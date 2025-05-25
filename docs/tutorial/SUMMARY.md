@@ -102,8 +102,10 @@
 * [唯一矩形构造](construction/01-unique-rectangle-construction/README.md)
   * [唯一矩形的结构构造](construction/01-unique-rectangle-construction/01-unique-rectangle-pattern-based-construction.md)
   * [代入唯一矩形](construction/01-unique-rectangle-construction/02-unique-rectangle-plus-n.md)
-* [链构造](construction/02-chaining-construction/README.md)
-  * [Wing 构造](construction/02-chaining-construction/01-wing-construction.md)
+* [Wing 构造](construction/02-wing-construction.md)
+* [毛刺和毛边](construction/03-kraken-logic/README.md)
+  * [毛刺的基本推理](construction/03-kraken-logic/01-reasoning-of-burr.md)
+  * [毛刺的使用](construction/03-kraken-logic/02-usages-of-burr.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
