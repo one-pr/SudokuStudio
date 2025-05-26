@@ -201,10 +201,9 @@ public sealed class DancingLinksSolver : ISolver, ISolutionEnumerableSolver
 	/// <returns>A grid converted.</returns>
 	private static Grid ToGrid(Stack<DancingLinkNode> answer)
 		=> Grid.Create(
-			from id in
-				from k in answer.GetInternalArray()
-				orderby k.Candidate
-				select k.Candidate
+			from k in answer.GetInternalArray()
+			orderby k.Candidate
+			select k.Candidate into id
 			select id % 9
 		);
 }
