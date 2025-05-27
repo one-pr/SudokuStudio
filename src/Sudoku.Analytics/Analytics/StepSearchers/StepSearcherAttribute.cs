@@ -69,7 +69,7 @@ public sealed class StepSearcherAttribute(string nameKey, params Technique[] tec
 	/// Indicates what difficulty levels the current step searcher can produce.
 	/// </summary>
 	public DifficultyLevel DifficultyLevels
-		=> (from t in SupportedTechniques select t.DifficultyLevel).Aggregate(@delegate.EnumFlagMerger);
+		=> DifficultyLevel.MergeFlags(from t in SupportedTechniques select t.DifficultyLevel);
 
 	/// <summary>
 	/// Indicates the supported sudoku types.

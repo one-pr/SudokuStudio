@@ -22,9 +22,13 @@ internal static partial class ChainingDriver
 		bool makeConclusionAroundBackdoors
 	)
 	{
-		LinkType[] linkTypes = [.. ChainingRule.ElementaryLinkTypes, .. allowsAdvancedLinks ? ChainingRule.AdvancedLinkTypes : []];
 		ref readonly var grid = ref context.Grid;
-		InitializeLinks(grid, linkTypes.Aggregate(@delegate.EnumFlagMerger), context.Options, out var supportedRules);
+		InitializeLinks(
+			grid,
+			LinkType.MergeFlags([.. ChainingRule.ElementaryLinkTypes, .. allowsAdvancedLinks ? ChainingRule.AdvancedLinkTypes : []]),
+			context.Options,
+			out var supportedRules
+		);
 
 		foreach (var chain in CollectChains(context.Grid, allowsAdvancedLinks, context.OnlyFindOne, makeConclusionAroundBackdoors))
 		{
@@ -166,9 +170,13 @@ internal static partial class ChainingDriver
 	/// <returns>The first found step.</returns>
 	public static Step? CollectBlossomLoopCore(ref StepAnalysisContext context, SortedSet<BlossomLoopStep> accumulator)
 	{
-		LinkType[] linkTypes = [.. ChainingRule.ElementaryLinkTypes, .. ChainingRule.AdvancedLinkTypes];
 		ref readonly var grid = ref context.Grid;
-		InitializeLinks(grid, linkTypes.Aggregate(@delegate.EnumFlagMerger), context.Options, out var supportedRules);
+		InitializeLinks(
+			grid,
+			LinkType.MergeFlags([.. ChainingRule.ElementaryLinkTypes, .. ChainingRule.AdvancedLinkTypes]),
+			context.Options,
+			out var supportedRules
+		);
 
 		foreach (var blossomLoop in CollectBlossomLoops(context.Grid, context.OnlyFindOne, supportedRules))
 		{
@@ -233,7 +241,7 @@ internal static partial class ChainingDriver
 	/// <returns>The first found step.</returns>
 	public static Step? CollectDynamicForcingChainsCore(ref StepAnalysisContext context, List<PatternBasedChainStep> accumulator)
 	{
-		var linkTypes = ChainingRule.ElementaryLinkTypes.Aggregate(@delegate.EnumFlagMerger);
+		var linkTypes = LinkType.MergeFlags(ChainingRule.ElementaryLinkTypes);
 		ref readonly var grid = ref context.Grid;
 		InitializeLinks(grid, linkTypes, context.Options, out var supportedRules);
 
@@ -291,10 +299,13 @@ internal static partial class ChainingDriver
 		where TMultipleForcingChains : MultipleForcingChains
 		where TMultipleForcingChainsStep : PatternBasedChainStep
 	{
-		LinkType[] l = [.. ChainingRule.ElementaryLinkTypes, .. allowsAdvancedLinks ? ChainingRule.AdvancedLinkTypes : []];
-		var linkTypes = l.Aggregate(@delegate.EnumFlagMerger);
 		ref readonly var grid = ref context.Grid;
-		InitializeLinks(grid, linkTypes, context.Options, out var supportedRules);
+		InitializeLinks(
+			grid,
+			LinkType.MergeFlags([.. ChainingRule.ElementaryLinkTypes, .. allowsAdvancedLinks ? ChainingRule.AdvancedLinkTypes : []]),
+			context.Options,
+			out var supportedRules
+		);
 
 		foreach (var chain in chainsCollector(context.Grid, context.OnlyFindOne))
 		{

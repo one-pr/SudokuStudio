@@ -140,7 +140,7 @@ internal sealed class SummaryViewBindableSource : INotifyPropertyChanged
 				select new SummaryViewBindableSource
 				{
 					TechniqueName = stepGroup.Key,
-					DifficultyLevel = difficultyLevels.Aggregate(@delegate.EnumFlagMerger),
+					DifficultyLevel = DifficultyLevel.MergeFlags([.. difficultyLevels]),
 					TotalDifficulty = stepGroupArray.SumUnsafe(&r),
 					MaxDifficulty = stepGroupArray.MaxUnsafe(&r),
 					CountOfSteps = stepGroupArray.Length

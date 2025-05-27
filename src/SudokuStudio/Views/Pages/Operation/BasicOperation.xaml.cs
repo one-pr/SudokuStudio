@@ -41,11 +41,12 @@ public sealed partial class BasicOperation : Page, IOperationProviderPage
 	/// <param name="panel">The panel.</param>
 	/// <returns>All format flags.</returns>
 	private SudokuFormatFlags GetFormatFlags(StackPanel panel)
-		=> (
+		=> SudokuFormatFlags.MergeFlags([
+			..
 			from children in panel.Children
 			where children is CheckBox { Tag: int and not 0, IsChecked: true }
 			select (SudokuFormatFlags)(int)((CheckBox)children).Tag!
-		).Aggregate(SudokuFormatFlags.None, @delegate.EnumFlagMerger);
+		]);
 
 
 	private void Page_Loaded(object sender, RoutedEventArgs e)
