@@ -164,7 +164,7 @@ public sealed class DictionaryQuerySolver : ISolver
 	/// </summary>
 	public Dictionary<string, string>? ParseGrid(string gridStr)
 	{
-		var values = Coordinates.ToDictionary(@delegate.Self, static _ => Digits);
+		var values = Coordinates.ToDictionary(Func<string>.Self, static _ => Digits);
 		foreach (var sd in Zip(Coordinates, [.. from s in gridStr select s.ToString()]))
 		{
 			var (s, d) = (sd[0], sd[1]);
