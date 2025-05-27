@@ -262,7 +262,7 @@ public partial struct CellMap : CellMapBase
 	/// </summary>
 	/// <remarks><b>
 	/// Please note that the result value may be invalid if no shared houses can be found.
-	/// In such case, the return value will be 32 (instead of -1, intuitive value).
+	/// In such case, the return value will be <see cref="FallbackConstants.@int"/> (32, not -1).
 	/// </b></remarks>
 	public readonly House SharedLine
 	{
@@ -276,7 +276,7 @@ public partial struct CellMap : CellMapBase
 	/// <remarks>
 	/// A shared house is a house of 9 cells that contain all possible cells stored in the current collection.
 	/// For example, cells <c>r1c25</c> is lying in row 1, the return value will be 9 (index of row 1).
-	/// However, <b>if the collection has no cells, the return value will be 32</b> (not -1).
+	/// However, <b>if the collection has no cells, the return value will be <see cref="FallbackConstants.@int"/></b> (32, not -1).
 	/// </remarks>
 	public readonly House FirstSharedHouse
 	{
