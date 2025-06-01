@@ -420,9 +420,14 @@ public sealed partial class ReverseBivalueUniversalGraveStepSearcher : StepSearc
 				var candidateOffsets = new List<CandidateViewNode>(cellsChosen.Count);
 				foreach (var cell in cellsChosen)
 				{
-					foreach (var digit in (Mask)(grid.GetCandidates(cell) & comparer))
+					foreach (var digit in grid.GetCandidates(cell))
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + digit));
+						candidateOffsets.Add(
+							new(
+								(comparer >> digit & 1) == 0 ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal,
+								cell * 9 + digit
+							)
+						);
 					}
 				}
 				foreach (var cell in cells)
