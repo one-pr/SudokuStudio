@@ -20,7 +20,7 @@ description: Reasoning of Burr
 
 那么，结合两个配图我们可以看到，数组成立时候的删数和 XY-Wing 成立时候的删数均包含 `r2c9(6)`，因此，这个题的结论就是 `r2c9 <> 6` 了。
 
-可以从这个例子里看到，我们稍微借助了一下鱼鳍的概念，将 `r3c9(7)` 这个候选数视为鱼鳍分情况讨论了一下，然后发现两种情况均可删除同样的位置，于是删数便成立。我们把这种鱼鳍的类似用法，放在强制链里推导的思维称为**毛刺**（Kraken Burr，简称 Burr）。
+可以从这个例子里看到，我们稍微借助了一下鱼鳍的概念，将 `r3c9(7)` 这个候选数视为鱼鳍分情况讨论了一下，然后发现两种情况均可删除同样的位置，于是删数便成立。我们把这种鱼鳍的类似用法，放在强制链里推导的思维称为**毛刺**（Kraken Burr、Burr 或 Kraken Fin）。
 
 ## 以毛刺冠名的技巧不区分主次关系 <a href="#there-is-no-primary-and-secondary-relation-on-naming-of-kraken-patterns" id="there-is-no-primary-and-secondary-relation-on-naming-of-kraken-patterns"></a>
 
