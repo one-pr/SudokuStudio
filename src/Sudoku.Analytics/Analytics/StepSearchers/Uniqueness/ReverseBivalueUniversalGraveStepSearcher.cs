@@ -295,17 +295,23 @@ public sealed partial class ReverseBivalueUniversalGraveStepSearcher : StepSearc
 			cellOffsets.Add(new(cellsChosen.Contains(cell) ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, cell));
 		}
 
+		var candidateOffsets = new List<CandidateViewNode>();
+		foreach (var cell in cellsChosen)
+		{
+			foreach (var digit in context.Grid.GetCandidates(cell))
+			{
+				candidateOffsets.Add(
+					new(
+						digit == extraDigit ? ColorIdentifier.Normal : ColorIdentifier.Auxiliary1,
+						cell * 9 + digit
+					)
+				);
+			}
+		}
+
 		var step = new ReverseBivalueUniversalGraveType2Step(
 			(from cell in elimMap select new Conclusion(Elimination, cell, extraDigit)).ToArray(),
-			[
-				[
-					.. cellOffsets,
-					..
-					from cell in cellsChosen
-					select new CandidateViewNode(ColorIdentifier.Normal, cell * 9 + extraDigit),
-					.. GetLinkViewNodes(separatedLoops)
-				]
-			],
+			[[.. cellOffsets, .. candidateOffsets, .. GetLinkViewNodes(separatedLoops)]],
 			context.Options,
 			d1,
 			d2,
