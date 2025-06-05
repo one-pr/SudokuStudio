@@ -13514,7 +13514,7 @@
             <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.Blocks" path="/summary"/></param>
             <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.DigitsMask" path="/summary"/></param>
             <param name="digitsCanAppearTwiceOrMore"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.DigitsCanAppearTwiceOrMore" path="/summary"/></param>
-            <param name="_xyzLoopReinterpretedTechnique">
+            <param name="_xyzLoopReducedTechnique">
             Indicates the technique that the current fat ring can be reinterpreted.
             If the fat ring cannot be reinterpreted as an XYZ-Loop or its grouped version,
             this value should be <see cref="F:Sudoku.Categorization.Technique.None"/>.
@@ -13532,7 +13532,7 @@
             <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.Blocks" path="/summary"/></param>
             <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.DigitsMask" path="/summary"/></param>
             <param name="digitsCanAppearTwiceOrMore"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.DigitsCanAppearTwiceOrMore" path="/summary"/></param>
-            <param name="_xyzLoopReinterpretedTechnique">
+            <param name="_xyzLoopReducedTechnique">
             Indicates the technique that the current fat ring can be reinterpreted.
             If the fat ring cannot be reinterpreted as an XYZ-Loop or its grouped version,
             this value should be <see cref="F:Sudoku.Categorization.Technique.None"/>.

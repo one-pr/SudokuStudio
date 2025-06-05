@@ -11,7 +11,7 @@ namespace Sudoku.Analytics.Steps;
 /// <param name="blocks"><inheritdoc cref="Blocks" path="/summary"/></param>
 /// <param name="digitsMask"><inheritdoc cref="DigitsMask" path="/summary"/></param>
 /// <param name="digitsCanAppearTwiceOrMore"><inheritdoc cref="DigitsCanAppearTwiceOrMore" path="/summary"/></param>
-/// <param name="_xyzLoopReinterpretedTechnique">
+/// <param name="_xyzLoopReducedTechnique">
 /// Indicates the technique that the current fat ring can be reinterpreted.
 /// If the fat ring cannot be reinterpreted as an XYZ-Loop or its grouped version,
 /// this value should be <see cref="Technique.None"/>.
@@ -25,7 +25,7 @@ public sealed class FatRingStep(
 	HouseMask blocks,
 	Mask digitsMask,
 	Mask digitsCanAppearTwiceOrMore,
-	Technique _xyzLoopReinterpretedTechnique
+	Technique _xyzLoopReducedTechnique
 ) : AlmostLockedSetsStep(conclusions, views, options)
 {
 	/// <inheritdoc/>
@@ -33,7 +33,7 @@ public sealed class FatRingStep(
 
 	/// <inheritdoc/>
 	public override Technique Code
-		=> _xyzLoopReinterpretedTechnique != Technique.None ? _xyzLoopReinterpretedTechnique : Technique.FatRing;
+		=> _xyzLoopReducedTechnique != Technique.None ? _xyzLoopReducedTechnique : Technique.FatRing;
 
 	/// <inheritdoc/>
 	public override Mask DigitsUsed => DigitsMask;

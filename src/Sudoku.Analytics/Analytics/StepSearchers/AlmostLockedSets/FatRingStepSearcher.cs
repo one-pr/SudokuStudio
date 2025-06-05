@@ -205,11 +205,26 @@ public sealed partial class FatRingStepSearcher : StepSearcher
 								}
 
 								// Okay for the pattern. Now check for eliminations.
+
+								// Phase 1: Basic eliminations.
 								var conclusions = new List<Conclusion>();
 								foreach (var digit in digitsCanAppearAtMostOnceMask)
 								{
 									var elimMap = HousesMap[digitsDistributionMap[digit].SharedLine] & CandidatesMap[digit] & ~allCells;
 									foreach (var cell in elimMap)
+									{
+										conclusions.Add(new(Elimination, cell, digit));
+									}
+								}
+
+								// Phase 2: Cannibalism.
+								// If all appearances of digit as canceled one can see the intersection
+								// of any cells inside the canceled block, we can remove them.
+								foreach (var digit in canceledHousesDictionary.Keys)
+								{
+									foreach (var cell in (allCells & CandidatesMap[digit]).PeerIntersection
+										& HousesMap[canceledHousesDictionary[digit]]
+										& CandidatesMap[digit])
 									{
 										conclusions.Add(new(Elimination, cell, digit));
 									}
