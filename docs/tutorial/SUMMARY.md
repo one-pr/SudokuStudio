@@ -111,6 +111,7 @@
   * [毛刺环和毛边环](construction/03-kraken-logic/05-kraken-burred-loop-and-kraken-linked-loop.md)
   * [毛刺、毛边的由来历史和翻译](construction/03-kraken-logic/06-naming-and-history-of-kraken-logic.md)
 * [鱼构造](construction/04-fish-construction.md)
+* [绽放环和绽放视角](construction/05-blossom-loop-and-its-view.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 

@@ -74,7 +74,7 @@ description: Elimination Analysis on Dynamic Loop
 
 有没有想过，当强制链形成回环后，会有什么样的效果呢？
 
-<figure><img src="../../.gitbook/assets/images_0366.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0366.png" alt="" width="375"><figcaption><p>绽放环</p></figcaption></figure>
 
 如图所示。本题其实是强制链，并带有三个分支，从 `r1c7` 单元格出发，并回到 `r4` 的所有 6 的位置上。非常巧妙的是，这个题的分支有 3 个，他们完全不同；最终走到 `r4` 上时，每一个分支都会唯一对应到一个 6 的位置上去。所有强链关系引出，并用弱链关系引入。写法如下：
 
