@@ -33,7 +33,7 @@ public sealed partial class IttoryuConstraint : Constraint, IComparisonOperatorC
 	public static int Minimum => 1;
 
 	/// <inheritdoc/>
-	public static int Maximum => 2;
+	public static int Maximum => 6;
 
 
 	/// <inheritdoc/>
@@ -96,21 +96,30 @@ public sealed partial class IttoryuConstraint : Constraint, IComparisonOperatorC
 		{
 			var previousDigit = ((SingleStep)steps[i]).Digit;
 			var currentDigit = ((SingleStep)steps[i + 1]).Digit;
-			if ((previousDigit, currentDigit) is (8, 0))
+			if (currentDigit < previousDigit)
 			{
 				roundsCount++;
-				continue;
 			}
 
-			if (currentDigit - previousDigit is 0 or 1)
+			if (currentDigit >= previousDigit && currentDigit - previousDigit is 0 or 1)
 			{
 				continue;
 			}
 
-			// Check whether the current digit is already completed.
-			// If the digit is already completed, we should consider this case as "consecutive" also.
+			// Check whether the all the interval digits are finished between 'previousDigit' and 'currentDigit'.
+			// If such digits are already completed, we should consider this case as "consecutive" also.
 			ref readonly var currentGrid = ref stepGrids[i + 1];
-			if (currentGrid.ValuesMap[previousDigit].Count == 9)
+			var valuesMap = currentGrid.ValuesMap;
+			var areAllIntervalDigitsCompleted = true;
+			for (var digit = (previousDigit + 1) % 9; digit != currentDigit; digit = (digit + 1) % 9)
+			{
+				if (valuesMap[digit].Count != 9)
+				{
+					areAllIntervalDigitsCompleted = false;
+					break;
+				}
+			}
+			if (areAllIntervalDigitsCompleted)
 			{
 				continue;
 			}
