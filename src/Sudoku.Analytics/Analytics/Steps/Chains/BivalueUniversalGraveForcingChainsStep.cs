@@ -79,7 +79,7 @@ public sealed class BivalueUniversalGraveForcingChainsStep(
 				"Factor_MultipleForcingChainsLengthFactor",
 				[nameof(Complexity)],
 				GetType(),
-				static args => ChainingLength.GetLengthDifficulty((int)args![0]!)
+				static args => DifficultyCalculator.Chaining.GetLengthDifficulty((int)args![0]!)
 			)
 		];
 

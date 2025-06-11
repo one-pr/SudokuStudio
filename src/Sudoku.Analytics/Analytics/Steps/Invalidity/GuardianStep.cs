@@ -56,7 +56,7 @@ public sealed class GuardianStep(
 				"Factor_GuardianFactor",
 				[nameof(ICellListTrait.CellSize), nameof(IGuardianTrait.GuardianCellsCount)],
 				GetType(),
-				static args => OeisSequences.A004526((int)args![0]! + OeisSequences.A004526((int)args![1]!))
+				static args => (int)args![0]! + ((int)args![1]! >> 1) >> 1
 			)
 		];
 

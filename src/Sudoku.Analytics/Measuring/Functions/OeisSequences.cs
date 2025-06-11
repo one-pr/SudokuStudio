@@ -26,13 +26,4 @@ public sealed class OeisSequences
 	/// <returns>The result value at the specified index.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static int A002024(int index) => (int)(Math.Sqrt(index << 1) + .5);
-
-	/// <summary>
-	/// Gets the value at the specified index in the sequence <see href="https://oeis.org/A004526">A004526</see>
-	/// (0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, ..).
-	/// </summary>
-	/// <param name="index"><inheritdoc cref="OeisSequences" path="//shared-comments/para[1]"/></param>
-	/// <returns>The result value at the specified index.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static int A004526(int index) => index >> 1;
 }

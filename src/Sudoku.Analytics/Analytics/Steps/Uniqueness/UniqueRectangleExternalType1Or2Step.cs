@@ -75,7 +75,7 @@ public sealed class UniqueRectangleExternalType1Or2Step(
 				"Factor_UniqueRectangleExternalType1Or2GuardianFactor",
 				[nameof(IGuardianTrait.GuardianCellsCount)],
 				GetType(),
-				static args => OeisSequences.A004526((int)args![0]!)
+				static args => (int)args![0]! >> 1
 			),
 			Factor.Create(
 				"Factor_RectangleIsAvoidableFactor",

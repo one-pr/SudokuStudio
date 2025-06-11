@@ -41,7 +41,7 @@ public sealed class BowmanBingoStep(
 				"Factor_BowmanBingoLengthFactor",
 				[nameof(ISizeTrait.Size)],
 				GetType(),
-				static args => ChainingLength.GetLengthDifficulty((int)args![0]!)
+				static args => DifficultyCalculator.Chaining.GetLengthDifficulty((int)args![0]!)
 			)
 		];
 

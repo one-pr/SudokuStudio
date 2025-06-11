@@ -48,7 +48,7 @@ public sealed class NormalExocetStep(
 				"Factor_ExocetConjugatePairsCountFactor",
 				[nameof(IConjugatePairTrait.ConjugatePairsCount)],
 				GetType(),
-				static args => OeisSequences.A004526((int)args![0]!)
+				static args => (int)args![0]! >> 1
 			)
 		];
 

@@ -69,7 +69,7 @@ public sealed class UniqueRectangleExternalWWingStep(
 				"Factor_UniqueRectangleExternalWWingGuardianFactor",
 				[nameof(IGuardianTrait.GuardianCellsCount)],
 				GetType(),
-				static args => OeisSequences.A004526((int)args![0]!)
+				static args => (int)args![0]! >> 1
 			),
 			Factor.Create(
 				"Factor_RectangleIsAvoidableFactor",

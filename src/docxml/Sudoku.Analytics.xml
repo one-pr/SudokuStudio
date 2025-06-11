@@ -7901,6 +7901,35 @@
             to provide checking rules on some analysis-related concepts like Sashimi.
             </summary>
         </member>
+        <member name="T:Sudoku.Analytics.Hub.DifficultyCalculator">
+            <summary>
+            Represents a type that calculates for difficulty rating.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Analytics.Hub.DifficultyCalculator.Chaining">
+            <summary>
+            Represents a chaining difficulty calculator.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Hub.DifficultyCalculator.Chaining.GetLengthDifficulty(System.Int32)">
+            <summary>
+            Gets the difficulty rating value of the length. The length can be used in chaining-like techniques.
+            </summary>
+            <param name="length">The length of the pattern.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.Hub.DifficultyCalculator.ComplexSingle">
+            <summary>
+            Represents difficulty calculator for complex single.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Hub.DifficultyCalculator.ComplexSingle.GetComplexityDifficulty(Sudoku.Categorization.Technique[][])">
+            <summary>
+            Gets the complexity difficulty for complex single techniques usages.
+            </summary>
+            <param name="techniques">The techniques used.</param>
+            <returns>The result.</returns>
+        </member>
         <member name="T:Sudoku.Analytics.Hub.EliminationCalculator">
             <summary>
             Represents a type that calculates eliminations.
@@ -28292,30 +28321,6 @@
         <member name="P:Sudoku.Measuring.FactorResourceMismatchedException.Message">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Measuring.Functions.ChainingLength">
-            <summary>
-            Represents a function that calculates for length on chaining rules.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Measuring.Functions.ChainingLength.GetLengthDifficulty(System.Int32)">
-            <summary>
-            Gets the difficulty rating value of the length. The length can be used in chaining-like techniques.
-            </summary>
-            <param name="length">The length of the pattern.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="T:Sudoku.Measuring.Functions.ComplexTechniqueUsages">
-            <summary>
-            Represents a function that calculates for complex technique rules.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Measuring.Functions.ComplexTechniqueUsages.GetComplexityDifficulty(Sudoku.Categorization.Technique[][])">
-            <summary>
-            Gets the complexity difficulty for complex single techniques usages.
-            </summary>
-            <param name="techniques">The techniques used.</param>
-            <returns>The result.</returns>
-        </member>
         <member name="T:Sudoku.Measuring.Functions.OeisSequences">
             <summary>
             Represents a list of methods that calculates for values in OEIS sequences.
@@ -28339,14 +28344,6 @@
             (1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, ..).
             </summary>
             <param name="index"><inheritdoc cref="T:Sudoku.Measuring.Functions.OeisSequences" path="//shared-comments/para[2]"/></param>
-            <returns>The result value at the specified index.</returns>
-        </member>
-        <member name="M:Sudoku.Measuring.Functions.OeisSequences.A004526(System.Int32)">
-            <summary>
-            Gets the value at the specified index in the sequence <see href="https://oeis.org/A004526">A004526</see>
-            (0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, ..).
-            </summary>
-            <param name="index"><inheritdoc cref="T:Sudoku.Measuring.Functions.OeisSequences" path="//shared-comments/para[1]"/></param>
             <returns>The result value at the specified index.</returns>
         </member>
         <member name="T:Sudoku.ModuleInitializer">

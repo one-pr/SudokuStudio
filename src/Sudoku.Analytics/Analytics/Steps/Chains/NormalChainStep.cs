@@ -68,7 +68,7 @@ public class NormalChainStep(
 				"Factor_ChainLengthFactor",
 				[nameof(Complexity)],
 				GetType(),
-				static args => ChainingLength.GetLengthDifficulty((int)args![0]!)
+				static args => DifficultyCalculator.Chaining.GetLengthDifficulty((int)args![0]!)
 			),
 			Factor.Create(
 				"Factor_ChainGroupedFactor",

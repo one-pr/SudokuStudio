@@ -58,7 +58,7 @@ public sealed class NormalComplexSingleStep(
 				"Factor_ComplexSingleFactor",
 				[nameof(IndirectTechniques)],
 				GetType(),
-				static args => ComplexTechniqueUsages.GetComplexityDifficulty((Technique[][])args![0]!)
+				static args => DifficultyCalculator.ComplexSingle.GetComplexityDifficulty((Technique[][])args![0]!)
 			)
 		];
 

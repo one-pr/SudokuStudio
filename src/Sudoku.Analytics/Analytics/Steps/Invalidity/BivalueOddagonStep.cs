@@ -54,7 +54,7 @@ public abstract class BivalueOddagonStep(
 				"Factor_BivalueOddagonLengthFactor",
 				[nameof(ICellListTrait.CellSize)],
 				GetType(),
-				static args => OeisSequences.A004526((int)args![0]!)
+				static args => (int)args![0]! >> 1
 			)
 		];
 

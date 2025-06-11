@@ -76,7 +76,7 @@ public sealed class BlossomLoopStep(ReadOnlyMemory<Conclusion> conclusions, View
 				"Factor_BlossomLoopLengthFactor",
 				[nameof(Complexity)],
 				GetType(),
-				static args => ChainingLength.GetLengthDifficulty((int)args![0]!)
+				static args => DifficultyCalculator.Chaining.GetLengthDifficulty((int)args![0]!)
 			)
 		];
 

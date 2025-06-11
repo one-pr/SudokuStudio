@@ -62,7 +62,7 @@ public sealed class WhipStep(
 				"Factor_WhipComplexityFactor",
 				[nameof(Complexity)],
 				GetType(),
-				static args => ChainingLength.GetLengthDifficulty((int)args[0]!)
+				static args => DifficultyCalculator.Chaining.GetLengthDifficulty((int)args[0]!)
 			)
 		];
 
