@@ -134,7 +134,7 @@ internal sealed partial class LibraryFileWriter : IAsyncDisposable
 			return;
 		}
 
-		await _writer.WriteAsync(string.Join("\n", _buffer));
+		await _writer.WriteAsync(string.Join('\n', _buffer.AsSpan()));
 		await _writer.FlushAsync();
 		_buffer.Clear();
 	}

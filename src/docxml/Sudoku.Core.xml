@@ -10129,7 +10129,7 @@
             </summary>
             <param name="value">The value to be set.</param>
         </member>
-        <member name="M:Sudoku.IO.Library.WriteTags(System.ReadOnlyMemory{System.String})">
+        <member name="M:Sudoku.IO.Library.WriteTags(System.ReadOnlySpan{System.String})">
             <summary>
             Writes the tags to the library information file.
             </summary>

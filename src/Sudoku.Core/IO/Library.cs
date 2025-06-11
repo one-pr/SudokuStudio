@@ -81,7 +81,7 @@ public sealed partial class Library(string directoryPath, string identifier) :
 	/// </summary>
 	/// <param name="value">The value to be set.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public void WriteTags(ReadOnlyMemory<string> value) => WriteProperty(static (info, value) => info.Tags = value.ToArray(), value);
+	public void WriteTags(ReadOnlySpan<string> value) => WriteProperty(static (info, value) => info.Tags = value.ToArray(), value);
 
 	/// <summary>
 	/// Reads the name of the library information file.
@@ -109,7 +109,7 @@ public sealed partial class Library(string directoryPath, string identifier) :
 	/// </summary>
 	/// <returns>The tags.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public ReadOnlyMemory<string> ReadTags() => ReadProperty(static info => info.Tags);
+	public ReadOnlySpan<string> ReadTags() => ReadProperty(static info => info.Tags);
 
 	/// <summary>
 	/// Writes a new grid into the target file; if the file doesn't exist, it will create a new file,
@@ -306,7 +306,7 @@ public sealed partial class Library(string directoryPath, string identifier) :
 	/// <param name="valueAssignment">The result value assigning method.</param>
 	/// <param name="value">The value to be set.</param>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private void WriteProperty<T>(Action<LibraryInfo, T> valueAssignment, T value)
+	private void WriteProperty<T>(Action<LibraryInfo, T> valueAssignment, T value) where T : allows ref struct
 	{
 		var info = LoadOrCreate();
 		valueAssignment(info, value);
@@ -333,7 +333,7 @@ public sealed partial class Library(string directoryPath, string identifier) :
 	/// <param name="resultValueCreator">The result value creator.</param>
 	/// <returns>The result value.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private T ReadProperty<T>(Func<LibraryInfo, T> resultValueCreator)
+	private T ReadProperty<T>(Func<LibraryInfo, T> resultValueCreator) where T : allows ref struct
 	{
 		var info = LoadOrCreate();
 		return resultValueCreator(info);
