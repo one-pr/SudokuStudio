@@ -9307,67 +9307,6 @@
         <member name="M:Sudoku.Analytics.StepSearchers.EmptyRectangleIntersectionPairStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.ExtendedSubsetPrincipleStepSearcher">
-            <summary>
-            Provides with an <b>Extended Subset Principle</b> step searcher.
-            The step searcher will include the following techniques:
-            <list type="bullet">
-            <item>Extended Subset Principle</item>
-            </list>
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.ExtendedSubsetPrincipleStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.FatRingStepSearcher">
-            <summary>
-            Provides with a <b>Fat Ring</b> step searcher.
-            The step searcher will include the following techniques:
-            <list type="bullet">
-            <item>Fat Ring</item>
-            </list>
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.StepSearchers.FatRingStepSearcher.PatternPositions">
-            <summary>
-            Indicates the detailed pattern positions.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.FatRingStepSearcher.#cctor">
-            <static-constructor>
-		<summary>
-			<para>
-				Indicates the <see langword="static" /> constructor of the current type.
-			</para>
-			<para>
-				This constructor will initialize some <see langword="static readonly" /> data members
-				of this type that can't use a simple expression to describe the initial value.
-			</para>
-		</summary>
-	</static-constructor>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.FatRingStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
-            <inheritdoc />
-            <remarks>
-            <developer-notes>
-		<para>
-			<b>Developer Notes</b>
-		</para>
-	</developer-notes>
-            <para>
-            The pattern will use a row and a column, with multiple blocks. For example, row 1, column 1 and blocks in [5, 6, 8, 9].
-            Some empty cells in row 1 and column 1 will be chosen, with each digit satisfying either the specified conditions:
-            <list type="bullet">
-            <item>the digit can be appeared at most once</item>
-            <item>
-            the digit can be appeared at most twice, but two different positions must be connected
-            with a strong link (or a grouped strong link, i.e. empty rectangle) in extra blocks
-            </item>
-            </list>
-            This is a dynamic loop, extended from technique "XYZ-Ring" (XYZ Loop) technique.
-            </para>
-            </remarks>
-        </member>
         <member name="T:Sudoku.Analytics.StepSearchers.AssemblyStepSearcherAttribute`1">
             <summary>
             Defines an attribute that can be applied to the solving assembly,
@@ -13207,6 +13146,67 @@
             </para>
             </remarks>
         </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.ExtendedSubsetPrincipleStepSearcher">
+            <summary>
+            Provides with an <b>Extended Subset Principle</b> step searcher.
+            The step searcher will include the following techniques:
+            <list type="bullet">
+            <item>Extended Subset Principle</item>
+            </list>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ExtendedSubsetPrincipleStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.FatRingStepSearcher">
+            <summary>
+            Provides with a <b>Fat Ring</b> step searcher.
+            The step searcher will include the following techniques:
+            <list type="bullet">
+            <item>Fat Ring</item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.StepSearchers.FatRingStepSearcher.PatternPositions">
+            <summary>
+            Indicates the detailed pattern positions.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.FatRingStepSearcher.#cctor">
+            <static-constructor>
+		<summary>
+			<para>
+				Indicates the <see langword="static" /> constructor of the current type.
+			</para>
+			<para>
+				This constructor will initialize some <see langword="static readonly" /> data members
+				of this type that can't use a simple expression to describe the initial value.
+			</para>
+		</summary>
+	</static-constructor>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.FatRingStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
+            <inheritdoc />
+            <remarks>
+            <developer-notes>
+		<para>
+			<b>Developer Notes</b>
+		</para>
+	</developer-notes>
+            <para>
+            The pattern will use a row and a column, with multiple blocks. For example, row 1, column 1 and blocks in [5, 6, 8, 9].
+            Some empty cells in row 1 and column 1 will be chosen, with each digit satisfying either the specified conditions:
+            <list type="bullet">
+            <item>the digit can be appeared at most once</item>
+            <item>
+            the digit can be appeared at most twice, but two different positions must be connected
+            with a strong link (or a grouped strong link, i.e. empty rectangle) in extra blocks
+            </item>
+            </list>
+            This is a dynamic loop, extended from technique "XYZ-Ring" (XYZ Loop) technique.
+            </para>
+            </remarks>
+        </member>
         <member name="T:Sudoku.Analytics.StepSearchers.IrregularWingStepSearcher">
             <summary>
             Provides with an <b>Irregular Wing</b> step searcher.
@@ -13446,134 +13446,6 @@
         </member>
         <member name="P:Sudoku.Analytics.Steps.EmptyRectangleIntersectionPairStep.Interpolations">
             <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep">
-            <summary>
-            Provides with a step that is an <b>Extended Subset Principle</b> technique.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-            <param name="cells"><inheritdoc cref="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.Cells" path="/summary"/></param>
-            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.DigitsMask" path="/summary"/></param>
-            <param name="extraDigit"><inheritdoc cref="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.ExtraDigit" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Concepts.CellMap@,System.Int16,System.Int32)">
-            <summary>
-            Provides with a step that is an <b>Extended Subset Principle</b> technique.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-            <param name="cells"><inheritdoc cref="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.Cells" path="/summary"/></param>
-            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.DigitsMask" path="/summary"/></param>
-            <param name="extraDigit"><inheritdoc cref="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.ExtraDigit" path="/summary"/></param>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.BaseDifficulty">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.Code">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.DigitsUsed">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.Interpolations">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.Factors">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.Cells">
-            <summary>
-            Indicates the cells used.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.DigitsMask">
-            <summary>
-            Indicates the digits used.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.ExtraDigit">
-            <summary>
-            Indicates the extra digit used.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.Sudoku#Analytics#Traits#ICellListTrait#CellSize">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Steps.FatRingStep">
-            <summary>
-            Provides with a step that is a <b>Fat Ring</b> technique.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-            <param name="row"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.Row" path="/summary"/></param>
-            <param name="column"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.Column" path="/summary"/></param>
-            <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.Blocks" path="/summary"/></param>
-            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.DigitsMask" path="/summary"/></param>
-            <param name="digitsCanAppearTwiceOrMore"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.DigitsCanAppearTwiceOrMore" path="/summary"/></param>
-            <param name="_xyzLoopReducedTechnique">
-            Indicates the technique that the current fat ring can be reinterpreted.
-            If the fat ring cannot be reinterpreted as an XYZ-Loop or its grouped version,
-            this value should be <see cref="F:Sudoku.Categorization.Technique.None"/>.
-            </param>
-        </member>
-        <member name="M:Sudoku.Analytics.Steps.FatRingStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.Int32,System.Int32,System.Int32,System.Int16,System.Int16,Sudoku.Categorization.Technique)">
-            <summary>
-            Provides with a step that is a <b>Fat Ring</b> technique.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-            <param name="row"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.Row" path="/summary"/></param>
-            <param name="column"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.Column" path="/summary"/></param>
-            <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.Blocks" path="/summary"/></param>
-            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.DigitsMask" path="/summary"/></param>
-            <param name="digitsCanAppearTwiceOrMore"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.DigitsCanAppearTwiceOrMore" path="/summary"/></param>
-            <param name="_xyzLoopReducedTechnique">
-            Indicates the technique that the current fat ring can be reinterpreted.
-            If the fat ring cannot be reinterpreted as an XYZ-Loop or its grouped version,
-            this value should be <see cref="F:Sudoku.Categorization.Technique.None"/>.
-            </param>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.FatRingStep.BaseDifficulty">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.FatRingStep.Code">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.FatRingStep.DigitsUsed">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.FatRingStep.Interpolations">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.FatRingStep.Row">
-            <summary>
-            Indicates the row used.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.FatRingStep.Column">
-            <summary>
-            Indicates the column used.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.FatRingStep.Blocks">
-            <summary>
-            Indicates the blocks used.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.FatRingStep.DigitsMask">
-            <summary>
-            Indicates the digits mask.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.FatRingStep.DigitsCanAppearTwiceOrMore">
-            <summary>
-            Indicates the digits that can appear in the target row and column twice or more.
-            </summary>
         </member>
         <member name="T:Sudoku.Analytics.Steps.HouseDeathBlossomStep">
             <summary>
@@ -21330,6 +21202,134 @@
         </member>
         <member name="P:Sudoku.Analytics.Steps.UniqueRectangleWWingStep.Factors">
             <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep">
+            <summary>
+            Provides with a step that is an <b>Extended Subset Principle</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="cells"><inheritdoc cref="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.Cells" path="/summary"/></param>
+            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.DigitsMask" path="/summary"/></param>
+            <param name="extraDigit"><inheritdoc cref="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.ExtraDigit" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Concepts.CellMap@,System.Int16,System.Int32)">
+            <summary>
+            Provides with a step that is an <b>Extended Subset Principle</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="cells"><inheritdoc cref="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.Cells" path="/summary"/></param>
+            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.DigitsMask" path="/summary"/></param>
+            <param name="extraDigit"><inheritdoc cref="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.ExtraDigit" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.BaseDifficulty">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.Code">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.DigitsUsed">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.Interpolations">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.Factors">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.Cells">
+            <summary>
+            Indicates the cells used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.DigitsMask">
+            <summary>
+            Indicates the digits used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.ExtraDigit">
+            <summary>
+            Indicates the extra digit used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.ExtendedSubsetPrincipleStep.Sudoku#Analytics#Traits#ICellListTrait#CellSize">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.Steps.FatRingStep">
+            <summary>
+            Provides with a step that is a <b>Fat Ring</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="row"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.Row" path="/summary"/></param>
+            <param name="column"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.Column" path="/summary"/></param>
+            <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.Blocks" path="/summary"/></param>
+            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.DigitsMask" path="/summary"/></param>
+            <param name="digitsCanAppearTwiceOrMore"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.DigitsCanAppearTwiceOrMore" path="/summary"/></param>
+            <param name="_xyzLoopReducedTechnique">
+            Indicates the technique that the current fat ring can be reinterpreted.
+            If the fat ring cannot be reinterpreted as an XYZ-Loop or its grouped version,
+            this value should be <see cref="F:Sudoku.Categorization.Technique.None"/>.
+            </param>
+        </member>
+        <member name="M:Sudoku.Analytics.Steps.FatRingStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.Int32,System.Int32,System.Int32,System.Int16,System.Int16,Sudoku.Categorization.Technique)">
+            <summary>
+            Provides with a step that is a <b>Fat Ring</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="row"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.Row" path="/summary"/></param>
+            <param name="column"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.Column" path="/summary"/></param>
+            <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.Blocks" path="/summary"/></param>
+            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.DigitsMask" path="/summary"/></param>
+            <param name="digitsCanAppearTwiceOrMore"><inheritdoc cref="P:Sudoku.Analytics.Steps.FatRingStep.DigitsCanAppearTwiceOrMore" path="/summary"/></param>
+            <param name="_xyzLoopReducedTechnique">
+            Indicates the technique that the current fat ring can be reinterpreted.
+            If the fat ring cannot be reinterpreted as an XYZ-Loop or its grouped version,
+            this value should be <see cref="F:Sudoku.Categorization.Technique.None"/>.
+            </param>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.FatRingStep.BaseDifficulty">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.FatRingStep.Code">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.FatRingStep.DigitsUsed">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.FatRingStep.Interpolations">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.FatRingStep.Row">
+            <summary>
+            Indicates the row used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.FatRingStep.Column">
+            <summary>
+            Indicates the column used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.FatRingStep.Blocks">
+            <summary>
+            Indicates the blocks used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.FatRingStep.DigitsMask">
+            <summary>
+            Indicates the digits mask.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.FatRingStep.DigitsCanAppearTwiceOrMore">
+            <summary>
+            Indicates the digits that can appear in the target row and column twice or more.
+            </summary>
         </member>
         <member name="T:Sudoku.Analytics.Steps.IrregularWingStep">
             <summary>
