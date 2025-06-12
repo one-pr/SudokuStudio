@@ -168,7 +168,8 @@ public sealed class ConstraintCollection :
 		=> FirstOrDefault(predicate) ?? defaultValue;
 
 	/// <inheritdoc/>
-	IEnumerable<Constraint> IWhereMethod<ConstraintCollection, Constraint>.Where(Func<Constraint, bool> predicate) => Where(predicate);
+	IEnumerable<Constraint> IWhereMethod<ConstraintCollection, Constraint>.Where(Func<Constraint, bool> predicate)
+		=> Where(predicate);
 
 	/// <inheritdoc/>
 	IEnumerable<Constraint> ISliceMethod<ConstraintCollection, Constraint>.Slice(int start, int count) => Slice(start, count);
@@ -186,7 +187,7 @@ public sealed class ConstraintCollection :
 	{
 		if (right is null)
 		{
-			return new(left);
+			return [.. left];
 		}
 
 		var result = new ConstraintCollection(left.Count + 1);
@@ -194,7 +195,7 @@ public sealed class ConstraintCollection :
 		{
 			if (element == right)
 			{
-				return new(left);
+				return [.. left];
 			}
 		}
 
@@ -207,7 +208,7 @@ public sealed class ConstraintCollection :
 	{
 		if (right is null)
 		{
-			return new(left);
+			return [.. left];
 		}
 
 		var result = new ConstraintCollection(left.Count - 1);
