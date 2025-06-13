@@ -71,9 +71,7 @@ public sealed partial class RankPattern(in Grid grid, params RankSetCollection s
 	{
 		var truths = Sets.Truths;
 		var links = Sets.Links;
-		var truthsString = string.Join(' ', from truth in truths select truth.ToString());
-		var linksString = string.Join(' ', from link in links select link.ToString());
-		return $"T{truths.Count} = {truthsString}, L{links.Count} = {linksString}";
+		return $"T{truths.Count} = {truths}, L{links.Count} = {links}";
 	}
 
 	/// <summary>

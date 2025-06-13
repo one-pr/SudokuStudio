@@ -115,14 +115,91 @@ public sealed partial class RankSetCollection :
 			return "<Empty>";
 		}
 
-		var truths = string.Join(' ', Truths).ToUpper();
-		var links = string.Join(' ', Links).ToLower();
+		var truths = toPartString(_truths).ToUpper();
+		var links = toPartString(_links).ToLower();
 		return (Truths, Links) switch
 		{
 			({ Count: not 0 }, { Count: not 0 }) => $"""{truths}\{links}""",
 			({ Count: not 0 }, _) => truths,
 			_ => links
 		};
+
+
+		static string toPartString(SortedSet<RankSet> sets)
+		{
+			Dictionary<Digit, Mask> rn = [], cn = [], bn = [], rc = [];
+			foreach (var set in sets)
+			{
+				switch (set)
+				{
+					case CellTruth { Cell: var cell }:
+					{
+						if (!rc.TryAdd(cell / 9, (Mask)(1 << cell % 9)))
+						{
+							rc[cell / 9] |= (Mask)(1 << cell % 9);
+						}
+						break;
+					}
+					case CellLink { Cell: var cell }:
+					{
+						if (!rc.TryAdd(cell / 9, (Mask)(1 << cell % 9)))
+						{
+							rc[cell / 9] |= (Mask)(1 << cell % 9);
+						}
+						break;
+					}
+					case HouseTruth { House: var house, Digit: var digit }:
+					{
+						var houseType = (HouseType)(house / 9);
+						var index = house % 9;
+						var dic = houseType switch { HouseType.Block => bn, HouseType.Row => rn, _ => cn };
+						if (!dic.TryAdd(index, (Mask)(1 << digit)))
+						{
+							dic[index] |= (Mask)(1 << digit);
+						}
+						break;
+					}
+					case HouseLink { House: var house, Digit: var digit }:
+					{
+						var houseType = (HouseType)(house / 9);
+						var index = house % 9;
+						var dic = houseType switch { HouseType.Block => bn, HouseType.Row => rn, _ => cn };
+						if (!dic.TryAdd(index, (Mask)(1 << digit)))
+						{
+							dic[index] |= (Mask)(1 << digit);
+						}
+						break;
+					}
+				}
+			}
+
+			var rnParts = new List<string>();
+			var cnParts = new List<string>();
+			var bnParts = new List<string>();
+			var rcParts = new List<string>();
+			foreach (var (n, values) in rn)
+			{
+				rnParts.Add($"{n + 1}r{string.Concat([.. from r in values select r + 1])}");
+			}
+			foreach (var (n, values) in cn)
+			{
+				cnParts.Add($"{n + 1}c{string.Concat([.. from c in values select c + 1])}");
+			}
+			foreach (var (n, values) in bn)
+			{
+				bnParts.Add($"{n + 1}b{string.Concat([.. from b in values select b + 1])}");
+			}
+			foreach (var (c, values) in rc)
+			{
+				rcParts.Add($"{c + 1}n{string.Concat([.. from r in values select r + 1])}");
+			}
+
+			var t1 = (string.Join(' ', rcParts) is { Length: not 0 } s ? s : null) is { } w ? $"{w} " : string.Empty;
+			var t2 = (string.Join(' ', bnParts) is { Length: not 0 } t ? t : null) is { } x ? $"{x} " : string.Empty;
+			var t3 = (string.Join(' ', rnParts) is { Length: not 0 } u ? u : null) is { } y ? $"{y} " : string.Empty;
+			var t4 = (string.Join(' ', cnParts) is { Length: not 0 } v ? v : null) is { } z ? $"{z} " : string.Empty;
+			return $"{t1}{t2}{t3}{t4}".TrimEnd();
+		}
 	}
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
