@@ -194,7 +194,8 @@
         </member>
         <member name="T:Sudoku.Analytics.Ranking.Link">
             <summary>
-            Represents a link (a set of 9 positions which allows at most 1 digit can be filled).
+            Represents a link. A link is a set of candidates that can be filled into it.
+            Different with truths, a link allows no digits filled into it.
             </summary>
         </member>
         <member name="M:Sudoku.Analytics.Ranking.Link.GetAvailableRange(Sudoku.Concepts.Grid@)">
@@ -303,7 +304,7 @@
         </member>
         <member name="T:Sudoku.Analytics.Ranking.RankSet">
             <summary>
-            Represents a rank set.
+            Represents a set of candidates that can be used for filling digits.
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.Ranking.RankSet.IsTruth">
@@ -622,7 +623,9 @@
         </member>
         <member name="T:Sudoku.Analytics.Ranking.Truth">
             <summary>
-            Represents a truth (a set of 9 positions which requires 1 digit can be filled).
+            Represents a truth. A truth is a set of candidates (generally one digit in a whole house, or a cell),
+            which requires the set can only fill one digit into it.
+            Both no digits filled or greater than 2 digits filled are disallowed.
             </summary>
         </member>
         <member name="T:Sudoku.ModuleInitializer">

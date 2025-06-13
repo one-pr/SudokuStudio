@@ -1,7 +1,7 @@
 namespace Sudoku.Analytics.Ranking;
 
 /// <summary>
-/// Represents a rank set.
+/// Represents a set of candidates that can be used for filling digits.
 /// </summary>
 [TypeImpl(
 	TypeImplFlags.AllObjectMethods | TypeImplFlags.AllEqualityComparisonOperators,

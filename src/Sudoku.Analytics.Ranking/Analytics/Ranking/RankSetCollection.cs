@@ -130,43 +130,49 @@ public sealed partial class RankSetCollection :
 			Dictionary<Digit, Mask> rn = [], cn = [], bn = [], rc = [];
 			foreach (var set in sets)
 			{
+				Cell targetCell;
+				House targetHouse;
+				Digit targetDigit;
 				switch (set)
 				{
 					case CellTruth { Cell: var cell }:
 					{
-						if (!rc.TryAdd(cell / 9, (Mask)(1 << cell % 9)))
-						{
-							rc[cell / 9] |= (Mask)(1 << cell % 9);
-						}
-						break;
+						targetCell = cell;
+						goto ForCellBased;
 					}
 					case CellLink { Cell: var cell }:
 					{
-						if (!rc.TryAdd(cell / 9, (Mask)(1 << cell % 9)))
-						{
-							rc[cell / 9] |= (Mask)(1 << cell % 9);
-						}
-						break;
+						targetCell = cell;
+						goto ForCellBased;
 					}
 					case HouseTruth { House: var house, Digit: var digit }:
 					{
-						var houseType = (HouseType)(house / 9);
-						var index = house % 9;
-						var dic = houseType switch { HouseType.Block => bn, HouseType.Row => rn, _ => cn };
-						if (!dic.TryAdd(index, (Mask)(1 << digit)))
-						{
-							dic[index] |= (Mask)(1 << digit);
-						}
-						break;
+						(targetHouse, targetDigit) = (house, digit);
+						goto ForHouseBased;
 					}
 					case HouseLink { House: var house, Digit: var digit }:
 					{
-						var houseType = (HouseType)(house / 9);
-						var index = house % 9;
-						var dic = houseType switch { HouseType.Block => bn, HouseType.Row => rn, _ => cn };
-						if (!dic.TryAdd(index, (Mask)(1 << digit)))
+						(targetHouse, targetDigit) = (house, digit);
+						goto ForHouseBased;
+					}
+
+				ForCellBased:
+					{
+						if (!rc.TryAdd(targetCell / 9, (Mask)(1 << targetCell % 9)))
 						{
-							dic[index] |= (Mask)(1 << digit);
+							rc[targetCell / 9] |= (Mask)(1 << targetCell % 9);
+						}
+						break;
+					}
+
+				ForHouseBased:
+					{
+						var houseType = (HouseType)(targetHouse / 9);
+						var index = targetHouse % 9;
+						var dic = houseType switch { HouseType.Block => bn, HouseType.Row => rn, _ => cn };
+						if (!dic.TryAdd(index, (Mask)(1 << targetDigit)))
+						{
+							dic[index] |= (Mask)(1 << targetDigit);
 						}
 						break;
 					}

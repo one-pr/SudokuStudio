@@ -1,7 +1,8 @@
 namespace Sudoku.Analytics.Ranking;
 
 /// <summary>
-/// Represents a link (a set of 9 positions which allows at most 1 digit can be filled).
+/// Represents a link. A link is a set of candidates that can be filled into it.
+/// Different with truths, a link allows no digits filled into it.
 /// </summary>
 public abstract class Link : RankSet
 {
