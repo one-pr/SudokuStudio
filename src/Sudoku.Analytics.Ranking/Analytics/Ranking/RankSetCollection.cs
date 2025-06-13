@@ -176,30 +176,30 @@ public sealed partial class RankSetCollection :
 			var t1 = (
 				(
 					from pair in rc.ToArray()
-					let c = pair.Key
+					let r = pair.Key
 					let values = pair.Value
-					select $"{c + 1}n{string.Concat([.. from r in values select r + 1])}"
+					select $"{r + 1}n{string.Concat([.. from c in values select c + 1])}"
 				) is { Length: not 0 } rcParts ? string.Join(' ', rcParts) : null) is { } w ? $"{w} " : string.Empty;
 			var t2 = (
 				(
 					from pair in bn.ToArray()
 					let n = pair.Key
 					let values = pair.Value
-					select $"{n + 1}b{string.Concat([.. from b in values select b + 1])}"
+					select $"{string.Concat([.. from b in values select b + 1])}b{n + 1}"
 				) is { Length: not 0 } bnParts ? string.Join(' ', bnParts) : null) is { } x ? $"{x} " : string.Empty;
 			var t3 = (
 				(
 					from pair in rn.ToArray()
 					let n = pair.Key
 					let values = pair.Value
-					select $"{n + 1}r{string.Concat([.. from r in values select r + 1])}"
+					select $"{string.Concat([.. from r in values select r + 1])}r{n + 1}"
 				) is { Length: not 0 } rnParts ? string.Join(' ', rnParts) : null) is { } y ? $"{y} " : string.Empty;
 			var t4 = (
 				(
 					from pair in cn.ToArray()
 					let n = pair.Key
 					let values = pair.Value
-					select $"{n + 1}c{string.Concat([.. from c in values select c + 1])}"
+					select $"{string.Concat([.. from c in values select c + 1])}c{n + 1}"
 				) is { Length: not 0 } cnParts ? string.Join(' ', cnParts) : null) is { } z ? $"{z} " : string.Empty;
 			return $"{t1}{t2}{t3}{t4}".TrimEnd();
 		}
