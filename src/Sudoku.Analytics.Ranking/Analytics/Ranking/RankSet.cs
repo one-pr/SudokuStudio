@@ -35,6 +35,13 @@ public abstract partial class RankSet :
 	/// <inheritdoc/>
 	public abstract bool Equals([NotNullWhen(true)] RankSet? other);
 
+	/// <summary>
+	/// Determine whether the specified assignment is inside the set.
+	/// </summary>
+	/// <param name="assignment">The assignment.</param>
+	/// <returns>A <see cref="bool"/> result.</returns>
+	public abstract bool ContainsAssignment(Candidate assignment);
+
 	/// <inheritdoc/>
 	public abstract int CompareTo(RankSet? other);
 

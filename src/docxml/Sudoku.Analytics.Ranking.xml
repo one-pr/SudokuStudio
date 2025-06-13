@@ -27,6 +27,9 @@
         <member name="M:Sudoku.Analytics.Ranking.CellLink.Equals(Sudoku.Analytics.Ranking.RankSet)">
             <inheritdoc/>
         </member>
+        <member name="M:Sudoku.Analytics.Ranking.CellLink.ContainsAssignment(System.Int32)">
+            <inheritdoc/>
+        </member>
         <member name="M:Sudoku.Analytics.Ranking.CellLink.CompareTo(Sudoku.Analytics.Ranking.RankSet)">
             <inheritdoc/>
         </member>
@@ -60,6 +63,9 @@
             </summary>
         </member>
         <member name="M:Sudoku.Analytics.Ranking.CellTruth.Equals(Sudoku.Analytics.Ranking.RankSet)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Ranking.CellTruth.ContainsAssignment(System.Int32)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Ranking.CellTruth.CompareTo(Sudoku.Analytics.Ranking.RankSet)">
@@ -107,6 +113,9 @@
         <member name="M:Sudoku.Analytics.Ranking.HouseLink.Equals(Sudoku.Analytics.Ranking.RankSet)">
             <inheritdoc/>
         </member>
+        <member name="M:Sudoku.Analytics.Ranking.HouseLink.ContainsAssignment(System.Int32)">
+            <inheritdoc/>
+        </member>
         <member name="M:Sudoku.Analytics.Ranking.HouseLink.CompareTo(Sudoku.Analytics.Ranking.RankSet)">
             <inheritdoc/>
         </member>
@@ -149,6 +158,9 @@
         <member name="M:Sudoku.Analytics.Ranking.HouseTruth.Equals(Sudoku.Analytics.Ranking.RankSet)">
             <inheritdoc/>
         </member>
+        <member name="M:Sudoku.Analytics.Ranking.HouseTruth.ContainsAssignment(System.Int32)">
+            <inheritdoc/>
+        </member>
         <member name="M:Sudoku.Analytics.Ranking.HouseTruth.CompareTo(Sudoku.Analytics.Ranking.RankSet)">
             <inheritdoc/>
         </member>
@@ -169,14 +181,14 @@
             Represents an object that can calculate rank-related information via the specified data.
             </summary>
             <param name="grid">The grid.</param>
-            <param name="rankSets">The rank sets.</param>
+            <param name="sets">The rank sets.</param>
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.#ctor(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ranking.RankSetCollection)">
             <summary>
             Represents an object that can calculate rank-related information via the specified data.
             </summary>
             <param name="grid">The grid.</param>
-            <param name="rankSets">The rank sets.</param>
+            <param name="sets">The rank sets.</param>
         </member>
         <member name="F:Sudoku.Analytics.Ranking.RankPattern._candidates">
             <summary>
@@ -186,6 +198,11 @@
         <member name="F:Sudoku.Analytics.Ranking.RankPattern._grid">
             <summary>
             The backing grid.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.RankPattern.IsRank0Pattern">
+            <summary>
+            Indicates whether the current pattern is stable rank-0 pattern, i.e. all links are rank-0 sets.
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.Ranking.RankPattern.Rank">
@@ -221,9 +238,14 @@
             </summary>
             <returns>Valid assignments.</returns>
         </member>
-        <member name="P:Sudoku.Analytics.Ranking.RankPattern.RankSets">
+        <member name="P:Sudoku.Analytics.Ranking.RankPattern.Sets">
             <summary>
             Indicates the rank sets.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.RankPattern.Rank0Sets">
+            <summary>
+            Try to find all rank-0 sets.
             </summary>
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.ToString">
@@ -260,6 +282,13 @@
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankSet.Equals(Sudoku.Analytics.Ranking.RankSet)">
             <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Ranking.RankSet.ContainsAssignment(System.Int32)">
+            <summary>
+            Determine whether the specified assignment is inside the set.
+            </summary>
+            <param name="assignment">The assignment.</param>
+            <returns>A <see cref="T:System.Boolean"/> result.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankSet.CompareTo(Sudoku.Analytics.Ranking.RankSet)">
             <inheritdoc/>

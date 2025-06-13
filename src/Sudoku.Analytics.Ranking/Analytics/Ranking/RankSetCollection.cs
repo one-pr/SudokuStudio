@@ -112,9 +112,19 @@ public sealed partial class RankSetCollection :
 	/// <inheritdoc/>
 	public override string ToString()
 	{
-		var truths = string.Join(' ', from set in _sets where set.IsTruth select set);
-		var links = string.Join(' ', from set in _sets where set.IsLink select set);
-		return $"""{truths}\{links}""";
+		if (Count == 0)
+		{
+			return "<Empty>";
+		}
+
+		var truths = string.Join(' ', Truths).ToUpper();
+		var links = string.Join(' ', Links).ToLower();
+		return (Truths, Links) switch
+		{
+			({ Count: not 0 }, { Count: not 0 }) => $"""{truths}\{links}""",
+			({ Count: not 0 }, _) => truths,
+			_ => links
+		};
 	}
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>

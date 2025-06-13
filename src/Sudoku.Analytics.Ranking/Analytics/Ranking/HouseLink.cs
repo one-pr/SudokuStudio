@@ -29,6 +29,19 @@ public sealed partial class HouseLink(House house, Digit digit) : RankSet
 		=> other is HouseLink comparer && Type == comparer.Type && House == comparer.House && Digit == comparer.Digit;
 
 	/// <inheritdoc/>
+	public override bool ContainsAssignment(Candidate assignment)
+	{
+		var digit = assignment % 9;
+		if (digit != Digit)
+		{
+			return false;
+		}
+
+		var cell = assignment / 9;
+		return HousesMap[House].Contains(cell);
+	}
+
+	/// <inheritdoc/>
 	public override int CompareTo(RankSet? other)
 	{
 		if (other is null)

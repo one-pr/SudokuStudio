@@ -22,6 +22,9 @@ public sealed partial class CellLink(Cell cell) : RankSet
 		=> other is CellLink comparer && Type == comparer.Type && Cell == comparer.Cell;
 
 	/// <inheritdoc/>
+	public override bool ContainsAssignment(Candidate assignment) => assignment / 9 == Cell;
+
+	/// <inheritdoc/>
 	public override int CompareTo(RankSet? other)
 	{
 		if (other is null)
