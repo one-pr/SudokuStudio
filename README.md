@@ -55,6 +55,7 @@ This repository is created for the following users:
   * Diff analysis & technique usage analysis
   * Specialized supports on direct & partial-marking techniques
   * Partial implementation on some extremely hard techniques
+  * Rank analysis (rank, eliminations, permutations, etc.)
 * Drawing
   * GDI+ drawing functions
 * Text
