@@ -5,7 +5,7 @@ namespace Sudoku.Analytics.Ranking;
 /// </summary>
 /// <param name="grid">The grid.</param>
 /// <param name="rankSets">The rank sets.</param>
-public sealed class RankSetInfo(in Grid grid, params RankSetCollection rankSets)
+public sealed class RankPattern(in Grid grid, params RankSetCollection rankSets)
 {
 	/// <summary>
 	/// Represents candidates.
@@ -17,6 +17,28 @@ public sealed class RankSetInfo(in Grid grid, params RankSetCollection rankSets)
 	/// </summary>
 	private readonly Grid _grid = grid;
 
+
+	/// <summary>
+	/// Indicates the rank of the current pattern. If the pattern is unstable
+	/// (sometimes assignments certain times of digits in the pattern but sometimes not), the result will be -1.
+	/// </summary>
+	public int Rank
+	{
+		get
+		{
+			var factAssignmentCountValues = new HashSet<int>();
+			foreach (var l in from assignment in Assignments select assignment.Length)
+			{
+				factAssignmentCountValues.Add(l);
+			}
+
+			if (factAssignmentCountValues.Count == 1)
+			{
+				return RankSets.Links.Count - factAssignmentCountValues.First();
+			}
+			return -1;
+		}
+	}
 
 	/// <summary>
 	/// Indicates all cells used.

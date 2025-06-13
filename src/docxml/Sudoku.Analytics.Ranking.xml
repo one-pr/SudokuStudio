@@ -164,6 +164,69 @@
         <member name="M:Sudoku.Analytics.Ranking.HouseTruth.GetHashCode">
             <inheritdoc cref="M:System.Object.GetHashCode"/>
         </member>
+        <member name="T:Sudoku.Analytics.Ranking.RankPattern">
+            <summary>
+            Represents an object that can calculate rank-related information via the specified data.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="rankSets">The rank sets.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.Ranking.RankPattern.#ctor(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ranking.RankSetCollection)">
+            <summary>
+            Represents an object that can calculate rank-related information via the specified data.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="rankSets">The rank sets.</param>
+        </member>
+        <member name="F:Sudoku.Analytics.Ranking.RankPattern._candidates">
+            <summary>
+            Represents candidates.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Ranking.RankPattern._grid">
+            <summary>
+            The backing grid.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.RankPattern.Rank">
+            <summary>
+            Indicates the rank of the current pattern. If the pattern is unstable
+            (sometimes assignments certain times of digits in the pattern but sometimes not), the result will be -1.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.RankPattern.Cells">
+            <summary>
+            Indicates all cells used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.RankPattern.Candidates">
+            <summary>
+            Indicates the candidates.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.RankPattern.Grid">
+            <summary>
+            Indicates the grid.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.RankPattern.Assignments">
+            <summary>
+            Returns a list of <see cref="T:System.Int32"/> group that describes the valid assignments.
+            </summary>
+            <returns>Valid assignments.</returns>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.RankPattern.RankSets">
+            <summary>
+            Indicates the rank sets.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Ranking.RankPattern.BuildCandidates(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ranking.RankSetCollection)">
+            <summary>
+            Build candidates.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="rankSets">The rank sets.</param>
+        </member>
         <member name="T:Sudoku.Analytics.Ranking.RankSet">
             <summary>
             Represents a rank set.
@@ -461,63 +524,6 @@
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankSetCollection.op_LessThanOrEqual(Sudoku.Analytics.Ranking.RankSetCollection,Sudoku.Analytics.Ranking.RankSetCollection)">
             <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThanOrEqual(`0,`1)"/>
-        </member>
-        <member name="T:Sudoku.Analytics.Ranking.RankSetInfo">
-            <summary>
-            Represents an object that can calculate rank-related information via the specified data.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="rankSets">The rank sets.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Ranking.RankSetInfo.#ctor(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ranking.RankSetCollection)">
-            <summary>
-            Represents an object that can calculate rank-related information via the specified data.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="rankSets">The rank sets.</param>
-        </member>
-        <member name="F:Sudoku.Analytics.Ranking.RankSetInfo._candidates">
-            <summary>
-            Represents candidates.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Ranking.RankSetInfo._grid">
-            <summary>
-            The backing grid.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.RankSetInfo.Cells">
-            <summary>
-            Indicates all cells used.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.RankSetInfo.Candidates">
-            <summary>
-            Indicates the candidates.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.RankSetInfo.Grid">
-            <summary>
-            Indicates the grid.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.RankSetInfo.Assignments">
-            <summary>
-            Returns a list of <see cref="T:System.Int32"/> group that describes the valid assignments.
-            </summary>
-            <returns>Valid assignments.</returns>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.RankSetInfo.RankSets">
-            <summary>
-            Indicates the rank sets.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Ranking.RankSetInfo.BuildCandidates(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ranking.RankSetCollection)">
-            <summary>
-            Build candidates.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="rankSets">The rank sets.</param>
         </member>
         <member name="T:Sudoku.Analytics.Ranking.RankSetType">
             <summary>
