@@ -382,25 +382,18 @@
             Represents a collection of rank sets.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Ranking.RankSetCollection._sets">
+        <member name="F:Sudoku.Analytics.Ranking.RankSetCollection._truths">
             <summary>
-            Indicates the backing sets.
+            Indicates the cached field for truths.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Ranking.RankSetCollection._links">
+            <summary>
+            Indicates the cached field for links.
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.Ranking.RankSetCollection.Count">
             <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.RankSetCollection.Min">
-            <summary>
-            Indicates the minimal rank set.
-            </summary>
-            <exception cref="T:System.InvalidOperationException">Throws when there's no elements in the collection.</exception>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.RankSetCollection.Max">
-            <summary>
-            Indicates the maximal rank set.
-            </summary>
-            <exception cref="T:System.InvalidOperationException">Throws when there's no elements in the collection.</exception>
         </member>
         <member name="P:Sudoku.Analytics.Ranking.RankSetCollection.Truths">
             <summary>
@@ -545,16 +538,12 @@
             Represents an enumerator object.
             </summary>
             <param name="_set">Indicates the set.</param>
-            <param name="_skipTruths">Indicates whether the enumerator skips for checking truths.</param>
-            <param name="_skipLinks">Indicates whether the enumerator skips for checking links.</param>
         </member>
-        <member name="M:Sudoku.Analytics.Ranking.RankSetCollection.Enumerator.#ctor(System.Collections.Generic.SortedSet{Sudoku.Analytics.Ranking.RankSet},System.Boolean,System.Boolean)">
+        <member name="M:Sudoku.Analytics.Ranking.RankSetCollection.Enumerator.#ctor(System.Collections.Generic.SortedSet{Sudoku.Analytics.Ranking.RankSet})">
             <summary>
             Represents an enumerator object.
             </summary>
             <param name="_set">Indicates the set.</param>
-            <param name="_skipTruths">Indicates whether the enumerator skips for checking truths.</param>
-            <param name="_skipLinks">Indicates whether the enumerator skips for checking links.</param>
         </member>
         <member name="F:Sudoku.Analytics.Ranking.RankSetCollection.Enumerator._enumerator">
             <summary>

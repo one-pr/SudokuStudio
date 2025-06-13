@@ -6,9 +6,7 @@ public partial class RankSetCollection
 	/// Represents an enumerator object.
 	/// </summary>
 	/// <param name="_set">Indicates the set.</param>
-	/// <param name="_skipTruths">Indicates whether the enumerator skips for checking truths.</param>
-	/// <param name="_skipLinks">Indicates whether the enumerator skips for checking links.</param>
-	public ref struct Enumerator(SortedSet<RankSet> _set, bool _skipTruths = false, bool _skipLinks = false) :
+	public ref struct Enumerator(SortedSet<RankSet> _set) :
 		IEnumerator<RankSet>,
 		IEnumerable<RankSet>
 	{
@@ -29,23 +27,7 @@ public partial class RankSetCollection
 		public readonly Enumerator GetEnumerator() => this;
 
 		/// <inheritdoc/>
-		public bool MoveNext()
-		{
-			while (_enumerator.MoveNext())
-			{
-				var current = _enumerator.Current;
-				if (current.IsTruth && _skipTruths)
-				{
-					continue;
-				}
-				if (current.IsLink && _skipLinks)
-				{
-					continue;
-				}
-				return true;
-			}
-			return false;
-		}
+		public bool MoveNext() => _enumerator.MoveNext();
 
 		/// <inheritdoc/>
 		readonly void IDisposable.Dispose()
