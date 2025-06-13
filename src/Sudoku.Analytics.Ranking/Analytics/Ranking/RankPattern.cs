@@ -20,9 +20,10 @@ public sealed class RankPattern(in Grid grid, params RankSetCollection rankSets)
 
 	/// <summary>
 	/// Indicates the rank of the current pattern. If the pattern is unstable
-	/// (sometimes assignments certain times of digits in the pattern but sometimes not), the result will be -1.
+	/// (sometimes assignments certain times of digits in the pattern but sometimes not),
+	/// this property will return <see langword="null"/>.
 	/// </summary>
-	public int Rank
+	public int? Rank
 	{
 		get
 		{
@@ -36,7 +37,7 @@ public sealed class RankPattern(in Grid grid, params RankSetCollection rankSets)
 			{
 				return RankSets.Links.Count - factAssignmentCountValues.First();
 			}
-			return -1;
+			return null;
 		}
 	}
 
@@ -99,6 +100,17 @@ public sealed class RankPattern(in Grid grid, params RankSetCollection rankSets)
 	/// Indicates the rank sets.
 	/// </summary>
 	public RankSetCollection RankSets { get; } = rankSets;
+
+
+	/// <inheritdoc/>
+	public override string ToString()
+	{
+		var truths = RankSets.Truths;
+		var links = RankSets.Links;
+		var truthsString = string.Join(' ', from truth in truths select truth.ToString());
+		var linksString = string.Join(' ', from link in links select link.ToString());
+		return $"T{truths.Count} = {truthsString}, L{links.Count} = {linksString}";
+	}
 
 
 	/// <summary>
