@@ -83,9 +83,9 @@ public partial struct SpaceSet :
 	public readonly Space[] ToArray()
 		=> [
 			.. from id in _field[0] select Space.RowColumn(id / 9, id % 9),
-			.. from id in _field[1] select Space.BlockNumber(id / 9, id % 9),
-			.. from id in _field[2] select Space.RowNumber(id / 9, id % 9),
-			.. from id in _field[3] select Space.ColumnNumber(id / 9, id % 9)
+			.. from id in _field[1] select Space.BlockDigit(id / 9, id % 9),
+			.. from id in _field[2] select Space.RowDigit(id / 9, id % 9),
+			.. from id in _field[3] select Space.ColumnDigit(id / 9, id % 9)
 		];
 
 	/// <inheritdoc/>

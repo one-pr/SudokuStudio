@@ -249,9 +249,9 @@ public sealed partial class WhipStepSearcher : StepSearcher
 				{
 					failedSpace = house switch
 					{
-						< 9 => Space.BlockNumber(house, digit),
-						< 18 => Space.RowNumber(house - 9, digit),
-						_ => Space.ColumnNumber(house - 18, digit)
+						< 9 => Space.BlockDigit(house, digit),
+						< 18 => Space.RowDigit(house - 9, digit),
+						_ => Space.ColumnDigit(house - 18, digit)
 					};
 					return true;
 				}
@@ -537,9 +537,9 @@ public sealed partial class WhipStepSearcher : StepSearcher
 					when d1 == d2 && BitOperations.IsPow2(d1) && BitOperations.Log2(d1) is var digit && (c1 | c2).FirstSharedHouse is var house
 						=> house switch
 						{
-							< 9 => Space.BlockNumber(house, digit),
-							< 18 => Space.RowNumber(house - 9, digit),
-							_ => Space.ColumnNumber(house - 18, digit)
+							< 9 => Space.BlockDigit(house, digit),
+							< 18 => Space.RowDigit(house - 9, digit),
+							_ => Space.ColumnDigit(house - 18, digit)
 						},
 					_ => throw new NotImplementedException()
 				};

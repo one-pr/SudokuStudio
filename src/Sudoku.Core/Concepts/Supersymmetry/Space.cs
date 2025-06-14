@@ -106,14 +106,14 @@ public readonly partial struct Space(Mask mask) : IEquatable<Space>, IEqualityOp
 
 
 	/// <summary>
-	/// Creates a <see cref="Space"/> for row-number space.
+	/// Creates a <see cref="Space"/> for row-digit space.
 	/// </summary>
 	/// <param name="row">Indicates the row index.</param>
-	/// <param name="digit">Indicates the number.</param>
+	/// <param name="digit">Indicates the digit.</param>
 	/// <returns>The <see cref="Space"/> instance created.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Throws when argument is greater than 9.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static Space RowNumber(RowIndex row, Digit digit)
+	public static Space RowDigit(RowIndex row, Digit digit)
 	{
 		ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(row, 9);
 		ArgumentOutOfRangeException.ThrowIfLessThan(row, 0);
@@ -123,14 +123,14 @@ public readonly partial struct Space(Mask mask) : IEquatable<Space>, IEqualityOp
 	}
 
 	/// <summary>
-	/// Creates a <see cref="Space"/> for column-number space.
+	/// Creates a <see cref="Space"/> for column-digit space.
 	/// </summary>
 	/// <param name="column">Indicates the column index.</param>
-	/// <param name="digit">Indicates the number.</param>
+	/// <param name="digit">Indicates the digit.</param>
 	/// <returns>The <see cref="Space"/> instance created.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Throws when argument is greater than 9.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static Space ColumnNumber(ColumnIndex column, Digit digit)
+	public static Space ColumnDigit(ColumnIndex column, Digit digit)
 	{
 		ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(column, 9);
 		ArgumentOutOfRangeException.ThrowIfLessThan(column, 0);
@@ -140,14 +140,14 @@ public readonly partial struct Space(Mask mask) : IEquatable<Space>, IEqualityOp
 	}
 
 	/// <summary>
-	/// Creates a <see cref="Space"/> for block-number space.
+	/// Creates a <see cref="Space"/> for block-digit space.
 	/// </summary>
 	/// <param name="block">Indicates the block index.</param>
-	/// <param name="digit">Indicates the number.</param>
+	/// <param name="digit">Indicates the digit.</param>
 	/// <returns>The <see cref="Space"/> instance created.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Throws when argument is greater than 9.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static Space BlockNumber(BlockIndex block, Digit digit)
+	public static Space BlockDigit(BlockIndex block, Digit digit)
 	{
 		ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(block, 9);
 		ArgumentOutOfRangeException.ThrowIfLessThan(block, 0);
@@ -160,7 +160,7 @@ public readonly partial struct Space(Mask mask) : IEquatable<Space>, IEqualityOp
 	/// Creates a <see cref="Space"/> for row-column space.
 	/// </summary>
 	/// <param name="row">Indicates the row index.</param>
-	/// <param name="column">Indicates the number.</param>
+	/// <param name="column">Indicates the column index.</param>
 	/// <returns>The <see cref="Space"/> instance created.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Throws when argument is greater than 9.</exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]

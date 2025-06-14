@@ -294,9 +294,9 @@ public sealed partial record RxCyParser : CoordinateParser
 						result.Add(
 							letterChar switch
 							{
-								'R' or 'r' => Space.RowNumber(p, q),
-								'C' or 'c' => Space.ColumnNumber(p, q),
-								'B' or 'b' => Space.BlockNumber(p, q),
+								'R' or 'r' => Space.RowDigit(p, q),
+								'C' or 'c' => Space.ColumnDigit(p, q),
+								'B' or 'b' => Space.BlockDigit(p, q),
 								'N' or 'n' => Space.RowColumn(p, q)
 							}
 						);
