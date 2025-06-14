@@ -346,7 +346,7 @@ public sealed record RxCyConverter(
 				{
 					switch (set)
 					{
-						case { IsCellRelated: true, Cell: var cell }:
+						case { Cell: var cell and not -1 }:
 						{
 							if (!rc.TryAdd(cell / 9, (Mask)(1 << cell % 9)))
 							{
@@ -354,7 +354,7 @@ public sealed record RxCyConverter(
 							}
 							break;
 						}
-						case { IsHouseRelated: true, House: var house, Digit: var digit }:
+						case { House: var house, Digit: var digit }:
 						{
 							var houseType = (HouseType)(house / 9);
 							var index = house % 9;

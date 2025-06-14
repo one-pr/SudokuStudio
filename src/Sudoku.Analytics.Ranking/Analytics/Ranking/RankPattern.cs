@@ -4,16 +4,17 @@ namespace Sudoku.Analytics.Ranking;
 /// Represents an object that can calculate rank-related information via the specified data.
 /// </summary>
 /// <param name="grid">The grid.</param>
-/// <param name="sets">The rank sets.</param>
+/// <param name="truths">The truths.</param>
+/// <param name="links">The links.</param>
 [TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.Object_GetHashCode | TypeImplFlags.Equatable | TypeImplFlags.EqualityOperators)]
-public sealed partial class RankPattern(in Grid grid, params RankSetCollection sets) :
+public sealed partial class RankPattern(in Grid grid, SpaceSet truths, SpaceSet links) :
 	IEquatable<RankPattern>,
 	IEqualityOperators<RankPattern, RankPattern, bool>
 {
 	/// <summary>
 	/// Represents candidates.
 	/// </summary>
-	private readonly CandidateMap _candidates = BuildCandidates(grid, sets);
+	private readonly CandidateMap _candidates = BuildCandidates(grid, truths, links);
 
 	/// <summary>
 	/// The backing grid.
@@ -39,17 +40,24 @@ public sealed partial class RankPattern(in Grid grid, params RankSetCollection s
 	public ref readonly Grid Grid => ref _grid;
 
 	/// <summary>
-	/// Indicates the rank sets.
+	/// Indicates the truths.
 	/// </summary>
 	[EquatableMember]
 	[HashCodeMember]
-	public RankSetCollection Sets { get; } = sets;
+	public SpaceSet Truths { get; } = truths;
+
+	/// <summary>
+	/// Indicates the links.
+	/// </summary>
+	[EquatableMember]
+	[HashCodeMember]
+	public SpaceSet Links { get; } = links;
 
 
 	/// <summary>
 	/// Indicates whether the current pattern is stable rank-0 pattern, i.e. all links are rank-0 sets.
 	/// </summary>
-	public bool GetIsRank0Pattern() => GetRank0Sets() == Sets.Links;
+	public bool GetIsRank0Pattern() => GetRank0Sets() == Links;
 
 	/// <summary>
 	/// Indicates the rank of the current pattern. If the pattern is unstable
@@ -63,16 +71,11 @@ public sealed partial class RankPattern(in Grid grid, params RankSetCollection s
 		{
 			factAssignmentCountValues.Add(l);
 		}
-		return factAssignmentCountValues.Count == 1 ? Sets.Links.Count - factAssignmentCountValues.First() : null;
+		return factAssignmentCountValues.Count == 1 ? Links.Count - factAssignmentCountValues.First() : null;
 	}
 
 	/// <inheritdoc/>
-	public override string ToString()
-	{
-		var truths = Sets.Truths;
-		var links = Sets.Links;
-		return $"T{truths.Count} = {truths}, L{links.Count} = {links}";
-	}
+	public override string ToString() => $"T{Truths.Count} = {Truths}, L{Links.Count} = {Links}";
 
 	/// <summary>
 	/// Gets the full string of the current pattern, including its details (rank, eliminations and so on).
@@ -136,7 +139,7 @@ public sealed partial class RankPattern(in Grid grid, params RankSetCollection s
 		var result = new List<ReadOnlyMemory<Candidate>>();
 
 		var assignments = CandidateMap.Empty;
-		var fullMap = (from set in Sets.Truths select set.GetAvailableRange(_grid).ToArray()).ToArray();
+		var fullMap = from set in Truths.ToArray() select set.GetAvailableRange(_grid).ToArray();
 		var combinations = fullMap.GetExtractedCombinations();
 		foreach (var combination in combinations)
 		{
@@ -144,14 +147,18 @@ public sealed partial class RankPattern(in Grid grid, params RankSetCollection s
 
 			// Check satisfiability.
 			var areAllRankSetsSatisfied = true;
-			foreach (var rankSet in Sets)
+			foreach (var (rankSets, isTruth) in ((Truths, true), (Links, false)))
 			{
-				if (!rankSet.IsSatisfied(candidates))
+				foreach (var rankSet in rankSets)
 				{
-					areAllRankSetsSatisfied = false;
-					break;
+					if (!rankSet.IsSatisfied(candidates, isTruth))
+					{
+						areAllRankSetsSatisfied = false;
+						goto CheckFlag;
+					}
 				}
 			}
+		CheckFlag:
 			if (!areAllRankSetsSatisfied)
 			{
 				continue;
@@ -167,15 +174,15 @@ public sealed partial class RankPattern(in Grid grid, params RankSetCollection s
 	/// <summary>
 	/// Try to find all rank-0 sets.
 	/// </summary>
-	public RankSetCollection GetRank0Sets()
+	public SpaceSet GetRank0Sets()
 	{
-		var result = Sets.Links;
-		var links = result.Clone();
+		var result = Links;
+		var links = result;
 
 		var i = 0;
 		foreach (var assignmentGroup in GetAssignmentCombinations())
 		{
-			var lightUpLinks = new RankSetCollection();
+			var lightUpLinks = SpaceSet.Empty;
 			foreach (var assignment in assignmentGroup)
 			{
 				foreach (var set in links)
@@ -205,17 +212,18 @@ public sealed partial class RankPattern(in Grid grid, params RankSetCollection s
 	/// Build candidates.
 	/// </summary>
 	/// <param name="grid">The grid.</param>
-	/// <param name="rankSets">The rank sets.</param>
-	private static CandidateMap BuildCandidates(in Grid grid, RankSetCollection rankSets)
+	/// <param name="truths">The truths.</param>
+	/// <param name="links">The links.</param>
+	private static CandidateMap BuildCandidates(in Grid grid, SpaceSet truths, SpaceSet links)
 	{
 		var result = CandidateMap.Empty;
 
 		var candidatesMap = grid.CandidatesMap;
-		foreach (var rankSet in rankSets.EnumerateTruths())
+		foreach (var truth in truths)
 		{
-			switch (rankSet)
+			switch (truth)
 			{
-				case CellTruth { Cell: var cell }:
+				case { IsCellRelated: true, Cell: var cell }:
 				{
 					foreach (var digit in grid.GetCandidates(cell))
 					{
@@ -223,7 +231,7 @@ public sealed partial class RankPattern(in Grid grid, params RankSetCollection s
 					}
 					break;
 				}
-				case HouseTruth { House: var house, Digit: var digit }:
+				case { IsHouseRelated: true, House: var house, Digit: var digit }:
 				{
 					foreach (var cell in HousesMap[house] & candidatesMap[digit])
 					{
