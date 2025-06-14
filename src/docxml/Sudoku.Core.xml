@@ -4046,6 +4046,11 @@
         <member name="P:Sudoku.Concepts.Coordinates.RxCyConverter.ConjugateConverter">
             <inheritdoc/>
         </member>
+        <member name="P:Sudoku.Concepts.Coordinates.RxCyConverter.SpaceConverter">
+            <summary>
+            The converter method that creates a <see cref="T:System.String"/> via the specified spaces.
+            </summary>
+        </member>
         <member name="M:Sudoku.Concepts.Coordinates.RxCyConverter.GetFormat(System.Type)">
             <inheritdoc/>
         </member>

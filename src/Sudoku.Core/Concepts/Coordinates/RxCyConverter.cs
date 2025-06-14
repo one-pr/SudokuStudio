@@ -330,6 +330,76 @@ public sealed record RxCyConverter(
 			return sb.RemoveFrom(^DefaultSeparator.Length).ToString();
 		};
 
+	/// <summary>
+	/// The converter method that creates a <see cref="string"/> via the specified spaces.
+	/// </summary>
+	public Func<SpaceSet, string> SpaceConverter
+		=> static spaces =>
+		{
+			return spaces.Count == 0 ? "<Empty>" : toPartString(in spaces);
+
+
+			static string toPartString(ref readonly SpaceSet sets)
+			{
+				Dictionary<Digit, Mask> rn = [], cn = [], bn = [], rc = [];
+				foreach (var set in sets)
+				{
+					switch (set)
+					{
+						case { IsCellRelated: true, Cell: var cell }:
+						{
+							if (!rc.TryAdd(cell / 9, (Mask)(1 << cell % 9)))
+							{
+								rc[cell / 9] |= (Mask)(1 << cell % 9);
+							}
+							break;
+						}
+						case { IsHouseRelated: true, House: var house, Digit: var digit }:
+						{
+							var houseType = (HouseType)(house / 9);
+							var index = house % 9;
+							var dic = houseType switch { HouseType.Block => bn, HouseType.Row => rn, _ => cn };
+							if (!dic.TryAdd(index, (Mask)(1 << digit)))
+							{
+								dic[index] |= (Mask)(1 << digit);
+							}
+							break;
+						}
+					}
+				}
+
+				var t1 = (
+					(
+						from pair in rc.ToArray()
+						let r = pair.Key
+						let values = pair.Value
+						select $"{r + 1}n{string.Concat([.. from c in values select c + 1])}"
+					) is { Length: not 0 } rcParts ? string.Join(' ', rcParts) : null) is { } w ? $"{w} " : string.Empty;
+				var t2 = (
+					(
+						from pair in bn.ToArray()
+						let n = pair.Key
+						let values = pair.Value
+						select $"{string.Concat([.. from b in values select b + 1])}b{n + 1}"
+					) is { Length: not 0 } bnParts ? string.Join(' ', bnParts) : null) is { } x ? $"{x} " : string.Empty;
+				var t3 = (
+					(
+						from pair in rn.ToArray()
+						let n = pair.Key
+						let values = pair.Value
+						select $"{string.Concat([.. from r in values select r + 1])}r{n + 1}"
+					) is { Length: not 0 } rnParts ? string.Join(' ', rnParts) : null) is { } y ? $"{y} " : string.Empty;
+				var t4 = (
+					(
+						from pair in cn.ToArray()
+						let n = pair.Key
+						let values = pair.Value
+						select $"{string.Concat([.. from c in values select c + 1])}c{n + 1}"
+					) is { Length: not 0 } cnParts ? string.Join(' ', cnParts) : null) is { } z ? $"{z} " : string.Empty;
+				return $"{t1}{t2}{t3}{t4}".TrimEnd();
+			}
+		};
+
 
 	/// <inheritdoc/>
 	[return: NotNullIfNotNull(nameof(formatType))]

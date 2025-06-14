@@ -33,6 +33,7 @@ global using Sudoku.Behaviors.Diff.Results;
 global using Sudoku.Concepts;
 global using Sudoku.Concepts.Coordinates;
 global using Sudoku.Concepts.Coordinates.Formatting;
+global using Sudoku.Concepts.Supersymmetry;
 global using Sudoku.Drawing;
 global using Sudoku.Drawing.Nodes;
 global using Sudoku.Linq;
