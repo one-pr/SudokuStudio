@@ -114,7 +114,7 @@
 * [绽放](construction/05-blossoming.md)
 * [牺牲](construction/06-sacrifice/README.md)
   * [牺牲的基本推理](construction/06-sacrifice/01-reasoning-of-sacrifice.md)
-  * [牺牲的例子](construction/06-sacrifice/xi-sheng-de-li-zi.md)
+  * [牺牲的例子](construction/06-sacrifice/02-examples-of-sacrifice.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 

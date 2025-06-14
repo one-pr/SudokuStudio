@@ -46,11 +46,11 @@ description: Examples of Sacrifice
 
 最后来看一个例子。这个例子稍微复杂一些。
 
-<figure><img src="../../.gitbook/assets/image.png" alt="" width="375"><figcaption><p>例子 4，毛刺假的情况</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0508.png" alt="" width="375"><figcaption><p>例子 4，毛刺假的情况</p></figcaption></figure>
 
 如图所示。这也是一个毛刺融合待定数组，其预备删数有 `r6c9(1)`、`r7c7(9)`、`r8c7(39)` 等。
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>例子 4，毛刺真的情况</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0509.png" alt=""><figcaption><p>例子 4，毛刺真的情况</p></figcaption></figure>
 
 如图所示。因为有点复杂，所以我把这个毛刺为真的视图又进一步拆了两个图。
 
