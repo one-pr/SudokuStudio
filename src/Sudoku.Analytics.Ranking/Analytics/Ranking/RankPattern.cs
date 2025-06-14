@@ -59,7 +59,7 @@ public sealed partial class RankPattern(in Grid grid, params RankSetCollection s
 	public int? GetRank()
 	{
 		var factAssignmentCountValues = new HashSet<int>();
-		foreach (var l in from assignment in GetAssignments() select assignment.Length)
+		foreach (var l in from assignment in GetAssignmentCombinations() select assignment.Length)
 		{
 			factAssignmentCountValues.Add(l);
 		}
@@ -83,7 +83,7 @@ public sealed partial class RankPattern(in Grid grid, params RankSetCollection s
 			SR.Get("RankInfo"),
 			_grid.ToString("@:"),
 			ToString(),
-			GetAssignments().Length,
+			GetAssignmentCombinations().Length,
 			GetRank()?.ToString() ?? SR.Get("UnstableRank"),
 			GetEliminations().ToString(),
 			GetRank0Sets().ToString(),
@@ -98,7 +98,7 @@ public sealed partial class RankPattern(in Grid grid, params RankSetCollection s
 		var result = CandidateMap.Empty;
 		var i = 0;
 		var candidatesMap = _grid.CandidatesMap;
-		foreach (var assignmentGroup in GetAssignments())
+		foreach (var assignmentGroup in GetAssignmentCombinations())
 		{
 			var current = CandidateMap.Empty;
 			foreach (var assignment in assignmentGroup)
@@ -131,12 +131,12 @@ public sealed partial class RankPattern(in Grid grid, params RankSetCollection s
 	/// Returns a list of <see cref="Candidate"/> group that describes the valid assignments.
 	/// </summary>
 	/// <returns>Valid assignments.</returns>
-	public ReadOnlySpan<ReadOnlyMemory<Candidate>> GetAssignments()
+	public ReadOnlySpan<ReadOnlyMemory<Candidate>> GetAssignmentCombinations()
 	{
 		var result = new List<ReadOnlyMemory<Candidate>>();
 
 		var assignments = CandidateMap.Empty;
-		var fullMap = (Candidate[][])[.. from set in Sets.Truths select set.GetAvailableRange(_grid).ToArray()];
+		var fullMap = (from set in Sets.Truths select set.GetAvailableRange(_grid).ToArray()).ToArray();
 		var combinations = fullMap.GetExtractedCombinations();
 		foreach (var combination in combinations)
 		{
@@ -173,7 +173,7 @@ public sealed partial class RankPattern(in Grid grid, params RankSetCollection s
 		var links = result.Clone();
 
 		var i = 0;
-		foreach (var assignmentGroup in GetAssignments())
+		foreach (var assignmentGroup in GetAssignmentCombinations())
 		{
 			var lightUpLinks = new RankSetCollection();
 			foreach (var assignment in assignmentGroup)

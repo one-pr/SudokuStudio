@@ -275,7 +275,7 @@
             Indicates eliminations can be found in the current pattern.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetAssignments">
+        <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetAssignmentCombinations">
             <summary>
             Returns a list of <see cref="T:System.Int32"/> group that describes the valid assignments.
             </summary>
