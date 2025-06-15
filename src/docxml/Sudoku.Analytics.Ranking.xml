@@ -115,26 +115,6 @@
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.Equals(Sudoku.Analytics.Ranking.RankPattern)">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Analytics.Ranking.Extensions">
-            <target name="class" when="extension">
-				<summary>
-					Provides with file-local extension methods.
-				</summary>
-			</target>
-        </member>
-        <member name="T:Sudoku.Analytics.Ranking.Extensions.<>E__0`1">
-            <summary>
-            Provides extension members on <typeparamref name="T"/>[][].
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Ranking.Extensions.<>E__0`1.GetExtractedCombinations2(System.Func{System.ReadOnlySpan{`0},System.Boolean})">
-            <summary>
-            Get all combinations that each sub-array only choose one.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Ranking.Extensions.GetExtractedCombinations2``1(``0[][],System.Func{System.ReadOnlySpan{``0},System.Boolean})">
-            <inheritdoc cref="M:Sudoku.Analytics.Ranking.Extensions.<>E__0`1.GetExtractedCombinations2(System.Func{System.ReadOnlySpan{`0},System.Boolean})"/>
-        </member>
         <member name="T:Sudoku.Concepts.Supersymmetry.SpaceExtensions">
             <summary>
             Provides with extension methods on <see cref="T:Sudoku.Concepts.Supersymmetry.Space"/>.

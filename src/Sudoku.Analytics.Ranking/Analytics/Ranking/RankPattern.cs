@@ -135,31 +135,119 @@ public sealed partial class RankPattern(in Grid grid, in SpaceSet truths, in Spa
 	/// </summary>
 	/// <returns>Valid assignments.</returns>
 	public ReadOnlySpan<ReadOnlyMemory<Candidate>> GetAssignmentCombinations()
-		=> (
-			from set in Truths.ToArray()
-			select set.GetAvailableRange(_grid).ToArray()
-		).GetExtractedCombinations2(
-			combination =>
+	{
+		var result = new List<ReadOnlyMemory<Candidate>>();
+
+		// Create a queue to record all possible cases, in BFS way.
+		var queue = new LinkedList<(CandidateMap State, int[] RemainingTruthIndices)>();
+		queue.AddLast(([], [.. SpanEnumerable.Range(Truths.Count)]));
+
+		// Iterate the whole queue until the queue becomes empty.
+		while (queue.Count != 0)
+		{
+			// Dequeue a node.
+			var (currentState, remainingTruths) = queue.RemoveFirstNode();
+
+			// Check whether the node has already finished.
+			if (remainingTruths.Length == 0)
 			{
-				var candidates = combination.AsCandidateMap();
+				// Verify links.
+				var flag = true;
 				foreach (var link in Links)
 				{
-					if (!link.IsSatisfied(candidates, false))
+					if (!link.IsSatisfied(currentState, false))
 					{
-						return false;
+						flag = false;
+						break;
 					}
 				}
-				return true;
+				if (flag)
+				{
+					result.Add(currentState.ToArray());
+				}
+				continue;
 			}
-		);
+
+			// Heuristic searching:
+			// We should firstly check for truths with less number of remaining positions.
+			// However, if we have found at least one house having no valid positions to be filled,
+			// because we must select a candidate to be filled, so it cause a conflict,
+			// meaning the current combination is invalid.
+			var tempProjectedValues = new List<(int, CandidateMap Remaining)>();
+			var tempGrid = Grid;
+			foreach (var state in currentState)
+			{
+				tempGrid.SetDigit(state / 9, state % 9);
+			}
+			foreach (var index in remainingTruths)
+			{
+				tempProjectedValues.AddRef((index, Truths[index].GetAvailableRange(tempGrid)));
+			}
+			var sorted =
+				from x in tempProjectedValues.AsSpan()
+				orderby x.Remaining.Count
+				select x into x
+				select x;
+
+			// Check whether the collection is valid.
+			if (sorted.Length == 0 || sorted.Any(static value => value.Remaining.Count == 0))
+			{
+				continue;
+			}
+
+			// Valid. Now add children nodes.
+			var (selectedIndex, candidates) = sorted[0];
+			var newRemainingTruths = new List<int>();
+			foreach (var truthIndex in remainingTruths)
+			{
+				if (truthIndex != selectedIndex)
+				{
+					newRemainingTruths.Add(truthIndex);
+				}
+			}
+			foreach (var candidate in candidates)
+			{
+				var nextState = currentState + candidate;
+				if (Links.All(link => link.IsSatisfied(nextState, false)))
+				{
+					// Check whether the remaining truths, preventing truth overlapped cases.
+					var overlapped = new List<int>();
+					foreach (var truthIndex in newRemainingTruths)
+					{
+						var overlappingFlag = false;
+						foreach (var assigned in nextState)
+						{
+							if (Truths[truthIndex].ContainsAssignment(assigned))
+							{
+								overlappingFlag = true;
+								break;
+							}
+						}
+						if (overlappingFlag)
+						{
+							overlapped.Add(truthIndex);
+						}
+					}
+					foreach (var truthIndex in overlapped)
+					{
+						newRemainingTruths.Remove(truthIndex);
+					}
+
+					queue.AddLast((nextState, [.. newRemainingTruths]));
+				}
+			}
+		}
+
+		return result.AsSpan();
+	}
 
 	/// <summary>
 	/// Try to find all rank-0 sets.
 	/// </summary>
 	public SpaceSet GetRank0Sets()
 	{
-		var result = Links;
-		var links = result;
+		var result = SpaceSet.Empty;
+		var links = Links;
 
 		var i = 0;
 		foreach (var assignmentGroup in GetAssignmentCombinations())
@@ -225,58 +313,5 @@ public sealed partial class RankPattern(in Grid grid, in SpaceSet truths, in Spa
 		}
 
 		return result;
-	}
-}
-
-/// <include file='../../global-doc-comments.xml' path='g/csharp11/feature[@name="file-local"]/target[@name="class" and @when="extension"]'/>
-file static class Extensions
-{
-	/// <summary>
-	/// Provides extension members on <typeparamref name="T"/>[][].
-	/// </summary>
-	extension<T>(T[][] @this)
-	{
-		/// <summary>
-		/// Get all combinations that each sub-array only choose one.
-		/// </summary>
-		public ReadOnlySpan<ReadOnlyMemory<T>> GetExtractedCombinations2(Func<ReadOnlySpan<T>, bool> predicate)
-		{
-			var length = @this.Length;
-			var tempArray = (stackalloc int[length]);
-			tempArray.Fill(-1);
-
-			var result = new List<ReadOnlyMemory<T>>();
-			var marker = -1;
-			do
-			{
-				if (marker < length - 1)
-				{
-					marker++;
-				}
-
-				ref var value = ref tempArray[marker];
-				value++;
-				if (value > @this[marker].Length - 1)
-				{
-					value = -1;
-					marker -= 2; // Backtrack.
-				}
-
-				if (marker == length - 1)
-				{
-					var r = new T[marker + 1];
-					for (var i = 0; i <= marker; i++)
-					{
-						r[i] = @this[i][tempArray[i]];
-					}
-					if (predicate(r))
-					{
-						result.Add(r);
-					}
-				}
-			} while (marker >= -1);
-
-			return result.AsSpan();
-		}
 	}
 }
