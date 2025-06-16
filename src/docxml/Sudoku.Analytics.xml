@@ -8572,7 +8572,7 @@
             Try to find all rank-0 sets.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Ranking.RankPattern.BuildCandidates(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet,Sudoku.Concepts.Supersymmetry.SpaceSet)">
+        <member name="M:Sudoku.Analytics.Ranking.RankPattern.BuildCandidates(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Supersymmetry.SpaceSet@)">
             <summary>
             Build candidates.
             </summary>

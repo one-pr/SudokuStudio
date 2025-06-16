@@ -296,7 +296,7 @@ public sealed partial class RankPattern(in Grid grid, in SpaceSet truths, in Spa
 	/// <param name="grid">The grid.</param>
 	/// <param name="truths">The truths.</param>
 	/// <param name="links">The links.</param>
-	private static CandidateMap BuildCandidates(in Grid grid, SpaceSet truths, SpaceSet links)
+	private static CandidateMap BuildCandidates(in Grid grid, in SpaceSet truths, in SpaceSet links)
 	{
 		var result = CandidateMap.Empty;
 
