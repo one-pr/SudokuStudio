@@ -6,7 +6,7 @@ namespace Sudoku.Analytics.Ranking;
 /// <param name="grid">The grid.</param>
 /// <param name="truths">The truths.</param>
 /// <param name="links">The links.</param>
-[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.EqualityOperators)]
+[TypeImpl(TypeImplFlags.EqualityOperators)]
 public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths, in SpaceSet links) : IEquatable<RankPattern>
 {
 	/// <summary>
@@ -46,6 +46,10 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	/// Indicates whether the current pattern is stable rank-0 pattern, i.e. all links are rank-0 sets.
 	/// </summary>
 	public bool GetIsRank0Pattern() => GetRank0Sets() == Links;
+
+	/// <inheritdoc/>
+	[Obsolete($"This method always return false. Ref structs cannot be boxed so argument '{nameof(obj)}' must be a different instance.", false)]
+	public override bool Equals(object? obj) => false;
 
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
 	public bool Equals(in RankPattern other) => Grid == other.Grid && Truths == other.Truths && Links == other.Links;
