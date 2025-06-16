@@ -126,10 +126,11 @@
 * [逻辑学简要介绍](logic-basics/01-brief-introduction-to-logic.md)
 * [分情况讨论和析取消去](logic-basics/02-proof-of-cases-and-disjunction-elimination.md)
 * [反证法](logic-basics/03-proof-by-contradiction.md)
+* [逻辑蕴含](logic-basics/04-entailment.md)
 
 ## 组合数学基础 <a href="#combinatorics" id="combinatorics"></a>
 
-* [抽屉原理/鸽巢原理](combinatorics/01-pigeonhole-principle.md)
+* [抽屉原理](combinatorics/01-pigeonhole-principle.md)
 
 ## 其他 <a href="#miscellaneous" id="miscellaneous"></a>
 
