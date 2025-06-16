@@ -1645,6 +1645,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Links are not supported to calculate available range..
+        /// </summary>
+        public static string ErrorInfo_LinkNotSupportedToFindAvailableRange {
+            get {
+                return ResourceManager.GetString("ErrorInfo_LinkNotSupportedToFindAvailableRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The property value &apos;Collector.DifficultyLevelMode&apos; is undefined..
         /// </summary>
         public static string ErrorInfo_ModeIsUndefined {
@@ -3463,6 +3472,24 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string IsNotRank0Pattern {
+            get {
+                return ResourceManager.GetString("IsNotRank0Pattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string IsRank0Pattern {
+            get {
+                return ResourceManager.GetString("IsRank0Pattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ittoryu rule: finish puzzle with {0} {1} rounds.
         /// </summary>
         public static string IttoryuConstraint {
@@ -4299,6 +4326,23 @@ namespace Sudoku.Resources {
         public static string QiuDeadlyPatternType4 {
             get {
                 return ResourceManager.GetString("QiuDeadlyPatternType4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid:
+        ///{0}
+        ///---
+        ///Pattern: {1}
+        ///Permutation cases count: {2}
+        ///Rank: {3}
+        ///Eliminations: {4}
+        ///Rank-0 sets: {5}
+        ///Is pattern rank-0: {6}.
+        /// </summary>
+        public static string RankInfo {
+            get {
+                return ResourceManager.GetString("RankInfo", resourceCulture);
             }
         }
         
@@ -9222,6 +9266,15 @@ namespace Sudoku.Resources {
         public static string Unknown {
             get {
                 return ResourceManager.GetString("Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;Unstable&gt;.
+        /// </summary>
+        public static string UnstableRank {
+            get {
+                return ResourceManager.GetString("UnstableRank", resourceCulture);
             }
         }
         

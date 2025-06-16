@@ -3272,9 +3272,6 @@
     <value>动态强制链</value>
     <comment>Step Searcher Name</comment>
   </data>
-  <data name="ErrorInfo_PuzzleCannotBeSolved" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="TechniqueGroup_FatRing" xml:space="preserve">
     <value>胖姨环</value>
   </data>
@@ -3288,5 +3285,25 @@
   </data>
   <data name="TechniqueFormat_FatRingStep" xml:space="preserve">
     <value>数字 {0} 位于 {1} 和 {2}</value>
+  </data>
+  <data name="IsNotRank0Pattern" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="IsRank0Pattern" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="RankInfo" xml:space="preserve">
+    <value>盘面：
+{0}
+---
+结构：{1}
+总排列情况数：{2}
+秩：{3}
+删数：{4}
+零秩区域：{5}
+是否为零秩结构：{6}</value>
+  </data>
+  <data name="UnstableRank" xml:space="preserve">
+    <value>&lt;不存在稳定秩值&gt;</value>
   </data>
 </root>

@@ -50,9 +50,6 @@
     <BuildType Solution="Build|*" Project="Debug" />
   </Project>
   <Project Path="src/ConsoleTest/MyPrivateWorks.csproj" />
-  <Project Path="src/Sudoku.Analytics.Ranking/Sudoku.Analytics.Ranking.csproj" Id="0759d62a-7ebe-4285-80e2-467888dc849f">
-    <BuildType Solution="Build|*" Project="Debug" />
-  </Project>
   <Project Path="src/Sudoku.Analytics/Sudoku.Analytics.csproj" />
   <Project Path="src/Sudoku.CommandLine/Sudoku.CommandLine.csproj">
     <BuildType Solution="Build|*" Project="Debug" />

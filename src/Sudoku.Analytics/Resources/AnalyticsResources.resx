@@ -3240,4 +3240,27 @@ Error grid: '{0:#}'</value>
   <data name="TechniqueFormat_FatRingStep" xml:space="preserve">
     <value>Digits {0} in {1} and {2}</value>
   </data>
+  <data name="ErrorInfo_LinkNotSupportedToFindAvailableRange" xml:space="preserve">
+    <value>Links are not supported to calculate available range.</value>
+  </data>
+  <data name="IsNotRank0Pattern" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="IsRank0Pattern" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="RankInfo" xml:space="preserve">
+    <value>Grid:
+{0}
+---
+Pattern: {1}
+Permutation cases count: {2}
+Rank: {3}
+Eliminations: {4}
+Rank-0 sets: {5}
+Is pattern rank-0: {6}</value>
+  </data>
+  <data name="UnstableRank" xml:space="preserve">
+    <value>&lt;Unstable&gt;</value>
+  </data>
 </root>
