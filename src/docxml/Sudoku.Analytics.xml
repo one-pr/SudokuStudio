@@ -8500,14 +8500,24 @@
             <param name="truths">The truths.</param>
             <param name="links">The links.</param>
         </member>
+        <member name="F:Sudoku.Analytics.Ranking.RankPattern.Grid">
+            <summary>
+            Indicates the grid.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Ranking.RankPattern.Truths">
+            <summary>
+            Indicates the truths.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Ranking.RankPattern.Links">
+            <summary>
+            Indicates the links.
+            </summary>
+        </member>
         <member name="F:Sudoku.Analytics.Ranking.RankPattern._candidates">
             <summary>
             Represents candidates.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Ranking.RankPattern._grid">
-            <summary>
-            The backing grid.
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.Ranking.RankPattern.Cells">
@@ -8520,25 +8530,16 @@
             Indicates the candidates.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Ranking.RankPattern.Grid">
-            <summary>
-            Indicates the grid.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.RankPattern.Truths">
-            <summary>
-            Indicates the truths.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.RankPattern.Links">
-            <summary>
-            Indicates the links.
-            </summary>
-        </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetIsRank0Pattern">
             <summary>
             Indicates whether the current pattern is stable rank-0 pattern, i.e. all links are rank-0 sets.
             </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Ranking.RankPattern.Equals(Sudoku.Analytics.Ranking.RankPattern@)">
+            <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetHashCode">
+            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetRank">
             <summary>
@@ -8572,6 +8573,9 @@
             Try to find all rank-0 sets.
             </summary>
         </member>
+        <member name="M:Sudoku.Analytics.Ranking.RankPattern.System#IEquatable{Sudoku#Analytics#Ranking#RankPattern}#Equals(Sudoku.Analytics.Ranking.RankPattern)">
+            <inheritdoc/>
+        </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.BuildCandidates(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Supersymmetry.SpaceSet@)">
             <summary>
             Build candidates.
@@ -8583,17 +8587,11 @@
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.Equals(System.Object)">
             <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
         </member>
-        <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetHashCode">
-            <inheritdoc cref="M:System.Object.GetHashCode"/>
-        </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.op_Equality(Sudoku.Analytics.Ranking.RankPattern,Sudoku.Analytics.Ranking.RankPattern)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.op_Inequality(Sudoku.Analytics.Ranking.RankPattern,Sudoku.Analytics.Ranking.RankPattern)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Ranking.RankPattern.Equals(Sudoku.Analytics.Ranking.RankPattern)">
-            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.RuntimeAnalysisException">
             <summary>

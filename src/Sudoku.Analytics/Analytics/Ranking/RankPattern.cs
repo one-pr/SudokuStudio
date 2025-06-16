@@ -6,22 +6,28 @@ namespace Sudoku.Analytics.Ranking;
 /// <param name="grid">The grid.</param>
 /// <param name="truths">The truths.</param>
 /// <param name="links">The links.</param>
-[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.Object_GetHashCode | TypeImplFlags.Equatable | TypeImplFlags.EqualityOperators)]
-public sealed partial class RankPattern(in Grid grid, in SpaceSet truths, in SpaceSet links) :
-	IEquatable<RankPattern>,
-	IEqualityOperators<RankPattern, RankPattern, bool>
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.EqualityOperators)]
+public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths, in SpaceSet links) : IEquatable<RankPattern>
 {
+	/// <summary>
+	/// Indicates the grid.
+	/// </summary>
+	public readonly ref readonly Grid Grid = ref grid;
+
+	/// <summary>
+	/// Indicates the truths.
+	/// </summary>
+	public readonly ref readonly SpaceSet Truths = ref truths;
+
+	/// <summary>
+	/// Indicates the links.
+	/// </summary>
+	public readonly ref readonly SpaceSet Links = ref links;
+
 	/// <summary>
 	/// Represents candidates.
 	/// </summary>
 	private readonly CandidateMap _candidates = BuildCandidates(grid, truths, links);
-
-	/// <summary>
-	/// The backing grid.
-	/// </summary>
-	[EquatableMember]
-	[HashCodeMember]
-	private readonly Grid _grid = grid;
 
 
 	/// <summary>
@@ -32,32 +38,20 @@ public sealed partial class RankPattern(in Grid grid, in SpaceSet truths, in Spa
 	/// <summary>
 	/// Indicates the candidates.
 	/// </summary>
+	[UnscopedRef]
 	public ref readonly CandidateMap Candidates => ref _candidates;
-
-	/// <summary>
-	/// Indicates the grid.
-	/// </summary>
-	public ref readonly Grid Grid => ref _grid;
-
-	/// <summary>
-	/// Indicates the truths.
-	/// </summary>
-	[EquatableMember]
-	[HashCodeMember]
-	public SpaceSet Truths { get; } = truths;
-
-	/// <summary>
-	/// Indicates the links.
-	/// </summary>
-	[EquatableMember]
-	[HashCodeMember]
-	public SpaceSet Links { get; } = links;
 
 
 	/// <summary>
 	/// Indicates whether the current pattern is stable rank-0 pattern, i.e. all links are rank-0 sets.
 	/// </summary>
 	public bool GetIsRank0Pattern() => GetRank0Sets() == Links;
+
+	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
+	public bool Equals(in RankPattern other) => Grid == other.Grid && Truths == other.Truths && Links == other.Links;
+
+	/// <inheritdoc/>
+	public override int GetHashCode() => HashCode.Combine(Grid, Truths, Links);
 
 	/// <summary>
 	/// Indicates the rank of the current pattern. If the pattern is unstable
@@ -84,7 +78,7 @@ public sealed partial class RankPattern(in Grid grid, in SpaceSet truths, in Spa
 	public string ToFullString()
 		=> string.Format(
 			SR.Get("RankInfo"),
-			_grid.ToString("@:"),
+			Grid.ToString("@:"),
 			ToString(),
 			GetAssignmentCombinations().Length,
 			GetRank()?.ToString() ?? SR.Get("UnstableRank"),
@@ -100,7 +94,7 @@ public sealed partial class RankPattern(in Grid grid, in SpaceSet truths, in Spa
 	{
 		var result = CandidateMap.Empty;
 		var i = 0;
-		var candidatesMap = _grid.CandidatesMap;
+		var candidatesMap = Grid.CandidatesMap;
 		foreach (var assignmentGroup in GetAssignmentCombinations())
 		{
 			var current = CandidateMap.Empty;
@@ -108,7 +102,7 @@ public sealed partial class RankPattern(in Grid grid, in SpaceSet truths, in Spa
 			{
 				var cell = assignment / 9;
 				var digit = assignment % 9;
-				foreach (var otherDigit in (Mask)(_grid.GetCandidates(cell) & ~(1 << digit)))
+				foreach (var otherDigit in (Mask)(Grid.GetCandidates(cell) & ~(1 << digit)))
 				{
 					current.Add(cell * 9 + otherDigit);
 				}
@@ -288,6 +282,9 @@ public sealed partial class RankPattern(in Grid grid, in SpaceSet truths, in Spa
 
 		return result;
 	}
+
+	/// <inheritdoc/>
+	bool IEquatable<RankPattern>.Equals(RankPattern other) => Equals(other);
 
 
 	/// <summary>
