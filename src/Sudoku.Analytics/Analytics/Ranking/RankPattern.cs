@@ -81,7 +81,7 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 			combinations.Length,
 			GetRankCore(combinations)?.ToString() ?? SR.Get("UnstableRank"),
 			GetEliminationsCore(combinations).ToString(),
-			GetEliminationZoneCore(combinations).ToString(),
+			GetEliminationZoneCore(combinations, true).ToString(),
 			GetRank0LinksCore(combinations).ToString(),
 			SR.Get(GetIsRank0PatternCore(combinations) ? "IsRank0Pattern" : "IsNotRank0Pattern")
 		);
@@ -229,8 +229,12 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	/// Find elimination zones, indicating a list of candidates that can be eliminated,
 	/// no matter whether they exist or not.
 	/// </summary>
+	/// <param name="linksOnly">
+	/// Indicates whether the elimination zone only checks for links.
+	/// If <see langword="true"/>, candidates can only be created from links.
+	/// </param>
 	/// <returns>A list of candidates.</returns>
-	public CandidateMap GetEliminationZone() => GetEliminationZoneCore(GetAssignmentCombinations());
+	public CandidateMap GetEliminationZone(bool linksOnly) => GetEliminationZoneCore(GetAssignmentCombinations(), linksOnly);
 
 	/// <inheritdoc/>
 	bool IEquatable<RankPattern>.Equals(RankPattern other) => Equals(other);
@@ -348,9 +352,19 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private unsafe CandidateMap GetEliminationZoneCore(ReadOnlySpan<ReadOnlyMemory<Candidate>> combinations)
+	private unsafe CandidateMap GetEliminationZoneCore(ReadOnlySpan<ReadOnlyMemory<Candidate>> combinations, bool linksOnly)
 	{
-		return GetEliminationsCore(combinations, &otherDigitsCalc, &otherCellsCalc);
+		var result = GetEliminationsCore(combinations, &otherDigitsCalc, &otherCellsCalc);
+		if (linksOnly)
+		{
+			var candidatesSet = CandidateMap.Empty;
+			foreach (var link in Links)
+			{
+				candidatesSet |= link.GetRange();
+			}
+			result &= candidatesSet;
+		}
+		return result;
 
 
 		static Mask otherDigitsCalc(ref readonly Grid grid, Cell cell, Digit digit) => grid.GetCandidates(cell);
