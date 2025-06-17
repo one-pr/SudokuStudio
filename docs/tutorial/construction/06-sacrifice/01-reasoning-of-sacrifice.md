@@ -59,7 +59,7 @@ $$
 
 逻辑学使用 $$\equiv$$ 来表示等价，而不是等号。但是你可以当成等号去理解。符号 $$\land$$ 表示“且”，$$\lor$$ 表示“或”，而 $$\lnot$$ 则表示“非”（也就是对原来的说辞的对错取个反）。
 
-这个式子是可以化简的，但是我们这里并不需要化简，因为我们并不是用这个公式来参与一些复杂运算来证明牺牲的正确性。
+这个式子是可以化简的，但是我们这里并不需要化简，因为我们并不是用这个公式来参与一些复杂运算来证明牺牲的正确性。推算过程可参考 [#result-calculation](../../logic-basics/04-entailment.md#result-calculation "mention") 的过程。
 
 ### 两层蕴含式 <a href="#higher-ordered-entailment" id="higher-ordered-entailment"></a>
 
