@@ -146,8 +146,8 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 		var result = new List<ReadOnlyMemory<Candidate>>();
 
 		// Create a queue to record all possible cases, in BFS way.
-		var queue = new LinkedList<(CandidateMap State, int[] RemainingTruthIndices)>();
-		queue.AddLast(([], [.. SpanEnumerable.Range(Truths.Count)]));
+		var queue = new LinkedList<CombinationQueueNode>();
+		queue.AddLast(new CombinationQueueNode([], [.. SpanEnumerable.Range(Truths.Count)]));
 
 #if DEBUG
 		// Provides a way to view max capacity while queuing.
@@ -251,7 +251,7 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 						newRemainingTruths.Remove(truthIndex);
 					}
 
-					queue.AddLast((nextState, [.. newRemainingTruths]));
+					queue.AddLast(new CombinationQueueNode(nextState, [.. newRemainingTruths]));
 				}
 			}
 		}

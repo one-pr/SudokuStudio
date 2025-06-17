@@ -8484,6 +8484,26 @@
             The type of the step searcher that throws the exception.
             </summary>
         </member>
+        <member name="T:Sudoku.Analytics.Ranking.CombinationQueueNode">
+            <summary>
+            Represents a queue node that is used in calculating assignment combinations.
+            </summary>
+            <param name="State">Indicates the state.</param>
+            <param name="RemainingTruthIndices">Indicates the remaining truth indices.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.Ranking.CombinationQueueNode.#ctor(Sudoku.Concepts.CandidateMap,System.Int32[])">
+            <summary>
+            Represents a queue node that is used in calculating assignment combinations.
+            </summary>
+            <param name="State">Indicates the state.</param>
+            <param name="RemainingTruthIndices">Indicates the remaining truth indices.</param>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.CombinationQueueNode.State">
+            <summary>Indicates the state.</summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.CombinationQueueNode.RemainingTruthIndices">
+            <summary>Indicates the remaining truth indices.</summary>
+        </member>
         <member name="T:Sudoku.Analytics.Ranking.RankPattern">
             <summary>
             Represents an object that can calculate rank-related information via the specified data.
