@@ -43,9 +43,9 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 
 
 	/// <summary>
-	/// Indicates whether the current pattern is stable rank-0 pattern, i.e. all links are rank-0 sets.
+	/// Indicates whether the current pattern is stable rank-0 pattern, i.e. all links are rank-0 links.
 	/// </summary>
-	public bool GetIsRank0Pattern() => GetRank0Sets() == Links;
+	public bool GetIsRank0Pattern() => GetRank0Links() == Links;
 
 	/// <inheritdoc/>
 	[Obsolete($"This method always return false. Ref structs cannot be boxed so argument '{nameof(obj)}' must be a different instance.", false)]
@@ -62,20 +62,7 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	/// (sometimes assignments certain times of digits in the pattern but sometimes not),
 	/// this property will return <see langword="null"/>.
 	/// </summary>
-	public int? GetRank()
-	{
-		var factAssignmentCountValues = new HashSet<int>();
-		foreach (var l in from assignment in GetAssignmentCombinations() select assignment.Length)
-		{
-			factAssignmentCountValues.Add(l);
-			if (factAssignmentCountValues.Count >= 2)
-			{
-				// Invalid, fast fail.
-				return null;
-			}
-		}
-		return factAssignmentCountValues.Count == 1 ? Links.Count - factAssignmentCountValues.First() : null;
-	}
+	public int? GetRank() => GetRankCore(GetAssignmentCombinations());
 
 	/// <inheritdoc cref="object.ToString"/>
 	public override string ToString() => $"T{Truths.Count} = {Truths}, L{Links.Count} = {Links}";
@@ -85,16 +72,19 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	/// </summary>
 	/// <returns>The string.</returns>
 	public string ToFullString()
-		=> string.Format(
+	{
+		var combinations = GetAssignmentCombinations();
+		return string.Format(
 			SR.Get("RankInfo"),
 			Grid.ToString("@:"),
 			ToString(),
-			GetAssignmentCombinations().Length,
-			GetRank()?.ToString() ?? SR.Get("UnstableRank"),
-			GetEliminations().ToString(),
-			GetRank0Sets().ToString(),
-			SR.Get(GetIsRank0Pattern() ? "IsRank0Pattern" : "IsNotRank0Pattern")
+			combinations.Length,
+			GetRankCore(combinations)?.ToString() ?? SR.Get("UnstableRank"),
+			GetEliminationsCore(combinations).ToString(),
+			GetRank0LinksCore(combinations).ToString(),
+			SR.Get(GetIsRank0PatternCore(combinations) ? "IsRank0Pattern" : "IsNotRank0Pattern")
 		);
+	}
 
 	/// <summary>
 	/// Indicates eliminations can be found in the current pattern.
@@ -103,39 +93,7 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	/// In theory, eliminations may not require any links. All conclusions come from valid combinations of truths,
 	/// keeping one valid digit filling into each truth, and find intersections of eliminations can be found from all cases.
 	/// </remarks>
-	public CandidateMap GetEliminations()
-	{
-		var result = CandidateMap.Empty;
-		var i = 0;
-		var candidatesMap = Grid.CandidatesMap;
-		foreach (var assignmentGroup in GetAssignmentCombinations())
-		{
-			var current = CandidateMap.Empty;
-			foreach (var assignment in assignmentGroup)
-			{
-				var cell = assignment / 9;
-				var digit = assignment % 9;
-				foreach (var otherDigit in (Mask)(Grid.GetCandidates(cell) & ~(1 << digit)))
-				{
-					current.Add(cell * 9 + otherDigit);
-				}
-				foreach (var otherCell in PeersMap[cell] & candidatesMap[digit])
-				{
-					current.Add(otherCell * 9 + digit);
-				}
-			}
-
-			if (i++ == 0)
-			{
-				result |= current;
-			}
-			else
-			{
-				result &= current;
-			}
-		}
-		return result;
-	}
+	public CandidateMap GetEliminations() => GetEliminationsCore(GetAssignmentCombinations());
 
 	/// <summary>
 	/// Returns a list of <see cref="Candidate"/> group that describes the valid assignments.
@@ -260,16 +218,73 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	}
 
 	/// <summary>
-	/// Try to find all rank-0 sets. A rank-0 set is a link that will become truth
+	/// Try to find all rank-0 links. A rank-0 link is a link that will become truth
 	/// because all valid combinations lead to a same result that the link must hold one correct digit.
 	/// </summary>
-	public SpaceSet GetRank0Sets()
+	public SpaceSet GetRank0Links() => GetRank0LinksCore(GetAssignmentCombinations());
+
+	/// <inheritdoc/>
+	bool IEquatable<RankPattern>.Equals(RankPattern other) => Equals(other);
+
+	private bool GetIsRank0PatternCore(ReadOnlySpan<ReadOnlyMemory<Candidate>> combinations)
+		=> GetRank0LinksCore(combinations) == Links;
+
+	private int? GetRankCore(ReadOnlySpan<ReadOnlyMemory<Candidate>> combinations)
+	{
+		var factAssignmentCountValues = new HashSet<int>();
+		foreach (var l in from assignment in combinations select assignment.Length)
+		{
+			factAssignmentCountValues.Add(l);
+			if (factAssignmentCountValues.Count >= 2)
+			{
+				// Invalid, fast fail.
+				return null;
+			}
+		}
+		return factAssignmentCountValues.Count == 1 ? Links.Count - factAssignmentCountValues.First() : null;
+	}
+
+	private CandidateMap GetEliminationsCore(ReadOnlySpan<ReadOnlyMemory<Candidate>> combinations)
+	{
+		var result = CandidateMap.Empty;
+		var i = 0;
+		var candidatesMap = Grid.CandidatesMap;
+		foreach (var assignmentGroup in combinations)
+		{
+			var current = CandidateMap.Empty;
+			foreach (var assignment in assignmentGroup)
+			{
+				var cell = assignment / 9;
+				var digit = assignment % 9;
+				foreach (var otherDigit in (Mask)(Grid.GetCandidates(cell) & ~(1 << digit)))
+				{
+					current.Add(cell * 9 + otherDigit);
+				}
+				foreach (var otherCell in PeersMap[cell] & candidatesMap[digit])
+				{
+					current.Add(otherCell * 9 + digit);
+				}
+			}
+
+			if (i++ == 0)
+			{
+				result |= current;
+			}
+			else
+			{
+				result &= current;
+			}
+		}
+		return result;
+	}
+
+	private SpaceSet GetRank0LinksCore(ReadOnlySpan<ReadOnlyMemory<Candidate>> combinations)
 	{
 		var result = SpaceSet.Empty;
 		var links = Links;
 
 		var i = 0;
-		foreach (var assignmentGroup in GetAssignmentCombinations())
+		foreach (var assignmentGroup in combinations)
 		{
 			var lightUpLinks = SpaceSet.Empty;
 			foreach (var assignment in assignmentGroup)
@@ -295,9 +310,6 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 
 		return result;
 	}
-
-	/// <inheritdoc/>
-	bool IEquatable<RankPattern>.Equals(RankPattern other) => Equals(other);
 
 
 	/// <summary>

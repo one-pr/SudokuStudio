@@ -8552,7 +8552,7 @@
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetIsRank0Pattern">
             <summary>
-            Indicates whether the current pattern is stable rank-0 pattern, i.e. all links are rank-0 sets.
+            Indicates whether the current pattern is stable rank-0 pattern, i.e. all links are rank-0 links.
             </summary>
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.Equals(System.Object)">
@@ -8595,9 +8595,9 @@
             </summary>
             <returns>Valid assignments.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetRank0Sets">
+        <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetRank0Links">
             <summary>
-            Try to find all rank-0 sets. A rank-0 set is a link that will become truth
+            Try to find all rank-0 links. A rank-0 link is a link that will become truth
             because all valid combinations lead to a same result that the link must hold one correct digit.
             </summary>
         </member>
