@@ -54,6 +54,154 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
 	public bool Equals(in RankPattern other) => Grid == other.Grid && Truths == other.Truths && Links == other.Links;
 
+	/// <summary>
+	/// Infers links that will cover all candidates from the truths and eliminations, if links are unknown.
+	/// </summary>
+	/// <param name="result">The result links found.</param>
+	/// <returns>A <see cref="bool"/> result indicating whether a combination is found.</returns>
+	public unsafe bool TryInferLinks(out SpaceSet result)
+	{
+		// Collect all candidates to be covered.
+		var eliminations = GetEliminations();
+		var allCandidatesToCover = CandidateMap.Empty;
+		foreach (var truth in Truths)
+		{
+			allCandidatesToCover |= truth.GetAvailableRange(Grid);
+		}
+
+		// Collect covering states that describes which candidates in truths can eliminate candidates in links.
+		var baseLinks = SpaceSet.Empty;
+		foreach (var elimination in eliminations)
+		{
+			var targetCell = elimination / 9;
+			var targetDigit = elimination % 9;
+
+			// Iterate combinations to find which digits can cause this elimination.
+			foreach (var truth in Truths)
+			{
+				foreach (var candidateInTruth in truth.GetAvailableRange(Grid))
+				{
+					var cell = candidateInTruth / 9;
+					var digit = candidateInTruth % 9;
+					if (cell == targetCell)
+					{
+						baseLinks.Add(Space.RowColumn(cell / 9, cell % 9));
+						allCandidatesToCover.Remove(candidateInTruth);
+					}
+					else if (PeersMap[cell].Contains(targetCell) && digit == targetDigit)
+					{
+						var house = (cell.AsCellMap() + targetCell).FirstSharedHouse;
+						baseLinks.Add(
+							house.HouseType switch
+							{
+								HouseType.Block => Space.BlockDigit(house, digit),
+								HouseType.Row => Space.RowDigit(house - 9, digit),
+								HouseType.Column => Space.ColumnDigit(house - 18, digit)
+							}
+						);
+						allCandidatesToCover.Remove(candidateInTruth);
+					}
+				}
+			}
+		}
+
+		// Find a way to fully cover all candidates.
+		var queue = new LinkedList<CoverQueueNode>();
+		queue.AddLast(new CoverQueueNode(default, allCandidatesToCover, null));
+
+		// Iterate nodes.
+		while (queue.Count != 0)
+		{
+			// Dequeue a node.
+			var currentNode = queue.RemoveFirstNode();
+			var (link, uncovered, parent) = currentNode;
+
+			if (!uncovered)
+			{
+				// All candidates are covered.
+				// Check whether the combination follows the eliminations.
+				result = baseLinks | currentNode.Links;
+				return true;
+			}
+
+			// Calculate for covered candidates.
+			var covered = allCandidatesToCover & ~uncovered;
+
+			// Find for remaining cases.
+			var cases = new List<(Space Space, CandidateMap UncoveredCandidates)>();
+			foreach (var candidate in uncovered)
+			{
+				var cell = candidate / 9;
+				var digit = candidate % 9;
+
+				var cellLink = Space.RowColumn(cell / 9, cell % 9);
+				if (!Truths.Contains(cellLink) && !cases.Exists(@case => @case.Space == cellLink))
+				{
+					var nextUncovered = remainingMap(uncovered, cellLink, Grid);
+					var nextCovered = uncovered & ~nextUncovered;
+					if (nextCovered.Count >= 2 || !!(nextCovered & eliminations)
+						|| covered.Any(candidate => cellLink.ContainsAssignment(candidate)))
+					{
+						cases.Add((cellLink, nextUncovered));
+					}
+				}
+
+				var blockLink = Space.BlockDigit(cell.ToHouse(HouseType.Block), digit);
+				if (!Truths.Contains(blockLink) && !cases.Exists(@case => @case.Space == blockLink))
+				{
+					var nextUncovered = remainingMap(uncovered, blockLink, Grid);
+					var nextCovered = uncovered & ~nextUncovered;
+					if (nextCovered.Count >= 2 || !!(nextCovered & eliminations)
+						|| covered.Any(candidate => blockLink.ContainsAssignment(candidate)))
+					{
+						cases.Add((blockLink, nextUncovered));
+					}
+				}
+
+				var rowLink = Space.RowDigit(cell.ToHouse(HouseType.Row) - 9, digit);
+				if (!Truths.Contains(rowLink) && !cases.Exists(@case => @case.Space == rowLink))
+				{
+					var nextUncovered = remainingMap(uncovered, rowLink, Grid);
+					var nextCovered = uncovered & ~nextUncovered;
+					if (nextCovered.Count >= 2 || !!(nextCovered & eliminations)
+						|| covered.Any(candidate => rowLink.ContainsAssignment(candidate)))
+					{
+						cases.Add((rowLink, nextUncovered));
+					}
+				}
+
+				var columnLink = Space.ColumnDigit(cell.ToHouse(HouseType.Column) - 18, digit);
+				if (!Truths.Contains(columnLink) && !cases.Exists(@case => @case.Space == columnLink))
+				{
+					var nextUncovered = remainingMap(uncovered, columnLink, Grid);
+					var nextCovered = uncovered & ~nextUncovered;
+					if (nextCovered.Count >= 2 || !!(nextCovered & eliminations)
+						|| covered.Any(candidate => columnLink.ContainsAssignment(candidate)))
+					{
+						cases.Add((columnLink, nextUncovered));
+					}
+				}
+			}
+
+			// Sort by descending order.
+			cases.Sort(static (left, right) => left.UncoveredCandidates.Count - right.UncoveredCandidates.Count);
+
+			// Iterate on the next connection.
+			foreach (var (nextSpace, nextUncovered) in cases)
+			{
+				queue.AddLast(new CoverQueueNode(nextSpace, nextUncovered, currentNode));
+			}
+		}
+
+		result = default;
+		return false;
+
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		static CandidateMap remainingMap(in CandidateMap currentMap, Space space, in Grid grid)
+			=> currentMap & ~space.GetAvailableRange(grid);
+	}
+
 	/// <inheritdoc/>
 	public override int GetHashCode() => HashCode.Combine(Grid, Truths, Links);
 
@@ -81,7 +229,7 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 			combinations.Length,
 			GetRankCore(combinations)?.ToString() ?? SR.Get("UnstableRank"),
 			GetEliminationsCore(combinations).ToString(),
-			GetEliminationZoneCore(combinations, true).ToString(),
+			GetEliminationZoneCore(combinations, false).ToString(),
 			GetRank0LinksCore(combinations).ToString(),
 			SR.Get(GetIsRank0PatternCore(combinations) ? "IsRank0Pattern" : "IsNotRank0Pattern")
 		);
@@ -367,7 +515,7 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 		return result;
 
 
-		static Mask otherDigitsCalc(ref readonly Grid grid, Cell cell, Digit digit) => grid.GetCandidates(cell);
+		static Mask otherDigitsCalc(ref readonly Grid grid, Cell cell, Digit digit) => (Mask)(Grid.MaxCandidatesMask & ~(1 << digit));
 
 		static CellMap otherCellsCalc(ref readonly Grid grid, Cell cell, Digit digit) => PeersMap[cell] & grid.EmptyCells;
 	}

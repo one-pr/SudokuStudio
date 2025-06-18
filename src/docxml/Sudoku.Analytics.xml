@@ -8491,7 +8491,7 @@
             <param name="State">Indicates the state.</param>
             <param name="RemainingTruthIndices">Indicates the remaining truth indices.</param>
         </member>
-        <member name="M:Sudoku.Analytics.Ranking.CombinationQueueNode.#ctor(Sudoku.Concepts.CandidateMap,System.Int32[])">
+        <member name="M:Sudoku.Analytics.Ranking.CombinationQueueNode.#ctor(Sudoku.Concepts.CandidateMap@,System.Int32[])">
             <summary>
             Represents a queue node that is used in calculating assignment combinations.
             </summary>
@@ -8503,6 +8503,36 @@
         </member>
         <member name="P:Sudoku.Analytics.Ranking.CombinationQueueNode.RemainingTruthIndices">
             <summary>Indicates the remaining truth indices.</summary>
+        </member>
+        <member name="T:Sudoku.Analytics.Ranking.CoverQueueNode">
+            <summary>
+            Represents a queue node that is used for covering candidates appeared in truths.
+            </summary>
+            <param name="Link">Indicates the appended link.</param>
+            <param name="UncoveredCandidates">Indicates the uncovered candidates.</param>
+            <param name="Parent">Indicates the parent node.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.Ranking.CoverQueueNode.#ctor(Sudoku.Concepts.Supersymmetry.Space,Sudoku.Concepts.CandidateMap@,Sudoku.Analytics.Ranking.CoverQueueNode)">
+            <summary>
+            Represents a queue node that is used for covering candidates appeared in truths.
+            </summary>
+            <param name="Link">Indicates the appended link.</param>
+            <param name="UncoveredCandidates">Indicates the uncovered candidates.</param>
+            <param name="Parent">Indicates the parent node.</param>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.CoverQueueNode.Link">
+            <summary>Indicates the appended link.</summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.CoverQueueNode.UncoveredCandidates">
+            <summary>Indicates the uncovered candidates.</summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.CoverQueueNode.Parent">
+            <summary>Indicates the parent node.</summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.CoverQueueNode.Links">
+            <summary>
+            Indicates the links.
+            </summary>
         </member>
         <member name="T:Sudoku.Analytics.Ranking.RankPattern">
             <summary>
@@ -8560,6 +8590,13 @@
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.Equals(Sudoku.Analytics.Ranking.RankPattern@)">
             <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Ranking.RankPattern.TryInferLinks(Sudoku.Concepts.Supersymmetry.SpaceSet@)">
+            <summary>
+            Infers links that will cover all candidates from the truths and eliminations, if links are unknown.
+            </summary>
+            <param name="result">The result links found.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether a combination is found.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetHashCode">
             <inheritdoc/>

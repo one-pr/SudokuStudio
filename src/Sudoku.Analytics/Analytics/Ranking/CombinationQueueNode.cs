@@ -5,4 +5,4 @@ namespace Sudoku.Analytics.Ranking;
 /// </summary>
 /// <param name="State">Indicates the state.</param>
 /// <param name="RemainingTruthIndices">Indicates the remaining truth indices.</param>
-internal sealed record CombinationQueueNode(CandidateMap State, int[] RemainingTruthIndices);
+internal sealed record CombinationQueueNode(in CandidateMap State, int[] RemainingTruthIndices);
