@@ -229,7 +229,7 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 			combinations.Length,
 			GetRankCore(combinations)?.ToString() ?? SR.Get("UnstableRank"),
 			GetEliminationsCore(combinations).ToString(),
-			GetEliminationZoneCore(combinations, false).ToString(),
+			GetEliminationZoneCore(combinations, EliminationZoneOptions.All).ToString(),
 			GetRank0LinksCore(combinations).ToString(),
 			SR.Get(GetIsRank0PatternCore(combinations) ? "IsRank0Pattern" : "IsNotRank0Pattern")
 		);
@@ -377,12 +377,10 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	/// Find elimination zones, indicating a list of candidates that can be eliminated,
 	/// no matter whether they exist or not.
 	/// </summary>
-	/// <param name="linksOnly">
-	/// Indicates whether the elimination zone only checks for links.
-	/// If <see langword="true"/>, candidates can only be created from links.
-	/// </param>
+	/// <param name="options">The options that determines and filters the elimination zones.</param>
 	/// <returns>A list of candidates.</returns>
-	public CandidateMap GetEliminationZone(bool linksOnly) => GetEliminationZoneCore(GetAssignmentCombinations(), linksOnly);
+	public CandidateMap GetEliminationZone(EliminationZoneOptions options)
+		=> GetEliminationZoneCore(GetAssignmentCombinations(), options);
 
 	/// <inheritdoc/>
 	bool IEquatable<RankPattern>.Equals(RankPattern other) => Equals(other);
@@ -500,10 +498,25 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private unsafe CandidateMap GetEliminationZoneCore(ReadOnlySpan<ReadOnlyMemory<Candidate>> combinations, bool linksOnly)
+	private unsafe CandidateMap GetEliminationZoneCore(ReadOnlySpan<ReadOnlyMemory<Candidate>> combinations, EliminationZoneOptions options)
 	{
+		if (options >= (EliminationZoneOptions.All | EliminationZoneOptions.IgnoreExternal | EliminationZoneOptions.IgnoreSubpatterns))
+		{
+			throw new ArgumentOutOfRangeException(nameof(options));
+		}
+
+		if (options == EliminationZoneOptions.None)
+		{
+			return CandidateMap.Empty;
+		}
+
 		var result = GetEliminationsCore(combinations, &otherDigitsCalc, &otherCellsCalc);
-		if (linksOnly)
+		if (options == EliminationZoneOptions.All)
+		{
+			return result;
+		}
+
+		if (options.HasFlag(EliminationZoneOptions.IgnoreExternal))
 		{
 			var candidatesSet = CandidateMap.Empty;
 			foreach (var link in Links)
@@ -512,6 +525,12 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 			}
 			result &= candidatesSet;
 		}
+
+		if (options.HasFlag(EliminationZoneOptions.IgnoreSubpatterns))
+		{
+			// TODO: Implemented later.
+		}
+
 		return result;
 
 

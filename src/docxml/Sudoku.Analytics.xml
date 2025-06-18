@@ -8534,6 +8534,40 @@
             Indicates the links.
             </summary>
         </member>
+        <member name="T:Sudoku.Analytics.Ranking.EliminationZoneOptions">
+            <summary>
+            Represents an option that checks for elimination zones.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Ranking.EliminationZoneOptions.None">
+            <summary>
+            Indicates the placeholder of the pattern.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Ranking.EliminationZoneOptions.All">
+            <summary>
+            Indicates all elimination zones should be checked,
+            including eliminations from sub-patterns and some invalid places (candidates not on links).
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Ranking.EliminationZoneOptions.IgnoreExternal">
+            <summary>
+            <para>
+            Indicates elimination zones will ignore external ones (i.e. candidates not on links).
+            </para>
+            <para>If this option is specified, it'll be okay to ignore specifying field <see cref="F:Sudoku.Analytics.Ranking.EliminationZoneOptions.All"/>.</para>
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Ranking.EliminationZoneOptions.IgnoreSubpatterns">
+            <summary>
+            <para>
+            Indicates elimination zones will ignore ones produced by subpatterns of the pattern.
+            For example, if a pattern contains a locked candidates, eliminations produced by this locked candidates
+            can also be included.
+            </para>
+            <para>If this option is specified, it'll be okay to ignore specifying field <see cref="F:Sudoku.Analytics.Ranking.EliminationZoneOptions.All"/>.</para>
+            </summary>
+        </member>
         <member name="T:Sudoku.Analytics.Ranking.RankPattern">
             <summary>
             Represents an object that can calculate rank-related information via the specified data.
@@ -8639,15 +8673,12 @@
             </summary>
             <returns>A list of links that are determined as rank-0 links.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetEliminationZone(System.Boolean)">
+        <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetEliminationZone(Sudoku.Analytics.Ranking.EliminationZoneOptions)">
             <summary>
             Find elimination zones, indicating a list of candidates that can be eliminated,
             no matter whether they exist or not.
             </summary>
-            <param name="linksOnly">
-            Indicates whether the elimination zone only checks for links.
-            If <see langword="true"/>, candidates can only be created from links.
-            </param>
+            <param name="options">The options that determines and filters the elimination zones.</param>
             <returns>A list of candidates.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.System#IEquatable{Sudoku#Analytics#Ranking#RankPattern}#Equals(Sudoku.Analytics.Ranking.RankPattern)">
