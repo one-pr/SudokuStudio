@@ -528,7 +528,7 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 
 		if (options.HasFlag(EliminationZoneIgnoringOptions.IgnoreSubpatterns))
 		{
-			// Iterate all combinations of assignments.
+			// Iterate all combinations of truths.
 			var truthsArray = Truths.ToArray();
 			for (var i = 1; i < Truths.Count - 1; i++)
 			{
