@@ -535,8 +535,7 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 				foreach (var truthCombination in truthsArray.GetSubsets(i))
 				{
 					var subpattern = new RankPattern(Grid, [.. truthCombination], SpaceSet.Empty);
-					var subpatternElims = subpattern.GetEliminationZone(EliminationZoneIgnoringOptions.None);
-					result &= ~subpatternElims;
+					result &= ~subpattern.GetEliminationZone(EliminationZoneIgnoringOptions.None);
 				}
 			}
 		}
