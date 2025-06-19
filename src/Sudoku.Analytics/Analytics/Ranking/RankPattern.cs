@@ -361,6 +361,8 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 				{
 					result.Add(currentState.ToArray());
 				}
+
+				links |= currentNode.GetProducedLinks(Grid, Truths);
 				continue;
 			}
 

@@ -98,7 +98,7 @@ internal sealed record CombinationQueueNode(Candidate Set, int[] RemainingTruthI
 				{
 					// The link is a cell link.
 					var cellLink = Space.RowColumn(removedCell / 9, removedCell % 9);
-					if (!linkLookup.TryAdd(cellLink, removedCandidate.AsCandidateMap()))
+					if (!truths.Contains(cellLink) && !linkLookup.TryAdd(cellLink, removedCandidate.AsCandidateMap()))
 					{
 						linkLookup[cellLink].Add(removedCandidate);
 					}
@@ -123,7 +123,7 @@ internal sealed record CombinationQueueNode(Candidate Set, int[] RemainingTruthI
 						>= 9 and < 18 => Space.RowDigit(line - 9, removedDigit),
 						>= 18 => Space.ColumnDigit(line - 18, removedDigit)
 					};
-					if (!linkLookup.TryAdd(lineLink, removedCandidate.AsCandidateMap()))
+					if (!truths.Contains(lineLink) && !linkLookup.TryAdd(lineLink, removedCandidate.AsCandidateMap()))
 					{
 						linkLookup[lineLink].Add(removedCandidate);
 					}
@@ -136,7 +136,7 @@ internal sealed record CombinationQueueNode(Candidate Set, int[] RemainingTruthI
 					// However, we should ignore the case when it can also be treated as a row / column link,
 					// in order to keep space relations unique, unified and "greedy".
 					var blockLink = Space.BlockDigit(block, removedDigit);
-					if (!linkLookup.TryAdd(blockLink, removedCandidate.AsCandidateMap()))
+					if (!truths.Contains(blockLink) && !linkLookup.TryAdd(blockLink, removedCandidate.AsCandidateMap()))
 					{
 						linkLookup[blockLink].Add(removedCandidate);
 					}
