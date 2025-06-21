@@ -8674,10 +8674,13 @@
             <summary>
             Indicates the links.
             </summary>
+            <remarks>
+            By design, this value can be empty if you want to infer this value.
+            </remarks>
         </member>
         <member name="F:Sudoku.Analytics.Ranking.RankPattern._candidates">
             <summary>
-            Represents candidates.
+            Represents all candidates used in this pattern.
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.Ranking.RankPattern.Cells">
@@ -8701,13 +8704,12 @@
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.Equals(Sudoku.Analytics.Ranking.RankPattern@)">
             <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
         </member>
-        <member name="M:Sudoku.Analytics.Ranking.RankPattern.TryInferLinks(Sudoku.Concepts.Supersymmetry.SpaceSet@)">
+        <member name="M:Sudoku.Analytics.Ranking.RankPattern.InferLinks">
             <summary>
             Infers links that will cover all candidates from the truths and eliminations, if links are unknown.
             This method doesn't use field <see cref="F:Sudoku.Analytics.Ranking.RankPattern.Links"/>.
             </summary>
-            <param name="result">The result links found.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating whether a combination is found.</returns>
+            <returns>The result links found.</returns>
             <seealso cref="F:Sudoku.Analytics.Ranking.RankPattern.Links"/>
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetHashCode">

@@ -22,10 +22,13 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	/// <summary>
 	/// Indicates the links.
 	/// </summary>
+	/// <remarks>
+	/// By design, this value can be empty if you want to infer this value.
+	/// </remarks>
 	public readonly ref readonly SpaceSet Links = ref links;
 
 	/// <summary>
-	/// Represents candidates.
+	/// Represents all candidates used in this pattern.
 	/// </summary>
 	private readonly CandidateMap _candidates = BuildCandidates(grid, truths, links);
 
@@ -60,213 +63,127 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	/// Infers links that will cover all candidates from the truths and eliminations, if links are unknown.
 	/// This method doesn't use field <see cref="Links"/>.
 	/// </summary>
-	/// <param name="result">The result links found.</param>
-	/// <returns>A <see cref="bool"/> result indicating whether a combination is found.</returns>
+	/// <returns>The result links found.</returns>
 	/// <seealso cref="Links"/>
-	public unsafe bool TryInferLinks(out SpaceSet result)
+	public unsafe SpaceSet InferLinks()
 	{
-		var availableTruthCandidates = _candidates;
-		var eliminations = GetEliminations();
-
-		// Iterate candidates to cover.
-		result = SpaceSet.Empty;
-		var isChanged = true;
-		while (!!availableTruthCandidates && isChanged)
+		// Find for all links, passing eliminations.
+		var combinations = GetAssignmentCombinationsCore(out var fullLinks);
+		var rank0Links = GetRank0LinksCore(combinations);
+		if (rank0Links.Count == Truths.Count)
 		{
-			isChanged = false;
-			foreach (var candidateToCover in availableTruthCandidates)
-			{
-				var cell = candidateToCover / 9;
-				var digit = candidateToCover % 9;
-
-				var validSpaces = new List<Space>(4);
-				var isFallbackChecked = false;
-
-				// Check for valid links to connect.
-				if (Space.RowColumn(cell / 9, cell % 9) is var cellLink
-					&& isLinkValid(this, cellLink, availableTruthCandidates, eliminations))
-				{
-					validSpaces.Add(cellLink);
-				}
-				if (Space.BlockDigit(cell.ToHouse(HouseType.Block), digit) is var blockLink
-					&& isLinkValid(this, blockLink, availableTruthCandidates, eliminations))
-				{
-					validSpaces.Add(blockLink);
-				}
-				if (Space.RowDigit(cell.ToHouse(HouseType.Row) - 9, digit) is var rowLink
-					&& isLinkValid(this, rowLink, availableTruthCandidates, eliminations))
-				{
-					validSpaces.Add(rowLink);
-				}
-				if (Space.ColumnDigit(cell.ToHouse(HouseType.Column) - 18, digit) is var columnLink
-					&& isLinkValid(this, columnLink, availableTruthCandidates, eliminations))
-				{
-					validSpaces.Add(columnLink);
-				}
-				goto CheckStateOfValidSpaces;
-
-			LinkTripletFallback:
-				if (!isFallbackChecked)
-				{
-					isFallbackChecked = true;
-
-					// Fallback to include all candidates to cover.
-					if (isLinkValid(this, cellLink, _candidates, eliminations))
-					{
-						validSpaces.Add(cellLink);
-					}
-					if (isLinkValid(this, blockLink, _candidates, eliminations))
-					{
-						validSpaces.Add(blockLink);
-					}
-					if (isLinkValid(this, rowLink, _candidates, eliminations))
-					{
-						validSpaces.Add(rowLink);
-					}
-					if (isLinkValid(this, columnLink, _candidates, eliminations))
-					{
-						validSpaces.Add(columnLink);
-					}
-				}
-
-			CheckStateOfValidSpaces:
-				switch (validSpaces)
-				{
-					// No valid links can be found.
-					// This case can be triggered if two links connect to a same candidate (a link triplet).
-					case []:
-					{
-						if (isFallbackChecked)
-						{
-							goto default;
-						}
-						else
-						{
-							goto LinkTripletFallback;
-						}
-					}
-
-					// If there's only one valid link to be connected, connect directly.
-					case [var space]:
-					{
-						result.Add(space);
-						availableTruthCandidates &= ~space.GetAvailableRange(Grid);
-						isChanged = true;
-						goto OuterWhileLoop;
-					}
-
-					// We should connect to the only link that connects to a truth.
-					// If at least 2 links connect to 2 different available candidates in truths,
-					// we cannot determine the target connecting state.
-					case { Count: >= 2 }:
-					{
-						var validLinks = new List<Space>();
-						foreach (var space in validSpaces)
-						{
-							if (space.GetAvailableRange(Grid) & availableTruthCandidates - candidateToCover)
-							{
-								validLinks.Add(space);
-							}
-						}
-
-						switch (validLinks)
-						{
-							case []:
-							{
-								continue;
-							}
-							case [var onlyValidLink]:
-							{
-								// Valid.
-								result.Add(onlyValidLink);
-								availableTruthCandidates &= ~onlyValidLink.GetAvailableRange(Grid);
-								isChanged = true;
-								goto OuterWhileLoop;
-							}
-							default:
-							{
-								// Multiple choosing ways can be selected.
-								// We should select a best one, which covers more candidates from truths.
-								var gridCopied = Grid;
-								validLinks.Sort(
-									(left, right) =>
-									{
-										var a = left.GetAvailableRange(gridCopied) & availableTruthCandidates - candidateToCover;
-										var b = right.GetAvailableRange(gridCopied) & availableTruthCandidates - candidateToCover;
-										return b.Count - a.Count;
-									}
-								);
-
-								var bestLink = validLinks[0];
-								result.Add(bestLink);
-								availableTruthCandidates &= ~bestLink.GetAvailableRange(Grid);
-								isChanged = true;
-								goto OuterWhileLoop;
-							}
-						}
-					}
-
-					// Otherwise, we should do BFS to perform valid connection.
-					default:
-					{
-						// TODO: Implement later.
-						continue;
-					}
-				}
-			}
-
-		OuterWhileLoop:
-			;
+			// Rank-0 pattern.
+			return rank0Links;
 		}
 
-		// Return true if there's no left candidates.
-		return !availableTruthCandidates;
+		var originalEliminations = GetEliminationsCore(combinations);
 
-
-		static bool isLinkValid(
-			in RankPattern @this,
-			Space link,
-			in CandidateMap availableTruthCandidates,
-			in CandidateMap eliminations
-		)
+		// Create a dictionary to record distribution of each candidate and its containing truth.
+		var truthDictionary = new Dictionary<Candidate, SpaceSet>();
+		foreach (var truth in Truths)
 		{
-			if (@this.Truths.Contains(link))
+			foreach (var candidate in truth.GetAvailableRange(Grid))
 			{
-				return false;
-			}
-
-			ref readonly var grid = ref @this.Grid;
-			var linkCovered = link.GetAvailableRange(grid);
-			var covered = availableTruthCandidates & linkCovered;
-			if (covered.Count == 1 && !((availableTruthCandidates | eliminations) & linkCovered & eliminations))
-			{
-				// If the current link can only cover one candidate of the available candidates,
-				// we should check for eliminations coverage.
-				// If the link cannot cover any eliminations, invalid.
-				return false;
-			}
-
-			if (covered.Count >= 2)
-			{
-				var isFullyCoveredByOneTruth = false;
-				foreach (var truth in @this.Truths)
+				if (!truthDictionary.TryAdd(candidate, [truth]))
 				{
-					if ((truth.GetAvailableRange(grid) & covered) == covered)
+					truthDictionary[candidate].Add(truth);
+				}
+			}
+		}
+
+		// Iterate on each link, to check whether it is redundant or not.
+		var result = SpaceSet.Empty;
+		foreach (var link in fullLinks)
+		{
+			var isLinkRedundant = true;
+			foreach (ref readonly var combination in _candidates & link.GetAvailableRange(Grid) & 2)
+			{
+				var first = combination[0];
+				var second = combination[1];
+				ref readonly var sets1 = ref truthDictionary.GetValueRef(first);
+				ref readonly var sets2 = ref truthDictionary.GetValueRef(second);
+
+				// Check whether they are in a same truth.
+				if (sets1 & sets2)
+				{
+					// This combination disobeys the rule of truth, invalid.
+					// Skip for the current combination.
+					continue;
+				}
+
+				// Suppose the link is gone and make an assumption that do both candidates are true.
+				// Here we should do a trick: forcely assign two candidates to the grid, regardless of conflict of grid.
+				// This will also work for both digits in a same cell.
+				// We know that two candidates will also clear digit appearances from peer cells,
+				// which is by design of type 'Grid', so we can perform the applying rules
+				// to clear irrelevant candidates.
+				// Although the grid becomes invalid, we know that this type won't check validity of the grid.
+				var subgrid = Grid;
+				subgrid.SetDigit(first / 9, first % 9);
+				subgrid.SetDigit(second / 9, second % 9);
+
+				// Create a pattern.
+				// Note that link can be empty because here we don't use any links as necessary data -
+				// we just want to get all assignment combinations of the subpattern mentioned above,
+				// whose relied mechanism doesn't use any links (link-free).
+				//
+				// You may ask me, "Why? I do see the code used links!"
+				// ...Well, in fact, the mechanism is unnecessary and can be removed.
+				// The backing implementation algorithm will automatically skip invalid combinations
+				// to keep the pattern valid;
+				// for example, it directly ignores same digit are filled into a same house with different cells.
+				var subpattern = new RankPattern(subgrid, Truths & ~(sets1 | sets2), SpaceSet.Empty);
+				var subpatternCombinations = subpattern.GetAssignmentCombinations();
+				var subpatternEliminations = subpattern.GetEliminationsCore(subpatternCombinations/*, &otherDigitsCalc, &otherCellsCalc*/);
+
+				// If there's a link from candidate to elimination,
+				// we will get an information "those two cannot be both true".
+				// Therefore, safely add elimination from original grid into the elimination set.
+				foreach (var assignmentToCheck in combination)
+				{
+					var cell = assignmentToCheck / 9;
+					var digit = assignmentToCheck % 9;
+
+					// Check whether the candidate can see at least one elimination.
+					var assignmentToCheckPeerCandidates = (Grid.CandidatesMap[digit] & PeersMap[cell]) * digit;
+					foreach (var d in (Mask)(Grid.GetCandidates(cell) & ~(1 << digit)))
 					{
-						isFullyCoveredByOneTruth = true;
-						break;
+						if (!_candidates.Contains(cell * 9 + d))
+						{
+							subpatternEliminations.Add(cell * 9 + d);
+						}
+						assignmentToCheckPeerCandidates.Add(cell * 9 + d);
+					}
+
+					foreach (var eliminationToCheck in assignmentToCheckPeerCandidates & originalEliminations)
+					{
+						var tempMap = link.GetAvailableRange(Grid);
+						if (tempMap.Contains(assignmentToCheck) && tempMap.Contains(eliminationToCheck))
+						{
+							// They are in a same link, but the link is supposed to be disappeared.
+							// So we cannot link they up and remove the elimination.
+							subpatternEliminations.Remove(eliminationToCheck);
+						}
 					}
 				}
-				if (isFullyCoveredByOneTruth)
+
+				if ((subpatternEliminations & originalEliminations) != originalEliminations)
 				{
-					// If all the covered candidates belong to a same truth, it'll be redundant.
-					return false;
+					// If we removed the link and can get a same elimination set or a subset,
+					// we can know that the link is redundant.
+					isLinkRedundant = false;
+					break;
 				}
 			}
-
-			// Seems good.
-			return true;
+			if (!isLinkRedundant)
+			{
+				// Otherwise, the link is required.
+				result.Add(link);
+			}
 		}
+
+		// Return necessary links.
+		return result;
 	}
 
 	/// <inheritdoc/>
