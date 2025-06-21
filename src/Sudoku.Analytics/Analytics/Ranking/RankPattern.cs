@@ -45,6 +45,7 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	/// <summary>
 	/// Indicates whether the current pattern is stable rank-0 pattern, i.e. all links are rank-0 links.
 	/// </summary>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool GetIsRank0Pattern() => GetRank0Links() == Links;
 
 	/// <inheritdoc/>
@@ -52,6 +53,7 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	public override bool Equals(object? obj) => false;
 
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool Equals(in RankPattern other) => Grid == other.Grid && Truths == other.Truths && Links == other.Links;
 
 	/// <summary>
@@ -275,7 +277,8 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	/// (sometimes assignments certain times of digits in the pattern but sometimes not),
 	/// this property will return <see langword="null"/>.
 	/// </summary>
-	public int? GetRank() => GetRankCore(GetAssignmentCombinations(out _));
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public int? GetRank() => GetRankCore(GetAssignmentCombinations());
 
 	/// <inheritdoc cref="object.ToString"/>
 	public override string ToString() => $"T{Truths.Count} = {Truths}, L{Links.Count} = {Links}";
@@ -286,7 +289,7 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	/// <returns>The string.</returns>
 	public unsafe string ToFullString()
 	{
-		var combinations = GetAssignmentCombinations(out _);
+		var combinations = GetAssignmentCombinations();
 		return string.Format(
 			SR.Get("RankInfo"),
 			Grid.ToString("@:"),
@@ -307,13 +310,148 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	/// In theory, eliminations may not require any links. All conclusions come from valid combinations of truths,
 	/// keeping one valid digit filling into each truth, and find intersections of eliminations can be found from all cases.
 	/// </remarks>
-	public unsafe CandidateMap GetEliminations() => GetEliminationsCore(GetAssignmentCombinations(out _));
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public unsafe CandidateMap GetEliminations() => GetEliminationsCore(GetAssignmentCombinations());
 
 	/// <summary>
 	/// Returns a list of <see cref="Candidate"/> group that describes the valid assignments.
 	/// </summary>
 	/// <returns>Valid assignments.</returns>
-	public ReadOnlySpan<ReadOnlyMemory<Candidate>> GetAssignmentCombinations(out SpaceSet links)
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public ReadOnlySpan<ReadOnlyMemory<Candidate>> GetAssignmentCombinations() => GetAssignmentCombinationsCore(out _);
+
+	/// <summary>
+	/// Returns a list of links indicating the connection on hatching.
+	/// </summary>
+	/// <returns>Links.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public SpaceSet GetFullLinks()
+	{
+		GetAssignmentCombinationsCore(out var result);
+		return result;
+	}
+
+	/// <summary>
+	/// Try to find all rank-0 links. A rank-0 link is a link that will become truth
+	/// because all valid combinations lead to a same result that the link must hold one correct digit.
+	/// </summary>
+	/// <returns>A list of links that are determined as rank-0 links.</returns>
+	public SpaceSet GetRank0Links() => GetRank0LinksCore(GetAssignmentCombinations());
+
+	/// <summary>
+	/// Find elimination zones, indicating a list of candidates that can be eliminated,
+	/// no matter whether they exist or not.
+	/// </summary>
+	/// <param name="options">The options that determines and filters the elimination zones.</param>
+	/// <returns>A list of candidates.</returns>
+	public CandidateMap GetEliminationZone(EliminationZoneIgnoringOptions options)
+		=> GetEliminationZoneCore(GetAssignmentCombinations(), options);
+
+	/// <inheritdoc/>
+	bool IEquatable<RankPattern>.Equals(RankPattern other) => Equals(other);
+
+	/// <summary>
+	/// Determine whether the pattern is rank-0 pattern via cached combinations.
+	/// </summary>
+	/// <param name="combinations">The combinations.</param>
+	/// <returns>A <see cref="bool"/> result indicating that.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	private bool GetIsRank0PatternCore(ReadOnlySpan<ReadOnlyMemory<Candidate>> combinations)
+		=> GetRank0LinksCore(combinations) == Links;
+
+	/// <summary>
+	/// Calculate rank value via cached combinations.
+	/// </summary>
+	/// <param name="combinations">The combinations.</param>
+	/// <returns>The rank value.</returns>
+	private int? GetRankCore(ReadOnlySpan<ReadOnlyMemory<Candidate>> combinations)
+	{
+		var factAssignmentCountValues = new HashSet<int>();
+		foreach (var l in from assignment in combinations select assignment.Length)
+		{
+			factAssignmentCountValues.Add(l);
+			if (factAssignmentCountValues.Count >= 2)
+			{
+				// Invalid, fast fail.
+				return null;
+			}
+		}
+		return factAssignmentCountValues.Count == 1 ? Links.Count - factAssignmentCountValues.First() : null;
+	}
+
+	/// <summary>
+	/// Calculate eliminations via cached combinations.
+	/// </summary>
+	/// <param name="combinations">The combinations.</param>
+	/// <param name="otherDigitCalculator">
+	/// The calculator function that gets a range of other digits of cell-assignment eliminations.
+	/// </param>
+	/// <param name="otherCellsCalculator">
+	/// The calculator function that gets a range of other cells of house-assignment eliminations.
+	/// </param>
+	/// <returns>A list of candidates.</returns>
+	private unsafe CandidateMap GetEliminationsCore(
+		ReadOnlySpan<ReadOnlyMemory<Candidate>> combinations,
+		delegate*<ref readonly Grid, Cell, Digit, Mask> otherDigitCalculator = null,
+		delegate*<ref readonly Grid, Cell, Digit, CellMap> otherCellsCalculator = null
+	)
+	{
+		if (otherDigitCalculator == null)
+		{
+			otherDigitCalculator = &otherDigitsCalc;
+		}
+		if (otherCellsCalculator == null)
+		{
+			otherCellsCalculator = &otherCellsCalc;
+		}
+
+		var result = CandidateMap.Empty;
+		var i = 0;
+		foreach (var assignmentGroup in combinations)
+		{
+			var current = CandidateMap.Empty;
+			foreach (var assignment in assignmentGroup)
+			{
+				var cell = assignment / 9;
+				var digit = assignment % 9;
+				foreach (var otherDigit in otherDigitCalculator(in Grid, cell, digit))
+				{
+					current.Add(cell * 9 + otherDigit);
+				}
+				foreach (var otherCell in otherCellsCalculator(in Grid, cell, digit))
+				{
+					current.Add(otherCell * 9 + digit);
+				}
+			}
+
+			if (i++ == 0)
+			{
+				result |= current;
+			}
+			else
+			{
+				result &= current;
+			}
+		}
+
+		// TODO: Remove fake eliminations from truths.
+
+		return result;
+
+
+		static Mask otherDigitsCalc(ref readonly Grid grid, Cell cell, Digit digit)
+			=> (Mask)(grid.GetCandidates(cell) & ~(1 << digit));
+
+		static CellMap otherCellsCalc(ref readonly Grid grid, Cell cell, Digit digit)
+			=> PeersMap[cell] & grid.CandidatesMap[digit];
+	}
+
+	/// <summary>
+	/// Gets assignment combinations with full links.
+	/// </summary>
+	/// <param name="links">The full links.</param>
+	/// <returns>Assignment combinations.</returns>
+	private ReadOnlySpan<ReadOnlyMemory<Candidate>> GetAssignmentCombinationsCore(out SpaceSet links)
 	{
 		(links, var result) = (SpaceSet.Empty, new List<ReadOnlyMemory<Candidate>>());
 
@@ -437,121 +575,6 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 		}
 
 		return result.AsSpan();
-	}
-
-	/// <summary>
-	/// Try to find all rank-0 links. A rank-0 link is a link that will become truth
-	/// because all valid combinations lead to a same result that the link must hold one correct digit.
-	/// </summary>
-	/// <returns>A list of links that are determined as rank-0 links.</returns>
-	public SpaceSet GetRank0Links() => GetRank0LinksCore(GetAssignmentCombinations(out _));
-
-	/// <summary>
-	/// Find elimination zones, indicating a list of candidates that can be eliminated,
-	/// no matter whether they exist or not.
-	/// </summary>
-	/// <param name="options">The options that determines and filters the elimination zones.</param>
-	/// <returns>A list of candidates.</returns>
-	public CandidateMap GetEliminationZone(EliminationZoneIgnoringOptions options)
-		=> GetEliminationZoneCore(GetAssignmentCombinations(out _), options);
-
-	/// <inheritdoc/>
-	bool IEquatable<RankPattern>.Equals(RankPattern other) => Equals(other);
-
-	/// <summary>
-	/// Determine whether the pattern is rank-0 pattern via cached combinations.
-	/// </summary>
-	/// <param name="combinations">The combinations.</param>
-	/// <returns>A <see cref="bool"/> result indicating that.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private bool GetIsRank0PatternCore(ReadOnlySpan<ReadOnlyMemory<Candidate>> combinations)
-		=> GetRank0LinksCore(combinations) == Links;
-
-	/// <summary>
-	/// Calculate rank value via cached combinations.
-	/// </summary>
-	/// <param name="combinations">The combinations.</param>
-	/// <returns>The rank value.</returns>
-	private int? GetRankCore(ReadOnlySpan<ReadOnlyMemory<Candidate>> combinations)
-	{
-		var factAssignmentCountValues = new HashSet<int>();
-		foreach (var l in from assignment in combinations select assignment.Length)
-		{
-			factAssignmentCountValues.Add(l);
-			if (factAssignmentCountValues.Count >= 2)
-			{
-				// Invalid, fast fail.
-				return null;
-			}
-		}
-		return factAssignmentCountValues.Count == 1 ? Links.Count - factAssignmentCountValues.First() : null;
-	}
-
-	/// <summary>
-	/// Calculate eliminations via cached combinations.
-	/// </summary>
-	/// <param name="combinations">The combinations.</param>
-	/// <param name="otherDigitCalculator">
-	/// The calculator function that gets a range of other digits of cell-assignment eliminations.
-	/// </param>
-	/// <param name="otherCellsCalculator">
-	/// The calculator function that gets a range of other cells of house-assignment eliminations.
-	/// </param>
-	/// <returns>A list of candidates.</returns>
-	private unsafe CandidateMap GetEliminationsCore(
-		ReadOnlySpan<ReadOnlyMemory<Candidate>> combinations,
-		delegate*<ref readonly Grid, Cell, Digit, Mask> otherDigitCalculator = null,
-		delegate*<ref readonly Grid, Cell, Digit, CellMap> otherCellsCalculator = null
-	)
-	{
-		if (otherDigitCalculator == null)
-		{
-			otherDigitCalculator = &otherDigitsCalc;
-		}
-		if (otherCellsCalculator == null)
-		{
-			otherCellsCalculator = &otherCellsCalc;
-		}
-
-		var result = CandidateMap.Empty;
-		var i = 0;
-		foreach (var assignmentGroup in combinations)
-		{
-			var current = CandidateMap.Empty;
-			foreach (var assignment in assignmentGroup)
-			{
-				var cell = assignment / 9;
-				var digit = assignment % 9;
-				foreach (var otherDigit in otherDigitCalculator(in Grid, cell, digit))
-				{
-					current.Add(cell * 9 + otherDigit);
-				}
-				foreach (var otherCell in otherCellsCalculator(in Grid, cell, digit))
-				{
-					current.Add(otherCell * 9 + digit);
-				}
-			}
-
-			if (i++ == 0)
-			{
-				result |= current;
-			}
-			else
-			{
-				result &= current;
-			}
-		}
-
-		// TODO: Remove fake eliminations from truths.
-
-		return result;
-
-
-		static Mask otherDigitsCalc(ref readonly Grid grid, Cell cell, Digit digit)
-			=> (Mask)(grid.GetCandidates(cell) & ~(1 << digit));
-
-		static CellMap otherCellsCalc(ref readonly Grid grid, Cell cell, Digit digit)
-			=> PeersMap[cell] & grid.CandidatesMap[digit];
 	}
 
 	/// <summary>

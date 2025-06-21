@@ -8738,11 +8738,17 @@
             keeping one valid digit filling into each truth, and find intersections of eliminations can be found from all cases.
             </remarks>
         </member>
-        <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetAssignmentCombinations(Sudoku.Concepts.Supersymmetry.SpaceSet@)">
+        <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetAssignmentCombinations">
             <summary>
             Returns a list of <see cref="T:System.Int32"/> group that describes the valid assignments.
             </summary>
             <returns>Valid assignments.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetFullLinks">
+            <summary>
+            Returns a list of links indicating the connection on hatching.
+            </summary>
+            <returns>Links.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetRank0Links">
             <summary>
@@ -8788,6 +8794,13 @@
             The calculator function that gets a range of other cells of house-assignment eliminations.
             </param>
             <returns>A list of candidates.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetAssignmentCombinationsCore(Sudoku.Concepts.Supersymmetry.SpaceSet@)">
+            <summary>
+            Gets assignment combinations with full links.
+            </summary>
+            <param name="links">The full links.</param>
+            <returns>Assignment combinations.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetRank0LinksCore(System.ReadOnlySpan{System.ReadOnlyMemory{System.Int32}})">
             <summary>
