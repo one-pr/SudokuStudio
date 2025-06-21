@@ -459,20 +459,9 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 		var queue = new LinkedList<CombinationQueueNode>();
 		queue.AddLast(new CombinationQueueNode(-1, [.. SpanEnumerable.Range(Truths.Count)], null));
 
-#if DEBUG
-		// Provides a way to view max capacity while queuing.
-		var max = 0;
-#endif
 		// Iterate the whole queue until the queue becomes empty.
 		while (queue.Count != 0)
 		{
-#if DEBUG
-			if (queue.Count >= max)
-			{
-				max = queue.Count;
-			}
-#endif
-
 			// Dequeue a node.
 			// There're the following values can be used:
 			//   * currentState: The current candidates applied. To combine all of them it will be the current assignment combination.
