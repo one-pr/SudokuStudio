@@ -117,6 +117,10 @@
   * [牺牲的例子](construction/06-sacrifice/02-examples-of-sacrifice.md)
   * [牺牲绽放环](construction/06-sacrifice/03-sacrifice-blossom-loop.md)
 
+## 秩理论 <a href="#rank-theory" id="rank-theory"></a>
+
+* [秩的定义](rank-theory/01-definition-of-rank.md)
+
 ## 附录 <a href="#appendix" id="appendix"></a>
 
 * [术语索引](appendix/01-terms.md)
