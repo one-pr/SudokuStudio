@@ -434,7 +434,26 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 			}
 		}
 
-		// TODO: Remove fake eliminations from truths.
+		// Trim fake eliminations from truths.
+		foreach (var truth in Truths)
+		{
+			switch (truth)
+			{
+				case { IsCellRelated: true, Cell: var cell }:
+				{
+					foreach (var digit in (Mask)(Grid.MaxCandidatesMask & ~Grid.GetCandidates(cell)))
+					{
+						result.Remove(cell * 9 + digit);
+					}
+					break;
+				}
+				case { IsHouseRelated: true, House: var house, Digit: var digit }:
+				{
+					result &= ~(HousesMap[house] * digit & ~truth.GetAvailableRange(Grid));
+					break;
+				}
+			}
+		}
 
 		return result;
 
