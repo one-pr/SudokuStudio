@@ -1,4 +1,5 @@
 #define SKIP_ZERO_RANK_FULL_REDUNDANCY_CHECK
+#define SKIP_VERIFY_SATISFIABILITY_ON_LINKS
 
 namespace Sudoku.Analytics.Ranking;
 
@@ -441,6 +442,9 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 			// Check whether the node has already finished.
 			if (remainingTruths.Length == 0)
 			{
+#if SKIP_VERIFY_SATISFIABILITY_ON_LINKS
+				result.Add(currentState.ToArray());
+#else
 				// Verify links.
 				var flag = true;
 				foreach (var link in Links)
@@ -455,6 +459,7 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 				{
 					result.Add(currentState.ToArray());
 				}
+#endif
 
 				links |= currentNode.GetProducedLinks(Grid, Truths);
 				continue;
@@ -500,7 +505,13 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 			foreach (var remainingCandidate in remainingCandidates)
 			{
 				var nextState = currentState + remainingCandidate;
-				if (Links.TrueForAll(link => link.IsSatisfied(nextState, false)))
+				if (
+#if SKIP_VERIFY_SATISFIABILITY_ON_LINKS
+					true
+#else
+					Links.TrueForAll(link => link.IsSatisfied(nextState, false))
+#endif
+				)
 				{
 					// Check whether the remaining truths, preventing truth overlapped cases.
 					var overlapped = new List<int>();

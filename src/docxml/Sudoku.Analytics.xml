@@ -8822,6 +8822,12 @@
             Throws when the argument <paramref name="options"/> is out of range.
             </exception>
         </member>
+        <member name="M:Sudoku.Analytics.Ranking.RankPattern.CreateTruthsDistributionDictionary">
+            <summary>
+            Creates a dictionary as lookup table on all pattern candidates and their containing truths.
+            </summary>
+            <returns>A dictionary that records each candidate appeared in pattern and its containing truths.</returns>
+        </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.BuildCandidates(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Supersymmetry.SpaceSet@)">
             <summary>
             Build candidates.
