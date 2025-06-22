@@ -63,12 +63,11 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 	public bool Equals(in RankPattern other) => Grid == other.Grid && Truths == other.Truths && Links == other.Links;
 
 	/// <summary>
-	/// Infers links that will cover all candidates from the truths and eliminations, if links are unknown.
-	/// This method doesn't use field <see cref="Links"/>.
+	/// Correct links that will cover all candidates from the truths and eliminations,
+	/// if links are unavailable, invalid or unknown.
 	/// </summary>
-	/// <returns>The result links found.</returns>
-	/// <seealso cref="Links"/>
-	public unsafe SpaceSet InferLinks()
+	/// <returns>The spaces that represent links.</returns>
+	public unsafe SpaceSet CorrectLinks()
 	{
 		// Find for all links, passing eliminations.
 		var combinations = GetAssignmentCombinationsCore(out var fullLinks);

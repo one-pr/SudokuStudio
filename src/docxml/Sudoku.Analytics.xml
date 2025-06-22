@@ -8704,13 +8704,12 @@
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.Equals(Sudoku.Analytics.Ranking.RankPattern@)">
             <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
         </member>
-        <member name="M:Sudoku.Analytics.Ranking.RankPattern.InferLinks">
+        <member name="M:Sudoku.Analytics.Ranking.RankPattern.CorrectLinks">
             <summary>
-            Infers links that will cover all candidates from the truths and eliminations, if links are unknown.
-            This method doesn't use field <see cref="F:Sudoku.Analytics.Ranking.RankPattern.Links"/>.
+            Correct links that will cover all candidates from the truths and eliminations,
+            if links are unavailable, invalid or unknown.
             </summary>
-            <returns>The result links found.</returns>
-            <seealso cref="F:Sudoku.Analytics.Ranking.RankPattern.Links"/>
+            <returns>The spaces that represent links.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetHashCode">
             <inheritdoc/>
