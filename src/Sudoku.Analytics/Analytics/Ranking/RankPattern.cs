@@ -1,5 +1,4 @@
 #undef SKIP_ZERO_RANK_FULL_REDUNDANCY_CHECK
-#define SKIP_VERIFY_SATISFIABILITY_ON_LINKS
 
 namespace Sudoku.Analytics.Ranking;
 
@@ -158,12 +157,6 @@ public readonly ref partial struct RankPattern(
 				// Note that link can be empty because here we don't use any links as necessary data -
 				// we just want to get all assignment combinations of the subpattern mentioned above,
 				// whose relied mechanism doesn't use any links (link-free).
-				//
-				// You may ask me, "Why? I do see the code used links!"
-				// ...Well, in fact, the mechanism is unnecessary and can be removed.
-				// The backing implementation algorithm will automatically skip invalid combinations
-				// to keep the pattern valid;
-				// for example, it directly ignores same digit are filled into a same house with different cells.
 				var subpatternTruths = Truths & ~setsUnioned;
 				var subpattern = new RankPattern(in subgrid, in subpatternTruths, in SpaceSet.Empty);
 				var subpatternCombinations = subpattern.GetAssignmentCombinations();
@@ -481,23 +474,7 @@ public readonly ref partial struct RankPattern(
 			// Check whether the node has already finished.
 			if (remainingTruths.Length == 0)
 			{
-				// Verify links.
-				var flag = true;
-#if !SKIP_VERIFY_SATISFIABILITY_ON_LINKS
-				foreach (var link in Links)
-				{
-					if (!link.IsSatisfied(currentState, false))
-					{
-						flag = false;
-						break;
-					}
-				}
-#endif
-				if (flag)
-				{
-					result.Add(currentState.ToArray());
-				}
-
+				result.Add(currentState.ToArray());
 				links |= currentNode.GetProducedLinks(Grid, Truths);
 				continue;
 			}
@@ -542,44 +519,36 @@ public readonly ref partial struct RankPattern(
 			foreach (var remainingCandidate in remainingCandidates)
 			{
 				var nextState = currentState + remainingCandidate;
-				if (
-#if SKIP_VERIFY_SATISFIABILITY_ON_LINKS
-					true
-#else
-					Links.TrueForAll(link => link.IsSatisfied(nextState, false))
-#endif
-				)
+
+				// Check whether the remaining truths, preventing truth overlapped cases.
+				var overlapped = new List<int>();
+				foreach (var truthIndex in newRemainingTruths)
 				{
-					// Check whether the remaining truths, preventing truth overlapped cases.
-					var overlapped = new List<int>();
-					foreach (var truthIndex in newRemainingTruths)
+					var overlappingFlag = false;
+					foreach (var assigned in nextState)
 					{
-						var overlappingFlag = false;
-						foreach (var assigned in nextState)
+						if (Truths[truthIndex].Contains(assigned))
 						{
-							if (Truths[truthIndex].Contains(assigned))
-							{
-								overlappingFlag = true;
-								break;
-							}
-						}
-						if (overlappingFlag)
-						{
-							overlapped.Add(truthIndex);
+							overlappingFlag = true;
+							break;
 						}
 					}
-					foreach (var truthIndex in overlapped)
+					if (overlappingFlag)
 					{
-						newRemainingTruths.Remove(truthIndex);
+						overlapped.Add(truthIndex);
 					}
+				}
+				foreach (var truthIndex in overlapped)
+				{
+					newRemainingTruths.Remove(truthIndex);
+				}
 
-					queue.AddLast(new CombinationQueueNode(remainingCandidate, [.. newRemainingTruths], currentNode));
+				queue.AddLast(new CombinationQueueNode(remainingCandidate, [.. newRemainingTruths], currentNode));
 
-					// Backtrack: Revert operation on removing on overlapped truths.
-					foreach (var truthIndex in overlapped)
-					{
-						newRemainingTruths.Add(truthIndex);
-					}
+				// Backtrack: Revert operation on removing on overlapped truths.
+				foreach (var truthIndex in overlapped)
+				{
+					newRemainingTruths.Add(truthIndex);
 				}
 			}
 		}
