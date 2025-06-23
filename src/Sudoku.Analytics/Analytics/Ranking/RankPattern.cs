@@ -37,7 +37,7 @@ public readonly ref partial struct RankPattern(
 	/// <summary>
 	/// Represents all candidates used in this pattern.
 	/// </summary>
-	private readonly CandidateMap _candidates = BuildCandidates(grid, truths, links);
+	private readonly CandidateMap _candidates = BuildCandidates(in grid, in truths, in links);
 
 
 	/// <summary>
@@ -714,7 +714,7 @@ public readonly ref partial struct RankPattern(
 	/// <param name="grid">The grid.</param>
 	/// <param name="truths">The truths.</param>
 	/// <param name="links">The links.</param>
-	private static CandidateMap BuildCandidates(in Grid grid, in SpaceSet truths, in SpaceSet links)
+	private static CandidateMap BuildCandidates(ref readonly Grid grid, ref readonly SpaceSet truths, ref readonly SpaceSet links)
 	{
 		var result = CandidateMap.Empty;
 

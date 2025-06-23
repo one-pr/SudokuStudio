@@ -8484,74 +8484,6 @@
             The type of the step searcher that throws the exception.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.Ranking.CombinationQueueNode">
-            <summary>
-            Represents a queue node that is used in calculating assignment combinations.
-            </summary>
-            <param name="Set">Indicates the set (assignment).</param>
-            <param name="RemainingTruthIndices">Indicates the remaining truth indices.</param>
-            <param name="Parent">Indicates the parent node.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Ranking.CombinationQueueNode.#ctor(System.Int32,System.Int32[],Sudoku.Analytics.Ranking.CombinationQueueNode)">
-            <summary>
-            Represents a queue node that is used in calculating assignment combinations.
-            </summary>
-            <param name="Set">Indicates the set (assignment).</param>
-            <param name="RemainingTruthIndices">Indicates the remaining truth indices.</param>
-            <param name="Parent">Indicates the parent node.</param>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.CombinationQueueNode.Set">
-            <summary>Indicates the set (assignment).</summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.CombinationQueueNode.RemainingTruthIndices">
-            <summary>Indicates the remaining truth indices.</summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.CombinationQueueNode.Parent">
-            <summary>Indicates the parent node.</summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.CombinationQueueNode.State">
-            <summary>
-            Indicates the states of node (assignments in this branch).
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Ranking.CombinationQueueNode.GetProducedLinks(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@)">
-            <summary>
-            Find for produced links on this branch of nodes in the grid.
-            </summary>
-            <param name="grid">The original grid.</param>
-            <param name="truths">Indicates the truths.</param>
-            <returns>The spaces of the links.</returns>
-        </member>
-        <member name="T:Sudoku.Analytics.Ranking.CoverQueueNode">
-            <summary>
-            Represents a queue node that is used for covering candidates appeared in truths.
-            </summary>
-            <param name="Link">Indicates the appended link.</param>
-            <param name="UncoveredCandidates">Indicates the uncovered candidates.</param>
-            <param name="Parent">Indicates the parent node.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Ranking.CoverQueueNode.#ctor(Sudoku.Concepts.Supersymmetry.Space,Sudoku.Concepts.CandidateMap@,Sudoku.Analytics.Ranking.CoverQueueNode)">
-            <summary>
-            Represents a queue node that is used for covering candidates appeared in truths.
-            </summary>
-            <param name="Link">Indicates the appended link.</param>
-            <param name="UncoveredCandidates">Indicates the uncovered candidates.</param>
-            <param name="Parent">Indicates the parent node.</param>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.CoverQueueNode.Link">
-            <summary>Indicates the appended link.</summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.CoverQueueNode.UncoveredCandidates">
-            <summary>Indicates the uncovered candidates.</summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.CoverQueueNode.Parent">
-            <summary>Indicates the parent node.</summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Ranking.CoverQueueNode.Links">
-            <summary>
-            Indicates the links.
-            </summary>
-        </member>
         <member name="T:Sudoku.Analytics.Ranking.EliminationZoneIgnoringOptions">
             <summary>
             Represents an option that checks for elimination zones.
@@ -8573,6 +8505,74 @@
             Indicates elimination zones will ignore ones produced by subpatterns of the pattern.
             For example, if a pattern contains a locked candidates, eliminations produced by this locked candidates
             can also be included.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Analytics.Ranking.Queuing.CombinationQueueNode">
+            <summary>
+            Represents a queue node that is used in calculating assignment combinations.
+            </summary>
+            <param name="Set">Indicates the set (assignment).</param>
+            <param name="RemainingTruthIndices">Indicates the remaining truth indices.</param>
+            <param name="Parent">Indicates the parent node.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.Ranking.Queuing.CombinationQueueNode.#ctor(System.Int32,System.Int32[],Sudoku.Analytics.Ranking.Queuing.CombinationQueueNode)">
+            <summary>
+            Represents a queue node that is used in calculating assignment combinations.
+            </summary>
+            <param name="Set">Indicates the set (assignment).</param>
+            <param name="RemainingTruthIndices">Indicates the remaining truth indices.</param>
+            <param name="Parent">Indicates the parent node.</param>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.Queuing.CombinationQueueNode.Set">
+            <summary>Indicates the set (assignment).</summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.Queuing.CombinationQueueNode.RemainingTruthIndices">
+            <summary>Indicates the remaining truth indices.</summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.Queuing.CombinationQueueNode.Parent">
+            <summary>Indicates the parent node.</summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.Queuing.CombinationQueueNode.State">
+            <summary>
+            Indicates the states of node (assignments in this branch).
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Ranking.Queuing.CombinationQueueNode.GetProducedLinks(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@)">
+            <summary>
+            Find for produced links on this branch of nodes in the grid.
+            </summary>
+            <param name="grid">The original grid.</param>
+            <param name="truths">Indicates the truths.</param>
+            <returns>The spaces of the links.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.Ranking.Queuing.CoverQueueNode">
+            <summary>
+            Represents a queue node that is used for covering candidates appeared in truths.
+            </summary>
+            <param name="Link">Indicates the appended link.</param>
+            <param name="UncoveredCandidates">Indicates the uncovered candidates.</param>
+            <param name="Parent">Indicates the parent node.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.Ranking.Queuing.CoverQueueNode.#ctor(Sudoku.Concepts.Supersymmetry.Space,Sudoku.Concepts.CandidateMap@,Sudoku.Analytics.Ranking.Queuing.CoverQueueNode)">
+            <summary>
+            Represents a queue node that is used for covering candidates appeared in truths.
+            </summary>
+            <param name="Link">Indicates the appended link.</param>
+            <param name="UncoveredCandidates">Indicates the uncovered candidates.</param>
+            <param name="Parent">Indicates the parent node.</param>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.Queuing.CoverQueueNode.Link">
+            <summary>Indicates the appended link.</summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.Queuing.CoverQueueNode.UncoveredCandidates">
+            <summary>Indicates the uncovered candidates.</summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.Queuing.CoverQueueNode.Parent">
+            <summary>Indicates the parent node.</summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.Queuing.CoverQueueNode.Links">
+            <summary>
+            Indicates the links.
             </summary>
         </member>
         <member name="T:Sudoku.Analytics.Ranking.RankPattern">
