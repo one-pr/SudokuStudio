@@ -70,7 +70,7 @@ public sealed partial class AnonymousDeadlyPatternStepSearcher : StepSearcher
 
 						// Add it into the whole pattern.
 						var (z, w) = (cell / 9, cell % 9);
-						var extraCells = cell.AsCellMap() + (x * 9 + w) + z * 9 + y;
+						var extraCells = cell.AsCellMap() + (x * 9 + w) + (z * 9 + y);
 						if (lastPatternCells & extraCells)
 						{
 							continue;
