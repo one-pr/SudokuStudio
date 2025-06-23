@@ -21594,7 +21594,7 @@
         </member>
         <member name="T:Sudoku.Analytics.Steps.FatRingStep">
             <summary>
-            Provides with a step that is a <b>Fat Ring</b> technique.
+            Provides with a step that is a <b>Fit Ring</b> or <b>Fat Ring</b> technique.
             </summary>
             <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
             <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
@@ -21610,9 +21610,9 @@
             this value should be <see cref="F:Sudoku.Categorization.Technique.None"/>.
             </param>
         </member>
-        <member name="M:Sudoku.Analytics.Steps.FatRingStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.Int32,System.Int32,System.Int32,System.Int16,System.Int16,Sudoku.Categorization.Technique)">
+        <member name="M:Sudoku.Analytics.Steps.FatRingStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.Int32,System.Int32,System.Int32,System.Int16,System.Int16,System.Nullable{Sudoku.Categorization.Technique})">
             <summary>
-            Provides with a step that is a <b>Fat Ring</b> technique.
+            Provides with a step that is a <b>Fit Ring</b> or <b>Fat Ring</b> technique.
             </summary>
             <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
             <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
@@ -24278,6 +24278,11 @@
         <member name="F:Sudoku.Categorization.Technique.ExtendedSubsetPrinciple">
             <summary>
             Indicates extended subset principle.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Categorization.Technique.FitRing">
+            <summary>
+            Indicates fit ring.
             </summary>
         </member>
         <member name="F:Sudoku.Categorization.Technique.FatRing">
@@ -30291,6 +30296,11 @@
         <member name="P:Sudoku.Resources.AnalyticsResources.FishyCycle">
             <summary>
               Looks up a localized string similar to Fishy Cycle.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.FitRing">
+            <summary>
+              Looks up a localized string similar to Fit Ring.
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.FrankenJellyfish">

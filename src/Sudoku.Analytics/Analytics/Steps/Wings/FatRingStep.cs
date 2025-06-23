@@ -1,7 +1,7 @@
 namespace Sudoku.Analytics.Steps;
 
 /// <summary>
-/// Provides with a step that is a <b>Fat Ring</b> technique.
+/// Provides with a step that is a <b>Fit Ring</b> or <b>Fat Ring</b> technique.
 /// </summary>
 /// <param name="conclusions"><inheritdoc cref="Step.Conclusions" path="/summary"/></param>
 /// <param name="views"><inheritdoc cref="Step.Views" path="/summary"/></param>
@@ -25,15 +25,14 @@ public sealed class FatRingStep(
 	HouseMask blocks,
 	Mask digitsMask,
 	Mask digitsCanAppearTwiceOrMore,
-	Technique _xyzLoopReducedTechnique
+	Technique? _xyzLoopReducedTechnique
 ) : AlmostLockedSetsStep(conclusions, views, options)
 {
 	/// <inheritdoc/>
 	public override int BaseDifficulty => 65;
 
 	/// <inheritdoc/>
-	public override Technique Code
-		=> _xyzLoopReducedTechnique != Technique.None ? _xyzLoopReducedTechnique : Technique.FatRing;
+	public override Technique Code => _xyzLoopReducedTechnique ?? Technique.FatRing;
 
 	/// <inheritdoc/>
 	public override Mask DigitsUsed => DigitsMask;

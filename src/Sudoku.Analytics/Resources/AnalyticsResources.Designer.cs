@@ -2914,6 +2914,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fit Ring.
+        /// </summary>
+        public static string FitRing {
+            get {
+                return ResourceManager.GetString("FitRing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Franken Jellyfish.
         /// </summary>
         public static string FrankenJellyfish {

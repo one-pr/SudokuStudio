@@ -3263,4 +3263,7 @@ Is pattern rank-0: {6}</value>
   <data name="UnstableRank" xml:space="preserve">
     <value>&lt;Unstable&gt;</value>
   </data>
+  <data name="FitRing" xml:space="preserve">
+    <value>Fit Ring</value>
+  </data>
 </root>

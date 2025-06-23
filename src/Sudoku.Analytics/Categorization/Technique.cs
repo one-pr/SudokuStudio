@@ -1758,9 +1758,18 @@ public enum Technique
 	#endregion
 
 	//
-	// Fat Ring
+	// Fit Ring & Fat Ring
 	//
-	#region Fat Ring
+	#region Fit Ring & Fat Ring
+	/// <summary>
+	/// Indicates fit ring.
+	/// </summary>
+	[TechniqueMetadata<FatRingStepSearcher, FatRingStep>(
+		Rating = 65,
+		DifficultyLevel = DifficultyLevel.Fiendish,
+		ContainingGroup = TechniqueGroup.FatRing)]
+	FitRing,
+
 	/// <summary>
 	/// Indicates fat ring.
 	/// </summary>

@@ -3306,4 +3306,8 @@
   <data name="UnstableRank" xml:space="preserve">
     <value>&lt;不存在稳定秩值&gt;</value>
   </data>
+  <data name="FitRing" xml:space="preserve">
+    <value>瘦姨环</value>
+    <comment>Technique Name</comment>
+  </data>
 </root>

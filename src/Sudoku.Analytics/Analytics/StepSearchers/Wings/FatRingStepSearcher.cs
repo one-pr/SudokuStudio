@@ -9,7 +9,7 @@ namespace Sudoku.Analytics.StepSearchers;
 /// </summary>
 [StepSearcher(
 	"StepSearcherName_FatRingStepSearcher",
-	Technique.FatRing, Technique.XyzLoop, Technique.GroupedXyzLoop)]
+	Technique.FitRing, Technique.FatRing, Technique.XyzLoop, Technique.GroupedXyzLoop)]
 public sealed partial class FatRingStepSearcher : StepSearcher
 {
 	/// <summary>
@@ -160,7 +160,7 @@ public sealed partial class FatRingStepSearcher : StepSearcher
 									0,
 									allDigitsMask,
 									0,
-									Technique.None
+									null
 								);
 								if (context.OnlyFindOne)
 								{
@@ -268,14 +268,16 @@ public sealed partial class FatRingStepSearcher : StepSearcher
 									Mask.Create(canceledHousesDictionary.Values),
 									allDigitsMask,
 									digitsCanAppearTwiceOrMoreMask,
-									(allCells, canceledHousesDictionary.First()) switch
+									(allCells, canceledHousesDictionary) switch
 									{
-										({ Count: not 3 }, _) => Technique.None,
-										(_, var (d, c)) => (HousesMap[c] & CandidatesMap[d]).Count switch
-										{
-											> 2 => Technique.GroupedXyzLoop,
-											_ => Technique.XyzLoop
-										}
+										({ Count: not 3 }, _) or (_, { Count: not 1 }) => null,
+										_ when allCellsAreBivalue(grid, allCells) => Technique.FitRing,
+										_ when canceledHousesDictionary.First() is var (d, c)
+											=> (HousesMap[c] & CandidatesMap[d]) switch
+											{
+												{ Count: > 2 } => Technique.GroupedXyzLoop,
+												_ => Technique.XyzLoop
+											}
 									}
 								);
 								if (context.OnlyFindOne)
@@ -292,5 +294,18 @@ public sealed partial class FatRingStepSearcher : StepSearcher
 		}
 
 		return null;
+
+
+		static bool allCellsAreBivalue(in Grid grid, in CellMap allCells)
+		{
+			foreach (var cell in allCells)
+			{
+				if (BitOperations.PopCount(grid.GetCandidates(cell)) != 2)
+				{
+					return false;
+				}
+			}
+			return true;
+		}
 	}
 }
