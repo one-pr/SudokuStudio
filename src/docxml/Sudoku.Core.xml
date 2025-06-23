@@ -7688,11 +7688,11 @@
         <member name="M:Sudoku.Concepts.Supersymmetry.Space.CompareTo(Sudoku.Concepts.Supersymmetry.Space)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Supersymmetry.Space.ContainsAssignment(System.Int32)">
+        <member name="M:Sudoku.Concepts.Supersymmetry.Space.Contains(System.Int32)">
             <summary>
-            Determine whether the specified assignment is inside the set.
+            Determine whether the specified assignment is inside the range of candidates of the current space.
             </summary>
-            <param name="assignment">The assignment.</param>
+            <param name="candidate">The candidate.</param>
             <returns>A <see cref="T:System.Boolean"/> result.</returns>
         </member>
         <member name="M:Sudoku.Concepts.Supersymmetry.Space.GetAvailableRange(Sudoku.Concepts.Grid@)">

@@ -149,16 +149,16 @@ public readonly partial struct Space(Mask mask) :
 				: Primary.CompareTo(other.Primary) is var r3 ? r3 : Secondary.CompareTo(other.Secondary);
 
 	/// <summary>
-	/// Determine whether the specified assignment is inside the set.
+	/// Determine whether the specified assignment is inside the range of candidates of the current space.
 	/// </summary>
-	/// <param name="assignment">The assignment.</param>
+	/// <param name="candidate">The candidate.</param>
 	/// <returns>A <see cref="bool"/> result.</returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public bool ContainsAssignment(Candidate assignment)
+	public bool Contains(Candidate candidate)
 		=> this switch
 		{
-			{ Cell: var cell and not -1 } => assignment / 9 == cell,
-			{ House: var house, Digit: var digit } => assignment % 9 == digit && HousesMap[house].Contains(assignment / 9)
+			{ Cell: var cell and not -1 } => candidate / 9 == cell,
+			{ House: var house, Digit: var digit } => candidate % 9 == digit && HousesMap[house].Contains(candidate / 9)
 		};
 
 	/// <summary>

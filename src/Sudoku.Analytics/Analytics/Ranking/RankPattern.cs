@@ -552,7 +552,7 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 						var overlappingFlag = false;
 						foreach (var assigned in nextState)
 						{
-							if (Truths[truthIndex].ContainsAssignment(assigned))
+							if (Truths[truthIndex].Contains(assigned))
 							{
 								overlappingFlag = true;
 								break;
@@ -600,7 +600,7 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 			{
 				foreach (var set in links)
 				{
-					if (set.ContainsAssignment(assignment))
+					if (set.Contains(assignment))
 					{
 						lightUpLinks.Add(set);
 					}
