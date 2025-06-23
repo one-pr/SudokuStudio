@@ -10,7 +10,11 @@ namespace Sudoku.Analytics.Ranking;
 /// <param name="truths">The truths.</param>
 /// <param name="links">The links.</param>
 [TypeImpl(TypeImplFlags.EqualityOperators)]
-public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths, in SpaceSet links) : IEquatable<RankPattern>
+public readonly ref partial struct RankPattern(
+	ref readonly Grid grid,
+	ref readonly SpaceSet truths,
+	ref readonly SpaceSet links
+) : IEquatable<RankPattern>
 {
 	/// <summary>
 	/// Indicates the grid.
@@ -160,7 +164,8 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 				// The backing implementation algorithm will automatically skip invalid combinations
 				// to keep the pattern valid;
 				// for example, it directly ignores same digit are filled into a same house with different cells.
-				var subpattern = new RankPattern(subgrid, Truths & ~setsUnioned, SpaceSet.Empty);
+				var subpatternTruths = Truths & ~setsUnioned;
+				var subpattern = new RankPattern(in subgrid, in subpatternTruths, in SpaceSet.Empty);
 				var subpatternCombinations = subpattern.GetAssignmentCombinations();
 				if (subpatternCombinations.Length == 0)
 				{
@@ -665,7 +670,8 @@ public readonly ref partial struct RankPattern(in Grid grid, in SpaceSet truths,
 			{
 				foreach (var truthCombination in truthsArray.GetSubsets(i))
 				{
-					var subpattern = new RankPattern(Grid, [.. truthCombination], SpaceSet.Empty);
+					var subpatternTruths = truthCombination.AsSpaceSet();
+					var subpattern = new RankPattern(in Grid, in subpatternTruths, in SpaceSet.Empty);
 					result &= ~subpattern.GetEliminationZone(EliminationZoneIgnoringOptions.None);
 				}
 			}

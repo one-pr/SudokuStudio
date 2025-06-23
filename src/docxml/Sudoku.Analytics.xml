@@ -26852,6 +26852,23 @@
             <param name="isTruth">Indicates whether the current space is as a truth.</param>
             <returns>A <see cref="T:System.Boolean"/> result.</returns>
         </member>
+        <member name="T:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:Sudoku.Concepts.Supersymmetry.SpaceSet"/>.
+            </summary>
+            <seealso cref="T:Sudoku.Concepts.Supersymmetry.SpaceSet"/>
+        </member>
+        <member name="T:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions.">
+            <summary>
+            Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Supersymmetry.SpaceSet"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions..AsSpaceSet">
+            <summary>
+            Converts <see cref="T:System.ReadOnlySpan`1"/> of <see cref="T:Sudoku.Concepts.Supersymmetry.Space"/> into <see cref="T:Sudoku.Concepts.Supersymmetry.SpaceSet"/>.
+            </summary>
+            <returns>The space set instance.</returns>
+        </member>
         <member name="T:Sudoku.Generating.Filtering.BetweenRule">
             <summary>
             Represents a between rule.
