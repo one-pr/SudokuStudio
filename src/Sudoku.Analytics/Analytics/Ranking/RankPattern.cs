@@ -330,6 +330,7 @@ public readonly ref partial struct RankPattern(
 	/// because all valid combinations lead to a same result that the link must hold one correct digit.
 	/// </summary>
 	/// <returns>A list of links that are determined as rank-0 links.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public SpaceSet GetRank0Links() => GetRank0LinksCore(GetAssignmentCombinations());
 
 	/// <summary>
@@ -338,6 +339,7 @@ public readonly ref partial struct RankPattern(
 	/// </summary>
 	/// <param name="options">The options that determines and filters the elimination zones.</param>
 	/// <returns>A list of candidates.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public CandidateMap GetEliminationZone(EliminationZoneIgnoringOptions options)
 		=> GetEliminationZoneCore(GetAssignmentCombinations(), options);
 
