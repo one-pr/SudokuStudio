@@ -27,7 +27,7 @@ public sealed partial class DigitSet : UserControl
 	/// <summary>
 	/// Indicates the event triggered when the selected digit is changed.
 	/// </summary>
-	public event DigitSetSelectedDigitChangedEventHandler? SelectedDigitChanged;
+	public event EventHandler<DigitSet, DigitSetSelectedDigitChangedEventArgs>? SelectedDigitChanged;
 
 
 	private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

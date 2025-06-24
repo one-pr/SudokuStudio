@@ -50,7 +50,7 @@ public sealed partial class CandidatePicker : UserControl
 	/// <summary>
 	/// Indicates the event that is triggered when the selected candidate is changed.
 	/// </summary>
-	public event CandidatePickerSelectedCandidateChangedEventHandler? SelectedCandidateChanged;
+	public event EventHandler<CandidatePicker, CandidatePickerSelectedCandidateChangedEventArgs>? SelectedCandidateChanged;
 
 
 	[Callback]

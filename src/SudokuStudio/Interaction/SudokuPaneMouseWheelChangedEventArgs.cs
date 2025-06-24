@@ -1,14 +1,10 @@
 namespace SudokuStudio.Interaction;
 
 /// <summary>
-/// Provides event data used by delegate type <see cref="SudokuPaneMouseWheelChangedEventHandler"/>.
+/// Provides event data used by event <see cref="SudokuPane.MouseWheelChanged"/>.
 /// </summary>
 /// <param name="isClockwise"><inheritdoc cref="IsClockwise" path="/summary"/></param>
-/// <remarks>
-/// Initializes a <see cref="SudokuPaneMouseWheelChangedEventArgs"/> instance via a <see cref="bool"/> value
-/// indicating whether the mouse wheel is clockwise.
-/// </remarks>
-/// <seealso cref="SudokuPaneMouseWheelChangedEventHandler"/>
+/// <seealso cref="SudokuPane.MouseWheelChanged"/>
 public sealed class SudokuPaneMouseWheelChangedEventArgs(bool isClockwise) : EventArgs
 {
 	/// <summary>

@@ -1,11 +1,11 @@
 namespace SudokuStudio.Interaction;
 
 /// <summary>
-/// Provides event data used by delegate type <see cref="DigitInputEventHandler"/>.
+/// Provides event data used by event <see cref="SudokuPane.DigitInput"/>.
 /// </summary>
 /// <param name="cell"><inheritdoc cref="Cell" path="/summary"/></param>
 /// <param name="newDigitInput"><inheritdoc cref="DigitInput" path="/summary"/></param>
-/// <seealso cref="DigitInputEventHandler"/>
+/// <seealso cref="SudokuPane.DigitInput"/>
 public sealed class DigitInputEventArgs(Cell cell, Digit newDigitInput) : EventArgs
 {
 	/// <summary>

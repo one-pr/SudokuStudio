@@ -14,12 +14,12 @@ public sealed partial class TechniqueGroupView : UserControl
 	/// <summary>
 	/// Indicates the event that a step is applied.
 	/// </summary>
-	public event TechniqueGroupViewStepAppliedEventHandler? StepApplied;
+	public event EventHandler<TechniqueGroupView, TechniqueGroupViewStepAppliedEventArgs>? StepApplied;
 
 	/// <summary>
 	/// Indicates the event that a step is chosen.
 	/// </summary>
-	public event TechniqueGroupViewStepChosenEventHandler? StepChosen;
+	public event EventHandler<TechniqueGroupView, TechniqueGroupViewStepChosenEventArgs>? StepChosen;
 
 
 	/// <summary>

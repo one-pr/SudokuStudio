@@ -1,10 +1,10 @@
 namespace SudokuStudio.Interaction;
 
 /// <summary>
-/// Provides event data used by delegate type <see cref="PuzzleCompletedEventHandler"/>.
+/// Provides event data used by event <see cref="SudokuPane.Clicked"/>.
 /// </summary>
 /// <param name="finishedPuzzle"><inheritdoc cref="FinishedPuzzle" path="/summary"/></param>
-/// <seealso cref="PuzzleCompletedEventHandler"/>
+/// <seealso cref="SudokuPane.Clicked"/>
 public sealed class PuzzleCompletedEventArgs(in Grid finishedPuzzle) : EventArgs
 {
 	/// <summary>

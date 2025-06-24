@@ -1,10 +1,10 @@
 namespace SudokuStudio.Interaction;
 
 /// <summary>
-/// Provides event data used by delegate type <see cref="TechniqueViewSelectedTechniquesChangedEventHandler"/>.
+/// Provides event data used by event <see cref="TechniqueView.SelectedTechniquesChanged"/>.
 /// </summary>
 /// <param name="techniqueSet"><inheritdoc cref="TechniqueSet" path="/summary"/></param>
-/// <seealso cref="TechniqueViewSelectedTechniquesChangedEventHandler"/>
+/// <seealso cref="TechniqueView.SelectedTechniquesChanged"/>
 public sealed class TechniqueViewSelectedTechniquesChangedEventArgs(params TechniqueSet techniqueSet) : EventArgs
 {
 	/// <summary>

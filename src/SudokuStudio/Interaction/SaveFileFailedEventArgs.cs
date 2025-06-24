@@ -1,13 +1,10 @@
 namespace SudokuStudio.Interaction;
 
 /// <summary>
-/// Provides event data used by delegate type <see cref="SaveFileFailedEventHandler"/>.
+/// Provides event data used by event <see cref="AnalyzePage.SaveFileFailed"/>.
 /// </summary>
 /// <param name="reason"><inheritdoc cref="Reason" path="/summary"/></param>
-/// <remarks>
-/// Initializes an <see cref="SaveFileFailedEventArgs"/> instance via the specified reason.
-/// </remarks>
-/// <seealso cref="SaveFileFailedEventHandler"/>
+/// <seealso cref="AnalyzePage.SaveFileFailed"/>
 public sealed class SaveFileFailedEventArgs(SaveFileFailedReason reason) : EventArgs
 {
 	/// <summary>

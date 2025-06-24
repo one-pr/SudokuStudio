@@ -119,12 +119,12 @@ public sealed partial class AnalyzePage : Page
 	/// <summary>
 	/// Provides with an event that is triggered when failed to open a file.
 	/// </summary>
-	public event OpenFileFailedEventHandler? OpenFileFailed;
+	public event EventHandler<AnalyzePage, OpenFileFailedEventArgs>? OpenFileFailed;
 
 	/// <summary>
 	/// Provides with an event that is triggered when failed to save a file.
 	/// </summary>
-	public event SaveFileFailedEventHandler? SaveFileFailed;
+	public event EventHandler<AnalyzePage, SaveFileFailedEventArgs>? SaveFileFailed;
 
 
 	/// <summary>

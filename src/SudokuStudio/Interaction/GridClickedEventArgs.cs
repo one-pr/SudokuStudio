@@ -1,11 +1,11 @@
 namespace SudokuStudio.Interaction;
 
 /// <summary>
-/// Provides event data used by delegate type <see cref="GridUpdatedEventHandler"/>.
+/// Provides event data used by event <see cref="SudokuPane.Clicked"/>.
 /// </summary>
 /// <param name="mouseButton"><inheritdoc cref="MouseButton" path="/summary"/></param>
 /// <param name="candidate"><inheritdoc cref="Candidate" path="/summary"/></param>
-/// <seealso cref="GridUpdatedEventHandler"/>
+/// <seealso cref="SudokuPane.Clicked"/>
 public sealed class GridClickedEventArgs(MouseButton mouseButton, Candidate candidate) : EventArgs
 {
 	/// <summary>

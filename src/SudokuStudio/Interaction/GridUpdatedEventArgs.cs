@@ -1,11 +1,11 @@
 namespace SudokuStudio.Interaction;
 
 /// <summary>
-/// Provides event data used by delegate type <see cref="GridUpdatedEventHandler"/>.
+/// Provides event data used by event <see cref="SudokuPane.GridUpdated"/>.
 /// </summary>
 /// <param name="behavior"><inheritdoc cref="Behavior" path="/summary"/></param>
 /// <param name="newValue"><inheritdoc cref="NewValue" path="/summary"/></param>
-/// <seealso cref="GridUpdatedEventHandler"/>
+/// <seealso cref="SudokuPane.GridUpdated"/>
 public sealed class GridUpdatedEventArgs(GridUpdatedBehavior behavior, object newValue) : EventArgs
 {
 	/// <summary>

@@ -79,12 +79,12 @@ public sealed partial class TechniqueView : UserControl
 	/// <summary>
 	/// Indicates the event triggered when selected techniques property is changed.
 	/// </summary>
-	public event TechniqueViewSelectedTechniquesChangedEventHandler? SelectedTechniquesChanged;
+	public event EventHandler<TechniqueView, TechniqueViewSelectedTechniquesChangedEventArgs>? SelectedTechniquesChanged;
 
 	/// <summary>
 	/// Indicates the event triggered when the current selected technique is changed.
 	/// </summary>
-	public event TechniqueViewCurrentSelectedTechniqueChangedEventHandler? CurrentSelectedTechniqueChanged;
+	public event EventHandler<TechniqueView, TechniqueViewCurrentSelectedTechniqueChangedEventArgs>? CurrentSelectedTechniqueChanged;
 
 
 	/// <summary>

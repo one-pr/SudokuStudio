@@ -22,7 +22,7 @@ public sealed partial class StepSearcherListView : UserControl
 	/// <summary>
 	/// Indicates the event triggered when an item is selected.
 	/// </summary>
-	public event StepSearcherListViewItemSelectedEventHandler? ItemSelected;
+	public event EventHandler<StepSearcherListView, StepSearcherListViewItemSelectedEventArgs>? ItemSelected;
 
 
 	private void MainListView_DragItemsStarting(object sender, DragItemsStartingEventArgs e)

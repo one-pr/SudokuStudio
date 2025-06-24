@@ -1,10 +1,10 @@
 namespace SudokuStudio.Interaction;
 
 /// <summary>
-/// Provides event data used by delegate type <see cref="DigitSetSelectedDigitChangedEventHandler"/>.
+/// Provides event data used by event <see cref="DigitSet.SelectedDigitChanged"/>.
 /// </summary>
 /// <param name="newDigit"><inheritdoc cref="NewDigit" path="/summary"/></param>
-/// <seealso cref="DigitSetSelectedDigitChangedEventHandler"/>
+/// <seealso cref="DigitSet.SelectedDigitChanged"/>
 public sealed class DigitSetSelectedDigitChangedEventArgs(Digit newDigit) : EventArgs
 {
 	/// <summary>

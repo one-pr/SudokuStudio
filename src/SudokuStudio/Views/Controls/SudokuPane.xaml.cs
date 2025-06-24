@@ -637,49 +637,49 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 	/// <summary>
 	/// Indicates the event that is triggered when a file is successfully to be received via dropped file.
 	/// </summary>
-	public event ReceivedDroppedFileSuccessfullyEventHandler? ReceivedDroppedFileSuccessfully;
+	public event EventHandler<SudokuPane, ReceivedDroppedFileSuccessfullyEventArgs>? ReceivedDroppedFileSuccessfully;
 
 	/// <summary>
 	/// Indicates the event that is triggered when a file is failed to be received via dropped file.
 	/// </summary>
-	public event ReceivedDroppedFileFailedEventHandler? ReceivedDroppedFileFailed;
+	public event EventHandler<SudokuPane, ReceivedDroppedFileFailedEventArgs>? ReceivedDroppedFileFailed;
 
 	/// <summary>
 	/// Indicates the event that is triggered when a digit is input (that cause a change in a cell).
 	/// </summary>
-	public event DigitInputEventHandler? DigitInput;
+	public event EventHandler<SudokuPane, DigitInputEventArgs>? DigitInput;
 
 	/// <summary>
 	/// Indicates the event that is triggered when the internal grid is updated with the specified behavior,
 	/// such as removed a candidate, filled with a digit, etc..
 	/// </summary>
-	public event GridUpdatedEventHandler? GridUpdated;
+	public event EventHandler<SudokuPane, GridUpdatedEventArgs>? GridUpdated;
 
 	/// <summary>
 	/// Indicates the event that is triggered when the mouse wheel is changed.
 	/// </summary>
-	public event SudokuPaneMouseWheelChangedEventHandler? MouseWheelChanged;
+	public event EventHandler<SudokuPane, SudokuPaneMouseWheelChangedEventArgs>? MouseWheelChanged;
 
 	/// <summary>
 	/// Indicates the event that is triggered when a candidate is clicked.
 	/// This event can be also used for checking the clicked cell, house, chute, etc..
 	/// </summary>
-	public event GridClickedEventHandler? Clicked;
+	public event EventHandler<SudokuPane, GridClickedEventArgs>? Clicked;
 
 	/// <summary>
 	/// Indicates the event that is triggered when "displaying candidates" option is toggled.
 	/// </summary>
-	public event CandidatesDisplayingToggledEventHandler? CandidatesDisplayingToggled;
+	public event EventHandler<SudokuPane, CandidatesDisplayingToggledEventArgs>? CandidatesDisplayingToggled;
 
 	/// <summary>
 	/// Indicates the event that is triggered when a house is completed.
 	/// </summary>
-	public event HouseCompletedEventHandler? HouseCompleted;
+	public event EventHandler<SudokuPane, HouseCompletedEventArgs>? HouseCompleted;
 
 	/// <summary>
 	/// Indicates the event that is triggered when the current puzzle is completed.
 	/// </summary>
-	public event PuzzleCompletedEventHandler? PuzzleCompleted;
+	public event EventHandler<SudokuPane, PuzzleCompletedEventArgs>? PuzzleCompleted;
 
 	/// <summary>
 	/// Indicates the event that is triggered when caching.

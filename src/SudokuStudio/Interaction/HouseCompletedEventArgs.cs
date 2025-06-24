@@ -1,12 +1,12 @@
 namespace SudokuStudio.Interaction;
 
 /// <summary>
-/// Provides event data used by delegate type <see cref="HouseCompletedEventHandler"/>.
+/// Provides event data used by event <see cref="SudokuPane.HouseCompleted"/>.
 /// </summary>
 /// <param name="lastCell"><inheritdoc cref="LastCell" path="/summary"/></param>
 /// <param name="house"><inheritdoc cref="House" path="/summary"/></param>
 /// <param name="method"><inheritdoc cref="Method" path="/summary"/></param>
-/// <seealso cref="HouseCompletedEventHandler"/>
+/// <seealso cref="SudokuPane.HouseCompleted"/>
 public sealed class HouseCompletedEventArgs(Cell lastCell, House house, PuzzleUpdatingMethod method) : EventArgs
 {
 	/// <summary>

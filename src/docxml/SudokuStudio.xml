@@ -3911,16 +3911,16 @@
         </member>
         <member name="T:SudokuStudio.Interaction.CandidatePickerSelectedCandidateChangedEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.CandidatePickerSelectedCandidateChangedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.CandidatePicker.SelectedCandidateChanged"/>.
             </summary>
-            <seealso cref="T:SudokuStudio.Interaction.CandidatePickerSelectedCandidateChangedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.CandidatePicker.SelectedCandidateChanged"/>
             <param name="newValue"><inheritdoc cref="P:SudokuStudio.Interaction.CandidatePickerSelectedCandidateChangedEventArgs.NewValue" path="/summary"/></param>
         </member>
         <member name="M:SudokuStudio.Interaction.CandidatePickerSelectedCandidateChangedEventArgs.#ctor(System.Int32)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.CandidatePickerSelectedCandidateChangedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.CandidatePicker.SelectedCandidateChanged"/>.
             </summary>
-            <seealso cref="T:SudokuStudio.Interaction.CandidatePickerSelectedCandidateChangedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.CandidatePicker.SelectedCandidateChanged"/>
             <param name="newValue"><inheritdoc cref="P:SudokuStudio.Interaction.CandidatePickerSelectedCandidateChangedEventArgs.NewValue" path="/summary"/></param>
         </member>
         <member name="P:SudokuStudio.Interaction.CandidatePickerSelectedCandidateChangedEventArgs.NewValue">
@@ -3928,26 +3928,10 @@
             The new value.
             </summary>
         </member>
-        <member name="T:SudokuStudio.Interaction.CandidatePickerSelectedCandidateChangedEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Controls.CandidatePicker.SelectedCandidateChanged"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Controls.CandidatePicker.SelectedCandidateChanged"/>
-        </member>
         <member name="T:SudokuStudio.Interaction.CandidatesDisplayingToggledEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.CandidatesDisplayingToggledEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.CandidatesDisplayingToggled"/>.
             </summary>
-            <seealso cref="T:SudokuStudio.Interaction.CandidatesDisplayingToggledEventHandler"/>
-        </member>
-        <member name="T:SudokuStudio.Interaction.CandidatesDisplayingToggledEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Controls.SudokuPane.CandidatesDisplayingToggled"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
             <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.CandidatesDisplayingToggled"/>
         </member>
         <member name="T:SudokuStudio.Interaction.Conversions.AnalyzeConversion">
@@ -4152,19 +4136,19 @@
         </member>
         <member name="T:SudokuStudio.Interaction.DigitInputEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.DigitInputEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.DigitInput"/>.
             </summary>
             <param name="cell"><inheritdoc cref="P:SudokuStudio.Interaction.DigitInputEventArgs.Cell" path="/summary"/></param>
             <param name="newDigitInput"><inheritdoc cref="P:SudokuStudio.Interaction.DigitInputEventArgs.DigitInput" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.DigitInputEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.DigitInput"/>
         </member>
         <member name="M:SudokuStudio.Interaction.DigitInputEventArgs.#ctor(System.Int32,System.Int32)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.DigitInputEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.DigitInput"/>.
             </summary>
             <param name="cell"><inheritdoc cref="P:SudokuStudio.Interaction.DigitInputEventArgs.Cell" path="/summary"/></param>
             <param name="newDigitInput"><inheritdoc cref="P:SudokuStudio.Interaction.DigitInputEventArgs.DigitInput" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.DigitInputEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.DigitInput"/>
         </member>
         <member name="P:SudokuStudio.Interaction.DigitInputEventArgs.Cancel">
             <summary>
@@ -4186,40 +4170,24 @@
             Indicates the candidate constructed. -1 is for the case that <see cref="P:SudokuStudio.Interaction.DigitInputEventArgs.DigitInput"/> is -1.
             </summary>
         </member>
-        <member name="T:SudokuStudio.Interaction.DigitInputEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Controls.SudokuPane.DigitInput"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.DigitInput"/>
-        </member>
         <member name="T:SudokuStudio.Interaction.DigitSetSelectedDigitChangedEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.DigitSetSelectedDigitChangedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.DigitSet.SelectedDigitChanged"/>.
             </summary>
             <param name="newDigit"><inheritdoc cref="P:SudokuStudio.Interaction.DigitSetSelectedDigitChangedEventArgs.NewDigit" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.DigitSetSelectedDigitChangedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.DigitSet.SelectedDigitChanged"/>
         </member>
         <member name="M:SudokuStudio.Interaction.DigitSetSelectedDigitChangedEventArgs.#ctor(System.Int32)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.DigitSetSelectedDigitChangedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.DigitSet.SelectedDigitChanged"/>.
             </summary>
             <param name="newDigit"><inheritdoc cref="P:SudokuStudio.Interaction.DigitSetSelectedDigitChangedEventArgs.NewDigit" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.DigitSetSelectedDigitChangedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.DigitSet.SelectedDigitChanged"/>
         </member>
         <member name="P:SudokuStudio.Interaction.DigitSetSelectedDigitChangedEventArgs.NewDigit">
             <summary>
             Indicates the new digit selected.
             </summary>
-        </member>
-        <member name="T:SudokuStudio.Interaction.DigitSetSelectedDigitChangedEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Controls.DigitSet.SelectedDigitChanged"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Controls.DigitSet.SelectedDigitChanged"/>
         </member>
         <member name="T:SudokuStudio.Interaction.GridCandidateRotating">
             <summary>
@@ -4239,19 +4207,19 @@
         </member>
         <member name="T:SudokuStudio.Interaction.GridClickedEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.GridUpdatedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.Clicked"/>.
             </summary>
             <param name="mouseButton"><inheritdoc cref="P:SudokuStudio.Interaction.GridClickedEventArgs.MouseButton" path="/summary"/></param>
             <param name="candidate"><inheritdoc cref="P:SudokuStudio.Interaction.GridClickedEventArgs.Candidate" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.GridUpdatedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.Clicked"/>
         </member>
         <member name="M:SudokuStudio.Interaction.GridClickedEventArgs.#ctor(SudokuStudio.Interaction.MouseButton,System.Int32)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.GridUpdatedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.Clicked"/>.
             </summary>
             <param name="mouseButton"><inheritdoc cref="P:SudokuStudio.Interaction.GridClickedEventArgs.MouseButton" path="/summary"/></param>
             <param name="candidate"><inheritdoc cref="P:SudokuStudio.Interaction.GridClickedEventArgs.Candidate" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.GridUpdatedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.Clicked"/>
         </member>
         <member name="P:SudokuStudio.Interaction.GridClickedEventArgs.MouseButton">
             <summary>
@@ -4298,14 +4266,6 @@
             </summary>
             <param name="candidate">The candidate.</param>
             <returns>A pair of two values indicating chute indices in a mega-row and mega-column.</returns>
-        </member>
-        <member name="T:SudokuStudio.Interaction.GridClickedEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Controls.SudokuPane.Clicked"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.Clicked"/>
         </member>
         <member name="T:SudokuStudio.Interaction.GridStateChanger`1">
             <summary>
@@ -4359,19 +4319,19 @@
         </member>
         <member name="T:SudokuStudio.Interaction.GridUpdatedEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.GridUpdatedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.GridUpdated"/>.
             </summary>
             <param name="behavior"><inheritdoc cref="P:SudokuStudio.Interaction.GridUpdatedEventArgs.Behavior" path="/summary"/></param>
             <param name="newValue"><inheritdoc cref="P:SudokuStudio.Interaction.GridUpdatedEventArgs.NewValue" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.GridUpdatedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.GridUpdated"/>
         </member>
         <member name="M:SudokuStudio.Interaction.GridUpdatedEventArgs.#ctor(SudokuStudio.Interaction.GridUpdatedBehavior,System.Object)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.GridUpdatedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.GridUpdated"/>.
             </summary>
             <param name="behavior"><inheritdoc cref="P:SudokuStudio.Interaction.GridUpdatedEventArgs.Behavior" path="/summary"/></param>
             <param name="newValue"><inheritdoc cref="P:SudokuStudio.Interaction.GridUpdatedEventArgs.NewValue" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.GridUpdatedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.GridUpdated"/>
         </member>
         <member name="P:SudokuStudio.Interaction.GridUpdatedEventArgs.NewValue">
             <summary>
@@ -4428,14 +4388,6 @@
             Indicates the behavior.
             </summary>
         </member>
-        <member name="T:SudokuStudio.Interaction.GridUpdatedEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Controls.SudokuPane.GridUpdated"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.GridUpdated"/>
-        </member>
         <member name="T:SudokuStudio.Interaction.GridUpdatingDetails">
             <summary>
             A set of grid updating details.
@@ -4463,21 +4415,21 @@
         </member>
         <member name="T:SudokuStudio.Interaction.HouseCompletedEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.HouseCompletedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.HouseCompleted"/>.
             </summary>
             <param name="lastCell"><inheritdoc cref="P:SudokuStudio.Interaction.HouseCompletedEventArgs.LastCell" path="/summary"/></param>
             <param name="house"><inheritdoc cref="P:SudokuStudio.Interaction.HouseCompletedEventArgs.House" path="/summary"/></param>
             <param name="method"><inheritdoc cref="P:SudokuStudio.Interaction.HouseCompletedEventArgs.Method" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.HouseCompletedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.HouseCompleted"/>
         </member>
         <member name="M:SudokuStudio.Interaction.HouseCompletedEventArgs.#ctor(System.Int32,System.Int32,SudokuStudio.Interaction.PuzzleUpdatingMethod)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.HouseCompletedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.HouseCompleted"/>.
             </summary>
             <param name="lastCell"><inheritdoc cref="P:SudokuStudio.Interaction.HouseCompletedEventArgs.LastCell" path="/summary"/></param>
             <param name="house"><inheritdoc cref="P:SudokuStudio.Interaction.HouseCompletedEventArgs.House" path="/summary"/></param>
             <param name="method"><inheritdoc cref="P:SudokuStudio.Interaction.HouseCompletedEventArgs.Method" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.HouseCompletedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.HouseCompleted"/>
         </member>
         <member name="P:SudokuStudio.Interaction.HouseCompletedEventArgs.Method">
             <summary>
@@ -4493,14 +4445,6 @@
             <summary>
             Indicates the house finished.
             </summary>
-        </member>
-        <member name="T:SudokuStudio.Interaction.HouseCompletedEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Controls.SudokuPane.HouseCompleted"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.HouseCompleted"/>
         </member>
         <member name="T:SudokuStudio.Interaction.LibraryCandidatesVisibility">
             <summary>
@@ -4580,36 +4524,22 @@
         </member>
         <member name="T:SudokuStudio.Interaction.OpenFileFailedEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.OpenFileFailedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Pages.AnalyzePage.OpenFileFailed"/>.
             </summary>
             <param name="reason"><inheritdoc cref="P:SudokuStudio.Interaction.OpenFileFailedEventArgs.Reason" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.OpenFileFailedEventHandler"/>
-            <remarks>
-            Initializes an <see cref="T:SudokuStudio.Interaction.OpenFileFailedEventArgs"/> instance via the specified reason.
-            </remarks>
+            <seealso cref="E:SudokuStudio.Views.Pages.AnalyzePage.OpenFileFailed"/>
         </member>
         <member name="M:SudokuStudio.Interaction.OpenFileFailedEventArgs.#ctor(SudokuStudio.Interaction.OpenFileFailedReason)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.OpenFileFailedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Pages.AnalyzePage.OpenFileFailed"/>.
             </summary>
             <param name="reason"><inheritdoc cref="P:SudokuStudio.Interaction.OpenFileFailedEventArgs.Reason" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.OpenFileFailedEventHandler"/>
-            <remarks>
-            Initializes an <see cref="T:SudokuStudio.Interaction.OpenFileFailedEventArgs"/> instance via the specified reason.
-            </remarks>
+            <seealso cref="E:SudokuStudio.Views.Pages.AnalyzePage.OpenFileFailed"/>
         </member>
         <member name="P:SudokuStudio.Interaction.OpenFileFailedEventArgs.Reason">
             <summary>
             The failed reason.
             </summary>
-        </member>
-        <member name="T:SudokuStudio.Interaction.OpenFileFailedEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Pages.AnalyzePage.OpenFileFailed"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Pages.AnalyzePage.OpenFileFailed"/>
         </member>
         <member name="T:SudokuStudio.Interaction.OpenFileFailedReason">
             <summary>
@@ -4638,17 +4568,17 @@
         </member>
         <member name="T:SudokuStudio.Interaction.PuzzleCompletedEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.PuzzleCompletedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.Clicked"/>.
             </summary>
             <param name="finishedPuzzle"><inheritdoc cref="P:SudokuStudio.Interaction.PuzzleCompletedEventArgs.FinishedPuzzle" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.PuzzleCompletedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.Clicked"/>
         </member>
         <member name="M:SudokuStudio.Interaction.PuzzleCompletedEventArgs.#ctor(Sudoku.Concepts.Grid@)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.PuzzleCompletedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.Clicked"/>.
             </summary>
             <param name="finishedPuzzle"><inheritdoc cref="P:SudokuStudio.Interaction.PuzzleCompletedEventArgs.FinishedPuzzle" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.PuzzleCompletedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.Clicked"/>
         </member>
         <member name="P:SudokuStudio.Interaction.PuzzleCompletedEventArgs.IsFullyFixed">
             <summary>
@@ -4659,14 +4589,6 @@
             <summary>
             Indicates the finished puzzle.
             </summary>
-        </member>
-        <member name="T:SudokuStudio.Interaction.PuzzleCompletedEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Controls.SudokuPane.Clicked"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.Clicked"/>
         </member>
         <member name="T:SudokuStudio.Interaction.PuzzleUpdatingMethod">
             <summary>
@@ -4685,36 +4607,28 @@
         </member>
         <member name="T:SudokuStudio.Interaction.ReceivedDroppedFileFailedEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.ReceivedDroppedFileFailedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.ReceivedDroppedFileFailed"/>.
             </summary>
             <param name="reason"><inheritdoc cref="P:SudokuStudio.Interaction.ReceivedDroppedFileFailedEventArgs.Reason" path="/summary"/></param>
             <remarks>
             Initializes a <see cref="T:SudokuStudio.Interaction.ReceivedDroppedFileFailedEventArgs"/> instance via the specified reason.
             </remarks>
-            <seealso cref="T:SudokuStudio.Interaction.ReceivedDroppedFileFailedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.ReceivedDroppedFileFailed"/>
         </member>
         <member name="M:SudokuStudio.Interaction.ReceivedDroppedFileFailedEventArgs.#ctor(SudokuStudio.Interaction.ReceivedDroppedFileFailedReason)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.ReceivedDroppedFileFailedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.ReceivedDroppedFileFailed"/>.
             </summary>
             <param name="reason"><inheritdoc cref="P:SudokuStudio.Interaction.ReceivedDroppedFileFailedEventArgs.Reason" path="/summary"/></param>
             <remarks>
             Initializes a <see cref="T:SudokuStudio.Interaction.ReceivedDroppedFileFailedEventArgs"/> instance via the specified reason.
             </remarks>
-            <seealso cref="T:SudokuStudio.Interaction.ReceivedDroppedFileFailedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.ReceivedDroppedFileFailed"/>
         </member>
         <member name="P:SudokuStudio.Interaction.ReceivedDroppedFileFailedEventArgs.Reason">
             <summary>
             The failed reason.
             </summary>
-        </member>
-        <member name="T:SudokuStudio.Interaction.ReceivedDroppedFileFailedEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Controls.SudokuPane.ReceivedDroppedFileFailed"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.ReceivedDroppedFileFailed"/>
         </member>
         <member name="T:SudokuStudio.Interaction.ReceivedDroppedFileFailedReason">
             <summary>
@@ -4738,19 +4652,19 @@
         </member>
         <member name="T:SudokuStudio.Interaction.ReceivedDroppedFileSuccessfullyEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.ReceivedDroppedFileSuccessfullyEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.ReceivedDroppedFileSuccessfully"/>.
             </summary>
             <param name="filePath"><inheritdoc cref="P:SudokuStudio.Interaction.ReceivedDroppedFileSuccessfullyEventArgs.FilePath" path="/summary"/></param>
             <param name="gridInfo"><inheritdoc cref="P:SudokuStudio.Interaction.ReceivedDroppedFileSuccessfullyEventArgs.GridInfo" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.ReceivedDroppedFileSuccessfullyEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.ReceivedDroppedFileSuccessfully"/>
         </member>
         <member name="M:SudokuStudio.Interaction.ReceivedDroppedFileSuccessfullyEventArgs.#ctor(System.String,SudokuStudio.Configuration.GridInfo)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.ReceivedDroppedFileSuccessfullyEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.ReceivedDroppedFileSuccessfully"/>.
             </summary>
             <param name="filePath"><inheritdoc cref="P:SudokuStudio.Interaction.ReceivedDroppedFileSuccessfullyEventArgs.FilePath" path="/summary"/></param>
             <param name="gridInfo"><inheritdoc cref="P:SudokuStudio.Interaction.ReceivedDroppedFileSuccessfullyEventArgs.GridInfo" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.ReceivedDroppedFileSuccessfullyEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.ReceivedDroppedFileSuccessfully"/>
         </member>
         <member name="P:SudokuStudio.Interaction.ReceivedDroppedFileSuccessfullyEventArgs.FilePath">
             <summary>
@@ -4762,46 +4676,24 @@
             The loaded grid info.
             </summary>
         </member>
-        <member name="T:SudokuStudio.Interaction.ReceivedDroppedFileSuccessfullyEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Controls.SudokuPane.ReceivedDroppedFileSuccessfully"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.ReceivedDroppedFileSuccessfully"/>
-        </member>
         <member name="T:SudokuStudio.Interaction.SaveFileFailedEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.SaveFileFailedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Pages.AnalyzePage.SaveFileFailed"/>.
             </summary>
             <param name="reason"><inheritdoc cref="P:SudokuStudio.Interaction.SaveFileFailedEventArgs.Reason" path="/summary"/></param>
-            <remarks>
-            Initializes an <see cref="T:SudokuStudio.Interaction.SaveFileFailedEventArgs"/> instance via the specified reason.
-            </remarks>
-            <seealso cref="T:SudokuStudio.Interaction.SaveFileFailedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Pages.AnalyzePage.SaveFileFailed"/>
         </member>
         <member name="M:SudokuStudio.Interaction.SaveFileFailedEventArgs.#ctor(SudokuStudio.Interaction.SaveFileFailedReason)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.SaveFileFailedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Pages.AnalyzePage.SaveFileFailed"/>.
             </summary>
             <param name="reason"><inheritdoc cref="P:SudokuStudio.Interaction.SaveFileFailedEventArgs.Reason" path="/summary"/></param>
-            <remarks>
-            Initializes an <see cref="T:SudokuStudio.Interaction.SaveFileFailedEventArgs"/> instance via the specified reason.
-            </remarks>
-            <seealso cref="T:SudokuStudio.Interaction.SaveFileFailedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Pages.AnalyzePage.SaveFileFailed"/>
         </member>
         <member name="P:SudokuStudio.Interaction.SaveFileFailedEventArgs.Reason">
             <summary>
             The failed reason.
             </summary>
-        </member>
-        <member name="T:SudokuStudio.Interaction.SaveFileFailedEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Pages.AnalyzePage.SaveFileFailed"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Pages.AnalyzePage.SaveFileFailed"/>
         </member>
         <member name="T:SudokuStudio.Interaction.SaveFileFailedReason">
             <summary>
@@ -4832,30 +4724,22 @@
         </member>
         <member name="T:SudokuStudio.Interaction.StepSearcherListViewItemSelectedEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.TechniqueGroupViewStepAppliedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.StepSearcherListView.ItemSelected"/>.
             </summary>
             <param name="selectedSearcherInfo"><inheritdoc cref="P:SudokuStudio.Interaction.StepSearcherListViewItemSelectedEventArgs.SelectedSearcherInfo" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.TechniqueGroupViewStepAppliedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.StepSearcherListView.ItemSelected"/>
         </member>
         <member name="M:SudokuStudio.Interaction.StepSearcherListViewItemSelectedEventArgs.#ctor(SudokuStudio.Configuration.StepSearcherInfo)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.TechniqueGroupViewStepAppliedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.StepSearcherListView.ItemSelected"/>.
             </summary>
             <param name="selectedSearcherInfo"><inheritdoc cref="P:SudokuStudio.Interaction.StepSearcherListViewItemSelectedEventArgs.SelectedSearcherInfo" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.TechniqueGroupViewStepAppliedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.StepSearcherListView.ItemSelected"/>
         </member>
         <member name="P:SudokuStudio.Interaction.StepSearcherListViewItemSelectedEventArgs.SelectedSearcherInfo">
             <summary>
             The selected searcher's information.
             </summary>
-        </member>
-        <member name="T:SudokuStudio.Interaction.StepSearcherListViewItemSelectedEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Controls.StepSearcherListView.ItemSelected"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Controls.StepSearcherListView.ItemSelected"/>
         </member>
         <member name="T:SudokuStudio.Interaction.StepTooltipDisplayItems">
             <summary>
@@ -4996,108 +4880,76 @@
         </member>
         <member name="T:SudokuStudio.Interaction.SudokuPaneMouseWheelChangedEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.SudokuPaneMouseWheelChangedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.MouseWheelChanged"/>.
             </summary>
             <param name="isClockwise"><inheritdoc cref="P:SudokuStudio.Interaction.SudokuPaneMouseWheelChangedEventArgs.IsClockwise" path="/summary"/></param>
-            <remarks>
-            Initializes a <see cref="T:SudokuStudio.Interaction.SudokuPaneMouseWheelChangedEventArgs"/> instance via a <see cref="T:System.Boolean"/> value
-            indicating whether the mouse wheel is clockwise.
-            </remarks>
-            <seealso cref="T:SudokuStudio.Interaction.SudokuPaneMouseWheelChangedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.MouseWheelChanged"/>
         </member>
         <member name="M:SudokuStudio.Interaction.SudokuPaneMouseWheelChangedEventArgs.#ctor(System.Boolean)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.SudokuPaneMouseWheelChangedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.MouseWheelChanged"/>.
             </summary>
             <param name="isClockwise"><inheritdoc cref="P:SudokuStudio.Interaction.SudokuPaneMouseWheelChangedEventArgs.IsClockwise" path="/summary"/></param>
-            <remarks>
-            Initializes a <see cref="T:SudokuStudio.Interaction.SudokuPaneMouseWheelChangedEventArgs"/> instance via a <see cref="T:System.Boolean"/> value
-            indicating whether the mouse wheel is clockwise.
-            </remarks>
-            <seealso cref="T:SudokuStudio.Interaction.SudokuPaneMouseWheelChangedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.MouseWheelChanged"/>
         </member>
         <member name="P:SudokuStudio.Interaction.SudokuPaneMouseWheelChangedEventArgs.IsClockwise">
             <summary>
             A <see cref="T:System.Boolean"/> value indicating whether the mouse wheel is clockwise.
             </summary>
         </member>
-        <member name="T:SudokuStudio.Interaction.SudokuPaneMouseWheelChangedEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Controls.SudokuPane.MouseWheelChanged"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.MouseWheelChanged"/>
-        </member>
         <member name="T:SudokuStudio.Interaction.TechniqueGroupViewStepAppliedEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.TechniqueGroupViewStepAppliedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.TechniqueGroupView.StepApplied"/>.
             </summary>
             <param name="step"><inheritdoc cref="P:SudokuStudio.Interaction.TechniqueGroupViewStepAppliedEventArgs.ChosenStep" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.TechniqueGroupViewStepAppliedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.TechniqueGroupView.StepApplied"/>
         </member>
         <member name="M:SudokuStudio.Interaction.TechniqueGroupViewStepAppliedEventArgs.#ctor(Sudoku.Analytics.Step)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.TechniqueGroupViewStepAppliedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.TechniqueGroupView.StepApplied"/>.
             </summary>
             <param name="step"><inheritdoc cref="P:SudokuStudio.Interaction.TechniqueGroupViewStepAppliedEventArgs.ChosenStep" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.TechniqueGroupViewStepAppliedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.TechniqueGroupView.StepApplied"/>
         </member>
         <member name="P:SudokuStudio.Interaction.TechniqueGroupViewStepAppliedEventArgs.ChosenStep">
             <summary>
             The step.
             </summary>
         </member>
-        <member name="T:SudokuStudio.Interaction.TechniqueGroupViewStepAppliedEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Controls.TechniqueGroupView.StepApplied"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Controls.TechniqueGroupView.StepApplied"/>
-        </member>
         <member name="T:SudokuStudio.Interaction.TechniqueGroupViewStepChosenEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.TechniqueGroupViewStepChosenEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.TechniqueGroupView.StepChosen"/>.
             </summary>
             <param name="step"><inheritdoc cref="P:SudokuStudio.Interaction.TechniqueGroupViewStepChosenEventArgs.ChosenStep" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.TechniqueGroupViewStepChosenEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.TechniqueGroupView.StepChosen"/>
         </member>
         <member name="M:SudokuStudio.Interaction.TechniqueGroupViewStepChosenEventArgs.#ctor(Sudoku.Analytics.Step)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.TechniqueGroupViewStepChosenEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.TechniqueGroupView.StepChosen"/>.
             </summary>
             <param name="step"><inheritdoc cref="P:SudokuStudio.Interaction.TechniqueGroupViewStepChosenEventArgs.ChosenStep" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.TechniqueGroupViewStepChosenEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.TechniqueGroupView.StepChosen"/>
         </member>
         <member name="P:SudokuStudio.Interaction.TechniqueGroupViewStepChosenEventArgs.ChosenStep">
             <summary>
             The step.
             </summary>
         </member>
-        <member name="T:SudokuStudio.Interaction.TechniqueGroupViewStepChosenEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Controls.TechniqueGroupView.StepChosen"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Controls.TechniqueGroupView.StepChosen"/>
-        </member>
         <member name="T:SudokuStudio.Interaction.TechniqueViewCurrentSelectedTechniqueChangedEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.TechniqueViewCurrentSelectedTechniqueChangedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.TechniqueView.CurrentSelectedTechniqueChanged"/>.
             </summary>
             <param name="technique"><inheritdoc cref="P:SudokuStudio.Interaction.TechniqueViewCurrentSelectedTechniqueChangedEventArgs.Technique" path="/summary"/></param>
             <param name="isSelected"><inheritdoc cref="P:SudokuStudio.Interaction.TechniqueViewCurrentSelectedTechniqueChangedEventArgs.IsSelected" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.TechniqueViewCurrentSelectedTechniqueChangedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.TechniqueView.CurrentSelectedTechniqueChanged"/>
         </member>
         <member name="M:SudokuStudio.Interaction.TechniqueViewCurrentSelectedTechniqueChangedEventArgs.#ctor(Sudoku.Categorization.Technique,System.Boolean)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.TechniqueViewCurrentSelectedTechniqueChangedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.TechniqueView.CurrentSelectedTechniqueChanged"/>.
             </summary>
             <param name="technique"><inheritdoc cref="P:SudokuStudio.Interaction.TechniqueViewCurrentSelectedTechniqueChangedEventArgs.Technique" path="/summary"/></param>
             <param name="isSelected"><inheritdoc cref="P:SudokuStudio.Interaction.TechniqueViewCurrentSelectedTechniqueChangedEventArgs.IsSelected" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.TechniqueViewCurrentSelectedTechniqueChangedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.TechniqueView.CurrentSelectedTechniqueChanged"/>
         </member>
         <member name="P:SudokuStudio.Interaction.TechniqueViewCurrentSelectedTechniqueChangedEventArgs.IsSelected">
             <summary>
@@ -5109,40 +4961,24 @@
             The technique to be assigned.
             </summary>
         </member>
-        <member name="T:SudokuStudio.Interaction.TechniqueViewCurrentSelectedTechniqueChangedEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Controls.TechniqueView.CurrentSelectedTechniqueChanged"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Controls.TechniqueView.CurrentSelectedTechniqueChanged"/>
-        </member>
         <member name="T:SudokuStudio.Interaction.TechniqueViewSelectedTechniquesChangedEventArgs">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.TechniqueViewSelectedTechniquesChangedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.TechniqueView.SelectedTechniquesChanged"/>.
             </summary>
             <param name="techniqueSet"><inheritdoc cref="P:SudokuStudio.Interaction.TechniqueViewSelectedTechniquesChangedEventArgs.TechniqueSet" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.TechniqueViewSelectedTechniquesChangedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.TechniqueView.SelectedTechniquesChanged"/>
         </member>
         <member name="M:SudokuStudio.Interaction.TechniqueViewSelectedTechniquesChangedEventArgs.#ctor(Sudoku.Categorization.TechniqueSet)">
             <summary>
-            Provides event data used by delegate type <see cref="T:SudokuStudio.Interaction.TechniqueViewSelectedTechniquesChangedEventHandler"/>.
+            Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.TechniqueView.SelectedTechniquesChanged"/>.
             </summary>
             <param name="techniqueSet"><inheritdoc cref="P:SudokuStudio.Interaction.TechniqueViewSelectedTechniquesChangedEventArgs.TechniqueSet" path="/summary"/></param>
-            <seealso cref="T:SudokuStudio.Interaction.TechniqueViewSelectedTechniquesChangedEventHandler"/>
+            <seealso cref="E:SudokuStudio.Views.Controls.TechniqueView.SelectedTechniquesChanged"/>
         </member>
         <member name="P:SudokuStudio.Interaction.TechniqueViewSelectedTechniquesChangedEventArgs.TechniqueSet">
             <summary>
             The technique set to be assigned.
             </summary>
-        </member>
-        <member name="T:SudokuStudio.Interaction.TechniqueViewSelectedTechniquesChangedEventHandler">
-            <summary>
-            Provides an event handler that is used by <see cref="E:SudokuStudio.Views.Controls.TechniqueView.SelectedTechniquesChanged"/>.
-            </summary>
-            <param name="sender">An object which triggers the event.</param>
-            <param name="e">The event data provided.</param>
-            <seealso cref="E:SudokuStudio.Views.Controls.TechniqueView.SelectedTechniquesChanged"/>
         </member>
         <member name="T:SudokuStudio.Interaction.TechniqueViewSelectionMode">
             <summary>
