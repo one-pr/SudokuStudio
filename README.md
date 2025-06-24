@@ -110,6 +110,7 @@ This solution supports many kinds of human-friendly techniques. Here I will list
       * Medusa Wing (*M-Wing*)
       * Split/Hybrid/Local Wing (*S/H/L-Wing*)
     * XYZ-Loop
+    * Fit Ring & Fat Ring
   * Deadly Patterns
     * Unconditional Deadly Patterns
       * Unique Rectangle (*UR*)
@@ -166,7 +167,6 @@ This solution supports many kinds of human-friendly techniques. Here I will list
       * Almost Locked Sets XY-Wing (*ALS-XY-Wing*)
       * Almost Locked Sets W-Wing (*ALS-W-Wing*)
     * Extended Subset Principle (*ESP*)
-    * Fit Ring & Fat Ring
     * Empty Rectangle Intersection Pair (*ERIP*)
     * Death Blossom
   * Rank Logic
