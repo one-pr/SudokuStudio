@@ -73,6 +73,21 @@ public partial class App : Application
 
 
 	/// <summary>
+	/// Represents rotated margin table.
+	/// </summary>
+	public static Thickness[] RotatedMarginTable => [
+		new(-5,  5, 0, 0),
+		new(-5,  0, 0, 0),
+		new(-5, -5, 0, 0),
+		new( 0,  5, 0, 0),
+		new( 0,  0, 0, 0),
+		new( 0, -5, 0, 0),
+		new( 5,  5, 0, 0),
+		new( 5,  0, 0, 0),
+		new( 5, -5, 0, 0)
+	];
+
+	/// <summary>
 	/// Indicates the configured application theme.
 	/// </summary>
 	internal static ApplicationTheme CurrentTheme
