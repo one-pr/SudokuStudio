@@ -954,66 +954,6 @@
             Indicates the base page.
             </summary>
         </member>
-        <member name="T:SudokuStudio.ComponentModel.OnlineLibraryDetail">
-            <summary>
-            Represents the details to a library.
-            </summary>
-        </member>
-        <member name="P:SudokuStudio.ComponentModel.OnlineLibraryDetail.Culture">
-            <summary>
-            Indicates the culture.
-            </summary>
-        </member>
-        <member name="P:SudokuStudio.ComponentModel.OnlineLibraryDetail.Name">
-            <summary>
-            Indicates the name of the library.
-            </summary>
-        </member>
-        <member name="P:SudokuStudio.ComponentModel.OnlineLibraryDetail.Description">
-            <summary>
-            Indicates the description.
-            </summary>
-        </member>
-        <member name="P:SudokuStudio.ComponentModel.OnlineLibraryDetail.Remarks">
-            <summary>
-            Indicates the remarks.
-            </summary>
-        </member>
-        <member name="P:SudokuStudio.ComponentModel.OnlineLibraryDetail.Tags">
-            <summary>
-            Indicates the tags.
-            </summary>
-        </member>
-        <member name="T:SudokuStudio.ComponentModel.OnlineLibraryInfo">
-            <summary>
-            Represents a data type that describes for an online library.
-            </summary>
-        </member>
-        <member name="P:SudokuStudio.ComponentModel.OnlineLibraryInfo.Schema">
-            <summary>
-            Indicates the schema.
-            </summary>
-        </member>
-        <member name="P:SudokuStudio.ComponentModel.OnlineLibraryInfo.Author">
-            <summary>
-            Indicates the author.
-            </summary>
-        </member>
-        <member name="P:SudokuStudio.ComponentModel.OnlineLibraryInfo.Link">
-            <summary>
-            Indicates the extra link that can visit to learn more information about the library.
-            </summary>
-        </member>
-        <member name="P:SudokuStudio.ComponentModel.OnlineLibraryInfo.LastUpdate">
-            <summary>
-            Indicates the last update time.
-            </summary>
-        </member>
-        <member name="P:SudokuStudio.ComponentModel.OnlineLibraryInfo.Data">
-            <summary>
-            Indicates the data of library.
-            </summary>
-        </member>
         <member name="T:SudokuStudio.Composition.IBackdropSupportedWindow">
             <summary>
             Represents a <see cref="T:Microsoft.UI.Xaml.Window"/> instance that supports backdrop.
