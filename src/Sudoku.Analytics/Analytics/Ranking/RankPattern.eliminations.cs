@@ -18,6 +18,10 @@ public partial struct RankPattern
 	/// </summary>
 	/// <param name="options">The options that determines and filters the elimination zones.</param>
 	/// <returns>A list of candidates.</returns>
+	/// <exception cref="PatternTooComplexException">
+	/// Throws when pattern is too complex
+	/// when <paramref name="options"/> is <see cref="EliminationZoneIgnoringOptions.IgnoreSubpatterns"/>.
+	/// </exception>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public CandidateMap GetEliminationZone(EliminationZoneIgnoringOptions options)
 		=> GetEliminationZoneCore(GetAssignmentCombinations(), options);
@@ -147,12 +151,20 @@ public partial struct RankPattern
 
 		if (options.HasFlag(EliminationZoneIgnoringOptions.IgnoreSubpatterns))
 		{
+			var counter = 0;
+
 			// Iterate all combinations of truths.
 			var truthsArray = Truths.ToArray();
 			for (var i = 1; i < Truths.Count - 1; i++)
 			{
-				foreach (var truthCombination in truthsArray.GetSubsets(i))
+				var truthCombinations = truthsArray.GetSubsets(i);
+				foreach (var truthCombination in truthCombinations)
 				{
+					if (counter++ >= 100000)
+					{
+						throw new PatternTooComplexException();
+					}
+
 					var subpatternTruths = truthCombination.AsSpaceSet();
 					var subpattern = new RankPattern(in Grid, in subpatternTruths, in SpaceSet.Empty);
 					result &= ~subpattern.GetEliminationZone(EliminationZoneIgnoringOptions.None);

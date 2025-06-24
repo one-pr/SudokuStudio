@@ -3310,4 +3310,7 @@
     <value>瘦姨环</value>
     <comment>Technique Name</comment>
   </data>
+  <data name="Message_RankPatternIsTooComplex" xml:space="preserve">
+    <value />
+  </data>
 </root>

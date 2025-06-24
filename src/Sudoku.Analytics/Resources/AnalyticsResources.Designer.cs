@@ -3833,6 +3833,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pattern is too complex..
+        /// </summary>
+        public static string Message_RankPatternIsTooComplex {
+            get {
+                return ResourceManager.GetString("Message_RankPatternIsTooComplex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The step may exist bug that causes the wrong handling.
         ///Current grid: &apos;{0:#}&apos;
         ///Current step: &apos;{1}&apos;.

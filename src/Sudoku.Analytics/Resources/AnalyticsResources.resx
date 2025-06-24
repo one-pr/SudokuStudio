@@ -3266,4 +3266,7 @@ Is pattern rank-0: {6}</value>
   <data name="FitRing" xml:space="preserve">
     <value>Fit Ring</value>
   </data>
+  <data name="Message_RankPatternIsTooComplex" xml:space="preserve">
+    <value>Pattern is too complex.</value>
+  </data>
 </root>

@@ -8507,6 +8507,14 @@
             can also be included.
             </summary>
         </member>
+        <member name="T:Sudoku.Analytics.Ranking.PatternTooComplexException">
+            <summary>
+            Represents too complex exception.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Ranking.PatternTooComplexException.Message">
+            <inheritdoc/>
+        </member>
         <member name="T:Sudoku.Analytics.Ranking.Queuing.CombinationQueueNode">
             <summary>
             Represents a queue node that is used in calculating assignment combinations.
@@ -8687,6 +8695,10 @@
             </summary>
             <param name="options">The options that determines and filters the elimination zones.</param>
             <returns>A list of candidates.</returns>
+            <exception cref="T:Sudoku.Analytics.Ranking.PatternTooComplexException">
+            Throws when pattern is too complex
+            when <paramref name="options"/> is <see cref="F:Sudoku.Analytics.Ranking.EliminationZoneIgnoringOptions.IgnoreSubpatterns"/>.
+            </exception>
         </member>
         <member name="M:Sudoku.Analytics.Ranking.RankPattern.GetEliminationsCore(System.ReadOnlySpan{System.ReadOnlyMemory{System.Int32}},,)">
             <summary>
@@ -30834,6 +30846,11 @@
                Looks up a localized string similar to Unexpected error thrown. This exception may be thrown if the puzzle is invalid.
             Error grid: &apos;{0:#}&apos;.
              </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.Message_RankPatternIsTooComplex">
+            <summary>
+              Looks up a localized string similar to Pattern is too complex..
+            </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.Message_WrongStepException">
              <summary>
