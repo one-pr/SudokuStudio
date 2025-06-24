@@ -71,6 +71,18 @@ internal sealed partial class SudokuPaneCell : UserControl
 	}
 
 	/// <summary>
+	/// Try to set rotating.
+	/// </summary>
+	/// <param name="thicknesses">An array of rotating margin values.</param>
+	public void SetRotating(Thickness[] thicknesses)
+	{
+		for (var digit = 0; digit < 9; digit++)
+		{
+			((TextBlock)_internalDigitDisplayers[digit + 1]).Margin = thicknesses[digit];
+		}
+	}
+
+	/// <summary>
 	/// Try to initialize for animation feedback if worth.
 	/// </summary>
 	[MemberNotNull(nameof(_internalDigitDisplayers))]
@@ -94,7 +106,11 @@ internal sealed partial class SudokuPaneCell : UserControl
 			return;
 		}
 
-		_internalDigitDisplayers.ForEach(static e => e.OpacityTransition = new());
+		_internalDigitDisplayers.ForEach(static e =>
+		{
+			e.OpacityTransition = new();
+			e.TranslationTransition = new();
+		});
 		ValueSurrounder.BackgroundTransition = new() { Duration = TimeSpan.FromMilliseconds(HouseCompletedFeedbackDuration) };
 	}
 

@@ -84,11 +84,6 @@
             Indicates the configured application theme.
             </summary>
         </member>
-        <member name="P:SudokuStudio.App.CandidateRotatingMargin">
-            <summary>
-            Indicates the candidate rotating margin.
-            </summary>
-        </member>
         <member name="P:SudokuStudio.App.Converter">
             <summary>
             Indicates the internal converter object.
@@ -4279,6 +4274,22 @@
             <param name="sender">An object which triggers the event.</param>
             <param name="e">The event data provided.</param>
             <seealso cref="E:SudokuStudio.Views.Controls.DigitSet.SelectedDigitChanged"/>
+        </member>
+        <member name="T:SudokuStudio.Interaction.GridCandidateRotating">
+            <summary>
+            Represents a rotating option on <see cref="T:SudokuStudio.Views.Controls.SudokuPaneCell"/> control.
+            </summary>
+            <seealso cref="T:SudokuStudio.Views.Controls.SudokuPaneCell"/>
+        </member>
+        <member name="F:SudokuStudio.Interaction.GridCandidateRotating.None">
+            <summary>
+            Represents no rotating.
+            </summary>
+        </member>
+        <member name="F:SudokuStudio.Interaction.GridCandidateRotating.XSudoRotating">
+            <summary>
+            Represents rotating mode as XSudo behaves.
+            </summary>
         </member>
         <member name="T:SudokuStudio.Interaction.GridClickedEventArgs">
             <summary>
@@ -13131,6 +13142,11 @@
             Indicates the displaying mode of an elimination.
             </summary>
         </member>
+        <member name="P:SudokuStudio.Views.Controls.SudokuPane.CandidateRotating">
+            <summary>
+            Indicates the rotating mode of candidates.
+            </summary>
+        </member>
         <member name="P:SudokuStudio.Views.Controls.SudokuPane.SelectedCell">
             <summary>
             Indicates the currently selected cell.
@@ -13657,6 +13673,12 @@
             </summary>
             <seealso cref="P:SudokuStudio.Views.Controls.SudokuPane.EliminationDisplayMode"/>
         </member>
+        <member name="F:SudokuStudio.Views.Controls.SudokuPane.CandidateRotatingProperty">
+            <summary>
+            Defines a dependency property that binds with property <see cref="P:SudokuStudio.Views.Controls.SudokuPane.CandidateRotating"/>.
+            </summary>
+            <seealso cref="P:SudokuStudio.Views.Controls.SudokuPane.CandidateRotating"/>
+        </member>
         <member name="F:SudokuStudio.Views.Controls.SudokuPane.SelectedCellProperty">
             <summary>
             Defines a dependency property that binds with property <see cref="P:SudokuStudio.Views.Controls.SudokuPane.SelectedCell"/>.
@@ -13935,6 +13957,12 @@
             <remarks><i>
             This method returns <see langword="void"/> on purpose because we do not want to make the method wait-able by user.
             </i></remarks>
+        </member>
+        <member name="M:SudokuStudio.Views.Controls.SudokuPaneCell.SetRotating(Microsoft.UI.Xaml.Thickness[])">
+            <summary>
+            Try to set rotating.
+            </summary>
+            <param name="thicknesses">An array of rotating margin values.</param>
         </member>
         <member name="M:SudokuStudio.Views.Controls.SudokuPaneCell.InitializeAnimationFeedbackIfWorth">
             <summary>

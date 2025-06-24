@@ -378,6 +378,12 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 	public partial EliminationDisplay EliminationDisplayMode { get; set; }
 
 	/// <summary>
+	/// Indicates the rotating mode of candidates.
+	/// </summary>
+	[DependencyProperty(DefaultValue = GridCandidateRotating.None)]
+	public partial GridCandidateRotating CandidateRotating { get; set; }
+
+	/// <summary>
 	/// Indicates the currently selected cell.
 	/// </summary>
 	[DependencyProperty]
@@ -1145,6 +1151,26 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 
 			t.Text = CoordinateLabelConversion.ToCoordinateLabelText(value, i % 9, i < 18);
 			i++;
+		}
+	}
+
+	[Callback]
+	private static void CandidateRotatingPropertyCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+	{
+		if (d is not SudokuPane pane || e.NewValue is not GridCandidateRotating rotating)
+		{
+			return;
+		}
+
+		var rotatingArray = rotating switch
+		{
+			GridCandidateRotating.None => [new(), new(), new(), new(), new(), new(), new(), new(), new()],
+			GridCandidateRotating.XSudoRotating => App.RotatedMarginTable,
+			_ => throw new InvalidOperationException()
+		};
+		for (var cell = 0; cell < 81; cell++)
+		{
+			pane._children[cell].SetRotating(rotatingArray);
 		}
 	}
 
