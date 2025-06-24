@@ -79,6 +79,11 @@
             Indicates the configured application theme.
             </summary>
         </member>
+        <member name="P:SudokuStudio.App.CandidateRotatingMargin">
+            <summary>
+            Indicates the candidate rotating margin.
+            </summary>
+        </member>
         <member name="P:SudokuStudio.App.Converter">
             <summary>
             Indicates the internal converter object.

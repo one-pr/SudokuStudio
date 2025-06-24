@@ -84,6 +84,21 @@ public partial class App : Application
 		};
 
 	/// <summary>
+	/// Indicates the candidate rotating margin.
+	/// </summary>
+	internal static Thickness[] CandidateRotatingMargin => [
+		new(-5, 5, 0, 0),
+		new(-5, 0, 0, 0),
+		new(-5, -5, 0, 0),
+		new(0, 5, 0, 0),
+		new(0, 0, 0, 0),
+		new(0, -5, 0, 0),
+		new(5, 5, 0, 0),
+		new(5, 0, 0, 0),
+		new(5, -5, 0, 0)
+	];
+
+	/// <summary>
 	/// Indicates the internal converter object.
 	/// </summary>
 	internal static CoordinateConverter Converter { get; private set; } = null!;
