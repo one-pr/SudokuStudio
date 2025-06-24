@@ -1,3 +1,6 @@
+#pragma warning disable IDE0079
+#pragma warning disable CA1806
+
 namespace SudokuStudio;
 
 /// <summary>
@@ -15,11 +18,11 @@ file static class Program
 		checkProcessRequirements();
 		ComWrappersSupport.InitializeComWrappers();
 		Application.Start(
-			static __ =>
+			static _ =>
 			{
 				var context = new dispatching::DispatcherQueueSynchronizationContext(dispatching::DispatcherQueue.GetForCurrentThread());
 				SynchronizationContext.SetSynchronizationContext(context);
-				_ = new App();
+				new App();
 			}
 		);
 
