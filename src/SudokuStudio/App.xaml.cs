@@ -90,17 +90,7 @@ public partial class App : Application
 	/// <summary>
 	/// Represents rotated candidate-based controls table.
 	/// </summary>
-	public static Vector3[] RotatedCandidateBasedControlTable => [
-		new(-5,  5, 0),
-		new(-5,  0, 0),
-		new(-5, -5, 0),
-		new( 0,  5, 0),
-		new( 0,  0, 0),
-		new( 0, -5, 0),
-		new( 4,  5, 0),
-		new( 4,  0, 0),
-		new( 4, -6, 0)
-	];
+	public static Vector3[] RotatedCandidateBasedControlTable => RotatedMarginTable;
 
 	/// <summary>
 	/// Indicates the configured application theme.
