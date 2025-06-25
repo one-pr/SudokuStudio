@@ -5,26 +5,30 @@ namespace Sudoku.Ranking;
 /// </summary>
 /// <param name="candidates"><inheritdoc cref="Candidates" path="/summary"/></param>
 /// <seealso cref="Space"/>
-[TypeImpl(TypeImplFlags.Object_GetHashCode | TypeImplFlags.Equatable | TypeImplFlags.EqualityOperators)]
-public readonly ref partial struct VirtualSpace(ref readonly CandidateMap candidates) : IEquatable<VirtualSpace>
+[TypeImpl(
+	TypeImplFlags.Object_Equals | TypeImplFlags.Object_GetHashCode | TypeImplFlags.Equatable
+		| TypeImplFlags.AllEqualityComparisonOperators,
+	IsLargeStructure = true)]
+public readonly partial struct VirtualSpace(in CandidateMap candidates) :
+	IComparable<VirtualSpace>,
+	IComparisonOperators<VirtualSpace, VirtualSpace, bool>,
+	IEquatable<VirtualSpace>,
+	IEqualityOperators<VirtualSpace, VirtualSpace, bool>
 {
 	/// <summary>
 	/// Indicates the backing field of candidates.
 	/// </summary>
 	[HashCodeMember]
 	[EquatableMember]
-	private readonly ref readonly CandidateMap _candidates = ref candidates;
+	private readonly CandidateMap _candidates = candidates;
 
 
 	/// <summary>
 	/// Indicates the candidates.
 	/// </summary>
+	[UnscopedRef]
 	public ref readonly CandidateMap Candidates => ref _candidates;
 
-
-	/// <inheritdoc/>
-	[Obsolete($"This method always return false. Ref structs cannot be boxed so argument '{nameof(obj)}' must be a different instance.", false)]
-	public override bool Equals([NotNullWhen(true)] object? obj) => false;
 
 	/// <summary>
 	/// Determine whether the specified assignment combination can satisfy the current rank set.
@@ -35,6 +39,12 @@ public readonly ref partial struct VirtualSpace(ref readonly CandidateMap candid
 	public bool IsSatisfied(in CandidateMap assignments, bool isTruth)
 		=> (assignments & Candidates).Count is var count && (isTruth ? count == 1 : count <= 1);
 
+	/// <inheritdoc cref="IComparable{T}.CompareTo(T)"/>
+	public int CompareTo(in VirtualSpace other) => _candidates.CompareTo(other._candidates);
+
 	/// <inheritdoc/>
 	public override string ToString() => $$"""{{nameof(VirtualSpace)}} {{{_candidates}}}""";
+
+	/// <inheritdoc/>
+	int IComparable<VirtualSpace>.CompareTo(VirtualSpace other) => CompareTo(other);
 }

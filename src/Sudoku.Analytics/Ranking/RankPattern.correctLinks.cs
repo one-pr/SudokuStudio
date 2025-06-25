@@ -10,7 +10,7 @@ public partial struct RankPattern
 	/// </summary>
 	/// <returns>The spaces that represent links.</returns>
 	/// <remarks>
-	/// <include file="../../../../global-doc-comments.xml" path="/g/developer-notes"/>
+	/// <include file="../../../global-doc-comments.xml" path="/g/developer-notes"/>
 	/// <para>
 	/// Because the algorithm design differs from that of the XSudo software,
 	/// we need special handling to support this feature.

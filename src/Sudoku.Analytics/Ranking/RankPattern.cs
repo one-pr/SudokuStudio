@@ -19,16 +19,20 @@ namespace Sudoku.Ranking;
 /// We should append an extra check on "both true" to candidates in a same link if we want to trim links.
 /// </para>
 /// </remarks>
-public readonly ref partial struct RankPattern(ref readonly Grid grid, ref readonly SpaceSet truths, ref readonly SpaceSet links)
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.Equatable | TypeImplFlags.EqualityOperators, IsLargeStructure = true)]
+public readonly ref partial struct RankPattern(ref readonly Grid grid, ref readonly SpaceSet truths, ref readonly SpaceSet links) :
+	IEquatable<RankPattern>
 {
 	/// <summary>
 	/// Indicates the grid.
 	/// </summary>
+	[EquatableMember]
 	public readonly ref readonly Grid Grid = ref grid;
 
 	/// <summary>
 	/// Indicates the truths.
 	/// </summary>
+	[EquatableMember]
 	public readonly ref readonly SpaceSet Truths = ref truths;
 
 	/// <summary>
@@ -37,12 +41,20 @@ public readonly ref partial struct RankPattern(ref readonly Grid grid, ref reado
 	/// <remarks>
 	/// By design, this value can be empty if you want to infer this value.
 	/// </remarks>
+	[EquatableMember]
 	public readonly ref readonly SpaceSet Links = ref links;
 
 	/// <summary>
 	/// Represents all candidates used in this pattern.
 	/// </summary>
 	private readonly CandidateMap _candidates = BuildCandidates(in grid, in truths, in links);
+
+
+	/// <summary>
+	/// [Not supported] Provides parameterless constructor of this type.
+	/// </summary>
+	[Obsolete("Do not use parameterless constructor. If you want to create a default value, use 'default' literal instead.", true)]
+	public RankPattern() : this(in Grid.nullref, in SpaceSet.nullref, in SpaceSet.nullref) => throw new NotSupportedException();
 
 
 	/// <summary>
@@ -55,6 +67,44 @@ public readonly ref partial struct RankPattern(ref readonly Grid grid, ref reado
 	/// </summary>
 	[UnscopedRef]
 	public ref readonly CandidateMap Candidates => ref _candidates;
+
+	/// <summary>
+	/// Indicates virtual truths.
+	/// </summary>
+	[EquatableMember]
+	public ReadOnlySpan<VirtualSpace> VirtualTruths
+	{
+		get;
+
+		init
+		{
+			var sortedSet = new SortedSet<VirtualSpace>();
+			foreach (var truth in value)
+			{
+				sortedSet.Add(truth);
+			}
+			field = sortedSet.ToArray();
+		}
+	}
+
+	/// <summary>
+	/// Indicates virtual links.
+	/// </summary>
+	[EquatableMember]
+	public ReadOnlySpan<VirtualSpace> VirtualLinks
+	{
+		get;
+
+		init
+		{
+			var sortedSet = new SortedSet<VirtualSpace>();
+			foreach (var truth in value)
+			{
+				sortedSet.Add(truth);
+			}
+			field = sortedSet.ToArray();
+		}
+	}
 
 
 	/// <summary>
