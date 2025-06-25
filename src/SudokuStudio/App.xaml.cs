@@ -94,9 +94,9 @@ public partial class App : Application
 		new(-5,  5, 0, 0),
 		new(-5,  0, 0, 0),
 		new(-5, -5, 0, 0),
-		new( 0,  6, 0, 0),
+		new( 0,  5, 0, 0),
 		new( 0,  0, 0, 0),
-		new( 0, -6, 0, 0),
+		new( 0, -5, 0, 0),
 		new( 4,  5, 0, 0),
 		new( 4,  0, 0, 0),
 		new( 4, -6, 0, 0)

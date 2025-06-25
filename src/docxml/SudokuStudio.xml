@@ -3473,14 +3473,20 @@
             <param name="polygon">The polygon points to be checked.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
         </member>
-        <member name="M:SudokuStudio.Drawing.ConvexHullHelper.BuildClosedPath(Windows.Foundation.Point[],System.Double,System.Double)">
+        <member name="M:SudokuStudio.Drawing.ConvexHullHelper.BuildClosedPath(Windows.Foundation.Point[],System.Double,System.Double,System.Boolean)">
             <summary>
             Try to build a <see cref="T:Microsoft.UI.Xaml.Media.PathGeometry"/> instance that makes a closed path of polygon.
             </summary>
             <param name="centers">The center points.</param>
             <param name="radius">The radius of each vertex.</param>
             <param name="ow">The offset.</param>
+            <param name="shouldRotate">
+            Indicates whether the points should rotate to obey rules on <see cref="P:SudokuStudio.Views.Controls.SudokuPane.CandidateRotating"/>
+            with <see cref="F:SudokuStudio.Interaction.GridCandidateRotating.XSudoRotating"/> mode.
+            </param>
             <returns>The instance.</returns>
+            <seealso cref="P:SudokuStudio.Views.Controls.SudokuPane.CandidateRotating"/>
+            <seealso cref="F:SudokuStudio.Interaction.GridCandidateRotating.XSudoRotating"/>
         </member>
         <member name="M:SudokuStudio.Drawing.ConvexHullHelper.GetOuterTangentPoints(Windows.Foundation.Point[],System.Double)">
             <summary>
