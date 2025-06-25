@@ -7716,6 +7716,18 @@
             <param name="grid">The grid.</param>
             <returns>The candidates.</returns>
         </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.Space.TryParse(System.String,Sudoku.Concepts.Supersymmetry.Space@)">
+            <inheritdoc cref="M:System.IParsable`1.TryParse(System.String,System.IFormatProvider,`0@)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.Space.TryParse(System.ReadOnlySpan{System.Char},Sudoku.Concepts.Supersymmetry.Space@)">
+            <inheritdoc cref="M:System.ISpanParsable`1.TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,`0@)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.Space.Parse(System.String)">
+            <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.Space.Parse(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.ISpanParsable`1.Parse(System.ReadOnlySpan{System.Char},System.IFormatProvider)"/>
+        </member>
         <member name="M:Sudoku.Concepts.Supersymmetry.Space.RowDigit(System.Int32,System.Int32)">
             <summary>
             Creates a <see cref="T:Sudoku.Concepts.Supersymmetry.Space"/> for row-digit space.
@@ -7751,6 +7763,18 @@
             <param name="column">Indicates the column index.</param>
             <returns>The <see cref="T:Sudoku.Concepts.Supersymmetry.Space"/> instance created.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when argument is greater than 9.</exception>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.Space.System#IParsable{Sudoku#Concepts#Supersymmetry#Space}#TryParse(System.String,System.IFormatProvider,Sudoku.Concepts.Supersymmetry.Space@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.Space.System#ISpanParsable{Sudoku#Concepts#Supersymmetry#Space}#TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,Sudoku.Concepts.Supersymmetry.Space@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.Space.System#IParsable{Sudoku#Concepts#Supersymmetry#Space}#Parse(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.Space.System#ISpanParsable{Sudoku#Concepts#Supersymmetry#Space}#Parse(System.ReadOnlySpan{System.Char},System.IFormatProvider)">
+            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Concepts.Supersymmetry.Space.Equals(System.Object)">
             <inheritdoc cref="M:System.Object.Equals(System.Object)"/>

@@ -10,7 +10,9 @@ public readonly partial struct Space(Mask mask) :
 	IComparable<Space>,
 	IComparisonOperators<Space, Space, bool>,
 	IEquatable<Space>,
-	IEqualityOperators<Space, Space, bool>
+	IEqualityOperators<Space, Space, bool>,
+	IParsable<Space>,
+	ISpanParsable<Space>
 {
 	/// <summary>
 	/// Indicates the backing mask.
@@ -195,6 +197,52 @@ public readonly partial struct Space(Mask mask) :
 	}
 
 
+	/// <inheritdoc cref="IParsable{TSelf}.TryParse(string?, IFormatProvider?, out TSelf)"/>
+	public static bool TryParse(string? s, out Space result) => TryParse((ReadOnlySpan<char>)s, out result);
+
+	/// <inheritdoc cref="ISpanParsable{TSelf}.TryParse(ReadOnlySpan{char}, IFormatProvider?, out TSelf)"/>
+	public static bool TryParse(ReadOnlySpan<char> s, out Space result)
+	{
+		try
+		{
+			if (s.IsEmpty)
+			{
+				goto ReturnFalse;
+			}
+
+			result = Parse(s);
+			return true;
+		}
+		catch (FormatException)
+		{
+		}
+
+	ReturnFalse:
+		result = default;
+		return false;
+	}
+
+	/// <inheritdoc cref="IParsable{TSelf}.Parse(string, IFormatProvider?)"/>
+	public static Space Parse(string s) => Parse((ReadOnlySpan<char>)s);
+
+	/// <inheritdoc cref="ISpanParsable{TSelf}.Parse(ReadOnlySpan{char}, IFormatProvider?)"/>
+	public static Space Parse(ReadOnlySpan<char> s)
+		=> s switch
+		{
+			[
+				var secondaryChar and >= '1' and <= '9',
+				var typeChar and ('R' or 'r' or 'C' or 'c' or 'B' or 'b' or 'N' or 'n'),
+				var primaryChar and >= '1' and <= '9'
+			] => typeChar switch
+			{
+				'N' or 'n' => RowColumn(secondaryChar - '1', primaryChar - '1'),
+				'B' or 'b' => BlockDigit(primaryChar - '1', secondaryChar - '1'),
+				'R' or 'r' => RowDigit(primaryChar - '1', secondaryChar - '1'),
+				_ => ColumnDigit(primaryChar - '1', secondaryChar - '1')
+			},
+			_ => throw new FormatException()
+		};
+
 	/// <summary>
 	/// Creates a <see cref="Space"/> for row-digit space.
 	/// </summary>
@@ -262,4 +310,17 @@ public readonly partial struct Space(Mask mask) :
 		ArgumentOutOfRangeException.ThrowIfLessThan(column, 0);
 		return new((Mask)(column | row << 4 | (int)SpaceType.RowColumn << 8));
 	}
+
+	/// <inheritdoc/>
+	static bool IParsable<Space>.TryParse(string? s, IFormatProvider? provider, out Space result) => TryParse(s, out result);
+
+	/// <inheritdoc/>
+	static bool ISpanParsable<Space>.TryParse(ReadOnlySpan<char> s, IFormatProvider? provider, out Space result)
+		=> TryParse(s, out result);
+
+	/// <inheritdoc/>
+	static Space IParsable<Space>.Parse(string s, IFormatProvider? provider) => Parse(s);
+
+	/// <inheritdoc/>
+	static Space ISpanParsable<Space>.Parse(ReadOnlySpan<char> s, IFormatProvider? provider) => Parse(s);
 }
