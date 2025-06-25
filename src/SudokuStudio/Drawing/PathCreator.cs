@@ -58,7 +58,7 @@ internal sealed class PathCreator(
 						if (shouldRotate)
 						{
 							var digit = s % 9;
-							var margin = App.RotatedCandidateBasedControlTable[digit];
+							var margin = App.MiscellaneousRotatedCandidateItemsTranslationVectors[digit];
 							tempPoint1 = new(tempPoint1.X + margin.X, tempPoint1.Y + margin.Y);
 						}
 
@@ -68,7 +68,7 @@ internal sealed class PathCreator(
 							if (shouldRotate)
 							{
 								var digit = e % 9;
-								var margin = App.RotatedCandidateBasedControlTable[digit];
+								var margin = App.MiscellaneousRotatedCandidateItemsTranslationVectors[digit];
 								tempPoint2 = new(tempPoint2.X + margin.X, tempPoint2.Y + margin.Y);
 							}
 

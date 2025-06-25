@@ -539,7 +539,7 @@ internal partial class DrawableFactory
 
 		var digit = candidate % 9;
 		control.Translation = rotatingMode == GridCandidateRotating.XSudoRotating
-			? App.RotatedCandidateBasedControlTable[digit]
+			? App.MiscellaneousRotatedCandidateItemsTranslationVectors[digit]
 			: new();
 
 		GridLayout.SetRow(control, digit / 3);

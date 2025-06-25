@@ -74,15 +74,23 @@
             Improved APIs for Picker/Dialog classes that implement <see cref="T:WinRT.Interop.InitializeWithWindow"/>
             </seealso>
         </member>
-        <member name="P:SudokuStudio.App.RotatedMarginTable">
+        <member name="P:SudokuStudio.App.RotatedCandidateTranslationVectors">
             <summary>
-            Represents rotated margin table.
+            Represents <see cref="T:System.Numerics.Vector3"/> collection that will be assigned to <see cref="P:Microsoft.UI.Xaml.UIElement.Translation"/> property
+            if the parent control is a sudoku pane cell control, and its parent <see cref="T:SudokuStudio.Views.Controls.SudokuPane"/> has set rotated option
+            (i.e. property <see cref="P:SudokuStudio.Views.Controls.SudokuPane.CandidateRotating"/> is <see cref="F:SudokuStudio.Interaction.GridCandidateRotating.XSudoRotating"/>).
             </summary>
+            <seealso cref="T:System.Numerics.Vector3"/>
+            <seealso cref="P:Microsoft.UI.Xaml.UIElement.Translation"/>
+            <seealso cref="P:SudokuStudio.Views.Controls.SudokuPane.CandidateRotating"/>
+            <seealso cref="F:SudokuStudio.Interaction.GridCandidateRotating.XSudoRotating"/>
         </member>
-        <member name="P:SudokuStudio.App.RotatedCandidateBasedControlTable">
+        <member name="P:SudokuStudio.App.MiscellaneousRotatedCandidateItemsTranslationVectors">
             <summary>
-            Represents rotated candidate-based controls table.
+            Represents translations on miscellaneous controls that should also adjust its offsets
+            with controls used property <see cref="P:SudokuStudio.App.RotatedCandidateTranslationVectors"/>.
             </summary>
+            <seealso cref="P:SudokuStudio.App.RotatedCandidateTranslationVectors"/>
         </member>
         <member name="P:SudokuStudio.App.CurrentTheme">
             <summary>

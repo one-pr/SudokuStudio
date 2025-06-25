@@ -392,7 +392,7 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 	/// <summary>
 	/// Indicates the rotating mode of candidates.
 	/// </summary>
-	[DependencyProperty(DefaultValue = GridCandidateRotating.XSudoRotating)]
+	[DependencyProperty(DefaultValue = GridCandidateRotating.None)]
 	public partial GridCandidateRotating CandidateRotating { get; set; }
 
 	/// <summary>
@@ -847,7 +847,7 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 
 			if (CandidateRotating == GridCandidateRotating.XSudoRotating)
 			{
-				cellControl.SetRotating(App.RotatedMarginTable);
+				cellControl.SetRotating(App.RotatedCandidateTranslationVectors);
 			}
 
 			MainGrid.Children.Add(cellControl);
@@ -1206,7 +1206,7 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 		var rotatingArray = rotating switch
 		{
 			GridCandidateRotating.None => [new(), new(), new(), new(), new(), new(), new(), new(), new()],
-			GridCandidateRotating.XSudoRotating => App.RotatedMarginTable,
+			GridCandidateRotating.XSudoRotating => App.RotatedCandidateTranslationVectors,
 			_ => throw new InvalidOperationException()
 		};
 		for (var cell = 0; cell < 81; cell++)

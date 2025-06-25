@@ -73,9 +73,15 @@ public partial class App : Application
 
 
 	/// <summary>
-	/// Represents rotated margin table.
+	/// Represents <see cref="Vector3"/> collection that will be assigned to <see cref="UIElement.Translation"/> property
+	/// if the parent control is a sudoku pane cell control, and its parent <see cref="SudokuPane"/> has set rotated option
+	/// (i.e. property <see cref="SudokuPane.CandidateRotating"/> is <see cref="GridCandidateRotating.XSudoRotating"/>).
 	/// </summary>
-	public static Vector3[] RotatedMarginTable => [
+	/// <seealso cref="Vector3"/>
+	/// <seealso cref="UIElement.Translation"/>
+	/// <seealso cref="SudokuPane.CandidateRotating"/>
+	/// <seealso cref="GridCandidateRotating.XSudoRotating"/>
+	public static Vector3[] RotatedCandidateTranslationVectors => [
 		new(-5,  5, 0),
 		new(-5,  0, 0),
 		new(-5, -5, 0),
@@ -88,9 +94,11 @@ public partial class App : Application
 	];
 
 	/// <summary>
-	/// Represents rotated candidate-based controls table.
+	/// Represents translations on miscellaneous controls that should also adjust its offsets
+	/// with controls used property <see cref="RotatedCandidateTranslationVectors"/>.
 	/// </summary>
-	public static Vector3[] RotatedCandidateBasedControlTable => RotatedMarginTable;
+	/// <seealso cref="RotatedCandidateTranslationVectors"/>
+	public static Vector3[] MiscellaneousRotatedCandidateItemsTranslationVectors => RotatedCandidateTranslationVectors;
 
 	/// <summary>
 	/// Indicates the configured application theme.

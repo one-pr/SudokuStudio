@@ -32,7 +32,7 @@ internal sealed class GroupedNodeCreator(SudokuPane pane, SudokuPanePositionConv
 							[
 								..
 								from candidate in node
-								let offset = shouldRotate ? App.RotatedCandidateBasedControlTable[candidate % 9] : default
+								let offset = shouldRotate ? App.MiscellaneousRotatedCandidateItemsTranslationVectors[candidate % 9] : default
 								let original = Converter.GetPosition(candidate)
 								select new Point(original.X + offset.X, original.Y + offset.Y)
 							],
