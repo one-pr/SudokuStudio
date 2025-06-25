@@ -37,8 +37,7 @@ internal sealed class GroupedNodeCreator(SudokuPane pane, SudokuPanePositionConv
 								select new Point(original.X + offset.Left / 2, original.Y + offset.Top / 2)
 							],
 							Converter.CandidateSize.Width / 2,
-							ow,
-							shouldRotate
+							ow
 						),
 						Stroke = stroke,
 						StrokeThickness = 1.5,
@@ -92,14 +91,10 @@ file sealed class ConvexHullHelper
 	/// <param name="centers">The center points.</param>
 	/// <param name="radius">The radius of each vertex.</param>
 	/// <param name="ow">The offset.</param>
-	/// <param name="shouldRotate">
-	/// Indicates whether the points should rotate to obey rules on <see cref="SudokuPane.CandidateRotating"/>
-	/// with <see cref="GridCandidateRotating.XSudoRotating"/> mode.
-	/// </param>
 	/// <returns>The instance.</returns>
 	/// <seealso cref="SudokuPane.CandidateRotating"/>
 	/// <seealso cref="GridCandidateRotating.XSudoRotating"/>
-	public static PathGeometry BuildClosedPath(Point[] centers, double radius, double ow, bool shouldRotate)
+	public static PathGeometry BuildClosedPath(Point[] centers, double radius, double ow)
 	{
 		var convexHull = GetConvexHull(centers);
 		var isClockwise = IsClockwise(convexHull);
