@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Ranking.Queuing;
+namespace Sudoku.Ranking.Queuing;
 
 /// <summary>
 /// Represents a queue node that is used in calculating assignment combinations.

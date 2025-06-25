@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Ranking;
+namespace Sudoku.Ranking;
 
 /// <summary>
 /// Represents an object that can calculate rank-related information via the specified grid, truths and links.

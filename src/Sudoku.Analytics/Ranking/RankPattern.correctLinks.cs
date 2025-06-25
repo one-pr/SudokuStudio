@@ -1,6 +1,6 @@
 #undef SKIP_ZERO_RANK_FULL_REDUNDANCY_CHECK
 
-namespace Sudoku.Analytics.Ranking;
+namespace Sudoku.Ranking;
 
 public partial struct RankPattern
 {
