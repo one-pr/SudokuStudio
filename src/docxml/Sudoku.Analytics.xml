@@ -28786,6 +28786,56 @@
         <member name="M:Sudoku.Ranking.RankPattern.op_Inequality(Sudoku.Ranking.RankPattern,Sudoku.Ranking.RankPattern)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
         </member>
+        <member name="T:Sudoku.Ranking.VirtualSpace">
+            <summary>
+            Represents a virtual set (truth or link) that cannot use a <see cref="T:Sudoku.Concepts.Supersymmetry.Space"/> to include candidates.
+            </summary>
+            <param name="candidates"><inheritdoc cref="P:Sudoku.Ranking.VirtualSpace.Candidates" path="/summary"/></param>
+            <seealso cref="T:Sudoku.Concepts.Supersymmetry.Space"/>
+        </member>
+        <member name="M:Sudoku.Ranking.VirtualSpace.#ctor(Sudoku.Concepts.CandidateMap@)">
+            <summary>
+            Represents a virtual set (truth or link) that cannot use a <see cref="T:Sudoku.Concepts.Supersymmetry.Space"/> to include candidates.
+            </summary>
+            <param name="candidates"><inheritdoc cref="P:Sudoku.Ranking.VirtualSpace.Candidates" path="/summary"/></param>
+            <seealso cref="T:Sudoku.Concepts.Supersymmetry.Space"/>
+        </member>
+        <member name="F:Sudoku.Ranking.VirtualSpace._candidates">
+            <summary>
+            Indicates the backing field of candidates.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Ranking.VirtualSpace.Candidates">
+            <summary>
+            Indicates the candidates.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Ranking.VirtualSpace.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Ranking.VirtualSpace.IsSatisfied(Sudoku.Concepts.CandidateMap@,System.Boolean)">
+            <summary>
+            Determine whether the specified assignment combination can satisfy the current rank set.
+            </summary>
+            <param name="assignments">The assignments.</param>
+            <param name="isTruth">Indicates whether the space is used as a truth.</param>
+            <returns>A <see cref="T:System.Boolean"/> result.</returns>
+        </member>
+        <member name="M:Sudoku.Ranking.VirtualSpace.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Ranking.VirtualSpace.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:Sudoku.Ranking.VirtualSpace.op_Equality(Sudoku.Ranking.VirtualSpace,Sudoku.Ranking.VirtualSpace)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Ranking.VirtualSpace.op_Inequality(Sudoku.Ranking.VirtualSpace,Sudoku.Ranking.VirtualSpace)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Ranking.VirtualSpace.Equals(Sudoku.Ranking.VirtualSpace)">
+            <inheritdoc/>
+        </member>
         <member name="T:Sudoku.Resources.AnalyticsResources">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
