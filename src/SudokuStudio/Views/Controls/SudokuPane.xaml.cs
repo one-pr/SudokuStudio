@@ -845,6 +845,11 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 			GridLayout.SetRow(cellControl, i / 9 + 2);
 			GridLayout.SetColumn(cellControl, i % 9 + 2);
 
+			if (CandidateRotating == GridCandidateRotating.XSudoRotating)
+			{
+				cellControl.SetRotating(App.RotatedMarginTable);
+			}
+
 			MainGrid.Children.Add(cellControl);
 			_children[i] = cellControl;
 		}
