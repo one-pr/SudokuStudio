@@ -7,7 +7,7 @@ public static class BlockCellConnection
 {
 	/// <summary>
 	/// Try to get a list of pair of cells that describes the connection segments.
-	/// This method can be used by forming a valid connection map used by rendering in XSudo like truths and links.
+	/// This method can be used by forming a valid connection segments on rendering truths and links, used by rendering in XSudo.
 	/// </summary>
 	/// <param name="cells">The cells to be traversed.</param>
 	/// <returns>A list of pairs of cells as connection segments.</returns>
