@@ -18,5 +18,10 @@ public enum LinkShape
 	/// <summary>
 	/// Indicates the link is inside a conjugate pair.
 	/// </summary>
-	ConjugatePair
+	ConjugatePair,
+
+	/// <summary>
+	/// Indicates the link is a truth or link.
+	/// </summary>
+	RankSet
 }

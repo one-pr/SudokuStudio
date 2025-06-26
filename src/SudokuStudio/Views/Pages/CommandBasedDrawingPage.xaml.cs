@@ -28,7 +28,7 @@ public sealed partial class CommandBasedDrawingPage : Page
 		{
 			"Highlights": [
 				{
-					"Pattern": "load|candidate|cell|house|chute|baba|icon|link",
+					"Pattern": "load|candidate|cell|house|chute|baba|icon|link(?:set)?|truthset",
 					"ColorDark": "#569cd6",
 					"ColorLight": "#0000ff"
 				},

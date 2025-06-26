@@ -87,6 +87,12 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 	private static readonly Color BlockTruthColorDefaultValue = Color.FromArgb(255, 172, 126, 113);
 
 	[Default]
+	private static readonly Color LineOrCellLinkColorDefaultValue = Color.FromArgb(86, 128, 128, 128);
+
+	[Default]
+	private static readonly Color BlockLinkColorDefaultValue = Color.FromArgb(86, 172, 126, 113);
+
+	[Default]
 	private static readonly DashArray StrongLinkDashStyleDefaultValue = [];
 
 	[Default]
@@ -564,6 +570,18 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 	/// </summary>
 	[DependencyProperty]
 	public partial Color BlockTruthColor { get; set; }
+
+	/// <summary>
+	/// Indicates the line or cell link color.
+	/// </summary>
+	[DependencyProperty]
+	public partial Color LineOrCellLinkColor { get; set; }
+
+	/// <summary>
+	/// Indicates the block link color.
+	/// </summary>
+	[DependencyProperty]
+	public partial Color BlockLinkColor { get; set; }
 
 	/// <summary>
 	/// Indicates the dash style of the strong links.
