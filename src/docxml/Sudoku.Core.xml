@@ -7596,6 +7596,70 @@
             Other blocks that the intersection map data does not cover. This property will be used by techniques such as Sue de Coq.
             </summary>
         </member>
+        <member name="T:Sudoku.Concepts.Supersymmetry.BlockCellConnection">
+            <summary>
+            Represents a way to find a path that connects block cells.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.BlockCellConnection.GetConnections(Sudoku.Concepts.CellMap@)">
+            <summary>
+            Try to get a list of pair of cells that describes the connection segments.
+            This method can be used by forming a valid connection map used by rendering in XSudo like truths and links.
+            </summary>
+            <param name="cells">The cells to be traversed.</param>
+            <returns>A list of pairs of cells as connection segments.</returns>
+            <exception cref="T:System.ArgumentException">Throws when the specified cells cannot be covered by only one block.</exception>
+        </member>
+        <member name="T:Sudoku.Concepts.Supersymmetry.HamiltonianPathFinder">
+            <summary>
+            Represents a Hamiltonian path finder.
+            </summary>
+            <param name="points">The points.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.HamiltonianPathFinder.#ctor(Sudoku.Concepts.CellMap@)">
+            <summary>
+            Represents a Hamiltonian path finder.
+            </summary>
+            <param name="points">The points.</param>
+        </member>
+        <member name="F:Sudoku.Concepts.Supersymmetry.HamiltonianPathFinder._originalPoints">
+            <summary>
+            Indicates the original points.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.Supersymmetry.HamiltonianPathFinder._graph">
+            <summary>
+            Indicates the graph.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.Supersymmetry.HamiltonianPathFinder._allPoints">
+            <summary>
+            Indicates all points.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.HamiltonianPathFinder.FindPath">
+            <summary>
+            Try to find a path; if none found, an empty array will be returned.
+            </summary>
+            <returns>A path with cells connected; if failed to find, an empty array will be returned.</returns>
+        </member>
+        <member name="T:Sudoku.Concepts.Supersymmetry.Extensions">
+            <target name="class" when="extension">
+				<summary>
+					Provides with file-local extension methods.
+				</summary>
+			</target>
+        </member>
+        <member name="T:Sudoku.Concepts.Supersymmetry.Extensions.">
+            <summary>
+            Provides extension members on <see cref="T:System.Int32"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.Supersymmetry.Extensions..Neighbors">
+            <summary>
+            Indicates the neighbors.
+            </summary>
+        </member>
         <member name="T:Sudoku.Concepts.Supersymmetry.Space">
             <summary>
             Represents a supersymmetric space. This type can also be used as representation for truth or link concept
