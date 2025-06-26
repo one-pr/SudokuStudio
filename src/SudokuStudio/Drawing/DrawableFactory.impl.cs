@@ -367,6 +367,9 @@ internal partial class DrawableFactory
 			(node.Space.IsCellRelated ? cellRankSets : houseRankSets).Add(node);
 		}
 
+		// TODO: Update logic to draw bound candidates. Do not use plain candidate drawing rule
+		// because it should be colorized as another color.
+
 		// Cell rank sets.
 		foreach (var cellRankSet in cellRankSets)
 		{
