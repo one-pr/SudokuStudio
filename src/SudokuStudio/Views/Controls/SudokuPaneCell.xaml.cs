@@ -74,11 +74,11 @@ internal sealed partial class SudokuPaneCell : UserControl
 	/// Try to set rotating.
 	/// </summary>
 	/// <param name="thicknesses">An array of rotating margin values.</param>
-	public void SetRotating(Thickness[] thicknesses)
+	public void SetRotating(Vector3[] thicknesses)
 	{
 		for (var digit = 0; digit < 9; digit++)
 		{
-			((TextBlock)_internalDigitDisplayers[digit + 1]).Margin = thicknesses[digit];
+			((TextBlock)_internalDigitDisplayers[digit + 1]).Translation = thicknesses[digit];
 		}
 	}
 

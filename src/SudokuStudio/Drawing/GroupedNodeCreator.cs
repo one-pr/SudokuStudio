@@ -11,6 +11,8 @@ internal sealed class GroupedNodeCreator(SudokuPane pane, SudokuPanePositionConv
 	/// <inheritdoc/>
 	public override ReadOnlySpan<Path> CreateShapes(ReadOnlySpan<GroupedNodeInfo> nodes)
 	{
+		var shouldRotate = Pane.CandidateRotating == GridCandidateRotating.XSudoRotating;
+
 		// Iterate on each inference to draw the links and grouped nodes (if so).
 		var ((ow, _), _) = Converter;
 		var drawnGroupedNodes = new HashSet<CandidateMap>();
@@ -27,7 +29,13 @@ internal sealed class GroupedNodeCreator(SudokuPane pane, SudokuPanePositionConv
 					new()
 					{
 						Data = ConvexHullHelper.BuildClosedPath(
-							[.. from candidate in node select Converter.GetPosition(candidate)],
+							[
+								..
+								from candidate in node
+								let offset = shouldRotate ? App.MiscellaneousRotatedCandidateItemsTranslationVectors[candidate % 9] : default
+								let original = Converter.GetPosition(candidate)
+								select new Point(original.X + offset.X, original.Y + offset.Y)
+							],
 							Converter.CandidateSize.Width / 2,
 							ow
 						),
@@ -84,6 +92,8 @@ file sealed class ConvexHullHelper
 	/// <param name="radius">The radius of each vertex.</param>
 	/// <param name="ow">The offset.</param>
 	/// <returns>The instance.</returns>
+	/// <seealso cref="SudokuPane.CandidateRotating"/>
+	/// <seealso cref="GridCandidateRotating.XSudoRotating"/>
 	public static PathGeometry BuildClosedPath(Point[] centers, double radius, double ow)
 	{
 		var convexHull = GetConvexHull(centers);

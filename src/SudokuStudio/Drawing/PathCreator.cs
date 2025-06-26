@@ -29,6 +29,8 @@ internal sealed class PathCreator(
 	/// <inheritdoc/>
 	public override ReadOnlySpan<Shape> CreateShapes(ReadOnlySpan<ILinkViewNode> nodes)
 	{
+		var shouldRotate = Pane.CandidateRotating == GridCandidateRotating.XSudoRotating;
+
 		// Iterate on each inference to draw the links and grouped nodes (if so).
 		var ((ow, oh), _) = Converter;
 		var ((cellSize, _), _, _, _) = Converter;
@@ -53,9 +55,23 @@ internal sealed class PathCreator(
 					foreach (var s in startCandidates)
 					{
 						var tempPoint1 = Converter.GetPosition(s);
+						if (shouldRotate)
+						{
+							var digit = s % 9;
+							var margin = App.MiscellaneousRotatedCandidateItemsTranslationVectors[digit];
+							tempPoint1 = new(tempPoint1.X + margin.X, tempPoint1.Y + margin.Y);
+						}
+
 						foreach (var e in endCandidates)
 						{
 							var tempPoint2 = Converter.GetPosition(e);
+							if (shouldRotate)
+							{
+								var digit = e % 9;
+								var margin = App.MiscellaneousRotatedCandidateItemsTranslationVectors[digit];
+								tempPoint2 = new(tempPoint2.X + margin.X, tempPoint2.Y + margin.Y);
+							}
+
 							var d = tempPoint1.DistanceTo(tempPoint2);
 							if (d <= distance)
 							{

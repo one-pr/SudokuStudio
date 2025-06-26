@@ -125,6 +125,8 @@ internal static partial class DrawableFactory
 					HouseViewNode h => context => ForHouseNode(context, h),
 					ChuteViewNode c => context => ForChuteNode(context, c),
 					BabaGroupViewNode b => context => ForBabaGroupNode(context, b),
+					//TruthSpaceViewNode _ => static context => { },
+					//LinkSpaceViewNode _ => static context => { },
 					ILinkViewNode l => _ => links.Add(l),
 					_ => default(Action<DrawingContext>)
 				}
