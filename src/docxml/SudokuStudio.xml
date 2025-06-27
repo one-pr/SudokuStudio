@@ -193,17 +193,20 @@
             </summary>
             <seealso cref="T:SudokuStudio.App"/>
         </member>
-        <member name="T:SudokuStudio.AppCastExtensions.">
+        <member name="T:SudokuStudio.AppCastExtensions.<>E__0">
             <summary>
             Provide casting method.
             </summary>
         </member>
-        <member name="M:SudokuStudio.AppCastExtensions..AsApp">
+        <member name="M:SudokuStudio.AppCastExtensions.<>E__0.AsApp">
             <summary>
             Converts the current instance into an <see cref="T:SudokuStudio.App"/> instance;
             throw <see cref="T:System.InvalidCastException"/> if the current object is not an <see cref="T:SudokuStudio.App"/> instance.
             </summary>
             <returns>The result casted.</returns>
+        </member>
+        <member name="M:SudokuStudio.AppCastExtensions.AsApp(Microsoft.UI.Xaml.Application)">
+            <inheritdoc cref="M:SudokuStudio.AppCastExtensions.<>E__0.AsApp"/>
         </member>
         <member name="T:SudokuStudio.BindableSource.AnalyzeTabPageBindableSource">
             <summary>
@@ -3199,6 +3202,12 @@
             </summary>
             <param name="pane">The pane.</param>
         </member>
+        <member name="M:SudokuStudio.Drawing.DrawableFactory.IterateViewUnitControls(SudokuStudio.Views.Controls.SudokuPane)">
+            <summary>
+            Finds for all possible <see cref="T:Microsoft.UI.Xaml.FrameworkElement"/> instances that bind with view nodes.
+            </summary>
+            <param name="pane">The pane.</param>
+        </member>
         <member name="M:SudokuStudio.Drawing.DrawableFactory.ForConclusion(SudokuStudio.Drawing.DrawingContext,Sudoku.Concepts.Conclusion,System.Collections.Generic.List{Sudoku.Concepts.Conclusion})">
             <summary>
             Create <see cref="T:Microsoft.UI.Xaml.FrameworkElement"/>s that displays for conclusions.
@@ -4883,16 +4892,19 @@
             </summary>
             <seealso cref="T:SudokuStudio.Interaction.SudokuFormatFlags"/>
         </member>
-        <member name="T:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.">
+        <member name="T:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.<>E__0">
             <summary>
             Provides extension members on <see cref="T:SudokuStudio.Interaction.SudokuFormatFlags"/>.
             </summary>
         </member>
-        <member name="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions..Converter">
+        <member name="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.<>E__0.Converter">
             <summary>
             Try to get target <see cref="T:Sudoku.Concepts.Coordinates.Formatting.GridFormatInfo`1"/> instance of type <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is not defined.</exception>
+        </member>
+        <member name="M:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.get_Converter(SudokuStudio.Interaction.SudokuFormatFlags)">
+            <inheritdoc cref="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.<>E__0.Converter"/>
         </member>
         <member name="T:SudokuStudio.Interaction.SudokuPaneMouseWheelChangedEventArgs">
             <summary>

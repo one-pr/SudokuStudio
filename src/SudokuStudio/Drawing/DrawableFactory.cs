@@ -111,7 +111,10 @@ internal static partial class DrawableFactory
 		}
 
 		// Add rotating support.
-		pane.CandidateRotating = view.OfType<RankSetViewNode>().IsEmpty ? GridCandidateRotating.None : GridCandidateRotating.XSudoRotating;
+		pane.CandidateRotating = IterateViewUnitControls(pane).Any(static control => control.Tag is RankSetViewNode)
+			|| !view.OfType<RankSetViewNode>().IsEmpty
+			? GridCandidateRotating.XSudoRotating
+			: GridCandidateRotating.None;
 
 		// Iterate on each view node, and get their own corresponding controls.
 		var (controlAddingActions, overlapped, links) = (new AnimatedResultCollection(), new List<Conclusion>(), new List<ILinkViewNode>());
@@ -171,6 +174,21 @@ internal static partial class DrawableFactory
 		=>
 		from targetControl in (from children in pane._children select children.MainGrid).Append(pane.MainGrid)
 		select targetControl.Children;
+
+	/// <summary>
+	/// Finds for all possible <see cref="FrameworkElement"/> instances that bind with view nodes.
+	/// </summary>
+	/// <param name="pane">The pane.</param>
+	private static IEnumerable<FrameworkElement> IterateViewUnitControls(SudokuPane pane)
+	{
+		foreach (var child in IterateControls(pane))
+		{
+			foreach (var control in child.FindDrawableControls())
+			{
+				yield return control;
+			}
+		}
+	}
 
 
 	private static partial void ForConclusion(DrawingContext context, Conclusion conclusion, List<Conclusion> overlapped);
