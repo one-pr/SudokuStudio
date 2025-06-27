@@ -139,6 +139,25 @@ For example, `link !n chain r1c1(1) r1c2(1) =` will create a strong link between
 
 In addition, grouped nodes are also supported.
 
+### Rank sets
+
+{% hint style="info" %}
+This feature begins with version 3.4.3.
+{% endhint %}
+
+Rank set rule allows you using keywords `truthset` or `linkset` to describe a rank set, in order to render rank sets that are just like program XSudo.
+
+```
+truthset <color-identifier> <sets>
+linkset <color-identifier> <sets>
+```
+
+For example, `truthset !n 14r1 7r6 8r156 8n3 4b4` means you will add 8 truths `14r1 7r6 8r156 8n3 4b4`.
+
+{% hint style="warning" %}
+Please note that color identifiers are not supported to be changed here, but expected a valid identiifer here as a placeholder by design. Colors can be changed via preference page, but it is not implemented now.
+{% endhint %}
+
 ## Coordinate syntax
 
 For the coordinates mentioned above, you should use one of RxCy, K9, Excel notation defined in settings page:

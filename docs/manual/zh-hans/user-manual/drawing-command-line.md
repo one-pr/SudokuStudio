@@ -137,6 +137,25 @@ link <color-identifier> <link-shape> <start-candidates> <end-candidates> [<extra
 
 另外，链的记号会用到 `=` 来表示强链，`-` 来表示弱链。比如说 `link !n chain r1c1(1) r1c2(1) =` 表示在 `r1c1(1)` 和 `r1c2(1)` 之间有一个强链。另外，这个语法还支持区块节点，如 `r1c123(1)` 这种组合候选数的情况。
 
+### 秩区域
+
+{% hint style="info" %}
+这个特性从版本 3.4.3 开始存在。
+{% endhint %}
+
+秩区域允许你使用关键字 `truthset` 或 `linkset` 去表示一个秩区域，用于渲染和 XSudo 软件一样的强区域和弱区域的表示。
+
+```
+truthset <color-identifier> <sets>
+linkset <color-identifier> <sets>
+```
+
+比如说，`truthset !n 14r1 7r6 8r156 8n3 4b4` 表示的是你会往图里添加 8 个强区域 `14r1 7r6 8r156 8n3 4b4`。
+
+{% hint style="warning" %}
+但是请注意，颜色标识符在这里只会起到解析占位用，是不支持修改的（写啥都一样的颜色）。颜色配置是在设置页里修改的，但这里为了兼容解析器的功能，所以必须有任意一个合理的颜色标识符放在这里占位。设置页暂时尚未支持，以后可能会支持。
+{% endhint %}
+
 ## 坐标语法 <a href="#coordinate-syntax" id="coordinate-syntax"></a>
 
 对于上述提及的坐标，你需要使用要么 RxCy 表示、要么 K9 表示，要么 Excel 表示的方式来呈现他们。具体哪一个取决于你在设置页里配置的那个。
