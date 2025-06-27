@@ -141,7 +141,7 @@ public sealed class DeadlyPatternInferrer : IInferrable<DeadlyPatternInferredRes
 
 			var rankPattern = new RankPattern(in grid, in truths);
 			var combinations = rankPattern.GetAssignmentCombinations();
-			if (combinations.Length >= 10000)
+			if (combinations.Length > 10000)
 			{
 				throw new DeadlyPatternInferrerLimitReachedException();
 			}
