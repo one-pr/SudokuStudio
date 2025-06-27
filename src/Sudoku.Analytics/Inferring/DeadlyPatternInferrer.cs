@@ -7,14 +7,16 @@ namespace Sudoku.Inferring;
 /// <seealso cref="Grid"/>
 public sealed class DeadlyPatternInferrer : IInferrable<DeadlyPatternInferredResult>
 {
-	/// <inheritdoc/>
-	/// <exception cref="DeadlyPatternInferrerLimitReachedException">
-	/// Throws when the pattern contains more than 10000 solutions.
-	/// </exception>
+	/// <inheritdoc cref="TryInfer(in Grid, ref readonly CellMap, out DeadlyPatternInferredResult)"/>
 	public static bool TryInfer(in Grid grid, out DeadlyPatternInferredResult result)
 		=> TryInfer(grid, in CellMap.nullref, out result);
 
-	/// <inheritdoc cref="TryInfer(in Grid, out DeadlyPatternInferredResult)"/>
+	/// <summary>
+	/// Try to analyze whether a grid is a deadly pattern, by only checking the specified cells.
+	/// </summary>
+	/// <param name="grid">Indicates the grid. It's required that only specified cells are assigned with candidates.</param>
+	/// <param name="cells">Indicates the cells to be checked.</param>
+	/// <param name="result">The result after the analysis operation is finished.</param>
 	/// <exception cref="DeadlyPatternInferrerLimitReachedException">
 	/// Throws when the pattern contains more than 10000 solutions.
 	/// </exception>
@@ -71,22 +73,20 @@ public sealed class DeadlyPatternInferrer : IInferrable<DeadlyPatternInferredRes
 		}
 
 		// Step 1: Get all solutions for that pattern.
-		var playground = grid;
-		var solutions = new List<Grid>();
-		dfs(ref playground, cellsUsed, solutions, 0);
-		if (solutions.Count == 0)
+		var solutions = getCombinations(grid, cellsUsed);
+		if (solutions.Length == 0)
 		{
 			goto FastFail;
 		}
 
 		var failedCases = new List<Grid>();
-		foreach (ref readonly var solution in solutions.AsSpan())
+		foreach (ref readonly var solution in solutions)
 		{
 			// Step 2: Iterate on all the other solutions,
 			// and find whether each solution contains at least one possible corresponding solution
 			// whose digits used in *all* houses are completely same.
 			var tempSolutions = new List<Grid>();
-			foreach (ref readonly var tempGrid in solutions.AsSpan()[..])
+			foreach (ref readonly var tempGrid in solutions[..])
 			{
 				if (tempGrid == solution)
 				{
@@ -129,36 +129,34 @@ public sealed class DeadlyPatternInferrer : IInferrable<DeadlyPatternInferredRes
 		return true;
 
 
-		static void dfs(ref Grid grid, in CellMap cellsRange, List<Grid> solutions, Cell currentCell)
+		static ReadOnlySpan<Grid> getCombinations(in Grid grid, in CellMap cellsUsed)
 		{
-			if (currentCell == 81)
-			{
-				if (solutions.Count >= 9999)
-				{
-					throw new DeadlyPatternInferrerLimitReachedException();
-				}
+			var result = new List<Grid>();
 
-				solutions.AddRef(grid);
-				return;
+			var truths = SpaceSet.Empty;
+			foreach (var cell in cellsUsed)
+			{
+				truths.Add(Space.RowColumn(cell / 9, cell % 9));
 			}
 
-			if (!cellsRange.Contains(currentCell))
+			var rankPattern = new RankPattern(in grid, in truths);
+			var combinations = rankPattern.GetAssignmentCombinations();
+			if (combinations.Length >= 10000)
 			{
-				dfs(ref grid, cellsRange, solutions, currentCell + 1);
+				throw new DeadlyPatternInferrerLimitReachedException();
 			}
-			else
+
+			foreach (var combination in combinations)
 			{
-				var (r, c, digits) = (currentCell / 9, currentCell % 9, grid.GetCandidates(currentCell));
-				foreach (var digit in digits)
+				var emptyGrid = Grid.Empty;
+				foreach (var candidate in combination)
 				{
-					grid[currentCell] = (Mask)(Grid.ModifiableMask | 1 << digit);
-					if (BacktrackingSolver.IsValid(grid, r, c))
-					{
-						dfs(ref grid, cellsRange, solutions, currentCell + 1);
-					}
+					emptyGrid[candidate / 9] = (Mask)(Grid.ModifiableMask | 1 << candidate % 9);
 				}
-				grid[currentCell] = (Mask)(Grid.EmptyMask | digits);
+				result.AddRef(emptyGrid);
 			}
+
+			return result.AsSpan();
 		}
 	}
 }

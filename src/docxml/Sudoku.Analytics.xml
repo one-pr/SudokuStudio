@@ -27916,13 +27916,15 @@
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
         <member name="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.DeadlyPatternInferredResult@)">
-            <inheritdoc/>
-            <exception cref="T:Sudoku.Inferring.DeadlyPatternInferrerLimitReachedException">
-            Throws when the pattern contains more than 10000 solutions.
-            </exception>
+            <inheritdoc cref="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Inferring.DeadlyPatternInferredResult@)"/>
         </member>
         <member name="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Inferring.DeadlyPatternInferredResult@)">
-            <inheritdoc cref="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.DeadlyPatternInferredResult@)"/>
+            <summary>
+            Try to analyze whether a grid is a deadly pattern, by only checking the specified cells.
+            </summary>
+            <param name="grid">Indicates the grid. It's required that only specified cells are assigned with candidates.</param>
+            <param name="cells">Indicates the cells to be checked.</param>
+            <param name="result">The result after the analysis operation is finished.</param>
             <exception cref="T:Sudoku.Inferring.DeadlyPatternInferrerLimitReachedException">
             Throws when the pattern contains more than 10000 solutions.
             </exception>
@@ -28650,6 +28652,13 @@
             <summary>
             [Not supported] Provides parameterless constructor of this type.
             </summary>
+        </member>
+        <member name="M:Sudoku.Ranking.RankPattern.#ctor(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Ranking.RankPattern"/> instance via the grid and truths.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="truths">The truths.</param>
         </member>
         <member name="P:Sudoku.Ranking.RankPattern.Cells">
             <summary>

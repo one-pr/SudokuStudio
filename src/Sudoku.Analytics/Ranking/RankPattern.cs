@@ -56,6 +56,15 @@ public readonly ref partial struct RankPattern(ref readonly Grid grid, ref reado
 	[Obsolete("Do not use parameterless constructor. If you want to create a default value, use 'default' literal instead.", true)]
 	public RankPattern() : this(in Grid.nullref, in SpaceSet.nullref, in SpaceSet.nullref) => throw new NotSupportedException();
 
+	/// <summary>
+	/// Initializes a <see cref="RankPattern"/> instance via the grid and truths.
+	/// </summary>
+	/// <param name="grid">The grid.</param>
+	/// <param name="truths">The truths.</param>
+	public RankPattern(ref readonly Grid grid, ref readonly SpaceSet truths) : this(in grid, in truths, in SpaceSet.Empty)
+	{
+	}
+
 
 	/// <summary>
 	/// Indicates all cells used.
