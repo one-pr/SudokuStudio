@@ -49,5 +49,5 @@ public sealed partial class ColorColorIdentifier(byte alpha, byte red, byte gree
 
 	/// <inheritdoc/>
 	public override bool Equals([NotNullWhen(true)] ColorIdentifier? other)
-		=> other is ColorColorIdentifier comparer && GetHashCode() == comparer.GetHashCode();
+		=> other is ColorColorIdentifier comparer && HashCode == comparer.HashCode;
 }

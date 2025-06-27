@@ -3281,9 +3281,16 @@
             This method is special: We should handle all <see cref="T:Sudoku.Drawing.Nodes.ILinkViewNode"/> instances together.
             </remarks>
         </member>
+        <member name="M:SudokuStudio.Drawing.DrawableFactory.ForRankSetNodes(SudokuStudio.Drawing.DrawingContext,System.ReadOnlySpan{Sudoku.Drawing.Nodes.RankSetViewNode})">
+            <summary>
+            Create <see cref="T:Microsoft.UI.Xaml.FrameworkElement"/>s that display for rank sets (truths and links).
+            </summary>
+            <param name="context">Indicates the drawing context.</param>
+            <param name="nodes">Indicates the nodes to be drawn.</param>
+        </member>
         <member name="M:SudokuStudio.Drawing.DrawableFactory.ForGroupedNodes(SudokuStudio.Drawing.DrawingContext,System.ReadOnlySpan{SudokuStudio.BindableSource.GroupedNodeInfo})">
             <summary>
-            Create <see cref="T:Microsoft.UI.Xaml.FrameworkElement"/>s that displays for grouped node instances.
+            Create <see cref="T:Microsoft.UI.Xaml.FrameworkElement"/>s that display for grouped node instances.
             </summary>
             <param name="context">Indicates the drawing context.</param>
             <param name="nodes">Indicates the nodes to be drawn.</param>
@@ -13079,6 +13086,21 @@
             Indicates the block truth color.
             </summary>
         </member>
+        <member name="P:SudokuStudio.Views.Controls.SudokuPane.LineOrCellLinkColor">
+            <summary>
+            Indicates the line or cell link color.
+            </summary>
+        </member>
+        <member name="P:SudokuStudio.Views.Controls.SudokuPane.BlockLinkColor">
+            <summary>
+            Indicates the block link color.
+            </summary>
+        </member>
+        <member name="P:SudokuStudio.Views.Controls.SudokuPane.RankSetBoundCandidatesColor">
+            <summary>
+            Indicates the bound candidates color on rank sets.
+            </summary>
+        </member>
         <member name="P:SudokuStudio.Views.Controls.SudokuPane.StrongLinkDashStyle">
             <summary>
             Indicates the dash style of the strong links.
@@ -13651,6 +13673,24 @@
             Defines a dependency property that binds with property <see cref="P:SudokuStudio.Views.Controls.SudokuPane.BlockTruthColor"/>.
             </summary>
             <seealso cref="P:SudokuStudio.Views.Controls.SudokuPane.BlockTruthColor"/>
+        </member>
+        <member name="F:SudokuStudio.Views.Controls.SudokuPane.LineOrCellLinkColorProperty">
+            <summary>
+            Defines a dependency property that binds with property <see cref="P:SudokuStudio.Views.Controls.SudokuPane.LineOrCellLinkColor"/>.
+            </summary>
+            <seealso cref="P:SudokuStudio.Views.Controls.SudokuPane.LineOrCellLinkColor"/>
+        </member>
+        <member name="F:SudokuStudio.Views.Controls.SudokuPane.BlockLinkColorProperty">
+            <summary>
+            Defines a dependency property that binds with property <see cref="P:SudokuStudio.Views.Controls.SudokuPane.BlockLinkColor"/>.
+            </summary>
+            <seealso cref="P:SudokuStudio.Views.Controls.SudokuPane.BlockLinkColor"/>
+        </member>
+        <member name="F:SudokuStudio.Views.Controls.SudokuPane.RankSetBoundCandidatesColorProperty">
+            <summary>
+            Defines a dependency property that binds with property <see cref="P:SudokuStudio.Views.Controls.SudokuPane.RankSetBoundCandidatesColor"/>.
+            </summary>
+            <seealso cref="P:SudokuStudio.Views.Controls.SudokuPane.RankSetBoundCandidatesColor"/>
         </member>
         <member name="F:SudokuStudio.Views.Controls.SudokuPane.StrongLinkDashStyleProperty">
             <summary>

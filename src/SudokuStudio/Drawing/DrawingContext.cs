@@ -5,7 +5,6 @@ namespace SudokuStudio.Drawing;
 /// </summary>
 /// <param name="sudokuPane"><inheritdoc cref="SudokuPane" path="/summary"/></param>
 /// <param name="controlAddingActions"><inheritdoc cref="ControlAddingActions" path="/summary"/></param>
-[TypeImpl(TypeImplFlags.AllObjectMethods)]
 internal readonly ref struct DrawingContext(SudokuPane sudokuPane, AnimatedResultCollection controlAddingActions)
 {
 	/// <summary>

@@ -110,9 +110,12 @@ internal static partial class DrawableFactory
 			return;
 		}
 
-		var (controlAddingActions, overlapped, links) = (new AnimatedResultCollection(), new List<Conclusion>(), new List<ILinkViewNode>());
+		// Add rotating support.
+		pane.CandidateRotating = view.OfType<RankSetViewNode>().IsEmpty ? GridCandidateRotating.None : GridCandidateRotating.XSudoRotating;
 
 		// Iterate on each view node, and get their own corresponding controls.
+		var (controlAddingActions, overlapped, links) = (new AnimatedResultCollection(), new List<Conclusion>(), new List<ILinkViewNode>());
+		var rankSets = new List<RankSetViewNode>();
 		var context = new DrawingContext(pane, controlAddingActions);
 		foreach (var viewNode in view)
 		{
@@ -125,8 +128,7 @@ internal static partial class DrawableFactory
 					HouseViewNode h => context => ForHouseNode(context, h),
 					ChuteViewNode c => context => ForChuteNode(context, c),
 					BabaGroupViewNode b => context => ForBabaGroupNode(context, b),
-					//TruthSpaceViewNode _ => static context => { },
-					//LinkSpaceViewNode _ => static context => { },
+					RankSetViewNode s => _ => rankSets.Add(s),
 					ILinkViewNode l => _ => links.Add(l),
 					_ => default(Action<DrawingContext>)
 				}
@@ -154,6 +156,10 @@ internal static partial class DrawableFactory
 		// We should handle it at last.
 		ForLinkNodes(context, links.AsSpan(), view.OfType<CandidateViewNode>(), conclusions);
 		ForGroupedNodes(context, groupedNodes);
+
+		// Draw rank set view nodes.
+		ForRankSetNodes(context, rankSets.AsSpan());
+
 		controlAddingActions.ForEach(static p => (p.Animating + p.Adding)());
 	}
 
@@ -175,6 +181,7 @@ internal static partial class DrawableFactory
 	private static partial void ForChuteNode(DrawingContext context, ChuteViewNode chuteNode);
 	private static partial void ForBabaGroupNode(DrawingContext context, BabaGroupViewNode babaGroupNode);
 	private static partial void ForLinkNodes(DrawingContext context, ReadOnlySpan<ILinkViewNode> linkNodes, ReadOnlySpan<CandidateViewNode> candidateNodes, ReadOnlyMemory<Conclusion> conclusions);
+	private static partial void ForRankSetNodes(DrawingContext context, ReadOnlySpan<RankSetViewNode> nodes);
 	private static partial void ForGroupedNodes(DrawingContext context, ReadOnlySpan<GroupedNodeInfo> nodes);
 }
 

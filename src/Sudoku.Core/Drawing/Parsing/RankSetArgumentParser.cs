@@ -1,9 +1,9 @@
 namespace Sudoku.Drawing.Parsing;
 
 /// <summary>
-/// Represents truth or link argument parser.
+/// Represents rank set argument parser.
 /// </summary>
-internal abstract class TruthOrLinkArgumentParser : ArgumentParser
+internal abstract class RankSetArgumentParser : ArgumentParser
 {
 	/// <summary>
 	/// Indicates whether the parser is truth-based.

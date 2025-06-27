@@ -348,7 +348,62 @@ internal partial class DrawableFactory
 	}
 
 	/// <summary>
-	/// Create <see cref="FrameworkElement"/>s that displays for grouped node instances.
+	/// Create <see cref="FrameworkElement"/>s that display for rank sets (truths and links).
+	/// </summary>
+	/// <param name="context">Indicates the drawing context.</param>
+	/// <param name="nodes">Indicates the nodes to be drawn.</param>
+	private static partial void ForRankSetNodes(DrawingContext context, ReadOnlySpan<RankSetViewNode> nodes)
+	{
+		var (sudokuPane, animatedResults) = context;
+		if (sudokuPane.MainGrid is not { } gridControl)
+		{
+			return;
+		}
+
+		var cellRankSets = new List<RankSetViewNode>();
+		var houseRankSets = new List<RankSetViewNode>();
+		foreach (var node in nodes)
+		{
+			(node.Space.IsCellRelated ? cellRankSets : houseRankSets).Add(node);
+		}
+
+		// TODO: Update logic to draw bound candidates. Do not use plain candidate drawing rule
+		// because it should be colorized as another color.
+
+		// Cell rank sets.
+		foreach (var cellRankSet in cellRankSets)
+		{
+			var cell = cellRankSet.Space.Cell;
+			var (a, r, g, b) = cellRankSet.IsTruth ? sudokuPane.CellTruthColor : sudokuPane.LineOrCellLinkColor;
+			var cellNode = new CellViewNode(new ColorColorIdentifier(a, r, g, b), cell);
+			sudokuPane.ViewUnit?.View.Add(cellNode);
+			ForCellNode(context, cellNode);
+		}
+
+		// House rank sets.
+		foreach (var control in new PathCreator(
+			sudokuPane,
+			new(gridControl),
+			ReadOnlyMemory<CandidateViewNode>.Empty,
+			ReadOnlyMemory<Conclusion>.Empty
+		).CreateShapes(houseRankSets.AsSpan()))
+		{
+			GridLayout.SetRow(control, 2);
+			GridLayout.SetColumn(control, 2);
+			GridLayout.SetRowSpan(control, 9);
+			GridLayout.SetColumnSpan(control, 9);
+			Canvas.SetZIndex(control, -1);
+
+			if (sudokuPane.EnableAnimationFeedback)
+			{
+				control.OpacityTransition = new();
+			}
+			animatedResults.Add((() => gridControl.Children.Add(control), () => control.Opacity = 1));
+		}
+	}
+
+	/// <summary>
+	/// Create <see cref="FrameworkElement"/>s that display for grouped node instances.
 	/// </summary>
 	/// <param name="context">Indicates the drawing context.</param>
 	/// <param name="nodes">Indicates the nodes to be drawn.</param>

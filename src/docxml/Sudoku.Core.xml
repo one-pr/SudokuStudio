@@ -7668,15 +7668,18 @@
 				</summary>
 			</target>
         </member>
-        <member name="T:Sudoku.Concepts.Supersymmetry.Extensions.">
+        <member name="T:Sudoku.Concepts.Supersymmetry.Extensions.<>E__0">
             <summary>
             Provides extension members on <see cref="T:System.Int32"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Concepts.Supersymmetry.Extensions..Neighbors">
+        <member name="P:Sudoku.Concepts.Supersymmetry.Extensions.<>E__0.Neighbors">
             <summary>
             Indicates the neighbors.
             </summary>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.Extensions.get_Neighbors(System.Int32)">
+            <inheritdoc cref="P:Sudoku.Concepts.Supersymmetry.Extensions.<>E__0.Neighbors"/>
         </member>
         <member name="T:Sudoku.Concepts.Supersymmetry.Space">
             <summary>
@@ -8936,17 +8939,17 @@
         <member name="P:Sudoku.Drawing.Parsing.LinkSetArgumentParser.IsTruthBased">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Drawing.Parsing.TruthOrLinkArgumentParser">
+        <member name="T:Sudoku.Drawing.Parsing.RankSetArgumentParser">
             <summary>
-            Represents truth or link argument parser.
+            Represents rank set argument parser.
             </summary>
         </member>
-        <member name="P:Sudoku.Drawing.Parsing.TruthOrLinkArgumentParser.IsTruthBased">
+        <member name="P:Sudoku.Drawing.Parsing.RankSetArgumentParser.IsTruthBased">
             <summary>
             Indicates whether the parser is truth-based.
             </summary>
         </member>
-        <member name="M:Sudoku.Drawing.Parsing.TruthOrLinkArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
+        <member name="M:Sudoku.Drawing.Parsing.RankSetArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Drawing.Parsing.TruthSetArgumentParser">
@@ -8999,6 +9002,11 @@
         <member name="F:Sudoku.Drawing.LinkShape.ConjugatePair">
             <summary>
             Indicates the link is inside a conjugate pair.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Drawing.LinkShape.RankSet">
+            <summary>
+            Indicates the link is a truth or link.
             </summary>
         </member>
         <member name="T:Sudoku.Drawing.Nodes.BabaGroupViewNode">
@@ -9604,15 +9612,18 @@
             <summary>
             Represents link view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.SetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='identifier']"/></param>
-            <param name="space"><inheritdoc cref="M:Sudoku.Drawing.Nodes.SetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='space']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='identifier']"/></param>
+            <param name="space"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='space']"/></param>
         </member>
         <member name="M:Sudoku.Drawing.Nodes.LinkSpaceViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)">
             <summary>
             Represents link view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.SetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='identifier']"/></param>
-            <param name="space"><inheritdoc cref="M:Sudoku.Drawing.Nodes.SetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='space']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='identifier']"/></param>
+            <param name="space"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='space']"/></param>
+        </member>
+        <member name="P:Sudoku.Drawing.Nodes.LinkSpaceViewNode.IsTruth">
+            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Drawing.Nodes.LinkSpaceViewNode.Equals(Sudoku.Drawing.ViewNode)">
             <inheritdoc/>
@@ -9620,29 +9631,43 @@
         <member name="M:Sudoku.Drawing.Nodes.LinkSpaceViewNode.Clone">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Drawing.Nodes.SetViewNode">
+        <member name="T:Sudoku.Drawing.Nodes.RankSetViewNode">
             <summary>
-            Represents a set (truth or link) view node.
+            Represents a rank set (truth or link) view node.
             </summary>
             <param name="identifier"><inheritdoc cref="P:Sudoku.Drawing.ViewNode.Identifier" path="/summary"/></param>
-            <param name="space"><inheritdoc cref="P:Sudoku.Drawing.Nodes.SetViewNode.Space" path="/summary"/></param>
+            <param name="space"><inheritdoc cref="P:Sudoku.Drawing.Nodes.RankSetViewNode.Space" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.SetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)">
+        <member name="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)">
             <summary>
-            Represents a set (truth or link) view node.
+            Represents a rank set (truth or link) view node.
             </summary>
             <param name="identifier"><inheritdoc cref="P:Sudoku.Drawing.ViewNode.Identifier" path="/summary"/></param>
-            <param name="space"><inheritdoc cref="P:Sudoku.Drawing.Nodes.SetViewNode.Space" path="/summary"/></param>
+            <param name="space"><inheritdoc cref="P:Sudoku.Drawing.Nodes.RankSetViewNode.Space" path="/summary"/></param>
         </member>
-        <member name="P:Sudoku.Drawing.Nodes.SetViewNode.Space">
+        <member name="P:Sudoku.Drawing.Nodes.RankSetViewNode.IsTruth">
+            <summary>
+            Indicates whether the rank set is a truth.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Drawing.Nodes.RankSetViewNode.Space">
             <summary>
             Indicates the space.
             </summary>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.SetViewNode.GetHashCode">
+        <member name="P:Sudoku.Drawing.Nodes.RankSetViewNode.Sudoku#Drawing#Nodes#ILinkViewNode#Start">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Drawing.Nodes.RankSetViewNode.Sudoku#Drawing#Nodes#ILinkViewNode#End">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Drawing.Nodes.RankSetViewNode.Sudoku#Drawing#Nodes#ILinkViewNode#Shape">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Drawing.Nodes.RankSetViewNode.GetHashCode">
             <inheritdoc cref="M:System.Object.GetHashCode"/>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.SetViewNode.ToString">
+        <member name="M:Sudoku.Drawing.Nodes.RankSetViewNode.ToString">
             <inheritdoc cref="M:System.Object.ToString"/>
         </member>
         <member name="T:Sudoku.Drawing.Nodes.SquareViewNode">
@@ -9700,15 +9725,18 @@
             <summary>
             Represents truth view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.SetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='identifier']"/></param>
-            <param name="space"><inheritdoc cref="M:Sudoku.Drawing.Nodes.SetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='space']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='identifier']"/></param>
+            <param name="space"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='space']"/></param>
         </member>
         <member name="M:Sudoku.Drawing.Nodes.TruthSpaceViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)">
             <summary>
             Represents truth view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.SetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='identifier']"/></param>
-            <param name="space"><inheritdoc cref="M:Sudoku.Drawing.Nodes.SetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='space']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='identifier']"/></param>
+            <param name="space"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='space']"/></param>
+        </member>
+        <member name="P:Sudoku.Drawing.Nodes.TruthSpaceViewNode.IsTruth">
+            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Drawing.Nodes.TruthSpaceViewNode.Equals(Sudoku.Drawing.ViewNode)">
             <inheritdoc/>
