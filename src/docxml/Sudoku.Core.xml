@@ -10553,6 +10553,28 @@
         <member name="M:Sudoku.Generating.PatternBasedPuzzleGenerator.ToString">
             <inheritdoc cref="M:System.Object.ToString"/>
         </member>
+        <member name="T:Sudoku.IO.ExternalSorter">
+            <summary>
+            Provides functionality to sort very large text files that cannot fit into memory.
+            Utilizes external merge sort strategy with asynchronous and thread-safe operations.
+            </summary>
+        </member>
+        <member name="M:Sudoku.IO.ExternalSorter.SortLargeFileAsync(System.String,System.String,System.Int32)">
+            <summary>
+            Sorts a large text file line by line in ascending order, using external sorting strategy.
+            The sorted result is written to the specified output file.
+            </summary>
+            <param name="inputPath">Path to the input file to be sorted.</param>
+            <param name="outputPath">Path to the file where sorted lines will be written.</param>
+            <param name="linesPerChunk">Maximum number of lines to load into memory per chunk.</param>
+        </member>
+        <member name="M:Sudoku.IO.ExternalSorter.MergeSortedFilesAsync(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Merges multiple pre-sorted text files into a single sorted output file.
+            </summary>
+            <param name="sortedFiles">List of paths to sorted temporary files.</param>
+            <param name="outputPath">Path to the final output file.</param>
+        </member>
         <member name="T:Sudoku.IO.Library">
             <summary>
             Represents a puzzle library.
