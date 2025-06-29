@@ -124,6 +124,8 @@
   * [零秩结构](rank-theory/02-range-of-rank/01-rank-0-pattern.md)
   * [正秩结构](rank-theory/02-range-of-rank/02-positive-rank-pattern.md)
   * [负秩结构](rank-theory/02-range-of-rank/03-negative-rank-pattern.md)
+* [三元组](rank-theory/03-triplet/README.md)
+  * [强三元组的基本推理](rank-theory/03-triplet/01-reasoning-of-truth-triplet.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
