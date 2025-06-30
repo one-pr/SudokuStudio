@@ -10797,6 +10797,22 @@
             </summary>
             <returns>The tags.</returns>
         </member>
+        <member name="M:Sudoku.IO.Library.WriteProperty``1(System.Action{Sudoku.IO.LibraryInfo,``0},``0)">
+            <summary>
+            Writes the property of type <typeparamref name="T"/> to the file.
+            </summary>
+            <typeparam name="T">The type of value.</typeparam>
+            <param name="valueAssignment">The result value assigning method.</param>
+            <param name="value">The value to be set.</param>
+        </member>
+        <member name="M:Sudoku.IO.Library.ReadProperty``1(System.Func{Sudoku.IO.LibraryInfo,``0})">
+            <summary>
+            Reads the property of value of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type of value.</typeparam>
+            <param name="resultValueCreator">The result value creator.</param>
+            <returns>The result value.</returns>
+        </member>
         <member name="M:Sudoku.IO.Library.WriteLineAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
             <summary>
             Writes a new grid into the target file; if the file doesn't exist, it will create a new file,
@@ -10853,27 +10869,11 @@
         <member name="M:Sudoku.IO.Library.GetAsyncEnumerator(System.Threading.CancellationToken)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.IO.Library.WriteProperty``1(System.Action{Sudoku.IO.LibraryInfo,``0},``0)">
-            <summary>
-            Writes the property of type <typeparamref name="T"/> to the file.
-            </summary>
-            <typeparam name="T">The type of value.</typeparam>
-            <param name="valueAssignment">The result value assigning method.</param>
-            <param name="value">The value to be set.</param>
-        </member>
         <member name="M:Sudoku.IO.Library.Save(Sudoku.IO.LibraryInfo)">
             <summary>
             Saves the file.
             </summary>
             <param name="info">The information to be saved.</param>
-        </member>
-        <member name="M:Sudoku.IO.Library.ReadProperty``1(System.Func{Sudoku.IO.LibraryInfo,``0})">
-            <summary>
-            Reads the property of value of type <typeparamref name="T"/>.
-            </summary>
-            <typeparam name="T">The type of value.</typeparam>
-            <param name="resultValueCreator">The result value creator.</param>
-            <returns>The result value.</returns>
         </member>
         <member name="M:Sudoku.IO.Library.LoadOrCreate">
             <summary>
