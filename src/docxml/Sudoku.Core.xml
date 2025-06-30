@@ -4,6 +4,155 @@
         <name>Sudoku.Core</name>
     </assembly>
     <members>
+        <member name="T:Sudoku.Behaviors.CellDistances.Distance">
+            <summary>
+            Represents the methods that calculates for distance.
+            </summary>
+            <param name="p">Indicates the integer part.</param>
+            <param name="q">Indicates the root part.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Throws when either <paramref name="p"/> or <paramref name="q"/> are less than 1.</exception>
+            <remarks>
+            This type is implemented via irrational numbers logic that only takes a square root.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Represents the methods that calculates for distance.
+            </summary>
+            <param name="p">Indicates the integer part.</param>
+            <param name="q">Indicates the root part.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Throws when either <paramref name="p"/> or <paramref name="q"/> are less than 1.</exception>
+            <remarks>
+            This type is implemented via irrational numbers logic that only takes a square root.
+            </remarks>
+        </member>
+        <member name="F:Sudoku.Behaviors.CellDistances.Distance.RootPartSpecifier">
+            <summary>
+            Indicates the default root part specifier.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Behaviors.CellDistances.Distance.DistanceTable">
+            <summary>
+            The table that displays the minimal and maximal index of cells that makes the distances least or greatest with the specified cell.
+            </summary>
+            <remarks>
+            <para>
+            The table is grouped with houses. If you want to fetch the smallest or largest distance value from a cell to a house, you can use
+            <c><see cref="F:Sudoku.Behaviors.CellDistances.Distance.DistanceTable"/>[Cell][House]</c>, where <c>Cell</c> is between 0 and 81, and <c>House</c> is between 0 and 27.
+            If the cell is inside the house, the value will be <see langword="null"/>.
+            </para>
+            <para>
+            In further, if you want to get the distance from two cells using this table, just call method <see cref="M:Sudoku.Behaviors.CellDistances.Distance.GetDistance(System.Int32,System.Int32)"/>.
+            </para>
+            </remarks>
+            <seealso cref="M:Sudoku.Behaviors.CellDistances.Distance.GetDistance(System.Int32,System.Int32)"/>
+        </member>
+        <member name="F:Sudoku.Behaviors.CellDistances.Distance._p">
+            <summary>
+            The root value of P.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Behaviors.CellDistances.Distance._q">
+            <summary>
+            The root value of Q.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.#ctor">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Behaviors.CellDistances.Distance"/> instance via both values 1.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.#ctor(System.Int32)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Behaviors.CellDistances.Distance"/> instance via the root part, with the default integer part 1.
+            <i>This value will automatically simplify the root expression, e.g. sqrt(18) -> 3sqrt(2).</i>
+            </summary>
+            <param name="q">The root value.</param>
+        </member>
+        <member name="P:Sudoku.Behaviors.CellDistances.Distance.RawValue">
+            <summary>
+            The raw value of the distance. The value will be output as a <see cref="T:System.Double"/> value.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.Equals(Sudoku.Behaviors.CellDistances.Distance)">
+            <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.CompareTo(Sudoku.Behaviors.CellDistances.Distance)">
+            <inheritdoc cref="M:System.IComparable`1.CompareTo(`0)"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+            <remarks>
+            The output format will be "<c>psq</c>", where <c>p</c> and <c>q</c> are the variables, and <c>s</c> means "square root of".
+            For example, "<c>3s2</c>" means <c>3 * sqrt(2)</c>, i.e. <c>sqrt(18)</c>.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.GetDistance(System.Int32,System.Int32)">
+            <summary>
+            Try to fetch the distance for the two cells.
+            </summary>
+            <param name="cell1">The first cell to be compared.</param>
+            <param name="cell2">The second cell to be compared.</param>
+            <returns>The distance result.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.GetDistance(Sudoku.Concepts.CellMap@)">
+            <summary>
+            Try to fetch the distance for two cells stored in a <see cref="T:Sudoku.Concepts.CellMap"/> instance.
+            </summary>
+            <param name="cells">The <see cref="T:Sudoku.Concepts.CellMap"/> instance storing two cells.</param>
+            <returns>The distance result.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.GetDistanceTo(System.Int32,System.Int32)">
+            <summary>
+            Try to get the minimal and maximal distance to the specified house from the specified cell.
+            </summary>
+            <param name="cell">The cell.</param>
+            <param name="house">The house.</param>
+            <returns>The minimal and maximal distance value.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.GetIntermediateCells(System.Int32,System.Int32)">
+            <summary>
+            Try to get the intermediate cells that are between <paramref name="cell1"/> and <paramref name="cell2"/> in logical position
+            for sudoku grid.
+            </summary>
+            <param name="cell1">The first cell.</param>
+            <param name="cell2">The second cell. The value should be greater than <paramref name="cell1"/>.</param>
+            <returns>The intermediate cells.</returns>
+            <exception cref="T:System.InvalidOperationException">
+            Throws when cells <paramref name="cell1"/> and <paramref name="cell2"/> are not in a same line (row or column).
+            </exception>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.SimplifyRootPart(System.Int32@)">
+            <summary>
+            Simplifies for root part.
+            </summary>
+            <param name="base">The root value.</param>
+            <returns>The P value.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.Equals(System.Object)">
+            <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.op_Equality(Sudoku.Behaviors.CellDistances.Distance,Sudoku.Behaviors.CellDistances.Distance)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.op_Inequality(Sudoku.Behaviors.CellDistances.Distance,Sudoku.Behaviors.CellDistances.Distance)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.op_GreaterThan(Sudoku.Behaviors.CellDistances.Distance,Sudoku.Behaviors.CellDistances.Distance)">
+            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThan(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.op_LessThan(Sudoku.Behaviors.CellDistances.Distance,Sudoku.Behaviors.CellDistances.Distance)">
+            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThan(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.op_GreaterThanOrEqual(Sudoku.Behaviors.CellDistances.Distance,Sudoku.Behaviors.CellDistances.Distance)">
+            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThanOrEqual(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.CellDistances.Distance.op_LessThanOrEqual(Sudoku.Behaviors.CellDistances.Distance,Sudoku.Behaviors.CellDistances.Distance)">
+            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThanOrEqual(`0,`1)"/>
+        </member>
         <member name="T:Sudoku.Behaviors.Diff.DiffAnalysis">
             <summary>
             Provides a way to analyze difference between two grids.
@@ -556,6 +705,102 @@
         </member>
         <member name="M:Sudoku.Behaviors.Diff.Results.UpdatedDiffResult.ToString">
             <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Behaviors.EmptyAreas.EmptyArea">
+            <summary>
+            Provides a way to calculate empty area of a <see cref="T:Sudoku.Concepts.Grid"/> or a <see cref="T:Sudoku.Concepts.CellMap"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Behaviors.EmptyAreas.EmptyArea.GetMaxEmptyArea(Sudoku.Concepts.Grid@,System.Int32@)">
+            <summary>
+            Try to get the maximum empty area exists in the specified grid.
+            </summary>
+            <param name="this">The grid to be checked.</param>
+            <param name="topLeftCell">
+            <inheritdoc cref="M:Sudoku.Behaviors.EmptyAreas.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.CellMap@,System.Int32@)" path="/param[@name='topLeftCell']"/>
+            </param>
+            <returns>A <see cref="T:System.Int32"/> value indicating the result.</returns>
+            <remarks>
+            <inheritdoc cref="M:Sudoku.Behaviors.EmptyAreas.EmptyArea.GetMaxEmptyArea(Sudoku.Concepts.CellMap@,System.Int32@)" path="/remarks"/>
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Behaviors.EmptyAreas.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.Grid@,System.Int32@)">
+            <summary>
+            Try to get the maximum empty square area exists in the specified grid.
+            </summary>
+            <param name="this">The grid to be checked.</param>
+            <param name="topLeftCell">
+            <inheritdoc cref="M:Sudoku.Behaviors.EmptyAreas.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.CellMap@,System.Int32@)" path="/param[@name='topLeftCell']"/>
+            </param>
+            <returns>A <see cref="T:System.Int32"/> value indicating the result.</returns>
+            <remarks>
+            <inheritdoc cref="M:Sudoku.Behaviors.EmptyAreas.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.CellMap@,System.Int32@)" path="/remarks"/>
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Behaviors.EmptyAreas.EmptyArea.GetMaxEmptyArea(Sudoku.Concepts.CellMap@,System.Int32@)">
+            <summary>
+            Try to get the maximum empty area exists in the specified cells.
+            </summary>
+            <param name="this">The cells to be checked.</param>
+            <param name="topLeftCell">
+            <inheritdoc cref="M:Sudoku.Behaviors.EmptyAreas.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.CellMap@,System.Int32@)" path="/param[@name='topLeftCell']"/>
+            </param>
+            <returns>A <see cref="T:System.Int32"/> value indicating the result.</returns>
+            <remarks>
+            This algorithm is from the puzzle called
+            <see href="https://leetcode.com/problems/maximal-rectangle/"><i>Maximal Rectangle</i></see>.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Behaviors.EmptyAreas.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.CellMap@,System.Int32@)">
+            <summary>
+            Try to get the maximum empty square area exists in the specified cells.
+            </summary>
+            <param name="this">The cells to be checked.</param>
+            <param name="topLeftCell">Indicates the cell at the top left index of the square.</param>
+            <returns>A <see cref="T:System.Int32"/> value indicating the result.</returns>
+            <remarks>
+            This algorithm is from the puzzle called
+            <see href="https://leetcode.com/problems/maximal-square/"><i>Maximal Square</i></see>.
+            </remarks>
+        </member>
+        <member name="T:Sudoku.Behaviors.GridMinimal.Minimal">
+            <summary>
+            Represents extension methods on <see cref="T:Sudoku.Concepts.Grid"/> for minimal.
+            </summary>
+            <seealso cref="T:Sudoku.Concepts.Grid"/>
+        </member>
+        <member name="T:Sudoku.Behaviors.GridMinimal.Minimal.<>E__0">
+            <summary>
+            Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Behaviors.GridMinimal.Minimal.<>E__0.IsMinimal">
+            <summary>
+            Determines whether the puzzle is a minimal puzzle, which means the puzzle will become multiple solution
+            if arbitrary one given digit will be removed from the grid.
+            </summary>
+            <returns>A <see cref="T:System.Boolean"/> result.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridMinimal.Minimal.<>E__0.CheckMinimal(System.Int32@)">
+            <summary>
+            Determines whether the puzzle is a minimal puzzle, which means the puzzle will become multiple solution
+            if arbitrary one given digit will be removed from the grid.
+            </summary>
+            <param name="firstCandidateMakePuzzleNotMinimal">
+            <para>
+            Indicates the first found candidate that can make the puzzle not minimal, which means
+            if we remove the digit in the cell, the puzzle will still keep unique.
+            </para>
+            <para>If the return value is <see langword="true"/>, this argument will be -1.</para>
+            </param>
+            <returns>A <see cref="T:System.Boolean"/> value indicating that.</returns>
+            <exception cref="T:System.InvalidOperationException">Throws when the puzzle is invalid (i.e. not unique).</exception>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridMinimal.Minimal.get_IsMinimal(Sudoku.Concepts.Grid@)">
+            <inheritdoc cref="P:Sudoku.Behaviors.GridMinimal.Minimal.<>E__0.IsMinimal"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridMinimal.Minimal.CheckMinimal(Sudoku.Concepts.Grid@,System.Int32@)">
+            <inheritdoc cref="M:Sudoku.Behaviors.GridMinimal.Minimal.<>E__0.CheckMinimal(System.Int32@)"/>
         </member>
         <member name="T:Sudoku.Concepts.CandidateMap">
             <summary>
@@ -11547,242 +11792,6 @@
         <member name="M:Sudoku.Linq.ViewEnumerable.SelectMany(Sudoku.Drawing.View[],System.Func{Sudoku.Drawing.View,Sudoku.Drawing.View},System.Func{Sudoku.Drawing.View,Sudoku.Drawing.ViewNode,Sudoku.Drawing.ViewNode})">
             <inheritdoc cref="M:System.Linq.ArrayEnumerable.SelectMany``3(``0[],System.Func{``0,System.ReadOnlySpan{``1}},System.Func{``0,``1,``2})"/>
         </member>
-        <member name="T:Sudoku.Measuring.Distance">
-            <summary>
-            Represents the methods that calculates for distance.
-            </summary>
-            <param name="p">Indicates the integer part.</param>
-            <param name="q">Indicates the root part.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException">Throws when either <paramref name="p"/> or <paramref name="q"/> are less than 1.</exception>
-            <remarks>
-            This type is implemented via irrational numbers logic that only takes a square root.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.#ctor(System.Int32,System.Int32)">
-            <summary>
-            Represents the methods that calculates for distance.
-            </summary>
-            <param name="p">Indicates the integer part.</param>
-            <param name="q">Indicates the root part.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException">Throws when either <paramref name="p"/> or <paramref name="q"/> are less than 1.</exception>
-            <remarks>
-            This type is implemented via irrational numbers logic that only takes a square root.
-            </remarks>
-        </member>
-        <member name="F:Sudoku.Measuring.Distance.RootPartSpecifier">
-            <summary>
-            Indicates the default root part specifier.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Measuring.Distance.DistanceTable">
-            <summary>
-            The table that displays the minimal and maximal index of cells that makes the distances least or greatest with the specified cell.
-            </summary>
-            <remarks>
-            <para>
-            The table is grouped with houses. If you want to fetch the smallest or largest distance value from a cell to a house, you can use
-            <c><see cref="F:Sudoku.Measuring.Distance.DistanceTable"/>[Cell][House]</c>, where <c>Cell</c> is between 0 and 81, and <c>House</c> is between 0 and 27.
-            If the cell is inside the house, the value will be <see langword="null"/>.
-            </para>
-            <para>
-            In further, if you want to get the distance from two cells using this table, just call method <see cref="M:Sudoku.Measuring.Distance.GetDistance(System.Int32,System.Int32)"/>.
-            </para>
-            </remarks>
-            <seealso cref="M:Sudoku.Measuring.Distance.GetDistance(System.Int32,System.Int32)"/>
-        </member>
-        <member name="F:Sudoku.Measuring.Distance._p">
-            <summary>
-            The root value of P.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Measuring.Distance._q">
-            <summary>
-            The root value of Q.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.#ctor">
-            <summary>
-            Initializes a <see cref="T:Sudoku.Measuring.Distance"/> instance via both values 1.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.#ctor(System.Int32)">
-            <summary>
-            Initializes a <see cref="T:Sudoku.Measuring.Distance"/> instance via the root part, with the default integer part 1.
-            <i>This value will automatically simplify the root expression, e.g. sqrt(18) -> 3sqrt(2).</i>
-            </summary>
-            <param name="q">The root value.</param>
-        </member>
-        <member name="P:Sudoku.Measuring.Distance.RawValue">
-            <summary>
-            The raw value of the distance. The value will be output as a <see cref="T:System.Double"/> value.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.Equals(Sudoku.Measuring.Distance)">
-            <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.CompareTo(Sudoku.Measuring.Distance)">
-            <inheritdoc cref="M:System.IComparable`1.CompareTo(`0)"/>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.ToString">
-            <inheritdoc cref="M:System.Object.ToString"/>
-            <remarks>
-            The output format will be "<c>psq</c>", where <c>p</c> and <c>q</c> are the variables, and <c>s</c> means "square root of".
-            For example, "<c>3s2</c>" means <c>3 * sqrt(2)</c>, i.e. <c>sqrt(18)</c>.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.GetDistance(System.Int32,System.Int32)">
-            <summary>
-            Try to fetch the distance for the two cells.
-            </summary>
-            <param name="cell1">The first cell to be compared.</param>
-            <param name="cell2">The second cell to be compared.</param>
-            <returns>The distance result.</returns>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.GetDistance(Sudoku.Concepts.CellMap@)">
-            <summary>
-            Try to fetch the distance for two cells stored in a <see cref="T:Sudoku.Concepts.CellMap"/> instance.
-            </summary>
-            <param name="cells">The <see cref="T:Sudoku.Concepts.CellMap"/> instance storing two cells.</param>
-            <returns>The distance result.</returns>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.GetDistanceTo(System.Int32,System.Int32)">
-            <summary>
-            Try to get the minimal and maximal distance to the specified house from the specified cell.
-            </summary>
-            <param name="cell">The cell.</param>
-            <param name="house">The house.</param>
-            <returns>The minimal and maximal distance value.</returns>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.GetIntermediateCells(System.Int32,System.Int32)">
-            <summary>
-            Try to get the intermediate cells that are between <paramref name="cell1"/> and <paramref name="cell2"/> in logical position
-            for sudoku grid.
-            </summary>
-            <param name="cell1">The first cell.</param>
-            <param name="cell2">The second cell. The value should be greater than <paramref name="cell1"/>.</param>
-            <returns>The intermediate cells.</returns>
-            <exception cref="T:System.InvalidOperationException">
-            Throws when cells <paramref name="cell1"/> and <paramref name="cell2"/> are not in a same line (row or column).
-            </exception>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.SimplifyRootPart(System.Int32@)">
-            <summary>
-            Simplifies for root part.
-            </summary>
-            <param name="base">The root value.</param>
-            <returns>The P value.</returns>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.Equals(System.Object)">
-            <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.GetHashCode">
-            <inheritdoc cref="M:System.Object.GetHashCode"/>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.op_Equality(Sudoku.Measuring.Distance,Sudoku.Measuring.Distance)">
-            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.op_Inequality(Sudoku.Measuring.Distance,Sudoku.Measuring.Distance)">
-            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.op_GreaterThan(Sudoku.Measuring.Distance,Sudoku.Measuring.Distance)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThan(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.op_LessThan(Sudoku.Measuring.Distance,Sudoku.Measuring.Distance)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThan(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.op_GreaterThanOrEqual(Sudoku.Measuring.Distance,Sudoku.Measuring.Distance)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThanOrEqual(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Measuring.Distance.op_LessThanOrEqual(Sudoku.Measuring.Distance,Sudoku.Measuring.Distance)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThanOrEqual(`0,`1)"/>
-        </member>
-        <member name="T:Sudoku.Measuring.EmptyArea">
-            <summary>
-            Provides a way to calculate empty area of a <see cref="T:Sudoku.Concepts.Grid"/> or a <see cref="T:Sudoku.Concepts.CellMap"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Measuring.EmptyArea.GetMaxEmptyArea(Sudoku.Concepts.Grid@,System.Int32@)">
-            <summary>
-            Try to get the maximum empty area exists in the specified grid.
-            </summary>
-            <param name="this">The grid to be checked.</param>
-            <param name="topLeftCell">
-            <inheritdoc cref="M:Sudoku.Measuring.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.CellMap@,System.Int32@)" path="/param[@name='topLeftCell']"/>
-            </param>
-            <returns>A <see cref="T:System.Int32"/> value indicating the result.</returns>
-            <remarks>
-            <inheritdoc cref="M:Sudoku.Measuring.EmptyArea.GetMaxEmptyArea(Sudoku.Concepts.CellMap@,System.Int32@)" path="/remarks"/>
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Measuring.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.Grid@,System.Int32@)">
-            <summary>
-            Try to get the maximum empty square area exists in the specified grid.
-            </summary>
-            <param name="this">The grid to be checked.</param>
-            <param name="topLeftCell">
-            <inheritdoc cref="M:Sudoku.Measuring.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.CellMap@,System.Int32@)" path="/param[@name='topLeftCell']"/>
-            </param>
-            <returns>A <see cref="T:System.Int32"/> value indicating the result.</returns>
-            <remarks>
-            <inheritdoc cref="M:Sudoku.Measuring.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.CellMap@,System.Int32@)" path="/remarks"/>
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Measuring.EmptyArea.GetMaxEmptyArea(Sudoku.Concepts.CellMap@,System.Int32@)">
-            <summary>
-            Try to get the maximum empty area exists in the specified cells.
-            </summary>
-            <param name="this">The cells to be checked.</param>
-            <param name="topLeftCell">
-            <inheritdoc cref="M:Sudoku.Measuring.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.CellMap@,System.Int32@)" path="/param[@name='topLeftCell']"/>
-            </param>
-            <returns>A <see cref="T:System.Int32"/> value indicating the result.</returns>
-            <remarks>
-            This algorithm is from the puzzle called
-            <see href="https://leetcode.com/problems/maximal-rectangle/"><i>Maximal Rectangle</i></see>.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Measuring.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.CellMap@,System.Int32@)">
-            <summary>
-            Try to get the maximum empty square area exists in the specified cells.
-            </summary>
-            <param name="this">The cells to be checked.</param>
-            <param name="topLeftCell">Indicates the cell at the top left index of the square.</param>
-            <returns>A <see cref="T:System.Int32"/> value indicating the result.</returns>
-            <remarks>
-            This algorithm is from the puzzle called
-            <see href="https://leetcode.com/problems/maximal-square/"><i>Maximal Square</i></see>.
-            </remarks>
-        </member>
-        <member name="T:Sudoku.Measuring.Minimal">
-            <summary>
-            Represents extension methods on <see cref="T:Sudoku.Concepts.Grid"/> for minimal.
-            </summary>
-            <seealso cref="T:Sudoku.Concepts.Grid"/>
-        </member>
-        <member name="M:Sudoku.Measuring.Minimal.GetIsMinimal(Sudoku.Concepts.Grid@)">
-            <summary>
-            Determines whether the puzzle is a minimal puzzle, which means the puzzle will become multiple solution
-            if arbitrary one given digit will be removed from the grid.
-            </summary>
-            <param name="this">Indicates the current instance.</param>
-            <returns>A <see cref="T:System.Boolean"/> result.</returns>
-        </member>
-        <member name="M:Sudoku.Measuring.Minimal.CheckMinimal(Sudoku.Concepts.Grid@,System.Int32@)">
-            <summary>
-            Determines whether the puzzle is a minimal puzzle, which means the puzzle will become multiple solution
-            if arbitrary one given digit will be removed from the grid.
-            </summary>
-            <param name="this">Indicates the current instance.</param>
-            <param name="firstCandidateMakePuzzleNotMinimal">
-            <para>
-            Indicates the first found candidate that can make the puzzle not minimal, which means
-            if we remove the digit in the cell, the puzzle will still keep unique.
-            </para>
-            <para>If the return value is <see langword="true"/>, this argument will be -1.</para>
-            </param>
-            <returns>A <see cref="T:System.Boolean"/> value indicating that.</returns>
-            <exception cref="T:System.InvalidOperationException">Throws when the puzzle is invalid (i.e. not unique).</exception>
-        </member>
         <member name="T:Sudoku.ModuleInitializer">
             <target name="type">
 				<summary>
@@ -13998,87 +14007,6 @@
             Bit vector of cells with exactly two pencil marks.
             </summary>
         </member>
-        <member name="T:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver">
-            <summary>
-            Implements a simple SAT solver using the DPLL algorithm with unit propagation.
-            For more information about DPLL algorithm, please visit
-            <see href="https://en.wikipedia.org/wiki/DPLL_algorithm">this link</see>.
-            </summary>
-            <param name="formula"><inheritdoc cref="F:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver._formula" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver.#ctor(Sudoku.Solving.BooleanSatisfiability.ConjunctiveNormalFormFormula)">
-            <summary>
-            Implements a simple SAT solver using the DPLL algorithm with unit propagation.
-            For more information about DPLL algorithm, please visit
-            <see href="https://en.wikipedia.org/wiki/DPLL_algorithm">this link</see>.
-            </summary>
-            <param name="formula"><inheritdoc cref="F:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver._formula" path="/summary"/></param>
-        </member>
-        <member name="F:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver._formula">
-            <summary>
-            Indicates the formula.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver._assignment">
-            <summary>
-            Represents the assignment values. The result value only represents for 3 values:
-            <list type="table">
-            <listheader>
-            <term>Value</term>
-            <description>Meaning</description>
-            </listheader>
-            <item>
-            <term><see langword="true"/></term>
-            <description>Represents <c>true</c> literal</description>
-            </item>
-            <item>
-            <term><see langword="false"/></term>
-            <description>Represents <c>false</c> literal</description>
-            </item>
-            <item>
-            <term><see langword="null"/></term>
-            <description>Leaves unassigned</description>
-            </item>
-            </list>
-            This array starts at index 1. Please use 1-based indexing to operate variables.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver.Solve">
-            <summary>
-            Try to find a satisfying assignment.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver.Backtracking">
-            <summary>
-            Performs DPLL recursive method. DPLL recursive routine:
-            <list type="number">
-            <item>Perform unit propagation to simplify.</item>
-            <item>If conflict, backtrack (return false).</item>
-            <item>If all vars assigned, formula is satisfied.</item>
-            <item>Otherwise, pick an unassigned variable and branch on true/false.</item>
-            </list>
-            </summary>
-        </member>
-        <member name="M:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver.UnitPropagation">
-            <summary>
-            Unit propagation:
-            Repeatedly scan for clauses where only one literal is unassigned and all others <see langword="false"/>,
-            then assign that literal to <see langword="true"/> (to satisfy the clause).
-            Returns <see langword="false"/> if a clause becomes unsatisfiable (all literals <see langword="false"/>).
-            </summary>
-        </member>
-        <member name="M:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver.GetUnassignedVar">
-            <summary>
-            Find a variable index that has not been assigned yet (0).
-            Returns -1 if all variables are assigned.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver.GetAssignmentStates">
-            <summary>
-            After solving, retrieve the assignment array
-            (index: <c>variable</c> is either <see langword="true"/> or <see langword="false"/>).
-            </summary>
-        </member>
         <member name="T:Sudoku.Solving.BooleanSatisfiability.ConjunctiveNormalFormFormula">
             <summary>
             Represents a Boolean formula in Conjunctive Normal Form (CNF).
@@ -14162,6 +14090,87 @@
             <summary>
             Maps 3D coordinates (row, col, digit) to a unique SAT variable index.
             Indices start from 1 up to 729.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver">
+            <summary>
+            Implements a simple SAT solver using the DPLL algorithm with unit propagation.
+            For more information about DPLL algorithm, please visit
+            <see href="https://en.wikipedia.org/wiki/DPLL_algorithm">this link</see>.
+            </summary>
+            <param name="formula"><inheritdoc cref="F:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver._formula" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver.#ctor(Sudoku.Solving.BooleanSatisfiability.ConjunctiveNormalFormFormula)">
+            <summary>
+            Implements a simple SAT solver using the DPLL algorithm with unit propagation.
+            For more information about DPLL algorithm, please visit
+            <see href="https://en.wikipedia.org/wiki/DPLL_algorithm">this link</see>.
+            </summary>
+            <param name="formula"><inheritdoc cref="F:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver._formula" path="/summary"/></param>
+        </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver._formula">
+            <summary>
+            Indicates the formula.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver._assignment">
+            <summary>
+            Represents the assignment values. The result value only represents for 3 values:
+            <list type="table">
+            <listheader>
+            <term>Value</term>
+            <description>Meaning</description>
+            </listheader>
+            <item>
+            <term><see langword="true"/></term>
+            <description>Represents <c>true</c> literal</description>
+            </item>
+            <item>
+            <term><see langword="false"/></term>
+            <description>Represents <c>false</c> literal</description>
+            </item>
+            <item>
+            <term><see langword="null"/></term>
+            <description>Leaves unassigned</description>
+            </item>
+            </list>
+            This array starts at index 1. Please use 1-based indexing to operate variables.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver.Solve">
+            <summary>
+            Try to find a satisfying assignment.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver.Backtracking">
+            <summary>
+            Performs DPLL recursive method. DPLL recursive routine:
+            <list type="number">
+            <item>Perform unit propagation to simplify.</item>
+            <item>If conflict, backtrack (return false).</item>
+            <item>If all vars assigned, formula is satisfied.</item>
+            <item>Otherwise, pick an unassigned variable and branch on true/false.</item>
+            </list>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver.UnitPropagation">
+            <summary>
+            Unit propagation:
+            Repeatedly scan for clauses where only one literal is unassigned and all others <see langword="false"/>,
+            then assign that literal to <see langword="true"/> (to satisfy the clause).
+            Returns <see langword="false"/> if a clause becomes unsatisfiable (all literals <see langword="false"/>).
+            </summary>
+        </member>
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver.GetUnassignedVar">
+            <summary>
+            Find a variable index that has not been assigned yet (0).
+            Returns -1 if all variables are assigned.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.BacktrackingSolver.GetAssignmentStates">
+            <summary>
+            After solving, retrieve the assignment array
+            (index: <c>variable</c> is either <see langword="true"/> or <see langword="false"/>).
             </summary>
         </member>
         <member name="T:Sudoku.Solving.DictionaryQuery.DictionaryQuerySolver">
