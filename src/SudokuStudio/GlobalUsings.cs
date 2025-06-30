@@ -57,6 +57,7 @@ global using Sudoku.Analytics.Steps;
 global using Sudoku.Analytics.StepSearchers;
 global using Sudoku.Behaviors.Backdoors;
 global using Sudoku.Behaviors.Bottlenecks;
+global using Sudoku.Behaviors.GridMinimal;
 global using Sudoku.Behaviors.Ittoryu;
 global using Sudoku.Categorization;
 global using Sudoku.Concepts;

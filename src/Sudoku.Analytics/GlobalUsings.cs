@@ -39,6 +39,7 @@ global using Sudoku.Analytics.Traits;
 global using Sudoku.Behaviors.Backdoors;
 global using Sudoku.Behaviors.Bottlenecks;
 global using Sudoku.Behaviors.Diff.Results;
+global using Sudoku.Behaviors.GridMinimal;
 global using Sudoku.Behaviors.GridSymmetry;
 global using Sudoku.Behaviors.PatternUniqueness;
 global using Sudoku.Categorization;
