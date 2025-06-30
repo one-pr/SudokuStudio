@@ -6,8 +6,8 @@ namespace Sudoku.IO;
 /// </summary>
 /// <param name="_inputPath">Path to the input text file.</param>
 /// <param name="_outputPath">Path to the output file containing deduplicated lines.</param>
-/// <param name="_workerCount">Number of worker threads for parallel deduplication (default: 4).</param>
-/// <param name="_boundedCapacity">The bounded size of the collection while processing.</param>
+/// <param name="_workerCount">Number of worker threads for parallel deduplication. The default value is 4.</param>
+/// <param name="_boundedCapacity">The bounded size of the collection while processing. The default value is 10000.</param>
 internal sealed class FileDeduplicator(string _inputPath, string _outputPath, int _workerCount = 4, int _boundedCapacity = 10_000)
 {
 	/// <summary>
