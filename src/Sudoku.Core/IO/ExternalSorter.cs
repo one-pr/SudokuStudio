@@ -53,7 +53,7 @@ public static class ExternalSorter
 		}
 
 		// Wait for all chunk sort tasks to complete.
-		await Task.WhenAll(chunkTasks);
+		await Task.WhenAll(chunkTasks.AsSpan());
 
 		// Merge sorted chunks into final output.
 		var resultFileLines = await MergeSortedFilesAsync([.. tempFiles], outputPath);
