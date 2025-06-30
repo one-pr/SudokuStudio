@@ -22211,6 +22211,124 @@
         <member name="M:Sudoku.Behaviors.DigitFirst.GetDistanceArray(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Steps.SingleStep,Sudoku.Concepts.Grid}}@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Step,Sudoku.Concepts.Grid}}@)">
             <inheritdoc/>
         </member>
+        <member name="T:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker">
+            <summary>
+            Represents a way to infer grid symmetry of placements.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.Checkers">
+            <summary>
+            The internal methods.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.GetSymmetry(Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
+            <summary>
+            Try to find the symmetry of placements of the specified grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="mappingDigits">The mapping digits.</param>
+            <param name="selfPairedDigitsMask">The self-paired digits.</param>
+            <returns>Symmetric types.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.IsSymmetricalPlacement(Sudoku.Concepts.Grid@,Sudoku.SymmetricType,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
+            <summary>
+            Try to get the its mapping rule for the specified grid via the specified symmetric type.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="symmetricType">The symmetric type to be checked.</param>
+            <param name="mappingDigits">The mapping digits returned.</param>
+            <param name="selfPairedDigitsMask">A mask that contains a list of digits self-paired.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is a symmetrical-placement pattern.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            Throws when the argument <paramref name="symmetricType"/> is not <see cref="F:Sudoku.SymmetricType.Central"/>,
+            <see cref="F:Sudoku.SymmetricType.Diagonal"/> or	<see cref="F:Sudoku.SymmetricType.AntiDiagonal"/>.
+            </exception>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.CheckAxesOrCenterPointForSymmetry(Sudoku.Concepts.Grid@,Sudoku.SymmetricType,System.Int16)">
+            <summary>
+            Check for the symmetry behavior on axes or center point.
+            </summary>
+            <param name="grid">The grid to be checked.</param>
+            <param name="symmetricType">The symmetric type.</param>
+            <param name="nonselfPairedDigitsMask">The mask that holds a list of digits that is non-self-paired.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.GetStep(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <summary>
+            Find GSP step if worth.
+            </summary>
+            <param name="grid">The grid to be checked.</param>
+            <param name="options">The options to set.</param>
+            <returns>The found step.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.GetHighlightCells(Sudoku.Concepts.Grid@,System.Collections.Generic.List{Sudoku.Drawing.Nodes.CellViewNode},System.ReadOnlySpan{System.Nullable{System.Int32}})">
+            <summary>
+            Records all possible highlight cells.
+            </summary>
+            <param name="grid">The grid as reference.</param>
+            <param name="cellOffsets">The target collection.</param>
+            <param name="mapping">The mapping relation.</param>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.Diagonal(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
+            <summary>
+            The internal method to check for diagonal symmetrical placement kind.
+            </summary>
+            <param name="grid">The grid to be check.</param>
+            <param name="symmetricType">
+            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.Diagonal"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
+            </param>
+            <param name="mappingDigits">The mapping digits.</param>
+            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is diagonal symmetrical placement.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.AntiDiagonal(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
+            <summary>
+            The internal method to check for anti-diagonal symmetrical placement kind.
+            </summary>
+            <param name="grid">The grid to be check.</param>
+            <param name="symmetricType">
+            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.AntiDiagonal"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
+            </param>
+            <param name="mappingDigits">The mapping digits.</param>
+            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is anti-diagonal symmetrical placement.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.Central(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
+            <summary>
+            The internal method to check for central symmetrical placement kind.
+            </summary>
+            <param name="grid">The grid to be check.</param>
+            <param name="symmetricType">
+            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.Central"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
+            </param>
+            <param name="mappingDigits">The mapping digits.</param>
+            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is central symmetrical placement.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.CheckDiagonal(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <summary>
+            Checks for diagonal symmetry steps.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="options">The options to set.</param>
+            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.CheckAntiDiagonal(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <summary>
+            Checks for anti-diagonal symmetry steps.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="options">The options to set.</param>
+            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.CheckCentral(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <summary>
+            Checks for central symmetry steps.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="options">The options to set.</param>
+            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
+        </member>
         <member name="T:Sudoku.Behaviors.IBehaviorMetric">
             <summary>
             Represents a type that can measure a kind of user behavior.
@@ -27932,168 +28050,6 @@
             even if the return value is <see langword="true"/>.
             </para>
             </returns>
-        </member>
-        <member name="T:Sudoku.Inferring.SymmetryInferredResult">
-            <summary>
-            Indicates the result value after <see cref="M:Sudoku.Inferring.SymmetryInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.SymmetryInferredResult@)"/> called.
-            </summary>
-            <param name="symmetricType"><inheritdoc cref="P:Sudoku.Inferring.SymmetryInferredResult.SymmetricType" path="/summary"/></param>
-            <param name="mappingDigits"><inheritdoc cref="P:Sudoku.Inferring.SymmetryInferredResult.MappingDigits" path="/summary"/></param>
-            <param name="selfPairedDigitsMask"><inheritdoc cref="P:Sudoku.Inferring.SymmetryInferredResult.SelfPairedDigitsMask" path="/summary"/></param>
-            <seealso cref="M:Sudoku.Inferring.SymmetryInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.SymmetryInferredResult@)"/>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferredResult.#ctor(Sudoku.SymmetricType,System.ReadOnlySpan{System.Nullable{System.Int32}},System.Int16)">
-            <summary>
-            Indicates the result value after <see cref="M:Sudoku.Inferring.SymmetryInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.SymmetryInferredResult@)"/> called.
-            </summary>
-            <param name="symmetricType"><inheritdoc cref="P:Sudoku.Inferring.SymmetryInferredResult.SymmetricType" path="/summary"/></param>
-            <param name="mappingDigits"><inheritdoc cref="P:Sudoku.Inferring.SymmetryInferredResult.MappingDigits" path="/summary"/></param>
-            <param name="selfPairedDigitsMask"><inheritdoc cref="P:Sudoku.Inferring.SymmetryInferredResult.SelfPairedDigitsMask" path="/summary"/></param>
-            <seealso cref="M:Sudoku.Inferring.SymmetryInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.SymmetryInferredResult@)"/>
-        </member>
-        <member name="P:Sudoku.Inferring.SymmetryInferredResult.SymmetricType">
-            <summary>
-            The symmetric type returned.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Inferring.SymmetryInferredResult.MappingDigits">
-            <summary>
-            The mapping digits returned.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Inferring.SymmetryInferredResult.SelfPairedDigitsMask">
-            <summary>
-            A mask that contains a list of digits self-paired.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferredResult.Deconstruct(Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
-            <target name="method">
-				<summary>
-					Deconstruct the current instance into multiple values, which means you can use
-					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
-				</summary>
-			</target>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferredResult.Equals(System.Object)">
-            <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferredResult.GetHashCode">
-            <inheritdoc cref="M:System.Object.GetHashCode"/>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferredResult.ToString">
-            <inheritdoc cref="M:System.Object.ToString"/>
-        </member>
-        <member name="T:Sudoku.Inferring.SymmetryInferrer">
-            <summary>
-            Represents an inferrer that can checks for symmetrical placements.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Inferring.SymmetryInferrer.Checkers">
-            <summary>
-            The internal methods.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.SymmetryInferredResult@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.IsSymmetricalPlacement(Sudoku.Concepts.Grid@,Sudoku.SymmetricType,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
-            <summary>
-            Try to get the its mapping rule for the specified grid via the specified symmetric type.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="symmetricType">The symmetric type to be checked.</param>
-            <param name="mappingDigits">The mapping digits returned.</param>
-            <param name="selfPairedDigitsMask">A mask that contains a list of digits self-paired.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is a symmetrical-placement pattern.</returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">
-            Throws when the argument <paramref name="symmetricType"/> is not <see cref="F:Sudoku.SymmetricType.Central"/>,
-            <see cref="F:Sudoku.SymmetricType.Diagonal"/> or	<see cref="F:Sudoku.SymmetricType.AntiDiagonal"/>.
-            </exception>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.CheckAxesOrCenterPointForSymmetry(Sudoku.Concepts.Grid@,Sudoku.SymmetricType,System.Int16)">
-            <summary>
-            Check for the symmetry behavior on axes or center point.
-            </summary>
-            <param name="grid">The grid to be checked.</param>
-            <param name="symmetricType">The symmetric type.</param>
-            <param name="nonselfPairedDigitsMask">The mask that holds a list of digits that is non-self-paired.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.GetStep(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <summary>
-            Find GSP step if worth.
-            </summary>
-            <param name="grid">The grid to be checked.</param>
-            <param name="options">The options to set.</param>
-            <returns>The found step.</returns>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.GetHighlightCells(Sudoku.Concepts.Grid@,System.Collections.Generic.List{Sudoku.Drawing.Nodes.CellViewNode},System.ReadOnlySpan{System.Nullable{System.Int32}})">
-            <summary>
-            Records all possible highlight cells.
-            </summary>
-            <param name="grid">The grid as reference.</param>
-            <param name="cellOffsets">The target collection.</param>
-            <param name="mapping">The mapping relation.</param>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.Diagonal(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
-            <summary>
-            The internal method to check for diagonal symmetrical placement kind.
-            </summary>
-            <param name="grid">The grid to be check.</param>
-            <param name="symmetricType">
-            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.Diagonal"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
-            </param>
-            <param name="mappingDigits">The mapping digits.</param>
-            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is diagonal symmetrical placement.</returns>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.AntiDiagonal(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
-            <summary>
-            The internal method to check for anti-diagonal symmetrical placement kind.
-            </summary>
-            <param name="grid">The grid to be check.</param>
-            <param name="symmetricType">
-            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.AntiDiagonal"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
-            </param>
-            <param name="mappingDigits">The mapping digits.</param>
-            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is anti-diagonal symmetrical placement.</returns>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.Central(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
-            <summary>
-            The internal method to check for central symmetrical placement kind.
-            </summary>
-            <param name="grid">The grid to be check.</param>
-            <param name="symmetricType">
-            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.Central"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
-            </param>
-            <param name="mappingDigits">The mapping digits.</param>
-            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is central symmetrical placement.</returns>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.CheckDiagonal(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <summary>
-            Checks for diagonal symmetry steps.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="options">The options to set.</param>
-            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.CheckAntiDiagonal(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <summary>
-            Checks for anti-diagonal symmetry steps.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="options">The options to set.</param>
-            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.CheckCentral(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <summary>
-            Checks for central symmetry steps.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="options">The options to set.</param>
-            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
         </member>
         <member name="T:Sudoku.Linq.AnalysisResultEnumerable">
             <summary>

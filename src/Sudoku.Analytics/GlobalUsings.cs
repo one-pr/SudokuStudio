@@ -40,6 +40,7 @@ global using Sudoku.Analytics.Traits;
 global using Sudoku.Behaviors.Backdoors;
 global using Sudoku.Behaviors.Bottlenecks;
 global using Sudoku.Behaviors.Diff.Results;
+global using Sudoku.Behaviors.GridSymmetry;
 global using Sudoku.Categorization;
 global using Sudoku.Concepts;
 global using Sudoku.Concepts.Coordinates;

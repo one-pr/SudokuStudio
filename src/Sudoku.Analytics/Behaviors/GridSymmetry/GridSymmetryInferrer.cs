@@ -1,9 +1,9 @@
-namespace Sudoku.Inferring;
+namespace Sudoku.Behaviors.GridSymmetry;
 
 /// <summary>
-/// Represents an inferrer that can checks for symmetrical placements.
+/// Represents a way to infer grid symmetry of placements.
 /// </summary>
-public sealed unsafe class SymmetryInferrer : IInferrable<SymmetryInferredResult>
+public sealed unsafe class GridSymmetryChecker
 {
 	/// <summary>
 	/// The internal methods.
@@ -15,8 +15,14 @@ public sealed unsafe class SymmetryInferrer : IInferrable<SymmetryInferredResult
 	];
 
 
-	/// <inheritdoc/>
-	public static bool TryInfer(in Grid grid, out SymmetryInferredResult result)
+	/// <summary>
+	/// Try to find the symmetry of placements of the specified grid.
+	/// </summary>
+	/// <param name="grid">The grid.</param>
+	/// <param name="mappingDigits">The mapping digits.</param>
+	/// <param name="selfPairedDigitsMask">The self-paired digits.</param>
+	/// <returns>Symmetric types.</returns>
+	public static SymmetricType GetSymmetry(in Grid grid, out ReadOnlySpan<Digit?> mappingDigits, out Mask selfPairedDigitsMask)
 	{
 		if (grid.PuzzleType != SudokuType.Standard || grid.Uniqueness != Uniqueness.Unique)
 		{
@@ -25,16 +31,16 @@ public sealed unsafe class SymmetryInferrer : IInferrable<SymmetryInferredResult
 
 		foreach (var functionPointer in Checkers)
 		{
-			if (functionPointer(grid, out var symmetricType, out var mappingDigits, out var selfPairedDigitsMask))
+			if (functionPointer(grid, out var symmetricType, out mappingDigits, out selfPairedDigitsMask))
 			{
-				result = new(symmetricType, mappingDigits, selfPairedDigitsMask);
-				return true;
+				return symmetricType;
 			}
 		}
 
 	FastFail:
-		result = default;
-		return false;
+		mappingDigits = default;
+		selfPairedDigitsMask = default;
+		return default;
 	}
 
 	/// <summary>
