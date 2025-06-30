@@ -1,31 +1,26 @@
-namespace Sudoku.Inferring;
+namespace Sudoku.Behaviors.Backdoors;
 
 /// <summary>
-/// Defines a backdoor searcher.
+/// Represents a type that searches for backdoors.
 /// </summary>
-public sealed class BackdoorInferrer : IInferrable<BackdoorInferredResult>
+public static class Backdoor
 {
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static bool TryInfer(in Grid grid, out BackdoorInferredResult result)
+	public static ReadOnlySpan<Conclusion> GetBackdoors(in Grid grid)
 	{
 		if (grid.PuzzleType != SudokuType.Standard || grid.IsSolved || !grid.IsValid)
 		{
-			result = default;
-			return false;
+			return default;
 		}
 
 		var sstsChecker = Analyzer.SstsOnly;
-		result = new(
-			sstsChecker.Analyze(grid).IsSolved && grid.SolutionGrid is var solution
-				?
-				from candidate in grid
-				let digit = solution.GetDigit(candidate / 9)
-				where digit != -1
-				select new Conclusion(digit == candidate % 9 ? Assignment : Elimination, candidate)
-				: g(grid)
-		);
-		return true;
+		return sstsChecker.Analyze(grid).IsSolved && grid.SolutionGrid is var solution
+			?
+			from candidate in grid
+			let digit = solution.GetDigit(candidate / 9)
+			where digit != -1
+			select new Conclusion(digit == candidate % 9 ? Assignment : Elimination, candidate)
+			: g(grid);
 
 
 		ReadOnlySpan<Conclusion> g(in Grid grid)

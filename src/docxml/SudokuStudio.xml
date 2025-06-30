@@ -193,20 +193,17 @@
             </summary>
             <seealso cref="T:SudokuStudio.App"/>
         </member>
-        <member name="T:SudokuStudio.AppCastExtensions.<>E__0">
+        <member name="T:SudokuStudio.AppCastExtensions.">
             <summary>
             Provide casting method.
             </summary>
         </member>
-        <member name="M:SudokuStudio.AppCastExtensions.<>E__0.AsApp">
+        <member name="M:SudokuStudio.AppCastExtensions..AsApp">
             <summary>
             Converts the current instance into an <see cref="T:SudokuStudio.App"/> instance;
             throw <see cref="T:System.InvalidCastException"/> if the current object is not an <see cref="T:SudokuStudio.App"/> instance.
             </summary>
             <returns>The result casted.</returns>
-        </member>
-        <member name="M:SudokuStudio.AppCastExtensions.AsApp(Microsoft.UI.Xaml.Application)">
-            <inheritdoc cref="M:SudokuStudio.AppCastExtensions.<>E__0.AsApp"/>
         </member>
         <member name="T:SudokuStudio.BindableSource.AnalyzeTabPageBindableSource">
             <summary>
@@ -4892,19 +4889,16 @@
             </summary>
             <seealso cref="T:SudokuStudio.Interaction.SudokuFormatFlags"/>
         </member>
-        <member name="T:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.<>E__0">
+        <member name="T:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.">
             <summary>
             Provides extension members on <see cref="T:SudokuStudio.Interaction.SudokuFormatFlags"/>.
             </summary>
         </member>
-        <member name="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.<>E__0.Converter">
+        <member name="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions..Converter">
             <summary>
             Try to get target <see cref="T:Sudoku.Concepts.Coordinates.Formatting.GridFormatInfo`1"/> instance of type <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is not defined.</exception>
-        </member>
-        <member name="M:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.get_Converter(SudokuStudio.Interaction.SudokuFormatFlags)">
-            <inheritdoc cref="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.<>E__0.Converter"/>
         </member>
         <member name="T:SudokuStudio.Interaction.SudokuPaneMouseWheelChangedEventArgs">
             <summary>

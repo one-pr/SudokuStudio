@@ -1194,12 +1194,12 @@
             Provides with extension methods on <see cref="T:Sudoku.Analytics.StepGatherer"/>.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__0">
+        <member name="T:Sudoku.Analytics.Async.AsyncStepGatherer.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Analyzer"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__0.AnalyzeAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer..AnalyzeAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
             <summary>
             Asynchronously analyzes the specified puzzle.
             </summary>
@@ -1208,7 +1208,7 @@
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
             <returns>An <see cref="T:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable"/> object that can analyze the puzzle asynchronously.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__0.EnumerateStepsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer..EnumerateStepsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
             <summary>
             Analyzes the specified grid, to find for all possible steps and iterate them in asynchronous way.
             </summary>
@@ -1216,18 +1216,12 @@
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
             <returns>A sequence that allows user iterating on it in asynchronous way.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.AnalyzeAsync(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
-            <inheritdoc cref="M:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__0.AnalyzeAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.EnumerateStepsAsync(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
-            <inheritdoc cref="M:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__0.EnumerateStepsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)"/>
-        </member>
-        <member name="T:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__1">
+        <member name="T:Sudoku.Analytics.Async.AsyncStepGatherer.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Collector"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__1.CollectAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer..CollectAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
             <summary>
             Asynchronously collects steps from a puzzle.
             </summary>
@@ -1236,19 +1230,13 @@
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
             <returns>An <see cref="T:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable"/> object that can analyze the puzzle asynchronously.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__1.ParallelCollectAsync(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer..ParallelCollectAsync(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
             <summary>
             Asynchronously collects steps from a puzzle, with parallel checking on all <see cref="T:Sudoku.Analytics.StepSearcher"/> instances.
             </summary>
             <param name="grid">The grid to be analyzed.</param>
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
             <returns>An <see cref="T:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable"/> object that can analyze the puzzle asynchronously.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.CollectAsync(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
-            <inheritdoc cref="M:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__1.CollectAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.ParallelCollectAsync(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
-            <inheritdoc cref="M:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__1.ParallelCollectAsync(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)"/>
         </member>
         <member name="T:Sudoku.Analytics.Async.IStepGathererAwaitable`1">
             <summary>
@@ -1764,12 +1752,12 @@
             Indicates the sequences.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions.<>E__0">
+        <member name="T:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Configuration.BabaGroupInitialLetter"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions.<>E__0.GetSequence(Sudoku.Analytics.Configuration.BabaGroupLetterCasing)">
+        <member name="M:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions..GetSequence(Sudoku.Analytics.Configuration.BabaGroupLetterCasing)">
             <summary>
             Try to get character sequence from the specified initial letter.
             </summary>
@@ -1777,18 +1765,12 @@
             <returns>The character sequence.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the specified arguments are not defined.</exception>
         </member>
-        <member name="M:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions.<>E__0.EscapeDigit(System.Int32)">
+        <member name="M:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions..EscapeDigit(System.Int32)">
             <summary>
             Try to escape the digit.
             </summary>
             <param name="digit">The digit to be escaped.</param>
             <returns>The escaped character. If a digit doesn't need to escape, return character representation of itself.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions.GetSequence(Sudoku.Analytics.Configuration.BabaGroupInitialLetter,Sudoku.Analytics.Configuration.BabaGroupLetterCasing)">
-            <inheritdoc cref="M:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions.<>E__0.GetSequence(Sudoku.Analytics.Configuration.BabaGroupLetterCasing)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions.EscapeDigit(Sudoku.Analytics.Configuration.BabaGroupInitialLetter,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions.<>E__0.EscapeDigit(System.Int32)"/>
         </member>
         <member name="T:Sudoku.Analytics.Configuration.BabaGroupLetterCasing">
             <summary>
@@ -2607,19 +2589,16 @@
             </code>
             </remarks>
         </member>
-        <member name="T:Sudoku.Analytics.Construction.Components.AnalysisResultExcluderExtensions.<>E__0">
+        <member name="T:Sudoku.Analytics.Construction.Components.AnalysisResultExcluderExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.AnalysisResult"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.AnalysisResultExcluderExtensions.<>E__0.HasBlockExcluders">
+        <member name="P:Sudoku.Analytics.Construction.Components.AnalysisResultExcluderExtensions..HasBlockExcluders">
             <summary>
             Indicates whether the solving steps contains at least one <see cref="T:Sudoku.Analytics.Step"/>
             using hidden singles in line, with block excluders.
             </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.AnalysisResultExcluderExtensions.get_HasBlockExcluders(Sudoku.Analytics.AnalysisResult)">
-            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.AnalysisResultExcluderExtensions.<>E__0.HasBlockExcluders"/>
         </member>
         <member name="T:Sudoku.Analytics.Construction.Components.BinaryForcingChains">
             <summary>
@@ -3193,71 +3172,50 @@
             </summary>
             <seealso cref="T:Sudoku.Analytics.Construction.Components.Chain"/>
         </member>
-        <member name="T:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0">
+        <member name="T:Sudoku.Analytics.Construction.Components.ChainExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Construction.Components.Chain"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsX">
+        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions..IsX">
             <summary>
             Indicates whether the pattern only uses same digits.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsY">
+        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions..IsY">
             <summary>
             Indicates whether the pattern only uses cell strong links.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsOverlapped">
+        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions..IsOverlapped">
             <summary>
             Indicates whether at least one node in the whole pattern overlaps with a node.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsXyCycle">
+        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions..IsXyCycle">
             <summary>
             Indicates whether the loop is an XY-Cycle.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsStrongLinksStrictlyGrouped">
+        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions..IsStrongLinksStrictlyGrouped">
             <summary>
             Indicates whether at least one link in strong links contains grouped nodes,
             and is not advanced node (i.e. contains grouped pattern).
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsWeakLinksStrictlyGrouped">
+        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions..IsWeakLinksStrictlyGrouped">
             <summary>
             Indicates whether at least one link in weak links contains grouped nodes,
             and is not advanced node (i.e. contains grouped pattern).
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.GetViews_Monoparental(Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection)">
+        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions..GetViews_Monoparental(Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection)">
             <summary>
             Collect views for the current chain, without nested paths checking.
             </summary>
             <param name="grid">The grid.</param>
             <param name="supportedRules">The supported rules.</param>
             <returns>The views.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions.get_IsX(Sudoku.Analytics.Construction.Components.Chain)">
-            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsX"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions.get_IsY(Sudoku.Analytics.Construction.Components.Chain)">
-            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsY"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions.get_IsOverlapped(Sudoku.Analytics.Construction.Components.Chain)">
-            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsOverlapped"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions.get_IsXyCycle(Sudoku.Analytics.Construction.Components.Chain)">
-            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsXyCycle"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions.get_IsStrongLinksStrictlyGrouped(Sudoku.Analytics.Construction.Components.Chain)">
-            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsStrongLinksStrictlyGrouped"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions.get_IsWeakLinksStrictlyGrouped(Sudoku.Analytics.Construction.Components.Chain)">
-            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsWeakLinksStrictlyGrouped"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions.GetViews_Monoparental(Sudoku.Analytics.Construction.Components.Chain,Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection)">
-            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.GetViews_Monoparental(Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection)"/>
         </member>
         <member name="T:Sudoku.Analytics.Construction.Components.ChainingRuleAttribute`1">
             <summary>
@@ -3528,18 +3486,15 @@
             Provides with extension methods around enumeration type <see cref="T:Sudoku.Analytics.Construction.Components.ExocetShapeKind"/>.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.Construction.Components.ExocetShapeKindExtensions.<>E__0">
+        <member name="T:Sudoku.Analytics.Construction.Components.ExocetShapeKindExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Construction.Components.IComplexSeniorExocet"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.ExocetShapeKindExtensions.<>E__0.ShapeKind">
+        <member name="P:Sudoku.Analytics.Construction.Components.ExocetShapeKindExtensions..ShapeKind">
             <summary>
             Indicates the shape kind of the current exocet pattern.
             </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.ExocetShapeKindExtensions.get_ShapeKind(Sudoku.Analytics.Construction.Components.IComplexSeniorExocet)">
-            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.ExocetShapeKindExtensions.<>E__0.ShapeKind"/>
         </member>
         <member name="T:Sudoku.Analytics.Construction.Components.FishFinKind">
             <summary>
@@ -3780,12 +3735,12 @@
             Represents a list of methods that operates with concept "Grouped Node".
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.Construction.Components.Grouped.<>E__0">
+        <member name="T:Sudoku.Analytics.Construction.Components.Grouped.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Concepts.CellMap"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.Grouped.<>E__0.FormsGroupedStrongLink(Sudoku.Concepts.CellMap@,System.Int32,System.ReadOnlySpan{System.Int32}@)">
+        <member name="M:Sudoku.Analytics.Construction.Components.Grouped..FormsGroupedStrongLink(Sudoku.Concepts.CellMap@,System.Int32,System.ReadOnlySpan{System.Int32}@)">
             <summary>
             Determine whether the specified cells can be split into two parts, and they form a grouped strong link with each other.
             </summary>
@@ -3793,9 +3748,6 @@
             <param name="house">The house.</param>
             <param name="spannedHousesList">The spanned houses.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.Grouped.FormsGroupedStrongLink(Sudoku.Concepts.CellMap@,System.Int32,System.ReadOnlySpan{System.Int32}@)">
-            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.Grouped.<>E__0.FormsGroupedStrongLink(Sudoku.Concepts.CellMap@,System.Int32,System.ReadOnlySpan{System.Int32}@)"/>
         </member>
         <member name="T:Sudoku.Analytics.Construction.Components.GroupedWhipAssignment">
             <summary>
@@ -4433,19 +4385,16 @@
             </summary>
             <seealso cref="T:Sudoku.Analytics.Construction.Components.LinkType"/>
         </member>
-        <member name="T:Sudoku.Analytics.Construction.Components.LinkTypeExtensions.<>E__0">
+        <member name="T:Sudoku.Analytics.Construction.Components.LinkTypeExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Construction.Components.LinkType"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.LinkTypeExtensions.<>E__0.RuleInstance">
+        <member name="P:Sudoku.Analytics.Construction.Components.LinkTypeExtensions..RuleInstance">
             <summary>
             Indicates a <see cref="T:Sudoku.Analytics.Construction.Chaining.ChainingRule"/> instance from the specified link type.
             </summary>
             <returns>The target <see cref="T:Sudoku.Analytics.Construction.Chaining.ChainingRule"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.LinkTypeExtensions.get_RuleInstance(Sudoku.Analytics.Construction.Components.LinkType)">
-            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.LinkTypeExtensions.<>E__0.RuleInstance"/>
         </member>
         <member name="T:Sudoku.Analytics.Construction.Components.LockedMember">
             <summary>
@@ -7469,20 +7418,17 @@
             </summary>
             <seealso cref="T:Sudoku.Analytics.DifficultyLevel"/>
         </member>
-        <member name="T:Sudoku.Analytics.DifficultyLevelExtensions.<>E__0">
+        <member name="T:Sudoku.Analytics.DifficultyLevelExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.DifficultyLevel"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.DifficultyLevelExtensions.<>E__0.GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.DifficultyLevelExtensions..GetName(System.IFormatProvider)">
             <summary>
             Gets the name of the current value, with specified culture.
             </summary>
             <param name="formatProvider">The culture.</param>
             <returns>The string value.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.DifficultyLevelExtensions.GetName(Sudoku.Analytics.DifficultyLevel,System.IFormatProvider)">
-            <inheritdoc cref="M:Sudoku.Analytics.DifficultyLevelExtensions.<>E__0.GetName(System.IFormatProvider)"/>
         </member>
         <member name="T:Sudoku.Analytics.DifficultyLevels">
             <summary>
@@ -7497,365 +7443,6 @@
         <member name="F:Sudoku.Analytics.DifficultyLevels.All">
             <summary>
             Indicates all difficulty levels.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Analytics.Drivers.ChainingDriver">
-            <summary>
-            Provides a driver that can generate normal chains and forcing chains.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.CollectChains(Sudoku.Concepts.Grid@,System.Boolean,System.Boolean,System.Boolean)">
-            <summary>
-            Collect all chains and loops appeared in a grid.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="allowsAdvancedLinks">Indicates whether this method allows for advanced links.</param>
-            <param name="onlyFindOne">Indicates whether the method only find one valid step.</param>
-            <param name="makeConclusionAroundBackdoors">
-            <inheritdoc cref="P:Sudoku.Analytics.StepSearchers.ChainStepSearcher.MakeConclusionAroundBackdoors" path="/summary" />
-            </param>
-            <returns>All possible <see cref="T:Sudoku.Analytics.Construction.Components.Chain" /> instances.</returns>
-            <remarks>
-            <developer-notes>
-		<para>
-			<b>Developer Notes</b>
-		</para>
-	</developer-notes>
-            A valid chain can only be categorized by the following three cases:
-            <list type="number">
-            <item>
-            <para><b>Discontinuous Nice Loop</b></para>
-            <para>
-            Start with weak link, alternating strong and weak links and return to itself of a weak link
-            (with an even number of nodes, odd number of links).
-            </para>
-            </item>
-            <item>
-            <para><b>Discontinuous Nice Loop</b></para>
-            <para>
-            Start with strong link, alternating strong and weak links and return to itself of a strong link
-            (with an even number of nodes, even number of links).
-            </para>
-            </item>
-            <item>
-            <para><b>Continuous Nice Loop</b></para>
-            <para>
-            Start with strong link, alternating strong and weak links and return to itself of a weak link
-            (with an even number of nodes, even number of links).
-            </para>
-            </item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.FindChains(Sudoku.Analytics.Construction.Components.Node,Sudoku.Concepts.Grid@,System.Boolean,System.Collections.Generic.SortedSet{Sudoku.Analytics.Construction.Components.NamedChain})">
-            <summary>
-            <para>
-            Find all possible <see cref="T:Sudoku.Analytics.Construction.Components.NamedChain"/> patterns starting with the current node,
-            and to make a conflict with itself.
-            </para>
-            <para>
-            This method will return <see langword="null"/> if <paramref name="onlyFindOne"/> is <see langword="false"/>,
-            or the method cannot find a valid chain that forms a conflict with the current node.
-            </para>
-            </summary>
-            <param name="startNode">The current instance.</param>
-            <param name="grid">The grid to be checked.</param>
-            <param name="onlyFindOne">Indicates whether the method only find one valid <see cref="T:Sudoku.Analytics.Construction.Components.NamedChain"/> and return.</param>
-            <param name="result">
-            A collection that stores all possible found <see cref="T:Sudoku.Analytics.Construction.Components.NamedChain"/> patterns
-            if <paramref name="onlyFindOne"/> is <see langword="false"/>.
-            </param>
-            <returns>The first found <see cref="T:Sudoku.Analytics.Construction.Components.NamedChain"/> pattern.</returns>
-            <seealso cref="T:Sudoku.Analytics.Construction.Components.NamedChain"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.CollectBlossomLoops(Sudoku.Concepts.Grid@,System.Boolean,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection)">
-            <summary>
-            Collect all blossom loops appeared in a grid.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="onlyFindOne">Indicates whether the method only find one valid chain.</param>
-            <param name="supportedRules">Indicates all supported rules to be used by checking eliminations.</param>
-            <returns>All possible multiple forcing chain instances.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.CollectBlossomConclusions(Sudoku.Concepts.Grid@,System.Collections.Generic.List{Sudoku.Analytics.Construction.Components.Link},Sudoku.Concepts.CandidateMap@,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection)">
-            <summary>
-            The backing method to collect blossom conclusions.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="patternLinks">The pattern links.</param>
-            <param name="exits">The exit candidates.</param>
-            <param name="supportedRules">All supported rules used.</param>
-            <returns>Found conclusions.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.CollectBivalueUniversalGraveMultipleForcingChains(Sudoku.Concepts.Grid@,System.Boolean)">
-            <summary>
-            Collect all multiple forcing chains on applying to a bi-value universal grave, appeared in a grid.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="onlyFindOne">Indicates whether the method only find one valid chain.</param>
-            <returns>All possible multiple forcing chain instances.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.CollectCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.NormalChainStep},System.Boolean,System.Boolean)">
-            <summary>
-            The collect method called by chain step searchers.
-            </summary>
-            <param name="context">The context.</param>
-            <param name="accumulator">The instance that temporarily records for chain steps.</param>
-            <param name="allowsAdvancedLinks">Indicates whether the method allows advanced links.</param>
-            <param name="makeConclusionAroundBackdoors">
-            <inheritdoc cref="P:Sudoku.Analytics.StepSearchers.ChainStepSearcher.MakeConclusionAroundBackdoors" path="/summary"/>
-            </param>
-            <returns>The first found step.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.CollectMultipleCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.ChainStep},System.Boolean,System.Boolean)">
-            <summary>
-            The collect method called by multiple forcing chains step searcher.
-            </summary>
-            <param name="context">The context.</param>
-            <param name="accumulator">The instance that temporarily records for chain steps.</param>
-            <param name="allowsAdvancedLinks">Indicates whether the method allows advanced links.</param>
-            <param name="onlyFindFinnedChain">Indicates whether the method only finds for (grouped) finned chains.</param>
-            <returns>The first found step.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.CollectRectangleMultipleCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.ChainStep},System.Boolean,System.Boolean)">
-            <summary>
-            The collect method called by rectangle forcing chains step searcher.
-            </summary>
-            <param name="context">The context.</param>
-            <param name="accumulator">The instance that temporarily records for chain steps.</param>
-            <param name="allowsAdvancedLinks">Indicates whether the method allows advanced links.</param>
-            <param name="onlyFindFinnedChain">Indicates whether the method only finds for (grouped) finned chains.</param>
-            <returns>The first found step.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.CollectBivalueUniversalGraveMultipleCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.ChainStep},System.Boolean,System.Boolean)">
-            <summary>
-            The collect method called by rectangle forcing chains step searcher.
-            </summary>
-            <param name="context">The context.</param>
-            <param name="accumulator">The instance that temporarily records for chain steps.</param>
-            <param name="allowsAdvancedLinks">Indicates whether the method allows advanced links.</param>
-            <param name="onlyFindFinnedChain">Indicates whether the method only finds for (grouped) finned chains.</param>
-            <returns>The first found step.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.CollectBlossomLoopCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.BlossomLoopStep})">
-            <summary>
-            The collect method called by blossom loop step searchers.
-            </summary>
-            <param name="context">The context.</param>
-            <param name="accumulator">The instance that temporarily records for chain steps.</param>
-            <returns>The first found step.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.CollectDynamicForcingChainsCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.List{Sudoku.Analytics.Steps.PatternBasedChainStep})">
-            <summary>
-            The collect method called by dynamic forcing chains step searchers.
-            </summary>
-            <param name="context">The context.</param>
-            <param name="accumulator">The instance that temporarily records for chain steps.</param>
-            <returns>The first found step.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.CollectGeneralizedMultipleCore``2(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.ChainStep},System.Boolean,System.Boolean,,,)">
-            <summary>
-            The internal method that can collect for general-typed multiple forcing chains.
-            </summary>
-            <typeparam name="TMultipleForcingChains">The type of multiple forcing chains.</typeparam>
-            <typeparam name="TMultipleForcingChainsStep">The type of target step can be created.</typeparam>
-            <param name="context">The context.</param>
-            <param name="accumulator">The instance that temporarily records for chain steps.</param>
-            <param name="allowsAdvancedLinks">Indicates whether the method allows advanced links.</param>
-            <param name="onlyFindFinnedChain">Indicates whether the method only finds for (grouped) finned chains.</param>
-            <param name="componentCreator">Indicates the component that the current forcing chains pattern is.</param>
-            <param name="chainsCollector">
-            The collector method that can find a list of <typeparamref name="TMultipleForcingChains"/> instances in the grid.
-            </param>
-            <param name="stepCreator">The creator method that can create a chain step.</param>
-            <returns>The first found step.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.CollectChainConclusions(Sudoku.Analytics.Construction.Components.NamedChain,Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection)">
-            <summary>
-            The backing method to collect chain conclusions.
-            </summary>
-            <param name="pattern">The pattern.</param>
-            <param name="grid">The grid.</param>
-            <param name="supportedRules">All supported rules used.</param>
-            <returns>Found conclusions.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.CollectDynamicForcingChains(Sudoku.Concepts.Grid@,Sudoku.Analytics.StepAnalysisContext@,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection)">
-            <summary>
-            Collect all dynamic multiple forcing chains and dynamic binary forcing chains appeared in a grid.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="context">Indicates the context to be used.</param>
-            <param name="chainingRules">Indicates the chaining rules used.</param>
-            <returns>All possible dynamic forcing chains instances.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.FindDynamicForcingChains(Sudoku.Analytics.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection,Sudoku.Analytics.Configuration.StepGathererOptions,System.Nullable{System.ValueTuple{Sudoku.Analytics.Construction.Components.Node,Sudoku.Analytics.Construction.Components.Node}}@)">
-            <summary>
-            Finds a list of nodes that can implicitly connects to current node via a dynamic forcing chain.
-            This method won't use cached dictionary.
-            </summary>
-            <param name="startNode">The current instance.</param>
-            <param name="grid">Indicates the interim cached grid.</param>
-            <param name="chainingRules">Indicates the chaining rules to be used.</param>
-            <param name="options">Indicates the options used.</param>
-            <param name="contradiction">
-            <para>
-            The found contradiction node pairs.
-            If there's no contradiction here, this argument will keep the value <see langword="null"/>.
-            </para>
-            <para>
-            In general, non-dynamic cases will always make this argument <see langword="null"/>,
-            because non-dynamic contradiction can be integrated into one normal alternating inference chain,
-            by combining two different branches.
-            </para>
-            </param>
-            <returns>
-            A pair of <see cref="T:System.Collections.Generic.HashSet`1"/> of <see cref="T:Sudoku.Analytics.Construction.Components.Node"/> instances, indicating all possible nodes
-            that can implicitly connects to the current node via the whole forcing chain, grouped by their own initial states,
-            encapsulating with type <see cref="T:Sudoku.Analytics.Construction.Components.ForcingChainsInfo"/>.
-            </returns>
-            <seealso cref="F:Sudoku.Analytics.Caching.MemoryCachedData.StrongLinkDictionary"/>
-            <seealso cref="F:Sudoku.Analytics.Caching.MemoryCachedData.WeakLinkDictionary"/>
-            <seealso cref="T:System.Collections.Generic.HashSet`1"/>
-            <seealso cref="T:Sudoku.Analytics.Construction.Components.Node"/>
-            <seealso cref="T:Sudoku.Analytics.Construction.Components.ForcingChainsInfo"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.GetNodesFromOnToOff(Sudoku.Analytics.Construction.Components.Node,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection,Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Concepts.Grid@)">
-            <summary>
-            Try to find nodes that will be considered as "off" state if the specified node is "on" state.
-            </summary>
-            <param name="node">The previous node to be checked.</param>
-            <param name="chainingRules">The chaining rule collection to be used.</param>
-            <param name="options">The options.</param>
-            <param name="grid">The current grid.</param>
-            <returns>A list of nodes found.</returns>
-            <remarks><i>
-            This method doesn't use cache on purpose, therefore this method won't be marked type
-            <see cref="T:Sudoku.Runtime.InterceptorServices.InterceptorMethodCallerAttribute"/>.
-            </i></remarks>
-            <seealso cref="T:Sudoku.Runtime.InterceptorServices.InterceptorMethodCallerAttribute"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.GetNodesFromOffToOn(Sudoku.Analytics.Construction.Components.Node,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection,System.Collections.Generic.HashSet{Sudoku.Analytics.Construction.Components.Node},Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)">
-            <summary>
-            Try to find nodes that will be considered as "on" state if the specified node is "off" state.
-            </summary>
-            <param name="node">The previous node to be checked.</param>
-            <param name="chainingRules">The chaining rule collection to be used.</param>
-            <param name="nodesSupposedOff">Indicates the nodes supposed to be "off".</param>
-            <param name="options">The options.</param>
-            <param name="grid">The current grid.</param>
-            <param name="originalGrid">Indicates the original grid.</param>
-            <returns>A list of nodes found.</returns>
-            <remarks><i>
-            This method doesn't use cache on purpose, therefore this method won't be marked type
-            <see cref="T:Sudoku.Runtime.InterceptorServices.InterceptorMethodCallerAttribute"/>.
-            </i></remarks>
-            <seealso cref="T:Sudoku.Runtime.InterceptorServices.InterceptorMethodCallerAttribute"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.CollectMultipleForcingChains(Sudoku.Concepts.Grid@,System.Boolean)">
-            <summary>
-            Collect all multiple forcing chains appeared in a grid.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="onlyFindOne">Indicates whether the method only find one valid chain.</param>
-            <returns>All possible multiple forcing chains instances.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.FindForcingChains(Sudoku.Analytics.Construction.Components.Node)">
-            <summary>
-            <para>Finds a list of nodes that can implicitly connects to current node via a forcing chain.</para>
-            <para>This method only uses cached fields <see cref="F:Sudoku.Analytics.Caching.MemoryCachedData.StrongLinkDictionary"/> and <see cref="F:Sudoku.Analytics.Caching.MemoryCachedData.WeakLinkDictionary"/>.</para>
-            </summary>
-            <param name="startNode">The current instance.</param>
-            <returns>
-            A pair of <see cref="T:System.Collections.Generic.HashSet`1"/> of <see cref="T:Sudoku.Analytics.Construction.Components.Node"/> instances, indicating all possible nodes
-            that can implicitly connects to the current node via the whole forcing chain, grouped by their own initial states,
-            encapsulating with type <see cref="T:Sudoku.Analytics.Construction.Components.ForcingChainsInfo"/>.
-            </returns>
-            <seealso cref="F:Sudoku.Analytics.Caching.MemoryCachedData.StrongLinkDictionary"/>
-            <seealso cref="F:Sudoku.Analytics.Caching.MemoryCachedData.WeakLinkDictionary"/>
-            <seealso cref="T:System.Collections.Generic.HashSet`1"/>
-            <seealso cref="T:Sudoku.Analytics.Construction.Components.Node"/>
-            <seealso cref="T:Sudoku.Analytics.Construction.Components.ForcingChainsInfo"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ChainingDriver.CollectRectangleMultipleForcingChains(Sudoku.Concepts.Grid@,System.Boolean)">
-            <summary>
-            Collect all multiple forcing chains on applying to a unique rectangle, appeared in a grid.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="onlyFindOne">Indicates whether the method only find one valid chain.</param>
-            <returns>All possible multiple forcing chain instances.</returns>
-        </member>
-        <member name="T:Sudoku.Analytics.Drivers.ForcingChainsCastingExtensions">
-            <summary>
-            Provides a file-local type that can simplify casting expression of <see cref="T:Sudoku.Analytics.Construction.Components.IForcingChains"/>.
-            </summary>
-            <seealso cref="T:Sudoku.Analytics.Construction.Components.IForcingChains"/>
-        </member>
-        <member name="T:Sudoku.Analytics.Drivers.ForcingChainsCastingExtensions.<>E__0`1">
-            <summary>
-            Provides extension members on <typeparamref name="T"/>,
-            where <typeparamref name="T"/> satisfies <see cref="T:Sudoku.Analytics.Construction.Components.IForcingChains"/> constraint.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ForcingChainsCastingExtensions.<>E__0`1.Cast">
-            <summary>
-            Cast the object into <see cref="T:Sudoku.Analytics.Construction.Components.IForcingChains"/> regardless of its base type <typeparamref name="T"/>.
-            </summary>
-            <returns>Cast <see cref="T:Sudoku.Analytics.Construction.Components.IForcingChains"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.ForcingChainsCastingExtensions.Cast``1(``0)">
-            <inheritdoc cref="M:Sudoku.Analytics.Drivers.ForcingChainsCastingExtensions.<>E__0`1.Cast"/>
-        </member>
-        <member name="T:Sudoku.Analytics.Drivers.GridNodeExtensions">
-            <summary>
-            Provides with extension methods on <see cref="T:Sudoku.Concepts.Grid"/>.
-            </summary>
-            <seealso cref="T:Sudoku.Concepts.Grid"/>
-        </member>
-        <member name="T:Sudoku.Analytics.Drivers.GridNodeExtensions.<>E__0">
-            <summary>
-            Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.GridNodeExtensions.<>E__0.Apply(Sudoku.Analytics.Construction.Components.Node)">
-            <summary>
-            Treat the specified node as a real conclusion, and apply to a grid.
-            </summary>
-            <param name="node">The node.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.GridNodeExtensions.Apply(Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Components.Node)">
-            <inheritdoc cref="M:Sudoku.Analytics.Drivers.GridNodeExtensions.<>E__0.Apply(Sudoku.Analytics.Construction.Components.Node)"/>
-        </member>
-        <member name="T:Sudoku.Analytics.Drivers.SubsetDriver">
-            <summary>
-            Represents a subset searching driver.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Drivers.SubsetDriver.MethodSet1">
-            <summary>
-            Represents a method set.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Drivers.SubsetDriver.MethodSet2">
-            <summary>
-            Represents a method set.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.SubsetDriver.CollectCore(System.Boolean,Sudoku.Analytics.StepAnalysisContext@)">
-            <summary>
-            The internal method to create subset steps.
-            </summary>
-            <param name="searchingForLocked">Indicates whether the module only searches for locked subsets.</param>
-            <param name="context">The context.</param>
-            <returns>The collected steps.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.SubsetDriver.HiddenSubset(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Concepts.CellMap},System.Int32,System.Boolean)">
-            <summary>
-            Search for hidden subsets.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Drivers.SubsetDriver.NakedSubset(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Concepts.CellMap},System.Int32,System.Boolean)">
-            <summary>
-            Search for naked subsets.
             </summary>
         </member>
         <member name="T:Sudoku.Analytics.FailedReason">
@@ -7926,51 +7513,39 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
-        <member name="T:Sudoku.Analytics.GridAnalysisExtensions.<>E__0">
+        <member name="T:Sudoku.Analytics.GridAnalysisExtensions.">
             <summary>
             Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.<>E__0.Apply(Sudoku.Analytics.Step)">
+        <member name="M:Sudoku.Analytics.GridAnalysisExtensions..Apply(Sudoku.Analytics.Step)">
             <summary>
             Applies for all conclusions into the current <see cref="T:Sudoku.Concepts.Grid"/> instance.
             </summary>
             <param name="step">A conclusion-provider <see cref="T:Sudoku.Analytics.Step"/> instance.</param>
         </member>
-        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.Apply(Sudoku.Concepts.Grid@,Sudoku.Analytics.Step)">
-            <inheritdoc cref="M:Sudoku.Analytics.GridAnalysisExtensions.<>E__0.Apply(Sudoku.Analytics.Step)"/>
-        </member>
-        <member name="T:Sudoku.Analytics.GridAnalysisExtensions.<>E__1">
+        <member name="T:Sudoku.Analytics.GridAnalysisExtensions.">
             <summary>
             Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.GridAnalysisExtensions.<>E__1.CanPrimaryFullHouse">
+        <member name="P:Sudoku.Analytics.GridAnalysisExtensions..CanPrimaryFullHouse">
             <summary>
             Checks whether the puzzle can be solved using only full house.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.GridAnalysisExtensions.<>E__1.CanPrimaryNakedSingle">
+        <member name="P:Sudoku.Analytics.GridAnalysisExtensions..CanPrimaryNakedSingle">
             <summary>
             Checks whether the puzzle can be solved using only naked single.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.<>E__1.CanPrimaryHiddenSingle(System.Boolean)">
+        <member name="M:Sudoku.Analytics.GridAnalysisExtensions..CanPrimaryHiddenSingle(System.Boolean)">
             <summary>
             Checks whether the puzzle can be solved using only full house and hidden single.
             </summary>
             <param name="allowHiddenSingleInLine">
             A <see cref="T:System.Boolean"/> value indicating whether hidden single includes line types.
             </param>
-        </member>
-        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.get_CanPrimaryFullHouse(Sudoku.Concepts.Grid@)">
-            <inheritdoc cref="P:Sudoku.Analytics.GridAnalysisExtensions.<>E__1.CanPrimaryFullHouse"/>
-        </member>
-        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.get_CanPrimaryNakedSingle(Sudoku.Concepts.Grid@)">
-            <inheritdoc cref="P:Sudoku.Analytics.GridAnalysisExtensions.<>E__1.CanPrimaryNakedSingle"/>
-        </member>
-        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.CanPrimaryHiddenSingle(Sudoku.Concepts.Grid@,System.Boolean)">
-            <inheritdoc cref="M:Sudoku.Analytics.GridAnalysisExtensions.<>E__1.CanPrimaryHiddenSingle(System.Boolean)"/>
         </member>
         <member name="T:Sudoku.Analytics.Hub">
             <summary>
@@ -8973,12 +8548,12 @@
             </summary>
             <seealso cref="T:Sudoku.Analytics.Step"/>
         </member>
-        <member name="T:Sudoku.Analytics.StepExtensions.<>E__0">
+        <member name="T:Sudoku.Analytics.StepExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Step"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepExtensions.<>E__0.CompareName(Sudoku.Analytics.Step,Sudoku.Analytics.Step,System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.StepExtensions..CompareName(Sudoku.Analytics.Step,Sudoku.Analytics.Step,System.IFormatProvider)">
             <summary>
             Compare names of two <see cref="T:Sudoku.Analytics.Step"/> instances.
             </summary>
@@ -8987,7 +8562,7 @@
             <param name="formatProvider">The culture information.</param>
             <returns>An <see cref="T:System.Int32"/> value indicating which is bigger.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepExtensions.<>E__0.Combine(System.ReadOnlySpan{Sudoku.Concepts.Grid},System.ReadOnlySpan{Sudoku.Analytics.Step})">
+        <member name="M:Sudoku.Analytics.StepExtensions..Combine(System.ReadOnlySpan{Sudoku.Concepts.Grid},System.ReadOnlySpan{Sudoku.Analytics.Step})">
             <summary>
             Zips the collection, pairing each step and corresponding grid into a <see cref="T:System.ValueTuple`2"/>,
             and return the collection of pairs.
@@ -8998,12 +8573,6 @@
             <exception cref="T:System.InvalidOperationException">
             Throws when the length of arguments <paramref name="interimGrids"/> and <paramref name="interimSteps"/> aren't same.
             </exception>
-        </member>
-        <member name="M:Sudoku.Analytics.StepExtensions.CompareName(Sudoku.Analytics.Step,Sudoku.Analytics.Step,System.IFormatProvider)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepExtensions.<>E__0.CompareName(Sudoku.Analytics.Step,Sudoku.Analytics.Step,System.IFormatProvider)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepExtensions.Combine(System.ReadOnlySpan{Sudoku.Concepts.Grid},System.ReadOnlySpan{Sudoku.Analytics.Step})">
-            <inheritdoc cref="M:Sudoku.Analytics.StepExtensions.<>E__0.Combine(System.ReadOnlySpan{Sudoku.Concepts.Grid},System.ReadOnlySpan{Sudoku.Analytics.Step})"/>
         </member>
         <member name="T:Sudoku.Analytics.StepGatherer">
             <summary>
@@ -9063,40 +8632,40 @@
             </summary>
             <seealso cref="T:Sudoku.Analytics.StepGatherer"/>
         </member>
-        <member name="T:Sudoku.Analytics.StepGathererFactory.<>E__0">
+        <member name="T:Sudoku.Analytics.StepGathererFactory.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Analyzer"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithRandomizedChoosing(System.Boolean)">
+        <member name="M:Sudoku.Analytics.StepGathererFactory..WithRandomizedChoosing(System.Boolean)">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.Analyzer.RandomizedChoosing"/> with the target value.
             </summary>
             <param name="randomizedChoosing">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithApplyAll(System.Boolean)">
+        <member name="M:Sudoku.Analytics.StepGathererFactory..WithApplyAll(System.Boolean)">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.Analyzer.IsFullApplying"/> with the target value.
             </summary>
             <param name="applyAll">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithStepSearchers(Sudoku.Analytics.StepSearcher[])">
+        <member name="M:Sudoku.Analytics.StepGathererFactory..WithStepSearchers(Sudoku.Analytics.StepSearcher[])">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.StepGatherer.StepSearchers"/> with the target value.
             </summary>
             <param name="stepSearchers">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithUserDefinedOptions(Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.StepGathererFactory..WithUserDefinedOptions(Sudoku.Analytics.Configuration.StepGathererOptions)">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.StepGatherer.Options"/> with the target value.
             </summary>
             <param name="options">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithStepSearchers(Sudoku.Analytics.StepSearcher[],Sudoku.Analytics.DifficultyLevel)">
+        <member name="M:Sudoku.Analytics.StepGathererFactory..WithStepSearchers(Sudoku.Analytics.StepSearcher[],Sudoku.Analytics.DifficultyLevel)">
             <summary>
             Try to set property <see cref="P:Sudoku.Analytics.StepGatherer.StepSearchers"/> with the specified value.
             </summary>
@@ -9106,7 +8675,7 @@
             <seealso cref="P:Sudoku.Analytics.StepGatherer.StepSearchers"/>
             <seealso cref="T:Sudoku.Analytics.StepSearcher"/>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__0.ApplySetter``1(System.Action{``0})">
+        <member name="M:Sudoku.Analytics.StepGathererFactory..ApplySetter``1(System.Action{``0})">
             <summary>
             Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
             </summary>
@@ -9114,78 +8683,54 @@
             <param name="setter">The value to be added.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__0.ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})">
+        <member name="M:Sudoku.Analytics.StepGathererFactory..ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})">
             <summary>
             Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
             </summary>
             <param name="setters">The value to be added.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__0.ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
+        <member name="M:Sudoku.Analytics.StepGathererFactory..ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
             <summary>
             Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
             </summary>
             <param name="setters">A list of values to be added.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.WithRandomizedChoosing(Sudoku.Analytics.Analyzer,System.Boolean)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithRandomizedChoosing(System.Boolean)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.WithApplyAll(Sudoku.Analytics.Analyzer,System.Boolean)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithApplyAll(System.Boolean)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.WithStepSearchers(Sudoku.Analytics.Analyzer,Sudoku.Analytics.StepSearcher[])">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithStepSearchers(Sudoku.Analytics.StepSearcher[])"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.WithUserDefinedOptions(Sudoku.Analytics.Analyzer,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithUserDefinedOptions(Sudoku.Analytics.Configuration.StepGathererOptions)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.WithStepSearchers(Sudoku.Analytics.Analyzer,Sudoku.Analytics.StepSearcher[],Sudoku.Analytics.DifficultyLevel)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithStepSearchers(Sudoku.Analytics.StepSearcher[],Sudoku.Analytics.DifficultyLevel)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.ApplySetter``1(Sudoku.Analytics.Analyzer,System.Action{``0})">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__0.ApplySetter``1(System.Action{``0})"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.ApplySetter(Sudoku.Analytics.Analyzer,System.Action{Sudoku.Analytics.StepSearcher})">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__0.ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.ApplySetters(Sudoku.Analytics.Analyzer,System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__0.ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})"/>
-        </member>
-        <member name="T:Sudoku.Analytics.StepGathererFactory.<>E__1">
+        <member name="T:Sudoku.Analytics.StepGathererFactory.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Collector"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__1.WithMaxSteps(System.Int32)">
+        <member name="M:Sudoku.Analytics.StepGathererFactory..WithMaxSteps(System.Int32)">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.Collector.MaxStepsCollected"/> with the target value.
             </summary>
             <param name="count">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__1.WithSameLevelConfiguration(Sudoku.Analytics.Configuration.CollectorDifficultyLevelMode)">
+        <member name="M:Sudoku.Analytics.StepGathererFactory..WithSameLevelConfiguration(Sudoku.Analytics.Configuration.CollectorDifficultyLevelMode)">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.Collector.DifficultyLevelMode"/> with the target value.
             </summary>
             <param name="collectingMode">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__1.WithStepSearchers(Sudoku.Analytics.StepSearcher[])">
+        <member name="M:Sudoku.Analytics.StepGathererFactory..WithStepSearchers(Sudoku.Analytics.StepSearcher[])">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.StepGatherer.StepSearchers"/> with the target value.
             </summary>
             <param name="stepSearchers">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__1.WithUserDefinedOptions(Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.StepGathererFactory..WithUserDefinedOptions(Sudoku.Analytics.Configuration.StepGathererOptions)">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.StepGatherer.Options"/> with the target value.
             </summary>
             <param name="options">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__1.ApplySetter``1(System.Action{``0})">
+        <member name="M:Sudoku.Analytics.StepGathererFactory..ApplySetter``1(System.Action{``0})">
             <summary>
             Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
             </summary>
@@ -9193,40 +8738,19 @@
             <param name="setter">The value to be added.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__1.ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})">
+        <member name="M:Sudoku.Analytics.StepGathererFactory..ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})">
             <summary>
             Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
             </summary>
             <param name="setters">The value to be added.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__1.ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
+        <member name="M:Sudoku.Analytics.StepGathererFactory..ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
             <summary>
             Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
             </summary>
             <param name="setters">A list of values to be added.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.WithMaxSteps(Sudoku.Analytics.Collector,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__1.WithMaxSteps(System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.WithSameLevelConfiguration(Sudoku.Analytics.Collector,Sudoku.Analytics.Configuration.CollectorDifficultyLevelMode)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__1.WithSameLevelConfiguration(Sudoku.Analytics.Configuration.CollectorDifficultyLevelMode)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.WithStepSearchers(Sudoku.Analytics.Collector,Sudoku.Analytics.StepSearcher[])">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__1.WithStepSearchers(Sudoku.Analytics.StepSearcher[])"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.WithUserDefinedOptions(Sudoku.Analytics.Collector,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__1.WithUserDefinedOptions(Sudoku.Analytics.Configuration.StepGathererOptions)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.ApplySetter``1(Sudoku.Analytics.Collector,System.Action{``0})">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__1.ApplySetter``1(System.Action{``0})"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.ApplySetter(Sudoku.Analytics.Collector,System.Action{Sudoku.Analytics.StepSearcher})">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__1.ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.ApplySetters(Sudoku.Analytics.Collector,System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__1.ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})"/>
         </member>
         <member name="T:Sudoku.Analytics.StepGathererProgressPresenter">
             <summary>
@@ -9537,6 +9061,326 @@
         <member name="M:Sudoku.Analytics.StepSearchers.BlossomLoopStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
             <inheritdoc/>
         </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.ChainingDriver">
+            <summary>
+            Provides a driver that can generate normal chains and forcing chains.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.CollectChains(Sudoku.Concepts.Grid@,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Collect all chains and loops appeared in a grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="allowsAdvancedLinks">Indicates whether this method allows for advanced links.</param>
+            <param name="onlyFindOne">Indicates whether the method only find one valid step.</param>
+            <param name="makeConclusionAroundBackdoors">
+            <inheritdoc cref="P:Sudoku.Analytics.StepSearchers.ChainStepSearcher.MakeConclusionAroundBackdoors" path="/summary" />
+            </param>
+            <returns>All possible <see cref="T:Sudoku.Analytics.Construction.Components.Chain" /> instances.</returns>
+            <remarks>
+            <developer-notes>
+		<para>
+			<b>Developer Notes</b>
+		</para>
+	</developer-notes>
+            A valid chain can only be categorized by the following three cases:
+            <list type="number">
+            <item>
+            <para><b>Discontinuous Nice Loop</b></para>
+            <para>
+            Start with weak link, alternating strong and weak links and return to itself of a weak link
+            (with an even number of nodes, odd number of links).
+            </para>
+            </item>
+            <item>
+            <para><b>Discontinuous Nice Loop</b></para>
+            <para>
+            Start with strong link, alternating strong and weak links and return to itself of a strong link
+            (with an even number of nodes, even number of links).
+            </para>
+            </item>
+            <item>
+            <para><b>Continuous Nice Loop</b></para>
+            <para>
+            Start with strong link, alternating strong and weak links and return to itself of a weak link
+            (with an even number of nodes, even number of links).
+            </para>
+            </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.FindChains(Sudoku.Analytics.Construction.Components.Node,Sudoku.Concepts.Grid@,System.Boolean,System.Collections.Generic.SortedSet{Sudoku.Analytics.Construction.Components.NamedChain})">
+            <summary>
+            <para>
+            Find all possible <see cref="T:Sudoku.Analytics.Construction.Components.NamedChain"/> patterns starting with the current node,
+            and to make a conflict with itself.
+            </para>
+            <para>
+            This method will return <see langword="null"/> if <paramref name="onlyFindOne"/> is <see langword="false"/>,
+            or the method cannot find a valid chain that forms a conflict with the current node.
+            </para>
+            </summary>
+            <param name="startNode">The current instance.</param>
+            <param name="grid">The grid to be checked.</param>
+            <param name="onlyFindOne">Indicates whether the method only find one valid <see cref="T:Sudoku.Analytics.Construction.Components.NamedChain"/> and return.</param>
+            <param name="result">
+            A collection that stores all possible found <see cref="T:Sudoku.Analytics.Construction.Components.NamedChain"/> patterns
+            if <paramref name="onlyFindOne"/> is <see langword="false"/>.
+            </param>
+            <returns>The first found <see cref="T:Sudoku.Analytics.Construction.Components.NamedChain"/> pattern.</returns>
+            <seealso cref="T:Sudoku.Analytics.Construction.Components.NamedChain"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.CollectBlossomLoops(Sudoku.Concepts.Grid@,System.Boolean,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection)">
+            <summary>
+            Collect all blossom loops appeared in a grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="onlyFindOne">Indicates whether the method only find one valid chain.</param>
+            <param name="supportedRules">Indicates all supported rules to be used by checking eliminations.</param>
+            <returns>All possible multiple forcing chain instances.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.CollectBlossomConclusions(Sudoku.Concepts.Grid@,System.Collections.Generic.List{Sudoku.Analytics.Construction.Components.Link},Sudoku.Concepts.CandidateMap@,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection)">
+            <summary>
+            The backing method to collect blossom conclusions.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="patternLinks">The pattern links.</param>
+            <param name="exits">The exit candidates.</param>
+            <param name="supportedRules">All supported rules used.</param>
+            <returns>Found conclusions.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.CollectBivalueUniversalGraveMultipleForcingChains(Sudoku.Concepts.Grid@,System.Boolean)">
+            <summary>
+            Collect all multiple forcing chains on applying to a bi-value universal grave, appeared in a grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="onlyFindOne">Indicates whether the method only find one valid chain.</param>
+            <returns>All possible multiple forcing chain instances.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.CollectCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.NormalChainStep},System.Boolean,System.Boolean)">
+            <summary>
+            The collect method called by chain step searchers.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="accumulator">The instance that temporarily records for chain steps.</param>
+            <param name="allowsAdvancedLinks">Indicates whether the method allows advanced links.</param>
+            <param name="makeConclusionAroundBackdoors">
+            <inheritdoc cref="P:Sudoku.Analytics.StepSearchers.ChainStepSearcher.MakeConclusionAroundBackdoors" path="/summary"/>
+            </param>
+            <returns>The first found step.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.CollectMultipleCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.ChainStep},System.Boolean,System.Boolean)">
+            <summary>
+            The collect method called by multiple forcing chains step searcher.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="accumulator">The instance that temporarily records for chain steps.</param>
+            <param name="allowsAdvancedLinks">Indicates whether the method allows advanced links.</param>
+            <param name="onlyFindFinnedChain">Indicates whether the method only finds for (grouped) finned chains.</param>
+            <returns>The first found step.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.CollectRectangleMultipleCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.ChainStep},System.Boolean,System.Boolean)">
+            <summary>
+            The collect method called by rectangle forcing chains step searcher.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="accumulator">The instance that temporarily records for chain steps.</param>
+            <param name="allowsAdvancedLinks">Indicates whether the method allows advanced links.</param>
+            <param name="onlyFindFinnedChain">Indicates whether the method only finds for (grouped) finned chains.</param>
+            <returns>The first found step.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.CollectBivalueUniversalGraveMultipleCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.ChainStep},System.Boolean,System.Boolean)">
+            <summary>
+            The collect method called by rectangle forcing chains step searcher.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="accumulator">The instance that temporarily records for chain steps.</param>
+            <param name="allowsAdvancedLinks">Indicates whether the method allows advanced links.</param>
+            <param name="onlyFindFinnedChain">Indicates whether the method only finds for (grouped) finned chains.</param>
+            <returns>The first found step.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.CollectBlossomLoopCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.BlossomLoopStep})">
+            <summary>
+            The collect method called by blossom loop step searchers.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="accumulator">The instance that temporarily records for chain steps.</param>
+            <returns>The first found step.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.CollectDynamicForcingChainsCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.List{Sudoku.Analytics.Steps.PatternBasedChainStep})">
+            <summary>
+            The collect method called by dynamic forcing chains step searchers.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="accumulator">The instance that temporarily records for chain steps.</param>
+            <returns>The first found step.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.CollectGeneralizedMultipleCore``2(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.ChainStep},System.Boolean,System.Boolean,,,)">
+            <summary>
+            The internal method that can collect for general-typed multiple forcing chains.
+            </summary>
+            <typeparam name="TMultipleForcingChains">The type of multiple forcing chains.</typeparam>
+            <typeparam name="TMultipleForcingChainsStep">The type of target step can be created.</typeparam>
+            <param name="context">The context.</param>
+            <param name="accumulator">The instance that temporarily records for chain steps.</param>
+            <param name="allowsAdvancedLinks">Indicates whether the method allows advanced links.</param>
+            <param name="onlyFindFinnedChain">Indicates whether the method only finds for (grouped) finned chains.</param>
+            <param name="componentCreator">Indicates the component that the current forcing chains pattern is.</param>
+            <param name="chainsCollector">
+            The collector method that can find a list of <typeparamref name="TMultipleForcingChains"/> instances in the grid.
+            </param>
+            <param name="stepCreator">The creator method that can create a chain step.</param>
+            <returns>The first found step.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.CollectChainConclusions(Sudoku.Analytics.Construction.Components.NamedChain,Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection)">
+            <summary>
+            The backing method to collect chain conclusions.
+            </summary>
+            <param name="pattern">The pattern.</param>
+            <param name="grid">The grid.</param>
+            <param name="supportedRules">All supported rules used.</param>
+            <returns>Found conclusions.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.CollectDynamicForcingChains(Sudoku.Concepts.Grid@,Sudoku.Analytics.StepAnalysisContext@,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection)">
+            <summary>
+            Collect all dynamic multiple forcing chains and dynamic binary forcing chains appeared in a grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="context">Indicates the context to be used.</param>
+            <param name="chainingRules">Indicates the chaining rules used.</param>
+            <returns>All possible dynamic forcing chains instances.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.FindDynamicForcingChains(Sudoku.Analytics.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection,Sudoku.Analytics.Configuration.StepGathererOptions,System.Nullable{System.ValueTuple{Sudoku.Analytics.Construction.Components.Node,Sudoku.Analytics.Construction.Components.Node}}@)">
+            <summary>
+            Finds a list of nodes that can implicitly connects to current node via a dynamic forcing chain.
+            This method won't use cached dictionary.
+            </summary>
+            <param name="startNode">The current instance.</param>
+            <param name="grid">Indicates the interim cached grid.</param>
+            <param name="chainingRules">Indicates the chaining rules to be used.</param>
+            <param name="options">Indicates the options used.</param>
+            <param name="contradiction">
+            <para>
+            The found contradiction node pairs.
+            If there's no contradiction here, this argument will keep the value <see langword="null"/>.
+            </para>
+            <para>
+            In general, non-dynamic cases will always make this argument <see langword="null"/>,
+            because non-dynamic contradiction can be integrated into one normal alternating inference chain,
+            by combining two different branches.
+            </para>
+            </param>
+            <returns>
+            A pair of <see cref="T:System.Collections.Generic.HashSet`1"/> of <see cref="T:Sudoku.Analytics.Construction.Components.Node"/> instances, indicating all possible nodes
+            that can implicitly connects to the current node via the whole forcing chain, grouped by their own initial states,
+            encapsulating with type <see cref="T:Sudoku.Analytics.Construction.Components.ForcingChainsInfo"/>.
+            </returns>
+            <seealso cref="F:Sudoku.Analytics.Caching.MemoryCachedData.StrongLinkDictionary"/>
+            <seealso cref="F:Sudoku.Analytics.Caching.MemoryCachedData.WeakLinkDictionary"/>
+            <seealso cref="T:System.Collections.Generic.HashSet`1"/>
+            <seealso cref="T:Sudoku.Analytics.Construction.Components.Node"/>
+            <seealso cref="T:Sudoku.Analytics.Construction.Components.ForcingChainsInfo"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.GetNodesFromOnToOff(Sudoku.Analytics.Construction.Components.Node,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection,Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Concepts.Grid@)">
+            <summary>
+            Try to find nodes that will be considered as "off" state if the specified node is "on" state.
+            </summary>
+            <param name="node">The previous node to be checked.</param>
+            <param name="chainingRules">The chaining rule collection to be used.</param>
+            <param name="options">The options.</param>
+            <param name="grid">The current grid.</param>
+            <returns>A list of nodes found.</returns>
+            <remarks><i>
+            This method doesn't use cache on purpose, therefore this method won't be marked type
+            <see cref="T:Sudoku.Runtime.InterceptorServices.InterceptorMethodCallerAttribute"/>.
+            </i></remarks>
+            <seealso cref="T:Sudoku.Runtime.InterceptorServices.InterceptorMethodCallerAttribute"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.GetNodesFromOffToOn(Sudoku.Analytics.Construction.Components.Node,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection,System.Collections.Generic.HashSet{Sudoku.Analytics.Construction.Components.Node},Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)">
+            <summary>
+            Try to find nodes that will be considered as "on" state if the specified node is "off" state.
+            </summary>
+            <param name="node">The previous node to be checked.</param>
+            <param name="chainingRules">The chaining rule collection to be used.</param>
+            <param name="nodesSupposedOff">Indicates the nodes supposed to be "off".</param>
+            <param name="options">The options.</param>
+            <param name="grid">The current grid.</param>
+            <param name="originalGrid">Indicates the original grid.</param>
+            <returns>A list of nodes found.</returns>
+            <remarks><i>
+            This method doesn't use cache on purpose, therefore this method won't be marked type
+            <see cref="T:Sudoku.Runtime.InterceptorServices.InterceptorMethodCallerAttribute"/>.
+            </i></remarks>
+            <seealso cref="T:Sudoku.Runtime.InterceptorServices.InterceptorMethodCallerAttribute"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.CollectMultipleForcingChains(Sudoku.Concepts.Grid@,System.Boolean)">
+            <summary>
+            Collect all multiple forcing chains appeared in a grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="onlyFindOne">Indicates whether the method only find one valid chain.</param>
+            <returns>All possible multiple forcing chains instances.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.FindForcingChains(Sudoku.Analytics.Construction.Components.Node)">
+            <summary>
+            <para>Finds a list of nodes that can implicitly connects to current node via a forcing chain.</para>
+            <para>This method only uses cached fields <see cref="F:Sudoku.Analytics.Caching.MemoryCachedData.StrongLinkDictionary"/> and <see cref="F:Sudoku.Analytics.Caching.MemoryCachedData.WeakLinkDictionary"/>.</para>
+            </summary>
+            <param name="startNode">The current instance.</param>
+            <returns>
+            A pair of <see cref="T:System.Collections.Generic.HashSet`1"/> of <see cref="T:Sudoku.Analytics.Construction.Components.Node"/> instances, indicating all possible nodes
+            that can implicitly connects to the current node via the whole forcing chain, grouped by their own initial states,
+            encapsulating with type <see cref="T:Sudoku.Analytics.Construction.Components.ForcingChainsInfo"/>.
+            </returns>
+            <seealso cref="F:Sudoku.Analytics.Caching.MemoryCachedData.StrongLinkDictionary"/>
+            <seealso cref="F:Sudoku.Analytics.Caching.MemoryCachedData.WeakLinkDictionary"/>
+            <seealso cref="T:System.Collections.Generic.HashSet`1"/>
+            <seealso cref="T:Sudoku.Analytics.Construction.Components.Node"/>
+            <seealso cref="T:Sudoku.Analytics.Construction.Components.ForcingChainsInfo"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ChainingDriver.CollectRectangleMultipleForcingChains(Sudoku.Concepts.Grid@,System.Boolean)">
+            <summary>
+            Collect all multiple forcing chains on applying to a unique rectangle, appeared in a grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="onlyFindOne">Indicates whether the method only find one valid chain.</param>
+            <returns>All possible multiple forcing chain instances.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.ForcingChainsCastingExtensions">
+            <summary>
+            Provides a file-local type that can simplify casting expression of <see cref="T:Sudoku.Analytics.Construction.Components.IForcingChains"/>.
+            </summary>
+            <seealso cref="T:Sudoku.Analytics.Construction.Components.IForcingChains"/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.ForcingChainsCastingExtensions.`1">
+            <summary>
+            Provides extension members on <typeparamref name="T"/>,
+            where <typeparamref name="T"/> satisfies <see cref="T:Sudoku.Analytics.Construction.Components.IForcingChains"/> constraint.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ForcingChainsCastingExtensions.`1.Cast">
+            <summary>
+            Cast the object into <see cref="T:Sudoku.Analytics.Construction.Components.IForcingChains"/> regardless of its base type <typeparamref name="T"/>.
+            </summary>
+            <returns>Cast <see cref="T:Sudoku.Analytics.Construction.Components.IForcingChains"/> instance.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.GridNodeExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+            <seealso cref="T:Sudoku.Concepts.Grid"/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.GridNodeExtensions.">
+            <summary>
+            Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.GridNodeExtensions..Apply(Sudoku.Analytics.Construction.Components.Node)">
+            <summary>
+            Treat the specified node as a real conclusion, and apply to a grid.
+            </summary>
+            <param name="node">The node.</param>
+        </member>
         <member name="T:Sudoku.Analytics.StepSearchers.ChainStepSearcher">
             <summary>
             Provides with a <b>Chain</b> step searcher.
@@ -9561,10 +9405,10 @@
 		</para>
 	</developer-notes>
             <para>
-            All implementations are extracted in type <see cref="T:Sudoku.Analytics.Drivers.ChainingDriver" />. Please visit it to learn more information.
+            All implementations are extracted in type <see cref="T:Sudoku.Analytics.StepSearchers.ChainingDriver" />. Please visit it to learn more information.
             </para>
             </remarks>
-            <seealso cref="T:Sudoku.Analytics.Drivers.ChainingDriver" />
+            <seealso cref="T:Sudoku.Analytics.StepSearchers.ChainingDriver" />
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.DynamicForcingChainsStepSearcher">
             <summary>
@@ -9945,12 +9789,12 @@
 				</summary>
 			</target>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.Extensions.<>E__0">
+        <member name="T:Sudoku.Analytics.StepSearchers.Extensions.">
             <summary>
             Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.CellMap"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__0.GroupTargets(System.Int32)">
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions..GroupTargets(System.Int32)">
             <summary>
             Try to group up with target cells, separating into multiple parts, grouped by its containing row or column.
             </summary>
@@ -9960,15 +9804,12 @@
             </returns>
             <seealso cref="T:Sudoku.Linq.CellMapOrCandidateMapGrouping`3"/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.GroupTargets(Sudoku.Concepts.CellMap@,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__0.GroupTargets(System.Int32)"/>
-        </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.Extensions.<>E__1">
+        <member name="T:Sudoku.Analytics.StepSearchers.Extensions.">
             <summary>
             Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.AppearingTimesOf(System.Int32,Sudoku.Concepts.CellMap@)">
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions..AppearingTimesOf(System.Int32,Sudoku.Concepts.CellMap@)">
             <summary>
             Try to get the maximum times that the specified digit, describing it can be filled with the specified houses in maximal case.
             </summary>
@@ -9976,7 +9817,7 @@
             <param name="cells">The cells to be checked.</param>
             <returns>The maximum possible times of the appearing.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.IsExactAppearingTimesOf(System.Int32,Sudoku.Concepts.CellMap@,System.Int32)">
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions..IsExactAppearingTimesOf(System.Int32,Sudoku.Concepts.CellMap@,System.Int32)">
             <summary>
             Try to get the maximum times that the specified digit, describing it can be filled with the specified houses in maximal case.
             </summary>
@@ -9985,7 +9826,7 @@
             <param name="limitCount">The number of times that the digit can be filled with the specified cells.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating whether the argument <paramref name="limitCount"/> is exactly correct.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.CheckCrossLineIntersectionLeaveEmpty(Sudoku.Concepts.CellMap@,System.Int16)">
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions..CheckCrossLineIntersectionLeaveEmpty(Sudoku.Concepts.CellMap@,System.Int16)">
             <summary>
             Check whether all intersected cells by original cross-line cells and extra house cells are non-empty,
             and cannot be of value appeared in base cells.
@@ -9994,7 +9835,7 @@
             <param name="baseCellsDigitsMask">The mask that holds a list of digits appeared in base cells.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.CheckTargetCellsDigitsValidity(Sudoku.Concepts.CellMap@,System.Int16)">
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions..CheckTargetCellsDigitsValidity(Sudoku.Concepts.CellMap@,System.Int16)">
             <summary>
             Check whether all digits appeared in base cells can be filled in target empty cells.
             </summary>
@@ -10002,28 +9843,13 @@
             <param name="baseCellsDigitsMask">A mask that holds a list of digits appeared in base cells.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.GetValueDigitsAppearedInCrossline(Sudoku.Concepts.CellMap@,System.Int16)">
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions..GetValueDigitsAppearedInCrossline(Sudoku.Concepts.CellMap@,System.Int16)">
             <summary>
             Try to get all possible digits as value representation in cross-line cells.
             </summary>
             <param name="crossline">The cross-line cells to be checked.</param>
             <param name="baseCellsDigitsMask">The digits appeared in base cells.</param>
             <returns>A list of digits appeared in cross-line cells as value representation.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.AppearingTimesOf(Sudoku.Concepts.Grid@,System.Int32,Sudoku.Concepts.CellMap@)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.AppearingTimesOf(System.Int32,Sudoku.Concepts.CellMap@)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.IsExactAppearingTimesOf(Sudoku.Concepts.Grid@,System.Int32,Sudoku.Concepts.CellMap@,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.IsExactAppearingTimesOf(System.Int32,Sudoku.Concepts.CellMap@,System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.CheckCrossLineIntersectionLeaveEmpty(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,System.Int16)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.CheckCrossLineIntersectionLeaveEmpty(Sudoku.Concepts.CellMap@,System.Int16)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.CheckTargetCellsDigitsValidity(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,System.Int16)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.CheckTargetCellsDigitsValidity(Sudoku.Concepts.CellMap@,System.Int16)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.GetValueDigitsAppearedInCrossline(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,System.Int16)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.GetValueDigitsAppearedInCrossline(Sudoku.Concepts.CellMap@,System.Int16)"/>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.ComplexFishStepSearcher">
             <summary>
@@ -10092,16 +9918,13 @@
 				</summary>
 			</target>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.Extensions.<>E__0">
+        <member name="T:Sudoku.Analytics.StepSearchers.Extensions.">
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <see cref="T:Sudoku.Concepts.CellMap"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__0.All(Sudoku.Analytics.StepSearchers.CellMapPredicate)">
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions..All(Sudoku.Analytics.StepSearchers.CellMapPredicate)">
             <inheritdoc cref="M:System.Linq.Providers.IAnyAllMethod`2.All(System.Func{`1,System.Boolean})"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.All(System.ReadOnlySpan{Sudoku.Concepts.CellMap},Sudoku.Analytics.StepSearchers.CellMapPredicate)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__0.All(Sudoku.Analytics.StepSearchers.CellMapPredicate)"/>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.CellMapPredicate">
             <summary>
@@ -11466,6 +11289,39 @@
         </member>
         <member name="M:Sudoku.Analytics.StepSearchers.NormalSubsetStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
             <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.SubsetDriver">
+            <summary>
+            Represents a subset searching driver.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.StepSearchers.SubsetDriver.MethodSet1">
+            <summary>
+            Represents a method set.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.StepSearchers.SubsetDriver.MethodSet2">
+            <summary>
+            Represents a method set.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.SubsetDriver.CollectCore(System.Boolean,Sudoku.Analytics.StepAnalysisContext@)">
+            <summary>
+            The internal method to create subset steps.
+            </summary>
+            <param name="searchingForLocked">Indicates whether the module only searches for locked subsets.</param>
+            <param name="context">The context.</param>
+            <returns>The collected steps.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.SubsetDriver.HiddenSubset(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Concepts.CellMap},System.Int32,System.Boolean)">
+            <summary>
+            Search for hidden subsets.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.SubsetDriver.NakedSubset(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Concepts.CellMap},System.Int32,System.Boolean)">
+            <summary>
+            Search for naked subsets.
+            </summary>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.AntiGurthSymmetricalPlacementStepSearcher">
             <summary>
@@ -22179,6 +22035,14 @@
             Indicates the wrong step.
             </summary>
         </member>
+        <member name="T:Sudoku.Behaviors.Backdoors.Backdoor">
+            <summary>
+            Represents a type that searches for backdoors.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Behaviors.Backdoors.Backdoor.GetBackdoors(Sudoku.Concepts.Grid@)">
+            <inheritdoc/>
+        </member>
         <member name="T:Sudoku.Behaviors.BlockFirst">
             <summary>
             Represents a way to finish puzzle with block-first rule.
@@ -22321,12 +22185,12 @@
             Provides a way to analyze technique usages on difference between two grids.
             </summary>
         </member>
-        <member name="T:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis.<>E__0">
+        <member name="T:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis.<>E__0.TryAnalyzeTechnique(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Analytics.Collector,Sudoku.Analytics.Step@)">
+        <member name="M:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis..TryAnalyzeTechnique(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Analytics.Collector,Sudoku.Analytics.Step@)">
             <summary>
             Try to analyze technique used that causes <paramref name="left"/> changing into <paramref name="right"/>.
             </summary>
@@ -22335,9 +22199,6 @@
             <param name="collector">The collector instance that is used for collecting found steps.</param>
             <param name="step">The step.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating whether such step can be inferred.</returns>
-        </member>
-        <member name="M:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis.TryAnalyzeTechnique(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Analytics.Collector,Sudoku.Analytics.Step@)">
-            <inheritdoc cref="M:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis.<>E__0.TryAnalyzeTechnique(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Analytics.Collector,Sudoku.Analytics.Step@)"/>
         </member>
         <member name="T:Sudoku.Behaviors.DigitFirst">
             <summary>
@@ -22349,6 +22210,124 @@
         </member>
         <member name="M:Sudoku.Behaviors.DigitFirst.GetDistanceArray(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Steps.SingleStep,Sudoku.Concepts.Grid}}@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Step,Sudoku.Concepts.Grid}}@)">
             <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker">
+            <summary>
+            Represents a way to infer grid symmetry of placements.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.Checkers">
+            <summary>
+            The internal methods.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.GetSymmetry(Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
+            <summary>
+            Try to find the symmetry of placements of the specified grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="mappingDigits">The mapping digits.</param>
+            <param name="selfPairedDigitsMask">The self-paired digits.</param>
+            <returns>Symmetric types.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.IsSymmetricalPlacement(Sudoku.Concepts.Grid@,Sudoku.SymmetricType,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
+            <summary>
+            Try to get the its mapping rule for the specified grid via the specified symmetric type.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="symmetricType">The symmetric type to be checked.</param>
+            <param name="mappingDigits">The mapping digits returned.</param>
+            <param name="selfPairedDigitsMask">A mask that contains a list of digits self-paired.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is a symmetrical-placement pattern.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            Throws when the argument <paramref name="symmetricType"/> is not <see cref="F:Sudoku.SymmetricType.Central"/>,
+            <see cref="F:Sudoku.SymmetricType.Diagonal"/> or	<see cref="F:Sudoku.SymmetricType.AntiDiagonal"/>.
+            </exception>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.CheckAxesOrCenterPointForSymmetry(Sudoku.Concepts.Grid@,Sudoku.SymmetricType,System.Int16)">
+            <summary>
+            Check for the symmetry behavior on axes or center point.
+            </summary>
+            <param name="grid">The grid to be checked.</param>
+            <param name="symmetricType">The symmetric type.</param>
+            <param name="nonselfPairedDigitsMask">The mask that holds a list of digits that is non-self-paired.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.GetStep(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <summary>
+            Find GSP step if worth.
+            </summary>
+            <param name="grid">The grid to be checked.</param>
+            <param name="options">The options to set.</param>
+            <returns>The found step.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.GetHighlightCells(Sudoku.Concepts.Grid@,System.Collections.Generic.List{Sudoku.Drawing.Nodes.CellViewNode},System.ReadOnlySpan{System.Nullable{System.Int32}})">
+            <summary>
+            Records all possible highlight cells.
+            </summary>
+            <param name="grid">The grid as reference.</param>
+            <param name="cellOffsets">The target collection.</param>
+            <param name="mapping">The mapping relation.</param>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.Diagonal(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
+            <summary>
+            The internal method to check for diagonal symmetrical placement kind.
+            </summary>
+            <param name="grid">The grid to be check.</param>
+            <param name="symmetricType">
+            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.Diagonal"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
+            </param>
+            <param name="mappingDigits">The mapping digits.</param>
+            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is diagonal symmetrical placement.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.AntiDiagonal(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
+            <summary>
+            The internal method to check for anti-diagonal symmetrical placement kind.
+            </summary>
+            <param name="grid">The grid to be check.</param>
+            <param name="symmetricType">
+            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.AntiDiagonal"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
+            </param>
+            <param name="mappingDigits">The mapping digits.</param>
+            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is anti-diagonal symmetrical placement.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.Central(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
+            <summary>
+            The internal method to check for central symmetrical placement kind.
+            </summary>
+            <param name="grid">The grid to be check.</param>
+            <param name="symmetricType">
+            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.Central"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
+            </param>
+            <param name="mappingDigits">The mapping digits.</param>
+            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is central symmetrical placement.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.CheckDiagonal(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <summary>
+            Checks for diagonal symmetry steps.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="options">The options to set.</param>
+            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.CheckAntiDiagonal(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <summary>
+            Checks for anti-diagonal symmetry steps.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="options">The options to set.</param>
+            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.CheckCentral(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <summary>
+            Checks for central symmetry steps.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="options">The options to set.</param>
+            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
         </member>
         <member name="T:Sudoku.Behaviors.IBehaviorMetric">
             <summary>
@@ -22509,12 +22488,12 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
-        <member name="T:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.<>E__0">
+        <member name="T:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.">
             <summary>
             Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.<>E__0.MakeIttoryu(Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)">
+        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions..MakeIttoryu(Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)">
             <summary>
             Try to reproduce ittoryu ordering for the specified grid whose path can be found by <see cref="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder"/>.
             </summary>
@@ -22524,22 +22503,19 @@
             <exception cref="T:System.ArgumentException">Throws when the ittoryu path contains a digit series of length 0 or 1.</exception>
             <seealso cref="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder"/>
         </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.MakeIttoryu(Sudoku.Concepts.Grid@,Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)">
-            <inheritdoc cref="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.<>E__0.MakeIttoryu(Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)"/>
-        </member>
-        <member name="T:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.<>E__1">
+        <member name="T:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.">
             <summary>
             Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.<>E__1.IsIttoryu(System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)">
+        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions..IsIttoryu(System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)">
             <summary>
             Determine whether the specified grid is an ittoryu puzzle, meaning the puzzle can be finished via digits one by one.
             </summary>
             <param name="path">The first found ittoryu path.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
         </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.<>E__1.IsIttoryu(Sudoku.Categorization.TechniqueSet,System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)">
+        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions..IsIttoryu(Sudoku.Categorization.TechniqueSet,System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)">
             <summary>
             Determine whether the specified grid is an ittoryu puzzle, meaning the puzzle can be finished via digits one by one,
             with checking using the specified techniques.
@@ -22560,12 +22536,6 @@
             </param>
             <param name="path">The first found ittoryu path.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.IsIttoryu(Sudoku.Concepts.Grid@,System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)">
-            <inheritdoc cref="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.<>E__1.IsIttoryu(System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)"/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.IsIttoryu(Sudoku.Concepts.Grid@,Sudoku.Categorization.TechniqueSet,System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)">
-            <inheritdoc cref="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.<>E__1.IsIttoryu(Sudoku.Categorization.TechniqueSet,System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)"/>
         </member>
         <member name="T:Sudoku.Behaviors.Ittoryu.IttoryuPathNode">
             <summary>
@@ -22642,6 +22612,82 @@
             <seealso cref="F:Sudoku.Categorization.Technique.FullHouse"/>
             <seealso cref="F:Sudoku.Categorization.Technique.HiddenSingleBlock"/>
         </member>
+        <member name="T:Sudoku.Behaviors.PatternUniqueness.DeadlyPatternInferrerLimitReachedException">
+            <summary>
+            Represents an exception that will be thrown if more than 10000 solutions found in a possible deadly pattern to be verified.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Behaviors.PatternUniqueness.DeadlyPatternInferrerLimitReachedException.Message">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo">
+            <summary>
+            Indicates the result value after <see cref="M:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/> called.
+            </summary>
+            <param name="grid"><inheritdoc cref="F:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.Grid" path="/summary"/></param>
+            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.IsDeadlyPattern" path="/summary"/></param>
+            <param name="failedCases"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.FailedCases" path="/summary"/></param>
+            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.PatternCandidates" path="/summary"/></param>
+            <seealso cref="M:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.#ctor(Sudoku.Concepts.Grid@,System.Boolean,System.ReadOnlySpan{Sudoku.Concepts.Grid},Sudoku.Concepts.CandidateMap@)">
+            <summary>
+            Indicates the result value after <see cref="M:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/> called.
+            </summary>
+            <param name="grid"><inheritdoc cref="F:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.Grid" path="/summary"/></param>
+            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.IsDeadlyPattern" path="/summary"/></param>
+            <param name="failedCases"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.FailedCases" path="/summary"/></param>
+            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.PatternCandidates" path="/summary"/></param>
+            <seealso cref="M:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/>
+        </member>
+        <member name="F:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.Grid">
+            <summary>
+            Indicates the grid used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.IsDeadlyPattern">
+            <summary>
+            Indicates the pattern is a real deadly pattern.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.FailedCases">
+            <summary>
+            Indicates all possible failed cases. The value can be an empty sequence if the pattern is a real deadly pattern,
+            or not a deadly pattern but containing obvious invalid candidates (like containing given or modifiable cells).
+            </summary>
+        </member>
+        <member name="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.PatternCandidates">
+            <summary>
+            Indicates the candidates the pattern used.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.Equals(System.Object)">
+            <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="T:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker">
+            <summary>
+            Represents a type that checks and infers for a pattern (specified as a <see cref="T:Sudoku.Concepts.Grid"/>, but invalid - multiple solutions),
+            determining whether the pattern is a deadly pattern.
+            </summary>
+            <seealso cref="T:Sudoku.Concepts.Grid"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)">
+            <summary>
+            Try to analyze whether a grid is a deadly pattern, by only checking the specified cells.
+            </summary>
+            <param name="grid">Indicates the grid. It's required that only specified cells are assigned with candidates.</param>
+            <param name="cells">Indicates the cells to be checked.</param>
+            <returns>The result after the analysis operation is finished.</returns>
+            <exception cref="T:Sudoku.Behaviors.PatternUniqueness.DeadlyPatternInferrerLimitReachedException">
+            Throws when the pattern contains more than 10000 solutions.
+            </exception>
+        </member>
         <member name="T:Sudoku.Behaviors.UserBehavior">
             <summary>
             Represents a kind of user behavior.
@@ -22694,12 +22740,12 @@
             Indicates the backing collector.
             </summary>
         </member>
-        <member name="T:Sudoku.Categorization.GridPartialMarkingExtensions.<>E__0">
+        <member name="T:Sudoku.Categorization.GridPartialMarkingExtensions.">
             <summary>
             Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Categorization.GridPartialMarkingExtensions.<>E__0.IsMissingCandidates(Sudoku.Categorization.PartialMarkingTechniques)">
+        <member name="M:Sudoku.Categorization.GridPartialMarkingExtensions..IsMissingCandidates(Sudoku.Categorization.PartialMarkingTechniques)">
             <summary>
             Determine whether the grid lacks some candidates that are included in a grid,
             through basic elimination rule (Naked Single checking) and specified partial-marking techniques.
@@ -22709,9 +22755,6 @@
             <exception cref="T:System.ArgumentOutOfRangeException">
             Throws when the argument <paramref name="techniques"/> is greater than the maximum value of enumeration field defined.
             </exception>
-        </member>
-        <member name="M:Sudoku.Categorization.GridPartialMarkingExtensions.IsMissingCandidates(Sudoku.Concepts.Grid@,Sudoku.Categorization.PartialMarkingTechniques)">
-            <inheritdoc cref="M:Sudoku.Categorization.GridPartialMarkingExtensions.<>E__0.IsMissingCandidates(Sudoku.Categorization.PartialMarkingTechniques)"/>
         </member>
         <member name="T:Sudoku.Categorization.MissingDifficultyLevelException">
             <summary>
@@ -23239,57 +23282,57 @@
             </summary>
             <seealso cref="T:Sudoku.Categorization.SingleSubtype"/>
         </member>
-        <member name="T:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0">
+        <member name="T:Sudoku.Categorization.SingleSubtypeExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Categorization.SingleSubtype"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.IsUnnecessary">
+        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions..IsUnnecessary">
             <summary>
             Indicates whether the specified subtype is unnecessary in practice.
             For example, a naked single with 8 digits in a block will form a full house, which is unnecessary.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.IsAlgorithmUnnecessary">
+        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions..IsAlgorithmUnnecessary">
             <summary>
             Indicates whether the specified subtype is unnecessary in solving algorithm,
             but it can be appeared in a solving step produced by a user.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.ExcludersCount">
+        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions..ExcludersCount">
             <summary>
             Indicates the number of excluders that the current single subtype will use.
             This method will return a non-zero value if and only if it is a hidden single.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.DirectDifficultyLevel">
+        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions..DirectDifficultyLevel">
             <summary>
             Indicates the direct difficulty level of the curreent subtype.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.Abbreviation">
+        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions..Abbreviation">
             <summary>
             Indicates the abbreviation of the subtype.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.RelatedTechnique">
+        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions..RelatedTechnique">
             <summary>
             Try to get the related technique of the current subtype.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.Attribute">
+        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions..Attribute">
             <summary>
             Gets the attribute.
             </summary>
         </member>
-        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.GetExcludersCount(Sudoku.Concepts.HouseType)">
+        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions..GetExcludersCount(Sudoku.Concepts.HouseType)">
             <summary>
             Try to get the number of excluders that the current single subtype will use in the specified house type.
             </summary>
             <param name="houseType">The house type.</param>
             <returns>The number of excluders.</returns>
         </member>
-        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.GetSingleTechnique(System.Boolean)">
+        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions..GetSingleTechnique(System.Boolean)">
             <summary>
             Try to get related <see cref="T:Sudoku.Categorization.SingleTechniqueFlag"/> field that corresponds the current subtype.
             All values are:
@@ -23314,33 +23357,6 @@
             <returns>The single technique returned.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is out of range.</exception>
             <seealso cref="T:Sudoku.Categorization.SingleTechniqueFlag"/>
-        </member>
-        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.get_IsUnnecessary(Sudoku.Categorization.SingleSubtype)">
-            <inheritdoc cref="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.IsUnnecessary"/>
-        </member>
-        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.get_IsAlgorithmUnnecessary(Sudoku.Categorization.SingleSubtype)">
-            <inheritdoc cref="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.IsAlgorithmUnnecessary"/>
-        </member>
-        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.get_ExcludersCount(Sudoku.Categorization.SingleSubtype)">
-            <inheritdoc cref="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.ExcludersCount"/>
-        </member>
-        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.get_DirectDifficultyLevel(Sudoku.Categorization.SingleSubtype)">
-            <inheritdoc cref="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.DirectDifficultyLevel"/>
-        </member>
-        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.get_Abbreviation(Sudoku.Categorization.SingleSubtype)">
-            <inheritdoc cref="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.Abbreviation"/>
-        </member>
-        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.get_RelatedTechnique(Sudoku.Categorization.SingleSubtype)">
-            <inheritdoc cref="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.RelatedTechnique"/>
-        </member>
-        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.get_Attribute(Sudoku.Categorization.SingleSubtype)">
-            <inheritdoc cref="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.Attribute"/>
-        </member>
-        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.GetExcludersCount(Sudoku.Categorization.SingleSubtype,Sudoku.Concepts.HouseType)">
-            <inheritdoc cref="M:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.GetExcludersCount(Sudoku.Concepts.HouseType)"/>
-        </member>
-        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.GetSingleTechnique(Sudoku.Categorization.SingleSubtype,System.Boolean)">
-            <inheritdoc cref="M:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.GetSingleTechnique(System.Boolean)"/>
         </member>
         <member name="T:Sudoku.Categorization.SingleSubtypeGroup">
             <summary>
@@ -23473,21 +23489,18 @@
             </summary>
             <seealso cref="T:Sudoku.Categorization.SingleTechniqueFlag"/>
         </member>
-        <member name="T:Sudoku.Categorization.SingleTechniqueFlagExtensions.<>E__0">
+        <member name="T:Sudoku.Categorization.SingleTechniqueFlagExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Categorization.SingleTechniqueFlag"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Categorization.SingleTechniqueFlagExtensions.<>E__0.GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Categorization.SingleTechniqueFlagExtensions..GetName(System.IFormatProvider)">
             <summary>
             Try to get the name of the current <see cref="T:Sudoku.Categorization.SingleTechniqueFlag"/>.
             </summary>
             <param name="formatProvider">The culture information.</param>
             <returns>The name of the current technique.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the target technique is out of range.</exception>
-        </member>
-        <member name="M:Sudoku.Categorization.SingleTechniqueFlagExtensions.GetName(Sudoku.Categorization.SingleTechniqueFlag,System.IFormatProvider)">
-            <inheritdoc cref="M:Sudoku.Categorization.SingleTechniqueFlagExtensions.<>E__0.GetName(System.IFormatProvider)"/>
         </member>
         <member name="T:Sudoku.Categorization.Technique">
             <summary>
@@ -25382,12 +25395,12 @@
             </summary>
             <seealso cref="T:Sudoku.Categorization.Technique"/>
         </member>
-        <member name="T:Sudoku.Categorization.TechniqueExtensions.<>E__0">
+        <member name="T:Sudoku.Categorization.TechniqueExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Categorization.Technique"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.IsAssignment">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions..IsAssignment">
             <summary>
             Indicates whether the specified technique produces assignments.
             </summary>
@@ -25405,48 +25418,48 @@
             <seealso cref="M:Sudoku.Categorization.TechniqueExtensions.get_IsDirect(Sudoku.Categorization.Technique)"/>
             <seealso cref="M:Sudoku.Categorization.TechniqueExtensions.get_IsSingle(Sudoku.Categorization.Technique)"/>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.IsSingle">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions..IsSingle">
             <summary>
             Indicates whether the specified technique is a single technique.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.IsDirect">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions..IsDirect">
             <summary>
             Indicates whether the specified technique is a technique that can only be produced in direct views.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.IsLastResort">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions..IsLastResort">
             <summary>
             Indicates whether the technique is last resort.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SupportsCustomizingDifficulty">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions..SupportsCustomizingDifficulty">
             <summary>
             Indicates whether the specified technique supports for customization on difficulty values.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SupportsSiamese">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions..SupportsSiamese">
             <summary>
             Indicates whether the technique supports for Siamese rule.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.EnglishName">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions..EnglishName">
             <summary>
             Indicates the English name of the current instance.
             </summary>
             <exception cref="T:System.Resources.ResourceNotFoundException">Throws when the target name is not found in resource dictionary.</exception>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.Abbreviation">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions..Abbreviation">
             <summary>
             Indicates the abbreviation of the current instance.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.ReferenceLinks">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions..ReferenceLinks">
             <summary>
             Indicates all configured links to EnjoySudoku forum describing the current technique.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.Group">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions..Group">
             <summary>
             Indicates the group that the current <see cref="T:Sudoku.Categorization.Technique"/> belongs to.
             </summary>
@@ -25454,29 +25467,29 @@
             Throws when the specified <see cref="T:Sudoku.Categorization.Technique"/> does not belong to any <see cref="T:Sudoku.Categorization.TechniqueGroup"/>.
             </exception>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.DifficultyLevel">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions..DifficultyLevel">
             <summary>
             Indicates its static difficulty level for the specified technique.
             If it doesn't contain a static difficulty level value, <see cref="F:Sudoku.Analytics.DifficultyLevel.Unknown"/> will be returned.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SingleTechnique">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions..SingleTechnique">
             <summary>
             Indicates the corresponding <see cref="T:Sudoku.Categorization.SingleTechniqueFlag"/> for the specified single <see cref="T:Sudoku.Categorization.Technique"/>.
             </summary>
             <exception cref="T:System.InvalidOperationException">Throws when the technique is not single.</exception>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.Features">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions..Features">
             <summary>
             Indicates all features configured for the current <see cref="T:Sudoku.Categorization.Technique"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SupportedPencilmarkVisibilityModes">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions..SupportedPencilmarkVisibilityModes">
             <summary>
             Indicates supported pencilmark-visibility modes that the current <see cref="T:Sudoku.Categorization.Technique"/> can be used in application.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SuitableStepType">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions..SuitableStepType">
             <summary>
             Indicates suitable <see cref="T:System.Type"/> which refers to a <see cref="T:Sudoku.Analytics.Step"/> type,
             whose contained property <see cref="P:Sudoku.Analytics.Step.Code"/> may create this technique;
@@ -25485,7 +25498,7 @@
             <seealso cref="T:Sudoku.Analytics.Step"/>
             <seealso cref="P:Sudoku.Analytics.Step.Code"/>
         </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.<>E__0.GetDefaultRating(System.Int32@)">
+        <member name="M:Sudoku.Categorization.TechniqueExtensions..GetDefaultRating(System.Int32@)">
             <summary>
             Try to get the base difficulty value for the specified technique, configured in metadata.
             </summary>
@@ -25494,7 +25507,7 @@
             </param>
             <returns>The difficulty value.</returns>
         </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.<>E__0.GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Categorization.TechniqueExtensions..GetName(System.IFormatProvider)">
             <summary>
             Try to get the name of the current <see cref="T:Sudoku.Categorization.Technique"/>.
             </summary>
@@ -25502,7 +25515,7 @@
             <returns>The name of the current technique.</returns>
             <exception cref="T:System.Resources.ResourceNotFoundException">Throws when the target name is not found in resource dictionary.</exception>
         </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.<>E__0.GetAliasedNames(System.IFormatProvider)">
+        <member name="M:Sudoku.Categorization.TechniqueExtensions..GetAliasedNames(System.IFormatProvider)">
             <summary>
             Try to get all aliases of the current <see cref="T:Sudoku.Categorization.Technique"/>.
             </summary>
@@ -25512,70 +25525,13 @@
             If the technique does not contain any aliases, the return value will be <see langword="null"/>.
             </returns>
         </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.<>E__0.TryGetGroup">
+        <member name="M:Sudoku.Categorization.TechniqueExtensions..TryGetGroup">
             <summary>
             Try to get the group that the current <see cref="T:Sudoku.Categorization.Technique"/> belongs to.
             If a technique doesn't contain a corresponding group, this method will return <see langword="null"/>.
             No exception will be thrown.
             </summary>
             <returns>The <see cref="T:Sudoku.Categorization.TechniqueGroup"/> value that the current <see cref="T:Sudoku.Categorization.Technique"/> belongs to.</returns>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_IsAssignment(Sudoku.Categorization.Technique)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.IsAssignment"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_IsSingle(Sudoku.Categorization.Technique)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.IsSingle"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_IsDirect(Sudoku.Categorization.Technique)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.IsDirect"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_IsLastResort(Sudoku.Categorization.Technique)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.IsLastResort"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_SupportsCustomizingDifficulty(Sudoku.Categorization.Technique)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SupportsCustomizingDifficulty"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_SupportsSiamese(Sudoku.Categorization.Technique)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SupportsSiamese"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_EnglishName(Sudoku.Categorization.Technique)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.EnglishName"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_Abbreviation(Sudoku.Categorization.Technique)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.Abbreviation"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_ReferenceLinks(Sudoku.Categorization.Technique)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.ReferenceLinks"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_Group(Sudoku.Categorization.Technique)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.Group"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_DifficultyLevel(Sudoku.Categorization.Technique)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.DifficultyLevel"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_SingleTechnique(Sudoku.Categorization.Technique)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SingleTechnique"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_Features(Sudoku.Categorization.Technique)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.Features"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_SupportedPencilmarkVisibilityModes(Sudoku.Categorization.Technique)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SupportedPencilmarkVisibilityModes"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_SuitableStepType(Sudoku.Categorization.Technique)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SuitableStepType"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.GetDefaultRating(Sudoku.Categorization.Technique,System.Int32@)">
-            <inheritdoc cref="M:Sudoku.Categorization.TechniqueExtensions.<>E__0.GetDefaultRating(System.Int32@)"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.GetName(Sudoku.Categorization.Technique,System.IFormatProvider)">
-            <inheritdoc cref="M:Sudoku.Categorization.TechniqueExtensions.<>E__0.GetName(System.IFormatProvider)"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.GetAliasedNames(Sudoku.Categorization.Technique,System.IFormatProvider)">
-            <inheritdoc cref="M:Sudoku.Categorization.TechniqueExtensions.<>E__0.GetAliasedNames(System.IFormatProvider)"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions.TryGetGroup(Sudoku.Categorization.Technique)">
-            <inheritdoc cref="M:Sudoku.Categorization.TechniqueExtensions.<>E__0.TryGetGroup"/>
         </member>
         <member name="T:Sudoku.Categorization.TechniqueFeatures">
             <summary>
@@ -25886,33 +25842,33 @@
             </summary>
             <seealso cref="T:Sudoku.Categorization.TechniqueGroup"/>
         </member>
-        <member name="T:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0">
+        <member name="T:Sudoku.Categorization.TechniqueGroupExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Categorization.TechniqueGroup"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.SupportsSiamese">
+        <member name="P:Sudoku.Categorization.TechniqueGroupExtensions..SupportsSiamese">
             <summary>
             Indicates whether the technique group supports for Siamese rule.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.Name">
+        <member name="P:Sudoku.Categorization.TechniqueGroupExtensions..Name">
             <summary>
             Indicates the name of the technique group.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.ShortenedName">
+        <member name="P:Sudoku.Categorization.TechniqueGroupExtensions..ShortenedName">
             <summary>
             Indicates shortened name of the current <see cref="T:Sudoku.Categorization.TechniqueGroup"/> instance.
             If the group has an abbreviation, return its abbreviation; otherwise, its full name.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.Abbreviation">
+        <member name="P:Sudoku.Categorization.TechniqueGroupExtensions..Abbreviation">
             <summary>
             Try to get abbreviation of the current <see cref="T:Sudoku.Categorization.TechniqueGroup"/> instance.
             </summary>
         </member>
-        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.GetShortenedName(System.Globalization.CultureInfo)">
+        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions..GetShortenedName(System.Globalization.CultureInfo)">
             <summary>
             Try to get shortened name of the current <see cref="T:Sudoku.Categorization.TechniqueGroup"/> instance. If the group has an abbreviation,
             return its abbreviation; otherwise, its full name.
@@ -25920,7 +25876,7 @@
             <param name="cultureInfo">The culture information instance.</param>
             <returns>The shortened name.</returns>
         </member>
-        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions..GetName(System.IFormatProvider)">
             <summary>
             Try to get name of the current <see cref="T:Sudoku.Categorization.TechniqueGroup"/> instance, with the specified culture information.
             </summary>
@@ -25928,7 +25884,7 @@
             <returns>The name.</returns>
             <exception cref="T:System.Resources.ResourceNotFoundException">Throws when the specified group does not contain a name.</exception>
         </member>
-        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.GetTechniques(System.Func{Sudoku.Categorization.Technique,System.Boolean})">
+        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions..GetTechniques(System.Func{Sudoku.Categorization.Technique,System.Boolean})">
             <summary>
             Try to get all possible <see cref="T:Sudoku.Categorization.Technique"/> fields belonging to the current group.
             </summary>
@@ -25936,27 +25892,6 @@
             <returns>
             A <see cref="T:Sudoku.Categorization.TechniqueSet"/> instance that contains all <see cref="T:Sudoku.Categorization.Technique"/> fields belonging to the current group.
             </returns>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.get_SupportsSiamese(Sudoku.Categorization.TechniqueGroup)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.SupportsSiamese"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.get_Name(Sudoku.Categorization.TechniqueGroup)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.Name"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.get_ShortenedName(Sudoku.Categorization.TechniqueGroup)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.ShortenedName"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.get_Abbreviation(Sudoku.Categorization.TechniqueGroup)">
-            <inheritdoc cref="P:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.Abbreviation"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.GetShortenedName(Sudoku.Categorization.TechniqueGroup,System.Globalization.CultureInfo)">
-            <inheritdoc cref="M:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.GetShortenedName(System.Globalization.CultureInfo)"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.GetName(Sudoku.Categorization.TechniqueGroup,System.IFormatProvider)">
-            <inheritdoc cref="M:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.GetName(System.IFormatProvider)"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.GetTechniques(Sudoku.Categorization.TechniqueGroup,System.Func{Sudoku.Categorization.Technique,System.Boolean})">
-            <inheritdoc cref="M:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.GetTechniques(System.Func{Sudoku.Categorization.Technique,System.Boolean})"/>
         </member>
         <member name="T:Sudoku.Categorization.TechniqueMetadataAttribute">
             <summary>
@@ -26828,12 +26763,12 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.Supersymmetry.Space"/>
         </member>
-        <member name="T:Sudoku.Concepts.Supersymmetry.SpaceExtensions.<>E__0">
+        <member name="T:Sudoku.Concepts.Supersymmetry.SpaceExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Concepts.Supersymmetry.Space"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceExtensions.<>E__0.IsSatisfied(Sudoku.Concepts.CandidateMap@,System.Boolean)">
+        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceExtensions..IsSatisfied(Sudoku.Concepts.CandidateMap@,System.Boolean)">
             <summary>
             Determine whether the specified assignment combination can satisfy the current rank set.
             </summary>
@@ -26841,28 +26776,22 @@
             <param name="isTruth">Indicates whether the current space is as a truth.</param>
             <returns>A <see cref="T:System.Boolean"/> result.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceExtensions.IsSatisfied(Sudoku.Concepts.Supersymmetry.Space,Sudoku.Concepts.CandidateMap@,System.Boolean)">
-            <inheritdoc cref="M:Sudoku.Concepts.Supersymmetry.SpaceExtensions.<>E__0.IsSatisfied(Sudoku.Concepts.CandidateMap@,System.Boolean)"/>
-        </member>
         <member name="T:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions">
             <summary>
             Provides with extension methods on <see cref="T:Sudoku.Concepts.Supersymmetry.SpaceSet"/>.
             </summary>
             <seealso cref="T:Sudoku.Concepts.Supersymmetry.SpaceSet"/>
         </member>
-        <member name="T:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions.<>E__0">
+        <member name="T:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions.">
             <summary>
             Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Supersymmetry.SpaceSet"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions.<>E__0.AsSpaceSet">
+        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions..AsSpaceSet">
             <summary>
             Converts <see cref="T:System.ReadOnlySpan`1"/> of <see cref="T:Sudoku.Concepts.Supersymmetry.Space"/> into <see cref="T:Sudoku.Concepts.Supersymmetry.SpaceSet"/>.
             </summary>
             <returns>The space set instance.</returns>
-        </member>
-        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions.AsSpaceSet(System.ReadOnlySpan{Sudoku.Concepts.Supersymmetry.Space})">
-            <inheritdoc cref="M:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions.<>E__0.AsSpaceSet"/>
         </member>
         <member name="T:Sudoku.Generating.Filtering.BetweenRule">
             <summary>
@@ -26930,29 +26859,23 @@
             </summary>
             <seealso cref="T:Sudoku.Generating.Filtering.ComparisonOperator"/>
         </member>
-        <member name="T:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.<>E__0">
+        <member name="T:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Generating.Filtering.ComparisonOperator"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.<>E__0.GetOperatorString">
+        <member name="P:Sudoku.Generating.Filtering.ComparisonOperatorExtensions..GetOperatorString">
             <summary>
             Indicates the string representation of the operator.
             </summary>
         </member>
-        <member name="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.<>E__0.GetOperator``1">
+        <member name="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions..GetOperator``1">
             <summary>
             Creates a delegate method that executes the specified rule of comparison.
             </summary>
             <typeparam name="T">The type of the target.</typeparam>
             <returns>A delegate function.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is out of range (not defined).</exception>
-        </member>
-        <member name="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.get_GetOperatorString(Sudoku.Generating.Filtering.ComparisonOperator)">
-            <inheritdoc cref="P:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.<>E__0.GetOperatorString"/>
-        </member>
-        <member name="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.GetOperator``1(Sudoku.Generating.Filtering.ComparisonOperator)">
-            <inheritdoc cref="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.<>E__0.GetOperator``1"/>
         </member>
         <member name="T:Sudoku.Generating.Filtering.Constraint">
             <summary>
@@ -28100,307 +28023,6 @@
         </member>
         <member name="M:Sudoku.Generating.Qualified.TechniqueGenerator.TryGenerateUnique(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
             <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Inferring.BackdoorInferredResult">
-            <summary>
-            Indicates the result value after <see cref="M:Sudoku.Inferring.BackdoorInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.BackdoorInferredResult@)"/> called.
-            </summary>
-            <param name="candidates"><inheritdoc cref="P:Sudoku.Inferring.BackdoorInferredResult.Candidates" path="/summary"/></param>
-            <seealso cref="M:Sudoku.Inferring.BackdoorInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.BackdoorInferredResult@)"/>
-        </member>
-        <member name="M:Sudoku.Inferring.BackdoorInferredResult.#ctor(System.ReadOnlySpan{Sudoku.Concepts.Conclusion})">
-            <summary>
-            Indicates the result value after <see cref="M:Sudoku.Inferring.BackdoorInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.BackdoorInferredResult@)"/> called.
-            </summary>
-            <param name="candidates"><inheritdoc cref="P:Sudoku.Inferring.BackdoorInferredResult.Candidates" path="/summary"/></param>
-            <seealso cref="M:Sudoku.Inferring.BackdoorInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.BackdoorInferredResult@)"/>
-        </member>
-        <member name="P:Sudoku.Inferring.BackdoorInferredResult.Candidates">
-            <summary>
-            Indicates the found candidates.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Inferring.BackdoorInferredResult.Equals(System.Object)">
-            <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
-        </member>
-        <member name="M:Sudoku.Inferring.BackdoorInferredResult.GetHashCode">
-            <inheritdoc cref="M:System.Object.GetHashCode"/>
-        </member>
-        <member name="M:Sudoku.Inferring.BackdoorInferredResult.ToString">
-            <inheritdoc cref="M:System.Object.ToString"/>
-        </member>
-        <member name="T:Sudoku.Inferring.BackdoorInferrer">
-            <summary>
-            Defines a backdoor searcher.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Inferring.BackdoorInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.BackdoorInferredResult@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Inferring.DeadlyPatternInferredResult">
-            <summary>
-            Indicates the result value after <see cref="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.DeadlyPatternInferredResult@)"/> called.
-            </summary>
-            <param name="grid"><inheritdoc cref="F:Sudoku.Inferring.DeadlyPatternInferredResult.Grid" path="/summary"/></param>
-            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.Inferring.DeadlyPatternInferredResult.IsDeadlyPattern" path="/summary"/></param>
-            <param name="failedCases"><inheritdoc cref="P:Sudoku.Inferring.DeadlyPatternInferredResult.FailedCases" path="/summary"/></param>
-            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.Inferring.DeadlyPatternInferredResult.PatternCandidates" path="/summary"/></param>
-            <seealso cref="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.DeadlyPatternInferredResult@)"/>
-        </member>
-        <member name="M:Sudoku.Inferring.DeadlyPatternInferredResult.#ctor(Sudoku.Concepts.Grid@,System.Boolean,System.ReadOnlySpan{Sudoku.Concepts.Grid},Sudoku.Concepts.CandidateMap@)">
-            <summary>
-            Indicates the result value after <see cref="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.DeadlyPatternInferredResult@)"/> called.
-            </summary>
-            <param name="grid"><inheritdoc cref="F:Sudoku.Inferring.DeadlyPatternInferredResult.Grid" path="/summary"/></param>
-            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.Inferring.DeadlyPatternInferredResult.IsDeadlyPattern" path="/summary"/></param>
-            <param name="failedCases"><inheritdoc cref="P:Sudoku.Inferring.DeadlyPatternInferredResult.FailedCases" path="/summary"/></param>
-            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.Inferring.DeadlyPatternInferredResult.PatternCandidates" path="/summary"/></param>
-            <seealso cref="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.DeadlyPatternInferredResult@)"/>
-        </member>
-        <member name="F:Sudoku.Inferring.DeadlyPatternInferredResult.Grid">
-            <summary>
-            Indicates the grid used.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Inferring.DeadlyPatternInferredResult.IsDeadlyPattern">
-            <summary>
-            Indicates the pattern is a real deadly pattern.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Inferring.DeadlyPatternInferredResult.FailedCases">
-            <summary>
-            Indicates all possible failed cases. The value can be an empty sequence if the pattern is a real deadly pattern,
-            or not a deadly pattern but containing obvious invalid candidates (like containing given or modifiable cells).
-            </summary>
-        </member>
-        <member name="P:Sudoku.Inferring.DeadlyPatternInferredResult.PatternCandidates">
-            <summary>
-            Indicates the candidates the pattern used.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Inferring.DeadlyPatternInferredResult.Equals(System.Object)">
-            <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
-        </member>
-        <member name="M:Sudoku.Inferring.DeadlyPatternInferredResult.GetHashCode">
-            <inheritdoc cref="M:System.Object.GetHashCode"/>
-        </member>
-        <member name="M:Sudoku.Inferring.DeadlyPatternInferredResult.ToString">
-            <inheritdoc cref="M:System.Object.ToString"/>
-        </member>
-        <member name="T:Sudoku.Inferring.DeadlyPatternInferrer">
-            <summary>
-            Represents a type that checks and infers for a pattern (specified as a <see cref="T:Sudoku.Concepts.Grid"/>, but invalid - multiple solutions),
-            determining whether the pattern is a deadly pattern.
-            </summary>
-            <seealso cref="T:Sudoku.Concepts.Grid"/>
-        </member>
-        <member name="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.DeadlyPatternInferredResult@)">
-            <inheritdoc cref="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Inferring.DeadlyPatternInferredResult@)"/>
-        </member>
-        <member name="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Inferring.DeadlyPatternInferredResult@)">
-            <summary>
-            Try to analyze whether a grid is a deadly pattern, by only checking the specified cells.
-            </summary>
-            <param name="grid">Indicates the grid. It's required that only specified cells are assigned with candidates.</param>
-            <param name="cells">Indicates the cells to be checked.</param>
-            <param name="result">The result after the analysis operation is finished.</param>
-            <exception cref="T:Sudoku.Inferring.DeadlyPatternInferrerLimitReachedException">
-            Throws when the pattern contains more than 10000 solutions.
-            </exception>
-        </member>
-        <member name="T:Sudoku.Inferring.DeadlyPatternInferrerLimitReachedException">
-            <summary>
-            Represents an exception that will be thrown if more than 10000 solutions found in a possible deadly pattern to be verified.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Inferring.DeadlyPatternInferrerLimitReachedException.Message">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Inferring.IInferrable`1">
-            <summary>
-            Represents an inferrable object.
-            </summary>
-            <typeparam name="TResult">
-            The type of the result. The result type should be considered as a non-<see langword="null"/> state.
-            </typeparam>
-        </member>
-        <member name="M:Sudoku.Inferring.IInferrable`1.TryInfer(Sudoku.Concepts.Grid@,`0@)">
-            <summary>
-            Infers the object and returns an instance of type <typeparamref name="TResult"/>, indicating the result.
-            </summary>
-            <param name="grid">The grid to be checked.</param>
-            <param name="result">The result returned.</param>
-            <returns>
-            <para>A <see cref="T:System.Boolean"/> value indicating whether the operation is successfully handled.</para>
-            <para>
-            To differ with <paramref name="result"/>, this value only records the result
-            that the current operation contains invalid data input or exception encountered.
-            In other words, the argument <paramref name="result"/> may not have a valid data
-            even if the return value is <see langword="true"/>.
-            </para>
-            </returns>
-        </member>
-        <member name="T:Sudoku.Inferring.SymmetryInferredResult">
-            <summary>
-            Indicates the result value after <see cref="M:Sudoku.Inferring.SymmetryInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.SymmetryInferredResult@)"/> called.
-            </summary>
-            <param name="symmetricType"><inheritdoc cref="P:Sudoku.Inferring.SymmetryInferredResult.SymmetricType" path="/summary"/></param>
-            <param name="mappingDigits"><inheritdoc cref="P:Sudoku.Inferring.SymmetryInferredResult.MappingDigits" path="/summary"/></param>
-            <param name="selfPairedDigitsMask"><inheritdoc cref="P:Sudoku.Inferring.SymmetryInferredResult.SelfPairedDigitsMask" path="/summary"/></param>
-            <seealso cref="M:Sudoku.Inferring.SymmetryInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.SymmetryInferredResult@)"/>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferredResult.#ctor(Sudoku.SymmetricType,System.ReadOnlySpan{System.Nullable{System.Int32}},System.Int16)">
-            <summary>
-            Indicates the result value after <see cref="M:Sudoku.Inferring.SymmetryInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.SymmetryInferredResult@)"/> called.
-            </summary>
-            <param name="symmetricType"><inheritdoc cref="P:Sudoku.Inferring.SymmetryInferredResult.SymmetricType" path="/summary"/></param>
-            <param name="mappingDigits"><inheritdoc cref="P:Sudoku.Inferring.SymmetryInferredResult.MappingDigits" path="/summary"/></param>
-            <param name="selfPairedDigitsMask"><inheritdoc cref="P:Sudoku.Inferring.SymmetryInferredResult.SelfPairedDigitsMask" path="/summary"/></param>
-            <seealso cref="M:Sudoku.Inferring.SymmetryInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.SymmetryInferredResult@)"/>
-        </member>
-        <member name="P:Sudoku.Inferring.SymmetryInferredResult.SymmetricType">
-            <summary>
-            The symmetric type returned.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Inferring.SymmetryInferredResult.MappingDigits">
-            <summary>
-            The mapping digits returned.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Inferring.SymmetryInferredResult.SelfPairedDigitsMask">
-            <summary>
-            A mask that contains a list of digits self-paired.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferredResult.Deconstruct(Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
-            <target name="method">
-				<summary>
-					Deconstruct the current instance into multiple values, which means you can use
-					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
-				</summary>
-			</target>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferredResult.Equals(System.Object)">
-            <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferredResult.GetHashCode">
-            <inheritdoc cref="M:System.Object.GetHashCode"/>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferredResult.ToString">
-            <inheritdoc cref="M:System.Object.ToString"/>
-        </member>
-        <member name="T:Sudoku.Inferring.SymmetryInferrer">
-            <summary>
-            Represents an inferrer that can checks for symmetrical placements.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Inferring.SymmetryInferrer.Checkers">
-            <summary>
-            The internal methods.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.SymmetryInferredResult@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.IsSymmetricalPlacement(Sudoku.Concepts.Grid@,Sudoku.SymmetricType,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
-            <summary>
-            Try to get the its mapping rule for the specified grid via the specified symmetric type.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="symmetricType">The symmetric type to be checked.</param>
-            <param name="mappingDigits">The mapping digits returned.</param>
-            <param name="selfPairedDigitsMask">A mask that contains a list of digits self-paired.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is a symmetrical-placement pattern.</returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">
-            Throws when the argument <paramref name="symmetricType"/> is not <see cref="F:Sudoku.SymmetricType.Central"/>,
-            <see cref="F:Sudoku.SymmetricType.Diagonal"/> or	<see cref="F:Sudoku.SymmetricType.AntiDiagonal"/>.
-            </exception>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.CheckAxesOrCenterPointForSymmetry(Sudoku.Concepts.Grid@,Sudoku.SymmetricType,System.Int16)">
-            <summary>
-            Check for the symmetry behavior on axes or center point.
-            </summary>
-            <param name="grid">The grid to be checked.</param>
-            <param name="symmetricType">The symmetric type.</param>
-            <param name="nonselfPairedDigitsMask">The mask that holds a list of digits that is non-self-paired.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.GetStep(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <summary>
-            Find GSP step if worth.
-            </summary>
-            <param name="grid">The grid to be checked.</param>
-            <param name="options">The options to set.</param>
-            <returns>The found step.</returns>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.GetHighlightCells(Sudoku.Concepts.Grid@,System.Collections.Generic.List{Sudoku.Drawing.Nodes.CellViewNode},System.ReadOnlySpan{System.Nullable{System.Int32}})">
-            <summary>
-            Records all possible highlight cells.
-            </summary>
-            <param name="grid">The grid as reference.</param>
-            <param name="cellOffsets">The target collection.</param>
-            <param name="mapping">The mapping relation.</param>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.Diagonal(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
-            <summary>
-            The internal method to check for diagonal symmetrical placement kind.
-            </summary>
-            <param name="grid">The grid to be check.</param>
-            <param name="symmetricType">
-            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.Diagonal"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
-            </param>
-            <param name="mappingDigits">The mapping digits.</param>
-            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is diagonal symmetrical placement.</returns>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.AntiDiagonal(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
-            <summary>
-            The internal method to check for anti-diagonal symmetrical placement kind.
-            </summary>
-            <param name="grid">The grid to be check.</param>
-            <param name="symmetricType">
-            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.AntiDiagonal"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
-            </param>
-            <param name="mappingDigits">The mapping digits.</param>
-            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is anti-diagonal symmetrical placement.</returns>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.Central(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
-            <summary>
-            The internal method to check for central symmetrical placement kind.
-            </summary>
-            <param name="grid">The grid to be check.</param>
-            <param name="symmetricType">
-            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.Central"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
-            </param>
-            <param name="mappingDigits">The mapping digits.</param>
-            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is central symmetrical placement.</returns>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.CheckDiagonal(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <summary>
-            Checks for diagonal symmetry steps.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="options">The options to set.</param>
-            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.CheckAntiDiagonal(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <summary>
-            Checks for anti-diagonal symmetry steps.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="options">The options to set.</param>
-            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
-        </member>
-        <member name="M:Sudoku.Inferring.SymmetryInferrer.CheckCentral(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <summary>
-            Checks for central symmetry steps.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="options">The options to set.</param>
-            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
         </member>
         <member name="T:Sudoku.Linq.AnalysisResultEnumerable">
             <summary>

@@ -1,4 +1,4 @@
-namespace Sudoku.Inferring;
+namespace Sudoku.Behaviors.PatternUniqueness;
 
 /// <summary>
 /// Represents an exception that will be thrown if more than 10000 solutions found in a possible deadly pattern to be verified.

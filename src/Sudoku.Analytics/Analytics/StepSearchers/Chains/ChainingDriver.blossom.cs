@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Drivers;
+namespace Sudoku.Analytics.StepSearchers;
 
 using CellsDistribution = Dictionary<Cell, SortedSet<Node>>;
 using HousesDistribution = Dictionary<(House, Digit), SortedSet<Node>>;

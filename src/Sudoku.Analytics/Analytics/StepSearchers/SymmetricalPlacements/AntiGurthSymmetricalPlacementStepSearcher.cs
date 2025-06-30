@@ -713,7 +713,7 @@ public sealed partial class AntiGurthSymmetricalPlacementStepSearcher : StepSear
 				selfPairedDigitsMask |= (Mask)(1 << digit);
 			}
 		}
-		return SymmetryInferrer.CheckAxesOrCenterPointForSymmetry(
+		return GridSymmetryChecker.CheckAxesOrCenterPointForSymmetry(
 			grid,
 			SymmetricType.Diagonal,
 			(Mask)(Grid.MaxCandidatesMask & ~selfPairedDigitsMask)

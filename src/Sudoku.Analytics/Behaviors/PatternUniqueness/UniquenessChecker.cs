@@ -1,26 +1,22 @@
-namespace Sudoku.Inferring;
+namespace Sudoku.Behaviors.PatternUniqueness;
 
 /// <summary>
 /// Represents a type that checks and infers for a pattern (specified as a <see cref="Grid"/>, but invalid - multiple solutions),
 /// determining whether the pattern is a deadly pattern.
 /// </summary>
 /// <seealso cref="Grid"/>
-public sealed class DeadlyPatternInferrer : IInferrable<DeadlyPatternInferredResult>
+public static class UniquenessChecker
 {
-	/// <inheritdoc cref="TryInfer(in Grid, ref readonly CellMap, out DeadlyPatternInferredResult)"/>
-	public static bool TryInfer(in Grid grid, out DeadlyPatternInferredResult result)
-		=> TryInfer(grid, in CellMap.nullref, out result);
-
 	/// <summary>
 	/// Try to analyze whether a grid is a deadly pattern, by only checking the specified cells.
 	/// </summary>
 	/// <param name="grid">Indicates the grid. It's required that only specified cells are assigned with candidates.</param>
 	/// <param name="cells">Indicates the cells to be checked.</param>
-	/// <param name="result">The result after the analysis operation is finished.</param>
+	/// <returns>The result after the analysis operation is finished.</returns>
 	/// <exception cref="DeadlyPatternInferrerLimitReachedException">
 	/// Throws when the pattern contains more than 10000 solutions.
 	/// </exception>
-	public static bool TryInfer(in Grid grid, [AllowNull] ref readonly CellMap cells, out DeadlyPatternInferredResult result)
+	public static PatternUniquenessInfo GetUniqueness(in Grid grid, in CellMap cells)
 	{
 		var patternCandidates = CandidateMap.Empty;
 		if (grid.IsValid || grid.EmptyCellsCount != 81 || grid.PuzzleType != SudokuType.Standard)
@@ -29,26 +25,8 @@ public sealed class DeadlyPatternInferrer : IInferrable<DeadlyPatternInferredRes
 			goto FastFail;
 		}
 
-		// Collect all used cells. This value may not be necessary but will make program be a little bit faster if cached.
-		CellMap cellsUsed;
-		if (Unsafe.IsNullRef(in cells))
-		{
-			cellsUsed = CellMap.Empty;
-			for (var cell = 0; cell < 81; cell++)
-			{
-				if (grid.GetCandidates(cell) != Grid.MaxCandidatesMask)
-				{
-					cellsUsed.Add(cell);
-				}
-			}
-		}
-		else
-		{
-			cellsUsed = cells;
-		}
-
 		// Verify whether at least one cell in pattern hold nothing.
-		foreach (var cell in cellsUsed)
+		foreach (var cell in cells)
 		{
 			var mask = grid.GetCandidates(cell);
 			if (mask == 0)
@@ -64,16 +42,16 @@ public sealed class DeadlyPatternInferrer : IInferrable<DeadlyPatternInferredRes
 
 		// Step 0: Determine whether at least one house the pattern spanned only hold one cell used.
 		// A valid deadly pattern must hold at least 2 cells for all spanned houses.
-		foreach (var house in cellsUsed.Houses)
+		foreach (var house in cells.Houses)
 		{
-			if ((HousesMap[house] & cellsUsed).Count == 1)
+			if ((HousesMap[house] & cells).Count == 1)
 			{
 				goto FastFail;
 			}
 		}
 
 		// Step 1: Get all solutions for that pattern.
-		var solutions = getCombinations(grid, cellsUsed);
+		var solutions = getCombinations(grid, cells);
 		if (solutions.Length == 0)
 		{
 			goto FastFail;
@@ -95,10 +73,10 @@ public sealed class DeadlyPatternInferrer : IInferrable<DeadlyPatternInferredRes
 
 				// Check for all possible houses.
 				var flag = true;
-				foreach (var house in cellsUsed.Houses)
+				foreach (var house in cells.Houses)
 				{
-					var mask1 = solution[HousesMap[house] & cellsUsed, true];
-					var mask2 = tempGrid[HousesMap[house] & cellsUsed, true];
+					var mask1 = solution[HousesMap[house] & cells, true];
+					var mask2 = tempGrid[HousesMap[house] & cells, true];
 					if (mask1 != mask2)
 					{
 						flag = false;
@@ -121,12 +99,10 @@ public sealed class DeadlyPatternInferrer : IInferrable<DeadlyPatternInferredRes
 
 		// If all possible solutions has exchangable patterns, the pattern will be a real deadly pattern;
 		// otherwise, not a deadly pattern.
-		result = new(grid, failedCases.Count == 0, failedCases.AsSpan(), patternCandidates);
-		return true;
+		return new(grid, failedCases.Count == 0, failedCases.AsSpan(), patternCandidates);
 
 	FastFail:
-		result = new(grid, false, [], patternCandidates);
-		return true;
+		return new(grid, false, [], patternCandidates);
 
 
 		static ReadOnlySpan<Grid> getCombinations(in Grid grid, in CellMap cellsUsed)
