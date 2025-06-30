@@ -171,17 +171,17 @@ public sealed class Analyzer : StepGatherer, IAnalyzer<Analyzer, AnalysisResult,
 	/// <summary>
 	/// Indicates the event to be triggered when a new step is found.
 	/// </summary>
-	public event EventHandler<AnalyzerStepFoundEventArgs>? StepFound;
+	public event EventHandler<Analyzer, AnalyzerStepFoundEventArgs>? StepFound;
 
 	/// <summary>
 	/// Indicates the event to be triggered when the whole analysis operation is finished.
 	/// </summary>
-	public event EventHandler<AnalyzerFinishedEventArgs>? Finished;
+	public event EventHandler<Analyzer, AnalyzerFinishedEventArgs>? Finished;
 
 	/// <summary>
 	/// Indicates the event to be triggered when an exception is thrown.
 	/// </summary>
-	public event EventHandler<AnalyzerExceptionThrownEventArgs>? ExceptionThrown;
+	public event EventHandler<Analyzer, AnalyzerExceptionThrownEventArgs>? ExceptionThrown;
 
 
 	/// <summary>

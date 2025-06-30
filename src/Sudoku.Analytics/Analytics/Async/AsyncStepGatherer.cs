@@ -70,7 +70,7 @@ public static class AsyncStepGatherer
 			}
 
 
-			void this_StepFound(object? sender, AnalyzerStepFoundEventArgs e) => channel.Writer.TryWrite(e.Step);
+			void this_StepFound(Analyzer _, AnalyzerStepFoundEventArgs e) => channel.Writer.TryWrite(e.Step);
 		}
 	}
 
