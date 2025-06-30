@@ -1,15 +1,15 @@
-namespace Sudoku.Inferring;
+namespace Sudoku.Behaviors.PatternUniqueness;
 
 /// <summary>
-/// Indicates the result value after <see cref="DeadlyPatternInferrer.TryInfer(in Grid, out DeadlyPatternInferredResult)"/> called.
+/// Indicates the result value after <see cref="UniquenessChecker.GetUniqueness(in Grid, in CellMap)"/> called.
 /// </summary>
 /// <param name="grid"><inheritdoc cref="Grid" path="/summary"/></param>
 /// <param name="isDeadlyPattern"><inheritdoc cref="IsDeadlyPattern" path="/summary"/></param>
 /// <param name="failedCases"><inheritdoc cref="FailedCases" path="/summary"/></param>
 /// <param name="patternCandidates"><inheritdoc cref="PatternCandidates" path="/summary"/></param>
-/// <seealso cref="DeadlyPatternInferrer.TryInfer(in Grid, out DeadlyPatternInferredResult)"/>
+/// <seealso cref="UniquenessChecker.GetUniqueness(in Grid, in CellMap)"/>
 [TypeImpl(TypeImplFlags.AllObjectMethods)]
-public readonly ref partial struct DeadlyPatternInferredResult(
+public readonly ref partial struct PatternUniquenessInfo(
 	in Grid grid,
 	bool isDeadlyPattern,
 	ReadOnlySpan<Grid> failedCases,

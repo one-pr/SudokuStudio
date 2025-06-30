@@ -22612,6 +22612,82 @@
             <seealso cref="F:Sudoku.Categorization.Technique.FullHouse"/>
             <seealso cref="F:Sudoku.Categorization.Technique.HiddenSingleBlock"/>
         </member>
+        <member name="T:Sudoku.Behaviors.PatternUniqueness.DeadlyPatternInferrerLimitReachedException">
+            <summary>
+            Represents an exception that will be thrown if more than 10000 solutions found in a possible deadly pattern to be verified.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Behaviors.PatternUniqueness.DeadlyPatternInferrerLimitReachedException.Message">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo">
+            <summary>
+            Indicates the result value after <see cref="M:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/> called.
+            </summary>
+            <param name="grid"><inheritdoc cref="F:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.Grid" path="/summary"/></param>
+            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.IsDeadlyPattern" path="/summary"/></param>
+            <param name="failedCases"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.FailedCases" path="/summary"/></param>
+            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.PatternCandidates" path="/summary"/></param>
+            <seealso cref="M:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.#ctor(Sudoku.Concepts.Grid@,System.Boolean,System.ReadOnlySpan{Sudoku.Concepts.Grid},Sudoku.Concepts.CandidateMap@)">
+            <summary>
+            Indicates the result value after <see cref="M:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/> called.
+            </summary>
+            <param name="grid"><inheritdoc cref="F:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.Grid" path="/summary"/></param>
+            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.IsDeadlyPattern" path="/summary"/></param>
+            <param name="failedCases"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.FailedCases" path="/summary"/></param>
+            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.PatternCandidates" path="/summary"/></param>
+            <seealso cref="M:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/>
+        </member>
+        <member name="F:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.Grid">
+            <summary>
+            Indicates the grid used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.IsDeadlyPattern">
+            <summary>
+            Indicates the pattern is a real deadly pattern.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.FailedCases">
+            <summary>
+            Indicates all possible failed cases. The value can be an empty sequence if the pattern is a real deadly pattern,
+            or not a deadly pattern but containing obvious invalid candidates (like containing given or modifiable cells).
+            </summary>
+        </member>
+        <member name="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.PatternCandidates">
+            <summary>
+            Indicates the candidates the pattern used.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.Equals(System.Object)">
+            <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="T:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker">
+            <summary>
+            Represents a type that checks and infers for a pattern (specified as a <see cref="T:Sudoku.Concepts.Grid"/>, but invalid - multiple solutions),
+            determining whether the pattern is a deadly pattern.
+            </summary>
+            <seealso cref="T:Sudoku.Concepts.Grid"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)">
+            <summary>
+            Try to analyze whether a grid is a deadly pattern, by only checking the specified cells.
+            </summary>
+            <param name="grid">Indicates the grid. It's required that only specified cells are assigned with candidates.</param>
+            <param name="cells">Indicates the cells to be checked.</param>
+            <returns>The result after the analysis operation is finished.</returns>
+            <exception cref="T:Sudoku.Behaviors.PatternUniqueness.DeadlyPatternInferrerLimitReachedException">
+            Throws when the pattern contains more than 10000 solutions.
+            </exception>
+        </member>
         <member name="T:Sudoku.Behaviors.UserBehavior">
             <summary>
             Represents a kind of user behavior.
@@ -27947,109 +28023,6 @@
         </member>
         <member name="M:Sudoku.Generating.Qualified.TechniqueGenerator.TryGenerateUnique(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
             <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Inferring.DeadlyPatternInferredResult">
-            <summary>
-            Indicates the result value after <see cref="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.DeadlyPatternInferredResult@)"/> called.
-            </summary>
-            <param name="grid"><inheritdoc cref="F:Sudoku.Inferring.DeadlyPatternInferredResult.Grid" path="/summary"/></param>
-            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.Inferring.DeadlyPatternInferredResult.IsDeadlyPattern" path="/summary"/></param>
-            <param name="failedCases"><inheritdoc cref="P:Sudoku.Inferring.DeadlyPatternInferredResult.FailedCases" path="/summary"/></param>
-            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.Inferring.DeadlyPatternInferredResult.PatternCandidates" path="/summary"/></param>
-            <seealso cref="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.DeadlyPatternInferredResult@)"/>
-        </member>
-        <member name="M:Sudoku.Inferring.DeadlyPatternInferredResult.#ctor(Sudoku.Concepts.Grid@,System.Boolean,System.ReadOnlySpan{Sudoku.Concepts.Grid},Sudoku.Concepts.CandidateMap@)">
-            <summary>
-            Indicates the result value after <see cref="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.DeadlyPatternInferredResult@)"/> called.
-            </summary>
-            <param name="grid"><inheritdoc cref="F:Sudoku.Inferring.DeadlyPatternInferredResult.Grid" path="/summary"/></param>
-            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.Inferring.DeadlyPatternInferredResult.IsDeadlyPattern" path="/summary"/></param>
-            <param name="failedCases"><inheritdoc cref="P:Sudoku.Inferring.DeadlyPatternInferredResult.FailedCases" path="/summary"/></param>
-            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.Inferring.DeadlyPatternInferredResult.PatternCandidates" path="/summary"/></param>
-            <seealso cref="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.DeadlyPatternInferredResult@)"/>
-        </member>
-        <member name="F:Sudoku.Inferring.DeadlyPatternInferredResult.Grid">
-            <summary>
-            Indicates the grid used.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Inferring.DeadlyPatternInferredResult.IsDeadlyPattern">
-            <summary>
-            Indicates the pattern is a real deadly pattern.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Inferring.DeadlyPatternInferredResult.FailedCases">
-            <summary>
-            Indicates all possible failed cases. The value can be an empty sequence if the pattern is a real deadly pattern,
-            or not a deadly pattern but containing obvious invalid candidates (like containing given or modifiable cells).
-            </summary>
-        </member>
-        <member name="P:Sudoku.Inferring.DeadlyPatternInferredResult.PatternCandidates">
-            <summary>
-            Indicates the candidates the pattern used.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Inferring.DeadlyPatternInferredResult.Equals(System.Object)">
-            <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
-        </member>
-        <member name="M:Sudoku.Inferring.DeadlyPatternInferredResult.GetHashCode">
-            <inheritdoc cref="M:System.Object.GetHashCode"/>
-        </member>
-        <member name="M:Sudoku.Inferring.DeadlyPatternInferredResult.ToString">
-            <inheritdoc cref="M:System.Object.ToString"/>
-        </member>
-        <member name="T:Sudoku.Inferring.DeadlyPatternInferrer">
-            <summary>
-            Represents a type that checks and infers for a pattern (specified as a <see cref="T:Sudoku.Concepts.Grid"/>, but invalid - multiple solutions),
-            determining whether the pattern is a deadly pattern.
-            </summary>
-            <seealso cref="T:Sudoku.Concepts.Grid"/>
-        </member>
-        <member name="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Inferring.DeadlyPatternInferredResult@)">
-            <inheritdoc cref="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Inferring.DeadlyPatternInferredResult@)"/>
-        </member>
-        <member name="M:Sudoku.Inferring.DeadlyPatternInferrer.TryInfer(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Inferring.DeadlyPatternInferredResult@)">
-            <summary>
-            Try to analyze whether a grid is a deadly pattern, by only checking the specified cells.
-            </summary>
-            <param name="grid">Indicates the grid. It's required that only specified cells are assigned with candidates.</param>
-            <param name="cells">Indicates the cells to be checked.</param>
-            <param name="result">The result after the analysis operation is finished.</param>
-            <exception cref="T:Sudoku.Inferring.DeadlyPatternInferrerLimitReachedException">
-            Throws when the pattern contains more than 10000 solutions.
-            </exception>
-        </member>
-        <member name="T:Sudoku.Inferring.DeadlyPatternInferrerLimitReachedException">
-            <summary>
-            Represents an exception that will be thrown if more than 10000 solutions found in a possible deadly pattern to be verified.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Inferring.DeadlyPatternInferrerLimitReachedException.Message">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Inferring.IInferrable`1">
-            <summary>
-            Represents an inferrable object.
-            </summary>
-            <typeparam name="TResult">
-            The type of the result. The result type should be considered as a non-<see langword="null"/> state.
-            </typeparam>
-        </member>
-        <member name="M:Sudoku.Inferring.IInferrable`1.TryInfer(Sudoku.Concepts.Grid@,`0@)">
-            <summary>
-            Infers the object and returns an instance of type <typeparamref name="TResult"/>, indicating the result.
-            </summary>
-            <param name="grid">The grid to be checked.</param>
-            <param name="result">The result returned.</param>
-            <returns>
-            <para>A <see cref="T:System.Boolean"/> value indicating whether the operation is successfully handled.</para>
-            <para>
-            To differ with <paramref name="result"/>, this value only records the result
-            that the current operation contains invalid data input or exception encountered.
-            In other words, the argument <paramref name="result"/> may not have a valid data
-            even if the return value is <see langword="true"/>.
-            </para>
-            </returns>
         </member>
         <member name="T:Sudoku.Linq.AnalysisResultEnumerable">
             <summary>
