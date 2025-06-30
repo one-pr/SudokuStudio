@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Drivers;
+namespace Sudoku.Analytics.StepSearchers;
 
 /// <summary>
 /// Provides a driver that can generate normal chains and forcing chains.
