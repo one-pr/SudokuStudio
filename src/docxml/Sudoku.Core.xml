@@ -10957,6 +10957,9 @@
             </summary>
             <param name="value">The vale to be set.</param>
         </member>
+        <member name="M:Sudoku.IO.Library.GetHashCode">
+            <inheritdoc/>
+        </member>
         <member name="M:Sudoku.IO.Library.ReadName">
             <summary>
             Reads the name of the library information file.
@@ -11108,9 +11111,6 @@
         </member>
         <member name="M:Sudoku.IO.Library.Equals(System.Object)">
             <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
-        </member>
-        <member name="M:Sudoku.IO.Library.GetHashCode">
-            <inheritdoc cref="M:System.Object.GetHashCode"/>
         </member>
         <member name="M:Sudoku.IO.Library.op_Equality(Sudoku.IO.Library,Sudoku.IO.Library)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
