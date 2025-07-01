@@ -129,17 +129,23 @@ public sealed partial class Library(string directoryPath, string identifier) :
 
 		if (cancellationToken.IsCancellationRequested)
 		{
-			File.Delete(tempFile);
+			lock (_fileLock)
+			{
+				File.Delete(tempFile);
+			}
 			return;
 		}
 
-		try
+		lock (_fileLock)
 		{
-			File.Delete(LibraryPath);
-			File.Move(tempFile, LibraryPath);
-		}
-		catch
-		{
+			try
+			{
+				File.Delete(LibraryPath);
+				File.Move(tempFile, LibraryPath);
+			}
+			catch
+			{
+			}
 		}
 	}
 
@@ -153,13 +159,16 @@ public sealed partial class Library(string directoryPath, string identifier) :
 		var tempFile = Path.GetTempFileName();
 		await new FileDeduplicator(LibraryPath, tempFile).DeduplicateAsync(cancellationToken);
 
-		try
+		lock (_fileLock)
 		{
-			File.Delete(LibraryPath);
-			File.Move(tempFile, LibraryPath);
-		}
-		catch
-		{
+			try
+			{
+				File.Delete(LibraryPath);
+				File.Move(tempFile, LibraryPath);
+			}
+			catch
+			{
+			}
 		}
 	}
 
