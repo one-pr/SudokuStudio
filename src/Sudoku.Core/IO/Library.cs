@@ -79,7 +79,8 @@ public sealed partial class Library(string directoryPath, string identifier) :
 	/// If the original file has any tags, the current value will cover that value.
 	/// </summary>
 	/// <param name="value">The value to be set.</param>
-	public void WriteTags(params ReadOnlySpan<string> value) => WriteProperty(static (info, value) => info.Tags = value.ToArray(), value);
+	public void WriteTags(params ReadOnlySpan<string> value)
+		=> WriteProperty(static (info, value) => info.Tags = value.ToArray(), value);
 
 	/// <summary>
 	/// Writes a list of new tags, appending them into the last of tags array in the library information file.
