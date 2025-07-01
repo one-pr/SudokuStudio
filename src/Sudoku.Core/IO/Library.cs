@@ -283,7 +283,7 @@ public sealed partial class Library(string directoryPath, string identifier) :
 	/// A <see cref="Task{TResult}"/> object that handles the asynchronous operation;
 	/// with a result type <see cref="long"/> indicating the number of lines.
 	/// </returns>
-	public async Task<long> GetPuzzlesCountAsync()
+	public async Task<long> GetCountAsync()
 	{
 		await using var reader = new LibraryFileReader(LibraryPath, out var exists);
 		return exists ? reader.CountLines() : 0;
@@ -298,7 +298,7 @@ public sealed partial class Library(string directoryPath, string identifier) :
 	/// <param name="length">Indicates the desired number of puzzles.</param>
 	/// <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
 	/// <returns>An enumerable object that allows iterating values asynchronously.</returns>
-	public async IAsyncEnumerable<string> ReadRangeAsync(
+	public async IAsyncEnumerable<string> GetRangeAsync(
 		ulong start,
 		ulong length,
 		[EnumeratorCancellation] CancellationToken cancellationToken = default

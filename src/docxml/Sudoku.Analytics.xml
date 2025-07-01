@@ -1194,12 +1194,12 @@
             Provides with extension methods on <see cref="T:Sudoku.Analytics.StepGatherer"/>.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.Async.AsyncStepGatherer.">
+        <member name="T:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Analyzer"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer..AnalyzeAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__0.AnalyzeAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
             <summary>
             Asynchronously analyzes the specified puzzle.
             </summary>
@@ -1208,7 +1208,7 @@
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
             <returns>An <see cref="T:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable"/> object that can analyze the puzzle asynchronously.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer..EnumerateStepsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__0.EnumerateStepsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
             <summary>
             Analyzes the specified grid, to find for all possible steps and iterate them in asynchronous way.
             </summary>
@@ -1216,12 +1216,18 @@
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
             <returns>A sequence that allows user iterating on it in asynchronous way.</returns>
         </member>
-        <member name="T:Sudoku.Analytics.Async.AsyncStepGatherer.">
+        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.AnalyzeAsync(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__0.AnalyzeAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.EnumerateStepsAsync(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__0.EnumerateStepsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="T:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__1">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Collector"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer..CollectAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__1.CollectAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
             <summary>
             Asynchronously collects steps from a puzzle.
             </summary>
@@ -1230,13 +1236,19 @@
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
             <returns>An <see cref="T:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable"/> object that can analyze the puzzle asynchronously.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer..ParallelCollectAsync(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__1.ParallelCollectAsync(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
             <summary>
             Asynchronously collects steps from a puzzle, with parallel checking on all <see cref="T:Sudoku.Analytics.StepSearcher"/> instances.
             </summary>
             <param name="grid">The grid to be analyzed.</param>
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
             <returns>An <see cref="T:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable"/> object that can analyze the puzzle asynchronously.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.CollectAsync(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__1.CollectAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.ParallelCollectAsync(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Sudoku.Analytics.Async.AsyncStepGatherer.<>E__1.ParallelCollectAsync(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)"/>
         </member>
         <member name="T:Sudoku.Analytics.Async.IStepGathererAwaitable`1">
             <summary>
@@ -1752,12 +1764,12 @@
             Indicates the sequences.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions.">
+        <member name="T:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Configuration.BabaGroupInitialLetter"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions..GetSequence(Sudoku.Analytics.Configuration.BabaGroupLetterCasing)">
+        <member name="M:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions.<>E__0.GetSequence(Sudoku.Analytics.Configuration.BabaGroupLetterCasing)">
             <summary>
             Try to get character sequence from the specified initial letter.
             </summary>
@@ -1765,12 +1777,18 @@
             <returns>The character sequence.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the specified arguments are not defined.</exception>
         </member>
-        <member name="M:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions..EscapeDigit(System.Int32)">
+        <member name="M:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions.<>E__0.EscapeDigit(System.Int32)">
             <summary>
             Try to escape the digit.
             </summary>
             <param name="digit">The digit to be escaped.</param>
             <returns>The escaped character. If a digit doesn't need to escape, return character representation of itself.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions.GetSequence(Sudoku.Analytics.Configuration.BabaGroupInitialLetter,Sudoku.Analytics.Configuration.BabaGroupLetterCasing)">
+            <inheritdoc cref="M:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions.<>E__0.GetSequence(Sudoku.Analytics.Configuration.BabaGroupLetterCasing)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions.EscapeDigit(Sudoku.Analytics.Configuration.BabaGroupInitialLetter,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Analytics.Configuration.BabaGroupInitialLetterExtensions.<>E__0.EscapeDigit(System.Int32)"/>
         </member>
         <member name="T:Sudoku.Analytics.Configuration.BabaGroupLetterCasing">
             <summary>
@@ -2589,16 +2607,19 @@
             </code>
             </remarks>
         </member>
-        <member name="T:Sudoku.Analytics.Construction.Components.AnalysisResultExcluderExtensions.">
+        <member name="T:Sudoku.Analytics.Construction.Components.AnalysisResultExcluderExtensions.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.AnalysisResult"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.AnalysisResultExcluderExtensions..HasBlockExcluders">
+        <member name="P:Sudoku.Analytics.Construction.Components.AnalysisResultExcluderExtensions.<>E__0.HasBlockExcluders">
             <summary>
             Indicates whether the solving steps contains at least one <see cref="T:Sudoku.Analytics.Step"/>
             using hidden singles in line, with block excluders.
             </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.AnalysisResultExcluderExtensions.get_HasBlockExcluders(Sudoku.Analytics.AnalysisResult)">
+            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.AnalysisResultExcluderExtensions.<>E__0.HasBlockExcluders"/>
         </member>
         <member name="T:Sudoku.Analytics.Construction.Components.BinaryForcingChains">
             <summary>
@@ -3172,50 +3193,71 @@
             </summary>
             <seealso cref="T:Sudoku.Analytics.Construction.Components.Chain"/>
         </member>
-        <member name="T:Sudoku.Analytics.Construction.Components.ChainExtensions.">
+        <member name="T:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Construction.Components.Chain"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions..IsX">
+        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsX">
             <summary>
             Indicates whether the pattern only uses same digits.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions..IsY">
+        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsY">
             <summary>
             Indicates whether the pattern only uses cell strong links.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions..IsOverlapped">
+        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsOverlapped">
             <summary>
             Indicates whether at least one node in the whole pattern overlaps with a node.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions..IsXyCycle">
+        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsXyCycle">
             <summary>
             Indicates whether the loop is an XY-Cycle.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions..IsStrongLinksStrictlyGrouped">
+        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsStrongLinksStrictlyGrouped">
             <summary>
             Indicates whether at least one link in strong links contains grouped nodes,
             and is not advanced node (i.e. contains grouped pattern).
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions..IsWeakLinksStrictlyGrouped">
+        <member name="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsWeakLinksStrictlyGrouped">
             <summary>
             Indicates whether at least one link in weak links contains grouped nodes,
             and is not advanced node (i.e. contains grouped pattern).
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions..GetViews_Monoparental(Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection)">
+        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.GetViews_Monoparental(Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection)">
             <summary>
             Collect views for the current chain, without nested paths checking.
             </summary>
             <param name="grid">The grid.</param>
             <param name="supportedRules">The supported rules.</param>
             <returns>The views.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions.get_IsX(Sudoku.Analytics.Construction.Components.Chain)">
+            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsX"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions.get_IsY(Sudoku.Analytics.Construction.Components.Chain)">
+            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsY"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions.get_IsOverlapped(Sudoku.Analytics.Construction.Components.Chain)">
+            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsOverlapped"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions.get_IsXyCycle(Sudoku.Analytics.Construction.Components.Chain)">
+            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsXyCycle"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions.get_IsStrongLinksStrictlyGrouped(Sudoku.Analytics.Construction.Components.Chain)">
+            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsStrongLinksStrictlyGrouped"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions.get_IsWeakLinksStrictlyGrouped(Sudoku.Analytics.Construction.Components.Chain)">
+            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.IsWeakLinksStrictlyGrouped"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.ChainExtensions.GetViews_Monoparental(Sudoku.Analytics.Construction.Components.Chain,Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.ChainExtensions.<>E__0.GetViews_Monoparental(Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection)"/>
         </member>
         <member name="T:Sudoku.Analytics.Construction.Components.ChainingRuleAttribute`1">
             <summary>
@@ -3486,15 +3528,18 @@
             Provides with extension methods around enumeration type <see cref="T:Sudoku.Analytics.Construction.Components.ExocetShapeKind"/>.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.Construction.Components.ExocetShapeKindExtensions.">
+        <member name="T:Sudoku.Analytics.Construction.Components.ExocetShapeKindExtensions.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Construction.Components.IComplexSeniorExocet"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.ExocetShapeKindExtensions..ShapeKind">
+        <member name="P:Sudoku.Analytics.Construction.Components.ExocetShapeKindExtensions.<>E__0.ShapeKind">
             <summary>
             Indicates the shape kind of the current exocet pattern.
             </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.ExocetShapeKindExtensions.get_ShapeKind(Sudoku.Analytics.Construction.Components.IComplexSeniorExocet)">
+            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.ExocetShapeKindExtensions.<>E__0.ShapeKind"/>
         </member>
         <member name="T:Sudoku.Analytics.Construction.Components.FishFinKind">
             <summary>
@@ -3735,12 +3780,12 @@
             Represents a list of methods that operates with concept "Grouped Node".
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.Construction.Components.Grouped.">
+        <member name="T:Sudoku.Analytics.Construction.Components.Grouped.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Concepts.CellMap"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.Grouped..FormsGroupedStrongLink(Sudoku.Concepts.CellMap@,System.Int32,System.ReadOnlySpan{System.Int32}@)">
+        <member name="M:Sudoku.Analytics.Construction.Components.Grouped.<>E__0.FormsGroupedStrongLink(Sudoku.Concepts.CellMap@,System.Int32,System.ReadOnlySpan{System.Int32}@)">
             <summary>
             Determine whether the specified cells can be split into two parts, and they form a grouped strong link with each other.
             </summary>
@@ -3748,6 +3793,9 @@
             <param name="house">The house.</param>
             <param name="spannedHousesList">The spanned houses.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.Grouped.FormsGroupedStrongLink(Sudoku.Concepts.CellMap@,System.Int32,System.ReadOnlySpan{System.Int32}@)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.Grouped.<>E__0.FormsGroupedStrongLink(Sudoku.Concepts.CellMap@,System.Int32,System.ReadOnlySpan{System.Int32}@)"/>
         </member>
         <member name="T:Sudoku.Analytics.Construction.Components.GroupedWhipAssignment">
             <summary>
@@ -4385,16 +4433,19 @@
             </summary>
             <seealso cref="T:Sudoku.Analytics.Construction.Components.LinkType"/>
         </member>
-        <member name="T:Sudoku.Analytics.Construction.Components.LinkTypeExtensions.">
+        <member name="T:Sudoku.Analytics.Construction.Components.LinkTypeExtensions.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Construction.Components.LinkType"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.LinkTypeExtensions..RuleInstance">
+        <member name="P:Sudoku.Analytics.Construction.Components.LinkTypeExtensions.<>E__0.RuleInstance">
             <summary>
             Indicates a <see cref="T:Sudoku.Analytics.Construction.Chaining.ChainingRule"/> instance from the specified link type.
             </summary>
             <returns>The target <see cref="T:Sudoku.Analytics.Construction.Chaining.ChainingRule"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.LinkTypeExtensions.get_RuleInstance(Sudoku.Analytics.Construction.Components.LinkType)">
+            <inheritdoc cref="P:Sudoku.Analytics.Construction.Components.LinkTypeExtensions.<>E__0.RuleInstance"/>
         </member>
         <member name="T:Sudoku.Analytics.Construction.Components.LockedMember">
             <summary>
@@ -7418,17 +7469,20 @@
             </summary>
             <seealso cref="T:Sudoku.Analytics.DifficultyLevel"/>
         </member>
-        <member name="T:Sudoku.Analytics.DifficultyLevelExtensions.">
+        <member name="T:Sudoku.Analytics.DifficultyLevelExtensions.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.DifficultyLevel"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.DifficultyLevelExtensions..GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.DifficultyLevelExtensions.<>E__0.GetName(System.IFormatProvider)">
             <summary>
             Gets the name of the current value, with specified culture.
             </summary>
             <param name="formatProvider">The culture.</param>
             <returns>The string value.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.DifficultyLevelExtensions.GetName(Sudoku.Analytics.DifficultyLevel,System.IFormatProvider)">
+            <inheritdoc cref="M:Sudoku.Analytics.DifficultyLevelExtensions.<>E__0.GetName(System.IFormatProvider)"/>
         </member>
         <member name="T:Sudoku.Analytics.DifficultyLevels">
             <summary>
@@ -7513,39 +7567,51 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
-        <member name="T:Sudoku.Analytics.GridAnalysisExtensions.">
+        <member name="T:Sudoku.Analytics.GridAnalysisExtensions.<>E__0">
             <summary>
             Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.GridAnalysisExtensions..Apply(Sudoku.Analytics.Step)">
+        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.<>E__0.Apply(Sudoku.Analytics.Step)">
             <summary>
             Applies for all conclusions into the current <see cref="T:Sudoku.Concepts.Grid"/> instance.
             </summary>
             <param name="step">A conclusion-provider <see cref="T:Sudoku.Analytics.Step"/> instance.</param>
         </member>
-        <member name="T:Sudoku.Analytics.GridAnalysisExtensions.">
+        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.Apply(Sudoku.Concepts.Grid@,Sudoku.Analytics.Step)">
+            <inheritdoc cref="M:Sudoku.Analytics.GridAnalysisExtensions.<>E__0.Apply(Sudoku.Analytics.Step)"/>
+        </member>
+        <member name="T:Sudoku.Analytics.GridAnalysisExtensions.<>E__1">
             <summary>
             Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.GridAnalysisExtensions..CanPrimaryFullHouse">
+        <member name="P:Sudoku.Analytics.GridAnalysisExtensions.<>E__1.CanPrimaryFullHouse">
             <summary>
             Checks whether the puzzle can be solved using only full house.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.GridAnalysisExtensions..CanPrimaryNakedSingle">
+        <member name="P:Sudoku.Analytics.GridAnalysisExtensions.<>E__1.CanPrimaryNakedSingle">
             <summary>
             Checks whether the puzzle can be solved using only naked single.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.GridAnalysisExtensions..CanPrimaryHiddenSingle(System.Boolean)">
+        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.<>E__1.CanPrimaryHiddenSingle(System.Boolean)">
             <summary>
             Checks whether the puzzle can be solved using only full house and hidden single.
             </summary>
             <param name="allowHiddenSingleInLine">
             A <see cref="T:System.Boolean"/> value indicating whether hidden single includes line types.
             </param>
+        </member>
+        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.get_CanPrimaryFullHouse(Sudoku.Concepts.Grid@)">
+            <inheritdoc cref="P:Sudoku.Analytics.GridAnalysisExtensions.<>E__1.CanPrimaryFullHouse"/>
+        </member>
+        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.get_CanPrimaryNakedSingle(Sudoku.Concepts.Grid@)">
+            <inheritdoc cref="P:Sudoku.Analytics.GridAnalysisExtensions.<>E__1.CanPrimaryNakedSingle"/>
+        </member>
+        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.CanPrimaryHiddenSingle(Sudoku.Concepts.Grid@,System.Boolean)">
+            <inheritdoc cref="M:Sudoku.Analytics.GridAnalysisExtensions.<>E__1.CanPrimaryHiddenSingle(System.Boolean)"/>
         </member>
         <member name="T:Sudoku.Analytics.Hub">
             <summary>
@@ -8548,12 +8614,12 @@
             </summary>
             <seealso cref="T:Sudoku.Analytics.Step"/>
         </member>
-        <member name="T:Sudoku.Analytics.StepExtensions.">
+        <member name="T:Sudoku.Analytics.StepExtensions.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Step"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepExtensions..CompareName(Sudoku.Analytics.Step,Sudoku.Analytics.Step,System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.StepExtensions.<>E__0.CompareName(Sudoku.Analytics.Step,Sudoku.Analytics.Step,System.IFormatProvider)">
             <summary>
             Compare names of two <see cref="T:Sudoku.Analytics.Step"/> instances.
             </summary>
@@ -8562,7 +8628,7 @@
             <param name="formatProvider">The culture information.</param>
             <returns>An <see cref="T:System.Int32"/> value indicating which is bigger.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepExtensions..Combine(System.ReadOnlySpan{Sudoku.Concepts.Grid},System.ReadOnlySpan{Sudoku.Analytics.Step})">
+        <member name="M:Sudoku.Analytics.StepExtensions.<>E__0.Combine(System.ReadOnlySpan{Sudoku.Concepts.Grid},System.ReadOnlySpan{Sudoku.Analytics.Step})">
             <summary>
             Zips the collection, pairing each step and corresponding grid into a <see cref="T:System.ValueTuple`2"/>,
             and return the collection of pairs.
@@ -8573,6 +8639,12 @@
             <exception cref="T:System.InvalidOperationException">
             Throws when the length of arguments <paramref name="interimGrids"/> and <paramref name="interimSteps"/> aren't same.
             </exception>
+        </member>
+        <member name="M:Sudoku.Analytics.StepExtensions.CompareName(Sudoku.Analytics.Step,Sudoku.Analytics.Step,System.IFormatProvider)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepExtensions.<>E__0.CompareName(Sudoku.Analytics.Step,Sudoku.Analytics.Step,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepExtensions.Combine(System.ReadOnlySpan{Sudoku.Concepts.Grid},System.ReadOnlySpan{Sudoku.Analytics.Step})">
+            <inheritdoc cref="M:Sudoku.Analytics.StepExtensions.<>E__0.Combine(System.ReadOnlySpan{Sudoku.Concepts.Grid},System.ReadOnlySpan{Sudoku.Analytics.Step})"/>
         </member>
         <member name="T:Sudoku.Analytics.StepGatherer">
             <summary>
@@ -8632,40 +8704,40 @@
             </summary>
             <seealso cref="T:Sudoku.Analytics.StepGatherer"/>
         </member>
-        <member name="T:Sudoku.Analytics.StepGathererFactory.">
+        <member name="T:Sudoku.Analytics.StepGathererFactory.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Analyzer"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory..WithRandomizedChoosing(System.Boolean)">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithRandomizedChoosing(System.Boolean)">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.Analyzer.RandomizedChoosing"/> with the target value.
             </summary>
             <param name="randomizedChoosing">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory..WithApplyAll(System.Boolean)">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithApplyAll(System.Boolean)">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.Analyzer.IsFullApplying"/> with the target value.
             </summary>
             <param name="applyAll">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory..WithStepSearchers(Sudoku.Analytics.StepSearcher[])">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithStepSearchers(Sudoku.Analytics.StepSearcher[])">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.StepGatherer.StepSearchers"/> with the target value.
             </summary>
             <param name="stepSearchers">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory..WithUserDefinedOptions(Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithUserDefinedOptions(Sudoku.Analytics.Configuration.StepGathererOptions)">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.StepGatherer.Options"/> with the target value.
             </summary>
             <param name="options">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory..WithStepSearchers(Sudoku.Analytics.StepSearcher[],Sudoku.Analytics.DifficultyLevel)">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithStepSearchers(Sudoku.Analytics.StepSearcher[],Sudoku.Analytics.DifficultyLevel)">
             <summary>
             Try to set property <see cref="P:Sudoku.Analytics.StepGatherer.StepSearchers"/> with the specified value.
             </summary>
@@ -8675,7 +8747,7 @@
             <seealso cref="P:Sudoku.Analytics.StepGatherer.StepSearchers"/>
             <seealso cref="T:Sudoku.Analytics.StepSearcher"/>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory..ApplySetter``1(System.Action{``0})">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__0.ApplySetter``1(System.Action{``0})">
             <summary>
             Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
             </summary>
@@ -8683,54 +8755,78 @@
             <param name="setter">The value to be added.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory..ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__0.ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})">
             <summary>
             Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
             </summary>
             <param name="setters">The value to be added.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory..ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__0.ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
             <summary>
             Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
             </summary>
             <param name="setters">A list of values to be added.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
-        <member name="T:Sudoku.Analytics.StepGathererFactory.">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.WithRandomizedChoosing(Sudoku.Analytics.Analyzer,System.Boolean)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithRandomizedChoosing(System.Boolean)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepGathererFactory.WithApplyAll(Sudoku.Analytics.Analyzer,System.Boolean)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithApplyAll(System.Boolean)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepGathererFactory.WithStepSearchers(Sudoku.Analytics.Analyzer,Sudoku.Analytics.StepSearcher[])">
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithStepSearchers(Sudoku.Analytics.StepSearcher[])"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepGathererFactory.WithUserDefinedOptions(Sudoku.Analytics.Analyzer,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithUserDefinedOptions(Sudoku.Analytics.Configuration.StepGathererOptions)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepGathererFactory.WithStepSearchers(Sudoku.Analytics.Analyzer,Sudoku.Analytics.StepSearcher[],Sudoku.Analytics.DifficultyLevel)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__0.WithStepSearchers(Sudoku.Analytics.StepSearcher[],Sudoku.Analytics.DifficultyLevel)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepGathererFactory.ApplySetter``1(Sudoku.Analytics.Analyzer,System.Action{``0})">
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__0.ApplySetter``1(System.Action{``0})"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepGathererFactory.ApplySetter(Sudoku.Analytics.Analyzer,System.Action{Sudoku.Analytics.StepSearcher})">
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__0.ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepGathererFactory.ApplySetters(Sudoku.Analytics.Analyzer,System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__0.ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})"/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepGathererFactory.<>E__1">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Collector"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory..WithMaxSteps(System.Int32)">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__1.WithMaxSteps(System.Int32)">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.Collector.MaxStepsCollected"/> with the target value.
             </summary>
             <param name="count">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory..WithSameLevelConfiguration(Sudoku.Analytics.Configuration.CollectorDifficultyLevelMode)">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__1.WithSameLevelConfiguration(Sudoku.Analytics.Configuration.CollectorDifficultyLevelMode)">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.Collector.DifficultyLevelMode"/> with the target value.
             </summary>
             <param name="collectingMode">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory..WithStepSearchers(Sudoku.Analytics.StepSearcher[])">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__1.WithStepSearchers(Sudoku.Analytics.StepSearcher[])">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.StepGatherer.StepSearchers"/> with the target value.
             </summary>
             <param name="stepSearchers">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory..WithUserDefinedOptions(Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__1.WithUserDefinedOptions(Sudoku.Analytics.Configuration.StepGathererOptions)">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.StepGatherer.Options"/> with the target value.
             </summary>
             <param name="options">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory..ApplySetter``1(System.Action{``0})">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__1.ApplySetter``1(System.Action{``0})">
             <summary>
             Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
             </summary>
@@ -8738,19 +8834,40 @@
             <param name="setter">The value to be added.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory..ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__1.ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})">
             <summary>
             Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
             </summary>
             <param name="setters">The value to be added.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory..ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.<>E__1.ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
             <summary>
             Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
             </summary>
             <param name="setters">A list of values to be added.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepGathererFactory.WithMaxSteps(Sudoku.Analytics.Collector,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__1.WithMaxSteps(System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepGathererFactory.WithSameLevelConfiguration(Sudoku.Analytics.Collector,Sudoku.Analytics.Configuration.CollectorDifficultyLevelMode)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__1.WithSameLevelConfiguration(Sudoku.Analytics.Configuration.CollectorDifficultyLevelMode)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepGathererFactory.WithStepSearchers(Sudoku.Analytics.Collector,Sudoku.Analytics.StepSearcher[])">
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__1.WithStepSearchers(Sudoku.Analytics.StepSearcher[])"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepGathererFactory.WithUserDefinedOptions(Sudoku.Analytics.Collector,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__1.WithUserDefinedOptions(Sudoku.Analytics.Configuration.StepGathererOptions)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepGathererFactory.ApplySetter``1(Sudoku.Analytics.Collector,System.Action{``0})">
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__1.ApplySetter``1(System.Action{``0})"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepGathererFactory.ApplySetter(Sudoku.Analytics.Collector,System.Action{Sudoku.Analytics.StepSearcher})">
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__1.ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepGathererFactory.ApplySetters(Sudoku.Analytics.Collector,System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.<>E__1.ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})"/>
         </member>
         <member name="T:Sudoku.Analytics.StepGathererProgressPresenter">
             <summary>
@@ -9352,17 +9469,20 @@
             </summary>
             <seealso cref="T:Sudoku.Analytics.Construction.Components.IForcingChains"/>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.ForcingChainsCastingExtensions.`1">
+        <member name="T:Sudoku.Analytics.StepSearchers.ForcingChainsCastingExtensions.<>E__0`1">
             <summary>
             Provides extension members on <typeparamref name="T"/>,
             where <typeparamref name="T"/> satisfies <see cref="T:Sudoku.Analytics.Construction.Components.IForcingChains"/> constraint.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.ForcingChainsCastingExtensions.`1.Cast">
+        <member name="M:Sudoku.Analytics.StepSearchers.ForcingChainsCastingExtensions.<>E__0`1.Cast">
             <summary>
             Cast the object into <see cref="T:Sudoku.Analytics.Construction.Components.IForcingChains"/> regardless of its base type <typeparamref name="T"/>.
             </summary>
             <returns>Cast <see cref="T:Sudoku.Analytics.Construction.Components.IForcingChains"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.ForcingChainsCastingExtensions.Cast``1(``0)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.ForcingChainsCastingExtensions.<>E__0`1.Cast"/>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.GridNodeExtensions">
             <summary>
@@ -9370,16 +9490,19 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.GridNodeExtensions.">
+        <member name="T:Sudoku.Analytics.StepSearchers.GridNodeExtensions.<>E__0">
             <summary>
             Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.GridNodeExtensions..Apply(Sudoku.Analytics.Construction.Components.Node)">
+        <member name="M:Sudoku.Analytics.StepSearchers.GridNodeExtensions.<>E__0.Apply(Sudoku.Analytics.Construction.Components.Node)">
             <summary>
             Treat the specified node as a real conclusion, and apply to a grid.
             </summary>
             <param name="node">The node.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.GridNodeExtensions.Apply(Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Components.Node)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.GridNodeExtensions.<>E__0.Apply(Sudoku.Analytics.Construction.Components.Node)"/>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.ChainStepSearcher">
             <summary>
@@ -9789,12 +9912,12 @@
 				</summary>
 			</target>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.Extensions.">
+        <member name="T:Sudoku.Analytics.StepSearchers.Extensions.<>E__0">
             <summary>
             Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.CellMap"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions..GroupTargets(System.Int32)">
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__0.GroupTargets(System.Int32)">
             <summary>
             Try to group up with target cells, separating into multiple parts, grouped by its containing row or column.
             </summary>
@@ -9804,12 +9927,15 @@
             </returns>
             <seealso cref="T:Sudoku.Linq.CellMapOrCandidateMapGrouping`3"/>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.Extensions.">
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.GroupTargets(Sudoku.Concepts.CellMap@,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__0.GroupTargets(System.Int32)"/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.Extensions.<>E__1">
             <summary>
             Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions..AppearingTimesOf(System.Int32,Sudoku.Concepts.CellMap@)">
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.AppearingTimesOf(System.Int32,Sudoku.Concepts.CellMap@)">
             <summary>
             Try to get the maximum times that the specified digit, describing it can be filled with the specified houses in maximal case.
             </summary>
@@ -9817,7 +9943,7 @@
             <param name="cells">The cells to be checked.</param>
             <returns>The maximum possible times of the appearing.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions..IsExactAppearingTimesOf(System.Int32,Sudoku.Concepts.CellMap@,System.Int32)">
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.IsExactAppearingTimesOf(System.Int32,Sudoku.Concepts.CellMap@,System.Int32)">
             <summary>
             Try to get the maximum times that the specified digit, describing it can be filled with the specified houses in maximal case.
             </summary>
@@ -9826,7 +9952,7 @@
             <param name="limitCount">The number of times that the digit can be filled with the specified cells.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating whether the argument <paramref name="limitCount"/> is exactly correct.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions..CheckCrossLineIntersectionLeaveEmpty(Sudoku.Concepts.CellMap@,System.Int16)">
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.CheckCrossLineIntersectionLeaveEmpty(Sudoku.Concepts.CellMap@,System.Int16)">
             <summary>
             Check whether all intersected cells by original cross-line cells and extra house cells are non-empty,
             and cannot be of value appeared in base cells.
@@ -9835,7 +9961,7 @@
             <param name="baseCellsDigitsMask">The mask that holds a list of digits appeared in base cells.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions..CheckTargetCellsDigitsValidity(Sudoku.Concepts.CellMap@,System.Int16)">
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.CheckTargetCellsDigitsValidity(Sudoku.Concepts.CellMap@,System.Int16)">
             <summary>
             Check whether all digits appeared in base cells can be filled in target empty cells.
             </summary>
@@ -9843,13 +9969,28 @@
             <param name="baseCellsDigitsMask">A mask that holds a list of digits appeared in base cells.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions..GetValueDigitsAppearedInCrossline(Sudoku.Concepts.CellMap@,System.Int16)">
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.GetValueDigitsAppearedInCrossline(Sudoku.Concepts.CellMap@,System.Int16)">
             <summary>
             Try to get all possible digits as value representation in cross-line cells.
             </summary>
             <param name="crossline">The cross-line cells to be checked.</param>
             <param name="baseCellsDigitsMask">The digits appeared in base cells.</param>
             <returns>A list of digits appeared in cross-line cells as value representation.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.AppearingTimesOf(Sudoku.Concepts.Grid@,System.Int32,Sudoku.Concepts.CellMap@)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.AppearingTimesOf(System.Int32,Sudoku.Concepts.CellMap@)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.IsExactAppearingTimesOf(Sudoku.Concepts.Grid@,System.Int32,Sudoku.Concepts.CellMap@,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.IsExactAppearingTimesOf(System.Int32,Sudoku.Concepts.CellMap@,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.CheckCrossLineIntersectionLeaveEmpty(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,System.Int16)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.CheckCrossLineIntersectionLeaveEmpty(Sudoku.Concepts.CellMap@,System.Int16)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.CheckTargetCellsDigitsValidity(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,System.Int16)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.CheckTargetCellsDigitsValidity(Sudoku.Concepts.CellMap@,System.Int16)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.GetValueDigitsAppearedInCrossline(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,System.Int16)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__1.GetValueDigitsAppearedInCrossline(Sudoku.Concepts.CellMap@,System.Int16)"/>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.ComplexFishStepSearcher">
             <summary>
@@ -9918,13 +10059,16 @@
 				</summary>
 			</target>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.Extensions.">
+        <member name="T:Sudoku.Analytics.StepSearchers.Extensions.<>E__0">
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <see cref="T:Sudoku.Concepts.CellMap"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.Extensions..All(Sudoku.Analytics.StepSearchers.CellMapPredicate)">
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__0.All(Sudoku.Analytics.StepSearchers.CellMapPredicate)">
             <inheritdoc cref="M:System.Linq.Providers.IAnyAllMethod`2.All(System.Func{`1,System.Boolean})"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.Extensions.All(System.ReadOnlySpan{Sudoku.Concepts.CellMap},Sudoku.Analytics.StepSearchers.CellMapPredicate)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.Extensions.<>E__0.All(Sudoku.Analytics.StepSearchers.CellMapPredicate)"/>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.CellMapPredicate">
             <summary>
@@ -22185,12 +22329,12 @@
             Provides a way to analyze technique usages on difference between two grids.
             </summary>
         </member>
-        <member name="T:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis.">
+        <member name="T:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis..TryAnalyzeTechnique(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Analytics.Collector,Sudoku.Analytics.Step@)">
+        <member name="M:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis.<>E__0.TryAnalyzeTechnique(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Analytics.Collector,Sudoku.Analytics.Step@)">
             <summary>
             Try to analyze technique used that causes <paramref name="left"/> changing into <paramref name="right"/>.
             </summary>
@@ -22199,6 +22343,9 @@
             <param name="collector">The collector instance that is used for collecting found steps.</param>
             <param name="step">The step.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating whether such step can be inferred.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis.TryAnalyzeTechnique(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Analytics.Collector,Sudoku.Analytics.Step@)">
+            <inheritdoc cref="M:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis.<>E__0.TryAnalyzeTechnique(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Analytics.Collector,Sudoku.Analytics.Step@)"/>
         </member>
         <member name="T:Sudoku.Behaviors.DigitFirst">
             <summary>
@@ -22488,12 +22635,12 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
-        <member name="T:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.">
+        <member name="T:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.<>E__0">
             <summary>
             Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions..MakeIttoryu(Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)">
+        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.<>E__0.MakeIttoryu(Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)">
             <summary>
             Try to reproduce ittoryu ordering for the specified grid whose path can be found by <see cref="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder"/>.
             </summary>
@@ -22503,19 +22650,22 @@
             <exception cref="T:System.ArgumentException">Throws when the ittoryu path contains a digit series of length 0 or 1.</exception>
             <seealso cref="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder"/>
         </member>
-        <member name="T:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.">
+        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.MakeIttoryu(Sudoku.Concepts.Grid@,Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)">
+            <inheritdoc cref="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.<>E__0.MakeIttoryu(Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)"/>
+        </member>
+        <member name="T:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.<>E__1">
             <summary>
             Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions..IsIttoryu(System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)">
+        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.<>E__1.IsIttoryu(System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)">
             <summary>
             Determine whether the specified grid is an ittoryu puzzle, meaning the puzzle can be finished via digits one by one.
             </summary>
             <param name="path">The first found ittoryu path.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
         </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions..IsIttoryu(Sudoku.Categorization.TechniqueSet,System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)">
+        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.<>E__1.IsIttoryu(Sudoku.Categorization.TechniqueSet,System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)">
             <summary>
             Determine whether the specified grid is an ittoryu puzzle, meaning the puzzle can be finished via digits one by one,
             with checking using the specified techniques.
@@ -22536,6 +22686,12 @@
             </param>
             <param name="path">The first found ittoryu path.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.IsIttoryu(Sudoku.Concepts.Grid@,System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)">
+            <inheritdoc cref="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.<>E__1.IsIttoryu(System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)"/>
+        </member>
+        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.IsIttoryu(Sudoku.Concepts.Grid@,Sudoku.Categorization.TechniqueSet,System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)">
+            <inheritdoc cref="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.<>E__1.IsIttoryu(Sudoku.Categorization.TechniqueSet,System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)"/>
         </member>
         <member name="T:Sudoku.Behaviors.Ittoryu.IttoryuPathNode">
             <summary>
@@ -22740,12 +22896,12 @@
             Indicates the backing collector.
             </summary>
         </member>
-        <member name="T:Sudoku.Categorization.GridPartialMarkingExtensions.">
+        <member name="T:Sudoku.Categorization.GridPartialMarkingExtensions.<>E__0">
             <summary>
             Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Categorization.GridPartialMarkingExtensions..IsMissingCandidates(Sudoku.Categorization.PartialMarkingTechniques)">
+        <member name="M:Sudoku.Categorization.GridPartialMarkingExtensions.<>E__0.IsMissingCandidates(Sudoku.Categorization.PartialMarkingTechniques)">
             <summary>
             Determine whether the grid lacks some candidates that are included in a grid,
             through basic elimination rule (Naked Single checking) and specified partial-marking techniques.
@@ -22755,6 +22911,9 @@
             <exception cref="T:System.ArgumentOutOfRangeException">
             Throws when the argument <paramref name="techniques"/> is greater than the maximum value of enumeration field defined.
             </exception>
+        </member>
+        <member name="M:Sudoku.Categorization.GridPartialMarkingExtensions.IsMissingCandidates(Sudoku.Concepts.Grid@,Sudoku.Categorization.PartialMarkingTechniques)">
+            <inheritdoc cref="M:Sudoku.Categorization.GridPartialMarkingExtensions.<>E__0.IsMissingCandidates(Sudoku.Categorization.PartialMarkingTechniques)"/>
         </member>
         <member name="T:Sudoku.Categorization.MissingDifficultyLevelException">
             <summary>
@@ -23282,57 +23441,57 @@
             </summary>
             <seealso cref="T:Sudoku.Categorization.SingleSubtype"/>
         </member>
-        <member name="T:Sudoku.Categorization.SingleSubtypeExtensions.">
+        <member name="T:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Categorization.SingleSubtype"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions..IsUnnecessary">
+        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.IsUnnecessary">
             <summary>
             Indicates whether the specified subtype is unnecessary in practice.
             For example, a naked single with 8 digits in a block will form a full house, which is unnecessary.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions..IsAlgorithmUnnecessary">
+        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.IsAlgorithmUnnecessary">
             <summary>
             Indicates whether the specified subtype is unnecessary in solving algorithm,
             but it can be appeared in a solving step produced by a user.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions..ExcludersCount">
+        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.ExcludersCount">
             <summary>
             Indicates the number of excluders that the current single subtype will use.
             This method will return a non-zero value if and only if it is a hidden single.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions..DirectDifficultyLevel">
+        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.DirectDifficultyLevel">
             <summary>
             Indicates the direct difficulty level of the curreent subtype.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions..Abbreviation">
+        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.Abbreviation">
             <summary>
             Indicates the abbreviation of the subtype.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions..RelatedTechnique">
+        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.RelatedTechnique">
             <summary>
             Try to get the related technique of the current subtype.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions..Attribute">
+        <member name="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.Attribute">
             <summary>
             Gets the attribute.
             </summary>
         </member>
-        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions..GetExcludersCount(Sudoku.Concepts.HouseType)">
+        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.GetExcludersCount(Sudoku.Concepts.HouseType)">
             <summary>
             Try to get the number of excluders that the current single subtype will use in the specified house type.
             </summary>
             <param name="houseType">The house type.</param>
             <returns>The number of excluders.</returns>
         </member>
-        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions..GetSingleTechnique(System.Boolean)">
+        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.GetSingleTechnique(System.Boolean)">
             <summary>
             Try to get related <see cref="T:Sudoku.Categorization.SingleTechniqueFlag"/> field that corresponds the current subtype.
             All values are:
@@ -23357,6 +23516,33 @@
             <returns>The single technique returned.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is out of range.</exception>
             <seealso cref="T:Sudoku.Categorization.SingleTechniqueFlag"/>
+        </member>
+        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.get_IsUnnecessary(Sudoku.Categorization.SingleSubtype)">
+            <inheritdoc cref="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.IsUnnecessary"/>
+        </member>
+        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.get_IsAlgorithmUnnecessary(Sudoku.Categorization.SingleSubtype)">
+            <inheritdoc cref="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.IsAlgorithmUnnecessary"/>
+        </member>
+        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.get_ExcludersCount(Sudoku.Categorization.SingleSubtype)">
+            <inheritdoc cref="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.ExcludersCount"/>
+        </member>
+        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.get_DirectDifficultyLevel(Sudoku.Categorization.SingleSubtype)">
+            <inheritdoc cref="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.DirectDifficultyLevel"/>
+        </member>
+        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.get_Abbreviation(Sudoku.Categorization.SingleSubtype)">
+            <inheritdoc cref="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.Abbreviation"/>
+        </member>
+        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.get_RelatedTechnique(Sudoku.Categorization.SingleSubtype)">
+            <inheritdoc cref="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.RelatedTechnique"/>
+        </member>
+        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.get_Attribute(Sudoku.Categorization.SingleSubtype)">
+            <inheritdoc cref="P:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.Attribute"/>
+        </member>
+        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.GetExcludersCount(Sudoku.Categorization.SingleSubtype,Sudoku.Concepts.HouseType)">
+            <inheritdoc cref="M:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.GetExcludersCount(Sudoku.Concepts.HouseType)"/>
+        </member>
+        <member name="M:Sudoku.Categorization.SingleSubtypeExtensions.GetSingleTechnique(Sudoku.Categorization.SingleSubtype,System.Boolean)">
+            <inheritdoc cref="M:Sudoku.Categorization.SingleSubtypeExtensions.<>E__0.GetSingleTechnique(System.Boolean)"/>
         </member>
         <member name="T:Sudoku.Categorization.SingleSubtypeGroup">
             <summary>
@@ -23489,18 +23675,21 @@
             </summary>
             <seealso cref="T:Sudoku.Categorization.SingleTechniqueFlag"/>
         </member>
-        <member name="T:Sudoku.Categorization.SingleTechniqueFlagExtensions.">
+        <member name="T:Sudoku.Categorization.SingleTechniqueFlagExtensions.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Categorization.SingleTechniqueFlag"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Categorization.SingleTechniqueFlagExtensions..GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Categorization.SingleTechniqueFlagExtensions.<>E__0.GetName(System.IFormatProvider)">
             <summary>
             Try to get the name of the current <see cref="T:Sudoku.Categorization.SingleTechniqueFlag"/>.
             </summary>
             <param name="formatProvider">The culture information.</param>
             <returns>The name of the current technique.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the target technique is out of range.</exception>
+        </member>
+        <member name="M:Sudoku.Categorization.SingleTechniqueFlagExtensions.GetName(Sudoku.Categorization.SingleTechniqueFlag,System.IFormatProvider)">
+            <inheritdoc cref="M:Sudoku.Categorization.SingleTechniqueFlagExtensions.<>E__0.GetName(System.IFormatProvider)"/>
         </member>
         <member name="T:Sudoku.Categorization.Technique">
             <summary>
@@ -25395,12 +25584,12 @@
             </summary>
             <seealso cref="T:Sudoku.Categorization.Technique"/>
         </member>
-        <member name="T:Sudoku.Categorization.TechniqueExtensions.">
+        <member name="T:Sudoku.Categorization.TechniqueExtensions.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Categorization.Technique"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions..IsAssignment">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.IsAssignment">
             <summary>
             Indicates whether the specified technique produces assignments.
             </summary>
@@ -25418,48 +25607,48 @@
             <seealso cref="M:Sudoku.Categorization.TechniqueExtensions.get_IsDirect(Sudoku.Categorization.Technique)"/>
             <seealso cref="M:Sudoku.Categorization.TechniqueExtensions.get_IsSingle(Sudoku.Categorization.Technique)"/>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions..IsSingle">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.IsSingle">
             <summary>
             Indicates whether the specified technique is a single technique.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions..IsDirect">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.IsDirect">
             <summary>
             Indicates whether the specified technique is a technique that can only be produced in direct views.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions..IsLastResort">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.IsLastResort">
             <summary>
             Indicates whether the technique is last resort.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions..SupportsCustomizingDifficulty">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SupportsCustomizingDifficulty">
             <summary>
             Indicates whether the specified technique supports for customization on difficulty values.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions..SupportsSiamese">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SupportsSiamese">
             <summary>
             Indicates whether the technique supports for Siamese rule.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions..EnglishName">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.EnglishName">
             <summary>
             Indicates the English name of the current instance.
             </summary>
             <exception cref="T:System.Resources.ResourceNotFoundException">Throws when the target name is not found in resource dictionary.</exception>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions..Abbreviation">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.Abbreviation">
             <summary>
             Indicates the abbreviation of the current instance.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions..ReferenceLinks">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.ReferenceLinks">
             <summary>
             Indicates all configured links to EnjoySudoku forum describing the current technique.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions..Group">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.Group">
             <summary>
             Indicates the group that the current <see cref="T:Sudoku.Categorization.Technique"/> belongs to.
             </summary>
@@ -25467,29 +25656,29 @@
             Throws when the specified <see cref="T:Sudoku.Categorization.Technique"/> does not belong to any <see cref="T:Sudoku.Categorization.TechniqueGroup"/>.
             </exception>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions..DifficultyLevel">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.DifficultyLevel">
             <summary>
             Indicates its static difficulty level for the specified technique.
             If it doesn't contain a static difficulty level value, <see cref="F:Sudoku.Analytics.DifficultyLevel.Unknown"/> will be returned.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions..SingleTechnique">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SingleTechnique">
             <summary>
             Indicates the corresponding <see cref="T:Sudoku.Categorization.SingleTechniqueFlag"/> for the specified single <see cref="T:Sudoku.Categorization.Technique"/>.
             </summary>
             <exception cref="T:System.InvalidOperationException">Throws when the technique is not single.</exception>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions..Features">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.Features">
             <summary>
             Indicates all features configured for the current <see cref="T:Sudoku.Categorization.Technique"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions..SupportedPencilmarkVisibilityModes">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SupportedPencilmarkVisibilityModes">
             <summary>
             Indicates supported pencilmark-visibility modes that the current <see cref="T:Sudoku.Categorization.Technique"/> can be used in application.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueExtensions..SuitableStepType">
+        <member name="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SuitableStepType">
             <summary>
             Indicates suitable <see cref="T:System.Type"/> which refers to a <see cref="T:Sudoku.Analytics.Step"/> type,
             whose contained property <see cref="P:Sudoku.Analytics.Step.Code"/> may create this technique;
@@ -25498,7 +25687,7 @@
             <seealso cref="T:Sudoku.Analytics.Step"/>
             <seealso cref="P:Sudoku.Analytics.Step.Code"/>
         </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions..GetDefaultRating(System.Int32@)">
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.<>E__0.GetDefaultRating(System.Int32@)">
             <summary>
             Try to get the base difficulty value for the specified technique, configured in metadata.
             </summary>
@@ -25507,7 +25696,7 @@
             </param>
             <returns>The difficulty value.</returns>
         </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions..GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.<>E__0.GetName(System.IFormatProvider)">
             <summary>
             Try to get the name of the current <see cref="T:Sudoku.Categorization.Technique"/>.
             </summary>
@@ -25515,7 +25704,7 @@
             <returns>The name of the current technique.</returns>
             <exception cref="T:System.Resources.ResourceNotFoundException">Throws when the target name is not found in resource dictionary.</exception>
         </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions..GetAliasedNames(System.IFormatProvider)">
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.<>E__0.GetAliasedNames(System.IFormatProvider)">
             <summary>
             Try to get all aliases of the current <see cref="T:Sudoku.Categorization.Technique"/>.
             </summary>
@@ -25525,13 +25714,70 @@
             If the technique does not contain any aliases, the return value will be <see langword="null"/>.
             </returns>
         </member>
-        <member name="M:Sudoku.Categorization.TechniqueExtensions..TryGetGroup">
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.<>E__0.TryGetGroup">
             <summary>
             Try to get the group that the current <see cref="T:Sudoku.Categorization.Technique"/> belongs to.
             If a technique doesn't contain a corresponding group, this method will return <see langword="null"/>.
             No exception will be thrown.
             </summary>
             <returns>The <see cref="T:Sudoku.Categorization.TechniqueGroup"/> value that the current <see cref="T:Sudoku.Categorization.Technique"/> belongs to.</returns>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_IsAssignment(Sudoku.Categorization.Technique)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.IsAssignment"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_IsSingle(Sudoku.Categorization.Technique)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.IsSingle"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_IsDirect(Sudoku.Categorization.Technique)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.IsDirect"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_IsLastResort(Sudoku.Categorization.Technique)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.IsLastResort"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_SupportsCustomizingDifficulty(Sudoku.Categorization.Technique)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SupportsCustomizingDifficulty"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_SupportsSiamese(Sudoku.Categorization.Technique)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SupportsSiamese"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_EnglishName(Sudoku.Categorization.Technique)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.EnglishName"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_Abbreviation(Sudoku.Categorization.Technique)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.Abbreviation"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_ReferenceLinks(Sudoku.Categorization.Technique)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.ReferenceLinks"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_Group(Sudoku.Categorization.Technique)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.Group"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_DifficultyLevel(Sudoku.Categorization.Technique)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.DifficultyLevel"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_SingleTechnique(Sudoku.Categorization.Technique)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SingleTechnique"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_Features(Sudoku.Categorization.Technique)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.Features"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_SupportedPencilmarkVisibilityModes(Sudoku.Categorization.Technique)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SupportedPencilmarkVisibilityModes"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.get_SuitableStepType(Sudoku.Categorization.Technique)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueExtensions.<>E__0.SuitableStepType"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.GetDefaultRating(Sudoku.Categorization.Technique,System.Int32@)">
+            <inheritdoc cref="M:Sudoku.Categorization.TechniqueExtensions.<>E__0.GetDefaultRating(System.Int32@)"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.GetName(Sudoku.Categorization.Technique,System.IFormatProvider)">
+            <inheritdoc cref="M:Sudoku.Categorization.TechniqueExtensions.<>E__0.GetName(System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.GetAliasedNames(Sudoku.Categorization.Technique,System.IFormatProvider)">
+            <inheritdoc cref="M:Sudoku.Categorization.TechniqueExtensions.<>E__0.GetAliasedNames(System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueExtensions.TryGetGroup(Sudoku.Categorization.Technique)">
+            <inheritdoc cref="M:Sudoku.Categorization.TechniqueExtensions.<>E__0.TryGetGroup"/>
         </member>
         <member name="T:Sudoku.Categorization.TechniqueFeatures">
             <summary>
@@ -25842,33 +26088,33 @@
             </summary>
             <seealso cref="T:Sudoku.Categorization.TechniqueGroup"/>
         </member>
-        <member name="T:Sudoku.Categorization.TechniqueGroupExtensions.">
+        <member name="T:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Categorization.TechniqueGroup"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueGroupExtensions..SupportsSiamese">
+        <member name="P:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.SupportsSiamese">
             <summary>
             Indicates whether the technique group supports for Siamese rule.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueGroupExtensions..Name">
+        <member name="P:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.Name">
             <summary>
             Indicates the name of the technique group.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueGroupExtensions..ShortenedName">
+        <member name="P:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.ShortenedName">
             <summary>
             Indicates shortened name of the current <see cref="T:Sudoku.Categorization.TechniqueGroup"/> instance.
             If the group has an abbreviation, return its abbreviation; otherwise, its full name.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueGroupExtensions..Abbreviation">
+        <member name="P:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.Abbreviation">
             <summary>
             Try to get abbreviation of the current <see cref="T:Sudoku.Categorization.TechniqueGroup"/> instance.
             </summary>
         </member>
-        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions..GetShortenedName(System.Globalization.CultureInfo)">
+        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.GetShortenedName(System.Globalization.CultureInfo)">
             <summary>
             Try to get shortened name of the current <see cref="T:Sudoku.Categorization.TechniqueGroup"/> instance. If the group has an abbreviation,
             return its abbreviation; otherwise, its full name.
@@ -25876,7 +26122,7 @@
             <param name="cultureInfo">The culture information instance.</param>
             <returns>The shortened name.</returns>
         </member>
-        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions..GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.GetName(System.IFormatProvider)">
             <summary>
             Try to get name of the current <see cref="T:Sudoku.Categorization.TechniqueGroup"/> instance, with the specified culture information.
             </summary>
@@ -25884,7 +26130,7 @@
             <returns>The name.</returns>
             <exception cref="T:System.Resources.ResourceNotFoundException">Throws when the specified group does not contain a name.</exception>
         </member>
-        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions..GetTechniques(System.Func{Sudoku.Categorization.Technique,System.Boolean})">
+        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.GetTechniques(System.Func{Sudoku.Categorization.Technique,System.Boolean})">
             <summary>
             Try to get all possible <see cref="T:Sudoku.Categorization.Technique"/> fields belonging to the current group.
             </summary>
@@ -25892,6 +26138,27 @@
             <returns>
             A <see cref="T:Sudoku.Categorization.TechniqueSet"/> instance that contains all <see cref="T:Sudoku.Categorization.Technique"/> fields belonging to the current group.
             </returns>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.get_SupportsSiamese(Sudoku.Categorization.TechniqueGroup)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.SupportsSiamese"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.get_Name(Sudoku.Categorization.TechniqueGroup)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.Name"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.get_ShortenedName(Sudoku.Categorization.TechniqueGroup)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.ShortenedName"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.get_Abbreviation(Sudoku.Categorization.TechniqueGroup)">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.Abbreviation"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.GetShortenedName(Sudoku.Categorization.TechniqueGroup,System.Globalization.CultureInfo)">
+            <inheritdoc cref="M:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.GetShortenedName(System.Globalization.CultureInfo)"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.GetName(Sudoku.Categorization.TechniqueGroup,System.IFormatProvider)">
+            <inheritdoc cref="M:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.GetName(System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueGroupExtensions.GetTechniques(Sudoku.Categorization.TechniqueGroup,System.Func{Sudoku.Categorization.Technique,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Categorization.TechniqueGroupExtensions.<>E__0.GetTechniques(System.Func{Sudoku.Categorization.Technique,System.Boolean})"/>
         </member>
         <member name="T:Sudoku.Categorization.TechniqueMetadataAttribute">
             <summary>
@@ -26763,12 +27030,12 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.Supersymmetry.Space"/>
         </member>
-        <member name="T:Sudoku.Concepts.Supersymmetry.SpaceExtensions.">
+        <member name="T:Sudoku.Concepts.Supersymmetry.SpaceExtensions.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Concepts.Supersymmetry.Space"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceExtensions..IsSatisfied(Sudoku.Concepts.CandidateMap@,System.Boolean)">
+        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceExtensions.<>E__0.IsSatisfied(Sudoku.Concepts.CandidateMap@,System.Boolean)">
             <summary>
             Determine whether the specified assignment combination can satisfy the current rank set.
             </summary>
@@ -26776,22 +27043,28 @@
             <param name="isTruth">Indicates whether the current space is as a truth.</param>
             <returns>A <see cref="T:System.Boolean"/> result.</returns>
         </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceExtensions.IsSatisfied(Sudoku.Concepts.Supersymmetry.Space,Sudoku.Concepts.CandidateMap@,System.Boolean)">
+            <inheritdoc cref="M:Sudoku.Concepts.Supersymmetry.SpaceExtensions.<>E__0.IsSatisfied(Sudoku.Concepts.CandidateMap@,System.Boolean)"/>
+        </member>
         <member name="T:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions">
             <summary>
             Provides with extension methods on <see cref="T:Sudoku.Concepts.Supersymmetry.SpaceSet"/>.
             </summary>
             <seealso cref="T:Sudoku.Concepts.Supersymmetry.SpaceSet"/>
         </member>
-        <member name="T:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions.">
+        <member name="T:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions.<>E__0">
             <summary>
             Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Supersymmetry.SpaceSet"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions..AsSpaceSet">
+        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions.<>E__0.AsSpaceSet">
             <summary>
             Converts <see cref="T:System.ReadOnlySpan`1"/> of <see cref="T:Sudoku.Concepts.Supersymmetry.Space"/> into <see cref="T:Sudoku.Concepts.Supersymmetry.SpaceSet"/>.
             </summary>
             <returns>The space set instance.</returns>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions.AsSpaceSet(System.ReadOnlySpan{Sudoku.Concepts.Supersymmetry.Space})">
+            <inheritdoc cref="M:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions.<>E__0.AsSpaceSet"/>
         </member>
         <member name="T:Sudoku.Generating.Filtering.Annotations.NameAttribute">
             <summary>
@@ -26983,23 +27256,29 @@
             </summary>
             <seealso cref="T:Sudoku.Generating.Filtering.ComparisonOperator"/>
         </member>
-        <member name="T:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.">
+        <member name="T:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.<>E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Generating.Filtering.ComparisonOperator"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Generating.Filtering.ComparisonOperatorExtensions..GetOperatorString">
+        <member name="P:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.<>E__0.GetOperatorString">
             <summary>
             Indicates the string representation of the operator.
             </summary>
         </member>
-        <member name="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions..GetOperator``1">
+        <member name="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.<>E__0.GetOperator``1">
             <summary>
             Creates a delegate method that executes the specified rule of comparison.
             </summary>
             <typeparam name="T">The type of the target.</typeparam>
             <returns>A delegate function.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is out of range (not defined).</exception>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.get_GetOperatorString(Sudoku.Generating.Filtering.ComparisonOperator)">
+            <inheritdoc cref="P:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.<>E__0.GetOperatorString"/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.GetOperator``1(Sudoku.Generating.Filtering.ComparisonOperator)">
+            <inheritdoc cref="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.<>E__0.GetOperator``1"/>
         </member>
         <member name="T:Sudoku.Generating.Filtering.Constraint">
             <summary>

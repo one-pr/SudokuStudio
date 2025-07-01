@@ -206,7 +206,7 @@ internal sealed partial class LibraryFileReader : IAsyncDisposable
 	{
 		var buffer = new byte[BufferSize];
 		var remainingBytes = new List<byte>(256);
-		var currentLineNumber = 0UL;
+		var currentLineNumber = 1UL;
 		while (true)
 		{
 			cancellationToken.ThrowIfCancellationRequested();
