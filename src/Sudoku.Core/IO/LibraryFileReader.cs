@@ -288,6 +288,6 @@ internal sealed partial class LibraryFileReader : IAsyncDisposable
 	/// <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
 	/// <returns>An enumerator object that allows iterating values asynchronously.</returns>
 	/// <exception cref="OperationCanceledException">Throws when <paramref name="cancellationToken"/> is requested.</exception>
-	public IAsyncEnumerable<string> ReadLinesAsync(CancellationToken cancellationToken = default)
+	public IAsyncEnumerable<string> ReadAllLinesAsync(CancellationToken cancellationToken = default)
 		=> ReadLinesRangeAsync(1, ulong.MaxValue, cancellationToken: cancellationToken);
 }

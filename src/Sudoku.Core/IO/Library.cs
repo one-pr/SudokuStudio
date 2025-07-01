@@ -219,7 +219,7 @@ public sealed partial class Library(string directoryPath, string identifier) :
 			// so it will be catched and make a rollback instead of skipping the foreach loop.
 			await using (var sw = new StreamWriter(tempFilePath, true))
 			{
-				await foreach (var line in otherReader.ReadLinesAsync(cancellationToken))
+				await foreach (var line in otherReader.ReadAllLinesAsync(cancellationToken))
 				{
 					if (Grid.TryParse(line, out _))
 					{
@@ -317,7 +317,7 @@ public sealed partial class Library(string directoryPath, string identifier) :
 			yield break;
 		}
 
-		await foreach (var line in reader.ReadLinesAsync(cancellationToken))
+		await foreach (var line in reader.ReadAllLinesAsync(cancellationToken))
 		{
 			yield return line;
 		}

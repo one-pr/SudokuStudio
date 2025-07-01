@@ -11020,7 +11020,7 @@
             <returns>An asynchronous enumerator instance.</returns>
             <exception cref="T:System.OperationCanceledException">Throws when <paramref name="cancellationToken"/> is requested.</exception>
         </member>
-        <member name="M:Sudoku.IO.LibraryFileReader.ReadLinesAsync(System.Threading.CancellationToken)">
+        <member name="M:Sudoku.IO.LibraryFileReader.ReadAllLinesAsync(System.Threading.CancellationToken)">
             <summary>
             Loads the puzzles line by line, and enumerate them without loading them together.
             </summary>
