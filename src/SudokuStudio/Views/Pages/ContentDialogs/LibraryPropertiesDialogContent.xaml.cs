@@ -13,7 +13,6 @@ public sealed partial class LibraryPropertiesDialogContent : Page
 		InitializeComponent();
 
 		IsLoadingPuzzlesCount = true;
-		TagsTokenView.ItemsSource = Library.ReadTags().ToArray();
 	}
 
 
@@ -58,6 +57,7 @@ public sealed partial class LibraryPropertiesDialogContent : Page
 		=> DispatcherQueue.TryEnqueue(
 			async () =>
 			{
+				TagsTokenView.ItemsSource = Library.ReadTags().ToArray();
 				LibraryPuzzlesCountDisplayer.Text = (await Library.GetCountAsync()).ToString();
 				IsLoadingPuzzlesCount = false;
 			}

@@ -177,13 +177,13 @@ public sealed partial class LibraryPage : Page
 			CloseButtonText = SR.Get("LibraryPage_LibraryPropertiesDialogClose", App.CurrentCulture),
 			Content = new LibraryPropertiesDialogContent
 			{
+				Library = lib,
 				LibraryName = lib.ReadName() is var name and not "" ? name : LibraryBindableSource.NameDefaultValue,
 				LibraryAuthor = lib.ReadAuthor() is var author and not "" ? author : LibraryBindableSource.AuthorDefaultValue,
 				LibraryDescription = lib.ReadDescription() is var description and not ""
 					? description
 					: LibraryBindableSource.DescriptionDefaultValue,
-				LibraryLastModifiedTime = lib.LastModifiedTime,
-				Library = lib
+				LibraryLastModifiedTime = lib.LastModifiedTime
 			}
 		};
 		await dialog.ShowAsync();
