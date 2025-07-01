@@ -4,30 +4,30 @@ namespace Sudoku.IO;
 /// Provides functionality to sort very large text files that cannot fit into memory.
 /// Utilizes external merge sort strategy with asynchronous and thread-safe operations.
 /// </summary>
-public static class ExternalSorter
+/// <param name="_inputPath">Path to the input file to be sorted.</param>
+/// <param name="_outputPath">Path to the file where sorted lines will be written.</param>
+/// <param name="_linesPerChunk">Maximum number of lines to load into memory per chunk.</param>
+internal sealed class FileExternalSorter(string _inputPath, string _outputPath, int _linesPerChunk = 500_000)
 {
 	/// <summary>
 	/// Sorts a large text file line by line in ascending order, using external sorting strategy.
 	/// The sorted result is written to the specified output file.
 	/// </summary>
-	/// <param name="inputPath">Path to the input file to be sorted.</param>
-	/// <param name="outputPath">Path to the file where sorted lines will be written.</param>
-	/// <param name="linesPerChunk">Maximum number of lines to load into memory per chunk.</param>
 	/// <returns>The number of lines of result file output.</returns>
-	public static async Task<int> SortLargeFileAsync(string inputPath, string outputPath, int linesPerChunk = 500_000)
+	public async Task<int> SortLargeFileAsync()
 	{
 		var tempFiles = new ConcurrentBag<string>(); // Stores paths of temporary sorted chunk files.
 		var chunkTasks = new List<Task>(); // Stores asynchronous chunk sort tasks.
 
-		using (var reader = new StreamReader(inputPath))
+		using (var reader = new StreamReader(_inputPath))
 		{
 			var chunkIndex = 0;
 			while (!reader.EndOfStream)
 			{
-				var lines = new List<string>(linesPerChunk);
+				var lines = new List<string>(_linesPerChunk);
 
 				// Read a chunk of lines from input file.
-				for (var i = 0; i < linesPerChunk && !reader.EndOfStream; i++)
+				for (var i = 0; i < _linesPerChunk && !reader.EndOfStream; i++)
 				{
 					if (await reader.ReadLineAsync() is { } line && !string.IsNullOrWhiteSpace(line))
 					{
@@ -56,7 +56,7 @@ public static class ExternalSorter
 		await Task.WhenAll(chunkTasks.AsSpan());
 
 		// Merge sorted chunks into final output.
-		var resultFileLines = await MergeSortedFilesAsync([.. tempFiles], outputPath);
+		var resultFileLines = await MergeSortedFilesAsync([.. tempFiles]);
 
 		// Clean up temporary files.
 		foreach (var file in tempFiles)
@@ -78,9 +78,8 @@ public static class ExternalSorter
 	/// Merges multiple pre-sorted text files into a single sorted output file.
 	/// </summary>
 	/// <param name="sortedFiles">List of paths to sorted temporary files.</param>
-	/// <param name="outputPath">Path to the final output file.</param>
 	/// <returns>The number of lines of result file output.</returns>
-	private static async Task<int> MergeSortedFilesAsync(List<string> sortedFiles, string outputPath)
+	private async Task<int> MergeSortedFilesAsync(List<string> sortedFiles)
 	{
 		var readers = new List<StreamReader>();
 
@@ -105,7 +104,7 @@ public static class ExternalSorter
 		}
 
 		var totalWrittenLines = 0;
-		await using (var writer = new StreamWriter(outputPath))
+		await using (var writer = new StreamWriter(_outputPath))
 		{
 			// Perform k-way merge.
 			while (queue.Count != 0)

@@ -79,14 +79,15 @@ public sealed partial class Library(string directoryPath, string identifier) :
 	/// If the original file has any tags, the current value will cover that value.
 	/// </summary>
 	/// <param name="value">The value to be set.</param>
-	public void WriteTags(params ReadOnlySpan<string> value) => WriteProperty(static (info, value) => info.Tags = value.ToArray(), value);
+	public void WriteTags(params ReadOnlySpan<string> value)
+		=> WriteProperty(static (info, value) => info.Tags = DeduplicateTags(value), value);
 
 	/// <summary>
 	/// Writes a list of new tags, appending them into the last of tags array in the library information file.
 	/// </summary>
 	/// <param name="value">The vale to be set.</param>
 	public void AppendTags(params ReadOnlySpan<string> value)
-		=> WriteProperty((info, value) => info.Tags = [.. info.Tags, .. value], value);
+		=> WriteProperty(static (info, value) => info.Tags = DeduplicateTags([.. info.Tags, .. value]), value);
 
 	/// <summary>
 	/// Reads the name of the library information file.
@@ -117,6 +118,38 @@ public sealed partial class Library(string directoryPath, string identifier) :
 	public ReadOnlySpan<string> ReadTags() => ReadProperty(static info => info.Tags);
 
 	/// <summary>
+	/// Sort the puzzles in the library.
+	/// </summary>
+	/// <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
+	/// <returns>A <see cref="Task"/> object that handles the asynchronous operation.</returns>
+	public async Task SortAsync(CancellationToken cancellationToken = default)
+	{
+		var tempFile = Path.GetTempFileName();
+		await new FileExternalSorter(LibraryPath, tempFile, 50_000).SortLargeFileAsync();
+
+		if (cancellationToken.IsCancellationRequested)
+		{
+			lock (_fileLock)
+			{
+				File.Delete(tempFile);
+			}
+			return;
+		}
+
+		lock (_fileLock)
+		{
+			try
+			{
+				File.Delete(LibraryPath);
+				File.Move(tempFile, LibraryPath);
+			}
+			catch
+			{
+			}
+		}
+	}
+
+	/// <summary>
 	/// Deduplicate the puzzles in the library.
 	/// </summary>
 	/// <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
@@ -126,13 +159,16 @@ public sealed partial class Library(string directoryPath, string identifier) :
 		var tempFile = Path.GetTempFileName();
 		await new FileDeduplicator(LibraryPath, tempFile).DeduplicateAsync(cancellationToken);
 
-		try
+		lock (_fileLock)
 		{
-			File.Delete(LibraryPath);
-			File.Move(tempFile, LibraryPath);
-		}
-		catch
-		{
+			try
+			{
+				File.Delete(LibraryPath);
+				File.Move(tempFile, LibraryPath);
+			}
+			catch
+			{
+			}
 		}
 	}
 
@@ -192,7 +228,7 @@ public sealed partial class Library(string directoryPath, string identifier) :
 			// so it will be catched and make a rollback instead of skipping the foreach loop.
 			await using (var sw = new StreamWriter(tempFilePath, true))
 			{
-				await foreach (var line in otherReader.ReadLinesAsync(cancellationToken))
+				await foreach (var line in otherReader.ReadAllLinesAsync(cancellationToken))
 				{
 					if (Grid.TryParse(line, out _))
 					{
@@ -290,7 +326,7 @@ public sealed partial class Library(string directoryPath, string identifier) :
 			yield break;
 		}
 
-		await foreach (var line in reader.ReadLinesAsync(cancellationToken))
+		await foreach (var line in reader.ReadAllLinesAsync(cancellationToken))
 		{
 			yield return line;
 		}
@@ -362,21 +398,17 @@ public sealed partial class Library(string directoryPath, string identifier) :
 
 
 	/// <summary>
-	/// Creates a <see cref="Library"/> instance (and local files) via the specified information.
+	/// Deduplicate tags.
 	/// </summary>
-	/// <param name="directoryPath">The directory path.</param>
-	/// <param name="identifier">The identifier.</param>
-	/// <param name="libraryInfo">The library information.</param>
-	/// <returns>The library instance.</returns>
-	public static Library CreateLibrary(string directoryPath, string identifier, LibraryInfo libraryInfo)
+	/// <param name="values">The value.</param>
+	/// <returns>The result.</returns>
+	private static string[] DeduplicateTags(params ReadOnlySpan<string> values)
 	{
-		var result = new Library(directoryPath, identifier);
-		var info = result.LoadOrCreate();
-		info.Name = libraryInfo.Name;
-		info.Author = libraryInfo.Author;
-		info.Description = libraryInfo.Description;
-		info.Tags = libraryInfo.Tags;
-		result.Save(info);
-		return result;
+		var result = new SortedSet<string>();
+		foreach (var value in values)
+		{
+			result.Add(value.Trim());
+		}
+		return [.. result];
 	}
 }
