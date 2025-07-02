@@ -158,12 +158,12 @@
             Provides a way to analyze difference between two grids.
             </summary>
         </member>
-        <member name="T:Sudoku.Behaviors.Diff.DiffAnalysis.<>E__0">
+        <member name="T:Sudoku.Behaviors.Diff.DiffAnalysis.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Behaviors.Diff.DiffAnalysis.<>E__0.TryAnalyzeDiff(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Behaviors.Diff.DiffResult@)">
+        <member name="M:Sudoku.Behaviors.Diff.DiffAnalysis..TryAnalyzeDiff(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Behaviors.Diff.DiffResult@)">
             <summary>
             Try to analyze difference between two grids if they have a same initial grid (with same digits from given cells).
             </summary>
@@ -176,9 +176,6 @@
             but it might be failed to check in some difference cases; no exceptions will be thrown in this method,
             except for some severe errors should be reported.
             </remarks>
-        </member>
-        <member name="M:Sudoku.Behaviors.Diff.DiffAnalysis.TryAnalyzeDiff(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Behaviors.Diff.DiffResult@)">
-            <inheritdoc cref="M:Sudoku.Behaviors.Diff.DiffAnalysis.<>E__0.TryAnalyzeDiff(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Behaviors.Diff.DiffResult@)"/>
         </member>
         <member name="T:Sudoku.Behaviors.Diff.DiffResult">
             <summary>
@@ -769,19 +766,19 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
-        <member name="T:Sudoku.Behaviors.GridMinimal.Minimal.<>E__0">
+        <member name="T:Sudoku.Behaviors.GridMinimal.Minimal.">
             <summary>
             Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Behaviors.GridMinimal.Minimal.<>E__0.IsMinimal">
+        <member name="P:Sudoku.Behaviors.GridMinimal.Minimal..IsMinimal">
             <summary>
             Determines whether the puzzle is a minimal puzzle, which means the puzzle will become multiple solution
             if arbitrary one given digit will be removed from the grid.
             </summary>
             <returns>A <see cref="T:System.Boolean"/> result.</returns>
         </member>
-        <member name="M:Sudoku.Behaviors.GridMinimal.Minimal.<>E__0.CheckMinimal(System.Int32@)">
+        <member name="M:Sudoku.Behaviors.GridMinimal.Minimal..CheckMinimal(System.Int32@)">
             <summary>
             Determines whether the puzzle is a minimal puzzle, which means the puzzle will become multiple solution
             if arbitrary one given digit will be removed from the grid.
@@ -795,12 +792,6 @@
             </param>
             <returns>A <see cref="T:System.Boolean"/> value indicating that.</returns>
             <exception cref="T:System.InvalidOperationException">Throws when the puzzle is invalid (i.e. not unique).</exception>
-        </member>
-        <member name="M:Sudoku.Behaviors.GridMinimal.Minimal.get_IsMinimal(Sudoku.Concepts.Grid@)">
-            <inheritdoc cref="P:Sudoku.Behaviors.GridMinimal.Minimal.<>E__0.IsMinimal"/>
-        </member>
-        <member name="M:Sudoku.Behaviors.GridMinimal.Minimal.CheckMinimal(Sudoku.Concepts.Grid@,System.Int32@)">
-            <inheritdoc cref="M:Sudoku.Behaviors.GridMinimal.Minimal.<>E__0.CheckMinimal(System.Int32@)"/>
         </member>
         <member name="T:Sudoku.Concepts.CandidateMap">
             <summary>
@@ -1945,28 +1936,28 @@
             Provides with extension methods on <see cref="T:Sudoku.Concepts.CellMap"/> or <see cref="T:Sudoku.Concepts.CandidateMap"/>.
             </summary>
         </member>
-        <member name="T:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__0">
+        <member name="T:Sudoku.Concepts.CellOrCandidateMapExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Int32"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__0.Band">
+        <member name="P:Sudoku.Concepts.CellOrCandidateMapExtensions..Band">
             <summary>
             Try to get the band index (mega-row) of the specified cell.
             </summary>
         </member>
-        <member name="P:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__0.Tower">
+        <member name="P:Sudoku.Concepts.CellOrCandidateMapExtensions..Tower">
             <summary>
             Try to get the tower index (mega-column) of the specified cell.
             </summary>
             <returns>The chute index.</returns>
         </member>
-        <member name="P:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__0.Houses">
+        <member name="P:Sudoku.Concepts.CellOrCandidateMapExtensions..Houses">
             <summary>
             Get the houses for the specified cell, representing as a <see cref="T:System.Int32"/> instance.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__0.CopyHouseInfo(System.Int32@)">
+        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions..CopyHouseInfo(System.Int32@)">
             <summary>
             Gets the row, column and block value and copies to the specified array that represents by a pointer
             of 3 elements, where the first element stores the block index, second element stores the row index
@@ -1980,13 +1971,13 @@
             Throws when the argument <paramref name="reference"/> references to <see langword="null"/>.
             </exception>
         </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__0.AsCellMap">
+        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions..AsCellMap">
             <summary>
             Converts the specified <see cref="T:System.Int32"/> into a singleton <see cref="T:Sudoku.Concepts.CellMap"/> instance.
             </summary>
             <returns>A <see cref="T:Sudoku.Concepts.CellMap"/> instance, containing only one element of the current cell.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__0.ToHouse(Sudoku.Concepts.HouseType)">
+        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions..ToHouse(Sudoku.Concepts.HouseType)">
             <summary>
             Get the house index (0..27 for block 1-9, row 1-9 and column 1-9) for the specified cell and the house type.
             </summary>
@@ -1996,87 +1987,54 @@
             Throws when the argument <paramref name="houseType"/> is not defined.
             </exception>
         </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.get_Band(System.Int32)">
-            <inheritdoc cref="P:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__0.Band"/>
-        </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.get_Tower(System.Int32)">
-            <inheritdoc cref="P:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__0.Tower"/>
-        </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.get_Houses(System.Int32)">
-            <inheritdoc cref="P:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__0.Houses"/>
-        </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.CopyHouseInfo(System.Int32,System.Int32@)">
-            <inheritdoc cref="M:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__0.CopyHouseInfo(System.Int32@)"/>
-        </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.AsCellMap(System.Int32)">
-            <inheritdoc cref="M:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__0.AsCellMap"/>
-        </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.ToHouse(System.Int32,Sudoku.Concepts.HouseType)">
-            <inheritdoc cref="M:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__0.ToHouse(Sudoku.Concepts.HouseType)"/>
-        </member>
-        <member name="T:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__1">
+        <member name="T:Sudoku.Concepts.CellOrCandidateMapExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Int32"/>[].
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__1.AsCellMap">
+        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions..AsCellMap">
             <inheritdoc cref="M:Sudoku.Concepts.CellOrCandidateMapExtensions.AsCellMap(System.ReadOnlySpan{System.Int32})"/>
         </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.AsCellMap(System.Int32[])">
-            <inheritdoc cref="M:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__1.AsCellMap"/>
-        </member>
-        <member name="T:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__2">
+        <member name="T:Sudoku.Concepts.CellOrCandidateMapExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Int32"/>[].
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__2.AsCandidateMap">
+        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions..AsCandidateMap">
             <inheritdoc cref="M:Sudoku.Concepts.CellOrCandidateMapExtensions.AsCandidateMap(System.ReadOnlySpan{System.Int32})"/>
         </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.AsCandidateMap(System.Int32[])">
-            <inheritdoc cref="M:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__2.AsCandidateMap"/>
-        </member>
-        <member name="T:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__3">
+        <member name="T:Sudoku.Concepts.CellOrCandidateMapExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Int32"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__3.AsCandidateMap">
+        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions..AsCandidateMap">
             <summary>
             Converts the specified <see cref="T:System.Int32"/> into a singleton <see cref="T:Sudoku.Concepts.CandidateMap"/> instance.
             </summary>
             <returns>A <see cref="T:Sudoku.Concepts.CandidateMap"/> instance, containing only one element of the current candidate.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.AsCandidateMap(System.Int32)">
-            <inheritdoc cref="M:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__3.AsCandidateMap"/>
-        </member>
-        <member name="T:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__4">
+        <member name="T:Sudoku.Concepts.CellOrCandidateMapExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <see cref="T:System.Int32"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__4.AsCellMap">
+        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions..AsCellMap">
             <summary>
             Converts the specified list of <see cref="T:System.Int32"/> instances into a <see cref="T:Sudoku.Concepts.CellMap"/> instance.
             </summary>
             <returns>A <see cref="T:Sudoku.Concepts.CellMap"/> instance, containing all elements come from the current sequence.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.AsCellMap(System.ReadOnlySpan{System.Int32})">
-            <inheritdoc cref="M:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__4.AsCellMap"/>
-        </member>
-        <member name="T:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__5">
+        <member name="T:Sudoku.Concepts.CellOrCandidateMapExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <see cref="T:System.Int32"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__5.AsCandidateMap">
+        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions..AsCandidateMap">
             <summary>
             Converts the specified list of <see cref="T:System.Int32"/> instances into a <see cref="T:Sudoku.Concepts.CandidateMap"/> instance.
             </summary>
             <returns>A <see cref="T:Sudoku.Concepts.CandidateMap"/> instance, containing all elements come from the current sequence.</returns>
-        </member>
-        <member name="M:Sudoku.Concepts.CellOrCandidateMapExtensions.AsCandidateMap(System.ReadOnlySpan{System.Int32})">
-            <inheritdoc cref="M:Sudoku.Concepts.CellOrCandidateMapExtensions.<>E__5.AsCandidateMap"/>
         </member>
         <member name="T:Sudoku.Concepts.CellState">
             <summary>
@@ -2329,41 +2287,32 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.Conclusion"/>
         </member>
-        <member name="T:Sudoku.Concepts.ConclusionExtensions.<>E__0">
+        <member name="T:Sudoku.Concepts.ConclusionExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Concepts.Conclusion"/>[].
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.ConclusionExtensions.<>E__0.AsSet">
+        <member name="M:Sudoku.Concepts.ConclusionExtensions..AsSet">
             <summary>
             Converts the <see cref="T:Sudoku.Concepts.Conclusion"/> array into a <see cref="T:Sudoku.Concepts.ConclusionSet"/> instance.
             </summary>
             <returns>A <see cref="T:Sudoku.Concepts.ConclusionSet"/> result.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.ConclusionExtensions.AsSet(Sudoku.Concepts.Conclusion[])">
-            <inheritdoc cref="M:Sudoku.Concepts.ConclusionExtensions.<>E__0.AsSet"/>
-        </member>
-        <member name="T:Sudoku.Concepts.ConclusionExtensions.<>E__1">
+        <member name="T:Sudoku.Concepts.ConclusionExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlyMemory`1"/> of <see cref="T:Sudoku.Concepts.Conclusion"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.ConclusionExtensions.<>E__1.AsSet">
+        <member name="M:Sudoku.Concepts.ConclusionExtensions..AsSet">
             <inheritdoc cref="M:Sudoku.Concepts.ConclusionExtensions.AsSet(Sudoku.Concepts.Conclusion[])"/>
         </member>
-        <member name="M:Sudoku.Concepts.ConclusionExtensions.AsSet(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion})">
-            <inheritdoc cref="M:Sudoku.Concepts.ConclusionExtensions.<>E__1.AsSet"/>
-        </member>
-        <member name="T:Sudoku.Concepts.ConclusionExtensions.<>E__2">
+        <member name="T:Sudoku.Concepts.ConclusionExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <see cref="T:Sudoku.Concepts.Conclusion"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.ConclusionExtensions.<>E__2.AsSet">
+        <member name="M:Sudoku.Concepts.ConclusionExtensions..AsSet">
             <inheritdoc cref="M:Sudoku.Concepts.ConclusionExtensions.AsSet(Sudoku.Concepts.Conclusion[])"/>
-        </member>
-        <member name="M:Sudoku.Concepts.ConclusionExtensions.AsSet(System.ReadOnlySpan{Sudoku.Concepts.Conclusion})">
-            <inheritdoc cref="M:Sudoku.Concepts.ConclusionExtensions.<>E__2.AsSet"/>
         </member>
         <member name="T:Sudoku.Concepts.ConclusionSet">
             <summary>
@@ -3079,12 +3028,12 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.Coordinates.CoordinateType"/>
         </member>
-        <member name="T:Sudoku.Concepts.Coordinates.CoordinateTypeExtensions.<>E__0">
+        <member name="T:Sudoku.Concepts.Coordinates.CoordinateTypeExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Concepts.Coordinates.CoordinateType"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Concepts.Coordinates.CoordinateTypeExtensions.<>E__0.Converter">
+        <member name="P:Sudoku.Concepts.Coordinates.CoordinateTypeExtensions..Converter">
             <summary>
             Gets the <see cref="T:Sudoku.Concepts.Coordinates.CoordinateConverter"/> instance via the specified <see cref="T:Sudoku.Concepts.Coordinates.CoordinateType"/> instance.
             </summary>
@@ -3092,19 +3041,13 @@
             A valid <see cref="T:Sudoku.Concepts.Coordinates.CoordinateConverter"/> instance. You can use cast operators to get the instance of desired type.
             </returns>
         </member>
-        <member name="P:Sudoku.Concepts.Coordinates.CoordinateTypeExtensions.<>E__0.Parser">
+        <member name="P:Sudoku.Concepts.Coordinates.CoordinateTypeExtensions..Parser">
             <summary>
             Gets the <see cref="T:Sudoku.Concepts.Coordinates.CoordinateParser"/> instance via the specified <see cref="T:Sudoku.Concepts.Coordinates.CoordinateType"/> instance.
             </summary>
             <returns>
             A valid <see cref="T:Sudoku.Concepts.Coordinates.CoordinateParser"/> instance. You can use cast operators to get the instance of desired type.
             </returns>
-        </member>
-        <member name="M:Sudoku.Concepts.Coordinates.CoordinateTypeExtensions.get_Converter(Sudoku.Concepts.Coordinates.CoordinateType)">
-            <inheritdoc cref="P:Sudoku.Concepts.Coordinates.CoordinateTypeExtensions.<>E__0.Converter"/>
-        </member>
-        <member name="M:Sudoku.Concepts.Coordinates.CoordinateTypeExtensions.get_Parser(Sudoku.Concepts.Coordinates.CoordinateType)">
-            <inheritdoc cref="P:Sudoku.Concepts.Coordinates.CoordinateTypeExtensions.<>E__0.Parser"/>
         </member>
         <member name="T:Sudoku.Concepts.Coordinates.ExcelCoordinateConverter">
             <summary>
@@ -3618,28 +3561,22 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.Coordinates.Formatting.NotationBracket"/>
         </member>
-        <member name="T:Sudoku.Concepts.Coordinates.Formatting.NotationBracketExtensions.<>E__0">
+        <member name="T:Sudoku.Concepts.Coordinates.Formatting.NotationBracketExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Concepts.Coordinates.Formatting.NotationBracket"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.NotationBracketExtensions.<>E__0.OpenBracket">
+        <member name="P:Sudoku.Concepts.Coordinates.Formatting.NotationBracketExtensions..OpenBracket">
             <summary>
             Indicates to get open bracket token.
             </summary>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is not defined.</exception>
         </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.NotationBracketExtensions.<>E__0.ClosedBracket">
+        <member name="P:Sudoku.Concepts.Coordinates.Formatting.NotationBracketExtensions..ClosedBracket">
             <summary>
             Indicates closed bracket token.
             </summary>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is not defined.</exception>
-        </member>
-        <member name="M:Sudoku.Concepts.Coordinates.Formatting.NotationBracketExtensions.get_OpenBracket(Sudoku.Concepts.Coordinates.Formatting.NotationBracket)">
-            <inheritdoc cref="P:Sudoku.Concepts.Coordinates.Formatting.NotationBracketExtensions.<>E__0.OpenBracket"/>
-        </member>
-        <member name="M:Sudoku.Concepts.Coordinates.Formatting.NotationBracketExtensions.get_ClosedBracket(Sudoku.Concepts.Coordinates.Formatting.NotationBracket)">
-            <inheritdoc cref="P:Sudoku.Concepts.Coordinates.Formatting.NotationBracketExtensions.<>E__0.ClosedBracket"/>
         </member>
         <member name="T:Sudoku.Concepts.Coordinates.Formatting.OnOffNotationFix">
             <summary>
@@ -5922,12 +5859,12 @@
             </summary>
             <seealso cref="T:System.Int32"/>
         </member>
-        <member name="T:Sudoku.Concepts.HouseExtensions.<>E__0">
+        <member name="T:Sudoku.Concepts.HouseExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Int32"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Concepts.HouseExtensions.<>E__0.HouseType">
+        <member name="P:Sudoku.Concepts.HouseExtensions..HouseType">
             <summary>
             Get the house type for the specified house index.
             </summary>
@@ -5953,41 +5890,32 @@
             </list>
             </returns>
         </member>
-        <member name="M:Sudoku.Concepts.HouseExtensions.get_HouseType(System.Int32)">
-            <inheritdoc cref="P:Sudoku.Concepts.HouseExtensions.<>E__0.HouseType"/>
-        </member>
         <member name="T:Sudoku.Concepts.HouseMaskExtensions">
             <summary>
             Provides with extension methods on <see cref="T:System.Int32"/>.
             </summary>
         </member>
-        <member name="T:Sudoku.Concepts.HouseMaskExtensions.<>E__0">
+        <member name="T:Sudoku.Concepts.HouseMaskExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Int32"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Concepts.HouseMaskExtensions.<>E__0.SplitMask">
+        <member name="P:Sudoku.Concepts.HouseMaskExtensions..SplitMask">
             <summary>
             Indicates the triplet of masks that describes the blocks, rows and columns.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.HouseMaskExtensions.get_SplitMask(System.Int32)">
-            <inheritdoc cref="P:Sudoku.Concepts.HouseMaskExtensions.<>E__0.SplitMask"/>
-        </member>
-        <member name="T:Sudoku.Concepts.HouseMaskExtensions.<>E__1">
+        <member name="T:Sudoku.Concepts.HouseMaskExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Int32"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.HouseMaskExtensions.<>E__1.Create(System.ReadOnlySpan{System.Int32})">
+        <member name="M:Sudoku.Concepts.HouseMaskExtensions..Create(System.ReadOnlySpan{System.Int32})">
             <summary>
             Creates for a <see cref="T:System.Int32"/> instance via the specified houses.
             </summary>
             <param name="houses">The houses.</param>
             <returns>A <see cref="T:System.Int32"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Concepts.HouseMaskExtensions.Create(System.ReadOnlySpan{System.Int32})">
-            <inheritdoc cref="M:Sudoku.Concepts.HouseMaskExtensions.<>E__1.Create(System.ReadOnlySpan{System.Int32})"/>
         </member>
         <member name="T:Sudoku.Concepts.HouseMaskOperations">
             <summary>
@@ -6041,27 +5969,21 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.HouseType"/>
         </member>
-        <member name="T:Sudoku.Concepts.HouseTypeExtensions.<>E__0">
+        <member name="T:Sudoku.Concepts.HouseTypeExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Concepts.HouseType"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Concepts.HouseTypeExtensions.<>E__0.Label">
+        <member name="P:Sudoku.Concepts.HouseTypeExtensions..Label">
             <summary>
             Try to get the label of the specified house type.
             </summary>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is not defined.</exception>
         </member>
-        <member name="P:Sudoku.Concepts.HouseTypeExtensions.<>E__0.ProgramOrder">
+        <member name="P:Sudoku.Concepts.HouseTypeExtensions..ProgramOrder">
             <summary>
             Gets the ordering of the house type. The result value will be 0, 1 and 2.
             </summary>
-        </member>
-        <member name="M:Sudoku.Concepts.HouseTypeExtensions.get_Label(Sudoku.Concepts.HouseType)">
-            <inheritdoc cref="P:Sudoku.Concepts.HouseTypeExtensions.<>E__0.Label"/>
-        </member>
-        <member name="M:Sudoku.Concepts.HouseTypeExtensions.get_ProgramOrder(Sudoku.Concepts.HouseType)">
-            <inheritdoc cref="P:Sudoku.Concepts.HouseTypeExtensions.<>E__0.ProgramOrder"/>
         </member>
         <member name="T:Sudoku.Concepts.ICellMapOrCandidateMap`2">
             <summary>
@@ -7677,17 +7599,17 @@
             </summary>
             <seealso cref="T:System.Int16"/>
         </member>
-        <member name="T:Sudoku.Concepts.MaskExtensions.<>E__0">
+        <member name="T:Sudoku.Concepts.MaskExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Int16"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Concepts.MaskExtensions.<>E__0.SplitMask">
+        <member name="P:Sudoku.Concepts.MaskExtensions..SplitMask">
             <summary>
             Indicates a triplet of mask parts by splitting mask, with each element of length 3.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.<>E__0.ToBinaryString(System.Boolean)">
+        <member name="M:Sudoku.Concepts.MaskExtensions..ToBinaryString(System.Boolean)">
             <summary>
             Try to convert the current mask value into a valid <see cref="T:System.String"/> representation of binary format.
             </summary>
@@ -7697,7 +7619,7 @@
             </param>
             <returns>A <see cref="T:System.String"/> result representing the current mask value.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.<>E__0.ToOctalString(System.Boolean)">
+        <member name="M:Sudoku.Concepts.MaskExtensions..ToOctalString(System.Boolean)">
             <summary>
             Try to convert the current mask value into a valid <see cref="T:System.String"/> representation of octal format.
             </summary>
@@ -7707,7 +7629,7 @@
             </param>
             <returns>A <see cref="T:System.String"/> result representing the current mask value.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.<>E__0.ToHexadecimalString(System.Boolean)">
+        <member name="M:Sudoku.Concepts.MaskExtensions..ToHexadecimalString(System.Boolean)">
             <summary>
             Try to convert the current mask value into a valid <see cref="T:System.String"/> representation of hexadecimal format.
             </summary>
@@ -7717,7 +7639,7 @@
             </param>
             <returns>A <see cref="T:System.String"/> result representing the current mask value.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.<>E__0.ToStringBase(System.Int32)">
+        <member name="M:Sudoku.Concepts.MaskExtensions..ToStringBase(System.Int32)">
             <summary>
             Convert the current instance into a <see cref="T:System.String"/> representation in numeral literal,
             with the specified base (2, 8, 10 or 16).
@@ -7725,7 +7647,7 @@
             <param name="base">The base value. The value must be 2, 8, 10 or 16.</param>
             <returns>The string.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.<>E__0.ToStringBase(System.Int32,System.Int32)">
+        <member name="M:Sudoku.Concepts.MaskExtensions..ToStringBase(System.Int32,System.Int32)">
             <summary>
             Convert the current instance into a <see cref="T:System.String"/> representation in numeral literal,
             with the specified base (2, 8, 10 or 16), padding some zeros.
@@ -7734,54 +7656,36 @@
             <param name="totalWidth">The total width.</param>
             <returns>The string.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.get_SplitMask(System.Int16)">
-            <inheritdoc cref="P:Sudoku.Concepts.MaskExtensions.<>E__0.SplitMask"/>
-        </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.ToBinaryString(System.Int16,System.Boolean)">
-            <inheritdoc cref="M:Sudoku.Concepts.MaskExtensions.<>E__0.ToBinaryString(System.Boolean)"/>
-        </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.ToOctalString(System.Int16,System.Boolean)">
-            <inheritdoc cref="M:Sudoku.Concepts.MaskExtensions.<>E__0.ToOctalString(System.Boolean)"/>
-        </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.ToHexadecimalString(System.Int16,System.Boolean)">
-            <inheritdoc cref="M:Sudoku.Concepts.MaskExtensions.<>E__0.ToHexadecimalString(System.Boolean)"/>
-        </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.ToStringBase(System.Int16,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Concepts.MaskExtensions.<>E__0.ToStringBase(System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.ToStringBase(System.Int16,System.Int32,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Concepts.MaskExtensions.<>E__0.ToStringBase(System.Int32,System.Int32)"/>
-        </member>
-        <member name="T:Sudoku.Concepts.MaskExtensions.<>E__1">
+        <member name="T:Sudoku.Concepts.MaskExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Int16"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.<>E__1.Create(System.ReadOnlySpan{System.Int32})">
+        <member name="M:Sudoku.Concepts.MaskExtensions..Create(System.ReadOnlySpan{System.Int32})">
             <summary>
-            Creates for a <see cref="T:System.Int16"/> instance via the specified digits.
+            Creates for a <see cref="T:System.Int16" /> instance via the specified digits.
             </summary>
             <param name="digits">
             <para>Indicates the digits to assign.</para>
-            <include file="../../global-doc-comments.xml" path="//g/csharp12/feature[@name='params-collections']/target[@name='parameter']"/>
+            <target name="parameter">
+				<para>
+					If a <see langword="ref struct" />-typed parameter is marked as <see langword="params" />,
+					it will be implicit-<see langword="scoped" />, which means you must use this variables inside the method.
+					Value-storages are not permitted.
+				</para>
+				<para>
+					Use <see cref="T:System.Diagnostics.CodeAnalysis.UnscopedRefAttribute" /> if you want to store variable values.
+				</para>
+			</target>
             </param>
-            <returns>A <see cref="T:System.Int16"/> instance.</returns>
+            <returns>A <see cref="T:System.Int16" /> instance.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.<>E__1.Create(System.Int32[])">
+        <member name="M:Sudoku.Concepts.MaskExtensions..Create(System.Int32[])">
             <inheritdoc cref="M:Sudoku.Concepts.MaskExtensions.Create(System.ReadOnlySpan{System.Int32})"/>
         </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.<>E__1.Create``1(``0)">
+        <member name="M:Sudoku.Concepts.MaskExtensions..Create``1(``0)">
             <typeparam name="TDigits">The type of the enumerable sequence.</typeparam>
             <inheritdoc cref="M:Sudoku.Concepts.MaskExtensions.Create(System.ReadOnlySpan{System.Int32})"/>
-        </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.Create(System.ReadOnlySpan{System.Int32})">
-            <inheritdoc cref="M:Sudoku.Concepts.MaskExtensions.<>E__1.Create(System.ReadOnlySpan{System.Int32})"/>
-        </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.Create(System.Int32[])">
-            <inheritdoc cref="M:Sudoku.Concepts.MaskExtensions.<>E__1.Create(System.Int32[])"/>
-        </member>
-        <member name="M:Sudoku.Concepts.MaskExtensions.Create``1(``0)">
-            <inheritdoc cref="M:Sudoku.Concepts.MaskExtensions.<>E__1.Create``1(``0)"/>
         </member>
         <member name="T:Sudoku.Concepts.MaskOperations">
             <summary>
@@ -8003,18 +7907,15 @@
 				</summary>
 			</target>
         </member>
-        <member name="T:Sudoku.Concepts.Supersymmetry.Extensions.<>E__0">
+        <member name="T:Sudoku.Concepts.Supersymmetry.Extensions.">
             <summary>
             Provides extension members on <see cref="T:System.Int32"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Concepts.Supersymmetry.Extensions.<>E__0.Neighbors">
+        <member name="P:Sudoku.Concepts.Supersymmetry.Extensions..Neighbors">
             <summary>
             Indicates the neighbors.
             </summary>
-        </member>
-        <member name="M:Sudoku.Concepts.Supersymmetry.Extensions.get_Neighbors(System.Int32)">
-            <inheritdoc cref="P:Sudoku.Concepts.Supersymmetry.Extensions.<>E__0.Neighbors"/>
         </member>
         <member name="T:Sudoku.Concepts.Supersymmetry.Space">
             <summary>
@@ -8629,12 +8530,12 @@
             </summary>
             <seealso cref="T:Sudoku.SymmetricType"/>
         </member>
-        <member name="T:Sudoku.Concepts.SymmetricTypeExtensions.<>E__0">
+        <member name="T:Sudoku.Concepts.SymmetricTypeExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.SymmetricType"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Concepts.SymmetricTypeExtensions.<>E__0.SymmetryCellsCount">
+        <member name="P:Sudoku.Concepts.SymmetricTypeExtensions..SymmetryCellsCount">
             <summary>
             Try to get the number of cells that the current symmetry should be formed a complete symmetric pattern.
             </summary>
@@ -8669,7 +8570,7 @@
             </returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is not defined.</exception>
         </member>
-        <member name="P:Sudoku.Concepts.SymmetricTypeExtensions.<>E__0.AxisDimension">
+        <member name="P:Sudoku.Concepts.SymmetricTypeExtensions..AxisDimension">
             <summary>
             Try to get the number of axes of the specified symmetric type.
             </summary>
@@ -8679,7 +8580,7 @@
             </returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when undefined.</exception>
         </member>
-        <member name="P:Sudoku.Concepts.SymmetricTypeExtensions.<>E__0.CellsInSymmetryAxis">
+        <member name="P:Sudoku.Concepts.SymmetricTypeExtensions..CellsInSymmetryAxis">
             <summary>
             Try to get all possible cells in symmetry axis (or point).
             </summary>
@@ -8688,7 +8589,7 @@
             Throws when undefined or <see cref="F:Sudoku.SymmetricType.None"/>.
             </exception>
         </member>
-        <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.<>E__0.GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Concepts.SymmetricTypeExtensions..GetName(System.IFormatProvider)">
             <summary>
             Gets the name of thr symmetry.
             </summary>
@@ -8696,35 +8597,17 @@
             <returns>The string.</returns>
             <exception cref="T:System.InvalidOperationException">Throws when the argument holds multiple flag values.</exception>
         </member>
-        <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.<>E__0.GetCells(System.Int32)">
+        <member name="M:Sudoku.Concepts.SymmetricTypeExtensions..GetCells(System.Int32)">
             <inheritdoc cref="M:Sudoku.Concepts.SymmetricTypeExtensions.GetCells(Sudoku.SymmetricType,System.Int32,System.Int32)"/>
             <param name="cell">Indicates the target cell to be checked.</param>
         </member>
-        <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.<>E__0.GetCells(System.Int32,System.Int32)">
+        <member name="M:Sudoku.Concepts.SymmetricTypeExtensions..GetCells(System.Int32,System.Int32)">
             <summary>
             Get the cells that is used for swapping via the specified symmetric type, and the specified row and column value.
             </summary>
             <param name="row">The row value.</param>
             <param name="column">The column value.</param>
             <returns>The cells.</returns>
-        </member>
-        <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.get_SymmetryCellsCount(Sudoku.SymmetricType)">
-            <inheritdoc cref="P:Sudoku.Concepts.SymmetricTypeExtensions.<>E__0.SymmetryCellsCount"/>
-        </member>
-        <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.get_AxisDimension(Sudoku.SymmetricType)">
-            <inheritdoc cref="P:Sudoku.Concepts.SymmetricTypeExtensions.<>E__0.AxisDimension"/>
-        </member>
-        <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.get_CellsInSymmetryAxis(Sudoku.SymmetricType)">
-            <inheritdoc cref="P:Sudoku.Concepts.SymmetricTypeExtensions.<>E__0.CellsInSymmetryAxis"/>
-        </member>
-        <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.GetName(Sudoku.SymmetricType,System.IFormatProvider)">
-            <inheritdoc cref="M:Sudoku.Concepts.SymmetricTypeExtensions.<>E__0.GetName(System.IFormatProvider)"/>
-        </member>
-        <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.GetCells(Sudoku.SymmetricType,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Concepts.SymmetricTypeExtensions.<>E__0.GetCells(System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.GetCells(Sudoku.SymmetricType,System.Int32,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Concepts.SymmetricTypeExtensions.<>E__0.GetCells(System.Int32,System.Int32)"/>
         </member>
         <member name="T:Sudoku.Concepts.Tokenization.CellMapToken">
             <summary>
@@ -12261,12 +12144,12 @@
             Represents a type that compares culture language names.
             </summary>
         </member>
-        <member name="T:Sudoku.Resources.LanguageNameComparisonExtensions.<>E__0">
+        <member name="T:Sudoku.Resources.LanguageNameComparisonExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.String"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Resources.LanguageNameComparisonExtensions.<>E__0.CultureNameEqual(System.String)">
+        <member name="M:Sudoku.Resources.LanguageNameComparisonExtensions..CultureNameEqual(System.String)">
             <summary>
             Compares two <see cref="T:System.String"/> values, treated as culture name,
             to get a <see cref="T:System.Boolean"/> result indicating whether they are same culture name,
@@ -12274,9 +12157,6 @@
             </summary>
             <param name="otherName">The other name to be compared.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:Sudoku.Resources.LanguageNameComparisonExtensions.CultureNameEqual(System.String,System.String)">
-            <inheritdoc cref="M:Sudoku.Resources.LanguageNameComparisonExtensions.<>E__0.CultureNameEqual(System.String)"/>
         </member>
         <member name="T:Sudoku.Runtime.InterceptorServices.InterceptorMethodCallerAttribute">
             <summary>
@@ -12406,37 +12286,34 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
-        <member name="T:Sudoku.Shuffling.Minlex.GridMinlexExtensions.<>E__0">
+        <member name="T:Sudoku.Shuffling.Minlex.GridMinlexExtensions.">
             <summary>
             Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.<>E__0.MakeMinLex">
+        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions..MakeMinLex">
             <summary>
             Adjust the grid to minimal lexicographical form.
             </summary>
         </member>
-        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.MakeMinLex(Sudoku.Concepts.Grid@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.<>E__0.MakeMinLex"/>
-        </member>
-        <member name="T:Sudoku.Shuffling.Minlex.GridMinlexExtensions.<>E__1">
+        <member name="T:Sudoku.Shuffling.Minlex.GridMinlexExtensions.">
             <summary>
             Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Shuffling.Minlex.GridMinlexExtensions.<>E__1.IsMinLex">
+        <member name="P:Sudoku.Shuffling.Minlex.GridMinlexExtensions..IsMinLex">
             <summary>
             Indicates whether the current grid is the minimal lexicographical form,
             meaning the corresponding string text code is the minimum value in all equivalent transforming cases
             in lexicographical order.
             </summary>
         </member>
-        <member name="P:Sudoku.Shuffling.Minlex.GridMinlexExtensions.<>E__1.MinLexGrid">
+        <member name="P:Sudoku.Shuffling.Minlex.GridMinlexExtensions..MinLexGrid">
             <summary>
             Indicates the new grid form of the current grid, which is at the minimal-lexicographical order.
             </summary>
         </member>
-        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.<>E__1.Equals(Sudoku.Concepts.Grid@,Puzzles.Meta.Transforming.BoardComparison)">
+        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions..Equals(Sudoku.Concepts.Grid@,Puzzles.Meta.Transforming.BoardComparison)">
             <summary>
             Determine whether the specified <see cref="T:Sudoku.Concepts.Grid"/> instance hold the same values as the current instance,
             by using the specified comparison type.
@@ -12446,7 +12323,7 @@
             <returns>A <see cref="T:System.Boolean"/> result.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument <paramref name="comparisonType"/> is not defined.</exception>
         </member>
-        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.<>E__1.GetHashCode(Puzzles.Meta.Transforming.BoardComparison)">
+        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions..GetHashCode(Puzzles.Meta.Transforming.BoardComparison)">
             <inheritdoc cref="M:Sudoku.Concepts.Grid.GetHashCode"/>
             <param name="comparisonType">
             Indicates the comparison type that specifies the target grid to be calculated its hash code.
@@ -12455,7 +12332,7 @@
             Throws when the argument <paramref name="comparisonType"/> isn't defined.
             </exception>
         </member>
-        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.<>E__1.CompareTo(Sudoku.Concepts.Grid@,Puzzles.Meta.Transforming.BoardComparison)">
+        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions..CompareTo(Sudoku.Concepts.Grid@,Puzzles.Meta.Transforming.BoardComparison)">
             <summary>
             Compares the current instance with another object of the same type and returns an integer
             that indicates whether the current instance precedes, follows or occurs in the same position in the sort order as the other object.
@@ -12465,21 +12342,6 @@
             <returns>A value that indicates the relative order of the objects being compared.</returns>
             <exception cref="T:System.InvalidOperationException">Throws when one of the grids to be compared is a Sukaku puzzle.</exception>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument <paramref name="comparisonType"/> is not defined.</exception>
-        </member>
-        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.get_IsMinLex(Sudoku.Concepts.Grid@)">
-            <inheritdoc cref="P:Sudoku.Shuffling.Minlex.GridMinlexExtensions.<>E__1.IsMinLex"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.get_MinLexGrid(Sudoku.Concepts.Grid@)">
-            <inheritdoc cref="P:Sudoku.Shuffling.Minlex.GridMinlexExtensions.<>E__1.MinLexGrid"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.Equals(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Puzzles.Meta.Transforming.BoardComparison)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.<>E__1.Equals(Sudoku.Concepts.Grid@,Puzzles.Meta.Transforming.BoardComparison)"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.GetHashCode(Sudoku.Concepts.Grid@,Puzzles.Meta.Transforming.BoardComparison)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.<>E__1.GetHashCode(Puzzles.Meta.Transforming.BoardComparison)"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.CompareTo(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Puzzles.Meta.Transforming.BoardComparison)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.<>E__1.CompareTo(Sudoku.Concepts.Grid@,Puzzles.Meta.Transforming.BoardComparison)"/>
         </member>
         <member name="T:Sudoku.Shuffling.Minlex.GridPattern">
             <summary>
@@ -12639,12 +12501,12 @@
             </summary>
             <seealso cref="T:System.Random"/>
         </member>
-        <member name="T:Sudoku.Shuffling.Transforming.RandomizationExtensions.<>E__0">
+        <member name="T:Sudoku.Shuffling.Transforming.RandomizationExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Random"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.<>E__0.NextDigit">
+        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions..NextDigit">
             <summary>
             Returns a random integer that is within valid digit range (0..9).
             </summary>
@@ -12652,7 +12514,7 @@
             An integer that represents a valid <see cref="T:System.Int32"/>.
             </returns>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.<>E__0.NextCell">
+        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions..NextCell">
             <summary>
             Returns a random integer that is within valid cell range (0..81).
             </summary>
@@ -12660,7 +12522,7 @@
             An integer that represents a valid <see cref="T:System.Int32"/>.
             </returns>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.<>E__0.NextHouse">
+        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions..NextHouse">
             <summary>
             Returns a random integer that is within valid house range (0..27).
             </summary>
@@ -12668,7 +12530,7 @@
             An integer that represents a valid <see cref="T:System.Int32"/>.
             </returns>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.<>E__0.RandomlySelect(Sudoku.Concepts.CellMap@,System.Int32)">
+        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions..RandomlySelect(Sudoku.Concepts.CellMap@,System.Int32)">
             <summary>
             Randomly select the specified number of elements from the current collection.
             </summary>
@@ -12676,7 +12538,7 @@
             <param name="count">The desired number of elements.</param>
             <returns>The specified number of elements returned, represented as a <see cref="T:Sudoku.Concepts.CellMap"/> instance.</returns>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.<>E__0.RandomlySelect(Sudoku.Concepts.CandidateMap@,System.Int32)">
+        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions..RandomlySelect(Sudoku.Concepts.CandidateMap@,System.Int32)">
             <summary>
             Randomly select the specified number of elements from the current collection.
             </summary>
@@ -12684,40 +12546,19 @@
             <param name="count">The desired number of elements.</param>
             <returns>The specified number of elements returned, represented as a <see cref="T:Sudoku.Concepts.CandidateMap"/> instance.</returns>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.<>E__0.CreateCellMap(System.Int32)">
+        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions..CreateCellMap(System.Int32)">
             <summary>
             Creates a <see cref="T:Sudoku.Concepts.CellMap"/> instance, with the specified number of <see cref="T:System.Int32"/>s stored in the collection.
             </summary>
             <param name="count">The desired number of elements.</param>
             <returns>A <see cref="T:Sudoku.Concepts.CellMap"/> instance.</returns>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.<>E__0.CreateCandidateMap(System.Int32)">
+        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions..CreateCandidateMap(System.Int32)">
             <summary>
             Creates a <see cref="T:Sudoku.Concepts.CandidateMap"/> instance, with the specified number of <see cref="T:System.Int32"/>s stored in the collection.
             </summary>
             <param name="count">The desired number of elements.</param>
             <returns>A <see cref="T:Sudoku.Concepts.CandidateMap"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.NextDigit(System.Random)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.<>E__0.NextDigit"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.NextCell(System.Random)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.<>E__0.NextCell"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.NextHouse(System.Random)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.<>E__0.NextHouse"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.RandomlySelect(System.Random,Sudoku.Concepts.CellMap@,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.<>E__0.RandomlySelect(Sudoku.Concepts.CellMap@,System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.RandomlySelect(System.Random,Sudoku.Concepts.CandidateMap@,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.<>E__0.RandomlySelect(Sudoku.Concepts.CandidateMap@,System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.CreateCellMap(System.Random,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.<>E__0.CreateCellMap(System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.CreateCandidateMap(System.Random,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.<>E__0.CreateCandidateMap(System.Int32)"/>
         </member>
         <member name="T:Sudoku.Shuffling.Transforming.Transformation">
             <summary>
@@ -13973,36 +13814,27 @@
             Indicates the backing solver.
             </summary>
         </member>
-        <member name="T:Sudoku.Solving.GridSolvingExtensions.<>E__0">
+        <member name="T:Sudoku.Solving.GridSolvingExtensions.">
             <summary>
             Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Solving.GridSolvingExtensions.<>E__0.IsValid">
+        <member name="P:Sudoku.Solving.GridSolvingExtensions..IsValid">
             <summary>
             Indicates whether the puzzle is valid (solved or a normal puzzle with a unique solution).
             </summary>
         </member>
-        <member name="P:Sudoku.Solving.GridSolvingExtensions.<>E__0.Uniqueness">
+        <member name="P:Sudoku.Solving.GridSolvingExtensions..Uniqueness">
             <summary>
             Checks the uniqueness of the current sudoku puzzle.
             </summary>
         </member>
-        <member name="P:Sudoku.Solving.GridSolvingExtensions.<>E__0.SolutionGrid">
+        <member name="P:Sudoku.Solving.GridSolvingExtensions..SolutionGrid">
             <summary>
             Indicates the solution of the current grid. If the puzzle has no solution or multiple solutions,
             this property will return <see cref="F:Sudoku.Concepts.Grid.Undefined"/>.
             </summary>
             <seealso cref="F:Sudoku.Concepts.Grid.Undefined"/>
-        </member>
-        <member name="M:Sudoku.Solving.GridSolvingExtensions.get_IsValid(Sudoku.Concepts.Grid@)">
-            <inheritdoc cref="P:Sudoku.Solving.GridSolvingExtensions.<>E__0.IsValid"/>
-        </member>
-        <member name="M:Sudoku.Solving.GridSolvingExtensions.get_Uniqueness(Sudoku.Concepts.Grid@)">
-            <inheritdoc cref="P:Sudoku.Solving.GridSolvingExtensions.<>E__0.Uniqueness"/>
-        </member>
-        <member name="M:Sudoku.Solving.GridSolvingExtensions.get_SolutionGrid(Sudoku.Concepts.Grid@)">
-            <inheritdoc cref="P:Sudoku.Solving.GridSolvingExtensions.<>E__0.SolutionGrid"/>
         </member>
         <member name="T:Sudoku.Solving.ISolutionEnumerableSolver">
             <summary>
@@ -14143,21 +13975,18 @@
             </summary>
             <seealso cref="T:Sudoku.Solving.SolverType"/>
         </member>
-        <member name="T:Sudoku.Solving.SolverTypeExtensions.<>E__0">
+        <member name="T:Sudoku.Solving.SolverTypeExtensions.">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Solving.SolverType"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Solving.SolverTypeExtensions.<>E__0.CreateSolver(Sudoku.Solving.SolverType)">
+        <member name="M:Sudoku.Solving.SolverTypeExtensions..CreateSolver(Sudoku.Solving.SolverType)">
             <summary>
             Creates a <see cref="T:Sudoku.Solving.ISolver"/> instance via the specified type.
             </summary>
             <param name="solverType">The type.</param>
             <returns>The instance.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is not defined.</exception>
-        </member>
-        <member name="M:Sudoku.Solving.SolverTypeExtensions.CreateSolver(Sudoku.Solving.SolverType)">
-            <inheritdoc cref="M:Sudoku.Solving.SolverTypeExtensions.<>E__0.CreateSolver(Sudoku.Solving.SolverType)"/>
         </member>
         <member name="T:Sudoku.SudokuType">
             <summary>
