@@ -164,6 +164,82 @@ public sealed partial class Library(string _directoryPath, string _identifier) :
 	public ReadOnlySpan<string> ReadTags() => ReadProperty(static info => info.Tags);
 
 	/// <summary>
+	/// Writes a new grid into the target file; if the file doesn't exist, it will create a new file,
+	/// and then append the puzzle into the file.
+	/// </summary>
+	/// <param name="grid">The grid to be appended.</param>
+	/// <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
+	/// <returns>A <see cref="Task"/> object that handles the asynchronous operation.</returns>
+	public async ValueTask WriteLineAsync(string grid, CancellationToken cancellationToken = default)
+	{
+		if (!Grid.TryParse(grid, out _))
+		{
+			return;
+		}
+
+		await using var writer = new LibraryFileWriter(LibraryPath, out _);
+		await writer.WriteLineAsync(grid, cancellationToken);
+	}
+
+	/// <summary>
+	/// Totals the number of puzzles up, and return the result.
+	/// </summary>
+	/// <returns>
+	/// A <see cref="Task{TResult}"/> object that handles the asynchronous operation;
+	/// with a result type <see cref="ulong"/> indicating the number of lines.
+	/// </returns>
+	public async ValueTask<ulong> GetCountAsync()
+	{
+		await using var reader = new LibraryFileReader(LibraryPath, out var exists);
+		return exists ? reader.CountLines() : 0;
+	}
+
+	/// <summary>
+	/// Gets the puzzle at the specified index.
+	/// If the desired index is out of range, this method will return a <see langword="null"/> string
+	/// instead of throwing any exceptions.
+	/// </summary>
+	/// <param name="index">The index, start at 0.</param>
+	/// <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
+	/// <returns>
+	/// A <see cref="Task{TResult}"/> of <see cref="string"/> object that can handle the asynchronous operation;
+	/// if canceled, the return value is also <see langword="null"/>.
+	/// </returns>
+	public async ValueTask<string?> GetIndexAtAsync(ulong index, CancellationToken cancellationToken = default)
+	{
+		await using var reader = new LibraryFileReader(LibraryPath, out var exists);
+		if (!exists)
+		{
+			// If the file is created just now, nothing will be iterated.
+			return null;
+		}
+
+		await foreach (var line in reader.ReadLinesRangeAsync(index + 1, index + 2, cancellationToken))
+		{
+			return line;
+		}
+		return null;
+	}
+
+	/// <summary>
+	/// Randomly selects one puzzle.
+	/// </summary>
+	/// <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
+	/// <returns>
+	/// The <see cref="ValueTask{TResult}"/> of <see cref="string"/>? object
+	/// that can asynchronously handle the operation, and return the result;
+	/// if canceled while searching, <see langword="null"/> will be returned.
+	/// </returns>
+	public async ValueTask<string?> SelectOneAsync(CancellationToken cancellationToken = default)
+	{
+		await foreach (var result in SelectMultipleAsync(1, cancellationToken))
+		{
+			return result;
+		}
+		return null;
+	}
+
+	/// <summary>
 	/// Sort the puzzles in the library.
 	/// </summary>
 	/// <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
@@ -216,24 +292,6 @@ public sealed partial class Library(string _directoryPath, string _identifier) :
 			{
 			}
 		}
-	}
-
-	/// <summary>
-	/// Writes a new grid into the target file; if the file doesn't exist, it will create a new file,
-	/// and then append the puzzle into the file.
-	/// </summary>
-	/// <param name="grid">The grid to be appended.</param>
-	/// <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
-	/// <returns>A <see cref="Task"/> object that handles the asynchronous operation.</returns>
-	public async Task WriteLineAsync(string grid, CancellationToken cancellationToken = default)
-	{
-		if (!Grid.TryParse(grid, out _))
-		{
-			return;
-		}
-
-		await using var writer = new LibraryFileWriter(LibraryPath, out _);
-		await writer.WriteLineAsync(grid, cancellationToken);
 	}
 
 	/// <summary>
@@ -352,64 +410,6 @@ public sealed partial class Library(string _directoryPath, string _identifier) :
 			{
 			}
 		}
-	}
-
-	/// <summary>
-	/// Totals the number of puzzles up, and return the result.
-	/// </summary>
-	/// <returns>
-	/// A <see cref="Task{TResult}"/> object that handles the asynchronous operation;
-	/// with a result type <see cref="ulong"/> indicating the number of lines.
-	/// </returns>
-	public async Task<ulong> GetCountAsync()
-	{
-		await using var reader = new LibraryFileReader(LibraryPath, out var exists);
-		return exists ? reader.CountLines() : 0;
-	}
-
-	/// <summary>
-	/// Gets the puzzle at the specified index.
-	/// If the desired index is out of range, this method will return a <see langword="null"/> string
-	/// instead of throwing any exceptions.
-	/// </summary>
-	/// <param name="index">The index, start at 0.</param>
-	/// <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
-	/// <returns>
-	/// A <see cref="Task{TResult}"/> of <see cref="string"/> object that can handle the asynchronous operation;
-	/// if canceled, the return value is also <see langword="null"/>.
-	/// </returns>
-	public async Task<string?> GetIndexAtAsync(ulong index, CancellationToken cancellationToken = default)
-	{
-		await using var reader = new LibraryFileReader(LibraryPath, out var exists);
-		if (!exists)
-		{
-			// If the file is created just now, nothing will be iterated.
-			return null;
-		}
-
-		await foreach (var line in reader.ReadLinesRangeAsync(index + 1, index + 2, cancellationToken))
-		{
-			return line;
-		}
-		return null;
-	}
-
-	/// <summary>
-	/// Randomly selects one puzzle.
-	/// </summary>
-	/// <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
-	/// <returns>
-	/// The <see cref="Task{TResult}"/> of <see cref="string"/>? object
-	/// that can asynchronously handle the operation, and return the result;
-	/// if canceled while searching, <see langword="null"/> will be returned.
-	/// </returns>
-	public async Task<string?> SelectOneAsync(CancellationToken cancellationToken = default)
-	{
-		await foreach (var result in SelectMultipleAsync(1, cancellationToken))
-		{
-			return result;
-		}
-		return null;
 	}
 
 	/// <summary>
