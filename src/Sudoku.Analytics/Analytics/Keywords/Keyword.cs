@@ -12,27 +12,6 @@ public static class Keyword
 	private const BindingFlags PropertyBindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
 
 
-	/// <summary>
-	/// Represents a default verbs table.
-	/// </summary>
-	private static readonly (Predicate<Type> Condition, KeywordVerb[] Verbs)[] DefaultVerbsLookup = [
-		// String types & Enumeration types
-		(
-			static propertyType => propertyType == typeof(string) || propertyType.IsEnum,
-			[KeywordVerb.StringEquality, KeywordVerb.StringPattern]
-		),
-
-		// Number types (Only commonly-used types are allowed)
-		(
-			static propertyType => propertyType == typeof(int) || propertyType == typeof(double) || propertyType == typeof(decimal),
-			[KeywordVerb.NumberEquality, KeywordVerb.NumberInequality, KeywordVerb.NumberRange]
-		),
-
-		// Default case
-		(static _ => true, [])
-	];
-
-
 	/// <inheritdoc cref="IsKeyword{TStep}(string, out PropertyInfo?)"/>
 	public static bool IsKeyword<TStep>(PropertyInfo propertyInfo) where TStep : Step
 		=> GetAttribute<KeywordAttribute>(propertyInfo) is not null;
@@ -62,9 +41,9 @@ public static class Keyword
 			return [];
 		}
 
-		if (GetAttribute<KeywordAllowedVerbsAttribute>(propertyInfo) is not { Verbs: var verbs })
+		if (GetAttribute<KeywordAttribute>(propertyInfo) is not { AllowedVerbs: var verbs })
 		{
-			goto InferFromPropertyType;
+			return [];
 		}
 
 		var result = new HashSet<KeywordVerb>();
@@ -73,23 +52,6 @@ public static class Keyword
 			result.Add(verb);
 		}
 		return result.AsReadOnlySpan();
-
-	InferFromPropertyType:
-		// If we cannot find explicit attribute to describe its verbs, we should infer them by its corresponding type.
-		// Please note that the configured default verbs may not valid in some cases.
-		// For example, if the target type is number, we can compare its backing values and specify a range.
-		// However, if the target property isn't marked by attribute '[KeywordRange]',
-		// we cannot know the valid minimum and maximum values of the property, meaning we can configure any possible values,
-		// which is bad (or even says, terrible).
-		var propertyType = propertyInfo.PropertyType;
-		foreach (var (predicate, defaultVerbsConfigured) in DefaultVerbsLookup)
-		{
-			if (predicate(propertyType))
-			{
-				return defaultVerbsConfigured;
-			}
-		}
-		return [];
 	}
 
 	/// <summary>
@@ -119,22 +81,19 @@ public static class Keyword
 	}
 
 	/// <summary>
-	/// Retrieve keyword condition of the specified property;
-	/// if unset, <see cref="IKeywordConditionDefaultValue{TSelf}.DefaultValue"/> will be returned.
+	/// Retrieve keyword condition of the specified keyword;
+	/// if unset, <see langword="null"/> will be returned.
 	/// </summary>
 	/// <typeparam name="TStep">The type of step.</typeparam>
 	/// <typeparam name="TAttribute">The type of attribute.</typeparam>
 	/// <returns>
-	/// The valid condition set or default instance returned;
-	/// or <see langword="null"/> if the target property is not found, or not a valid keyword.
+	/// The valid condition set returned, or <see langword="null"/>
+	/// if the target property is either not found or not a valid keyword.
 	/// </returns>
 	public static TAttribute? GetKeywordCondition<TStep, TAttribute>(string propertyName)
 		where TStep : Step
-		where TAttribute : KeywordConditionAttribute, IKeywordConditionDefaultValue<TAttribute>
-		=> IsKeyword<TStep>(propertyName, out var propertyInfo)
-		&& GetAttribute<TAttribute>(propertyInfo) is { } result
-			? result
-			: TAttribute.DefaultValue;
+		where TAttribute : KeywordConditionAttribute
+		=> IsKeyword<TStep>(propertyName, out var propertyInfo) ? GetAttribute<TAttribute>(propertyInfo) : null;
 
 	/// <summary>
 	/// Determine whether the specified property name is a keyword (a property to be used by filtering).

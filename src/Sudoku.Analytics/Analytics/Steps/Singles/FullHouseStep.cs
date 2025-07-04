@@ -38,10 +38,10 @@ public sealed class FullHouseStep(
 	public override int BaseDifficulty => 10;
 
 	/// <inheritdoc cref="ILastingTrait.Lasting"/>
-	[Keyword]
-	[KeywordResource("FullHouseStep_Lasting_Name", DescriptionResourceKey = "FullHouseStep_Lasting_Description")]
+	[Keyword(
+		NameResourceKey = "FullHouseStep_Lasting_Name", DescriptionResourceKey = "FullHouseStep_Lasting_Description",
+		AllowedVerbs = [KeywordVerb.NumberEquality, KeywordVerb.NumberInequality, KeywordVerb.NumberRange])]
 	[KeywordRange(0, Maximum = 7, IncludesMaximum = true)]
-	[KeywordAllowedVerbs(KeywordVerb.NumberEquality, KeywordVerb.NumberInequality, KeywordVerb.NumberRange)]
 	public int Lasting { get; } = lasting;
 
 	/// <inheritdoc/>
@@ -50,9 +50,9 @@ public sealed class FullHouseStep(
 	/// <summary>
 	/// The house to be displayed.
 	/// </summary>
-	[Keyword]
-	[KeywordResource("FullHouseStep_House_Name", DescriptionResourceKey = "FullHouseStep_House_Description")]
+	[Keyword(
+		NameResourceKey = "FullHouseStep_House_Name", DescriptionResourceKey = "FullHouseStep_House_Description",
+		AllowedVerbs = [KeywordVerb.NumberEquality, KeywordVerb.NumberInequality, KeywordVerb.NumberRange])]
 	[KeywordRange(0, Maximum = 27)]
-	[KeywordAllowedVerbs(KeywordVerb.NumberEquality, KeywordVerb.NumberInequality, KeywordVerb.NumberRange)]
 	public House House { get; } = house;
 }

@@ -55,9 +55,7 @@ public abstract partial class Step(ReadOnlyMemory<Conclusion> conclusions, View[
 	/// <summary>
 	/// Indicates the English name of the technique.
 	/// </summary>
-	[Keyword]
-	[KeywordResource("Step_EnglishName_Name")]
-	[KeywordAllowedVerbs(KeywordVerb.StringEquality)]
+	[Keyword(NameResourceKey = "Step_EnglishName_Name", AllowedVerbs = [KeywordVerb.StringEquality, KeywordVerb.StringPattern])]
 	public virtual string EnglishName => Code.EnglishName;
 
 	/// <summary>
@@ -69,9 +67,7 @@ public abstract partial class Step(ReadOnlyMemory<Conclusion> conclusions, View[
 	/// as elementary and default rating value; other factors will be given in the other property <see cref="Factors"/>.
 	/// </remarks>
 	/// <seealso cref="Factors"/>
-	[Keyword]
-	[KeywordResource("Step_BaseDifficulty_Name")]
-	[KeywordAllowedVerbs(KeywordVerb.NumberEquality, KeywordVerb.NumberInequality)]
+	[Keyword(NameResourceKey = "Step_BaseDifficulty_Name", AllowedVerbs = [KeywordVerb.NumberEquality, KeywordVerb.NumberInequality])]
 	public abstract int BaseDifficulty { get; }
 
 	/// <summary>
@@ -95,9 +91,7 @@ public abstract partial class Step(ReadOnlyMemory<Conclusion> conclusions, View[
 	/// </summary>
 	[HashCodeMember]
 	[EquatableMember]
-	[Keyword]
-	[KeywordResource("Step_Code_Name")]
-	[KeywordAllowedVerbs(KeywordVerb.StringEquality, KeywordVerb.StringPattern)]
+	[Keyword(NameResourceKey = "Step_Code_Name", AllowedVerbs = [KeywordVerb.StringEquality, KeywordVerb.StringPattern])]
 	public abstract Technique Code { get; }
 
 	/// <summary>

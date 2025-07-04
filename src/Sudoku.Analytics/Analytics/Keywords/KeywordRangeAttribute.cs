@@ -6,9 +6,7 @@ namespace Sudoku.Analytics.Keywords;
 /// <param name="minimum"><inheritdoc cref="Minimum" path="/summary"/></param>
 [AttributeUsage(AttributeTargets.Property, Inherited = false)]
 [method: SetsRequiredMembers]
-public sealed class KeywordRangeAttribute(int minimum) :
-	KeywordConditionAttribute,
-	IKeywordConditionDefaultValue<KeywordRangeAttribute>
+public sealed class KeywordRangeAttribute(int minimum) : KeywordConditionAttribute
 {
 	/// <summary>
 	/// Indicates the minimum value.
@@ -29,9 +27,4 @@ public sealed class KeywordRangeAttribute(int minimum) :
 	/// Indicates whether the range includes maximum value. By default it's <see langword="false"/>.
 	/// </summary>
 	public bool IncludesMaximum { get; init; } = false;
-
-
-	/// <inheritdoc/>
-	static KeywordRangeAttribute IKeywordConditionDefaultValue<KeywordRangeAttribute>.DefaultValue
-		=> new(-1) { IncludesMinimum = false, IncludesMaximum = false };
 }

@@ -8096,17 +8096,6 @@
             <param name="size">The number of cells used in a subset.</param>
             <returns>The name of the subset.</returns>
         </member>
-        <member name="T:Sudoku.Analytics.Keywords.IKeywordConditionDefaultValue`1">
-            <summary>
-            Represents default value of a keyword condition.
-            </summary>
-            <typeparam name="TSelf">The type of keyword condition attribute.</typeparam>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.IKeywordConditionDefaultValue`1.DefaultValue">
-            <summary>
-            Indicates the default value of the instance.
-            </summary>
-        </member>
         <member name="T:Sudoku.Analytics.Keywords.Keyword">
             <summary>
             Provides helper methods for retrieving attributes with <see cref="T:Sudoku.Analytics.Keywords.KeywordAttribute"/> inheritance rules.
@@ -8116,11 +8105,6 @@
         <member name="F:Sudoku.Analytics.Keywords.Keyword.PropertyBindingFlags">
             <summary>
             Represents default binding flags on property.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Keywords.Keyword.DefaultVerbsLookup">
-            <summary>
-            Represents a default verbs table.
             </summary>
         </member>
         <member name="M:Sudoku.Analytics.Keywords.Keyword.IsKeyword``1(System.Reflection.PropertyInfo)">
@@ -8152,14 +8136,14 @@
         </member>
         <member name="M:Sudoku.Analytics.Keywords.Keyword.GetKeywordCondition``2(System.String)">
             <summary>
-            Retrieve keyword condition of the specified property;
-            if unset, <see cref="P:Sudoku.Analytics.Keywords.IKeywordConditionDefaultValue`1.DefaultValue"/> will be returned.
+            Retrieve keyword condition of the specified keyword;
+            if unset, <see langword="null"/> will be returned.
             </summary>
             <typeparam name="TStep">The type of step.</typeparam>
             <typeparam name="TAttribute">The type of attribute.</typeparam>
             <returns>
-            The valid condition set or default instance returned;
-            or <see langword="null"/> if the target property is not found, or not a valid keyword.
+            The valid condition set returned, or <see langword="null"/>
+            if the target property is either not found or not a valid keyword.
             </returns>
         </member>
         <member name="M:Sudoku.Analytics.Keywords.Keyword.IsKeyword``1(System.String,System.Reflection.PropertyInfo@)">
@@ -8206,26 +8190,25 @@
             First found attribute in base classes, or <see langword="null"/> if not found.
             </returns>
         </member>
-        <member name="T:Sudoku.Analytics.Keywords.KeywordAllowedVerbsAttribute">
-            <summary>
-            Represents an attribute that describes a keyword allowing filtering verbs.
-            </summary>
-            <param name="verbs">Indicates allowed verbs.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.KeywordAllowedVerbsAttribute.#ctor(Sudoku.Analytics.Keywords.KeywordVerb[])">
-            <summary>
-            Represents an attribute that describes a keyword allowing filtering verbs.
-            </summary>
-            <param name="verbs">Indicates allowed verbs.</param>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordAllowedVerbsAttribute.Verbs">
-            <summary>
-            Indicates all allowed verbs.
-            </summary>
-        </member>
         <member name="T:Sudoku.Analytics.Keywords.KeywordAttribute">
             <summary>
             Represents an attribute type that describes the property is marked as special property to be filtered in reflection.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.NameResourceKey">
+            <summary>
+            Indicates the name resource key. By default it's <c>"DefaultName"</c>,
+            which represents string <c>"&lt;Unknown&gt;"</c> in resource dictionary.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.DescriptionResourceKey">
+            <summary>
+            Indicates the description resource key to the property. By default it's <see langword="null"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.AllowedVerbs">
+            <summary>
+            Indicates the allowed verbs in runtime.
             </summary>
         </member>
         <member name="T:Sudoku.Analytics.Keywords.KeywordConditionAttribute">
@@ -8264,34 +8247,6 @@
             <summary>
             Indicates whether the range includes maximum value. By default it's <see langword="false"/>.
             </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordRangeAttribute.Sudoku#Analytics#Keywords#IKeywordConditionDefaultValue{Sudoku#Analytics#Keywords#KeywordRangeAttribute}#DefaultValue">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Keywords.KeywordResourceAttribute">
-            <summary>
-            Represents an attribute type that describes the resource of a keyword.
-            </summary>
-            <param name="nameResourceKey"><inheritdoc cref="P:Sudoku.Analytics.Keywords.KeywordResourceAttribute.NameResourceKey" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.KeywordResourceAttribute.#ctor(System.String)">
-            <summary>
-            Represents an attribute type that describes the resource of a keyword.
-            </summary>
-            <param name="nameResourceKey"><inheritdoc cref="P:Sudoku.Analytics.Keywords.KeywordResourceAttribute.NameResourceKey" path="/summary"/></param>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordResourceAttribute.NameResourceKey">
-            <summary>
-            Indicates the name resource key.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordResourceAttribute.DescriptionResourceKey">
-            <summary>
-            Indicates the description resource key to the property. By default it's <see langword="null"/>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordResourceAttribute.Sudoku#Analytics#Keywords#IKeywordConditionDefaultValue{Sudoku#Analytics#Keywords#KeywordResourceAttribute}#DefaultValue">
-            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Keywords.KeywordVerb">
             <summary>
