@@ -8133,14 +8133,6 @@
             <returns>The description of the keyword.</returns>
             <exception cref="T:Sudoku.Analytics.Keywords.InvalidKeywordException">Throws when the target property specified is not a valid keyword.</exception>
         </member>
-        <member name="M:Sudoku.Analytics.Keywords.Keyword.GetKeywords``1">
-            <summary>
-            Retrieves possible keywords that are marked <see cref="T:Sudoku.Analytics.Keywords.KeywordAttribute"/>.
-            </summary>
-            <typeparam name="TStep">The type of step.</typeparam>
-            <returns>A list of keywords that are marked <see cref="T:Sudoku.Analytics.Keywords.KeywordAttribute"/>.</returns>
-            <seealso cref="T:Sudoku.Analytics.Keywords.KeywordAttribute"/>
-        </member>
         <member name="M:Sudoku.Analytics.Keywords.Keyword.GetKeywordVerbs``1(System.String)">
             <summary>
             Retrieves possible keyword verbs.
@@ -8149,6 +8141,14 @@
             <param name="keyword">The keyword.</param>
             <returns>All keyword verbs allowed.</returns>
             <exception cref="T:Sudoku.Analytics.Keywords.InvalidKeywordException">Throws when the target property specified is not a valid keyword.</exception>
+        </member>
+        <member name="M:Sudoku.Analytics.Keywords.Keyword.GetKeywords``1">
+            <summary>
+            Retrieves possible keywords that are marked <see cref="T:Sudoku.Analytics.Keywords.KeywordAttribute"/>.
+            </summary>
+            <typeparam name="TStep">The type of step.</typeparam>
+            <returns>A list of keywords that are marked <see cref="T:Sudoku.Analytics.Keywords.KeywordAttribute"/>.</returns>
+            <seealso cref="T:Sudoku.Analytics.Keywords.KeywordAttribute"/>
         </member>
         <member name="M:Sudoku.Analytics.Keywords.Keyword.GetKeywordConditions``1(System.String)">
             <summary>
@@ -8282,37 +8282,40 @@
             Indicates whether the range includes maximum value. By default it's <see langword="false"/>.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.Keywords.KeywordVerb">
+        <member name="T:Sudoku.Analytics.Keywords.KeywordVerbs">
             <summary>
             Represents a verb of keyword filtering rule.
             </summary>
+            <remarks><flags-attribute>
+		<para>
+			<i>
+				This type is marked <see cref="T:System.FlagsAttribute" />, which means you can use
+				<see langword="operator" /> | to combine multiple fields.
+			</i>
+		</para>
+	</flags-attribute></remarks>
         </member>
-        <member name="F:Sudoku.Analytics.Keywords.KeywordVerb.None">
+        <member name="F:Sudoku.Analytics.Keywords.KeywordVerbs.None">
             <summary>
             The placeholder of the verb enumeration type.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Keywords.KeywordVerb.StringEquality">
+        <member name="F:Sudoku.Analytics.Keywords.KeywordVerbs.StringEqualityComparison">
             <summary>
             Indicates the verb is to compare string equality.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Keywords.KeywordVerb.StringPattern">
+        <member name="F:Sudoku.Analytics.Keywords.KeywordVerbs.StringPattern">
             <summary>
             Indicates the verb is to check regular expression pattern of a string.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Keywords.KeywordVerb.NumberEquality">
+        <member name="F:Sudoku.Analytics.Keywords.KeywordVerbs.NumberComparison">
             <summary>
-            Indicates the verb is to compare number equality.
+            Indicates the verb is to compare number equality, also includes inequality operators like greater-than <c>&gt;=</c>.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Keywords.KeywordVerb.NumberInequality">
-            <summary>
-            Indicates the verb is to compare number inequality.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Keywords.KeywordVerb.NumberRange">
+        <member name="F:Sudoku.Analytics.Keywords.KeywordVerbs.NumberRange">
             <summary>
             Indicates the verb is to check whether a number is in a range.
             </summary>
@@ -27377,6 +27380,182 @@
         <member name="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.GetOperator``1(Sudoku.Generating.Filtering.ComparisonOperator)">
             <inheritdoc cref="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.<>E__0.GetOperator``1"/>
         </member>
+        <member name="T:Sudoku.Generating.Filtering.Conditions.NumberComparisonKeywordCondition">
+            <summary>
+            Represents number equality keyword condition.
+            </summary>
+            <param name="value"><inheritdoc cref="P:Sudoku.Generating.Filtering.Conditions.NumberComparisonKeywordCondition.Value" path="/summary"/></param>
+            <param name="operator"><inheritdoc cref="P:Sudoku.Generating.Filtering.Conditions.NumberComparisonKeywordCondition.Operator" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.NumberComparisonKeywordCondition.#ctor(System.Int32,Sudoku.Generating.Filtering.ComparisonOperator)">
+            <summary>
+            Represents number equality keyword condition.
+            </summary>
+            <param name="value"><inheritdoc cref="P:Sudoku.Generating.Filtering.Conditions.NumberComparisonKeywordCondition.Value" path="/summary"/></param>
+            <param name="operator"><inheritdoc cref="P:Sudoku.Generating.Filtering.Conditions.NumberComparisonKeywordCondition.Operator" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Conditions.NumberComparisonKeywordCondition.Value">
+            <summary>
+            Indicates the value to be compared.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Conditions.NumberComparisonKeywordCondition.Operator">
+            <summary>
+            Indicates the operator to be used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Conditions.NumberComparisonKeywordCondition.Verb">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.NumberComparisonKeywordCondition.Equals(Sudoku.Generating.Filtering.KeywordCondition)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.NumberComparisonKeywordCondition.IsSatisifed``1(``0,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.NumberComparisonKeywordCondition.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.NumberComparisonKeywordCondition.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.NumberComparisonKeywordCondition.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="T:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition">
+            <summary>
+            Represents number range keyword condition.
+            </summary>
+            <param name="minimum"><inheritdoc cref="P:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.Minimum" path="/summary"/></param>
+            <param name="maximum"><inheritdoc cref="P:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.Maximum" path="/summary"/></param>
+            <param name="includesMinimum"><inheritdoc cref="P:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.IncludesMinimum" path="/summary"/></param>
+            <param name="includesMaximum"><inheritdoc cref="P:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.IncludesMaximum" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.#ctor(System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Represents number range keyword condition.
+            </summary>
+            <param name="minimum"><inheritdoc cref="P:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.Minimum" path="/summary"/></param>
+            <param name="maximum"><inheritdoc cref="P:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.Maximum" path="/summary"/></param>
+            <param name="includesMinimum"><inheritdoc cref="P:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.IncludesMinimum" path="/summary"/></param>
+            <param name="includesMaximum"><inheritdoc cref="P:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.IncludesMaximum" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.IncludesMinimum">
+            <summary>
+            Indicates whether the range includes minimum value.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.IncludesMaximum">
+            <summary>
+            Indicates whether the range includes maximum value.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.Minimum">
+            <summary>
+            Indicates the minimum value.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.Maximum">
+            <summary>
+            Indicates the maximum value.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.Verb">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.Equals(Sudoku.Generating.Filtering.KeywordCondition)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.IsSatisifed``1(``0,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.NumberRangeKeywordCondition.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="T:Sudoku.Generating.Filtering.Conditions.StringEqualityComparisonKeywordCondition">
+            <summary>
+            Represents string equality condition.
+            </summary>
+            <param name="value"><inheritdoc cref="P:Sudoku.Generating.Filtering.Conditions.StringEqualityComparisonKeywordCondition.Value" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.StringEqualityComparisonKeywordCondition.#ctor(System.String)">
+            <summary>
+            Represents string equality condition.
+            </summary>
+            <param name="value"><inheritdoc cref="P:Sudoku.Generating.Filtering.Conditions.StringEqualityComparisonKeywordCondition.Value" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Conditions.StringEqualityComparisonKeywordCondition.Value">
+            <summary>
+            Indicates the value to be compared.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Conditions.StringEqualityComparisonKeywordCondition.Verb">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.StringEqualityComparisonKeywordCondition.IsSatisifed``1(``0,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.StringEqualityComparisonKeywordCondition.Equals(Sudoku.Generating.Filtering.KeywordCondition)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.StringEqualityComparisonKeywordCondition.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.StringEqualityComparisonKeywordCondition.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.StringEqualityComparisonKeywordCondition.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="T:Sudoku.Generating.Filtering.Conditions.StringPatternKeywordCondition">
+            <summary>
+            Represents a keyword condition.
+            </summary>
+            <param name="value"><inheritdoc cref="P:Sudoku.Generating.Filtering.Conditions.StringPatternKeywordCondition.Value" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.StringPatternKeywordCondition.#ctor(System.String)">
+            <summary>
+            Represents a keyword condition.
+            </summary>
+            <param name="value"><inheritdoc cref="P:Sudoku.Generating.Filtering.Conditions.StringPatternKeywordCondition.Value" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Conditions.StringPatternKeywordCondition.Value">
+            <summary>
+            Indicates the value to be checked.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Conditions.StringPatternKeywordCondition.Verb">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Conditions.StringPatternKeywordCondition.Pattern">
+            <summary>
+            Indicates the pattern to be used.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.StringPatternKeywordCondition.IsValueValid">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.StringPatternKeywordCondition.Equals(Sudoku.Generating.Filtering.KeywordCondition)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.StringPatternKeywordCondition.IsSatisifed``1(``0,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.StringPatternKeywordCondition.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.StringPatternKeywordCondition.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Conditions.StringPatternKeywordCondition.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
         <member name="T:Sudoku.Generating.Filtering.Constraint">
             <summary>
             Represents a rule that checks whether a grid or its relied analysis information is passed the constraint.
@@ -28150,6 +28329,67 @@
         </member>
         <member name="M:Sudoku.Generating.Filtering.Constraints.TechniqueSetConstraint.ToString">
             <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="T:Sudoku.Generating.Filtering.KeywordCondition">
+            <summary>
+            Represents a keyword condition.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.KeywordCondition.Verb">
+            <summary>
+            Indicates the verb supported.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.KeywordCondition.IsSatisifed``1(``0,System.String)">
+            <summary>
+            Determine whether the condition specified is satisfied.
+            </summary>
+            <typeparam name="TStep">The type of step.</typeparam>
+            <param name="instance">The instance of type <typeparamref name="TStep"/>.</param>
+            <param name="keyword">The keyword (a property that will be checked, specified by its name).</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.KeywordCondition.IsValueValid">
+            <summary>
+            Determines whether the specified value configured is valid.
+            </summary>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.KeywordCondition.Equals(Sudoku.Generating.Filtering.KeywordCondition)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.KeywordCondition.Clone">
+            <inheritdoc cref="M:System.ICloneable.Clone"/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.KeywordCondition.GetValue``1(``0,System.String)">
+            <summary>
+            Returns the value of the property in a step instance.
+            </summary>
+            <typeparam name="TStep">The type of step.</typeparam>
+            <param name="instance">The instance of type <typeparamref name="TStep"/>.</param>
+            <param name="keyword">The keyword.</param>
+            <returns>The real value set. You should cast to target type if you want.</returns>
+            <exception cref="T:Sudoku.Analytics.Keywords.InvalidKeywordException">
+            Throws when the keyword is not found in type <typeparamref name="TStep"/>, or it is not a keyword.
+            </exception>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.KeywordCondition.System#ICloneable#Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.KeywordCondition.Equals(System.Object)">
+            <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.KeywordCondition.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.KeywordCondition.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.KeywordCondition.op_Equality(Sudoku.Generating.Filtering.KeywordCondition,Sudoku.Generating.Filtering.KeywordCondition)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.KeywordCondition.op_Inequality(Sudoku.Generating.Filtering.KeywordCondition,Sudoku.Generating.Filtering.KeywordCondition)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
         </member>
         <member name="T:Sudoku.Generating.Filtering.StepFilter">
             <summary>
@@ -34485,11 +34725,6 @@
             <summary>
               Overrides the current thread's CurrentUICulture property for all
               resource lookups using this strongly typed resource class.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.DefaultName">
-            <summary>
-              Looks up a localized string similar to &lt;Unknown&gt;.
             </summary>
         </member>
         <member name="P:Sudoku.Resources.FilteringPropertyResources.FullHouseStep_House_Description">

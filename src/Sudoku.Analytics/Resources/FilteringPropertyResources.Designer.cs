@@ -61,15 +61,6 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;Unknown&gt;.
-        /// </summary>
-        internal static string DefaultName {
-            get {
-                return ResourceManager.GetString("DefaultName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The label of house: 0-8 is for block 1 to 9, 9-17 is for row 1 to 9 and 18-26 is for column 1 to 9.
         /// </summary>
         internal static string FullHouseStep_House_Description {

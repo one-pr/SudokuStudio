@@ -10,7 +10,7 @@ public sealed class KeywordAttribute : Attribute
 	/// Indicates the name resource key. By default it's <c>"DefaultName"</c>,
 	/// which represents string <c>"&lt;Unknown&gt;"</c> in resource dictionary.
 	/// </summary>
-	public string NameResourceKey { get; init; } = "DefaultName";
+	public required string NameResourceKey { get; init; }
 
 	/// <summary>
 	/// Indicates the description resource key to the property. By default it's <see langword="null"/>.
@@ -20,5 +20,5 @@ public sealed class KeywordAttribute : Attribute
 	/// <summary>
 	/// Indicates the allowed verbs in runtime.
 	/// </summary>
-	public required KeywordVerb[] AllowedVerbs { get; init; }
+	public required KeywordVerbs AllowedVerbs { get; init; }
 }

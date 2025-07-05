@@ -37,6 +37,18 @@ public static class Keyword
 			: throw new InvalidKeywordException();
 
 	/// <summary>
+	/// Retrieves possible keyword verbs.
+	/// </summary>
+	/// <typeparam name="TStep">THe type of step.</typeparam>
+	/// <param name="keyword">The keyword.</param>
+	/// <returns>All keyword verbs allowed.</returns>
+	/// <exception cref="InvalidKeywordException">Throws when the target property specified is not a valid keyword.</exception>
+	public static KeywordVerbs GetKeywordVerbs<TStep>(string keyword) where TStep : Step
+		=> GetKeywordAttribute<TStep>(keyword) is { AllowedVerbs: var verbs }
+			? verbs
+			: throw new InvalidKeywordException();
+
+	/// <summary>
 	/// Retrieves possible keywords that are marked <see cref="KeywordAttribute"/>.
 	/// </summary>
 	/// <typeparam name="TStep">The type of step.</typeparam>
@@ -47,18 +59,6 @@ public static class Keyword
 		from propertyInfo in typeof(TStep).GetProperties(PropertyBindingFlags)
 		where propertyInfo.IsDefined<KeywordAttribute>()
 		select propertyInfo.Name;
-
-	/// <summary>
-	/// Retrieves possible keyword verbs.
-	/// </summary>
-	/// <typeparam name="TStep">THe type of step.</typeparam>
-	/// <param name="keyword">The keyword.</param>
-	/// <returns>All keyword verbs allowed.</returns>
-	/// <exception cref="InvalidKeywordException">Throws when the target property specified is not a valid keyword.</exception>
-	public static ReadOnlySpan<KeywordVerb> GetKeywordVerbs<TStep>(string keyword) where TStep : Step
-		=> GetKeywordAttribute<TStep>(keyword) is { AllowedVerbs: var verbs }
-			? verbs
-			: throw new InvalidKeywordException();
 
 	/// <summary>
 	/// Retrieves possible keyword conditions of a keyword.
@@ -108,7 +108,7 @@ public static class Keyword
 	/// <param name="propertyName">The property name.</param>
 	/// <param name="propertyInfo">The property information instance.</param>
 	/// <returns>A <see cref="bool"/> result indicating that.</returns>
-	private static bool IsKeyword<TStep>(string propertyName, [NotNullWhen(true)] out PropertyInfo? propertyInfo)
+	internal static bool IsKeyword<TStep>(string propertyName, [NotNullWhen(true)] out PropertyInfo? propertyInfo)
 		where TStep : Step
 	{
 		if (typeof(TStep).GetProperty(propertyName, PropertyBindingFlags) is not { } p)

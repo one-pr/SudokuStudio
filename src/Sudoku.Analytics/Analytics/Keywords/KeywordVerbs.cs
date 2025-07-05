@@ -3,7 +3,9 @@ namespace Sudoku.Analytics.Keywords;
 /// <summary>
 /// Represents a verb of keyword filtering rule.
 /// </summary>
-public enum KeywordVerb
+/// <remarks><include file="../../global-doc-comments.xml" path="/g/flags-attribute"/></remarks>
+[Flags]
+public enum KeywordVerbs
 {
 	/// <summary>
 	/// The placeholder of the verb enumeration type.
@@ -13,25 +15,20 @@ public enum KeywordVerb
 	/// <summary>
 	/// Indicates the verb is to compare string equality.
 	/// </summary>
-	StringEquality = 101,
+	StringEqualityComparison = 1 << 0,
 
 	/// <summary>
 	/// Indicates the verb is to check regular expression pattern of a string.
 	/// </summary>
-	StringPattern,
+	StringPattern = 1 << 1,
 
 	/// <summary>
-	/// Indicates the verb is to compare number equality.
+	/// Indicates the verb is to compare number equality, also includes inequality operators like greater-than <c>&gt;=</c>.
 	/// </summary>
-	NumberEquality = 201,
-
-	/// <summary>
-	/// Indicates the verb is to compare number inequality.
-	/// </summary>
-	NumberInequality,
+	NumberComparison = 1 << 2,
 
 	/// <summary>
 	/// Indicates the verb is to check whether a number is in a range.
 	/// </summary>
-	NumberRange
+	NumberRange = 1 << 3
 }
