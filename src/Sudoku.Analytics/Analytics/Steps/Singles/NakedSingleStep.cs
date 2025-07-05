@@ -37,9 +37,12 @@ public sealed class NakedSingleStep(
 
 	/// <inheritdoc cref="ILastingTrait.Lasting"/>
 	[Keyword(
-		NameResourceKey = "NakedSingleStep_Lasting_Name", DescriptionResourceKey = "NakedSingleStep_Lasting_Description",
-		AllowedVerbs = KeywordVerbs.NumberComparison | KeywordVerbs.NumberRange)]
-	[KeywordRange(0, Maximum = 7, IncludesMaximum = true)]
+		NameResourceKey = "NakedSingleStep_Lasting_Name",
+		DescriptionResourceKey = "NakedSingleStep_Lasting_Description",
+		AllowedVerbs = KeywordVerbs.NumberComparison | KeywordVerbs.NumberRange,
+		Minimum = 0,
+		Maximum = 7,
+		IncludesMaximum = true)]
 	public Digit Lasting { get; } = lasting;
 
 

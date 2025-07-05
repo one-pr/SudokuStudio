@@ -8211,6 +8211,26 @@
             Represents an attribute type that describes the property is marked as special property to be filtered in reflection.
             </summary>
         </member>
+        <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.IncludesMinimum">
+            <summary>
+            Indicates whether the range includes minimum value. By default it's <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.IncludesMaximum">
+            <summary>
+            Indicates whether the range includes maximum value. By default it's <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.Minimum">
+            <summary>
+            Indicates the minimum value. By default it's -1.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.Maximum">
+            <summary>
+            Indicates the maximum value. By default it's -1.
+            </summary>
+        </member>
         <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.NameResourceKey">
             <summary>
             Indicates the name resource key to the property.
@@ -8224,43 +8244,6 @@
         <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.AllowedVerbs">
             <summary>
             Indicates the allowed verbs in runtime.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Analytics.Keywords.KeywordConditionAttribute">
-            <summary>
-            Represents an attribute that is the base type of all condition-related attributes.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Analytics.Keywords.KeywordRangeAttribute">
-            <summary>
-            Represents an attribute type that describes the range of a keyword.
-            </summary>
-            <param name="minimum"><inheritdoc cref="P:Sudoku.Analytics.Keywords.KeywordRangeAttribute.Minimum" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.KeywordRangeAttribute.#ctor(System.Int32)">
-            <summary>
-            Represents an attribute type that describes the range of a keyword.
-            </summary>
-            <param name="minimum"><inheritdoc cref="P:Sudoku.Analytics.Keywords.KeywordRangeAttribute.Minimum" path="/summary"/></param>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordRangeAttribute.Minimum">
-            <summary>
-            Indicates the minimum value.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordRangeAttribute.Maximum">
-            <summary>
-            Indicates the maximum value. By default it's -1.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordRangeAttribute.IncludesMinimum">
-            <summary>
-            Indicates whether the range includes minimum value. By default it's <see langword="true"/>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordRangeAttribute.IncludesMaximum">
-            <summary>
-            Indicates whether the range includes maximum value. By default it's <see langword="false"/>.
             </summary>
         </member>
         <member name="T:Sudoku.Analytics.Keywords.KeywordVerbs">
@@ -17470,11 +17453,11 @@
         <member name="P:Sudoku.Analytics.Steps.FullHouseStep.BaseDifficulty">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Analytics.Steps.FullHouseStep.Lasting">
-            <inheritdoc cref="P:Sudoku.Analytics.Traits.ILastingTrait.Lasting"/>
-        </member>
         <member name="P:Sudoku.Analytics.Steps.FullHouseStep.Code">
             <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.FullHouseStep.Lasting">
+            <inheritdoc cref="P:Sudoku.Analytics.Traits.ILastingTrait.Lasting"/>
         </member>
         <member name="P:Sudoku.Analytics.Steps.FullHouseStep.House">
             <summary>

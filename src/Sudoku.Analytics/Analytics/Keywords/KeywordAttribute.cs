@@ -7,6 +7,26 @@ namespace Sudoku.Analytics.Keywords;
 public sealed class KeywordAttribute : Attribute
 {
 	/// <summary>
+	/// Indicates whether the range includes minimum value. By default it's <see langword="true"/>.
+	/// </summary>
+	public bool IncludesMinimum { get; init; } = true;
+
+	/// <summary>
+	/// Indicates whether the range includes maximum value. By default it's <see langword="false"/>.
+	/// </summary>
+	public bool IncludesMaximum { get; init; } = false;
+
+	/// <summary>
+	/// Indicates the minimum value. By default it's -1.
+	/// </summary>
+	public int Minimum { get; init; } = -1;
+
+	/// <summary>
+	/// Indicates the maximum value. By default it's -1.
+	/// </summary>
+	public int Maximum { get; init; } = -1;
+
+	/// <summary>
 	/// Indicates the name resource key to the property.
 	/// </summary>
 	public required string NameResourceKey { get; init; }

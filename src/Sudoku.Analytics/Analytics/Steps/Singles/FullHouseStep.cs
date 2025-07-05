@@ -37,22 +37,27 @@ public sealed class FullHouseStep(
 	/// <inheritdoc/>
 	public override int BaseDifficulty => 10;
 
-	/// <inheritdoc cref="ILastingTrait.Lasting"/>
-	[Keyword(
-		NameResourceKey = "FullHouseStep_Lasting_Name", DescriptionResourceKey = "FullHouseStep_Lasting_Description",
-		AllowedVerbs = KeywordVerbs.NumberComparison | KeywordVerbs.NumberRange)]
-	[KeywordRange(1, Maximum = 1, IncludesMaximum = true)]
-	public Digit Lasting { get; } = lasting;
-
 	/// <inheritdoc/>
 	public override Technique Code => Technique.FullHouse;
+
+	/// <inheritdoc cref="ILastingTrait.Lasting"/>
+	[Keyword(
+		NameResourceKey = "FullHouseStep_Lasting_Name",
+		DescriptionResourceKey = "FullHouseStep_Lasting_Description",
+		AllowedVerbs = KeywordVerbs.NumberComparison | KeywordVerbs.NumberRange,
+		Minimum = 1,
+		Maximum = 1,
+		IncludesMaximum = true)]
+	public Digit Lasting { get; } = lasting;
 
 	/// <summary>
 	/// The house to be displayed.
 	/// </summary>
 	[Keyword(
-		NameResourceKey = "FullHouseStep_House_Name", DescriptionResourceKey = "FullHouseStep_House_Description",
-		AllowedVerbs = KeywordVerbs.NumberComparison | KeywordVerbs.NumberRange)]
-	[KeywordRange(0, Maximum = 27)]
+		NameResourceKey = "FullHouseStep_House_Name",
+		DescriptionResourceKey = "FullHouseStep_House_Description",
+		AllowedVerbs = KeywordVerbs.NumberComparison | KeywordVerbs.NumberRange,
+		Minimum = 0,
+		Maximum = 27)]
 	public House House { get; } = house;
 }

@@ -49,16 +49,21 @@ public class HiddenSingleStep(
 	/// The house to be displayed.
 	/// </summary>
 	[Keyword(
-		NameResourceKey = "HiddenSingleStep_House_Name", DescriptionResourceKey = "HiddenSingleStep_House_Description",
-		AllowedVerbs = KeywordVerbs.NumberComparison | KeywordVerbs.NumberRange)]
-	[KeywordRange(0, Maximum = 27)]
+		NameResourceKey = "HiddenSingleStep_House_Name",
+		DescriptionResourceKey = "HiddenSingleStep_House_Description",
+		AllowedVerbs = KeywordVerbs.NumberComparison | KeywordVerbs.NumberRange,
+		Minimum = 0,
+		Maximum = 27)]
 	public House House { get; } = house;
 
 	/// <inheritdoc cref="ILastingTrait.Lasting"/>
 	[Keyword(
-		NameResourceKey = "HiddenSingleStep_Lasting_Name", DescriptionResourceKey = "HiddenSingleStep_Lasting_Description",
-		AllowedVerbs = KeywordVerbs.NumberComparison | KeywordVerbs.NumberRange)]
-	[KeywordRange(0, Maximum = 7, IncludesMaximum = true)]
+		NameResourceKey = "HiddenSingleStep_Lasting_Name",
+		DescriptionResourceKey = "HiddenSingleStep_Lasting_Description",
+		AllowedVerbs = KeywordVerbs.NumberComparison | KeywordVerbs.NumberRange,
+		Minimum = 0,
+		Maximum = 7,
+		IncludesMaximum = true)]
 	public Digit Lasting { get; } = lasting;
 
 	/// <inheritdoc/>
