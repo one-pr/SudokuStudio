@@ -7,8 +7,7 @@ namespace Sudoku.Analytics.Keywords;
 public sealed class KeywordAttribute : Attribute
 {
 	/// <summary>
-	/// Indicates the name resource key. By default it's <c>"DefaultName"</c>,
-	/// which represents string <c>"&lt;Unknown&gt;"</c> in resource dictionary.
+	/// Indicates the name resource key to the property.
 	/// </summary>
 	public required string NameResourceKey { get; init; }
 

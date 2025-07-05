@@ -8231,8 +8231,7 @@
         </member>
         <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.NameResourceKey">
             <summary>
-            Indicates the name resource key. By default it's <c>"DefaultName"</c>,
-            which represents string <c>"&lt;Unknown&gt;"</c> in resource dictionary.
+            Indicates the name resource key to the property.
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.DescriptionResourceKey">
