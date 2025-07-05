@@ -34816,6 +34816,16 @@
               Looks up a localized string similar to Lasting.
             </summary>
         </member>
+        <member name="P:Sudoku.Resources.FilteringPropertyResources.HiddenSingleStep_House_Description">
+            <summary>
+              Looks up a localized string similar to The label of house: 0-8 is for block 1 to 9, 9-17 is for row 1 to 9 and 18-26 is for column 1 to 9.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.FilteringPropertyResources.HiddenSingleStep_House_Name">
+            <summary>
+              Looks up a localized string similar to House.
+            </summary>
+        </member>
         <member name="P:Sudoku.Resources.FilteringPropertyResources.HiddenSingleStep_Lasting_Description">
             <summary>
               Looks up a localized string similar to The number for empty cells in target house.

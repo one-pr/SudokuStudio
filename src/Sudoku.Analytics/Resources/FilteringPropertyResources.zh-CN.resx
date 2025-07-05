@@ -129,6 +129,12 @@
   <data name="FullHouseStep_Lasting_Name" xml:space="preserve">
     <value>剩余数</value>
   </data>
+  <data name="HiddenSingleStep_House_Description" xml:space="preserve">
+    <value>区域的编号：0-8 表示第 1 到 9 宫、9-17 表示第 1 到 9 行，而 18-26 则表示第 1 到 9 列</value>
+  </data>
+  <data name="HiddenSingleStep_House_Name" xml:space="preserve">
+    <value>区域</value>
+  </data>
   <data name="HiddenSingleStep_Lasting_Description" xml:space="preserve">
     <value>当前区域内空格数的数量</value>
   </data>

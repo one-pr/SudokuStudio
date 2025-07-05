@@ -129,6 +129,12 @@
   <data name="FullHouseStep_Lasting_Name" xml:space="preserve">
     <value>Lasting</value>
   </data>
+  <data name="HiddenSingleStep_House_Description" xml:space="preserve">
+    <value>The label of house: 0-8 is for block 1 to 9, 9-17 is for row 1 to 9 and 18-26 is for column 1 to 9</value>
+  </data>
+  <data name="HiddenSingleStep_House_Name" xml:space="preserve">
+    <value>House</value>
+  </data>
   <data name="HiddenSingleStep_Lasting_Description" xml:space="preserve">
     <value>The number for empty cells in target house</value>
   </data>

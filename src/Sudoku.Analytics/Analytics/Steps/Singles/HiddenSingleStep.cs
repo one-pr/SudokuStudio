@@ -48,6 +48,10 @@ public class HiddenSingleStep(
 	/// <summary>
 	/// The house to be displayed.
 	/// </summary>
+	[Keyword(
+		NameResourceKey = "HiddenSingleStep_House_Name", DescriptionResourceKey = "HiddenSingleStep_House_Description",
+		AllowedVerbs = KeywordVerbs.NumberComparison | KeywordVerbs.NumberRange)]
+	[KeywordRange(0, Maximum = 27)]
 	public House House { get; } = house;
 
 	/// <inheritdoc cref="ILastingTrait.Lasting"/>
