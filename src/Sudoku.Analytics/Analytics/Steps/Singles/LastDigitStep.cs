@@ -17,5 +17,5 @@ public sealed class LastDigitStep(
 	Cell cell,
 	Digit digit,
 	House house,
-	int lasting
+	Digit lasting
 ) : HiddenSingleStep(conclusions, views, options, cell, digit, house, true, lasting, SingleSubtype.LastDigit, null);

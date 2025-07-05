@@ -18,7 +18,7 @@ public sealed class NakedSingleStep(
 	Cell cell,
 	Digit digit,
 	SingleSubtype subtype,
-	int lasting,
+	Digit lasting,
 	HouseType lastingHouseType
 ) :
 	SingleStep(conclusions, views, options, cell, digit, subtype),
@@ -27,13 +27,6 @@ public sealed class NakedSingleStep(
 	/// <inheritdoc/>
 	public override int BaseDifficulty => Options.IsDirectMode ? 23 : 10;
 
-	/// <inheritdoc cref="ILastingTrait.Lasting"/>
-	[Keyword(
-		NameResourceKey = "NakedSingleStep_Lasting_Name", DescriptionResourceKey = "NakedSingleStep_Lasting_Description",
-		AllowedVerbs = KeywordVerbs.NumberComparison | KeywordVerbs.NumberRange)]
-	[KeywordRange(0, Maximum = 7, IncludesMaximum = true)]
-	public int Lasting { get; } = lasting;
-
 	/// <inheritdoc/>
 	public override Technique Code => Technique.NakedSingle;
 
@@ -41,6 +34,13 @@ public sealed class NakedSingleStep(
 	/// Indicates the lasting house type.
 	/// </summary>
 	public HouseType LastingHouseType { get; } = lastingHouseType;
+
+	/// <inheritdoc cref="ILastingTrait.Lasting"/>
+	[Keyword(
+		NameResourceKey = "NakedSingleStep_Lasting_Name", DescriptionResourceKey = "NakedSingleStep_Lasting_Description",
+		AllowedVerbs = KeywordVerbs.NumberComparison | KeywordVerbs.NumberRange)]
+	[KeywordRange(0, Maximum = 7, IncludesMaximum = true)]
+	public Digit Lasting { get; } = lasting;
 
 
 	/// <inheritdoc/>

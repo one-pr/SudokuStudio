@@ -17,7 +17,7 @@ public sealed class FullHouseStep(
 	House house,
 	Cell cell,
 	Digit digit,
-	int lasting
+	Digit lasting
 ) :
 	SingleStep(
 		conclusions,
@@ -42,7 +42,7 @@ public sealed class FullHouseStep(
 		NameResourceKey = "FullHouseStep_Lasting_Name", DescriptionResourceKey = "FullHouseStep_Lasting_Description",
 		AllowedVerbs = KeywordVerbs.NumberComparison | KeywordVerbs.NumberRange)]
 	[KeywordRange(1, Maximum = 1, IncludesMaximum = true)]
-	public Cell Lasting { get; } = lasting;
+	public Digit Lasting { get; } = lasting;
 
 	/// <inheritdoc/>
 	public override Technique Code => Technique.FullHouse;

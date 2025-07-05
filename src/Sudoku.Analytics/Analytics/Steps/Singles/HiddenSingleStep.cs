@@ -21,7 +21,7 @@ public class HiddenSingleStep(
 	Digit digit,
 	House house,
 	bool enableAndIsLastDigit,
-	Cell lasting,
+	Digit lasting,
 	SingleSubtype subtype,
 	ExcluderInfo? excluderInfo
 ) : SingleStep(conclusions, views, options, cell, digit, subtype), ILastingTrait
@@ -59,7 +59,7 @@ public class HiddenSingleStep(
 		NameResourceKey = "HiddenSingleStep_Lasting_Name", DescriptionResourceKey = "HiddenSingleStep_Lasting_Description",
 		AllowedVerbs = KeywordVerbs.NumberComparison | KeywordVerbs.NumberRange)]
 	[KeywordRange(0, Maximum = 7, IncludesMaximum = true)]
-	public Cell Lasting { get; } = lasting;
+	public Digit Lasting { get; } = lasting;
 
 	/// <inheritdoc/>
 	public sealed override InterpolationArray Interpolations

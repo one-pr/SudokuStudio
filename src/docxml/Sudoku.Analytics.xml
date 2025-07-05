@@ -17598,9 +17598,6 @@
         <member name="P:Sudoku.Analytics.Steps.NakedSingleStep.BaseDifficulty">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Analytics.Steps.NakedSingleStep.Lasting">
-            <inheritdoc cref="P:Sudoku.Analytics.Traits.ILastingTrait.Lasting"/>
-        </member>
         <member name="P:Sudoku.Analytics.Steps.NakedSingleStep.Code">
             <inheritdoc/>
         </member>
@@ -17608,6 +17605,9 @@
             <summary>
             Indicates the lasting house type.
             </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.NakedSingleStep.Lasting">
+            <inheritdoc cref="P:Sudoku.Analytics.Traits.ILastingTrait.Lasting"/>
         </member>
         <member name="M:Sudoku.Analytics.Steps.NakedSingleStep.GetName(System.IFormatProvider)">
             <inheritdoc/>
