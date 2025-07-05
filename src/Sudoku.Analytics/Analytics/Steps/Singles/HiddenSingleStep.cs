@@ -61,8 +61,8 @@ public class HiddenSingleStep(
 		NameResourceKey = "HiddenSingleStep_Lasting_Name",
 		DescriptionResourceKey = "HiddenSingleStep_Lasting_Description",
 		AllowedVerbs = KeywordVerbs.NumberComparison | KeywordVerbs.NumberRange,
-		Minimum = 0,
-		Maximum = 7,
+		Minimum = 2,
+		Maximum = 9,
 		IncludesMaximum = true)]
 	public Digit Lasting { get; } = lasting;
 
