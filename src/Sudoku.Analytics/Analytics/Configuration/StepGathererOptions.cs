@@ -24,13 +24,6 @@ public sealed record StepGathererOptions
 	public bool IsDirectMode { get; init; } = false;
 
 	/// <summary>
-	/// Indicates whether the step searcher will checks for hidden singles in rows or columns
-	/// if <see cref="PrimarySingle"/> property has flag <see cref="SingleTechniqueFlag.HiddenSingle"/>.
-	/// </summary>
-	/// <seealso cref="SingleTechniqueFlag.HiddenSingle"/>
-	public bool PrimaryHiddenSingleAllowsLines { get; init; } = false;
-
-	/// <summary>
 	/// Indicates whether the searching module will use ittoryu mode to calculate steps.
 	/// </summary>
 	public bool UseIttoryuMode { get; init; } = false;
@@ -105,7 +98,6 @@ public sealed record StepGathererOptions
 	/// <item><see cref="IsDirectMode"/>: <see langword="false"/></item>
 	/// <item><see cref="UseIttoryuMode"/>: <see langword="false"/></item>
 	/// <item><see cref="PrimarySingle"/>: <see cref="SingleTechniqueFlag.None"/></item>
-	/// <item><see cref="PrimaryHiddenSingleAllowsLines"/>: <see langword="false"/></item>
 	/// <item><see cref="BabaGroupInitialLetter"/>: <see cref="BabaGroupInitialLetter.EnglishLetter_X"/></item>
 	/// <item><see cref="BabaGroupLetterCasing"/>: <see cref="BabaGroupLetterCasing.Lower"/></item>
 	/// <item><see cref="DefaultLinkOption"/>: <see cref="LinkOption.House"/></item>

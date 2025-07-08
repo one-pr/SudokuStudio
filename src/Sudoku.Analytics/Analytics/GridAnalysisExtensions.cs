@@ -60,14 +60,7 @@ public static class GridAnalysisExtensions
 		public bool CanPrimaryHiddenSingle(bool allowHiddenSingleInLine)
 			=> Analyzer.Default
 				.WithStepSearchers(new SingleStepSearcher { EnableFullHouse = true, EnableLastDigit = true })
-				.WithUserDefinedOptions(
-					new()
-					{
-						IsDirectMode = true,
-						PrimarySingle = SingleTechniqueFlag.HiddenSingle,
-						PrimaryHiddenSingleAllowsLines = allowHiddenSingleInLine
-					}
-				)
+				.WithUserDefinedOptions(new() { IsDirectMode = true, PrimarySingle = SingleTechniqueFlag.HiddenSingleColumn })
 				.Analyze(in @this)
 				.IsSolved;
 	}

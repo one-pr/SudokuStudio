@@ -2818,6 +2818,15 @@ namespace SudokuStudio.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to , is puzzle required to be strictly-ittoryu:.
+        /// </summary>
+        internal static string GeneratedPuzzleConstraintPage_IsStrictIttoryuPuzzleRequired {
+            get {
+                return ResourceManager.GetString("GeneratedPuzzleConstraintPage_IsStrictIttoryuPuzzleRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ittoryu rounds.
         /// </summary>
         internal static string GeneratedPuzzleConstraintPage_Ittoryu {

@@ -2001,13 +2001,6 @@
             meaning UI will display the grid without any candidates.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Configuration.StepGathererOptions.PrimaryHiddenSingleAllowsLines">
-            <summary>
-            Indicates whether the step searcher will checks for hidden singles in rows or columns
-            if <see cref="P:Sudoku.Analytics.Configuration.StepGathererOptions.PrimarySingle"/> property has flag <see cref="F:Sudoku.Categorization.SingleTechniqueFlag.HiddenSingle"/>.
-            </summary>
-            <seealso cref="F:Sudoku.Categorization.SingleTechniqueFlag.HiddenSingle"/>
-        </member>
         <member name="P:Sudoku.Analytics.Configuration.StepGathererOptions.UseIttoryuMode">
             <summary>
             Indicates whether the searching module will use ittoryu mode to calculate steps.
@@ -2079,7 +2072,6 @@
             <item><see cref="P:Sudoku.Analytics.Configuration.StepGathererOptions.IsDirectMode"/>: <see langword="false"/></item>
             <item><see cref="P:Sudoku.Analytics.Configuration.StepGathererOptions.UseIttoryuMode"/>: <see langword="false"/></item>
             <item><see cref="P:Sudoku.Analytics.Configuration.StepGathererOptions.PrimarySingle"/>: <see cref="F:Sudoku.Categorization.SingleTechniqueFlag.None"/></item>
-            <item><see cref="P:Sudoku.Analytics.Configuration.StepGathererOptions.PrimaryHiddenSingleAllowsLines"/>: <see langword="false"/></item>
             <item><see cref="P:Sudoku.Analytics.Configuration.StepGathererOptions.BabaGroupInitialLetter"/>: <see cref="F:Sudoku.Analytics.Configuration.BabaGroupInitialLetter.EnglishLetter_X"/></item>
             <item><see cref="P:Sudoku.Analytics.Configuration.StepGathererOptions.BabaGroupLetterCasing"/>: <see cref="F:Sudoku.Analytics.Configuration.BabaGroupLetterCasing.Lower"/></item>
             <item><see cref="P:Sudoku.Analytics.Configuration.StepGathererOptions.DefaultLinkOption"/>: <see cref="F:Sudoku.Analytics.Construction.Components.LinkOption.House"/></item>
@@ -27971,6 +27963,12 @@
             Represents a constraint that checks whether a puzzle can be finished by ittoryu rules.
             </summary>
         </member>
+        <member name="P:Sudoku.Generating.Filtering.Constraints.IttoryuConstraint.IsStrictIttoryu">
+            <summary>
+            Indicates whether the constraint use strict mode to check for ittoryu mode,
+            meaning the puzzle must be solved with ittoryu mode.
+            </summary>
+        </member>
         <member name="P:Sudoku.Generating.Filtering.Constraints.IttoryuConstraint.Rounds">
             <summary>
             Indicates the rounds used.
@@ -30102,7 +30100,7 @@
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.ConstraintDescription_IttoryuConstraint">
             <summary>
-              Looks up a localized string similar to Catch a puzzle being an ittoryu one.
+              Looks up a localized string similar to Catch a puzzle with ittoryu solving strategy.
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.ConstraintDescription_IttoryuLengthConstraint">
@@ -31422,7 +31420,12 @@
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.IttoryuConstraint">
             <summary>
-              Looks up a localized string similar to Ittoryu rule: finish puzzle with {0} {1} rounds.
+              Looks up a localized string similar to Ittoryu rule: finish puzzle with {0} {1} rounds, and the puzzle should {2}be ittoryu-strict one.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.IttoryuConstraintInterpolation">
+            <summary>
+              Looks up a localized string similar to not .
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.Jellyfish">

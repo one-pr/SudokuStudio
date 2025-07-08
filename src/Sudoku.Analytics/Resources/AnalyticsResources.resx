@@ -2527,7 +2527,7 @@ Error grid: '{0:#}'</value>
     <value>, </value>
   </data>
   <data name="IttoryuConstraint" xml:space="preserve">
-    <value>Ittoryu rule: finish puzzle with {0} {1} rounds</value>
+    <value>Ittoryu rule: finish puzzle with {0} {1} rounds, and the puzzle should {2}be ittoryu-strict one</value>
   </data>
   <data name="MinimalConstraint" xml:space="preserve">
     <value>Minimal rule: should {0}be a minimal puzzle</value>
@@ -3076,7 +3076,7 @@ Error grid: '{0:#}'</value>
     <value>Catch a puzzle having specified number of eliminations</value>
   </data>
   <data name="ConstraintDescription_IttoryuConstraint" xml:space="preserve">
-    <value>Catch a puzzle being an ittoryu one</value>
+    <value>Catch a puzzle with ittoryu solving strategy</value>
   </data>
   <data name="ConstraintDescription_IttoryuLengthConstraint" xml:space="preserve">
     <value>Catch a puzzle having specified length of ittoryu rounds</value>
@@ -3296,5 +3296,8 @@ Is pattern rank-0: {6}</value>
   </data>
   <data name="ErrorInfo_RequireLinksOnCheckingEliminationRank" xml:space="preserve">
     <value>Links expected on checking elimination rank.</value>
+  </data>
+  <data name="IttoryuConstraintInterpolation" xml:space="preserve">
+    <value>not </value>
   </data>
 </root>

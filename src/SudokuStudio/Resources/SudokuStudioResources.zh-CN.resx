@@ -2909,4 +2909,7 @@
   <data name="AboutPage_TutorialPage_OnlyChinese" xml:space="preserve">
     <value>（暂只支持中文）</value>
   </data>
+  <data name="GeneratedPuzzleConstraintPage_IsStrictIttoryuPuzzleRequired" xml:space="preserve">
+    <value>，是否题目需要真的是一刀流题：</value>
+  </data>
 </root>

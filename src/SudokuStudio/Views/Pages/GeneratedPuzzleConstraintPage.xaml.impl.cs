@@ -533,6 +533,19 @@ public partial class GeneratedPuzzleConstraintPage
 		//
 		var roundsControl = LimitCountControl(rounds, constraint);
 
+		// information label for "strict ittoryu required"
+		var isStrictIttoryuInfoLabel = new TextBlock
+		{
+			Text = SR.Get("GeneratedPuzzleConstraintPage_IsStrictIttoryuPuzzleRequired", App.CurrentCulture),
+			VerticalAlignment = VerticalAlignment.Center
+		};
+
+		//
+		// strict-ittoryu toggle switch
+		//
+		var isStrictIttoryuRequiredToggleSwitchControl = new ToggleSwitch { IsOn = constraint.IsStrictIttoryu };
+		isStrictIttoryuRequiredToggleSwitchControl.RegisterPropertyChangedCallback(ToggleSwitch.IsOnProperty, isStrictIttoryuRequiredToggleSwitchControlCallback);
+
 		return new()
 		{
 			Header = SR.Get("GeneratedPuzzleConstraintPage_Ittoryu", App.CurrentCulture),
@@ -542,10 +555,14 @@ public partial class GeneratedPuzzleConstraintPage
 			{
 				Orientation = Orientation.Horizontal,
 				Spacing = DefaultSpacing,
-				Children = { highestTechniqueControl, singleControl, operatorControl, roundsControl }
+				Children = { highestTechniqueControl, singleControl, operatorControl, roundsControl, isStrictIttoryuInfoLabel, isStrictIttoryuRequiredToggleSwitchControl }
 			},
 			Tag = constraint
 		};
+
+
+		void isStrictIttoryuRequiredToggleSwitchControlCallback(DependencyObject d, DependencyProperty _)
+			=> constraint.IsStrictIttoryu = ((ToggleSwitch)d).IsOn;
 	}
 
 	private partial SettingsExpander? Create_Technique(TechniqueConstraint constraint)

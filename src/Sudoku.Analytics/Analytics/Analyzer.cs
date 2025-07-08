@@ -346,13 +346,7 @@ public sealed class Analyzer : StepGatherer, IAnalyzer<Analyzer, AnalysisResult,
 						_,
 						_,
 						SingleStepSearcher,
-						{
-							Options:
-							{
-								PrimaryHiddenSingleAllowsLines: var allowLine,
-								PrimarySingle: var limited and not 0
-							}
-						}
+						{ Options: { PrimarySingle: var limited and not 0, UseIttoryuMode: var ittoryuMode } }
 					):
 #pragma warning restore format
 					{
@@ -371,26 +365,30 @@ public sealed class Analyzer : StepGatherer, IAnalyzer<Analyzer, AnalysisResult,
 						{
 							if (step is SingleStep { Code: var code } s)
 							{
-								switch (limited, code, allowLine)
+								switch (limited, code)
 								{
-									case (SingleTechniqueFlag.FullHouse, not Technique.FullHouse, _):
+									case (SingleTechniqueFlag.FullHouse, not Technique.FullHouse):
 									{
 										break;
 									}
-									case (_, Technique.FullHouse, _):
+									case (_, Technique.FullHouse):
 									case (
-										SingleTechniqueFlag.HiddenSingle,
-										Technique.LastDigit or Technique.CrosshatchingBlock or Technique.HiddenSingleBlock,
-										false
+										SingleTechniqueFlag.HiddenSingleBlock,
+										Technique.LastDigit or Technique.CrosshatchingBlock or Technique.HiddenSingleBlock
 									):
 									case (
-										SingleTechniqueFlag.HiddenSingle,
+										SingleTechniqueFlag.HiddenSingleRow,
+										Technique.LastDigit
+											or Technique.HiddenSingleBlock or Technique.HiddenSingleRow
+											or Technique.CrosshatchingBlock or Technique.CrosshatchingRow
+									):
+									case (
+										SingleTechniqueFlag.HiddenSingle or SingleTechniqueFlag.HiddenSingleColumn,
 										Technique.LastDigit
 											or >= Technique.HiddenSingleBlock and <= Technique.HiddenSingleColumn
-											or >= Technique.CrosshatchingBlock and <= Technique.CrosshatchingColumn,
-										true
+											or >= Technique.CrosshatchingBlock and <= Technique.CrosshatchingColumn
 									):
-									case (SingleTechniqueFlag.NakedSingle, Technique.NakedSingle, _):
+									case (SingleTechniqueFlag.NakedSingle, Technique.NakedSingle):
 									{
 										chosenSteps.Add(s);
 										break;
@@ -422,7 +420,15 @@ public sealed class Analyzer : StepGatherer, IAnalyzer<Analyzer, AnalysisResult,
 						}
 						else
 						{
-							var chosenStep = RandomizedChoosing ? chosenSteps[_random.Next(0, chosenSteps.Count)] : chosenSteps[0];
+							var chosenStep = RandomizedChoosing
+								? chosenSteps[_random.Next(0, chosenSteps.Count)]
+								: ittoryuMode
+									? collectedSteps is [.., SingleStep { Digit: var previousDigit }]
+										? (from s in chosenSteps where s.Digit >= previousDigit orderby s.Digit select s) is [var tempStep, ..]
+											? tempStep
+											: chosenSteps.MinBy(static step => step.Digit)!
+										: chosenSteps.MinBy(static step => step.Digit)!
+									: chosenSteps[0];
 							if (!verifyConclusionValidity(searcher, solution, chosenStep))
 							{
 								throw new WrongStepException(playground, chosenStep);

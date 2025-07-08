@@ -1150,7 +1150,7 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Catch a puzzle being an ittoryu one.
+        ///   Looks up a localized string similar to Catch a puzzle with ittoryu solving strategy.
         /// </summary>
         public static string ConstraintDescription_IttoryuConstraint {
             get {
@@ -3526,11 +3526,20 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ittoryu rule: finish puzzle with {0} {1} rounds.
+        ///   Looks up a localized string similar to Ittoryu rule: finish puzzle with {0} {1} rounds, and the puzzle should {2}be ittoryu-strict one.
         /// </summary>
         public static string IttoryuConstraint {
             get {
                 return ResourceManager.GetString("IttoryuConstraint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to not .
+        /// </summary>
+        public static string IttoryuConstraintInterpolation {
+            get {
+                return ResourceManager.GetString("IttoryuConstraintInterpolation", resourceCulture);
             }
         }
         

@@ -7218,6 +7218,11 @@
               Looks up a localized string similar to This page stores the constraints that will be used in analyze page, filtering generated puzzles automatically. You can control the following rules to filter puzzles..
             </summary>
         </member>
+        <member name="P:SudokuStudio.Resources.SudokuStudioResources.GeneratedPuzzleConstraintPage_IsStrictIttoryuPuzzleRequired">
+            <summary>
+              Looks up a localized string similar to , is puzzle required to be strictly-ittoryu:.
+            </summary>
+        </member>
         <member name="P:SudokuStudio.Resources.SudokuStudioResources.GeneratedPuzzleConstraintPage_Ittoryu">
             <summary>
               Looks up a localized string similar to Ittoryu rounds.

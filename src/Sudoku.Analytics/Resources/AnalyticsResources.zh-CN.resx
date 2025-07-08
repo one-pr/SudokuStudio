@@ -2567,7 +2567,7 @@
     <value>、</value>
   </data>
   <data name="IttoryuConstraint" xml:space="preserve">
-    <value>一刀流：在 {0} {1} 轮约束下完成题目</value>
+    <value>一刀流：在 {0} {1} 轮{2}完成题目</value>
   </data>
   <data name="MinimalConstraint" xml:space="preserve">
     <value>最小题：{0}是一个最小题</value>
@@ -3116,7 +3116,7 @@
     <value>限制题目某步骤的删数个数</value>
   </data>
   <data name="ConstraintDescription_IttoryuConstraint" xml:space="preserve">
-    <value>限制题目必须是一刀流题</value>
+    <value>限制题目基于一刀流做题模式下需要满足的条件</value>
   </data>
   <data name="ConstraintDescription_IttoryuLengthConstraint" xml:space="preserve">
     <value>限制题目完成的一刀流轮数</value>
@@ -3340,5 +3340,8 @@
   </data>
   <data name="ErrorInfo_RequireLinksOnCheckingEliminationRank" xml:space="preserve">
     <value />
+  </data>
+  <data name="IttoryuConstraintInterpolation" xml:space="preserve">
+    <value>，且在数字不间断的一刀流做题下</value>
   </data>
 </root>

@@ -2918,4 +2918,7 @@ Correct rate: {3:P} ({4}/{5})</value>
   <data name="AboutPage_TutorialPage_OnlyChinese" xml:space="preserve">
     <value>(Chinese only)</value>
   </data>
+  <data name="GeneratedPuzzleConstraintPage_IsStrictIttoryuPuzzleRequired" xml:space="preserve">
+    <value>, is puzzle required to be strictly-ittoryu:</value>
+  </data>
 </root>
