@@ -55,9 +55,6 @@ public sealed class DirectIntersectionStep(
 			_ => throw new NotSupportedException(SR.ExceptionMessage("TechiqueIsNotSupported"))
 		} + 2;
 
-	/// <inheritdoc/>
-	public override Technique Code => BasedOn;
-
 	/// <summary>
 	/// Indicates the intersection cells.
 	/// </summary>

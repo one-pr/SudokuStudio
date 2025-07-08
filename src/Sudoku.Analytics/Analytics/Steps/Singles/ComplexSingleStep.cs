@@ -27,6 +27,17 @@ public abstract class ComplexSingleStep(
 	/// </summary>
 	public Technique BasedOn { get; } = basedOn;
 
+	/// <inheritdoc/>
+	public sealed override Technique Code
+		=> BasedOn switch
+		{
+			Technique.FullHouse => Technique.ComplexFullHouse,
+			Technique.CrosshatchingBlock => Technique.ComplexCrosshatchingBlock,
+			Technique.CrosshatchingRow => Technique.ComplexCrosshatchingRow,
+			Technique.CrosshatchingColumn => Technique.ComplexCrosshatchingColumn,
+			Technique.NakedSingle => Technique.ComplexNakedSingle
+		};
+
 	/// <summary>
 	/// <para>Indicates the indirect techniques used in this pattern.</para>
 	/// <para>

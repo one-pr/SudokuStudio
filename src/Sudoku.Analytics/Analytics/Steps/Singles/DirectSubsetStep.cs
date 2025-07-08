@@ -63,9 +63,6 @@ public sealed class DirectSubsetStep(
 	/// <inheritdoc/>
 	public override int BaseDifficulty => IsNaked ? 33 : 37;
 
-	/// <inheritdoc/>
-	public override Technique Code => BasedOn;
-
 	/// <summary>
 	/// Indicates the subset technique used.
 	/// </summary>

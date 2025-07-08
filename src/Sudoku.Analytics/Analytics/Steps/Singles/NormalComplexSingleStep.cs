@@ -34,17 +34,6 @@ public sealed class NormalComplexSingleStep(
 		};
 
 	/// <inheritdoc/>
-	public override Technique Code
-		=> BasedOn switch
-		{
-			Technique.FullHouse => Technique.ComplexFullHouse,
-			Technique.CrosshatchingBlock => Technique.ComplexCrosshatchingBlock,
-			Technique.CrosshatchingRow => Technique.ComplexCrosshatchingRow,
-			Technique.CrosshatchingColumn => Technique.ComplexCrosshatchingColumn,
-			Technique.NakedSingle => Technique.ComplexNakedSingle
-		};
-
-	/// <inheritdoc/>
 	public override InterpolationArray Interpolations
 		=> [
 			new(SR.EnglishLanguage, [TechniqueNotation(SR.EnglishLanguage)]),

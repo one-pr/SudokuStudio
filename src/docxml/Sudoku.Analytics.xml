@@ -17228,6 +17228,9 @@
             Indicates the single technique that is based on.
             </summary>
         </member>
+        <member name="P:Sudoku.Analytics.Steps.ComplexSingleStep.Code">
+            <inheritdoc/>
+        </member>
         <member name="P:Sudoku.Analytics.Steps.ComplexSingleStep.IndirectTechniques">
             <summary>
             <para>Indicates the indirect techniques used in this pattern.</para>
@@ -17291,9 +17294,6 @@
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.Steps.DirectIntersectionStep.BaseDifficulty">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.DirectIntersectionStep.Code">
             <inheritdoc/>
         </member>
         <member name="P:Sudoku.Analytics.Steps.DirectIntersectionStep.IntersectionCells">
@@ -17371,9 +17371,6 @@
             <inheritdoc/>
         </member>
         <member name="P:Sudoku.Analytics.Steps.DirectSubsetStep.BaseDifficulty">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.DirectSubsetStep.Code">
             <inheritdoc/>
         </member>
         <member name="P:Sudoku.Analytics.Steps.DirectSubsetStep.SubsetTechnique">
@@ -17622,9 +17619,6 @@
             <param name="indirectTechniques"><inheritdoc cref="P:Sudoku.Analytics.Steps.ComplexSingleStep.IndirectTechniques" path="/summary"/></param>
         </member>
         <member name="P:Sudoku.Analytics.Steps.NormalComplexSingleStep.BaseDifficulty">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.NormalComplexSingleStep.Code">
             <inheritdoc/>
         </member>
         <member name="P:Sudoku.Analytics.Steps.NormalComplexSingleStep.Interpolations">
