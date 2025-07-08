@@ -155,11 +155,14 @@ public partial class GeneratedPuzzleConstraintPage
 				constraint.SymmetricTypes = SymmetryConstraint.InvalidSymmetricType;
 			}
 		};
-		foreach (SegmentedItem element in symmetryControl.Items)
+		if (symmetricTypes != SymmetryConstraint.InvalidSymmetricType)
 		{
-			if (symmetricTypes.HasFlag((SymmetricType)element.Tag!))
+			foreach (SegmentedItem element in symmetryControl.Items)
 			{
-				symmetryControl.SelectedItems.Add(element);
+				if (symmetricTypes.HasFlag((SymmetricType)element.Tag!))
+				{
+					symmetryControl.SelectedItems.Add(element);
+				}
 			}
 		}
 

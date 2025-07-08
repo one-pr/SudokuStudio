@@ -233,10 +233,9 @@ public sealed partial class GeneratingOperation : Page, IOperationProviderPage
 
 			var rng = Random.Shared;
 			var symmetries = (
-				(
-					from c in constraints.OfType<SymmetryConstraint>()
-					select c.SymmetricTypes
-				) is [var p] ? p : SymmetryConstraint.AllSymmetricTypes
+				(from c in constraints.OfType<SymmetryConstraint>() select c.SymmetricTypes) is [var p]
+					? p
+					: SymmetryConstraint.AllSymmetricTypes
 			) switch
 			{
 				SymmetryConstraint.InvalidSymmetricType => [],
@@ -259,7 +258,7 @@ public sealed partial class GeneratingOperation : Page, IOperationProviderPage
 			var progress = new SelfReportingProgress<TProgressDataProvider>(reporter);
 			while (true)
 			{
-				var chosenSymmetricType = symmetries[rng.Next(0, symmetries.Length)];
+				var chosenSymmetricType = symmetries.Length == 0 ? SymmetricType.None : symmetries[rng.Next(0, symmetries.Length)];
 				var grid = gridCreator(givensCount, chosenSymmetricType, cancellationToken);
 				if (grid.IsEmpty || analyzer.Analyze(grid) is var analysisResult && !analysisResult.IsSolved)
 				{

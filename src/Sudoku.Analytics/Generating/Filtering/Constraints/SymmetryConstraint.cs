@@ -52,5 +52,11 @@ public sealed partial class SymmetryConstraint : Constraint
 	public override SymmetryConstraint Clone() => new() { IsNegated = IsNegated, SymmetricTypes = SymmetricTypes };
 
 	/// <inheritdoc/>
-	protected override bool CheckCore(ConstraintCheckingContext context) => (SymmetricTypes & context.Grid.Symmetry) != 0;
+	protected override bool CheckCore(ConstraintCheckingContext context)
+		=> context.Grid.Symmetry is var symmetry
+		&& SymmetricTypes switch
+		{
+			InvalidSymmetricType => symmetry == SymmetricType.None,
+			_ => (SymmetricTypes & symmetry) != 0
+		};
 }
