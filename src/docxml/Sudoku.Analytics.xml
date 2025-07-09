@@ -28312,6 +28312,44 @@
         <member name="M:Sudoku.Generating.Filtering.Constraints.TechniqueCountConstraint.ToString">
             <inheritdoc cref="M:System.Object.ToString"/>
         </member>
+        <member name="T:Sudoku.Generating.Filtering.Constraints.TechniquePrecedenceConstraint">
+            <summary>
+            Represents a precedence (ordering relation) of a technique.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Constraints.TechniquePrecedenceConstraint.TargetTechnique">
+            <summary>
+            Indicates the target technqiue to be compared.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Constraints.TechniquePrecedenceConstraint.ComparedTechnique">
+            <summary>
+            Indicates the techniques that the target technique should be compared.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Constraints.TechniquePrecedenceConstraint.Operator">
+            <summary>
+            Indicates the operator.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.TechniquePrecedenceConstraint.Equals(Sudoku.Generating.Filtering.Constraint)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.TechniquePrecedenceConstraint.ToString(System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.TechniquePrecedenceConstraint.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.TechniquePrecedenceConstraint.CheckCore(Sudoku.Generating.Filtering.ConstraintCheckingContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.TechniquePrecedenceConstraint.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.TechniquePrecedenceConstraint.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
         <member name="T:Sudoku.Generating.Filtering.Constraints.TechniqueSetConstraint">
             <summary>
             Represents a constraint that limits a puzzle that can only use such techniques to be finished.
@@ -28404,6 +28442,21 @@
         </member>
         <member name="M:Sudoku.Generating.Filtering.KeywordCondition.op_Inequality(Sudoku.Generating.Filtering.KeywordCondition,Sudoku.Generating.Filtering.KeywordCondition)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
+        </member>
+        <member name="T:Sudoku.Generating.Filtering.PrecedenceOperator">
+            <summary>
+            Represent an operator to be used in precedence checking.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Generating.Filtering.PrecedenceOperator.Predecessor">
+            <summary>
+            Indicates the precendence operator is predecessor.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Generating.Filtering.PrecedenceOperator.Successor">
+            <summary>
+            Indicates the precendence operator is successor.
+            </summary>
         </member>
         <member name="T:Sudoku.Generating.Filtering.StepFilter">
             <summary>
@@ -30140,6 +30193,11 @@
         <member name="P:Sudoku.Resources.AnalyticsResources.ConstraintDescription_TechniqueCountConstraint">
             <summary>
               Looks up a localized string similar to Catch a puzzle having specified number of usages in a puzzle solving path.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.ConstraintDescription_TechniquePrecedenceConstraint">
+            <summary>
+              Looks up a localized string similar to Catch a puzzle with specified ordering rules of two techniques&apos; precedence relation.
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.ConstraintDescription_TechniqueSetConstraint">
@@ -31880,6 +31938,11 @@
               Looks up a localized string similar to Pointing.
             </summary>
         </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.PredecessorText">
+            <summary>
+              Looks up a localized string similar to before.
+            </summary>
+        </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.PrimarySingleConstraint">
             <summary>
               Looks up a localized string similar to Single rule: {0} is primary technique, Hidden Single in rows or columns {1}included.
@@ -32712,6 +32775,11 @@
         <member name="P:Sudoku.Resources.AnalyticsResources.SubsetNamesSize7">
             <summary>
               Looks up a localized string similar to septuple.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.SuccessorText">
+            <summary>
+              Looks up a localized string similar to after.
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.SueDeCoq">
@@ -34382,6 +34450,11 @@
         <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueGroup_XyzRing">
             <summary>
               Looks up a localized string similar to XYZ-Ring.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.TechniquePrecedenceConstraint">
+            <summary>
+              Looks up a localized string similar to Technique precedence: all steps used technique &quot;{0}&quot; must be {1} all appearances of technique &quot;{2}&quot; in a puzzle.
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueSetConstraint">

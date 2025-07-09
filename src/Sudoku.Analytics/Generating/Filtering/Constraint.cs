@@ -11,6 +11,7 @@ namespace Sudoku.Generating.Filtering;
 [JsonDerivedType(typeof(DifficultyLevelConstraint), nameof(DifficultyLevelConstraint))]
 [JsonDerivedType(typeof(EliminationCountConstraint), nameof(EliminationCountConstraint))]
 [JsonDerivedType(typeof(IttoryuConstraint), nameof(IttoryuConstraint))]
+[JsonDerivedType(typeof(KeywordConditionConstraint), nameof(KeywordConditionConstraint))]
 [JsonDerivedType(typeof(LastingConstraint), nameof(LastingConstraint))]
 [JsonDerivedType(typeof(MinimalConstraint), nameof(MinimalConstraint))]
 [JsonDerivedType(typeof(PearlConstraint), nameof(PearlConstraint))]
@@ -18,8 +19,8 @@ namespace Sudoku.Generating.Filtering;
 [JsonDerivedType(typeof(SymmetryConstraint), nameof(SymmetryConstraint))]
 [JsonDerivedType(typeof(TechniqueConstraint), nameof(TechniqueConstraint))]
 [JsonDerivedType(typeof(TechniqueCountConstraint), nameof(TechniqueCountConstraint))]
+[JsonDerivedType(typeof(TechniquePrecedenceConstraint), nameof(TechniquePrecedenceConstraint))]
 [JsonDerivedType(typeof(TechniqueSetConstraint), nameof(TechniqueSetConstraint))]
-[JsonDerivedType(typeof(KeywordConditionConstraint), nameof(KeywordConditionConstraint))]
 [TypeImpl(
 	TypeImplFlags.AllObjectMethods | TypeImplFlags.EqualityOperators,
 	OtherModifiersOnEquals = "sealed",

@@ -3344,4 +3344,16 @@
   <data name="IttoryuConstraintInterpolation" xml:space="preserve">
     <value>，且在数字不间断的一刀流做题下</value>
   </data>
+  <data name="TechniquePrecedenceConstraint" xml:space="preserve">
+    <value>技巧次序：一个题里所有技巧为“{0}”的步骤都必须{1}所有技巧{2}的步骤出现</value>
+  </data>
+  <data name="PredecessorText" xml:space="preserve">
+    <value>先于</value>
+  </data>
+  <data name="SuccessorText" xml:space="preserve">
+    <value>后于</value>
+  </data>
+  <data name="ConstraintDescription_TechniquePrecedenceConstraint" xml:space="preserve">
+    <value>限制题目使用的技巧出现的先后关系</value>
+  </data>
 </root>

@@ -3300,4 +3300,16 @@ Is pattern rank-0: {6}</value>
   <data name="IttoryuConstraintInterpolation" xml:space="preserve">
     <value>not </value>
   </data>
+  <data name="TechniquePrecedenceConstraint" xml:space="preserve">
+    <value>Technique precedence: all steps used technique "{0}" must be {1} all appearances of technique "{2}" in a puzzle</value>
+  </data>
+  <data name="PredecessorText" xml:space="preserve">
+    <value>before</value>
+  </data>
+  <data name="SuccessorText" xml:space="preserve">
+    <value>after</value>
+  </data>
+  <data name="ConstraintDescription_TechniquePrecedenceConstraint" xml:space="preserve">
+    <value>Catch a puzzle with specified ordering rules of two techniques' precedence relation</value>
+  </data>
 </root>

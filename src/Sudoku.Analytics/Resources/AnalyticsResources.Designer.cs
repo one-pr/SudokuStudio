@@ -1240,6 +1240,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Catch a puzzle with specified ordering rules of two techniques&apos; precedence relation.
+        /// </summary>
+        public static string ConstraintDescription_TechniquePrecedenceConstraint {
+            get {
+                return ResourceManager.GetString("ConstraintDescription_TechniquePrecedenceConstraint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Catch a puzzle solving by only using specified technique set.
         /// </summary>
         public static string ConstraintDescription_TechniqueSetConstraint {
@@ -4366,6 +4375,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to before.
+        /// </summary>
+        public static string PredecessorText {
+            get {
+                return ResourceManager.GetString("PredecessorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Single rule: {0} is primary technique, Hidden Single in rows or columns {1}included.
         /// </summary>
         public static string PrimarySingleConstraint {
@@ -5856,6 +5874,15 @@ namespace Sudoku.Resources {
         public static string SubsetNamesSize7 {
             get {
                 return ResourceManager.GetString("SubsetNamesSize7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to after.
+        /// </summary>
+        public static string SuccessorText {
+            get {
+                return ResourceManager.GetString("SuccessorText", resourceCulture);
             }
         }
         
@@ -8862,6 +8889,15 @@ namespace Sudoku.Resources {
         public static string TechniqueGroup_XyzRing {
             get {
                 return ResourceManager.GetString("TechniqueGroup_XyzRing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technique precedence: all steps used technique &quot;{0}&quot; must be {1} all appearances of technique &quot;{2}&quot; in a puzzle.
+        /// </summary>
+        public static string TechniquePrecedenceConstraint {
+            get {
+                return ResourceManager.GetString("TechniquePrecedenceConstraint", resourceCulture);
             }
         }
         
