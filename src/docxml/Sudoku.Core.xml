@@ -10321,6 +10321,88 @@
             Indicates the third AUR or AAR recorded.
             </summary>
         </member>
+        <member name="T:Sudoku.Generating.EmptyHouseBasedGenerator">
+            <summary>
+            Represents a puzzle generator that can avoid selections on empty houses.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Generating.EmptyHouseBasedGenerator.#ctor">
+            <summary>
+            Represents a puzzle generator that can avoid selections on empty houses.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Generating.EmptyHouseBasedGenerator._generateIndices">
+            <summary>
+            The order in which cells are set when generating a full grid.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Generating.EmptyHouseBasedGenerator._rng">
+            <summary>
+            A random generator for creating new puzzles.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Generating.EmptyHouseBasedGenerator._solver">
+            <summary>
+            Indicates the internal fast solver.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Generating.EmptyHouseBasedGenerator._stack">
+            <summary>
+            The recursion stack.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Generating.EmptyHouseBasedGenerator._newFullSudoku">
+            <summary>
+            The final grid to be used.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Generating.EmptyHouseBasedGenerator._newValidSudoku">
+            <summary>
+            The final grid to be used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.EmptyHouseBasedGenerator.MissingHouseType">
+            <summary>
+            Indicates the missing house type.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.EmptyHouseBasedGenerator.MissingHousesCount">
+            <summary>
+            Indicates the number of missing houses.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Generating.EmptyHouseBasedGenerator.Generate(System.Threading.CancellationToken)">
+            <summary>
+            Try to generate a puzzle randomly, or return <see cref="F:Sudoku.Concepts.Grid.Undefined"/> if a user cancelled the operation.
+            </summary>
+            <param name="cancellationToken">The cancellation token that can cancel the operation.</param>
+            <returns>The result grid, or <see cref="F:Sudoku.Concepts.Grid.Undefined"/> if a user cancelled the operation.</returns>
+        </member>
+        <member name="M:Sudoku.Generating.EmptyHouseBasedGenerator.GenerateInitPos(System.Threading.CancellationToken)">
+            <summary>
+            Takes a full sudoku from <see cref="F:Sudoku.Generating.EmptyHouseBasedGenerator._newFullSudoku"/> and generates a valid puzzle by deleting cells.
+            If a deletion produces a grid with more than one solution it is of course undone.
+            </summary>
+            <inheritdoc cref="M:Sudoku.Generating.EmptyHouseBasedGenerator.Generate(System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Sudoku.Generating.EmptyHouseBasedGenerator.GenerateForFullGrid">
+            <summary>
+            Generate a solution grid.
+            </summary>
+            <returns>A <see cref="T:System.Boolean"/> value indicating whether the generation operation is succeeded.</returns>
+        </member>
+        <member name="M:Sudoku.Generating.EmptyHouseBasedGenerator.Sudoku#Generating#IGenerator{Sudoku#Concepts#Grid}#Generate(System.IProgress{Sudoku.Generating.GeneratorProgress},System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.EmptyHouseBasedGenerator.Equals(System.Object)">
+            <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
+        </member>
+        <member name="M:Sudoku.Generating.EmptyHouseBasedGenerator.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:Sudoku.Generating.EmptyHouseBasedGenerator.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
         <member name="T:Sudoku.Generating.FilteredGeneratorProgress">
             <summary>
             Represents a progress data type that is nearly same as <see cref="T:Sudoku.Generating.GeneratorProgress"/>, but with filtered data.
