@@ -153,7 +153,7 @@ public sealed partial class GeneratingOperation : Page, IOperationProviderPage
 				HasIttoryuConstraint:
 					constraints.OfType<IttoryuConstraint>() is [{ Operator: ComparisonOperator.Equality, Rounds: 1 }],
 				HasMissingDigitConstraint:
-					constraints.OfType<MissingDigitConstraint>() is [{ Digit: var digit and not -1 }],
+					constraints.OfType<MissingDigitConstraint>() is [{ Digit: not -1 }],
 				HasMissingHouseConstraint:
 					constraints.Has<EmptyHousesCountConstraint>()
 			);
