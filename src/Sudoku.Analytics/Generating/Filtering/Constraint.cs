@@ -10,6 +10,7 @@ namespace Sudoku.Generating.Filtering;
 [JsonDerivedType(typeof(DiamondConstraint), nameof(DiamondConstraint))]
 [JsonDerivedType(typeof(DifficultyLevelConstraint), nameof(DifficultyLevelConstraint))]
 [JsonDerivedType(typeof(EliminationCountConstraint), nameof(EliminationCountConstraint))]
+[JsonDerivedType(typeof(EmptyHousesCountConstraint), nameof(EmptyHousesCountConstraint))]
 [JsonDerivedType(typeof(IttoryuConstraint), nameof(IttoryuConstraint))]
 [JsonDerivedType(typeof(KeywordConditionConstraint), nameof(KeywordConditionConstraint))]
 [JsonDerivedType(typeof(LastingConstraint), nameof(LastingConstraint))]

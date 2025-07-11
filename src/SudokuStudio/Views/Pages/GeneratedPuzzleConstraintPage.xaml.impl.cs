@@ -824,6 +824,70 @@ public partial class GeneratedPuzzleConstraintPage
 		};
 	}
 
+	private partial SettingsCard? Create_EmptyHousesCount(EmptyHousesCountConstraint constraint)
+	{
+		if (constraint is not { HouseType: var houseType, Count: var count })
+		{
+			return null;
+		}
+
+		//
+		// empty houses type label
+		//
+		var emptyHousesTypeLabel = new TextBlock
+		{
+			Text = SR.Get("GeneratedPuzzleConstraintPage_EmptyHouseTypeIs", App.CurrentCulture),
+			VerticalAlignment = VerticalAlignment.Center
+		};
+
+		//
+		// house type selector
+		//
+		var houseTypeControl = new Segmented
+		{
+			Style = (Style)Application.Current.Resources["ButtonSegmentedStyle"]!,
+			Items =
+			{
+				new SegmentedItem { Content = SR.Get("BlockName", App.CurrentCulture), Tag = HouseType.Block },
+				new SegmentedItem { Content = SR.Get("RowName", App.CurrentCulture), Tag = HouseType.Row },
+				new SegmentedItem { Content = SR.Get("ColumnName", App.CurrentCulture), Tag = HouseType.Column }
+			}
+		};
+		EnumBinder<Segmented, SegmentedItem, HouseType>(
+			houseTypeControl,
+			constraint.HouseType,
+			value => constraint.HouseType = value
+		);
+
+		//
+		// count label
+		//
+		var countLabel = new TextBlock
+		{
+			Text = SR.Get("GeneratedPuzzleConstraintPage_EmptyHousesCountIs", App.CurrentCulture),
+			VerticalAlignment = VerticalAlignment.Center
+		};
+
+		//
+		// count number box
+		//
+		var countBox = LimitCountControl(count, constraint);
+
+		return new()
+		{
+			Header = SR.Get("GeneratedPuzzleConstraintPage_EmptyHousesCount", App.CurrentCulture),
+			Description = constraint.Description,
+			Margin = DefaultMargin,
+			Content = new StackPanel
+			{
+				Orientation = Orientation.Horizontal,
+				Spacing = DefaultSpacing,
+				Children = { emptyHousesTypeLabel, houseTypeControl, countLabel, countBox }
+			},
+			Tag = constraint
+		};
+	}
+
 	private partial SettingsCard? Create_PrimarySingle(PrimarySingleConstraint constraint)
 	{
 		if (constraint is not { Primary: var prefer, AllowsHiddenSingleInLines: var allowsForLine })

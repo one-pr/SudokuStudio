@@ -3362,4 +3362,10 @@
   <data name="ConstraintDescription_MissingDigitConstraint" xml:space="preserve">
     <value>限制题目提示数不出现指定数字</value>
   </data>
+  <data name="EmptyHousesCountConstraint" xml:space="preserve">
+    <value>空白区域：一个题需要包含 {0} 个空白{1}</value>
+  </data>
+  <data name="ConstraintDescription_EmptyHousesCountConstraint" xml:space="preserve">
+    <value>限制题目包含指定数量的空白区域</value>
+  </data>
 </root>

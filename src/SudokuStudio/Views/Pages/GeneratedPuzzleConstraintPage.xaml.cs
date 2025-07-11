@@ -18,6 +18,7 @@ public sealed partial class GeneratedPuzzleConstraintPage : Page
 		{ typeof(DiamondConstraint), static (@this, s) => @this.Create_PearlOrDiamond((DiamondConstraint)s) },
 		{ typeof(DifficultyLevelConstraint), static (@this, s) => @this.Create_DifficultyLevel((DifficultyLevelConstraint)s) },
 		{ typeof(EliminationCountConstraint), static (@this, s) => @this.Create_EliminationCount((EliminationCountConstraint)s) },
+		{ typeof(EmptyHousesCountConstraint), static (@this, s) => @this.Create_EmptyHousesCount((EmptyHousesCountConstraint)s) },
 		{ typeof(IttoryuConstraint), static (@this, s) => @this.Create_Ittoryu((IttoryuConstraint)s) },
 		{ typeof(LastingConstraint), static (@this, s) => @this.Create_Lasting((LastingConstraint)s) },
 		{ typeof(MinimalConstraint), static (@this, s) => @this.Create_Minimal((MinimalConstraint)s) },
@@ -136,20 +137,21 @@ public sealed partial class GeneratedPuzzleConstraintPage : Page
 	}
 
 	private partial SettingsExpander? Create_BottleneckTechnique(BottleneckTechniqueConstraint constraint);
-	private partial SettingsCard? Create_DifficultyLevel(DifficultyLevelConstraint constraint);
-	private partial SettingsCard? Create_Symmetry(SymmetryConstraint constraint);
 	private partial SettingsCard? Create_Conclusion(ConclusionConstraint constraint);
+	private partial SettingsCard? Create_CountBetween(CountBetweenConstraint constraint);
+	private partial SettingsCard? Create_DifficultyLevel(DifficultyLevelConstraint constraint);
+	private partial SettingsExpander? Create_EliminationCount(EliminationCountConstraint constraint);
+	private partial SettingsCard? Create_EmptyHousesCount(EmptyHousesCountConstraint constraint);
+	private partial SettingsCard? Create_Ittoryu(IttoryuConstraint constraint);
 	private partial SettingsCard? Create_Lasting(LastingConstraint constraint);
 	private partial SettingsCard? Create_Minimal(MinimalConstraint constraint);
 	private partial SettingsCard? Create_MissingDigit(MissingDigitConstraint constraint);
 	private partial SettingsCard? Create_PearlOrDiamond<TConstraint>(TConstraint constraint) where TConstraint : PearlOrDiamondConstraint;
-	private partial SettingsCard? Create_CountBetween(CountBetweenConstraint constraint);
-	private partial SettingsCard? Create_Ittoryu(IttoryuConstraint constraint);
+	private partial SettingsCard? Create_PrimarySingle(PrimarySingleConstraint constraint);
 	private partial SettingsExpander? Create_Technique(TechniqueConstraint constraint);
 	private partial SettingsExpander? Create_TechniqueCount(TechniqueCountConstraint constraint);
 	private partial SettingsExpander? Create_TechniqueSet(TechniqueSetConstraint constraint);
-	private partial SettingsExpander? Create_EliminationCount(EliminationCountConstraint constraint);
-	private partial SettingsCard? Create_PrimarySingle(PrimarySingleConstraint constraint);
+	private partial SettingsCard? Create_Symmetry(SymmetryConstraint constraint);
 
 
 	private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)

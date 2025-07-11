@@ -2921,4 +2921,16 @@
   <data name="GeneratedPuzzleConstraintPage_MissingDigit" xml:space="preserve">
     <value>题目里不出现的数字</value>
   </data>
+  <data name="GeneratedPuzzleConstraintPage_EmptyHousesCount" xml:space="preserve">
+    <value>空白区域</value>
+  </data>
+  <data name="GeneratedPuzzleConstraintPage_EmptyHousesCountConstraint" xml:space="preserve">
+    <value>空白区域约束</value>
+  </data>
+  <data name="GeneratedPuzzleConstraintPage_EmptyHouseTypeIs" xml:space="preserve">
+    <value>空白区域类型为</value>
+  </data>
+  <data name="GeneratedPuzzleConstraintPage_EmptyHousesCountIs" xml:space="preserve">
+    <value>，数量为</value>
+  </data>
 </root>

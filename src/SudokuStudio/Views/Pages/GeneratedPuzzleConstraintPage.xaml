@@ -89,6 +89,11 @@
 								<con:MissingDigitConstraint Digit="4" />
 							</MenuFlyoutItem.Tag>
 						</MenuFlyoutItem>
+						<MenuFlyoutItem Text="{m:R Key=GeneratedPuzzleConstraintPage_EmptyHousesCountConstraint}" Click="MenuFlyoutItem_Click">
+							<MenuFlyoutItem.Tag>
+								<con:EmptyHousesCountConstraint HouseType="Block" Count="1" />
+							</MenuFlyoutItem.Tag>
+						</MenuFlyoutItem>
 						<MenuFlyoutSeparator />
 						<MenuFlyoutItem Text="{m:R Key=GeneratedPuzzleConstraintPage_PearlConstraint}" Click="MenuFlyoutItem_Click">
 							<MenuFlyoutItem.Tag>

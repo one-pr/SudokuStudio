@@ -2930,4 +2930,16 @@ Correct rate: {3:P} ({4}/{5})</value>
   <data name="GeneratedPuzzleConstraintPage_MissingDigit" xml:space="preserve">
     <value>Missing digit in givens</value>
   </data>
+  <data name="GeneratedPuzzleConstraintPage_EmptyHousesCount" xml:space="preserve">
+    <value>Empty houses</value>
+  </data>
+  <data name="GeneratedPuzzleConstraintPage_EmptyHousesCountConstraint" xml:space="preserve">
+    <value>Empty houses constraint</value>
+  </data>
+  <data name="GeneratedPuzzleConstraintPage_EmptyHouseTypeIs" xml:space="preserve">
+    <value>Empty house type is</value>
+  </data>
+  <data name="GeneratedPuzzleConstraintPage_EmptyHousesCountIs" xml:space="preserve">
+    <value>, count equals to</value>
+  </data>
 </root>

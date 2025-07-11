@@ -3318,4 +3318,10 @@ Is pattern rank-0: {6}</value>
   <data name="ConstraintDescription_MissingDigitConstraint" xml:space="preserve">
     <value>Catch a puzzle missing specified digit</value>
   </data>
+  <data name="EmptyHousesCountConstraint" xml:space="preserve">
+    <value>Empty houses: a puzzle contains {0} empty {1}{2}</value>
+  </data>
+  <data name="ConstraintDescription_EmptyHousesCountConstraint" xml:space="preserve">
+    <value>Catch a puzzle having specified number of empty houses</value>
+  </data>
 </root>

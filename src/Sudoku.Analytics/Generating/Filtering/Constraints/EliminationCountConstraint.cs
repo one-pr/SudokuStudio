@@ -42,7 +42,7 @@ public sealed partial class EliminationCountConstraint : Constraint, IComparison
 			SR.Get("EliminationCountConstraint", culture),
 			Operator.OperatorString,
 			LimitCount,
-			LimitCount != 1 ? string.Empty : SR.Get("NounPluralSuffix", culture),
+			LimitCount == 1 ? string.Empty : SR.Get("NounPluralSuffix", culture),
 			Technique.GetName(culture)
 		);
 	}

@@ -2800,6 +2800,42 @@ namespace SudokuStudio.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Empty houses.
+        /// </summary>
+        internal static string GeneratedPuzzleConstraintPage_EmptyHousesCount {
+            get {
+                return ResourceManager.GetString("GeneratedPuzzleConstraintPage_EmptyHousesCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empty houses constraint.
+        /// </summary>
+        internal static string GeneratedPuzzleConstraintPage_EmptyHousesCountConstraint {
+            get {
+                return ResourceManager.GetString("GeneratedPuzzleConstraintPage_EmptyHousesCountConstraint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to , count equals to.
+        /// </summary>
+        internal static string GeneratedPuzzleConstraintPage_EmptyHousesCountIs {
+            get {
+                return ResourceManager.GetString("GeneratedPuzzleConstraintPage_EmptyHousesCountIs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empty house type is.
+        /// </summary>
+        internal static string GeneratedPuzzleConstraintPage_EmptyHouseTypeIs {
+            get {
+                return ResourceManager.GetString("GeneratedPuzzleConstraintPage_EmptyHouseTypeIs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Givens count is between.
         /// </summary>
         internal static string GeneratedPuzzleConstraintPage_GivensCount {

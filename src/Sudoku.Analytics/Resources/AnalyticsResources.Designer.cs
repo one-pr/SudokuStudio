@@ -1150,6 +1150,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Catch a puzzle having specified number of empty houses.
+        /// </summary>
+        public static string ConstraintDescription_EmptyHousesCountConstraint {
+            get {
+                return ResourceManager.GetString("ConstraintDescription_EmptyHousesCountConstraint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Catch a puzzle with ittoryu solving strategy.
         /// </summary>
         public static string ConstraintDescription_IttoryuConstraint {
@@ -1488,6 +1497,15 @@ namespace Sudoku.Resources {
         public static string EmptyCell {
             get {
                 return ResourceManager.GetString("EmptyCell", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empty houses: a puzzle contains {0} empty {1}{2}.
+        /// </summary>
+        public static string EmptyHousesCountConstraint {
+            get {
+                return ResourceManager.GetString("EmptyHousesCountConstraint", resourceCulture);
             }
         }
         
