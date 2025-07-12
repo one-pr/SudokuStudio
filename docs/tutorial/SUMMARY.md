@@ -129,6 +129,10 @@
   * [强三元组的例子](rank-theory/03-triplet/02-examples-using-truth-triplet.md)
   * [弱三元组的基本推理](rank-theory/03-triplet/03-reasoning-of-link-triplet.md)
   * [弱三元组的例子](rank-theory/03-triplet/04-examples-using-link-triplet.md)
+* [复杂鱼](rank-theory/04-complex-fish/README.md)
+  * [宫内鱼的基本推理](rank-theory/04-complex-fish/01-reasoning-of-franken-fish.md)
+  * [交叉鱼的基本推理](rank-theory/04-complex-fish/02-reasoning-of-mutant-fish.md)
+  * [对复杂鱼的补充说明](rank-theory/04-complex-fish/03-extra-descriptions-to-complex-fish.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
