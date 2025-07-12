@@ -7,7 +7,16 @@ namespace Sudoku.Generating;
 public ref partial struct EmptyHouseBasedGenerator() : IGenerator<Grid>
 {
 	/// <summary>
-	/// Indicates invalid combinations of houses to be empty. Such combinations will make puzzle have multiple solutions.
+	/// <para>
+	/// Indicates invalid combinations of houses to be cleared.
+	/// Such combinations will make puzzle have multiple solutions.
+	/// </para>
+	/// <para>
+	/// You can compare houses cleared with such values,
+	/// to know whether a combination of cleared houses are invalid.
+	/// For example, a valid puzzle (having a unique solution) cannot remove 27 givens
+	/// from block 1, 2, 3, block 4, 5, 6, and so on).
+	/// </para>
 	/// </summary>
 	private static readonly HouseMask[][] InvalidHouseCombinations = [
 		[0b000_000_000__000_000_000__000_000_111, 0b000_000_001__000_000_001__000_000_001],
@@ -136,10 +145,10 @@ public ref partial struct EmptyHouseBasedGenerator() : IGenerator<Grid>
 			new() { HouseType = HouseType.Column, HouseIndices = &columnIndices }
 		};
 
-		var trialTimes = -1;
+		var patternTrialTimes = -1;
 		while (true)
 		{
-			if (++trialTimes >= 126)
+			if (++patternTrialTimes >= 126)
 			{
 				return false;
 			}
@@ -160,12 +169,12 @@ public ref partial struct EmptyHouseBasedGenerator() : IGenerator<Grid>
 				var l = localPairs + i;
 				if (bitsMap[l->HouseType] == 0)
 				{
+					// Skip for the unset house types.
 					continue;
 				}
 
 				_rng.Shuffle(*l->HouseIndices);
-				var previousHousesMask = 0;
-				var j = 0;
+				var (previousHousesMask, j) = (0, 0);
 				foreach (var house in *l->HouseIndices)
 				{
 					// Check whether the house selected will directly cause multiple solutions.
