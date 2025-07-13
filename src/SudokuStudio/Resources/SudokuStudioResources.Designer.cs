@@ -268,6 +268,24 @@ namespace SudokuStudio.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to appears before.
+        /// </summary>
+        internal static string _PrecedenceOperator_Predecessor {
+            get {
+                return ResourceManager.GetString("_PrecedenceOperator_Predecessor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to appears after.
+        /// </summary>
+        internal static string _PrecedenceOperator_Successor {
+            get {
+                return ResourceManager.GetString("_PrecedenceOperator_Successor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sudoku Studio.
         /// </summary>
         internal static string _ProgramName {
@@ -3165,6 +3183,24 @@ namespace SudokuStudio.Resources {
         internal static string GeneratedPuzzleConstraintPage_TechniqueCountConstraint {
             get {
                 return ResourceManager.GetString("GeneratedPuzzleConstraintPage_TechniqueCountConstraint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technique precedence.
+        /// </summary>
+        internal static string GeneratedPuzzleConstraintPage_TechniquePrecedence {
+            get {
+                return ResourceManager.GetString("GeneratedPuzzleConstraintPage_TechniquePrecedence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technique precedence constraint.
+        /// </summary>
+        internal static string GeneratedPuzzleConstraintPage_TechniquePrecedenceConstraint {
+            get {
+                return ResourceManager.GetString("GeneratedPuzzleConstraintPage_TechniquePrecedenceConstraint", resourceCulture);
             }
         }
         

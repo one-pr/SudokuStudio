@@ -969,6 +969,83 @@ public partial class GeneratedPuzzleConstraintPage
 		};
 	}
 
+	private partial SettingsCard? Create_TechniquePrecedence(TechniquePrecedenceConstraint constraint)
+	{
+		if (constraint is not
+			{
+				TargetTechnique: var technique,
+				ComparedTechnique: var comparedTechnique,
+				Operator: var @operator
+			})
+		{
+			return null;
+		}
+
+		//
+		// technique selector
+		//
+		var techniqueSelector = new TechniqueSelector { VerticalAlignment = VerticalAlignment.Center };
+		techniqueSelector.SelectedIndex = techniqueSelector.ItemsSource.FindIndex(element => element.Technique == technique);
+		techniqueSelector.SelectionChanged += (_, _) =>
+		{
+			var selectedIndex = techniqueSelector.SelectedIndex;
+			var technique = techniqueSelector.ItemsSource[selectedIndex].Technique;
+			constraint.TargetTechnique = technique;
+		};
+
+		//
+		// operator selector
+		//
+		var operatorSelector = new Segmented
+		{
+			Style = (Style)Application.Current.Resources["ButtonSegmentedStyle"]!,
+			Items =
+			{
+				new SegmentedItem
+				{
+					Content = SR.Get("_PrecedenceOperator_Predecessor", App.CurrentCulture),
+					Tag = PrecedenceOperator.Predecessor
+				},
+				new SegmentedItem
+				{
+					Content = SR.Get("_PrecedenceOperator_Successor", App.CurrentCulture),
+					Tag = PrecedenceOperator.Successor
+				}
+			}
+		};
+		EnumBinder<Segmented, SegmentedItem, PrecedenceOperator>(
+			operatorSelector,
+			constraint.Operator,
+			value => constraint.Operator = value
+		);
+
+		//
+		// compared technique selector
+		//
+		var comparedTechniqueSelector = new TechniqueSelector { VerticalAlignment = VerticalAlignment.Center };
+		comparedTechniqueSelector.SelectedIndex = comparedTechniqueSelector.ItemsSource.FindIndex(element => element.Technique == comparedTechnique);
+		comparedTechniqueSelector.SelectionChanged += (_, _) =>
+		{
+			var selectedIndex = comparedTechniqueSelector.SelectedIndex;
+			var technique = comparedTechniqueSelector.ItemsSource[selectedIndex].Technique;
+			constraint.ComparedTechnique = technique;
+		};
+
+		return new()
+		{
+			Header = SR.Get("GeneratedPuzzleConstraintPage_TechniquePrecedence", App.CurrentCulture),
+			Description = constraint.Description,
+			Margin = DefaultMargin,
+			Content = new StackPanel
+			{
+				Orientation = Orientation.Horizontal,
+				Spacing = DefaultSpacing,
+				Children = { techniqueSelector, operatorSelector, comparedTechniqueSelector }
+			},
+			Tag = constraint
+		};
+	}
+
 
 	/// <summary>
 	/// The core method that binds a field of type <typeparamref name="TEnum"/> to a <typeparamref name="TControl"/> instance.

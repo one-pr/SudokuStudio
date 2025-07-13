@@ -5795,6 +5795,16 @@
               Looks up a localized string similar to s.
             </summary>
         </member>
+        <member name="P:SudokuStudio.Resources.SudokuStudioResources._PrecedenceOperator_Predecessor">
+            <summary>
+              Looks up a localized string similar to appears before.
+            </summary>
+        </member>
+        <member name="P:SudokuStudio.Resources.SudokuStudioResources._PrecedenceOperator_Successor">
+            <summary>
+              Looks up a localized string similar to appears after.
+            </summary>
+        </member>
         <member name="P:SudokuStudio.Resources.SudokuStudioResources._ProgramName">
             <summary>
               Looks up a localized string similar to Sudoku Studio.
@@ -7406,6 +7416,16 @@
         <member name="P:SudokuStudio.Resources.SudokuStudioResources.GeneratedPuzzleConstraintPage_TechniqueCountConstraint">
             <summary>
               Looks up a localized string similar to Technique appearing times constraint.
+            </summary>
+        </member>
+        <member name="P:SudokuStudio.Resources.SudokuStudioResources.GeneratedPuzzleConstraintPage_TechniquePrecedence">
+            <summary>
+              Looks up a localized string similar to Technique precedence.
+            </summary>
+        </member>
+        <member name="P:SudokuStudio.Resources.SudokuStudioResources.GeneratedPuzzleConstraintPage_TechniquePrecedenceConstraint">
+            <summary>
+              Looks up a localized string similar to Technique precedence constraint.
             </summary>
         </member>
         <member name="P:SudokuStudio.Resources.SudokuStudioResources.GeneratedPuzzleConstraintPage_TechniqueSet">

@@ -58,6 +58,11 @@
 								<con:TechniqueCountConstraint Technique="NakedSingle" LimitCount="1" Operator="GreaterThanOrEqual" />
 							</MenuFlyoutItem.Tag>
 						</MenuFlyoutItem>
+						<MenuFlyoutItem Text="{m:R Key=GeneratedPuzzleConstraintPage_TechniquePrecedenceConstraint}" Click="MenuFlyoutItem_Click">
+							<MenuFlyoutItem.Tag>
+								<con:TechniquePrecedenceConstraint TargetTechnique="NakedPair" ComparedTechnique="Pointing" Operator="Predecessor" />
+							</MenuFlyoutItem.Tag>
+						</MenuFlyoutItem>
 						<MenuFlyoutItem Text="{m:R Key=GeneratedPuzzleConstraintPage_EliminationCountConstraint}" Click="MenuFlyoutItem_Click">
 							<MenuFlyoutItem.Tag>
 								<con:EliminationCountConstraint Technique="LockedPair" LimitCount="5" Operator="GreaterThanOrEqual" />

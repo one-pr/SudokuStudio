@@ -2933,4 +2933,16 @@
   <data name="GeneratedPuzzleConstraintPage_EmptyHousesCountIs" xml:space="preserve">
     <value>，数量为</value>
   </data>
+  <data name="_PrecedenceOperator_Predecessor" xml:space="preserve">
+    <value>先出现于</value>
+  </data>
+  <data name="_PrecedenceOperator_Successor" xml:space="preserve">
+    <value>后出现于</value>
+  </data>
+  <data name="GeneratedPuzzleConstraintPage_TechniquePrecedence" xml:space="preserve">
+    <value>技巧先后次序</value>
+  </data>
+  <data name="GeneratedPuzzleConstraintPage_TechniquePrecedenceConstraint" xml:space="preserve">
+    <value>技巧先后次序约束</value>
+  </data>
 </root>

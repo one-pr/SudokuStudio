@@ -2942,4 +2942,16 @@ Correct rate: {3:P} ({4}/{5})</value>
   <data name="GeneratedPuzzleConstraintPage_EmptyHousesCountIs" xml:space="preserve">
     <value>, count equals to</value>
   </data>
+  <data name="_PrecedenceOperator_Predecessor" xml:space="preserve">
+    <value>appears before</value>
+  </data>
+  <data name="_PrecedenceOperator_Successor" xml:space="preserve">
+    <value>appears after</value>
+  </data>
+  <data name="GeneratedPuzzleConstraintPage_TechniquePrecedence" xml:space="preserve">
+    <value>Technique precedence</value>
+  </data>
+  <data name="GeneratedPuzzleConstraintPage_TechniquePrecedenceConstraint" xml:space="preserve">
+    <value>Technique precedence constraint</value>
+  </data>
 </root>

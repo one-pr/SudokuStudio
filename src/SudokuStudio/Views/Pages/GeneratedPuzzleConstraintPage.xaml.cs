@@ -27,6 +27,7 @@ public sealed partial class GeneratedPuzzleConstraintPage : Page
 		{ typeof(SymmetryConstraint), static (@this, s) => @this.Create_Symmetry((SymmetryConstraint)s) },
 		{ typeof(TechniqueConstraint), static (@this, s) => @this.Create_Technique((TechniqueConstraint)s) },
 		{ typeof(TechniqueCountConstraint), static (@this, s) => @this.Create_TechniqueCount((TechniqueCountConstraint)s) },
+		{ typeof(TechniquePrecedenceConstraint), static (@this, s) => @this.Create_TechniquePrecedence((TechniquePrecedenceConstraint)s) },
 		{ typeof(TechniqueSetConstraint), static (@this, s) => @this.Create_TechniqueSet((TechniqueSetConstraint)s) }
 	};
 
@@ -148,10 +149,11 @@ public sealed partial class GeneratedPuzzleConstraintPage : Page
 	private partial SettingsCard? Create_MissingDigit(MissingDigitConstraint constraint);
 	private partial SettingsCard? Create_PearlOrDiamond<TConstraint>(TConstraint constraint) where TConstraint : PearlOrDiamondConstraint;
 	private partial SettingsCard? Create_PrimarySingle(PrimarySingleConstraint constraint);
+	private partial SettingsCard? Create_Symmetry(SymmetryConstraint constraint);
 	private partial SettingsExpander? Create_Technique(TechniqueConstraint constraint);
 	private partial SettingsExpander? Create_TechniqueCount(TechniqueCountConstraint constraint);
 	private partial SettingsExpander? Create_TechniqueSet(TechniqueSetConstraint constraint);
-	private partial SettingsCard? Create_Symmetry(SymmetryConstraint constraint);
+	private partial SettingsCard? Create_TechniquePrecedence(TechniquePrecedenceConstraint constraint);
 
 
 	private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
