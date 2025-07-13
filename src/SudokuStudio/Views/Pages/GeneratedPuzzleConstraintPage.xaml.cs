@@ -10,7 +10,7 @@ public sealed partial class GeneratedPuzzleConstraintPage : Page
 	/// </summary>
 	private static readonly ControlCreatorFactory ControlCreatorFactory = new()
 	{
-		{ typeof(BottleneckTechniqueConstraint), static (@this, s) => @this.Create_BottleneckTechnique((BottleneckTechniqueConstraint) s) },
+		{ typeof(BottleneckTechniqueConstraint), static (@this, s) => @this.Create_BottleneckTechnique((BottleneckTechniqueConstraint)s) },
 		{ typeof(ConclusionConstraint), static (@this, s) => @this.Create_Conclusion((ConclusionConstraint)s) },
 		{ typeof(CountBetweenConstraint), static (@this, s) => @this.Create_CountBetween((CountBetweenConstraint)s) },
 		{ typeof(DiamondConstraint), static (@this, s) => @this.Create_PearlOrDiamond((DiamondConstraint)s) },
