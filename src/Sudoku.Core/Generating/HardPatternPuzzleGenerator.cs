@@ -26,7 +26,6 @@ public sealed class HardPatternPuzzleGenerator : IGenerator<Grid>
 	/// <summary>
 	/// Indicates the backing random.
 	/// </summary>
-	[field: MaybeNull]
 	private static Random Rng => field ??= Random.Shared;
 
 
@@ -41,8 +40,8 @@ public sealed class HardPatternPuzzleGenerator : IGenerator<Grid>
 		ref readonly var charRef = ref Grid.EmptyString.Span[0];
 		while (true)
 		{
-			Unsafe.CopyBlock(ref @ref.ByteRef(ref puzzleString[0]), in @ref.ReadOnlyByteRef(in charRef), sizeof(char) * 81);
-			Unsafe.CopyBlock(ref @ref.ByteRef(ref solutionString[0]), in @ref.ReadOnlyByteRef(in charRef), sizeof(char) * 81);
+			Unsafe.CopyBlock(ref Unsafe.ByteRef(ref puzzleString[0]), in Unsafe.ReadOnlyByteRef(in charRef), sizeof(char) * 81);
+			Unsafe.CopyBlock(ref Unsafe.ByteRef(ref solutionString[0]), in Unsafe.ReadOnlyByteRef(in charRef), sizeof(char) * 81);
 
 			GenerateAnswerGrid(puzzleString, solutionString);
 
@@ -156,7 +155,7 @@ public sealed class HardPatternPuzzleGenerator : IGenerator<Grid>
 			var (initial, boundary, delta) = target[index];
 			for (var i = initial; i >= boundary; i--)
 			{
-				@ref.Swap(ref pattern[i], ref pattern[boundary + (Cell)((index == 3 ? delta : (i + delta)) * Rng.NextDouble())]);
+				Unsafe.Swap(ref pattern[i], ref pattern[boundary + (Cell)((index == 3 ? delta : (i + delta)) * Rng.NextDouble())]);
 			}
 		}
 	}

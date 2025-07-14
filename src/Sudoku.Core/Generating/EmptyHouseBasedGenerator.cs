@@ -292,7 +292,7 @@ public ref partial struct EmptyHouseBasedGenerator() : IGenerator<Grid>
 				index2 = _rng.NextCell();
 			}
 
-			@ref.Swap(ref _generateIndices[index1], ref _generateIndices[index2]);
+			Unsafe.Swap(ref _generateIndices[index1], ref _generateIndices[index2]);
 		}
 
 		// First set a new empty Sudoku.

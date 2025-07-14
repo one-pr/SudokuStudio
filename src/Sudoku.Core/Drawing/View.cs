@@ -26,7 +26,6 @@ public sealed partial class View :
 	/// </summary>
 	/// <seealso cref="IEqualityComparer{T}"/>
 	/// <seealso cref="ViewNode"/>
-	[field: MaybeNull]
 	public static IEqualityComparer<View> SetComparer => field ??= CreateSetComparer();
 
 

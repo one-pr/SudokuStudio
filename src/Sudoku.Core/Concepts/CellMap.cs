@@ -28,22 +28,16 @@ public partial struct CellMap : CellMapBase
 	private const int Shifting = 41;
 
 
-	/// <inheritdoc cref="CellMapBase.Empty"/>
-	public static readonly CellMap Empty = [];
-
-	/// <inheritdoc cref="CellMapBase.Full"/>
-	public static readonly CellMap Full = ~default(CellMap);
-
 	/// <summary>
 	/// Indicates the constant that will be used on bitwise not operation.
 	/// </summary>
-	private static readonly Vector128<ulong> BitwiseNotConstant = CV(0xFF_FFFF_FFFFUL, 0x1FF_FFFF_FFFFUL);
+	public static readonly Vector128<ulong> BitwiseNotConstant = CV(0xFF_FFFF_FFFFUL, 0x1FF_FFFF_FFFFUL);
 
 	/// <summary>
 	/// Indicates the <see cref="Vector128{T}"/> instances to be used for checking shared houses.
 	/// </summary>
 	/// <seealso cref="Vector128{T}"/>
-	private static readonly ReadOnlyMemory<Vector128<ulong>> SharedHouseConstants = (Vector128<ulong>[])[
+	public static readonly ReadOnlyMemory<Vector128<ulong>> SharedHouseConstants = (Vector128<ulong>[])[
 		CV(~0b_000000000_000000000_000000000_000000000_0000UL, ~0b_00000_000000000_000000111_000000111_000000111UL),
 		CV(~0b_000000000_000000000_000000000_000000000_0000UL, ~0b_00000_000000000_000111000_000111000_000111000UL),
 		CV(~0b_000000000_000000000_000000000_000000000_0000UL, ~0b_00000_000000000_111000000_111000000_111000000UL),
@@ -72,6 +66,12 @@ public partial struct CellMap : CellMapBase
 		CV(~0b_010000000_010000000_010000000_010000000_0100UL, ~0b_00000_010000000_010000000_010000000_010000000UL),
 		CV(~0b_100000000_100000000_100000000_100000000_1000UL, ~0b_00000_100000000_100000000_100000000_100000000UL)
 	];
+
+	/// <inheritdoc cref="CellMapBase.Empty"/>
+	public static readonly CellMap Empty = [];
+
+	/// <inheritdoc cref="CellMapBase.Full"/>
+	public static readonly CellMap Full = ~default(CellMap);
 
 	/// <summary>
 	/// Indicates the factor values for property <see cref="SharedHouses"/>.
@@ -497,7 +497,7 @@ public partial struct CellMap : CellMapBase
 	/// <inheritdoc/>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly void CopyTo(ref Cell sequence, Cell length)
-		=> Offsets.AsReadOnlySpan().TryCopyTo(@ref.AsSpan(ref sequence, length));
+		=> Offsets.AsReadOnlySpan().TryCopyTo(Span<int>.Create(ref sequence, length));
 
 	/// <inheritdoc/>
 	public readonly void ForEach(Action<Cell> action)

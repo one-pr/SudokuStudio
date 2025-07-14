@@ -178,7 +178,7 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 			var result = stackalloc char[BufferLength];
 			if (InternalSolve(puzzle, result, 2) == 1)
 			{
-				solutionIfUnique = @ref.AsSpan(ref *result, BufferLength).ToString();
+				solutionIfUnique = Span<char>.Create(ref *result, BufferLength).ToString();
 				return true;
 			}
 

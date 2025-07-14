@@ -202,8 +202,8 @@ public sealed partial class SusserGridFormatInfo<TGrid> : GridFormatInfo<TGrid> 
 					{
 						// Can't find any simplifications.
 						Unsafe.CopyBlock(
-							ref @ref.ByteRef(ref resultSpan[characterIndexStart]),
-							in @ref.ReadOnlyByteRef(in sliced.Span[0]),
+							ref Unsafe.ByteRef(ref resultSpan[characterIndexStart]),
+							in Unsafe.ReadOnlyByteRef(in sliced.Span[0]),
 							sizeof(char) * 9
 						);
 						spanIndex += 9;

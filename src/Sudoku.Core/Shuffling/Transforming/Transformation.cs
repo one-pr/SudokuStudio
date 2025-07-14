@@ -76,7 +76,7 @@ public static class Transformation
 		{
 			for (var j = 0; j < 9; j++)
 			{
-				@ref.Swap(ref @this[i * 9 + j], ref @this[i * 9 + (8 - j)]);
+				Unsafe.Swap(ref @this[i * 9 + j], ref @this[i * 9 + (8 - j)]);
 			}
 		}
 		return ref @this;
@@ -98,7 +98,7 @@ public static class Transformation
 		{
 			for (var j = 0; j < 9; j++)
 			{
-				@ref.Swap(ref @this[i * 9 + j], ref @this[(8 - i) * 9 + j]);
+				Unsafe.Swap(ref @this[i * 9 + j], ref @this[(8 - i) * 9 + j]);
 			}
 		}
 		return ref @this;
@@ -120,7 +120,7 @@ public static class Transformation
 		{
 			for (var j = 0; j < 9; j++)
 			{
-				@ref.Swap(ref @this[i * 9 + j], ref @this[j * 9 + i]);
+				Unsafe.Swap(ref @this[i * 9 + j], ref @this[j * 9 + i]);
 			}
 		}
 		return ref @this;
@@ -156,7 +156,7 @@ public static class Transformation
 		{
 			for (var j = 0; j < 9; j++)
 			{
-				@ref.Swap(ref @this[i * 9 + j], ref @this[(8 - j) * 9 + (8 - i)]);
+				Unsafe.Swap(ref @this[i * 9 + j], ref @this[(8 - j) * 9 + (8 - i)]);
 			}
 		}
 		return ref @this;
@@ -282,7 +282,7 @@ public static class Transformation
 
 		for (var i = 0; i < 9; i++)
 		{
-			@ref.Swap(ref @this[HousesCells[houseIndex1][i]], ref @this[HousesCells[houseIndex2][i]]);
+			Unsafe.Swap(ref @this[HousesCells[houseIndex1][i]], ref @this[HousesCells[houseIndex2][i]]);
 		}
 		return ref @this;
 
@@ -315,7 +315,7 @@ public static class Transformation
 		ref readonly var chuteCells2 = ref Chutes[chuteIndex2].Cells;
 		for (var i = 0; i < 27; i++)
 		{
-			@ref.Swap(ref @this[chuteCells1[i]], ref @this[chuteCells2[i]]);
+			Unsafe.Swap(ref @this[chuteCells1[i]], ref @this[chuteCells2[i]]);
 		}
 		return ref @this;
 	}

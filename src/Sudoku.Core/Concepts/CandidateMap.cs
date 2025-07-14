@@ -277,7 +277,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	/// <inheritdoc/>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly void CopyTo(ref Candidate sequence, Candidate length)
-		=> Offsets.AsReadOnlySpan().TryCopyTo(@ref.AsSpan(ref sequence, length));
+		=> Offsets.AsReadOnlySpan().TryCopyTo(Span<int>.Create(ref sequence, length));
 
 	/// <summary>
 	/// Determine whether the map contains the specified offset.

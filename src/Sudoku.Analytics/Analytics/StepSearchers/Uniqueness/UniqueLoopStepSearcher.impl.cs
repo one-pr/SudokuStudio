@@ -472,7 +472,7 @@ public partial class UniqueLoopStepSearcher
 					for (
 						var (i, thisDigit, nextDigit) = (0, digit, theOtherDigit);
 						i < pathLength - 1;
-						i++, @ref.Swap(ref thisDigit, ref nextDigit)
+						i++, Unsafe.Swap(ref thisDigit, ref nextDigit)
 					)
 					{
 						var (thisCell, nextCell) = (loopCells[i], loopCells[i + 1]);

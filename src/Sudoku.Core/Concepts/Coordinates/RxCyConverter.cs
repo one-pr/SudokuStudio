@@ -210,8 +210,8 @@ public sealed record RxCyConverter(
 			{
 				var conclusions = new Conclusion[c.Length];
 				Unsafe.CopyBlock(
-					ref @ref.ByteRef(ref conclusions[0]),
-					in @ref.ReadOnlyByteRef(in c[0]),
+					ref Unsafe.ByteRef(ref conclusions[0]),
+					in Unsafe.ReadOnlyByteRef(in c[0]),
 					(uint)(sizeof(Conclusion) * c.Length)
 				);
 

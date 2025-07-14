@@ -231,7 +231,6 @@ public abstract partial class Chain :
 	ComponentType IComponent.Type => ComponentType.Chain;
 
 	/// <inheritdoc cref="Links"/>
-	[field: MaybeNull]
 	private Link[] LinksCore
 	{
 		get
