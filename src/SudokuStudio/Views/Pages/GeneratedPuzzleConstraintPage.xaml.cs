@@ -176,4 +176,18 @@ public sealed partial class GeneratedPuzzleConstraintPage : Page
 			}
 		}
 	}
+
+	private void MenuFlyoutItem_PointerEntered(object sender, PointerRoutedEventArgs e)
+	{
+		if (sender is not MenuFlyoutItem { Tag: Constraint constraint })
+		{
+			return;
+		}
+
+		var resourceKey = $"ConstraintDescription_{constraint.GetType().Name}";
+		DescriptionDisplayer.Text = SR.Get(resourceKey, App.CurrentCulture);
+	}
+
+	private void MenuFlyoutItem_PointerExited(object sender, PointerRoutedEventArgs e)
+		=> DescriptionDisplayer.Text = string.Empty;
 }

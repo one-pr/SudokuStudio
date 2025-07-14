@@ -15540,12 +15540,18 @@
 				</summary>
 			</target>
         </member>
-        <member name="M:SudokuStudio.Views.Pages.Extensions.GetTechniqueString(Sudoku.Categorization.TechniqueSet)">
+        <member name="T:SudokuStudio.Views.Pages.Extensions.<>E__0">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Categorization.TechniqueSet"/>.
+            </summary>
+        </member>
+        <member name="P:SudokuStudio.Views.Pages.Extensions.<>E__0.TechniqueString">
             <summary>
             Try to fetch the string representation of the techniques chosen in UI.
             </summary>
-            <param name="this">The techniques chosen.</param>
-            <returns>The string representation.</returns>
+        </member>
+        <member name="M:SudokuStudio.Views.Pages.Extensions.get_TechniqueString(Sudoku.Categorization.TechniqueSet)">
+            <inheritdoc cref="P:SudokuStudio.Views.Pages.Extensions.<>E__0.TechniqueString"/>
         </member>
         <member name="T:SudokuStudio.Views.Pages.LibraryPage">
             <summary>

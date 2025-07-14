@@ -28,7 +28,7 @@ public partial class GeneratedPuzzleConstraintPage
 			MaxWidth = 400,
 			TextWrapping = TextWrapping.WrapWholeWords,
 			VerticalAlignment = VerticalAlignment.Center,
-			Text = techniques.GetTechniqueString()
+			Text = techniques.TechniqueString
 		};
 
 		//
@@ -40,7 +40,7 @@ public partial class GeneratedPuzzleConstraintPage
 			SelectedTechniques = techniques,
 			Margin = new(-56, 0, 0, 0)
 		};
-		techniqueControl.SelectedTechniquesChanged += (_, e) => displayerControl.Text = (constraint.Techniques = e.TechniqueSet).GetTechniqueString();
+		techniqueControl.SelectedTechniquesChanged += (_, e) => displayerControl.Text = (constraint.Techniques = e.TechniqueSet).TechniqueString;
 
 		// Fixes #558: 'SettingsExpander' always requires 'SettingsCard' as the children control
 		// for 'SettingsExpander.Items' property. See https://github.com/kyoyama-kazusa/Sudoku/issues/558
@@ -633,7 +633,7 @@ public partial class GeneratedPuzzleConstraintPage
 			MaxWidth = 400,
 			TextWrapping = TextWrapping.WrapWholeWords,
 			VerticalAlignment = VerticalAlignment.Center,
-			Text = techniques.GetTechniqueString()
+			Text = techniques.TechniqueString
 		};
 
 		//
@@ -645,7 +645,7 @@ public partial class GeneratedPuzzleConstraintPage
 			SelectedTechniques = techniques,
 			Margin = new(-56, 0, 0, 0)
 		};
-		techniqueControl.SelectedTechniquesChanged += (_, e) => displayerControl.Text = (constraint.Techniques = e.TechniqueSet).GetTechniqueString();
+		techniqueControl.SelectedTechniquesChanged += (_, e) => displayerControl.Text = (constraint.Techniques = e.TechniqueSet).TechniqueString;
 
 		return new()
 		{
@@ -738,7 +738,7 @@ public partial class GeneratedPuzzleConstraintPage
 			MaxWidth = 400,
 			TextWrapping = TextWrapping.WrapWholeWords,
 			VerticalAlignment = VerticalAlignment.Center,
-			Text = techniques.GetTechniqueString()
+			Text = techniques.TechniqueString
 		};
 
 		//
@@ -750,7 +750,7 @@ public partial class GeneratedPuzzleConstraintPage
 			SelectedTechniques = techniques,
 			Margin = new(-56, 0, 0, 0)
 		};
-		techniqueControl.SelectedTechniquesChanged += (_, e) => displayerControl.Text = (constraint.Techniques = e.TechniqueSet).GetTechniqueString();
+		techniqueControl.SelectedTechniquesChanged += (_, e) => displayerControl.Text = (constraint.Techniques = e.TechniqueSet).TechniqueString;
 
 		return new()
 		{
@@ -1229,18 +1229,22 @@ public partial class GeneratedPuzzleConstraintPage
 file static class Extensions
 {
 	/// <summary>
-	/// Try to fetch the string representation of the techniques chosen in UI.
+	/// Provides extension members on <see cref="TechniqueSet"/>.
 	/// </summary>
-	/// <param name="this">The techniques chosen.</param>
-	/// <returns>The string representation.</returns>
-	public static string GetTechniqueString(this TechniqueSet @this)
-		=> @this switch
-		{
-			[] => SR.Get("GeneratedPuzzleConstraintPage_NoTechniquesSelected", App.CurrentCulture),
-			[var technique] => technique.GetName(App.CurrentCulture),
-			_ => string.Join(
-				SR.Get("_Token_Comma", App.CurrentCulture),
-				from technique in @this select technique.GetName(App.CurrentCulture)
-			)
-		};
+	extension(TechniqueSet @this)
+	{
+		/// <summary>
+		/// Try to fetch the string representation of the techniques chosen in UI.
+		/// </summary>
+		public string TechniqueString
+			=> @this switch
+			{
+				[] => SR.Get("GeneratedPuzzleConstraintPage_NoTechniquesSelected", App.CurrentCulture),
+				[var technique] => technique.GetName(App.CurrentCulture),
+				_ => string.Join(
+					SR.Get("_Token_Comma", App.CurrentCulture),
+					from technique in @this select technique.GetName(App.CurrentCulture)
+				)
+			};
+	}
 }
