@@ -91,7 +91,10 @@ public abstract partial class Step(ReadOnlyMemory<Conclusion> conclusions, View[
 	/// </summary>
 	[HashCodeMember]
 	[EquatableMember]
-	[Keyword(NameResourceKey = "Step_Code_Name", AllowedVerbs = KeywordVerbs.StringEqualityComparison | KeywordVerbs.StringPattern)]
+	[Keyword(
+		NameResourceKey = "Step_Code_Name",
+		MetaType = KeywordType.String,
+		AllowedVerbs = KeywordVerbs.StringEqualityComparison | KeywordVerbs.StringPattern)]
 	public abstract Technique Code { get; }
 
 	/// <summary>

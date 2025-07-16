@@ -39,5 +39,10 @@ public sealed class KeywordAttribute : Attribute
 	/// <summary>
 	/// Indicates the allowed verbs in runtime.
 	/// </summary>
-	public required KeywordVerbs AllowedVerbs { get; init; }
+	public KeywordVerbs AllowedVerbs { get; init; }
+
+	/// <summary>
+	/// Indicates the meta type configured.
+	/// </summary>
+	public KeywordType MetaType { get; init; }
 }

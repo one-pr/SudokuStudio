@@ -46,8 +46,11 @@ public static class Keyword
 	/// <exception cref="InvalidKeywordException">Throws when the target property specified is not a valid keyword.</exception>
 	public static KeywordVerbs GetKeywordVerbs(string keyword, Type keywordType)
 		=> GetKeywordAttribute(keyword, keywordType) is { AllowedVerbs: var verbs }
-			? verbs
-			: throw new InvalidKeywordException();
+		&& (
+			GetKeywordType(keyword, keywordType) is var metaType and not KeywordType.Unknown
+				? metaType.AllowedVerbs
+				: KeywordVerbs.Values[1..].Aggregate(static (interim, next) => interim | next)
+		) is var allowedVerbs ? allowedVerbs & verbs : throw new InvalidKeywordException();
 
 	/// <summary>
 	/// Retrieves possible keywords that are marked <see cref="KeywordAttribute"/>.
@@ -68,6 +71,41 @@ public static class Keyword
 			);
 
 	/// <summary>
+	/// <para>Try to get the meta type of the keyword.</para>
+	/// <para>
+	/// The value will be inferred from target property type of assembly;
+	/// if the target type is not valid keyword type (enumeration and so on),
+	/// the value will be fetched from property <see cref="KeywordAttribute.MetaType"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="keyword">The keyword.</param>
+	/// <param name="keywordType">The containing type.</param>
+	/// <returns>The keyword type.</returns>
+	/// <seealso cref="KeywordAttribute.MetaType"/>
+	public static KeywordType GetKeywordType(string keyword, Type keywordType)
+	{
+		if (!IsKeyword(keyword, keywordType, out var propertyInfo))
+		{
+			throw new InvalidKeywordException();
+		}
+
+		var type = propertyInfo.PropertyType;
+		if (type.IsAssignableTo(typeof(INumber<>).MakeGenericType(type)))
+		{
+			// Implements this interface: T implements INumber<T>
+			return KeywordType.Number;
+		}
+		if (type == typeof(string))
+		{
+			// String type.
+			return KeywordType.String;
+		}
+
+		// Fallback to read for keyword type configured in attribute.
+		return propertyInfo.GetCustomAttribute<KeywordAttribute>()!.MetaType;
+	}
+
+	/// <summary>
 	/// Gets <see cref="KeywordAttribute"/> configured.
 	/// </summary>
 	/// <param name="keyword">The keyword.</param>
@@ -82,12 +120,12 @@ public static class Keyword
 	/// Determine whether the specified property name is a keyword.
 	/// </summary>
 	/// <param name="propertyName">The property name.</param>
-	/// <param name="propertyType">The property type.</param>
+	/// <param name="containingType">The property containing type.</param>
 	/// <param name="propertyInfo">The property information instance.</param>
 	/// <returns>A <see cref="bool"/> result indicating that.</returns>
-	internal static bool IsKeyword(string propertyName, Type propertyType, [NotNullWhen(true)] out PropertyInfo? propertyInfo)
+	internal static bool IsKeyword(string propertyName, Type containingType, [NotNullWhen(true)] out PropertyInfo? propertyInfo)
 	{
-		if (propertyType.GetProperty(propertyName, PropertyBindingFlags) is not { } p)
+		if (containingType.GetProperty(propertyName, PropertyBindingFlags) is not { } p)
 		{
 			propertyInfo = null;
 			return false;
