@@ -45,12 +45,16 @@ public static class Keyword
 	/// <returns>All keyword verbs allowed.</returns>
 	/// <exception cref="InvalidKeywordException">Throws when the target property specified is not a valid keyword.</exception>
 	public static KeywordVerbs GetKeywordVerbs(string keyword, Type keywordType)
-		=> GetKeywordAttribute(keyword, keywordType) is { AllowedVerbs: var verbs }
-		&& (
-			GetKeywordType(keyword, keywordType) is var metaType and not KeywordType.Unknown
-				? metaType.AllowedVerbs
-				: KeywordVerbs.MergeFlags(KeywordVerbs.Values[1..])
-		) is var allowedVerbs ? allowedVerbs & verbs : throw new InvalidKeywordException();
+		=> GetKeywordAttribute(keyword, keywordType) switch
+		{
+			{ AllowedVerbs: var verbs, MetaType: var metaType } => (metaType, verbs) switch
+			{
+				(not KeywordType.Unknown, _) => metaType.AllowedVerbs,
+				(_, not KeywordVerbs.None) => verbs,
+				_ => KeywordVerbs.MergeFlags(KeywordVerbs.Values[1..])
+			},
+			_ => throw new InvalidKeywordException()
+		};
 
 	/// <summary>
 	/// Retrieves possible keywords that are marked <see cref="KeywordAttribute"/>.
