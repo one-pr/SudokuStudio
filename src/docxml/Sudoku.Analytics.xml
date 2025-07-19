@@ -8220,6 +8220,35 @@
             First found attribute in base classes, or <see langword="null"/> if not found.
             </returns>
         </member>
+        <member name="T:Sudoku.Analytics.Keywords.PropertyCollector">
+            <summary>
+            Collect all instance properties declared in a type and its base types,
+            including private ones, excluding static and interface properties.
+            Overrides are only counted once (even if re-<see langword="abstract"/>ed),
+            while <see langword="new"/> properties are counted separately.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Keywords.PropertyCollector.InstancePropertyFlags">
+            <summary>
+            Represents instance property flags.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Keywords.PropertyCollector.GetAllDeclaredProperties(System.Type)">
+            <summary>
+            Retrieves all instance properties declared in the given type and its base types.
+            This includes non-<see langword="public"/> properties. Overrides are only counted once.
+            Properties declared with <see langword="new"/> are treated as distinct.
+            </summary>
+            <param name="type">The leaf type to begin property collection from.</param>
+            <returns>A list of PropertyInfo instances that match the criteria.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Keywords.PropertyCollector.IsNewMethod(System.Reflection.MethodInfo)">
+            <summary>
+            Determines whether a method is using the <see langword="new"/> keyword (i.e., it hides a base method).
+            </summary>
+            <param name="method">The method to inspect.</param>
+            <returns>True if the method is <see langword="new"/>, false otherwise.</returns>
+        </member>
         <member name="T:Sudoku.Analytics.Keywords.KeywordAttribute">
             <summary>
             Represents an attribute type that describes the property is marked as special property to be filtered in reflection.
@@ -8348,21 +8377,21 @@
             Indicates the base type.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Keywords.KeywordValueConverter.TryConvert(System.Object,System.IFormatProvider,System.Object@)">
+        <member name="M:Sudoku.Analytics.Keywords.KeywordValueConverter.TryConvert(System.Object,Sudoku.Analytics.Step,System.Object@)">
             <summary>
             Try to convert a value to the target type.
             </summary>
             <param name="value">The value to convert from.</param>
-            <param name="formatProvider">The format provider to be used (like culture information).</param>
+            <param name="step">The step instance.</param>
             <param name="result">The result converted.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating whether the conversion success.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Keywords.KeywordValueConverter.TryConvertBack(System.Object,System.IFormatProvider,System.Object@)">
+        <member name="M:Sudoku.Analytics.Keywords.KeywordValueConverter.TryConvertBack(System.Object,Sudoku.Analytics.Step,System.Object@)">
             <summary>
             Try to convert a value back to base type.
             </summary>
             <param name="value">The value to convert from.</param>
-            <param name="formatProvider">The format provider to be used (like culture information).</param>
+            <param name="step">The step instance.</param>
             <param name="result">The result converted.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating whether the conversion success.</returns>
             <remarks>
@@ -8418,10 +8447,10 @@
         <member name="P:Sudoku.Analytics.Keywords.TechniqueKeywordValueConverter.BaseType">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Keywords.TechniqueKeywordValueConverter.TryConvert(System.Object,System.IFormatProvider,System.Object@)">
+        <member name="M:Sudoku.Analytics.Keywords.TechniqueKeywordValueConverter.TryConvert(System.Object,Sudoku.Analytics.Step,System.Object@)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Keywords.TechniqueKeywordValueConverter.TryConvertBack(System.Object,System.IFormatProvider,System.Object@)">
+        <member name="M:Sudoku.Analytics.Keywords.TechniqueKeywordValueConverter.TryConvertBack(System.Object,Sudoku.Analytics.Step,System.Object@)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.PatternSearcher`1">

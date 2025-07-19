@@ -70,7 +70,7 @@ public abstract partial class KeywordCondition :
 		if (Keyword.GetKeywordAttribute(keyword, instanceType)!.KeywordConverterType is { } converterType)
 		{
 			var converter = (KeywordValueConverter)Activator.CreateInstance(converterType)!;
-			return converter.TryConvert(rawValue, CultureInfo.CurrentUICulture, out var valueConverted)
+			return converter.TryConvert(rawValue, instance, out var valueConverted)
 				? valueConverted
 				: throw new InvalidKeywordException();
 		}

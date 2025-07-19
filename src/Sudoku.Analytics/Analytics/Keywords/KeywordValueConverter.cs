@@ -22,22 +22,22 @@ public abstract class KeywordValueConverter
 	/// Try to convert a value to the target type.
 	/// </summary>
 	/// <param name="value">The value to convert from.</param>
-	/// <param name="formatProvider">The format provider to be used (like culture information).</param>
+	/// <param name="step">The step instance.</param>
 	/// <param name="result">The result converted.</param>
 	/// <returns>A <see cref="bool"/> result indicating whether the conversion success.</returns>
-	public abstract bool TryConvert(object? value, IFormatProvider? formatProvider, [NotNullWhen(true)] out dynamic? result);
+	public abstract bool TryConvert(object? value, Step step, [NotNullWhen(true)] out dynamic? result);
 
 	/// <summary>
 	/// Try to convert a value back to base type.
 	/// </summary>
 	/// <param name="value">The value to convert from.</param>
-	/// <param name="formatProvider">The format provider to be used (like culture information).</param>
+	/// <param name="step">The step instance.</param>
 	/// <param name="result">The result converted.</param>
 	/// <returns>A <see cref="bool"/> result indicating whether the conversion success.</returns>
 	/// <remarks>
 	/// This method can keep not being implemented if the target value converter doesn't want to support this.
 	/// </remarks>
-	public virtual bool TryConvertBack(object? value, IFormatProvider? formatProvider, [NotNullWhen(true)] out dynamic? result)
+	public virtual bool TryConvertBack(object? value, Step step, [NotNullWhen(true)] out dynamic? result)
 	{
 		result = null;
 		return false;

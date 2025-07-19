@@ -62,7 +62,7 @@ public static class Keyword
 	public static ReadOnlySpan<string> GetKeywords(Type keywordType)
 		=> keywordType.IsAssignableTo(typeof(Step))
 			?
-			from propertyInfo in keywordType.GetProperties(PropertyBindingFlags)
+			from propertyInfo in PropertyCollector.GetAllDeclaredProperties(keywordType)
 			where propertyInfo.IsDefined<KeywordAttribute>()
 			select propertyInfo.Name
 			: throw new ArgumentException(
@@ -225,4 +225,96 @@ public static class Keyword
 
 		return null; // Attribute not found.
 	}
+}
+
+/// <summary>
+/// Collect all instance properties declared in a type and its base types,
+/// including private ones, excluding static and interface properties.
+/// Overrides are only counted once (even if re-<see langword="abstract"/>ed),
+/// while <see langword="new"/> properties are counted separately.
+/// </summary>
+file static class PropertyCollector
+{
+	/// <summary>
+	/// Represents instance property flags.
+	/// </summary>
+	private const BindingFlags InstancePropertyFlags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.DeclaredOnly;
+
+
+	/// <summary>
+	/// Retrieves all instance properties declared in the given type and its base types.
+	/// This includes non-<see langword="public"/> properties. Overrides are only counted once.
+	/// Properties declared with <see langword="new"/> are treated as distinct.
+	/// </summary>
+	/// <param name="type">The leaf type to begin property collection from.</param>
+	/// <returns>A list of PropertyInfo instances that match the criteria.</returns>
+	public static List<PropertyInfo> GetAllDeclaredProperties(Type type)
+	{
+		var result = new List<PropertyInfo>();
+		var overriddenMethods = new HashSet<MethodInfo>(); // Tracks already counted base method definitions.
+		var collectedProperties = new Dictionary<string, PropertyInfo>(); // Unique key => property.
+
+		var current = type;
+		while (current is not null && current != typeof(object))
+		{
+			// Get only instance-level, declared-only properties of current type.
+			var properties = current.GetProperties(InstancePropertyFlags);
+
+			foreach (var prop in properties)
+			{
+				if (prop.GetIndexParameters().Length != 0)
+				{
+					// Skip for indexers.
+					continue;
+				}
+
+				// Get accessor methods (getter/setter).
+				var getMethod = prop.GetGetMethod(true);
+				var setMethod = prop.GetSetMethod(true);
+				var method = getMethod ?? setMethod;
+				if (method is null)
+				{
+					continue;
+				}
+
+				var isOverride = method.GetBaseDefinition() != method;
+				var isNew = IsNewMethod(method);
+
+				// Generate a key based on property name and signature.
+				var key = prop.Name;
+
+				// Skip overridden methods if already seen.
+				if (isOverride)
+				{
+					var baseDef = method.GetBaseDefinition();
+					if (overriddenMethods.Contains(baseDef))
+					{
+						continue;
+					}
+					overriddenMethods.Add(baseDef);
+				}
+
+				// Skip duplicate properties unless marked with 'new'.
+				if (collectedProperties.ContainsKey(key) && !isNew)
+				{
+					continue;
+				}
+
+				collectedProperties[key] = prop;
+				result.Add(prop);
+			}
+
+			current = current.BaseType;
+		}
+
+		return result;
+	}
+
+	/// <summary>
+	/// Determines whether a method is using the <see langword="new"/> keyword (i.e., it hides a base method).
+	/// </summary>
+	/// <param name="method">The method to inspect.</param>
+	/// <returns>True if the method is <see langword="new"/>, false otherwise.</returns>
+	private static bool IsNewMethod(MethodInfo method)
+		=> method.GetBaseDefinition() is var baseDef && baseDef != method && method.DeclaringType != baseDef.DeclaringType;
 }

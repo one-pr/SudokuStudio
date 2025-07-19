@@ -13,7 +13,7 @@ public sealed class TechniqueKeywordValueConverter : KeywordValueConverter
 
 
 	/// <inheritdoc/>
-	public override bool TryConvert(object? value, IFormatProvider? formatProvider, [NotNullWhen(true)] out dynamic? result)
+	public override bool TryConvert(object? value, Step step, [NotNullWhen(true)] out dynamic? result)
 	{
 		if (value is not Technique field)
 		{
@@ -21,12 +21,12 @@ public sealed class TechniqueKeywordValueConverter : KeywordValueConverter
 			return false;
 		}
 
-		result = field.GetName(formatProvider);
+		result = field.GetName(step.Options.CurrentCulture);
 		return true;
 	}
 
 	/// <inheritdoc/>
-	public override bool TryConvertBack(object? value, IFormatProvider? formatProvider, [NotNullWhen(true)] out dynamic? result)
+	public override bool TryConvertBack(object? value, Step step, [NotNullWhen(true)] out dynamic? result)
 	{
 		if (value is not string str)
 		{
@@ -35,7 +35,7 @@ public sealed class TechniqueKeywordValueConverter : KeywordValueConverter
 
 		foreach (var field in Technique.Values)
 		{
-			if (field.GetName(formatProvider) == str)
+			if (field.GetName(step.Options.CurrentCulture) == str)
 			{
 				result = field;
 				return true;
