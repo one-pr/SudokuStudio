@@ -133,7 +133,8 @@
   * [宫内鱼的基本推理](rank-theory/04-complex-fish/01-reasoning-of-franken-fish.md)
   * [交叉鱼的基本推理](rank-theory/04-complex-fish/02-reasoning-of-mutant-fish.md)
   * [对复杂鱼的补充说明](rank-theory/04-complex-fish/03-extra-descriptions-to-complex-fish.md)
-  * [带有外鱼鳍的复杂鱼](rank-theory/04-complex-fish/04-exofinned-complex-fish.md)
+  * [外鱼鳍的基本推理](rank-theory/04-complex-fish/04-reasoning-of-exofin.md)
+  * [内鱼鳍的基本推理](rank-theory/04-complex-fish/05-reasoning-of-endofin.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
