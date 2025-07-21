@@ -8400,6 +8400,29 @@
             Indicates the verb is to check whether a number is in a range.
             </summary>
         </member>
+        <member name="T:Sudoku.Analytics.Keywords.StepExtensions">
+            <summary>
+            Represents extension methods on <see cref="T:Sudoku.Analytics.Step"/> instances.
+            </summary>
+            <seealso cref="T:Sudoku.Analytics.Step"/>
+        </member>
+        <member name="T:Sudoku.Analytics.Keywords.StepExtensions.<>E__0">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Analytics.Step"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Keywords.StepExtensions.<>E__0.TryGetPropertyValue``1(System.String,``0@)">
+            <summary>
+            Determine whether the current instance contains a property of name <paramref name="propertyName"/>.
+            </summary>
+            <typeparam name="T">The type of property value.</typeparam>
+            <param name="propertyName">The name of property.</param>
+            <param name="result">The result value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Keywords.StepExtensions.TryGetPropertyValue``1(Sudoku.Analytics.Step,System.String,``0@)">
+            <inheritdoc cref="M:Sudoku.Analytics.Keywords.StepExtensions.<>E__0.TryGetPropertyValue``1(System.String,``0@)"/>
+        </member>
         <member name="T:Sudoku.Analytics.Keywords.TechniqueKeywordValueConverter">
             <summary>
             Represents a keyword value converter for <see cref="T:Sudoku.Categorization.Technique"/> instance.
