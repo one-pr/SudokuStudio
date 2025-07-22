@@ -5,8 +5,7 @@ namespace Sudoku.Concepts;
 /// </summary>
 /// <param name="Base">Indicates the base that describes the block and line index.</param>
 /// <param name="Result">Indicates the result values.</param>
-public readonly record struct Miniline(in MinilineBase Base, in MinilineResult Result) :
-	IEqualityOperators<Miniline, Miniline, bool>
+public readonly record struct Miniline(in MinilineBase Base, in MinilineResult Result) : IEqualityOperators<Miniline, Miniline, bool>
 {
 	/// <summary>
 	/// Indicates the mini-lines to be iterated, grouped by chute index.
