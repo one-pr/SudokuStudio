@@ -33,7 +33,6 @@ public sealed partial class BivalueOddagonPattern(in CellMap loopCells, in CellM
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out CellMap loopCells, out CellMap extraCells, out Mask digitsMask)
 		=> (loopCells, extraCells, digitsMask) = (LoopCells, ExtraCells, DigitsMask);
 

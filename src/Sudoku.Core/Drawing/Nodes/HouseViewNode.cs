@@ -18,7 +18,6 @@ public sealed partial class HouseViewNode(ColorIdentifier identifier, House hous
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out ColorIdentifier identifier, out House house) => (identifier, house) = (Identifier, House);
 
 	/// <inheritdoc/>

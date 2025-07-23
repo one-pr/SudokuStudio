@@ -101,7 +101,6 @@ public readonly ref partial struct AdjacentCellGraph :
 	public override string ToString() => ToString(null);
 
 	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public string ToString(IFormatProvider? formatProvider) => Cells.ToString(formatProvider);
 
 	/// <inheritdoc/>

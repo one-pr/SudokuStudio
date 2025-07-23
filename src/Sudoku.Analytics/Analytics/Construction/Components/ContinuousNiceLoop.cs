@@ -31,7 +31,6 @@ public sealed partial class ContinuousNiceLoop(Node lastNode) : NamedChain(lastN
 	}
 
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool Equals([NotNullWhen(true)] ContinuousNiceLoop? other)
 		=> Equals(other, NodeComparison.IgnoreIsOn, ChainComparison.Undirected);
 
@@ -194,7 +193,6 @@ public sealed partial class ContinuousNiceLoop(Node lastNode) : NamedChain(lastN
 	/// </item>
 	/// </list>
 	/// </remarks>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public int CompareTo(ContinuousNiceLoop? other) => CompareTo(other, NodeComparison.IgnoreIsOn);
 
 	/// <inheritdoc cref="CompareTo(ContinuousNiceLoop?)"/>

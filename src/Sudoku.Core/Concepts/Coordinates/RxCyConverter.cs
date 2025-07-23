@@ -182,7 +182,6 @@ public sealed record RxCyConverter(
 			return resultBuilder.ToString();
 
 
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			static char getChar(House house)
 				=> house switch
 				{
@@ -410,7 +409,6 @@ public sealed record RxCyConverter(
 	/// </summary>
 	/// <param name="houseIndex">The house index.</param>
 	/// <returns>The label.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private char GetLabel(byte houseIndex)
 		=> (houseIndex, MakeLettersUpperCase) switch
 		{

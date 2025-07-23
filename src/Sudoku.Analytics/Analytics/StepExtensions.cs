@@ -18,7 +18,6 @@ public static class StepExtensions
 		/// <param name="right">The right instance to be compared.</param>
 		/// <param name="formatProvider">The culture information.</param>
 		/// <returns>An <see cref="int"/> value indicating which is bigger.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static int CompareName(Step? left, Step? right, IFormatProvider? formatProvider)
 			=> (left, right) switch
 			{

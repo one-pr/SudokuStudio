@@ -15,7 +15,6 @@ public static class SpaceSetExtensions
 		/// Converts <see cref="ReadOnlySpan{T}"/> of <see cref="Space"/> into <see cref="SpaceSet"/>.
 		/// </summary>
 		/// <returns>The space set instance.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public SpaceSet AsSpaceSet() => [.. @this];
 	}
 }

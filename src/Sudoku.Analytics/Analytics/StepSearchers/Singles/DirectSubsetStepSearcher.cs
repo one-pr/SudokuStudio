@@ -872,7 +872,6 @@ public sealed partial class DirectSubsetStepSearcher : StepSearcher
 	/// </summary>
 	/// <param name="subsetCells">The subset cells used.</param>
 	/// <returns>The final result.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static Technique GetSubsetTechnique_Hidden(in CellMap subsetCells)
 		=> (subsetCells.IsInIntersection, subsetCells.Count) switch
 		{
@@ -889,7 +888,6 @@ public sealed partial class DirectSubsetStepSearcher : StepSearcher
 	/// <param name="subsetCells">The subset cells used.</param>
 	/// <param name="isLocked">Indicates whether the subset is locked in logic.</param>
 	/// <returns>The final result.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static Technique GetSubsetTechnique_Naked(in CellMap subsetCells, bool? isLocked)
 		=> (isLocked, subsetCells.Count) switch
 		{

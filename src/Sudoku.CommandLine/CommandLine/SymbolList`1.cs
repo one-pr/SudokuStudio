@@ -48,7 +48,6 @@ public readonly struct SymbolList<TSymbol> :
 	/// Initializes a <see cref="SymbolList{TSymbol}"/> instance.
 	/// </summary>
 	/// <param name="symbols">The symbols.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal SymbolList(ReadOnlySpan<TSymbol> symbols) => _symbols = symbols.ToArray();
 
 
@@ -139,7 +138,6 @@ public readonly struct SymbolList<TSymbol> :
 	}
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public AnonymousSpanEnumerator<TSymbol> GetEnumerator() => new(_symbols);
 
 	/// <summary>
@@ -148,7 +146,6 @@ public readonly struct SymbolList<TSymbol> :
 	/// <param name="start">The start index.</param>
 	/// <param name="length">The desired length.</param>
 	/// <returns>The <see cref="SymbolList{TSymbol}"/> instance.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public SymbolList<TSymbol> Slice(int start, int length) => new(_symbols.AsSpan().Slice(start, length));
 
 	/// <inheritdoc cref="ISelectMethod{TSelf, TSource}.Select{TResult}(Func{TSource, TResult})"/>
@@ -180,14 +177,12 @@ public readonly struct SymbolList<TSymbol> :
 	/// Casts the current instance as a <see cref="ReadOnlySpan{T}"/> instance.
 	/// </summary>
 	/// <returns>A <see cref="ReadOnlySpan{T}"/> instance.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public ReadOnlySpan<TSymbol> AsSpan() => _symbols;
 
 	/// <summary>
 	/// Returns an array of <typeparamref name="TSymbol"/> instances.
 	/// </summary>
 	/// <returns>An array of <typeparamref name="TSymbol"/> instances.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public TSymbol[] ToArray() => [.. _symbols];
 
 	/// <inheritdoc/>
@@ -284,6 +279,5 @@ public readonly struct SymbolList<TSymbol> :
 	/// Implicit cast from <see cref="SymbolList{TSymbol}"/> instance into <see cref="Symbol"/>[].
 	/// </summary>
 	/// <param name="symbols">The symbols.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static implicit operator Symbol[](SymbolList<TSymbol> symbols) => symbols._symbols;
 }

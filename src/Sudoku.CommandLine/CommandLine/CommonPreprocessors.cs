@@ -148,7 +148,6 @@ internal static class CommonPreprocessors
 	/// <param name="timeout">The timeout in milliseconds.</param>
 	/// <returns>A <see cref="CancellationTokenSource"/> instance.</returns>
 	/// <seealso cref="Timeout.Infinite"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CancellationTokenSource CreateCancellationTokenSource(int timeout)
 		=> timeout == Timeout.Infinite ? new() : new(timeout);
 }

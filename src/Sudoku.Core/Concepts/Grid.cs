@@ -114,14 +114,12 @@ public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffRes
 	/// <inheritdoc/>
 	public readonly bool IsUndefined
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get => this == Undefined;
 	}
 
 	/// <inheritdoc/>
 	public readonly bool IsEmpty
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get => this == Empty;
 	}
 
@@ -207,21 +205,18 @@ public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffRes
 	/// <inheritdoc/>
 	public readonly Cell GivenCellsCount
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get => GivenCells.Count;
 	}
 
 	/// <inheritdoc/>
 	public readonly Cell ModifiableCellsCount
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get => ModifiableCells.Count;
 	}
 
 	/// <inheritdoc/>
 	public readonly Cell EmptyCellsCount
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get => EmptyCells.Count;
 	}
 
@@ -348,7 +343,6 @@ public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffRes
 	/// </summary>
 	public readonly Grid ResetCandidatesGrid
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get
 		{
 			var result = this;
@@ -360,7 +354,6 @@ public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffRes
 	/// <inheritdoc/>
 	public readonly Grid UnfixedGrid
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get
 		{
 			var result = this;
@@ -372,7 +365,6 @@ public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffRes
 	/// <inheritdoc/>
 	public readonly Grid FixedGrid
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get
 		{
 			var result = this;
@@ -473,17 +465,14 @@ public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffRes
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly void Deconstruct(out CellMap givenCells, out CellMap modifiableCells, out CellMap emptyCells)
 		=> (givenCells, modifiableCells, emptyCells) = (GivenCells, ModifiableCells, EmptyCells);
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly void Deconstruct(out CellMap givenCells, out CellMap modifiableCells, out CellMap emptyCells, out CellMap bivalueCells)
 		=> ((givenCells, modifiableCells, emptyCells), bivalueCells) = (this, BivalueCells);
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly void Deconstruct(
 		out CellMap emptyCells,
 		out CellMap bivalueCells,

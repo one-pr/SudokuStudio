@@ -12,7 +12,6 @@ public static class AnalysisResultEnumerable
 	/// <typeparam name="TStep">The type of each element casted.</typeparam>
 	/// <param name="this">The instance to be casted.</param>
 	/// <returns>A list of <typeparamref name="TStep"/> instances.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static ReadOnlySpan<TStep> Cast<TStep>(this AnalysisResult @this) where TStep : Step
 		=> from element in @this select (TStep)element;
 

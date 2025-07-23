@@ -67,7 +67,6 @@ public partial class DancingLinkNode : IFormattable
 		return sb.ToString();
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		string f(Candidate candidate)
 		{
 			var converter = CoordinateConverter.GetInstance(formatProvider);

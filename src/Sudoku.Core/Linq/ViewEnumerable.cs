@@ -68,7 +68,6 @@ public static class ViewEnumerable
 	/// Throws when the sequence has no elements satisfying the specified rule.
 	/// </exception>
 	/// <inheritdoc cref="FirstOrDefault(View, Func{ViewNode, bool})"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static ViewNode First(this View @this, Func<ViewNode, bool> match) => @this.FirstOrDefault(match)!;
 
 	/// <summary>

@@ -32,7 +32,6 @@ public sealed partial class RecognitionServiceProvider : IDisposable
 	/// <param name="image">The image.</param>
 	/// <returns>The grid.</returns>
 	/// <exception cref="RecognizerNotInitializedException">Throws when the tool has not initialized yet.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public Grid Recognize(Bitmap image)
 	{
 		if (IsInitialized)

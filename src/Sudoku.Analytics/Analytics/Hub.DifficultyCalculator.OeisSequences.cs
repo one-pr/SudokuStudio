@@ -19,7 +19,6 @@ public partial class Hub
 			/// </summary>
 			/// <param name="index"><inheritdoc cref="OeisSequences" path="//shared-comments/para[2]"/></param>
 			/// <returns>The result value at the specified index.</returns>
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			public static int A002024(int index) => (int)(Math.Sqrt(index << 1) + .5);
 		}
 	}

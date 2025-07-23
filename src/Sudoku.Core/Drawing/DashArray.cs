@@ -43,7 +43,6 @@ public readonly partial struct DashArray() : IEnumerable<double>, IEquatable<Das
 	/// Converts the current collection into an array of <see cref="double"/> values.
 	/// </summary>
 	/// <returns>An array of <see cref="double"/> values.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public double[] ToArray() => [.. _doubles];
 
 	/// <inheritdoc cref="object.GetHashCode"/>

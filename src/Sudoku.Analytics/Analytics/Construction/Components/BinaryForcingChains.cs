@@ -85,7 +85,6 @@ public sealed partial class BinaryForcingChains(
 
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public string ToString(IFormatProvider? formatProvider)
 	{
 		var converter = CoordinateConverter.GetInstance(formatProvider);

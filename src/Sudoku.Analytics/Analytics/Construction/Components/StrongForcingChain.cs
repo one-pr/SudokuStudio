@@ -45,7 +45,6 @@ public sealed partial class StrongForcingChain(Node lastNode, bool isDynamicChai
 	/// </item>
 	/// </list>
 	/// </remarks>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public int CompareTo(StrongForcingChain? other) => CompareTo(other, NodeComparison.IgnoreIsOn);
 
 	/// <inheritdoc/>

@@ -17,7 +17,6 @@ public static class LanguageNameComparisonExtensions
 		/// </summary>
 		/// <param name="otherName">The other name to be compared.</param>
 		/// <returns>A <see cref="bool"/> result indicating that.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool CultureNameEqual(string otherName) => @this.StartsWith(otherName, StringComparison.OrdinalIgnoreCase);
 	}
 }

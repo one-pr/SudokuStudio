@@ -56,7 +56,6 @@ public sealed class DancingLinksSolver : ISolver, ISolutionEnumerableSolver
 		[DoesNotReturn]
 		static void g() => throw new MultipleSolutionException();
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static bool r(DancingLinksSolver @this, Stack<DancingLinkNode> resultNodes)
 		{
 			@this._solution = ToGrid(resultNodes);
@@ -65,7 +64,6 @@ public sealed class DancingLinksSolver : ISolver, ISolutionEnumerableSolver
 	}
 
 	/// <inheritdoc cref="Solve(in Grid, out Grid)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool? Solve(Digit[] grid, out Grid result) => Solve(Grid.Create(grid), out result);
 
 	/// <inheritdoc/>
@@ -75,7 +73,6 @@ public sealed class DancingLinksSolver : ISolver, ISolutionEnumerableSolver
 		Search(&Action.DoNothingMethod, &r);
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static bool r(DancingLinksSolver @this, Stack<DancingLinkNode> resultNodes)
 		{
 			var newFoundGrid = ToGrid(resultNodes);

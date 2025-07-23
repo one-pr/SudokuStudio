@@ -34,7 +34,6 @@ public sealed class LinkDictionary : Dictionary<Node, HashSet<Node>>, IComponent
 	/// <summary>
 	/// Clears the collection.
 	/// </summary>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public new void Clear()
 	{
 		base.Clear();
@@ -67,7 +66,6 @@ public sealed class LinkDictionary : Dictionary<Node, HashSet<Node>>, IComponent
 	/// <param name="node2">Indicates the second node to be added.</param>
 	/// <param name="isStrong">Indicates the grouped link pattern is a strong link.</param>
 	/// <param name="pattern">The advanced pattern to be used.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void AddEntry(Node node1, Node node2, bool isStrong = false, Pattern? pattern = null)
 	{
 		if (!TryAdd(node1, [node2]))

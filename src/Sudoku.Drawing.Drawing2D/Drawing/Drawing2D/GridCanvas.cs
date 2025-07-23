@@ -130,7 +130,6 @@ public sealed partial class GridCanvas : IDisposable
 	/// <param name="result">The result color got.</param>
 	/// <returns>The <see cref="bool"/> result.</returns>
 	/// <exception cref="InvalidOperationException">Throws when the ID is invalid.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private bool TryGetPaletteColorByIndex(int paletteColorIndex, out Color result)
 	{
 		var palette = Settings.ColorPalette;
@@ -143,7 +142,6 @@ public sealed partial class GridCanvas : IDisposable
 	/// <param name="id">The identifier instance.</param>
 	/// <returns></returns>
 	/// <exception cref="ArgumentException">Throws when the specified value is invalid.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private Color GetColor(ColorIdentifier id)
 		=> id switch
 		{
@@ -184,7 +182,6 @@ public sealed partial class GridCanvas : IDisposable
 	/// <param name="size">Indicates the size to be used.</param>
 	/// <param name="settings">Indicates the settings to be used.</param>
 	/// <returns>Indicates the measured extra height.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static float MeasureFooterTextExtraHeight(string footerText, int size, GridCanvasSettings? settings)
 	{
 		using var tempBitmap = new Bitmap(size, size);
@@ -199,7 +196,6 @@ public sealed partial class GridCanvas : IDisposable
 	/// <param name="size">The size that decides the default font size.</param>
 	/// <param name="settings">Indicates the settings.</param>
 	/// <returns>The font.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static Font GetFooterTextFont(float size, GridCanvasSettings? settings)
 		=> new((settings ??= new()).FooterTextFontName!, size / 9 * (float)settings.FooterTextScale, settings.FooterTextFontStyle);
 
@@ -212,7 +208,6 @@ public sealed partial class GridCanvas : IDisposable
 	/// <param name="style">The style that decides the font style of the text in the picture.</param>
 	/// <returns>The font.</returns>
 	/// <exception cref="ArgumentNullException">Throws when <paramref name="fontName"/> is <see langword="null"/>.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static Font GetFont(string fontName, float size, decimal scale, FontStyle style)
 		=> new(fontName, size * (float)scale, style);
 
@@ -224,7 +219,6 @@ public sealed partial class GridCanvas : IDisposable
 	/// <param name="settings">Indicates the settings.</param>
 	/// <param name="bitmap">Indicates the bitmap instance that returns after <see cref="Graphics"/> instance is created.</param>
 	/// <returns>A <see cref="Graphics"/> instance.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static Graphics CreateGraphics(bool needFooterText, int size, GridCanvasSettings? settings, out Bitmap bitmap)
 	{
 		var g = Graphics.FromImage(bitmap = new(size, (int)(needFooterText ? size + MeasureFooterTextExtraHeight("a", size, settings) : size)));

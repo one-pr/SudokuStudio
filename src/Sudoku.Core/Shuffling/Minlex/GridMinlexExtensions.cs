@@ -14,7 +14,6 @@ public static class GridMinlexExtensions
 		/// <summary>
 		/// Adjust the grid to minimal lexicographical form.
 		/// </summary>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void MakeMinLex() => @this = @this.MinLexGrid;
 	}
 
@@ -47,7 +46,6 @@ public static class GridMinlexExtensions
 		/// <param name="comparisonType">One of the enumeration values that specifies the rules for the comparison.</param>
 		/// <returns>A <see cref="bool"/> result.</returns>
 		/// <exception cref="ArgumentOutOfRangeException">Throws when the argument <paramref name="comparisonType"/> is not defined.</exception>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool Equals(in Grid other, BoardComparison comparisonType)
 			=> comparisonType switch
 			{
@@ -63,7 +61,6 @@ public static class GridMinlexExtensions
 		/// <exception cref="ArgumentOutOfRangeException">
 		/// Throws when the argument <paramref name="comparisonType"/> isn't defined.
 		/// </exception>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public int GetHashCode(BoardComparison comparisonType)
 		{
 			var grid = comparisonType switch
@@ -84,7 +81,6 @@ public static class GridMinlexExtensions
 		/// <returns>A value that indicates the relative order of the objects being compared.</returns>
 		/// <exception cref="InvalidOperationException">Throws when one of the grids to be compared is a Sukaku puzzle.</exception>
 		/// <exception cref="ArgumentOutOfRangeException">Throws when the argument <paramref name="comparisonType"/> is not defined.</exception>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public int CompareTo(in Grid other, BoardComparison comparisonType)
 			=> (@this.PuzzleType, other.PuzzleType) switch
 			{

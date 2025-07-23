@@ -28,7 +28,6 @@ public sealed partial class CandidateViewNode(ColorIdentifier identifier, Candid
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out ColorIdentifier identifier, out Candidate candidate) => (identifier, candidate) = (Identifier, Candidate);
 
 	/// <inheritdoc/>

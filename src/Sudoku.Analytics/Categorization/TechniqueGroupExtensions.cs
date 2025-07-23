@@ -41,7 +41,6 @@ public static class TechniqueGroupExtensions
 		/// </summary>
 		/// <param name="cultureInfo">The culture information instance.</param>
 		/// <returns>The shortened name.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public string GetShortenedName(CultureInfo? cultureInfo)
 			=> @this.Abbreviation is { } abbr ? abbr : @this.GetName(cultureInfo ?? CultureInfo.CurrentUICulture);
 
@@ -51,7 +50,6 @@ public static class TechniqueGroupExtensions
 		/// <param name="formatProvider">The culture information instance.</param>
 		/// <returns>The name.</returns>
 		/// <exception cref="ResourceNotFoundException">Throws when the specified group does not contain a name.</exception>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public string GetName(IFormatProvider? formatProvider)
 			=> SR.Get($"{nameof(TechniqueGroup)}_{@this}", formatProvider as CultureInfo ?? CultureInfo.CurrentUICulture);
 
@@ -62,7 +60,6 @@ public static class TechniqueGroupExtensions
 		/// <returns>
 		/// A <see cref="TechniqueSet"/> instance that contains all <see cref="Technique"/> fields belonging to the current group.
 		/// </returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public TechniqueSet GetTechniques(Func<Technique, bool>? filter = null)
 			=> filter is null
 				? TechniqueSet.TechniqueRelationGroups[@this]

@@ -71,7 +71,6 @@ public partial class Hub
 			/// <param name="chain">The chain to be checked.</param>
 			/// <param name="conclusions">Indicates conclusions to be used.</param>
 			/// <returns>The pattern sort key.</returns>
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			public static int GetSortKey(NamedChain chain, ConclusionSet conclusions)
 				=> SortKeyDictionary[GetTechnique(chain, conclusions)];
 
@@ -81,7 +80,6 @@ public partial class Hub
 			/// <param name="chain">The chain to be checked.</param>
 			/// <param name="grid">The grid to calculate on conclusions for the pattern.</param>
 			/// <returns>The <see cref="Technique"/> field categorized.</returns>
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			public static Technique GetTechnique(NamedChain chain, in Grid grid)
 				=> GetTechnique(chain, chain.GetConclusions(grid));
 

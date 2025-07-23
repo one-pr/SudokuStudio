@@ -436,7 +436,6 @@ public interface IGrid<TSelf> :
 	public abstract bool ConflictWith(Cell cell, Digit digit);
 
 	/// <inheritdoc cref="Exists(Cell, Digit)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public virtual bool? Exists(Candidate candidate) => Exists(candidate / 9, candidate % 9);
 
 	/// <summary>

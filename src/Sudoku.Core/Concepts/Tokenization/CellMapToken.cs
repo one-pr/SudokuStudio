@@ -39,14 +39,12 @@ public static class CellMapToken
 			return result;
 		}
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static int[] sextuple(int value)
 			=> [value >> 25 & 3, value >> 20 & 31, value >> 15 & 31, value >> 10 & 31, value >> 5 & 31, value & 31];
 	}
 
 
 	/// <inheritdoc cref="CreateFromToken(string)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellMap CreateFromToken(ReadOnlySpan<char> token) => CreateFromToken(token.ToString());
 
 	/// <summary>
@@ -55,7 +53,6 @@ public static class CellMapToken
 	/// <param name="token">Indicates the token.</param>
 	/// <returns>A <see cref="CellMap"/> result.</returns>
 	/// <exception cref="FormatException">Throws when the length of the argument mismatched.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellMap CreateFromToken(string token)
 		=> token.Length switch
 		{

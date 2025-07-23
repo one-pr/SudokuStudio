@@ -23,7 +23,6 @@ public partial class Hub
 		/// <param name="culture">The culture.</param>
 		/// <param name="digit">The digit value.</param>
 		/// <returns>The character that represents the specified digit.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static char GetDigitCharacter(CultureInfo culture, Digit digit)
 			=> SR.IsChinese(culture) ? ChineseDigitCharacters[digit] : (char)(digit + '1');
 
@@ -33,7 +32,6 @@ public partial class Hub
 		/// <param name="left">The left value to be compared.</param>
 		/// <param name="right">The right value to be compared.</param>
 		/// <returns>An <see cref="int"/> indicating which is bigger.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static int ChineseDigitCompare(Digit left, Digit right)
 			=> Math.Sign(ChineseDigitCharacters[left] - ChineseDigitCharacters[right]);
 
@@ -42,7 +40,6 @@ public partial class Hub
 		/// </summary>
 		/// <param name="digitCharacter">The digit character.</param>
 		/// <returns>The corresponding digit.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Digit GetChineseDigit(char digitCharacter) => ChineseDigitCharacters.Span.IndexOf(digitCharacter);
 	}
 }

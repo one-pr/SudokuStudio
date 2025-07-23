@@ -111,7 +111,6 @@ public partial class MultipleForcingChains(params Conclusion[] conclusions) :
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public int CompareTo(MultipleForcingChains? other) => CompareTo(other, NodeComparison.IgnoreIsOn);
 
 	/// <summary>
@@ -156,7 +155,6 @@ public partial class MultipleForcingChains(params Conclusion[] conclusions) :
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool Equals([NotNullWhen(true)] MultipleForcingChains? other)
 		=> Equals(other, NodeComparison.IgnoreIsOn, ChainComparison.Undirected);
 
@@ -298,7 +296,6 @@ public partial class MultipleForcingChains(params Conclusion[] conclusions) :
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public string ToString(IFormatProvider? formatProvider)
 	{
 		var converter = CoordinateConverter.GetInstance(formatProvider);
@@ -342,7 +339,6 @@ public partial class MultipleForcingChains(params Conclusion[] conclusions) :
 	/// <param name="fins">The fins converted.</param>
 	/// <returns>The pattern converted.</returns>
 	/// <exception cref="InvalidOperationException">Throws when the current instance cannot be converted.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public Chain CastToFinnedChain(out CandidateMap fins)
 	{
 		if (TryCastToFinnedChain(out var result, out var f))

@@ -37,25 +37,21 @@ public readonly partial record struct ForcingChainsInfo(HashSet<Node> OnNodes, H
 	/// <param name="other">The other instance to be compared.</param>
 	/// <param name="nodeComparison">The node comparison rule.</param>
 	/// <returns>A <see cref="bool"/> result indicating that.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool Equals(ForcingChainsInfo other, NodeComparison nodeComparison) => StartNode.Equals(other.StartNode, nodeComparison);
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public Enumerator GetEnumerator() => new([.. OnNodes, .. OffNodes]);
 
 	/// <summary>
 	/// Try to enumerate for nodes that supposed with "on" state.
 	/// </summary>
 	/// <returns>An enumerator that can iterate on nodes supposed with "on" state.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public NodesEnumerator EnumerateOnNodes() => new(OnNodes.GetEnumerator());
 
 	/// <summary>
 	/// Try to enumerate for nodes that supposed with "off" state.
 	/// </summary>
 	/// <returns>An enumerator that can iterate on nodes supposed with "off" state.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public NodesEnumerator EnumerateOffNodes() => new(OffNodes.GetEnumerator());
 
 	/// <inheritdoc/>

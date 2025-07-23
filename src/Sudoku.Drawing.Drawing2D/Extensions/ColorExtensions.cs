@@ -18,7 +18,6 @@ public static class ColorExtensions
 
 
 		/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Deconstruct(out byte a, out byte r, out byte g, out byte b) => (a, r, g, b) = (@this.A, @this.R, @this.G, @this.B);
 	}
 }

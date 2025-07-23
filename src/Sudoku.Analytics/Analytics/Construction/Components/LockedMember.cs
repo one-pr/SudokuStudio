@@ -28,7 +28,6 @@ public sealed partial class LockedMember(in CellMap lockedCells, House lockedBlo
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out CellMap lockedCells, out House lockedBlock)
 		=> (lockedCells, lockedBlock) = (LockedCells, LockedBlock);
 

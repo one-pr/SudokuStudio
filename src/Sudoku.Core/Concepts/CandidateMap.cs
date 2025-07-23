@@ -275,7 +275,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly void CopyTo(ref Candidate sequence, Candidate length)
 		=> Offsets.AsReadOnlySpan().TryCopyTo(Span<int>.Create(ref sequence, length));
 
@@ -284,11 +283,9 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	/// </summary>
 	/// <param name="item">The offset.</param>
 	/// <returns>A <see cref="bool"/> value indicating that.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly bool Contains(Candidate item) => (_bits[item >> 6] >> (item & 63) & 1) != 0;
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
 	{
 		var targetString = ToString(provider);
@@ -309,7 +306,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly bool TryFormat(Span<byte> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
 	{
 		var targetString = ToString(provider);
@@ -330,13 +326,11 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly int CompareTo(in CandidateMap other)
 	{
 		return Count > other.Count ? 1 : Count < other.Count ? -1 : -Math.Sign($"{b(this)}".CompareTo($"{b(other)}"));
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static string b(in CandidateMap f) => f.ToString(new BitmapCandidateMapFormatInfo());
 	}
 
@@ -366,7 +360,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	public override readonly int GetHashCode() => _bits.GetHashCode();
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly string ToString(IFormatProvider? formatProvider)
 		=> formatProvider switch
 		{
@@ -375,7 +368,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 		};
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly Candidate[] ToArray() => Offsets[..];
 
 	/// <inheritdoc cref="ToArray"/>
@@ -383,7 +375,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	/// Although the return value is an array, you cannot modify them to keep data-safety (read-only array).
 	/// Returning other types of such value will raise extra conversion, which is slower.
 	/// </i></b></remarks>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly Candidate[] ToArrayUnsafe() => Offsets;
 
 	/// <summary>
@@ -424,21 +415,18 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly AnonymousSpanEnumerator<Candidate> GetEnumerator() => new(Offsets);
 
 	/// <summary>
 	/// Try to enumerate cells on each candidate.
 	/// </summary>
 	/// <returns>The enumerator instance.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly CellEnumerator EnumerateCells() => new(Offsets);
 
 	/// <summary>
 	/// Try to enumerate cell and digit value on each candidate.
 	/// </summary>
 	/// <returns>The enumerator instance.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly CellDigitEnumerator EnumerateCellDigit() => new(Offsets);
 
 	/// <inheritdoc/>
@@ -458,7 +446,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	/// </summary>
 	/// <param name="item">The offset to be added.</param>
 	/// <returns>A <see cref="bool"/> value indicating whether the collection has already contained the offset.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool Add(Candidate item)
 	{
 		if (Contains(item))
@@ -489,7 +476,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	/// </summary>
 	/// <param name="item">An offset to be removed.</param>
 	/// <returns>A <see cref="bool"/> value indicating whether the collection has already contained the specified offset.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool Remove(Candidate item)
 	{
 		if (!Contains(item))
@@ -530,14 +516,12 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Toggle(Candidate offset) => _ = Contains(offset) ? Remove(offset) : Add(offset);
 
 	/// <summary>
 	/// Remove all elements stored in the current collection, and set the property <see cref="Count"/> to zero.
 	/// </summary>
 	/// <seealso cref="Count"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Clear() => this = Empty;
 
 	/// <inheritdoc/>
@@ -608,7 +592,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc cref="TryParse(ReadOnlySpan{char}, IFormatProvider?, out CandidateMap)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool TryParse(ReadOnlySpan<char> s, out CandidateMap result) => TryParse(s, null, out result);
 
 	/// <inheritdoc/>
@@ -666,7 +649,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CandidateMap Parse(string s, IFormatProvider? provider)
 		=> provider switch
 		{
@@ -675,11 +657,9 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 		};
 
 	/// <inheritdoc cref="Parse(ReadOnlySpan{char}, IFormatProvider?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CandidateMap Parse(ReadOnlySpan<char> s) => Parse(s, null);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CandidateMap Parse(ReadOnlySpan<char> s, IFormatProvider? provider) => Parse(s.ToString(), provider);
 
 	/// <summary>
@@ -689,7 +669,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	/// <param name="e1">The middle 256 bits.</param>
 	/// <param name="e2">The higher 256 bits.</param>
 	/// <returns>A <see cref="CandidateMap"/> instance.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CandidateMap CreateByVectors(in Vector256<ulong> e0, in Vector256<ulong> e1, in Vector256<ulong> e2)
 	{
 		Unsafe.SkipInit(out CandidateMap result);
@@ -701,7 +680,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CandidateMap operator ~(in CandidateMap offsets)
 	{
 		var vectors = offsets._bits.Vectors;
@@ -709,7 +687,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CandidateMap operator +(in CandidateMap collection, Candidate offset)
 	{
 		var result = collection;
@@ -718,7 +695,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CandidateMap operator -(in CandidateMap collection, Candidate offset)
 	{
 		var result = collection;
@@ -727,12 +703,10 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CandidateMap operator %(in CandidateMap @base, in CandidateMap template)
 		=> (@base & template).PeerIntersection & template;
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CandidateMap operator &(in CandidateMap left, in CandidateMap right)
 	{
 		var l = left._bits.Vectors;
@@ -741,7 +715,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CandidateMap operator |(in CandidateMap left, in CandidateMap right)
 	{
 		var l = left._bits.Vectors;
@@ -750,7 +723,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CandidateMap operator ^(in CandidateMap left, in CandidateMap right)
 	{
 		var l = left._bits.Vectors;
@@ -759,7 +731,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static unsafe ReadOnlySpan<CandidateMap> operator &(in CandidateMap map, int subsetSize)
 	{
 		if (subsetSize == 0 || subsetSize > map.Count)

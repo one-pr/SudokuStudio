@@ -98,7 +98,6 @@ public static class HodokuCompatibility
 	/// or the value is <see cref="Technique.None"/>.
 	/// </exception>
 	/// <seealso cref="Technique"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string? GetHodokuLibraryPrefix(Technique @this)
 		=> (@this != Technique.None && Enum.IsDefined(@this))
 			? Technique.FieldInfoOf(@this) is { } fieldInfo
@@ -118,7 +117,6 @@ public static class HodokuCompatibility
 	/// or the value is <see cref="Technique.None"/>.
 	/// </exception>
 	/// <seealso cref="Technique"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string[]? GetAliases(Technique @this)
 		=> (@this != Technique.None && Enum.IsDefined(@this))
 			? Technique.FieldInfoOf(@this) is { } fieldInfo
@@ -140,7 +138,6 @@ public static class HodokuCompatibility
 	/// or the value is <see cref="Technique.None"/>.
 	/// </exception>
 	/// <seealso cref="Technique"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[return: NotNullIfNotNull(nameof(difficultyLevel))]
 	public static int? GetDifficultyScore(Technique @this, out HodokuDifficultyLevel? difficultyLevel)
 	{

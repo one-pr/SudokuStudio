@@ -13,7 +13,6 @@ public static class SizeOrSizeFExtensions
 	extension(Size @this)
 	{
 		/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Deconstruct(out int width, out int height) => (width, height) = (@this.Width, @this.Height);
 	}
 
@@ -26,11 +25,9 @@ public static class SizeOrSizeFExtensions
 		/// To truncate the size.
 		/// </summary>
 		/// <returns>The result.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Size Truncate() => new((int)@this.Width, (int)@this.Height);
 
 		/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Deconstruct(out float width, out float height) => (width, height) = (@this.Width, @this.Height);
 	}
 }

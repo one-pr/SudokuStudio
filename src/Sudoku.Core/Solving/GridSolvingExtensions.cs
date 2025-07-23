@@ -64,7 +64,6 @@ public static class GridSolvingExtensions
 		/// </summary>
 		public bool IsValid
 		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			get => @this.IsSolved || @this.Uniqueness == Uniqueness.Unique;
 		}
 

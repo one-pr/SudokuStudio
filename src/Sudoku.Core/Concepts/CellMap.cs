@@ -132,7 +132,6 @@ public partial struct CellMap : CellMapBase
 	/// </summary>
 	public readonly bool IsInIntersection
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get => Count == 1 || Count <= 3 && BitOperations.PopCount(SharedHouses) == 2;
 	}
 
@@ -181,7 +180,6 @@ public partial struct CellMap : CellMapBase
 	/// </remarks>
 	public readonly Mask BlockMask
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get
 		{
 			var result = (Mask)0;
@@ -206,7 +204,6 @@ public partial struct CellMap : CellMapBase
 	/// </remarks>
 	public readonly Mask RowMask
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get
 		{
 			var result = (Mask)0;
@@ -231,7 +228,6 @@ public partial struct CellMap : CellMapBase
 	/// </remarks>
 	public readonly Mask ColumnMask
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get
 		{
 			var result = (Mask)0;
@@ -257,7 +253,6 @@ public partial struct CellMap : CellMapBase
 	/// </b></remarks>
 	public readonly House SharedBlock
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get => BitOperations.TrailingZeroCount(SharedHouses & Grid.MaxCandidatesMask);
 	}
 
@@ -270,7 +265,6 @@ public partial struct CellMap : CellMapBase
 	/// </b></remarks>
 	public readonly House SharedLine
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get => BitOperations.TrailingZeroCount(SharedHouses & ~Grid.MaxCandidatesMask);
 	}
 
@@ -284,7 +278,6 @@ public partial struct CellMap : CellMapBase
 	/// </remarks>
 	public readonly House FirstSharedHouse
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get => BitOperations.TrailingZeroCount(SharedHouses);
 	}
 
@@ -322,7 +315,6 @@ public partial struct CellMap : CellMapBase
 	/// </summary>
 	public readonly HouseMask Houses
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get => (HouseMask)BlockMask | RowMask << 9 | ColumnMask << 18;
 	}
 
@@ -462,7 +454,6 @@ public partial struct CellMap : CellMapBase
 	/// </returns>
 	public readonly Cell this[Cell index]
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get
 		{
 			if (!this || index >= Count)
@@ -495,7 +486,6 @@ public partial struct CellMap : CellMapBase
 
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly void CopyTo(ref Cell sequence, Cell length)
 		=> Offsets.AsReadOnlySpan().TryCopyTo(Span<int>.Create(ref sequence, length));
 
@@ -513,11 +503,9 @@ public partial struct CellMap : CellMapBase
 	/// </summary>
 	/// <param name="item">The offset.</param>
 	/// <returns>A <see cref="bool"/> value indicating that.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly bool Contains(Cell item) => (_vector[item < Shifting ? 0 : 1] >> item % Shifting & 1) != 0;
 
 	/// <inheritdoc cref="ISpanFormattable.TryFormat(Span{char}, out int, ReadOnlySpan{char}, IFormatProvider?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
 	{
 		var targetString = ToString(provider);
@@ -538,7 +526,6 @@ public partial struct CellMap : CellMapBase
 	}
 
 	/// <inheritdoc cref="IUtf8SpanFormattable.TryFormat(Span{byte}, out int, ReadOnlySpan{char}, IFormatProvider?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly bool TryFormat(Span<byte> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
 	{
 		var targetString = ToString(provider);
@@ -559,13 +546,11 @@ public partial struct CellMap : CellMapBase
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly int CompareTo(in CellMap other)
 	{
 		return Count > other.Count ? 1 : Count < other.Count ? -1 : -Math.Sign($"{b(this)}".CompareTo($"{b(other)}"));
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static string b(in CellMap f) => f.ToString(new BitmapCellMapFormatInfo());
 	}
 
@@ -583,7 +568,6 @@ public partial struct CellMap : CellMapBase
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly string ToString(IFormatProvider? formatProvider)
 		=> formatProvider switch
 		{
@@ -592,7 +576,6 @@ public partial struct CellMap : CellMapBase
 		};
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly Cell[] ToArray() => Offsets[..];
 
 	/// <inheritdoc cref="ToArray"/>
@@ -600,11 +583,9 @@ public partial struct CellMap : CellMapBase
 	/// Although the return value is an array, you cannot modify them to keep data-safety (read-only array).
 	/// Returning other types of such value will raise extra conversion, which is slower.
 	/// </i></b></remarks>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly Cell[] ToArrayUnsafe() => Offsets;
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly AnonymousSpanEnumerator<Cell> GetEnumerator() => new(Offsets);
 
 	/// <inheritdoc/>
@@ -623,7 +604,6 @@ public partial struct CellMap : CellMapBase
 	/// </summary>
 	/// <param name="item">The offset to be added.</param>
 	/// <returns>A <see cref="bool"/> value indicating whether the collection has already contained the offset.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool Add(Cell item)
 	{
 		if (Contains(item))
@@ -654,7 +634,6 @@ public partial struct CellMap : CellMapBase
 	/// </summary>
 	/// <param name="item">An offset to be removed.</param>
 	/// <returns>A <see cref="bool"/> value indicating whether the collection has already contained the specified offset.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool Remove(Cell item)
 	{
 		if (!Contains(item))
@@ -681,14 +660,12 @@ public partial struct CellMap : CellMapBase
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Toggle(Cell offset) => _ = Contains(offset) ? Remove(offset) : Add(offset);
 
 	/// <summary>
 	/// Remove all elements stored in the current collection, and set the property <see cref="Count"/> to zero.
 	/// </summary>
 	/// <seealso cref="Count"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Clear() => this = Empty;
 
 	/// <inheritdoc/>
@@ -757,7 +734,6 @@ public partial struct CellMap : CellMapBase
 	}
 
 	/// <inheritdoc cref="TryParse(ReadOnlySpan{char}, IFormatProvider?, out CellMap)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool TryParse(ReadOnlySpan<char> s, out CellMap result) => TryParse(s, null, out result);
 
 	/// <inheritdoc cref="ISpanParsable{TSelf}.TryParse(ReadOnlySpan{char}, IFormatProvider?, out TSelf)"/>
@@ -802,7 +778,6 @@ public partial struct CellMap : CellMapBase
 	/// <param name="high">Higher 40 bits.</param>
 	/// <param name="low">Lower 41 bits.</param>
 	/// <returns>The result instance created.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellMap CreateByBits(ulong high, ulong low)
 	{
 		CellMap result;
@@ -817,7 +792,6 @@ public partial struct CellMap : CellMapBase
 	/// <param name="mid">Medium 27 bits.</param>
 	/// <param name="low">Lower 27 bits.</param>
 	/// <returns>The result instance created.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellMap CreateByBits(int high, int mid, int low)
 		=> CreateByBits(
 			((ulong)high & 0x7FFFFFFUL) << 13 | (ulong)mid >> 14 & 0x1FFFUL,
@@ -829,7 +803,6 @@ public partial struct CellMap : CellMapBase
 	/// </summary>
 	/// <param name="vector">Two bits, represented as high 41 and low 40 bits.</param>
 	/// <returns>A <see cref="CellMap"/> instance.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellMap CreateByVector(Vector128<ulong> vector)
 	{
 		CellMap result;
@@ -855,7 +828,6 @@ public partial struct CellMap : CellMapBase
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellMap Parse(string s, IFormatProvider? provider)
 		=> provider switch
 		{
@@ -864,11 +836,9 @@ public partial struct CellMap : CellMapBase
 		};
 
 	/// <inheritdoc cref="Parse(ReadOnlySpan{char}, IFormatProvider?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellMap Parse(ReadOnlySpan<char> s) => Parse(s, null);
 
 	/// <inheritdoc cref="IParsable{TSelf}.Parse(string, IFormatProvider?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellMap Parse(ReadOnlySpan<char> s, IFormatProvider? provider) => Parse(s.ToString(), provider);
 
 	/// <summary>
@@ -880,18 +850,15 @@ public partial struct CellMap : CellMapBase
 	/// <remarks><b>
 	/// This method will only be used in constant creation, just for readability on binary integers' positions.
 	/// </b></remarks>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[DebuggerStepThrough]
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	private static Vector128<ulong> CV(ulong e1, ulong e0) => Vector128.Create(e0, e1);
 
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellMap operator ~(in CellMap offsets) => CreateByVector(~offsets._vector & BitwiseNotConstant);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellMap operator +(in CellMap collection, Cell offset)
 	{
 		var result = collection;
@@ -900,7 +867,6 @@ public partial struct CellMap : CellMapBase
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellMap operator -(in CellMap collection, Cell offset)
 	{
 		var result = collection;
@@ -909,23 +875,18 @@ public partial struct CellMap : CellMapBase
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellMap operator %(in CellMap @base, in CellMap template) => (@base & template).PeerIntersection & template;
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellMap operator &(in CellMap left, in CellMap right) => CreateByVector(left._vector & right._vector);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellMap operator |(in CellMap left, in CellMap right) => CreateByVector(left._vector | right._vector);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellMap operator ^(in CellMap left, in CellMap right) => CreateByVector(left._vector ^ right._vector);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static unsafe ReadOnlySpan<CellMap> operator &(in CellMap map, int subsetSize)
 	{
 		if (subsetSize == 0 || subsetSize > map.Count)

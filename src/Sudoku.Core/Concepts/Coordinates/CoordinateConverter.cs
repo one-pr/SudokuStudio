@@ -101,7 +101,6 @@ public abstract record CoordinateConverter(
 
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CoordinateConverter GetInstance(IFormatProvider? formatProvider)
 		=> formatProvider switch
 		{

@@ -121,7 +121,6 @@ internal static class MemoryCachedData
 
 
 	/// <inheritdoc cref="Initialize(Analyzer, in Grid, in Grid)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static void Initialize(in Grid g, in Grid s) => Initialize(null, g, s);
 
 	/// <summary>
@@ -130,7 +129,6 @@ internal static class MemoryCachedData
 	/// <param name="analyzer">The analyzer.</param>
 	/// <param name="g">The grid.</param>
 	/// <param name="s">The solution of <paramref name="g"/>.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static void Initialize(Analyzer? analyzer, in Grid g, in Grid s)
 	{
 		(CandidatesCount, StrongLinkTypesCollected, WeakLinkTypesCollected) = (g.CandidatesCount, LinkType.Unknown, LinkType.Unknown);

@@ -291,7 +291,6 @@ public sealed partial class BorescoperDeadlyPatternPattern(long mask) : Pattern
 	public override BorescoperDeadlyPatternPattern Clone() => new(_mask);
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal void Deconstruct(out (Cell A, Cell B) pair1, out (Cell A, Cell B) pair2, out (Cell A, Cell B, Cell C, Cell D) centerCells)
 		=> (pair1, pair2, centerCells) = (Pair1, Pair2, CenterCells);
 }

@@ -35,7 +35,6 @@ public sealed partial class GuardianPattern(in CellMap loopCells, in CellMap gua
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out CellMap loopCells, out CellMap guardians, out Digit digit)
 		=> (loopCells, guardians, digit) = (LoopCells, Guardians, Digit);
 

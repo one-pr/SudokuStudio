@@ -67,7 +67,6 @@ public abstract record CoordinateParser : ICoordinateProvider<CoordinateParser>
 
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CoordinateParser GetInstance(IFormatProvider? formatProvider)
 		=> formatProvider switch
 		{

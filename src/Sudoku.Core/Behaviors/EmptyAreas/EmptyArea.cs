@@ -16,7 +16,6 @@ public static class EmptyArea
 	/// <remarks>
 	/// <inheritdoc cref="GetMaxEmptyArea(in CellMap, out Cell)" path="/remarks"/>
 	/// </remarks>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Cell GetMaxEmptyArea(this in Grid @this, out Cell topLeftCell) => @this.EmptyCells.GetMaxEmptyArea(out topLeftCell);
 
 	/// <summary>
@@ -30,7 +29,6 @@ public static class EmptyArea
 	/// <remarks>
 	/// <inheritdoc cref="GetMaxEmptySquareArea(in CellMap, out Cell)" path="/remarks"/>
 	/// </remarks>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Cell GetMaxEmptySquareArea(this in Grid @this, out Cell topLeftCell)
 		=> @this.EmptyCells.GetMaxEmptySquareArea(out topLeftCell);
 

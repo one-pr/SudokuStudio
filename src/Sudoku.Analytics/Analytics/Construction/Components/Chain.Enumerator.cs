@@ -17,7 +17,6 @@ public partial class Chain
 		/// <inheritdoc cref="IEnumerator.Current"/>
 		public readonly Node Current
 		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			get => _nodes[_index];
 		}
 
@@ -26,7 +25,6 @@ public partial class Chain
 
 
 		/// <inheritdoc cref="IEnumerator.MoveNext"/>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool MoveNext() => ++_index < _nodes.Length;
 
 		/// <inheritdoc/>

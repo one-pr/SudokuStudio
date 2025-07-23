@@ -419,7 +419,6 @@ public sealed partial class UniqueRectangleStepSearcher : StepSearcher
 	/// <param name="map">The map.</param>
 	/// <param name="houseIndex">The house index.</param>
 	/// <returns>A <see cref="bool"/> value.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static bool IsConjugatePair(Digit digit, in CellMap map, House houseIndex)
 		=> (HousesMap[houseIndex] & CandidatesMap[digit]) == map;
 
@@ -434,7 +433,6 @@ public sealed partial class UniqueRectangleStepSearcher : StepSearcher
 	/// <returns>
 	/// The <see cref="bool"/> value indicating whether the another cell is same house as the current one.
 	/// </returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static bool IsSameHouseCell(Cell cell1, Cell cell2, out HouseMask houses)
 	{
 		var v = (cell1.AsCellMap() + cell2).SharedHouses;
@@ -455,7 +453,6 @@ public sealed partial class UniqueRectangleStepSearcher : StepSearcher
 	/// candidates used in the current UR pattern. If and only if the full pattern uses 8 candidates
 	/// colored with normal one, the pattern will be complete.
 	/// </remarks>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static unsafe bool IsIncompleteValid(bool arMode, bool allowIncomplete, List<CandidateViewNode> list, out bool isIncomplete)
 	{
 		isIncomplete = !allowIncomplete && list.CountUnsafe(&nodeChecker) != 8 || allowIncomplete;
@@ -473,7 +470,6 @@ public sealed partial class UniqueRectangleStepSearcher : StepSearcher
 	/// <param name="cell">The current cell.</param>
 	/// <returns>The diagonal cell.</returns>
 	/// <exception cref="ArgumentException">Throws when the specified argument <paramref name="cell"/> is invalid.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static Cell GetDiagonalCell(Cell[] urCells, Cell cell)
 		=> cell == urCells[0] ? urCells[3] : cell == urCells[1] ? urCells[2] : cell == urCells[2] ? urCells[1] : urCells[0];
 
@@ -482,7 +478,6 @@ public sealed partial class UniqueRectangleStepSearcher : StepSearcher
 	/// </summary>
 	/// <param name="urCells">The all UR cells used.</param>
 	/// <returns>The list of highlight cells.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static CellViewNode[] GetHighlightCells(Cell[] urCells)
 		=> from urCell in urCells select new CellViewNode(ColorIdentifier.Normal, urCell);
 

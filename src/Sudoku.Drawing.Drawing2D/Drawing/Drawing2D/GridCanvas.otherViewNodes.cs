@@ -92,7 +92,6 @@ public partial class GridCanvas
 		}
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		void d(Cell cell, Digit digit, float vOffsetCandidate, Brush brush)
 		{
 			var originalPoint = _calculator.GetMousePointInCenter(cell, digit);
@@ -272,7 +271,6 @@ public partial class GridCanvas
 			}
 
 
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			void adjust(PointF pt1, PointF pt2, out PointF p1, out PointF p2, float alpha, float candidateSize)
 			{
 				if (node.Shape is LinkShape.Chain or LinkShape.ConjugatePair)
@@ -290,7 +288,6 @@ public partial class GridCanvas
 				}
 			}
 
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			void cut(ref PointF pt1, ref PointF pt2, float cw, float ch, float pt1x, float pt1y, float pt2x, float pt2y)
 			{
 				if (node.Shape is LinkShape.Chain or LinkShape.ConjugatePair)
@@ -312,7 +309,6 @@ public partial class GridCanvas
 		}
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static void rotate(PointF pt1, ref PointF pt2, float angle)
 		{
 			// Translate 'pt2' to (0, 0).

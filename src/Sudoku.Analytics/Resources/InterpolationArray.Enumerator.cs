@@ -28,7 +28,6 @@ public partial struct InterpolationArray
 
 
 		/// <inheritdoc/>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool MoveNext() => ++_index < _values.Length;
 
 		/// <inheritdoc/>

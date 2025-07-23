@@ -15,7 +15,6 @@ public readonly record struct Chute(int Index, bool IsRow, HouseMask HousesMask)
 
 
 	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public string ToString(IFormatProvider? formatProvider)
 		=> CoordinateConverter.GetInstance(formatProvider).ChuteConverter([this]);
 
@@ -24,7 +23,6 @@ public readonly record struct Chute(int Index, bool IsRow, HouseMask HousesMask)
 
 
 	/// <inheritdoc cref="IParsable{TSelf}.TryParse(string?, IFormatProvider?, out TSelf)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool TryParse(string str, out Chute result) => TryParse(str, null, out result);
 
 	/// <inheritdoc/>
@@ -48,11 +46,9 @@ public readonly record struct Chute(int Index, bool IsRow, HouseMask HousesMask)
 	}
 
 	/// <inheritdoc cref="IParsable{TSelf}.Parse(string, IFormatProvider?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Chute Parse(string s) => Parse(s, null);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Chute Parse(string s, IFormatProvider? provider)
 		=> CoordinateParser.GetInstance(provider).ChuteParser(s) is [var result]
 			? result

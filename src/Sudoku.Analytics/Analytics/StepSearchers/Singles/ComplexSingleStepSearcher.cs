@@ -96,7 +96,6 @@ public sealed partial class ComplexSingleStepSearcher : StepSearcher
 		return null;
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static void pushStep(out Grid playground, in Grid baseGrid, Step[] indirectStepGroup, LinkedList<Step[]> interimSteps)
 		{
 			interimSteps.AddLast(indirectStepGroup);
@@ -107,7 +106,6 @@ public sealed partial class ComplexSingleStepSearcher : StepSearcher
 			}
 		}
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static void popStep(ref Grid playground, in Grid baseGrid, LinkedList<Step[]> interimSteps)
 		{
 			interimSteps.RemoveLast();

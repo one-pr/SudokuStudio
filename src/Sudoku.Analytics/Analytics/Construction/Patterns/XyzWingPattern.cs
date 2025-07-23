@@ -77,12 +77,10 @@ public sealed partial class XyzWingPattern(
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out CellMap cells, out Mask digitsMask, out Digit zDigit)
 		=> (cells, digitsMask, zDigit) = (Cells, DigitsMask, ZDigit);
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out Cell pivot, out Cell leafCell1, out Cell leafCell2, out House house1, out House house2, out Mask digitsMask, out Digit zDigit)
 		=> (pivot, leafCell1, leafCell2, house1, house2, (_, digitsMask, zDigit)) = (Pivot, LeafCell1, LeafCell2, House1, House2, this);
 

@@ -17,7 +17,6 @@ public static class SpaceExtensions
 		/// <param name="assignments">The assignments.</param>
 		/// <param name="isTruth">Indicates whether the current space is as a truth.</param>
 		/// <returns>A <see cref="bool"/> result.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool IsSatisfied(in CandidateMap assignments, bool isTruth)
 			=> (isTruth, @this) switch
 			{

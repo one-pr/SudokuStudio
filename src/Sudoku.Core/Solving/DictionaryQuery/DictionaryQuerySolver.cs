@@ -183,7 +183,6 @@ public sealed class DictionaryQuerySolver : ISolver
 	/// <remarks>
 	/// This algorithm is hard to determine whether the puzzle has multiple solutions, due to DFS.
 	/// </remarks>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public Dictionary<string, string>? Search(Dictionary<string, string>? values)
 	{
 		if (values is null)
@@ -211,7 +210,6 @@ public sealed class DictionaryQuerySolver : ISolver
 	/// Eliminate all the other values (except <paramref name="d"/>)
 	/// from <c><paramref name="values"/>[<paramref name="s"/>]</c> and propagate.
 	/// </summary>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private Dictionary<string, string>? Assign(Dictionary<string, string> values, string s, string d)
 		=> AllNotNull(from d2 in values[s] where d2.ToString() != d select Eliminate(values, s, d2.ToString())) ? values : null;
 

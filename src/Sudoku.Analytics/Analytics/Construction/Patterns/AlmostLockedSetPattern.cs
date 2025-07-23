@@ -38,7 +38,6 @@ public sealed partial class AlmostLockedSetPattern(
 	/// </summary>
 	public bool IsBivalueCell
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get => Cells.Count == 1;
 	}
 
@@ -76,7 +75,6 @@ public sealed partial class AlmostLockedSetPattern(
 	/// </summary>
 	public House House
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get => Cells.FirstSharedHouse;
 	}
 
@@ -103,16 +101,13 @@ public sealed partial class AlmostLockedSetPattern(
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out Mask digitsMask, out CellMap cells) => (digitsMask, cells) = (DigitsMask, Cells);
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out Mask digitsMask, out CellMap cells, out CellMap possibleEliminationMap)
 		=> ((digitsMask, cells), possibleEliminationMap) = (this, PossibleEliminationMap);
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out Mask digitsMask, out CellMap cells, out CellMap possibleEliminationMap, out CellMap[] eliminationMap)
 		=> ((digitsMask, cells, possibleEliminationMap), eliminationMap) = (this, EliminationMap);
 

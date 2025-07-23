@@ -223,7 +223,6 @@ public sealed partial class SueDeCoq3DimensionStepSearcher : StepSearcher
 		return null;
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static void reinitializeList(List<CellMap> list, in CellMap emptyMap)
 		{
 			list.Clear();

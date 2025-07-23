@@ -39,7 +39,6 @@ public sealed partial class FishPattern(Digit digit, HouseMask baseSets, HouseMa
 			};
 
 
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			static FishShapeKind k(HouseMask mask)
 			{
 				var (blockMask, rowMask, columnMask) = mask.SplitMask;

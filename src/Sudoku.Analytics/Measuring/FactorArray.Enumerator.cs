@@ -22,7 +22,6 @@ public partial struct FactorArray
 		/// <inheritdoc cref="IEnumerator{T}.Current"/>
 		public readonly Factor Current
 		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			get => _factors[_index];
 		}
 
@@ -31,7 +30,6 @@ public partial struct FactorArray
 
 
 		/// <inheritdoc cref="IEnumerator.MoveNext"/>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool MoveNext() => ++_index < _factors.Length;
 
 		/// <inheritdoc/>

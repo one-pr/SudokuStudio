@@ -40,7 +40,6 @@ public static class StepSearcherFactory
 	/// <exception cref="InvalidOperationException">
 	/// Throws when the corresponding <see cref="Type"/> reflection result is not found.
 	/// </exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static StepSearcher GetStepSearcher(string typeName)
 		=> GetStepSearcher(ThisAssembly.GetDerivedTypes<StepSearcher>().FirstOrDefault(t => t.Name == typeName)!);
 
@@ -49,6 +48,5 @@ public static class StepSearcherFactory
 	/// </summary>
 	/// <param name="type">The type of the step searcher.</param>
 	/// <returns>An array of <see cref="StepSearcher"/> instances found.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static StepSearcher GetStepSearcher(Type type) => (StepSearcher)Activator.CreateInstance(type)!;
 }

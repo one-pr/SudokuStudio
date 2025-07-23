@@ -17,7 +17,6 @@ public static class SolverTypeExtensions
 		/// <param name="solverType">The type.</param>
 		/// <returns>The instance.</returns>
 		/// <exception cref="ArgumentOutOfRangeException">Throws when the argument is not defined.</exception>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static ISolver CreateSolver(SolverType solverType)
 			=> solverType switch
 			{

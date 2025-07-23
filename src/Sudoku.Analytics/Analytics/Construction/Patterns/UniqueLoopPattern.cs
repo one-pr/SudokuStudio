@@ -59,7 +59,6 @@ public sealed partial class UniqueLoopPattern(in CellMap loop, Cell[] path, Mask
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out CellMap loop, out Cell[] path, out Mask digitsMask)
 		=> (loop, path, digitsMask) = (Loop, Path, DigitsMask);
 

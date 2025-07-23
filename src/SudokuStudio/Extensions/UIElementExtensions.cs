@@ -76,7 +76,6 @@ public static class UIElementExtensions
 		}
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static void setPixelData(BitmapEncoder encoder, RenderTargetBitmap rtb, IBuffer pixelBuffer, float dpi)
 			=> encoder.SetPixelData(
 				BitmapPixelFormat.Bgra8,

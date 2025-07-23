@@ -136,7 +136,6 @@ public static class Transformation
 	/// This method will return the reference that is same as the argument,
 	/// in order to inline multiple transformation operations.
 	/// </remarks>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static ref TGrid Transpose<TGrid>(this ref TGrid @this) where TGrid : unmanaged, IGrid<TGrid>
 		=> ref @this.MirrorDiagonal<TGrid>();
 

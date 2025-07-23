@@ -29,7 +29,6 @@ public partial class GridCanvas
 					break;
 
 
-					[MethodImpl(MethodImplOptions.AggressiveInlining)]
 					GraphicsPath triangle(float x, float y)
 					{
 						var top = new PointF(x, y - Tan(PI / 3) / 4 * (cw - 2 * padding));
@@ -42,7 +41,6 @@ public partial class GridCanvas
 						return path;
 					}
 
-					[MethodImpl(MethodImplOptions.AggressiveInlining)]
 					GraphicsPath diamond(float x, float y)
 					{
 						var p1 = new PointF(x, y - ch / 2 + padding);
@@ -89,7 +87,6 @@ public partial class GridCanvas
 							return result;
 						}
 
-						[MethodImpl(MethodImplOptions.AggressiveInlining)]
 						static PointF getPoint(float x, float y, float length, float angle)
 							=> new(x + length * Cos(angle), y + length * Sin(angle));
 

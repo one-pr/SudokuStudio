@@ -203,7 +203,6 @@ public abstract class GridFormatInfo<TGrid> : FormatInfo<TGrid> where TGrid : un
 	/// <returns>
 	/// The <see cref="GridFormatInfo{TGrid}"/> of <see cref="Grid"/> associated with the specified <see cref="IFormatProvider"/>.
 	/// </returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static GridFormatInfo<Grid>? GetInstance(IFormatProvider? formatProvider)
 		=> GetInstance(
 			formatProvider switch
@@ -218,7 +217,6 @@ public abstract class GridFormatInfo<TGrid> : FormatInfo<TGrid> where TGrid : un
 	/// </summary>
 	/// <param name="format">The format.</param>
 	/// <returns>A valid <see cref="GridFormatInfo{TGrid}"/> instance.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static GridFormatInfo<Grid>? GetInstance(string? format)
 	{
 		var p = Array.FindIndex(ValuesRouter, pair => Array.IndexOf(pair.FormatChecker, format) != -1);

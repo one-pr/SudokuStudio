@@ -73,7 +73,6 @@ public sealed partial class WhipNode(
 	/// <param name="current">The current node.</param>
 	/// <param name="parent">The parent node.</param>
 	/// <returns>The new node created.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static WhipNode operator >>(WhipNode current, WhipNode? parent)
 		=> new(current.Assignment, current.AvailableAssignments, parent);
 }

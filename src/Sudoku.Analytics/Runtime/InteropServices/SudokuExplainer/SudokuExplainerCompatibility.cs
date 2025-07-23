@@ -33,7 +33,6 @@ public static class SudokuExplainerCompatibility
 	/// <returns>
 	/// The corresponding technique defined by Sudoku Explainer. If not found, <see langword="null"/> will be returned.
 	/// </returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static SudokuExplainerTechnique? GetCorrespondingTechnique(Technique @this)
 	{
 		var found = Technique.FieldInfoOf(@this)?.GetCustomAttribute<SudokuExplainerAttribute>();
@@ -53,7 +52,6 @@ public static class SudokuExplainerCompatibility
 	/// or the value is <see cref="Technique.None"/>.
 	/// </exception>
 	/// <seealso cref="Technique"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static SudokuExplainerRating? GetDifficultyRatingRange(Technique @this)
 		=> @this == Technique.None || !Enum.IsDefined(@this)
 			? throw new ArgumentOutOfRangeException(nameof(@this))

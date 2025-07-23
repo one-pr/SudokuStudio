@@ -105,7 +105,6 @@ public static class SymmetricTypeExtensions
 		/// <param name="formatProvider">The culture.</param>
 		/// <returns>The string.</returns>
 		/// <exception cref="InvalidOperationException">Throws when the argument holds multiple flag values.</exception>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public string GetName(IFormatProvider? formatProvider)
 			=> BitOperations.PopCount((int)@this) < 2
 				? SR.Get($"SymmetricType_{@this}", formatProvider as CultureInfo)
@@ -113,7 +112,6 @@ public static class SymmetricTypeExtensions
 
 		/// <inheritdoc cref="GetCells(SymmetricType, RowIndex, ColumnIndex)"/>
 		/// <param name="cell">Indicates the target cell to be checked.</param>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public CellMap GetCells(Cell cell) => @this.GetCells(cell / 9, cell % 9);
 
 		/// <summary>
@@ -122,7 +120,6 @@ public static class SymmetricTypeExtensions
 		/// <param name="row">The row value.</param>
 		/// <param name="column">The column value.</param>
 		/// <returns>The cells.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public CellMap GetCells(RowIndex row, ColumnIndex column)
 			=> @this switch
 			{

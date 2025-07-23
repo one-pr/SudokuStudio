@@ -448,7 +448,6 @@ public abstract partial class Chain :
 	public ReadOnlySpan<Node> Slice(int start, int length) => ValidNodes[start..(start + length)];
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public Enumerator GetEnumerator() => new(this);
 
 	/// <inheritdoc/>

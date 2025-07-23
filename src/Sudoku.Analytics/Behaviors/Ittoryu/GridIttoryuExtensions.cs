@@ -67,7 +67,6 @@ public static class GridIttoryuExtensions
 		/// </summary>
 		/// <param name="path">The first found ittoryu path.</param>
 		/// <returns>A <see cref="bool"/> result indicating that.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool IsIttoryu([NotNullWhen(true)] out DisorderedIttoryuDigitPath? path)
 			=> @this.IsIttoryu(TechniqueIttoryuSets.IttoryuTechniques, out path);
 
@@ -91,7 +90,6 @@ public static class GridIttoryuExtensions
 		/// </param>
 		/// <param name="path">The first found ittoryu path.</param>
 		/// <returns>A <see cref="bool"/> result indicating that.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool IsIttoryu(TechniqueSet techniques, [NotNullWhen(true)] out DisorderedIttoryuDigitPath? path)
 		{
 			var pathFinder = new DisorderedIttoryuFinder(techniques);

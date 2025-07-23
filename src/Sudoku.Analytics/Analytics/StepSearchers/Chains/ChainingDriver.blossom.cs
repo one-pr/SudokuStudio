@@ -65,7 +65,6 @@ internal partial class ChainingDriver
 		return result.AsSpan();
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static CandidateMap getExitsMap(StrongForcingChain[] strongForcingChains)
 			=> [.. from branch in strongForcingChains select branch[0].Map[0]];
 

@@ -95,12 +95,10 @@ internal readonly partial record struct SudokuPanePositionConverter([property: H
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out Point firstCellTopLeftPosition, out Point[,] gridPoints)
 		=> (firstCellTopLeftPosition, gridPoints) = (FirstCellTopLeftPosition, GridPoints);
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out Size candidateSize, out Size cellSize, out Size blockSize, out Size gridSize)
 		=> (candidateSize, cellSize, blockSize, gridSize) = (CandidateSize, CellSize, BlockSize, GridSize);
 

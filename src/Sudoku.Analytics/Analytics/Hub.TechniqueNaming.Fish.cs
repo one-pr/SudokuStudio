@@ -51,7 +51,6 @@ public partial class Hub
 				return Technique.Parse(buffer[..bufferLength]);
 
 
-				[MethodImpl(MethodImplOptions.AggressiveInlining)]
 				ReadOnlySpan<char> internalName()
 				{
 					var finKindStr = finKind() is var finModifier and not FishFinKind.Normal
@@ -61,11 +60,9 @@ public partial class Hub
 					return $"{finKindStr}{shapeKindStr}{GetFishEnglishName(step.Size)}";
 				}
 
-				[MethodImpl(MethodImplOptions.AggressiveInlining)]
 				FishFinKind finKind()
 					=> step.IsSashimi switch { true => FishFinKind.Sashimi, false => FishFinKind.Finned, _ => FishFinKind.Normal };
 
-				[MethodImpl(MethodImplOptions.AggressiveInlining)]
 				FishShapeKind shapeKind() => step.IsFranken ? FishShapeKind.Franken : FishShapeKind.Mutant;
 			}
 		}

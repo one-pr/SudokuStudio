@@ -40,11 +40,9 @@ public sealed partial class ColorColorIdentifier(byte alpha, byte red, byte gree
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out byte r, out byte g, out byte b) => (r, g, b) = (Red, Green, Blue);
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out byte a, out byte r, out byte g, out byte b) => (a, (r, g, b)) = (Alpha, this);
 
 	/// <inheritdoc/>

@@ -123,7 +123,6 @@ public sealed partial class ChromaticPatternPattern(Cell[] block1Cells, Cell[] b
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out Cell[] block1Cells, out Cell[] block2Cells, out Cell[] block3Cells, out Cell[] block4Cells)
 		=> (block1Cells, block2Cells, block3Cells, block4Cells) = (Block1Cells, Block2Cells, Block3Cells, Block4Cells);
 

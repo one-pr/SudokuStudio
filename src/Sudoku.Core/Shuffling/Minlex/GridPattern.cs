@@ -63,7 +63,6 @@ public unsafe struct GridPattern
 	/// </summary>
 	/// <param name="p">The grid pattern instance.</param>
 	/// <returns>The score value calculated.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static int BestTopRowScore(in GridPattern p)
 	{
 		// Returns the smallest row after canonicalization of each row independently.

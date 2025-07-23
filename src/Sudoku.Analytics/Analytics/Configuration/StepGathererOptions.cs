@@ -119,7 +119,6 @@ public sealed record StepGathererOptions
 	/// The link option returned. If there's no overridden link option, return <see cref="DefaultLinkOption"/>.
 	/// </returns>
 	/// <seealso cref="DefaultLinkOption"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public LinkOption GetLinkOption(LinkType linkType)
 		=> OverriddenLinkOptions is { } p && p.TryGetValue(linkType, out var lo) ? lo : DefaultLinkOption;
 }

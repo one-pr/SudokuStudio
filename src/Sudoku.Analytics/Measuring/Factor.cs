@@ -84,7 +84,6 @@ public readonly struct Factor(string resourceKey, string[] parameterNames, Type 
 
 
 			// Here a property may be explicitly implemented, the name may starts with interface name.
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			static bool nameMatcher(string a, string b) => a == b || a.Contains('.') && a[(a.LastIndexOf('.') + 1)..] == b;
 		}
 	}
@@ -116,7 +115,6 @@ public readonly struct Factor(string resourceKey, string[] parameterNames, Type 
 	/// <param name="reflectedStepType"><inheritdoc cref="ReflectedStepType" path="/summary"/></param>
 	/// <param name="formula"><inheritdoc cref="Formula" path="/summary"/></param>
 	/// <returns>A <see cref="Factor"/> instance.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Factor Create(string resourceKey, string[] parameterNames, Type reflectedStepType, Func<ReadOnlySpan<object?>, int> formula)
 		=> new(resourceKey, parameterNames, reflectedStepType, formula);
 }

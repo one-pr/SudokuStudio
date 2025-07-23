@@ -488,7 +488,6 @@ public sealed partial class Library(string _directoryPath, string _identifier) :
 	/// <typeparam name="T">The type of value.</typeparam>
 	/// <param name="valueAssignment">The result value assigning method.</param>
 	/// <param name="value">The value to be set.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private void WriteProperty<T>(Action<LibraryInfo, T> valueAssignment, T value) where T : allows ref struct
 	{
 		var info = LoadOrCreate();
@@ -515,7 +514,6 @@ public sealed partial class Library(string _directoryPath, string _identifier) :
 	/// <typeparam name="T">The type of value.</typeparam>
 	/// <param name="resultValueCreator">The result value creator.</param>
 	/// <returns>The result value.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private T ReadProperty<T>(Func<LibraryInfo, T> resultValueCreator) where T : allows ref struct
 	{
 		var info = LoadOrCreate();

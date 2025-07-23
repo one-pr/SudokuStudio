@@ -12,7 +12,6 @@ public static class GridBitOutput
 	/// <typeparam name="TGrid">The type of grid.</typeparam>
 	/// <param name="this">The instance.</param>
 	/// <returns>The string.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string GetTextColorized<TGrid>(in TGrid @this) where TGrid : unmanaged, IGrid<TGrid>
 		=> GetTextCore(@this, "\e[90m", "\e[33m", null);
 
@@ -22,7 +21,6 @@ public static class GridBitOutput
 	/// <typeparam name="TGrid">The type of grid.</typeparam>
 	/// <param name="this">The instance.</param>
 	/// <returns>The string.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string GetText<TGrid>(in TGrid @this) where TGrid : unmanaged, IGrid<TGrid>
 		=> GetTextCore(@this, null, null, null);
 

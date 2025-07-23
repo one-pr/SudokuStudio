@@ -131,7 +131,6 @@ public sealed partial class PencilmarkGridFormatInfo : GridFormatInfo<Grid>
 		return sb.ToString();
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		void defaultPrinting(StringBuilder sb, IList<Mask> valuesByRow, char c1, char c2, Span<int> maxLengths)
 		{
 			sb.Append(c1);
@@ -179,7 +178,6 @@ public sealed partial class PencilmarkGridFormatInfo : GridFormatInfo<Grid>
 			}
 		}
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static void printTabLines(StringBuilder sb, char c1, char c2, char fillingChar, Span<int> m)
 			=> sb
 				.Append(c1)
@@ -190,7 +188,6 @@ public sealed partial class PencilmarkGridFormatInfo : GridFormatInfo<Grid>
 				.Append(string.Empty.PadRight(m[6] + m[7] + m[8] + 6, fillingChar)).Append(c1)
 				.AppendLine();
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static Dictionary<Candidate, List<Mask>> createTempDictionary()
 			=> new() { { 0, new() }, { 1, new() }, { 2, new() }, { 3, new() }, { 4, new() }, { 5, new() }, { 6, new() }, { 7, new() }, { 8, new() } };
 	}

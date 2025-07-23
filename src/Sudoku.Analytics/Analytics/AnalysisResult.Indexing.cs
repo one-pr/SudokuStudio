@@ -78,7 +78,6 @@ public partial record AnalysisResult
 			return null;
 
 
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			bool oic(string name) => name == techniqueName || name.Contains(techniqueName, StringComparison.OrdinalIgnoreCase);
 		}
 	}

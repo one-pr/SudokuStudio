@@ -184,7 +184,6 @@ public sealed partial class BowmanBingoStepSearcher : StepSearcher
 	/// <param name="cell">The cell.</param>
 	/// <param name="digit">The digit.</param>
 	/// <returns>The result.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static (CandidateMap Candidates, Mask Mask) RecordUndoInfo(in Grid grid, Cell cell, Digit digit)
 		=> ((from c in PeersMap[cell] & CandidatesMap[digit] select c * 9 + digit).AsCandidateMap(), grid[cell]);
 

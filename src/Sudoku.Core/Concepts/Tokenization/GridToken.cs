@@ -66,7 +66,6 @@ public static class GridToken
 	}
 
 	/// <inheritdoc cref="CreateFromToken(string)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Grid CreateFromToken(ReadOnlySpan<char> token) => CreateFromToken(token.ToString());
 
 	/// <summary>
@@ -75,7 +74,6 @@ public static class GridToken
 	/// <param name="token">Indicates the token.</param>
 	/// <returns>A <see cref="Grid"/> result.</returns>
 	/// <exception cref="FormatException">Throws when the length of the argument mismatched.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Grid CreateFromToken(string token)
 		=> token.Length switch
 		{
@@ -94,7 +92,6 @@ public static class GridToken
 	/// </summary>
 	/// <param name="s">The string.</param>
 	/// <returns>The result digit.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal static int GetDigitViaToken(string s)
 		=> (Base32CharSpan.IndexOf(s[0]) << 25)
 		+ (Base32CharSpan.IndexOf(s[1]) << 20)

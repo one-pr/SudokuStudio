@@ -24,7 +24,6 @@ public sealed class ConjunctiveNormalFormFormula(int numVars) : IEnumerable<Read
 	/// Add a new clause (disjunction of literals) to the formula.
 	/// </summary>
 	/// <param name="literals">The literals.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void AddClause(params int[] literals) => _clauses.Add(literals);
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>

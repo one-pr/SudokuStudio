@@ -15,7 +15,6 @@ internal static class ChainingRulePool
 	/// <summary>
 	/// Clears the cached rules.
 	/// </summary>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static void FlushCachedRules() => CachedRules.Clear();
 
 	/// <summary>
@@ -23,7 +22,6 @@ internal static class ChainingRulePool
 	/// </summary>
 	/// <param name="linkType">The link type.</param>
 	/// <returns>The created <see cref="ChainingRule"/> instance created.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static ChainingRule? TryCreate(LinkType linkType)
 	{
 		if (CachedRules.TryGetValue(linkType, out var rule))

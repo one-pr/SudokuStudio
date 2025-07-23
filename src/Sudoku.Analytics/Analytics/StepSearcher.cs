@@ -67,7 +67,6 @@ public abstract partial class StepSearcher(
 	/// </summary>
 	/// <param name="other">The other object to be compared.</param>
 	/// <returns>A <see cref="bool"/> result indicating that.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool Equals([NotNullWhen(true)] StepSearcher? other) => other is not null && Priority == other.Priority;
 
 	/// <summary>
@@ -75,11 +74,9 @@ public abstract partial class StepSearcher(
 	/// </summary>
 	/// <param name="other">The other object to be compared.</param>
 	/// <returns>An <see cref="int"/> indicating which one is greater.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public int CompareTo(StepSearcher? other) => other is null ? -1 : Priority.CompareTo(other.Priority);
 
 	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public string ToString(IFormatProvider? formatProvider) => Metadata.GetName(formatProvider as CultureInfo);
 
 	/// <summary>

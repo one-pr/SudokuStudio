@@ -50,7 +50,6 @@ public sealed partial class ConjugateLinkViewNode(ColorIdentifier identifier, Ce
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out ColorIdentifier identifier, out Cell start, out Cell end, out Digit digit)
 		=> (identifier, start, end, digit) = (Identifier, Start, End, Digit);
 

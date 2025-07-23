@@ -234,7 +234,6 @@ file static class Extensions
 	/// <param name="scale">The scale value to be used.</param>
 	/// <param name="formatProvider">The culture to be used.</param>
 	/// <returns>The string representation of final rating text.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string ToString(this Factor @this, Step step, decimal scale, IFormatProvider? formatProvider)
 	{
 		var culture = formatProvider as CultureInfo;

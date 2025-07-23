@@ -16,7 +16,6 @@ public static class DifficultyLevelExtensions
 		/// </summary>
 		/// <param name="formatProvider">The culture.</param>
 		/// <returns>The string value.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public string GetName(IFormatProvider? formatProvider)
 			=> BitOperations.PopCount((int)@this) < 2
 				? SR.Get(@this.ToString(), formatProvider as CultureInfo)

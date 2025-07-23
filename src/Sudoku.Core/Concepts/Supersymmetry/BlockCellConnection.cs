@@ -210,7 +210,6 @@ file static class Extensions
 		/// </summary>
 		public CellMap Neighbors
 		{
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			get
 			{
 				var block = @this.ToHouse(HouseType.Block);

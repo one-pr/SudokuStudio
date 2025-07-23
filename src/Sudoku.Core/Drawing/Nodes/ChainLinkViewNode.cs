@@ -44,7 +44,6 @@ public sealed partial class ChainLinkViewNode(ColorIdentifier identifier, Candid
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out ColorIdentifier identifier, out CandidateMap start, out CandidateMap end, out bool isStrongLink)
 		=> (identifier, start, end, isStrongLink) = (Identifier, Start, End, IsStrongLink);
 

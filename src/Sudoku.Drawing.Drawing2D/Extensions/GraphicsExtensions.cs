@@ -20,7 +20,6 @@ public static class GraphicsExtensions
 		/// <param name="brush">The brush.</param>
 		/// <param name="point">The point.</param>
 		/// <param name="stringFormat">The string format instance.</param>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void DrawValue<TFormattable>(TFormattable value, Font font, Brush brush, PointF point, StringFormat stringFormat)
 			where TFormattable : IFormattable, allows ref struct
 			=> @this.DrawString(value.ToString(null, null), font, brush, point, stringFormat);
@@ -77,7 +76,6 @@ public static class GraphicsExtensions
 		/// This method will draw a cross sign and fill with the specified color, so you don't need
 		/// to find any fill methods.
 		/// </remarks>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void DrawCrossSign(Pen pen, RectangleF rectangle)
 		{
 			var (x, y, w, h) = rectangle;
@@ -95,7 +93,6 @@ public static class GraphicsExtensions
 		/// </summary>
 		/// <param name="pen">The pen.</param>
 		/// <param name="rectangle">The rectangle.</param>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void DrawCapsule(Pen pen, RectangleF rectangle) => @this.DrawRoundedRectangle(pen, rectangle, 0);
 
 		/// <summary>
@@ -103,7 +100,6 @@ public static class GraphicsExtensions
 		/// </summary>
 		/// <param name="brush">The brush.</param>
 		/// <param name="rectangle">The rectangle.</param>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void FillCapsule(Brush brush, RectangleF rectangle) => @this.FillRoundedRectangle(brush, rectangle, 0);
 
 		/// <summary>

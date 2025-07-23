@@ -30,7 +30,6 @@ public static class MaskOperations
 	/// </summary>
 	/// <param name="mask">The cell mask.</param>
 	/// <returns>The sudoku type configured.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static SudokuType MaskToSudokuType(Mask mask)
 		=> (mask >> GridBase.HeaderShift << GridBase.HeaderShift) switch
 		{
@@ -45,6 +44,5 @@ public static class MaskOperations
 	/// <param name="mask">The mask.</param>
 	/// <returns>The cell state.</returns>
 	/// <seealso cref="Grid"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellState MaskToCellState(Mask mask) => (CellState)(mask >> 9 & 7);
 }

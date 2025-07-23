@@ -88,7 +88,6 @@ public sealed partial class StepCollecting : Page, IAnalyzerTab
 		];
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static CollectedStepBindableSource leafItems(Step step, StepTooltipDisplayItems displayItems)
 			=> new(
 				step.ToSimpleString(App.CurrentCulture),
@@ -97,11 +96,9 @@ public sealed partial class StepCollecting : Page, IAnalyzerTab
 				AnalyzeConversion.GetInlinesOfTooltip(new() { DisplayItems = displayItems, InterimStep = step })
 			);
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static CollectedStepBindableSource rootOrIntermediateItems(string displayKey, IEnumerable<CollectedStepBindableSource> leafItems)
 			=> new(displayKey, null, leafItems, null);
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static IEnumerable<CollectedStepBindableSource> g<TKey>(IGrouping<TKey, Step> stepsGrouped, StepTooltipDisplayItems displayItems)
 			=> from step in stepsGrouped orderby step.DifficultyLevel, step.Difficulty select leafItems(step, displayItems);
 	}

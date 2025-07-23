@@ -75,7 +75,6 @@ public static class CellOrCandidateMapExtensions
 		/// <exception cref="ArgumentNullException">
 		/// Throws when the argument <paramref name="reference"/> references to <see langword="null"/>.
 		/// </exception>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void CopyHouseInfo(ref House reference)
 		{
 			reference = BlockTable[@this];
@@ -87,7 +86,6 @@ public static class CellOrCandidateMapExtensions
 		/// Converts the specified <see cref="Cell"/> into a singleton <see cref="CellMap"/> instance.
 		/// </summary>
 		/// <returns>A <see cref="CellMap"/> instance, containing only one element of the current cell.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public ref readonly CellMap AsCellMap() => ref CellMaps[@this];
 
 		/// <summary>
@@ -98,7 +96,6 @@ public static class CellOrCandidateMapExtensions
 		/// <exception cref="ArgumentOutOfRangeException">
 		/// Throws when the argument <paramref name="houseType"/> is not defined.
 		/// </exception>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public House ToHouse(HouseType houseType)
 			=> houseType switch
 			{
@@ -115,7 +112,6 @@ public static class CellOrCandidateMapExtensions
 	extension(Cell[] @this)
 	{
 		/// <inheritdoc cref="AsCellMap(ReadOnlySpan{Cell})"/>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public CellMap AsCellMap() => [.. @this];
 	}
 
@@ -125,7 +121,6 @@ public static class CellOrCandidateMapExtensions
 	extension(Candidate[] @this)
 	{
 		/// <inheritdoc cref="AsCandidateMap(ReadOnlySpan{Candidate})"/>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public CandidateMap AsCandidateMap() => [.. @this];
 	}
 
@@ -138,8 +133,7 @@ public static class CellOrCandidateMapExtensions
 		/// Converts the specified <see cref="Candidate"/> into a singleton <see cref="CandidateMap"/> instance.
 		/// </summary>
 		/// <returns>A <see cref="CandidateMap"/> instance, containing only one element of the current candidate.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-#if CACHE_CANDIDATE_MAPS
+		#if CACHE_CANDIDATE_MAPS
 		public ref readonly CandidateMap AsCandidateMap() => ref CandidateMaps[@this];
 #else
 		public CandidateMap AsCandidateMap() => [@this];
@@ -155,7 +149,6 @@ public static class CellOrCandidateMapExtensions
 		/// Converts the specified list of <see cref="Cell"/> instances into a <see cref="CellMap"/> instance.
 		/// </summary>
 		/// <returns>A <see cref="CellMap"/> instance, containing all elements come from the current sequence.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public CellMap AsCellMap() => [.. @this];
 	}
 
@@ -168,7 +161,6 @@ public static class CellOrCandidateMapExtensions
 		/// Converts the specified list of <see cref="Candidate"/> instances into a <see cref="CandidateMap"/> instance.
 		/// </summary>
 		/// <returns>A <see cref="CandidateMap"/> instance, containing all elements come from the current sequence.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public CandidateMap AsCandidateMap() => [.. @this];
 	}
 }

@@ -67,7 +67,6 @@ public sealed partial class NodeSet : IComponent, IFormattable, IReadOnlyList<No
 	/// </summary>
 	/// <param name="nodes">A list of nodes.</param>
 	/// <returns>A <see cref="NodeSet"/> instance returned.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public static NodeSet Create(ReadOnlySpan<Node> nodes) => new([.. nodes]);
 

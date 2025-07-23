@@ -451,11 +451,9 @@ file static class ImageHandler
 			return image;
 
 
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			static bool colorIs<TPossibleColor>() where TPossibleColor : struct, IColor, allows ref struct
 				=> typeof(TColor) == typeof(TPossibleColor);
 
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			static bool depthIs<TPossibleDepth>() where TPossibleDepth : new(), allows ref struct
 				=> typeof(TDepth) == typeof(TPossibleDepth);
 		}

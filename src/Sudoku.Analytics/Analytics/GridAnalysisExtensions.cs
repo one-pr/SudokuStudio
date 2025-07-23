@@ -56,7 +56,6 @@ public static class GridAnalysisExtensions
 		/// <param name="allowHiddenSingleInLine">
 		/// A <see cref="bool"/> value indicating whether hidden single includes line types.
 		/// </param>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool CanPrimaryHiddenSingle(bool allowHiddenSingleInLine)
 			=> Analyzer.Default
 				.WithStepSearchers(new SingleStepSearcher { EnableFullHouse = true, EnableLastDigit = true })

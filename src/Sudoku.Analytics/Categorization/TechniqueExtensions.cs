@@ -163,7 +163,6 @@ public static class TechniqueExtensions
 		/// An extra value that is defined in direct mode. If undefined, the argument will keep a same value as the return value.
 		/// </param>
 		/// <returns>The difficulty value.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public int GetDefaultRating(out int directRatingValue)
 		{
 			var attribute = Technique.FieldInfoOf(@this)!.GetCustomAttribute<TechniqueMetadataAttribute>()!;
@@ -177,7 +176,6 @@ public static class TechniqueExtensions
 		/// <param name="formatProvider">The culture information.</param>
 		/// <returns>The name of the current technique.</returns>
 		/// <exception cref="ResourceNotFoundException">Throws when the target name is not found in resource dictionary.</exception>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public string GetName(IFormatProvider? formatProvider)
 			=> SR.TryGet(@this.ToString(), out var resource, formatProvider as CultureInfo ?? CultureInfo.CurrentUICulture)
 				? resource
@@ -191,7 +189,6 @@ public static class TechniqueExtensions
 		/// All possible aliases of the current technique.
 		/// If the technique does not contain any aliases, the return value will be <see langword="null"/>.
 		/// </returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public string[]? GetAliasedNames(IFormatProvider? formatProvider)
 			=> SR.TryGet($"TechniqueAlias_{@this}", out var resource, formatProvider as CultureInfo ?? CultureInfo.CurrentUICulture)
 				? resource.Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
@@ -203,7 +200,6 @@ public static class TechniqueExtensions
 		/// No exception will be thrown.
 		/// </summary>
 		/// <returns>The <see cref="TechniqueGroup"/> value that the current <see cref="Technique"/> belongs to.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public TechniqueGroup? TryGetGroup()
 			=> Technique.FieldInfoOf(@this)?.GetCustomAttribute<TechniqueMetadataAttribute>()?.ContainingGroup;
 	}

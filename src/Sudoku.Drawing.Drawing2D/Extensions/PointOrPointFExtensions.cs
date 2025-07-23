@@ -13,7 +13,6 @@ public static class PointOrPointFExtensions
 	extension(Point @this)
 	{
 		/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Deconstruct(out int x, out int y) => (x, y) = (@this.X, @this.Y);
 	}
 
@@ -26,11 +25,9 @@ public static class PointOrPointFExtensions
 		/// To truncate the point.
 		/// </summary>
 		/// <returns>The result.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Point Truncate() => new((int)@this.X, (int)@this.Y);
 
 		/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Deconstruct(out float x, out float y) => (x, y) = (@this.X, @this.Y);
 	}
 }

@@ -97,7 +97,6 @@ public sealed partial class BlossomLoop(params ConclusionSet conclusions) :
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool Equals([NotNullWhen(true)] BlossomLoop? other)
 		=> Equals(other, NodeComparison.IgnoreIsOn, ChainComparison.Undirected);
 
@@ -140,7 +139,6 @@ public sealed partial class BlossomLoop(params ConclusionSet conclusions) :
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public int CompareTo(BlossomLoop? other) => CompareTo(other, NodeComparison.IgnoreIsOn);
 
 	/// <summary>
@@ -205,7 +203,6 @@ public sealed partial class BlossomLoop(params ConclusionSet conclusions) :
 	}
 
 	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public string ToString(IFormatProvider? formatProvider)
 	{
 		var converter = CoordinateConverter.GetInstance(formatProvider);

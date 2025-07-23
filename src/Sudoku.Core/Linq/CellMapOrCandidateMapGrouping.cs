@@ -48,14 +48,12 @@ public readonly partial struct CellMapOrCandidateMapGrouping<TMap, TElement, TKe
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out TKey key, out TMap values) => (key, values) = (Key, Values);
 
 	/// <summary>
 	/// Returns an enumerator that iterates through a collection.
 	/// </summary>
 	/// <returns>An enumerator object that can be used to iterate through the collection.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public AnonymousSpanEnumerator<TElement> GetEnumerator() => Values.GetEnumerator();
 
 	/// <summary>

@@ -149,7 +149,6 @@ public sealed partial class AlternatingInferenceChain(Node lastNode) : NamedChai
 	}
 
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool Equals([NotNullWhen(true)] AlternatingInferenceChain? other)
 		=> Equals(other, NodeComparison.IgnoreIsOn, ChainComparison.Undirected);
 
@@ -283,7 +282,6 @@ public sealed partial class AlternatingInferenceChain(Node lastNode) : NamedChai
 	/// </item>
 	/// </list>
 	/// </remarks>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public int CompareTo(AlternatingInferenceChain? other) => CompareTo(other, NodeComparison.IgnoreIsOn);
 
 	/// <inheritdoc/>

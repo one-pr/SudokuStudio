@@ -6,7 +6,6 @@ public partial struct RankPattern
 	/// Returns a list of <see cref="Candidate"/> group that describes the valid assignments.
 	/// </summary>
 	/// <returns>Valid assignments.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public ReadOnlySpan<ReadOnlyMemory<Candidate>> GetAssignmentCombinations() => GetAssignmentCombinationsCore(out _);
 
 	/// <summary>

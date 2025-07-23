@@ -100,7 +100,6 @@ public sealed partial class OpenSudokuGridFormatInfo : GridFormatInfo<Grid>
 		return result;
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static bool whenClause(Cell i, string match, string pattern1, string pattern2)
 			=> i == 80 * 6 ? match[(i + 1)..(i + 5)] == pattern1 : match[(i + 1)..(i + 6)] == pattern2;
 	}

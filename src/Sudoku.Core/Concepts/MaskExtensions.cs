@@ -25,7 +25,6 @@ public static class MaskExtensions
 		/// The default value is <see langword="false"/>.
 		/// </param>
 		/// <returns>A <see cref="string"/> result representing the current mask value.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public string ToBinaryString(bool upperCasedPrefix = false)
 			=> $"0{(upperCasedPrefix ? 'B' : 'b')}{@this.ToStringBase(2, 9)}";
 
@@ -37,7 +36,6 @@ public static class MaskExtensions
 		/// The default value is <see langword="false"/>.
 		/// </param>
 		/// <returns>A <see cref="string"/> result representing the current mask value.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public string ToOctalString(bool upperCasedPrefix = false)
 			=> $"0{(upperCasedPrefix ? 'O' : 'o')}{@this.ToStringBase(8, 3)}";
 
@@ -49,7 +47,6 @@ public static class MaskExtensions
 		/// The default value is <see langword="false"/>.
 		/// </param>
 		/// <returns>A <see cref="string"/> result representing the current mask value.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public string ToHexadecimalString(bool upperCasedPrefix = false)
 			=> $"0{(upperCasedPrefix ? 'X' : 'x')}{@this.ToStringBase(16, 3)}";
 
@@ -59,7 +56,6 @@ public static class MaskExtensions
 		/// </summary>
 		/// <param name="base">The base value. The value must be 2, 8, 10 or 16.</param>
 		/// <returns>The string.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public string ToStringBase(int @base) => Convert.ToString(@this, @base);
 
 		/// <summary>
@@ -69,7 +65,6 @@ public static class MaskExtensions
 		/// <param name="base">The base value. The value must be 2, 8, 10 or 16.</param>
 		/// <param name="totalWidth">The total width.</param>
 		/// <returns>The string.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public string ToStringBase(int @base, int totalWidth) => Convert.ToString(@this, @base).PadLeft(totalWidth, '0');
 	}
 
@@ -97,7 +92,6 @@ public static class MaskExtensions
 		}
 
 		/// <inheritdoc cref="Create(ReadOnlySpan{Digit})"/>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Mask Create(Digit[] digits) => Create(digits.AsReadOnlySpan());
 
 		/// <typeparam name="TDigits">The type of the enumerable sequence.</typeparam>

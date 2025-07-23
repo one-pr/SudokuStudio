@@ -70,7 +70,6 @@ public static class SingleSubtypeExtensions
 		/// </summary>
 		/// <param name="houseType">The house type.</param>
 		/// <returns>The number of excluders.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public int GetExcludersCount(HouseType houseType) => @this.ToString()[^(3 - (int)houseType)] - '0';
 
 		/// <summary>
@@ -97,7 +96,6 @@ public static class SingleSubtypeExtensions
 		/// <returns>The single technique returned.</returns>
 		/// <exception cref="ArgumentOutOfRangeException">Throws when the argument is out of range.</exception>
 		/// <seealso cref="SingleTechniqueFlag"/>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public SingleTechniqueFlag GetSingleTechnique(bool subtleValue = false)
 		{
 			const string block = nameof(HouseType.Block), row = nameof(HouseType.Row), column = nameof(HouseType.Column);

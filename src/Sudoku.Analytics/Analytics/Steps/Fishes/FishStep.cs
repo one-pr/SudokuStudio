@@ -112,6 +112,5 @@ public abstract class FishStep(
 
 
 	/// <inheritdoc cref="Step.ToString(IFormatProvider?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public new string ToString(IFormatProvider? formatProvider) => Pattern.ToString(formatProvider);
 }

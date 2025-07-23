@@ -17,11 +17,9 @@ public abstract partial class IconViewNode(ColorIdentifier identifier, Cell cell
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out Cell cell) => cell = Cell;
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public sealed override bool Equals([NotNullWhen(true)] ViewNode? other)
 		=> base.Equals(other) && other is IconViewNode comparer && Cell == comparer.Cell;
 }

@@ -14,7 +14,6 @@ public readonly ref struct ChainingRuleCollection(ReadOnlySpan<ChainingRule> rul
 	/// </summary>
 	public int Length
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get => Rules.Length;
 	}
 
@@ -31,17 +30,14 @@ public readonly ref struct ChainingRuleCollection(ReadOnlySpan<ChainingRule> rul
 	/// <returns>A <see cref="ChainingRule"/> instance returned.</returns>
 	public ChainingRule this[int index]
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get => Rules[index];
 	}
 
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public AnonymousSpanEnumerator<ChainingRule> GetEnumerator() => new(Rules);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public ChainingRule[] ToArray() => Rules.ToArray();
 
 	/// <inheritdoc/>
@@ -56,7 +52,6 @@ public readonly ref struct ChainingRuleCollection(ReadOnlySpan<ChainingRule> rul
 	/// </summary>
 	/// <param name="value">The value.</param>
 	/// <returns>A <see cref="ChainingRuleCollection"/> instance.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static ChainingRuleCollection Create(ReadOnlySpan<ChainingRule> value) => new(value);
 
 
@@ -64,6 +59,5 @@ public readonly ref struct ChainingRuleCollection(ReadOnlySpan<ChainingRule> rul
 	/// Initializes a <see cref="ChainingRuleCollection"/> instance.
 	/// </summary>
 	/// <param name="rules">The rules.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static implicit operator ChainingRuleCollection(ReadOnlySpan<ChainingRule> rules) => new(rules);
 }

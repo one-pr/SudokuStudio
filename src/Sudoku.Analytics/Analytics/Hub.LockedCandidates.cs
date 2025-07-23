@@ -17,7 +17,6 @@ public partial class Hub
 		/// <param name="emptyCells">The empty cells in the pattern.</param>
 		/// <param name="digitsMask">Indicates the mask of digits that are locked candidates in the pattern.</param>
 		/// <returns>A <see cref="bool"/> result.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool IsLockedCandidates(
 			in Grid grid,
 			in CellMap a,

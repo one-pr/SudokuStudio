@@ -6,7 +6,6 @@ namespace Sudoku.Drawing.Drawing2D;
 public sealed class ColorPalette : List<Color>, ISliceMethod<ColorPalette, Color>
 {
 	/// <inheritdoc cref="ISliceMethod{TSelf, TSource}.Slice(int, int)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public new ColorPalette Slice(int start, int count) => [.. base.Slice(start, count)];
 
 	/// <inheritdoc/>

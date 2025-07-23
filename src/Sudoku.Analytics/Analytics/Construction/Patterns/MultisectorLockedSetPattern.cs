@@ -92,7 +92,6 @@ public sealed partial class MultisectorLockedSetPattern(in CellMap map, RowIndex
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out CellMap map, out RowIndex rowCount, out ColumnIndex columnCount)
 		=> (map, rowCount, columnCount) = (Map, RowCount, ColumnCount);
 

@@ -29,7 +29,6 @@ public partial record struct ForcingChainsInfo
 		public void Reset() => throw new NotImplementedException();
 
 		/// <inheritdoc/>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool MoveNext() => _enumerator.MoveNext();
 	}
 }

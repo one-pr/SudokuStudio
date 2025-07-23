@@ -156,11 +156,9 @@ public readonly ref partial struct Distance(int p, int q)
 
 
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool Equals(Distance other) => (_p, _q) == (other._p, other._q);
 
 	/// <inheritdoc cref="IComparable{T}.CompareTo(T)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public int CompareTo(Distance other) => RawValue.CompareTo(other.RawValue);
 
 	/// <inheritdoc cref="object.ToString"/>
@@ -183,7 +181,6 @@ public readonly ref partial struct Distance(int p, int q)
 	/// <param name="cell1">The first cell to be compared.</param>
 	/// <param name="cell2">The second cell to be compared.</param>
 	/// <returns>The distance result.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Distance GetDistance(Cell cell1, Cell cell2)
 	{
 		var (x1, y1) = (cell1 / 9, cell1 % 9);
@@ -196,7 +193,6 @@ public readonly ref partial struct Distance(int p, int q)
 	/// </summary>
 	/// <param name="cells">The <see cref="CellMap"/> instance storing two cells.</param>
 	/// <returns>The distance result.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static Distance GetDistance(in CellMap cells)
 	{
 		ArgumentException.ThrowIfAssertionFailed(cells.Count == 2);
@@ -209,7 +205,6 @@ public readonly ref partial struct Distance(int p, int q)
 	/// <param name="cell">The cell.</param>
 	/// <param name="house">The house.</param>
 	/// <returns>The minimal and maximal distance value.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static (Cell Min, Cell Max)? GetDistanceTo(Cell cell, House house) => DistanceTable[cell][house];
 
 	/// <summary>

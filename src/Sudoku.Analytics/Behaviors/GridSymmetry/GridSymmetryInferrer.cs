@@ -55,7 +55,6 @@ public sealed unsafe class GridSymmetryChecker
 	/// Throws when the argument <paramref name="symmetricType"/> is not <see cref="SymmetricType.Central"/>,
 	/// <see cref="SymmetricType.Diagonal"/> or	<see cref="SymmetricType.AntiDiagonal"/>.
 	/// </exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool IsSymmetricalPlacement(
 		in Grid grid,
 		SymmetricType symmetricType,

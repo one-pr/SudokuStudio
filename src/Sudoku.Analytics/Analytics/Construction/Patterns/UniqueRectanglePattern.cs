@@ -93,11 +93,9 @@ public sealed partial class UniqueRectanglePattern(in CellMap cells, Mask digits
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out CellMap cells, out Mask digitsMask) => (cells, digitsMask) = (Cells, DigitsMask);
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out CellMap cells, out Mask digitsMask, out Mask otherDigitsMask)
 		=> ((cells, digitsMask), otherDigitsMask) = (this, OtherDigitsMask);
 
@@ -142,7 +140,6 @@ public sealed partial class UniqueRectanglePattern(in CellMap cells, Mask digits
 	/// <param name="d2">The second digit.</param>
 	/// <param name="cells">All four cells.</param>
 	/// <returns>A <see cref="bool"/> result indicating that.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool CanMakeDeadlyPattern(in Grid grid, Digit d1, Digit d2, Cell[] cells)
 		// Labeling of four cells:
 		// c1 c2

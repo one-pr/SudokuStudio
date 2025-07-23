@@ -173,7 +173,6 @@ public sealed class HiddenSingleGenerator : SingleGenerator
 			}
 
 
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			static void adjustToBlock5(ref House house, ref Cell targetCell, ref Grid puzzle)
 			{
 				if (house == 4)
@@ -203,7 +202,6 @@ public sealed class HiddenSingleGenerator : SingleGenerator
 				targetCell = HousesCells[4][BlockPositionOf(targetCell)];
 			}
 
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			static void adjustToCenterCell(ref Cell targetCell, ref Grid puzzle)
 			{
 				var pos = BlockPositionOf(targetCell);
@@ -362,7 +360,6 @@ public sealed class HiddenSingleGenerator : SingleGenerator
 			}
 
 
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			static void adjustToBlock5(House cellHouse, ref House house, ref Cell targetCell, ref Grid puzzle)
 			{
 				if (cellHouse == 4)
@@ -405,7 +402,6 @@ public sealed class HiddenSingleGenerator : SingleGenerator
 				targetCell = HousesCells[4][blockPos];
 			}
 
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			static void adjustToCenterCell(ref House house, ref Cell targetCell, ref Grid puzzle)
 			{
 				var pos = BlockPositionOf(targetCell);

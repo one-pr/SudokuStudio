@@ -58,7 +58,6 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool? Solve(in Grid grid, out Grid result)
 	{
 		ClearStack();
@@ -88,7 +87,6 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 	/// <param name="solution">The solution.</param>
 	/// <param name="limit">The limit of solutions to be checked.</param>
 	/// <returns>A <see cref="long"/> value indicating the number of solutions.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public long SolveString(char* puzzle, char* solution, int limit)
 	{
 		ArgumentNullException.ThrowIfNull(puzzle);
@@ -105,7 +103,6 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 	}
 
 	/// <inheritdoc cref="SolveString(char*, char*, int)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public long SolveString(string puzzle, char* solution, int limit)
 	{
 		ClearStack();
@@ -123,7 +120,6 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 	}
 
 	/// <inheritdoc cref="SolveString(char*, char*, int)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public long SolveString(string puzzle, out string solution, int limit)
 	{
 		ClearStack();
@@ -147,7 +143,6 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 	/// Throws when the argument <paramref name="grid"/> is <see langword="null"/>.
 	/// </exception>
 	/// <seealso cref="CheckValidity(string, out string?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool CheckValidity(char* grid)
 	{
 		ArgumentNullException.ThrowIfNull(grid);
@@ -156,11 +151,9 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 	}
 
 	/// <inheritdoc cref="CheckValidity(char*)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool CheckValidity(ref readonly char grid) => CheckValidity((char*)Unsafe.AsPointer(ref Unsafe.AsRef(in grid)));
 
 	/// <inheritdoc cref="CheckValidity(char*)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool CheckValidity(string grid) => CheckValidity(in grid.Span[0]);
 
 	/// <summary>
@@ -193,7 +186,6 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 	/// <param name="puzzle">The puzzle to solve.</param>
 	/// <returns>The solution. If failed to solve, <see cref="Grid.Undefined"/>.</returns>
 	/// <seealso cref="Grid.Undefined"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public Grid Solve(in Grid puzzle) => Solve(puzzle, out var result) is true ? result : Grid.Undefined;
 
 	/// <inheritdoc/>
@@ -204,7 +196,6 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 	/// To clear the field <see cref="_stack"/>.
 	/// </summary>
 	/// <seealso cref="_stack"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private void ClearStack() => Array.Clear(_stack);
 
 	/// <summary>
@@ -213,7 +204,6 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 	/// <param name="cell">The cell.</param>
 	/// <param name="digit">The digit.</param>
 	/// <returns>The <see cref="bool"/> result.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private bool SetSolvedDigit(Cell cell, Digit digit)
 	{
 		var subBand = (int)Cell2Floor[cell];
@@ -251,7 +241,6 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 	/// <param name="cell">The cell.</param>
 	/// <param name="digit">The digit.</param>
 	/// <returns>The <see cref="bool"/> result.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private bool EliminateDigit(Cell cell, Digit digit)
 	{
 		var subBand = Cell2Floor[cell];
@@ -273,7 +262,6 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 	/// <param name="band">The band.</param>
 	/// <param name="mask">The mask.</param>
 	/// <returns>The <see cref="bool"/> result.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private bool SetSolvedMask(int band, uint mask)
 	{
 		if ((_g->Bands[band] & mask) == 0)
@@ -619,7 +607,6 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 
 		// The core Update routine from Zhou Yundong.
 		// This copy has been optimized by champagne and JasonLion in minor ways.
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		bool updn(uint* s, uint i, uint j, uint k, uint l)
 		{
 			a = _g->Bands[i * 3 + j];
@@ -640,7 +627,6 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 			return true;
 		}
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		void upwcl(uint s, uint i, uint p, uint q, uint r, uint t, uint u, uint v, uint w, uint x, uint a)
 		{
 			cl = ~(a & RowMaskTable[s]);
@@ -741,7 +727,6 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 	/// <param name="solutionPtr">The pointer to the solution string.</param>
 	/// <param name="limit">The limitation for the number of all final solutions.</param>
 	/// <returns>The number of solutions found.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private long InternalSolve(char* puzzle, char* solutionPtr, int limit)
 	{
 		_numSolutions = 0;
@@ -904,7 +889,6 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 	/// <summary>
 	/// Either already solved, or guess and recurse.
 	/// </summary>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private void Guess()
 	{
 		if ((_g->UnsolvedRows[0] | _g->UnsolvedRows[1] | _g->UnsolvedRows[2]) == 0)
@@ -971,7 +955,6 @@ public sealed unsafe partial class BitwiseSolver : ISolver, ISolutionEnumerableS
 	/// </summary>
 	/// <param name="map">The map.</param>
 	/// <returns>The position.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static byte BitPos(uint map) => MultiplyDeBruijnBitPosition32[map * 0x077CB531U >> 27];
 
 	/// <summary>

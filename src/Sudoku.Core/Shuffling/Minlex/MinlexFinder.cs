@@ -20,7 +20,6 @@ public sealed unsafe class MinlexFinder
 
 
 	/// <inheritdoc cref="Find(string)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public Grid Find(in Grid grid) => Grid.Parse(Find(grid.ToString("0")));
 
 	/// <summary>

@@ -4653,7 +4653,6 @@ public sealed partial class ExocetStepSearcher : StepSearcher
 	/// <param name="isRow">Indicates whether the cross-line cells are at row direction.</param>
 	/// <param name="baseCells">The base cells.</param>
 	/// <returns>A mask that holds a list of houses that can be complex houses.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static HouseMask GetComplexHouses(bool isRow, in CellMap baseCells)
 		=> HouseMaskOperations.AllHousesMask
 			& ~(isRow ? HouseMaskOperations.AllRowsMask : HouseMaskOperations.AllColumnsMask)
@@ -4811,7 +4810,6 @@ file static class Extensions
 		/// <param name="targetCellsToBeChecked">The target cells to be checked.</param>
 		/// <param name="baseCellsDigitsMask">A mask that holds a list of digits appeared in base cells.</param>
 		/// <returns>A <see cref="bool"/> result indicating that.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool CheckTargetCellsDigitsValidity(in CellMap targetCellsToBeChecked, Mask baseCellsDigitsMask)
 			=> targetCellsToBeChecked switch
 			{

@@ -17,7 +17,6 @@ public static class SingleTechniqueFlagExtensions
 		/// <param name="formatProvider">The culture information.</param>
 		/// <returns>The name of the current technique.</returns>
 		/// <exception cref="ArgumentOutOfRangeException">Throws when the target technique is out of range.</exception>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public string GetName(IFormatProvider? formatProvider)
 			=> @this switch
 			{

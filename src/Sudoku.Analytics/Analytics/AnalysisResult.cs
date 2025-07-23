@@ -376,7 +376,6 @@ public sealed partial record AnalysisResult([property: EquatableMember] in Grid 
 	/// <param name="technique">The technique you want to be checked.</param>
 	/// <returns>A <see cref="bool"/> result indicating that.</returns>
 	/// <exception cref="InvalidOperationException">Throws when the puzzle has not been solved.</exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public bool HasTechnique(Technique technique) => TechniquesUsed.Contains(technique);
 
 	/// <summary>
@@ -437,24 +436,19 @@ public sealed partial record AnalysisResult([property: EquatableMember] in Grid 
 	public override string ToString() => ToString(DefaultOptions);
 
 	/// <inheritdoc cref="ToString(FormattingOptions, IFormatProvider?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public string ToString(FormattingOptions options) => ToString(options, default(IFormatProvider));
 
 	/// <inheritdoc cref="ToString(FormattingOptions, IFormatProvider?, Func{string, Step, string}?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public string ToString(Func<string, Step, string>? stepStringReplacer) => ToString(DefaultOptions, null, stepStringReplacer);
 
 	/// <inheritdoc cref="ToString(FormattingOptions, IFormatProvider?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public string ToString(IFormatProvider? formatProvider) => ToString(DefaultOptions, formatProvider);
 
 	/// <inheritdoc cref="ToString(FormattingOptions, IFormatProvider?, Func{string, Step, string}?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public string ToString(IFormatProvider? formatProvider, Func<string, Step, string> stepStringReplacer)
 		=> ToString(DefaultOptions, formatProvider, stepStringReplacer);
 
 	/// <inheritdoc cref="ToString(FormattingOptions, IFormatProvider?, Func{string, Step, string}?)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public string ToString(FormattingOptions options, Func<string, Step, string> stepStringReplacer)
 		=> ToString(options, null, stepStringReplacer);
 
@@ -464,7 +458,6 @@ public sealed partial record AnalysisResult([property: EquatableMember] in Grid 
 	/// <param name="options">The formatting options.</param>
 	/// <param name="formatProvider">The format provider instance.</param>
 	/// <returns>A string that represents the current object.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public string ToString(FormattingOptions options, IFormatProvider? formatProvider) => ToString(options, formatProvider, null);
 
 	/// <summary>
@@ -686,7 +679,6 @@ public sealed partial record AnalysisResult([property: EquatableMember] in Grid 
 		return sb.ToString();
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static void a(StringBuilder sb, bool showSeparator)
 		{
 			if (showSeparator)
@@ -695,7 +687,6 @@ public sealed partial record AnalysisResult([property: EquatableMember] in Grid 
 			}
 		}
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		bool f(FormattingOptions x) => options.HasFlag(x);
 
 		(int, Step)? getBottleneck()
@@ -723,7 +714,6 @@ public sealed partial record AnalysisResult([property: EquatableMember] in Grid 
 	/// Gets the enumerator of the current instance in order to use <see langword="foreach"/> loop.
 	/// </summary>
 	/// <returns>The enumerator instance.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public AnonymousSpanEnumerator<Step> GetEnumerator() => new(StepsSpan);
 
 	/// <inheritdoc/>
@@ -790,7 +780,6 @@ public sealed partial record AnalysisResult([property: EquatableMember] in Grid 
 	/// <param name="defaultRating">The default value as the return value when <see cref="StepsSpan"/> is empty.</param>
 	/// <returns>The result.</returns>
 	/// <seealso cref="StepsSpan"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static int EvaluateRating(
 		ReadOnlySpan<Step> steps,
 		Func<ReadOnlySpan<Step>, Func<Step, int>, int> executor,

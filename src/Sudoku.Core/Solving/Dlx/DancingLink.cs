@@ -64,7 +64,6 @@ public sealed class DancingLink(ColumnNode _root)
 		return _root;
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static void formLinks(ColumnNode[] cols, RowIndex r, ColumnIndex c, Digit d)
 		{
 			var candidate = r * 81 + c * 9 + d;
@@ -80,7 +79,6 @@ public sealed class DancingLink(ColumnNode _root)
 			linkRowToColumn(matrixRow.Block);
 		}
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static void linkRow(ref MatrixRow d)
 		{
 			d.Cell.Right = d.Column;
@@ -93,7 +91,6 @@ public sealed class DancingLink(ColumnNode _root)
 			d.Block.Left = d.Row;
 		}
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static void linkRowToColumn(DancingLinkNode s)
 		{
 			if (s.Column is { } col)
@@ -108,6 +105,5 @@ public sealed class DancingLink(ColumnNode _root)
 	}
 
 	/// <inheritdoc cref="Create(in Grid)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public ColumnNode Create(Digit[] grid) => Create(Grid.Create(grid));
 }

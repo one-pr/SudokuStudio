@@ -190,7 +190,6 @@ public sealed class SatSolver : ISolver
 	/// Maps 3D coordinates (row, col, digit) to a unique SAT variable index.
 	/// Indices start from 1 up to 729.
 	/// </summary>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private int MapVariable(int r, int c, int d) => r * 81 + c * 9 + d + 1;
 }
 

@@ -216,7 +216,6 @@ public readonly partial struct CellGraph : IEquatable<CellGraph>, IFormattable, 
 	/// </summary>
 	/// <param name="cell">The desired cell.</param>
 	/// <returns>An <see cref="int"/> indicating that. If the cell isn't in the current graph, -1 will be returned.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public int GetDegreeOf(Cell cell) => _cells.Contains(cell) ? _directlyConnectedCellsDictionary[cell].Count : -1;
 
 	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
@@ -277,14 +276,12 @@ public readonly partial struct CellGraph : IEquatable<CellGraph>, IFormattable, 
 	/// </summary>
 	/// <param name="cell">Indicates the cell to be checked.</param>
 	/// <returns>All cells that connect the current cell.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public CellMap GetConnectedCells(Cell cell) => _directlyConnectedCellsDictionary[cell];
 
 	/// <summary>
 	/// Creates an enumerator type that can iterate on each cell in the collection.
 	/// </summary>
 	/// <returns>An enumerator instance.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public Enumerator GetEnumerator() => new(_cells.ToArrayUnsafe());
 
 	/// <summary>
@@ -350,11 +347,9 @@ public readonly partial struct CellGraph : IEquatable<CellGraph>, IFormattable, 
 	/// </summary>
 	/// <param name="cells">The cells.</param>
 	/// <returns>An <see cref="CellGraph"/> instance.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellGraph Create(in CellMap cells) => new(cells, CellMap.Empty);
 
 	/// <inheritdoc cref="Create(in CellMap)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellGraph Create(scoped ReadOnlySpan<Cell> cells) => Create(cells.AsCellMap());
 
 	/// <summary>

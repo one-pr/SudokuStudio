@@ -12,7 +12,6 @@ public static class AnalysisResultOutput
 	/// <param name="options">The options.</param>
 	/// <param name="formatProvider">The format provider.</param>
 	/// <returns>The string.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string GetColorizedText(
 		AnalysisResult instance,
 		AnalysisResult.FormattingOptions options,

@@ -75,7 +75,6 @@ public sealed class NormalComplexSingleStep(
 		return sortKeyThis.CompareTo(sortKeyOther);
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static int getSortKey(Technique technique)
 			=> technique switch
 			{

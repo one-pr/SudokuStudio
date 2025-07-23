@@ -134,7 +134,6 @@ public sealed partial class SingleStepSearcher : StepSearcher
 		return null;
 
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static int stepComparison(Step left, Step right)
 			=> ((SingleStep)left, (SingleStep)right) is var (l, r)
 			&& handleEasyTechnique(left.Code) is var leftEasyCode
@@ -151,7 +150,6 @@ public sealed partial class SingleStepSearcher : StepSearcher
 							? candidateComparisonResult
 							: 0;
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		static int handleEasyTechnique(Technique technique)
 			=> technique switch
 			{

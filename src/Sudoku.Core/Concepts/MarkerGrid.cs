@@ -100,7 +100,6 @@ public partial struct MarkerGrid : GridBase
 	/// <inheritdoc/>
 	public readonly MarkerGrid UnfixedGrid
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get
 		{
 			var result = this;
@@ -112,7 +111,6 @@ public partial struct MarkerGrid : GridBase
 	/// <inheritdoc/>
 	public readonly MarkerGrid FixedGrid
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		get
 		{
 			var result = this;
@@ -336,7 +334,6 @@ public partial struct MarkerGrid : GridBase
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
 	{
 		var targetString = ToString(format.IsEmpty ? null : format.ToString(), provider);
@@ -357,11 +354,9 @@ public partial struct MarkerGrid : GridBase
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly bool GetExistence(Cell cell, Digit digit) => (this[cell] >> digit & 1) != 0;
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly bool? Exists(Cell cell, Digit digit) => GetState(cell) == CellState.Empty ? GetExistence(cell, digit) : null;
 
 	/// <inheritdoc/>
@@ -374,11 +369,9 @@ public partial struct MarkerGrid : GridBase
 	public override readonly string ToString() => ToString(null, null);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly string ToString(string? format) => ToString(format, null);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly string ToString(string? format, IFormatProvider? formatProvider)
 		=> (format, formatProvider) switch
 		{
@@ -390,15 +383,12 @@ public partial struct MarkerGrid : GridBase
 		};
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly string ToString(IFormatProvider? formatProvider) => ToString(null, formatProvider);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly CellState GetState(Cell cell) => MaskOperations.MaskToCellState(this[cell]);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly Mask GetCandidates(Cell cell) => (Mask)(this[cell] & Grid.MaxCandidatesMask);
 
 	/// <inheritdoc/>
@@ -416,11 +406,9 @@ public partial struct MarkerGrid : GridBase
 	/// Creates an array of <see cref="Mask"/> values that is a copy for the current inline array data structure.
 	/// </summary>
 	/// <returns>An array of <see cref="Mask"/> values.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly Mask[] ToMaskArray() => this[..].ToArray();
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public readonly Digit GetDigit(Cell cell)
 		=> GetState(cell) switch
 		{
@@ -444,7 +432,6 @@ public partial struct MarkerGrid : GridBase
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Reset() => this = Preserve(GivenCells);
 
 	/// <inheritdoc/>
@@ -472,7 +459,6 @@ public partial struct MarkerGrid : GridBase
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void SetState(Cell cell, CellState state)
 	{
 		ref var mask = ref this[cell];
@@ -480,7 +466,6 @@ public partial struct MarkerGrid : GridBase
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void SetDigit(Cell cell, Digit digit)
 	{
 		if (digit switch
@@ -495,12 +480,10 @@ public partial struct MarkerGrid : GridBase
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void SetCandidates(Cell cell, Mask mask)
 		=> this[cell] = (Mask)((Mask)((int)GetState(cell) << 9) | (Mask)(mask & Grid.MaxCandidatesMask));
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void SetExistence(Cell cell, Digit digit, bool isOn)
 	{
 		if ((cell, digit) is ( >= 0 and < 81, >= 0 and < 9))
@@ -521,7 +504,6 @@ public partial struct MarkerGrid : GridBase
 	/// </summary>
 	/// <param name="cell">The cell.</param>
 	/// <param name="digits">The digits.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void AddCandidates(Cell cell, params ReadOnlySpan<Digit> digits) => AddCandidates(cell, Mask.Create(digits));
 
 	/// <summary>
@@ -529,7 +511,6 @@ public partial struct MarkerGrid : GridBase
 	/// </summary>
 	/// <param name="cell">The cell.</param>
 	/// <param name="digitsMask">The mask of digits.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void AddCandidates(Cell cell, Mask digitsMask)
 	{
 		if (GetState(cell) == CellState.Empty)
@@ -543,7 +524,6 @@ public partial struct MarkerGrid : GridBase
 	/// </summary>
 	/// <param name="cell">The cell.</param>
 	/// <param name="digits">The digits.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void RemoveCandidates(Cell cell, params ReadOnlySpan<Digit> digits)
 		=> RemoveCandidates(cell, Mask.Create(digits));
 
@@ -552,7 +532,6 @@ public partial struct MarkerGrid : GridBase
 	/// </summary>
 	/// <param name="cell">The cell.</param>
 	/// <param name="digitsMask">The mask of digits.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void RemoveCandidates(Cell cell, Mask digitsMask)
 	{
 		if (GetState(cell) == CellState.Empty)
@@ -562,7 +541,6 @@ public partial struct MarkerGrid : GridBase
 	}
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Apply(Conclusion conclusion)
 	{
 		_ = conclusion is var (type, cell, digit);
@@ -660,16 +638,13 @@ public partial struct MarkerGrid : GridBase
 
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool TryParse(ReadOnlySpan<char> s, out MarkerGrid result) => TryParse(s.ToString(), null, out result);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool TryParse(ReadOnlySpan<char> s, IFormatProvider? provider, out MarkerGrid result)
 		=> TryParse(s.ToString(), provider, out result);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static bool TryParse(string? s, out MarkerGrid result) => TryParse(s, null, out result);
 
 	/// <inheritdoc/>
@@ -725,7 +700,6 @@ public partial struct MarkerGrid : GridBase
 	/// </summary>
 	/// <param name="gridValues">The array of grid values.</param>
 	/// <param name="creatingOption">The grid creating option.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static MarkerGrid Create(Digit[] gridValues, GridCreatingOption creatingOption = 0)
 		=> new(in gridValues[0], creatingOption);
 
@@ -735,24 +709,19 @@ public partial struct MarkerGrid : GridBase
 	/// </summary>
 	/// <param name="gridValues">The list of cell digits.</param>
 	/// <param name="creatingOption">The grid creating option.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static MarkerGrid Create(ReadOnlySpan<Digit> gridValues, GridCreatingOption creatingOption = 0)
 		=> new(in gridValues[0], creatingOption);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static MarkerGrid Parse(ReadOnlySpan<char> s) => Parse(s, null);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static MarkerGrid Parse(ReadOnlySpan<char> s, IFormatProvider? provider) => Parse(s.ToString(), provider);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static MarkerGrid Parse(string? s) => Parse(s ?? string.Empty, null);
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static MarkerGrid Parse(string s, IFormatProvider? provider)
 		=> (provider as SusserGridFormatInfo<MarkerGrid> ?? new()).ParseCore(s);
 
@@ -761,13 +730,11 @@ public partial struct MarkerGrid : GridBase
 	/// Casts the current instance into a <see cref="Grid"/>, only with given and modifiable cells reserved.
 	/// </summary>
 	/// <param name="grid">The grid to be cast from.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static explicit operator Grid(in MarkerGrid grid) => Grid.Create(grid.ToDigitsArray());
 
 	/// <summary>
 	/// Casts the current instance into a <see cref="MarkerGrid"/>, only with given and modifiable cells reserved.
 	/// </summary>
 	/// <param name="grid">The grid to be cast from.</param>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static explicit operator MarkerGrid(in Grid grid) => Create(grid.ToDigitsArray());
 }

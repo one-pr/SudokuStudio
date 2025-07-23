@@ -80,7 +80,6 @@ public static class StepGathererFactory
 		/// <typeparam name="TStepSearcher">The type of step searcher.</typeparam>
 		/// <param name="setter">The value to be added.</param>
 		/// <returns>The value same as <see cref="Analyzer"/>.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Analyzer ApplySetter<TStepSearcher>(Action<TStepSearcher> setter) where TStepSearcher : StepSearcher
 		{
 			instance.Setters.Add(
@@ -176,7 +175,6 @@ public static class StepGathererFactory
 		/// <typeparam name="TStepSearcher">The type of step searcher.</typeparam>
 		/// <param name="setter">The value to be added.</param>
 		/// <returns>The value same as <see cref="Collector"/>.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Collector ApplySetter<TStepSearcher>(Action<TStepSearcher> setter) where TStepSearcher : StepSearcher
 		{
 			instance.Setters.Add(

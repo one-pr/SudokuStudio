@@ -47,7 +47,6 @@ public static class BabaGroupInitialLetterExtensions
 		/// <param name="casing">The letter casing.</param>
 		/// <returns>The character sequence.</returns>
 		/// <exception cref="ArgumentOutOfRangeException">Throws when the specified arguments are not defined.</exception>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public ReadOnlySpan<char> GetSequence(BabaGroupLetterCasing casing)
 			=> Enum.IsDefined(@this) && Enum.IsDefined(casing)
 				? CharSequences[(@this, casing)].Span
@@ -58,7 +57,6 @@ public static class BabaGroupInitialLetterExtensions
 		/// </summary>
 		/// <param name="digit">The digit to be escaped.</param>
 		/// <returns>The escaped character. If a digit doesn't need to escape, return character representation of itself.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public char EscapeDigit(Digit digit)
 			=> @this switch
 			{

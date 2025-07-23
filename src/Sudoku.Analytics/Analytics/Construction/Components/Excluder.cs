@@ -13,7 +13,6 @@ public static class Excluder
 	/// <param name="digit">The digit.</param>
 	/// <param name="excluderHouses">The excluder houses.</param>
 	/// <returns>A <see cref="CellMap"/> instance.</returns>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static CellMap GetNakedSingleExcluderCells(in Grid grid, Cell cell, Digit digit, out ReadOnlySpan<House> excluderHouses)
 		=> [.. from node in GetNakedSingleExcluders(grid, cell, digit, out excluderHouses) select node.Cell];
 

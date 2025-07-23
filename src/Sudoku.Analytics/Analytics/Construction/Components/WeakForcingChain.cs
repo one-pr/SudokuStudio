@@ -45,7 +45,6 @@ public sealed partial class WeakForcingChain(Node lastNode, bool isDynamicChaini
 	/// </item>
 	/// </list>
 	/// </remarks>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public int CompareTo(WeakForcingChain? other) => CompareTo(other, NodeComparison.IgnoreIsOn);
 
 	/// <inheritdoc/>

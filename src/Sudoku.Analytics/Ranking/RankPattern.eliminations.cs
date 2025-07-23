@@ -9,7 +9,6 @@ public partial struct RankPattern
 	/// In theory, eliminations may not require any links. All conclusions come from valid combinations of truths,
 	/// keeping one valid digit filling into each truth, and find intersections of eliminations can be found from all cases.
 	/// </remarks>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public unsafe CandidateMap GetEliminations() => GetEliminationsCore(GetAssignmentCombinations());
 
 	/// <summary>
@@ -22,7 +21,6 @@ public partial struct RankPattern
 	/// Throws when pattern is too complex
 	/// when <paramref name="options"/> is <see cref="EliminationZoneIgnoringOptions.IgnoreSubpatterns"/>.
 	/// </exception>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public CandidateMap GetEliminationZone(EliminationZoneIgnoringOptions options)
 		=> GetEliminationZoneCore(GetAssignmentCombinations(), options);
 

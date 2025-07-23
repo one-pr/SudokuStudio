@@ -37,7 +37,6 @@ public sealed partial class CellLinkViewNode(ColorIdentifier identifier, Cell st
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out ColorIdentifier identifier, out Cell start, out Cell end)
 		=> (identifier, start, end) = (Identifier, Start, End);
 

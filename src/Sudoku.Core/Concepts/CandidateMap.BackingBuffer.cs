@@ -60,7 +60,6 @@ public partial struct CandidateMap
 		}
 
 		/// <inheritdoc/>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		readonly bool IEquatable<BackingBuffer>.Equals(BackingBuffer other) => Equals(other);
 
 		/// <inheritdoc/>
@@ -77,11 +76,9 @@ public partial struct CandidateMap
 
 
 		/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool operator ==(in BackingBuffer left, in BackingBuffer right) => left.Equals(right);
 
 		/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool operator !=(in BackingBuffer left, in BackingBuffer right) => !(left == right);
 
 		/// <inheritdoc/>

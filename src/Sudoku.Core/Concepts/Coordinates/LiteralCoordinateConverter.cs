@@ -173,7 +173,6 @@ public sealed record LiteralCoordinateConverter(
 			);
 
 
-			[MethodImpl(MethodImplOptions.AggressiveInlining)]
 			string labelKey(byte house)
 				=> ((House)house).HouseType switch
 				{

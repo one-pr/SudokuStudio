@@ -72,15 +72,12 @@ public readonly struct SingleSubtypeGroup(ReadOnlyMemory<SingleSubtype> values) 
 
 
 	/// <inheritdoc/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public SingleSubtype[] ToArray() => _values.ToArray();
 
 	/// <inheritdoc cref="ISliceMethod{TSelf, TSource}.Slice(int, int)"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public SingleSubtypeGroup Slice(int start, int count) => new(_values.Slice(start, count));
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public AnonymousSpanEnumerator<SingleSubtype> GetEnumerator() => new(_values.Span);
 
 	/// <inheritdoc/>
@@ -99,6 +96,5 @@ public readonly struct SingleSubtypeGroup(ReadOnlyMemory<SingleSubtype> values) 
 	/// <param name="values">The values.</param>
 	/// <returns>A <see cref="SingleSubtypeGroup"/> instance.</returns>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static SingleSubtypeGroup Create(ReadOnlySpan<SingleSubtype> values) => values.IsEmpty ? Empty : new(values.ToArray());
 }

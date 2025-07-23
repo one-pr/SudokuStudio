@@ -53,12 +53,10 @@ public sealed partial class BabaGroupViewNode(ColorIdentifier identifier, Cell c
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out ColorIdentifier identifier, out Cell cell, out char unknownValueChar)
 		=> (identifier, cell, unknownValueChar) = (Identifier, Cell, UnknownValueChar);
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public void Deconstruct(out ColorIdentifier identifier, out Cell cell, out Mask digitsMask, out char unknownValueChar)
 		=> ((identifier, cell, unknownValueChar), digitsMask) = (this, DigitsMask);
 

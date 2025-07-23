@@ -32,7 +32,6 @@ public static class ComparisonOperatorExtensions
 		/// <typeparam name="T">The type of the target.</typeparam>
 		/// <returns>A delegate function.</returns>
 		/// <exception cref="ArgumentOutOfRangeException">Throws when the argument is out of range (not defined).</exception>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Func<T, T, bool> GetOperator<T>() where T : IComparisonOperators<T, T, bool>
 			=> @this switch
 			{
