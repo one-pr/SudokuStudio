@@ -1794,6 +1794,24 @@
         <member name="M:Sudoku.Concepts.CellMap.op_ExclusiveOr(Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@)">
             <inheritdoc/>
         </member>
+        <member name="M:Sudoku.Concepts.CellMap.op_BitwiseAndAssignment(Sudoku.Concepts.CellMap@)">
+            <summary>
+            Performs compound bitwise-and assignment.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.CellMap.op_BitwiseOrAssignment(Sudoku.Concepts.CellMap@)">
+            <summary>
+            Performs compound bitwise-or assignment.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.CellMap.op_ExclusiveOrAssignment(Sudoku.Concepts.CellMap@)">
+            <summary>
+            Performs compound exclusive-or assignment.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
         <member name="M:Sudoku.Concepts.CellMap.op_BitwiseAnd(Sudoku.Concepts.CellMap@,System.Int32)">
             <inheritdoc/>
         </member>

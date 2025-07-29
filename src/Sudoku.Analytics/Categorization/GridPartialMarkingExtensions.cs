@@ -11,8 +11,10 @@ public static class GridPartialMarkingExtensions
 	/// </summary>
 	internal static readonly Collector Collector = new Collector()
 		.WithStepSearchers(
-			new SingleStepSearcher { EnableFullHouse = true, EnableLastDigit = true, HiddenSinglesInBlockFirst = true },
-			new DirectIntersectionStepSearcher { AllowDirectClaiming = true, AllowDirectPointing = true },
+			// ROSLYN_ISSUE: Remove null-forgiving operator
+			// due to wrong analysis for Roslyn on extension member with complex nullable argument types.
+			new SingleStepSearcher { EnableFullHouse = true, EnableLastDigit = true, HiddenSinglesInBlockFirst = true }!,
+			new DirectIntersectionStepSearcher { AllowDirectClaiming = true, AllowDirectPointing = true }!,
 			new DirectSubsetStepSearcher
 			{
 				AllowDirectHiddenSubset = true,
@@ -21,7 +23,7 @@ public static class GridPartialMarkingExtensions
 				AllowDirectNakedSubset = true,
 				DirectHiddenSubsetMaxSize = 4,
 				DirectNakedSubsetMaxSize = 4
-			}
+			}!
 		)
 		.WithUserDefinedOptions(new() { IsDirectMode = true });
 

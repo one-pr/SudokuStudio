@@ -158,7 +158,9 @@ public sealed partial class UniqueRectangleStepSearcher : StepSearcher
 			ref readonly var initialGrid = ref context.InitialGrid;
 			foreach (var element in list)
 			{
-				var comparer = Mask.Create(element.Digit1, element.Digit2);
+				// ROSLYN_ISSUE: Remove null-forgiving operator
+				// due to wrong analysis for Roslyn on extension member with complex nullable argument types.
+				var comparer = Mask.Create(element.Digit1!, element.Digit2!);
 
 				var isValid = true;
 				foreach (var cell in element.Cells)

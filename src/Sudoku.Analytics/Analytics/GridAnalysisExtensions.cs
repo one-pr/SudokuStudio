@@ -34,7 +34,9 @@ public static class GridAnalysisExtensions
 		/// </summary>
 		public bool CanPrimaryFullHouse
 			=> Analyzer.Default
-				.WithStepSearchers(new SingleStepSearcher { EnableFullHouse = true })
+				// ROSLYN_ISSUE: Remove null-forgiving operator
+				// due to wrong analysis for Roslyn on extension member with complex nullable argument types.
+				.WithStepSearchers(new SingleStepSearcher { EnableFullHouse = true }!)
 				.WithUserDefinedOptions(new() { PrimarySingle = SingleTechniqueFlag.FullHouse })
 				.Analyze(in @this)
 				.IsSolved;
@@ -44,7 +46,9 @@ public static class GridAnalysisExtensions
 		/// </summary>
 		public bool CanPrimaryNakedSingle
 			=> Analyzer.Default
-				.WithStepSearchers(new SingleStepSearcher { EnableFullHouse = true })
+				// ROSLYN_ISSUE: Remove null-forgiving operator
+				// due to wrong analysis for Roslyn on extension member with complex nullable argument types.
+				.WithStepSearchers(new SingleStepSearcher { EnableFullHouse = true }!)
 				.WithUserDefinedOptions(new() { IsDirectMode = true, PrimarySingle = SingleTechniqueFlag.NakedSingle })
 				.Analyze(in @this)
 				.IsSolved;
@@ -58,7 +62,9 @@ public static class GridAnalysisExtensions
 		/// </param>
 		public bool CanPrimaryHiddenSingle(bool allowHiddenSingleInLine)
 			=> Analyzer.Default
-				.WithStepSearchers(new SingleStepSearcher { EnableFullHouse = true, EnableLastDigit = true })
+				// ROSLYN_ISSUE: Remove null-forgiving operator
+				// due to wrong analysis for Roslyn on extension member with complex nullable argument types.
+				.WithStepSearchers(new SingleStepSearcher { EnableFullHouse = true, EnableLastDigit = true }!)
 				.WithUserDefinedOptions(new() { IsDirectMode = true, PrimarySingle = SingleTechniqueFlag.HiddenSingleColumn })
 				.Analyze(in @this)
 				.IsSolved;

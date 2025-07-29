@@ -886,6 +886,24 @@ public partial struct CellMap : CellMapBase
 	/// <inheritdoc/>
 	public static CellMap operator ^(in CellMap left, in CellMap right) => CreateByVector(left._vector ^ right._vector);
 
+	/// <summary>
+	/// Performs compound bitwise-and assignment.
+	/// </summary>
+	/// <param name="value">The value.</param>
+	public void operator &=(in CellMap value) => _vector &= value._vector;
+
+	/// <summary>
+	/// Performs compound bitwise-or assignment.
+	/// </summary>
+	/// <param name="value">The value.</param>
+	public void operator |=(in CellMap value) => _vector |= value._vector;
+
+	/// <summary>
+	/// Performs compound exclusive-or assignment.
+	/// </summary>
+	/// <param name="value">The value.</param>
+	public void operator ^=(in CellMap value) => _vector ^= value._vector;
+
 	/// <inheritdoc/>
 	public static unsafe ReadOnlySpan<CellMap> operator &(in CellMap map, int subsetSize)
 	{

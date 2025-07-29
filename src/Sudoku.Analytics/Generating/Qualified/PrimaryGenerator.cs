@@ -34,7 +34,9 @@ public abstract class PrimaryGenerator : TechniqueGenerator, IJustOneCellGenerat
 	/// Represents an analyzer that will be used in generating phased puzzles.
 	/// </summary>
 	protected static readonly Analyzer Analyzer = Analyzer.Default
-		.WithStepSearchers(new SingleStepSearcher { EnableFullHouse = true, HiddenSinglesInBlockFirst = true })
+		// ROSLYN_ISSUE: Remove null-forgiving operator
+		// due to wrong analysis for Roslyn on extension member with complex nullable argument types.
+		.WithStepSearchers(new SingleStepSearcher { EnableFullHouse = true, HiddenSinglesInBlockFirst = true }!)
 		.WithUserDefinedOptions(new() { IsDirectMode = true });
 
 

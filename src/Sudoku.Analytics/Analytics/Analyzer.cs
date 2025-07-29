@@ -110,10 +110,12 @@ public sealed class Analyzer : StepGatherer, IAnalyzer<Analyzer, AnalysisResult,
 	public static Analyzer SstsOnly
 		=> Default
 			.WithStepSearchers(
-				new SingleStepSearcher(),
-				new LockedSubsetStepSearcher(),
-				new LockedCandidatesStepSearcher(),
-				new NormalSubsetStepSearcher()
+				// ROSLYN_ISSUE: Remove null-forgiving operator
+				// due to wrong analysis for Roslyn on extension member with complex nullable argument types.
+				new SingleStepSearcher()!,
+				new LockedSubsetStepSearcher()!,
+				new LockedCandidatesStepSearcher()!,
+				new NormalSubsetStepSearcher()!
 			)
 			.WithUserDefinedOptions(new() { IsDirectMode = true })
 			.ApplySetter<SingleStepSearcher>(
@@ -132,18 +134,20 @@ public sealed class Analyzer : StepGatherer, IAnalyzer<Analyzer, AnalysisResult,
 	public static Analyzer SudokuExplainer
 		=> Default
 			.WithStepSearchers(
-				new SingleStepSearcher(),
-				new LockedSubsetStepSearcher(),
-				new LockedCandidatesStepSearcher(),
-				new NormalSubsetStepSearcher(),
-				new NormalFishStepSearcher(),
-				new RegularWingStepSearcher(),
-				new UniqueRectangleStepSearcher(),
-				new UniqueLoopStepSearcher(),
-				new BivalueUniversalGraveStepSearcher(),
-				new AlignedExclusionStepSearcher(),
-				new ChainStepSearcher(),
-				new MultipleForcingChainsStepSearcher()
+				// ROSLYN_ISSUE: Remove null-forgiving operator
+				// due to wrong analysis for Roslyn on extension member with complex nullable argument types.
+				new SingleStepSearcher()!,
+				new LockedSubsetStepSearcher()!,
+				new LockedCandidatesStepSearcher()!,
+				new NormalSubsetStepSearcher()!,
+				new NormalFishStepSearcher()!,
+				new RegularWingStepSearcher()!,
+				new UniqueRectangleStepSearcher()!,
+				new UniqueLoopStepSearcher()!,
+				new BivalueUniversalGraveStepSearcher()!,
+				new AlignedExclusionStepSearcher()!,
+				new ChainStepSearcher()!,
+				new MultipleForcingChainsStepSearcher()!
 			)
 			.WithUserDefinedOptions(new() { IsDirectMode = true })
 			.ApplySetter<SingleStepSearcher>(
