@@ -27,6 +27,7 @@ public enum Technique
 	[SudokuExplainer(Technique = SudokuExplainerTechnique.Single, RatingOriginal = [1.0], Aliases = ["Single"])]
 	[TechniqueMetadata<SingleStepSearcher, FullHouseStep>(
 		Rating = 10,
+		Abbreviation = "FH",
 		DifficultyLevel = DifficultyLevel.Easy,
 		ContainingGroup = TechniqueGroup.Single,
 		Links = ["http://sudopedia.enjoysudoku.com/Full_House.html"])]
@@ -38,6 +39,7 @@ public enum Technique
 	[Hodoku(Prefix = "0001")]
 	[TechniqueMetadata<SingleStepSearcher, LastDigitStep>(
 		Rating = 11,
+		Abbreviation = "LD",
 		DifficultyLevel = DifficultyLevel.Easy,
 		ContainingGroup = TechniqueGroup.Single,
 		Links = ["http://sudopedia.enjoysudoku.com/Last_Digit.html"])]

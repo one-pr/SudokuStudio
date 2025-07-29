@@ -69,7 +69,11 @@ description: Reasoning of Endofin
 
 前文我们介绍了外鱼鳍和内鱼鳍的基本推理过程。而对于复杂鱼来说，两种鱼鳍是可以混合出现的。下面我们就来看一些这样的例子。
 
-### 五阶宫内退化鱼 <a href="#sashimi-franken-squirmbag" id="sashimi-franken-squirmbag"></a>
+> 下面两个例子都是五阶的情况。由于结构的长相使得它不具备明显的互补性质和特征，所以在复杂鱼里是可以存在稳定的五阶鱼及以上规格的鱼的。
+>
+> 五阶的鱼称为 Squirmbag 或 Starfish（海星）。后者“海星”的由来比较好理解，但前者没有比较好的翻译，应该是来自三阶鱼 Swordfish （那架战斗机）的另外一个称呼 Stringbag（网袋）衍生而来。
+
+### 五阶宫内退化鱼（Finned Franken Squirmbag） <a href="#sashimi-franken-squirmbag" id="sashimi-franken-squirmbag"></a>
 
 <figure><img src="../../.gitbook/assets/image.png" alt="" width="375"><figcaption><p>五阶宫内退化鱼</p></figcaption></figure>
 
@@ -84,7 +88,7 @@ description: Reasoning of Endofin
 
 所以，结论是 `r9c5 <> 7`。同样地，本题的 `r6c5 <> 7` 也可以删除，但是它也不能直接这么删，因为内鱼鳍 `r9c1(7)` 无法删到它那里，所以它需要单独讨论，这里就不作解释了。等到了后面再说。
 
-### 五阶交叉退化鱼 <a href="#sashimi-mutant-squirmbag" id="sashimi-mutant-squirmbag"></a>
+### 五阶交叉退化鱼（Finned Mutant Squirmbag） <a href="#sashimi-mutant-squirmbag" id="sashimi-mutant-squirmbag"></a>
 
 <figure><img src="../../.gitbook/assets/images_0580.png" alt="" width="375"><figcaption><p>五阶交叉退化鱼</p></figcaption></figure>
 
