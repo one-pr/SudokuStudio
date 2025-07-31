@@ -5,7 +5,7 @@ namespace Sudoku.Analytics.Construction.Components;
 /// and such pattern contains a list of <see cref="Node"/> instances indicating interim passing nodes.
 /// </summary>
 /// <seealso cref="Node"/>
-[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.AllEqualityComparisonOperators, OtherModifiersOnEquals = "sealed")]
+[TypeImpl(TypeImplFlags.AllEqualityComparisonOperators)]
 public abstract partial class Chain :
 	IComparable<Chain>,
 	IComparisonOperators<Chain, Chain, bool>,
@@ -271,6 +271,9 @@ public abstract partial class Chain :
 	/// Try to reverse the pattern, making all nodes negated its direction connected.
 	/// </summary>
 	public abstract void Reverse();
+
+	/// <inheritdoc/>
+	public sealed override bool Equals([NotNullWhen(true)] object? obj) => Equals(obj as Chain);
 
 	/// <inheritdoc/>
 	public bool Equals(Chain? other) => Equals(other, NodeComparison.IgnoreIsOn, ChainComparison.Undirected);

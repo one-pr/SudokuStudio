@@ -3,7 +3,7 @@ namespace Sudoku.Behaviors.Diff;
 /// <summary>
 /// Represents a difference result.
 /// </summary>
-[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.EqualityOperators, OtherModifiersOnEquals = "sealed")]
+[TypeImpl(TypeImplFlags.EqualityOperators)]
 [JsonPolymorphic]
 [JsonDerivedType(typeof(NothingChangedDiffResult), (int)DiffType.NothingChanged)]
 [JsonDerivedType(typeof(ResetDiffResult), (int)DiffType.Reset)]
@@ -42,6 +42,9 @@ public abstract partial class DiffResult :
 	/// </summary>
 	protected Type EqualityContract => GetType();
 
+
+	/// <inheritdoc/>
+	public sealed override bool Equals([NotNullWhen(true)] object? obj) => Equals(obj as DiffResult);
 
 	/// <inheritdoc/>
 	public abstract bool Equals([NotNullWhen(true)] DiffResult? other);

@@ -23,7 +23,7 @@ namespace Sudoku.Generating.Filtering;
 [JsonDerivedType(typeof(TechniqueCountConstraint), nameof(TechniqueCountConstraint))]
 [JsonDerivedType(typeof(TechniquePrecedenceConstraint), nameof(TechniquePrecedenceConstraint))]
 [JsonDerivedType(typeof(TechniqueSetConstraint), nameof(TechniqueSetConstraint))]
-[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.EqualityOperators, OtherModifiersOnEquals = "sealed")]
+[TypeImpl(TypeImplFlags.EqualityOperators)]
 public abstract partial class Constraint : IEquatable<Constraint>, IEqualityOperators<Constraint, Constraint, bool>, IFormattable
 {
 	/// <summary>
@@ -43,6 +43,9 @@ public abstract partial class Constraint : IEquatable<Constraint>, IEqualityOper
 	/// <param name="context">Indicates the context used.</param>
 	/// <returns>A <see cref="bool"/> result indicating that.</returns>
 	public bool Check(ConstraintCheckingContext context) => CheckCore(context) is var result && (IsNegated ? !result : result);
+
+	/// <inheritdoc/>
+	public sealed override bool Equals([NotNullWhen(true)] object? obj) => Equals(obj as Constraint);
 
 	/// <inheritdoc/>
 	public abstract bool Equals([NotNullWhen(true)] Constraint? other);

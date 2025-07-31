@@ -202,6 +202,9 @@
             Indicates the target type.
             </summary>
         </member>
+        <member name="M:Sudoku.Behaviors.Diff.DiffResult.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
         <member name="M:Sudoku.Behaviors.Diff.DiffResult.Equals(Sudoku.Behaviors.Diff.DiffResult)">
             <inheritdoc/>
         </member>
@@ -226,9 +229,6 @@
         </member>
         <member name="M:Sudoku.Behaviors.Diff.DiffResult.System#ICloneable#Clone">
             <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Diff.DiffResult.Equals(System.Object)">
-            <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
         </member>
         <member name="M:Sudoku.Behaviors.Diff.DiffResult.op_Equality(Sudoku.Behaviors.Diff.DiffResult,Sudoku.Behaviors.Diff.DiffResult)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
@@ -9891,11 +9891,11 @@
         <member name="P:Sudoku.Drawing.Nodes.RankSetViewNode.Sudoku#Drawing#Nodes#ILinkViewNode#Shape">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.RankSetViewNode.ToString">
+        <member name="M:Sudoku.Drawing.Nodes.RankSetViewNode.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.RankSetViewNode.GetHashCode">
-            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        <member name="M:Sudoku.Drawing.Nodes.RankSetViewNode.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Drawing.Nodes.SquareViewNode">
             <summary>
@@ -10161,6 +10161,9 @@
             </summary>
             <seealso cref="T:Sudoku.Drawing.ViewNode"/>
         </member>
+        <member name="M:Sudoku.Drawing.ViewNode.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
         <member name="M:Sudoku.Drawing.ViewNode.Equals(Sudoku.Drawing.ViewNode)">
             <inheritdoc/>
         </member>
@@ -10175,9 +10178,6 @@
         </member>
         <member name="M:Sudoku.Drawing.ViewNode.System#ICloneable#Clone">
             <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Drawing.ViewNode.Equals(System.Object)">
-            <inheritdoc cref="M:System.Object.Equals(System.Object)"/>
         </member>
         <member name="M:Sudoku.Drawing.ViewNode.op_Equality(Sudoku.Drawing.ViewNode,Sudoku.Drawing.ViewNode)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>

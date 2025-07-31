@@ -7,7 +7,7 @@ namespace Sudoku.Drawing;
 [JsonPolymorphic(
 	UnknownDerivedTypeHandling = JsonUnknownDerivedTypeHandling.FallBackToBaseType,
 	TypeDiscriminatorPropertyName = "$typeid")]
-[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.EqualityOperators, OtherModifiersOnEquals = "sealed")]
+[TypeImpl(TypeImplFlags.EqualityOperators)]
 [JsonDerivedType(typeof(CellViewNode), 0)]
 [JsonDerivedType(typeof(CandidateViewNode), 1)]
 [JsonDerivedType(typeof(HouseViewNode), 2)]
@@ -51,6 +51,9 @@ public abstract partial class ViewNode(ColorIdentifier identifier) :
 	[StringMember("EqualityContract")]
 	protected string TypeIdentifier => GetType().Name;
 
+
+	/// <inheritdoc/>
+	public sealed override bool Equals([NotNullWhen(true)] object? obj) => Equals(obj as ViewNode);
 
 	/// <inheritdoc/>
 	public virtual bool Equals([NotNullWhen(true)] ViewNode? other) => other is not null && Identifier == other.Identifier;

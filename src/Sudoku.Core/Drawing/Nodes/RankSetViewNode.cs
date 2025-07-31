@@ -5,8 +5,7 @@ namespace Sudoku.Drawing.Nodes;
 /// </summary>
 /// <param name="identifier"><inheritdoc cref="ViewNode.Identifier" path="/summary"/></param>
 /// <param name="space"><inheritdoc cref="Space" path="/summary"/></param>
-[TypeImpl(TypeImplFlags.Object_GetHashCode, OtherModifiersOnGetHashCode = "sealed")]
-public abstract partial class RankSetViewNode(ColorIdentifier identifier, Space space) : ViewNode(identifier), ILinkViewNode
+public abstract class RankSetViewNode(ColorIdentifier identifier, Space space) : ViewNode(identifier), ILinkViewNode
 {
 	/// <summary>
 	/// Indicates whether the rank set is a truth.
@@ -16,7 +15,6 @@ public abstract partial class RankSetViewNode(ColorIdentifier identifier, Space 
 	/// <summary>
 	/// Indicates the space.
 	/// </summary>
-	[HashCodeMember]
 	public Space Space { get; } = space;
 
 	/// <inheritdoc/>
@@ -28,6 +26,9 @@ public abstract partial class RankSetViewNode(ColorIdentifier identifier, Space 
 	/// <inheritdoc/>
 	LinkShape ILinkViewNode.Shape => LinkShape.RankSet;
 
+
+	/// <inheritdoc/>
+	public sealed override int GetHashCode() => HashCode.Combine(Space, TypeIdentifier);
 
 	/// <inheritdoc/>
 	public sealed override string ToString()
