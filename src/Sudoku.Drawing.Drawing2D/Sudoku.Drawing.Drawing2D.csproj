@@ -4,7 +4,7 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<RootNamespace>Sudoku</RootNamespace>
 		<Description>Provides APIs for drawing pictures with sudoku-related items.</Description>
-		<DocumentationFile>..\docxml\Sudoku.Drawing.Drawing2D.xml</DocumentationFile>
+		<DocumentationFile>Sudoku.Drawing.Drawing2D.xml</DocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -4,7 +4,7 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<RootNamespace>Sudoku</RootNamespace>
 		<Description>Provides APIs for OCR on sudoku grid.</Description>
-		<DocumentationFile>..\docxml\Sudoku.Drawing.Ocr.xml</DocumentationFile>
+		<DocumentationFile>Sudoku.Drawing.Ocr.xml</DocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>

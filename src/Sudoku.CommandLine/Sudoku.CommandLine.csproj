@@ -4,7 +4,7 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<RootNamespace>Sudoku</RootNamespace>
 		<Description>Provides APIs that supports command-line handling.</Description>
-		<DocumentationFile>..\docxml\Sudoku.CommandLine.xml</DocumentationFile>
+		<DocumentationFile>Sudoku.CommandLine.xml</DocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>

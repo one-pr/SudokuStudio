@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<Description>A project that generates the source code.</Description>
-		<DocumentationFile>..\docxml\SudokuStudio.SourceGeneration.xml</DocumentationFile>
+		<DocumentationFile>SudokuStudio.SourceGeneration.xml</DocumentationFile>
 		<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
 	</PropertyGroup>
 
