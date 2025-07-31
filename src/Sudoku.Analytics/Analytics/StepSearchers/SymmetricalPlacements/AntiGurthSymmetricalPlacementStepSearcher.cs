@@ -703,12 +703,12 @@ public sealed partial class AntiGurthSymmetricalPlacementStepSearcher : StepSear
 	/// <param name="mapping">Mapping digits table.</param>
 	/// <param name="selfPairedDigitsMask">Self-paired digits.</param>
 	/// <returns>A <see cref="bool"/> mask.</returns>
-	private static bool SatisfyForAxis(in Grid grid, Span<int?> mapping, out Mask selfPairedDigitsMask)
+	private static bool SatisfyForAxis(in Grid grid, Span<Digit?> mapping, out Mask selfPairedDigitsMask)
 	{
 		selfPairedDigitsMask = 0;
 		for (var digit = 0; digit < 9; digit++)
 		{
-			if (mapping[digit] switch { { } currentDigit => currentDigit == digit, _ => true })
+			if (mapping[digit] is not { } currentDigit || currentDigit == digit)
 			{
 				selfPairedDigitsMask |= (Mask)(1 << digit);
 			}
