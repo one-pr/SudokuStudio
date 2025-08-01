@@ -333,11 +333,11 @@ public sealed partial class PatternBasedPuzzleGeneratingPage : Page
 			var cellsMap = fixedCandidates.CellDistribution;
 			foreach (var cell in fixedCandidates.EnumerateCells())
 			{
-				grid.SwapDigit(grid.SolutionGrid.GetDigit(cell), BitOperations.Log2(cellsMap[cell]));
+				grid.SwapDigit(grid.SolutionGrid.GetDigit(cell), BitOperations.Log2((uint)cellsMap[cell]));
 			}
 			foreach (var cell in fixedCandidates.EnumerateCells())
 			{
-				if (grid.SolutionGrid.GetDigit(cell) != BitOperations.Log2(cellsMap[cell]))
+				if (grid.SolutionGrid.GetDigit(cell) != BitOperations.Log2((uint)cellsMap[cell]))
 				{
 					return false;
 				}

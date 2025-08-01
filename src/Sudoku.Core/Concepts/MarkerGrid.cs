@@ -425,7 +425,7 @@ public partial struct MarkerGrid : GridBase
 		{
 			if (GetState(cell) != CellState.Empty)
 			{
-				result[cell] = BitOperations.Log2(GetCandidates(cell));
+				result[cell] = BitOperations.Log2((uint)GetCandidates(cell));
 			}
 		}
 		return result;

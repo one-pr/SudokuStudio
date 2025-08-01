@@ -373,7 +373,7 @@ public sealed partial class ExtendedRectangleStepSearcher : StepSearcher
 							}
 
 							// This digit will be cannibalism. Checks for elimination.
-							var intersectedDigit = BitOperations.Log2(intersectedDigitsMask);
+							var intersectedDigit = BitOperations.Log2((uint)intersectedDigitsMask);
 							var elimMap = patternCellsCoveredInThisHouse & CandidatesMap[intersectedDigit];
 							if (!elimMap)
 							{

@@ -95,7 +95,7 @@ public sealed class UniqueRectangleDoubleSideExternalChainingRule : UniqueRectan
 							continue;
 						}
 
-						var lastUrDigit = BitOperations.Log2((Mask)(urDigitsMask & ~lockedUrDigitsMask));
+						var lastUrDigit = BitOperations.Log2((uint)(urDigitsMask & ~lockedUrDigitsMask));
 						var otherCellsContainingLastUrDigit = HousesMap[lockedHouse] & __CandidatesMap[lastUrDigit] & ~urCells;
 						if (linkOption == LinkOption.Intersection && !otherCellsContainingLastUrDigit.IsInIntersection)
 						{

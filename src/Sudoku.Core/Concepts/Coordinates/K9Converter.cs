@@ -161,7 +161,7 @@ public sealed record K9Converter(
 
 			if (BitOperations.IsPow2(housesMask))
 			{
-				var house = BitOperations.Log2(housesMask);
+				var house = BitOperations.Log2((uint)housesMask);
 				var houseType = house.HouseType;
 				return string.Format(
 					SR.Get(

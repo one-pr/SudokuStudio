@@ -422,9 +422,9 @@ public abstract partial class Chain :
 						spaces.Add(
 							house switch
 							{
-								< 9 => Space.BlockDigit(house, BitOperations.Log2(startDigits)),
-								< 18 => Space.RowDigit(house - 9, BitOperations.Log2(startDigits)),
-								_ => Space.ColumnDigit(house - 18, BitOperations.Log2(startDigits))
+								< 9 => Space.BlockDigit(house, BitOperations.Log2((uint)startDigits)),
+								< 18 => Space.RowDigit(house - 9, BitOperations.Log2((uint)startDigits)),
+								_ => Space.ColumnDigit(house - 18, BitOperations.Log2((uint)startDigits))
 							}
 						);
 					}

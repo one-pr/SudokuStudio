@@ -176,7 +176,7 @@ public sealed class DisorderedIttoryuFinder(params TechniqueSet supportedTechniq
 
 				if ((HousesMap[house] & candidatesMap[digit]) / house is var mask && BitOperations.IsPow2(mask))
 				{
-					foundNodes.Add(new(grid, house, HousesCells[house][BitOperations.Log2(mask)] * 9 + digit));
+					foundNodes.Add(new(grid, house, HousesCells[house][BitOperations.Log2((uint)mask)] * 9 + digit));
 				}
 			}
 		}

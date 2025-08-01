@@ -82,7 +82,7 @@ public sealed partial class ExtendedSubsetPrincipleStepSearcher : StepSearcher
 									continue;
 								}
 
-								var zDigit = BitOperations.Log2(zDigitsMask);
+								var zDigit = BitOperations.Log2((uint)zDigitsMask);
 								var isolatedDigitsMask = (Mask)(selectedInterMask & ~(blockMask | lineMask));
 								var digitsCount = BitOperations.PopCount((Mask)(blockMask | lineMask) | isolatedDigitsMask);
 								var cellsCount = currentInterMap.Count + i + j;

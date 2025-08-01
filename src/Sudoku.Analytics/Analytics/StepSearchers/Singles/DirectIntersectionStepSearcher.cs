@@ -150,7 +150,7 @@ public sealed partial class DirectIntersectionStepSearcher : StepSearcher
 				continue;
 			}
 
-			var lastDigit = BitOperations.Log2(lastDigitMask);
+			var lastDigit = BitOperations.Log2((uint)lastDigitMask);
 			var lastCell = (emptyCellsInHouse & elimMap)[0];
 			var step = new DirectIntersectionStep(
 				new SingletonArray<Conclusion>(new(Assignment, lastCell, lastDigit)),
