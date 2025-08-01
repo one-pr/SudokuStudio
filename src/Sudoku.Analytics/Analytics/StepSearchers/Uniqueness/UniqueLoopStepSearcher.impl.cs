@@ -179,12 +179,12 @@ public partial class UniqueLoopStepSearcher
 				}
 
 				otherCells = HousesMap[houseIndex] & EmptyCells & ~loop;
-				for (var size = BitOperations.PopCount(otherDigitsMask) - 1; size < otherCells.Count; size++)
+				for (var size = BitOperations.PopCount((uint)otherDigitsMask) - 1; size < otherCells.Count; size++)
 				{
 					foreach (ref readonly var cells in otherCells & size)
 					{
 						var mask = grid[cells];
-						if (BitOperations.PopCount(mask) != size + 1 || (mask & otherDigitsMask) != otherDigitsMask)
+						if (BitOperations.PopCount((uint)mask) != size + 1 || (mask & otherDigitsMask) != otherDigitsMask)
 						{
 							continue;
 						}
@@ -259,12 +259,12 @@ public partial class UniqueLoopStepSearcher
 			return null;
 		}
 
-		for (var size = BitOperations.PopCount(otherDigitsMask) - 1; size < otherCells.Count; size++)
+		for (var size = BitOperations.PopCount((uint)otherDigitsMask) - 1; size < otherCells.Count; size++)
 		{
 			foreach (ref readonly var cells in otherCells & size)
 			{
 				var mask = grid[cells];
-				if (BitOperations.PopCount(mask) != size + 1 || (mask & otherDigitsMask) != otherDigitsMask)
+				if (BitOperations.PopCount((uint)mask) != size + 1 || (mask & otherDigitsMask) != otherDigitsMask)
 				{
 					continue;
 				}

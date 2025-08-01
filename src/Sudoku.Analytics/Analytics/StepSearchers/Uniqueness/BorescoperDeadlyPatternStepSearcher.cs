@@ -81,7 +81,7 @@ public sealed partial class BorescoperDeadlyPatternStepSearcher : StepSearcher
 	)
 	{
 		var orMask = (Mask)((Mask)(cornerMask1 | cornerMask2) | centerMask);
-		if (BitOperations.PopCount(orMask) != (pattern.IsHeptagon ? 4 : 5))
+		if (BitOperations.PopCount((uint)orMask) != (pattern.IsHeptagon ? 4 : 5))
 		{
 			goto ReturnNull;
 		}
@@ -90,7 +90,7 @@ public sealed partial class BorescoperDeadlyPatternStepSearcher : StepSearcher
 		foreach (var digits in orMask.AllSets.GetSubsets(pattern.IsHeptagon ? 3 : 4))
 		{
 			var tempMask = Mask.Create(digits);
-			var otherDigit = BitOperations.TrailingZeroCount((Mask)(orMask & ~tempMask));
+			var otherDigit = BitOperations.TrailingZeroCount((uint)(orMask & ~tempMask));
 			var mapContainingThatDigit = map & CandidatesMap[otherDigit];
 			if (mapContainingThatDigit is not [var elimCell])
 			{
@@ -148,7 +148,7 @@ public sealed partial class BorescoperDeadlyPatternStepSearcher : StepSearcher
 	)
 	{
 		var orMask = (Mask)((Mask)(cornerMask1 | cornerMask2) | centerMask);
-		if (BitOperations.PopCount(orMask) != (pattern.IsHeptagon ? 4 : 5))
+		if (BitOperations.PopCount((uint)orMask) != (pattern.IsHeptagon ? 4 : 5))
 		{
 			goto ReturnNull;
 		}
@@ -224,12 +224,12 @@ public sealed partial class BorescoperDeadlyPatternStepSearcher : StepSearcher
 				// Iterate on the cells by the specified size.
 				var iterationCellsMap = HousesMap[houseIndex] & ~currentMap & EmptyCells;
 				var otherDigitsMask = (Mask)(orMask & ~tempMask);
-				for (var size = BitOperations.PopCount(otherDigitsMask) - 1; size < iterationCellsMap.Count; size++)
+				for (var size = BitOperations.PopCount((uint)otherDigitsMask) - 1; size < iterationCellsMap.Count; size++)
 				{
 					foreach (ref readonly var combination in iterationCellsMap & size)
 					{
 						var comparer = grid[combination];
-						if ((tempMask & comparer) != 0 || BitOperations.PopCount(tempMask) - 1 != size
+						if ((tempMask & comparer) != 0 || BitOperations.PopCount((uint)tempMask) - 1 != size
 							|| (tempMask & otherDigitsMask) != otherDigitsMask)
 						{
 							continue;

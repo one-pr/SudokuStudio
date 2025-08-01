@@ -74,7 +74,7 @@ public sealed record LiteralCoordinateConverter(
 				);
 			}
 
-			var snippets = new List<string>(BitOperations.PopCount(housesMask));
+			var snippets = new List<string>(BitOperations.PopCount((uint)housesMask));
 			foreach (var house in housesMask)
 			{
 				var houseType = house.HouseType;

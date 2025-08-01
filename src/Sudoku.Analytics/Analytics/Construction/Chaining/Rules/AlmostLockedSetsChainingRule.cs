@@ -45,7 +45,7 @@ public sealed class AlmostLockedSetsChainingRule : ChainingRule
 					mask |= maskTempList[cell];
 				}
 
-				if (BitOperations.PopCount(mask) == subsetCells.Count)
+				if (BitOperations.PopCount((uint)mask) == subsetCells.Count)
 				{
 					isAlsCanBeReduced = true;
 					break;

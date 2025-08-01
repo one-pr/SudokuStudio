@@ -25,9 +25,9 @@ public static class SpaceExtensions
 				(true, { House: var house, Digit: var digit })
 					=> BitOperations.IsPow2(assignments.GetPositionsFor(house, digit)),
 				(_, { Cell: var cell and not -1 })
-					=> BitOperations.PopCount(assignments.GetDigitsFor(cell)) <= 1,
+					=> BitOperations.PopCount((uint)assignments.GetDigitsFor(cell)) <= 1,
 				(_, { House: var house, Digit: var digit })
-					=> BitOperations.PopCount(assignments.GetPositionsFor(house, digit)) <= 1
+					=> BitOperations.PopCount((uint)assignments.GetPositionsFor(house, digit)) <= 1
 			};
 	}
 }

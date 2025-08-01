@@ -88,7 +88,7 @@ public partial struct MarkerGrid : GridBase
 			var result = 0;
 			for (var cell = 0; cell < 81; cell++)
 			{
-				result += BitOperations.PopCount(GetCandidates(cell));
+				result += BitOperations.PopCount((uint)GetCandidates(cell));
 			}
 			return result;
 		}

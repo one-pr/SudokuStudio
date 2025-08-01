@@ -64,7 +64,7 @@ public abstract class FishStep(
 	/// </list>
 	/// Other fishes of sizes not appearing in above don't have well-known names.
 	/// </remarks>
-	public int Size => BitOperations.PopCount(BaseSetsMask);
+	public int Size => BitOperations.PopCount((uint)BaseSetsMask);
 
 	/// <inheritdoc/>
 	public sealed override Mask DigitsUsed => (Mask)(1 << Digit);

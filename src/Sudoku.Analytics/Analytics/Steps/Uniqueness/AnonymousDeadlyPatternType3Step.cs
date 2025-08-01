@@ -73,7 +73,7 @@ public sealed class AnonymousDeadlyPatternType3Step(
 	bool IPatternType3StepTrait<AnonymousDeadlyPatternType3Step>.IsHidden => false;
 
 	/// <inheritdoc/>
-	int IPatternType3StepTrait<AnonymousDeadlyPatternType3Step>.SubsetSize => BitOperations.PopCount(SubsetDigitsMask);
+	int IPatternType3StepTrait<AnonymousDeadlyPatternType3Step>.SubsetSize => BitOperations.PopCount((uint)SubsetDigitsMask);
 
 	private string ExtraDigitsStr => Options.Converter.DigitConverter(SubsetDigitsMask);
 

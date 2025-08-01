@@ -181,7 +181,7 @@ public partial class UniqueRectangleStepSearcher
 						foreach (ref readonly var otherCells in houseCells & size - 1)
 						{
 							var subsetDigitsMask = (Mask)(grid[otherCells] | comparer);
-							if (BitOperations.PopCount(subsetDigitsMask) != size)
+							if (BitOperations.PopCount((uint)subsetDigitsMask) != size)
 							{
 								// The subset cannot formed.
 								continue;

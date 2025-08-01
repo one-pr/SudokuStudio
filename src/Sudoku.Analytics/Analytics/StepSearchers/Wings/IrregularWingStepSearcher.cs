@@ -122,7 +122,7 @@ public sealed partial class IrregularWingStepSearcher : StepSearcher
 								|| (c1.AsCellMap() + b).FirstSharedHouse != FallbackConstants.@int
 								&& (c2.AsCellMap() + a).FirstSharedHouse != FallbackConstants.@int
 								=> true,
-							{ Count: > 2 and <= 6, BlockMask: var blocks } => BitOperations.PopCount(blocks) switch
+							{ Count: > 2 and <= 6, BlockMask: var blocks } => BitOperations.PopCount((uint)blocks) switch
 							{
 								1 => ((PeersMap[c1] | PeersMap[c2]) & bridge) == bridge,
 								2 when BitOperations.TrailingZeroCount(blocks) is var block1 && blocks.GetNextSet(block1) is var block2

@@ -87,7 +87,7 @@ public sealed class BivalueUniversalGraveType3Step(
 	/// <summary>
 	/// Indicates the size of the subset.
 	/// </summary>
-	private int Size => BitOperations.PopCount(SubsetDigitsMask);
+	private int Size => BitOperations.PopCount((uint)SubsetDigitsMask);
 
 	private string TrueCandidatesStr => Options.Converter.CandidateConverter(TrueCandidates);
 

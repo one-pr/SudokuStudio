@@ -372,7 +372,7 @@ public sealed partial class ReverseBivalueUniversalGraveStepSearcher : StepSearc
 			return null;
 		}
 
-		var numbersOfOtherDigits = BitOperations.PopCount(otherDigitsMask);
+		var numbersOfOtherDigits = BitOperations.PopCount((uint)otherDigitsMask);
 		foreach (var house in cellsChosen.SharedHouses)
 		{
 			var otherEmptyCells = EmptyCells & HousesMap[house] & ~cellsChosen;
@@ -639,7 +639,9 @@ public sealed partial class ReverseBivalueUniversalGraveStepSearcher : StepSearc
 
 		// The pattern must span n/2 rows, n/2 columns and n/2 blocks, and n is the length of the pattern).
 		var halfLength = length >> 1;
-		if (BitOperations.PopCount(r) != halfLength || BitOperations.PopCount(c) != halfLength || BitOperations.PopCount(b) != halfLength)
+		if (BitOperations.PopCount((uint)r) != halfLength
+			|| BitOperations.PopCount((uint)c) != halfLength
+			|| BitOperations.PopCount((uint)b) != halfLength)
 		{
 			return false;
 		}

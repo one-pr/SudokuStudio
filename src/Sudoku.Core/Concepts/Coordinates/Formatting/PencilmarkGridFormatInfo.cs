@@ -52,7 +52,7 @@ public sealed partial class PencilmarkGridFormatInfo : GridFormatInfo<Grid>
 
 				// Iteration on each candidate.
 				// Counts the number of candidates.
-				candidatesCount += BitOperations.PopCount(value);
+				candidatesCount += BitOperations.PopCount((uint)value);
 
 				// Compares the values.
 				var comparer = Math.Max(

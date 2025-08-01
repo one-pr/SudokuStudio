@@ -130,7 +130,7 @@ public partial struct CellMap : CellMapBase
 	/// <summary>
 	/// Determines whether the current list of cells are all lie in an intersection area, i.e. a locked candidates.
 	/// </summary>
-	public readonly bool IsInIntersection => Count == 1 || Count <= 3 && BitOperations.PopCount(SharedHouses) == 2;
+	public readonly bool IsInIntersection => Count == 1 || Count <= 3 && BitOperations.PopCount((uint)SharedHouses) == 2;
 
 	/// <summary>
 	/// Indicates whether every cell in the current collection cannot see each other.

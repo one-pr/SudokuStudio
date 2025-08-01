@@ -134,7 +134,7 @@ public sealed class SueDeCoqStep(
 	bool IIsolatedDigitTrait.ContainsIsolatedDigits => IsolatedDigitsMask != 0;
 
 	/// <inheritdoc/>
-	int IIsolatedDigitTrait.IsolatedDigitsCount => IsolatedDigitsMask == 0 ? 0 : BitOperations.PopCount(IsolatedDigitsMask);
+	int IIsolatedDigitTrait.IsolatedDigitsCount => IsolatedDigitsMask == 0 ? 0 : BitOperations.PopCount((uint)IsolatedDigitsMask);
 
 	private string IntersectionCellsStr => Options.Converter.CellConverter(IntersectionCells);
 

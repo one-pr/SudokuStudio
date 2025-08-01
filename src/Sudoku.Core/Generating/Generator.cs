@@ -272,7 +272,7 @@ public ref struct Generator() : IGenerator<Grid>
 			{
 				// This loop runs as long as the next candidate tried produces an invalid sudoku or until all candidates have been tried.
 				// Fall back all levels, where nothing is to do anymore.
-				while (_stack[level].CandidateIndex >= BitOperations.PopCount(_stack[level].Candidates))
+				while (_stack[level].CandidateIndex >= BitOperations.PopCount((uint)_stack[level].Candidates))
 				{
 					level--;
 					if (level <= 0)

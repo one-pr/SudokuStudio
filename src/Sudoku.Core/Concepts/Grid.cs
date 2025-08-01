@@ -215,7 +215,7 @@ public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffRes
 			{
 				if (GetState(i) == CellState.Empty)
 				{
-					count += BitOperations.PopCount(GetCandidates(i));
+					count += BitOperations.PopCount((uint)GetCandidates(i));
 				}
 			}
 			return count;

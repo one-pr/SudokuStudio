@@ -293,7 +293,7 @@ public sealed partial class DirectIntersectionStepSearcher : StepSearcher
 	{
 		foreach (var lastCell in elimMap)
 		{
-			if (grid.GetCandidates(lastCell) is var digitsMask && BitOperations.PopCount(digitsMask) != 2)
+			if (grid.GetCandidates(lastCell) is var digitsMask && BitOperations.PopCount((uint)digitsMask) != 2)
 			{
 				continue;
 			}

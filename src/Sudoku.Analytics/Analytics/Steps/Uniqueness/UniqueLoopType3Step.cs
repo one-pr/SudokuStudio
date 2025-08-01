@@ -65,11 +65,11 @@ public sealed class UniqueLoopType3Step(
 	bool IPatternType3StepTrait<UniqueLoopType3Step>.IsHidden => false;
 
 	/// <inheritdoc/>
-	int IPatternType3StepTrait<UniqueLoopType3Step>.SubsetSize => BitOperations.PopCount(SubsetDigitsMask);
+	int IPatternType3StepTrait<UniqueLoopType3Step>.SubsetSize => BitOperations.PopCount((uint)SubsetDigitsMask);
 
 	private string SubsetCellsStr => Options.Converter.CellConverter(SubsetCells);
 
 	private string DigitsStr => Options.Converter.DigitConverter(SubsetDigitsMask);
 
-	private string SubsetName => TechniqueNaming.Subset.GetSubsetName(BitOperations.PopCount(SubsetDigitsMask));
+	private string SubsetName => TechniqueNaming.Subset.GetSubsetName(BitOperations.PopCount((uint)SubsetDigitsMask));
 }

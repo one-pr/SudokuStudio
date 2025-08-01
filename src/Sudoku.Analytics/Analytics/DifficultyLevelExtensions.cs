@@ -17,7 +17,7 @@ public static class DifficultyLevelExtensions
 		/// <param name="formatProvider">The culture.</param>
 		/// <returns>The string value.</returns>
 		public string GetName(IFormatProvider? formatProvider)
-			=> BitOperations.PopCount((int)@this) < 2
+			=> BitOperations.PopCount((uint)(int)@this) < 2
 				? SR.Get(@this.ToString(), formatProvider as CultureInfo)
 				: throw new InvalidOperationException(SR.ExceptionMessage("MultipleFlagsExist"));
 	}

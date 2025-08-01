@@ -96,7 +96,7 @@ public sealed partial class FatRingStepSearcher : StepSearcher
 
 							var allCells = rowCellsChosen | columnCellsChosen;
 							var allDigitsMask = grid[allCells];
-							if (BitOperations.PopCount(allDigitsMask) != allCells.Count)
+							if (BitOperations.PopCount((uint)allDigitsMask) != allCells.Count)
 							{
 								// The desired number of digits appeared in cells must be equal to the number of cells of pattern.
 								continue;
@@ -173,7 +173,7 @@ public sealed partial class FatRingStepSearcher : StepSearcher
 							{
 								// Extra check: Check for empty rectangles.
 								var digitsCanAppearTwiceOrMoreMask = (Mask)(allDigitsMask & ~digitsCanAppearAtMostOnceMask);
-								var desiredCount = BitOperations.PopCount(digitsCanAppearTwiceOrMoreMask);
+								var desiredCount = BitOperations.PopCount((uint)digitsCanAppearTwiceOrMoreMask);
 								var canceledHousesDictionary = new Dictionary<Digit, House>();
 								foreach (var digit in digitsCanAppearTwiceOrMoreMask)
 								{
@@ -300,7 +300,7 @@ public sealed partial class FatRingStepSearcher : StepSearcher
 		{
 			foreach (var cell in allCells)
 			{
-				if (BitOperations.PopCount(grid.GetCandidates(cell)) != 2)
+				if (BitOperations.PopCount((uint)grid.GetCandidates(cell)) != 2)
 				{
 					return false;
 				}
