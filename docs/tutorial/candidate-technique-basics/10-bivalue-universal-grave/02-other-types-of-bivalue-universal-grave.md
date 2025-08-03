@@ -1,4 +1,4 @@
-﻿---
+---
 description: Other Types of Bi-value Universal Grave
 ---
 
@@ -242,8 +242,10 @@ description: Other Types of Bi-value Universal Grave
 
 另外，如果你只是想挑战下极限，单纯想看看这个技巧可以有多少个真数，而并不要求真数是否生效，也不考虑是否被其他技巧所代替的话（就单纯想看看真数的最大情况），这个数虽然我也不清楚它的精确值，但它目前发现到的最大值，也比 7 大，甚至大很多。
 
-下面给各位展示的是一个 BUG + 94 的例子。
+下面给各位展示的是一个 BUG + 106 的例子。
 
-<figure><img src="../../.gitbook/assets/images_0026.png" alt="" width="375"><figcaption><p>BUG + 94 例子</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0026.png" alt="" width="375"><figcaption><p>BUG + 106</p></figcaption></figure>
+
+其准确的数值并不清楚。按照数独 17 数为最少提示数的情况来算，理应能到的极限可能会到 110 以上。
 
 至此，这个技巧的内容也就全部结束了。下面我们将进入到新的技巧学习之中去。
