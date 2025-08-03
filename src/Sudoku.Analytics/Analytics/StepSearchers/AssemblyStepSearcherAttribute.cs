@@ -7,8 +7,7 @@ namespace Sudoku.Analytics.StepSearchers;
 /// <typeparam name="TStepSearcher">The type of the step searcher.</typeparam>
 /// <param name="level"><inheritdoc cref="Level" path="/summary"/></param>
 [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true, Inherited = false)]
-public sealed class AssemblyStepSearcherAttribute<TStepSearcher>([ConstantExpected] int level) : Attribute
-	where TStepSearcher : StepSearcher
+public sealed class AssemblyStepSearcherAttribute<TStepSearcher>(int level) : Attribute where TStepSearcher : StepSearcher
 {
 	/// <summary>
 	/// Indicates the step searcher level.
