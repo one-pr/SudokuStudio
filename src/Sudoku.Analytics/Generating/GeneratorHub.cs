@@ -162,10 +162,10 @@ public static partial class GeneratorHub
 		}
 
 		var rng = Random.Shared;
-		var symmetries = getSymmetry();
-		var chosenGivensCountSeed = getChosenGivensCountRange();
-		var givensCount = getGivensCount();
-		var difficultyLevel = getDifficultyLevel();
+		var symmetries = GetSymmetry(constraints);
+		var chosenGivensCountSeed = GetChosenGivensCountRange(constraints);
+		var givensCount = GetGivensCount(rng, chosenGivensCountSeed);
+		var difficultyLevel = GetDifficultyLevel(constraints, rng);
 		var progress = new SelfReportingProgress<TProgressDataProvider>(reporter);
 		while (true)
 		{
@@ -194,53 +194,16 @@ public static partial class GeneratorHub
 			progress.Report(TProgressDataProvider.Create(++generatingCount, generatingFilteredCount));
 			cancellationToken.ThrowIfCancellationRequested();
 		}
-
-
-		static (Cell, Cell) determineEmptyCellsCount(BetweenRule betweenRule, Cell start, Cell end)
-			=> betweenRule switch
-			{
-				BetweenRule.BothOpen => (start + 1, end - 1),
-				BetweenRule.LeftOpen => (start + 1, end),
-				BetweenRule.RightOpen => (start, end + 1),
-				_ => (start, end)
-			};
-
-		ReadOnlySpan<SymmetricType> getSymmetry()
-			=> (from c in constraints.OfType<SymmetryConstraint>() select c.SymmetricTypes) switch
-			{
-				[var p] => p switch
-				{
-					SymmetryConstraint.InvalidSymmetricType => [],
-					SymmetryConstraint.AllSymmetricTypes => SymmetricType.Values,
-					var symmetricTypes and not 0 => symmetricTypes.AllFlags,
-					_ => [SymmetricType.None]
-				},
-				_ => SymmetricType.Values
-			};
-
-		(Cell, Cell) getChosenGivensCountRange()
-			=> (
-				from c in constraints.OfType<CountBetweenConstraint>()
-				let betweenRule = c.BetweenRule
-				let pair = (Start: c.Range.Start.Value, End: c.Range.End.Value)
-				let targetPair = c.CellState switch
-				{
-					CellState.Given => (pair.Start, pair.End),
-					CellState.Empty => (81 - pair.End, 81 - pair.Start)
-				}
-				select (betweenRule, targetPair)
-			) is [var (br, (start, end))] ? determineEmptyCellsCount(br, start, end) : (-1, -1);
-
-		Cell getGivensCount() => chosenGivensCountSeed is (var s and not -1, var e and not -1) ? rng.Next(s, e + 1) : -1;
-
-		DifficultyLevel getDifficultyLevel()
-			=> (
-				from c in constraints.OfType<DifficultyLevelConstraint>()
-				select c.ValidDifficultyLevels.AllFlags.ToArray()
-			) is [var d] ? d[rng.Next(0, d.Length)] : DifficultyLevels.AllValid;
 	}
 
+	private static partial DifficultyLevel GetDifficultyLevel(ConstraintCollection constraints, Random rng);
+	private static partial Cell GetGivensCount(Random rng, (Cell, Cell) chosenGivensCountSeed);
+	private static partial (Cell, Cell) GetChosenGivensCountRange(ConstraintCollection constraints);
+	private static partial (Cell, Cell) DetermineEmptyCellsCount(BetweenRule betweenRule, Cell start, Cell end);
+	private static partial ReadOnlySpan<SymmetricType> GetSymmetry(ConstraintCollection constraints);
+
 	private static partial bool TransformChecker_MissingDigit(in Grid grid, out object? result);
+
 	private static partial void Transformer_MissingDigit(ref Grid grid, ConstraintCollection constraints, object? variable);
 
 	private static partial Grid Optimizer_FullHouseOnly(Cell givens, SymmetricType type, ConstraintCollection constraints, CancellationToken ct);
