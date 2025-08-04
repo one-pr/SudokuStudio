@@ -18,9 +18,7 @@ using CellMapBase = ICellMapOrCandidateMap<CellMap, Cell>;
 [StructLayout(LayoutKind.Auto)]
 [CollectionBuilder(typeof(CellMap), nameof(Create))]
 [DebuggerStepThrough]
-[TypeImpl(
-	TypeImplFlags.AllObjectMethods | TypeImplFlags.AllEqualityComparisonOperators | TypeImplFlags.TrueAndFalseOperators,
-	IsLargeStructure = true)]
+[TypeImpl(TypeImplFlags.AllObjectMethods | TypeImplFlags.AllEqualityComparisonOperators, IsLargeStructure = true)]
 public partial struct CellMap : CellMapBase
 {
 	/// <inheritdoc cref="CellMapBase.Shifting"/>
@@ -847,6 +845,12 @@ public partial struct CellMap : CellMapBase
 	/// <inheritdoc cref="ILogicalOperators{TSelf}.op_LogicalNot(TSelf)"/>
 	public static bool operator !(in CellMap value) => value.Count == 0;
 
+	/// <inheritdoc cref="ILogicalOperators{TSelf}.op_True(TSelf)"/>
+	public static bool operator true(in CellMap value) => value.Count != 0;
+
+	/// <inheritdoc cref="ILogicalOperators{TSelf}.op_False(TSelf)"/>
+	public static bool operator false(in CellMap value) => value.Count == 0;
+
 	/// <inheritdoc/>
 	public static CellMap operator ~(in CellMap offsets) => CreateByVector(~offsets._vector & BitwiseNotConstant);
 
@@ -1014,4 +1018,10 @@ public partial struct CellMap : CellMapBase
 
 	/// <inheritdoc/>
 	static bool ILogicalOperators<CellMap>.operator !(CellMap value) => value.Count == 0;
+
+	/// <inheritdoc/>
+	static bool ILogicalOperators<CellMap>.operator true(CellMap value) => value.Count != 0;
+
+	/// <inheritdoc/>
+	static bool ILogicalOperators<CellMap>.operator false(CellMap value) => value.Count == 0;
 }

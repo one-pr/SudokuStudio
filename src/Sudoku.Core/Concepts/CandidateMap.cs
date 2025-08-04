@@ -13,8 +13,7 @@ using CandidateMapBase = ICellMapOrCandidateMap<CandidateMap, Candidate>;
 [CollectionBuilder(typeof(CandidateMap), nameof(Create))]
 [DebuggerStepThrough]
 [TypeImpl(
-	TypeImplFlags.Object_Equals | TypeImplFlags.Object_ToString
-		| TypeImplFlags.AllEqualityComparisonOperators | TypeImplFlags.TrueAndFalseOperators,
+	TypeImplFlags.Object_Equals | TypeImplFlags.Object_ToString | TypeImplFlags.AllEqualityComparisonOperators,
 	IsLargeStructure = true)]
 public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 {
@@ -686,6 +685,12 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	/// <inheritdoc/>
 	public static bool operator !(in CandidateMap value) => value.Count == 0;
 
+	/// <inheritdoc cref="ILogicalOperators{TSelf}.op_True(TSelf)"/>
+	public static bool operator true(in CandidateMap value) => value.Count != 0;
+
+	/// <inheritdoc cref="ILogicalOperators{TSelf}.op_False(TSelf)"/>
+	public static bool operator false(in CandidateMap value) => value.Count == 0;
+
 	/// <inheritdoc/>
 	public static CandidateMap operator ~(in CandidateMap offsets)
 	{
@@ -858,4 +863,10 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 
 	/// <inheritdoc/>
 	static bool ILogicalOperators<CandidateMap>.operator !(CandidateMap value) => value.Count == 0;
+
+	/// <inheritdoc/>
+	static bool ILogicalOperators<CandidateMap>.operator true(CandidateMap value) => value.Count != 0;
+
+	/// <inheritdoc/>
+	static bool ILogicalOperators<CandidateMap>.operator false(CandidateMap value) => value.Count == 0;
 }

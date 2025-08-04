@@ -26607,6 +26607,12 @@
         <member name="M:Sudoku.Categorization.TechniqueSet.op_LogicalNot(Sudoku.Categorization.TechniqueSet)">
             <inheritdoc/>
         </member>
+        <member name="M:Sudoku.Categorization.TechniqueSet.op_True(Sudoku.Categorization.TechniqueSet)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueSet.op_False(Sudoku.Categorization.TechniqueSet)">
+            <inheritdoc/>
+        </member>
         <member name="M:Sudoku.Categorization.TechniqueSet.op_Addition(Sudoku.Categorization.TechniqueSet,Sudoku.Categorization.Technique)">
             <inheritdoc/>
         </member>
@@ -26668,18 +26674,6 @@
         </member>
         <member name="M:Sudoku.Categorization.TechniqueSet.op_Inequality(Sudoku.Categorization.TechniqueSet,Sudoku.Categorization.TechniqueSet)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueSet.op_True(Sudoku.Categorization.TechniqueSet)">
-            <inheritdoc cref="M:System.ILogicalOperators`1.op_True(`0)"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueSet.op_False(Sudoku.Categorization.TechniqueSet)">
-            <inheritdoc cref="M:System.ILogicalOperators`1.op_False(`0)"/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueSet.System#ILogicalOperators{Sudoku#Categorization#TechniqueSet}#op_True(Sudoku.Categorization.TechniqueSet)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueSet.System#ILogicalOperators{Sudoku#Categorization#TechniqueSet}#op_False(Sudoku.Categorization.TechniqueSet)">
-            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Categorization.TechniqueSetExtensions">
             <summary>

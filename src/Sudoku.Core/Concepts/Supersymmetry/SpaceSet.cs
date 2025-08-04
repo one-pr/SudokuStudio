@@ -7,9 +7,7 @@ namespace Sudoku.Concepts.Supersymmetry;
 /// <para><include file="../../global-doc-comments.xml" path="/g/large-structure"/></para>
 /// </remarks>
 /// <seealso cref="Space"/>
-[TypeImpl(
-	TypeImplFlags.Object_Equals | TypeImplFlags.AllEqualityComparisonOperators | TypeImplFlags.TrueAndFalseOperators,
-	IsLargeStructure = true)]
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.AllEqualityComparisonOperators, IsLargeStructure = true)]
 public partial struct SpaceSet :
 	IAdditionOperators<SpaceSet, Space, SpaceSet>,
 	IAnyAllMethod<SpaceSet, Space>,
@@ -381,6 +379,15 @@ public partial struct SpaceSet :
 	static SpaceSet IParsable<SpaceSet>.Parse(string s, IFormatProvider? provider) => Parse(s);
 
 
+	/// <inheritdoc cref="ILogicalOperators{TSelf}.op_LogicalNot(TSelf)"/>
+	public static bool operator !(in SpaceSet value) => value.Count == 0;
+
+	/// <inheritdoc cref="ILogicalOperators{TSelf}.op_True(TSelf)"/>
+	public static bool operator true(in SpaceSet value) => value.Count != 0;
+
+	/// <inheritdoc cref="ILogicalOperators{TSelf}.op_False(TSelf)"/>
+	public static bool operator false(in SpaceSet value) => value.Count == 0;
+
 	/// <inheritdoc cref="IBitwiseOperators{TSelf, TOther, TResult}.op_OnesComplement(TSelf)"/>
 	public static SpaceSet operator ~(in SpaceSet value)
 	{
@@ -391,9 +398,6 @@ public partial struct SpaceSet :
 		result._field[3] = ~result._field[3];
 		return result;
 	}
-
-	/// <inheritdoc cref="ILogicalOperators{TSelf}.op_LogicalNot(TSelf)"/>
-	public static bool operator !(in SpaceSet value) => value.Count == 0;
 
 	/// <inheritdoc cref="IAdditionOperators{TSelf, TOther, TResult}.op_Addition(TSelf, TOther)"/>
 	public static SpaceSet operator +(in SpaceSet left, Space right)
@@ -446,6 +450,12 @@ public partial struct SpaceSet :
 
 	/// <inheritdoc/>
 	static bool ILogicalOperators<SpaceSet>.operator !(SpaceSet value) => value.Count == 0;
+
+	/// <inheritdoc/>
+	static bool ILogicalOperators<SpaceSet>.operator true(SpaceSet value) => value.Count != 0;
+
+	/// <inheritdoc/>
+	static bool ILogicalOperators<SpaceSet>.operator false(SpaceSet value) => value.Count == 0;
 
 	/// <inheritdoc/>
 	static SpaceSet IBitwiseOperators<SpaceSet, SpaceSet, SpaceSet>.operator ~(SpaceSet value) => ~value;

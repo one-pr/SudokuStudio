@@ -3,9 +3,7 @@ namespace Sudoku.Concepts;
 /// <summary>
 /// Represents a list of conclusions.
 /// </summary>
-[TypeImpl(
-	TypeImplFlags.Object_Equals | TypeImplFlags.Object_ToString
-		| TypeImplFlags.EqualityOperators | TypeImplFlags.TrueAndFalseOperators)]
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.Object_ToString | TypeImplFlags.EqualityOperators)]
 public sealed partial class ConclusionSet :
 	IAnyAllMethod<ConclusionSet, Conclusion>,
 	IContainsMethod<ConclusionSet, Conclusion>,
@@ -495,6 +493,12 @@ public sealed partial class ConclusionSet :
 
 	/// <inheritdoc/>
 	public static bool operator !(ConclusionSet value) => value.Count == 0;
+
+	/// <inheritdoc/>
+	public static bool operator true(ConclusionSet value) => value.Count != 0;
+
+	/// <inheritdoc/>
+	public static bool operator false(ConclusionSet value) => value.Count == 0;
 
 	/// <inheritdoc/>
 	public static ConclusionSet operator ~(ConclusionSet value)
