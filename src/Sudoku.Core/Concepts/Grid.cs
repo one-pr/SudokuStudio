@@ -15,9 +15,7 @@ using GridBase = IGrid<Grid>;
 [DebuggerDisplay($$"""{{{nameof(ToString)}}("#")}""")]
 [InlineArray(81)]
 [JsonConverter(typeof(Converter))]
-[TypeImpl(
-	TypeImplFlags.Object_Equals | TypeImplFlags.AllEqualityComparisonOperators | TypeImplFlags.Equatable,
-	IsLargeStructure = true)]
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.AllEqualityComparisonOperators, IsLargeStructure = true)]
 public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffResult?>
 {
 	/// <inheritdoc cref="GridBase.DefaultMask"/>
@@ -472,6 +470,9 @@ public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffRes
 		valuesMap = ValuesMap;
 	}
 
+	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
+	public readonly bool Equals(in Grid other) => this[..].SequenceEqual(other[..]);
+
 	/// <inheritdoc/>
 	public readonly bool ConflictWith(Cell cell, Digit digit)
 	{
@@ -873,6 +874,9 @@ public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffRes
 	/// Removes for Sukaku puzzle header.
 	/// </summary>
 	internal void RemoveSukakuHeader() => this[0] &= (1 << GridBase.HeaderShift) - 1;
+
+	/// <inheritdoc/>
+	readonly bool IEquatable<Grid>.Equals(Grid other) => Equals(other);
 
 	/// <inheritdoc/>
 	[UnscopedRef]

@@ -1,7 +1,5 @@
 namespace Sudoku.Concepts.Graphs;
 
-using ConflictedInfo = ((Cell Left, Cell Right), CellMap InfluencedRange);
-
 /// <summary>
 /// <para>Represents a cluster. A cluster is a group of candidates which are all connected with strong links.</para>
 /// <para>
@@ -16,29 +14,23 @@ using ConflictedInfo = ((Cell Left, Cell Right), CellMap InfluencedRange);
 /// <param name="digit"><inheritdoc cref="Digit" path="/summary"/></param>
 /// <param name="map"><inheritdoc cref="Map" path="/summary"/></param>
 /// <seealso href="http://sudopedia.enjoysudoku.com/Cluster.html">Sudopedia Mirror - Cluster</seealso>
-[TypeImpl(
-	TypeImplFlags.Object_Equals | TypeImplFlags.Object_GetHashCode
-		| TypeImplFlags.EqualityOperators | TypeImplFlags.Equatable)]
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.EqualityOperators)]
 public readonly ref partial struct Cluster(in Grid grid, Digit digit, scoped in CellMap map) : IEquatable<Cluster>
 {
 	/// <summary>
 	/// Indicates the grid used.
 	/// </summary>
-	[HashCodeMember]
 	private readonly ref readonly Grid _grid = ref grid;
 
 	/// <summary>
 	/// Indicates the backing cells map used.
 	/// </summary>
-	[HashCodeMember]
-	[EquatableMember]
 	private readonly CellMap _map = map;
 
 
 	/// <summary>
 	/// Indicates the digit used.
 	/// </summary>
-	[HashCodeMember]
 	public Digit Digit { get; } = digit;
 
 	/// <summary>
@@ -112,7 +104,8 @@ public readonly ref partial struct Cluster(in Grid grid, Digit digit, scoped in 
 				var parity2 = firstParityPair.Off.Cells;
 
 				// Now we should iterate two collections to get contradiction.
-				var (conflictedCells, conflictedPair) = (CellMap.Empty, new HashSet<ConflictedInfo>());
+				var conflictCells = CellMap.Empty;
+				var conflictPair = new HashSet<((Cell Left, Cell Right), CellMap InfluencedRange)>();
 				foreach (var cell1 in parity1)
 				{
 					foreach (var cell2 in parity2)
@@ -120,19 +113,25 @@ public readonly ref partial struct Cluster(in Grid grid, Digit digit, scoped in 
 						var intersection = (cell1.AsCellMap() + cell2).PeerIntersection;
 						var currentConflictCells = intersection & candsMap;
 						if (!!currentConflictCells
-							&& !conflictedPair.Any(p => (p.InfluencedRange & currentConflictCells) == currentConflictCells))
+							&& !conflictPair.Any(p => (p.InfluencedRange & currentConflictCells) == currentConflictCells))
 						{
-							conflictedPair.Add(((cell1, cell2), currentConflictCells));
-							conflictedCells |= currentConflictCells;
+							conflictPair.Add(((cell1, cell2), currentConflictCells));
+							conflictCells |= currentConflictCells;
 						}
 					}
 				}
-				result |= conflictedCells;
+				result |= conflictCells;
 			}
 			return result;
 		}
 	}
 
+
+	/// <inheritdoc/>
+	public bool Equals(Cluster other) => _map == other._map;
+
+	/// <inheritdoc/>
+	public override int GetHashCode() => _map.GetHashCode();
 
 	/// <inheritdoc cref="object.ToString"/>
 	public override string ToString()

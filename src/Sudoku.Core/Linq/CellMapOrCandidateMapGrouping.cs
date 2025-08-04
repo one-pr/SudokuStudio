@@ -10,9 +10,7 @@ namespace Sudoku.Linq;
 /// <param name="values"><inheritdoc cref="Values" path="/summary"/></param>
 /// <seealso cref="CellMap"/>
 /// <seealso cref="CandidateMap"/>
-[TypeImpl(
-	TypeImplFlags.Object_Equals | TypeImplFlags.Object_GetHashCode | TypeImplFlags.EqualityOperators | TypeImplFlags.Equatable,
-	IsLargeStructure = true)]
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.EqualityOperators, IsLargeStructure = true)]
 public readonly partial struct CellMapOrCandidateMapGrouping<TMap, TElement, TKey>(TKey key, in TMap values) :
 	IEnumerable<TElement>,
 	IEquatable<CellMapOrCandidateMapGrouping<TMap, TElement, TKey>>,
@@ -38,8 +36,6 @@ public readonly partial struct CellMapOrCandidateMapGrouping<TMap, TElement, TKe
 	/// <summary>
 	/// Indicates the candidates.
 	/// </summary>
-	[HashCodeMember]
-	[EquatableMember]
 	public TMap Values { get; } = values;
 
 
@@ -49,6 +45,14 @@ public readonly partial struct CellMapOrCandidateMapGrouping<TMap, TElement, TKe
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
 	public void Deconstruct(out TKey key, out TMap values) => (key, values) = (Key, Values);
+
+
+
+	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
+	public bool Equals(in CellMapOrCandidateMapGrouping<TMap, TElement, TKey> other) => Values == other.Values;
+
+	/// <inheritdoc/>
+	public override int GetHashCode() => Values.GetHashCode();
 
 	/// <summary>
 	/// Returns an enumerator that iterates through a collection.
@@ -71,6 +75,10 @@ public readonly partial struct CellMapOrCandidateMapGrouping<TMap, TElement, TKe
 		}
 		return result;
 	}
+
+	/// <inheritdoc/>
+	bool IEquatable<CellMapOrCandidateMapGrouping<TMap, TElement, TKey>>.Equals(CellMapOrCandidateMapGrouping<TMap, TElement, TKey> other)
+		=> Equals(other);
 
 	/// <inheritdoc/>
 	IEnumerator IEnumerable.GetEnumerator() => Values.AsEnumerable().GetEnumerator();

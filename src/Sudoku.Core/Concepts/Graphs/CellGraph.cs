@@ -9,7 +9,7 @@ namespace Sudoku.Concepts.Graphs;
 /// </summary>
 /// <seealso href="https://en.wikipedia.org/wiki/Component_(graph_theory)">Wikipedia - Component (Graph Theory)</seealso>
 [CollectionBuilder(typeof(CellGraph), nameof(Create))]
-[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.Object_GetHashCode | TypeImplFlags.Equatable | TypeImplFlags.EqualityOperators)]
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.EqualityOperators)]
 public readonly partial struct CellGraph : IEquatable<CellGraph>, IFormattable, IReadOnlyCollection<Cell>
 {
 	/// <summary>
@@ -21,8 +21,6 @@ public readonly partial struct CellGraph : IEquatable<CellGraph>, IFormattable, 
 	/// <summary>
 	/// Indicates the cells used.
 	/// </summary>
-	[EquatableMember]
-	[HashCodeMember]
 	private readonly CellMap _cells;
 
 	/// <summary>
@@ -210,6 +208,12 @@ public readonly partial struct CellGraph : IEquatable<CellGraph>, IFormattable, 
 		}
 	}
 
+
+	/// <inheritdoc/>
+	public bool Equals(CellGraph other) => _cells == other._cells;
+
+	/// <inheritdoc/>
+	public override int GetHashCode() => _cells.GetHashCode();
 
 	/// <summary>
 	/// Try to get the degree of the specified cell.

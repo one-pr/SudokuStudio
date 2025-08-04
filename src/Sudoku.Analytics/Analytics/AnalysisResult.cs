@@ -6,8 +6,7 @@ using meta_analysis = Puzzles.Meta.Analytics;
 /// Provides the result after <see cref="Analyzer"/> solving a puzzle.
 /// </summary>
 /// <param name="Puzzle">Indicates the original puzzle to be solved.</param>
-[TypeImpl(TypeImplFlags.Equatable)]
-public sealed partial record AnalysisResult([property: EquatableMember] in Grid Puzzle) :
+public sealed partial record AnalysisResult(in Grid Puzzle) :
 	IAnalysisResult<AnalysisResult, Grid, Step>,
 	IAnyAllMethod<AnalysisResult, Step>,
 	ICastMethod<AnalysisResult, Step>,
@@ -428,6 +427,9 @@ public sealed partial record AnalysisResult([property: EquatableMember] in Grid 
 		}
 		return false;
 	}
+
+	/// <inheritdoc/>
+	public bool Equals([NotNullWhen(true)] AnalysisResult? other) => other is not null && Puzzle == other.Puzzle;
 
 	/// <inheritdoc/>
 	public override int GetHashCode() => Puzzle.GetHashCode();

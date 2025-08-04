@@ -22,7 +22,7 @@ namespace Sudoku.IO;
 /// </para>
 /// </remarks>
 /// <seealso cref="CreateLibrary(string, string, string)"/>
-[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.Equatable | TypeImplFlags.EqualityOperators)]
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.EqualityOperators)]
 public sealed partial class Library(string _directoryPath, string _identifier) :
 	IAsyncEnumerable<string>,
 	IEquatable<Library>,
@@ -55,7 +55,6 @@ public sealed partial class Library(string _directoryPath, string _identifier) :
 	/// <summary>
 	/// Indicates the information path.
 	/// </summary>
-	[EquatableMember]
 	public string InfoPath => $@"{_directoryPath}\{_identifier}.json";
 
 	/// <summary>
@@ -117,6 +116,9 @@ public sealed partial class Library(string _directoryPath, string _identifier) :
 		File.Delete(InfoPath);
 		File.Delete(LibraryPath);
 	}
+
+	/// <inheritdoc/>
+	public bool Equals([NotNullWhen(true)] Library? other) => other is not null && InfoPath == other.InfoPath;
 
 	/// <inheritdoc/>
 	public override int GetHashCode() => HashCode.Combine(_directoryPath, _identifier);

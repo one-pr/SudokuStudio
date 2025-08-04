@@ -612,12 +612,12 @@
             </summary>
             <seealso cref="T:System.Drawing.Bitmap"/>
         </member>
-        <member name="T:System.Drawing.BitmapExtensions.<>E__0">
+        <member name="T:System.Drawing.BitmapExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Drawing.Bitmap"/>.
             </summary>
         </member>
-        <member name="M:System.Drawing.BitmapExtensions.<>E__0.ZoomTo(System.Int32,System.Int32)">
+        <member name="M:System.Drawing.BitmapExtensions..ZoomTo(System.Int32,System.Int32)">
             <summary>
             Zoom a picture.
             </summary>
@@ -625,33 +625,29 @@
             <param name="newHeight">The new height.</param>
             <returns>The new bitmap instance that has been zoomed.</returns>
         </member>
-        <member name="M:System.Drawing.BitmapExtensions.ZoomTo(System.Drawing.Bitmap,System.Int32,System.Int32)">
-            <inheritdoc cref="M:System.Drawing.BitmapExtensions.<>E__0.ZoomTo(System.Int32,System.Int32)"/>
-        </member>
         <member name="T:System.Drawing.ColorExtensions">
             <summary>
             Provides with extension methods on <see cref="T:System.Drawing.Color"/>.
             </summary>
             <seealso cref="T:System.Drawing.Color"/>
         </member>
-        <member name="T:System.Drawing.ColorExtensions.<>E__0">
+        <member name="T:System.Drawing.ColorExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Drawing.Color"/>.
             </summary>
         </member>
-        <member name="P:System.Drawing.ColorExtensions.<>E__0.QuarterAlpha">
+        <member name="P:System.Drawing.ColorExtensions..QuarterAlpha">
             <summary>
             Gets a target <see cref="T:System.Drawing.Color"/> whose <see cref="P:System.Drawing.Color.A"/> value is a quarter of the original one.
             </summary>
         </member>
-        <member name="M:System.Drawing.ColorExtensions.<>E__0.Deconstruct(System.Byte@,System.Byte@,System.Byte@,System.Byte@)">
-            <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-        </member>
-        <member name="M:System.Drawing.ColorExtensions.get_QuarterAlpha(System.Drawing.Color)">
-            <inheritdoc cref="P:System.Drawing.ColorExtensions.<>E__0.QuarterAlpha"/>
-        </member>
-        <member name="M:System.Drawing.ColorExtensions.Deconstruct(System.Drawing.Color,System.Byte@,System.Byte@,System.Byte@,System.Byte@)">
-            <inheritdoc cref="M:System.Drawing.ColorExtensions.<>E__0.Deconstruct(System.Byte@,System.Byte@,System.Byte@,System.Byte@)"/>
+        <member name="M:System.Drawing.ColorExtensions..Deconstruct(System.Byte@,System.Byte@,System.Byte@,System.Byte@)">
+            <target name="method">
+				<summary>
+					Deconstruct the current instance into multiple values, which means you can use
+					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+				</summary>
+			</target>
         </member>
         <member name="T:System.Drawing.GraphicsExtensions">
             <summary>
@@ -659,12 +655,12 @@
             </summary>
             <seealso cref="T:System.Drawing.Graphics"/>
         </member>
-        <member name="T:System.Drawing.GraphicsExtensions.<>E__0">
+        <member name="T:System.Drawing.GraphicsExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Drawing.Graphics"/>.
             </summary>
         </member>
-        <member name="M:System.Drawing.GraphicsExtensions.<>E__0.DrawValue``1(``0,System.Drawing.Font,System.Drawing.Brush,System.Drawing.PointF,System.Drawing.StringFormat)">
+        <member name="M:System.Drawing.GraphicsExtensions..DrawValue``1(``0,System.Drawing.Font,System.Drawing.Brush,System.Drawing.PointF,System.Drawing.StringFormat)">
             <summary>
             Draw the string representation of an instance onto the current <see cref="T:System.Drawing.Graphics"/> instance.
             </summary>
@@ -675,7 +671,7 @@
             <param name="point">The point.</param>
             <param name="stringFormat">The string format instance.</param>
         </member>
-        <member name="M:System.Drawing.GraphicsExtensions.<>E__0.DrawHollowArrow(System.Drawing.Brush,System.Drawing.PointF,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:System.Drawing.GraphicsExtensions..DrawHollowArrow(System.Drawing.Brush,System.Drawing.PointF,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Fills a hollow arrow.
             </summary>
@@ -689,7 +685,7 @@
             Throws when the argument <paramref name="length"/> is below 0 or either <paramref name="width"/> or <paramref name="height"/> is below 0.
             </exception>
         </member>
-        <member name="M:System.Drawing.GraphicsExtensions.<>E__0.DrawCrossSign(System.Drawing.Pen,System.Drawing.RectangleF)">
+        <member name="M:System.Drawing.GraphicsExtensions..DrawCrossSign(System.Drawing.Pen,System.Drawing.RectangleF)">
             <summary>
             Draw a cross sign (<c>x</c>).
             </summary>
@@ -700,21 +696,21 @@
             to find any fill methods.
             </remarks>
         </member>
-        <member name="M:System.Drawing.GraphicsExtensions.<>E__0.DrawCapsule(System.Drawing.Pen,System.Drawing.RectangleF)">
+        <member name="M:System.Drawing.GraphicsExtensions..DrawCapsule(System.Drawing.Pen,System.Drawing.RectangleF)">
             <summary>
             Draw a capsule.
             </summary>
             <param name="pen">The pen.</param>
             <param name="rectangle">The rectangle.</param>
         </member>
-        <member name="M:System.Drawing.GraphicsExtensions.<>E__0.FillCapsule(System.Drawing.Brush,System.Drawing.RectangleF)">
+        <member name="M:System.Drawing.GraphicsExtensions..FillCapsule(System.Drawing.Brush,System.Drawing.RectangleF)">
             <summary>
             Fill a capsule.
             </summary>
             <param name="brush">The brush.</param>
             <param name="rectangle">The rectangle.</param>
         </member>
-        <member name="M:System.Drawing.GraphicsExtensions.<>E__0.DrawRoundedRectangle(System.Drawing.Pen,System.Drawing.RectangleF,System.Single)">
+        <member name="M:System.Drawing.GraphicsExtensions..DrawRoundedRectangle(System.Drawing.Pen,System.Drawing.RectangleF,System.Single)">
             <summary>
             Draw a rounded rectangle.
             </summary>
@@ -725,7 +721,7 @@
             Throws when <paramref name="circleRadius"/> is greater than the value in <paramref name="rectangle"/>.
             </exception>
         </member>
-        <member name="M:System.Drawing.GraphicsExtensions.<>E__0.FillRoundedRectangle(System.Drawing.Brush,System.Drawing.RectangleF,System.Single)">
+        <member name="M:System.Drawing.GraphicsExtensions..FillRoundedRectangle(System.Drawing.Brush,System.Drawing.RectangleF,System.Single)">
             <summary>
             Fill a rounded rectangle.
             </summary>
@@ -736,27 +732,6 @@
             Throws when <paramref name="circleRadius"/> is greater than the value in <paramref name="rectangle"/>.
             </exception>
         </member>
-        <member name="M:System.Drawing.GraphicsExtensions.DrawValue``1(System.Drawing.Graphics,``0,System.Drawing.Font,System.Drawing.Brush,System.Drawing.PointF,System.Drawing.StringFormat)">
-            <inheritdoc cref="M:System.Drawing.GraphicsExtensions.<>E__0.DrawValue``1(``0,System.Drawing.Font,System.Drawing.Brush,System.Drawing.PointF,System.Drawing.StringFormat)"/>
-        </member>
-        <member name="M:System.Drawing.GraphicsExtensions.DrawHollowArrow(System.Drawing.Graphics,System.Drawing.Brush,System.Drawing.PointF,System.Single,System.Single,System.Single,System.Single)">
-            <inheritdoc cref="M:System.Drawing.GraphicsExtensions.<>E__0.DrawHollowArrow(System.Drawing.Brush,System.Drawing.PointF,System.Single,System.Single,System.Single,System.Single)"/>
-        </member>
-        <member name="M:System.Drawing.GraphicsExtensions.DrawCrossSign(System.Drawing.Graphics,System.Drawing.Pen,System.Drawing.RectangleF)">
-            <inheritdoc cref="M:System.Drawing.GraphicsExtensions.<>E__0.DrawCrossSign(System.Drawing.Pen,System.Drawing.RectangleF)"/>
-        </member>
-        <member name="M:System.Drawing.GraphicsExtensions.DrawCapsule(System.Drawing.Graphics,System.Drawing.Pen,System.Drawing.RectangleF)">
-            <inheritdoc cref="M:System.Drawing.GraphicsExtensions.<>E__0.DrawCapsule(System.Drawing.Pen,System.Drawing.RectangleF)"/>
-        </member>
-        <member name="M:System.Drawing.GraphicsExtensions.FillCapsule(System.Drawing.Graphics,System.Drawing.Brush,System.Drawing.RectangleF)">
-            <inheritdoc cref="M:System.Drawing.GraphicsExtensions.<>E__0.FillCapsule(System.Drawing.Brush,System.Drawing.RectangleF)"/>
-        </member>
-        <member name="M:System.Drawing.GraphicsExtensions.DrawRoundedRectangle(System.Drawing.Graphics,System.Drawing.Pen,System.Drawing.RectangleF,System.Single)">
-            <inheritdoc cref="M:System.Drawing.GraphicsExtensions.<>E__0.DrawRoundedRectangle(System.Drawing.Pen,System.Drawing.RectangleF,System.Single)"/>
-        </member>
-        <member name="M:System.Drawing.GraphicsExtensions.FillRoundedRectangle(System.Drawing.Graphics,System.Drawing.Brush,System.Drawing.RectangleF,System.Single)">
-            <inheritdoc cref="M:System.Drawing.GraphicsExtensions.<>E__0.FillRoundedRectangle(System.Drawing.Brush,System.Drawing.RectangleF,System.Single)"/>
-        </member>
         <member name="T:System.Drawing.PointOrPointFExtensions">
             <summary>
             Provides with extension methods on <see cref="T:System.Drawing.Point"/> or <see cref="T:System.Drawing.PointF"/>.
@@ -764,36 +739,37 @@
             <seealso cref="T:System.Drawing.Point"/>
             <seealso cref="T:System.Drawing.PointF"/>
         </member>
-        <member name="T:System.Drawing.PointOrPointFExtensions.<>E__0">
+        <member name="T:System.Drawing.PointOrPointFExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Drawing.Point"/>.
             </summary>
         </member>
-        <member name="M:System.Drawing.PointOrPointFExtensions.<>E__0.Deconstruct(System.Int32@,System.Int32@)">
-            <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
+        <member name="M:System.Drawing.PointOrPointFExtensions..Deconstruct(System.Int32@,System.Int32@)">
+            <target name="method">
+				<summary>
+					Deconstruct the current instance into multiple values, which means you can use
+					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+				</summary>
+			</target>
         </member>
-        <member name="M:System.Drawing.PointOrPointFExtensions.Deconstruct(System.Drawing.Point,System.Int32@,System.Int32@)">
-            <inheritdoc cref="M:System.Drawing.PointOrPointFExtensions.<>E__0.Deconstruct(System.Int32@,System.Int32@)"/>
-        </member>
-        <member name="T:System.Drawing.PointOrPointFExtensions.<>E__1">
+        <member name="T:System.Drawing.PointOrPointFExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Drawing.PointF"/>.
             </summary>
         </member>
-        <member name="M:System.Drawing.PointOrPointFExtensions.<>E__1.Truncate">
+        <member name="M:System.Drawing.PointOrPointFExtensions..Truncate">
             <summary>
             To truncate the point.
             </summary>
             <returns>The result.</returns>
         </member>
-        <member name="M:System.Drawing.PointOrPointFExtensions.<>E__1.Deconstruct(System.Single@,System.Single@)">
-            <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-        </member>
-        <member name="M:System.Drawing.PointOrPointFExtensions.Truncate(System.Drawing.PointF)">
-            <inheritdoc cref="M:System.Drawing.PointOrPointFExtensions.<>E__1.Truncate"/>
-        </member>
-        <member name="M:System.Drawing.PointOrPointFExtensions.Deconstruct(System.Drawing.PointF,System.Single@,System.Single@)">
-            <inheritdoc cref="M:System.Drawing.PointOrPointFExtensions.<>E__1.Deconstruct(System.Single@,System.Single@)"/>
+        <member name="M:System.Drawing.PointOrPointFExtensions..Deconstruct(System.Single@,System.Single@)">
+            <target name="method">
+				<summary>
+					Deconstruct the current instance into multiple values, which means you can use
+					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+				</summary>
+			</target>
         </member>
         <member name="T:System.Drawing.RectangleOrRectangleFExtensions">
             <summary>
@@ -802,12 +778,12 @@
             <seealso cref="T:System.Drawing.Rectangle"/>
             <seealso cref="T:System.Drawing.RectangleF"/>
         </member>
-        <member name="T:System.Drawing.RectangleOrRectangleFExtensions.<>E__0">
+        <member name="T:System.Drawing.RectangleOrRectangleFExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Drawing.Rectangle"/>.
             </summary>
         </member>
-        <member name="M:System.Drawing.RectangleOrRectangleFExtensions.<>E__0.Zoom(System.Int32)">
+        <member name="M:System.Drawing.RectangleOrRectangleFExtensions..Zoom(System.Int32)">
             <summary>
             Zoom in or out the rectangle by the specified offset.
             If the offset is positive, the rectangle will be larger; otherwise, smaller.
@@ -815,21 +791,20 @@
             <param name="offset">The offset to zoom in or out.</param>
             <returns>The new rectangle.</returns>
         </member>
-        <member name="M:System.Drawing.RectangleOrRectangleFExtensions.<>E__0.Deconstruct(System.Drawing.Point@,System.Drawing.Size@)">
-            <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
+        <member name="M:System.Drawing.RectangleOrRectangleFExtensions..Deconstruct(System.Drawing.Point@,System.Drawing.Size@)">
+            <target name="method">
+				<summary>
+					Deconstruct the current instance into multiple values, which means you can use
+					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+				</summary>
+			</target>
         </member>
-        <member name="M:System.Drawing.RectangleOrRectangleFExtensions.Zoom(System.Drawing.Rectangle,System.Int32)">
-            <inheritdoc cref="M:System.Drawing.RectangleOrRectangleFExtensions.<>E__0.Zoom(System.Int32)"/>
-        </member>
-        <member name="M:System.Drawing.RectangleOrRectangleFExtensions.Deconstruct(System.Drawing.Rectangle,System.Drawing.Point@,System.Drawing.Size@)">
-            <inheritdoc cref="M:System.Drawing.RectangleOrRectangleFExtensions.<>E__0.Deconstruct(System.Drawing.Point@,System.Drawing.Size@)"/>
-        </member>
-        <member name="T:System.Drawing.RectangleOrRectangleFExtensions.<>E__1">
+        <member name="T:System.Drawing.RectangleOrRectangleFExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Drawing.Rectangle"/>.
             </summary>
         </member>
-        <member name="M:System.Drawing.RectangleOrRectangleFExtensions.<>E__1.Create(System.Drawing.Point,System.Drawing.Point)">
+        <member name="M:System.Drawing.RectangleOrRectangleFExtensions..Create(System.Drawing.Point,System.Drawing.Point)">
             <summary>
             Create an instance with two points.
             </summary>
@@ -837,15 +812,12 @@
             <param name="bottomRight">The bottom-right point.</param>
             <returns>The rectangle.</returns>
         </member>
-        <member name="M:System.Drawing.RectangleOrRectangleFExtensions.Create(System.Drawing.Point,System.Drawing.Point)">
-            <inheritdoc cref="M:System.Drawing.RectangleOrRectangleFExtensions.<>E__1.Create(System.Drawing.Point,System.Drawing.Point)"/>
-        </member>
-        <member name="T:System.Drawing.RectangleOrRectangleFExtensions.<>E__2">
+        <member name="T:System.Drawing.RectangleOrRectangleFExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Drawing.RectangleF"/>.
             </summary>
         </member>
-        <member name="M:System.Drawing.RectangleOrRectangleFExtensions.<>E__2.Create(System.Drawing.PointF,System.Drawing.PointF)">
+        <member name="M:System.Drawing.RectangleOrRectangleFExtensions..Create(System.Drawing.PointF,System.Drawing.PointF)">
             <summary>
             Create an instance with two points.
             </summary>
@@ -853,15 +825,12 @@
             <param name="bottomRight">The bottom-right point.</param>
             <returns>The rectangle.</returns>
         </member>
-        <member name="M:System.Drawing.RectangleOrRectangleFExtensions.Create(System.Drawing.PointF,System.Drawing.PointF)">
-            <inheritdoc cref="M:System.Drawing.RectangleOrRectangleFExtensions.<>E__2.Create(System.Drawing.PointF,System.Drawing.PointF)"/>
-        </member>
-        <member name="T:System.Drawing.RectangleOrRectangleFExtensions.<>E__3">
+        <member name="T:System.Drawing.RectangleOrRectangleFExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Drawing.RectangleF"/>.
             </summary>
         </member>
-        <member name="M:System.Drawing.RectangleOrRectangleFExtensions.<>E__3.Zoom(System.Single)">
+        <member name="M:System.Drawing.RectangleOrRectangleFExtensions..Zoom(System.Single)">
             <summary>
             Zoom in or out the rectangle by the specified offset.
             If the offset is positive, the rectangle will be larger; otherwise, smaller.
@@ -869,29 +838,27 @@
             <param name="offset">The offset to zoom in or out.</param>
             <returns>The new rectangle.</returns>
         </member>
-        <member name="M:System.Drawing.RectangleOrRectangleFExtensions.<>E__3.Truncate">
+        <member name="M:System.Drawing.RectangleOrRectangleFExtensions..Truncate">
             <summary>
             Truncate the specified rectangle.
             </summary>
             <returns>The result.</returns>
         </member>
-        <member name="M:System.Drawing.RectangleOrRectangleFExtensions.<>E__3.Deconstruct(System.Drawing.PointF@,System.Drawing.SizeF@)">
-            <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
+        <member name="M:System.Drawing.RectangleOrRectangleFExtensions..Deconstruct(System.Drawing.PointF@,System.Drawing.SizeF@)">
+            <target name="method">
+				<summary>
+					Deconstruct the current instance into multiple values, which means you can use
+					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+				</summary>
+			</target>
         </member>
-        <member name="M:System.Drawing.RectangleOrRectangleFExtensions.<>E__3.Deconstruct(System.Single@,System.Single@,System.Single@,System.Single@)">
-            <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-        </member>
-        <member name="M:System.Drawing.RectangleOrRectangleFExtensions.Zoom(System.Drawing.RectangleF,System.Single)">
-            <inheritdoc cref="M:System.Drawing.RectangleOrRectangleFExtensions.<>E__3.Zoom(System.Single)"/>
-        </member>
-        <member name="M:System.Drawing.RectangleOrRectangleFExtensions.Truncate(System.Drawing.RectangleF)">
-            <inheritdoc cref="M:System.Drawing.RectangleOrRectangleFExtensions.<>E__3.Truncate"/>
-        </member>
-        <member name="M:System.Drawing.RectangleOrRectangleFExtensions.Deconstruct(System.Drawing.RectangleF,System.Drawing.PointF@,System.Drawing.SizeF@)">
-            <inheritdoc cref="M:System.Drawing.RectangleOrRectangleFExtensions.<>E__3.Deconstruct(System.Drawing.PointF@,System.Drawing.SizeF@)"/>
-        </member>
-        <member name="M:System.Drawing.RectangleOrRectangleFExtensions.Deconstruct(System.Drawing.RectangleF,System.Single@,System.Single@,System.Single@,System.Single@)">
-            <inheritdoc cref="M:System.Drawing.RectangleOrRectangleFExtensions.<>E__3.Deconstruct(System.Single@,System.Single@,System.Single@,System.Single@)"/>
+        <member name="M:System.Drawing.RectangleOrRectangleFExtensions..Deconstruct(System.Single@,System.Single@,System.Single@,System.Single@)">
+            <target name="method">
+				<summary>
+					Deconstruct the current instance into multiple values, which means you can use
+					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+				</summary>
+			</target>
         </member>
         <member name="T:System.Drawing.SizeOrSizeFExtensions">
             <summary>
@@ -900,36 +867,37 @@
             <seealso cref="T:System.Drawing.Size"/>
             <seealso cref="T:System.Drawing.SizeF"/>
         </member>
-        <member name="T:System.Drawing.SizeOrSizeFExtensions.<>E__0">
+        <member name="T:System.Drawing.SizeOrSizeFExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Drawing.Size"/>.
             </summary>
         </member>
-        <member name="M:System.Drawing.SizeOrSizeFExtensions.<>E__0.Deconstruct(System.Int32@,System.Int32@)">
-            <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
+        <member name="M:System.Drawing.SizeOrSizeFExtensions..Deconstruct(System.Int32@,System.Int32@)">
+            <target name="method">
+				<summary>
+					Deconstruct the current instance into multiple values, which means you can use
+					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+				</summary>
+			</target>
         </member>
-        <member name="M:System.Drawing.SizeOrSizeFExtensions.Deconstruct(System.Drawing.Size,System.Int32@,System.Int32@)">
-            <inheritdoc cref="M:System.Drawing.SizeOrSizeFExtensions.<>E__0.Deconstruct(System.Int32@,System.Int32@)"/>
-        </member>
-        <member name="T:System.Drawing.SizeOrSizeFExtensions.<>E__1">
+        <member name="T:System.Drawing.SizeOrSizeFExtensions.">
             <summary>
             Provides extension members on <see cref="T:System.Drawing.SizeF"/>.
             </summary>
         </member>
-        <member name="M:System.Drawing.SizeOrSizeFExtensions.<>E__1.Truncate">
+        <member name="M:System.Drawing.SizeOrSizeFExtensions..Truncate">
             <summary>
             To truncate the size.
             </summary>
             <returns>The result.</returns>
         </member>
-        <member name="M:System.Drawing.SizeOrSizeFExtensions.<>E__1.Deconstruct(System.Single@,System.Single@)">
-            <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-        </member>
-        <member name="M:System.Drawing.SizeOrSizeFExtensions.Truncate(System.Drawing.SizeF)">
-            <inheritdoc cref="M:System.Drawing.SizeOrSizeFExtensions.<>E__1.Truncate"/>
-        </member>
-        <member name="M:System.Drawing.SizeOrSizeFExtensions.Deconstruct(System.Drawing.SizeF,System.Single@,System.Single@)">
-            <inheritdoc cref="M:System.Drawing.SizeOrSizeFExtensions.<>E__1.Deconstruct(System.Single@,System.Single@)"/>
+        <member name="M:System.Drawing.SizeOrSizeFExtensions..Deconstruct(System.Single@,System.Single@)">
+            <target name="method">
+				<summary>
+					Deconstruct the current instance into multiple values, which means you can use
+					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+				</summary>
+			</target>
         </member>
     </members>
 </doc>

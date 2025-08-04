@@ -11,7 +11,7 @@ namespace Sudoku.Concepts;
 /// but one of those two holds the global index of the candidate position is greater, it is greater.
 /// </remarks>
 [JsonConverter(typeof(Converter))]
-[TypeImpl(TypeImplFlags.AllObjectMethods | TypeImplFlags.EqualityOperators | TypeImplFlags.Equatable)]
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.Object_ToString | TypeImplFlags.EqualityOperators)]
 public readonly partial struct Conclusion(Mask mask) :
 	IComparable<Conclusion>,
 	IDrawableItem,
@@ -36,9 +36,7 @@ public readonly partial struct Conclusion(Mask mask) :
 	/// but the real type <see cref="ConclusionType"/> uses <see cref="byte"/> as its underlying numeric type
 	/// because C# cannot set "A bit" to be the underlying type. The narrowest type is <see cref="byte"/>.
 	/// </summary>
-	[HashCodeMember]
-	[EquatableMember]
-	private readonly short _mask = mask;
+	private readonly Mask _mask = mask;
 
 
 	/// <summary>
@@ -91,6 +89,12 @@ public readonly partial struct Conclusion(Mask mask) :
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
 	public void Deconstruct(out ConclusionType conclusionType, out Cell cell, out Digit digit)
 		=> ((conclusionType, _), cell, digit) = (this, Cell, Digit);
+
+	/// <inheritdoc/>
+	public bool Equals(Conclusion other) => _mask == other._mask;
+
+	/// <inheritdoc/>
+	public override int GetHashCode() => _mask;
 
 	/// <inheritdoc/>
 	public int CompareTo(Conclusion other) => _mask.CompareTo(_mask);

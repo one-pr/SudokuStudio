@@ -5,7 +5,7 @@ namespace Sudoku.Concepts.Supersymmetry;
 /// defined in another project called <see href="https://sudoku.allanbarker.com/index.html">XSudo</see>.
 /// </summary>
 /// <param name="mask"><inheritdoc cref="_mask" path="/summary"/></param>
-[TypeImpl(TypeImplFlags.AllObjectMethods | TypeImplFlags.Equatable | TypeImplFlags.AllEqualityComparisonOperators)]
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.Object_ToString | TypeImplFlags.AllEqualityComparisonOperators)]
 public readonly partial struct Space(Mask mask) :
 	IComparable<Space>,
 	IComparisonOperators<Space, Space, bool>,
@@ -17,8 +17,6 @@ public readonly partial struct Space(Mask mask) :
 	/// <summary>
 	/// Indicates the backing mask.
 	/// </summary>
-	[HashCodeMember]
-	[EquatableMember]
 	private readonly Mask _mask = mask;
 
 
@@ -159,6 +157,12 @@ public readonly partial struct Space(Mask mask) :
 			{ Cell: var cell and not -1 } => candidate / 9 == cell,
 			{ House: var house, Digit: var digit } => candidate % 9 == digit && HousesMap[house].Contains(candidate / 9)
 		};
+
+	/// <inheritdoc/>
+	public bool Equals(Space other) => _mask == other._mask;
+
+	/// <inheritdoc/>
+	public override int GetHashCode() => _mask;
 
 	/// <summary>
 	/// Try to find all possible candidates in the current set.

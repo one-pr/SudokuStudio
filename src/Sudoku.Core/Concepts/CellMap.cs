@@ -19,8 +19,8 @@ using CellMapBase = ICellMapOrCandidateMap<CellMap, Cell>;
 [CollectionBuilder(typeof(CellMap), nameof(Create))]
 [DebuggerStepThrough]
 [TypeImpl(
-	TypeImplFlags.AllObjectMethods | TypeImplFlags.AllEqualityComparisonOperators | TypeImplFlags.TrueAndFalseOperators
-		| TypeImplFlags.LogicalNotOperator | TypeImplFlags.Equatable,
+	TypeImplFlags.AllObjectMethods
+		| TypeImplFlags.AllEqualityComparisonOperators | TypeImplFlags.TrueAndFalseOperators | TypeImplFlags.LogicalNotOperator,
 	IsLargeStructure = true)]
 public partial struct CellMap : CellMapBase
 {
@@ -99,7 +99,6 @@ public partial struct CellMap : CellMapBase
 	/// </list>
 	/// </summary>
 	[HashCodeMember]
-	[EquatableMember]
 	private Vector128<ulong> _vector;
 
 
@@ -530,6 +529,9 @@ public partial struct CellMap : CellMapBase
 		return false;
 	}
 
+	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
+	public readonly bool Equals(in CellMap other) => _vector.Equals(other._vector);
+
 	/// <inheritdoc/>
 	public readonly int CompareTo(in CellMap other)
 	{
@@ -652,6 +654,9 @@ public partial struct CellMap : CellMapBase
 	/// </summary>
 	/// <seealso cref="Count"/>
 	public void Clear() => this = Empty;
+
+	/// <inheritdoc/>
+	readonly bool IEquatable<CellMap>.Equals(CellMap other) => Equals(other);
 
 	/// <inheritdoc/>
 	readonly bool IAnyAllMethod<CellMap, Cell>.Any() => Count != 0;

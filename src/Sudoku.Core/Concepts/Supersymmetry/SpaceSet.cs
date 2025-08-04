@@ -8,7 +8,7 @@ namespace Sudoku.Concepts.Supersymmetry;
 /// </remarks>
 /// <seealso cref="Space"/>
 [TypeImpl(
-	TypeImplFlags.Object_Equals | TypeImplFlags.Equatable
+	TypeImplFlags.Object_Equals
 		| TypeImplFlags.AllEqualityComparisonOperators
 		| TypeImplFlags.TrueAndFalseOperators | TypeImplFlags.LogicalNotOperator,
 	IsLargeStructure = true)]
@@ -40,7 +40,6 @@ public partial struct SpaceSet :
 	/// <summary>
 	/// Indicates the buffer entry field.
 	/// </summary>
-	[EquatableMember]
 	private BackingBuffer _field;
 
 
@@ -121,6 +120,9 @@ public partial struct SpaceSet :
 		}
 		return true;
 	}
+
+	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
+	public readonly bool Equals(in SpaceSet other) => _field[..].SequenceEqual(other._field[..]);
 
 	/// <inheritdoc/>
 	public override readonly int GetHashCode() => HashCode.Combine(_field[0], _field[1], _field[2], _field[3]);
@@ -217,6 +219,9 @@ public partial struct SpaceSet :
 
 	/// <inheritdoc cref="object.ToString"/>
 	public override readonly string ToString() => new RxCyConverter().SpaceConverter(this);
+
+	/// <inheritdoc/>
+	readonly bool IEquatable<SpaceSet>.Equals(SpaceSet other) => Equals(other);
 
 	/// <inheritdoc/>
 	readonly bool IReadOnlySet<Space>.IsProperSubsetOf(IEnumerable<Space> other)

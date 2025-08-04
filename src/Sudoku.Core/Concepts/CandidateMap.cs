@@ -14,8 +14,7 @@ using CandidateMapBase = ICellMapOrCandidateMap<CandidateMap, Candidate>;
 [DebuggerStepThrough]
 [TypeImpl(
 	TypeImplFlags.Object_Equals | TypeImplFlags.Object_ToString
-		| TypeImplFlags.AllEqualityComparisonOperators | TypeImplFlags.TrueAndFalseOperators
-		| TypeImplFlags.LogicalNotOperator | TypeImplFlags.Equatable,
+		| TypeImplFlags.AllEqualityComparisonOperators | TypeImplFlags.TrueAndFalseOperators | TypeImplFlags.LogicalNotOperator,
 	IsLargeStructure = true)]
 public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 {
@@ -37,7 +36,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	/// Indicates the internal field that provides the visit entry for fixed-sized buffer type <see cref="BackingBuffer"/>.
 	/// </summary>
 	/// <seealso cref="BackingBuffer"/>
-	[EquatableMember]
 	private BackingBuffer _bits;
 
 
@@ -277,6 +275,9 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	/// <inheritdoc/>
 	public readonly void CopyTo(ref Candidate sequence, Candidate length)
 		=> Offsets.AsReadOnlySpan().TryCopyTo(Span<int>.Create(ref sequence, length));
+
+	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
+	public readonly bool Equals(in CandidateMap other) => _bits == other._bits;
 
 	/// <summary>
 	/// Determine whether the map contains the specified offset.
@@ -523,6 +524,9 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	/// </summary>
 	/// <seealso cref="Count"/>
 	public void Clear() => this = Empty;
+
+	/// <inheritdoc/>
+	readonly bool IEquatable<CandidateMap>.Equals(CandidateMap other) => Equals(other);
 
 	/// <inheritdoc/>
 	readonly bool IAnyAllMethod<CandidateMap, Candidate>.Any() => Count != 0;

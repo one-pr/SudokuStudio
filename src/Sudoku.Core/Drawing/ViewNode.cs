@@ -40,7 +40,6 @@ public abstract partial class ViewNode(ColorIdentifier identifier) :
 	/// because it's in primary constructor declaration by a base type.
 	/// </b></remarks>
 	[StringMember]
-	[EquatableMember]
 	public ColorIdentifier Identifier { get; } = identifier;
 
 	/// <summary>

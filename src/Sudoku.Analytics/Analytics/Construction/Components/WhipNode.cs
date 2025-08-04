@@ -7,7 +7,7 @@ namespace Sudoku.Analytics.Construction.Components;
 /// <param name="availableAssignments"><inheritdoc cref="AvailableAssignments" path="/summary"/></param>
 /// <param name="parent"><inheritdoc cref="Parent" path="/summary"/></param>
 [StructLayout(LayoutKind.Auto)]
-[TypeImpl(TypeImplFlags.AllObjectMethods | TypeImplFlags.Equatable | TypeImplFlags.EqualityOperators)]
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.Object_ToString | TypeImplFlags.EqualityOperators)]
 public sealed partial class WhipNode(
 	WhipAssignment assignment,
 	ReadOnlyMemory<WhipAssignment> availableAssignments,
@@ -31,8 +31,6 @@ public sealed partial class WhipNode(
 	/// <summary>
 	/// Indicates the assignment conclusion.
 	/// </summary>
-	[HashCodeMember]
-	[EquatableMember]
 	public WhipAssignment Assignment { get; } = assignment;
 
 	/// <inheritdoc/>
@@ -57,6 +55,12 @@ public sealed partial class WhipNode(
 	/// <inheritdoc/>
 	ComponentType IComponent.Type => ComponentType.WhipNode;
 
+
+	/// <inheritdoc/>
+	public bool Equals([NotNullWhen(true)] WhipNode? other) => other is not null && Assignment == other.Assignment;
+
+	/// <inheritdoc/>
+	public override int GetHashCode() => Assignment.GetHashCode();
 
 	/// <inheritdoc/>
 	public string ToString(IFormatProvider? formatProvider)

@@ -22,9 +22,7 @@ using GridBase = IGrid<MarkerGrid>;
 [CollectionBuilder(typeof(Grid), nameof(Create))]
 [DebuggerStepThrough]
 [InlineArray(81)]
-[TypeImpl(
-	TypeImplFlags.Object_Equals | TypeImplFlags.AllEqualityComparisonOperators | TypeImplFlags.Equatable,
-	IsLargeStructure = true)]
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.AllEqualityComparisonOperators, IsLargeStructure = true)]
 public partial struct MarkerGrid : GridBase
 {
 	/// <summary>
@@ -356,6 +354,9 @@ public partial struct MarkerGrid : GridBase
 	/// <inheritdoc/>
 	public readonly bool GetExistence(Cell cell, Digit digit) => (this[cell] >> digit & 1) != 0;
 
+	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
+	public readonly bool Equals(in MarkerGrid other) => this[..].SequenceEqual(other[..]);
+
 	/// <inheritdoc/>
 	public readonly bool? Exists(Cell cell, Digit digit) => GetState(cell) == CellState.Empty ? GetExistence(cell, digit) : null;
 
@@ -558,6 +559,9 @@ public partial struct MarkerGrid : GridBase
 			}
 		}
 	}
+
+	/// <inheritdoc/>
+	readonly bool IEquatable<MarkerGrid>.Equals(MarkerGrid other) => Equals(other);
 
 	/// <inheritdoc/>
 	[UnscopedRef]

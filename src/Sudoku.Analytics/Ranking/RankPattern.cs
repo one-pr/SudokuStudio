@@ -19,20 +19,18 @@ namespace Sudoku.Ranking;
 /// We should append an extra check on "both true" to candidates in a same link if we want to trim links.
 /// </para>
 /// </remarks>
-[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.Equatable | TypeImplFlags.EqualityOperators, IsLargeStructure = true)]
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.EqualityOperators, IsLargeStructure = true)]
 public readonly ref partial struct RankPattern(ref readonly Grid grid, ref readonly SpaceSet truths, ref readonly SpaceSet links) :
 	IEquatable<RankPattern>
 {
 	/// <summary>
 	/// Indicates the grid.
 	/// </summary>
-	[EquatableMember]
 	public readonly ref readonly Grid Grid = ref grid;
 
 	/// <summary>
 	/// Indicates the truths.
 	/// </summary>
-	[EquatableMember]
 	public readonly ref readonly SpaceSet Truths = ref truths;
 
 	/// <summary>
@@ -41,7 +39,6 @@ public readonly ref partial struct RankPattern(ref readonly Grid grid, ref reado
 	/// <remarks>
 	/// By design, this value can be empty if you want to infer this value.
 	/// </remarks>
-	[EquatableMember]
 	public readonly ref readonly SpaceSet Links = ref links;
 
 	/// <summary>
@@ -76,6 +73,13 @@ public readonly ref partial struct RankPattern(ref readonly Grid grid, ref reado
 	/// </summary>
 	[UnscopedRef]
 	public ref readonly CandidateMap Candidates => ref _candidates;
+
+
+	/// <inheritdoc/>
+	public bool Equals(in RankPattern other) => Grid == other.Grid && Truths == other.Truths && Links == other.Links;
+
+	/// <inheritdoc/>
+	bool IEquatable<RankPattern>.Equals(RankPattern other) => Equals(other);
 
 
 	/// <summary>

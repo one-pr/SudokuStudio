@@ -8,7 +8,6 @@ namespace Sudoku.Analytics.Construction.Components;
 /// <param name="OffNodes">Indicates all possible nodes that can implicitly connect to node, supposed to "off".</param>
 /// <seealso cref="Node"/>
 /// <seealso cref="Node.IsOn"/>
-[TypeImpl(TypeImplFlags.Object_GetHashCode | TypeImplFlags.Equatable)]
 public readonly partial record struct ForcingChainsInfo(HashSet<Node> OnNodes, HashSet<Node> OffNodes) :
 	IComponent,
 	IEnumerable<Node>,
@@ -20,15 +19,14 @@ public readonly partial record struct ForcingChainsInfo(HashSet<Node> OnNodes, H
 	/// <summary>
 	/// Indicates the start node.
 	/// </summary>
-	[EquatableMember]
 	public Node StartNode => OnNodes.First().Root;
 
 	/// <inheritdoc/>
 	ComponentType IComponent.Type => ComponentType.ForcingChains;
 
-	[HashCodeMember]
-	private int StartNodeHashCode => StartNode.GetHashCode();
 
+	/// <inheritdoc/>
+	public bool Equals(ForcingChainsInfo other) => StartNode == other.StartNode;
 
 	/// <summary>
 	/// Determines whether two <see cref="ForcingChainsInfo"/> instances contain a same <see cref="StartNode"/> property,
@@ -38,6 +36,9 @@ public readonly partial record struct ForcingChainsInfo(HashSet<Node> OnNodes, H
 	/// <param name="nodeComparison">The node comparison rule.</param>
 	/// <returns>A <see cref="bool"/> result indicating that.</returns>
 	public bool Equals(ForcingChainsInfo other, NodeComparison nodeComparison) => StartNode.Equals(other.StartNode, nodeComparison);
+
+	/// <inheritdoc/>
+	public override int GetHashCode() => StartNode.GetHashCode();
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
 	public Enumerator GetEnumerator() => new([.. OnNodes, .. OffNodes]);
