@@ -11,10 +11,7 @@ using CandidateMapBase = ICellMapOrCandidateMap<CandidateMap, Candidate>;
 [JsonConverter(typeof(Converter))]
 [StructLayout(LayoutKind.Auto)]
 [CollectionBuilder(typeof(CandidateMap), nameof(Create))]
-[DebuggerStepThrough]
-[TypeImpl(
-	TypeImplFlags.Object_Equals | TypeImplFlags.Object_ToString | TypeImplFlags.AllEqualityComparisonOperators,
-	IsLargeStructure = true)]
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.Object_ToString, IsLargeStructure = true)]
 public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 {
 	/// <summary>
@@ -691,6 +688,24 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	/// <inheritdoc cref="ILogicalOperators{TSelf}.op_False(TSelf)"/>
 	public static bool operator false(in CandidateMap value) => value.Count == 0;
 
+	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
+	public static bool operator ==(in CandidateMap left, in CandidateMap right) => left.Equals(in right);
+
+	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
+	public static bool operator !=(in CandidateMap left, in CandidateMap right) => !(left == right);
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
+	public static bool operator >(in CandidateMap left, in CandidateMap right) => left.CompareTo(in right) > 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThan(TSelf, TOther)"/>
+	public static bool operator <(in CandidateMap left, in CandidateMap right) => left.CompareTo(in right) < 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThanOrEqual(TSelf, TOther)"/>
+	public static bool operator >=(in CandidateMap left, in CandidateMap right) => left.CompareTo(in right) >= 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
+	public static bool operator <=(in CandidateMap left, in CandidateMap right) => left.CompareTo(in right) <= 0;
+
 	/// <inheritdoc/>
 	public static CandidateMap operator ~(in CandidateMap offsets)
 	{
@@ -869,4 +884,22 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 
 	/// <inheritdoc/>
 	static bool ILogicalOperators<CandidateMap>.operator false(CandidateMap value) => value.Count == 0;
+
+	/// <inheritdoc/>
+	static bool IEqualityOperators<CandidateMap, CandidateMap, bool>.operator ==(CandidateMap left, CandidateMap right) => left == right;
+
+	/// <inheritdoc/>
+	static bool IEqualityOperators<CandidateMap, CandidateMap, bool>.operator !=(CandidateMap left, CandidateMap right) => left != right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<CandidateMap, CandidateMap, bool>.operator >(CandidateMap left, CandidateMap right) => left > right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<CandidateMap, CandidateMap, bool>.operator <(CandidateMap left, CandidateMap right) => left < right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<CandidateMap, CandidateMap, bool>.operator >=(CandidateMap left, CandidateMap right) => left >= right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<CandidateMap, CandidateMap, bool>.operator <=(CandidateMap left, CandidateMap right) => left <= right;
 }

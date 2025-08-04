@@ -10,7 +10,7 @@ namespace Sudoku.Analytics.Construction.Components;
 /// <param name="map"><inheritdoc cref="_map" path="/summary"/></param>
 /// <param name="isOn"><inheritdoc cref="IsOn" path="/summary"/></param>
 /// <param name="parents"><inheritdoc cref="Parents" path="/summary"/></param>
-[TypeImpl(TypeImplFlags.AllObjectMethods | TypeImplFlags.AllEqualityComparisonOperators)]
+[TypeImpl(TypeImplFlags.AllObjectMethods)]
 public sealed partial class Node(in CandidateMap map, bool isOn, NodeSet? parents = null) :
 	IComparable<Node>,
 	IComparisonOperators<Node, Node, bool>,
@@ -207,6 +207,25 @@ public sealed partial class Node(in CandidateMap map, bool isOn, NodeSet? parent
 	/// <inheritdoc/>
 	object ICloneable.Clone() => Clone();
 
+
+	/// <inheritdoc/>
+	public static bool operator ==(Node? left, Node? right)
+		=> (left, right) switch { (null, null) => true, (not null, not null) => left.Equals(right), _ => false };
+
+	/// <inheritdoc/>
+	public static bool operator !=(Node? left, Node? right) => !(left == right);
+
+	/// <inheritdoc/>
+	public static bool operator >(Node left, Node right) => left.CompareTo(right) > 0;
+
+	/// <inheritdoc/>
+	public static bool operator <(Node left, Node right) => left.CompareTo(right) < 0;
+
+	/// <inheritdoc/>
+	public static bool operator >=(Node left, Node right) => left.CompareTo(right) >= 0;
+
+	/// <inheritdoc/>
+	public static bool operator <=(Node left, Node right) => left.CompareTo(right) <= 0;
 
 	/// <summary>
 	/// Negates the node with <see cref="IsOn"/> property value.

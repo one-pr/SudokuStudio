@@ -7,7 +7,7 @@ namespace Sudoku.Concepts.Supersymmetry;
 /// <para><include file="../../global-doc-comments.xml" path="/g/large-structure"/></para>
 /// </remarks>
 /// <seealso cref="Space"/>
-[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.AllEqualityComparisonOperators, IsLargeStructure = true)]
+[TypeImpl(TypeImplFlags.Object_Equals, IsLargeStructure = true)]
 public partial struct SpaceSet :
 	IAdditionOperators<SpaceSet, Space, SpaceSet>,
 	IAnyAllMethod<SpaceSet, Space>,
@@ -388,6 +388,24 @@ public partial struct SpaceSet :
 	/// <inheritdoc cref="ILogicalOperators{TSelf}.op_False(TSelf)"/>
 	public static bool operator false(in SpaceSet value) => value.Count == 0;
 
+	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
+	public static bool operator ==(in SpaceSet left, in SpaceSet right) => left.Equals(in right);
+
+	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
+	public static bool operator !=(in SpaceSet left, in SpaceSet right) => !(left == right);
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
+	public static bool operator >(in SpaceSet left, in SpaceSet right) => left.CompareTo(in right) > 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThan(TSelf, TOther)"/>
+	public static bool operator <(in SpaceSet left, in SpaceSet right) => left.CompareTo(in right) < 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThanOrEqual(TSelf, TOther)"/>
+	public static bool operator >=(in SpaceSet left, in SpaceSet right) => left.CompareTo(in right) >= 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
+	public static bool operator <=(in SpaceSet left, in SpaceSet right) => left.CompareTo(in right) <= 0;
+
 	/// <inheritdoc cref="IBitwiseOperators{TSelf, TOther, TResult}.op_OnesComplement(TSelf)"/>
 	public static SpaceSet operator ~(in SpaceSet value)
 	{
@@ -456,6 +474,24 @@ public partial struct SpaceSet :
 
 	/// <inheritdoc/>
 	static bool ILogicalOperators<SpaceSet>.operator false(SpaceSet value) => value.Count == 0;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<SpaceSet, SpaceSet, bool>.operator >(SpaceSet left, SpaceSet right) => left > right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<SpaceSet, SpaceSet, bool>.operator <(SpaceSet left, SpaceSet right) => left < right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<SpaceSet, SpaceSet, bool>.operator >=(SpaceSet left, SpaceSet right) => left >= right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<SpaceSet, SpaceSet, bool>.operator <=(SpaceSet left, SpaceSet right) => left <= right;
+
+	/// <inheritdoc/>
+	static bool IEqualityOperators<SpaceSet, SpaceSet, bool>.operator ==(SpaceSet left, SpaceSet right) => left == right;
+
+	/// <inheritdoc/>
+	static bool IEqualityOperators<SpaceSet, SpaceSet, bool>.operator !=(SpaceSet left, SpaceSet right) => left != right;
 
 	/// <inheritdoc/>
 	static SpaceSet IBitwiseOperators<SpaceSet, SpaceSet, SpaceSet>.operator ~(SpaceSet value) => ~value;

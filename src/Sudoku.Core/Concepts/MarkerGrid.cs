@@ -20,9 +20,8 @@ using GridBase = IGrid<MarkerGrid>;
 /// <seealso cref="Grid"/>
 /// <seealso cref="Grid.SetCandidates(Cell, Mask)"/>
 [CollectionBuilder(typeof(Grid), nameof(Create))]
-[DebuggerStepThrough]
 [InlineArray(81)]
-[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.AllEqualityComparisonOperators, IsLargeStructure = true)]
+[TypeImpl(TypeImplFlags.Object_Equals, IsLargeStructure = true)]
 public partial struct MarkerGrid : GridBase
 {
 	/// <summary>
@@ -728,6 +727,44 @@ public partial struct MarkerGrid : GridBase
 	/// <inheritdoc/>
 	public static MarkerGrid Parse(string s, IFormatProvider? provider)
 		=> (provider as SusserGridFormatInfo<MarkerGrid> ?? new()).ParseCore(s);
+
+
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
+	public static bool operator >(in MarkerGrid left, in MarkerGrid right) => left.CompareTo(in right) > 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThan(TSelf, TOther)"/>
+	public static bool operator <(in MarkerGrid left, in MarkerGrid right) => left.CompareTo(in right) < 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThanOrEqual(TSelf, TOther)"/>
+	public static bool operator >=(in MarkerGrid left, in MarkerGrid right) => left.CompareTo(in right) >= 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
+	public static bool operator <=(in MarkerGrid left, in MarkerGrid right) => left.CompareTo(in right) <= 0;
+
+	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
+	public static bool operator ==(in MarkerGrid left, in MarkerGrid right) => left.Equals(in right);
+
+	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
+	public static bool operator !=(in MarkerGrid left, in MarkerGrid right) => !(left == right);
+
+	/// <inheritdoc/>
+	static bool IEqualityOperators<MarkerGrid, MarkerGrid, bool>.operator ==(MarkerGrid left, MarkerGrid right) => left == right;
+
+	/// <inheritdoc/>
+	static bool IEqualityOperators<MarkerGrid, MarkerGrid, bool>.operator !=(MarkerGrid left, MarkerGrid right) => left != right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<MarkerGrid, MarkerGrid, bool>.operator >(MarkerGrid left, MarkerGrid right) => left > right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<MarkerGrid, MarkerGrid, bool>.operator <(MarkerGrid left, MarkerGrid right) => left < right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<MarkerGrid, MarkerGrid, bool>.operator >=(MarkerGrid left, MarkerGrid right) => left >= right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<MarkerGrid, MarkerGrid, bool>.operator <=(MarkerGrid left, MarkerGrid right) => left <= right;
 
 
 	/// <summary>

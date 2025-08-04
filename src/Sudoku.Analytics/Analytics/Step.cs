@@ -7,8 +7,7 @@ namespace Sudoku.Analytics;
 /// <param name="conclusions"><inheritdoc cref="Conclusions" path="/summary"/></param>
 /// <param name="views"><inheritdoc cref="Views" path="/summary"/></param>
 /// <param name="options"><inheritdoc cref="Options" path="/summary"/></param>
-[TypeImpl(TypeImplFlags.AllEqualityComparisonOperators)]
-public abstract partial class Step(ReadOnlyMemory<Conclusion> conclusions, View[]? views, StepGathererOptions options) :
+public abstract class Step(ReadOnlyMemory<Conclusion> conclusions, View[]? views, StepGathererOptions options) :
 	IComparable<Step>,
 	IComparisonOperators<Step, Step, bool>,
 	IDrawable,
@@ -296,4 +295,24 @@ public abstract partial class Step(ReadOnlyMemory<Conclusion> conclusions, View[
 	/// <param name="culture">Indicates the current culture used.</param>
 	private string? GetResourceFormat(CultureInfo? culture)
 		=> SR.TryGet(TechniqueResourceKey, out var resource, culture) ? resource : null;
+
+
+	/// <inheritdoc/>
+	public static bool operator ==(Step? left, Step? right)
+		=> (left, right) switch { (null, null) => true, (not null, not null) => left.Equals(right), _ => false };
+
+	/// <inheritdoc/>
+	public static bool operator !=(Step? left, Step? right) => !(left == right);
+
+	/// <inheritdoc/>
+	public static bool operator >(Step left, Step right) => left.CompareTo(right) > 0;
+
+	/// <inheritdoc/>
+	public static bool operator <(Step left, Step right) => left.CompareTo(right) < 0;
+
+	/// <inheritdoc/>
+	public static bool operator >=(Step left, Step right) => left.CompareTo(right) >= 0;
+
+	/// <inheritdoc/>
+	public static bool operator <=(Step left, Step right) => left.CompareTo(right) <= 0;
 }

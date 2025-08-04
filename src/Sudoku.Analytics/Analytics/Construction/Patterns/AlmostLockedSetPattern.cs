@@ -12,7 +12,7 @@ namespace Sudoku.Analytics.Construction.Patterns;
 /// <c>n</c> cells contains <c>(n + 1)</c> kinds of different digits.
 /// The special case is a bi-value cell.
 /// </remarks>
-[TypeImpl(TypeImplFlags.Object_GetHashCode | TypeImplFlags.Object_ToString | TypeImplFlags.ComparisonOperators)]
+[TypeImpl(TypeImplFlags.Object_GetHashCode | TypeImplFlags.Object_ToString)]
 public sealed partial class AlmostLockedSetPattern(
 	Mask digitsMask,
 	in CellMap cells,
@@ -248,6 +248,18 @@ public sealed partial class AlmostLockedSetPattern(
 			: throw new FormatException(SR.ExceptionMessage("AlsMissingSlash"));
 	}
 
+
+	/// <inheritdoc/>
+	public static bool operator >(AlmostLockedSetPattern left, AlmostLockedSetPattern right) => left.CompareTo(right) > 0;
+
+	/// <inheritdoc/>
+	public static bool operator <(AlmostLockedSetPattern left, AlmostLockedSetPattern right) => left.CompareTo(right) < 0;
+
+	/// <inheritdoc/>
+	public static bool operator >=(AlmostLockedSetPattern left, AlmostLockedSetPattern right) => left.CompareTo(right) >= 0;
+
+	/// <inheritdoc/>
+	public static bool operator <=(AlmostLockedSetPattern left, AlmostLockedSetPattern right) => left.CompareTo(right) <= 0;
 
 	/// <inheritdoc/>
 	static bool IEqualityOperators<AlmostLockedSetPattern, AlmostLockedSetPattern, bool>.operator ==(AlmostLockedSetPattern? left, AlmostLockedSetPattern? right)

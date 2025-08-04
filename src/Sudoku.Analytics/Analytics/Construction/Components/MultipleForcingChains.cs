@@ -13,8 +13,7 @@ namespace Sudoku.Analytics.Construction.Components;
 /// <seealso cref="StrongForcingChain"/>
 /// <seealso cref="WeakForcingChain"/>
 /// <seealso cref="Node"/>
-[TypeImpl(TypeImplFlags.AllEqualityComparisonOperators)]
-public partial class MultipleForcingChains(params Conclusion[] conclusions) :
+public class MultipleForcingChains(params Conclusion[] conclusions) :
 	SortedDictionary<Candidate, UnnamedChain>,
 	IAnyAllMethod<MultipleForcingChains, KeyValuePair<Candidate, UnnamedChain>>,
 	IComparable<MultipleForcingChains>,
@@ -476,4 +475,24 @@ public partial class MultipleForcingChains(params Conclusion[] conclusions) :
 		result[0] = [.. initialViewNodes, .. globalView];
 		return result;
 	}
+
+
+	/// <inheritdoc/>
+	public static bool operator ==(MultipleForcingChains? left, MultipleForcingChains? right)
+		=> (left, right) switch { (null, null) => true, (not null, not null) => left.Equals(right), _ => false };
+
+	/// <inheritdoc/>
+	public static bool operator !=(MultipleForcingChains? left, MultipleForcingChains? right) => !(left == right);
+
+	/// <inheritdoc/>
+	public static bool operator >(MultipleForcingChains left, MultipleForcingChains right) => left.CompareTo(right) > 0;
+
+	/// <inheritdoc/>
+	public static bool operator <(MultipleForcingChains left, MultipleForcingChains right) => left.CompareTo(right) < 0;
+
+	/// <inheritdoc/>
+	public static bool operator >=(MultipleForcingChains left, MultipleForcingChains right) => left.CompareTo(right) >= 0;
+
+	/// <inheritdoc/>
+	public static bool operator <=(MultipleForcingChains left, MultipleForcingChains right) => left.CompareTo(right) <= 0;
 }

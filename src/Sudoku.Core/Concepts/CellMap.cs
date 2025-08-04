@@ -17,8 +17,7 @@ using CellMapBase = ICellMapOrCandidateMap<CellMap, Cell>;
 [JsonConverter(typeof(Converter))]
 [StructLayout(LayoutKind.Auto)]
 [CollectionBuilder(typeof(CellMap), nameof(Create))]
-[DebuggerStepThrough]
-[TypeImpl(TypeImplFlags.AllObjectMethods | TypeImplFlags.AllEqualityComparisonOperators, IsLargeStructure = true)]
+[TypeImpl(TypeImplFlags.AllObjectMethods, IsLargeStructure = true)]
 public partial struct CellMap : CellMapBase
 {
 	/// <inheritdoc cref="CellMapBase.Shifting"/>
@@ -851,6 +850,24 @@ public partial struct CellMap : CellMapBase
 	/// <inheritdoc cref="ILogicalOperators{TSelf}.op_False(TSelf)"/>
 	public static bool operator false(in CellMap value) => value.Count == 0;
 
+	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
+	public static bool operator ==(in CellMap left, in CellMap right) => left.Equals(in right);
+
+	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
+	public static bool operator !=(in CellMap left, in CellMap right) => !(left == right);
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
+	public static bool operator >(in CellMap left, in CellMap right) => left.CompareTo(in right) > 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThan(TSelf, TOther)"/>
+	public static bool operator <(in CellMap left, in CellMap right) => left.CompareTo(in right) < 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThanOrEqual(TSelf, TOther)"/>
+	public static bool operator >=(in CellMap left, in CellMap right) => left.CompareTo(in right) >= 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
+	public static bool operator <=(in CellMap left, in CellMap right) => left.CompareTo(in right) <= 0;
+
 	/// <inheritdoc/>
 	public static CellMap operator ~(in CellMap offsets) => CreateByVector(~offsets._vector & BitwiseNotConstant);
 
@@ -1024,4 +1041,22 @@ public partial struct CellMap : CellMapBase
 
 	/// <inheritdoc/>
 	static bool ILogicalOperators<CellMap>.operator false(CellMap value) => value.Count == 0;
+
+	/// <inheritdoc/>
+	static bool IEqualityOperators<CellMap, CellMap, bool>.operator ==(CellMap left, CellMap right) => left == right;
+
+	/// <inheritdoc/>
+	static bool IEqualityOperators<CellMap, CellMap, bool>.operator !=(CellMap left, CellMap right) => left != right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<CellMap, CellMap, bool>.operator >(CellMap left, CellMap right) => left > right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<CellMap, CellMap, bool>.operator <(CellMap left, CellMap right) => left < right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<CellMap, CellMap, bool>.operator >=(CellMap left, CellMap right) => left >= right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<CellMap, CellMap, bool>.operator <=(CellMap left, CellMap right) => left <= right;
 }

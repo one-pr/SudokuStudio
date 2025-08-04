@@ -4,7 +4,7 @@ namespace Sudoku.Analytics.Construction.Components;
 /// Represents a blossom loop.
 /// </summary>
 /// <param name="conclusions"><inheritdoc cref="Conclusions" path="/summary"/></param>
-[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.Object_ToString | TypeImplFlags.AllEqualityComparisonOperators)]
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.Object_ToString)]
 public sealed partial class BlossomLoop(params ConclusionSet conclusions) :
 	SortedDictionary<Candidate, StrongForcingChain>,
 	IComparable<BlossomLoop>,
@@ -217,4 +217,24 @@ public sealed partial class BlossomLoop(params ConclusionSet conclusions) :
 
 	/// <inheritdoc/>
 	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
+
+
+	/// <inheritdoc/>
+	public static bool operator ==(BlossomLoop? left, BlossomLoop? right)
+		=> (left, right) switch { (null, null) => true, (not null, not null) => left.Equals(right), _ => false };
+
+	/// <inheritdoc/>
+	public static bool operator !=(BlossomLoop? left, BlossomLoop? right) => !(left == right);
+
+	/// <inheritdoc/>
+	public static bool operator >(BlossomLoop left, BlossomLoop right) => left.CompareTo(right) > 0;
+
+	/// <inheritdoc/>
+	public static bool operator <(BlossomLoop left, BlossomLoop right) => left.CompareTo(right) < 0;
+
+	/// <inheritdoc/>
+	public static bool operator >=(BlossomLoop left, BlossomLoop right) => left.CompareTo(right) >= 0;
+
+	/// <inheritdoc/>
+	public static bool operator <=(BlossomLoop left, BlossomLoop right) => left.CompareTo(right) <= 0;
 }

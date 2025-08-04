@@ -12,7 +12,7 @@ namespace Sudoku.Analytics.Construction.Patterns;
 /// An <b>Almost Hidden Set</b> is a sudoku concept, which describes a case that
 /// <c>n</c> digits are only appeared inside <c>(n + 1)</c> cells in a house.
 /// </remarks>
-[TypeImpl(TypeImplFlags.Object_GetHashCode | TypeImplFlags.ComparisonOperators)]
+[TypeImpl(TypeImplFlags.Object_GetHashCode)]
 public sealed partial class AlmostHiddenSetPattern(
 	in CellMap cells,
 	House house,
@@ -80,6 +80,18 @@ public sealed partial class AlmostHiddenSetPattern(
 	/// <inheritdoc/>
 	public override AlmostHiddenSetPattern Clone() => new(Cells, House, DigitsMask, SubsetDigitsMask, CandidatesCanFormWeakLink);
 
+
+	/// <inheritdoc/>
+	public static bool operator >(AlmostHiddenSetPattern left, AlmostHiddenSetPattern right) => left.CompareTo(right) > 0;
+
+	/// <inheritdoc/>
+	public static bool operator <(AlmostHiddenSetPattern left, AlmostHiddenSetPattern right) => left.CompareTo(right) < 0;
+
+	/// <inheritdoc/>
+	public static bool operator >=(AlmostHiddenSetPattern left, AlmostHiddenSetPattern right) => left.CompareTo(right) >= 0;
+
+	/// <inheritdo/>
+	public static bool operator <=(AlmostHiddenSetPattern left, AlmostHiddenSetPattern right) => left.CompareTo(right) <= 0;
 
 	/// <inheritdoc/>
 	static bool IEqualityOperators<AlmostHiddenSetPattern, AlmostHiddenSetPattern, bool>.operator ==(AlmostHiddenSetPattern? left, AlmostHiddenSetPattern? right)

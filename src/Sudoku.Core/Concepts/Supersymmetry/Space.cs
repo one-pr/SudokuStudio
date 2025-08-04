@@ -5,7 +5,7 @@ namespace Sudoku.Concepts.Supersymmetry;
 /// defined in another project called <see href="https://sudoku.allanbarker.com/index.html">XSudo</see>.
 /// </summary>
 /// <param name="mask"><inheritdoc cref="_mask" path="/summary"/></param>
-[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.Object_ToString | TypeImplFlags.AllEqualityComparisonOperators)]
+[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.Object_ToString)]
 public readonly partial struct Space(Mask mask) :
 	IComparable<Space>,
 	IComparisonOperators<Space, Space, bool>,
@@ -320,4 +320,23 @@ public readonly partial struct Space(Mask mask) :
 
 	/// <inheritdoc/>
 	static Space ISpanParsable<Space>.Parse(ReadOnlySpan<char> s, IFormatProvider? provider) => Parse(s);
+
+
+	/// <inheritdoc/>
+	public static bool operator ==(Space left, Space right) => left.Equals(right);
+
+	/// <inheritdoc/>
+	public static bool operator !=(Space left, Space right) => !(left == right);
+
+	/// <inheritdoc/>
+	public static bool operator >(Space left, Space right) => left.CompareTo(right) > 0;
+
+	/// <inheritdoc/>
+	public static bool operator <(Space left, Space right) => left.CompareTo(right) < 0;
+
+	/// <inheritdoc/>
+	public static bool operator >=(Space left, Space right) => left.CompareTo(right) >= 0;
+
+	/// <inheritdoc/>
+	public static bool operator <=(Space left, Space right) => left.CompareTo(right) <= 0;
 }

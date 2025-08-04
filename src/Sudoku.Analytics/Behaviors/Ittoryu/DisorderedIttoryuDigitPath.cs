@@ -5,9 +5,7 @@ namespace Sudoku.Behaviors.Ittoryu;
 /// </summary>
 /// <param name="Digits">The digits path.</param>
 [CollectionBuilder(typeof(DisorderedIttoryuDigitPath), nameof(Create))]
-[DebuggerStepThrough]
-[TypeImpl(TypeImplFlags.ComparisonOperators)]
-public readonly partial record struct DisorderedIttoryuDigitPath(Digit[] Digits) :
+public readonly record struct DisorderedIttoryuDigitPath(Digit[] Digits) :
 	IComparable<DisorderedIttoryuDigitPath>,
 	IComparisonOperators<DisorderedIttoryuDigitPath, DisorderedIttoryuDigitPath, bool>,
 	IEnumerable<Digit>
@@ -66,6 +64,19 @@ public readonly partial record struct DisorderedIttoryuDigitPath(Digit[] Digits)
 	/// <returns>A <see cref="DisorderedIttoryuDigitPath"/> instance.</returns>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public static DisorderedIttoryuDigitPath Create(ReadOnlySpan<Digit> digits) => new([.. digits]);
+
+
+	/// <inheritdoc/>
+	public static bool operator >(DisorderedIttoryuDigitPath left, DisorderedIttoryuDigitPath right) => left.CompareTo(right) > 0;
+
+	/// <inheritdoc/>
+	public static bool operator <(DisorderedIttoryuDigitPath left, DisorderedIttoryuDigitPath right) => left.CompareTo(right) < 0;
+
+	/// <inheritdoc/>
+	public static bool operator >=(DisorderedIttoryuDigitPath left, DisorderedIttoryuDigitPath right) => left.CompareTo(right) >= 0;
+
+	/// <inheritdoc/>
+	public static bool operator <=(DisorderedIttoryuDigitPath left, DisorderedIttoryuDigitPath right) => left.CompareTo(right) <= 0;
 
 
 	/// <summary>

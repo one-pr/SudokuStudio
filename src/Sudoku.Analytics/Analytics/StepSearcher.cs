@@ -7,8 +7,7 @@ namespace Sudoku.Analytics;
 /// <param name="level"><inheritdoc cref="Level" path="/summary"/></param>
 /// <param name="runningArea"><inheritdoc cref="RunningArea" path="/summary"/></param>
 /// <seealso cref="Step"/>
-[TypeImpl(TypeImplFlags.AllEqualityComparisonOperators)]
-public abstract partial class StepSearcher(
+public abstract class StepSearcher(
 	int priority,
 	int level,
 	StepSearcherRunningArea runningArea = StepSearcherRunningArea.Searching | StepSearcherRunningArea.Collecting
@@ -114,4 +113,24 @@ public abstract partial class StepSearcher(
 
 	/// <inheritdoc/>
 	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
+
+
+	/// <inheritdoc/>
+	public static bool operator ==(StepSearcher? left, StepSearcher? right)
+		=> (left, right) switch { (null, null) => true, (not null, not null) => left.Equals(right), _ => false };
+
+	/// <inheritdoc/>
+	public static bool operator !=(StepSearcher? left, StepSearcher? right) => !(left == right);
+
+	/// <inheritdoc/>
+	public static bool operator >(StepSearcher left, StepSearcher right) => left.CompareTo(right) > 0;
+
+	/// <inheritdoc/>
+	public static bool operator <(StepSearcher left, StepSearcher right) => left.CompareTo(right) < 0;
+
+	/// <inheritdoc/>
+	public static bool operator >=(StepSearcher left, StepSearcher right) => left.CompareTo(right) >= 0;
+
+	/// <inheritdoc/>
+	public static bool operator <=(StepSearcher left, StepSearcher right) => left.CompareTo(right) <= 0;
 }

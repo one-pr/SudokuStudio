@@ -5,7 +5,6 @@ namespace Sudoku.Analytics.Construction.Components;
 /// and such pattern contains a list of <see cref="Node"/> instances indicating interim passing nodes.
 /// </summary>
 /// <seealso cref="Node"/>
-[TypeImpl(TypeImplFlags.AllEqualityComparisonOperators)]
 public abstract partial class Chain :
 	IComparable<Chain>,
 	IComparisonOperators<Chain, Chain, bool>,
@@ -497,4 +496,24 @@ public abstract partial class Chain :
 		var parser = (ChainFormatInfo)((provider as ChainFormatInfo) ?? ChainFormatInfo.Standard);
 		return ChainFormatInfo.ParseCoreUnsafeAccessor(parser, s);
 	}
+
+
+	/// <inheritdoc/>
+	public static bool operator ==(Chain? left, Chain? right)
+		=> (left, right) switch { (null, null) => true, (not null, not null) => left.Equals(right), _ => false };
+
+	/// <inheritdoc/>
+	public static bool operator !=(Chain? left, Chain? right) => !(left == right);
+
+	/// <inheritdoc/>
+	public static bool operator >(Chain left, Chain right) => left.CompareTo(right) > 0;
+
+	/// <inheritdoc/>
+	public static bool operator <(Chain left, Chain right) => left.CompareTo(right) < 0;
+
+	/// <inheritdoc/>
+	public static bool operator >=(Chain left, Chain right) => left.CompareTo(right) >= 0;
+
+	/// <inheritdoc/>
+	public static bool operator <=(Chain left, Chain right) => left.CompareTo(right) <= 0;
 }

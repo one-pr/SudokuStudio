@@ -11,11 +11,10 @@ using GridBase = IGrid<Grid>;
 /// <para><include file="../../global-doc-comments.xml" path="/g/large-structure"/></para>
 /// </remarks>
 [CollectionBuilder(typeof(Grid), nameof(Create))]
-[DebuggerStepThrough]
 [DebuggerDisplay($$"""{{{nameof(ToString)}}("#")}""")]
 [InlineArray(81)]
 [JsonConverter(typeof(Converter))]
-[TypeImpl(TypeImplFlags.Object_Equals | TypeImplFlags.AllEqualityComparisonOperators, IsLargeStructure = true)]
+[TypeImpl(TypeImplFlags.Object_Equals, IsLargeStructure = true)]
 public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffResult?>
 {
 	/// <inheritdoc cref="GridBase.DefaultMask"/>
@@ -1268,6 +1267,24 @@ public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffRes
 	}
 
 
+	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
+	public static bool operator ==(in Grid left, in Grid right) => left.Equals(in right);
+
+	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
+	public static bool operator !=(in Grid left, in Grid right) => !(left == right);
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
+	public static bool operator >(in Grid left, in Grid right) => left.CompareTo(in right) > 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThan(TSelf, TOther)"/>
+	public static bool operator <(in Grid left, in Grid right) => left.CompareTo(in right) < 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThanOrEqual(TSelf, TOther)"/>
+	public static bool operator >=(in Grid left, in Grid right) => left.CompareTo(in right) >= 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
+	public static bool operator <=(in Grid left, in Grid right) => left.CompareTo(in right) <= 0;
+
 	/// <summary>
 	/// Analyzes difference between two grids.
 	/// If two grids are not same from given cells, the return value will be <see langword="null"/>.
@@ -1291,6 +1308,24 @@ public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffRes
 	/// <exception cref="GridDiffTooMuchException">Throws when two grids are not same from given cells.</exception>
 	public static DiffResult operator checked -(in Grid left, in Grid right)
 		=> left - right ?? throw new GridDiffTooMuchException();
+
+	/// <inheritdoc/>
+	static bool IEqualityOperators<Grid, Grid, bool>.operator ==(Grid left, Grid right) => left == right;
+
+	/// <inheritdoc/>
+	static bool IEqualityOperators<Grid, Grid, bool>.operator !=(Grid left, Grid right) => left != right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<Grid, Grid, bool>.operator >(Grid left, Grid right) => left > right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<Grid, Grid, bool>.operator <(Grid left, Grid right) => left < right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<Grid, Grid, bool>.operator >=(Grid left, Grid right) => left >= right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<Grid, Grid, bool>.operator <=(Grid left, Grid right) => left <= right;
 
 	/// <inheritdoc/>
 	static DiffResult? ISubtractionOperators<Grid, Grid, DiffResult?>.operator -(Grid left, Grid right) => left - right;
