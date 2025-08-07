@@ -1735,30 +1735,6 @@
             <param name="cells">The cells.</param>
             <returns>A <see cref="T:Sudoku.Concepts.CellMap"/> instance.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.CellMap.CreateByBits(System.UInt64,System.UInt64)">
-            <summary>
-            Initializes an instance with two binary values.
-            </summary>
-            <param name="high">Higher 40 bits.</param>
-            <param name="low">Lower 41 bits.</param>
-            <returns>The result instance created.</returns>
-        </member>
-        <member name="M:Sudoku.Concepts.CellMap.CreateByBits(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Initializes an instance with three binary values.
-            </summary>
-            <param name="high">Higher 27 bits.</param>
-            <param name="mid">Medium 27 bits.</param>
-            <param name="low">Lower 27 bits.</param>
-            <returns>The result instance created.</returns>
-        </member>
-        <member name="M:Sudoku.Concepts.CellMap.CreateByVector(System.Runtime.Intrinsics.Vector128{System.UInt64})">
-            <summary>
-            Initializes an instance with a <see cref="T:System.Runtime.Intrinsics.Vector128`1"/> of <see cref="T:System.Int64"/>.
-            </summary>
-            <param name="vector">Two bits, represented as high 41 and low 40 bits.</param>
-            <returns>A <see cref="T:Sudoku.Concepts.CellMap"/> instance.</returns>
-        </member>
         <member name="M:Sudoku.Concepts.CellMap.Parse(System.String)">
             <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
         </member>
@@ -1913,6 +1889,40 @@
         </member>
         <member name="M:Sudoku.Concepts.CellMap.Enumerator.System#Collections#IEnumerator#Reset">
             <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Concepts.CellMapCreator">
+            <summary>
+            Represents a list of creating methods.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Concepts.CellMapCreator.">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Concepts.CellMap"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Concepts.CellMapCreator..Create(System.UInt64,System.UInt64)">
+            <summary>
+            Initializes an instance with two binary values.
+            </summary>
+            <param name="high">Higher 40 bits.</param>
+            <param name="low">Lower 41 bits.</param>
+            <returns>The result instance created.</returns>
+        </member>
+        <member name="M:Sudoku.Concepts.CellMapCreator..Create(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes an instance with three binary values.
+            </summary>
+            <param name="high">Higher 27 bits.</param>
+            <param name="mid">Medium 27 bits.</param>
+            <param name="low">Lower 27 bits.</param>
+            <returns>The result instance created.</returns>
+        </member>
+        <member name="M:Sudoku.Concepts.CellMapCreator..Create(System.Runtime.Intrinsics.Vector128{System.UInt64})">
+            <summary>
+            Initializes an instance with a <see cref="T:System.Runtime.Intrinsics.Vector128`1"/> of <see cref="T:System.Int64"/>.
+            </summary>
+            <param name="vector">Two bits, represented as high 41 and low 40 bits.</param>
+            <returns>A <see cref="T:Sudoku.Concepts.CellMap"/> instance.</returns>
         </member>
         <member name="T:Sudoku.Concepts.CellMapOrCandidateMapPredicate`2">
             <summary>

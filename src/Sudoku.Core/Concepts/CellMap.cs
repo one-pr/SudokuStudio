@@ -92,7 +92,7 @@ public partial struct CellMap : CellMapBase
 	/// </item>
 	/// </list>
 	/// </summary>
-	private Vector128<ulong> _vector;
+	internal Vector128<ulong> _vector;
 
 
 	/// <summary>
@@ -372,9 +372,7 @@ public partial struct CellMap : CellMapBase
 					higherBits &= high;
 				}
 			}
-
-			var vector = CV(higherBits, lowerBits);
-			return CreateByVector(vector);
+			return CellMap.Create(CV(higherBits, lowerBits));
 		}
 	}
 
@@ -749,6 +747,7 @@ public partial struct CellMap : CellMapBase
 	/// <param name="cells">The cells.</param>
 	/// <returns>A <see cref="CellMap"/> instance.</returns>
 	[EditorBrowsable(EditorBrowsableState.Never)]
+	[OverloadResolutionPriority(-1)]
 	public static CellMap Create(ReadOnlySpan<Cell> cells)
 	{
 		if (cells.IsEmpty)
@@ -761,44 +760,6 @@ public partial struct CellMap : CellMapBase
 		{
 			result.Add(cell);
 		}
-		return result;
-	}
-
-	/// <summary>
-	/// Initializes an instance with two binary values.
-	/// </summary>
-	/// <param name="high">Higher 40 bits.</param>
-	/// <param name="low">Lower 41 bits.</param>
-	/// <returns>The result instance created.</returns>
-	public static CellMap CreateByBits(ulong high, ulong low)
-	{
-		CellMap result;
-		result._vector = CV(high, low);
-		return result;
-	}
-
-	/// <summary>
-	/// Initializes an instance with three binary values.
-	/// </summary>
-	/// <param name="high">Higher 27 bits.</param>
-	/// <param name="mid">Medium 27 bits.</param>
-	/// <param name="low">Lower 27 bits.</param>
-	/// <returns>The result instance created.</returns>
-	public static CellMap CreateByBits(int high, int mid, int low)
-		=> CreateByBits(
-			((ulong)high & 0x7FFFFFFUL) << 13 | (ulong)mid >> 14 & 0x1FFFUL,
-			((ulong)mid & 0x3FFFL) << 27 | (ulong)low & 0x7FFFFFFUL
-		);
-
-	/// <summary>
-	/// Initializes an instance with a <see cref="Vector128{T}"/> of <see cref="long"/>.
-	/// </summary>
-	/// <param name="vector">Two bits, represented as high 41 and low 40 bits.</param>
-	/// <returns>A <see cref="CellMap"/> instance.</returns>
-	public static CellMap CreateByVector(Vector128<ulong> vector)
-	{
-		CellMap result;
-		result._vector = vector;
 		return result;
 	}
 
@@ -842,9 +803,8 @@ public partial struct CellMap : CellMapBase
 	/// <remarks><b>
 	/// This method will only be used in constant creation, just for readability on binary integers' positions.
 	/// </b></remarks>
-	[DebuggerStepThrough]
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	private static Vector128<ulong> CV(ulong e1, ulong e0) => Vector128.Create(e0, e1);
+	internal static Vector128<ulong> CV(ulong e1, ulong e0) => Vector128.Create(e0, e1);
 
 
 	/// <inheritdoc cref="ILogicalOperators{TSelf}.op_LogicalNot(TSelf)"/>
@@ -875,7 +835,7 @@ public partial struct CellMap : CellMapBase
 	public static bool operator <=(in CellMap left, in CellMap right) => left.CompareTo(in right) <= 0;
 
 	/// <inheritdoc/>
-	public static CellMap operator ~(in CellMap offsets) => CreateByVector(~offsets._vector & BitwiseNotConstant);
+	public static CellMap operator ~(in CellMap offsets) => CellMap.Create(~offsets._vector & BitwiseNotConstant);
 
 	/// <inheritdoc/>
 	public static CellMap operator +(in CellMap collection, Cell offset)
@@ -897,13 +857,13 @@ public partial struct CellMap : CellMapBase
 	public static CellMap operator %(in CellMap @base, in CellMap template) => (@base & template).PeerIntersection & template;
 
 	/// <inheritdoc/>
-	public static CellMap operator &(in CellMap left, in CellMap right) => CreateByVector(left._vector & right._vector);
+	public static CellMap operator &(in CellMap left, in CellMap right) => CellMap.Create(left._vector & right._vector);
 
 	/// <inheritdoc/>
-	public static CellMap operator |(in CellMap left, in CellMap right) => CreateByVector(left._vector | right._vector);
+	public static CellMap operator |(in CellMap left, in CellMap right) => CellMap.Create(left._vector | right._vector);
 
 	/// <inheritdoc/>
-	public static CellMap operator ^(in CellMap left, in CellMap right) => CreateByVector(left._vector ^ right._vector);
+	public static CellMap operator ^(in CellMap left, in CellMap right) => CellMap.Create(left._vector ^ right._vector);
 
 	/// <inheritdoc/>
 	public static unsafe ReadOnlySpan<CellMap> operator &(in CellMap map, int subsetSize)
