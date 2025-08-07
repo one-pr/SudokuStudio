@@ -211,7 +211,7 @@ public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffRes
 			{
 				if (GetState(i) == CellState.Empty)
 				{
-					count += BitOperations.PopCount((uint)GetCandidates(i));
+					count += PopCount((uint)GetCandidates(i));
 				}
 			}
 			return count;
@@ -674,7 +674,7 @@ public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffRes
 		=> GetState(cell) switch
 		{
 			CellState.Empty => -1,
-			CellState.Modifiable or CellState.Given => BitOperations.TrailingZeroCount(this[cell]),
+			CellState.Modifiable or CellState.Given => TrailingZeroCount(this[cell]),
 			_ => throw new InvalidOperationException(SR.ExceptionMessage("GridInvalidCellState"))
 		};
 

@@ -106,7 +106,7 @@ public static class SymmetricTypeExtensions
 		/// <returns>The string.</returns>
 		/// <exception cref="InvalidOperationException">Throws when the argument holds multiple flag values.</exception>
 		public string GetName(IFormatProvider? formatProvider)
-			=> BitOperations.PopCount((uint)(int)@this) < 2
+			=> PopCount((uint)(int)@this) < 2
 				? SR.Get($"SymmetricType_{@this}", formatProvider as CultureInfo)
 				: throw new InvalidOperationException(SR.ExceptionMessage("MultipleFlagsExist"));
 

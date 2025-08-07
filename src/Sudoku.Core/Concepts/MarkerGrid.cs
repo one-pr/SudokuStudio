@@ -84,7 +84,7 @@ public struct MarkerGrid : GridBase
 			var result = 0;
 			for (var cell = 0; cell < 81; cell++)
 			{
-				result += BitOperations.PopCount((uint)GetCandidates(cell));
+				result += PopCount((uint)GetCandidates(cell));
 			}
 			return result;
 		}
@@ -415,7 +415,7 @@ public struct MarkerGrid : GridBase
 		=> GetState(cell) switch
 		{
 			CellState.Empty => -1,
-			CellState.Modifiable or CellState.Given => BitOperations.TrailingZeroCount(this[cell]),
+			CellState.Modifiable or CellState.Given => TrailingZeroCount(this[cell]),
 			_ => throw new InvalidOperationException(SR.ExceptionMessage("GridInvalidCellState"))
 		};
 
@@ -427,7 +427,7 @@ public struct MarkerGrid : GridBase
 		{
 			if (GetState(cell) != CellState.Empty)
 			{
-				result[cell] = BitOperations.Log2((uint)GetCandidates(cell));
+				result[cell] = Log2((uint)GetCandidates(cell));
 			}
 		}
 		return result;

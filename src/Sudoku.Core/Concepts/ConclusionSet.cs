@@ -121,7 +121,7 @@ public sealed class ConclusionSet :
 			{
 				var bits = (uint)internalField[i];
 				var z = bmi2IsSupported
-					? BitOperations.TrailingZeroCount(Bmi2.ParallelBitDeposit(1U << index - popCountSum, bits))
+					? TrailingZeroCount(Bmi2.ParallelBitDeposit(1U << index - popCountSum, bits))
 					: bits.SetAt(index - popCountSum);
 				switch (bmi2IsSupported)
 				{
@@ -132,7 +132,7 @@ public sealed class ConclusionSet :
 					}
 				}
 
-				popCountSum += BitOperations.PopCount(bits);
+				popCountSum += PopCount(bits);
 			}
 			return default;
 		}

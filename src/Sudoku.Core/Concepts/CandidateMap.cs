@@ -90,7 +90,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 			{
 				for (var i = 0; i < 4; i++)
 				{
-					result += BitOperations.PopCount(vector[i]);
+					result += PopCount(vector[i]);
 				}
 			}
 			return result;
@@ -203,7 +203,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 				for (
 					var value = _bits[i];
 					value != 0;
-					arr[pos++] = (i << 6) + BitOperations.TrailingZeroCount(value), value &= value - 1
+					arr[pos++] = (i << 6) + TrailingZeroCount(value), value &= value - 1
 				) ;
 			}
 			return arr;
@@ -249,7 +249,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 			{
 				var bits = _bits[i];
 				var z = bmi2IsSupported
-					? BitOperations.TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << index - popCountSum, bits))
+					? TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << index - popCountSum, bits))
 					: bits.SetAt(index - popCountSum);
 				switch (bmi2IsSupported)
 				{
@@ -260,7 +260,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 					}
 				}
 
-				popCountSum += BitOperations.PopCount(bits);
+				popCountSum += PopCount(bits);
 			}
 			return -1;
 		}

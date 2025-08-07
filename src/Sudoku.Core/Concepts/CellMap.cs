@@ -122,7 +122,7 @@ public partial struct CellMap : CellMapBase
 	/// <summary>
 	/// Determines whether the current list of cells are all lie in an intersection area, i.e. a locked candidates.
 	/// </summary>
-	public readonly bool IsInIntersection => Count == 1 || Count <= 3 && BitOperations.PopCount((uint)SharedHouses) == 2;
+	public readonly bool IsInIntersection => Count == 1 || Count <= 3 && PopCount((uint)SharedHouses) == 2;
 
 	/// <summary>
 	/// Indicates whether every cell in the current collection cannot see each other.
@@ -154,7 +154,7 @@ public partial struct CellMap : CellMapBase
 	}
 
 	/// <inheritdoc/>
-	public readonly int Count => BitOperations.PopCount(_vector[1]) + BitOperations.PopCount(_vector[0]);
+	public readonly int Count => PopCount(_vector[1]) + PopCount(_vector[0]);
 
 	/// <inheritdoc/>
 	[JsonInclude]
@@ -240,7 +240,7 @@ public partial struct CellMap : CellMapBase
 	/// Please note that the result value may be invalid if no shared houses can be found.
 	/// In such case, the return value will be <see cref="FallbackConstants.@int"/> (32, not -1).
 	/// </b></remarks>
-	public readonly House SharedBlock => BitOperations.TrailingZeroCount(SharedHouses & Grid.MaxCandidatesMask);
+	public readonly House SharedBlock => TrailingZeroCount(SharedHouses & Grid.MaxCandidatesMask);
 
 	/// <summary>
 	/// Indicates the shared line, i.e. a line of 9 cells that contain all possible cells stored in the current collection.
@@ -249,7 +249,7 @@ public partial struct CellMap : CellMapBase
 	/// Please note that the result value may be invalid if no shared houses can be found.
 	/// In such case, the return value will be <see cref="FallbackConstants.@int"/> (32, not -1).
 	/// </b></remarks>
-	public readonly House SharedLine => BitOperations.TrailingZeroCount(SharedHouses & ~Grid.MaxCandidatesMask);
+	public readonly House SharedLine => TrailingZeroCount(SharedHouses & ~Grid.MaxCandidatesMask);
 
 	/// <summary>
 	/// Indicates the first shared house returned.
@@ -259,7 +259,7 @@ public partial struct CellMap : CellMapBase
 	/// For example, cells <c>r1c25</c> is lying in row 1, the return value will be 9 (index of row 1).
 	/// However, <b>if the collection has no cells, the return value will be <see cref="FallbackConstants.@int"/></b> (32, not -1).
 	/// </remarks>
-	public readonly House FirstSharedHouse => BitOperations.TrailingZeroCount(SharedHouses);
+	public readonly House FirstSharedHouse => TrailingZeroCount(SharedHouses);
 
 	/// <summary>
 	/// Indicates all houses shared. This property is used to check all houses that all cells of this instance shared.
@@ -389,8 +389,8 @@ public partial struct CellMap : CellMapBase
 			}
 
 			var (pos, arr) = (0, new Cell[Count]);
-			for (var value = _vector[0]; value != 0; arr[pos++] = BitOperations.TrailingZeroCount(value), value &= value - 1) ;
-			for (var value = _vector[1]; value != 0; arr[pos++] = Shifting + BitOperations.TrailingZeroCount(value), value &= value - 1) ;
+			for (var value = _vector[0]; value != 0; arr[pos++] = TrailingZeroCount(value), value &= value - 1) ;
+			for (var value = _vector[1]; value != 0; arr[pos++] = Shifting + TrailingZeroCount(value), value &= value - 1) ;
 			return arr;
 		}
 	}
@@ -432,10 +432,10 @@ public partial struct CellMap : CellMapBase
 			if (Bmi2.X64.IsSupported)
 			{
 				// https://stackoverflow.com/questions/7669057/find-nth-set-bit-in-an-int
-				return BitOperations.TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << index, low)) switch
+				return TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << index, low)) switch
 				{
 					var l and not 64 => l,
-					_ => BitOperations.TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << index - BitOperations.PopCount(low), high)) switch
+					_ => TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << index - PopCount(low), high)) switch
 					{
 						var h and not 64 => h + Shifting,
 						_ => -1
@@ -443,8 +443,8 @@ public partial struct CellMap : CellMapBase
 				};
 			}
 
-			return BitOperations.PopCount(low) is var popCountLow && popCountLow == index
-				? 63 - BitOperations.LeadingZeroCount(low)
+			return PopCount(low) is var popCountLow && popCountLow == index
+				? 63 - LeadingZeroCount(low)
 				: popCountLow > index
 					? low.SetAt(index)
 					: high.SetAt(index - popCountLow) is var z and not 64 ? z + Shifting : -1;

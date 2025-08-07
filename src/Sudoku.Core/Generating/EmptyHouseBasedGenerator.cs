@@ -88,9 +88,9 @@ public ref partial struct EmptyHouseBasedGenerator() : IGenerator<Grid>
 	{
 		var bitsMap = new Dictionary<HouseType, int>(3)
 		{
-			{ HouseType.Block, BitOperations.PopCount((uint)(DesiredMissingHousesMask & Grid.MaxCandidatesMask)) },
-			{ HouseType.Row, BitOperations.PopCount((uint)(DesiredMissingHousesMask >> 9 & Grid.MaxCandidatesMask)) },
-			{ HouseType.Column, BitOperations.PopCount((uint)(DesiredMissingHousesMask >> 18)) }
+			{ HouseType.Block, PopCount((uint)(DesiredMissingHousesMask & Grid.MaxCandidatesMask)) },
+			{ HouseType.Row, PopCount((uint)(DesiredMissingHousesMask >> 9 & Grid.MaxCandidatesMask)) },
+			{ HouseType.Column, PopCount((uint)(DesiredMissingHousesMask >> 18)) }
 		};
 
 		var blockIndices = SpanEnumerable.Range(0, 9).ToArray().AsSpan();
@@ -147,7 +147,7 @@ public ref partial struct EmptyHouseBasedGenerator() : IGenerator<Grid>
 					if (house < 9)
 					{
 #if ENABLE_VERIFICATION_ON_BLOCK_COMBINATION
-						if (BitOperations.PopCount((uint)previousHousesMask) >= 2)
+						if (PopCount((uint)previousHousesMask) >= 2)
 						{
 							var allSetBits = previousHousesMask.AllSets;
 							foreach (var pair in allSetBits.GetSubsets(2))
@@ -336,7 +336,7 @@ public ref partial struct EmptyHouseBasedGenerator() : IGenerator<Grid>
 			{
 				// This loop runs as long as the next candidate tried produces an invalid sudoku or until all candidates have been tried.
 				// Fall back all levels, where nothing is to do anymore.
-				while (_stack[level].CandidateIndex >= BitOperations.PopCount((uint)_stack[level].Candidates))
+				while (_stack[level].CandidateIndex >= PopCount((uint)_stack[level].Candidates))
 				{
 					level--;
 					if (level <= 0)
@@ -410,10 +410,10 @@ public ref partial struct EmptyHouseBasedGenerator() : IGenerator<Grid>
 						}
 					}
 
-					if (BitOperations.IsPow2(houseMask))
+					if (IsPow2(houseMask))
 					{
 						// Hidden single.
-						var cell = HousesCells[house][BitOperations.TrailingZeroCount(houseMask)];
+						var cell = HousesCells[house][TrailingZeroCount(houseMask)];
 						grid.SetDigit(cell, digit);
 						if (!checkValidityOnDuplicate(grid, cell))
 						{
@@ -428,9 +428,9 @@ public ref partial struct EmptyHouseBasedGenerator() : IGenerator<Grid>
 			foreach (var cell in emptyCells)
 			{
 				var mask = grid.GetCandidates(cell);
-				if (BitOperations.IsPow2(mask))
+				if (IsPow2(mask))
 				{
-					grid.SetDigit(cell, BitOperations.TrailingZeroCount(mask));
+					grid.SetDigit(cell, TrailingZeroCount(mask));
 					if (!checkValidityOnDuplicate(grid, cell))
 					{
 						// Invalid.
