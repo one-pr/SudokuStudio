@@ -6,7 +6,7 @@ namespace Sudoku.Shuffling.Minlex;
 /// <param name="bestResult"><inheritdoc cref="BestResult" path="/summary"/></param>
 /// <param name="resultMask"><inheritdoc cref="ResultMask" path="/summary"/></param>
 /// <param name="resultNumberOfBits"><inheritdoc cref="ResultNumberOfBits" path="/summary"/></param>
-public partial struct BestTripletPermutation(int bestResult, int resultMask, int resultNumberOfBits)
+public struct BestTripletPermutation(int bestResult, int resultMask, int resultNumberOfBits)
 {
 	/// <summary>
 	/// Indicates the permutation cases.

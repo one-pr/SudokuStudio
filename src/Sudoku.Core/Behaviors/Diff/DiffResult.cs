@@ -15,7 +15,7 @@ namespace Sudoku.Behaviors.Diff;
 [JsonDerivedType(typeof(ChangedGivenDiffResult), (int)DiffType.ChangedGiven)]
 [JsonDerivedType(typeof(ChangedModifiableDiffResult), (int)DiffType.ChangedModifiable)]
 [JsonDerivedType(typeof(ChangedCandidateDiffResult), (int)DiffType.ChangedCandidate)]
-public abstract partial class DiffResult :
+public abstract class DiffResult :
 	ICloneable,
 	IEquatable<DiffResult>,
 	IEqualityOperators<DiffResult, DiffResult, bool>,
