@@ -7,156 +7,161 @@ namespace Sudoku.Behaviors.Bottlenecks;
 public static class AnalysisResultExtensions
 {
 	/// <summary>
-	/// Try to get bottleneck steps under the specified rules.
+	/// Provides extension members on <see cref="AnalysisResult"/>.
 	/// </summary>
-	/// <param name="this">The current instance.</param>
-	/// <param name="filters">The bottleneck filters.</param>
-	/// <returns>A list of bottleneck steps.</returns>
-	/// <exception cref="NotSupportedException">
-	/// Throws when the filter contains invalid configuration,
-	/// like <see cref="BottleneckType.SingleStepOnly"/> in full-marking mode.
-	/// </exception>
-	/// <exception cref="InvalidOperationException">Throws when the puzzle is not fully solved.</exception>
-	/// <exception cref="ArgumentOutOfRangeException">
-	/// Throws when argument <paramref name="filters"/> contains one filter holding an undefined <see cref="BottleneckType"/> flag.
-	/// </exception>
-	public static ReadOnlySpan<Step> GetBottlenecks(this AnalysisResult @this, params ReadOnlySpan<BottleneckFilter> filters)
+	extension(AnalysisResult @this)
 	{
-		if (!@this.IsSolved)
+		/// <summary>
+		/// Try to get bottleneck steps under the specified rules.
+		/// </summary>
+		/// <param name="filters">The bottleneck filters.</param>
+		/// <returns>A list of bottleneck steps.</returns>
+		/// <exception cref="NotSupportedException">
+		/// Throws when the filter contains invalid configuration,
+		/// like <see cref="BottleneckType.SingleStepOnly"/> in full-marking mode.
+		/// </exception>
+		/// <exception cref="InvalidOperationException">Throws when the puzzle is not fully solved.</exception>
+		/// <exception cref="ArgumentOutOfRangeException">
+		/// Throws when argument <paramref name="filters"/> contains one filter holding an undefined <see cref="BottleneckType"/> flag.
+		/// </exception>
+		public ReadOnlySpan<Step> GetBottlenecks(params ReadOnlySpan<BottleneckFilter> filters)
 		{
-			throw new InvalidOperationException(SR.ExceptionMessage("BottlenecksShouldBeAvailableInSolvedPuzzle"));
-		}
-
-		if (@this.StepsSpan is not { Length: not 0 } steps)
-		{
-			return [];
-		}
-
-		var pencilmarkMode = steps.Aggregate(
-			PencilmarkVisibility.None,
-			static (interim, next) => interim | next switch
+			if (!@this.IsSolved)
 			{
-				FullPencilmarkingStep => PencilmarkVisibility.FullMarking,
-				PartialPencilmarkingStep => PencilmarkVisibility.PartialMarking,
-				DirectStep => PencilmarkVisibility.Direct,
-				_ => PencilmarkVisibility.None
+				throw new InvalidOperationException(SR.ExceptionMessage("BottlenecksShouldBeAvailableInSolvedPuzzle"));
 			}
-		);
-		var filterMode = pencilmarkMode.HasFlag(PencilmarkVisibility.FullMarking)
-			? PencilmarkVisibility.FullMarking
-			: pencilmarkMode.HasFlag(PencilmarkVisibility.PartialMarking)
-				? PencilmarkVisibility.PartialMarking
-				: PencilmarkVisibility.Direct;
-		return (filters.FirstRefOrNullRef((in f) => f.Visibility == filterMode).Type, filterMode) switch
-		{
-			(BottleneckType.SingleStepOnly, PencilmarkVisibility.Direct or PencilmarkVisibility.PartialMarking) => singleStepOnly(),
-			(BottleneckType.SingleStepSameLevelOnly, PencilmarkVisibility.PartialMarking) => singleStepSameLevelOnly(),
-			(BottleneckType.EliminationGroup, PencilmarkVisibility.FullMarking) => eliminationGroup(steps),
-			(BottleneckType.SequentialInversion, not PencilmarkVisibility.Direct) => sequentialInversion(steps),
-			(BottleneckType.HardestRating, _) => hardestRating(steps, steps.MaxBy(static s => s.Difficulty)!),
-			(BottleneckType.HardestLevel, not PencilmarkVisibility.Direct) => hardestLevel(steps, steps.MaxBy(static s => (int)s.DifficultyLevel)!),
-			_ => throw new ArgumentOutOfRangeException(nameof(filters))
-		};
 
-
-		ReadOnlySpan<Step> singleStepOnly()
-		{
-			var collector = GridPartialMarkingExtensions.Collector;
-			var result = new List<Step>();
-			foreach (var (g, s) in Step.Combine(@this.GridsSpan, @this.StepsSpan))
+			if (@this.StepsSpan is not { Length: not 0 } steps)
 			{
-				if ((
-					from step in collector.Collect(g)
-					select (SingleStep)step into step
-					select step.Cell * 9 + step.Digit
-				).AsCandidateMap().Count == 1)
+				return [];
+			}
+
+			var pencilmarkMode = steps.Aggregate(
+				PencilmarkVisibility.None,
+				static (interim, next) => interim | next switch
 				{
-					result.Add(s);
+					FullPencilmarkingStep => PencilmarkVisibility.FullMarking,
+					PartialPencilmarkingStep => PencilmarkVisibility.PartialMarking,
+					DirectStep => PencilmarkVisibility.Direct,
+					_ => PencilmarkVisibility.None
 				}
-			}
-			return result.AsSpan();
-		}
-
-		ReadOnlySpan<Step> singleStepSameLevelOnly()
-		{
-			var collector = GridPartialMarkingExtensions.Collector;
-			var result = new List<Step>();
-			foreach (var (g, s) in Step.Combine(@this.GridsSpan, @this.StepsSpan))
+			);
+			var filterMode = pencilmarkMode.HasFlag(PencilmarkVisibility.FullMarking)
+				? PencilmarkVisibility.FullMarking
+				: pencilmarkMode.HasFlag(PencilmarkVisibility.PartialMarking)
+					? PencilmarkVisibility.PartialMarking
+					: PencilmarkVisibility.Direct;
+			return (filters.FirstRefOrNullRef((in f) => f.Visibility == filterMode).Type, filterMode) switch
 			{
-				var currentStepPencilmarkVisibility = s.PencilmarkType;
-				if ((
-					from step in collector.Collect(g)
-					select ((SingleStep)step) into step
-					where step.PencilmarkType <= currentStepPencilmarkVisibility
-					select step.Cell * 9 + step.Digit
-				).AsCandidateMap().Count == 1)
-				{
-					result.Add(s);
-				}
-			}
-			return result.AsSpan();
-		}
+				(BottleneckType.SingleStepOnly, PencilmarkVisibility.Direct or PencilmarkVisibility.PartialMarking) => singleStepOnly(),
+				(BottleneckType.SingleStepSameLevelOnly, PencilmarkVisibility.PartialMarking) => singleStepSameLevelOnly(),
+				(BottleneckType.EliminationGroup, PencilmarkVisibility.FullMarking) => eliminationGroup(steps),
+				(BottleneckType.SequentialInversion, not PencilmarkVisibility.Direct) => sequentialInversion(steps),
+				(BottleneckType.HardestRating, _) => hardestRating(steps, steps.MaxBy(static s => s.Difficulty)!),
+				(BottleneckType.HardestLevel, not PencilmarkVisibility.Direct) => hardestLevel(steps, steps.MaxBy(static s => (int)s.DifficultyLevel)!),
+				_ => throw new ArgumentOutOfRangeException(nameof(filters))
+			};
 
-		static ReadOnlySpan<Step> eliminationGroup(ReadOnlySpan<Step> steps)
-		{
-			var result = new List<Step>();
-			for (var i = 0; i < steps.Length - 1; i++)
+
+			ReadOnlySpan<Step> singleStepOnly()
 			{
-				if (steps[i].IsAssignment is false)
+				var collector = GridPartialMarkingExtensions.Collector;
+				var result = new List<Step>();
+				foreach (var (g, s) in Step.Combine(@this.GridsSpan, @this.StepsSpan))
 				{
-					for (var j = i + 1; j < steps.Length; j++)
+					if ((
+						from step in collector.Collect(g)
+						select (SingleStep)step into step
+						select step.Cell * 9 + step.Digit
+					).AsCandidateMap().Count == 1)
 					{
-						if (steps[j].IsAssignment is not false)
+						result.Add(s);
+					}
+				}
+				return result.AsSpan();
+			}
+
+			ReadOnlySpan<Step> singleStepSameLevelOnly()
+			{
+				var collector = GridPartialMarkingExtensions.Collector;
+				var result = new List<Step>();
+				foreach (var (g, s) in Step.Combine(@this.GridsSpan, @this.StepsSpan))
+				{
+					var currentStepPencilmarkVisibility = s.PencilmarkType;
+					if ((
+						from step in collector.Collect(g)
+						select ((SingleStep)step) into step
+						where step.PencilmarkType <= currentStepPencilmarkVisibility
+						select step.Cell * 9 + step.Digit
+					).AsCandidateMap().Count == 1)
+					{
+						result.Add(s);
+					}
+				}
+				return result.AsSpan();
+			}
+
+			static ReadOnlySpan<Step> eliminationGroup(ReadOnlySpan<Step> steps)
+			{
+				var result = new List<Step>();
+				for (var i = 0; i < steps.Length - 1; i++)
+				{
+					if (steps[i].IsAssignment is false)
+					{
+						for (var j = i + 1; j < steps.Length; j++)
 						{
-							// Okay. Now we have a group of steps that only produce eliminations.
-							// Set the outer loop pointer to skip elimination steps.
-							result.Add(steps[i = j]);
-							break;
+							if (steps[j].IsAssignment is not false)
+							{
+								// Okay. Now we have a group of steps that only produce eliminations.
+								// Set the outer loop pointer to skip elimination steps.
+								result.Add(steps[i = j]);
+								break;
+							}
 						}
 					}
 				}
+				return result.AsSpan();
 			}
-			return result.AsSpan();
-		}
 
-		static ReadOnlySpan<Step> sequentialInversion(ReadOnlySpan<Step> steps)
-		{
-			var result = new List<Step>();
-			for (var i = 0; i < steps.Length - 1; i++)
+			static ReadOnlySpan<Step> sequentialInversion(ReadOnlySpan<Step> steps)
 			{
-				var (previous, next) = (steps[i], steps[i + 1]);
-				if (previous.DifficultyLevel > next.DifficultyLevel && next.DifficultyLevel != DifficultyLevel.Unknown)
+				var result = new List<Step>();
+				for (var i = 0; i < steps.Length - 1; i++)
 				{
-					result.Add(previous);
+					var (previous, next) = (steps[i], steps[i + 1]);
+					if (previous.DifficultyLevel > next.DifficultyLevel && next.DifficultyLevel != DifficultyLevel.Unknown)
+					{
+						result.Add(previous);
+					}
 				}
+				return result.AsSpan();
 			}
-			return result.AsSpan();
-		}
 
-		static ReadOnlySpan<Step> hardestRating(ReadOnlySpan<Step> steps, Step maxStep)
-		{
-			var result = new List<Step>();
-			foreach (var element in steps)
+			static ReadOnlySpan<Step> hardestRating(ReadOnlySpan<Step> steps, Step maxStep)
 			{
-				if (element.Code == maxStep.Code)
+				var result = new List<Step>();
+				foreach (var element in steps)
 				{
-					result.Add(element);
+					if (element.Code == maxStep.Code)
+					{
+						result.Add(element);
+					}
 				}
+				return result.AsSpan();
 			}
-			return result.AsSpan();
-		}
 
-		static ReadOnlySpan<Step> hardestLevel(ReadOnlySpan<Step> steps, Step maxStep)
-		{
-			var result = new List<Step>();
-			foreach (var element in steps)
+			static ReadOnlySpan<Step> hardestLevel(ReadOnlySpan<Step> steps, Step maxStep)
 			{
-				if (element.DifficultyLevel == maxStep.DifficultyLevel)
+				var result = new List<Step>();
+				foreach (var element in steps)
 				{
-					result.Add(element);
+					if (element.DifficultyLevel == maxStep.DifficultyLevel)
+					{
+						result.Add(element);
+					}
 				}
+				return result.AsSpan();
 			}
-			return result.AsSpan();
 		}
 	}
 }
@@ -164,17 +169,23 @@ public static class AnalysisResultExtensions
 /// <include file='../../global-doc-comments.xml' path='g/csharp11/feature[@name="file-local"]/target[@name="class" and @when="extension"]'/>
 file static class Extensions
 {
-	/// <inheritdoc cref="IFirstLastMethod{TSelf, TSource}.FirstOrDefault(Func{TSource, bool})"/>
-	public static ref readonly T FirstRefOrNullRef<T>(this ReadOnlySpan<T> @this, LargePredicate<T> predicate) where T : struct
+	/// <summary>
+	/// Provides extension members on <see cref="ReadOnlySpan{T}"/>.
+	/// </summary>
+	extension<T>(ReadOnlySpan<T> @this) where T : struct
 	{
-		foreach (ref readonly var element in @this)
+		/// <inheritdoc cref="IFirstLastMethod{TSelf, TSource}.FirstOrDefault(Func{TSource, bool})"/>
+		public ref readonly T FirstRefOrNullRef(LargePredicate<T> predicate)
 		{
-			if (predicate(element))
+			foreach (ref readonly var element in @this)
 			{
-				return ref element;
+				if (predicate(element))
+				{
+					return ref element;
+				}
 			}
+			return ref Unsafe.NullRef<T>();
 		}
-		return ref Unsafe.NullRef<T>();
 	}
 }
 
