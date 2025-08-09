@@ -118,7 +118,7 @@ public static class Transformation
 	{
 		for (var i = 0; i < 9; i++)
 		{
-			for (var j = 0; j < 9; j++)
+			for (var j = i + 1; j < 9; j++)
 			{
 				Unsafe.Swap(ref @this[i * 9 + j], ref @this[j * 9 + i]);
 			}
