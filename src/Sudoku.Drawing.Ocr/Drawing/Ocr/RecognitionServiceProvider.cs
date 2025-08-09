@@ -43,14 +43,15 @@ public sealed class RecognitionServiceProvider : IDisposable
 	/// Recognize the image.
 	/// </summary>
 	/// <param name="image">The image.</param>
+	/// <param name="ignoreConflicts">Indicates whether this method ignores any conflicts on sudoku basic rules.</param>
 	/// <returns>The grid.</returns>
 	/// <exception cref="RecognizerNotInitializedException">Throws when the tool has not initialized yet.</exception>
-	public Grid Recognize(Bitmap image)
+	public Grid Recognize(Bitmap image, bool ignoreConflicts)
 	{
 		if (IsInitialized)
 		{
 			using var gridRecognizer = new GridRecognizer(image);
-			return _recognizingServiceProvider.RecognizeDigits(gridRecognizer.Recognize());
+			return _recognizingServiceProvider.RecognizeDigits(gridRecognizer.Recognize(), ignoreConflicts);
 		}
 
 		throw new RecognizerNotInitializedException();

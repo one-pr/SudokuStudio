@@ -50,11 +50,12 @@ internal sealed class InternalServiceProvider : IDisposable
 	/// Recognizes digits.
 	/// </summary>
 	/// <param name="field">The field.</param>
+	/// <param name="ignoreConflicts">Indicates whether the method ignores any conflicts of sudoku basic rules.</param>
 	/// <returns>The grid.</returns>
 	/// <exception cref="FailedToFillValueException">
 	/// Throws when the processing is wrong or un-handle-able.
 	/// </exception>
-	public Grid RecognizeDigits(Image<Bgr, byte> field)
+	public Grid RecognizeDigits(Image<Bgr, byte> field, bool ignoreConflicts)
 	{
 		var result = Grid.Empty;
 		var w = field.Width / 9;
@@ -69,7 +70,7 @@ internal sealed class InternalServiceProvider : IDisposable
 				{
 					var cell = x * 9 + y;
 					var digit = recognizedResult - 1;
-					if (!result.GetExistence(cell, digit))
+					if (!result.GetExistence(cell, digit) && !ignoreConflicts)
 					{
 						throw new FailedToFillValueException(cell, digit);
 					}
@@ -110,7 +111,7 @@ internal sealed class InternalServiceProvider : IDisposable
 			throw new TesseractException(SR.ExceptionMessage("CannotRecognizeCellImage"));
 		}
 
-		var characters = _ocr.GetCharacters();
+		var characters = _ocr.GetWords();
 		var numberText = string.Empty;
 		foreach (var c in characters)
 		{
