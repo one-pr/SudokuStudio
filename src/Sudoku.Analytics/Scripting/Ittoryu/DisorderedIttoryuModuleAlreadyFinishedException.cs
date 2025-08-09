@@ -1,4 +1,4 @@
-namespace Sudoku.Behaviors.Ittoryu;
+namespace Sudoku.Scripting.Ittoryu;
 
 /// <summary>
 /// The internal exception type that reports "Already finished" information, breaking the recursion.

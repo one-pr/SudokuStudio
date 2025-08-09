@@ -1,4 +1,4 @@
-namespace Sudoku.Behaviors.Ittoryu;
+namespace Sudoku.Scripting.Ittoryu;
 
 /// <summary>
 /// Indicates the target digit path.

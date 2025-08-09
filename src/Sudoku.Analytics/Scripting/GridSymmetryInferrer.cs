@@ -1,4 +1,4 @@
-namespace Sudoku.Behaviors.GridSymmetry;
+namespace Sudoku.Scripting;
 
 /// <summary>
 /// Represents a way to infer grid symmetry of placements.

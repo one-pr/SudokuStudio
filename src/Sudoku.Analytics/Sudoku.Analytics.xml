@@ -22414,14 +22414,6 @@
             Indicates the wrong step.
             </summary>
         </member>
-        <member name="T:Sudoku.Behaviors.Backdoors.Backdoor">
-            <summary>
-            Represents a type that searches for backdoors.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Behaviors.Backdoors.Backdoor.GetBackdoors(Sudoku.Concepts.Grid@)">
-            <inheritdoc/>
-        </member>
         <member name="T:Sudoku.Behaviors.BlockFirst">
             <summary>
             Represents a way to finish puzzle with block-first rule.
@@ -22593,124 +22585,6 @@
         <member name="M:Sudoku.Behaviors.DigitFirst.GetDistanceArray(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Steps.SingleStep,Sudoku.Concepts.Grid}}@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Step,Sudoku.Concepts.Grid}}@)">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker">
-            <summary>
-            Represents a way to infer grid symmetry of placements.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.Checkers">
-            <summary>
-            The internal methods.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.GetSymmetry(Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
-            <summary>
-            Try to find the symmetry of placements of the specified grid.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="mappingDigits">The mapping digits.</param>
-            <param name="selfPairedDigitsMask">The self-paired digits.</param>
-            <returns>Symmetric types.</returns>
-        </member>
-        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.IsSymmetricalPlacement(Sudoku.Concepts.Grid@,Sudoku.SymmetricType,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
-            <summary>
-            Try to get the its mapping rule for the specified grid via the specified symmetric type.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="symmetricType">The symmetric type to be checked.</param>
-            <param name="mappingDigits">The mapping digits returned.</param>
-            <param name="selfPairedDigitsMask">A mask that contains a list of digits self-paired.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is a symmetrical-placement pattern.</returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">
-            Throws when the argument <paramref name="symmetricType"/> is not <see cref="F:Sudoku.SymmetricType.Central"/>,
-            <see cref="F:Sudoku.SymmetricType.Diagonal"/> or	<see cref="F:Sudoku.SymmetricType.AntiDiagonal"/>.
-            </exception>
-        </member>
-        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.CheckAxesOrCenterPointForSymmetry(Sudoku.Concepts.Grid@,Sudoku.SymmetricType,System.Int16)">
-            <summary>
-            Check for the symmetry behavior on axes or center point.
-            </summary>
-            <param name="grid">The grid to be checked.</param>
-            <param name="symmetricType">The symmetric type.</param>
-            <param name="nonselfPairedDigitsMask">The mask that holds a list of digits that is non-self-paired.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.GetStep(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <summary>
-            Find GSP step if worth.
-            </summary>
-            <param name="grid">The grid to be checked.</param>
-            <param name="options">The options to set.</param>
-            <returns>The found step.</returns>
-        </member>
-        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.GetHighlightCells(Sudoku.Concepts.Grid@,System.Collections.Generic.List{Sudoku.Drawing.Nodes.CellViewNode},System.ReadOnlySpan{System.Nullable{System.Int32}})">
-            <summary>
-            Records all possible highlight cells.
-            </summary>
-            <param name="grid">The grid as reference.</param>
-            <param name="cellOffsets">The target collection.</param>
-            <param name="mapping">The mapping relation.</param>
-        </member>
-        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.Diagonal(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
-            <summary>
-            The internal method to check for diagonal symmetrical placement kind.
-            </summary>
-            <param name="grid">The grid to be check.</param>
-            <param name="symmetricType">
-            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.Diagonal"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
-            </param>
-            <param name="mappingDigits">The mapping digits.</param>
-            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is diagonal symmetrical placement.</returns>
-        </member>
-        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.AntiDiagonal(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
-            <summary>
-            The internal method to check for anti-diagonal symmetrical placement kind.
-            </summary>
-            <param name="grid">The grid to be check.</param>
-            <param name="symmetricType">
-            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.AntiDiagonal"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
-            </param>
-            <param name="mappingDigits">The mapping digits.</param>
-            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is anti-diagonal symmetrical placement.</returns>
-        </member>
-        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.Central(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
-            <summary>
-            The internal method to check for central symmetrical placement kind.
-            </summary>
-            <param name="grid">The grid to be check.</param>
-            <param name="symmetricType">
-            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.Central"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
-            </param>
-            <param name="mappingDigits">The mapping digits.</param>
-            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is central symmetrical placement.</returns>
-        </member>
-        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.CheckDiagonal(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <summary>
-            Checks for diagonal symmetry steps.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="options">The options to set.</param>
-            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
-        </member>
-        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.CheckAntiDiagonal(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <summary>
-            Checks for anti-diagonal symmetry steps.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="options">The options to set.</param>
-            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
-        </member>
-        <member name="M:Sudoku.Behaviors.GridSymmetry.GridSymmetryChecker.CheckCentral(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <summary>
-            Checks for central symmetry steps.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="options">The options to set.</param>
-            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
-        </member>
         <member name="T:Sudoku.Behaviors.IBehaviorMetric">
             <summary>
             Represents a type that can measure a kind of user behavior.
@@ -22739,336 +22613,6 @@
             argument <paramref name="stepsAll"/> will record the usages of all techniques (including direct and indirect techniques);
             and argument <paramref name="steps"/> only records for direct technique usages.
             </remarks>
-        </member>
-        <member name="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath">
-            <summary>
-            Indicates the target digit path.
-            </summary>
-            <param name="Digits">The digits path.</param>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.#ctor(System.Int32[])">
-            <summary>
-            Indicates the target digit path.
-            </summary>
-            <param name="Digits">The digits path.</param>
-        </member>
-        <member name="P:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.Digits">
-            <summary>The digits path.</summary>
-        </member>
-        <member name="P:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.IsComplete">
-            <summary>
-            Indicates whether the pattern is complete.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.DigitsString">
-            <summary>
-            Indicates hte digits string.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.CompareTo(Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.Equals(Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.GetHashCode">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.ToString">
-            <inheritdoc cref="M:System.Object.ToString"/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.ToString(System.String)">
-            <inheritdoc cref="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.ToString"/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.GetEnumerator">
-            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.System#Collections#IEnumerable#GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.System#Collections#Generic#IEnumerable{System#Int32}#GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.Create(System.ReadOnlySpan{System.Int32})">
-            <summary>
-            Creates a <see cref="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath"/> instance via collection expression.
-            </summary>
-            <param name="digits">A list of digits to be initialized.</param>
-            <returns>A <see cref="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.op_GreaterThan(Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath,Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.op_LessThan(Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath,Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.op_GreaterThanOrEqual(Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath,Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.op_LessThanOrEqual(Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath,Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath.op_Implicit(System.Int32[])~Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath">
-            <summary>
-            Implicit cast from a <see cref="T:System.Int32"/> sequence into a <see cref="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath"/>.
-            </summary>
-            <param name="digitSequence">A digit sequence. Please note that the value can be <see langword="null"/>.</param>
-        </member>
-        <member name="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder">
-            <summary>
-            Represents a disordered ittoryu path finder. This finder will find a digit sequence order that makes the puzzle be an ittoryu.
-            This finder only uses single techniques (Hidden Singles and Naked Singles) to solve a puzzle;
-            complex singles won't be supported for now.
-            </summary>
-            <param name="supportedTechniques"><inheritdoc cref="P:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder.SupportedTechniques" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder.#ctor(Sudoku.Categorization.TechniqueSet)">
-            <summary>
-            Represents a disordered ittoryu path finder. This finder will find a digit sequence order that makes the puzzle be an ittoryu.
-            This finder only uses single techniques (Hidden Singles and Naked Singles) to solve a puzzle;
-            complex singles won't be supported for now.
-            </summary>
-            <param name="supportedTechniques"><inheritdoc cref="P:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder.SupportedTechniques" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder.#ctor">
-            <summary>
-            Initializes a <see cref="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder"/> instance.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder.#ctor(System.Collections.Generic.IEnumerable{Sudoku.Categorization.Technique})">
-            <summary>
-            Initializes a <see cref="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder"/> instance via the specified list of techniques.
-            </summary>
-            <param name="techniques">A list of techniques.</param>
-        </member>
-        <member name="P:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder.SupportedTechniques">
-            <summary>
-            Indicates the supported techniques. By default, all singles are included.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder.FindPath(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
-            <summary>
-            Find a suitable ittoryu path.
-            </summary>
-            <param name="grid">The grid to be checked.</param>
-            <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
-            <returns>
-            The target digit path. If none found, a longest path will be returned.
-            </returns>
-        </member>
-        <member name="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuModuleAlreadyFinishedException">
-            <summary>
-            The internal exception type that reports "Already finished" information, breaking the recursion.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuModuleAlreadyFinishedException.Message">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions">
-            <summary>
-            Provides with extension methods on <see cref="T:Sudoku.Concepts.Grid"/>.
-            </summary>
-            <seealso cref="T:Sudoku.Concepts.Grid"/>
-        </member>
-        <member name="T:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.&lt;&gt;E__0">
-            <summary>
-            Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.&lt;&gt;E__0.MakeIttoryu(Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)">
-            <summary>
-            Try to reproduce ittoryu ordering for the specified grid whose path can be found by <see cref="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder"/>.
-            </summary>
-            <param name="ittoryuPath">
-            The path to be used. The argument isn't required to be a complete path. It's considered to be OK if a path contains at least 2 digits.
-            </param>
-            <exception cref="T:System.ArgumentException">Throws when the ittoryu path contains a digit series of length 0 or 1.</exception>
-            <seealso cref="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder"/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.MakeIttoryu(Sudoku.Concepts.Grid@,Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)">
-            <inheritdoc cref="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.&lt;&gt;E__0.MakeIttoryu(Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath)"/>
-        </member>
-        <member name="T:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.&lt;&gt;E__1">
-            <summary>
-            Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.&lt;&gt;E__1.IsIttoryu(System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)">
-            <summary>
-            Determine whether the specified grid is an ittoryu puzzle, meaning the puzzle can be finished via digits one by one.
-            </summary>
-            <param name="path">The first found ittoryu path.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.&lt;&gt;E__1.IsIttoryu(Sudoku.Categorization.TechniqueSet,System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)">
-            <summary>
-            Determine whether the specified grid is an ittoryu puzzle, meaning the puzzle can be finished via digits one by one,
-            with checking using the specified techniques.
-            </summary>
-            <param name="techniques">
-            <para>The techniques supported.</para>
-            <para>
-            The value is a <see cref="T:Sudoku.Categorization.TechniqueSet"/> instance. You can only chose one or more fields in the following list:
-            <list type="bullet">
-            <item><see cref="F:Sudoku.Categorization.Technique.FullHouse"/> (Full House)</item>
-            <item><see cref="F:Sudoku.Categorization.Technique.HiddenSingleBlock"/> (Hidden Single in Block)</item>
-            <item><see cref="F:Sudoku.Categorization.Technique.HiddenSingleRow"/> (Hidden Single in Row)</item>
-            <item><see cref="F:Sudoku.Categorization.Technique.HiddenSingleColumn"/> (Hidden Single in Column)</item>
-            <item><see cref="F:Sudoku.Categorization.Technique.NakedSingle"/> (Naked Single)</item>
-            </list>
-            </para>
-            <para>For example, <c>[Technique.FullHouse, Technique.NakedSingle]</c> is valid argument, but <c>[Technique.NakedPair]</c> is not.</para>
-            </param>
-            <param name="path">The first found ittoryu path.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.IsIttoryu(Sudoku.Concepts.Grid@,System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)">
-            <inheritdoc cref="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.&lt;&gt;E__1.IsIttoryu(System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)"/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.IsIttoryu(Sudoku.Concepts.Grid@,Sudoku.Categorization.TechniqueSet,System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)">
-            <inheritdoc cref="M:Sudoku.Behaviors.Ittoryu.GridIttoryuExtensions.&lt;&gt;E__1.IsIttoryu(Sudoku.Categorization.TechniqueSet,System.Nullable{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuDigitPath}@)"/>
-        </member>
-        <member name="T:Sudoku.Behaviors.Ittoryu.IttoryuPathNode">
-            <summary>
-            Represents for a path node in a whole solving path via ittoryu solving logic.
-            </summary>
-            <param name="Grid">Indicates the currently-used grid.</param>
-            <param name="House">Indicates the house. The value can be -1 when the represented node is for a naked single.</param>
-            <param name="Candidate">Indicates the target candidate.</param>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.IttoryuPathNode.#ctor(Sudoku.Concepts.Grid@,System.Int32,System.Int32)">
-            <summary>
-            Represents for a path node in a whole solving path via ittoryu solving logic.
-            </summary>
-            <param name="Grid">Indicates the currently-used grid.</param>
-            <param name="House">Indicates the house. The value can be -1 when the represented node is for a naked single.</param>
-            <param name="Candidate">Indicates the target candidate.</param>
-        </member>
-        <member name="P:Sudoku.Behaviors.Ittoryu.IttoryuPathNode.Grid">
-            <summary>Indicates the currently-used grid.</summary>
-        </member>
-        <member name="P:Sudoku.Behaviors.Ittoryu.IttoryuPathNode.House">
-            <summary>Indicates the house. The value can be -1 when the represented node is for a naked single.</summary>
-        </member>
-        <member name="P:Sudoku.Behaviors.Ittoryu.IttoryuPathNode.Candidate">
-            <summary>Indicates the target candidate.</summary>
-        </member>
-        <member name="P:Sudoku.Behaviors.Ittoryu.IttoryuPathNode.Digit">
-            <summary>
-            Indicates the target digit.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Behaviors.Ittoryu.IttoryuPathNode.Cell">
-            <summary>
-            Indicates the target cell.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.IttoryuPathNode.Deconstruct(Sudoku.Concepts.Grid@,System.Int32@,System.Int32@,System.Int32@)">
-            <target name="method">
-				<summary>
-					Deconstruct the current instance into multiple values, which means you can use
-					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
-				</summary>
-			</target>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.IttoryuPathNode.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Ittoryu.IttoryuPathNode.System#IFormattable#ToString(System.String,System.IFormatProvider)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Behaviors.Ittoryu.TechniqueIttoryuSets">
-            <summary>
-            Represents ittoryu-related technique sets instances.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Behaviors.Ittoryu.TechniqueIttoryuSets.IttoryuTechniques">
-            <summary>
-            Indicates the techniques that ittoryu path finder will use.
-            </summary>
-            <seealso cref="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder"/>
-        </member>
-        <member name="P:Sudoku.Behaviors.Ittoryu.TechniqueIttoryuSets.IttoryuNakedSingleNotIncluded">
-            <summary>
-            Indicates the techniques that ittoryu path finder will use, and naked singles are not included.
-            </summary>
-            <seealso cref="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder"/>
-        </member>
-        <member name="P:Sudoku.Behaviors.Ittoryu.TechniqueIttoryuSets.IttoryuBlockHiddenSingle">
-            <summary>
-            Indicates the techniques that ittroyu path finder will use,
-            only containing <see cref="F:Sudoku.Categorization.Technique.FullHouse"/> and <see cref="F:Sudoku.Categorization.Technique.HiddenSingleBlock"/>.
-            </summary>
-            <seealso cref="T:Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder"/>
-            <seealso cref="F:Sudoku.Categorization.Technique.FullHouse"/>
-            <seealso cref="F:Sudoku.Categorization.Technique.HiddenSingleBlock"/>
-        </member>
-        <member name="T:Sudoku.Behaviors.PatternUniqueness.DeadlyPatternInferrerLimitReachedException">
-            <summary>
-            Represents an exception that will be thrown if more than 10000 solutions found in a possible deadly pattern to be verified.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Behaviors.PatternUniqueness.DeadlyPatternInferrerLimitReachedException.Message">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo">
-            <summary>
-            Indicates the result value after <see cref="M:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/> called.
-            </summary>
-            <param name="grid"><inheritdoc cref="F:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.Grid" path="/summary"/></param>
-            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.IsDeadlyPattern" path="/summary"/></param>
-            <param name="failedCases"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.FailedCases" path="/summary"/></param>
-            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.PatternCandidates" path="/summary"/></param>
-            <seealso cref="M:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/>
-        </member>
-        <member name="M:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.#ctor(Sudoku.Concepts.Grid@,System.Boolean,System.ReadOnlySpan{Sudoku.Concepts.Grid},Sudoku.Concepts.CandidateMap@)">
-            <summary>
-            Indicates the result value after <see cref="M:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/> called.
-            </summary>
-            <param name="grid"><inheritdoc cref="F:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.Grid" path="/summary"/></param>
-            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.IsDeadlyPattern" path="/summary"/></param>
-            <param name="failedCases"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.FailedCases" path="/summary"/></param>
-            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.PatternCandidates" path="/summary"/></param>
-            <seealso cref="M:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/>
-        </member>
-        <member name="F:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.Grid">
-            <summary>
-            Indicates the grid used.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.IsDeadlyPattern">
-            <summary>
-            Indicates the pattern is a real deadly pattern.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.FailedCases">
-            <summary>
-            Indicates all possible failed cases. The value can be an empty sequence if the pattern is a real deadly pattern,
-            or not a deadly pattern but containing obvious invalid candidates (like containing given or modifiable cells).
-            </summary>
-        </member>
-        <member name="P:Sudoku.Behaviors.PatternUniqueness.PatternUniquenessInfo.PatternCandidates">
-            <summary>
-            Indicates the candidates the pattern used.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker">
-            <summary>
-            Represents a type that checks and infers for a pattern (specified as a <see cref="T:Sudoku.Concepts.Grid"/>, but invalid - multiple solutions),
-            determining whether the pattern is a deadly pattern.
-            </summary>
-            <seealso cref="T:Sudoku.Concepts.Grid"/>
-        </member>
-        <member name="M:Sudoku.Behaviors.PatternUniqueness.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)">
-            <summary>
-            Try to analyze whether a grid is a deadly pattern, by only checking the specified cells.
-            </summary>
-            <param name="grid">Indicates the grid. It's required that only specified cells are assigned with candidates.</param>
-            <param name="cells">Indicates the cells to be checked.</param>
-            <returns>The result after the analysis operation is finished.</returns>
-            <exception cref="T:Sudoku.Behaviors.PatternUniqueness.DeadlyPatternInferrerLimitReachedException">
-            Throws when the pattern contains more than 10000 solutions.
-            </exception>
         </member>
         <member name="T:Sudoku.Behaviors.UserBehavior">
             <summary>
@@ -28471,7 +28015,7 @@
             Represents an entry point for generating puzzles with mixed configuration.
             </summary>
         </member>
-        <member name="M:Sudoku.Generating.GeneratorHub.GenerateAsync``1(System.Boolean,System.Func{Sudoku.Generating.Filtering.ConstraintCollection},System.Func{Sudoku.Generating.Filtering.ConstraintCollection,Sudoku.Analytics.DifficultyLevel},System.Func{Sudoku.Analytics.DifficultyLevel,Sudoku.Analytics.Analyzer},System.Func{Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder},System.Action{System.Threading.CancellationTokenSource},System.Action,System.Action,System.Func{Sudoku.Behaviors.Bottlenecks.BottleneckFilter[]},System.Action{``0},Sudoku.Generating.GridStateChanger{Sudoku.Analytics.Analyzer},System.Action{System.String})">
+        <member name="M:Sudoku.Generating.GeneratorHub.GenerateAsync``1(System.Boolean,System.Func{Sudoku.Generating.Filtering.ConstraintCollection},System.Func{Sudoku.Generating.Filtering.ConstraintCollection,Sudoku.Analytics.DifficultyLevel},System.Func{Sudoku.Analytics.DifficultyLevel,Sudoku.Analytics.Analyzer},System.Func{Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder},System.Action{System.Threading.CancellationTokenSource},System.Action,System.Action,System.Func{Sudoku.Behaviors.Bottlenecks.BottleneckFilter[]},System.Action{``0},Sudoku.Generating.GridStateChanger{Sudoku.Analytics.Analyzer},System.Action{System.String})">
             <summary>
             Provides a way to generate a puzzle in asynchronous environment.
             </summary>
@@ -28491,7 +28035,7 @@
             <returns>A task that encapsulates asynchronous operation.</returns>
             <exception cref="T:System.OperationCanceledException">Throws when operation canceled.</exception>
         </member>
-        <member name="M:Sudoku.Generating.GeneratorHub.HandlerCore``1(System.Int32@,System.Int32@,Sudoku.Generating.Filtering.ConstraintCollection,,,,System.Action{``0},Sudoku.Analytics.Analyzer,Sudoku.Behaviors.Ittoryu.DisorderedIttoryuFinder,Sudoku.Behaviors.Bottlenecks.BottleneckFilter[],System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Generating.GeneratorHub.HandlerCore``1(System.Int32@,System.Int32@,Sudoku.Generating.Filtering.ConstraintCollection,,,,System.Action{``0},Sudoku.Analytics.Analyzer,Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder,Sudoku.Behaviors.Bottlenecks.BottleneckFilter[],System.Threading.CancellationToken)">
             <summary>
             The backing hanlder.
             </summary>
@@ -35948,6 +35492,462 @@
             <summary>
             Represents brute force.
             </summary>
+        </member>
+        <member name="T:Sudoku.Scripting.Backdoor">
+            <summary>
+            Represents a type that searches for backdoors.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Scripting.Backdoor.GetBackdoors(Sudoku.Concepts.Grid@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Scripting.GridSymmetryChecker">
+            <summary>
+            Represents a way to infer grid symmetry of placements.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Scripting.GridSymmetryChecker.Checkers">
+            <summary>
+            The internal methods.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Scripting.GridSymmetryChecker.GetSymmetry(Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
+            <summary>
+            Try to find the symmetry of placements of the specified grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="mappingDigits">The mapping digits.</param>
+            <param name="selfPairedDigitsMask">The self-paired digits.</param>
+            <returns>Symmetric types.</returns>
+        </member>
+        <member name="M:Sudoku.Scripting.GridSymmetryChecker.IsSymmetricalPlacement(Sudoku.Concepts.Grid@,Sudoku.SymmetricType,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
+            <summary>
+            Try to get the its mapping rule for the specified grid via the specified symmetric type.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="symmetricType">The symmetric type to be checked.</param>
+            <param name="mappingDigits">The mapping digits returned.</param>
+            <param name="selfPairedDigitsMask">A mask that contains a list of digits self-paired.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is a symmetrical-placement pattern.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            Throws when the argument <paramref name="symmetricType"/> is not <see cref="F:Sudoku.SymmetricType.Central"/>,
+            <see cref="F:Sudoku.SymmetricType.Diagonal"/> or	<see cref="F:Sudoku.SymmetricType.AntiDiagonal"/>.
+            </exception>
+        </member>
+        <member name="M:Sudoku.Scripting.GridSymmetryChecker.CheckAxesOrCenterPointForSymmetry(Sudoku.Concepts.Grid@,Sudoku.SymmetricType,System.Int16)">
+            <summary>
+            Check for the symmetry behavior on axes or center point.
+            </summary>
+            <param name="grid">The grid to be checked.</param>
+            <param name="symmetricType">The symmetric type.</param>
+            <param name="nonselfPairedDigitsMask">The mask that holds a list of digits that is non-self-paired.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:Sudoku.Scripting.GridSymmetryChecker.GetStep(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <summary>
+            Find GSP step if worth.
+            </summary>
+            <param name="grid">The grid to be checked.</param>
+            <param name="options">The options to set.</param>
+            <returns>The found step.</returns>
+        </member>
+        <member name="M:Sudoku.Scripting.GridSymmetryChecker.GetHighlightCells(Sudoku.Concepts.Grid@,System.Collections.Generic.List{Sudoku.Drawing.Nodes.CellViewNode},System.ReadOnlySpan{System.Nullable{System.Int32}})">
+            <summary>
+            Records all possible highlight cells.
+            </summary>
+            <param name="grid">The grid as reference.</param>
+            <param name="cellOffsets">The target collection.</param>
+            <param name="mapping">The mapping relation.</param>
+        </member>
+        <member name="M:Sudoku.Scripting.GridSymmetryChecker.Diagonal(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
+            <summary>
+            The internal method to check for diagonal symmetrical placement kind.
+            </summary>
+            <param name="grid">The grid to be check.</param>
+            <param name="symmetricType">
+            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.Diagonal"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
+            </param>
+            <param name="mappingDigits">The mapping digits.</param>
+            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is diagonal symmetrical placement.</returns>
+        </member>
+        <member name="M:Sudoku.Scripting.GridSymmetryChecker.AntiDiagonal(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
+            <summary>
+            The internal method to check for anti-diagonal symmetrical placement kind.
+            </summary>
+            <param name="grid">The grid to be check.</param>
+            <param name="symmetricType">
+            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.AntiDiagonal"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
+            </param>
+            <param name="mappingDigits">The mapping digits.</param>
+            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is anti-diagonal symmetrical placement.</returns>
+        </member>
+        <member name="M:Sudoku.Scripting.GridSymmetryChecker.Central(Sudoku.Concepts.Grid@,Sudoku.SymmetricType@,System.ReadOnlySpan{System.Nullable{System.Int32}}@,System.Int16@)">
+            <summary>
+            The internal method to check for central symmetrical placement kind.
+            </summary>
+            <param name="grid">The grid to be check.</param>
+            <param name="symmetricType">
+            The symmetrical placement type if so. The value can only be <see cref="F:Sudoku.SymmetricType.Central"/> or <see cref="F:Sudoku.SymmetricType.None"/>.
+            </param>
+            <param name="mappingDigits">The mapping digits.</param>
+            <param name="selfPairedDigitsMask">A mask holding a list of digits being self-paired.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid is central symmetrical placement.</returns>
+        </member>
+        <member name="M:Sudoku.Scripting.GridSymmetryChecker.CheckDiagonal(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <summary>
+            Checks for diagonal symmetry steps.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="options">The options to set.</param>
+            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
+        </member>
+        <member name="M:Sudoku.Scripting.GridSymmetryChecker.CheckAntiDiagonal(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <summary>
+            Checks for anti-diagonal symmetry steps.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="options">The options to set.</param>
+            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
+        </member>
+        <member name="M:Sudoku.Scripting.GridSymmetryChecker.CheckCentral(Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <summary>
+            Checks for central symmetry steps.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="options">The options to set.</param>
+            <returns>A correct step if found; otherwise, <see langword="null"/>.</returns>
+        </member>
+        <member name="T:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath">
+            <summary>
+            Indicates the target digit path.
+            </summary>
+            <param name="Digits">The digits path.</param>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.#ctor(System.Int32[])">
+            <summary>
+            Indicates the target digit path.
+            </summary>
+            <param name="Digits">The digits path.</param>
+        </member>
+        <member name="P:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.Digits">
+            <summary>The digits path.</summary>
+        </member>
+        <member name="P:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.IsComplete">
+            <summary>
+            Indicates whether the pattern is complete.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.DigitsString">
+            <summary>
+            Indicates hte digits string.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.CompareTo(Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.Equals(Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.ToString(System.String)">
+            <inheritdoc cref="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.ToString"/>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.GetEnumerator">
+            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.System#Collections#Generic#IEnumerable{System#Int32}#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.Create(System.ReadOnlySpan{System.Int32})">
+            <summary>
+            Creates a <see cref="T:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath"/> instance via collection expression.
+            </summary>
+            <param name="digits">A list of digits to be initialized.</param>
+            <returns>A <see cref="T:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.op_GreaterThan(Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath,Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.op_LessThan(Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath,Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.op_GreaterThanOrEqual(Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath,Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.op_LessThanOrEqual(Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath,Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath.op_Implicit(System.Int32[])~Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath">
+            <summary>
+            Implicit cast from a <see cref="T:System.Int32"/> sequence into a <see cref="T:Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath"/>.
+            </summary>
+            <param name="digitSequence">A digit sequence. Please note that the value can be <see langword="null"/>.</param>
+        </member>
+        <member name="T:Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder">
+            <summary>
+            Represents a disordered ittoryu path finder. This finder will find a digit sequence order that makes the puzzle be an ittoryu.
+            This finder only uses single techniques (Hidden Singles and Naked Singles) to solve a puzzle;
+            complex singles won't be supported for now.
+            </summary>
+            <param name="supportedTechniques"><inheritdoc cref="P:Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder.SupportedTechniques" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder.#ctor(Sudoku.Categorization.TechniqueSet)">
+            <summary>
+            Represents a disordered ittoryu path finder. This finder will find a digit sequence order that makes the puzzle be an ittoryu.
+            This finder only uses single techniques (Hidden Singles and Naked Singles) to solve a puzzle;
+            complex singles won't be supported for now.
+            </summary>
+            <param name="supportedTechniques"><inheritdoc cref="P:Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder.SupportedTechniques" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder.#ctor">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder"/> instance.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder.#ctor(System.Collections.Generic.IEnumerable{Sudoku.Categorization.Technique})">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder"/> instance via the specified list of techniques.
+            </summary>
+            <param name="techniques">A list of techniques.</param>
+        </member>
+        <member name="P:Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder.SupportedTechniques">
+            <summary>
+            Indicates the supported techniques. By default, all singles are included.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder.FindPath(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
+            <summary>
+            Find a suitable ittoryu path.
+            </summary>
+            <param name="grid">The grid to be checked.</param>
+            <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
+            <returns>
+            The target digit path. If none found, a longest path will be returned.
+            </returns>
+        </member>
+        <member name="T:Sudoku.Scripting.Ittoryu.DisorderedIttoryuModuleAlreadyFinishedException">
+            <summary>
+            The internal exception type that reports "Already finished" information, breaking the recursion.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Scripting.Ittoryu.DisorderedIttoryuModuleAlreadyFinishedException.Message">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Scripting.Ittoryu.GridIttoryuExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+            <seealso cref="T:Sudoku.Concepts.Grid"/>
+        </member>
+        <member name="T:Sudoku.Scripting.Ittoryu.GridIttoryuExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.GridIttoryuExtensions.&lt;&gt;E__0.MakeIttoryu(Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath)">
+            <summary>
+            Try to reproduce ittoryu ordering for the specified grid whose path can be found by <see cref="T:Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder"/>.
+            </summary>
+            <param name="ittoryuPath">
+            The path to be used. The argument isn't required to be a complete path. It's considered to be OK if a path contains at least 2 digits.
+            </param>
+            <exception cref="T:System.ArgumentException">Throws when the ittoryu path contains a digit series of length 0 or 1.</exception>
+            <seealso cref="T:Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder"/>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.GridIttoryuExtensions.MakeIttoryu(Sudoku.Concepts.Grid@,Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath)">
+            <inheritdoc cref="M:Sudoku.Scripting.Ittoryu.GridIttoryuExtensions.&lt;&gt;E__0.MakeIttoryu(Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath)"/>
+        </member>
+        <member name="T:Sudoku.Scripting.Ittoryu.GridIttoryuExtensions.&lt;&gt;E__1">
+            <summary>
+            Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.GridIttoryuExtensions.&lt;&gt;E__1.IsIttoryu(System.Nullable{Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath}@)">
+            <summary>
+            Determine whether the specified grid is an ittoryu puzzle, meaning the puzzle can be finished via digits one by one.
+            </summary>
+            <param name="path">The first found ittoryu path.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.GridIttoryuExtensions.&lt;&gt;E__1.IsIttoryu(Sudoku.Categorization.TechniqueSet,System.Nullable{Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath}@)">
+            <summary>
+            Determine whether the specified grid is an ittoryu puzzle, meaning the puzzle can be finished via digits one by one,
+            with checking using the specified techniques.
+            </summary>
+            <param name="techniques">
+            <para>The techniques supported.</para>
+            <para>
+            The value is a <see cref="T:Sudoku.Categorization.TechniqueSet"/> instance. You can only chose one or more fields in the following list:
+            <list type="bullet">
+            <item><see cref="F:Sudoku.Categorization.Technique.FullHouse"/> (Full House)</item>
+            <item><see cref="F:Sudoku.Categorization.Technique.HiddenSingleBlock"/> (Hidden Single in Block)</item>
+            <item><see cref="F:Sudoku.Categorization.Technique.HiddenSingleRow"/> (Hidden Single in Row)</item>
+            <item><see cref="F:Sudoku.Categorization.Technique.HiddenSingleColumn"/> (Hidden Single in Column)</item>
+            <item><see cref="F:Sudoku.Categorization.Technique.NakedSingle"/> (Naked Single)</item>
+            </list>
+            </para>
+            <para>For example, <c>[Technique.FullHouse, Technique.NakedSingle]</c> is valid argument, but <c>[Technique.NakedPair]</c> is not.</para>
+            </param>
+            <param name="path">The first found ittoryu path.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.GridIttoryuExtensions.IsIttoryu(Sudoku.Concepts.Grid@,System.Nullable{Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath}@)">
+            <inheritdoc cref="M:Sudoku.Scripting.Ittoryu.GridIttoryuExtensions.&lt;&gt;E__1.IsIttoryu(System.Nullable{Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath}@)"/>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.GridIttoryuExtensions.IsIttoryu(Sudoku.Concepts.Grid@,Sudoku.Categorization.TechniqueSet,System.Nullable{Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath}@)">
+            <inheritdoc cref="M:Sudoku.Scripting.Ittoryu.GridIttoryuExtensions.&lt;&gt;E__1.IsIttoryu(Sudoku.Categorization.TechniqueSet,System.Nullable{Sudoku.Scripting.Ittoryu.DisorderedIttoryuDigitPath}@)"/>
+        </member>
+        <member name="T:Sudoku.Scripting.Ittoryu.IttoryuPathNode">
+            <summary>
+            Represents for a path node in a whole solving path via ittoryu solving logic.
+            </summary>
+            <param name="Grid">Indicates the currently-used grid.</param>
+            <param name="House">Indicates the house. The value can be -1 when the represented node is for a naked single.</param>
+            <param name="Candidate">Indicates the target candidate.</param>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.IttoryuPathNode.#ctor(Sudoku.Concepts.Grid@,System.Int32,System.Int32)">
+            <summary>
+            Represents for a path node in a whole solving path via ittoryu solving logic.
+            </summary>
+            <param name="Grid">Indicates the currently-used grid.</param>
+            <param name="House">Indicates the house. The value can be -1 when the represented node is for a naked single.</param>
+            <param name="Candidate">Indicates the target candidate.</param>
+        </member>
+        <member name="P:Sudoku.Scripting.Ittoryu.IttoryuPathNode.Grid">
+            <summary>Indicates the currently-used grid.</summary>
+        </member>
+        <member name="P:Sudoku.Scripting.Ittoryu.IttoryuPathNode.House">
+            <summary>Indicates the house. The value can be -1 when the represented node is for a naked single.</summary>
+        </member>
+        <member name="P:Sudoku.Scripting.Ittoryu.IttoryuPathNode.Candidate">
+            <summary>Indicates the target candidate.</summary>
+        </member>
+        <member name="P:Sudoku.Scripting.Ittoryu.IttoryuPathNode.Digit">
+            <summary>
+            Indicates the target digit.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Scripting.Ittoryu.IttoryuPathNode.Cell">
+            <summary>
+            Indicates the target cell.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.IttoryuPathNode.Deconstruct(Sudoku.Concepts.Grid@,System.Int32@,System.Int32@,System.Int32@)">
+            <target name="method">
+				<summary>
+					Deconstruct the current instance into multiple values, which means you can use
+					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+				</summary>
+			</target>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.IttoryuPathNode.ToString(System.IFormatProvider)">
+            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Scripting.Ittoryu.IttoryuPathNode.System#IFormattable#ToString(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Scripting.Ittoryu.TechniqueIttoryuSets">
+            <summary>
+            Represents ittoryu-related technique sets instances.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Scripting.Ittoryu.TechniqueIttoryuSets.IttoryuTechniques">
+            <summary>
+            Indicates the techniques that ittoryu path finder will use.
+            </summary>
+            <seealso cref="T:Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder"/>
+        </member>
+        <member name="P:Sudoku.Scripting.Ittoryu.TechniqueIttoryuSets.IttoryuNakedSingleNotIncluded">
+            <summary>
+            Indicates the techniques that ittoryu path finder will use, and naked singles are not included.
+            </summary>
+            <seealso cref="T:Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder"/>
+        </member>
+        <member name="P:Sudoku.Scripting.Ittoryu.TechniqueIttoryuSets.IttoryuBlockHiddenSingle">
+            <summary>
+            Indicates the techniques that ittroyu path finder will use,
+            only containing <see cref="F:Sudoku.Categorization.Technique.FullHouse"/> and <see cref="F:Sudoku.Categorization.Technique.HiddenSingleBlock"/>.
+            </summary>
+            <seealso cref="T:Sudoku.Scripting.Ittoryu.DisorderedIttoryuFinder"/>
+            <seealso cref="F:Sudoku.Categorization.Technique.FullHouse"/>
+            <seealso cref="F:Sudoku.Categorization.Technique.HiddenSingleBlock"/>
+        </member>
+        <member name="T:Sudoku.Scripting.UniquenessTest.DeadlyPatternInferrerLimitReachedException">
+            <summary>
+            Represents an exception that will be thrown if more than 10000 solutions found in a possible deadly pattern to be verified.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Scripting.UniquenessTest.DeadlyPatternInferrerLimitReachedException.Message">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Scripting.UniquenessTest.PatternUniquenessInfo">
+            <summary>
+            Indicates the result value after <see cref="M:Sudoku.Scripting.UniquenessTest.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/> called.
+            </summary>
+            <param name="grid"><inheritdoc cref="F:Sudoku.Scripting.UniquenessTest.PatternUniquenessInfo.Grid" path="/summary"/></param>
+            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.Scripting.UniquenessTest.PatternUniquenessInfo.IsDeadlyPattern" path="/summary"/></param>
+            <param name="failedCases"><inheritdoc cref="P:Sudoku.Scripting.UniquenessTest.PatternUniquenessInfo.FailedCases" path="/summary"/></param>
+            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.Scripting.UniquenessTest.PatternUniquenessInfo.PatternCandidates" path="/summary"/></param>
+            <seealso cref="M:Sudoku.Scripting.UniquenessTest.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/>
+        </member>
+        <member name="M:Sudoku.Scripting.UniquenessTest.PatternUniquenessInfo.#ctor(Sudoku.Concepts.Grid@,System.Boolean,System.ReadOnlySpan{Sudoku.Concepts.Grid},Sudoku.Concepts.CandidateMap@)">
+            <summary>
+            Indicates the result value after <see cref="M:Sudoku.Scripting.UniquenessTest.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/> called.
+            </summary>
+            <param name="grid"><inheritdoc cref="F:Sudoku.Scripting.UniquenessTest.PatternUniquenessInfo.Grid" path="/summary"/></param>
+            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.Scripting.UniquenessTest.PatternUniquenessInfo.IsDeadlyPattern" path="/summary"/></param>
+            <param name="failedCases"><inheritdoc cref="P:Sudoku.Scripting.UniquenessTest.PatternUniquenessInfo.FailedCases" path="/summary"/></param>
+            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.Scripting.UniquenessTest.PatternUniquenessInfo.PatternCandidates" path="/summary"/></param>
+            <seealso cref="M:Sudoku.Scripting.UniquenessTest.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/>
+        </member>
+        <member name="F:Sudoku.Scripting.UniquenessTest.PatternUniquenessInfo.Grid">
+            <summary>
+            Indicates the grid used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Scripting.UniquenessTest.PatternUniquenessInfo.IsDeadlyPattern">
+            <summary>
+            Indicates the pattern is a real deadly pattern.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Scripting.UniquenessTest.PatternUniquenessInfo.FailedCases">
+            <summary>
+            Indicates all possible failed cases. The value can be an empty sequence if the pattern is a real deadly pattern,
+            or not a deadly pattern but containing obvious invalid candidates (like containing given or modifiable cells).
+            </summary>
+        </member>
+        <member name="P:Sudoku.Scripting.UniquenessTest.PatternUniquenessInfo.PatternCandidates">
+            <summary>
+            Indicates the candidates the pattern used.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Scripting.UniquenessTest.UniquenessChecker">
+            <summary>
+            Represents a type that checks and infers for a pattern (specified as a <see cref="T:Sudoku.Concepts.Grid"/>, but invalid - multiple solutions),
+            determining whether the pattern is a deadly pattern.
+            </summary>
+            <seealso cref="T:Sudoku.Concepts.Grid"/>
+        </member>
+        <member name="M:Sudoku.Scripting.UniquenessTest.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)">
+            <summary>
+            Try to analyze whether a grid is a deadly pattern, by only checking the specified cells.
+            </summary>
+            <param name="grid">Indicates the grid. It's required that only specified cells are assigned with candidates.</param>
+            <param name="cells">Indicates the cells to be checked.</param>
+            <returns>The result after the analysis operation is finished.</returns>
+            <exception cref="T:Sudoku.Scripting.UniquenessTest.DeadlyPatternInferrerLimitReachedException">
+            Throws when the pattern contains more than 10000 solutions.
+            </exception>
         </member>
         <member name="T:Sudoku.Text.AnalysisResultOutput">
             <summary>

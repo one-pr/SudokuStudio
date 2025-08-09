@@ -1,4 +1,4 @@
-namespace Sudoku.Behaviors.GridMinimal;
+namespace Sudoku.Scripting;
 
 /// <summary>
 /// Represents extension methods on <see cref="Grid"/> for minimal.

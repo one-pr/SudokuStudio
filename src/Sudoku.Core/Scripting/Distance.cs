@@ -1,15 +1,15 @@
-namespace Sudoku.Behaviors.CellDistances;
+namespace Sudoku.Scripting;
 
 /// <summary>
 /// Represents the methods that calculates for distance.
 /// </summary>
-/// <param name="p">Indicates the integer part.</param>
-/// <param name="q">Indicates the root part.</param>
-/// <exception cref="ArgumentOutOfRangeException">Throws when either <paramref name="p"/> or <paramref name="q"/> are less than 1.</exception>
+/// <param name="_p">Indicates the integer part.</param>
+/// <param name="_q">Indicates the root part.</param>
+/// <exception cref="ArgumentOutOfRangeException">Throws when either <paramref name="_p"/> or <paramref name="_q"/> are less than 1.</exception>
 /// <remarks>
 /// This type is implemented via irrational numbers logic that only takes a square root.
 /// </remarks>
-public readonly ref struct Distance(int p, int q)
+public readonly ref struct Distance(int _p, int _q) : IEquatable<Distance>
 {
 	/// <summary>
 	/// Indicates the default root part specifier.
@@ -119,16 +119,16 @@ public readonly ref struct Distance(int p, int q)
 	/// <summary>
 	/// The root value of P.
 	/// </summary>
-	private readonly int _p = p < 1
-		? throw new ArgumentOutOfRangeException(nameof(p))
-		: q < 1
-			? throw new ArgumentOutOfRangeException(nameof(q))
-			: p * SimplifyRootPart(ref q);
+	private readonly int _p = _p < 1
+		? throw new ArgumentOutOfRangeException(nameof(_p))
+		: _q < 1
+			? throw new ArgumentOutOfRangeException(nameof(_q))
+			: _p * SimplifyRootPart(ref _q);
 
 	/// <summary>
 	/// The root value of Q.
 	/// </summary>
-	private readonly int _q = q;
+	private readonly int _q = _q;
 
 
 	/// <summary>
@@ -157,7 +157,7 @@ public readonly ref struct Distance(int p, int q)
 	/// <inheritdoc cref="ReadOnlySpan{T}.Equals"/>
 	public override bool Equals(object? obj) => false;
 
-	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
+	/// <inheritdoc/>
 	public bool Equals(Distance other) => (_p, _q) == (other._p, other._q);
 
 	/// <inheritdoc cref="object.GetHashCode"/>

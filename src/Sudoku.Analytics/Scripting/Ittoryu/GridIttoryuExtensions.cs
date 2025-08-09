@@ -1,4 +1,4 @@
-namespace Sudoku.Behaviors.Ittoryu;
+namespace Sudoku.Scripting.Ittoryu;
 
 /// <summary>
 /// Provides with extension methods on <see cref="Grid"/>.

@@ -1,4 +1,4 @@
-namespace Sudoku.Behaviors.Backdoors;
+namespace Sudoku.Scripting;
 
 /// <summary>
 /// Represents a type that searches for backdoors.
