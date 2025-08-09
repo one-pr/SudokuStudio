@@ -12968,18 +12968,18 @@
             </summary>
             <returns>The result fliped.</returns>
         </member>
-        <member name="T:Sudoku.Shuffling.Transforming.RandomizationExtensions">
+        <member name="T:Sudoku.Shuffling.Transforming.RandomShufflingExtensions">
             <summary>
             Provides with extension methods for <see cref="T:System.Random"/>.
             </summary>
             <seealso cref="T:System.Random"/>
         </member>
-        <member name="T:Sudoku.Shuffling.Transforming.RandomizationExtensions.&lt;&gt;E__0">
+        <member name="T:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.&lt;&gt;E__0">
             <summary>
             Provides extension members on <see cref="T:System.Random"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.&lt;&gt;E__0.NextDigit">
+        <member name="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.&lt;&gt;E__0.NextDigit">
             <summary>
             Returns a random integer that is within valid digit range (0..9).
             </summary>
@@ -12987,7 +12987,7 @@
             An integer that represents a valid <see cref="T:System.Int32"/>.
             </returns>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.&lt;&gt;E__0.NextCell">
+        <member name="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.&lt;&gt;E__0.NextCell">
             <summary>
             Returns a random integer that is within valid cell range (0..81).
             </summary>
@@ -12995,7 +12995,7 @@
             An integer that represents a valid <see cref="T:System.Int32"/>.
             </returns>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.&lt;&gt;E__0.NextHouse">
+        <member name="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.&lt;&gt;E__0.NextHouse">
             <summary>
             Returns a random integer that is within valid house range (0..27).
             </summary>
@@ -13003,7 +13003,7 @@
             An integer that represents a valid <see cref="T:System.Int32"/>.
             </returns>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.&lt;&gt;E__0.RandomlySelect(Sudoku.Concepts.CellMap@,System.Int32)">
+        <member name="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.&lt;&gt;E__0.RandomlySelect(Sudoku.Concepts.CellMap@,System.Int32)">
             <summary>
             Randomly select the specified number of elements from the current collection.
             </summary>
@@ -13011,7 +13011,7 @@
             <param name="count">The desired number of elements.</param>
             <returns>The specified number of elements returned, represented as a <see cref="T:Sudoku.Concepts.CellMap"/> instance.</returns>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.&lt;&gt;E__0.RandomlySelect(Sudoku.Concepts.CandidateMap@,System.Int32)">
+        <member name="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.&lt;&gt;E__0.RandomlySelect(Sudoku.Concepts.CandidateMap@,System.Int32)">
             <summary>
             Randomly select the specified number of elements from the current collection.
             </summary>
@@ -13019,40 +13019,40 @@
             <param name="count">The desired number of elements.</param>
             <returns>The specified number of elements returned, represented as a <see cref="T:Sudoku.Concepts.CandidateMap"/> instance.</returns>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.&lt;&gt;E__0.CreateCellMap(System.Int32)">
+        <member name="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.&lt;&gt;E__0.CreateCellMap(System.Int32)">
             <summary>
             Creates a <see cref="T:Sudoku.Concepts.CellMap"/> instance, with the specified number of <see cref="T:System.Int32"/>s stored in the collection.
             </summary>
             <param name="count">The desired number of elements.</param>
             <returns>A <see cref="T:Sudoku.Concepts.CellMap"/> instance.</returns>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.&lt;&gt;E__0.CreateCandidateMap(System.Int32)">
+        <member name="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.&lt;&gt;E__0.CreateCandidateMap(System.Int32)">
             <summary>
             Creates a <see cref="T:Sudoku.Concepts.CandidateMap"/> instance, with the specified number of <see cref="T:System.Int32"/>s stored in the collection.
             </summary>
             <param name="count">The desired number of elements.</param>
             <returns>A <see cref="T:Sudoku.Concepts.CandidateMap"/> instance.</returns>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.NextDigit(System.Random)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.&lt;&gt;E__0.NextDigit"/>
+        <member name="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.NextDigit(System.Random)">
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.&lt;&gt;E__0.NextDigit"/>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.NextCell(System.Random)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.&lt;&gt;E__0.NextCell"/>
+        <member name="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.NextCell(System.Random)">
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.&lt;&gt;E__0.NextCell"/>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.NextHouse(System.Random)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.&lt;&gt;E__0.NextHouse"/>
+        <member name="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.NextHouse(System.Random)">
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.&lt;&gt;E__0.NextHouse"/>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.RandomlySelect(System.Random,Sudoku.Concepts.CellMap@,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.&lt;&gt;E__0.RandomlySelect(Sudoku.Concepts.CellMap@,System.Int32)"/>
+        <member name="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.RandomlySelect(System.Random,Sudoku.Concepts.CellMap@,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.&lt;&gt;E__0.RandomlySelect(Sudoku.Concepts.CellMap@,System.Int32)"/>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.RandomlySelect(System.Random,Sudoku.Concepts.CandidateMap@,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.&lt;&gt;E__0.RandomlySelect(Sudoku.Concepts.CandidateMap@,System.Int32)"/>
+        <member name="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.RandomlySelect(System.Random,Sudoku.Concepts.CandidateMap@,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.&lt;&gt;E__0.RandomlySelect(Sudoku.Concepts.CandidateMap@,System.Int32)"/>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.CreateCellMap(System.Random,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.&lt;&gt;E__0.CreateCellMap(System.Int32)"/>
+        <member name="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.CreateCellMap(System.Random,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.&lt;&gt;E__0.CreateCellMap(System.Int32)"/>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.CreateCandidateMap(System.Random,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomizationExtensions.&lt;&gt;E__0.CreateCandidateMap(System.Int32)"/>
+        <member name="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.CreateCandidateMap(System.Random,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.RandomShufflingExtensions.&lt;&gt;E__0.CreateCandidateMap(System.Int32)"/>
         </member>
         <member name="T:Sudoku.Shuffling.Transforming.Transformation">
             <summary>
