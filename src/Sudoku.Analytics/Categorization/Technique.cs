@@ -1604,18 +1604,18 @@ public enum Technique
 	/// <summary>
 	/// Indicates M-Wing.
 	/// </summary>
-	[TechniqueMetadata<IrregularWingStepSearcher, MWingStep>(
+	[TechniqueMetadata<ChainStepSearcher, NormalChainStep>(
 		Rating = 45,
-		DifficultyLevel = DifficultyLevel.Hard,
+		DifficultyLevel = DifficultyLevel.Fiendish,
 		ContainingGroup = TechniqueGroup.IrregularWing)]
 	MWing,
 
 	/// <summary>
 	/// Indicates grouped M-Wing.
 	/// </summary>
-	[TechniqueMetadata<IrregularWingStepSearcher, MWingStep>(
+	[TechniqueMetadata<IrregularWingStepSearcher, NormalChainStep>(
 		Rating = 45,
-		DifficultyLevel = DifficultyLevel.Hard,
+		DifficultyLevel = DifficultyLevel.Fiendish,
 		ContainingGroup = TechniqueGroup.IrregularWing)]
 	GroupedMWing,
 

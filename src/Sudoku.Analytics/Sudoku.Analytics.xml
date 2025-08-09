@@ -13785,23 +13785,6 @@
         <member name="M:Sudoku.Analytics.StepSearchers.IrregularWingStepSearcher.Collect_MultiBranchWWing(Sudoku.Analytics.StepAnalysisContext@)">
             <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.IrregularWingStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)"/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.IrregularWingStepSearcher.Collect_MWing(Sudoku.Analytics.StepAnalysisContext@)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.IrregularWingStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)" />
-            <remarks>
-            <developer-notes>
-		<para>
-			<b>Developer Notes</b>
-		</para>
-	</developer-notes>
-            A valid pattern of M-Wing is <c><![CDATA[(x=y)-y=(y-x)=x]]></c>, asymmetric.
-            </remarks>
-            <example>
-            TODO: Add loop logic. Example:
-            <code><![CDATA[
-            .9.2.+8.5.7..+4...891+85+9.6....4.59+72...+7.+6+4+3..+8..9+182.7....3..7.163......5.1...4.3.:417 419 157 883 785 891 893 795
-            ]]></code>
-            </example>
-        </member>
         <member name="T:Sudoku.Analytics.StepSearchers.RegularWingStepSearcher">
             <summary>
             Provides with a <b>Regular Wing</b> step searcher.
@@ -21957,78 +21940,6 @@
             <inheritdoc/>
         </member>
         <member name="P:Sudoku.Analytics.Steps.MultiBranchWWingStep.Factors">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Steps.MWingStep">
-            <summary>
-            Provides with a step that is a <b>(Grouped) M-Wing</b> technique.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-            <param name="node1"><inheritdoc cref="P:Sudoku.Analytics.Steps.MWingStep.Node1" path="/summary"/></param>
-            <param name="node2"><inheritdoc cref="P:Sudoku.Analytics.Steps.MWingStep.Node2" path="/summary"/></param>
-            <param name="strongXyCell"><inheritdoc cref="P:Sudoku.Analytics.Steps.MWingStep.StrongXyCell" path="/summary"/></param>
-            <param name="weakXyCell"><inheritdoc cref="P:Sudoku.Analytics.Steps.MWingStep.WeakXyCell" path="/summary"/></param>
-            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.MWingStep.DigitsMask" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Analytics.Steps.MWingStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.Int32,System.Int32,System.Int16)">
-            <summary>
-            Provides with a step that is a <b>(Grouped) M-Wing</b> technique.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-            <param name="node1"><inheritdoc cref="P:Sudoku.Analytics.Steps.MWingStep.Node1" path="/summary"/></param>
-            <param name="node2"><inheritdoc cref="P:Sudoku.Analytics.Steps.MWingStep.Node2" path="/summary"/></param>
-            <param name="strongXyCell"><inheritdoc cref="P:Sudoku.Analytics.Steps.MWingStep.StrongXyCell" path="/summary"/></param>
-            <param name="weakXyCell"><inheritdoc cref="P:Sudoku.Analytics.Steps.MWingStep.WeakXyCell" path="/summary"/></param>
-            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.MWingStep.DigitsMask" path="/summary"/></param>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.MWingStep.IsSymmetricPattern">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.MWingStep.IsGrouped">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.MWingStep.BaseDifficulty">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.MWingStep.Code">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.MWingStep.DigitsUsed">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.MWingStep.Interpolations">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.MWingStep.Node1">
-            <summary>
-            Indicates the node 1.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.MWingStep.Node2">
-            <summary>
-            Indicates the node 2.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.MWingStep.StrongXyCell">
-            <summary>
-            Indicates the strong XY cell.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.MWingStep.WeakXyCell">
-            <summary>
-            Indicates the weak XY cell.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.MWingStep.DigitsMask">
-            <summary>
-            Indicates the digits used.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Steps.MWingStep.Equals(Sudoku.Analytics.Step)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Steps.RegularWingStep">

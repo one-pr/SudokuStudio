@@ -109,8 +109,8 @@ public partial class Hub
 						{ IsOverlapped: true } => Technique.NodeCollision,
 #if false
 						{ IsWoodsWing: true } => isGrouped ? Technique.GroupedWWing : Technique.WWing,
-						{ IsMedusaWing: true } => isGrouped ? Technique.GroupedMWing : Technique.MWing,
 #endif
+						{ IsMedusaWing: true } => isGrouped ? Technique.GroupedMWing : Technique.MWing,
 						{ IsSplitWing: true } => isGrouped ? Technique.GroupedSWing : Technique.SWing,
 						{ IsLocalWing: true } => isGrouped ? Technique.GroupedLWing : Technique.LWing,
 						{ IsHybridWing: true } => isGrouped ? Technique.GroupedHWing : Technique.HWing,

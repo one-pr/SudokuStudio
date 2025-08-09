@@ -193,17 +193,20 @@
             </summary>
             <seealso cref="T:SudokuStudio.App"/>
         </member>
-        <member name="T:SudokuStudio.AppCastExtensions.">
+        <member name="T:SudokuStudio.AppCastExtensions.&lt;&gt;E__0">
             <summary>
             Provide casting method.
             </summary>
         </member>
-        <member name="M:SudokuStudio.AppCastExtensions..AsApp">
+        <member name="M:SudokuStudio.AppCastExtensions.&lt;&gt;E__0.AsApp">
             <summary>
             Converts the current instance into an <see cref="T:SudokuStudio.App"/> instance;
             throw <see cref="T:System.InvalidCastException"/> if the current object is not an <see cref="T:SudokuStudio.App"/> instance.
             </summary>
             <returns>The result casted.</returns>
+        </member>
+        <member name="M:SudokuStudio.AppCastExtensions.AsApp(Microsoft.UI.Xaml.Application)">
+            <inheritdoc cref="M:SudokuStudio.AppCastExtensions.&lt;&gt;E__0.AsApp"/>
         </member>
         <member name="T:SudokuStudio.BindableSource.AnalyzeTabPageBindableSource">
             <summary>
@@ -4861,16 +4864,19 @@
             </summary>
             <seealso cref="T:SudokuStudio.Interaction.SudokuFormatFlags"/>
         </member>
-        <member name="T:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.">
+        <member name="T:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.&lt;&gt;E__0">
             <summary>
             Provides extension members on <see cref="T:SudokuStudio.Interaction.SudokuFormatFlags"/>.
             </summary>
         </member>
-        <member name="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions..Converter">
+        <member name="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.&lt;&gt;E__0.Converter">
             <summary>
             Try to get target <see cref="T:Sudoku.Concepts.Coordinates.Formatting.GridFormatInfo`1"/> instance of type <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is not defined.</exception>
+        </member>
+        <member name="M:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.get_Converter(SudokuStudio.Interaction.SudokuFormatFlags)">
+            <inheritdoc cref="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.&lt;&gt;E__0.Converter"/>
         </member>
         <member name="T:SudokuStudio.Interaction.SudokuPaneMouseWheelChangedEventArgs">
             <summary>
@@ -15510,15 +15516,18 @@
 				</summary>
 			</target>
         </member>
-        <member name="T:SudokuStudio.Views.Pages.Extensions.">
+        <member name="T:SudokuStudio.Views.Pages.Extensions.&lt;&gt;E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Categorization.TechniqueSet"/>.
             </summary>
         </member>
-        <member name="P:SudokuStudio.Views.Pages.Extensions..TechniqueString">
+        <member name="P:SudokuStudio.Views.Pages.Extensions.&lt;&gt;E__0.TechniqueString">
             <summary>
             Try to fetch the string representation of the techniques chosen in UI.
             </summary>
+        </member>
+        <member name="M:SudokuStudio.Views.Pages.Extensions.get_TechniqueString(Sudoku.Categorization.TechniqueSet)">
+            <inheritdoc cref="P:SudokuStudio.Views.Pages.Extensions.&lt;&gt;E__0.TechniqueString"/>
         </member>
         <member name="T:SudokuStudio.Views.Pages.LibraryPage">
             <summary>

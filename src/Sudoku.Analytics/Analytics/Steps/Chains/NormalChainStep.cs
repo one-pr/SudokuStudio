@@ -46,7 +46,15 @@ public class NormalChainStep(
 	public bool IsLoop => Pattern is ContinuousNiceLoop;
 
 	/// <inheritdoc/>
-	public override int BaseDifficulty => 60;
+	public override int BaseDifficulty
+		=> Code switch
+		{
+			Technique.WWing => 43,
+			Technique.MWing => 44,
+			Technique.GroupedWWing => 44,
+			Technique.GroupedMWing => 45,
+			_ => 59
+		};
 
 	/// <inheritdoc/>
 	public sealed override int Complexity => Casted.Length;
