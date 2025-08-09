@@ -912,22 +912,22 @@ public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffRes
 		=> this.Select(selector).ToArray();
 
 	/// <inheritdoc/>
-	Grid IBoardTransformable<Grid>.MirrorLeftRight() => this.MirrorLeftRight();
+	Grid IGridTransformable<Grid>.MirrorLeftRight() => this.MirrorLeftRight();
 
 	/// <inheritdoc/>
-	Grid IBoardTransformable<Grid>.MirrorTopBottom() => this.MirrorTopBottom();
+	Grid IGridTransformable<Grid>.MirrorTopBottom() => this.MirrorTopBottom();
 
 	/// <inheritdoc/>
-	Grid IBoardTransformable<Grid>.MirrorDiagonal() => this.MirrorDiagonal();
+	Grid IGridTransformable<Grid>.MirrorDiagonal() => this.MirrorDiagonal();
 
 	/// <inheritdoc/>
-	Grid IBoardTransformable<Grid>.MirrorAntidiagonal() => this.MirrorAntidiagonal();
+	Grid IGridTransformable<Grid>.MirrorAntidiagonal() => this.MirrorAntidiagonal();
 
 	/// <inheritdoc/>
-	Grid IBoardTransformable<Grid>.RotateClockwise() => this.RotateClockwise();
+	Grid IGridTransformable<Grid>.RotateClockwise() => this.RotateClockwise();
 
 	/// <inheritdoc/>
-	Grid IBoardTransformable<Grid>.RotateCounterclockwise() => this.RotateCounterclockwise();
+	Grid IGridTransformable<Grid>.RotateCounterclockwise() => this.RotateCounterclockwise();
 
 	/// <inheritdoc/>
 	Grid IElementSwappingTransformable<Grid, Digit>.SwapElement(Digit element1, Digit element2) => this.SwapDigit(element1, element2);
@@ -1175,7 +1175,7 @@ public partial struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffRes
 	/// </summary>
 	/// <param name="comparison">Indicates the comparison rule.</param>
 	/// <returns>An <see cref="IEqualityComparer{T}"/> instance.</returns>
-	public static IEqualityComparer<Grid> CreateEqualityComparer(BoardComparison comparison)
+	public static IEqualityComparer<Grid> CreateEqualityComparer(GridComparison comparison)
 		=> EqualityComparer<Grid>.Create((a, b) => a.Equals(in b, comparison), obj => obj.GetHashCode(comparison));
 
 	/// <inheritdoc/>

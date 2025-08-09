@@ -5680,7 +5680,7 @@
         <member name="M:Sudoku.Concepts.Grid.System#IInlineArray{Sudoku#Concepts#Grid,System#Int16}#AsReadOnlySpan">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Grid.Puzzles#Meta#Transforming#IElementSwappingTransformable{Sudoku#Concepts#Grid,System#Int32}#Shuffle">
+        <member name="M:Sudoku.Concepts.Grid.Sudoku#Shuffling#Transforming#IElementSwappingTransformable{Sudoku#Concepts#Grid,System#Int32}#Shuffle">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Concepts.Grid.System#Collections#Generic#IEnumerable{System#Int32}#GetEnumerator">
@@ -5692,25 +5692,25 @@
         <member name="M:Sudoku.Concepts.Grid.System#Linq#Providers#ISelectMethod{Sudoku#Concepts#Grid,System#Int32}#Select``1(System.Func{System.Int32,``0})">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Grid.Puzzles#Meta#Transforming#IBoardTransformable{Sudoku#Concepts#Grid}#MirrorLeftRight">
+        <member name="M:Sudoku.Concepts.Grid.Sudoku#Shuffling#Transforming#IGridTransformable{Sudoku#Concepts#Grid}#MirrorLeftRight">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Grid.Puzzles#Meta#Transforming#IBoardTransformable{Sudoku#Concepts#Grid}#MirrorTopBottom">
+        <member name="M:Sudoku.Concepts.Grid.Sudoku#Shuffling#Transforming#IGridTransformable{Sudoku#Concepts#Grid}#MirrorTopBottom">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Grid.Puzzles#Meta#Transforming#IBoardTransformable{Sudoku#Concepts#Grid}#MirrorDiagonal">
+        <member name="M:Sudoku.Concepts.Grid.Sudoku#Shuffling#Transforming#IGridTransformable{Sudoku#Concepts#Grid}#MirrorDiagonal">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Grid.Puzzles#Meta#Transforming#IBoardTransformable{Sudoku#Concepts#Grid}#MirrorAntidiagonal">
+        <member name="M:Sudoku.Concepts.Grid.Sudoku#Shuffling#Transforming#IGridTransformable{Sudoku#Concepts#Grid}#MirrorAntidiagonal">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Grid.Puzzles#Meta#Transforming#IBoardTransformable{Sudoku#Concepts#Grid}#RotateClockwise">
+        <member name="M:Sudoku.Concepts.Grid.Sudoku#Shuffling#Transforming#IGridTransformable{Sudoku#Concepts#Grid}#RotateClockwise">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Grid.Puzzles#Meta#Transforming#IBoardTransformable{Sudoku#Concepts#Grid}#RotateCounterclockwise">
+        <member name="M:Sudoku.Concepts.Grid.Sudoku#Shuffling#Transforming#IGridTransformable{Sudoku#Concepts#Grid}#RotateCounterclockwise">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Grid.Puzzles#Meta#Transforming#IElementSwappingTransformable{Sudoku#Concepts#Grid,System#Int32}#SwapElement(System.Int32,System.Int32)">
+        <member name="M:Sudoku.Concepts.Grid.Sudoku#Shuffling#Transforming#IElementSwappingTransformable{Sudoku#Concepts#Grid,System#Int32}#SwapElement(System.Int32,System.Int32)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Concepts.Grid.System#IInlineArray{Sudoku#Concepts#Grid,System#Int16}#AsSpan">
@@ -5765,7 +5765,7 @@
         <member name="M:Sudoku.Concepts.Grid.Parse(System.ReadOnlySpan{System.Char},System.IFormatProvider)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Grid.CreateEqualityComparer(Puzzles.Meta.Transforming.BoardComparison)">
+        <member name="M:Sudoku.Concepts.Grid.CreateEqualityComparer(Sudoku.Shuffling.Transforming.GridComparison)">
             <summary>
             Creates an <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> instance from the basic grid checking rule.
             </summary>
@@ -6818,12 +6818,6 @@
             <seealso cref="T:Sudoku.Concepts.CellState"/>
             <seealso cref="T:Sudoku.SudokuType"/>
         </member>
-        <member name="P:Sudoku.Concepts.IGrid`1.Puzzles#Meta#Concepts#IBoard#Rows">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Concepts.IGrid`1.Puzzles#Meta#Concepts#IBoard#Columns">
-            <inheritdoc/>
-        </member>
         <member name="P:Sudoku.Concepts.IGrid`1.EmptyString">
             <summary>
             Represents a string value that describes a <typeparamref name="TSelf"/> instance can be parsed into <see cref="P:Sudoku.Concepts.IGrid`1.Empty"/>.
@@ -7537,7 +7531,7 @@
         <member name="M:Sudoku.Concepts.MarkerGrid.System#IInlineArray{Sudoku#Concepts#MarkerGrid,System#Int16}#AsReadOnlySpan">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.MarkerGrid.Puzzles#Meta#Transforming#IElementSwappingTransformable{Sudoku#Concepts#MarkerGrid,System#Int32}#Shuffle">
+        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Shuffling#Transforming#IElementSwappingTransformable{Sudoku#Concepts#MarkerGrid,System#Int32}#Shuffle">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Concepts.MarkerGrid.System#Collections#Generic#IEnumerable{System#Int32}#GetEnumerator">
@@ -7552,22 +7546,22 @@
         <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Concepts#IGrid{Sudoku#Concepts#MarkerGrid}#SetMask(System.Int32,System.Int16)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.MarkerGrid.Puzzles#Meta#Transforming#IBoardTransformable{Sudoku#Concepts#MarkerGrid}#RotateClockwise">
+        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Shuffling#Transforming#IGridTransformable{Sudoku#Concepts#MarkerGrid}#RotateClockwise">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.MarkerGrid.Puzzles#Meta#Transforming#IBoardTransformable{Sudoku#Concepts#MarkerGrid}#MirrorLeftRight">
+        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Shuffling#Transforming#IGridTransformable{Sudoku#Concepts#MarkerGrid}#MirrorLeftRight">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.MarkerGrid.Puzzles#Meta#Transforming#IBoardTransformable{Sudoku#Concepts#MarkerGrid}#MirrorTopBottom">
+        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Shuffling#Transforming#IGridTransformable{Sudoku#Concepts#MarkerGrid}#MirrorTopBottom">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.MarkerGrid.Puzzles#Meta#Transforming#IBoardTransformable{Sudoku#Concepts#MarkerGrid}#MirrorDiagonal">
+        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Shuffling#Transforming#IGridTransformable{Sudoku#Concepts#MarkerGrid}#MirrorDiagonal">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.MarkerGrid.Puzzles#Meta#Transforming#IBoardTransformable{Sudoku#Concepts#MarkerGrid}#MirrorAntidiagonal">
+        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Shuffling#Transforming#IGridTransformable{Sudoku#Concepts#MarkerGrid}#MirrorAntidiagonal">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.MarkerGrid.Puzzles#Meta#Transforming#IElementSwappingTransformable{Sudoku#Concepts#MarkerGrid,System#Int32}#SwapElement(System.Int32,System.Int32)">
+        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Shuffling#Transforming#IElementSwappingTransformable{Sudoku#Concepts#MarkerGrid,System#Int32}#SwapElement(System.Int32,System.Int32)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Concepts.MarkerGrid.System#IInlineArray{Sudoku#Concepts#MarkerGrid,System#Int16}#AsSpan">
@@ -12667,7 +12661,7 @@
             Indicates the new grid form of the current grid, which is at the minimal-lexicographical order.
             </summary>
         </member>
-        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.&lt;&gt;E__1.Equals(Sudoku.Concepts.Grid@,Puzzles.Meta.Transforming.BoardComparison)">
+        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.&lt;&gt;E__1.Equals(Sudoku.Concepts.Grid@,Sudoku.Shuffling.Transforming.GridComparison)">
             <summary>
             Determine whether the specified <see cref="T:Sudoku.Concepts.Grid"/> instance hold the same values as the current instance,
             by using the specified comparison type.
@@ -12677,7 +12671,7 @@
             <returns>A <see cref="T:System.Boolean"/> result.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument <paramref name="comparisonType"/> is not defined.</exception>
         </member>
-        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.&lt;&gt;E__1.GetHashCode(Puzzles.Meta.Transforming.BoardComparison)">
+        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.&lt;&gt;E__1.GetHashCode(Sudoku.Shuffling.Transforming.GridComparison)">
             <inheritdoc cref="M:Sudoku.Concepts.Grid.GetHashCode"/>
             <param name="comparisonType">
             Indicates the comparison type that specifies the target grid to be calculated its hash code.
@@ -12686,7 +12680,7 @@
             Throws when the argument <paramref name="comparisonType"/> isn't defined.
             </exception>
         </member>
-        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.&lt;&gt;E__1.CompareTo(Sudoku.Concepts.Grid@,Puzzles.Meta.Transforming.BoardComparison)">
+        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.&lt;&gt;E__1.CompareTo(Sudoku.Concepts.Grid@,Sudoku.Shuffling.Transforming.GridComparison)">
             <summary>
             Compares the current instance with another object of the same type and returns an integer
             that indicates whether the current instance precedes, follows or occurs in the same position in the sort order as the other object.
@@ -12703,14 +12697,14 @@
         <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.get_MinLexGrid(Sudoku.Concepts.Grid@)">
             <inheritdoc cref="P:Sudoku.Shuffling.Minlex.GridMinlexExtensions.&lt;&gt;E__1.MinLexGrid"/>
         </member>
-        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.Equals(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Puzzles.Meta.Transforming.BoardComparison)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.&lt;&gt;E__1.Equals(Sudoku.Concepts.Grid@,Puzzles.Meta.Transforming.BoardComparison)"/>
+        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.Equals(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Shuffling.Transforming.GridComparison)">
+            <inheritdoc cref="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.&lt;&gt;E__1.Equals(Sudoku.Concepts.Grid@,Sudoku.Shuffling.Transforming.GridComparison)"/>
         </member>
-        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.GetHashCode(Sudoku.Concepts.Grid@,Puzzles.Meta.Transforming.BoardComparison)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.&lt;&gt;E__1.GetHashCode(Puzzles.Meta.Transforming.BoardComparison)"/>
+        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.GetHashCode(Sudoku.Concepts.Grid@,Sudoku.Shuffling.Transforming.GridComparison)">
+            <inheritdoc cref="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.&lt;&gt;E__1.GetHashCode(Sudoku.Shuffling.Transforming.GridComparison)"/>
         </member>
-        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.CompareTo(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Puzzles.Meta.Transforming.BoardComparison)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.&lt;&gt;E__1.CompareTo(Sudoku.Concepts.Grid@,Puzzles.Meta.Transforming.BoardComparison)"/>
+        <member name="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.CompareTo(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Shuffling.Transforming.GridComparison)">
+            <inheritdoc cref="M:Sudoku.Shuffling.Minlex.GridMinlexExtensions.&lt;&gt;E__1.CompareTo(Sudoku.Concepts.Grid@,Sudoku.Shuffling.Transforming.GridComparison)"/>
         </member>
         <member name="T:Sudoku.Shuffling.Minlex.GridPattern">
             <summary>
@@ -12849,6 +12843,23 @@
             <param name="grid">Indicates the source grid.</param>
             <returns>The corresponding minimal lexicographical form of the grid.</returns>
         </member>
+        <member name="T:Sudoku.Shuffling.Transforming.GridComparison">
+            <summary>
+            Specifies the comparison rule of a <see cref="T:Sudoku.Concepts.IGrid`1"/> instance.
+            </summary>
+            <seealso cref="T:Sudoku.Concepts.IGrid`1"/>
+        </member>
+        <member name="F:Sudoku.Shuffling.Transforming.GridComparison.Default">
+            <summary>
+            Indicates two <see cref="T:Sudoku.Concepts.IGrid`1"/> instances compare with each other by using the default checking rule
+            (cell by cell, bit by bit).
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Transforming.GridComparison.IncludingTransforms">
+            <summary>
+            Indicates two <see cref="T:Sudoku.Concepts.IGrid`1"/> instances compare with each other, including considerations on transforming cases.
+            </summary>
+        </member>
         <member name="T:Sudoku.Shuffling.Transforming.GridTransformingExtensions">
             <summary>
             Provides with extension methods on <see cref="T:Sudoku.Concepts.Grid"/>.
@@ -12863,6 +12874,99 @@
             <param name="transformTypes">
             The transform types can be applied. You can use <c><see cref="T:Sudoku.Shuffling.Transforming.TransformType"/>.<see langword="operator"/> |</c> to combine flags.
             </param>
+        </member>
+        <member name="T:Sudoku.Shuffling.Transforming.IElementSwappingTransformable`2">
+            <summary>
+            Represents an object that can swap elements of itself.
+            </summary>
+            <typeparam name="TSelf"><self-type-constraint>
+		<para>Indicates the type implementing this interface.</para>
+		<para>
+			This type doesn't use any extra syntax to constraint such usage, but C# will check for it.
+			The type will include a <see langword="where" /> constraint that implements the interface itself
+			to declare such "self constraint" usage:
+			<code><![CDATA[interface ISelfType<TSelf> where TSelf : ISelfType<TSelf>]]></code>
+			In addition, the type should be named <c>TSelf</c> in order to tell type parameters with the others.
+		</para>
+	</self-type-constraint></typeparam>
+            <typeparam name="TElement">The type of each element.</typeparam>
+        </member>
+        <member name="M:Sudoku.Shuffling.Transforming.IElementSwappingTransformable`2.SwapElement(`1,`1)">
+            <summary>
+            Swaps all elements whose values are equal to <paramref name="element1"/> and <paramref name="element2"/>.
+            </summary>
+            <param name="element1">The first element to be swapped.</param>
+            <param name="element2">The second element to be swapped.</param>
+            <returns>The result swapped.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.Transforming.IElementSwappingTransformable`2.Shuffle">
+            <summary>
+            Try to shuffle <typeparamref name="TSelf"/> instance of elements, keeping equality with the current instance.
+            </summary>
+            <returns>The result shuffled.</returns>
+        </member>
+        <member name="T:Sudoku.Shuffling.Transforming.IGridTransformable`1">
+            <summary>
+            Represents an object that can be transformed into another kind of value.
+            </summary>
+            <typeparam name="TSelf"><self-type-constraint>
+		<para>Indicates the type implementing this interface.</para>
+		<para>
+			This type doesn't use any extra syntax to constraint such usage, but C# will check for it.
+			The type will include a <see langword="where" /> constraint that implements the interface itself
+			to declare such "self constraint" usage:
+			<code><![CDATA[interface ISelfType<TSelf> where TSelf : ISelfType<TSelf>]]></code>
+			In addition, the type should be named <c>TSelf</c> in order to tell type parameters with the others.
+		</para>
+	</self-type-constraint></typeparam>
+        </member>
+        <member name="M:Sudoku.Shuffling.Transforming.IGridTransformable`1.RotateClockwise">
+            <summary>
+            Rotate <typeparamref name="TSelf"/> instance clockwisely.
+            </summary>
+            <returns>The result rotated.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.Transforming.IGridTransformable`1.RotateCounterclockwise">
+            <summary>
+            Rotate <typeparamref name="TSelf"/> instance counter-clockwisely.
+            </summary>
+            <returns>The result rotated.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.Transforming.IGridTransformable`1.RotatePi">
+            <summary>
+            Rotate <typeparamref name="TSelf"/> instance 180 degrees.
+            </summary>
+            <returns>The result rotated.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.Transforming.IGridTransformable`1.MirrorLeftRight">
+            <summary>
+            Mirror <typeparamref name="TSelf"/> instance in left-right side.
+            </summary>
+            <returns>The result fliped.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.Transforming.IGridTransformable`1.MirrorTopBottom">
+            <summary>
+            Mirror <typeparamref name="TSelf"/> instance in top-bottom side.
+            </summary>
+            <returns>The result fliped.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.Transforming.IGridTransformable`1.MirrorDiagonal">
+            <summary>
+            Mirror <typeparamref name="TSelf"/> instance in diagonal.
+            </summary>
+            <returns>The result fliped.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.Transforming.IGridTransformable`1.Transpose">
+            <summary>
+            Simply calls <see cref="M:Sudoku.Shuffling.Transforming.IGridTransformable`1.MirrorDiagonal"/>.
+            </summary>
+            <returns>The result fliped.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.Transforming.IGridTransformable`1.MirrorAntidiagonal">
+            <summary>
+            Mirror <typeparamref name="TSelf"/> instance in anti-diagonal.
+            </summary>
+            <returns>The result fliped.</returns>
         </member>
         <member name="T:Sudoku.Shuffling.Transforming.RandomizationExtensions">
             <summary>
@@ -14389,6 +14493,39 @@
         </member>
         <member name="M:Sudoku.Solving.SolverTypeExtensions.CreateSolver(Sudoku.Solving.SolverType)">
             <inheritdoc cref="M:Sudoku.Solving.SolverTypeExtensions.&lt;&gt;E__0.CreateSolver(Sudoku.Solving.SolverType)"/>
+        </member>
+        <member name="T:Sudoku.Solving.Uniqueness">
+            <summary>
+            Represents a flag describing the number of solutions to a puzzle.
+            </summary>
+            <remarks><flags-attribute>
+		<para>
+			<i>
+				This type is marked <see cref="T:System.FlagsAttribute" />, which means you can use
+				<see langword="operator" /> | to combine multiple fields.
+			</i>
+		</para>
+	</flags-attribute></remarks>
+        </member>
+        <member name="F:Sudoku.Solving.Uniqueness.None">
+            <summary>
+            The placeholder of this type.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.Uniqueness.Bad">
+            <summary>
+            Indicates the puzzle has no valid solution.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.Uniqueness.Unique">
+            <summary>
+            Indicates the puzzle has a unique solution.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.Uniqueness.Multiple">
+            <summary>
+            Indicates the puzzle has multiple solutions.
+            </summary>
         </member>
         <member name="T:Sudoku.SudokuType">
             <summary>

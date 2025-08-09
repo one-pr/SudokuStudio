@@ -3,7 +3,7 @@ namespace Sudoku.Analytics;
 /// <summary>
 /// Represents an instance that can collect all possible <see cref="Step"/>s in a grid for one state.
 /// </summary>
-public sealed class Collector : StepGatherer, ICollector<Grid, Step>
+public sealed class Collector : StepGatherer
 {
 	/// <summary>
 	/// Indicates the maximum steps can be collected.
@@ -140,8 +140,4 @@ public sealed class Collector : StepGatherer, ICollector<Grid, Step>
 			return bag.AsSpan();
 		}
 	}
-
-	/// <inheritdoc/>
-	ReadOnlySpan<Step> ICollector<Grid, Step>.Collect(Grid board, CancellationToken cancellationToken)
-		=> Collect(board, cancellationToken: cancellationToken);
 }

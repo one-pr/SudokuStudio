@@ -1,13 +1,10 @@
 namespace Sudoku.Analytics;
 
-using meta_analysis = Puzzles.Meta.Analytics;
-
 /// <summary>
 /// Provides the result after <see cref="Analyzer"/> solving a puzzle.
 /// </summary>
 /// <param name="Puzzle">Indicates the original puzzle to be solved.</param>
 public sealed partial record AnalysisResult(in Grid Puzzle) :
-	IAnalysisResult<AnalysisResult, Grid, Step>,
 	IAnyAllMethod<AnalysisResult, Step>,
 	ICastMethod<AnalysisResult, Step>,
 	IEnumerable<Step>,
@@ -313,33 +310,6 @@ public sealed partial record AnalysisResult(in Grid Puzzle) :
 
 	/// <inheritdoc/>
 	int IReadOnlyCollection<KeyValuePair<Grid, Step>>.Count => Span.Length;
-
-	/// <inheritdoc/>
-	meta_analysis::FailedReason IAnalysisResult<AnalysisResult, Grid, Step>.FailedReason
-	{
-		get => FailedReason switch
-		{
-			FailedReason.Nothing => meta_analysis::FailedReason.None,
-			FailedReason.PuzzleIsInvalid or FailedReason.PuzzleHasNoSolution or FailedReason.PuzzleHasMultipleSolutions
-				or FailedReason.AnalyzerGiveUp
-				=> meta_analysis::FailedReason.PuzzleInvalid,
-			FailedReason.UserCancelled => meta_analysis::FailedReason.UserCancelled,
-			FailedReason.ExceptionThrown or FailedReason.WrongStep or FailedReason.NotImplemented
-				=> meta_analysis::FailedReason.ExceptionThrown
-		};
-
-		init => FailedReason = value switch
-		{
-			meta_analysis::FailedReason.None => FailedReason.Nothing,
-			meta_analysis::FailedReason.PuzzleInvalid => FailedReason.PuzzleIsInvalid,
-			meta_analysis::FailedReason.UserCancelled => FailedReason.UserCancelled,
-			meta_analysis::FailedReason.ExceptionThrown => FailedReason.ExceptionThrown,
-			_ => throw new ArgumentOutOfRangeException(nameof(value))
-		};
-	}
-
-	/// <inheritdoc/>
-	ReadOnlySpan<Step> IAnalysisResult<AnalysisResult, Grid, Step>.Steps => StepsSpan;
 
 	/// <inheritdoc/>
 	IEnumerable<Grid> IReadOnlyDictionary<Grid, Step>.Keys => InterimGrids ?? [];

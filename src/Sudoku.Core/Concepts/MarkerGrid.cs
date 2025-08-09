@@ -600,19 +600,19 @@ public struct MarkerGrid : GridBase
 	void GridBase.SetMask(Cell cell, Mask mask) => this[cell] = mask;
 
 	/// <inheritdoc/>
-	MarkerGrid IBoardTransformable<MarkerGrid>.RotateClockwise() => this.RotateClockwise();
+	MarkerGrid IGridTransformable<MarkerGrid>.RotateClockwise() => this.RotateClockwise();
 
 	/// <inheritdoc/>
-	MarkerGrid IBoardTransformable<MarkerGrid>.MirrorLeftRight() => this.MirrorLeftRight();
+	MarkerGrid IGridTransformable<MarkerGrid>.MirrorLeftRight() => this.MirrorLeftRight();
 
 	/// <inheritdoc/>
-	MarkerGrid IBoardTransformable<MarkerGrid>.MirrorTopBottom() => this.MirrorTopBottom();
+	MarkerGrid IGridTransformable<MarkerGrid>.MirrorTopBottom() => this.MirrorTopBottom();
 
 	/// <inheritdoc/>
-	MarkerGrid IBoardTransformable<MarkerGrid>.MirrorDiagonal() => this.MirrorDiagonal();
+	MarkerGrid IGridTransformable<MarkerGrid>.MirrorDiagonal() => this.MirrorDiagonal();
 
 	/// <inheritdoc/>
-	MarkerGrid IBoardTransformable<MarkerGrid>.MirrorAntidiagonal() => this.MirrorAntidiagonal();
+	MarkerGrid IGridTransformable<MarkerGrid>.MirrorAntidiagonal() => this.MirrorAntidiagonal();
 
 	/// <inheritdoc/>
 	MarkerGrid IElementSwappingTransformable<MarkerGrid, Digit>.SwapElement(Digit element1, Digit element2)

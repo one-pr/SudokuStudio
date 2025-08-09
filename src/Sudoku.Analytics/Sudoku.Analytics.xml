@@ -279,12 +279,6 @@
         <member name="P:Sudoku.Analytics.AnalysisResult.System#Collections#Generic#IReadOnlyCollection{System#Collections#Generic#KeyValuePair{Sudoku#Concepts#Grid,Sudoku#Analytics#Step}}#Count">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Analytics.AnalysisResult.Puzzles#Meta#Analytics#IAnalysisResult{Sudoku#Analytics#AnalysisResult,Sudoku#Concepts#Grid,Sudoku#Analytics#Step}#FailedReason">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.AnalysisResult.Puzzles#Meta#Analytics#IAnalysisResult{Sudoku#Analytics#AnalysisResult,Sudoku#Concepts#Grid,Sudoku#Analytics#Step}#Steps">
-            <inheritdoc/>
-        </member>
         <member name="P:Sudoku.Analytics.AnalysisResult.System#Collections#Generic#IReadOnlyDictionary{Sudoku#Concepts#Grid,Sudoku#Analytics#Step}#Keys">
             <inheritdoc/>
         </member>
@@ -701,9 +695,6 @@
             <param name="progress">Indicates the progress reporter object.</param>
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
             <returns>The result value.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Analyzer.Puzzles#Meta#Analytics#IAnalyzer{Sudoku#Analytics#Analyzer,Sudoku#Analytics#AnalysisResult,Sudoku#Concepts#Grid,Sudoku#Analytics#Step}#Analyze(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
-            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Analyzer.ConclusionBackingField(Sudoku.Analytics.Step)">
             <summary>
@@ -1656,9 +1647,6 @@
             <exception cref="T:System.InvalidOperationException">
             Throws when property <see cref="P:Sudoku.Analytics.Collector.DifficultyLevelMode"/> is not defined.
             </exception>
-        </member>
-        <member name="M:Sudoku.Analytics.Collector.Puzzles#Meta#Analytics#ICollector{Sudoku#Concepts#Grid,Sudoku#Analytics#Step}#Collect(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
-            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Configuration.BabaGroupInitialLetter">
             <summary>

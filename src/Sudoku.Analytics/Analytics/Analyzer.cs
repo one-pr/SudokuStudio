@@ -6,7 +6,7 @@ namespace Sudoku.Analytics;
 /// </summary>
 /// <seealso cref="AnalysisResult"/>
 /// <seealso cref="Analyzer"/>
-public sealed class Analyzer : StepGatherer, IAnalyzer<Analyzer, AnalysisResult, Grid, Step>
+public sealed class Analyzer : StepGatherer
 {
 	/// <summary>
 	/// Indicates the default steps capacity.
@@ -667,10 +667,6 @@ public sealed class Analyzer : StepGatherer, IAnalyzer<Analyzer, AnalysisResult,
 			}
 		}
 	}
-
-	/// <inheritdoc/>
-	AnalysisResult IAnalyzer<Analyzer, AnalysisResult, Grid, Step>.Analyze(Grid board, CancellationToken cancellationToken)
-		=> Analyze(board, cancellationToken: cancellationToken);
 
 
 	/// <summary>

@@ -46,11 +46,11 @@ public static class GridMinlexExtensions
 		/// <param name="comparisonType">One of the enumeration values that specifies the rules for the comparison.</param>
 		/// <returns>A <see cref="bool"/> result.</returns>
 		/// <exception cref="ArgumentOutOfRangeException">Throws when the argument <paramref name="comparisonType"/> is not defined.</exception>
-		public bool Equals(in Grid other, BoardComparison comparisonType)
+		public bool Equals(in Grid other, GridComparison comparisonType)
 			=> comparisonType switch
 			{
-				BoardComparison.Default => @this.Equals(other),
-				BoardComparison.IncludingTransforms => @this.MinLexGrid == other.MinLexGrid,
+				GridComparison.Default => @this.Equals(other),
+				GridComparison.IncludingTransforms => @this.MinLexGrid == other.MinLexGrid,
 				_ => throw new ArgumentOutOfRangeException(nameof(comparisonType))
 			};
 
@@ -61,12 +61,12 @@ public static class GridMinlexExtensions
 		/// <exception cref="ArgumentOutOfRangeException">
 		/// Throws when the argument <paramref name="comparisonType"/> isn't defined.
 		/// </exception>
-		public int GetHashCode(BoardComparison comparisonType)
+		public int GetHashCode(GridComparison comparisonType)
 		{
 			var grid = comparisonType switch
 			{
-				BoardComparison.Default => @this,
-				BoardComparison.IncludingTransforms => @this.MinLexGrid,
+				GridComparison.Default => @this,
+				GridComparison.IncludingTransforms => @this.MinLexGrid,
 				_ => throw new ArgumentOutOfRangeException(nameof(comparisonType))
 			};
 			return grid.GetHashCode();
@@ -81,13 +81,13 @@ public static class GridMinlexExtensions
 		/// <returns>A value that indicates the relative order of the objects being compared.</returns>
 		/// <exception cref="InvalidOperationException">Throws when one of the grids to be compared is a Sukaku puzzle.</exception>
 		/// <exception cref="ArgumentOutOfRangeException">Throws when the argument <paramref name="comparisonType"/> is not defined.</exception>
-		public int CompareTo(in Grid other, BoardComparison comparisonType)
+		public int CompareTo(in Grid other, GridComparison comparisonType)
 			=> (@this.PuzzleType, other.PuzzleType) switch
 			{
 				(not SudokuType.Sukaku, not SudokuType.Sukaku) => comparisonType switch
 				{
-					BoardComparison.Default => @this.ToString("#").CompareTo(other.ToString("#")),
-					BoardComparison.IncludingTransforms => @this.MinLexGrid.ToString("#").CompareTo(other.MinLexGrid.ToString("#")),
+					GridComparison.Default => @this.ToString("#").CompareTo(other.ToString("#")),
+					GridComparison.IncludingTransforms => @this.MinLexGrid.ToString("#").CompareTo(other.MinLexGrid.ToString("#")),
 					_ => throw new ArgumentOutOfRangeException(nameof(comparisonType))
 				},
 				_ => throw new InvalidOperationException(SR.ExceptionMessage("ComparableGridMustBeStandard"))

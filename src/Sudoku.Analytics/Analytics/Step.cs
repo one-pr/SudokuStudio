@@ -12,8 +12,7 @@ public abstract class Step(ReadOnlyMemory<Conclusion> conclusions, View[]? views
 	IComparisonOperators<Step, Step, bool>,
 	IDrawable,
 	IEquatable<Step>,
-	IFormattable,
-	IStep<Step>
+	IFormattable
 {
 	/// <summary>
 	/// Indicates whether the step is an assignment. The possible result values are:

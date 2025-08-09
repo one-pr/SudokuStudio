@@ -3,7 +3,7 @@ namespace Sudoku.CommandLine.Options;
 /// <summary>
 /// Represents a comparing method option.
 /// </summary>
-internal sealed class ComparingMethodOption : Option<BoardComparison>, IOption<BoardComparison>
+internal sealed class ComparingMethodOption : Option<GridComparison>, IOption<GridComparison>
 {
 	/// <summary>
 	/// Initializes a <see cref="ComparingMethodOption"/> instance.
@@ -12,11 +12,11 @@ internal sealed class ComparingMethodOption : Option<BoardComparison>, IOption<B
 	{
 		Arity = ArgumentArity.ExactlyOne;
 		IsRequired = false;
-		SetDefaultValue(BoardComparison.Default);
+		SetDefaultValue(GridComparison.Default);
 	}
 
 
 	/// <inheritdoc/>
-	static BoardComparison IMySymbol<BoardComparison>.ParseArgument(ArgumentResult result)
+	static GridComparison IMySymbol<GridComparison>.ParseArgument(ArgumentResult result)
 		=> throw new NotImplementedException();
 }
