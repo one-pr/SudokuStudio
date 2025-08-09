@@ -7767,19 +7767,6 @@
         <member name="M:System.TimeSpanLiterals.get_year(System.Double)">
             <inheritdoc cref="P:System.TimeSpanLiterals.&lt;&gt;E__1.year"/>
         </member>
-        <member name="T:System.TimeSpanLiterals.&lt;&gt;E__2">
-            <summary>
-            Provides extension members on <see cref="T:System.TimeSpan"/>.
-            </summary>
-        </member>
-        <member name="P:System.TimeSpanLiterals.&lt;&gt;E__2.NormalFormat">
-            <summary>
-            Represents normal format <c>"hh:mm:ss.fff"</c>.
-            </summary>
-        </member>
-        <member name="M:System.TimeSpanLiterals.get_NormalFormat">
-            <inheritdoc cref="P:System.TimeSpanLiterals.&lt;&gt;E__2.NormalFormat"/>
-        </member>
         <member name="T:System.ValueTupleExtensions">
             <summary>
             Represents with extension methods for value tuple type set.
