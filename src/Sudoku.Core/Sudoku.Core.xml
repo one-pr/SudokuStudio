@@ -6,29 +6,7 @@
     <members>
         <member name="T:Sudoku.Algorithms.Distance">
             <summary>
-            Represents the methods that calculates for distance.
-            </summary>
-            <param name="_p">Indicates the integer part.</param>
-            <param name="_q">Indicates the root part.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException">Throws when either <paramref name="_p"/> or <paramref name="_q"/> are less than 1.</exception>
-            <remarks>
-            This type is implemented via irrational numbers logic that only takes a square root.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Algorithms.Distance.#ctor(System.Int32,System.Int32)">
-            <summary>
-            Represents the methods that calculates for distance.
-            </summary>
-            <param name="_p">Indicates the integer part.</param>
-            <param name="_q">Indicates the root part.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException">Throws when either <paramref name="_p"/> or <paramref name="_q"/> are less than 1.</exception>
-            <remarks>
-            This type is implemented via irrational numbers logic that only takes a square root.
-            </remarks>
-        </member>
-        <member name="F:Sudoku.Algorithms.Distance.RootPartSpecifier">
-            <summary>
-            Indicates the default root part specifier.
+            Represents a way to calculate distances between two cells.
             </summary>
         </member>
         <member name="F:Sudoku.Algorithms.Distance.DistanceTable">
@@ -46,52 +24,6 @@
             </para>
             </remarks>
             <seealso cref="M:Sudoku.Algorithms.Distance.GetDistance(System.Int32,System.Int32)"/>
-        </member>
-        <member name="F:Sudoku.Algorithms.Distance._p">
-            <summary>
-            The root value of P.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Algorithms.Distance._q">
-            <summary>
-            The root value of Q.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Algorithms.Distance.#ctor">
-            <summary>
-            Initializes a <see cref="T:Sudoku.Algorithms.Distance"/> instance via both values 1.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Algorithms.Distance.#ctor(System.Int32)">
-            <summary>
-            Initializes a <see cref="T:Sudoku.Algorithms.Distance"/> instance via the root part, with the default integer part 1.
-            <i>This value will automatically simplify the root expression, e.g. sqrt(18) -> 3sqrt(2).</i>
-            </summary>
-            <param name="q">The root value.</param>
-        </member>
-        <member name="P:Sudoku.Algorithms.Distance.RawValue">
-            <summary>
-            The raw value of the distance. The value will be output as a <see cref="T:System.Double"/> value.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Algorithms.Distance.Equals(System.Object)">
-            <inheritdoc cref="M:System.ReadOnlySpan`1.Equals(System.Object)"/>
-        </member>
-        <member name="M:Sudoku.Algorithms.Distance.Equals(Sudoku.Algorithms.Distance)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Algorithms.Distance.GetHashCode">
-            <inheritdoc cref="M:System.Object.GetHashCode"/>
-        </member>
-        <member name="M:Sudoku.Algorithms.Distance.CompareTo(Sudoku.Algorithms.Distance)">
-            <inheritdoc cref="M:System.IComparable`1.CompareTo(`0)"/>
-        </member>
-        <member name="M:Sudoku.Algorithms.Distance.ToString">
-            <inheritdoc cref="M:System.Object.ToString"/>
-            <remarks>
-            The output format will be "<c>psq</c>", where <c>p</c> and <c>q</c> are the variables, and <c>s</c> means "square root of".
-            For example, "<c>3s2</c>" means <c>3 * sqrt(2)</c>, i.e. <c>sqrt(18)</c>.
-            </remarks>
         </member>
         <member name="M:Sudoku.Algorithms.Distance.GetDistance(System.Int32,System.Int32)">
             <summary>
@@ -127,31 +59,6 @@
             <exception cref="T:System.InvalidOperationException">
             Throws when cells <paramref name="cell1"/> and <paramref name="cell2"/> are not in a same line (row or column).
             </exception>
-        </member>
-        <member name="M:Sudoku.Algorithms.Distance.SimplifyRootPart(System.Int32@)">
-            <summary>
-            Simplifies for root part.
-            </summary>
-            <param name="base">The root value.</param>
-            <returns>The P value.</returns>
-        </member>
-        <member name="M:Sudoku.Algorithms.Distance.op_Equality(Sudoku.Algorithms.Distance,Sudoku.Algorithms.Distance)">
-            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Algorithms.Distance.op_Inequality(Sudoku.Algorithms.Distance,Sudoku.Algorithms.Distance)">
-            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Algorithms.Distance.op_GreaterThan(Sudoku.Algorithms.Distance,Sudoku.Algorithms.Distance)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThan(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Algorithms.Distance.op_LessThan(Sudoku.Algorithms.Distance,Sudoku.Algorithms.Distance)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThan(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Algorithms.Distance.op_GreaterThanOrEqual(Sudoku.Algorithms.Distance,Sudoku.Algorithms.Distance)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThanOrEqual(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Algorithms.Distance.op_LessThanOrEqual(Sudoku.Algorithms.Distance,Sudoku.Algorithms.Distance)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThanOrEqual(`0,`1)"/>
         </member>
         <member name="T:Sudoku.Algorithms.EmptyArea">
             <summary>
