@@ -215,19 +215,9 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 	internal SudokuPaneCell[] _children;
 
 	/// <summary>
-	/// Indicates the internal compositor.
-	/// </summary>
-	private readonly Compositor _compositor = CompositionTarget.GetCompositorForCurrentThread();
-
-	/// <summary>
 	/// The backing field of property <see cref="Puzzle"/>.
 	/// </summary>
 	private Grid _puzzle;
-
-	/// <summary>
-	/// Indicates the spring animation.
-	/// </summary>
-	private SpringVector3NaturalMotionAnimation? _springAnimation;
 
 
 	/// <summary>
@@ -918,39 +908,6 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 	}
 
 	/// <summary>
-	/// Try to reset scale if worth.
-	/// </summary>
-	private void ResetScale()
-	{
-		for (var c = 0; c < 81; c++)
-		{
-			if (_children[c].ValueTextBlock is { Scale: not { X: 1.0F, Y: 1.0F, Z: 1.0F } } textBlock)
-			{
-				CreateOrUpdateSpringAnimation(1.0F, .4F);
-				textBlock.StartAnimation(_springAnimation);
-			}
-		}
-	}
-
-	/// <summary>
-	/// Create or update spring animation.
-	/// </summary>
-	/// <param name="finalValue">The value to be set. The value will be used for scaling the control.</param>
-	/// <param name="dampingRatio">The value indicating how much damping is applied to the spring.</param>
-	[MemberNotNull(nameof(_springAnimation))]
-	private void CreateOrUpdateSpringAnimation(float finalValue, float dampingRatio)
-	{
-		if (_springAnimation is null)
-		{
-			_springAnimation = _compositor.CreateSpringVector3Animation();
-			_springAnimation.Target = nameof(Scale);
-		}
-
-		_springAnimation.FinalValue = new(finalValue);
-		_springAnimation.DampingRatio = dampingRatio;
-	}
-
-	/// <summary>
 	/// To initialize <see cref="_children"/> values via the specified grid.
 	/// </summary>
 	/// <param name="grid">The grid.</param>
@@ -1015,12 +972,6 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 				_redoStack.Clear();
 				break;
 			}
-		}
-
-		// Reset scale.
-		if (EnableAnimationFeedback)
-		{
-			ResetScale();
 		}
 
 		// Triggers the event.
