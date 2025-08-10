@@ -896,7 +896,6 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 		if (EnableAnimationFeedback)
 		{
 			HouseCompleted += static (sender, e) => sender.OnHouseCompletedAsync(e);
-			Clicked += static (sender, e) => sender.ValueClicked(e.MouseButton, e.Cell);
 		}
 	}
 
@@ -915,46 +914,6 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 		{
 			cells.ForEach(cell => _children[cell].LightUpAsync(250));
 			await 100.ms;
-		}
-	}
-
-	/// <summary>
-	/// Update scaling for <see cref="SudokuPaneCell"/> controls where the corresponding cell is value.
-	/// </summary>
-	/// <param name="button">The clicked button.</param>
-	/// <param name="cell">The cell to be checked.</param>
-	private void ValueClicked(MouseButton button, Cell cell)
-	{
-		if (button != MouseButton.Left)
-		{
-			return;
-		}
-
-		if (_puzzle.GetDigit(cell) is not (var digit and not -1))
-		{
-			return;
-		}
-
-		var a = new List<TextBlock>();
-		var b = new List<TextBlock>();
-		for (var c = 0; c < 81; c++)
-		{
-			var textBlock = _children[c].ValueTextBlock;
-			if (_puzzle.GetState(c) != CellState.Empty)
-			{
-				(_puzzle.GetDigit(c) == digit ? a : b).Add(textBlock);
-			}
-		}
-
-		ResetScale();
-		a.ForEach(textBlock => updateScale(1.6F, textBlock));
-		b.ForEach(textBlock => updateScale(1.0F, textBlock));
-
-
-		void updateScale(float value, TextBlock textBlock)
-		{
-			CreateOrUpdateSpringAnimation(value, .4F);
-			textBlock.StartAnimation(_springAnimation);
 		}
 	}
 
