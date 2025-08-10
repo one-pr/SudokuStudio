@@ -148,6 +148,8 @@ internal sealed partial class SudokuPaneCell : UserControl
 			return;
 		}
 
+		BasePane.TriggerClicked(MouseButton.Left, cell * 9 + digit, true);
+
 		modified.SetDigit(cell, digit);
 		BasePane.SetPuzzleInternal(modified, PuzzleUpdatingMethod.UserUpdating);
 
@@ -166,7 +168,7 @@ internal sealed partial class SudokuPaneCell : UserControl
 			return;
 		}
 
-		BasePane.TriggerClicked(MouseButton.Right, cell * 9 + digit);
+		BasePane.TriggerClicked(MouseButton.Right, cell * 9 + digit, false);
 
 		if (!BasePane.EnableRightTapRemoving || modified.GetState(cell) != CellState.Empty || (modified.GetCandidates(cell) >> digit & 1) == 0)
 		{
@@ -191,6 +193,6 @@ internal sealed partial class SudokuPaneCell : UserControl
 			return;
 		}
 
-		BasePane.TriggerClicked(MouseButton.Left, cell * 9 + digit);
+		BasePane.TriggerClicked(MouseButton.Left, cell * 9 + digit, false);
 	}
 }

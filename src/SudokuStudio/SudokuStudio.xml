@@ -4235,15 +4235,22 @@
             </summary>
             <param name="mouseButton"><inheritdoc cref="P:SudokuStudio.Interaction.GridClickedEventArgs.MouseButton" path="/summary"/></param>
             <param name="candidate"><inheritdoc cref="P:SudokuStudio.Interaction.GridClickedEventArgs.Candidate" path="/summary"/></param>
+            <param name="isDoubleTapped"><inheritdoc cref="P:SudokuStudio.Interaction.GridClickedEventArgs.IsDoubleTapped" path="/summary"/></param>
             <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.Clicked"/>
         </member>
-        <member name="M:SudokuStudio.Interaction.GridClickedEventArgs.#ctor(SudokuStudio.Interaction.MouseButton,System.Int32)">
+        <member name="M:SudokuStudio.Interaction.GridClickedEventArgs.#ctor(SudokuStudio.Interaction.MouseButton,System.Int32,System.Boolean)">
             <summary>
             Provides event data used by event <see cref="E:SudokuStudio.Views.Controls.SudokuPane.Clicked"/>.
             </summary>
             <param name="mouseButton"><inheritdoc cref="P:SudokuStudio.Interaction.GridClickedEventArgs.MouseButton" path="/summary"/></param>
             <param name="candidate"><inheritdoc cref="P:SudokuStudio.Interaction.GridClickedEventArgs.Candidate" path="/summary"/></param>
+            <param name="isDoubleTapped"><inheritdoc cref="P:SudokuStudio.Interaction.GridClickedEventArgs.IsDoubleTapped" path="/summary"/></param>
             <seealso cref="E:SudokuStudio.Views.Controls.SudokuPane.Clicked"/>
+        </member>
+        <member name="P:SudokuStudio.Interaction.GridClickedEventArgs.IsDoubleTapped">
+            <summary>
+            Indicates whether the operation is double-tapped.
+            </summary>
         </member>
         <member name="P:SudokuStudio.Interaction.GridClickedEventArgs.MouseButton">
             <summary>
@@ -13294,13 +13301,14 @@
             <param name="value">The new value to assign.</param>
             <seealso cref="T:SudokuStudio.Views.Controls.SudokuPaneCell"/>
         </member>
-        <member name="M:SudokuStudio.Views.Controls.SudokuPane.TriggerClicked(SudokuStudio.Interaction.MouseButton,System.Int32)">
+        <member name="M:SudokuStudio.Views.Controls.SudokuPane.TriggerClicked(SudokuStudio.Interaction.MouseButton,System.Int32,System.Boolean)">
             <summary>
             <para>Triggers <see cref="E:SudokuStudio.Views.Controls.SudokuPane.Clicked"/> event.</para>
             <para><inheritdoc cref="M:SudokuStudio.Views.Controls.SudokuPane.TriggerGridUpdated(SudokuStudio.Interaction.GridUpdatedBehavior,System.Object)" path="//summary/para[2]"/></para>
             </summary>
             <param name="mouseButton">Indicates the mouse button clicked.</param>
             <param name="candidate">The candidate.</param>
+            <param name="isDoubleTapped">Indicates whether the operation is double-tapped.</param>
         </member>
         <member name="M:SudokuStudio.Views.Controls.SudokuPane.SetPuzzleInternal(Sudoku.Concepts.Grid@,SudokuStudio.Interaction.PuzzleUpdatingMethod,System.Boolean)">
             <summary>

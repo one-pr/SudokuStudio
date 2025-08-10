@@ -833,7 +833,9 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 	/// </summary>
 	/// <param name="mouseButton">Indicates the mouse button clicked.</param>
 	/// <param name="candidate">The candidate.</param>
-	internal void TriggerClicked(MouseButton mouseButton, Candidate candidate) => Clicked?.Invoke(this, new(mouseButton, candidate));
+	/// <param name="isDoubleTapped">Indicates whether the operation is double-tapped.</param>
+	internal void TriggerClicked(MouseButton mouseButton, Candidate candidate, bool isDoubleTapped)
+		=> Clicked?.Invoke(this, new(mouseButton, candidate, isDoubleTapped));
 
 	/// <summary>
 	/// <para>Try to set puzzle, with a <see cref="bool"/> value indicating whether undoing and redoing stacks should be cleared.</para>

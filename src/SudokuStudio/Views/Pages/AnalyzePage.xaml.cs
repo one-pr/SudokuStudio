@@ -434,12 +434,12 @@ public sealed partial class AnalyzePage : Page
 						switch (SudokuFileHandler.Read(filePath))
 						{
 							case [
-							{
-								BaseGrid: var g,
-								GridString: var gridStr,
-								ShowCandidates: var showCandidates,
-								RenderableData: var possibleDrawable
-							}
+								{
+									BaseGrid: var g,
+									GridString: var gridStr,
+									ShowCandidates: var showCandidates,
+									RenderableData: var possibleDrawable
+								}
 							]:
 							{
 								SudokuPane.Puzzle = gridStr is not null && Grid.TryParse(gridStr, out var g2) ? g2 : g;
@@ -952,7 +952,24 @@ public sealed partial class AnalyzePage : Page
 	{
 		switch (this, e)
 		{
+			// Assign a value.
+			case ({ SudokuPane.EnableDoubleTapFilling: true }, { MouseButton: MouseButton.Left, IsDoubleTapped: true }):
+			{
+				VisualUnit = null;
+				SudokuPane.ViewUnit = null;
+				break;
+			}
+
+			// Delete a candidate via right click.
+			case ({ SudokuPane.EnableRightTapRemoving: true }, { MouseButton: MouseButton.Right }):
+			{
+				VisualUnit = null;
+				SudokuPane.ViewUnit = null;
+				break;
+			}
+
 #pragma warning disable format
+			// Delete a candidate via menu flyout buttons.
 			case (
 				{
 					SudokuPane: { DisableFlyout: false, Puzzle: var puzzle },
@@ -992,6 +1009,8 @@ public sealed partial class AnalyzePage : Page
 				}
 				break;
 			}
+
+			// Otherwise.
 			default:
 			{
 				// Manually set focus for pane because user clicked a candidate, displayed using a text block, making the pane unfocused.

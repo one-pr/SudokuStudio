@@ -5,9 +5,15 @@ namespace SudokuStudio.Interaction;
 /// </summary>
 /// <param name="mouseButton"><inheritdoc cref="MouseButton" path="/summary"/></param>
 /// <param name="candidate"><inheritdoc cref="Candidate" path="/summary"/></param>
+/// <param name="isDoubleTapped"><inheritdoc cref="IsDoubleTapped" path="/summary"/></param>
 /// <seealso cref="SudokuPane.Clicked"/>
-public sealed class GridClickedEventArgs(MouseButton mouseButton, Candidate candidate) : EventArgs
+public sealed class GridClickedEventArgs(MouseButton mouseButton, Candidate candidate, bool isDoubleTapped) : EventArgs
 {
+	/// <summary>
+	/// Indicates whether the operation is double-tapped.
+	/// </summary>
+	public bool IsDoubleTapped { get; } = isDoubleTapped;
+
 	/// <summary>
 	/// The candidate clicked.
 	/// </summary>
