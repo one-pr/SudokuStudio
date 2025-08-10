@@ -1,4 +1,4 @@
-namespace Sudoku.Drawing.Ocr;
+namespace Sudoku.Ocr;
 
 /// <summary>
 /// Define a sudoku recognition service provider.

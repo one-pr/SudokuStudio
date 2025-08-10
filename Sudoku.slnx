@@ -23,7 +23,7 @@
   <Folder Name="/Global Items/Licenses/">
     <File Path="LICENSE-CODE.txt" />
     <File Path="LICENSE-WIKI.txt" />
-    <File Path="src/Sudoku.Drawing.Ocr/LICENSE-OCR.txt" />
+    <File Path="src/Sudoku.Ocr/LICENSE-OCR.txt" />
   </Folder>
   <Folder Name="/Global Items/ReadMe Files/">
     <File Path="README-zh-cn.md" />
@@ -44,8 +44,10 @@
   </Project>
   <Project Path="src/Sudoku.Core/Sudoku.Core.csproj" />
   <Project Path="src/Sudoku.Drawing.Drawing2D/Sudoku.Drawing.Drawing2D.csproj" />
-  <Project Path="src/Sudoku.Drawing.Ocr/Sudoku.Drawing.Ocr.csproj" />
   <Project Path="src/Sudoku.Logging/Sudoku.Logging/Sudoku.Logging.csproj">
+    <BuildType Solution="Build|*" Project="Debug" />
+  </Project>
+  <Project Path="src/Sudoku.Ocr/Sudoku.Ocr.csproj" Id="b9e08212-cf7a-4469-9a21-083b4a5fcede">
     <BuildType Solution="Build|*" Project="Debug" />
   </Project>
   <Project Path="src/SudokuStudio/SudokuStudio.csproj">

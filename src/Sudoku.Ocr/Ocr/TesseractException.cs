@@ -1,4 +1,4 @@
-namespace Sudoku.Drawing.Ocr;
+namespace Sudoku.Ocr;
 
 /// <summary>
 /// Indicates the exception that throws when the tesseract has encountered an error.
