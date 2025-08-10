@@ -1,9 +1,9 @@
-namespace Sudoku.Analytics.Async;
+namespace Sudoku.Analytics;
 
 /// <summary>
-/// Represents an awaitable rule on collecting steps from a puzzle.
+/// Represents an awaitable rule on analysis for a puzzle.
 /// </summary>
-public readonly ref partial struct AsyncCollectorAwaitable : IStepGathererAwaitable<AsyncCollectorAwaitable.Awaiter>
+public readonly ref partial struct AsyncAnalyzerAwaitable : IStepGathererAwaitable<AsyncAnalyzerAwaitable.Awaiter>
 {
 	/// <summary>
 	/// Indicates whether to continue works on captured context instead of reverting back to previous context.
@@ -21,9 +21,9 @@ public readonly ref partial struct AsyncCollectorAwaitable : IStepGathererAwaita
 	private readonly CancellationToken _cancellationToken;
 
 	/// <summary>
-	/// Indicates the backing collector.
+	/// Indicates the backing analyzer.
 	/// </summary>
-	private readonly Collector _collector;
+	private readonly Analyzer _analyzer;
 
 	/// <summary>
 	/// Indicates the progress reporter.
@@ -32,24 +32,24 @@ public readonly ref partial struct AsyncCollectorAwaitable : IStepGathererAwaita
 
 
 	/// <summary>
-	/// Initializes an <see cref="AsyncCollectorAwaitable"/> object.
+	/// Initializes an <see cref="AsyncAnalyzerAwaitable"/> object.
 	/// </summary>
-	/// <param name="collector">Indicates the collector.</param>
+	/// <param name="analyzer">Indicates the analyzer.</param>
 	/// <param name="grid">Indicates the grid.</param>
 	/// <param name="progress">The progress reporter.</param>
 	/// <param name="continueOnCapturedContext">
 	/// Indicates whether to continue works on captured context instead of reverting back to previous context.
 	/// </param>
 	/// <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
-	public AsyncCollectorAwaitable(
-		Collector collector,
+	public AsyncAnalyzerAwaitable(
+		Analyzer analyzer,
 		ref readonly Grid grid,
 		IProgress<StepGathererProgressPresenter>? progress,
 		bool continueOnCapturedContext,
 		CancellationToken cancellationToken
 	)
 	{
-		_collector = collector;
+		_analyzer = analyzer;
 		_grid = ref grid;
 		_progress = progress;
 		_cancellationToken = cancellationToken;
@@ -61,8 +61,8 @@ public readonly ref partial struct AsyncCollectorAwaitable : IStepGathererAwaita
 	/// </summary>
 	/// <param name="original">The original value.</param>
 	/// <param name="continueOnCapturedContext">The new value to be assigned to <see cref="_continueOnCapturedContext"/>.</param>
-	internal AsyncCollectorAwaitable(scoped in AsyncCollectorAwaitable original, bool continueOnCapturedContext) :
-		this(original._collector, in original._grid, original._progress, continueOnCapturedContext, original._cancellationToken)
+	internal AsyncAnalyzerAwaitable(scoped in AsyncAnalyzerAwaitable original, bool continueOnCapturedContext) :
+		this(original._analyzer, in original._grid, original._progress, continueOnCapturedContext, original._cancellationToken)
 	{
 	}
 
@@ -74,9 +74,9 @@ public readonly ref partial struct AsyncCollectorAwaitable : IStepGathererAwaita
 	/// <param name="continueOnCapturedContext">
 	/// Indicates whether to continue works on captured context instead of reverting back to previous context.
 	/// </param>
-	/// <returns>A new <see cref="AsyncCollectorAwaitable"/> instance, with context switching option updated.</returns>
-	public AsyncCollectorAwaitable ConfigureAwait(bool continueOnCapturedContext) => new(this, continueOnCapturedContext);
+	/// <returns>A new <see cref="AsyncAnalyzerAwaitable"/> instance, with context switching option updated.</returns>
+	public AsyncAnalyzerAwaitable ConfigureAwait(bool continueOnCapturedContext) => new(this, continueOnCapturedContext);
 
 	/// <inheritdoc/>
-	public Awaiter GetAwaiter() => new(_collector, _grid, _progress, _continueOnCapturedContext, _cancellationToken);
+	public Awaiter GetAwaiter() => new(_analyzer, _grid, _progress, _continueOnCapturedContext, _cancellationToken);
 }

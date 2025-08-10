@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Async;
+namespace Sudoku.Analytics;
 
 /// <summary>
 /// Represents an awaitable object that runs for step gathering rule (analysis or collecting operation).

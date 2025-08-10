@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Async;
+namespace Sudoku.Analytics;
 
 public partial struct AsyncAnalyzerAwaitable
 {
@@ -41,7 +41,7 @@ public partial struct AsyncAnalyzerAwaitable
 		/// Indicates whether the operation is completed.
 		/// </summary>
 		/// <remarks>
-		/// <include file="../../../../global-doc-comments.xml" path="/g/developer-notes"/>
+		/// <include file="../../../global-doc-comments.xml" path="/g/developer-notes"/>
 		/// <para>
 		/// The field isn't marked as <see langword="volatile"/>,
 		/// because the writting operation uses <see langword="lock"/> statement.

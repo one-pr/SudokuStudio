@@ -1,17 +1,12 @@
-namespace Sudoku.Analytics.Async;
+namespace Sudoku.Analytics;
 
-public partial struct AsyncCollectorAwaitable
+public partial struct ParallelAsyncCollectorAwaitable
 {
 	/// <summary>
 	/// Represents an awaiter object that collects steps for the specified puzzle.
 	/// </summary>
 	public sealed class Awaiter : IStepGathererAwaiter<ReadOnlySpan<Step>>
 	{
-		/// <summary>
-		/// Indicates whether to continue works on captured context instead of reverting back to previous context.
-		/// </summary>
-		private readonly bool _continueOnCapturedContext;
-
 		/// <summary>
 		/// Indicates the backing grid to be analyzed.
 		/// </summary>
@@ -28,50 +23,28 @@ public partial struct AsyncCollectorAwaitable
 		private readonly Lock _lock = new();
 
 		/// <summary>
-		/// Indicates the backing collector.
+		/// Indicates the backing analyzer.
 		/// </summary>
 		private readonly Collector _collector;
 
 		/// <summary>
-		/// Indicates the progress reporter.
+		/// Indicates the checking tasks.
 		/// </summary>
-		private readonly IProgress<StepGathererProgressPresenter>? _progress;
-
-		/// <summary>
-		/// Indicates whether the operation is completed.
-		/// </summary>
-		/// <remarks>
-		/// <include file="../../../../global-doc-comments.xml" path="/g/developer-notes"/>
-		/// <para>
-		/// The field isn't marked as <see langword="volatile"/>,
-		/// because the writting operation uses <see langword="lock"/> statement.
-		/// </para>
-		/// </remarks>
-		[SuppressMessage("Style", "IDE0032:Use auto property", Justification = "<Pending>")]
-		private bool _isCompleted;
+		private readonly List<Task> _stepCheckingTasks = [];
 
 		/// <summary>
 		/// Indicates the result.
 		/// </summary>
-		/// <remarks>
-		/// <inheritdoc cref="_isCompleted" path="/remarks"/>
-		/// </remarks>
-		private Step[]? _result;
+		private readonly SortedDictionary<int, Step[]> _result = [];
 
 		/// <summary>
-		/// Indicates the exception thrown.
+		/// Indicates the task to await all sub-tasks.
 		/// </summary>
-		/// <remarks>
-		/// <inheritdoc cref="_isCompleted" path="/remarks"/>
-		/// </remarks>
-		private Exception? _exception;
+		private Task? _awaitAllTask;
 
 		/// <summary>
 		/// Indicates the callback action on analysis operation having been finished.
 		/// </summary>
-		/// <remarks>
-		/// <inheritdoc cref="_isCompleted" path="/remarks"/>
-		/// </remarks>
 		private Action? _continuation;
 
 
@@ -80,21 +53,10 @@ public partial struct AsyncCollectorAwaitable
 		/// </summary>
 		/// <param name="collector">Indicates the collector.</param>
 		/// <param name="grid">Indicates the grid.</param>
-		/// <param name="progress">Indicates the progress reporter.</param>
-		/// <param name="continueOnCapturedContext">
-		/// Indicates whether to continue works on captured context instead of reverting back to previous context.
-		/// </param>
 		/// <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
-		public Awaiter(
-			Collector collector,
-			in Grid grid,
-			IProgress<StepGathererProgressPresenter>? progress,
-			bool continueOnCapturedContext,
-			CancellationToken cancellationToken
-		)
+		public Awaiter(Collector collector, in Grid grid, CancellationToken cancellationToken)
 		{
-			(_grid, _collector, _progress, _cancellationToken) = (grid, collector, progress, cancellationToken);
-			_continueOnCapturedContext = continueOnCapturedContext;
+			(_grid, _collector, _cancellationToken) = (grid, collector, cancellationToken);
 
 			// Use thread pool to execute the analysis operation.
 			ThreadPool.QueueUserWorkItem(CoreOperation);
@@ -103,14 +65,13 @@ public partial struct AsyncCollectorAwaitable
 
 		/// <inheritdoc/>
 		[MemberNotNullWhen(true, nameof(_result))]
-		[MemberNotNullWhen(true, nameof(Result))]
 		public bool IsCompleted
 		{
 			get
 			{
 				lock (_lock)
 				{
-					return _isCompleted;
+					return _awaitAllTask?.IsCompleted ?? false;
 				}
 			}
 		}
@@ -122,7 +83,7 @@ public partial struct AsyncCollectorAwaitable
 			{
 				lock (_lock)
 				{
-					return _result.AsSpan();
+					return GetResult();
 				}
 			}
 		}
@@ -134,20 +95,29 @@ public partial struct AsyncCollectorAwaitable
 			{
 				lock (_lock)
 				{
-					return _exception;
+					return _awaitAllTask?.Exception;
 				}
 			}
 		}
 
 		/// <inheritdoc/>
-		ReadOnlySpan<Step> IStepGathererAwaiter<ReadOnlySpan<Step>>.Result => Result;
-
-		/// <inheritdoc/>
 		Lock IStepGathererAwaiter<ReadOnlySpan<Step>>.Lock => _lock;
 
 
-		/// <inheritdoc/>
-		public ReadOnlySpan<Step> GetResult() => _exception is null ? _result! : throw _exception;
+		/// <summary>
+		/// Returns the result value, or throw the internal exception if unhandled exception is encountered.
+		/// </summary>
+		/// <returns>The result value.</returns>
+		public ReadOnlySpan<Step> GetResult()
+		{
+			// Flatten the field _result into the a whole list.
+			var result = new List<Step>();
+			foreach (var steps in _result.Values)
+			{
+				result.AddRange(steps);
+			}
+			return result.AsSpan();
+		}
 
 		/// <inheritdoc/>
 		public void OnCompleted(Action continuation) => OnCompletedInternal(false, continuation);
@@ -215,25 +185,104 @@ public partial struct AsyncCollectorAwaitable
 		{
 			try
 			{
-				_result = _collector.Collect(_grid, _progress, _cancellationToken).ToArray();
+				// Create a list of tasks, and assign them into the collection.
+				AssignCheckingTasks();
+
+				// Try to await them.
+				_awaitAllTask = Task.WhenAll(_stepCheckingTasks);
+
+				// Start and wait for it.
+				_awaitAllTask.Wait();
 			}
-			catch (Exception ex)
+			catch
 			{
-				_exception = ex;
 			}
 			finally
 			{
 				Action? continuation;
 				lock (_lock)
 				{
-					_isCompleted = true;
 					continuation = _continuation;
 					_continuation = null;
 				}
 
 				if (continuation is not null)
 				{
-					StartContinuation(_continueOnCapturedContext, continuation);
+					StartContinuation(false, continuation);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Updates field <see cref="_stepCheckingTasks"/> to get all possible tasks to be checked.
+		/// </summary>
+		/// <seealso cref="_stepCheckingTasks"/>
+		private void AssignCheckingTasks()
+		{
+			if (!Enum.IsDefined(_collector.DifficultyLevelMode))
+			{
+				throw new InvalidOperationException(SR.ExceptionMessage("ModeIsUndefined"));
+			}
+
+			if (_grid.IsSolved)
+			{
+				return;
+			}
+
+			// Apply setters.
+			StepGatherer.ApplySetters(_collector);
+
+			// Initialize values.
+			Initialize(_grid, _grid.SolutionGrid);
+
+			// Create a list of tasks by the searchers to be checked.
+			foreach (var searcher in _collector.ResultStepSearchers)
+			{
+				var task = new Task(stepsCreator, _cancellationToken);
+				task.Start();
+				_stepCheckingTasks.Add(task);
+
+
+				void stepsCreator()
+				{
+					var accumulator = new List<Step>();
+					var context = new StepAnalysisContext(_grid, in _grid)
+					{
+						Accumulator = accumulator,
+						OnlyFindOne = false,
+						Options = _collector.Options,
+						CancellationToken = _cancellationToken
+					};
+					switch (searcher)
+					{
+						case { RunningArea: var runningArea } when !runningArea.HasFlag(StepSearcherRunningArea.Collecting):
+						case { Metadata.SupportsSukaku: false } when _grid.PuzzleType == SudokuType.Sukaku:
+						{
+							break;
+						}
+						case { Level: var currentLevel }:
+						{
+							if (_cancellationToken.IsCancellationRequested)
+							{
+								return;
+							}
+
+							searcher.Collect(ref context);
+							break;
+						}
+					}
+
+					if (accumulator.Count == 0)
+					{
+						return;
+					}
+
+					// Assign the found steps into target collection.
+					var key = searcher.Priority;
+					if (!_result.TryAdd(key, [.. accumulator]))
+					{
+						_result[key].AddRange(accumulator);
+					}
 				}
 			}
 		}

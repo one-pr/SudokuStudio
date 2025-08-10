@@ -13372,42 +13372,6 @@
 		</summary>
 	</static-constructor>
         </member>
-        <member name="T:Sudoku.Solving.Async.SolutionEnumerableSolverExtensions">
-            <summary>
-            Provides with extension methods on <see cref="T:Sudoku.Solving.ISolutionEnumerableSolver"/>.
-            </summary>
-            <seealso cref="T:Sudoku.Solving.ISolutionEnumerableSolver"/>
-        </member>
-        <member name="T:Sudoku.Solving.Async.SolutionEnumerableSolverExtensions.&lt;&gt;E__0">
-            <summary>
-            Provides extension members on <see cref="T:Sudoku.Solving.ISolutionEnumerableSolver"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Solving.Async.SolutionEnumerableSolverExtensions.&lt;&gt;E__0.CountSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
-            <summary>
-            Count the number of solutions can be found of a grid.
-            </summary>
-            <param name="grid">The grid to be solved.</param>
-            <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
-            <returns>
-            A <see cref="T:System.Threading.Tasks.Task`1"/> instance indicating the asynchronous operation,
-            with an <see cref="T:System.Int32"/> value indicating the result can be produced after the operation executed.
-            </returns>
-        </member>
-        <member name="M:Sudoku.Solving.Async.SolutionEnumerableSolverExtensions.&lt;&gt;E__0.EnumerateSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
-            <summary>
-            Try to enumerate all possible solutions of the specified grid, by using the current solver, in asynchronous way.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
-            <returns>A sequence of <see cref="T:Sudoku.Concepts.Grid"/> values indicating the raw solution text to the puzzle.</returns>
-        </member>
-        <member name="M:Sudoku.Solving.Async.SolutionEnumerableSolverExtensions.CountSolutionsAsync(Sudoku.Solving.ISolutionEnumerableSolver,Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
-            <inheritdoc cref="M:Sudoku.Solving.Async.SolutionEnumerableSolverExtensions.&lt;&gt;E__0.CountSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)"/>
-        </member>
-        <member name="M:Sudoku.Solving.Async.SolutionEnumerableSolverExtensions.EnumerateSolutionsAsync(Sudoku.Solving.ISolutionEnumerableSolver,Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
-            <inheritdoc cref="M:Sudoku.Solving.Async.SolutionEnumerableSolverExtensions.&lt;&gt;E__0.EnumerateSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)"/>
-        </member>
         <member name="T:Sudoku.Solving.Backtracking.BacktrackingSolver">
             <summary>
             Defines a solver that can solve a sudoku puzzle, using backtracking algorithm.
@@ -14369,6 +14333,42 @@
         </member>
         <member name="P:Sudoku.Solving.MultipleSolutionException.Message">
             <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Solving.SolutionEnumerableSolverExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:Sudoku.Solving.ISolutionEnumerableSolver"/>.
+            </summary>
+            <seealso cref="T:Sudoku.Solving.ISolutionEnumerableSolver"/>
+        </member>
+        <member name="T:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Solving.ISolutionEnumerableSolver"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;&gt;E__0.CountSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+            <summary>
+            Count the number of solutions can be found of a grid.
+            </summary>
+            <param name="grid">The grid to be solved.</param>
+            <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task`1"/> instance indicating the asynchronous operation,
+            with an <see cref="T:System.Int32"/> value indicating the result can be produced after the operation executed.
+            </returns>
+        </member>
+        <member name="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;&gt;E__0.EnumerateSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+            <summary>
+            Try to enumerate all possible solutions of the specified grid, by using the current solver, in asynchronous way.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
+            <returns>A sequence of <see cref="T:Sudoku.Concepts.Grid"/> values indicating the raw solution text to the puzzle.</returns>
+        </member>
+        <member name="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.CountSolutionsAsync(Sudoku.Solving.ISolutionEnumerableSolver,Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;&gt;E__0.CountSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.EnumerateSolutionsAsync(Sudoku.Solving.ISolutionEnumerableSolver,Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;&gt;E__0.EnumerateSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)"/>
         </member>
         <member name="T:Sudoku.Solving.SolverSolutionFoundEventArgs">
             <summary>

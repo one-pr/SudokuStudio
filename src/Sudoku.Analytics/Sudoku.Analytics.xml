@@ -1214,47 +1214,47 @@
             Indicates the found step.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable">
+        <member name="T:Sudoku.Analytics.AsyncAnalyzerAwaitable">
             <summary>
             Represents an awaitable rule on analysis for a puzzle.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter">
+        <member name="T:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter">
             <summary>
             Represents an awaiter object that analyzes the specified puzzle.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter._continueOnCapturedContext">
+        <member name="F:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter._continueOnCapturedContext">
             <summary>
             Indicates whether to continue works on captured context instead of reverting back to previous context.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter._grid">
+        <member name="F:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter._grid">
             <summary>
             Indicates the backing grid to be analyzed.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter._cancellationToken">
+        <member name="F:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter._cancellationToken">
             <summary>
             Indicates the cancellation token that can cancel the current operation.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter._lock">
+        <member name="F:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter._lock">
             <summary>
             Indicates the lock.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter._analyzer">
+        <member name="F:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter._analyzer">
             <summary>
             Indicates the backing analyzer.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter._progress">
+        <member name="F:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter._progress">
             <summary>
             Indicates the progress reporter.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter._isCompleted">
+        <member name="F:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter._isCompleted">
             <summary>
             Indicates whether the operation is completed.
             </summary>
@@ -1270,33 +1270,33 @@
             </para>
             </remarks>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter._result">
+        <member name="F:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter._result">
             <summary>
             Indicates the result.
             </summary>
             <remarks>
-            <inheritdoc cref="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter._isCompleted" path="/remarks"/>
+            <inheritdoc cref="F:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter._isCompleted" path="/remarks"/>
             </remarks>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter._exception">
+        <member name="F:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter._exception">
             <summary>
             Indicates the exception thrown.
             </summary>
             <remarks>
-            <inheritdoc cref="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter._isCompleted" path="/remarks"/>
+            <inheritdoc cref="F:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter._isCompleted" path="/remarks"/>
             </remarks>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter._continuation">
+        <member name="F:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter._continuation">
             <summary>
             Indicates the callback action on analysis operation having been finished.
             </summary>
             <remarks>
-            <inheritdoc cref="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter._isCompleted" path="/remarks"/>
+            <inheritdoc cref="F:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter._isCompleted" path="/remarks"/>
             </remarks>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter.#ctor(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Boolean,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter.#ctor(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Boolean,System.Threading.CancellationToken)">
             <summary>
-            Initializes an <see cref="T:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter"/> instance via the specified analyzer.
+            Initializes an <see cref="T:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter"/> instance via the specified analyzer.
             </summary>
             <param name="analyzer">Indicates the analyzer.</param>
             <param name="grid">Indicates the grid.</param>
@@ -1306,87 +1306,87 @@
             </param>
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
         </member>
-        <member name="P:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter.IsCompleted">
+        <member name="P:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter.IsCompleted">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter.Result">
+        <member name="P:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter.Result">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter.Exception">
+        <member name="P:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter.Exception">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#Async#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#Result">
+        <member name="P:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#Result">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#Async#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#Lock">
+        <member name="P:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#Lock">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter.GetResult">
+        <member name="M:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter.GetResult">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter.OnCompleted(System.Action)">
+        <member name="M:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter.OnCompleted(System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter.UnsafeOnCompleted(System.Action)">
+        <member name="M:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter.UnsafeOnCompleted(System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#Async#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#OnCompletedInternal(System.Boolean,System.Action)">
+        <member name="M:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#OnCompletedInternal(System.Boolean,System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#Async#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#StartContinuation(System.Boolean,System.Action)">
+        <member name="M:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#StartContinuation(System.Boolean,System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#Async#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#CoreOperation(System.Object)">
+        <member name="M:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#CoreOperation(System.Object)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter.OnCompletedInternal(System.Boolean,System.Action)">
+        <member name="M:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter.OnCompletedInternal(System.Boolean,System.Action)">
             <summary>
             Executes a custom method on work having been completed.
             </summary>
             <param name="continueOnCapturedContext">Indicates whether to capture and marshal back to the current context.</param>
             <param name="continuation">The method to be executed.</param>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter.StartContinuation(System.Boolean,System.Action)">
+        <member name="M:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter.StartContinuation(System.Boolean,System.Action)">
             <summary>
             Determine whether we should switch execution context, and start continuation in thread pool from the context decided.
             </summary>
             <param name="continueOnCapturedContext">Indicates whether to capture and marshal back to the current context.</param>
             <param name="continuation">The method to be executed.</param>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.Awaiter.CoreOperation(System.Object)">
+        <member name="M:Sudoku.Analytics.AsyncAnalyzerAwaitable.Awaiter.CoreOperation(System.Object)">
             <summary>
             Indicates the backing operation.
             </summary>
             <param name="state">An object containing information to be used by the callback method.</param>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable._continueOnCapturedContext">
+        <member name="F:Sudoku.Analytics.AsyncAnalyzerAwaitable._continueOnCapturedContext">
             <summary>
             Indicates whether to continue works on captured context instead of reverting back to previous context.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable._grid">
+        <member name="F:Sudoku.Analytics.AsyncAnalyzerAwaitable._grid">
             <summary>
             Indicates the reference to the grid.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable._cancellationToken">
+        <member name="F:Sudoku.Analytics.AsyncAnalyzerAwaitable._cancellationToken">
             <summary>
             Indicates the cancellation token that can cancel the current operation.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable._analyzer">
+        <member name="F:Sudoku.Analytics.AsyncAnalyzerAwaitable._analyzer">
             <summary>
             Indicates the backing analyzer.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable._progress">
+        <member name="F:Sudoku.Analytics.AsyncAnalyzerAwaitable._progress">
             <summary>
             Indicates the progress reporter.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.#ctor(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Boolean,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.AsyncAnalyzerAwaitable.#ctor(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Boolean,System.Threading.CancellationToken)">
             <summary>
-            Initializes an <see cref="T:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable"/> object.
+            Initializes an <see cref="T:Sudoku.Analytics.AsyncAnalyzerAwaitable"/> object.
             </summary>
             <param name="analyzer">Indicates the analyzer.</param>
             <param name="grid">Indicates the grid.</param>
@@ -1396,14 +1396,14 @@
             </param>
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.#ctor(Sudoku.Analytics.Async.AsyncAnalyzerAwaitable@,System.Boolean)">
+        <member name="M:Sudoku.Analytics.AsyncAnalyzerAwaitable.#ctor(Sudoku.Analytics.AsyncAnalyzerAwaitable@,System.Boolean)">
             <summary>
-            Copies the specified source, and update for field <see cref="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable._continueOnCapturedContext"/>.
+            Copies the specified source, and update for field <see cref="F:Sudoku.Analytics.AsyncAnalyzerAwaitable._continueOnCapturedContext"/>.
             </summary>
             <param name="original">The original value.</param>
-            <param name="continueOnCapturedContext">The new value to be assigned to <see cref="F:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable._continueOnCapturedContext"/>.</param>
+            <param name="continueOnCapturedContext">The new value to be assigned to <see cref="F:Sudoku.Analytics.AsyncAnalyzerAwaitable._continueOnCapturedContext"/>.</param>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.ConfigureAwait(System.Boolean)">
+        <member name="M:Sudoku.Analytics.AsyncAnalyzerAwaitable.ConfigureAwait(System.Boolean)">
             <summary>
             Updates the awaiting rule to specify whether the execution context will be back to the previous one,
             instead of just using the current context, to reduce memory allocation.
@@ -1411,52 +1411,52 @@
             <param name="continueOnCapturedContext">
             Indicates whether to continue works on captured context instead of reverting back to previous context.
             </param>
-            <returns>A new <see cref="T:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable"/> instance, with context switching option updated.</returns>
+            <returns>A new <see cref="T:Sudoku.Analytics.AsyncAnalyzerAwaitable"/> instance, with context switching option updated.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable.GetAwaiter">
+        <member name="M:Sudoku.Analytics.AsyncAnalyzerAwaitable.GetAwaiter">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Analytics.Async.AsyncCollectorAwaitable">
+        <member name="T:Sudoku.Analytics.AsyncCollectorAwaitable">
             <summary>
             Represents an awaitable rule on collecting steps from a puzzle.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter">
+        <member name="T:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter">
             <summary>
             Represents an awaiter object that collects steps for the specified puzzle.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter._continueOnCapturedContext">
+        <member name="F:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter._continueOnCapturedContext">
             <summary>
             Indicates whether to continue works on captured context instead of reverting back to previous context.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter._grid">
+        <member name="F:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter._grid">
             <summary>
             Indicates the backing grid to be analyzed.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter._cancellationToken">
+        <member name="F:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter._cancellationToken">
             <summary>
             Indicates the cancellation token that can cancel the current operation.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter._lock">
+        <member name="F:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter._lock">
             <summary>
             Indicates the lock.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter._collector">
+        <member name="F:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter._collector">
             <summary>
             Indicates the backing collector.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter._progress">
+        <member name="F:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter._progress">
             <summary>
             Indicates the progress reporter.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter._isCompleted">
+        <member name="F:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter._isCompleted">
             <summary>
             Indicates whether the operation is completed.
             </summary>
@@ -1472,33 +1472,33 @@
             </para>
             </remarks>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter._result">
+        <member name="F:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter._result">
             <summary>
             Indicates the result.
             </summary>
             <remarks>
-            <inheritdoc cref="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter._isCompleted" path="/remarks"/>
+            <inheritdoc cref="F:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter._isCompleted" path="/remarks"/>
             </remarks>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter._exception">
+        <member name="F:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter._exception">
             <summary>
             Indicates the exception thrown.
             </summary>
             <remarks>
-            <inheritdoc cref="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter._isCompleted" path="/remarks"/>
+            <inheritdoc cref="F:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter._isCompleted" path="/remarks"/>
             </remarks>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter._continuation">
+        <member name="F:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter._continuation">
             <summary>
             Indicates the callback action on analysis operation having been finished.
             </summary>
             <remarks>
-            <inheritdoc cref="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter._isCompleted" path="/remarks"/>
+            <inheritdoc cref="F:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter._isCompleted" path="/remarks"/>
             </remarks>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter.#ctor(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Boolean,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter.#ctor(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Boolean,System.Threading.CancellationToken)">
             <summary>
-            Initializes an <see cref="T:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter"/> instance via the specified analyzer.
+            Initializes an <see cref="T:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter"/> instance via the specified analyzer.
             </summary>
             <param name="collector">Indicates the collector.</param>
             <param name="grid">Indicates the grid.</param>
@@ -1508,87 +1508,87 @@
             </param>
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
         </member>
-        <member name="P:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter.IsCompleted">
+        <member name="P:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter.IsCompleted">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter.Result">
+        <member name="P:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter.Result">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter.Exception">
+        <member name="P:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter.Exception">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Async#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#Result">
+        <member name="P:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#Result">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Async#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#Lock">
+        <member name="P:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#Lock">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter.GetResult">
+        <member name="M:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter.GetResult">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter.OnCompleted(System.Action)">
+        <member name="M:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter.OnCompleted(System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter.UnsafeOnCompleted(System.Action)">
+        <member name="M:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter.UnsafeOnCompleted(System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Async#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#OnCompletedInternal(System.Boolean,System.Action)">
+        <member name="M:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#OnCompletedInternal(System.Boolean,System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Async#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#StartContinuation(System.Boolean,System.Action)">
+        <member name="M:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#StartContinuation(System.Boolean,System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Async#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#CoreOperation(System.Object)">
+        <member name="M:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#CoreOperation(System.Object)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter.OnCompletedInternal(System.Boolean,System.Action)">
+        <member name="M:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter.OnCompletedInternal(System.Boolean,System.Action)">
             <summary>
             Executes a custom method on work having been completed.
             </summary>
             <param name="continueOnCapturedContext">Indicates whether to capture and marshal back to the current context.</param>
             <param name="continuation">The method to be executed.</param>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter.StartContinuation(System.Boolean,System.Action)">
+        <member name="M:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter.StartContinuation(System.Boolean,System.Action)">
             <summary>
             Determine whether we should switch execution context, and start continuation in thread pool from the context decided.
             </summary>
             <param name="continueOnCapturedContext">Indicates whether to capture and marshal back to the current context.</param>
             <param name="continuation">The method to be executed.</param>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncCollectorAwaitable.Awaiter.CoreOperation(System.Object)">
+        <member name="M:Sudoku.Analytics.AsyncCollectorAwaitable.Awaiter.CoreOperation(System.Object)">
             <summary>
             Indicates the backing operation.
             </summary>
             <param name="state">An object containing information to be used by the callback method.</param>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable._continueOnCapturedContext">
+        <member name="F:Sudoku.Analytics.AsyncCollectorAwaitable._continueOnCapturedContext">
             <summary>
             Indicates whether to continue works on captured context instead of reverting back to previous context.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable._grid">
+        <member name="F:Sudoku.Analytics.AsyncCollectorAwaitable._grid">
             <summary>
             Indicates the reference to the grid.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable._cancellationToken">
+        <member name="F:Sudoku.Analytics.AsyncCollectorAwaitable._cancellationToken">
             <summary>
             Indicates the cancellation token that can cancel the current operation.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable._collector">
+        <member name="F:Sudoku.Analytics.AsyncCollectorAwaitable._collector">
             <summary>
             Indicates the backing collector.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable._progress">
+        <member name="F:Sudoku.Analytics.AsyncCollectorAwaitable._progress">
             <summary>
             Indicates the progress reporter.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncCollectorAwaitable.#ctor(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Boolean,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.AsyncCollectorAwaitable.#ctor(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Boolean,System.Threading.CancellationToken)">
             <summary>
-            Initializes an <see cref="T:Sudoku.Analytics.Async.AsyncCollectorAwaitable"/> object.
+            Initializes an <see cref="T:Sudoku.Analytics.AsyncCollectorAwaitable"/> object.
             </summary>
             <param name="collector">Indicates the collector.</param>
             <param name="grid">Indicates the grid.</param>
@@ -1598,14 +1598,14 @@
             </param>
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncCollectorAwaitable.#ctor(Sudoku.Analytics.Async.AsyncCollectorAwaitable@,System.Boolean)">
+        <member name="M:Sudoku.Analytics.AsyncCollectorAwaitable.#ctor(Sudoku.Analytics.AsyncCollectorAwaitable@,System.Boolean)">
             <summary>
-            Copies the specified source, and update for field <see cref="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable._continueOnCapturedContext"/>.
+            Copies the specified source, and update for field <see cref="F:Sudoku.Analytics.AsyncCollectorAwaitable._continueOnCapturedContext"/>.
             </summary>
             <param name="original">The original value.</param>
-            <param name="continueOnCapturedContext">The new value to be assigned to <see cref="F:Sudoku.Analytics.Async.AsyncCollectorAwaitable._continueOnCapturedContext"/>.</param>
+            <param name="continueOnCapturedContext">The new value to be assigned to <see cref="F:Sudoku.Analytics.AsyncCollectorAwaitable._continueOnCapturedContext"/>.</param>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncCollectorAwaitable.ConfigureAwait(System.Boolean)">
+        <member name="M:Sudoku.Analytics.AsyncCollectorAwaitable.ConfigureAwait(System.Boolean)">
             <summary>
             Updates the awaiting rule to specify whether the execution context will be back to the previous one,
             instead of just using the current context, to reduce memory allocation.
@@ -1613,31 +1613,31 @@
             <param name="continueOnCapturedContext">
             Indicates whether to continue works on captured context instead of reverting back to previous context.
             </param>
-            <returns>A new <see cref="T:Sudoku.Analytics.Async.AsyncCollectorAwaitable"/> instance, with context switching option updated.</returns>
+            <returns>A new <see cref="T:Sudoku.Analytics.AsyncCollectorAwaitable"/> instance, with context switching option updated.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncCollectorAwaitable.GetAwaiter">
+        <member name="M:Sudoku.Analytics.AsyncCollectorAwaitable.GetAwaiter">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Analytics.Async.AsyncStepGatherer">
+        <member name="T:Sudoku.Analytics.AsyncStepGatherer">
             <summary>
             Provides with extension methods on <see cref="T:Sudoku.Analytics.StepGatherer"/>.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.Async.AsyncStepGatherer.&lt;&gt;E__0">
+        <member name="T:Sudoku.Analytics.AsyncStepGatherer.&lt;&gt;E__0">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Analyzer"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.&lt;&gt;E__0.AnalyzeAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.AsyncStepGatherer.&lt;&gt;E__0.AnalyzeAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
             <summary>
             Asynchronously analyzes the specified puzzle.
             </summary>
             <param name="grid">The grid to be analyzed.</param>
             <param name="progress">The progress reporter.</param>
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
-            <returns>An <see cref="T:Sudoku.Analytics.Async.AsyncAnalyzerAwaitable"/> object that can analyze the puzzle asynchronously.</returns>
+            <returns>An <see cref="T:Sudoku.Analytics.AsyncAnalyzerAwaitable"/> object that can analyze the puzzle asynchronously.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.&lt;&gt;E__0.EnumerateStepsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.AsyncStepGatherer.&lt;&gt;E__0.EnumerateStepsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
             <summary>
             Analyzes the specified grid, to find for all possible steps and iterate them in asynchronous way.
             </summary>
@@ -1645,246 +1645,39 @@
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
             <returns>A sequence that allows user iterating on it in asynchronous way.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.AnalyzeAsync(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
-            <inheritdoc cref="M:Sudoku.Analytics.Async.AsyncStepGatherer.&lt;&gt;E__0.AnalyzeAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)"/>
+        <member name="M:Sudoku.Analytics.AsyncStepGatherer.AnalyzeAsync(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Sudoku.Analytics.AsyncStepGatherer.&lt;&gt;E__0.AnalyzeAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)"/>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.EnumerateStepsAsync(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
-            <inheritdoc cref="M:Sudoku.Analytics.Async.AsyncStepGatherer.&lt;&gt;E__0.EnumerateStepsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)"/>
+        <member name="M:Sudoku.Analytics.AsyncStepGatherer.EnumerateStepsAsync(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Sudoku.Analytics.AsyncStepGatherer.&lt;&gt;E__0.EnumerateStepsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)"/>
         </member>
-        <member name="T:Sudoku.Analytics.Async.AsyncStepGatherer.&lt;&gt;E__1">
+        <member name="T:Sudoku.Analytics.AsyncStepGatherer.&lt;&gt;E__1">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Collector"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.&lt;&gt;E__1.CollectAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.AsyncStepGatherer.&lt;&gt;E__1.CollectAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
             <summary>
             Asynchronously collects steps from a puzzle.
             </summary>
             <param name="grid">The grid to be analyzed.</param>
             <param name="progress">The progress reporter.</param>
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
-            <returns>An <see cref="T:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable"/> object that can analyze the puzzle asynchronously.</returns>
+            <returns>An <see cref="T:Sudoku.Analytics.ParallelAsyncCollectorAwaitable"/> object that can analyze the puzzle asynchronously.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.&lt;&gt;E__1.ParallelCollectAsync(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.AsyncStepGatherer.&lt;&gt;E__1.ParallelCollectAsync(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
             <summary>
             Asynchronously collects steps from a puzzle, with parallel checking on all <see cref="T:Sudoku.Analytics.StepSearcher"/> instances.
             </summary>
             <param name="grid">The grid to be analyzed.</param>
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
-            <returns>An <see cref="T:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable"/> object that can analyze the puzzle asynchronously.</returns>
+            <returns>An <see cref="T:Sudoku.Analytics.ParallelAsyncCollectorAwaitable"/> object that can analyze the puzzle asynchronously.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.CollectAsync(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
-            <inheritdoc cref="M:Sudoku.Analytics.Async.AsyncStepGatherer.&lt;&gt;E__1.CollectAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)"/>
+        <member name="M:Sudoku.Analytics.AsyncStepGatherer.CollectAsync(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Sudoku.Analytics.AsyncStepGatherer.&lt;&gt;E__1.CollectAsync(Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)"/>
         </member>
-        <member name="M:Sudoku.Analytics.Async.AsyncStepGatherer.ParallelCollectAsync(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
-            <inheritdoc cref="M:Sudoku.Analytics.Async.AsyncStepGatherer.&lt;&gt;E__1.ParallelCollectAsync(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)"/>
-        </member>
-        <member name="T:Sudoku.Analytics.Async.IStepGathererAwaitable`1">
-            <summary>
-            Represents an awaitable object that runs for step gathering rule (analysis or collecting operation).
-            </summary>
-            <typeparam name="TAwaiter">The type of awaiter.</typeparam>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.IStepGathererAwaitable`1.GetAwaiter">
-            <summary>
-            Returns an object of type <typeparamref name="TAwaiter"/> that supports the internal awaiting rule of analyzing a puzzle.
-            </summary>
-            <returns>An object of type <typeparamref name="TAwaiter"/>.</returns>
-        </member>
-        <member name="T:Sudoku.Analytics.Async.IStepGathererAwaiter`1">
-            <summary>
-            Represents an awaiter object that handles the backing logic on asynchronous programming.
-            </summary>
-            <typeparam name="TResult">The type of result.</typeparam>
-        </member>
-        <member name="P:Sudoku.Analytics.Async.IStepGathererAwaiter`1.IsCompleted">
-            <summary>
-            Indicates whether the operation is completed.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Async.IStepGathererAwaiter`1.Result">
-            <summary>
-            Indicates the result.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Async.IStepGathererAwaiter`1.Exception">
-            <summary>
-            Indicates the exception thrown.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Async.IStepGathererAwaiter`1.Lock">
-            <summary>
-            Indicates the backing lock.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.IStepGathererAwaiter`1.GetResult">
-            <summary>
-            Returns the result value, or throw the internal exception if unhandled exception is encountered.
-            </summary>
-            <returns>The result value.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.IStepGathererAwaiter`1.OnCompletedInternal(System.Boolean,System.Action)">
-            <summary>
-            Executes a custom method on work having been completed.
-            </summary>
-            <param name="continueOnCapturedContext">Indicates whether to capture and marshal back to the current context.</param>
-            <param name="continuation">The method to be executed.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.IStepGathererAwaiter`1.StartContinuation(System.Boolean,System.Action)">
-            <summary>
-            Determine whether we should switch execution context, and start continuation in thread pool from the context decided.
-            </summary>
-            <param name="continueOnCapturedContext">Indicates whether to capture and marshal back to the current context.</param>
-            <param name="continuation">The method to be executed.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.IStepGathererAwaiter`1.CoreOperation(System.Object)">
-            <summary>
-            Indicates the backing operation.
-            </summary>
-            <param name="state">An object containing information to be used by the callback method.</param>
-        </member>
-        <member name="T:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable">
-            <summary>
-            Represents an awaitable rule on collecting steps from a puzzle.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter">
-            <summary>
-            Represents an awaiter object that collects steps for the specified puzzle.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter._grid">
-            <summary>
-            Indicates the backing grid to be analyzed.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter._cancellationToken">
-            <summary>
-            Indicates the cancellation token that can cancel the current operation.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter._lock">
-            <summary>
-            Indicates the lock.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter._collector">
-            <summary>
-            Indicates the backing analyzer.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter._stepCheckingTasks">
-            <summary>
-            Indicates the checking tasks.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter._result">
-            <summary>
-            Indicates the result.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter._awaitAllTask">
-            <summary>
-            Indicates the task to await all sub-tasks.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter._continuation">
-            <summary>
-            Indicates the callback action on analysis operation having been finished.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter.#ctor(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
-            <summary>
-            Initializes an <see cref="T:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter"/> instance via the specified analyzer.
-            </summary>
-            <param name="collector">Indicates the collector.</param>
-            <param name="grid">Indicates the grid.</param>
-            <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
-        </member>
-        <member name="P:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter.IsCompleted">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter.Result">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter.Exception">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Async#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#Lock">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter.GetResult">
-            <summary>
-            Returns the result value, or throw the internal exception if unhandled exception is encountered.
-            </summary>
-            <returns>The result value.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter.OnCompleted(System.Action)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter.UnsafeOnCompleted(System.Action)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Async#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#OnCompletedInternal(System.Boolean,System.Action)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Async#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#StartContinuation(System.Boolean,System.Action)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Async#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#CoreOperation(System.Object)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter.OnCompletedInternal(System.Boolean,System.Action)">
-            <summary>
-            Executes a custom method on work having been completed.
-            </summary>
-            <param name="continueOnCapturedContext">Indicates whether to capture and marshal back to the current context.</param>
-            <param name="continuation">The method to be executed.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter.StartContinuation(System.Boolean,System.Action)">
-            <summary>
-            Determine whether we should switch execution context, and start continuation in thread pool from the context decided.
-            </summary>
-            <param name="continueOnCapturedContext">Indicates whether to capture and marshal back to the current context.</param>
-            <param name="continuation">The method to be executed.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter.CoreOperation(System.Object)">
-            <summary>
-            Indicates the backing operation.
-            </summary>
-            <param name="state">An object containing information to be used by the callback method.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter.AssignCheckingTasks">
-            <summary>
-            Updates field <see cref="F:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter._stepCheckingTasks"/> to get all possible tasks to be checked.
-            </summary>
-            <seealso cref="F:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.Awaiter._stepCheckingTasks"/>
-        </member>
-        <member name="F:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable._grid">
-            <summary>
-            Indicates the reference to the grid.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable._cancellationToken">
-            <summary>
-            Indicates the cancellation token that can cancel the current operation.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable._collector">
-            <summary>
-            Indicates the backing analyzer.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.#ctor(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
-            <summary>
-            Initializes an <see cref="T:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable"/> object.
-            </summary>
-            <param name="collector">Indicates the collector.</param>
-            <param name="grid">Indicates the grid.</param>
-            <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Async.ParallelAsyncCollectorAwaitable.GetAwaiter">
-            <inheritdoc/>
+        <member name="M:Sudoku.Analytics.AsyncStepGatherer.ParallelCollectAsync(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Sudoku.Analytics.AsyncStepGatherer.&lt;&gt;E__1.ParallelCollectAsync(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)"/>
         </member>
         <member name="T:Sudoku.Analytics.Caching.ChainingComparers">
             <summary>
@@ -8484,6 +8277,70 @@
             <returns>All true candidates.</returns>
             <exception cref="T:System.ArgumentException">Throws when the puzzle is invalid.</exception>
         </member>
+        <member name="T:Sudoku.Analytics.IStepGathererAwaitable`1">
+            <summary>
+            Represents an awaitable object that runs for step gathering rule (analysis or collecting operation).
+            </summary>
+            <typeparam name="TAwaiter">The type of awaiter.</typeparam>
+        </member>
+        <member name="M:Sudoku.Analytics.IStepGathererAwaitable`1.GetAwaiter">
+            <summary>
+            Returns an object of type <typeparamref name="TAwaiter"/> that supports the internal awaiting rule of analyzing a puzzle.
+            </summary>
+            <returns>An object of type <typeparamref name="TAwaiter"/>.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.IStepGathererAwaiter`1">
+            <summary>
+            Represents an awaiter object that handles the backing logic on asynchronous programming.
+            </summary>
+            <typeparam name="TResult">The type of result.</typeparam>
+        </member>
+        <member name="P:Sudoku.Analytics.IStepGathererAwaiter`1.IsCompleted">
+            <summary>
+            Indicates whether the operation is completed.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.IStepGathererAwaiter`1.Result">
+            <summary>
+            Indicates the result.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.IStepGathererAwaiter`1.Exception">
+            <summary>
+            Indicates the exception thrown.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.IStepGathererAwaiter`1.Lock">
+            <summary>
+            Indicates the backing lock.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.IStepGathererAwaiter`1.GetResult">
+            <summary>
+            Returns the result value, or throw the internal exception if unhandled exception is encountered.
+            </summary>
+            <returns>The result value.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.IStepGathererAwaiter`1.OnCompletedInternal(System.Boolean,System.Action)">
+            <summary>
+            Executes a custom method on work having been completed.
+            </summary>
+            <param name="continueOnCapturedContext">Indicates whether to capture and marshal back to the current context.</param>
+            <param name="continuation">The method to be executed.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.IStepGathererAwaiter`1.StartContinuation(System.Boolean,System.Action)">
+            <summary>
+            Determine whether we should switch execution context, and start continuation in thread pool from the context decided.
+            </summary>
+            <param name="continueOnCapturedContext">Indicates whether to capture and marshal back to the current context.</param>
+            <param name="continuation">The method to be executed.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.IStepGathererAwaiter`1.CoreOperation(System.Object)">
+            <summary>
+            Indicates the backing operation.
+            </summary>
+            <param name="state">An object containing information to be used by the callback method.</param>
+        </member>
         <member name="T:Sudoku.Analytics.Keywords.InvalidKeywordConverterTypeException">
             <summary>
             Represents an exception that describes "invalid keyword converter type" information.
@@ -8870,6 +8727,149 @@
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Keywords.TechniqueKeywordValueConverter.TryConvertBack(System.Object,Sudoku.Analytics.Step,System.Object@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.ParallelAsyncCollectorAwaitable">
+            <summary>
+            Represents an awaitable rule on collecting steps from a puzzle.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter">
+            <summary>
+            Represents an awaiter object that collects steps for the specified puzzle.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter._grid">
+            <summary>
+            Indicates the backing grid to be analyzed.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter._cancellationToken">
+            <summary>
+            Indicates the cancellation token that can cancel the current operation.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter._lock">
+            <summary>
+            Indicates the lock.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter._collector">
+            <summary>
+            Indicates the backing analyzer.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter._stepCheckingTasks">
+            <summary>
+            Indicates the checking tasks.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter._result">
+            <summary>
+            Indicates the result.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter._awaitAllTask">
+            <summary>
+            Indicates the task to await all sub-tasks.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter._continuation">
+            <summary>
+            Indicates the callback action on analysis operation having been finished.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter.#ctor(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
+            <summary>
+            Initializes an <see cref="T:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter"/> instance via the specified analyzer.
+            </summary>
+            <param name="collector">Indicates the collector.</param>
+            <param name="grid">Indicates the grid.</param>
+            <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
+        </member>
+        <member name="P:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter.IsCompleted">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter.Result">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter.Exception">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#Lock">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter.GetResult">
+            <summary>
+            Returns the result value, or throw the internal exception if unhandled exception is encountered.
+            </summary>
+            <returns>The result value.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter.OnCompleted(System.Action)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter.UnsafeOnCompleted(System.Action)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#OnCompletedInternal(System.Boolean,System.Action)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#StartContinuation(System.Boolean,System.Action)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#CoreOperation(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter.OnCompletedInternal(System.Boolean,System.Action)">
+            <summary>
+            Executes a custom method on work having been completed.
+            </summary>
+            <param name="continueOnCapturedContext">Indicates whether to capture and marshal back to the current context.</param>
+            <param name="continuation">The method to be executed.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter.StartContinuation(System.Boolean,System.Action)">
+            <summary>
+            Determine whether we should switch execution context, and start continuation in thread pool from the context decided.
+            </summary>
+            <param name="continueOnCapturedContext">Indicates whether to capture and marshal back to the current context.</param>
+            <param name="continuation">The method to be executed.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter.CoreOperation(System.Object)">
+            <summary>
+            Indicates the backing operation.
+            </summary>
+            <param name="state">An object containing information to be used by the callback method.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter.AssignCheckingTasks">
+            <summary>
+            Updates field <see cref="F:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter._stepCheckingTasks"/> to get all possible tasks to be checked.
+            </summary>
+            <seealso cref="F:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.Awaiter._stepCheckingTasks"/>
+        </member>
+        <member name="F:Sudoku.Analytics.ParallelAsyncCollectorAwaitable._grid">
+            <summary>
+            Indicates the reference to the grid.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.ParallelAsyncCollectorAwaitable._cancellationToken">
+            <summary>
+            Indicates the cancellation token that can cancel the current operation.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.ParallelAsyncCollectorAwaitable._collector">
+            <summary>
+            Indicates the backing analyzer.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.#ctor(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
+            <summary>
+            Initializes an <see cref="T:Sudoku.Analytics.ParallelAsyncCollectorAwaitable"/> object.
+            </summary>
+            <param name="collector">Indicates the collector.</param>
+            <param name="grid">Indicates the grid.</param>
+            <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.ParallelAsyncCollectorAwaitable.GetAwaiter">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.PatternSearcher`1">
