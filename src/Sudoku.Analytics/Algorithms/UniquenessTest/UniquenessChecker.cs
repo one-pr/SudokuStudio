@@ -19,7 +19,7 @@ public static class UniquenessChecker
 	public static PatternUniquenessInfo GetUniqueness(in Grid grid, in CellMap cells)
 	{
 		var patternCandidates = CandidateMap.Empty;
-		if (grid.IsValid || grid.EmptyCellsCount != 81 || grid.PuzzleType != SudokuType.Standard)
+		if (grid is not { IsValid: false, EmptyCellsCount: 81, PuzzleType: SudokuType.Standard })
 		{
 			// Invalid values to be checked.
 			goto FastFail;
