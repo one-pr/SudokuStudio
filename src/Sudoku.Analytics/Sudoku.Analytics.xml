@@ -14233,7 +14233,8 @@
         </member>
         <member name="F:Sudoku.Analytics.StepSearchers.StepSearcherRuntimeFlags.Default">
             <summary>
-            Indicates the step searcher can be called anywhere as long it is enabled. This is also the default value of this enumeration type.
+            Indicates the step searcher can be called anywhere as long it is enabled.
+            This is also the default value of this enumeration type.
             </summary>
         </member>
         <member name="F:Sudoku.Analytics.StepSearchers.StepSearcherRuntimeFlags.DirectTechniquesOnly">
@@ -14250,9 +14251,21 @@
         </member>
         <member name="F:Sudoku.Analytics.StepSearchers.StepSearcherRuntimeFlags.SkipVerification">
             <summary>
+            <para>
             Indicates conclusions produced by the current <see cref="T:Sudoku.Analytics.StepSearcher"/> can be skipped to be verified,
             because they can be guaranteed as correct ones.
+            </para>
+            <para>
+            <see cref="T:Sudoku.Analytics.StepSearcher"/> configuring this flag will skip verifying validity of conclusions found.
+            If there's any conclusion is invalid, it will cause a severe problem,
+            e.g. a runtime crash or <see cref="T:Sudoku.Analytics.WrongStepException"/>.
+            </para>
+            <para>
+            Please think over and then use this flag.
+            Don't use this flag if a step searcher produces unknown conclusions of validity.
+            </para>
             </summary>
+            <seealso cref="T:Sudoku.Analytics.WrongStepException"/>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.SubsetDriver">
             <summary>
