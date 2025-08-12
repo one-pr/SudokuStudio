@@ -676,7 +676,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	/// <returns>A <see cref="CandidateMap"/> instance.</returns>
 	public static CandidateMap CreateByVectors(in Vector256<ulong> e0, in Vector256<ulong> e1, in Vector256<ulong> e2)
 	{
-		Unsafe.SkipInit(out CandidateMap result);
+		Unsafe.SkipInit<CandidateMap>(out var result);
 		e0.CopyTo(result._bits[..4]);
 		e1.CopyTo(result._bits[4..8]);
 		e2.CopyTo(result._bits[8..]);
@@ -694,22 +694,22 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	public static bool operator false(in CandidateMap value) => value.Count == 0;
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
-	public static bool operator ==(in CandidateMap left, in CandidateMap right) => left.Equals(in right);
+	public static bool operator ==(in CandidateMap left, in CandidateMap right) => left.Equals(right);
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
 	public static bool operator !=(in CandidateMap left, in CandidateMap right) => !(left == right);
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
-	public static bool operator >(in CandidateMap left, in CandidateMap right) => left.CompareTo(in right) > 0;
+	public static bool operator >(in CandidateMap left, in CandidateMap right) => left.CompareTo(right) > 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThan(TSelf, TOther)"/>
-	public static bool operator <(in CandidateMap left, in CandidateMap right) => left.CompareTo(in right) < 0;
+	public static bool operator <(in CandidateMap left, in CandidateMap right) => left.CompareTo(right) < 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThanOrEqual(TSelf, TOther)"/>
-	public static bool operator >=(in CandidateMap left, in CandidateMap right) => left.CompareTo(in right) >= 0;
+	public static bool operator >=(in CandidateMap left, in CandidateMap right) => left.CompareTo(right) >= 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
-	public static bool operator <=(in CandidateMap left, in CandidateMap right) => left.CompareTo(in right) <= 0;
+	public static bool operator <=(in CandidateMap left, in CandidateMap right) => left.CompareTo(right) <= 0;
 
 	/// <inheritdoc/>
 	public static CandidateMap operator ~(in CandidateMap offsets)

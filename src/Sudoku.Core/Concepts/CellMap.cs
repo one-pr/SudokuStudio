@@ -809,22 +809,22 @@ public partial struct CellMap : CellMapBase
 	public static bool operator false(in CellMap value) => value.Count == 0;
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
-	public static bool operator ==(in CellMap left, in CellMap right) => left.Equals(in right);
+	public static bool operator ==(in CellMap left, in CellMap right) => left.Equals(right);
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
 	public static bool operator !=(in CellMap left, in CellMap right) => !(left == right);
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
-	public static bool operator >(in CellMap left, in CellMap right) => left.CompareTo(in right) > 0;
+	public static bool operator >(in CellMap left, in CellMap right) => left.CompareTo(right) > 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThan(TSelf, TOther)"/>
-	public static bool operator <(in CellMap left, in CellMap right) => left.CompareTo(in right) < 0;
+	public static bool operator <(in CellMap left, in CellMap right) => left.CompareTo(right) < 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThanOrEqual(TSelf, TOther)"/>
-	public static bool operator >=(in CellMap left, in CellMap right) => left.CompareTo(in right) >= 0;
+	public static bool operator >=(in CellMap left, in CellMap right) => left.CompareTo(right) >= 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
-	public static bool operator <=(in CellMap left, in CellMap right) => left.CompareTo(in right) <= 0;
+	public static bool operator <=(in CellMap left, in CellMap right) => left.CompareTo(right) <= 0;
 
 	/// <inheritdoc/>
 	public static CellMap operator ~(in CellMap offsets) => CellMap.Create(~offsets._vector & BitwiseNotConstant);
