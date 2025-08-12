@@ -5,7 +5,7 @@ namespace Sudoku.Analytics.Construction.Components;
 /// </summary>
 /// <param name="trueCandidates"><inheritdoc cref="TrueCandidates" path="/summary"/></param>
 /// <param name="conclusions"><inheritdoc cref="MultipleForcingChains(Conclusion[])" path="/param[@name='conclusions']"/></param>
-public sealed partial class BivalueUniversalGraveForcingChains(in CandidateMap trueCandidates, params Conclusion[] conclusions) :
+public sealed class BivalueUniversalGraveForcingChains(in CandidateMap trueCandidates, params Conclusion[] conclusions) :
 	MultipleForcingChains(conclusions)
 {
 	/// <inheritdoc/>

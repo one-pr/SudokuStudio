@@ -8,7 +8,7 @@ namespace Sudoku.Analytics.Configuration;
 /// <seealso cref="StepSearcher"/>
 /// <seealso cref="SettingItemNames"/>
 [AttributeUsage(AttributeTargets.Property, Inherited = false)]
-public sealed partial class SettingItemNameAttribute(string identifier) : Attribute
+public sealed class SettingItemNameAttribute(string identifier) : Attribute
 {
 	/// <summary>
 	/// Indicates the runtime identifier value. You can use <see cref="SettingItemNames"/> type to get the target name.

@@ -7,7 +7,7 @@ namespace Sudoku.Analytics.Steps;
 /// <param name="views"><inheritdoc cref="Step.Views" path="/summary"/></param>
 /// <param name="options"><inheritdoc cref="Step.Options" path="/summary"/></param>
 /// <param name="trueCandidates"><inheritdoc cref="TrueCandidates" path="/summary"/></param>
-public sealed partial class BivalueUniversalGraveMultipleStep(
+public sealed class BivalueUniversalGraveMultipleStep(
 	ReadOnlyMemory<Conclusion> conclusions,
 	View[]? views,
 	StepGathererOptions options,

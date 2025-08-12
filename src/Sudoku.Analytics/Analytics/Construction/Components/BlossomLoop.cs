@@ -4,7 +4,7 @@ namespace Sudoku.Analytics.Construction.Components;
 /// Represents a blossom loop.
 /// </summary>
 /// <param name="conclusions"><inheritdoc cref="Conclusions" path="/summary"/></param>
-public sealed partial class BlossomLoop(params ConclusionSet conclusions) :
+public sealed class BlossomLoop(params ConclusionSet conclusions) :
 	SortedDictionary<Candidate, StrongForcingChain>,
 	IComparable<BlossomLoop>,
 	IComparisonOperators<BlossomLoop, BlossomLoop, bool>,

@@ -7,12 +7,7 @@ namespace Sudoku.Analytics.Construction.Components;
 /// <param name="branch2"><inheritdoc cref="Branch2" path="/summary"/></param>
 /// <param name="conclusion"><inheritdoc cref="Conclusion" path="/summary"/></param>
 /// <param name="isContradiction"><inheritdoc cref="IsContradiction" path="/summary"/></param>
-public sealed partial class BinaryForcingChains(
-	UnnamedChain branch1,
-	UnnamedChain branch2,
-	Conclusion conclusion,
-	bool isContradiction
-) :
+public sealed class BinaryForcingChains(UnnamedChain branch1, UnnamedChain branch2, Conclusion conclusion, bool isContradiction) :
 	IBinaryForcingChains<BinaryForcingChains, UnnamedChain>,
 	IDynamicForcingChains
 {
