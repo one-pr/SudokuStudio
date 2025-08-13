@@ -5389,9 +5389,9 @@
         </member>
         <member name="T:SudokuStudio.Markup.BottleneckTypeExtension">
             <summary>
-            Represents a markup extension to provide a <see cref="T:Sudoku.Behaviors.Bottlenecks.BottleneckType"/> value.
+            Represents a markup extension to provide a <see cref="T:Sudoku.Cognition.Bottlenecks.BottleneckType"/> value.
             </summary>
-            <seealso cref="T:Sudoku.Behaviors.Bottlenecks.BottleneckType"/>
+            <seealso cref="T:Sudoku.Cognition.Bottlenecks.BottleneckType"/>
         </member>
         <member name="P:SudokuStudio.Markup.BottleneckTypeExtension.Value">
             <summary>

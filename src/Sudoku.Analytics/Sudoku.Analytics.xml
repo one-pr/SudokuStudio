@@ -22759,262 +22759,6 @@
             Indicates the wrong step.
             </summary>
         </member>
-        <member name="T:Sudoku.Behaviors.BlockFirst">
-            <summary>
-            Represents a way to finish puzzle with block-first rule.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Behaviors.BlockFirst.MeasurableBehavior">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Behaviors.BlockFirst.GetDistanceArray(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Steps.SingleStep,Sudoku.Concepts.Grid}}@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Step,Sudoku.Concepts.Grid}}@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Behaviors.Bottlenecks.AnalysisResultExtensions">
-            <summary>
-            Provides with extension methods on <see cref="T:Sudoku.Analytics.AnalysisResult"/>.
-            </summary>
-            <seealso cref="T:Sudoku.Analytics.AnalysisResult"/>
-        </member>
-        <member name="T:Sudoku.Behaviors.Bottlenecks.AnalysisResultExtensions.&lt;&gt;E__0">
-            <summary>
-            Provides extension members on <see cref="T:Sudoku.Analytics.AnalysisResult"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Behaviors.Bottlenecks.AnalysisResultExtensions.&lt;&gt;E__0.GetBottlenecks(System.ReadOnlySpan{Sudoku.Behaviors.Bottlenecks.BottleneckFilter})">
-            <summary>
-            Try to get bottleneck steps under the specified rules.
-            </summary>
-            <param name="filters">The bottleneck filters.</param>
-            <returns>A list of bottleneck steps.</returns>
-            <exception cref="T:System.NotSupportedException">
-            Throws when the filter contains invalid configuration,
-            like <see cref="F:Sudoku.Behaviors.Bottlenecks.BottleneckType.SingleStepOnly"/> in full-marking mode.
-            </exception>
-            <exception cref="T:System.InvalidOperationException">Throws when the puzzle is not fully solved.</exception>
-            <exception cref="T:System.ArgumentOutOfRangeException">
-            Throws when argument <paramref name="filters"/> contains one filter holding an undefined <see cref="T:Sudoku.Behaviors.Bottlenecks.BottleneckType"/> flag.
-            </exception>
-        </member>
-        <member name="M:Sudoku.Behaviors.Bottlenecks.AnalysisResultExtensions.GetBottlenecks(Sudoku.Analytics.AnalysisResult,System.ReadOnlySpan{Sudoku.Behaviors.Bottlenecks.BottleneckFilter})">
-            <inheritdoc cref="M:Sudoku.Behaviors.Bottlenecks.AnalysisResultExtensions.&lt;&gt;E__0.GetBottlenecks(System.ReadOnlySpan{Sudoku.Behaviors.Bottlenecks.BottleneckFilter})"/>
-        </member>
-        <member name="T:Sudoku.Behaviors.Bottlenecks.Extensions">
-            <target name="class" when="extension">
-				<summary>
-					Provides with file-local extension methods.
-				</summary>
-			</target>
-        </member>
-        <member name="T:Sudoku.Behaviors.Bottlenecks.Extensions.&lt;&gt;E__0`1">
-            <summary>
-            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Behaviors.Bottlenecks.Extensions.&lt;&gt;E__0`1.FirstRefOrNullRef(Sudoku.Behaviors.Bottlenecks.LargePredicate{`0})">
-            <inheritdoc cref="M:System.Linq.Providers.IFirstLastMethod`2.FirstOrDefault(System.Func{`1,System.Boolean})"/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Bottlenecks.Extensions.FirstRefOrNullRef``1(System.ReadOnlySpan{``0},Sudoku.Behaviors.Bottlenecks.LargePredicate{``0})">
-            <inheritdoc cref="M:Sudoku.Behaviors.Bottlenecks.Extensions.&lt;&gt;E__0`1.FirstRefOrNullRef(Sudoku.Behaviors.Bottlenecks.LargePredicate{`0})"/>
-        </member>
-        <member name="T:Sudoku.Behaviors.Bottlenecks.LargePredicate`1">
-            <summary>
-            Represents a type that determine the instance satisfies the specified condition.
-            </summary>
-            <typeparam name="T">The type of instance.</typeparam>
-            <param name="instance">The instance.</param>
-            <returns>A <see cref="T:System.Boolean"/> result.</returns>
-        </member>
-        <member name="T:Sudoku.Behaviors.Bottlenecks.BottleneckFilter">
-            <summary>
-            Represents a bottleneck filter consumed by method <see cref="M:Sudoku.Behaviors.Bottlenecks.AnalysisResultExtensions.GetBottlenecks(Sudoku.Analytics.AnalysisResult,System.ReadOnlySpan{Sudoku.Behaviors.Bottlenecks.BottleneckFilter})"/>.
-            </summary>
-            <param name="Visibility">Indicates a visibility type of pencilmark.</param>
-            <param name="Type">Indicates the bottleneck type.</param>
-            <seealso cref="M:Sudoku.Behaviors.Bottlenecks.AnalysisResultExtensions.GetBottlenecks(Sudoku.Analytics.AnalysisResult,System.ReadOnlySpan{Sudoku.Behaviors.Bottlenecks.BottleneckFilter})"/>
-        </member>
-        <member name="M:Sudoku.Behaviors.Bottlenecks.BottleneckFilter.#ctor(Sudoku.Analytics.PencilmarkVisibility,Sudoku.Behaviors.Bottlenecks.BottleneckType)">
-            <summary>
-            Represents a bottleneck filter consumed by method <see cref="M:Sudoku.Behaviors.Bottlenecks.AnalysisResultExtensions.GetBottlenecks(Sudoku.Analytics.AnalysisResult,System.ReadOnlySpan{Sudoku.Behaviors.Bottlenecks.BottleneckFilter})"/>.
-            </summary>
-            <param name="Visibility">Indicates a visibility type of pencilmark.</param>
-            <param name="Type">Indicates the bottleneck type.</param>
-            <seealso cref="M:Sudoku.Behaviors.Bottlenecks.AnalysisResultExtensions.GetBottlenecks(Sudoku.Analytics.AnalysisResult,System.ReadOnlySpan{Sudoku.Behaviors.Bottlenecks.BottleneckFilter})"/>
-        </member>
-        <member name="P:Sudoku.Behaviors.Bottlenecks.BottleneckFilter.Visibility">
-            <summary>Indicates a visibility type of pencilmark.</summary>
-        </member>
-        <member name="P:Sudoku.Behaviors.Bottlenecks.BottleneckFilter.Type">
-            <summary>Indicates the bottleneck type.</summary>
-        </member>
-        <member name="T:Sudoku.Behaviors.Bottlenecks.BottleneckType">
-            <summary>
-            Represents a type of bottleneck.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Behaviors.Bottlenecks.BottleneckType.EliminationGroup">
-            <summary>
-            Indicates the bottleneck is the last step in a list of steps that only produces eliminations.
-            </summary>
-            <remarks><b>This field can only be used by checking a puzzle containing full-marking steps.</b></remarks>
-        </member>
-        <member name="F:Sudoku.Behaviors.Bottlenecks.BottleneckType.HardestRating">
-            <summary>
-            Indicates the bottleneck is for a hardest step or a list of steps having a same hardest difficulty found in analyzer.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Behaviors.Bottlenecks.BottleneckType.HardestLevel">
-            <summary>
-            Indicates the bottleneck is for a step or a list of steps that hold the hardest difficulty level.
-            </summary>
-            <remarks><b>This field can only be used by checking a puzzle containing partial-marking and full-marking steps.</b></remarks>
-        </member>
-        <member name="F:Sudoku.Behaviors.Bottlenecks.BottleneckType.SequentialInversion">
-            <summary>
-            <para>Indicates the bottleneck for a step that makes the next step has a easier difficulty level than it.</para>
-            <para>
-            For example, the first step is a chain (at "Fiendish" level),
-            and the second step is a locked candidates (at "Moderate" level).
-            In this case, the first step makes the second step to be easy, so it will be considered as a bottleneck under this rule.
-            </para>
-            </summary>
-            <remarks><b>This field can only be used by checking a puzzle containing partial-marking and full-marking steps.</b></remarks>
-        </member>
-        <member name="F:Sudoku.Behaviors.Bottlenecks.BottleneckType.SingleStepOnly">
-            <summary>
-            <para>
-            Indicates the bottleneck step is a step
-            whose corresponding grid pattern only contains one step can makes such conclusion with it.
-            </para>
-            <para>
-            For example, the step is a hidden single. However, hidden single is the only step that the current grid can be found.
-            If you don't apply it to puzzle, solving this puzzle cannot continue.
-            Therefore, the step will be considered as a bottleneck under this rule.
-            </para>
-            </summary>
-            <remarks><b>This field can only be used by checking a puzzle only containing direct or partial-marking steps.</b></remarks>
-        </member>
-        <member name="F:Sudoku.Behaviors.Bottlenecks.BottleneckType.SingleStepSameLevelOnly">
-            <summary>
-            <para>
-            Indicates the bottleneck step is a step
-            whose corresponding grid pattern only contains one step can makes such conclusion with it;
-            and only checks for same-level techniques.
-            </para>
-            <para>
-            For example, the step is a hidden single. However, hidden single is the only step that the current grid can be found.
-            If you don't apply it to puzzle, solving this puzzle cannot continue.
-            Therefore, the step will be considered as a bottleneck under this rule;
-            if the current grid pattern containing complex singles that can have extra assignemnts,
-            but it will be ignored to be checked in this flag.
-            </para>
-            </summary>
-            <remarks><b>This field can only be used by checking a puzzle only containing direct and partial-marking steps.</b></remarks>
-        </member>
-        <member name="T:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis">
-            <summary>
-            Provides a way to analyze technique usages on difference between two grids.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis.&lt;&gt;E__0">
-            <summary>
-            Provides extension members on <see cref="T:Sudoku.Concepts.Grid"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis.&lt;&gt;E__0.TryAnalyzeTechnique(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Analytics.Collector,Sudoku.Analytics.Step@)">
-            <summary>
-            Try to analyze technique used that causes <paramref name="left"/> changing into <paramref name="right"/>.
-            </summary>
-            <param name="left">The first grid to be checked.</param>
-            <param name="right">The second grid to be checked.</param>
-            <param name="collector">The collector instance that is used for collecting found steps.</param>
-            <param name="step">The step.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating whether such step can be inferred.</returns>
-        </member>
-        <member name="M:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis.TryAnalyzeTechnique(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Analytics.Collector,Sudoku.Analytics.Step@)">
-            <inheritdoc cref="M:Sudoku.Behaviors.Diff.DiffTechniqueAnalysis.&lt;&gt;E__0.TryAnalyzeTechnique(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Analytics.Collector,Sudoku.Analytics.Step@)"/>
-        </member>
-        <member name="T:Sudoku.Behaviors.DigitFirst">
-            <summary>
-            Represents a way to finish puzzle with digit-first rule.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Behaviors.DigitFirst.MeasurableBehavior">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Behaviors.DigitFirst.GetDistanceArray(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Steps.SingleStep,Sudoku.Concepts.Grid}}@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Step,Sudoku.Concepts.Grid}}@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Behaviors.IBehaviorMetric">
-            <summary>
-            Represents a type that can measure a kind of user behavior.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Behaviors.IBehaviorMetric.MeasurableBehavior">
-            <summary>
-            Indicates a behavior to be measured.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Behaviors.IBehaviorMetric.GetDistanceArray(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Steps.SingleStep,Sudoku.Concepts.Grid}}@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Step,Sudoku.Concepts.Grid}}@)">
-            <summary>
-            Returns a list of integers representing the logical filling distance between two adjacent steps,
-            by using the current filling rule.
-            </summary>
-            <param name="collector">The collector instance.</param>
-            <param name="grid">The grid to be checked.</param>
-            <param name="steps">The steps and corresponding grid states.</param>
-            <param name="stepsAll">
-            Indicates all possible steps applied. If the puzzle cannot be solved with direct techniques,
-            this method will find indirect techniques again and again, until at least one single step can be found here.
-            </param>
-            <returns>A list of distance values.</returns>
-            <remarks>
-            This method allows solving puzzles with indirect techniques. If the puzzle cannot be solved with direct-only techniques,
-            argument <paramref name="stepsAll"/> will record the usages of all techniques (including direct and indirect techniques);
-            and argument <paramref name="steps"/> only records for direct technique usages.
-            </remarks>
-        </member>
-        <member name="T:Sudoku.Behaviors.UserBehavior">
-            <summary>
-            Represents a kind of user behavior.
-            </summary>
-            <remarks><flags-attribute>
-		<para>
-			<i>
-				This type is marked <see cref="T:System.FlagsAttribute" />, which means you can use
-				<see langword="operator" /> | to combine multiple fields.
-			</i>
-		</para>
-	</flags-attribute></remarks>
-            <seealso cref="T:System.FlagsAttribute" />
-            <completionlist cref="T:Sudoku.Behaviors.UserBehaviors" />
-        </member>
-        <member name="F:Sudoku.Behaviors.UserBehavior.None">
-            <summary>
-            Indicates a user doesn't contain an explicit behavior.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Behaviors.UserBehavior.BlockFirst">
-            <summary>
-            Indicates a user like to finish a puzzle block by block.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Behaviors.UserBehavior.DigitFirst">
-            <summary>
-            Indicates a user like to finish a puzzle digit by digit.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Behaviors.UserBehaviors">
-            <summary>
-            Represents constants of <see cref="T:Sudoku.Behaviors.UserBehavior"/>.
-            </summary>
-            <seealso cref="T:Sudoku.Behaviors.UserBehavior"/>
-        </member>
-        <member name="F:Sudoku.Behaviors.UserBehaviors.All">
-            <summary>
-            Indicates all possible behaviors.
-            </summary>
-        </member>
         <member name="T:Sudoku.Categorization.GridPartialMarkingExtensions">
             <summary>
             Provides with extension methods on <see cref="T:Sudoku.Concepts.Grid"/>, calculating with partial-marking rules checking.
@@ -26837,6 +26581,239 @@
             Indicates all assignment techniques.
             </summary>
         </member>
+        <member name="T:Sudoku.Cognition.BlockFirst">
+            <summary>
+            Represents a way to finish puzzle with block-first rule.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Cognition.BlockFirst.MeasurableBehavior">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Cognition.BlockFirst.GetDistanceArray(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Steps.SingleStep,Sudoku.Concepts.Grid}}@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Step,Sudoku.Concepts.Grid}}@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Cognition.Bottlenecks.AnalysisResultExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:Sudoku.Analytics.AnalysisResult"/>.
+            </summary>
+            <seealso cref="T:Sudoku.Analytics.AnalysisResult"/>
+        </member>
+        <member name="T:Sudoku.Cognition.Bottlenecks.AnalysisResultExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Analytics.AnalysisResult"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Cognition.Bottlenecks.AnalysisResultExtensions.&lt;&gt;E__0.GetBottlenecks(System.ReadOnlySpan{Sudoku.Cognition.Bottlenecks.BottleneckFilter})">
+            <summary>
+            Try to get bottleneck steps under the specified rules.
+            </summary>
+            <param name="filters">The bottleneck filters.</param>
+            <returns>A list of bottleneck steps.</returns>
+            <exception cref="T:System.NotSupportedException">
+            Throws when the filter contains invalid configuration,
+            like <see cref="F:Sudoku.Cognition.Bottlenecks.BottleneckType.SingleStepOnly"/> in full-marking mode.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">Throws when the puzzle is not fully solved.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            Throws when argument <paramref name="filters"/> contains one filter holding an undefined <see cref="T:Sudoku.Cognition.Bottlenecks.BottleneckType"/> flag.
+            </exception>
+        </member>
+        <member name="M:Sudoku.Cognition.Bottlenecks.AnalysisResultExtensions.GetBottlenecks(Sudoku.Analytics.AnalysisResult,System.ReadOnlySpan{Sudoku.Cognition.Bottlenecks.BottleneckFilter})">
+            <inheritdoc cref="M:Sudoku.Cognition.Bottlenecks.AnalysisResultExtensions.&lt;&gt;E__0.GetBottlenecks(System.ReadOnlySpan{Sudoku.Cognition.Bottlenecks.BottleneckFilter})"/>
+        </member>
+        <member name="T:Sudoku.Cognition.Bottlenecks.Extensions">
+            <target name="class" when="extension">
+				<summary>
+					Provides with file-local extension methods.
+				</summary>
+			</target>
+        </member>
+        <member name="T:Sudoku.Cognition.Bottlenecks.Extensions.&lt;&gt;E__0`1">
+            <summary>
+            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Cognition.Bottlenecks.Extensions.&lt;&gt;E__0`1.FirstRefOrNullRef(Sudoku.Cognition.Bottlenecks.LargePredicate{`0})">
+            <inheritdoc cref="M:System.Linq.Providers.IFirstLastMethod`2.FirstOrDefault(System.Func{`1,System.Boolean})"/>
+        </member>
+        <member name="M:Sudoku.Cognition.Bottlenecks.Extensions.FirstRefOrNullRef``1(System.ReadOnlySpan{``0},Sudoku.Cognition.Bottlenecks.LargePredicate{``0})">
+            <inheritdoc cref="M:Sudoku.Cognition.Bottlenecks.Extensions.&lt;&gt;E__0`1.FirstRefOrNullRef(Sudoku.Cognition.Bottlenecks.LargePredicate{`0})"/>
+        </member>
+        <member name="T:Sudoku.Cognition.Bottlenecks.LargePredicate`1">
+            <summary>
+            Represents a type that determine the instance satisfies the specified condition.
+            </summary>
+            <typeparam name="T">The type of instance.</typeparam>
+            <param name="instance">The instance.</param>
+            <returns>A <see cref="T:System.Boolean"/> result.</returns>
+        </member>
+        <member name="T:Sudoku.Cognition.Bottlenecks.BottleneckFilter">
+            <summary>
+            Represents a bottleneck filter consumed by method <see cref="M:Sudoku.Cognition.Bottlenecks.AnalysisResultExtensions.GetBottlenecks(Sudoku.Analytics.AnalysisResult,System.ReadOnlySpan{Sudoku.Cognition.Bottlenecks.BottleneckFilter})"/>.
+            </summary>
+            <param name="Visibility">Indicates a visibility type of pencilmark.</param>
+            <param name="Type">Indicates the bottleneck type.</param>
+            <seealso cref="M:Sudoku.Cognition.Bottlenecks.AnalysisResultExtensions.GetBottlenecks(Sudoku.Analytics.AnalysisResult,System.ReadOnlySpan{Sudoku.Cognition.Bottlenecks.BottleneckFilter})"/>
+        </member>
+        <member name="M:Sudoku.Cognition.Bottlenecks.BottleneckFilter.#ctor(Sudoku.Analytics.PencilmarkVisibility,Sudoku.Cognition.Bottlenecks.BottleneckType)">
+            <summary>
+            Represents a bottleneck filter consumed by method <see cref="M:Sudoku.Cognition.Bottlenecks.AnalysisResultExtensions.GetBottlenecks(Sudoku.Analytics.AnalysisResult,System.ReadOnlySpan{Sudoku.Cognition.Bottlenecks.BottleneckFilter})"/>.
+            </summary>
+            <param name="Visibility">Indicates a visibility type of pencilmark.</param>
+            <param name="Type">Indicates the bottleneck type.</param>
+            <seealso cref="M:Sudoku.Cognition.Bottlenecks.AnalysisResultExtensions.GetBottlenecks(Sudoku.Analytics.AnalysisResult,System.ReadOnlySpan{Sudoku.Cognition.Bottlenecks.BottleneckFilter})"/>
+        </member>
+        <member name="P:Sudoku.Cognition.Bottlenecks.BottleneckFilter.Visibility">
+            <summary>Indicates a visibility type of pencilmark.</summary>
+        </member>
+        <member name="P:Sudoku.Cognition.Bottlenecks.BottleneckFilter.Type">
+            <summary>Indicates the bottleneck type.</summary>
+        </member>
+        <member name="T:Sudoku.Cognition.Bottlenecks.BottleneckType">
+            <summary>
+            Represents a type of bottleneck.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Cognition.Bottlenecks.BottleneckType.EliminationGroup">
+            <summary>
+            Indicates the bottleneck is the last step in a list of steps that only produces eliminations.
+            </summary>
+            <remarks><b>This field can only be used by checking a puzzle containing full-marking steps.</b></remarks>
+        </member>
+        <member name="F:Sudoku.Cognition.Bottlenecks.BottleneckType.HardestRating">
+            <summary>
+            Indicates the bottleneck is for a hardest step or a list of steps having a same hardest difficulty found in analyzer.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Cognition.Bottlenecks.BottleneckType.HardestLevel">
+            <summary>
+            Indicates the bottleneck is for a step or a list of steps that hold the hardest difficulty level.
+            </summary>
+            <remarks><b>This field can only be used by checking a puzzle containing partial-marking and full-marking steps.</b></remarks>
+        </member>
+        <member name="F:Sudoku.Cognition.Bottlenecks.BottleneckType.SequentialInversion">
+            <summary>
+            <para>Indicates the bottleneck for a step that makes the next step has a easier difficulty level than it.</para>
+            <para>
+            For example, the first step is a chain (at "Fiendish" level),
+            and the second step is a locked candidates (at "Moderate" level).
+            In this case, the first step makes the second step to be easy, so it will be considered as a bottleneck under this rule.
+            </para>
+            </summary>
+            <remarks><b>This field can only be used by checking a puzzle containing partial-marking and full-marking steps.</b></remarks>
+        </member>
+        <member name="F:Sudoku.Cognition.Bottlenecks.BottleneckType.SingleStepOnly">
+            <summary>
+            <para>
+            Indicates the bottleneck step is a step
+            whose corresponding grid pattern only contains one step can makes such conclusion with it.
+            </para>
+            <para>
+            For example, the step is a hidden single. However, hidden single is the only step that the current grid can be found.
+            If you don't apply it to puzzle, solving this puzzle cannot continue.
+            Therefore, the step will be considered as a bottleneck under this rule.
+            </para>
+            </summary>
+            <remarks><b>This field can only be used by checking a puzzle only containing direct or partial-marking steps.</b></remarks>
+        </member>
+        <member name="F:Sudoku.Cognition.Bottlenecks.BottleneckType.SingleStepSameLevelOnly">
+            <summary>
+            <para>
+            Indicates the bottleneck step is a step
+            whose corresponding grid pattern only contains one step can makes such conclusion with it;
+            and only checks for same-level techniques.
+            </para>
+            <para>
+            For example, the step is a hidden single. However, hidden single is the only step that the current grid can be found.
+            If you don't apply it to puzzle, solving this puzzle cannot continue.
+            Therefore, the step will be considered as a bottleneck under this rule;
+            if the current grid pattern containing complex singles that can have extra assignemnts,
+            but it will be ignored to be checked in this flag.
+            </para>
+            </summary>
+            <remarks><b>This field can only be used by checking a puzzle only containing direct and partial-marking steps.</b></remarks>
+        </member>
+        <member name="T:Sudoku.Cognition.DigitFirst">
+            <summary>
+            Represents a way to finish puzzle with digit-first rule.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Cognition.DigitFirst.MeasurableBehavior">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Cognition.DigitFirst.GetDistanceArray(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Steps.SingleStep,Sudoku.Concepts.Grid}}@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Step,Sudoku.Concepts.Grid}}@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Cognition.IBehaviorMetric">
+            <summary>
+            Represents a type that can measure a kind of user behavior.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Cognition.IBehaviorMetric.MeasurableBehavior">
+            <summary>
+            Indicates a behavior to be measured.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Cognition.IBehaviorMetric.GetDistanceArray(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Steps.SingleStep,Sudoku.Concepts.Grid}}@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Step,Sudoku.Concepts.Grid}}@)">
+            <summary>
+            Returns a list of integers representing the logical filling distance between two adjacent steps,
+            by using the current filling rule.
+            </summary>
+            <param name="collector">The collector instance.</param>
+            <param name="grid">The grid to be checked.</param>
+            <param name="steps">The steps and corresponding grid states.</param>
+            <param name="stepsAll">
+            Indicates all possible steps applied. If the puzzle cannot be solved with direct techniques,
+            this method will find indirect techniques again and again, until at least one single step can be found here.
+            </param>
+            <returns>A list of distance values.</returns>
+            <remarks>
+            This method allows solving puzzles with indirect techniques. If the puzzle cannot be solved with direct-only techniques,
+            argument <paramref name="stepsAll"/> will record the usages of all techniques (including direct and indirect techniques);
+            and argument <paramref name="steps"/> only records for direct technique usages.
+            </remarks>
+        </member>
+        <member name="T:Sudoku.Cognition.UserBehavior">
+            <summary>
+            Represents a kind of user behavior.
+            </summary>
+            <remarks><flags-attribute>
+		<para>
+			<i>
+				This type is marked <see cref="T:System.FlagsAttribute" />, which means you can use
+				<see langword="operator" /> | to combine multiple fields.
+			</i>
+		</para>
+	</flags-attribute></remarks>
+            <seealso cref="T:System.FlagsAttribute" />
+            <completionlist cref="T:Sudoku.Cognition.UserBehaviors" />
+        </member>
+        <member name="F:Sudoku.Cognition.UserBehavior.None">
+            <summary>
+            Indicates a user doesn't contain an explicit behavior.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Cognition.UserBehavior.BlockFirst">
+            <summary>
+            Indicates a user like to finish a puzzle block by block.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Cognition.UserBehavior.DigitFirst">
+            <summary>
+            Indicates a user like to finish a puzzle digit by digit.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Cognition.UserBehaviors">
+            <summary>
+            Represents constants of <see cref="T:Sudoku.Cognition.UserBehavior"/>.
+            </summary>
+            <seealso cref="T:Sudoku.Cognition.UserBehavior"/>
+        </member>
+        <member name="F:Sudoku.Cognition.UserBehaviors.All">
+            <summary>
+            Indicates all possible behaviors.
+            </summary>
+        </member>
         <member name="T:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo">
             <summary>
             Represents a type that can format a <see cref="T:Sudoku.Analytics.Construction.Components.Chain"/> instance.
@@ -27214,6 +27191,29 @@
         </member>
         <member name="M:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions.AsSpaceSet(System.ReadOnlySpan{Sudoku.Concepts.Supersymmetry.Space})">
             <inheritdoc cref="M:Sudoku.Concepts.Supersymmetry.SpaceSetExtensions.&lt;&gt;E__0.AsSpaceSet"/>
+        </member>
+        <member name="T:Sudoku.Diff.DiffTechniqueAnalysis">
+            <summary>
+            Provides a way to analyze technique usages on difference between two grids.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Diff.DiffTechniqueAnalysis.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Diff.DiffTechniqueAnalysis.&lt;&gt;E__0.TryAnalyzeTechnique(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Analytics.Collector,Sudoku.Analytics.Step@)">
+            <summary>
+            Try to analyze technique used that causes <paramref name="left"/> changing into <paramref name="right"/>.
+            </summary>
+            <param name="left">The first grid to be checked.</param>
+            <param name="right">The second grid to be checked.</param>
+            <param name="collector">The collector instance that is used for collecting found steps.</param>
+            <param name="step">The step.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether such step can be inferred.</returns>
+        </member>
+        <member name="M:Sudoku.Diff.DiffTechniqueAnalysis.TryAnalyzeTechnique(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Analytics.Collector,Sudoku.Analytics.Step@)">
+            <inheritdoc cref="M:Sudoku.Diff.DiffTechniqueAnalysis.&lt;&gt;E__0.TryAnalyzeTechnique(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,Sudoku.Analytics.Collector,Sudoku.Analytics.Step@)"/>
         </member>
         <member name="T:Sudoku.Generating.Filtering.BetweenRule">
             <summary>
@@ -28415,7 +28415,7 @@
             Represents an entry point for generating puzzles with mixed configuration.
             </summary>
         </member>
-        <member name="M:Sudoku.Generating.GeneratorHub.GenerateAsync``1(System.Boolean,System.Func{Sudoku.Generating.Filtering.ConstraintCollection},System.Func{Sudoku.Generating.Filtering.ConstraintCollection,Sudoku.Analytics.DifficultyLevel},System.Func{Sudoku.Analytics.DifficultyLevel,Sudoku.Analytics.Analyzer},System.Func{Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder},System.Action{System.Threading.CancellationTokenSource},System.Action,System.Action,System.Func{Sudoku.Behaviors.Bottlenecks.BottleneckFilter[]},System.Action{``0},Sudoku.Generating.GridStateChanger{Sudoku.Analytics.Analyzer},System.Action{System.String})">
+        <member name="M:Sudoku.Generating.GeneratorHub.GenerateAsync``1(System.Boolean,System.Func{Sudoku.Generating.Filtering.ConstraintCollection},System.Func{Sudoku.Generating.Filtering.ConstraintCollection,Sudoku.Analytics.DifficultyLevel},System.Func{Sudoku.Analytics.DifficultyLevel,Sudoku.Analytics.Analyzer},System.Func{Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder},System.Action{System.Threading.CancellationTokenSource},System.Action,System.Action,System.Func{Sudoku.Cognition.Bottlenecks.BottleneckFilter[]},System.Action{``0},Sudoku.Generating.GridStateChanger{Sudoku.Analytics.Analyzer},System.Action{System.String})">
             <summary>
             Provides a way to generate a puzzle in asynchronous environment.
             </summary>
@@ -28435,7 +28435,7 @@
             <returns>A task that encapsulates asynchronous operation.</returns>
             <exception cref="T:System.OperationCanceledException">Throws when operation canceled.</exception>
         </member>
-        <member name="M:Sudoku.Generating.GeneratorHub.HandlerCore``1(System.Int32@,System.Int32@,Sudoku.Generating.Filtering.ConstraintCollection,,,,System.Action{``0},Sudoku.Analytics.Analyzer,Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder,Sudoku.Behaviors.Bottlenecks.BottleneckFilter[],System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Generating.GeneratorHub.HandlerCore``1(System.Int32@,System.Int32@,Sudoku.Generating.Filtering.ConstraintCollection,,,,System.Action{``0},Sudoku.Analytics.Analyzer,Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder,Sudoku.Cognition.Bottlenecks.BottleneckFilter[],System.Threading.CancellationToken)">
             <summary>
             The backing hanlder.
             </summary>
