@@ -496,7 +496,7 @@ public sealed class ConclusionSet :
 		=> CoordinateParser.GetInstance(provider).ConclusionParser(s);
 
 
-#if USER_DEFINED_COMPOUND_OPERATORS
+#if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
 	/// <summary>
 	/// Adds a new technique into the current collection.
 	/// </summary>

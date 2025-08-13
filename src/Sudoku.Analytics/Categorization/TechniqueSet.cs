@@ -475,7 +475,7 @@ public sealed partial class TechniqueSet() :
 	private static Technique TechniqueProjectionBack(int index) => (Technique)index + 1;
 
 
-#if USER_DEFINED_COMPOUND_OPERATORS
+#if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
 	/// <summary>
 	/// Adds a new technique into the current collection.
 	/// </summary>

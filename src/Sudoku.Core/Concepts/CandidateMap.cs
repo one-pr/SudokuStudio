@@ -683,7 +683,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 
-#if USER_DEFINED_COMPOUND_OPERATORS
+#if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
 	/// <inheritdoc/>
 	public void operator &=(in CandidateMap value)
 	{

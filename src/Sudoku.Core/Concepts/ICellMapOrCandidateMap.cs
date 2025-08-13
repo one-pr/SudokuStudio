@@ -414,7 +414,7 @@ public interface ICellMapOrCandidateMap<TSelf, TElement> :
 	}
 
 
-#if USER_DEFINED_COMPOUND_OPERATORS
+#if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
 	/// <summary>
 	/// Performs bitwise-and operation and assign the value to the current instance.
 	/// </summary>

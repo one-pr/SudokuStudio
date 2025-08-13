@@ -15,7 +15,7 @@
 		<Nullable>enable</Nullable>
 
 		<!--Compilation Features-->
-		<DefineConstants>USER_DEFINED_COMPOUND_OPERATORS</DefineConstants>
+		<DefineConstants>USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS</DefineConstants>
 		<Features>strict</Features>
 		<CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
 		<AnalysisLevel>latest</AnalysisLevel>

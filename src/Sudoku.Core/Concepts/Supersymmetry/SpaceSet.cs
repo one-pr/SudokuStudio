@@ -381,7 +381,7 @@ public partial struct SpaceSet :
 	static SpaceSet IParsable<SpaceSet>.Parse(string s, IFormatProvider? provider) => Parse(s);
 
 
-#if USER_DEFINED_COMPOUND_OPERATORS
+#if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
 	/// <summary>
 	/// Adds a new space into the current collection.
 	/// </summary>
