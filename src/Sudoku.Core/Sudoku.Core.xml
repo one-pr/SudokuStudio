@@ -743,61 +743,65 @@
 	</large-structure>
             </remarks>
         </member>
-        <member name="T:Sudoku.Concepts.CandidateMap.BackingBuffer">
+        <member name="T:Sudoku.Concepts.CandidateMap.BackingVectorArray">
             <summary>
-            Indicates the internal buffer type.
+            Indicates the backing vector array type as field of containing type <see cref="T:Sudoku.Concepts.CandidateMap"/>.
             </summary>
+            <remarks>
+            Do not inline the field to <see cref="T:Sudoku.Concepts.CandidateMap"/>
+            because it will conflict with predefined rules of C# 12 feature "Inline Array".
+            </remarks>
         </member>
-        <member name="F:Sudoku.Concepts.CandidateMap.BackingBuffer._firstElement">
+        <member name="F:Sudoku.Concepts.CandidateMap.BackingVectorArray._firstElement">
             <summary>
             Indicates the first element of the whole buffer.
             </summary>
         </member>
-        <member name="P:Sudoku.Concepts.CandidateMap.BackingBuffer.Vectors">
+        <member name="P:Sudoku.Concepts.CandidateMap.BackingVectorArray.Vectors">
             <summary>
             Returns a sequence of <see cref="T:System.Runtime.Intrinsics.Vector256`1"/> of <see cref="T:System.UInt64"/> values that can be used in SIMD scenarios.
             </summary>
         </member>
-        <member name="P:Sudoku.Concepts.CandidateMap.BackingBuffer.System#IInlineArray{Sudoku#Concepts#CandidateMap#BackingBuffer,System#UInt64}#Elements">
+        <member name="P:Sudoku.Concepts.CandidateMap.BackingVectorArray.System#IInlineArray{Sudoku#Concepts#CandidateMap#BackingVectorArray,System#UInt64}#Elements">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Concepts.CandidateMap.BackingBuffer.System#IInlineArray{Sudoku#Concepts#CandidateMap#BackingBuffer,System#UInt64}#InlineArrayLength">
+        <member name="P:Sudoku.Concepts.CandidateMap.BackingVectorArray.System#IInlineArray{Sudoku#Concepts#CandidateMap#BackingVectorArray,System#UInt64}#InlineArrayLength">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Concepts.CandidateMap.BackingBuffer.System#IInlineArray{Sudoku#Concepts#CandidateMap#BackingBuffer,System#UInt64}#Item(System.Int32)">
+        <member name="P:Sudoku.Concepts.CandidateMap.BackingVectorArray.System#IInlineArray{Sudoku#Concepts#CandidateMap#BackingVectorArray,System#UInt64}#Item(System.Int32)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.CandidateMap.BackingBuffer.Equals(System.Object)">
+        <member name="M:Sudoku.Concepts.CandidateMap.BackingVectorArray.Equals(System.Object)">
             <inheritdoc cref="M:System.Object.ToString"/>
         </member>
-        <member name="M:Sudoku.Concepts.CandidateMap.BackingBuffer.Equals(Sudoku.Concepts.CandidateMap.BackingBuffer@)">
+        <member name="M:Sudoku.Concepts.CandidateMap.BackingVectorArray.Equals(Sudoku.Concepts.CandidateMap.BackingVectorArray@)">
             <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
         </member>
-        <member name="M:Sudoku.Concepts.CandidateMap.BackingBuffer.GetHashCode">
+        <member name="M:Sudoku.Concepts.CandidateMap.BackingVectorArray.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.CandidateMap.BackingBuffer.System#IEquatable{Sudoku#Concepts#CandidateMap#BackingBuffer}#Equals(Sudoku.Concepts.CandidateMap.BackingBuffer)">
+        <member name="M:Sudoku.Concepts.CandidateMap.BackingVectorArray.System#IEquatable{Sudoku#Concepts#CandidateMap#BackingVectorArray}#Equals(Sudoku.Concepts.CandidateMap.BackingVectorArray)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.CandidateMap.BackingBuffer.System#IInlineArray{Sudoku#Concepts#CandidateMap#BackingBuffer,System#UInt64}#AsReadOnlySpan">
+        <member name="M:Sudoku.Concepts.CandidateMap.BackingVectorArray.System#IInlineArray{Sudoku#Concepts#CandidateMap#BackingVectorArray,System#UInt64}#AsReadOnlySpan">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.CandidateMap.BackingBuffer.System#IInlineArray{Sudoku#Concepts#CandidateMap#BackingBuffer,System#UInt64}#GetPinnableReference">
+        <member name="M:Sudoku.Concepts.CandidateMap.BackingVectorArray.System#IInlineArray{Sudoku#Concepts#CandidateMap#BackingVectorArray,System#UInt64}#GetPinnableReference">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.CandidateMap.BackingBuffer.System#IInlineArray{Sudoku#Concepts#CandidateMap#BackingBuffer,System#UInt64}#AsSpan">
+        <member name="M:Sudoku.Concepts.CandidateMap.BackingVectorArray.System#IInlineArray{Sudoku#Concepts#CandidateMap#BackingVectorArray,System#UInt64}#AsSpan">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.CandidateMap.BackingBuffer.op_Equality(Sudoku.Concepts.CandidateMap.BackingBuffer@,Sudoku.Concepts.CandidateMap.BackingBuffer@)">
+        <member name="M:Sudoku.Concepts.CandidateMap.BackingVectorArray.op_Equality(Sudoku.Concepts.CandidateMap.BackingVectorArray@,Sudoku.Concepts.CandidateMap.BackingVectorArray@)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
         </member>
-        <member name="M:Sudoku.Concepts.CandidateMap.BackingBuffer.op_Inequality(Sudoku.Concepts.CandidateMap.BackingBuffer@,Sudoku.Concepts.CandidateMap.BackingBuffer@)">
+        <member name="M:Sudoku.Concepts.CandidateMap.BackingVectorArray.op_Inequality(Sudoku.Concepts.CandidateMap.BackingVectorArray@,Sudoku.Concepts.CandidateMap.BackingVectorArray@)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
         </member>
-        <member name="M:Sudoku.Concepts.CandidateMap.BackingBuffer.System#Numerics#IEqualityOperators{Sudoku#Concepts#CandidateMap#BackingBuffer,Sudoku#Concepts#CandidateMap#BackingBuffer,System#Boolean}#op_Equality(Sudoku.Concepts.CandidateMap.BackingBuffer,Sudoku.Concepts.CandidateMap.BackingBuffer)">
+        <member name="M:Sudoku.Concepts.CandidateMap.BackingVectorArray.System#Numerics#IEqualityOperators{Sudoku#Concepts#CandidateMap#BackingVectorArray,Sudoku#Concepts#CandidateMap#BackingVectorArray,System#Boolean}#op_Equality(Sudoku.Concepts.CandidateMap.BackingVectorArray,Sudoku.Concepts.CandidateMap.BackingVectorArray)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.CandidateMap.BackingBuffer.System#Numerics#IEqualityOperators{Sudoku#Concepts#CandidateMap#BackingBuffer,Sudoku#Concepts#CandidateMap#BackingBuffer,System#Boolean}#op_Inequality(Sudoku.Concepts.CandidateMap.BackingBuffer,Sudoku.Concepts.CandidateMap.BackingBuffer)">
+        <member name="M:Sudoku.Concepts.CandidateMap.BackingVectorArray.System#Numerics#IEqualityOperators{Sudoku#Concepts#CandidateMap#BackingVectorArray,Sudoku#Concepts#CandidateMap#BackingVectorArray,System#Boolean}#op_Inequality(Sudoku.Concepts.CandidateMap.BackingVectorArray,Sudoku.Concepts.CandidateMap.BackingVectorArray)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Concepts.CandidateMap.CellDigitEnumerator">
@@ -893,7 +897,7 @@
         <member name="M:Sudoku.Concepts.CandidateMap.Converter.Write(System.Text.Json.Utf8JsonWriter,Sudoku.Concepts.CandidateMap,System.Text.Json.JsonSerializerOptions)">
             <inheritdoc/>
         </member>
-        <member name="F:Sudoku.Concepts.CandidateMap.Length">
+        <member name="F:Sudoku.Concepts.CandidateMap.InlineArrayLength">
             <summary>
             Indicates the length of the backing buffer.
             The size of the buffer is 12 <c><![CDATA[floor(729 / sizeof(long) << 6)]]></c>.
@@ -907,9 +911,8 @@
         </member>
         <member name="F:Sudoku.Concepts.CandidateMap._bits">
             <summary>
-            Indicates the internal field that provides the visit entry for fixed-sized buffer type <see cref="T:Sudoku.Concepts.CandidateMap.BackingBuffer"/>.
+            Indicates the internal field that represents a list of <see cref="T:System.UInt64"/> bits.
             </summary>
-            <seealso cref="T:Sudoku.Concepts.CandidateMap.BackingBuffer"/>
         </member>
         <member name="M:Sudoku.Concepts.CandidateMap.#ctor(System.String[])">
             <summary>

@@ -17,7 +17,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	/// Indicates the length of the backing buffer.
 	/// The size of the buffer is 12 <c><![CDATA[floor(729 / sizeof(long) << 6)]]></c>.
 	/// </summary>
-	private const int Length = 12;
+	private const int InlineArrayLength = 12;
 
 
 	/// <inheritdoc cref="CandidateMapBase.Empty"/>
@@ -28,10 +28,9 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 
 
 	/// <summary>
-	/// Indicates the internal field that provides the visit entry for fixed-sized buffer type <see cref="BackingBuffer"/>.
+	/// Indicates the internal field that represents a list of <see cref="ulong"/> bits.
 	/// </summary>
-	/// <seealso cref="BackingBuffer"/>
-	private BackingBuffer _bits;
+	private BackingVectorArray _bits;
 
 
 	/// <summary>
@@ -198,7 +197,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 			}
 
 			var (pos, arr) = (0, new Candidate[Count]);
-			for (var i = 0; i < Length; i++)
+			for (var i = 0; i < InlineArrayLength; i++)
 			{
 				for (
 					var value = _bits[i];
@@ -245,7 +244,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 
 			var bmi2IsSupported = Bmi2.X64.IsSupported;
 			var popCountSum = 0;
-			for (var i = 0; i < Length; i++)
+			for (var i = 0; i < InlineArrayLength; i++)
 			{
 				var bits = _bits[i];
 				var z = bmi2IsSupported
