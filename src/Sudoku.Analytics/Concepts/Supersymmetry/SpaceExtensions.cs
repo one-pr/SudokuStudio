@@ -20,14 +20,10 @@ public static class SpaceExtensions
 		public bool IsSatisfied(in CandidateMap assignments, bool isTruth)
 			=> (isTruth, @this) switch
 			{
-				(true, { Cell: var cell and not -1 })
-					=> IsPow2(assignments.GetDigitsFor(cell)),
-				(true, { House: var house, Digit: var digit })
-					=> IsPow2(assignments.GetPositionsFor(house, digit)),
-				(_, { Cell: var cell and not -1 })
-					=> PopCount((uint)assignments.GetDigitsFor(cell)) <= 1,
-				(_, { House: var house, Digit: var digit })
-					=> PopCount((uint)assignments.GetPositionsFor(house, digit)) <= 1
+				(true, { Cell: var cell and not -1 }) => IsPow2(assignments.GetDigitsFor(cell)),
+				(true, { House: var house, Digit: var digit }) => IsPow2(assignments.GetPositionsFor(house, digit)),
+				(_, { Cell: var cell and not -1 }) => PopCount((uint)assignments.GetDigitsFor(cell)) <= 1,
+				(_, { House: var house, Digit: var digit }) => PopCount((uint)assignments.GetPositionsFor(house, digit)) <= 1
 			};
 	}
 }
