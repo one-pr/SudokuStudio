@@ -733,19 +733,19 @@ public struct MarkerGrid : GridBase
 
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
-	public static bool operator >(in MarkerGrid left, in MarkerGrid right) => left.CompareTo(in right) > 0;
+	public static bool operator >(in MarkerGrid left, in MarkerGrid right) => left.CompareTo(right) > 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThan(TSelf, TOther)"/>
-	public static bool operator <(in MarkerGrid left, in MarkerGrid right) => left.CompareTo(in right) < 0;
+	public static bool operator <(in MarkerGrid left, in MarkerGrid right) => left.CompareTo(right) < 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThanOrEqual(TSelf, TOther)"/>
-	public static bool operator >=(in MarkerGrid left, in MarkerGrid right) => left.CompareTo(in right) >= 0;
+	public static bool operator >=(in MarkerGrid left, in MarkerGrid right) => left.CompareTo(right) >= 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
-	public static bool operator <=(in MarkerGrid left, in MarkerGrid right) => left.CompareTo(in right) <= 0;
+	public static bool operator <=(in MarkerGrid left, in MarkerGrid right) => left.CompareTo(right) <= 0;
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
-	public static bool operator ==(in MarkerGrid left, in MarkerGrid right) => left.Equals(in right);
+	public static bool operator ==(in MarkerGrid left, in MarkerGrid right) => left.Equals(right);
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
 	public static bool operator !=(in MarkerGrid left, in MarkerGrid right) => !(left == right);

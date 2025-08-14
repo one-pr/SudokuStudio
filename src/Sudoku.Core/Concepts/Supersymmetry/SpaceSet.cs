@@ -441,22 +441,22 @@ public partial struct SpaceSet :
 	public static bool operator false(in SpaceSet value) => value.Count == 0;
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
-	public static bool operator ==(in SpaceSet left, in SpaceSet right) => left.Equals(in right);
+	public static bool operator ==(in SpaceSet left, in SpaceSet right) => left.Equals(right);
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
 	public static bool operator !=(in SpaceSet left, in SpaceSet right) => !(left == right);
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
-	public static bool operator >(in SpaceSet left, in SpaceSet right) => left.CompareTo(in right) > 0;
+	public static bool operator >(in SpaceSet left, in SpaceSet right) => left.CompareTo(right) > 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThan(TSelf, TOther)"/>
-	public static bool operator <(in SpaceSet left, in SpaceSet right) => left.CompareTo(in right) < 0;
+	public static bool operator <(in SpaceSet left, in SpaceSet right) => left.CompareTo(right) < 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThanOrEqual(TSelf, TOther)"/>
-	public static bool operator >=(in SpaceSet left, in SpaceSet right) => left.CompareTo(in right) >= 0;
+	public static bool operator >=(in SpaceSet left, in SpaceSet right) => left.CompareTo(right) >= 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
-	public static bool operator <=(in SpaceSet left, in SpaceSet right) => left.CompareTo(in right) <= 0;
+	public static bool operator <=(in SpaceSet left, in SpaceSet right) => left.CompareTo(right) <= 0;
 
 	/// <inheritdoc cref="IBitwiseOperators{TSelf, TOther, TResult}.op_OnesComplement(TSelf)"/>
 	public static SpaceSet operator ~(in SpaceSet value)

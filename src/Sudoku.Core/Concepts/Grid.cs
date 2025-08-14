@@ -1176,7 +1176,7 @@ public struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffResult?>
 	/// <param name="comparison">Indicates the comparison rule.</param>
 	/// <returns>An <see cref="IEqualityComparer{T}"/> instance.</returns>
 	public static IEqualityComparer<Grid> CreateEqualityComparer(GridComparison comparison)
-		=> EqualityComparer<Grid>.Create((a, b) => a.Equals(in b, comparison), obj => obj.GetHashCode(comparison));
+		=> EqualityComparer<Grid>.Create((a, b) => a.Equals(b, comparison), obj => obj.GetHashCode(comparison));
 
 	/// <inheritdoc/>
 	static void GridBase.OnValueChanged(ref Grid @this, Cell cell, Digit setValue) => OnValueChanged(ref @this, cell, setValue);
@@ -1213,7 +1213,14 @@ public struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffResult?>
 			case [var uniformValue]:
 			{
 				var result = Undefined;
-				if (uniformValue == 0) { result[..].Clear(); } else { result[..].Fill(uniformValue); }
+				if (uniformValue == 0)
+				{
+					result[..].Clear();
+				}
+				else
+				{
+					result[..].Fill(uniformValue);
+				}
 				return result;
 			}
 			case { Length: 81 }:
@@ -1270,22 +1277,22 @@ public struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffResult?>
 
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
-	public static bool operator ==(in Grid left, in Grid right) => left.Equals(in right);
+	public static bool operator ==(in Grid left, in Grid right) => left.Equals(right);
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
 	public static bool operator !=(in Grid left, in Grid right) => !(left == right);
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
-	public static bool operator >(in Grid left, in Grid right) => left.CompareTo(in right) > 0;
+	public static bool operator >(in Grid left, in Grid right) => left.CompareTo(right) > 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThan(TSelf, TOther)"/>
-	public static bool operator <(in Grid left, in Grid right) => left.CompareTo(in right) < 0;
+	public static bool operator <(in Grid left, in Grid right) => left.CompareTo(right) < 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThanOrEqual(TSelf, TOther)"/>
-	public static bool operator >=(in Grid left, in Grid right) => left.CompareTo(in right) >= 0;
+	public static bool operator >=(in Grid left, in Grid right) => left.CompareTo(right) >= 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
-	public static bool operator <=(in Grid left, in Grid right) => left.CompareTo(in right) <= 0;
+	public static bool operator <=(in Grid left, in Grid right) => left.CompareTo(right) <= 0;
 
 	/// <summary>
 	/// Analyzes difference between two grids.

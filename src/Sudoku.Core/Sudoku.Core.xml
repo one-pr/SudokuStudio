@@ -14187,7 +14187,7 @@
             Indicates the entry instance. Use this propeprty to create links:
             <code><![CDATA[
             var grid = ...;
-            DancingLink.Entry.Create(in grid);
+            DancingLink.Entry.Create(grid);
             ]]></code>
             </summary>
         </member>

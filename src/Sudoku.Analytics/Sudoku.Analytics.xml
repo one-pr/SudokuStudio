@@ -29332,7 +29332,7 @@
             <inheritdoc cref="M:System.ReadOnlySpan`1.Equals(System.Object)"/>
         </member>
         <member name="M:Sudoku.Ranking.RankPattern.Equals(Sudoku.Ranking.RankPattern@)">
-            <inheritdoc/>
+            <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
         </member>
         <member name="M:Sudoku.Ranking.RankPattern.System#IEquatable{Sudoku#Ranking#RankPattern}#Equals(Sudoku.Ranking.RankPattern)">
             <inheritdoc/>

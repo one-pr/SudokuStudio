@@ -335,10 +335,10 @@ public sealed record RxCyConverter(
 	public Func<SpaceSet, string> SpaceConverter
 		=> static spaces =>
 		{
-			return spaces.Count == 0 ? "<Empty>" : toPartString(in spaces);
+			return spaces.Count == 0 ? "<Empty>" : toPartString(spaces);
 
 
-			static string toPartString(ref readonly SpaceSet sets)
+			static string toPartString(in SpaceSet sets)
 			{
 				Dictionary<Digit, Mask> rn = [], cn = [], bn = [], rc = [];
 				foreach (var set in sets)

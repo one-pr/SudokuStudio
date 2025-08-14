@@ -665,7 +665,7 @@ public sealed partial class ExocetStepSearcher : StepSearcher
 				{
 					if (CheckComplexJuniorLockedMember(
 						ref context, grid, baseCells, targetCells, crossline, baseCellsDigitsMask,
-						housesMask, 1 << extraHouse, size, in expandedCrosslineIncludingTarget, lockedMembers, chuteIndex,
+						housesMask, 1 << extraHouse, size, expandedCrosslineIncludingTarget, lockedMembers, chuteIndex,
 						groupsOfTargetCells, out _, out var lockedDigitsMask
 					) is { } complexJuniorLockedMemberTypeStep)
 					{
@@ -819,7 +819,7 @@ public sealed partial class ExocetStepSearcher : StepSearcher
 						{
 							if (CheckComplexSeniorLockedMember(
 								ref context, grid, baseCells, targetCell, endoTargetCell, crossline, baseCellsDigitsMask,
-								housesMask, 1 << extraHouse, size, in expandedCrosslineIncludingTarget, lockedMembers, chuteIndex,
+								housesMask, 1 << extraHouse, size, expandedCrosslineIncludingTarget, lockedMembers, chuteIndex,
 								out _, out var lockedDigitsMask
 							) is { } complexSeniorLockedMemberTypeStep)
 							{
@@ -914,7 +914,7 @@ public sealed partial class ExocetStepSearcher : StepSearcher
 
 									if (CheckComplexSeniorLockedMemberGrouped(
 										ref context, grid, baseCells, targetCell, endoTargetCellsGroup, crossline, baseCellsDigitsMask,
-										(Mask)(1 << selectedDigit), housesMask, 1 << extraHouse, size, in expandedCrosslineIncludingTarget,
+										(Mask)(1 << selectedDigit), housesMask, 1 << extraHouse, size, expandedCrosslineIncludingTarget,
 										lockedMembers, chuteIndex, out var lockedDigitsMask, out var inferredBaseDigitsMask
 									) is { } complexSeniorLockedMemberTypeStep)
 									{
@@ -980,7 +980,7 @@ public sealed partial class ExocetStepSearcher : StepSearcher
 										var currentDigitsMask = Mask.Create(digitCombination);
 										if (CheckComplexSeniorLockedMemberGrouped(
 											ref context, grid, baseCells, targetCell, endoTargetCellsGroup, crossline, baseCellsDigitsMask,
-											currentDigitsMask, housesMask, 1 << extraHouse, size, in expandedCrosslineIncludingTarget,
+											currentDigitsMask, housesMask, 1 << extraHouse, size, expandedCrosslineIncludingTarget,
 											lockedMembers, chuteIndex, out var lockedDigitsMask, out var inferredBaseDigitsMask
 										) is { } complexSeniorLockedMemberTypeStep)
 										{
