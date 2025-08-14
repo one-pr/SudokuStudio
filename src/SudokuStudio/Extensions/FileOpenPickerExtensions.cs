@@ -6,10 +6,16 @@ namespace Windows.Storage.Pickers;
 /// <seealso cref="FileOpenPicker"/>
 public static class FileOpenPickerExtensions
 {
-	internal static void Initialize<TUIElement>(this FileOpenPicker @this, TUIElement control) where TUIElement : UIElement
+	/// <summary>
+	/// Provides extension memebers on <see cref="FileOpenPicker"/>.
+	/// </summary>
+	extension(FileOpenPicker @this)
 	{
-		var window = Application.Current.AsApp().WindowManager.GetWindowForElement(control);
-		var hWnd = WindowNative.GetWindowHandle(window);
-		InitializeWithWindow.Initialize(@this, hWnd);
+		internal void Initialize<TUIElement>(TUIElement control) where TUIElement : UIElement
+		{
+			var window = Application.Current.AsApp().WindowManager.GetWindowForElement(control);
+			var hWnd = WindowNative.GetWindowHandle(window);
+			InitializeWithWindow.Initialize(@this, hWnd);
+		}
 	}
 }

@@ -47,23 +47,33 @@ public static class FileFormats
 
 
 	/// <summary>
-	/// Add a new format into the collection of file-type choices for a <see cref="FileSavePicker"/> instance.
+	/// Provides extension members on <see cref="FileSavePicker"/>.
 	/// </summary>
-	/// <param name="this">The file save picker.</param>
-	/// <param name="format">The format to be added.</param>
-	public static void AddFileFormat(this FileSavePicker @this, FileFormat format)
-		=> @this.FileTypeChoices.Add(format.Description, format.Formats);
+	extension(FileSavePicker @this)
+	{
+		/// <summary>
+		/// Add a new format into the collection of file-type choices for a <see cref="FileSavePicker"/> instance.
+		/// </summary>
+		/// <param name="format">The format to be added.</param>
+		public void AddFileFormat(FileFormat format)
+			=> @this.FileTypeChoices.Add(format.Description, format.Formats);
+	}
 
 	/// <summary>
-	/// Add a new format into the filtering collection for a <see cref="FileOpenPicker"/> instance.
+	/// Provides extension members on <see cref="FileOpenPicker"/>.
 	/// </summary>
-	/// <param name="this">The file open picker.</param>
-	/// <param name="format">The format to be added.</param>
-	/// <exception cref="InvalidOperationException">Throws when the format value is invalid.</exception>
-	public static void AddFileFormat(this FileOpenPicker @this, FileFormat format)
-		=> @this.FileTypeFilter.Add(
-			format.Formats is [var f]
-				? f
-				: throw new InvalidOperationException(SR.ExceptionMessage("FileFormatContainsMultipleSubformats"))
-		);
+	extension(FileOpenPicker @this)
+	{
+		/// <summary>
+		/// Add a new format into the filtering collection for a <see cref="FileOpenPicker"/> instance.
+		/// </summary>
+		/// <param name="format">The format to be added.</param>
+		/// <exception cref="InvalidOperationException">Throws when the format value is invalid.</exception>
+		public void AddFileFormat(FileFormat format)
+			=> @this.FileTypeFilter.Add(
+				format.Formats is [var f]
+					? f
+					: throw new InvalidOperationException(SR.ExceptionMessage("FileFormatContainsMultipleSubformats"))
+			);
+	}
 }

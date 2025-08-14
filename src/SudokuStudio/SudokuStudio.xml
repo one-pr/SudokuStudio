@@ -1532,12 +1532,6 @@
             Indicates the transparent backdrop.
             </summary>
         </member>
-        <member name="T:SudokuStudio.Configuration.BackdropKindExtensions">
-            <summary>
-            Provides with extension methods on <see cref="T:SudokuStudio.Configuration.BackdropKind"/>.
-            </summary>
-            <seealso cref="T:SudokuStudio.Configuration.BackdropKind"/>
-        </member>
         <member name="T:SudokuStudio.Configuration.BuiltInColorPalette">
             <summary>
             Indicates a built-in color palette.
@@ -11012,20 +11006,34 @@
             Indicates the user preference file format (SSP - Sudoku Studio Preference format).
             </summary>
         </member>
-        <member name="M:SudokuStudio.Storage.FileFormats.AddFileFormat(Windows.Storage.Pickers.FileSavePicker,SudokuStudio.Storage.FileFormat)">
+        <member name="T:SudokuStudio.Storage.FileFormats.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see cref="T:Windows.Storage.Pickers.FileSavePicker"/>.
+            </summary>
+        </member>
+        <member name="M:SudokuStudio.Storage.FileFormats.&lt;&gt;E__0.AddFileFormat(SudokuStudio.Storage.FileFormat)">
             <summary>
             Add a new format into the collection of file-type choices for a <see cref="T:Windows.Storage.Pickers.FileSavePicker"/> instance.
             </summary>
-            <param name="this">The file save picker.</param>
             <param name="format">The format to be added.</param>
         </member>
-        <member name="M:SudokuStudio.Storage.FileFormats.AddFileFormat(Windows.Storage.Pickers.FileOpenPicker,SudokuStudio.Storage.FileFormat)">
+        <member name="M:SudokuStudio.Storage.FileFormats.AddFileFormat(Windows.Storage.Pickers.FileSavePicker,SudokuStudio.Storage.FileFormat)">
+            <inheritdoc cref="M:SudokuStudio.Storage.FileFormats.&lt;&gt;E__0.AddFileFormat(SudokuStudio.Storage.FileFormat)"/>
+        </member>
+        <member name="T:SudokuStudio.Storage.FileFormats.&lt;&gt;E__1">
+            <summary>
+            Provides extension members on <see cref="T:Windows.Storage.Pickers.FileOpenPicker"/>.
+            </summary>
+        </member>
+        <member name="M:SudokuStudio.Storage.FileFormats.&lt;&gt;E__1.AddFileFormat(SudokuStudio.Storage.FileFormat)">
             <summary>
             Add a new format into the filtering collection for a <see cref="T:Windows.Storage.Pickers.FileOpenPicker"/> instance.
             </summary>
-            <param name="this">The file open picker.</param>
             <param name="format">The format to be added.</param>
             <exception cref="T:System.InvalidOperationException">Throws when the format value is invalid.</exception>
+        </member>
+        <member name="M:SudokuStudio.Storage.FileFormats.AddFileFormat(Windows.Storage.Pickers.FileOpenPicker,SudokuStudio.Storage.FileFormat)">
+            <inheritdoc cref="M:SudokuStudio.Storage.FileFormats.&lt;&gt;E__1.AddFileFormat(SudokuStudio.Storage.FileFormat)"/>
         </member>
         <member name="T:SudokuStudio.Storage.IProgramSupportedFileHandler`1">
             <summary>
@@ -17662,11 +17670,21 @@
             </summary>
             <seealso cref="T:Windows.Storage.Pickers.FileOpenPicker"/>
         </member>
+        <member name="T:Windows.Storage.Pickers.FileOpenPickerExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension memebers on <see cref="T:Windows.Storage.Pickers.FileOpenPicker"/>.
+            </summary>
+        </member>
         <member name="T:Windows.Storage.Pickers.FileSavePickerExtensions">
             <summary>
             Provides with extension methods on <see cref="T:Windows.Storage.Pickers.FileSavePicker"/>.
             </summary>
             <seealso cref="T:Windows.Storage.Pickers.FileSavePicker"/>
+        </member>
+        <member name="T:Windows.Storage.Pickers.FileSavePickerExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension memebers on <see cref="T:Windows.Storage.Pickers.FileSavePicker"/>.
+            </summary>
         </member>
         <member name="T:Windows.Foundation.PointExtensions">
             <summary>
@@ -17740,12 +17758,19 @@
             </summary>
             <seealso cref="T:Microsoft.UI.Xaml.Documents.Run"/>
         </member>
-        <member name="M:Microsoft.UI.Xaml.Documents.RunExtensions.SingletonSpan``1(Microsoft.UI.Xaml.Documents.Run)">
+        <member name="T:Microsoft.UI.Xaml.Documents.RunExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see cref="T:Microsoft.UI.Xaml.Documents.Run"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.UI.Xaml.Documents.RunExtensions.&lt;&gt;E__0.SingletonSpan``1">
             <summary>
             Creates a <see cref="T:Microsoft.UI.Xaml.Documents.Bold"/> instance with a singleton value of <see cref="T:Microsoft.UI.Xaml.Documents.Run"/>.
             </summary>
-            <param name="this">The <see cref="T:Microsoft.UI.Xaml.Documents.Run"/> instance.</param>
             <returns>A <see cref="T:Microsoft.UI.Xaml.Documents.Bold"/> instance.</returns>
+        </member>
+        <member name="M:Microsoft.UI.Xaml.Documents.RunExtensions.SingletonSpan``1(Microsoft.UI.Xaml.Documents.Run)">
+            <inheritdoc cref="M:Microsoft.UI.Xaml.Documents.RunExtensions.&lt;&gt;E__0.SingletonSpan``1"/>
         </member>
         <member name="T:Microsoft.UI.Xaml.UIElementExtensions">
             <summary>

@@ -7,14 +7,19 @@ namespace Microsoft.UI.Xaml.Documents;
 public static class RunExtensions
 {
 	/// <summary>
-	/// Creates a <see cref="Bold"/> instance with a singleton value of <see cref="Run"/>.
+	/// Provides extension members on <see cref="Run"/>.
 	/// </summary>
-	/// <param name="this">The <see cref="Run"/> instance.</param>
-	/// <returns>A <see cref="Bold"/> instance.</returns>
-	public static TSpan SingletonSpan<TSpan>(this Run @this) where TSpan : Span, new()
+	extension(Run @this)
 	{
-		var result = new TSpan();
-		result.Inlines.Add(@this);
-		return result;
+		/// <summary>
+		/// Creates a <see cref="Bold"/> instance with a singleton value of <see cref="Run"/>.
+		/// </summary>
+		/// <returns>A <see cref="Bold"/> instance.</returns>
+		public TSpan SingletonSpan<TSpan>() where TSpan : Span, new()
+		{
+			var result = new TSpan();
+			result.Inlines.Add(@this);
+			return result;
+		}
 	}
 }
