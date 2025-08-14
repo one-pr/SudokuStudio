@@ -33,11 +33,8 @@
     <File Path="docs/assets-renamer.ps1" />
   </Folder>
   <Folder Name="/Global Items/Source Generators/" />
-  <Folder Name="/Source Generators/">
-    <Project Path="src/Sudoku.Analytics.SourceGeneration/Sudoku.Analytics.SourceGeneration.csproj" />
-    <Project Path="src/SudokuStudio.SourceGeneration/SudokuStudio.SourceGeneration.csproj" />
-  </Folder>
   <Project Path="src/ConsoleTest/MyPrivateWorks.csproj" />
+  <Project Path="src/Sudoku.Analytics.SourceGeneration/Sudoku.Analytics.SourceGeneration.csproj" />
   <Project Path="src/Sudoku.Analytics/Sudoku.Analytics.csproj" />
   <Project Path="src/Sudoku.CommandLine/Sudoku.CommandLine.csproj">
     <BuildType Solution="Build|*" Project="Debug" />
@@ -52,6 +49,7 @@
   <Project Path="src/Sudoku.Ocr/Sudoku.Ocr.csproj" Id="b9e08212-cf7a-4469-9a21-083b4a5fcede">
     <BuildType Solution="Build|*" Project="Debug" />
   </Project>
+  <Project Path="src/SudokuStudio.SourceGeneration/SudokuStudio.SourceGeneration.csproj" />
   <Project Path="src/SudokuStudio/SudokuStudio.csproj">
     <Platform Solution="Debug|Any CPU" Project="x64" />
     <Platform Solution="Debug|x64" Project="x64" />
