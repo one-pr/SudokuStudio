@@ -4,7 +4,7 @@ namespace System.Text.Json;
 /// Represents a converter for <see cref="DateOnly"/> instance.
 /// </summary>
 /// <seealso cref="DateOnly"/>
-public sealed partial class DateOnlyConverter : JsonConverter<DateOnly>
+public sealed class DateOnlyConverter : JsonConverter<DateOnly>
 {
 	/// <summary>
 	/// Indicates the format text to be used.
