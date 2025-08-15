@@ -5422,6 +5422,9 @@
         <member name="P:Sudoku.Concepts.HouseDigitIdentifier.System#Numerics#IMinMaxValue{Sudoku#Concepts#HouseDigitIdentifier}#MaxValue">
             <inheritdoc/>
         </member>
+        <member name="P:Sudoku.Concepts.HouseDigitIdentifier.System#Numerics#IAdditiveIdentity{Sudoku#Concepts#HouseDigitIdentifier,Sudoku#Concepts#HouseDigitIdentifier}#AdditiveIdentity">
+            <inheritdoc/>
+        </member>
         <member name="M:Sudoku.Concepts.HouseDigitIdentifier.Deconstruct(System.Int32@,System.Int32@)">
             <target name="method">
 				<summary>

@@ -7,6 +7,7 @@ namespace Sudoku.Concepts;
 /// <param name="digit"><inheritdoc cref="Digit" path="/summary"/></param>
 public readonly struct HouseDigitIdentifier(House house, Digit digit) :
 	IAdditionOperators<HouseDigitIdentifier, byte, HouseDigitIdentifier>,
+	IAdditiveIdentity<HouseDigitIdentifier, HouseDigitIdentifier>,
 	IComparable<HouseDigitIdentifier>,
 	IComparisonOperators<HouseDigitIdentifier, HouseDigitIdentifier, bool>,
 	IDecrementOperators<HouseDigitIdentifier>,
@@ -57,6 +58,9 @@ public readonly struct HouseDigitIdentifier(House house, Digit digit) :
 
 	/// <inheritdoc/>
 	static HouseDigitIdentifier IMinMaxValue<HouseDigitIdentifier>.MaxValue => MaxValue;
+
+	/// <inheritdoc/>
+	static HouseDigitIdentifier IAdditiveIdentity<HouseDigitIdentifier, HouseDigitIdentifier>.AdditiveIdentity => MinValue;
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
@@ -171,7 +175,7 @@ public readonly struct HouseDigitIdentifier(House house, Digit digit) :
 
 	/// <inheritdoc/>
 	public static HouseDigitIdentifier operator checked +(HouseDigitIdentifier left, byte right)
-		=> checked((HouseDigitIdentifier)((left._mask + right) % MaxRawValue));
+		=> right is >= 0 and < MaxRawValue ? checked((HouseDigitIdentifier)(left._mask + right)) : throw new OverflowException();
 
 	/// <inheritdoc/>
 	public static HouseDigitIdentifier operator -(HouseDigitIdentifier left, byte right)
@@ -179,7 +183,7 @@ public readonly struct HouseDigitIdentifier(House house, Digit digit) :
 
 	/// <inheritdoc/>
 	public static HouseDigitIdentifier operator checked -(HouseDigitIdentifier left, byte right)
-		=> checked((HouseDigitIdentifier)((left._mask + MaxRawValue - right % MaxRawValue) % MaxRawValue));
+		=> right is >= 0 and < MaxRawValue ? checked((HouseDigitIdentifier)(left._mask - right)) : throw new OverflowException();
 
 
 	/// <summary>
