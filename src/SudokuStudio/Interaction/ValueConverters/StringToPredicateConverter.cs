@@ -1,7 +1,5 @@
 namespace SudokuStudio.Interaction.ValueConverters;
 
-using unsafe StringCheckerFuncPtr = delegate*<string, bool>;
-
 /// <summary>
 /// Converts a <see cref="string"/> value into a predicate that can return a <see cref="bool"/> result.
 /// </summary>
@@ -21,7 +19,7 @@ public sealed class StringToPredicateConverter : IValueConverter
 	/// <inheritdoc/>
 	public unsafe object Convert(object? value, Type? targetType, object? parameter, string? language)
 		=> value is string target
-		&& (EnforceNonWhiteSpaceString ? &string.IsNullOrWhiteSpace : (StringCheckerFuncPtr)(&string.IsNullOrEmpty)) is var checkerFunc
+		&& (EnforceNonWhiteSpaceString ? &string.IsNullOrWhiteSpace : (delegate*<string, bool>)&string.IsNullOrEmpty) is var checkerFunc
 			? IsInverted ? !checkerFunc(target) : checkerFunc(target)
 			: IsInverted ? value is not null : value is null;
 
