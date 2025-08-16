@@ -1930,6 +1930,13 @@
             where <typeparamref name="T"/> satisfies <see langword="class"/> constraint.
             </summary>
         </member>
+        <member name="M:System.GenericExtensions.&lt;&gt;E__0`1.op_LogicalNot(`0)">
+            <summary>
+            Determines whether the current value is <see langword="null"/>.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
         <member name="M:System.GenericExtensions.&lt;&gt;E__0`1.op_True(`0)">
             <summary>
             Determines whether the current value is non-<see langword="null"/>.
@@ -1943,6 +1950,9 @@
             </summary>
             <param name="value">The value.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.GenericExtensions.op_LogicalNot``1(``0)">
+            <inheritdoc cref="M:System.GenericExtensions.&lt;&gt;E__0`1.op_LogicalNot(`0)"/>
         </member>
         <member name="M:System.GenericExtensions.op_True``1(``0)">
             <inheritdoc cref="M:System.GenericExtensions.&lt;&gt;E__0`1.op_True(`0)"/>
@@ -7575,6 +7585,13 @@
             Provides extension members on <see cref="T:System.Threading.CancellationToken"/>.
             </summary>
         </member>
+        <member name="M:System.Threading.CancellationTokenExtensions.&lt;&gt;E__0.op_LogicalNot(System.Threading.CancellationToken)">
+            <summary>
+            Indicates whether the cancellation token is cancellation-requested.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
         <member name="M:System.Threading.CancellationTokenExtensions.&lt;&gt;E__0.op_True(System.Threading.CancellationToken)">
             <summary>
             Indicates whether the cancellation token isn't cancellation-requested.
@@ -7588,6 +7605,9 @@
             </summary>
             <param name="value">The value.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.Threading.CancellationTokenExtensions.op_LogicalNot(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.Threading.CancellationTokenExtensions.&lt;&gt;E__0.op_LogicalNot(System.Threading.CancellationToken)"/>
         </member>
         <member name="M:System.Threading.CancellationTokenExtensions.op_True(System.Threading.CancellationToken)">
             <inheritdoc cref="M:System.Threading.CancellationTokenExtensions.&lt;&gt;E__0.op_True(System.Threading.CancellationToken)"/>

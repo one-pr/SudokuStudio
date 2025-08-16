@@ -13,6 +13,13 @@ public static class CancellationTokenExtensions
 	{
 #if EXTENSION_OPERATORS
 		/// <summary>
+		/// Indicates whether the cancellation token is cancellation-requested.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>A <see cref="bool"/> result indicating that.</returns>
+		public static bool operator !(CancellationToken value) => value.IsCancellationRequested;
+
+		/// <summary>
 		/// Indicates whether the cancellation token isn't cancellation-requested.
 		/// </summary>
 		/// <param name="value">The value.</param>
