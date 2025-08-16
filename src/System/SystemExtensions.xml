@@ -1926,7 +1926,8 @@
         </member>
         <member name="T:System.GenericExtensions.&lt;&gt;E__0`1">
             <summary>
-            Provides extension members on <see cref="T:System.Object"/>?.
+            Provides extension members on <typeparamref name="T"/>,
+            where <typeparamref name="T"/> satisfies <see langword="class"/> constraint.
             </summary>
         </member>
         <member name="M:System.GenericExtensions.&lt;&gt;E__0`1.op_True(`0)">

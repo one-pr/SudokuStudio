@@ -6,7 +6,8 @@ namespace System;
 public static class GenericExtensions
 {
 	/// <summary>
-	/// Provides extension members on <see cref="object"/>?.
+	/// Provides extension members on <typeparamref name="T"/>,
+	/// where <typeparamref name="T"/> satisfies <see langword="class"/> constraint.
 	/// </summary>
 	extension<T>(T) where T : class
 	{
