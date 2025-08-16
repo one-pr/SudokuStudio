@@ -1926,17 +1926,42 @@
         </member>
         <member name="T:System.GenericExtensions.&lt;&gt;E__0`1">
             <summary>
+            Provides extension members on <see cref="T:System.Object"/>?.
+            </summary>
+        </member>
+        <member name="M:System.GenericExtensions.&lt;&gt;E__0`1.op_True(`0)">
+            <summary>
+            Determines whether the current value is non-<see langword="null"/>.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.GenericExtensions.&lt;&gt;E__0`1.op_False(`0)">
+            <summary>
+            Determines whether the current value is <see langword="null"/>.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.GenericExtensions.op_True``1(``0)">
+            <inheritdoc cref="M:System.GenericExtensions.&lt;&gt;E__0`1.op_True(`0)"/>
+        </member>
+        <member name="M:System.GenericExtensions.op_False``1(``0)">
+            <inheritdoc cref="M:System.GenericExtensions.&lt;&gt;E__0`1.op_False(`0)"/>
+        </member>
+        <member name="T:System.GenericExtensions.&lt;&gt;E__1`1">
+            <summary>
             Provides extension members on <typeparamref name="T"/>,
             where <typeparamref name="T"/> satisfies <see langword="struct"/> constraint.
             </summary>
         </member>
-        <member name="P:System.GenericExtensions.&lt;&gt;E__0`1.nullref">
+        <member name="P:System.GenericExtensions.&lt;&gt;E__1`1.nullref">
             <summary>
             Represents null reference of the type <typeparamref name="T"/>.
             </summary>
         </member>
         <member name="M:System.GenericExtensions.get_nullref``1">
-            <inheritdoc cref="P:System.GenericExtensions.&lt;&gt;E__0`1.nullref"/>
+            <inheritdoc cref="P:System.GenericExtensions.&lt;&gt;E__1`1.nullref"/>
         </member>
         <member name="T:System.IInlineArray`2">
             <summary>
@@ -6499,36 +6524,6 @@
         </member>
         <member name="M:System.Numerics.NIntEnumerator.System#IDisposable#Dispose">
             <inheritdoc/>
-        </member>
-        <member name="T:System.ObjectExtensions">
-            <summary>
-            Provides with extension methods on <see cref="T:System.Object"/>.
-            </summary>
-        </member>
-        <member name="T:System.ObjectExtensions.&lt;&gt;E__0">
-            <summary>
-            Provides extension members on <see cref="T:System.Object"/>?.
-            </summary>
-        </member>
-        <member name="M:System.ObjectExtensions.&lt;&gt;E__0.op_True(System.Object)">
-            <summary>
-            Determines whether the current value is non-<see langword="null"/>.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:System.ObjectExtensions.&lt;&gt;E__0.op_False(System.Object)">
-            <summary>
-            Determines whether the current value is <see langword="null"/>.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:System.ObjectExtensions.op_True(System.Object)">
-            <inheritdoc cref="M:System.ObjectExtensions.&lt;&gt;E__0.op_True(System.Object)"/>
-        </member>
-        <member name="M:System.ObjectExtensions.op_False(System.Object)">
-            <inheritdoc cref="M:System.ObjectExtensions.&lt;&gt;E__0.op_False(System.Object)"/>
         </member>
         <member name="T:System.RandomExtensions">
             <summary>
