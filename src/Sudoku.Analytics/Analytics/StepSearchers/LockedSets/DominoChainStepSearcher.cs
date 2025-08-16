@@ -1,10 +1,10 @@
 namespace Sudoku.Analytics.StepSearchers;
 
 /// <summary>
-/// Provides with a <b>Sue de Coq Chain</b> step searcher.
+/// Provides with a <b>Domino Chain</b> step searcher.
 /// The step searcher will include the following techniques:
 /// <list type="bullet">
-/// <item>Sue de Coq Chain</item>
+/// <item>Domino Chain</item>
 /// </list>
 /// </summary>
 [StepSearcher("StepSearcherName_DominoChainStepSearcher", Technique.DominoChain)]

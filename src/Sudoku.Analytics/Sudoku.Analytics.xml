@@ -12820,10 +12820,10 @@
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.DominoChainStepSearcher">
             <summary>
-            Provides with a <b>Sue de Coq Chain</b> step searcher.
+            Provides with a <b>Domino Chain</b> step searcher.
             The step searcher will include the following techniques:
             <list type="bullet">
-            <item>Sue de Coq Chain</item>
+            <item>Domino Chain</item>
             </list>
             </summary>
         </member>
@@ -17159,7 +17159,7 @@
         </member>
         <member name="T:Sudoku.Analytics.Steps.DominoChainStep">
             <summary>
-            Provides with a step that is a <b>Sue de Coq Chain</b> technique.
+            Provides with a step that is a <b>Domino Chain</b> technique.
             </summary>
             <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
             <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
@@ -17168,7 +17168,7 @@
         </member>
         <member name="M:Sudoku.Analytics.Steps.DominoChainStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern[])">
             <summary>
-            Provides with a step that is a <b>Sue de Coq Chain</b> technique.
+            Provides with a step that is a <b>Domino Chain</b> technique.
             </summary>
             <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
             <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
@@ -25460,7 +25460,7 @@
         </member>
         <member name="F:Sudoku.Categorization.Technique.DominoChain">
             <summary>
-            Indicates sue de coq chain.
+            Indicates domino chain.
             </summary>
         </member>
         <member name="F:Sudoku.Categorization.Technique.DominoLoop">

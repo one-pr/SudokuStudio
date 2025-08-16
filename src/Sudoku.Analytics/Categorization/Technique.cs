@@ -4513,7 +4513,7 @@ public enum Technique
 	//
 	#region Domino Chain & Loop
 	/// <summary>
-	/// Indicates sue de coq chain.
+	/// Indicates domino chain.
 	/// </summary>
 	[TechniqueMetadata<DominoChainStepSearcher, DominoChainStep>(
 		Rating = 80,

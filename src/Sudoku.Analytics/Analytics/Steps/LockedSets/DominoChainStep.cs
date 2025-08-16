@@ -1,7 +1,7 @@
 namespace Sudoku.Analytics.Steps;
 
 /// <summary>
-/// Provides with a step that is a <b>Sue de Coq Chain</b> technique.
+/// Provides with a step that is a <b>Domino Chain</b> technique.
 /// </summary>
 /// <param name="conclusions"><inheritdoc cref="Step.Conclusions" path="/summary"/></param>
 /// <param name="views"><inheritdoc cref="Step.Views" path="/summary"/></param>
