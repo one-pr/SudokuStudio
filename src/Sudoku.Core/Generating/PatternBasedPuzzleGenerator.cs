@@ -111,7 +111,11 @@ public ref struct PatternBasedPuzzleGenerator(ref readonly CellMap seedPattern, 
 				continue;
 			}
 
+#if EXTENSION_OPERATORS
+			if (!cancellationToken)
+#else
 			if (cancellationToken.IsCancellationRequested)
+#endif
 			{
 				_isCancelled = true;
 				return true;

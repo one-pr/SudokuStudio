@@ -45,7 +45,7 @@ public partial class XyzRingStepSearcher							(): StepSearcher(33, 1);
 public partial class UniquenessClueCoverStepSearcher				(): StepSearcher(34, 2);
 public partial class ChainStepSearcher								(): StepSearcher(35, 2);
 public partial class GroupedChainStepSearcher						(): StepSearcher(36, 2);
-public partial class SueDeCoqChainStepSearcher						(): StepSearcher(37, 3);
+public partial class DominoChainStepSearcher						(): StepSearcher(37, 3);
 public partial class AlignedExclusionStepSearcher					(): StepSearcher(38, 2);
 public partial class GuardianStepSearcher							(): StepSearcher(39, 2);
 public partial class ComplexFishStepSearcher						(): StepSearcher(40, 2);

@@ -55,6 +55,9 @@ public static class Combinatorics
 		/// All possible subsets returned.
 		/// </returns>
 		public ReadOnlySpan<T[]> GetSubsets()
+#if EXTENSION_OPERATORS
+			=> @this | @this.Length;
+#else
 		{
 			var result = new List<T[]>();
 			for (var size = 1; size <= @this.Length; size++)
@@ -66,6 +69,7 @@ public static class Combinatorics
 			}
 			return result.AsSpan();
 		}
+#endif
 
 		/// <summary>
 		/// Get all subsets from the specified number of the values to take.
@@ -81,6 +85,9 @@ public static class Combinatorics
 		/// </returns>
 		/// <exception cref="ArgumentException">Throws when the argument is negative.</exception>
 		public ReadOnlySpan<T[]> GetSubsets(int count)
+#if EXTENSION_OPERATORS
+			=> @this & count;
+#else
 		{
 			ArgumentException.ThrowIfAssertionFailed(count >= 0);
 
@@ -90,9 +97,10 @@ public static class Combinatorics
 			}
 
 			var result = new List<T[]>();
-			GetSubsetsCore(@this.Length, count, count, stackalloc int[count], @this, result);
+			GetSubsetsCore(value.Length, count, count, stackalloc int[count], value, result);
 			return result.AsSpan();
 		}
+#endif
 
 		/// <summary>
 		/// Get all permutations from the collection.
@@ -196,6 +204,57 @@ public static class Combinatorics
 				}
 			}
 		}
+
+
+#if EXTENSION_OPERATORS
+		/// <summary>
+		/// Get all subsets from the specified number of the values to take.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <param name="count">The number of elements you want to take.</param>
+		/// <returns>
+		/// The subsets of the list.
+		/// For example, if the input array is <c>[1, 2, 3]</c> and the argument <paramref name="count"/> is 2, the result will be
+		/// <code><![CDATA[
+		/// [[1, 2], [1, 3], [2, 3]]
+		/// ]]></code>
+		/// 3 cases.
+		/// </returns>
+		/// <exception cref="ArgumentException">Throws when the argument is negative.</exception>
+		public static ReadOnlySpan<T[]> operator &(ReadOnlySpan<T> value, int count)
+		{
+			ArgumentException.ThrowIfAssertionFailed(count >= 0);
+
+			if (count == 0)
+			{
+				return [];
+			}
+
+			var result = new List<T[]>();
+			GetSubsetsCore(value.Length, count, count, stackalloc int[count], value, result);
+			return result.AsSpan();
+		}
+
+		/// <summary>
+		/// Get all subsets from the limited number of the values to take,
+		/// specified as maximum number of elements of each combination.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <param name="count">The number of elements you want to take, as maximum possible value.</param>
+		/// <exception cref="ArgumentException">Throws when the argument is negative.</exception>
+		public static ReadOnlySpan<T[]> operator |(ReadOnlySpan<T> value, int count)
+		{
+			var result = new List<T[]>();
+			for (var size = 1; size <= count; size++)
+			{
+				foreach (var element in value.GetSubsets(size))
+				{
+					result.Add(element);
+				}
+			}
+			return result.AsSpan();
+		}
+#endif
 	}
 
 	/// <summary>

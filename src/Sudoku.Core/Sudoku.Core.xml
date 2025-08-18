@@ -613,6 +613,21 @@
             <param name="e2">The higher 256 bits.</param>
             <returns>A <see cref="T:Sudoku.Concepts.CandidateMap"/> instance.</returns>
         </member>
+        <member name="M:Sudoku.Concepts.CandidateMap.op_BitwiseAndAssignment(Sudoku.Concepts.CandidateMap@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.CandidateMap.op_BitwiseOrAssignment(Sudoku.Concepts.CandidateMap@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.CandidateMap.op_ExclusiveOrAssignment(Sudoku.Concepts.CandidateMap@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.CandidateMap.op_AdditionAssignment(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.CandidateMap.op_SubtractionAssignment(System.Int32)">
+            <inheritdoc/>
+        </member>
         <member name="M:Sudoku.Concepts.CandidateMap.op_LogicalNot(Sudoku.Concepts.CandidateMap@)">
             <inheritdoc/>
         </member>
@@ -1120,6 +1135,21 @@
             <remarks><b>
             This method will only be used in constant creation, just for readability on binary integers' positions.
             </b></remarks>
+        </member>
+        <member name="M:Sudoku.Concepts.CellMap.op_BitwiseAndAssignment(Sudoku.Concepts.CellMap@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.CellMap.op_BitwiseOrAssignment(Sudoku.Concepts.CellMap@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.CellMap.op_ExclusiveOrAssignment(Sudoku.Concepts.CellMap@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.CellMap.op_AdditionAssignment(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.CellMap.op_SubtractionAssignment(System.Int32)">
+            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Concepts.CellMap.op_LogicalNot(Sudoku.Concepts.CellMap@)">
             <inheritdoc cref="M:System.ILogicalOperators`1.op_LogicalNot(`0)"/>
@@ -2009,6 +2039,36 @@
         </member>
         <member name="M:Sudoku.Concepts.ConclusionSet.Parse(System.String,System.IFormatProvider)">
             <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.ConclusionSet.op_AdditionAssignment(Sudoku.Concepts.Conclusion)">
+            <summary>
+            Adds a new technique into the current collection.
+            </summary>
+            <param name="value">The technique.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.ConclusionSet.op_SubtractionAssignment(Sudoku.Concepts.Conclusion)">
+            <summary>
+            Remove a technique from the current collection.
+            </summary>
+            <param name="value">The technique.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.ConclusionSet.op_BitwiseAndAssignment(Sudoku.Concepts.ConclusionSet)">
+            <summary>
+            Performs bitwise-and operation and assign the value to the current instance.
+            </summary>
+            <param name="value">The instance.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.ConclusionSet.op_BitwiseOrAssignment(Sudoku.Concepts.ConclusionSet)">
+            <summary>
+            Performs bitwise-or operation and assign the value to the current instance.
+            </summary>
+            <param name="value">The instance.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.ConclusionSet.op_ExclusiveOrAssignment(Sudoku.Concepts.ConclusionSet)">
+            <summary>
+            Performs bitwise-exclusive-or operation and assign the value to the current instance.
+            </summary>
+            <param name="value">The instance.</param>
         </member>
         <member name="M:Sudoku.Concepts.ConclusionSet.op_LogicalNot(Sudoku.Concepts.ConclusionSet)">
             <inheritdoc/>
@@ -5314,14 +5374,14 @@
         </member>
         <member name="T:Sudoku.Concepts.HouseDigitIdentifier">
             <summary>
-            Represents a pair of (house, digit) information.
+            Encapsulates house and digit into one type.
             </summary>
             <param name="house"><inheritdoc cref="P:Sudoku.Concepts.HouseDigitIdentifier.House" path="/summary"/></param>
             <param name="digit"><inheritdoc cref="P:Sudoku.Concepts.HouseDigitIdentifier.Digit" path="/summary"/></param>
         </member>
         <member name="M:Sudoku.Concepts.HouseDigitIdentifier.#ctor(System.Int32,System.Int32)">
             <summary>
-            Represents a pair of (house, digit) information.
+            Encapsulates house and digit into one type.
             </summary>
             <param name="house"><inheritdoc cref="P:Sudoku.Concepts.HouseDigitIdentifier.House" path="/summary"/></param>
             <param name="digit"><inheritdoc cref="P:Sudoku.Concepts.HouseDigitIdentifier.Digit" path="/summary"/></param>
@@ -5346,6 +5406,18 @@
             Represents the backing mask value.
             </summary>
         </member>
+        <member name="M:Sudoku.Concepts.HouseDigitIdentifier.#ctor(System.Index,System.Index)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Concepts.HouseDigitIdentifier"/> instance via the specified house index and digit index;
+            from-end cases are also supported.
+            </summary>
+            <param name="houseIndex">Indicates the house index.</param>
+            <param name="digitIndex">Indicates the digit index.</param>
+            <remarks>
+            This constructor allows you using index syntax to create a <see cref="T:Sudoku.Concepts.HouseDigitIdentifier"/> instance,
+            like <c><see langword="new"/> <see cref="T:Sudoku.Concepts.HouseDigitIdentifier"/>(^1, ^1)</c>.
+            </remarks>
+        </member>
         <member name="P:Sudoku.Concepts.HouseDigitIdentifier.House">
             <summary>
             Indicates the house.
@@ -5356,10 +5428,23 @@
             Indicates the digit.
             </summary>
         </member>
+        <member name="P:Sudoku.Concepts.HouseDigitIdentifier.Cells">
+            <summary>
+            Indicates the cells used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.HouseDigitIdentifier.Candidates">
+            <summary>
+            Indicates the candidates used.
+            </summary>
+        </member>
         <member name="P:Sudoku.Concepts.HouseDigitIdentifier.System#Numerics#IMinMaxValue{Sudoku#Concepts#HouseDigitIdentifier}#MinValue">
             <inheritdoc/>
         </member>
         <member name="P:Sudoku.Concepts.HouseDigitIdentifier.System#Numerics#IMinMaxValue{Sudoku#Concepts#HouseDigitIdentifier}#MaxValue">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Concepts.HouseDigitIdentifier.System#Numerics#IAdditiveIdentity{Sudoku#Concepts#HouseDigitIdentifier,Sudoku#Concepts#HouseDigitIdentifier}#AdditiveIdentity">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Concepts.HouseDigitIdentifier.Deconstruct(System.Int32@,System.Int32@)">
@@ -5935,6 +6020,36 @@
         </member>
         <member name="M:Sudoku.Concepts.ICellMapOrCandidateMap`2.System#Linq#Providers#IGetSubsetMethod{TSelf,TElement}#GetSubsets(System.Int32)">
             <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.ICellMapOrCandidateMap`2.op_BitwiseAndAssignment(`0@)">
+            <summary>
+            Performs bitwise-and operation and assign the value to the current instance.
+            </summary>
+            <param name="value">The instance.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.ICellMapOrCandidateMap`2.op_BitwiseOrAssignment(`0@)">
+            <summary>
+            Performs bitwise-or operation and assign the value to the current instance.
+            </summary>
+            <param name="value">The instance.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.ICellMapOrCandidateMap`2.op_ExclusiveOrAssignment(`0@)">
+            <summary>
+            Performs bitwise-exclusive-or operation and assign the value to the current instance.
+            </summary>
+            <param name="value">The instance.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.ICellMapOrCandidateMap`2.op_AdditionAssignment(`1)">
+            <summary>
+            Performs adding operation and assign the value to the current instance.
+            </summary>
+            <param name="offset">The offset.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.ICellMapOrCandidateMap`2.op_SubtractionAssignment(`1)">
+            <summary>
+            Performs removing operation and assign the value to the current instance.
+            </summary>
+            <param name="offset">The offset.</param>
         </member>
         <member name="M:Sudoku.Concepts.ICellMapOrCandidateMap`2.op_LogicalNot(`0@)">
             <summary>
@@ -8026,6 +8141,36 @@
         </member>
         <member name="M:Sudoku.Concepts.Supersymmetry.SpaceSet.System#IParsable{Sudoku#Concepts#Supersymmetry#SpaceSet}#Parse(System.String,System.IFormatProvider)">
             <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceSet.op_AdditionAssignment(Sudoku.Concepts.Supersymmetry.Space)">
+            <summary>
+            Adds a new space into the current collection.
+            </summary>
+            <param name="value">The space.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceSet.op_SubtractionAssignment(Sudoku.Concepts.Supersymmetry.Space)">
+            <summary>
+            Removes a space from the current collection.
+            </summary>
+            <param name="value">The space.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceSet.op_BitwiseAndAssignment(Sudoku.Concepts.Supersymmetry.SpaceSet@)">
+            <summary>
+            Performs bitwise-and operation and assign the value to the current instance.
+            </summary>
+            <param name="value">The instance.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceSet.op_BitwiseOrAssignment(Sudoku.Concepts.Supersymmetry.SpaceSet@)">
+            <summary>
+            Performs bitwise-or operation and assign the value to the current instance.
+            </summary>
+            <param name="value">The instance.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.Supersymmetry.SpaceSet.op_ExclusiveOrAssignment(Sudoku.Concepts.Supersymmetry.SpaceSet@)">
+            <summary>
+            Performs bitwise-exclusive-or operation and assign the value to the current instance.
+            </summary>
+            <param name="value">The instance.</param>
         </member>
         <member name="M:Sudoku.Concepts.Supersymmetry.SpaceSet.op_LogicalNot(Sudoku.Concepts.Supersymmetry.SpaceSet@)">
             <inheritdoc cref="M:System.ILogicalOperators`1.op_LogicalNot(`0)"/>
@@ -10307,6 +10452,24 @@
         </member>
         <member name="M:Sudoku.Drawing.View.System#Linq#Providers#IOfTypeMethod{Sudoku#Drawing#View,Sudoku#Drawing#ViewNode}#OfType``1">
             <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Drawing.View.op_BitwiseAndAssignment(Sudoku.Drawing.View)">
+            <summary>
+            Performs bitwise-and operation and assign the value to the current instance.
+            </summary>
+            <param name="value">The instance.</param>
+        </member>
+        <member name="M:Sudoku.Drawing.View.op_BitwiseOrAssignment(Sudoku.Drawing.View)">
+            <summary>
+            Performs bitwise-or operation and assign the value to the current instance.
+            </summary>
+            <param name="value">The instance.</param>
+        </member>
+        <member name="M:Sudoku.Drawing.View.op_ExclusiveOrAssignment(Sudoku.Drawing.View)">
+            <summary>
+            Performs bitwise-exclusive-or operation and assign the value to the current instance.
+            </summary>
+            <param name="value">The instance.</param>
         </member>
         <member name="M:Sudoku.Drawing.View.op_Equality(Sudoku.Drawing.View,Sudoku.Drawing.View)">
             <inheritdoc/>

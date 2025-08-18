@@ -416,7 +416,7 @@ public abstract partial class Chain :
 				{
 					// Check for cells.
 					var combined = startCells | endCells;
-					if (combined.FirstSharedHouse is var house and not 32)
+					if (combined.FirstSharedHouse is var house and not FallbackConstants.@int)
 					{
 						spaces.Add(
 							house switch

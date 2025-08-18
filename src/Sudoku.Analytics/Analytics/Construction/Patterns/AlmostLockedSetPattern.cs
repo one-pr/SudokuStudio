@@ -230,43 +230,6 @@ public sealed class AlmostLockedSetPattern(Mask digitsMask, in CellMap cells, in
 		return result.AsSpan();
 	}
 
-	/// <summary>
-	/// Create a lookup table that represents distribution of ALS patterns. This method can be used for checking Sue de Coq chains.
-	/// </summary>
-	/// <param name="grid">The grid.</param>
-	/// <param name="skipBivalueCells">Indicates whether this method will ignore bi-value cells checking.</param>
-	/// <returns>A list of ALS patterns, grouped by containing house and primary digit.</returns>
-	public static AlmostLockedSetLookup GetLookup(in Grid grid, bool skipBivalueCells)
-	{
-		var candidatesMap = grid.CandidatesMap;
-		var result = new AlmostLockedSetLookup();
-		foreach (var als in Collect(grid))
-		{
-			if (als.IsBivalueCell && skipBivalueCells)
-			{
-				continue;
-			}
-
-			// Check for digits.
-			foreach (var digit in als.DigitsMask)
-			{
-				// Check distribution of cells, to know whether all cells containing the digit is in a line or not.
-				var appearingCells = als.Cells & candidatesMap[digit];
-				if (appearingCells.SharedLine is var sharedLine and not FallbackConstants.@int)
-				{
-					var keyPair = new HouseDigitIdentifier(als.House, digit);
-					var valuePair = (als, sharedLine);
-					if (!result.TryAdd(keyPair, [valuePair]))
-					{
-						result[keyPair].Add(valuePair);
-					}
-				}
-			}
-		}
-
-		return result;
-	}
-
 	/// <inheritdoc cref="IParsable{TSelf}.Parse(string, IFormatProvider?)"/>
 	public static AlmostLockedSetPattern Parse(string s) => Parse(s, null);
 

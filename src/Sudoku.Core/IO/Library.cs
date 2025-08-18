@@ -253,7 +253,11 @@ public sealed class Library(string _directoryPath, string _identifier) :
 		var tempFile = Path.GetTempFileName();
 		await new FileExternalSorter(LibraryPath, tempFile, 50_000).SortLargeFileAsync();
 
+#if EXTENSION_OPERATORS
+		if (!cancellationToken)
+#else
 		if (cancellationToken.IsCancellationRequested)
+#endif
 		{
 			lock (FileLock)
 			{
@@ -430,7 +434,11 @@ public sealed class Library(string _directoryPath, string _identifier) :
 		var rng = new IndexGenerator(0, await GetCountAsync());
 		for (var i = 0UL; i < count; i++)
 		{
+#if EXTENSION_OPERATORS
+			if (!cancellationToken)
+#else
 			if (cancellationToken.IsCancellationRequested)
+#endif
 			{
 				yield break;
 			}
@@ -677,7 +685,11 @@ file sealed class IndexGenerator(ulong _a, ulong _b, int? seed = null)
 
 		while (true)
 		{
+#if EXTENSION_OPERATORS
+			if (!cancellationToken)
+#else
 			if (cancellationToken.IsCancellationRequested)
+#endif
 			{
 				return null;
 			}

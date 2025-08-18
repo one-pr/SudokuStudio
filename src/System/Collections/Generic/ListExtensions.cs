@@ -131,6 +131,23 @@ public static class ListExtensions
 			Debug.Assert(Entry<T>.GetItems(@this).Length < capacity);
 			return Entry<T>.GetItems(@this).Length == 0 ? 4 : Entry<T>.GetItems(@this).Length << 1;
 		}
+
+
+#if EXTENSION_OPERATORS
+#if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
+		/// <summary>
+		/// Performs add operation.
+		/// </summary>
+		/// <param name="item">The new item.</param>
+		public void operator +=(T item) => @this.Add(item);
+
+		/// <summary>
+		/// Performs remove operation.
+		/// </summary>
+		/// <param name="item">The item to remove.</param>
+		public void operator -=(T item) => @this.Remove(item);
+#endif
+#endif
 	}
 
 	/// <summary>

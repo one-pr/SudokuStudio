@@ -3186,15 +3186,6 @@ public enum Technique
 		ContainingGroup = TechniqueGroup.SueDeCoq,
 		Links = ["http://sudopedia.enjoysudoku.com/Sue_de_Coq.html"])]
 	SueDeCoqCannibalism,
-
-	/// <summary>
-	/// Indicates sue de coq chain.
-	/// </summary>
-	[TechniqueMetadata<SueDeCoqChainStepSearcher, SueDeCoqChainStep>(
-		Rating = 80,
-		DifficultyLevel = DifficultyLevel.Nightmare,
-		ContainingGroup = TechniqueGroup.SueDeCoq)]
-	SueDeCoqChain,
 	#endregion
 
 	//
@@ -4518,9 +4509,18 @@ public enum Technique
 	#endregion
 
 	//
-	// Domino Loop
+	// Domino Chain & Loop
 	//
-	#region Domino Loop
+	#region Domino Chain & Loop
+	/// <summary>
+	/// Indicates domino chain.
+	/// </summary>
+	[TechniqueMetadata<DominoChainStepSearcher, DominoChainStep>(
+		Rating = 80,
+		DifficultyLevel = DifficultyLevel.Nightmare,
+		ContainingGroup = TechniqueGroup.DominoLoop)]
+	DominoChain,
+
 	/// <summary>
 	/// Indicates domino loop.
 	/// </summary>

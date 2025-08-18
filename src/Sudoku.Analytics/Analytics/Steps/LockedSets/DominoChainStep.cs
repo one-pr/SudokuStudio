@@ -1,13 +1,13 @@
 namespace Sudoku.Analytics.Steps;
 
 /// <summary>
-/// Provides with a step that is a <b>Sue de Coq Chain</b> technique.
+/// Provides with a step that is a <b>Domino Chain</b> technique.
 /// </summary>
 /// <param name="conclusions"><inheritdoc cref="Step.Conclusions" path="/summary"/></param>
 /// <param name="views"><inheritdoc cref="Step.Views" path="/summary"/></param>
 /// <param name="options"><inheritdoc cref="Step.Options" path="/summary"/></param>
 /// <param name="_patterns"><inheritdoc cref="Patterns" path="/summary"/></param>
-public sealed class SueDeCoqChainStep(
+public sealed class DominoChainStep(
 	ReadOnlyMemory<Conclusion> conclusions,
 	View[]? views,
 	StepGathererOptions options,
@@ -20,7 +20,7 @@ public sealed class SueDeCoqChainStep(
 	/// <summary>
 	/// Represents the length of the patterns.
 	/// </summary>
-	public int Length => Patterns.Length;
+	public int PatternsLength => Patterns.Length;
 
 	/// <inheritdoc/>
 	public override Mask DigitsUsed
@@ -37,14 +37,14 @@ public sealed class SueDeCoqChainStep(
 	}
 
 	/// <inheritdoc/>
-	public override Technique Code => Technique.SueDeCoqChain;
+	public override Technique Code => Technique.DominoChain;
 
 	/// <inheritdoc/>
 	public override FactorArray Factors
 		=> [
 			Factor.Create(
-				"Factor_SueDeCoqChainLengthFactor",
-				[nameof(Length)],
+				"Factor_DominoChainLengthFactor",
+				[nameof(PatternsLength)],
 				GetType(),
 				static args => DifficultyCalculator.OeisSequences.A002024((int)args[0]!)
 			)
@@ -63,5 +63,5 @@ public sealed class SueDeCoqChainStep(
 
 	/// <inheritdoc/>
 	public override bool Equals([NotNullWhen(true)] Step? other)
-		=> other is SueDeCoqChainStep comparer && PatternsSet.SetEquals(comparer.PatternsSet);
+		=> other is DominoChainStep comparer && PatternsSet.SetEquals(comparer.PatternsSet);
 }

@@ -429,20 +429,20 @@ public partial struct CellMap : CellMapBase
 				// https://stackoverflow.com/questions/7669057/find-nth-set-bit-in-an-int
 				return TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << index, low)) switch
 				{
-					var l and not 64 => l,
+					var l and not FallbackConstants.@long => l,
 					_ => TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << index - PopCount(low), high)) switch
 					{
-						var h and not 64 => h + Shifting,
+						var h and not FallbackConstants.@long => h + Shifting,
 						_ => -1
 					}
 				};
 			}
 
 			return PopCount(low) is var popCountLow && popCountLow == index
-				? 63 - LeadingZeroCount(low)
+				? FallbackConstants.@long - 1 - LeadingZeroCount(low)
 				: popCountLow > index
 					? low.SetAt(index)
-					: high.SetAt(index - popCountLow) is var z and not 64 ? z + Shifting : -1;
+					: high.SetAt(index - popCountLow) is var z and not FallbackConstants.@long ? z + Shifting : -1;
 		}
 	}
 

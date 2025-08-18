@@ -3312,13 +3312,13 @@ Is pattern rank-0: {6}</value>
   <data name="Message_InvalidKeywordConverterType" xml:space="preserve">
     <value>The type is invalid. The type must be derived from type '{0}' and must contain a visible parameterless constructor to be invoked.</value>
   </data>
-  <data name="SueDeCoqChain" xml:space="preserve">
+  <data name="DominoChain" xml:space="preserve">
     <value>Sue de Coq Chain</value>
   </data>
-  <data name="Factor_SueDeCoqChainLengthFactor" xml:space="preserve">
+  <data name="Factor_DominoChainLengthFactor" xml:space="preserve">
     <value>Length of Sue de Coq chain</value>
   </data>
-  <data name="StepSearcherName_SueDeCoqChainStepSearcher" xml:space="preserve">
+  <data name="StepSearcherName_DominoChainStepSearcher" xml:space="preserve">
     <value>Sue de Coq Chain</value>
   </data>
 </root>

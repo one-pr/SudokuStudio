@@ -681,7 +681,8 @@ public partial class UniqueRectangleStepSearcher
 		{
 			var map1 = abzCell.AsCellMap() + abxCell;
 			var map2 = abzCell.AsCellMap() + abyCell;
-			if (map1.SharedLine is not (var m1cl and not 32) || map2.SharedLine is not (var m2cl and not 32))
+			if (map1.SharedLine is not (var m1cl and not FallbackConstants.@int)
+				|| map2.SharedLine is not (var m2cl and not FallbackConstants.@int))
 			{
 				// There's no common covered line to display.
 				continue;

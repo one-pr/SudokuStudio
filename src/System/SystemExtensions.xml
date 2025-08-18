@@ -12,6 +12,38 @@
             <typeparam name="T">The type of the element.</typeparam>
             <param name="value">The value to be initialized.</param>
         </member>
+        <member name="T:System.BinaryIntegerExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:System.Numerics.IBinaryInteger`1"/> instances.
+            </summary>
+            <seealso cref="T:System.Numerics.IBinaryInteger`1"/>
+        </member>
+        <member name="T:System.BinaryIntegerExtensions.&lt;&gt;E__0`1">
+            <summary>
+            Provides extension members on <typeparamref name="TSelf"/>,
+            where <typeparamref name="TSelf"/> satisfies <see cref="T:System.Numerics.IBinaryInteger`1"/> constraint.
+            </summary>
+        </member>
+        <member name="M:System.BinaryIntegerExtensions.&lt;&gt;E__0`1.op_True(`0)">
+            <summary>
+            Determine whether the specified value isn't equal to 0.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.BinaryIntegerExtensions.&lt;&gt;E__0`1.op_False(`0)">
+            <summary>
+            Determine whether the specified value is equal to 0.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.BinaryIntegerExtensions.op_True``1(``0)">
+            <inheritdoc cref="M:System.BinaryIntegerExtensions.&lt;&gt;E__0`1.op_True(`0)"/>
+        </member>
+        <member name="M:System.BinaryIntegerExtensions.op_False``1(``0)">
+            <inheritdoc cref="M:System.BinaryIntegerExtensions.&lt;&gt;E__0`1.op_False(`0)"/>
+        </member>
         <member name="T:System.Buffers.ReadOnlyMemoryOfCharComparer">
             <summary>
             Represents an equality comparer of <see cref="T:System.ReadOnlySpan`1"/> of <see cref="T:System.Char"/> object,
@@ -175,6 +207,42 @@
             <param name="length">The desired length.</param>
             <returns>A list of <see cref="T:System.String"/> values.</returns>
         </member>
+        <member name="M:System.CharSetExtensions.&lt;&gt;E__1.op_Multiply(System.String,System.Int32)">
+            <summary>
+            Repeats the specified string specified times.
+            </summary>
+            <param name="value">The string.</param>
+            <param name="times">The repeating times.</param>
+            <returns>The result string.</returns>
+        </member>
+        <member name="M:System.CharSetExtensions.&lt;&gt;E__1.op_Division(System.String,System.Int32)">
+            <summary>
+            Splits the string into specified parts, as same length as possible.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="parts">The desired parts.</param>
+            <returns>The sequence of strings.</returns>
+        </member>
+        <member name="M:System.CharSetExtensions.&lt;&gt;E__1.op_Division(System.String,System.Char)">
+            <summary>
+            Splits a string into substrings based on a specified delimiting character.
+            </summary>
+            <param name="value">The current string instance.</param>
+            <param name="separator">A character that delimits the substrings in this string.</param>
+            <returns>
+            An array whose elements contain the substrings from this instance that are delimited by separator.
+            </returns>
+        </member>
+        <member name="M:System.CharSetExtensions.&lt;&gt;E__1.op_Division(System.String,System.String)">
+            <summary>
+            Splits a string into substrings based on a specified delimiting string.
+            </summary>
+            <param name="value">The current string instance.</param>
+            <param name="separator">A string that delimits the substrings in this string.</param>
+            <returns>
+            An array whose elements contain the substrings from this instance that are delimited by separator.
+            </returns>
+        </member>
         <member name="M:System.CharSetExtensions.get_UpperCasing(System.String)">
             <inheritdoc cref="P:System.CharSetExtensions.&lt;&gt;E__1.UpperCasing"/>
         </member>
@@ -192,6 +260,18 @@
         </member>
         <member name="M:System.CharSetExtensions.Chunk(System.String,System.Int32)">
             <inheritdoc cref="M:System.CharSetExtensions.&lt;&gt;E__1.Chunk(System.Int32)"/>
+        </member>
+        <member name="M:System.CharSetExtensions.op_Multiply(System.String,System.Int32)">
+            <inheritdoc cref="M:System.CharSetExtensions.&lt;&gt;E__1.op_Multiply(System.String,System.Int32)"/>
+        </member>
+        <member name="M:System.CharSetExtensions.op_Division(System.String,System.Int32)">
+            <inheritdoc cref="M:System.CharSetExtensions.&lt;&gt;E__1.op_Division(System.String,System.Int32)"/>
+        </member>
+        <member name="M:System.CharSetExtensions.op_Division(System.String,System.Char)">
+            <inheritdoc cref="M:System.CharSetExtensions.&lt;&gt;E__1.op_Division(System.String,System.Char)"/>
+        </member>
+        <member name="M:System.CharSetExtensions.op_Division(System.String,System.String)">
+            <inheritdoc cref="M:System.CharSetExtensions.&lt;&gt;E__1.op_Division(System.String,System.String)"/>
         </member>
         <member name="T:System.Collections.BitArrayConverter">
             <summary>
@@ -1078,6 +1158,18 @@
 				</target>
             </remarks>
         </member>
+        <member name="M:System.Collections.Generic.ListExtensions.&lt;&gt;E__0`1.op_AdditionAssignment(`0)">
+            <summary>
+            Performs add operation.
+            </summary>
+            <param name="item">The new item.</param>
+        </member>
+        <member name="M:System.Collections.Generic.ListExtensions.&lt;&gt;E__0`1.op_SubtractionAssignment(`0)">
+            <summary>
+            Performs remove operation.
+            </summary>
+            <param name="item">The item to remove.</param>
+        </member>
         <member name="M:System.Collections.Generic.ListExtensions.AddRef``1(System.Collections.Generic.List{``0},``0@)">
             <inheritdoc cref="M:System.Collections.Generic.ListExtensions.&lt;&gt;E__0`1.AddRef(`0@)"/>
         </member>
@@ -1101,6 +1193,12 @@
         </member>
         <member name="M:System.Collections.Generic.ListExtensions.GetNewCapacity``1(System.Collections.Generic.List{``0},System.Int32)">
             <inheritdoc cref="M:System.Collections.Generic.ListExtensions.&lt;&gt;E__0`1.GetNewCapacity(System.Int32)"/>
+        </member>
+        <member name="M:System.Collections.Generic.ListExtensions.op_AdditionAssignment``1(System.Collections.Generic.List{``0},``0)">
+            <inheritdoc cref="M:System.Collections.Generic.ListExtensions.&lt;&gt;E__0`1.op_AdditionAssignment(`0)"/>
+        </member>
+        <member name="M:System.Collections.Generic.ListExtensions.op_SubtractionAssignment``1(System.Collections.Generic.List{``0},``0)">
+            <inheritdoc cref="M:System.Collections.Generic.ListExtensions.&lt;&gt;E__0`1.op_SubtractionAssignment(`0)"/>
         </member>
         <member name="T:System.Collections.Generic.ListExtensions.&lt;&gt;E__1`1">
             <summary>
@@ -1824,17 +1922,89 @@
         </member>
         <member name="T:System.GenericExtensions.&lt;&gt;E__0`1">
             <summary>
+            Provides extension members on <typeparamref name="T"/>?,
+            where <typeparamref name="T"/> satisfies <see langword="class"/>? constraint.
+            </summary>
+        </member>
+        <member name="M:System.GenericExtensions.&lt;&gt;E__0`1.op_LogicalNot(`0)">
+            <summary>
+            Determines whether the current value is <see langword="null"/>.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.GenericExtensions.&lt;&gt;E__0`1.op_True(`0)">
+            <summary>
+            Determines whether the current value is non-<see langword="null"/>.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.GenericExtensions.&lt;&gt;E__0`1.op_False(`0)">
+            <summary>
+            Determines whether the current value is <see langword="null"/>.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.GenericExtensions.op_LogicalNot``1(``0)">
+            <inheritdoc cref="M:System.GenericExtensions.&lt;&gt;E__0`1.op_LogicalNot(`0)"/>
+        </member>
+        <member name="M:System.GenericExtensions.op_True``1(``0)">
+            <inheritdoc cref="M:System.GenericExtensions.&lt;&gt;E__0`1.op_True(`0)"/>
+        </member>
+        <member name="M:System.GenericExtensions.op_False``1(``0)">
+            <inheritdoc cref="M:System.GenericExtensions.&lt;&gt;E__0`1.op_False(`0)"/>
+        </member>
+        <member name="T:System.GenericExtensions.&lt;&gt;E__1`1">
+            <summary>
+            Provides extension members on <typeparamref name="T"/>? (i.e. <see cref="T:System.Nullable`1"/>),
+            where <typeparamref name="T"/> satisfies <see langword="struct"/> constraint.
+            </summary>
+        </member>
+        <member name="M:System.GenericExtensions.&lt;&gt;E__1`1.op_LogicalNot(System.Nullable{`0})">
+            <summary>
+            Determines whether the current value is <see langword="null"/>.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.GenericExtensions.&lt;&gt;E__1`1.op_True(System.Nullable{`0})">
+            <summary>
+            Determines whether the current value is non-<see langword="null"/>.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.GenericExtensions.&lt;&gt;E__1`1.op_False(System.Nullable{`0})">
+            <summary>
+            Determines whether the current value is <see langword="null"/>.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.GenericExtensions.op_LogicalNot``1(System.Nullable{``0})">
+            <inheritdoc cref="M:System.GenericExtensions.&lt;&gt;E__1`1.op_LogicalNot(System.Nullable{`0})"/>
+        </member>
+        <member name="M:System.GenericExtensions.op_True``1(System.Nullable{``0})">
+            <inheritdoc cref="M:System.GenericExtensions.&lt;&gt;E__1`1.op_True(System.Nullable{`0})"/>
+        </member>
+        <member name="M:System.GenericExtensions.op_False``1(System.Nullable{``0})">
+            <inheritdoc cref="M:System.GenericExtensions.&lt;&gt;E__1`1.op_False(System.Nullable{`0})"/>
+        </member>
+        <member name="T:System.GenericExtensions.&lt;&gt;E__2`1">
+            <summary>
             Provides extension members on <typeparamref name="T"/>,
             where <typeparamref name="T"/> satisfies <see langword="struct"/> constraint.
             </summary>
         </member>
-        <member name="P:System.GenericExtensions.&lt;&gt;E__0`1.nullref">
+        <member name="P:System.GenericExtensions.&lt;&gt;E__2`1.nullref">
             <summary>
             Represents null reference of the type <typeparamref name="T"/>.
             </summary>
         </member>
         <member name="M:System.GenericExtensions.get_nullref``1">
-            <inheritdoc cref="P:System.GenericExtensions.&lt;&gt;E__0`1.nullref"/>
+            <inheritdoc cref="P:System.GenericExtensions.&lt;&gt;E__2`1.nullref"/>
         </member>
         <member name="T:System.IInlineArray`2">
             <summary>
@@ -2590,6 +2760,39 @@
         </member>
         <member name="M:System.Linq.DictionaryEnumerable.ElementAt``2(System.Collections.Generic.Dictionary{``0,``1},System.Index)">
             <inheritdoc cref="M:System.Linq.Enumerable.ElementAt``1(System.Collections.Generic.IEnumerable{``0},System.Index)"/>
+        </member>
+        <member name="T:System.Linq.EnumerableExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:System.Collections.Generic.IEnumerable`1"/> instances.
+            </summary>
+            <seealso cref="T:System.Collections.Generic.IEnumerable`1"/>
+        </member>
+        <member name="T:System.Linq.EnumerableExtensions.&lt;&gt;E__0`1">
+            <summary>
+            Provides extension members on <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+        </member>
+        <member name="M:System.Linq.EnumerableExtensions.&lt;&gt;E__0`1.op_Addition(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Concats two collection.
+            </summary>
+            <param name="left">The left instance.</param>
+            <param name="right">The right instance.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:System.Linq.EnumerableExtensions.&lt;&gt;E__0`1.op_Multiply(System.Collections.Generic.IEnumerable{`0},System.Func{`0,`0,`0})">
+            <summary>
+            Performs aggregate function.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="aggregateFunc">Aggregate function.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:System.Linq.EnumerableExtensions.op_Addition``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})">
+            <inheritdoc cref="M:System.Linq.EnumerableExtensions.&lt;&gt;E__0`1.op_Addition(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEnumerable{`0})"/>
+        </member>
+        <member name="M:System.Linq.EnumerableExtensions.op_Multiply``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0,``0})">
+            <inheritdoc cref="M:System.Linq.EnumerableExtensions.&lt;&gt;E__0`1.op_Multiply(System.Collections.Generic.IEnumerable{`0},System.Func{`0,`0,`0})"/>
         </member>
         <member name="T:System.Linq.Enumerators.AnonymousSpanEnumerator`1">
             <summary>
@@ -6104,6 +6307,31 @@
             6 cases.
             </returns>
         </member>
+        <member name="M:System.Numerics.Combinatorics.&lt;&gt;E__0`1.op_BitwiseAnd(System.ReadOnlySpan{`0},System.Int32)">
+            <summary>
+            Get all subsets from the specified number of the values to take.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="count">The number of elements you want to take.</param>
+            <returns>
+            The subsets of the list.
+            For example, if the input array is <c>[1, 2, 3]</c> and the argument <paramref name="count"/> is 2, the result will be
+            <code><![CDATA[
+            [[1, 2], [1, 3], [2, 3]]
+            ]]></code>
+            3 cases.
+            </returns>
+            <exception cref="T:System.ArgumentException">Throws when the argument is negative.</exception>
+        </member>
+        <member name="M:System.Numerics.Combinatorics.&lt;&gt;E__0`1.op_BitwiseOr(System.ReadOnlySpan{`0},System.Int32)">
+            <summary>
+            Get all subsets from the limited number of the values to take,
+            specified as maximum number of elements of each combination.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="count">The number of elements you want to take, as maximum possible value.</param>
+            <exception cref="T:System.ArgumentException">Throws when the argument is negative.</exception>
+        </member>
         <member name="M:System.Numerics.Combinatorics.GetSubsets``1(System.ReadOnlySpan{``0})">
             <inheritdoc cref="M:System.Numerics.Combinatorics.&lt;&gt;E__0`1.GetSubsets"/>
         </member>
@@ -6115,6 +6343,12 @@
         </member>
         <member name="M:System.Numerics.Combinatorics.GetPermutations``1(System.ReadOnlySpan{``0},System.Int32)">
             <inheritdoc cref="M:System.Numerics.Combinatorics.&lt;&gt;E__0`1.GetPermutations(System.Int32)"/>
+        </member>
+        <member name="M:System.Numerics.Combinatorics.op_BitwiseAnd``1(System.ReadOnlySpan{``0},System.Int32)">
+            <inheritdoc cref="M:System.Numerics.Combinatorics.&lt;&gt;E__0`1.op_BitwiseAnd(System.ReadOnlySpan{`0},System.Int32)"/>
+        </member>
+        <member name="M:System.Numerics.Combinatorics.op_BitwiseOr``1(System.ReadOnlySpan{``0},System.Int32)">
+            <inheritdoc cref="M:System.Numerics.Combinatorics.&lt;&gt;E__0`1.op_BitwiseOr(System.ReadOnlySpan{`0},System.Int32)"/>
         </member>
         <member name="T:System.Numerics.Combinatorics.&lt;&gt;E__1`1">
             <summary>
@@ -7435,6 +7669,47 @@
         </member>
         <member name="M:System.SpanUnsafeExtensions.Create``1(``0@,System.Int32)">
             <inheritdoc cref="M:System.SpanUnsafeExtensions.&lt;&gt;E__0`1.Create(`0@,System.Int32)"/>
+        </member>
+        <member name="T:System.Threading.CancellationTokenExtensions">
+            <summary>
+            Provides with extension members on <see cref="T:System.Threading.CancellationToken"/> instances.
+            </summary>
+            <seealso cref="T:System.Threading.CancellationToken"/>
+        </member>
+        <member name="T:System.Threading.CancellationTokenExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see cref="T:System.Threading.CancellationToken"/>.
+            </summary>
+        </member>
+        <member name="M:System.Threading.CancellationTokenExtensions.&lt;&gt;E__0.op_LogicalNot(System.Threading.CancellationToken)">
+            <summary>
+            Indicates whether the cancellation token is cancellation-requested.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.Threading.CancellationTokenExtensions.&lt;&gt;E__0.op_True(System.Threading.CancellationToken)">
+            <summary>
+            Indicates whether the cancellation token isn't cancellation-requested.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.Threading.CancellationTokenExtensions.&lt;&gt;E__0.op_False(System.Threading.CancellationToken)">
+            <summary>
+            Indicates whether the cancellation token is cancellation-requested.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.Threading.CancellationTokenExtensions.op_LogicalNot(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.Threading.CancellationTokenExtensions.&lt;&gt;E__0.op_LogicalNot(System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:System.Threading.CancellationTokenExtensions.op_True(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.Threading.CancellationTokenExtensions.&lt;&gt;E__0.op_True(System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:System.Threading.CancellationTokenExtensions.op_False(System.Threading.CancellationToken)">
+            <inheritdoc cref="M:System.Threading.CancellationTokenExtensions.&lt;&gt;E__0.op_False(System.Threading.CancellationToken)"/>
         </member>
         <member name="T:System.Threading.Tasks.TimeSpanAwaitable">
             <summary>

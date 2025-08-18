@@ -2597,54 +2597,6 @@
         <member name="M:Sudoku.Analytics.Construction.Chaining.Rules.YChainingRule.CollectOffNodes(Sudoku.Analytics.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions,System.Collections.Generic.HashSet{Sudoku.Analytics.Construction.Components.Node}@)">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Analytics.Construction.Components.AlmostLockedSetLookup">
-            <summary>
-            Represents a lookup table of Almost Locked Sets, grouped by house and digit.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.AlmostLockedSetLookup.#ctor">
-            <summary>
-            Represents a lookup table of Almost Locked Sets, grouped by house and digit.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.AlmostLockedSetLookup.BlockView">
-            <summary>
-            Represents block view.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.AlmostLockedSetLookup.LineView">
-            <summary>
-            Represents line view.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.AlmostLockedSetLookup.Sudoku#Analytics#Construction#IComponent#Type">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Construction.Components.AlmostLockedSetLookup.KeyComparer">
-            <summary>
-            Represents key comparer.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.AlmostLockedSetLookup.TryAdd(Sudoku.Concepts.HouseDigitIdentifier,System.Collections.Generic.HashSet{System.ValueTuple{Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern,System.Int32}})">
-            <inheritdoc cref="M:System.Collections.Generic.Dictionary`2.TryAdd(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.AlmostLockedSetLookup.Add(Sudoku.Concepts.HouseDigitIdentifier,System.Collections.Generic.HashSet{System.ValueTuple{Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern,System.Int32}})">
-            <inheritdoc cref="M:System.Collections.Generic.SortedDictionary`2.Add(`0,`1)"/>
-        </member>
-        <member name="T:Sudoku.Analytics.Construction.Components.AlmostLockedSetLookupBase">
-            <summary>
-            Represents the base dictionary type of <see cref="T:Sudoku.Analytics.Construction.Components.AlmostLockedSetLookup"/>.
-            </summary>
-            <param name="comparer"><inheritdoc cref="M:System.Collections.Generic.SortedDictionary`2.#ctor(System.Collections.Generic.IComparer{`0})" path="/param[@name='comparer']"/></param>
-            <seealso cref="T:Sudoku.Analytics.Construction.Components.AlmostLockedSetLookup"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.AlmostLockedSetLookupBase.#ctor(System.Collections.Generic.IComparer{Sudoku.Concepts.HouseDigitIdentifier})">
-            <summary>
-            Represents the base dictionary type of <see cref="T:Sudoku.Analytics.Construction.Components.AlmostLockedSetLookup"/>.
-            </summary>
-            <param name="comparer"><inheritdoc cref="M:System.Collections.Generic.SortedDictionary`2.#ctor(System.Collections.Generic.IComparer{`0})" path="/param[@name='comparer']"/></param>
-            <seealso cref="T:Sudoku.Analytics.Construction.Components.AlmostLockedSetLookup"/>
-        </member>
         <member name="T:Sudoku.Analytics.Construction.Components.AlternatingInferenceChain">
             <summary>
             Represents a chain pattern that has a start node, with alternating inferences between strong and weak.
@@ -5955,14 +5907,6 @@
             </summary>
             <param name="grid">The grid.</param>
             <returns>All possible found <see cref="T:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern"/> instances.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.GetLookup(Sudoku.Concepts.Grid@,System.Boolean)">
-            <summary>
-            Create a lookup table that represents distribution of ALS patterns. This method can be used for checking Sue de Coq chains.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="skipBivalueCells">Indicates whether this method will ignore bi-value cells checking.</param>
-            <returns>A list of ALS patterns, grouped by containing house and primary digit.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.Parse(System.String)">
             <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
@@ -12874,16 +12818,21 @@
         <member name="M:Sudoku.Analytics.StepSearchers.GroupedChainStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.SueDeCoqChainStepSearcher">
+        <member name="T:Sudoku.Analytics.StepSearchers.DominoChainStepSearcher">
             <summary>
-            Provides with a <b>Sue de Coq Chain</b> step searcher.
+            Provides with a <b>Domino Chain</b> step searcher.
             The step searcher will include the following techniques:
             <list type="bullet">
-            <item>Sue de Coq Chain</item>
+            <item>Domino Chain</item>
             </list>
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.SueDeCoqChainStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
+        <member name="F:Sudoku.Analytics.StepSearchers.DominoChainStepSearcher.LineFirst">
+            <summary>
+            Indicates the row column first grouped by block.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.DominoChainStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.AlignedExclusionStepSearcher">
@@ -14005,6 +13954,40 @@
             </summary>
             <param name="map">The map.</param>
             <returns>A <see cref="T:System.Boolean"/> result.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.QueueNode">
+            <summary>
+            Represents a file-local queue node on calculating domino chains.
+            </summary>
+            <param name="pattern"><inheritdoc cref="P:Sudoku.Analytics.StepSearchers.QueueNode.Pattern" path="/summary"/></param>
+            <param name="restrictedCommon"><inheritdoc cref="P:Sudoku.Analytics.StepSearchers.QueueNode.RestrictedCommon" path="/summary"/></param>
+            <param name="parent"><inheritdoc cref="P:Sudoku.Analytics.StepSearchers.QueueNode.Parent" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.QueueNode.#ctor(Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern,Sudoku.Concepts.CandidateMap@,Sudoku.Analytics.StepSearchers.QueueNode)">
+            <summary>
+            Represents a file-local queue node on calculating domino chains.
+            </summary>
+            <param name="pattern"><inheritdoc cref="P:Sudoku.Analytics.StepSearchers.QueueNode.Pattern" path="/summary"/></param>
+            <param name="restrictedCommon"><inheritdoc cref="P:Sudoku.Analytics.StepSearchers.QueueNode.RestrictedCommon" path="/summary"/></param>
+            <param name="parent"><inheritdoc cref="P:Sudoku.Analytics.StepSearchers.QueueNode.Parent" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Analytics.StepSearchers.QueueNode.RestrictedCommon">
+            <summary>
+            Indicates the restricted common candidates.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.StepSearchers.QueueNode.Pattern">
+            <summary>
+            Indicates the pattern.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.StepSearchers.QueueNode.Parent">
+            <summary>
+            Indicates the parent node.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.QueueNode.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.StepSearcherAttribute">
             <summary>
@@ -17213,6 +17196,54 @@
         <member name="P:Sudoku.Analytics.Steps.PatternOverlayStep.Interpolations">
             <inheritdoc/>
         </member>
+        <member name="T:Sudoku.Analytics.Steps.DominoChainStep">
+            <summary>
+            Provides with a step that is a <b>Domino Chain</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="_patterns"><inheritdoc cref="P:Sudoku.Analytics.Steps.DominoChainStep.Patterns" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Analytics.Steps.DominoChainStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern[])">
+            <summary>
+            Provides with a step that is a <b>Domino Chain</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="_patterns"><inheritdoc cref="P:Sudoku.Analytics.Steps.DominoChainStep.Patterns" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.DominoChainStep.BaseDifficulty">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.DominoChainStep.PatternsLength">
+            <summary>
+            Represents the length of the patterns.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.DominoChainStep.DigitsUsed">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.DominoChainStep.Code">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.DominoChainStep.Factors">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.DominoChainStep.Patterns">
+            <summary>
+            Indicates the patterns.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.DominoChainStep.PatternsSet">
+            <summary>
+            Represents a <see cref="T:System.Collections.Generic.HashSet`1"/> instance that will be used for comparison.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Steps.DominoChainStep.Equals(Sudoku.Analytics.Step)">
+            <inheritdoc/>
+        </member>
         <member name="T:Sudoku.Analytics.Steps.DominoLoopStep">
             <summary>
             Provides with a step that is a <b>Domino Loop</b> technique.
@@ -17401,54 +17432,6 @@
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.Steps.SueDeCoq3DimensionStep.Interpolations">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Steps.SueDeCoqChainStep">
-            <summary>
-            Provides with a step that is a <b>Sue de Coq Chain</b> technique.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-            <param name="_patterns"><inheritdoc cref="P:Sudoku.Analytics.Steps.SueDeCoqChainStep.Patterns" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Analytics.Steps.SueDeCoqChainStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern[])">
-            <summary>
-            Provides with a step that is a <b>Sue de Coq Chain</b> technique.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-            <param name="_patterns"><inheritdoc cref="P:Sudoku.Analytics.Steps.SueDeCoqChainStep.Patterns" path="/summary"/></param>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.SueDeCoqChainStep.BaseDifficulty">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.SueDeCoqChainStep.Length">
-            <summary>
-            Represents the length of the patterns.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.SueDeCoqChainStep.DigitsUsed">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.SueDeCoqChainStep.Code">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.SueDeCoqChainStep.Factors">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.SueDeCoqChainStep.Patterns">
-            <summary>
-            Indicates the patterns.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.SueDeCoqChainStep.PatternsSet">
-            <summary>
-            Represents a <see cref="T:System.Collections.Generic.HashSet`1"/> instance that will be used for comparison.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Steps.SueDeCoqChainStep.Equals(Sudoku.Analytics.Step)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Steps.SueDeCoqStep">
@@ -24929,11 +24912,6 @@
             Indicates sue de coq cannibalism.
             </summary>
         </member>
-        <member name="F:Sudoku.Categorization.Technique.SueDeCoqChain">
-            <summary>
-            Indicates sue de coq chain.
-            </summary>
-        </member>
         <member name="F:Sudoku.Categorization.Technique.FireworkTriple">
             <summary>
             Indicates firework triple.
@@ -25517,6 +25495,11 @@
         <member name="F:Sudoku.Categorization.Technique.PatternLockedQuadruple">
             <summary>
             Indicates pattern-locked quadruple. This quadruple is a special quadruple: it can only be concluded after both JE and SK-Loop are formed.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Categorization.Technique.DominoChain">
+            <summary>
+            Indicates domino chain.
             </summary>
         </member>
         <member name="F:Sudoku.Categorization.Technique.DominoLoop">
@@ -26513,6 +26496,42 @@
             </summary>
             <param name="index">The index.</param>
             <returns>The technique field.</returns>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueSet.op_AdditionAssignment(Sudoku.Categorization.Technique)">
+            <summary>
+            Adds a new technique into the current collection.
+            </summary>
+            <param name="value">The technique.</param>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueSet.op_AdditionAssignment(Sudoku.Categorization.TechniqueGroup)">
+            <summary>
+            Adds a new technique group into the current collection.
+            </summary>
+            <param name="value">The technique.</param>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueSet.op_SubtractionAssignment(Sudoku.Categorization.Technique)">
+            <summary>
+            Remove a technique from the current collection.
+            </summary>
+            <param name="value">The technique.</param>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueSet.op_BitwiseAndAssignment(Sudoku.Categorization.TechniqueSet)">
+            <summary>
+            Performs bitwise-and operation and assign the value to the current instance.
+            </summary>
+            <param name="value">The instance.</param>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueSet.op_BitwiseOrAssignment(Sudoku.Categorization.TechniqueSet)">
+            <summary>
+            Performs bitwise-or operation and assign the value to the current instance.
+            </summary>
+            <param name="value">The instance.</param>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueSet.op_ExclusiveOrAssignment(Sudoku.Categorization.TechniqueSet)">
+            <summary>
+            Performs bitwise-exclusive-or operation and assign the value to the current instance.
+            </summary>
+            <param name="value">The instance.</param>
         </member>
         <member name="M:Sudoku.Categorization.TechniqueSet.op_LogicalNot(Sudoku.Categorization.TechniqueSet)">
             <inheritdoc/>
@@ -27686,6 +27705,18 @@
         </member>
         <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.System#Linq#Providers#IOfTypeMethod{Sudoku#Generating#Filtering#ConstraintCollection,Sudoku#Generating#Filtering#Constraint}#OfType``1">
             <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.op_AdditionAssignment(Sudoku.Generating.Filtering.Constraint)">
+            <summary>
+            Adds a new constraint into the current collection, or do nothing if <paramref name="value"/> is <see langword="null"/>.
+            </summary>
+            <param name="value">The constraint.</param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.op_SubtractionAssignment(Sudoku.Generating.Filtering.Constraint)">
+            <summary>
+            Removes a constraint from the current collection, or do nothing if <paramref name="value"/> is <see langword="null"/>.
+            </summary>
+            <param name="value">The constraint.</param>
         </member>
         <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.op_Addition(Sudoku.Generating.Filtering.ConstraintCollection,Sudoku.Generating.Filtering.Constraint)">
             <inheritdoc/>
@@ -30913,7 +30944,7 @@
               Looks up a localized string similar to Cannibalism in Sue de Coq.
             </summary>
         </member>
-        <member name="P:Sudoku.Resources.AnalyticsResources.Factor_SueDeCoqChainLengthFactor">
+        <member name="P:Sudoku.Resources.AnalyticsResources.Factor_DominoChainLengthFactor">
             <summary>
               Looks up a localized string similar to Length of Sue de Coq chain.
             </summary>
@@ -32745,7 +32776,7 @@
               Looks up a localized string similar to Sue de Coq 3 Dimension.
             </summary>
         </member>
-        <member name="P:Sudoku.Resources.AnalyticsResources.StepSearcherName_SueDeCoqChainStepSearcher">
+        <member name="P:Sudoku.Resources.AnalyticsResources.StepSearcherName_DominoChainStepSearcher">
             <summary>
               Looks up a localized string similar to Sue de Coq Chain.
             </summary>
@@ -32850,7 +32881,7 @@
               Looks up a localized string similar to Sue de Coq Cannibalism.
             </summary>
         </member>
-        <member name="P:Sudoku.Resources.AnalyticsResources.SueDeCoqChain">
+        <member name="P:Sudoku.Resources.AnalyticsResources.DominoChain">
             <summary>
               Looks up a localized string similar to Sue de Coq Chain.
             </summary>

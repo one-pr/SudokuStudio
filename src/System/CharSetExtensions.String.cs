@@ -51,5 +51,53 @@ public partial class CharSetExtensions
 			}
 			return result;
 		}
+
+
+#if EXTENSION_OPERATORS
+		/// <summary>
+		/// Repeats the specified string specified times.
+		/// </summary>
+		/// <param name="value">The string.</param>
+		/// <param name="times">The repeating times.</param>
+		/// <returns>The result string.</returns>
+		public static string operator *(string value, int times)
+		{
+			var result = new char[value.Length * times];
+			var span = result.AsSpan();
+			for (var i = 0; i < result.Length; i += value.Length)
+			{
+				value.CopyTo(span[i..(i + value.Length)]);
+			}
+			return new(result);
+		}
+
+		/// <summary>
+		/// Splits the string into specified parts, as same length as possible.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <param name="parts">The desired parts.</param>
+		/// <returns>The sequence of strings.</returns>
+		public static ReadOnlySpan<string> operator /(string value, int parts) => Chunk(value, parts);
+
+		/// <summary>
+		/// Splits a string into substrings based on a specified delimiting character.
+		/// </summary>
+		/// <param name="value">The current string instance.</param>
+		/// <param name="separator">A character that delimits the substrings in this string.</param>
+		/// <returns>
+		/// An array whose elements contain the substrings from this instance that are delimited by separator.
+		/// </returns>
+		public static ReadOnlySpan<string> operator /(string value, char separator) => value.Split(separator);
+
+		/// <summary>
+		/// Splits a string into substrings based on a specified delimiting string.
+		/// </summary>
+		/// <param name="value">The current string instance.</param>
+		/// <param name="separator">A string that delimits the substrings in this string.</param>
+		/// <returns>
+		/// An array whose elements contain the substrings from this instance that are delimited by separator.
+		/// </returns>
+		public static ReadOnlySpan<string> operator /(string value, string separator) => value.Split(separator);
+#endif
 	}
 }
