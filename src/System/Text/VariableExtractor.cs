@@ -32,7 +32,6 @@ public unsafe ref struct VariableExtractor(int literalLength, int formattedCount
 	private readonly string _original = original;
 #pragma warning restore IDE0052
 
-
 	/// <summary>
 	/// Indicates the string variable pointers.
 	/// </summary>
