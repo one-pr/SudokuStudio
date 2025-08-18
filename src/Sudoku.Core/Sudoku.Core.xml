@@ -3786,7 +3786,7 @@
             <code>
             ○ Match with 2 alternative expressions, atomically.<br/>
                 ○ Match a sequence of expressions.<br/>
-                    ○ Match an empty string.<br/>
+                    ○ Match a character in the set [Rr].<br/>
                     ○ Match a character in the set [1-9] atomically at least once.<br/>
                     ○ Match a character in the set [Cc].<br/>
                     ○ Match a character in the set [1-9] atomically at least once.<br/>

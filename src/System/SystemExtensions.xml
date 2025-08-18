@@ -412,6 +412,11 @@
             </summary>
             <seealso cref="T:System.Collections.BitArray"/>
         </member>
+        <member name="F:System.Collections.BitArrayExtensions.NibblePopCount">
+            <summary>
+            Represents a field to be used as table lookup.
+            </summary>
+        </member>
         <member name="T:System.Collections.BitArrayExtensions.&lt;&gt;E__0">
             <summary>
             Provides extension members on <see cref="T:System.Collections.BitArray"/>.
@@ -1666,15 +1671,6 @@
         </member>
         <member name="M:System.EnvironmentExtensions.get_DesktopPath">
             <inheritdoc cref="P:System.EnvironmentExtensions.&lt;&gt;E__0.DesktopPath"/>
-        </member>
-        <member name="T:System.EventHandler`2">
-            <summary>
-            Represents an event handler that simplifies the definition on customization on event handler delegate types.
-            </summary>
-            <typeparam name="TSender">The type of sender which triggers the event.</typeparam>
-            <typeparam name="TEventArgs">The type of event argument provided.</typeparam>
-            <param name="sender">The sender which triggers the event.</param>
-            <param name="e">The event arguments provided.</param>
         </member>
         <member name="T:System.ExceptionExtensions">
             <summary>
@@ -5565,6 +5561,24 @@
             </summary>
             <seealso cref="T:System.Numerics.BitOperations"/>
         </member>
+        <member name="F:System.Numerics.BitOperationsExtensions.BitCountLut">
+            <summary>
+            Represents the table that describes the number of bits set for all possible 256 values of <see cref="T:System.Byte"/>.
+            </summary>
+        </member>
+        <member name="M:System.Numerics.BitOperationsExtensions.#cctor">
+            <static-constructor>
+		<summary>
+			<para>
+				Indicates the <see langword="static" /> constructor of the current type.
+			</para>
+			<para>
+				This constructor will initialize some <see langword="static readonly" /> data members
+				of this type that can't use a simple expression to describe the initial value.
+			</para>
+		</summary>
+	</static-constructor>
+        </member>
         <member name="T:System.Numerics.BitOperationsExtensions.&lt;&gt;E__0">
             <summary>
             Provides extension members on <see cref="T:System.SByte"/>.
@@ -6013,6 +6027,21 @@
         </member>
         <member name="M:System.Numerics.BitOperationsExtensions.GetEnumerator``1(``0)">
             <inheritdoc cref="M:System.Numerics.BitOperationsExtensions.&lt;&gt;E__18`1.GetEnumerator"/>
+        </member>
+        <member name="T:System.Numerics.BitOperationsExtensions.&lt;&gt;E__19">
+            <summary>
+            Provides extension members on <see cref="T:System.Byte"/>[].
+            </summary>
+        </member>
+        <member name="M:System.Numerics.BitOperationsExtensions.&lt;&gt;E__19.SetBitAt(System.Int32)">
+            <summary>
+            Try to get set bit offset at the specified index.
+            </summary>
+            <param name="k">The index.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:System.Numerics.BitOperationsExtensions.SetBitAt(System.Byte[],System.Int32)">
+            <inheritdoc cref="M:System.Numerics.BitOperationsExtensions.&lt;&gt;E__19.SetBitAt(System.Int32)"/>
         </member>
         <member name="T:System.Numerics.Combinatorics">
             <summary>
@@ -6987,7 +7016,7 @@
         </member>
         <member name="F:System.Runtime.CompilerServices.LibraryIdentifiers.BitArray_Array">
             <summary>
-            Indicates the name is <c>"m_array"</c>.
+            Indicates the name is <c>"_array"</c>.
             </summary>
         </member>
         <member name="F:System.Runtime.CompilerServices.LibraryIdentifiers.KeyValuePair_Key">

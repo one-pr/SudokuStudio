@@ -1,3 +1,8 @@
+#if NET10_0_OR_GREATER
+using System.Runtime.Intrinsics;
+using System.Runtime.Intrinsics.X86;
+#endif
+
 namespace System.Collections;
 
 /// <summary>
@@ -6,6 +11,14 @@ namespace System.Collections;
 /// <seealso cref="BitArray"/>
 public static class BitArrayExtensions
 {
+#if NET10_0_OR_GREATER
+	/// <summary>
+	/// Represents a field to be used as table lookup.
+	/// </summary>
+	private static readonly Vector128<byte> NibblePopCount = Vector128.Create((byte)0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4);
+#endif
+
+
 	/// <summary>
 	/// Provides extension members on <see cref="BitArray"/>.
 	/// </summary>
@@ -15,7 +28,146 @@ public static class BitArrayExtensions
 		/// Get the cardinality of the specified <see cref="BitArray"/>,
 		/// indicating the total number of bits set <see langword="true"/>.
 		/// </summary>
-		public int Cardinality => Unsafe.As<int[], uint[]>(ref Entry.GetArrayField(@this)).Sum(PopCount);
+		[SuppressMessage("Style", "IDE0002:Simplify Member Access", Justification = "<Pending>")]
+		public int Cardinality
+#if NET10_0_OR_GREATER
+		{
+			get
+			{
+				var data = Entry.GetArrayField(@this);
+				if (Avx2.IsSupported)
+				{
+					return popcnt_Avx2(data);
+				}
+				if (Sse2.IsSupported)
+				{
+					return popcnt_Sse2(data);
+				}
+				if (Popcnt.IsSupported)
+				{
+					return popcnt_Popcnt(data);
+				}
+
+				var sum = 0;
+				foreach (var b in data)
+				{
+					sum += PopCount(b);
+				}
+				return sum;
+
+
+				static unsafe int popcnt_Avx2(byte[] data)
+				{
+					var length = data.Length;
+					var i = 0;
+					var sum = 0;
+					var lowMask = Vector256.Create((byte)0x0F);
+					var lookup = NibblePopCount;
+					fixed (byte* ptr = data)
+					{
+						for (; i + 32 <= length; i += 32)
+						{
+							var v = Avx.LoadVector256(ptr + i);
+
+							// low nibble
+							var lo = Avx2.And(v, lowMask);
+							var popLo = Avx2.Shuffle(lookup, lo.GetLower()); // need 128-bit lanes
+							var popLoHi = Avx2.Shuffle(lookup, lo.GetUpper());
+
+							// high nibble
+							var hi = Avx2.And(Avx2.ShiftRightLogical(v.AsUInt16(), 4).AsByte(), lowMask);
+							var popHi = Avx2.Shuffle(lookup, hi.GetLower());
+							var popHiHi = Avx2.Shuffle(lookup, hi.GetUpper());
+
+							var sumLo = Avx2.Add(popLo, popHi);
+							var sumHi = Avx2.Add(popLoHi, popHiHi);
+
+							// horizontal sum
+							sum += horizontalSum(sumLo);
+							sum += horizontalSum(sumHi);
+						}
+					}
+					for (; i < length; i++)
+					{
+						sum += BitOperations.PopCount(data[i]);
+					}
+					return sum;
+				}
+
+				static unsafe int popcnt_Sse2(byte[] data)
+				{
+					var length = data.Length;
+					var i = 0;
+					var sum = 0;
+					var lowMask = Vector128.Create((byte)0x0F);
+					var lookup = NibblePopCount;
+					fixed (byte* ptr = data)
+					{
+						for (; i + 16 <= length; i += 16)
+						{
+							var v = Sse2.LoadVector128(ptr + i);
+							var lo = Sse2.And(v, lowMask);
+							var hi = Sse2.And(Sse2.ShiftRightLogical(v.AsUInt16(), 4).AsByte(), lowMask);
+							var popLo = Ssse3.Shuffle(lookup, lo);
+							var popHi = Ssse3.Shuffle(lookup, hi);
+							var total = Sse2.Add(popLo, popHi);
+							sum += horizontalSum(total);
+						}
+					}
+					for (; i < length; i++)
+					{
+						sum += BitOperations.PopCount(data[i]);
+					}
+					return sum;
+				}
+
+				static unsafe int popcnt_Popcnt(byte[] data)
+				{
+					var i = 0;
+					var sum = 0;
+					if (Popcnt.X64.IsSupported)
+					{
+						fixed (byte* ptr = data)
+						{
+							for (; i + 8 <= data.Length; i += 8)
+							{
+								var value = Unsafe.ReadUnaligned<ulong>(ptr + i);
+								sum += (int)Popcnt.X64.PopCount(value);
+							}
+						}
+					}
+					else
+					{
+						fixed (byte* ptr = data)
+						{
+							for (; i + 4 <= data.Length; i += 4)
+							{
+								var value = Unsafe.ReadUnaligned<uint>(ptr + i);
+								sum += (int)Popcnt.PopCount(value);
+							}
+						}
+					}
+					for (; i < data.Length; i++)
+					{
+						sum += PopCount(data[i]);
+					}
+					return sum;
+				}
+
+				static int horizontalSum(Vector128<byte> v)
+				{
+					var result = 0;
+					for (var i = 0; i < 16; i++)
+					{
+						result += v.GetElement(i);
+					}
+					return result;
+				}
+			}
+		}
+#else
+			=> Unsafe.As<int[], uint[]>(ref Entry.GetArrayField(@this)).Sum(PopCount);
+#endif
 
 
 		/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
@@ -27,7 +179,11 @@ public static class BitArrayExtensions
 		/// Try to get internal array field.
 		/// </summary>
 		/// <returns>The field.</returns>
+#if NET10_0_OR_GREATER
+		public byte[] GetInternalArrayField() => Entry.GetArrayField(@this);
+#else
 		public int[] GetInternalArrayField() => Entry.GetArrayField(@this);
+#endif
 
 		/// <summary>
 		/// Slices the current <see cref="BitArray"/> instance.
@@ -64,7 +220,11 @@ public static class BitArrayExtensions
 				return @this;
 			}
 
+#if NET10_0_OR_GREATER
+			var indexCount = (other.Count + 7) / 8;
+#else
 			var indexCount = (other.Count + 31) / 32;
+#endif
 			var internalBits = Entry.GetArrayField(@this);
 			var otherInternalBits = Entry.GetArrayField(other);
 			for (var i = 0; i < indexCount; i++)
@@ -96,5 +256,9 @@ file static class Entry
 	///     path="//g/dotnet/version[@value='8']/feature[@name='unsafe-accessor']/target[@name='field-related-method']"/>
 	/// </remarks>
 	[UnsafeAccessor(UnsafeAccessorKind.Field, Name = LibraryIdentifiers.BitArray_Array)]
+#if NET10_0_OR_GREATER
+	public static extern ref byte[] GetArrayField(BitArray @this);
+#else
 	public static extern ref int[] GetArrayField(BitArray @this);
+#endif
 }

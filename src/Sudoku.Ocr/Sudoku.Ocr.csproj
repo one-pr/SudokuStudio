@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFramework>net10.0</TargetFramework>
 		<RootNamespace>Sudoku</RootNamespace>
 		<Description>Provides APIs for OCR (picture recognition) on sudoku grid.</Description>
 		<DocumentationFile>Sudoku.Ocr.xml</DocumentationFile>

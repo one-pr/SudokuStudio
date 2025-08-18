@@ -4,9 +4,31 @@ namespace System.Numerics;
 /// Provides extension methods on <see cref="BitOperations"/>.
 /// </summary>
 /// <seealso cref="BitOperations"/>
-[SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification = "<Pending>")]
 public static partial class BitOperationsExtensions
 {
+	/// <summary>
+	/// Represents the table that describes the number of bits set for all possible 256 values of <see cref="byte"/>.
+	/// </summary>
+	private static readonly byte[] BitCountLut = new byte[256];
+
+
+	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	static BitOperationsExtensions()
+	{
+		for (var i = 0; i < 256; i++)
+		{
+			var n = i;
+			var c = (byte)0;
+			while (n != 0)
+			{
+				c++;
+				n &= n - 1;
+			}
+			BitCountLut[i] = c;
+		}
+	}
+
+
 	/// <summary>
 	/// Provides extension members on <see cref="sbyte"/>.
 	/// </summary>
@@ -842,5 +864,95 @@ public static partial class BitOperationsExtensions
 		/// <inheritdoc cref="GetEnumerator(sbyte)"/>
 		[OverloadResolutionPriority(1)]
 		public unsafe GenericIntegerEnumerator<TInteger> GetEnumerator() => new(@this, sizeof(TInteger) << 3);
+	}
+
+	/// <summary>
+	/// Provides extension members on <see cref="byte"/>[].
+	/// </summary>
+	extension(byte[] @this)
+	{
+		/// <summary>
+		/// Try to get set bit offset at the specified index.
+		/// </summary>
+		/// <param name="k">The index.</param>
+		/// <returns>The result.</returns>
+		public int SetBitAt(int k)
+		{
+			var bitOffset = 0;
+			if (Vector.IsHardwareAccelerated && @this.Length >= Vector<byte>.Count)
+			{
+				var i = 0;
+				var vectorSize = Vector<byte>.Count;
+				for (; i <= @this.Length - vectorSize; i += vectorSize)
+				{
+					var vec = new Vector<byte>(@this, i);
+					var sum = 0;
+					for (var j = 0; j < vectorSize; j++)
+					{
+						sum += BitCountLut[vec[j]];
+					}
+
+					if (k <= sum)
+					{
+						for (var j = 0; j < vectorSize; j++)
+						{
+							int c = BitCountLut[vec[j]];
+							if (k <= c)
+							{
+								return bitOffset + findKthBitInByte(vec[j], k);
+							}
+							k -= c;
+							bitOffset += 8;
+						}
+					}
+					else
+					{
+						k -= sum;
+						bitOffset += vectorSize * 8;
+					}
+				}
+
+				// Remainder.
+				for (; i < @this.Length; i++)
+				{
+					int c = BitCountLut[@this[i]];
+					if (k <= c)
+					{
+						return bitOffset + findKthBitInByte(@this[i], k);
+					}
+					k -= c;
+					bitOffset += 8;
+				}
+			}
+			else
+			{
+				for (var i = 0; i < @this.Length; i++)
+				{
+					int c = BitCountLut[@this[i]];
+					if (k <= c)
+					{
+						return bitOffset + findKthBitInByte(@this[i], k);
+					}
+					k -= c;
+					bitOffset += 8;
+				}
+			}
+
+			// Not found.
+			return -1;
+
+
+			static int findKthBitInByte(int b, int k)
+			{
+				for (var i = 0; i < 8; i++)
+				{
+					if (((b >> i) & 1) != 0)
+					{
+						if (--k == 0) return i;
+					}
+				}
+				return -1;
+			}
+		}
 	}
 }

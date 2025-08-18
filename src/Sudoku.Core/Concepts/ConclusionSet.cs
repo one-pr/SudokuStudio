@@ -114,6 +114,10 @@ public sealed class ConclusionSet :
 				throw new IndexOutOfRangeException();
 			}
 
+#if NET10_0_OR_GREATER
+			var internalField = _bitArray.GetInternalArrayField();
+			return new((Mask)internalField.SetBitAt(index));
+#else
 			var bmi2IsSupported = Bmi2.IsSupported;
 			var popCountSum = 0;
 			var internalField = _bitArray.GetInternalArrayField();
@@ -128,13 +132,14 @@ public sealed class ConclusionSet :
 					case true when z != FallbackConstants.@int:
 					case false when z != -1:
 					{
-						return new((short)(z + (i << 5))); // * 32
+						return new((Mask)(z + (i << 5))); // * 32
 					}
 				}
 
 				popCountSum += PopCount(bits);
 			}
 			return default;
+#endif
 		}
 	}
 

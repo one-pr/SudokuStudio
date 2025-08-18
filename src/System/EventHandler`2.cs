@@ -1,3 +1,4 @@
+#if !NET10_0_OR_GREATER
 namespace System;
 
 /// <summary>
@@ -7,6 +8,7 @@ namespace System;
 /// <typeparam name="TEventArgs">The type of event argument provided.</typeparam>
 /// <param name="sender">The sender which triggers the event.</param>
 /// <param name="e">The event arguments provided.</param>
-public delegate void EventHandler<TSender, TEventArgs>(TSender sender, TEventArgs e)
+public delegate void EventHandler<in TSender, in TEventArgs>(TSender sender, TEventArgs e)
 	where TSender : allows ref struct
 	where TEventArgs : EventArgs;
+#endif
