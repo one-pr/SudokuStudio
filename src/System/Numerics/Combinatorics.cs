@@ -97,7 +97,7 @@ public static class Combinatorics
 			}
 
 			var result = new List<T[]>();
-			GetSubsetsCore(value.Length, count, count, stackalloc int[count], value, result);
+			GetSubsetsCore(@this.Length, count, count, stackalloc int[count], @this, result);
 			return result.AsSpan();
 		}
 #endif
