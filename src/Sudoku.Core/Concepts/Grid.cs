@@ -472,7 +472,53 @@ public struct Grid : GridBase, ISubtractionOperators<Grid, Grid, DiffResult?>
 	public override readonly bool Equals([NotNullWhen(true)] object? obj) => obj is Grid comparer && Equals(comparer);
 
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
-	public readonly bool Equals(in Grid other) => this[..].SequenceEqual(other[..]);
+	public readonly unsafe bool Equals(in Grid other)
+	{
+		if (Avx2.IsSupported || Sse2.IsSupported)
+		{
+			var i = 0;
+			fixed (short* pLeft = this[..], pRight = other[..])
+			{
+				if (Avx2.IsSupported)
+				{
+					var step = Vector256<short>.Count; // 16
+					for (; i <= 81 - step; i += step)
+					{
+						var v1 = Avx.LoadVector256(pLeft + i);
+						var v2 = Avx.LoadVector256(pRight + i);
+						if (Avx2.MoveMask(Avx2.CompareEqual(v1, v2).AsByte()) != -1)
+						{
+							return false;
+						}
+					}
+				}
+				else if (Sse2.IsSupported)
+				{
+					var step = Vector128<short>.Count; // 8
+					for (; i <= 81 - step; i += step)
+					{
+						var v1 = Sse2.LoadVector128(pLeft + i);
+						var v2 = Sse2.LoadVector128(pRight + i);
+						if (Sse2.MoveMask(Sse2.CompareEqual(v1, v2).AsByte()) != 0xFFFF)
+						{
+							return false;
+						}
+					}
+				}
+				for (; i < 81; i++)
+				{
+					if (this[i] != other[i])
+					{
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+
+		// Fallback.
+		return this[..].SequenceEqual(other[..]);
+	}
 
 	/// <inheritdoc/>
 	public readonly bool ConflictWith(Cell cell, Digit digit)

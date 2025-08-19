@@ -13976,6 +13976,11 @@
             Indicates the restricted common candidates.
             </summary>
         </member>
+        <member name="P:Sudoku.Analytics.StepSearchers.QueueNode.HousesUsed">
+            <summary>
+            Indicates all houses used.
+            </summary>
+        </member>
         <member name="P:Sudoku.Analytics.StepSearchers.QueueNode.Pattern">
             <summary>
             Indicates the pattern.
