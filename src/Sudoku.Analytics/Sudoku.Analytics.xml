@@ -17131,15 +17131,13 @@
             Provides with a step that is a <b>Brute Force</b> technique.
             </summary>
             <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
             <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Analytics.Steps.BruteForceStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.Steps.BruteForceStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Analytics.Configuration.StepGathererOptions)">
             <summary>
             Provides with a step that is a <b>Brute Force</b> technique.
             </summary>
             <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
             <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
         </member>
         <member name="P:Sudoku.Analytics.Steps.BruteForceStep.BaseDifficulty">
