@@ -1,4 +1,4 @@
-namespace Sudoku.Measuring;
+namespace Sudoku.Analytics;
 
 public partial struct FactorArray
 {

@@ -7527,6 +7527,216 @@
             Indicates all difficulty levels.
             </summary>
         </member>
+        <member name="T:Sudoku.Analytics.Factor">
+            <summary>
+            Represents a factor that describes a rule for calculating difficulty rating for a step in one factor.
+            </summary>
+            <param name="resourceKey"><inheritdoc cref="P:Sudoku.Analytics.Factor.FactorResourceKey" path="/summary"/></param>
+            <param name="parameterNames"><inheritdoc cref="P:Sudoku.Analytics.Factor.ParameterNames" path="/summary"/></param>
+            <param name="reflectedStepType"><inheritdoc cref="P:Sudoku.Analytics.Factor.ReflectedStepType" path="/summary"/></param>
+            <param name="formula"><inheritdoc cref="P:Sudoku.Analytics.Factor.Formula" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Analytics.Factor.#ctor(System.String,System.String[],System.Type,System.Func{System.ReadOnlySpan{System.Object},System.Int32})">
+            <summary>
+            Represents a factor that describes a rule for calculating difficulty rating for a step in one factor.
+            </summary>
+            <param name="resourceKey"><inheritdoc cref="P:Sudoku.Analytics.Factor.FactorResourceKey" path="/summary"/></param>
+            <param name="parameterNames"><inheritdoc cref="P:Sudoku.Analytics.Factor.ParameterNames" path="/summary"/></param>
+            <param name="reflectedStepType"><inheritdoc cref="P:Sudoku.Analytics.Factor.ReflectedStepType" path="/summary"/></param>
+            <param name="formula"><inheritdoc cref="P:Sudoku.Analytics.Factor.Formula" path="/summary"/></param>
+        </member>
+        <member name="F:Sudoku.Analytics.Factor.PropertyFlags">
+            <summary>
+            Default property flags, including properties that are explicitly interface implemented.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Factor.FactorResourceKey">
+            <summary>
+            Indicates the factor resource key.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Factor.ParameterNames">
+            <summary>
+            Indicates a list of <see cref="T:System.String"/> instances that binds with real instance properties
+            stored inside a <see cref="T:Sudoku.Analytics.Step"/> instance, representing the target step type is compatible
+            with the current factor and can be calculated its rating.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Factor.Parameters">
+            <summary>
+            Indicates a <see cref="T:System.Reflection.PropertyInfo"/> instance that creates from property <see cref="P:Sudoku.Analytics.Factor.ParameterNames"/>.
+            </summary>
+            <exception cref="T:Sudoku.Analytics.FactorResourceMismatchedException">Throws when resource is mismatched.</exception>
+            <seealso cref="P:Sudoku.Analytics.Factor.ParameterNames"/>
+            <seealso cref="T:System.Reflection.PropertyInfo"/>
+        </member>
+        <member name="P:Sudoku.Analytics.Factor.ReflectedStepType">
+            <summary>
+            Indicates the relied <see cref="T:System.Type"/> instance.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Factor.Formula">
+            <summary>
+            Provides with a formula that calculates for the result.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Factor.GetName(System.IFormatProvider)">
+            <summary>
+            Try to fetch the name stored in resource dictionary.
+            </summary>
+            <param name="formatProvider">The culture information.</param>
+            <returns>The name of the factor.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Factor.Create(System.String,System.String[],System.Type,System.Func{System.ReadOnlySpan{System.Object},System.Int32})">
+            <summary>
+            Creates a <see cref="T:Sudoku.Analytics.Factor"/> instance that assigns predefined values.
+            </summary>
+            <param name="resourceKey"><inheritdoc cref="P:Sudoku.Analytics.Factor.FactorResourceKey" path="/summary"/></param>
+            <param name="parameterNames"><inheritdoc cref="P:Sudoku.Analytics.Factor.ParameterNames" path="/summary"/></param>
+            <param name="reflectedStepType"><inheritdoc cref="P:Sudoku.Analytics.Factor.ReflectedStepType" path="/summary"/></param>
+            <param name="formula"><inheritdoc cref="P:Sudoku.Analytics.Factor.Formula" path="/summary"/></param>
+            <returns>A <see cref="T:Sudoku.Analytics.Factor"/> instance.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.FactorArray">
+            <summary>
+            Represents a read-only array of <see cref="T:Sudoku.Analytics.Factor"/> values.
+            </summary>
+            <param name="_values">Indicates the values.</param>
+            <seealso cref="T:Sudoku.Analytics.Factor"/>
+        </member>
+        <member name="M:Sudoku.Analytics.FactorArray.#ctor(System.ReadOnlyMemory{Sudoku.Analytics.Factor})">
+            <summary>
+            Represents a read-only array of <see cref="T:Sudoku.Analytics.Factor"/> values.
+            </summary>
+            <param name="_values">Indicates the values.</param>
+            <seealso cref="T:Sudoku.Analytics.Factor"/>
+        </member>
+        <member name="P:Sudoku.Analytics.FactorArray.Length">
+            <summary>
+            Indicates the length of elements stored in this collection.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.FactorArray.Span">
+            <summary>
+            Indicates the sequence of <see cref="T:Sudoku.Analytics.Factor"/> instances stored in the current collection.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.FactorArray.System#Collections#Generic#IReadOnlyCollection{Sudoku#Analytics#Factor}#Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.FactorArray.Item(System.Int32)">
+            <summary>
+            Gets the element at the specified index.
+            </summary>
+            <param name="index">The desired index.</param>
+            <returns>The <see cref="T:Sudoku.Analytics.Factor"/> instance at the specified index.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.FactorArray.FirstOrDefault(System.Func{Sudoku.Analytics.Factor,System.Boolean})">
+            <summary>
+            Checks for all elements in this collection, finding for the first element satisfying the specified condition;
+            return <see langword="null"/> if no such elements in this collection.
+            </summary>
+            <param name="match">The condition to be checked.</param>
+            <returns>The first found <see cref="T:Sudoku.Analytics.Factor"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.FactorArray.ForEach(System.Action{Sudoku.Analytics.Factor})">
+            <summary>
+            Iterates on each element, executing the specified action.
+            </summary>
+            <param name="action">The action to be executed and applied to each element.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.FactorArray.Sum(Sudoku.Analytics.Step)">
+            <summary>
+            Calculates sum of difficulty of the current step.
+            </summary>
+            <param name="step">The step.</param>
+            <returns>The sum value.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.FactorArray.GetEnumerator">
+            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+        </member>
+        <member name="M:Sudoku.Analytics.FactorArray.Slice(System.Int32,System.Int32)">
+            <summary>
+            Slices the collection via the specified index as the start, and the number of elements to be sliced.
+            </summary>
+            <param name="start">The index of the start element.</param>
+            <param name="length">The number of elements to be sliced.</param>
+            <returns>A <see cref="T:Sudoku.Analytics.FactorArray"/> instance sliced.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.FactorArray.ToArray">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.FactorArray.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.FactorArray.System#Collections#Generic#IEnumerable{Sudoku#Analytics#Factor}#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.FactorArray.System#Linq#Providers#ISliceMethod{Sudoku#Analytics#FactorArray,Sudoku#Analytics#Factor}#Slice(System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.FactorArray.Create(System.ReadOnlySpan{Sudoku.Analytics.Factor})">
+            <summary>
+            Creates a <see cref="T:Sudoku.Analytics.FactorArray" /> instance.
+            </summary>
+            <param name="factors">
+            <para>The factors to be used as initial values.</para>
+            <feature name="scoped-keyword">
+			<para>
+				The keyword <see langword="scoped" /> means the argument and local variable can only be used inside the method.
+				This means you cannot use this variable and argument outside the scope,
+				such as <c>new RefStructType(scoped_variable)</c>, <c>return scoped_variable</c> and <c>field = scoped_variable</c>.
+				Such expressions may store the <see langword="scoped" /> variables, unsafely expanding the variable's lifecycle.
+			</para>
+		</feature>
+            </param>
+            <returns>A <see cref="T:Sudoku.Analytics.FactorArray" /> instance.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.FactorArray.Enumerator">
+            <summary>
+            The back enumerator of this type.
+            </summary>
+            <param name="factors">Indicates the back factors to be iterated.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.FactorArray.Enumerator.#ctor(System.ReadOnlySpan{Sudoku.Analytics.Factor})">
+            <summary>
+            The back enumerator of this type.
+            </summary>
+            <param name="factors">Indicates the back factors to be iterated.</param>
+        </member>
+        <member name="F:Sudoku.Analytics.FactorArray.Enumerator._factors">
+            <summary>
+            Indicates the field of factors.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.FactorArray.Enumerator._index">
+            <summary>
+            Indicates the currently-iterated index.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.FactorArray.Enumerator.Current">
+            <inheritdoc cref="P:System.Collections.Generic.IEnumerator`1.Current"/>
+        </member>
+        <member name="P:Sudoku.Analytics.FactorArray.Enumerator.System#Collections#IEnumerator#Current">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.FactorArray.Enumerator.MoveNext">
+            <inheritdoc cref="M:System.Collections.IEnumerator.MoveNext"/>
+        </member>
+        <member name="M:Sudoku.Analytics.FactorArray.Enumerator.System#IDisposable#Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.FactorArray.Enumerator.System#Collections#IEnumerator#Reset">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.FactorResourceMismatchedException">
+            <summary>
+            Represents an exception type that will be thrown if factor resource is mismatched.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.FactorResourceMismatchedException.Message">
+            <inheritdoc/>
+        </member>
         <member name="T:Sudoku.Analytics.FailedReason">
             <summary>
             Defines a reason why the puzzle is failed to be analyzed.
@@ -9020,7 +9230,7 @@
             </summary>
             <seealso cref="P:Sudoku.Analytics.Step.BaseDifficulty"/>
             <seealso cref="P:Sudoku.Analytics.Step.Factors"/>
-            <seealso cref="T:Sudoku.Measuring.Factor"/>
+            <seealso cref="T:Sudoku.Analytics.Factor"/>
         </member>
         <member name="P:Sudoku.Analytics.Step.ConclusionText">
             <summary>
@@ -28945,216 +29155,6 @@
         </member>
         <member name="M:Sudoku.Linq.TechniqueSetEnumerable.Where(Sudoku.Categorization.TechniqueSet,System.Func{Sudoku.Categorization.Technique,System.Boolean})">
             <inheritdoc cref="M:System.Linq.ArrayEnumerable.Where``1(``0[],System.Func{``0,System.Boolean})"/>
-        </member>
-        <member name="T:Sudoku.Measuring.Factor">
-            <summary>
-            Represents a factor that describes a rule for calculating difficulty rating for a step in one factor.
-            </summary>
-            <param name="resourceKey"><inheritdoc cref="P:Sudoku.Measuring.Factor.FactorResourceKey" path="/summary"/></param>
-            <param name="parameterNames"><inheritdoc cref="P:Sudoku.Measuring.Factor.ParameterNames" path="/summary"/></param>
-            <param name="reflectedStepType"><inheritdoc cref="P:Sudoku.Measuring.Factor.ReflectedStepType" path="/summary"/></param>
-            <param name="formula"><inheritdoc cref="P:Sudoku.Measuring.Factor.Formula" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Measuring.Factor.#ctor(System.String,System.String[],System.Type,System.Func{System.ReadOnlySpan{System.Object},System.Int32})">
-            <summary>
-            Represents a factor that describes a rule for calculating difficulty rating for a step in one factor.
-            </summary>
-            <param name="resourceKey"><inheritdoc cref="P:Sudoku.Measuring.Factor.FactorResourceKey" path="/summary"/></param>
-            <param name="parameterNames"><inheritdoc cref="P:Sudoku.Measuring.Factor.ParameterNames" path="/summary"/></param>
-            <param name="reflectedStepType"><inheritdoc cref="P:Sudoku.Measuring.Factor.ReflectedStepType" path="/summary"/></param>
-            <param name="formula"><inheritdoc cref="P:Sudoku.Measuring.Factor.Formula" path="/summary"/></param>
-        </member>
-        <member name="F:Sudoku.Measuring.Factor.PropertyFlags">
-            <summary>
-            Default property flags, including properties that are explicitly interface implemented.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Measuring.Factor.FactorResourceKey">
-            <summary>
-            Indicates the factor resource key.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Measuring.Factor.ParameterNames">
-            <summary>
-            Indicates a list of <see cref="T:System.String"/> instances that binds with real instance properties
-            stored inside a <see cref="T:Sudoku.Analytics.Step"/> instance, representing the target step type is compatible
-            with the current factor and can be calculated its rating.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Measuring.Factor.Parameters">
-            <summary>
-            Indicates a <see cref="T:System.Reflection.PropertyInfo"/> instance that creates from property <see cref="P:Sudoku.Measuring.Factor.ParameterNames"/>.
-            </summary>
-            <exception cref="T:Sudoku.Measuring.FactorResourceMismatchedException">Throws when resource is mismatched.</exception>
-            <seealso cref="P:Sudoku.Measuring.Factor.ParameterNames"/>
-            <seealso cref="T:System.Reflection.PropertyInfo"/>
-        </member>
-        <member name="P:Sudoku.Measuring.Factor.ReflectedStepType">
-            <summary>
-            Indicates the relied <see cref="T:System.Type"/> instance.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Measuring.Factor.Formula">
-            <summary>
-            Provides with a formula that calculates for the result.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Measuring.Factor.GetName(System.IFormatProvider)">
-            <summary>
-            Try to fetch the name stored in resource dictionary.
-            </summary>
-            <param name="formatProvider">The culture information.</param>
-            <returns>The name of the factor.</returns>
-        </member>
-        <member name="M:Sudoku.Measuring.Factor.Create(System.String,System.String[],System.Type,System.Func{System.ReadOnlySpan{System.Object},System.Int32})">
-            <summary>
-            Creates a <see cref="T:Sudoku.Measuring.Factor"/> instance that assigns predefined values.
-            </summary>
-            <param name="resourceKey"><inheritdoc cref="P:Sudoku.Measuring.Factor.FactorResourceKey" path="/summary"/></param>
-            <param name="parameterNames"><inheritdoc cref="P:Sudoku.Measuring.Factor.ParameterNames" path="/summary"/></param>
-            <param name="reflectedStepType"><inheritdoc cref="P:Sudoku.Measuring.Factor.ReflectedStepType" path="/summary"/></param>
-            <param name="formula"><inheritdoc cref="P:Sudoku.Measuring.Factor.Formula" path="/summary"/></param>
-            <returns>A <see cref="T:Sudoku.Measuring.Factor"/> instance.</returns>
-        </member>
-        <member name="T:Sudoku.Measuring.FactorArray">
-            <summary>
-            Represents a read-only array of <see cref="T:Sudoku.Measuring.Factor"/> values.
-            </summary>
-            <param name="_values">Indicates the values.</param>
-            <seealso cref="T:Sudoku.Measuring.Factor"/>
-        </member>
-        <member name="M:Sudoku.Measuring.FactorArray.#ctor(System.ReadOnlyMemory{Sudoku.Measuring.Factor})">
-            <summary>
-            Represents a read-only array of <see cref="T:Sudoku.Measuring.Factor"/> values.
-            </summary>
-            <param name="_values">Indicates the values.</param>
-            <seealso cref="T:Sudoku.Measuring.Factor"/>
-        </member>
-        <member name="P:Sudoku.Measuring.FactorArray.Length">
-            <summary>
-            Indicates the length of elements stored in this collection.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Measuring.FactorArray.Span">
-            <summary>
-            Indicates the sequence of <see cref="T:Sudoku.Measuring.Factor"/> instances stored in the current collection.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Measuring.FactorArray.System#Collections#Generic#IReadOnlyCollection{Sudoku#Measuring#Factor}#Count">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Measuring.FactorArray.Item(System.Int32)">
-            <summary>
-            Gets the element at the specified index.
-            </summary>
-            <param name="index">The desired index.</param>
-            <returns>The <see cref="T:Sudoku.Measuring.Factor"/> instance at the specified index.</returns>
-        </member>
-        <member name="M:Sudoku.Measuring.FactorArray.FirstOrDefault(System.Func{Sudoku.Measuring.Factor,System.Boolean})">
-            <summary>
-            Checks for all elements in this collection, finding for the first element satisfying the specified condition;
-            return <see langword="null"/> if no such elements in this collection.
-            </summary>
-            <param name="match">The condition to be checked.</param>
-            <returns>The first found <see cref="T:Sudoku.Measuring.Factor"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Measuring.FactorArray.ForEach(System.Action{Sudoku.Measuring.Factor})">
-            <summary>
-            Iterates on each element, executing the specified action.
-            </summary>
-            <param name="action">The action to be executed and applied to each element.</param>
-        </member>
-        <member name="M:Sudoku.Measuring.FactorArray.Sum(Sudoku.Analytics.Step)">
-            <summary>
-            Calculates sum of difficulty of the current step.
-            </summary>
-            <param name="step">The step.</param>
-            <returns>The sum value.</returns>
-        </member>
-        <member name="M:Sudoku.Measuring.FactorArray.GetEnumerator">
-            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
-        </member>
-        <member name="M:Sudoku.Measuring.FactorArray.Slice(System.Int32,System.Int32)">
-            <summary>
-            Slices the collection via the specified index as the start, and the number of elements to be sliced.
-            </summary>
-            <param name="start">The index of the start element.</param>
-            <param name="length">The number of elements to be sliced.</param>
-            <returns>A <see cref="T:Sudoku.Measuring.FactorArray"/> instance sliced.</returns>
-        </member>
-        <member name="M:Sudoku.Measuring.FactorArray.ToArray">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Measuring.FactorArray.System#Collections#IEnumerable#GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Measuring.FactorArray.System#Collections#Generic#IEnumerable{Sudoku#Measuring#Factor}#GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Measuring.FactorArray.System#Linq#Providers#ISliceMethod{Sudoku#Measuring#FactorArray,Sudoku#Measuring#Factor}#Slice(System.Int32,System.Int32)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Measuring.FactorArray.Create(System.ReadOnlySpan{Sudoku.Measuring.Factor})">
-            <summary>
-            Creates a <see cref="T:Sudoku.Measuring.FactorArray" /> instance.
-            </summary>
-            <param name="factors">
-            <para>The factors to be used as initial values.</para>
-            <feature name="scoped-keyword">
-			<para>
-				The keyword <see langword="scoped" /> means the argument and local variable can only be used inside the method.
-				This means you cannot use this variable and argument outside the scope,
-				such as <c>new RefStructType(scoped_variable)</c>, <c>return scoped_variable</c> and <c>field = scoped_variable</c>.
-				Such expressions may store the <see langword="scoped" /> variables, unsafely expanding the variable's lifecycle.
-			</para>
-		</feature>
-            </param>
-            <returns>A <see cref="T:Sudoku.Measuring.FactorArray" /> instance.</returns>
-        </member>
-        <member name="T:Sudoku.Measuring.FactorArray.Enumerator">
-            <summary>
-            The back enumerator of this type.
-            </summary>
-            <param name="factors">Indicates the back factors to be iterated.</param>
-        </member>
-        <member name="M:Sudoku.Measuring.FactorArray.Enumerator.#ctor(System.ReadOnlySpan{Sudoku.Measuring.Factor})">
-            <summary>
-            The back enumerator of this type.
-            </summary>
-            <param name="factors">Indicates the back factors to be iterated.</param>
-        </member>
-        <member name="F:Sudoku.Measuring.FactorArray.Enumerator._factors">
-            <summary>
-            Indicates the field of factors.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Measuring.FactorArray.Enumerator._index">
-            <summary>
-            Indicates the currently-iterated index.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Measuring.FactorArray.Enumerator.Current">
-            <inheritdoc cref="P:System.Collections.Generic.IEnumerator`1.Current"/>
-        </member>
-        <member name="P:Sudoku.Measuring.FactorArray.Enumerator.System#Collections#IEnumerator#Current">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Measuring.FactorArray.Enumerator.MoveNext">
-            <inheritdoc cref="M:System.Collections.IEnumerator.MoveNext"/>
-        </member>
-        <member name="M:Sudoku.Measuring.FactorArray.Enumerator.System#IDisposable#Dispose">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Measuring.FactorArray.Enumerator.System#Collections#IEnumerator#Reset">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Measuring.FactorResourceMismatchedException">
-            <summary>
-            Represents an exception type that will be thrown if factor resource is mismatched.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Measuring.FactorResourceMismatchedException.Message">
-            <inheritdoc/>
         </member>
         <member name="T:Sudoku.ModuleInitializer">
             <target name="type">

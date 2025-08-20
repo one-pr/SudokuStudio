@@ -1,4 +1,4 @@
-namespace Sudoku.Measuring;
+namespace Sudoku.Analytics;
 
 /// <summary>
 /// Represents a read-only array of <see cref="Factor"/> values.

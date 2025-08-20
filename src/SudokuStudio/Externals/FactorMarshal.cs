@@ -1,4 +1,4 @@
-namespace Sudoku.Measuring;
+namespace Sudoku.Analytics;
 
 /// <summary>
 /// Represents some methods operating with <see cref="Factor"/> instances.

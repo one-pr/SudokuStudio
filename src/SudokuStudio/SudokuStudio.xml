@@ -3978,7 +3978,7 @@
         </member>
         <member name="T:SudokuStudio.Interaction.Conversions.Extensions.&lt;&gt;E__0">
             <summary>
-            Provides extension members on <see cref="T:Sudoku.Measuring.Factor"/>.
+            Provides extension members on <see cref="T:Sudoku.Analytics.Factor"/>.
             </summary>
         </member>
         <member name="M:SudokuStudio.Interaction.Conversions.Extensions.&lt;&gt;E__0.ToString(Sudoku.Analytics.Step,System.Decimal,System.IFormatProvider)">
@@ -3991,7 +3991,7 @@
             <param name="formatProvider">The culture to be used.</param>
             <returns>The string representation of final rating text.</returns>
         </member>
-        <member name="M:SudokuStudio.Interaction.Conversions.Extensions.ToString(Sudoku.Measuring.Factor,Sudoku.Analytics.Step,System.Decimal,System.IFormatProvider)">
+        <member name="M:SudokuStudio.Interaction.Conversions.Extensions.ToString(Sudoku.Analytics.Factor,Sudoku.Analytics.Step,System.Decimal,System.IFormatProvider)">
             <inheritdoc cref="M:SudokuStudio.Interaction.Conversions.Extensions.&lt;&gt;E__0.ToString(Sudoku.Analytics.Step,System.Decimal,System.IFormatProvider)"/>
         </member>
         <member name="T:SudokuStudio.Interaction.Conversions.BackdropConversion">
@@ -17883,19 +17883,19 @@
             <param name="grid">The <see cref="T:Microsoft.UI.Xaml.Controls.Grid"/> instance represented by creating point calculator instance.</param>
             <returns>A <see cref="T:System.Boolean"/> value indicating that.</returns>
         </member>
-        <member name="T:Sudoku.Measuring.FactorMarshal">
+        <member name="T:Sudoku.Analytics.FactorMarshal">
             <summary>
-            Represents some methods operating with <see cref="T:Sudoku.Measuring.Factor"/> instances.
+            Represents some methods operating with <see cref="T:Sudoku.Analytics.Factor"/> instances.
             </summary>
-            <seealso cref="T:Sudoku.Measuring.Factor"/>
+            <seealso cref="T:Sudoku.Analytics.Factor"/>
         </member>
-        <member name="M:Sudoku.Measuring.FactorMarshal.GetScaleUnitLength(System.Decimal)">
+        <member name="M:Sudoku.Analytics.FactorMarshal.GetScaleUnitLength(System.Decimal)">
             <summary>
             Try to get the scale unit length from the scale value.
             </summary>
             <exception cref="T:System.InvalidOperationException">Throws when the scale value is negative.</exception>
         </member>
-        <member name="M:Sudoku.Measuring.FactorMarshal.GetScaleFormatString(System.Decimal)">
+        <member name="M:Sudoku.Analytics.FactorMarshal.GetScaleFormatString(System.Decimal)">
             <summary>
             Try to get the scale unit from the scale value.
             </summary>
