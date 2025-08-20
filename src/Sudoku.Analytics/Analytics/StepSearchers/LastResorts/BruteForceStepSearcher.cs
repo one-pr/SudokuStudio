@@ -28,7 +28,7 @@ public sealed partial class BruteForceStepSearcher : StepSearcher
 	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
 	static BruteForceStepSearcher()
 	{
-		var (table, currentRow, currentColumn, k) = ((List<int>)[40], 4, 4, 1);
+		var (table, currentRow, currentColumn, k) = ((List<Cell>)[40], 4, 4, 1);
 		var directions = ((int, int)[])[(0, 1), (-1, 0), (0, -1), (1, 0)];
 		while (table.Count < 81)
 		{
