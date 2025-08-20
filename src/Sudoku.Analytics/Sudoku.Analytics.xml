@@ -7851,6 +7851,36 @@
         <member name="M:Sudoku.Analytics.GridAnalysisExtensions.CanPrimaryHiddenSingle(Sudoku.Concepts.Grid@,System.Boolean)">
             <inheritdoc cref="M:Sudoku.Analytics.GridAnalysisExtensions.&lt;&gt;E__1.CanPrimaryHiddenSingle(System.Boolean)"/>
         </member>
+        <member name="T:Sudoku.Analytics.GridPartialMarkingExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:Sudoku.Concepts.Grid"/>, calculating with partial-marking rules checking.
+            </summary>
+            <seealso cref="T:Sudoku.Concepts.Grid"/>
+        </member>
+        <member name="F:Sudoku.Analytics.GridPartialMarkingExtensions.Collector">
+            <summary>
+            Indicates the backing collector.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Analytics.GridPartialMarkingExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.GridPartialMarkingExtensions.&lt;&gt;E__0.IsMissingCandidates(Sudoku.Categorization.PartialMarkingTechniques)">
+            <summary>
+            Determine whether the grid lacks some candidates that are included in a grid,
+            through basic elimination rule (Naked Single checking) and specified partial-marking techniques.
+            </summary>
+            <param name="techniques">A list of techniques to be checked.</param>
+            <returns>A <see cref="T:System.Boolean"/> value indicating that.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            Throws when the argument <paramref name="techniques"/> is greater than the maximum value of enumeration field defined.
+            </exception>
+        </member>
+        <member name="M:Sudoku.Analytics.GridPartialMarkingExtensions.IsMissingCandidates(Sudoku.Concepts.Grid@,Sudoku.Categorization.PartialMarkingTechniques)">
+            <inheritdoc cref="M:Sudoku.Analytics.GridPartialMarkingExtensions.&lt;&gt;E__0.IsMissingCandidates(Sudoku.Categorization.PartialMarkingTechniques)"/>
+        </member>
         <member name="T:Sudoku.Analytics.Hub">
             <summary>
             The top-level type that stores <see langword="static class"/>es as nested ones,
@@ -23056,36 +23086,6 @@
             <summary>
             Indicates the wrong step.
             </summary>
-        </member>
-        <member name="T:Sudoku.Categorization.GridPartialMarkingExtensions">
-            <summary>
-            Provides with extension methods on <see cref="T:Sudoku.Concepts.Grid"/>, calculating with partial-marking rules checking.
-            </summary>
-            <seealso cref="T:Sudoku.Concepts.Grid"/>
-        </member>
-        <member name="F:Sudoku.Categorization.GridPartialMarkingExtensions.Collector">
-            <summary>
-            Indicates the backing collector.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Categorization.GridPartialMarkingExtensions.&lt;&gt;E__0">
-            <summary>
-            Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Categorization.GridPartialMarkingExtensions.&lt;&gt;E__0.IsMissingCandidates(Sudoku.Categorization.PartialMarkingTechniques)">
-            <summary>
-            Determine whether the grid lacks some candidates that are included in a grid,
-            through basic elimination rule (Naked Single checking) and specified partial-marking techniques.
-            </summary>
-            <param name="techniques">A list of techniques to be checked.</param>
-            <returns>A <see cref="T:System.Boolean"/> value indicating that.</returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">
-            Throws when the argument <paramref name="techniques"/> is greater than the maximum value of enumeration field defined.
-            </exception>
-        </member>
-        <member name="M:Sudoku.Categorization.GridPartialMarkingExtensions.IsMissingCandidates(Sudoku.Concepts.Grid@,Sudoku.Categorization.PartialMarkingTechniques)">
-            <inheritdoc cref="M:Sudoku.Categorization.GridPartialMarkingExtensions.&lt;&gt;E__0.IsMissingCandidates(Sudoku.Categorization.PartialMarkingTechniques)"/>
         </member>
         <member name="T:Sudoku.Categorization.MissingDifficultyLevelException">
             <summary>
