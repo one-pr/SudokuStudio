@@ -6257,6 +6257,13 @@
             (in Chinese: Yang Hui's Triangle), i.e. the combinatorial numbers from <c>C(1, 1)</c> to <c>C(30, 30)</c>.
             </summary>
         </member>
+        <member name="M:System.Numerics.Combinatorics.Generate(System.Int32)">
+            <summary>
+            The backing method to generate pascal triangle.
+            </summary>
+            <param name="rows">The desired number of rows to be generated.</param>
+            <returns>A list of arrays indicating pascal triangle, with the first element ignored for each row.</returns>
+        </member>
         <member name="T:System.Numerics.Combinatorics.&lt;&gt;E__0`1">
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/>.
