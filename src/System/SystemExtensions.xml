@@ -810,6 +810,9 @@
             </summary>
             <returns>An instance as the result.</returns>
         </member>
+        <member name="M:System.Collections.Generic.IFiniteSet`2.op_OnesComplement(`0)">
+            <inheritdoc cref="M:System.Numerics.IBitwiseOperators`3.op_OnesComplement(`0)"/>
+        </member>
         <member name="T:System.Collections.Generic.IInfiniteSet`2">
             <summary>
             Represents an object that is a set of elements of type <typeparamref name="T" />, and isn't a closed set,
@@ -834,6 +837,15 @@
             </summary>
             <param name="other">The collection to make subraction.</param>
             <returns>An instance as the result.</returns>
+        </member>
+        <member name="M:System.Collections.Generic.IInfiniteSet`2.op_SubtractionAssignment(`0)">
+            <summary>
+            Calls <see cref="M:System.Collections.Generic.IInfiniteSet`2.ExceptWith(`0)"/>.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Collections.Generic.IInfiniteSet`2.op_Subtraction(`0,`0)">
+            <inheritdoc cref="M:System.Numerics.ISubtractionOperators`3.op_Subtraction(`0,`1)"/>
         </member>
         <member name="T:System.Collections.Generic.KeyValuePairExtensions">
             <summary>

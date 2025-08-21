@@ -13,4 +13,8 @@ public interface IFiniteSet<TSelf, T> : ISet<T> where TSelf : IFiniteSet<TSelf, 
 	/// </summary>
 	/// <returns>An instance as the result.</returns>
 	TSelf Negate();
+
+
+	/// <inheritdoc cref="IBitwiseOperators{TSelf, TOther, TResult}.op_OnesComplement(TSelf)"/>
+	static virtual TSelf operator ~(TSelf value) => value.Negate();
 }

@@ -15,4 +15,20 @@ public interface IInfiniteSet<TSelf, T> : ISet<T> where TSelf : IInfiniteSet<TSe
 	/// <param name="other">The collection to make subraction.</param>
 	/// <returns>An instance as the result.</returns>
 	TSelf ExceptWith(TSelf other);
+
+
+#if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
+	/// <summary>
+	/// Calls <see cref="ExceptWith(TSelf)"/>.
+	/// </summary>
+	/// <param name="value">The value.</param>
+	void operator -=(TSelf value) => ExceptWith(value);
+#endif
+
+	/// <inheritdoc cref="ISubtractionOperators{TSelf, TOther, TResult}.op_Subtraction(TSelf, TOther)"/>
+	static virtual TSelf operator -(TSelf left, TSelf right)
+	{
+		left.ExceptWith(right);
+		return left;
+	}
 }
