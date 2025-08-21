@@ -179,7 +179,66 @@ public sealed partial class DominoChainStepSearcher : StepSearcher
 							continue;
 						}
 
-						// TODO: Implement.
+						// It's okay to construct the full pattern.
+						// Check for eliminations.
+						var conclusions = new List<Conclusion>();
+						var nodes = new List<QueueNode>();
+						for (var node = currentNode; node is not null; node = node.Parent)
+						{
+							nodes.Add(node);
+							foreach (var digit in node.Pattern.DigitsMask)
+							{
+								var cells = node.Pattern.Cells & CandidatesMap[digit];
+								foreach (var house in cells.SharedHouses)
+								{
+									foreach (var cell in HousesMap[house] & CandidatesMap[digit] & ~cells)
+									{
+										conclusions.Add(new(Elimination, cell, digit));
+									}
+								}
+							}
+						}
+						if (conclusions.Count == 0)
+						{
+							continue;
+						}
+
+						nodes.Reverse();
+
+						var candidateOffsets = new List<CandidateViewNode>();
+						for (var i = 0; i < nodes.Count; i++)
+						{
+							var n = nodes[i];
+							var rcc = n.RestrictedCommon;
+							foreach (var cell in n.Pattern.Cells)
+							{
+								foreach (var digit in grid.GetCandidates(cell))
+								{
+									var candidate = cell * 9 + digit;
+									candidateOffsets.Add(
+										new(
+											rcc.Contains(candidate)
+												? ColorIdentifier.Auxiliary1
+												: WellKnownColorIdentifierKind.AlmostLockedSet1 + i % 5,
+											candidate
+										)
+									);
+								}
+							}
+						}
+
+						var step = new DominoChainStep(
+							conclusions.AsMemory(),
+							[[.. candidateOffsets]],
+							context.Options,
+							[.. from node in nodes select node.Pattern]
+						);
+						if (context.OnlyFindOne)
+						{
+							return step;
+						}
+
+						context.Accumulator.Add(step);
 					}
 				}
 			}
