@@ -135,4 +135,224 @@ public static class UniquenessChecker
 			return result.AsSpan();
 		}
 	}
+
+	/// <summary>
+	/// Try to assign a candidate, and find a complete pattern where all cells are assigned,
+	/// and then check whether the assigned pattern can form a deadly pattern.
+	/// </summary>
+	/// <param name="assigned">The assigned candidate.</param>
+	/// <param name="grid">The grid.</param>
+	/// <param name="cells">The cells in the grid to be checked.</param>
+	/// <param name="result">
+	/// The last node assigned if return value is <see langword="true"/>; otherwise, <see langword="null"/>.
+	/// If non-<see langword="null"/>, you can iterate with property <see cref="PatternTrialNode.Parent"/>
+	/// to find all candidates assigned.
+	/// </param>
+	/// <returns>
+	/// A <see cref="bool"/> result indicating whether the candidate <paramref name="assigned"/>
+	/// will make the pattern to be a deadly pattern.
+	/// </returns>
+	public static bool TryAssign(Candidate assigned, in Grid grid, in CellMap cells, [NotNullWhen(true)] out PatternTrialNode? result)
+	{
+		if (grid.GetState(assigned / 9) != CellState.Empty)
+		{
+			// Invalid state.
+			goto ReturnFalse;
+		}
+
+		var allSpecifiedCellsAreNonGiven = true;
+		foreach (var cell in cells)
+		{
+			if (grid.GetState(cell) == CellState.Given)
+			{
+				allSpecifiedCellsAreNonGiven = false;
+				break;
+			}
+		}
+		if (!allSpecifiedCellsAreNonGiven)
+		{
+			// Invalid state.
+			goto ReturnFalse;
+		}
+
+		var root = new PatternTrialNode(assigned, null);
+		var queue = new Queue<PatternTrialNode>();
+		queue.Enqueue(root);
+
+		while (queue.TryDequeue(out var currentNode))
+		{
+			var appliedGrid = grid;
+			currentNode.ApplyTo(ref appliedGrid);
+
+			var unassignedCells = cells & ~appliedGrid.ModifiableCells;
+			if (!unassignedCells)
+			{
+				// All cells are assigned.
+				// Check whether the digits can form a deadly pattern or not.
+				var tempGrid = Grid.Empty;
+				foreach (var cell in cells)
+				{
+					tempGrid.SetDigit(cell, appliedGrid.GetDigit(cell));
+				}
+				if (!checkDeadlyPatternOnAssignedCells(tempGrid, cells))
+				{
+					continue;
+				}
+
+				// Valid.
+				result = currentNode;
+				return true;
+			}
+
+			// If not, we should continue to search for cells unassigned.
+			foreach (var cell in unassignedCells)
+			{
+				if (appliedGrid.GetState(cell) != CellState.Empty)
+				{
+					continue;
+				}
+
+				// Check any hidden singles and naked singles.
+				if (isNakedSingle(appliedGrid, cell, out var digit))
+				{
+					// Assign the value.
+					var nextNode = new PatternTrialNode(cell * 9 + digit, currentNode);
+					queue.Enqueue(nextNode);
+				}
+				else if (isHiddenSingle(appliedGrid, cell, out var targetCell, out digit))
+				{
+					var nextNode = new PatternTrialNode(targetCell * 9 + digit, currentNode);
+					queue.Enqueue(nextNode);
+				}
+			}
+		}
+
+	ReturnFalse:
+		result = null;
+		return false;
+
+
+		static bool isNakedSingle(in Grid grid, Cell cell, out Digit digit)
+		{
+			var mask = (uint)(grid.GetCandidates(cell) & Grid.MaxCandidatesMask);
+			if (IsPow2(mask))
+			{
+				digit = Log2(mask);
+				return true;
+			}
+			digit = -1;
+			return false;
+		}
+
+		static bool isHiddenSingle(in Grid grid, Cell cell, out Cell targetCell, out Digit digit)
+		{
+			for (var eachDigit = 0; eachDigit < 9; eachDigit++)
+			{
+				foreach (var houseType in HouseTypes)
+				{
+					var counter = 0;
+					targetCell = -1;
+					foreach (var eachCell in HousesMap[cell.ToHouse(houseType)])
+					{
+						if (grid.Exists(eachCell, eachDigit) is true && (targetCell = eachCell) is var _ && ++counter >= 2)
+						{
+							break;
+						}
+					}
+					if (counter == 1)
+					{
+						digit = eachDigit;
+						return true;
+					}
+				}
+			}
+
+			digit = -1;
+			targetCell = -1;
+			return false;
+		}
+
+		static bool checkDeadlyPatternOnAssignedCells(in Grid grid, in CellMap cells)
+		{
+			// Find for all digits appeared in all houses.
+			var houseDigitsDictionary = new Dictionary<House, Mask>(27);
+			foreach (var house in cells.Houses)
+			{
+				houseDigitsDictionary.Add(house, grid[HousesMap[house] & cells]);
+			}
+
+			// Then enumerate assignments to find a new assignments, where all digits are same as the current one.
+			var queue = new Queue<PatternTrialNode>();
+			var firstCell = cells[0];
+
+			var a = houseDigitsDictionary[firstCell.ToHouse(HouseType.Block)];
+			var b = houseDigitsDictionary[firstCell.ToHouse(HouseType.Row)];
+			var c = houseDigitsDictionary[firstCell.ToHouse(HouseType.Column)];
+			foreach (var digit in (Mask)(a | (Mask)(b | c)))
+			{
+				queue.Enqueue(new(firstCell * 9 + digit, null));
+			}
+
+			// Try to assign the value.
+			while (queue.TryDequeue(out var currentNode))
+			{
+				var appliedGrid = grid;
+				currentNode.ApplyTo(ref appliedGrid);
+
+				var unassignedCells = cells & ~appliedGrid.ModifiableCells;
+				if (!unassignedCells)
+				{
+					if (grid == appliedGrid)
+					{
+						continue;
+					}
+
+					// Check for each house.
+					var tempHouseDigitsDictionary = new Dictionary<House, Mask>(27);
+					var houses = cells.Houses;
+					foreach (var house in houses)
+					{
+						tempHouseDigitsDictionary.Add(house, appliedGrid[HousesMap[house] & cells]);
+					}
+					var flag = true;
+					foreach (var house in houses)
+					{
+						if (houseDigitsDictionary[house] != tempHouseDigitsDictionary[house])
+						{
+							flag = false;
+							break;
+						}
+					}
+					if (!flag)
+					{
+						continue;
+					}
+
+					return true;
+				}
+
+				// Otherwise, we should continue to iterate other cells.
+				foreach (var cell in unassignedCells)
+				{
+					var d = houseDigitsDictionary[cell.ToHouse(HouseType.Block)];
+					var e = houseDigitsDictionary[cell.ToHouse(HouseType.Row)];
+					var f = houseDigitsDictionary[cell.ToHouse(HouseType.Column)];
+					var g = (Mask)0;
+					foreach (var houseType in HouseTypes)
+					{
+						foreach (var tempCell in cells & HousesMap[cell.ToHouse(houseType)] & ~unassignedCells)
+						{
+							g |= (Mask)(1 << appliedGrid.GetDigit(tempCell));
+						}
+					}
+					foreach (var digit in (Mask)((Mask)(d | (Mask)(e | f)) & ~g))
+					{
+						queue.Enqueue(new(cell * 9 + digit, currentNode));
+					}
+				}
+			}
+
+			return false;
+		}
+	}
 }

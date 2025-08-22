@@ -439,7 +439,7 @@ public interface IGrid<TSelf> :
 	/// <returns>
 	/// The method will return a <see cref="bool"/>? value
 	/// (containing three possible cases: <see langword="true"/>, <see langword="false"/> and <see langword="null"/>).
-	/// All values corresponding to the cases are below:
+	/// All possible cases are as follows:
 	/// <list type="table">
 	/// <listheader>
 	/// <term>Value</term>
