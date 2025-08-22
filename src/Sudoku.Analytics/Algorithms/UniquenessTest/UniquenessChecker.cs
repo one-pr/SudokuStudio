@@ -141,6 +141,9 @@ public static class UniquenessChecker
 	/// and then check whether the assigned pattern can form a deadly pattern.
 	/// </summary>
 	/// <param name="assigned">The assigned candidate.</param>
+	/// <param name="availableMask">
+	/// The mask of digits to be checked. This argument can accelerate checking if specified. If not, assign 0.
+	/// </param>
 	/// <param name="grid">The grid.</param>
 	/// <param name="cells">The cells in the grid to be checked.</param>
 	/// <param name="result">
@@ -152,14 +155,22 @@ public static class UniquenessChecker
 	/// A <see cref="bool"/> result indicating whether the candidate <paramref name="assigned"/>
 	/// will make the pattern to be a deadly pattern.
 	/// </returns>
-	public static bool TryAssign(Candidate assigned, in Grid grid, in CellMap cells, [NotNullWhen(true)] out PatternTrialNode? result)
+	public static bool TryAssign(
+		Candidate assigned,
+		Mask availableMask,
+		in Grid grid,
+		in CellMap cells,
+		[NotNullWhen(true)] out PatternTrialNode? result
+	)
 	{
+		// Check whether the first assigned cell is empty. If not, we cannot start.
 		if (grid.GetState(assigned / 9) != CellState.Empty)
 		{
 			// Invalid state.
 			goto ReturnFalse;
 		}
 
+		// Check whether all cells are empty or modifiable cells.
 		var allSpecifiedCellsAreNonGiven = true;
 		foreach (var cell in cells)
 		{
@@ -179,21 +190,48 @@ public static class UniquenessChecker
 		var queue = new Queue<PatternTrialNode>();
 		queue.Enqueue(root);
 
+		// Do a BFS to find a path.
 		while (queue.TryDequeue(out var currentNode))
 		{
+			// Apply grid.
 			var appliedGrid = grid;
 			currentNode.ApplyTo(ref appliedGrid);
 
+			// Check whether all cells are assigned or not.
 			var unassignedCells = cells & ~appliedGrid.ModifiableCells;
 			if (!unassignedCells)
 			{
 				// All cells are assigned.
 				// Check whether the digits can form a deadly pattern or not.
+
+				// Set all digits to a temporary grid, making the local vairable only contains such assignments.
 				var tempGrid = Grid.Empty;
 				foreach (var cell in cells)
 				{
 					tempGrid.SetDigit(cell, appliedGrid.GetDigit(cell));
 				}
+
+				// Check whether all cells are filled with a valid digit specified.
+				if (availableMask != 0)
+				{
+					var doesCombinationContainAnyInvalidAssignments = false;
+					foreach (var cell in cells)
+					{
+						if ((availableMask >> tempGrid.GetDigit(cell) & 1) == 0)
+						{
+							// The cell cannot assign with the digit unassigned.
+							doesCombinationContainAnyInvalidAssignments = true;
+						}
+					}
+					if (doesCombinationContainAnyInvalidAssignments)
+					{
+						// This combination contains at least one invalid assignment.
+						continue;
+					}
+				}
+
+				// Check whether the combination can correspond with another grid,
+				// whose houses occupied use same digits as the original combination.
 				if (!checkDeadlyPatternOnAssignedCells(tempGrid, cells))
 				{
 					continue;
@@ -219,7 +257,7 @@ public static class UniquenessChecker
 					var nextNode = new PatternTrialNode(cell * 9 + digit, currentNode);
 					queue.Enqueue(nextNode);
 				}
-				else if (isHiddenSingle(appliedGrid, cell, out var targetCell, out digit))
+				else if (isHiddenSingle(appliedGrid, cell, out var targetCell, out digit) && cells.Contains(targetCell))
 				{
 					var nextNode = new PatternTrialNode(targetCell * 9 + digit, currentNode);
 					queue.Enqueue(nextNode);
@@ -296,9 +334,12 @@ public static class UniquenessChecker
 			// Try to assign the value.
 			while (queue.TryDequeue(out var currentNode))
 			{
-				var appliedGrid = grid;
+				// Apply grid.
+				var appliedGrid = Grid.Empty;
 				currentNode.ApplyTo(ref appliedGrid);
 
+				// Check for existence of unassigned cells.
+				// If all cells are assigned, we should check whether all cells satisfy deadly pattern basic rule.
 				var unassignedCells = cells & ~appliedGrid.ModifiableCells;
 				if (!unassignedCells)
 				{

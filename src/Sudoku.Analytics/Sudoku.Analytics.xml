@@ -531,12 +531,15 @@
             Throws when the pattern contains more than 10000 solutions.
             </exception>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.UniquenessChecker.TryAssign(System.Int32,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Algorithms.UniquenessTest.PatternTrialNode@)">
+        <member name="M:Sudoku.Algorithms.UniquenessTest.UniquenessChecker.TryAssign(System.Int32,System.Int16,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Algorithms.UniquenessTest.PatternTrialNode@)">
             <summary>
             Try to assign a candidate, and find a complete pattern where all cells are assigned,
             and then check whether the assigned pattern can form a deadly pattern.
             </summary>
             <param name="assigned">The assigned candidate.</param>
+            <param name="availableMask">
+            The mask of digits to be checked. This argument can accelerate checking if specified. If not, assign 0.
+            </param>
             <param name="grid">The grid.</param>
             <param name="cells">The cells in the grid to be checked.</param>
             <param name="result">
