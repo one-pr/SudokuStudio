@@ -141,8 +141,11 @@ public static class UniquenessChecker
 	/// and then check whether the assigned pattern can form a deadly pattern.
 	/// </summary>
 	/// <param name="assigned">The assigned candidate.</param>
-	/// <param name="availableMask">
-	/// The mask of digits to be checked. This argument can accelerate checking if specified. If not, assign 0.
+	/// <param name="assigningMap">
+	/// The assigning map to be checked. This argument can accelerate checking if specified.
+	/// This argument limits the checking to the specified digits for the specified cells,
+	/// in order to prevent the backing searching module doing unnecessary digits' checking.
+	/// Assign <see langword="null"/> if you don't want to specify, meaning all candidates in the grid will be checked.
 	/// </param>
 	/// <param name="grid">The grid.</param>
 	/// <param name="cells">The cells in the grid to be checked.</param>
@@ -157,7 +160,7 @@ public static class UniquenessChecker
 	/// </returns>
 	public static bool TryAssign(
 		Candidate assigned,
-		Mask availableMask,
+		PatternAssigningMap? assigningMap,
 		in Grid grid,
 		in CellMap cells,
 		[NotNullWhen(true)] out PatternTrialNode? result
@@ -212,12 +215,12 @@ public static class UniquenessChecker
 				}
 
 				// Check whether all cells are filled with a valid digit specified.
-				if (availableMask != 0)
+				if (assigningMap is not null)
 				{
 					var doesCombinationContainAnyInvalidAssignments = false;
 					foreach (var cell in cells)
 					{
-						if ((availableMask >> tempGrid.GetDigit(cell) & 1) == 0)
+						if (!assigningMap[cell, tempGrid.GetDigit(cell)])
 						{
 							// The cell cannot assign with the digit unassigned.
 							doesCombinationContainAnyInvalidAssignments = true;

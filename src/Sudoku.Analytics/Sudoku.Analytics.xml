@@ -396,6 +396,117 @@
         <member name="P:Sudoku.Algorithms.UniquenessTest.DeadlyPatternInferrerLimitReachedException.Message">
             <inheritdoc/>
         </member>
+        <member name="T:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap">
+            <summary>
+            Represents a map of cell and mask pairs, indicating the specified cells should only use specified digits.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap._maskTable">
+            <summary>
+            Indicates the backing mask table.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.#ctor">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap"/> instance.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Count">
+            <summary>
+            Indicates the number of values.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Item(System.Int32)">
+            <summary>
+            Lookups the current collection to get digits limited of the specified cell.
+            </summary>
+            <param name="cell">The cell specified.</param>
+            <returns>The mask of digits.</returns>
+        </member>
+        <member name="P:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Item(System.Int32,System.Int32)">
+            <summary>
+            Determines whether the specified cell and digit exist in the current collection.
+            </summary>
+            <param name="cell">The cell.</param>
+            <param name="digit">The digit.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <summary>
+            Converts the current instance into string representation, using the specified coordinate converter instance.
+            </summary>
+            <param name="converter">The converter.</param>
+            <returns>The string representation.</returns>
+        </member>
+        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.ToString(System.IFormatProvider)">
+            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.AsCandidateMap">
+            <summary>
+            Converts the current instance into a <see cref="T:Sudoku.Concepts.CandidateMap"/> instance.
+            </summary>
+            <returns>The instance of type <see cref="T:Sudoku.Concepts.CandidateMap"/>.</returns>
+        </member>
+        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.GetEnumerator">
+            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+        </member>
+        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.ToFrozenDictionary">
+            <summary>
+            Converts the current instance into a <see cref="T:System.Collections.Frozen.FrozenDictionary`2"/> of cell and mask pairs.
+            </summary>
+            <returns>The instance of type <see cref="T:System.Collections.Frozen.FrozenDictionary`2"/>.</returns>
+        </member>
+        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.System#IFormattable#ToString(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{System#Int32,System#Int16}}#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Create(System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{System.Int32,System.Int16}})">
+            <summary>
+            Creates a <see cref="T:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap"/> instance.
+            </summary>
+            <param name="values">The values.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="T:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Enumerator">
+            <summary>
+            Represents the backing enumerator instance.
+            </summary>
+            <param name="_dictionary">The backing dictionary.</param>
+        </member>
+        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Enumerator.#ctor(System.Collections.Generic.Dictionary{System.Int32,System.Int16})">
+            <summary>
+            Represents the backing enumerator instance.
+            </summary>
+            <param name="_dictionary">The backing dictionary.</param>
+        </member>
+        <member name="F:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Enumerator._enumerator">
+            <summary>
+            Indicates the backing enumerator.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Enumerator.Current">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Enumerator.System#Collections#IEnumerator#Current">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Enumerator.MoveNext">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Enumerator.System#IDisposable#Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Enumerator.System#Collections#IEnumerator#Reset">
+            <inheritdoc/>
+        </member>
         <member name="T:Sudoku.Algorithms.UniquenessTest.PatternTrialNode">
             <summary>
             Represents a pattern trial node.
@@ -531,14 +642,17 @@
             Throws when the pattern contains more than 10000 solutions.
             </exception>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.UniquenessChecker.TryAssign(System.Int32,System.Int16,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Algorithms.UniquenessTest.PatternTrialNode@)">
+        <member name="M:Sudoku.Algorithms.UniquenessTest.UniquenessChecker.TryAssign(System.Int32,Sudoku.Algorithms.UniquenessTest.PatternAssigningMap,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Algorithms.UniquenessTest.PatternTrialNode@)">
             <summary>
             Try to assign a candidate, and find a complete pattern where all cells are assigned,
             and then check whether the assigned pattern can form a deadly pattern.
             </summary>
             <param name="assigned">The assigned candidate.</param>
-            <param name="availableMask">
-            The mask of digits to be checked. This argument can accelerate checking if specified. If not, assign 0.
+            <param name="assigningMap">
+            The assigning map to be checked. This argument can accelerate checking if specified.
+            This argument limits the checking to the specified digits for the specified cells,
+            in order to prevent the backing searching module doing unnecessary digits' checking.
+            Assign <see langword="null"/> if you don't want to specify, meaning all candidates in the grid will be checked.
             </param>
             <param name="grid">The grid.</param>
             <param name="cells">The cells in the grid to be checked.</param>
