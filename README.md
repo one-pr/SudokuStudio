@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/github/license/kyoyama-kazusa/Sudoku?color=097abb)](https://github.com/kyoyama-kazusa/Sudoku/blob/main/LICENSE)
 
 ![](https://img.shields.io/badge/Programming%20Language-C%23%2014-%23178600)
-![](https://img.shields.io/badge/Framework-.NET%209-blueviolet)
+![](https://img.shields.io/badge/Framework-.NET%2010-blueviolet)
 ![](https://img.shields.io/badge/Indenting-Tabs-lightgrey)
 ![](https://img.shields.io/badge/IDE-Visual%20Studio%202022%20v17.14.13%20Preview%201-%23cf98fb?logo=Visual%20Studio)
 ![](https://img.shields.io/badge/Language-English%2C%20Simplified%20Chinese-success)
