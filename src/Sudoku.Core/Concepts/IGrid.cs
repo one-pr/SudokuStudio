@@ -13,7 +13,6 @@ public interface IGrid<TSelf> :
 	IEquatable<TSelf>,
 	IEqualityOperators<TSelf, TSelf, bool>,
 	IFormattable,
-	IInlineArray<TSelf, Mask>,
 	IMinMaxValue<TSelf>,
 	IParsable<TSelf>,
 	IReadOnlyCollection<Digit>,
@@ -102,6 +101,12 @@ public interface IGrid<TSelf> :
 	/// Indicates the number of total candidates.
 	/// </summary>
 	Candidate CandidatesCount { get; }
+
+	/// <summary>
+	/// Indicates the elements.
+	/// </summary>
+	[UnscopedRef]
+	ReadOnlySpan<Mask> Elements { get; }
 
 	/// <summary>
 	/// Indicates the map of possible positions of the existence of the candidate value for each digit.
@@ -287,6 +292,15 @@ public interface IGrid<TSelf> :
 	/// </remarks>
 	static TSelf IMinMaxValue<TSelf>.MaxValue => TSelf.Parse("987654321654321987321987654896745213745213896213896745579468132468132579132579468");
 
+
+	/// <summary>
+	/// Returns the reference to the element at the specified index.
+	/// </summary>
+	/// <param name="index">The desired index.</param>
+	/// <returns>The reference to the element.</returns>
+	/// <exception cref="IndexOutOfRangeException">Throws when the index is out of range.</exception>
+	[UnscopedRef]
+	ref Mask this[Cell index] { get; }
 
 	/// <summary>
 	/// Creates a mask of type <see cref="Mask"/> that represents the usages of digits 1 to 9,
