@@ -6,7 +6,7 @@ using CandidateMapBase = ICellMapOrCandidateMap<CandidateMap, Candidate>;
 /// Encapsulates a binary series of candidate state table.
 /// </summary>
 /// <remarks>
-/// <include file="../../global-doc-comments.xml" path="/g/large-structure"/>
+/// This type uses 96 bits.
 /// </remarks>
 [JsonConverter(typeof(Converter))]
 [StructLayout(LayoutKind.Auto)]

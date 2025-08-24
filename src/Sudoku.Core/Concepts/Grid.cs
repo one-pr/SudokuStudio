@@ -8,7 +8,7 @@ using GridBase = IGrid<Grid>;
 /// Represents a sudoku grid.
 /// </summary>
 /// <remarks>
-/// <para><include file="../../global-doc-comments.xml" path="/g/large-structure"/></para>
+/// This type uses 162 bits.
 /// </remarks>
 [CollectionBuilder(typeof(Grid), nameof(Create))]
 [DebuggerDisplay($$"""{{{nameof(ToString)}}("#")}""")]

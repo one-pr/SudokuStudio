@@ -6,7 +6,7 @@ using CellMapBase = ICellMapOrCandidateMap<CellMap, Cell>;
 /// Encapsulates a binary series of cell state table.
 /// </summary>
 /// <remarks>
-/// <include file="../../global-doc-comments.xml" path="/g/large-structure"/>
+/// This type uses 16 bits.
 /// </remarks>
 /// <seealso cref="Vector128{T}"/>
 [JsonConverter(typeof(Converter))]
