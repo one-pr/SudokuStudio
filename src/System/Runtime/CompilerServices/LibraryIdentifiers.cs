@@ -30,17 +30,10 @@ internal static class LibraryIdentifiers
 	/// </summary>
 	public const string Enumerator_Current = "_current";
 
-#if NET10_0_OR_GREATER
 	/// <summary>
 	/// Indicates the name is <c>"_array"</c>.
 	/// </summary>
 	public const string BitArray_Array = "_array";
-#else
-	/// <summary>
-	/// Indicates the name is <c>"m_array"</c>.
-	/// </summary>
-	public const string BitArray_Array = "m_array";
-#endif
 
 	/// <summary>
 	/// Indicates the name is <c>"key"</c>.

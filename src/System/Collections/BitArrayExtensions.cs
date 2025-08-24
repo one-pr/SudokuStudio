@@ -1,8 +1,3 @@
-#if NET10_0_OR_GREATER
-using System.Runtime.Intrinsics;
-using System.Runtime.Intrinsics.X86;
-#endif
-
 namespace System.Collections;
 
 /// <summary>
@@ -11,12 +6,10 @@ namespace System.Collections;
 /// <seealso cref="BitArray"/>
 public static class BitArrayExtensions
 {
-#if NET10_0_OR_GREATER
 	/// <summary>
 	/// Represents a field to be used as table lookup.
 	/// </summary>
 	private static readonly Vector128<byte> NibblePopCount = Vector128.Create((byte)0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4);
-#endif
 
 
 	/// <summary>
@@ -30,7 +23,6 @@ public static class BitArrayExtensions
 		/// </summary>
 		[SuppressMessage("Style", "IDE0002:Simplify Member Access", Justification = "<Pending>")]
 		public int Cardinality
-#if NET10_0_OR_GREATER
 		{
 			get
 			{
@@ -165,9 +157,6 @@ public static class BitArrayExtensions
 				}
 			}
 		}
-#else
-			=> Unsafe.As<int[], uint[]>(ref Entry.GetArrayField(@this)).Sum(PopCount);
-#endif
 
 
 		/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
@@ -179,11 +168,7 @@ public static class BitArrayExtensions
 		/// Try to get internal array field.
 		/// </summary>
 		/// <returns>The field.</returns>
-#if NET10_0_OR_GREATER
 		public byte[] GetInternalArrayField() => Entry.GetArrayField(@this);
-#else
-		public int[] GetInternalArrayField() => Entry.GetArrayField(@this);
-#endif
 
 		/// <summary>
 		/// Slices the current <see cref="BitArray"/> instance.
@@ -220,11 +205,7 @@ public static class BitArrayExtensions
 				return @this;
 			}
 
-#if NET10_0_OR_GREATER
 			var indexCount = (other.Count + 7) / 8;
-#else
-			var indexCount = (other.Count + 31) / 32;
-#endif
 			var internalBits = Entry.GetArrayField(@this);
 			var otherInternalBits = Entry.GetArrayField(other);
 			for (var i = 0; i < indexCount; i++)
@@ -256,9 +237,5 @@ file static class Entry
 	///     path="//g/dotnet/version[@value='8']/feature[@name='unsafe-accessor']/target[@name='field-related-method']"/>
 	/// </remarks>
 	[UnsafeAccessor(UnsafeAccessorKind.Field, Name = LibraryIdentifiers.BitArray_Array)]
-#if NET10_0_OR_GREATER
 	public static extern ref byte[] GetArrayField(BitArray @this);
-#else
-	public static extern ref int[] GetArrayField(BitArray @this);
-#endif
 }

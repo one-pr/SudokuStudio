@@ -114,32 +114,8 @@ public sealed class ConclusionSet :
 				throw new IndexOutOfRangeException();
 			}
 
-#if NET10_0_OR_GREATER
 			var internalField = _bitArray.GetInternalArrayField();
 			return new((Mask)internalField.SetBitAt(index));
-#else
-			var bmi2IsSupported = Bmi2.IsSupported;
-			var popCountSum = 0;
-			var internalField = _bitArray.GetInternalArrayField();
-			for (var i = 0; i < Length; i++)
-			{
-				var bits = (uint)internalField[i];
-				var z = bmi2IsSupported
-					? TrailingZeroCount(Bmi2.ParallelBitDeposit(1U << index - popCountSum, bits))
-					: bits.SetAt(index - popCountSum);
-				switch (bmi2IsSupported)
-				{
-					case true when z != FallbackConstants.@int:
-					case false when z != -1:
-					{
-						return new((Mask)(z + (i << 5))); // * 32
-					}
-				}
-
-				popCountSum += PopCount(bits);
-			}
-			return default;
-#endif
 		}
 	}
 
