@@ -14,7 +14,7 @@
 		<!--
 		Other available symbols: SEARCH_AUTO_SUGGESTION_BOX
 		-->
-		<DefineConstants>CUSTOMIZED_TITLE_BAR;DISABLE_XAML_GENERATED_MAIN;CUSTOMIZED_BACKDROP</DefineConstants>
+		<DefineConstants>$(DefineConstants);CUSTOMIZED_TITLE_BAR;DISABLE_XAML_GENERATED_MAIN;CUSTOMIZED_BACKDROP</DefineConstants>
 		<DocumentationFile>SudokuStudio.xml</DocumentationFile>
 		<Description>The project represents with user interfaces that operates with sudoku puzzles.</Description>
 		<PublishAot>false</PublishAot>

@@ -5,6 +5,7 @@
 		<RootNamespace>Sudoku</RootNamespace>
 		<Description>Provides APIs for OCR (picture recognition) on sudoku grid.</Description>
 		<DocumentationFile>Sudoku.Ocr.xml</DocumentationFile>
+		<DefineConstants>$(DefineConstants)</DefineConstants>
 	</PropertyGroup>
 
 	<ItemGroup>

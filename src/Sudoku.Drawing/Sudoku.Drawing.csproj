@@ -5,6 +5,7 @@
 		<RootNamespace>Sudoku</RootNamespace>
 		<Description>Provides APIs for drawing pictures.</Description>
 		<DocumentationFile>Sudoku.Drawing.xml</DocumentationFile>
+		<DefineConstants>$(DefineConstants)</DefineConstants>
 	</PropertyGroup>
 
 	<ItemGroup>
