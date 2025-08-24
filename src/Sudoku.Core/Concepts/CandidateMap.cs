@@ -30,7 +30,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	/// <summary>
 	/// Indicates the internal field that represents a list of <see cref="ulong"/> bits.
 	/// </summary>
-	private BackingVectorArray _bits;
+	private InlineArray12<ulong> _bits;
 
 
 	/// <summary>
@@ -85,7 +85,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 		get
 		{
 			var result = 0;
-			foreach (ref readonly var vector in _bits.Vectors)
+			foreach (ref readonly var vector in Vectors)
 			{
 				for (var i = 0; i < 4; i++)
 				{
@@ -209,6 +209,12 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 		}
 	}
 
+	/// <summary>
+	/// Returns a sequence of <see cref="Vector256{T}"/> of <see cref="ulong"/> values that can be used in SIMD scenarios.
+	/// </summary>
+	internal readonly ReadOnlySpan<Vector256<ulong>> Vectors
+		=> (Vector256<ulong>[])[Vector256.Create(_bits[..4]), Vector256.Create(_bits[4..8]), Vector256.Create(_bits[8..])];
+
 	/// <inheritdoc/>
 	readonly int CandidateMapBase.Shifting => sizeof(long) << 3;
 
@@ -271,7 +277,12 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 		=> Offsets.AsReadOnlySpan().TryCopyTo(Span<int>.Create(ref sequence, length));
 
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
-	public readonly bool Equals(in CandidateMap other) => _bits == other._bits;
+	public readonly bool Equals(in CandidateMap other)
+	{
+		var leftVectors = Vectors;
+		var rightVectors = other.Vectors;
+		return leftVectors[0] == rightVectors[0] && leftVectors[1] == rightVectors[1] && leftVectors[2] == rightVectors[2];
+	}
 
 	/// <summary>
 	/// Determine whether the map contains the specified offset.
@@ -355,7 +366,15 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc cref="object.GetHashCode"/>
-	public override readonly int GetHashCode() => _bits.GetHashCode();
+	public override readonly int GetHashCode()
+	{
+		var hashCode = default(HashCode);
+		for (var i = 0; i < InlineArrayLength; i++)
+		{
+			hashCode.Add(this[i]);
+		}
+		return hashCode.ToHashCode();
+	}
 
 	/// <inheritdoc cref="object.ToString"/>
 	public override readonly string ToString() => ToString(null);
@@ -748,7 +767,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	/// <inheritdoc/>
 	public static CandidateMap operator ~(in CandidateMap offsets)
 	{
-		var vectors = offsets._bits.Vectors;
+		var vectors = offsets.Vectors;
 		return CreateByVectors(~vectors[0], ~vectors[1], ~vectors[2]);
 	}
 
@@ -775,24 +794,24 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	/// <inheritdoc/>
 	public static CandidateMap operator &(in CandidateMap left, in CandidateMap right)
 	{
-		var l = left._bits.Vectors;
-		var r = right._bits.Vectors;
+		var l = left.Vectors;
+		var r = right.Vectors;
 		return CreateByVectors(l[0] & r[0], l[1] & r[1], l[2] & r[2]);
 	}
 
 	/// <inheritdoc/>
 	public static CandidateMap operator |(in CandidateMap left, in CandidateMap right)
 	{
-		var l = left._bits.Vectors;
-		var r = right._bits.Vectors;
+		var l = left.Vectors;
+		var r = right.Vectors;
 		return CreateByVectors(l[0] | r[0], l[1] | r[1], l[2] | r[2]);
 	}
 
 	/// <inheritdoc/>
 	public static CandidateMap operator ^(in CandidateMap left, in CandidateMap right)
 	{
-		var l = left._bits.Vectors;
-		var r = right._bits.Vectors;
+		var l = left.Vectors;
+		var r = right.Vectors;
 		return CreateByVectors(l[0] ^ r[0], l[1] ^ r[1], l[2] ^ r[2]);
 	}
 

@@ -26873,42 +26873,6 @@
             <param name="index">The index.</param>
             <returns>The technique field.</returns>
         </member>
-        <member name="M:Sudoku.Categorization.TechniqueSet.op_AdditionAssignment(Sudoku.Categorization.Technique)">
-            <summary>
-            Adds a new technique into the current collection.
-            </summary>
-            <param name="value">The technique.</param>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueSet.op_AdditionAssignment(Sudoku.Categorization.TechniqueGroup)">
-            <summary>
-            Adds a new technique group into the current collection.
-            </summary>
-            <param name="value">The technique.</param>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueSet.op_SubtractionAssignment(Sudoku.Categorization.Technique)">
-            <summary>
-            Remove a technique from the current collection.
-            </summary>
-            <param name="value">The technique.</param>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueSet.op_BitwiseAndAssignment(Sudoku.Categorization.TechniqueSet)">
-            <summary>
-            Performs bitwise-and operation and assign the value to the current instance.
-            </summary>
-            <param name="value">The instance.</param>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueSet.op_BitwiseOrAssignment(Sudoku.Categorization.TechniqueSet)">
-            <summary>
-            Performs bitwise-or operation and assign the value to the current instance.
-            </summary>
-            <param name="value">The instance.</param>
-        </member>
-        <member name="M:Sudoku.Categorization.TechniqueSet.op_ExclusiveOrAssignment(Sudoku.Categorization.TechniqueSet)">
-            <summary>
-            Performs bitwise-exclusive-or operation and assign the value to the current instance.
-            </summary>
-            <param name="value">The instance.</param>
-        </member>
         <member name="M:Sudoku.Categorization.TechniqueSet.op_LogicalNot(Sudoku.Categorization.TechniqueSet)">
             <inheritdoc/>
         </member>
@@ -28081,18 +28045,6 @@
         </member>
         <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.System#Linq#Providers#IOfTypeMethod{Sudoku#Generating#Filtering#ConstraintCollection,Sudoku#Generating#Filtering#Constraint}#OfType``1">
             <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.op_AdditionAssignment(Sudoku.Generating.Filtering.Constraint)">
-            <summary>
-            Adds a new constraint into the current collection, or do nothing if <paramref name="value"/> is <see langword="null"/>.
-            </summary>
-            <param name="value">The constraint.</param>
-        </member>
-        <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.op_SubtractionAssignment(Sudoku.Generating.Filtering.Constraint)">
-            <summary>
-            Removes a constraint from the current collection, or do nothing if <paramref name="value"/> is <see langword="null"/>.
-            </summary>
-            <param name="value">The constraint.</param>
         </member>
         <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.op_Addition(Sudoku.Generating.Filtering.ConstraintCollection,Sudoku.Generating.Filtering.Constraint)">
             <inheritdoc/>
