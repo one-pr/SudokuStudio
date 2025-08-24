@@ -70,7 +70,7 @@ public sealed class DancingLinksSolver : ISolutionEnumerableSolver
 	unsafe void ISolutionEnumerableSolver.EnumerateSolutionsCore(Grid grid, CancellationToken cancellationToken)
 	{
 		_root = DancingLink.Entry.Create(grid);
-		Search(&Action.DoNothingMethod, &r);
+		Search(Action.DoNothingMethodPtr, &r);
 
 
 		static bool r(DancingLinksSolver @this, Stack<DancingLinkNode> resultNodes)

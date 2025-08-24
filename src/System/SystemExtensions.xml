@@ -1553,6 +1553,12 @@
             Provides extension members on <see cref="T:System.Action"/>.
             </summary>
         </member>
+        <member name="P:System.DelegateExtensions.&lt;&gt;E__0.DoNothingMethodPtr">
+            <summary>
+            Represents pointer to <see cref="M:System.DelegateExtensions.DoNothingMethod"/>.
+            </summary>
+            <seealso cref="M:System.DelegateExtensions.DoNothingMethod"/>
+        </member>
         <member name="P:System.DelegateExtensions.&lt;&gt;E__0.DoNothing">
             <summary>
             Creates an <see cref="T:System.Action"/> instance that do nothing.
@@ -1562,6 +1568,9 @@
             <summary>
             Represents a method that do nothing.
             </summary>
+        </member>
+        <member name="M:System.DelegateExtensions.get_DoNothingMethodPtr">
+            <inheritdoc cref="P:System.DelegateExtensions.&lt;&gt;E__0.DoNothingMethodPtr"/>
         </member>
         <member name="M:System.DelegateExtensions.get_DoNothing">
             <inheritdoc cref="P:System.DelegateExtensions.&lt;&gt;E__0.DoNothing"/>
@@ -1596,6 +1605,12 @@
             Provides extension members on <see cref="T:System.Func`2"/>.
             </summary>
         </member>
+        <member name="P:System.DelegateExtensions.&lt;&gt;E__2`1.SelfMethodPtr">
+            <summary>
+            Indicates the pointer to method <see cref="M:System.DelegateExtensions.SelfMethod``1(``0)"/>.
+            </summary>
+            <seealso cref="M:System.DelegateExtensions.SelfMethod``1(``0)"/>
+        </member>
         <member name="P:System.DelegateExtensions.&lt;&gt;E__2`1.Self">
             <summary>
             Creates a <see cref="T:System.Func`2"/> instance that directly returns parameter.
@@ -1605,6 +1620,9 @@
             <summary>
             Represents a method that directly returns <paramref name="instance"/>.
             </summary>
+        </member>
+        <member name="M:System.DelegateExtensions.get_SelfMethodPtr``1">
+            <inheritdoc cref="P:System.DelegateExtensions.&lt;&gt;E__2`1.SelfMethodPtr"/>
         </member>
         <member name="M:System.DelegateExtensions.get_Self``1">
             <inheritdoc cref="P:System.DelegateExtensions.&lt;&gt;E__2`1.Self"/>
