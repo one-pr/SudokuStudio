@@ -64,7 +64,7 @@ public partial class GridCanvas
 	/// </summary>
 	/// <typeparam name="TGrid">The type of grid.</typeparam>
 	/// <param name="grid">The grid to be drawn.</param>
-	public partial void DrawGrid<TGrid>(in TGrid grid) where TGrid : unmanaged, IGrid<TGrid>, IInlineArrayGrid<TGrid>
+	public partial void DrawGrid<TGrid>(in TGrid grid) where TGrid : unmanaged, IInlineArrayGrid<TGrid>
 	{
 		if (Settings is not
 			{

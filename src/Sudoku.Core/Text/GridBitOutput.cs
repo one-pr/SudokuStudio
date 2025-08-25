@@ -12,7 +12,7 @@ public static class GridBitOutput
 	/// <typeparam name="TGrid">The type of grid.</typeparam>
 	/// <param name="this">The instance.</param>
 	/// <returns>The string.</returns>
-	public static string GetTextColorized<TGrid>(in TGrid @this) where TGrid : unmanaged, IGrid<TGrid>, IInlineArrayGrid<TGrid>
+	public static string GetTextColorized<TGrid>(in TGrid @this) where TGrid : unmanaged, IInlineArrayGrid<TGrid>
 		=> GetTextCore(@this, "\e[90m", "\e[33m", null);
 
 	/// <summary>
@@ -21,14 +21,14 @@ public static class GridBitOutput
 	/// <typeparam name="TGrid">The type of grid.</typeparam>
 	/// <param name="this">The instance.</param>
 	/// <returns>The string.</returns>
-	public static string GetText<TGrid>(in TGrid @this) where TGrid : unmanaged, IGrid<TGrid>, IInlineArrayGrid<TGrid>
+	public static string GetText<TGrid>(in TGrid @this) where TGrid : unmanaged, IInlineArrayGrid<TGrid>
 		=> GetTextCore(@this, null, null, null);
 
 	/// <summary>
 	/// The core method to output text.
 	/// </summary>
 	private static string GetTextCore<TGrid>(in TGrid @this, string? part1, string? part2, string? part3)
-		where TGrid : unmanaged, IGrid<TGrid>, IInlineArrayGrid<TGrid>
+		where TGrid : unmanaged, IInlineArrayGrid<TGrid>
 	{
 		var masks = @this.Elements;
 		var sb = new StringBuilder();

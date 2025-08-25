@@ -243,7 +243,7 @@ public sealed partial class GridCanvas : IDisposable
 	public partial void DrawBackground();
 	public partial void DrawBorderLines();
 	public partial void DrawFooterText(string footerText);
-	public partial void DrawGrid<TGrid>(in TGrid grid) where TGrid : unmanaged, IGrid<TGrid>, IInlineArrayGrid<TGrid>;
+	public partial void DrawGrid<TGrid>(in TGrid grid) where TGrid : unmanaged, IInlineArrayGrid<TGrid>;
 	public partial void DrawCellViewNodes(ReadOnlySpan<CellViewNode> nodes);
 	public partial void DrawCandidateViewNodes(ReadOnlySpan<CandidateViewNode> nodes, ReadOnlySpan<Conclusion> conclusions);
 	public partial void DrawHouseViewNodes(ReadOnlySpan<HouseViewNode> nodes);

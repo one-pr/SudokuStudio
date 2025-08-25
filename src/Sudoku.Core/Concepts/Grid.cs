@@ -15,7 +15,7 @@ using InlineArrayGridBase = IInlineArrayGrid<Grid>;
 [DebuggerDisplay($$"""{{{nameof(ToString)}}("#")}""")]
 [InlineArray(81)]
 [JsonConverter(typeof(Converter))]
-public struct Grid : GridBase, InlineArrayGridBase
+public struct Grid : InlineArrayGridBase
 {
 	/// <inheritdoc cref="InlineArrayGridBase.DefaultMask"/>
 	public const Mask DefaultMask = EmptyMask | MaxCandidatesMask;

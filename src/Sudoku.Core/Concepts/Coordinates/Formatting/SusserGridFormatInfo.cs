@@ -4,7 +4,7 @@ namespace Sudoku.Concepts.Coordinates.Formatting;
 /// Represents a <see cref="GridFormatInfo{TGrid}"/> type that supports Susser formatting.
 /// </summary>
 /// <typeparam name="TGrid">The type of grid.</typeparam>
-public sealed partial class SusserGridFormatInfo<TGrid> : GridFormatInfo<TGrid> where TGrid : unmanaged, IGrid<TGrid>, IInlineArrayGrid<TGrid>
+public sealed partial class SusserGridFormatInfo<TGrid> : GridFormatInfo<TGrid> where TGrid : unmanaged, IInlineArrayGrid<TGrid>
 {
 	/// <summary>
 	/// Indicates the modifiable prefix character.

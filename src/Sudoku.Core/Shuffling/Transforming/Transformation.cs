@@ -62,10 +62,10 @@ public static class Transformation
 
 	/// <summary>
 	/// Provides extension members on <typeparamref name="TGrid"/>,
-	/// where <typeparamref name="TGrid"/> satisfies <see langword="unmanaged"/>, <see cref="IGrid{TSelf}"/>
+	/// where <typeparamref name="TGrid"/> satisfies <see langword="unmanaged"/>
 	/// and <see cref="IInlineArrayGrid{TSelf}"/> constraints.
 	/// </summary>
-	extension<TGrid>(ref TGrid @this) where TGrid : unmanaged, IGrid<TGrid>, IInlineArrayGrid<TGrid>
+	extension<TGrid>(ref TGrid @this) where TGrid : unmanaged, IInlineArrayGrid<TGrid>
 	{
 		/// <summary>
 		/// Mirror left-right the grid.

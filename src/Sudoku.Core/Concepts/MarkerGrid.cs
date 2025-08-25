@@ -22,7 +22,7 @@ using InlineArrayGridBase = IInlineArrayGrid<MarkerGrid>;
 /// <seealso cref="Grid.SetCandidates(Cell, Mask)"/>
 [CollectionBuilder(typeof(Grid), nameof(Create))]
 [InlineArray(81)]
-public struct MarkerGrid : GridBase, InlineArrayGridBase
+public struct MarkerGrid : InlineArrayGridBase
 {
 	/// <summary>
 	/// <inheritdoc cref="GridBase.Undefined" path="/summary"/>

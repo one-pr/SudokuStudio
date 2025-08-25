@@ -4,7 +4,7 @@ namespace Sudoku.Concepts;
 /// Represents a grid instance that supports inline-array-related members.
 /// </summary>
 /// <typeparam name="TSelf"><include file="../../global-doc-comments.xml" path="/g/self-type-constraint"/></typeparam>
-public interface IInlineArrayGrid<TSelf> where TSelf : IInlineArrayGrid<TSelf>, allows ref struct
+public interface IInlineArrayGrid<TSelf> : IGrid<TSelf> where TSelf : unmanaged, IInlineArrayGrid<TSelf>
 {
 	/// <summary>
 	/// Indicates the elements.

@@ -13297,7 +13297,7 @@
         <member name="T:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1">
             <summary>
             Provides extension members on <typeparamref name="TGrid"/>,
-            where <typeparamref name="TGrid"/> satisfies <see langword="unmanaged"/>, <see cref="T:Sudoku.Concepts.IGrid`1"/>
+            where <typeparamref name="TGrid"/> satisfies <see langword="unmanaged"/>
             and <see cref="T:Sudoku.Concepts.IInlineArrayGrid`1"/> constraints.
             </summary>
         </member>
