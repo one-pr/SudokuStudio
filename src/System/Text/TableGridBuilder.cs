@@ -10,23 +10,13 @@ public static class TableGridBuilder
 	/// Handles alignment with proper width calculation for wide characters (CJK, full-width symbols).
 	/// </summary>
 	/// <param name="table">List of string arrays, where each array represents a row.</param>
-	/// <param name="printBorders">Whether to print outer table borders.</param>
-	/// <param name="printRowSeparators">Whether to print separators between every row.</param>
-	/// <param name="vertical">Vertical border character(s), e.g., "|" or "||".</param>
-	/// <param name="horizontal">Horizontal border character(s), e.g., "-" or "=".</param>
-	/// <param name="corner">Corner character(s), e.g., "+" or "#".</param>
+	/// <param name="options">The options to build table.</param>
 	/// <returns>The formatted table as a string.</returns>
-	public static string BuildTable(
-		ReadOnlySpan<string[]> table,
-		bool printBorders = true,
-		bool printRowSeparators = false,
-		string vertical = "|",
-		string horizontal = "-",
-		string corner = "+"
-	)
+	public static string BuildTable(ReadOnlySpan<string[]> table, TableGridBuilderOptions? options = null)
 	{
-		var sbResult = new StringBuilder();
+		options ??= TableGridBuilderOptions.Default;
 
+		var sbResult = new StringBuilder();
 		if (table.Length == 0)
 		{
 			sbResult.AppendLine("(empty table)");
@@ -36,7 +26,6 @@ public static class TableGridBuilder
 		// Calculate max width for each column considering wide characters.
 		var columnCount = table.Max(static row => row.Length);
 		var columnWidths = new int[columnCount];
-
 		foreach (var row in table)
 		{
 			for (var i = 0; i < row.Length; i++)
@@ -51,20 +40,21 @@ public static class TableGridBuilder
 
 		// Precompute border line considering custom characters.
 		var borderLine = string.Empty;
-		if (printBorders)
+		if (options.PrintBorders)
 		{
 			var sbBorder = new StringBuilder();
-			sbBorder.Append(corner);
+			sbBorder.Append(options.Corner);
 			foreach (var width in columnWidths)
 			{
-				sbBorder.Append(new string(horizontal[0], width + vertical.Length * 2)); // Adjust for vertical padding.
-				sbBorder.Append(corner);
+				// Adjust for vertical padding.
+				sbBorder.Append(new string(options.Horizontal[0], width + options.Vertical.Length * 2));
+				sbBorder.Append(options.Corner);
 			}
 			borderLine = sbBorder.ToString();
 		}
 
 		// Append top border.
-		if (printBorders)
+		if (options.PrintBorders)
 		{
 			sbResult.AppendLine(borderLine);
 		}
@@ -74,9 +64,9 @@ public static class TableGridBuilder
 		{
 			var row = table[r];
 			var line = new StringBuilder();
-			if (printBorders)
+			if (options.PrintBorders)
 			{
-				line.Append(vertical);
+				line.Append(options.Vertical);
 			}
 
 			for (var c = 0; c < columnCount; c++)
@@ -85,23 +75,23 @@ public static class TableGridBuilder
 				var pad = columnWidths[c] - GetDisplayWidth(cell);
 
 				line.Append(' ').Append(cell).Append(new string(' ', pad)).Append(' ');
-				if (printBorders)
+				if (options.PrintBorders)
 				{
-					line.Append(vertical);
+					line.Append(options.Vertical);
 				}
 			}
 
 			sbResult.AppendLine(line.ToString());
 
 			// Append row separator after each row if enabled.
-			if (printRowSeparators && r < table.Length - 1 && printBorders)
+			if (options.PrintRowSeparators && r < table.Length - 1 && options.PrintBorders)
 			{
 				sbResult.AppendLine(borderLine);
 			}
 		}
 
 		// Append bottom border.
-		if (printBorders)
+		if (options.PrintBorders)
 		{
 			sbResult.AppendLine(borderLine);
 		}

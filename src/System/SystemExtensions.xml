@@ -5503,17 +5503,13 @@
             Represents a printer that can print table grid and return as a string.
             </summary>
         </member>
-        <member name="M:System.Text.TableGridBuilder.BuildTable(System.ReadOnlySpan{System.String[]},System.Boolean,System.Boolean,System.String,System.String,System.String)">
+        <member name="M:System.Text.TableGridBuilder.BuildTable(System.ReadOnlySpan{System.String[]},System.Text.TableGridBuilderOptions)">
             <summary>
             Builds a table as a string with optional borders, row separators, and customizable border characters.
             Handles alignment with proper width calculation for wide characters (CJK, full-width symbols).
             </summary>
             <param name="table">List of string arrays, where each array represents a row.</param>
-            <param name="printBorders">Whether to print outer table borders.</param>
-            <param name="printRowSeparators">Whether to print separators between every row.</param>
-            <param name="vertical">Vertical border character(s), e.g., "|" or "||".</param>
-            <param name="horizontal">Horizontal border character(s), e.g., "-" or "=".</param>
-            <param name="corner">Corner character(s), e.g., "+" or "#".</param>
+            <param name="options">The options to build table.</param>
             <returns>The formatted table as a string.</returns>
         </member>
         <member name="M:System.Text.TableGridBuilder.GetDisplayWidth(System.String)">
@@ -5524,6 +5520,41 @@
         <member name="M:System.Text.TableGridBuilder.IsWideChar(System.Char)">
             <summary>
             Determines whether a character is wide (CJK or full-width symbol).
+            </summary>
+        </member>
+        <member name="T:System.Text.TableGridBuilderOptions">
+            <summary>
+            Represents a way to describe table grid builder.
+            </summary>
+        </member>
+        <member name="F:System.Text.TableGridBuilderOptions.Default">
+            <summary>
+            Indicates the default option.
+            </summary>
+        </member>
+        <member name="P:System.Text.TableGridBuilderOptions.PrintBorders">
+            <summary>
+            Whether to print outer table borders.
+            </summary>
+        </member>
+        <member name="P:System.Text.TableGridBuilderOptions.PrintRowSeparators">
+            <summary>
+            Whether to print separators between every row.
+            </summary>
+        </member>
+        <member name="P:System.Text.TableGridBuilderOptions.Vertical">
+            <summary>
+            Vertical border character(s), e.g., <c>"|"</c>.
+            </summary>
+        </member>
+        <member name="P:System.Text.TableGridBuilderOptions.Horizontal">
+            <summary>
+            Horizontal border character(s), e.g., <c>"-"</c>.
+            </summary>
+        </member>
+        <member name="P:System.Text.TableGridBuilderOptions.Corner">
+            <summary>
+            Corner character(s), e.g., <c>"+"</c>.
             </summary>
         </member>
         <member name="T:System.Text.VariableExtractor">
