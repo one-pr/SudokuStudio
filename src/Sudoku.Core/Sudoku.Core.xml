@@ -10232,15 +10232,6 @@
             <returns>A new <see cref="T:Sudoku.Drawing.View"/> instance.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when argument <paramref name="option"/> isn't defined.</exception>
         </member>
-        <member name="M:Sudoku.Drawing.View.ShallowClone">
-            <summary>
-            Creates a new <see cref="T:Sudoku.Drawing.View"/> instance whose contents are all come from the current instance,
-            with reference cloned.
-            </summary>
-            <returns>
-            A new <see cref="T:Sudoku.Drawing.View"/> instance with same values as the current instance, with reference cloned.
-            </returns>
-        </member>
         <member name="M:Sudoku.Drawing.View.AsSpan">
             <summary>
             Try to convert this collection as a <see cref="T:System.ReadOnlySpan`1"/> instance.

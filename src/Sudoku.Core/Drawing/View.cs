@@ -117,15 +117,6 @@ public sealed class View :
 			};
 
 	/// <summary>
-	/// Creates a new <see cref="View"/> instance whose contents are all come from the current instance,
-	/// with reference cloned.
-	/// </summary>
-	/// <returns>
-	/// A new <see cref="View"/> instance with same values as the current instance, with reference cloned.
-	/// </returns>
-	public View ShallowClone() => Clone(ViewCloningOption.Default);
-
-	/// <summary>
 	/// Try to convert this collection as a <see cref="ReadOnlySpan{T}"/> instance.
 	/// </summary>
 	/// <returns>A <see cref="ReadOnlySpan{T}"/> instance.</returns>
