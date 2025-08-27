@@ -42,7 +42,7 @@ public readonly record struct DisorderedIttoryuDigitPath(Digit[] Digits) :
 	public string ToString(string? separator)
 	{
 		var digitsString = from digit in Digits select (digit + 1).ToString();
-		return separator switch { null or [] => string.Concat(digitsString), _ => string.Join(separator, digitsString) };
+		return separator is null or [] ? string.Concat(digitsString) : string.Join(separator, digitsString);
 	}
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
