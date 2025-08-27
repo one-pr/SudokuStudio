@@ -118,19 +118,48 @@ public static class TableGridBuilder
 	}
 
 	/// <summary>
-	/// Determines whether a character is wide (CJK or full-width symbol).
+	/// Determines whether a character is a wide character (full-width or wide)
+	/// according to East Asian Width properties.
+	/// This includes CJK ideographs, Hangul, Kana, and full-width forms.
 	/// </summary>
 	private static bool IsWideChar(char ch)
-		=> ch
-		is >= (char)0x1100
-		and (
-			<= (char)0x115F or (char)0x2329 or (char)0x232A
-			or >= (char)0x2E80 and <= (char)0xA4CF
-			or >= (char)0xAC00 and <= (char)0xD7A3
-			or >= (char)0xF900 and <= (char)0xFAFF
-			or >= (char)0xFE10 and <= (char)0xFE19
-			or >= (char)0xFE30 and <= (char)0xFE6F
-			or >= (char)0xFF00 and <= (char)0xFF60
-			or >= (char)0xFFE0 and <= (char)0xFFE6
+		=> ch is >= '\u1100' and (
+			// Hangul Jamo (U+1100–U+115F)
+			// Korean alphabet letters (consonants and vowels).
+			<= '\u115F'
+
+			// U+2329 and U+232A: Angle brackets (technical symbols).
+			or '\u2329' or '\u232A'
+
+			// U+2E80–U+A4CF: Multiple CJK-related blocks
+			// Includes: CJK Radicals Supplement, Kangxi Radicals,
+			// CJK Symbols and Punctuation, Hiragana, Katakana,
+			// Bopomofo, Hangul Compatibility Jamo,
+			// CJK Unified Ideographs Extension A, Yi Syllables, etc..
+			or >= '\u2E80' and <= '\uA4CF'
+
+			// Hangul Syllables (U+AC00–U+D7A3)
+			// Complete Korean syllable blocks.
+			or >= '\uAC00' and <= '\uD7A3'
+
+			// CJK Compatibility Ideographs (U+F900–U+FAFF)
+			// Variant forms of Han characters for compatibility.
+			or >= '\uF900' and <= '\uFAFF'
+
+			// Vertical Forms (U+FE10–U+FE19)
+			// Punctuation for vertical text layout.
+			or >= '\uFE10' and <= '\uFE19'
+
+			// CJK Compatibility Forms (U+FE30–U+FE6F)
+			// Fullwidth punctuation and compatibility symbols.
+			or >= '\uFE30' and <= '\uFE6F'
+
+			// Halfwidth and Fullwidth Forms (U+FF00–U+FF60)
+			// Fullwidth ASCII variants: letters, digits, punctuation.
+			or >= '\uFF00' and <= '\uFF60'
+
+			// Halfwidth and Fullwidth Forms (U+FFE0–U+FFE6)
+			// Fullwidth currency symbols and special signs.
+			or >= '\uFFE0' and <= '\uFFE6'
 		);
 }

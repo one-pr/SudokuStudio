@@ -5519,7 +5519,9 @@
         </member>
         <member name="M:System.Text.TableGridBuilder.IsWideChar(System.Char)">
             <summary>
-            Determines whether a character is wide (CJK or full-width symbol).
+            Determines whether a character is a wide character (full-width or wide)
+            according to East Asian Width properties.
+            This includes CJK ideographs, Hangul, Kana, and full-width forms.
             </summary>
         </member>
         <member name="T:System.Text.TableGridBuilderOptions">
