@@ -3,7 +3,7 @@ namespace System.Text;
 /// <summary>
 /// Represents a printer that can print table grid and return as a string.
 /// </summary>
-public static class TableGridPrinter
+public static class TableGridBuilder
 {
 	/// <summary>
 	/// Builds a table as a string with optional borders, row separators, and customizable border characters.

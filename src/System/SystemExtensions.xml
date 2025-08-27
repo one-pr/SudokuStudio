@@ -5498,12 +5498,12 @@
         <member name="M:System.Text.StringBuilderExtensions.AppendRange``1(System.Text.StringBuilder,System.Func{``0,System.String},System.Func{System.Text.StringBuilder,System.String,System.Text.StringBuilder},System.ReadOnlySpan{``0})">
             <inheritdoc cref="M:System.Text.StringBuilderExtensions.&lt;&gt;E__0.AppendRange``1(System.Func{``0,System.String},System.Func{System.Text.StringBuilder,System.String,System.Text.StringBuilder},System.ReadOnlySpan{``0})"/>
         </member>
-        <member name="T:System.Text.TableGridPrinter">
+        <member name="T:System.Text.TableGridBuilder">
             <summary>
             Represents a printer that can print table grid and return as a string.
             </summary>
         </member>
-        <member name="M:System.Text.TableGridPrinter.BuildTable(System.ReadOnlySpan{System.String[]},System.Boolean,System.Boolean,System.String,System.String,System.String)">
+        <member name="M:System.Text.TableGridBuilder.BuildTable(System.ReadOnlySpan{System.String[]},System.Boolean,System.Boolean,System.String,System.String,System.String)">
             <summary>
             Builds a table as a string with optional borders, row separators, and customizable border characters.
             Handles alignment with proper width calculation for wide characters (CJK, full-width symbols).
@@ -5516,12 +5516,12 @@
             <param name="corner">Corner character(s), e.g., "+" or "#".</param>
             <returns>The formatted table as a string.</returns>
         </member>
-        <member name="M:System.Text.TableGridPrinter.GetDisplayWidth(System.String)">
+        <member name="M:System.Text.TableGridBuilder.GetDisplayWidth(System.String)">
             <summary>
             Calculates the display width of a string, counting wide characters (CJK, full-width) as 2 units.
             </summary>
         </member>
-        <member name="M:System.Text.TableGridPrinter.IsWideChar(System.Char)">
+        <member name="M:System.Text.TableGridBuilder.IsWideChar(System.Char)">
             <summary>
             Determines whether a character is wide (CJK or full-width symbol).
             </summary>
