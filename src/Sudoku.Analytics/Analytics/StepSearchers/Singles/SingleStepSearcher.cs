@@ -533,21 +533,28 @@ public sealed partial class SingleStepSearcher : StepSearcher
 			enableAndIsLastDigit = digitCount == 8;
 		}
 
-		return (enableAndIsLastDigit, house) switch
+		switch (enableAndIsLastDigit, house)
 		{
-			(true, >= 9) => null,
-			(true, _) => new LastDigitStep(
-				new SingletonArray<Conclusion>(new(Assignment, resultCell, digit)),
-				[[.. cellOffsets]],
-				context.Options,
-				resultCell,
-				digit,
-				house,
-				Lasting.GetLastingAllHouses(grid, resultCell, out _)
-			),
-			_ => Excluder.GetHiddenSingleExcluders(grid, digit, house, resultCell, out var chosenCells, out var excluderInfo) switch
+			case (true, >= 9):
 			{
-				var cellOffsets2 => TechniqueNaming.Single.GetHiddenSingleSubtype(grid, resultCell, house, chosenCells) switch
+				return null;
+			}
+			case (true, _):
+			{
+				return new LastDigitStep(
+					new SingletonArray<Conclusion>(new(Assignment, resultCell, digit)),
+					[[.. cellOffsets]],
+					context.Options,
+					resultCell,
+					digit,
+					house,
+					Lasting.GetLastingAllHouses(grid, resultCell, out _)
+				);
+			}
+			default:
+			{
+				var cellOffsets2 = Excluder.GetHiddenSingleExcluders(grid, digit, house, resultCell, out var chosenCells, out var excluderInfo);
+				return TechniqueNaming.Single.GetHiddenSingleSubtype(grid, resultCell, house, chosenCells) switch
 				{
 					var subtype when subtype.IsUnnecessary && grid.PuzzleType != SudokuType.Sukaku => null,
 					var subtype => new HiddenSingleStep(
@@ -562,8 +569,8 @@ public sealed partial class SingleStepSearcher : StepSearcher
 						subtype,
 						excluderInfo
 					)
-				}
+				};
 			}
-		};
+		}
 	}
 }
