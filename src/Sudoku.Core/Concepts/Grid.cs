@@ -467,7 +467,7 @@ public struct Grid : InlineArrayGridBase
 	}
 
 	/// <inheritdoc/>
-	public override readonly bool Equals([NotNullWhen(true)] object? obj) => obj is Grid comparer && Equals(comparer);
+	public readonly override bool Equals([NotNullWhen(true)] object? obj) => obj is Grid comparer && Equals(comparer);
 
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
 	public readonly unsafe bool Equals(in Grid other)
@@ -561,7 +561,7 @@ public struct Grid : InlineArrayGridBase
 	public readonly bool? Exists(Cell cell, Digit digit) => GetState(cell) == CellState.Empty ? GetExistence(cell, digit) : null;
 
 	/// <inheritdoc cref="object.GetHashCode"/>
-	public override readonly int GetHashCode()
+	public readonly override int GetHashCode()
 		=> this switch { { IsUndefined: true } => 0, { IsEmpty: true } => 1, _ => ToString("#").GetHashCode() };
 
 	/// <inheritdoc cref="IComparable{T}.CompareTo(T)"/>
@@ -572,7 +572,7 @@ public struct Grid : InlineArrayGridBase
 			: throw new InvalidOperationException(SR.ExceptionMessage("ComparableGridMustBeStandard"));
 
 	/// <inheritdoc cref="object.ToString"/>
-	public override readonly string ToString() => PuzzleType == SudokuType.Sukaku ? ToString("~") : ToString(null, null);
+	public readonly override string ToString() => PuzzleType == SudokuType.Sukaku ? ToString("~") : ToString(null, null);
 
 	/// <remarks>
 	/// <para>You can use format identifiers to create the format text. All valid format identifiers:

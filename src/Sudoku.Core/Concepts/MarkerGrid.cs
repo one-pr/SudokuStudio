@@ -315,7 +315,7 @@ public struct MarkerGrid : InlineArrayGridBase
 
 
 	/// <inheritdoc/>
-	public override readonly bool Equals([NotNullWhen(true)] object? obj) => obj is MarkerGrid comparer && Equals(comparer);
+	public readonly override bool Equals([NotNullWhen(true)] object? obj) => obj is MarkerGrid comparer && Equals(comparer);
 
 	/// <inheritdoc/>
 	public readonly bool ConflictWith(Cell cell, Digit digit)
@@ -360,13 +360,13 @@ public struct MarkerGrid : InlineArrayGridBase
 	public readonly bool? Exists(Cell cell, Digit digit) => GetState(cell) == CellState.Empty ? GetExistence(cell, digit) : null;
 
 	/// <inheritdoc/>
-	public override readonly int GetHashCode() => ToString("#").GetHashCode();
+	public readonly override int GetHashCode() => ToString("#").GetHashCode();
 
 	/// <inheritdoc/>
 	public readonly int CompareTo(in MarkerGrid other) => ToString("#").CompareTo(other.ToString("#"));
 
 	/// <inheritdoc cref="object.ToString"/>
-	public override readonly string ToString() => ToString(null, null);
+	public readonly override string ToString() => ToString(null, null);
 
 	/// <inheritdoc/>
 	public readonly string ToString(string? format) => ToString(format, null);

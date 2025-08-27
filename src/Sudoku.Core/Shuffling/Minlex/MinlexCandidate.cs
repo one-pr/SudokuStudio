@@ -121,7 +121,7 @@ public unsafe struct MinlexCandidate
 	}
 
 	/// <inheritdoc cref="object.ToString"/>
-	public override readonly string ToString()
+	public readonly override string ToString()
 	{
 		var sb = new StringBuilder();
 		sb.Append(IsTransposed);

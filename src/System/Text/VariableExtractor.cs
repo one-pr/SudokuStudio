@@ -65,7 +65,7 @@ public unsafe ref struct VariableExtractor(int literalLength, int formattedCount
 	}
 
 	/// <inheritdoc cref="object.ToString"/>
-	public override readonly string ToString() => _builder.ToString().Replace(PlaceholderReservedCharacter, '?');
+	public readonly override string ToString() => _builder.ToString().Replace(PlaceholderReservedCharacter, '?');
 
 
 	/// <summary>

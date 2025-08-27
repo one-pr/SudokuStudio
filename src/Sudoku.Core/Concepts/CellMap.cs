@@ -508,13 +508,13 @@ public partial struct CellMap : CellMapBase
 	}
 
 	/// <inheritdoc/>
-	public override readonly bool Equals([NotNullWhen(true)] object? obj) => obj is CellMap comparer && Equals(comparer);
+	public readonly override bool Equals([NotNullWhen(true)] object? obj) => obj is CellMap comparer && Equals(comparer);
 
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
 	public readonly bool Equals(in CellMap other) => _vector.Equals(other._vector);
 
 	/// <inheritdoc cref="object.GetHashCode"/>
-	public override readonly int GetHashCode() => _vector.GetHashCode();
+	public readonly override int GetHashCode() => _vector.GetHashCode();
 
 	/// <inheritdoc/>
 	public readonly int CompareTo(in CellMap other)
@@ -539,7 +539,7 @@ public partial struct CellMap : CellMapBase
 	}
 
 	/// <inheritdoc cref="object.ToString"/>
-	public override readonly string ToString() => ToString(null);
+	public readonly override string ToString() => ToString(null);
 
 	/// <inheritdoc/>
 	public readonly string ToString(IFormatProvider? formatProvider)

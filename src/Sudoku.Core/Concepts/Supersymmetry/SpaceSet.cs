@@ -83,7 +83,7 @@ public partial struct SpaceSet :
 	}
 
 	/// <inheritdoc/>
-	public override readonly bool Equals([NotNullWhen(true)] object? obj) => obj is SpaceSet comparer && Equals(comparer);
+	public readonly override bool Equals([NotNullWhen(true)] object? obj) => obj is SpaceSet comparer && Equals(comparer);
 
 	/// <inheritdoc/>
 	public readonly bool Contains(Space space)
@@ -123,7 +123,7 @@ public partial struct SpaceSet :
 	public readonly bool Equals(in SpaceSet other) => _field[..].SequenceEqual(other._field[..]);
 
 	/// <inheritdoc/>
-	public override readonly int GetHashCode() => HashCode.Combine(_field[0], _field[1], _field[2], _field[3]);
+	public readonly override int GetHashCode() => HashCode.Combine(_field[0], _field[1], _field[2], _field[3]);
 
 	/// <inheritdoc cref="IComparable{T}.CompareTo(T)"/>
 	public readonly int CompareTo(in SpaceSet other)
@@ -216,7 +216,7 @@ public partial struct SpaceSet :
 	}
 
 	/// <inheritdoc cref="object.ToString"/>
-	public override readonly string ToString() => new RxCyConverter().SpaceConverter(this);
+	public readonly override string ToString() => new RxCyConverter().SpaceConverter(this);
 
 	/// <inheritdoc/>
 	readonly bool IEquatable<SpaceSet>.Equals(SpaceSet other) => Equals(other);

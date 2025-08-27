@@ -332,7 +332,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc/>
-	public override readonly bool Equals([NotNullWhen(true)] object? obj) => obj is CandidateMap comparer && Equals(comparer);
+	public readonly override bool Equals([NotNullWhen(true)] object? obj) => obj is CandidateMap comparer && Equals(comparer);
 
 	/// <inheritdoc/>
 	public readonly int CompareTo(in CandidateMap other)
@@ -366,7 +366,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc cref="object.GetHashCode"/>
-	public override readonly int GetHashCode()
+	public readonly override int GetHashCode()
 	{
 		var hashCode = default(HashCode);
 		for (var i = 0; i < InlineArrayLength; i++)
@@ -377,7 +377,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc cref="object.ToString"/>
-	public override readonly string ToString() => ToString(null);
+	public readonly override string ToString() => ToString(null);
 
 	/// <inheritdoc/>
 	public readonly string ToString(IFormatProvider? formatProvider)
