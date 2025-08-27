@@ -10218,9 +10218,19 @@
         </member>
         <member name="M:Sudoku.Drawing.View.Clone">
             <summary>
-            Creates a new <see cref="T:Sudoku.Drawing.View"/> instance with same values as the current instance, with independency.
+            Creates a new <see cref="T:Sudoku.Drawing.View"/> instance with same values as the current instance,
+            with all nodes cloned with new instances.
             </summary>
-            <returns>A new <see cref="T:Sudoku.Drawing.View"/> instance with same values as the current instance.</returns>
+            <returns>A new <see cref="T:Sudoku.Drawing.View"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Drawing.View.Clone(Sudoku.Drawing.ViewCloningOption)">
+            <summary>
+            Creates a new <see cref="T:Sudoku.Drawing.View"/> instance with same values as the current instance,
+            with specified option to define the cloning behavior.
+            </summary>
+            <param name="option">The option to define the cloning behavior.</param>
+            <returns>A new <see cref="T:Sudoku.Drawing.View"/> instance.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Throws when argument <paramref name="option"/> isn't defined.</exception>
         </member>
         <member name="M:Sudoku.Drawing.View.ShallowClone">
             <summary>
@@ -10318,6 +10328,30 @@
             <param name="left">The left-side <see cref="T:Sudoku.Drawing.View"/> instance.</param>
             <param name="right">The right-side <see cref="T:Sudoku.Drawing.View"/> instance.</param>
             <returns>A <see cref="T:Sudoku.Drawing.View"/> result created.</returns>
+        </member>
+        <member name="T:Sudoku.Drawing.ViewCloningOption">
+            <summary>
+            Represents an option that specifies a behavior while view cloning.
+            </summary>
+            <seealso cref="T:Sudoku.Drawing.View"/>
+        </member>
+        <member name="F:Sudoku.Drawing.ViewCloningOption.Default">
+            <summary>
+            Indicates the cloneation behavior is default one, all nodes are copied into a new collection,
+            but nodes themselves are not cloned with new instances.
+            </summary>
+            <remarks>
+            Meaning: <c>result = [.. <see langword="this"/>]</c>
+            </remarks>
+        </member>
+        <member name="F:Sudoku.Drawing.ViewCloningOption.IncludingNodes">
+            <summary>
+            Indicates the cloneation behavior includes nodes.
+            All nodes are copied into a new collection, and data from each node will be copied into a new instance.
+            </summary>
+            <remarks>
+            Meaning: <c>result = [.. <see langword="from"/> node <see langword="in this select"/> node.Clone()]</c>
+            </remarks>
         </member>
         <member name="T:Sudoku.Drawing.ViewNode">
             <summary>

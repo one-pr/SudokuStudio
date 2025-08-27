@@ -87,16 +87,34 @@ public sealed class View :
 	/// <inheritdoc cref="IExceptMethod{TSelf, TSource}.Except(IEnumerable{TSource})"/>
 	public View ExceptWith(View other)
 	{
-		var result = ShallowClone();
+		var result = Clone(ViewCloningOption.Default);
 		result.ExceptWith(other.AsEnumerable());
 		return result;
 	}
 
 	/// <summary>
-	/// Creates a new <see cref="View"/> instance with same values as the current instance, with independency.
+	/// Creates a new <see cref="View"/> instance with same values as the current instance,
+	/// with all nodes cloned with new instances.
 	/// </summary>
-	/// <returns>A new <see cref="View"/> instance with same values as the current instance.</returns>
-	public View Clone() => Count == 0 ? Empty : [.. from node in this select node.Clone()];
+	/// <returns>A new <see cref="View"/> instance.</returns>
+	public View Clone() => Clone(ViewCloningOption.IncludingNodes);
+
+	/// <summary>
+	/// Creates a new <see cref="View"/> instance with same values as the current instance,
+	/// with specified option to define the cloning behavior.
+	/// </summary>
+	/// <param name="option">The option to define the cloning behavior.</param>
+	/// <returns>A new <see cref="View"/> instance.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Throws when argument <paramref name="option"/> isn't defined.</exception>
+	public View Clone(ViewCloningOption option)
+		=> Count == 0
+			? Empty
+			: option switch
+			{
+				ViewCloningOption.Default => [.. this],
+				ViewCloningOption.IncludingNodes => [.. from node in this select node.Clone()],
+				_ => throw new ArgumentOutOfRangeException(nameof(option))
+			};
 
 	/// <summary>
 	/// Creates a new <see cref="View"/> instance whose contents are all come from the current instance,
@@ -105,7 +123,7 @@ public sealed class View :
 	/// <returns>
 	/// A new <see cref="View"/> instance with same values as the current instance, with reference cloned.
 	/// </returns>
-	public View ShallowClone() => Count == 0 ? Empty : [.. this];
+	public View ShallowClone() => Clone(ViewCloningOption.Default);
 
 	/// <summary>
 	/// Try to convert this collection as a <see cref="ReadOnlySpan{T}"/> instance.
@@ -185,7 +203,7 @@ public sealed class View :
 	/// <returns>A <see cref="View"/> result created.</returns>
 	public static View operator &(View left, View right)
 	{
-		var result = left.ShallowClone();
+		var result = left.Clone(ViewCloningOption.Default);
 		result.IntersectWith(right);
 		return result;
 	}
@@ -198,7 +216,7 @@ public sealed class View :
 	/// <returns>A <see cref="View"/> result merged.</returns>
 	public static View operator |(View left, View right)
 	{
-		var result = left.ShallowClone();
+		var result = left.Clone(ViewCloningOption.Default);
 		result.UnionWith(right);
 		return result;
 	}
@@ -212,7 +230,7 @@ public sealed class View :
 	/// <returns>A <see cref="View"/> result created.</returns>
 	public static View operator ^(View left, View right)
 	{
-		var result = left.ShallowClone();
+		var result = left.Clone(ViewCloningOption.Default);
 		result.SymmetricExceptWith(right);
 		return result;
 	}
