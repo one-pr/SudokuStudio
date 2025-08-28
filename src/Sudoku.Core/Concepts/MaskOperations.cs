@@ -1,7 +1,5 @@
 namespace Sudoku.Concepts;
 
-using GridBase = IGrid<Grid>;
-
 /// <summary>
 /// Provides with a set of methods that operates with mask defined in basic sudoku concepts, as data structures.
 /// </summary>
@@ -31,7 +29,7 @@ public static class MaskOperations
 	/// <param name="mask">The cell mask.</param>
 	/// <returns>The sudoku type configured.</returns>
 	public static SudokuType MaskToSudokuType(Mask mask)
-		=> mask >> GridBase.HeaderShift << GridBase.HeaderShift is var resultMask and not 0
+		=> mask >> IGrid<Grid>.HeaderShift << IGrid<Grid>.HeaderShift is var resultMask and not 0
 			? (SudokuType)resultMask
 			: SudokuType.Standard;
 
