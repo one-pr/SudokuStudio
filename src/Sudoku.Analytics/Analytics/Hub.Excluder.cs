@@ -74,10 +74,10 @@ public partial class Hub
 				chosenCells = cc;
 				return (IconViewNode[])[
 					.. from c in chosenCells select new CircleViewNode(ColorIdentifier.Normal, c),
-				..
-				from c in covered
-				let p = excluded.Contains(c) ? ColorIdentifier.Auxiliary2 : ColorIdentifier.Auxiliary1
-				select (IconViewNode)(p == ColorIdentifier.Auxiliary2 ? new TriangleViewNode(p, c) : new CrossViewNode(p, c))
+					..
+					from c in covered
+					let p = excluded.Contains(c) ? ColorIdentifier.Auxiliary2 : ColorIdentifier.Auxiliary1
+					select (IconViewNode)(p == ColorIdentifier.Auxiliary2 ? new TriangleViewNode(p, c) : new CrossViewNode(p, c))
 				];
 			}
 
