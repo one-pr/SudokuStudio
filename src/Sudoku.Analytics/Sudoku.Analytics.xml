@@ -205,7 +205,7 @@
             This finder only uses single techniques (Hidden Singles and Naked Singles) to solve a puzzle;
             complex singles won't be supported for now.
             </summary>
-            <param name="supportedTechniques"><inheritdoc cref="P:Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder.SupportedTechniques" path="/summary"/></param>
+            <param name="_supportedTechniques">Indicates the supported techniques. By default, all singles are included.</param>
         </member>
         <member name="M:Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder.#ctor(Sudoku.Categorization.TechniqueSet)">
             <summary>
@@ -213,7 +213,7 @@
             This finder only uses single techniques (Hidden Singles and Naked Singles) to solve a puzzle;
             complex singles won't be supported for now.
             </summary>
-            <param name="supportedTechniques"><inheritdoc cref="P:Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder.SupportedTechniques" path="/summary"/></param>
+            <param name="_supportedTechniques">Indicates the supported techniques. By default, all singles are included.</param>
         </member>
         <member name="M:Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder.#ctor">
             <summary>
@@ -225,11 +225,6 @@
             Initializes a <see cref="T:Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder"/> instance via the specified list of techniques.
             </summary>
             <param name="techniques">A list of techniques.</param>
-        </member>
-        <member name="P:Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder.SupportedTechniques">
-            <summary>
-            Indicates the supported techniques. By default, all singles are included.
-            </summary>
         </member>
         <member name="M:Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder.FindPath(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
             <summary>

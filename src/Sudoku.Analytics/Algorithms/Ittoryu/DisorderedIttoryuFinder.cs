@@ -5,8 +5,8 @@ namespace Sudoku.Algorithms.Ittoryu;
 /// This finder only uses single techniques (Hidden Singles and Naked Singles) to solve a puzzle;
 /// complex singles won't be supported for now.
 /// </summary>
-/// <param name="supportedTechniques"><inheritdoc cref="SupportedTechniques" path="/summary"/></param>
-public sealed class DisorderedIttoryuFinder(params TechniqueSet supportedTechniques)
+/// <param name="_supportedTechniques">Indicates the supported techniques. By default, all singles are included.</param>
+public sealed class DisorderedIttoryuFinder(params TechniqueSet _supportedTechniques)
 {
 	/// <summary>
 	/// Initializes a <see cref="DisorderedIttoryuFinder"/> instance.
@@ -22,12 +22,6 @@ public sealed class DisorderedIttoryuFinder(params TechniqueSet supportedTechniq
 	public DisorderedIttoryuFinder(IEnumerable<Technique> techniques) : this([.. techniques])
 	{
 	}
-
-
-	/// <summary>
-	/// Indicates the supported techniques. By default, all singles are included.
-	/// </summary>
-	public TechniqueSet SupportedTechniques { get; } = supportedTechniques;
 
 
 	/// <summary>
@@ -142,7 +136,7 @@ public sealed class DisorderedIttoryuFinder(params TechniqueSet supportedTechniq
 
 		void fullHouses(in Grid grid, List<IttoryuPathNode> foundNodes, Digit digit)
 		{
-			if (!SupportedTechniques.Contains(Technique.FullHouse))
+			if (!_supportedTechniques.Contains(Technique.FullHouse))
 			{
 				return;
 			}
@@ -169,7 +163,7 @@ public sealed class DisorderedIttoryuFinder(params TechniqueSet supportedTechniq
 					HouseType.Row => Technique.HiddenSingleRow,
 					_ => Technique.HiddenSingleColumn
 				};
-				if (!SupportedTechniques.Contains(houseCode))
+				if (!_supportedTechniques.Contains(houseCode))
 				{
 					continue;
 				}
@@ -183,7 +177,7 @@ public sealed class DisorderedIttoryuFinder(params TechniqueSet supportedTechniq
 
 		void nakedSingles(in Grid grid, List<IttoryuPathNode> foundNodes, Digit digit)
 		{
-			if (!SupportedTechniques.Contains(Technique.NakedSingle))
+			if (!_supportedTechniques.Contains(Technique.NakedSingle))
 			{
 				return;
 			}
