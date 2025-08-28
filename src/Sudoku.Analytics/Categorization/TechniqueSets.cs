@@ -7,26 +7,27 @@ namespace Sudoku.Categorization;
 public static class TechniqueSets
 {
 	/// <summary>
-	/// Indicates the number of techniques supported in this program.
+	/// Provides extension members on <see cref="TechniqueSet"/>.
 	/// </summary>
-	public static int TechniquesCount => All.Count;
+	extension(TechniqueSet)
+	{
+		/// <summary>
+		/// Indicates all techniques are not included.
+		/// </summary>
+		public static TechniqueSet None => [];
 
-	/// <summary>
-	/// Indicates all techniques are not included.
-	/// </summary>
-	public static TechniqueSet None => [];
+		/// <summary>
+		/// Indicates all <see cref="Technique"/> fields included.
+		/// </summary>
+		public static TechniqueSet All => [.. Technique.Values[1..]];
 
-	/// <summary>
-	/// Indicates all <see cref="Technique"/> fields included.
-	/// </summary>
-	public static TechniqueSet All => [.. Technique.Values[1..]];
-
-	/// <summary>
-	/// Indicates all assignment techniques.
-	/// </summary>
-	public static TechniqueSet Assignments
-		=> [
-			Technique.FullHouse, Technique.LastDigit, Technique.HiddenSingleBlock,
-			Technique.HiddenSingleRow, Technique.HiddenSingleColumn, Technique.NakedSingle
-		];
+		/// <summary>
+		/// Indicates all assignment techniques.
+		/// </summary>
+		public static TechniqueSet Assignments
+			=> [
+				Technique.FullHouse, Technique.LastDigit, Technique.HiddenSingleBlock,
+				Technique.HiddenSingleRow, Technique.HiddenSingleColumn, Technique.NakedSingle
+			];
+	}
 }

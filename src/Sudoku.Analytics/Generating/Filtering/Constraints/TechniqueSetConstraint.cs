@@ -8,7 +8,7 @@ public sealed class TechniqueSetConstraint : Constraint
 	/// <summary>
 	/// Indicates the technique used.
 	/// </summary>
-	public TechniqueSet Techniques { get; set; } = TechniqueSets.None;
+	public TechniqueSet Techniques { get; set; } = TechniqueSet.None;
 
 
 	/// <inheritdoc/>

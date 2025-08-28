@@ -84,7 +84,7 @@ public sealed partial class GeneratingOperation : Page, IOperationProviderPage
 				return difficultyLevels is [var dl] ? dl : default;
 			},
 			analyzerCreator: difficultyLevel => Application.Current.AsApp().GetAnalyzerConfigured(BasePage.SudokuPane, difficultyLevel),
-			ittoryuFinderCreator: () => new DisorderedIttoryuFinder(TechniqueIttoryuSets.IttoryuTechniques),
+			ittoryuFinderCreator: () => new DisorderedIttoryuFinder(TechniqueSet.IttoryuTechniques),
 			cancellationTokenSourceAssigner: cts => BasePage._ctsForAnalyzingRelatedOperations = cts,
 			stateInitializer: () =>
 			{
@@ -216,7 +216,7 @@ public sealed partial class GeneratingOperation : Page, IOperationProviderPage
 					return;
 				}
 
-				var techniques = TechniqueSets.None;
+				var techniques = TechniqueSet.None;
 				foreach (var constraint in Application.Current.AsApp().Preference.ConstraintPreferences.Constraints)
 				{
 					switch (constraint)
@@ -285,7 +285,7 @@ public sealed partial class GeneratingOperation : Page, IOperationProviderPage
 					return;
 				}
 
-				var techniques = TechniqueSets.None;
+				var techniques = TechniqueSet.None;
 				foreach (var constraint in Application.Current.AsApp().Preference.ConstraintPreferences.Constraints)
 				{
 					switch (constraint)

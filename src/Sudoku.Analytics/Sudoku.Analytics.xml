@@ -367,19 +367,24 @@
             Represents ittoryu-related technique sets instances.
             </summary>
         </member>
-        <member name="P:Sudoku.Algorithms.Ittoryu.TechniqueIttoryuSets.IttoryuTechniques">
+        <member name="T:Sudoku.Algorithms.Ittoryu.TechniqueIttoryuSets.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Categorization.TechniqueSet"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Algorithms.Ittoryu.TechniqueIttoryuSets.&lt;&gt;E__0.IttoryuTechniques">
             <summary>
             Indicates the techniques that ittoryu path finder will use.
             </summary>
             <seealso cref="T:Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder"/>
         </member>
-        <member name="P:Sudoku.Algorithms.Ittoryu.TechniqueIttoryuSets.IttoryuNakedSingleNotIncluded">
+        <member name="P:Sudoku.Algorithms.Ittoryu.TechniqueIttoryuSets.&lt;&gt;E__0.IttoryuNakedSingleNotIncluded">
             <summary>
             Indicates the techniques that ittoryu path finder will use, and naked singles are not included.
             </summary>
             <seealso cref="T:Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder"/>
         </member>
-        <member name="P:Sudoku.Algorithms.Ittoryu.TechniqueIttoryuSets.IttoryuBlockHiddenSingle">
+        <member name="P:Sudoku.Algorithms.Ittoryu.TechniqueIttoryuSets.&lt;&gt;E__0.IttoryuBlockHiddenSingle">
             <summary>
             Indicates the techniques that ittroyu path finder will use,
             only containing <see cref="F:Sudoku.Categorization.Technique.FullHouse"/> and <see cref="F:Sudoku.Categorization.Technique.HiddenSingleBlock"/>.
@@ -387,6 +392,15 @@
             <seealso cref="T:Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder"/>
             <seealso cref="F:Sudoku.Categorization.Technique.FullHouse"/>
             <seealso cref="F:Sudoku.Categorization.Technique.HiddenSingleBlock"/>
+        </member>
+        <member name="M:Sudoku.Algorithms.Ittoryu.TechniqueIttoryuSets.get_IttoryuTechniques">
+            <inheritdoc cref="P:Sudoku.Algorithms.Ittoryu.TechniqueIttoryuSets.&lt;&gt;E__0.IttoryuTechniques"/>
+        </member>
+        <member name="M:Sudoku.Algorithms.Ittoryu.TechniqueIttoryuSets.get_IttoryuNakedSingleNotIncluded">
+            <inheritdoc cref="P:Sudoku.Algorithms.Ittoryu.TechniqueIttoryuSets.&lt;&gt;E__0.IttoryuNakedSingleNotIncluded"/>
+        </member>
+        <member name="M:Sudoku.Algorithms.Ittoryu.TechniqueIttoryuSets.get_IttoryuBlockHiddenSingle">
+            <inheritdoc cref="P:Sudoku.Algorithms.Ittoryu.TechniqueIttoryuSets.&lt;&gt;E__0.IttoryuBlockHiddenSingle"/>
         </member>
         <member name="T:Sudoku.Algorithms.UniquenessTest.DeadlyPatternInferrerLimitReachedException">
             <summary>
@@ -27022,25 +27036,34 @@
             </summary>
             <seealso cref="T:Sudoku.Categorization.TechniqueSet"/>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueSets.TechniquesCount">
+        <member name="T:Sudoku.Categorization.TechniqueSets.&lt;&gt;E__0">
             <summary>
-            Indicates the number of techniques supported in this program.
+            Provides extension members on <see cref="T:Sudoku.Categorization.TechniqueSet"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueSets.None">
+        <member name="P:Sudoku.Categorization.TechniqueSets.&lt;&gt;E__0.None">
             <summary>
             Indicates all techniques are not included.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueSets.All">
+        <member name="P:Sudoku.Categorization.TechniqueSets.&lt;&gt;E__0.All">
             <summary>
             Indicates all <see cref="T:Sudoku.Categorization.Technique"/> fields included.
             </summary>
         </member>
-        <member name="P:Sudoku.Categorization.TechniqueSets.Assignments">
+        <member name="P:Sudoku.Categorization.TechniqueSets.&lt;&gt;E__0.Assignments">
             <summary>
             Indicates all assignment techniques.
             </summary>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueSets.get_None">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueSets.&lt;&gt;E__0.None"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueSets.get_All">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueSets.&lt;&gt;E__0.All"/>
+        </member>
+        <member name="M:Sudoku.Categorization.TechniqueSets.get_Assignments">
+            <inheritdoc cref="P:Sudoku.Categorization.TechniqueSets.&lt;&gt;E__0.Assignments"/>
         </member>
         <member name="T:Sudoku.Cognition.BlockFirst">
             <summary>

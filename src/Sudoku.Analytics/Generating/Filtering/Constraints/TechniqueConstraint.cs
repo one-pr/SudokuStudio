@@ -11,7 +11,7 @@ public sealed class TechniqueConstraint : Constraint
 	/// <summary>
 	/// Indicates the techniques must appear.
 	/// </summary>
-	public TechniqueSet Techniques { get; set; } = TechniqueSets.None;
+	public TechniqueSet Techniques { get; set; } = TechniqueSet.None;
 
 
 	/// <inheritdoc/>
@@ -47,7 +47,6 @@ public sealed class TechniqueConstraint : Constraint
 				return true;
 			}
 		}
-
 		return false;
 	}
 }

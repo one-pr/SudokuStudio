@@ -68,7 +68,7 @@ public static class GridIttoryuExtensions
 		/// <param name="path">The first found ittoryu path.</param>
 		/// <returns>A <see cref="bool"/> result indicating that.</returns>
 		public bool IsIttoryu([NotNullWhen(true)] out DisorderedIttoryuDigitPath? path)
-			=> @this.IsIttoryu(TechniqueIttoryuSets.IttoryuTechniques, out path);
+			=> @this.IsIttoryu(TechniqueSet.IttoryuTechniques, out path);
 
 		/// <summary>
 		/// Determine whether the specified grid is an ittoryu puzzle, meaning the puzzle can be finished via digits one by one,

@@ -11,7 +11,7 @@ public sealed class DisorderedIttoryuFinder(params TechniqueSet supportedTechniq
 	/// <summary>
 	/// Initializes a <see cref="DisorderedIttoryuFinder"/> instance.
 	/// </summary>
-	public DisorderedIttoryuFinder() : this(TechniqueIttoryuSets.IttoryuTechniques)
+	public DisorderedIttoryuFinder() : this(TechniqueSet.IttoryuTechniques)
 	{
 	}
 

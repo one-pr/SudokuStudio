@@ -305,7 +305,7 @@ public sealed partial class TechniqueSet() :
 	/// <inheritdoc cref="ISliceMethod{TSelf, TSource}.Slice(int, int)"/>
 	public TechniqueSet Slice(int start, int count)
 	{
-		var result = TechniqueSets.None;
+		var result = TechniqueSet.None;
 		var i = start - 1;
 		foreach (var technique in this)
 		{
@@ -590,7 +590,7 @@ file sealed class Converter : JsonConverter<TechniqueSet>
 	/// <inheritdoc/>
 	public override TechniqueSet Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 	{
-		var (result, isInitialized) = (TechniqueSets.None, false);
+		var (result, isInitialized) = (TechniqueSet.None, false);
 		while (reader.Read())
 		{
 			switch (reader.TokenType)
