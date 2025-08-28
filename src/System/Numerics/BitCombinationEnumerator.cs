@@ -4,24 +4,24 @@ namespace System.Numerics;
 /// Indicates the enumerator of the current instance.
 /// </summary>
 /// <typeparam name="TInteger">The type of the target integer value.</typeparam>
-/// <param name="bitCount">The number of bits.</param>
-/// <param name="oneCount">The number of <see langword="true"/> bits.</param>
-public ref struct BitCombinationEnumerator<TInteger>(int bitCount, int oneCount) : IEnumerator<TInteger>
+/// <param name="_bitCount">The number of bits.</param>
+/// <param name="_oneCount">The number of <see langword="true"/> bits.</param>
+public ref struct BitCombinationEnumerator<TInteger>(int _bitCount, int _oneCount) : IEnumerator<TInteger>
 	where TInteger : IBinaryInteger<TInteger>
 {
 	/// <summary>
 	/// The mask.
 	/// </summary>
-	private readonly TInteger _mask = (TInteger.MultiplicativeIdentity << bitCount - oneCount) - TInteger.MultiplicativeIdentity;
+	private readonly TInteger _mask = (TInteger.MultiplicativeIdentity << _bitCount - _oneCount) - TInteger.MultiplicativeIdentity;
 
 	/// <summary>
 	/// Indicates whether that the value is the last one.
 	/// </summary>
-	private bool _isLast = bitCount == 0;
+	private bool _isLast = _bitCount == 0;
 
 
 	/// <inheritdoc cref="IEnumerator.Current"/>
-	public TInteger Current { get; private set; } = (TInteger.MultiplicativeIdentity << oneCount) - TInteger.MultiplicativeIdentity;
+	public TInteger Current { get; private set; } = (TInteger.MultiplicativeIdentity << _oneCount) - TInteger.MultiplicativeIdentity;
 
 	/// <inheritdoc/>
 	readonly object IEnumerator.Current => Current;
@@ -63,9 +63,7 @@ public ref struct BitCombinationEnumerator<TInteger>(int bitCount, int oneCount)
 	readonly void IEnumerator.Reset() => throw new NotImplementedException();
 
 	/// <inheritdoc/>
-	readonly void IDisposable.Dispose()
-	{
-	}
+	readonly void IDisposable.Dispose() { }
 
 	/// <summary>
 	/// Changes the state of the fields, and check whether the bit has another available possibility to be iterated.

@@ -5753,16 +5753,16 @@
             Indicates the enumerator of the current instance.
             </summary>
             <typeparam name="TInteger">The type of the target integer value.</typeparam>
-            <param name="bitCount">The number of bits.</param>
-            <param name="oneCount">The number of <see langword="true"/> bits.</param>
+            <param name="_bitCount">The number of bits.</param>
+            <param name="_oneCount">The number of <see langword="true"/> bits.</param>
         </member>
         <member name="M:System.Numerics.BitCombinationEnumerator`1.#ctor(System.Int32,System.Int32)">
             <summary>
             Indicates the enumerator of the current instance.
             </summary>
             <typeparam name="TInteger">The type of the target integer value.</typeparam>
-            <param name="bitCount">The number of bits.</param>
-            <param name="oneCount">The number of <see langword="true"/> bits.</param>
+            <param name="_bitCount">The number of bits.</param>
+            <param name="_oneCount">The number of <see langword="true"/> bits.</param>
         </member>
         <member name="F:System.Numerics.BitCombinationEnumerator`1._mask">
             <summary>
@@ -5800,26 +5800,16 @@
             Represents a combination generator that iterations each combination of bits for the specified number of bits, and how many 1's in it.
             </summary>
             <typeparam name="TInteger">The type of the target integer value.</typeparam>
-            <param name="bitCount"><inheritdoc cref="F:System.Numerics.BitCombinationGenerator`1._bitCount" path="/summary"/></param>
-            <param name="oneCount"><inheritdoc cref="F:System.Numerics.BitCombinationGenerator`1._oneCount" path="/summary"/></param>
+            <param name="_bitCount">Indicates the number of bits.</param>
+            <param name="_oneCount">Indicates the number of bits set <see langword="true"/>.</param>
         </member>
         <member name="M:System.Numerics.BitCombinationGenerator`1.#ctor(System.Int32,System.Int32)">
             <summary>
             Represents a combination generator that iterations each combination of bits for the specified number of bits, and how many 1's in it.
             </summary>
             <typeparam name="TInteger">The type of the target integer value.</typeparam>
-            <param name="bitCount"><inheritdoc cref="F:System.Numerics.BitCombinationGenerator`1._bitCount" path="/summary"/></param>
-            <param name="oneCount"><inheritdoc cref="F:System.Numerics.BitCombinationGenerator`1._oneCount" path="/summary"/></param>
-        </member>
-        <member name="F:System.Numerics.BitCombinationGenerator`1._bitCount">
-            <summary>
-            Indicates the number of bits.
-            </summary>
-        </member>
-        <member name="F:System.Numerics.BitCombinationGenerator`1._oneCount">
-            <summary>
-            Indicates the number of bits set <see langword="true"/>.
-            </summary>
+            <param name="_bitCount">Indicates the number of bits.</param>
+            <param name="_oneCount">Indicates the number of bits set <see langword="true"/>.</param>
         </member>
         <member name="M:System.Numerics.BitCombinationGenerator`1.GetEnumerator">
             <summary>

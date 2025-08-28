@@ -2628,12 +2628,8 @@
             </summary>
             <param name="grid">Indicates the grid.</param>
             <param name="links">Indicates the links.</param>
-            <param name="conclusions">
-            Indicates the conclusions. Use operator <see cref="M:Sudoku.Concepts.ConclusionSet.op_BitwiseOr(Sudoku.Concepts.ConclusionSet,Sudoku.Concepts.ConclusionSet)"/>
-            to collect conclusions.
-            </param>
+            <param name="conclusions">Indicates the conclusions.</param>
             <returns>A list of found conclusions.</returns>
-            <seealso cref="M:Sudoku.Concepts.ConclusionSet.op_BitwiseOr(Sudoku.Concepts.ConclusionSet,Sudoku.Concepts.ConclusionSet)"/>
         </member>
         <member name="T:Sudoku.Analytics.Construction.Chaining.ChainingRuleCollection">
             <summary>
