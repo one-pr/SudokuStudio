@@ -543,7 +543,7 @@ public struct MarkerGrid : InlineArrayGridBase
 	/// <inheritdoc/>
 	public void Apply(Conclusion conclusion)
 	{
-		_ = conclusion is var (type, cell, digit);
+		var (type, cell, digit) = conclusion;
 		switch (type)
 		{
 			case Assignment:
