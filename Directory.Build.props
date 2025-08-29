@@ -48,19 +48,10 @@
 		<Using Include="System.Int32" Alias="Digit" />
 		<Using Include="System.Int32" Alias="House" />
 		<Using Include="System.Int32" Alias="HouseMask" />
-		<Using Include="System.Int32" Alias="ConjugateMask" />
 		<Using Include="System.Int32" Alias="BlockIndex" />
 		<Using Include="System.Int32" Alias="RowIndex" />
 		<Using Include="System.Int32" Alias="ColumnIndex" />
 		<Using Include="System.Int16" Alias="Mask" />
 	</ItemGroup>
-
-	<!--
-	SOURCE GENEARTOR PROJECTS CONFIGURATION
-	-->
-	<!--Set the root namespaces for source generator projects.-->
-	<PropertyGroup Condition="'$(MSBuildProjectFile.TrimEnd(`.csproj`).EndsWith(`SourceGeneration`))'=='true'">
-		<RootNamespace>Sudoku.SourceGeneration</RootNamespace>
-	</PropertyGroup>
 
 </Project>

@@ -8,7 +8,7 @@ namespace Sudoku.Concepts;
 /// where all cells has only two position can fill this candidate.
 /// </remarks>
 /// <param name="_mask">Indicates the target mask.</param>
-public readonly struct Conjugate(ConjugateMask _mask) :
+public readonly struct Conjugate(int _mask) :
 	IEquatable<Conjugate>,
 	IEqualityOperators<Conjugate, Conjugate, bool>,
 	IFormattable,
