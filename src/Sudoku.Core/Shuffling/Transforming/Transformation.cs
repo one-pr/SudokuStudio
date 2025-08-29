@@ -255,19 +255,20 @@ public static class Transformation
 		/// </exception>
 		public ref TGrid SwapHouse(House houseIndex1, House houseIndex2)
 		{
+			if (houseIndex1 == houseIndex2)
+			{
+				return ref @this;
+			}
+
 			ArgumentOutOfRangeException.ThrowIfOutOfRange(houseIndex1, 9, 27);
 			ArgumentOutOfRangeException.ThrowIfOutOfRange(houseIndex2, 9, 27);
 			ArgumentException.ThrowIfAssertionFailed(houseIndex1.HouseType == houseIndex2.HouseType);
-			ArgumentException.ThrowIfAssertionFailed(Array.Exists(SwappableHouses, houseIndexChecker));
 
 			for (var i = 0; i < 9; i++)
 			{
 				Unsafe.Swap(ref @this[HousesCells[houseIndex1][i]], ref @this[HousesCells[houseIndex2][i]]);
 			}
 			return ref @this;
-
-
-			bool houseIndexChecker((House, House) pair) => pair == (houseIndex1, houseIndex2) || pair == (houseIndex2, houseIndex1);
 		}
 
 		/// <summary>
