@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Keywords;
+namespace Sudoku.Keywords;
 
 /// <summary>
 /// Represents an attribute type that describes the property is marked as special property to be filtered in reflection.

@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Keywords;
+namespace Sudoku.Keywords;
 
 /// <summary>
 /// Represents a value converter that can cast a value from a variant type into a keyword type

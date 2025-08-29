@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Keywords;
+namespace Sudoku.Keywords;
 
 /// <summary>
 /// Represents an exception that describes "invalid keyword converter type" information.

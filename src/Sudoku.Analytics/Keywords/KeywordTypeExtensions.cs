@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Keywords;
+namespace Sudoku.Keywords;
 
 /// <summary>
 /// Provides with extension methods on <see cref="KeywordType"/>.

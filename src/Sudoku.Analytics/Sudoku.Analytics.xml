@@ -3656,394 +3656,6 @@
             </summary>
             <param name="state">An object containing information to be used by the callback method.</param>
         </member>
-        <member name="T:Sudoku.Analytics.Keywords.InvalidKeywordConverterTypeException">
-            <summary>
-            Represents an exception that describes "invalid keyword converter type" information.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.InvalidKeywordConverterTypeException.Message">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Keywords.InvalidKeywordException">
-            <summary>
-            Represents an exception that describes "invalid keyword" information.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.InvalidKeywordException.Message">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Keywords.Keyword">
-            <summary>
-            Provides helper methods for retrieving attributes with <see cref="T:Sudoku.Analytics.Keywords.KeywordAttribute"/> inheritance rules.
-            </summary>
-            <seealso cref="T:Sudoku.Analytics.Keywords.KeywordAttribute"/>
-        </member>
-        <member name="F:Sudoku.Analytics.Keywords.Keyword.PropertyBindingFlags">
-            <summary>
-            Represents default binding flags on property.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.Keyword.GetName(System.String,System.Type,System.Globalization.CultureInfo)">
-            <summary>
-            Retrieves the name of the keyword.
-            </summary>
-            <param name="keyword">The keyword.</param>
-            <param name="keywordType">The keyword containing type.</param>
-            <param name="cultureInfo">The culture information.</param>
-            <returns>The name of the keyword.</returns>
-            <exception cref="T:Sudoku.Analytics.Keywords.InvalidKeywordException">Throws when the target property specified is not a valid keyword.</exception>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.Keyword.GetDescription(System.String,System.Type)">
-            <summary>
-            Retrieves the description of the keyword.
-            </summary>
-            <param name="keyword">The keyword.</param>
-            <param name="keywordType">The keyword containing type.</param>
-            <returns>The description of the keyword.</returns>
-            <exception cref="T:Sudoku.Analytics.Keywords.InvalidKeywordException">Throws when the target property specified is not a valid keyword.</exception>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.Keyword.GetKeywordVerbs(System.String,System.Type)">
-            <summary>
-            Retrieves possible keyword verbs.
-            </summary>
-            <param name="keyword">The keyword.</param>
-            <param name="keywordType">The keyword containing type.</param>
-            <returns>All keyword verbs allowed.</returns>
-            <exception cref="T:Sudoku.Analytics.Keywords.InvalidKeywordException">Throws when the target property specified is not a valid keyword.</exception>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.Keyword.GetKeywords(System.Type)">
-            <summary>
-            Retrieves possible keywords that are marked <see cref="T:Sudoku.Analytics.Keywords.KeywordAttribute"/>.
-            </summary>
-            <param name="keywordType">The keyword type.</param>
-            <returns>A list of keywords that are marked <see cref="T:Sudoku.Analytics.Keywords.KeywordAttribute"/>.</returns>
-            <exception cref="T:System.ArgumentException">Throws when the target type is not derived from <see cref="T:Sudoku.Analytics.Step"/>.</exception>
-            <seealso cref="T:Sudoku.Analytics.Keywords.KeywordAttribute"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.Keyword.GetKeywordType(System.String,System.Type)">
-            <summary>
-            <para>Try to get the meta type of the keyword.</para>
-            <para>
-            The value will be inferred from target property type of assembly;
-            if the target type is not valid keyword type (enumeration and so on),
-            the value will be fetched from property <see cref="P:Sudoku.Analytics.Keywords.KeywordAttribute.MetaType"/>.
-            </para>
-            </summary>
-            <param name="keyword">The keyword.</param>
-            <param name="keywordType">The containing type.</param>
-            <returns>The keyword type.</returns>
-            <seealso cref="P:Sudoku.Analytics.Keywords.KeywordAttribute.MetaType"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.Keyword.GetKeywordAttribute(System.String,System.Type)">
-            <summary>
-            Gets <see cref="T:Sudoku.Analytics.Keywords.KeywordAttribute"/> configured.
-            </summary>
-            <param name="keyword">The keyword.</param>
-            <param name="keywordType">The keyword type.</param>
-            <returns>
-            The <see cref="T:Sudoku.Analytics.Keywords.KeywordAttribute"/> instance configured; or <see langword="null"/> if it is not a keyword.
-            </returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.Keyword.IsKeyword(System.String,System.Type,System.Reflection.PropertyInfo@)">
-            <summary>
-            Determine whether the specified property name is a keyword.
-            </summary>
-            <param name="propertyName">The property name.</param>
-            <param name="containingType">The property containing type.</param>
-            <param name="propertyInfo">The property information instance.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.Keyword.GetAttribute``1(System.Reflection.PropertyInfo)">
-            <summary>
-            Retrieves the attribute applied to a property according to custom inheritance rules.
-            </summary>
-            <typeparam name="TAttribute">The type of the attribute to retrieve.</typeparam>
-            <param name="property">The property to inspect.</param>
-            <returns>
-            The attribute instance based on these rules:
-            <list type="bullet">
-            <item>For <see langword="override"/> properties: Returns base class attribute</item>
-            <item>For <see langword="new"/> properties: Returns only if defined on current property</item>
-            <item>For non-overridden properties: Returns base class attribute</item>
-            </list>
-            </returns>
-            <exception cref="T:System.ArgumentNullException">Thrown when property is <see langword="null"/>.</exception>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.Keyword.IsNewProperty(System.Reflection.PropertyInfo)">
-            <summary>
-            Determines if the property is declared with the <see langword="new"/> keyword.
-            </summary>
-            <param name="property">Property to check.</param>
-            <returns>
-            True if property hides base member with <see langword="new"/> keyword, False otherwise.
-            </returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.Keyword.FindInBaseClasses``1(System.Reflection.PropertyInfo)">
-            <summary>
-            Finds the attribute in the property's inheritance hierarchy.
-            </summary>
-            <typeparam name="TAttribute">Attribute type to find.</typeparam>
-            <param name="property">Starting property.</param>
-            <returns>
-            First found attribute in base classes, or <see langword="null"/> if not found.
-            </returns>
-        </member>
-        <member name="T:Sudoku.Analytics.Keywords.PropertyCollector">
-            <summary>
-            Collect all instance properties declared in a type and its base types,
-            including private ones, excluding static and interface properties.
-            Overrides are only counted once (even if re-<see langword="abstract"/>ed),
-            while <see langword="new"/> properties are counted separately.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Keywords.PropertyCollector.InstancePropertyFlags">
-            <summary>
-            Represents instance property flags.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.PropertyCollector.GetAllDeclaredProperties(System.Type)">
-            <summary>
-            Retrieves all instance properties declared in the given type and its base types.
-            This includes non-<see langword="public"/> properties. Overrides are only counted once.
-            Properties declared with <see langword="new"/> are treated as distinct.
-            </summary>
-            <param name="type">The leaf type to begin property collection from.</param>
-            <returns>A list of PropertyInfo instances that match the criteria.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.PropertyCollector.IsNewMethod(System.Reflection.MethodInfo)">
-            <summary>
-            Determines whether a method is using the <see langword="new"/> keyword (i.e., it hides a base method).
-            </summary>
-            <param name="method">The method to inspect.</param>
-            <returns>True if the method is <see langword="new"/>, false otherwise.</returns>
-        </member>
-        <member name="T:Sudoku.Analytics.Keywords.KeywordAttribute">
-            <summary>
-            Represents an attribute type that describes the property is marked as special property to be filtered in reflection.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.IncludesMinimum">
-            <summary>
-            Indicates whether the range includes minimum value. By default it's <see langword="true"/>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.IncludesMaximum">
-            <summary>
-            Indicates whether the range includes maximum value. By default it's <see langword="false"/>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.Minimum">
-            <summary>
-            Indicates the minimum value. By default it's -1.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.Maximum">
-            <summary>
-            Indicates the maximum value. By default it's -1.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.NameResourceKey">
-            <summary>
-            Indicates the name resource key to the property.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.DescriptionResourceKey">
-            <summary>
-            Indicates the description resource key to the property. By default it's <see langword="null"/>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.AllowedVerbs">
-            <summary>
-            Indicates the allowed verbs in runtime.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.MetaType">
-            <summary>
-            Indicates the meta type configured.
-            </summary>
-            <remarks>
-            <para>
-            The meta type will be represented in runtime type checking and conversion,
-            in order to achieve complex conversion behaviors from the specified value into built-in types.
-            </para>
-            <para>
-            For example, if the target type mark this attribute is an enumeration type (like <see cref="P:Sudoku.Analytics.Step.Code"/>),
-            we can configure this property with value <see cref="F:Sudoku.Analytics.Keywords.KeywordType.String"/>,
-            the runtime will use its string representation of target keyword property value (using <see cref="M:System.Enum.ToString"/>)
-            to convert the original value into built-in type <see cref="F:Sudoku.Analytics.Keywords.KeywordType.String"/>.
-            </para>
-            </remarks>
-            <seealso cref="P:Sudoku.Analytics.Step.Code"/>
-            <seealso cref="M:System.Enum.ToString"/>
-            <seealso cref="F:Sudoku.Analytics.Keywords.KeywordType.String"/>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordAttribute.KeywordConverterType">
-            <summary>
-            Indicates keyword converter type.
-            </summary>
-            <value>
-            The type to be assigned. The value shouldn't be <see langword="null"/> and must leave parameterless constructor.
-            </value>
-            <exception cref="T:Sudoku.Analytics.Keywords.InvalidKeywordConverterTypeException">
-            Throws when the value is not derived from <see cref="T:Sudoku.Analytics.Keywords.KeywordValueConverter"/>,
-            or doesn't contain a visible parameterless constructor to be invoked.
-            </exception>
-        </member>
-        <member name="T:Sudoku.Analytics.Keywords.KeywordType">
-            <summary>
-            Represents a keyword type.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Keywords.KeywordType.Unknown">
-            <summary>
-            Indicates the keyword type is unknown. The type should be parsed if matched;
-            otherwise, you should configure them using <see cref="T:Sudoku.Analytics.Keywords.KeywordAttribute"/>.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Keywords.KeywordType.Number">
-            <summary>
-            Indicates the number.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Keywords.KeywordType.String">
-            <summary>
-            Indicates the string.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Analytics.Keywords.KeywordTypeExtensions">
-            <summary>
-            Provides with extension methods on <see cref="T:Sudoku.Analytics.Keywords.KeywordType"/>.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Analytics.Keywords.KeywordTypeExtensions.&lt;&gt;E__0">
-            <summary>
-            Provides extension members on <see cref="T:Sudoku.Analytics.Keywords.KeywordType"/>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordTypeExtensions.&lt;&gt;E__0.AllowedVerbs">
-            <summary>
-            Indicates allowed verbs.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.KeywordTypeExtensions.get_AllowedVerbs(Sudoku.Analytics.Keywords.KeywordType)">
-            <inheritdoc cref="P:Sudoku.Analytics.Keywords.KeywordTypeExtensions.&lt;&gt;E__0.AllowedVerbs"/>
-        </member>
-        <member name="T:Sudoku.Analytics.Keywords.KeywordValueConverter">
-            <summary>
-            Represents a value converter that can cast a value from a variant type into a keyword type
-            supported in enumeration type <see cref="T:Sudoku.Analytics.Keywords.KeywordType"/>.
-            </summary>
-            <seealso cref="T:Sudoku.Analytics.Keywords.KeywordType"/>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordValueConverter.TargetType">
-            <summary>
-            Indicates the target type.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.KeywordValueConverter.BaseType">
-            <summary>
-            Indicates the base type.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.KeywordValueConverter.TryConvert(System.Object,Sudoku.Analytics.Step,System.Object@)">
-            <summary>
-            Try to convert a value to the target type.
-            </summary>
-            <param name="value">The value to convert from.</param>
-            <param name="step">The step instance.</param>
-            <param name="result">The result converted.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating whether the conversion success.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.KeywordValueConverter.TryConvertBack(System.Object,Sudoku.Analytics.Step,System.Object@)">
-            <summary>
-            Try to convert a value back to base type.
-            </summary>
-            <param name="value">The value to convert from.</param>
-            <param name="step">The step instance.</param>
-            <param name="result">The result converted.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating whether the conversion success.</returns>
-            <remarks>
-            This method can keep not being implemented if the target value converter doesn't want to support this.
-            </remarks>
-        </member>
-        <member name="T:Sudoku.Analytics.Keywords.KeywordVerbs">
-            <summary>
-            Represents a verb of keyword filtering rule.
-            </summary>
-            <remarks><flags-attribute>
-		<para>
-			<i>
-				This type is marked <see cref="T:System.FlagsAttribute" />, which means you can use
-				<see langword="operator" /> | to combine multiple fields.
-			</i>
-		</para>
-	</flags-attribute></remarks>
-        </member>
-        <member name="F:Sudoku.Analytics.Keywords.KeywordVerbs.None">
-            <summary>
-            The placeholder of the verb enumeration type.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Keywords.KeywordVerbs.StringEqualityComparison">
-            <summary>
-            Indicates the verb is to compare string equality.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Keywords.KeywordVerbs.StringPattern">
-            <summary>
-            Indicates the verb is to check regular expression pattern of a string.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Keywords.KeywordVerbs.NumberComparison">
-            <summary>
-            Indicates the verb is to compare number equality, also includes inequality operators like greater-than <c>&gt;=</c>.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Keywords.KeywordVerbs.NumberRange">
-            <summary>
-            Indicates the verb is to check whether a number is in a range.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Analytics.Keywords.StepExtensions">
-            <summary>
-            Represents extension methods on <see cref="T:Sudoku.Analytics.Step"/> instances.
-            </summary>
-            <seealso cref="T:Sudoku.Analytics.Step"/>
-        </member>
-        <member name="T:Sudoku.Analytics.Keywords.StepExtensions.&lt;&gt;E__0">
-            <summary>
-            Provides extension members on <see cref="T:Sudoku.Analytics.Step"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.StepExtensions.&lt;&gt;E__0.TryGetPropertyValue``1(System.String,``0@)">
-            <summary>
-            Determine whether the current instance contains a property of name <paramref name="propertyName"/>.
-            </summary>
-            <typeparam name="T">The type of property value.</typeparam>
-            <param name="propertyName">The name of property.</param>
-            <param name="result">The result value.</param>
-            <returns>A <see cref="T:System.Boolean"/> result.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.StepExtensions.TryGetPropertyValue``1(Sudoku.Analytics.Step,System.String,``0@)">
-            <inheritdoc cref="M:Sudoku.Analytics.Keywords.StepExtensions.&lt;&gt;E__0.TryGetPropertyValue``1(System.String,``0@)"/>
-        </member>
-        <member name="T:Sudoku.Analytics.Keywords.TechniqueKeywordValueConverter">
-            <summary>
-            Represents a keyword value converter for <see cref="T:Sudoku.Categorization.Technique"/> instance.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.TechniqueKeywordValueConverter.TargetType">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Keywords.TechniqueKeywordValueConverter.BaseType">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.TechniqueKeywordValueConverter.TryConvert(System.Object,Sudoku.Analytics.Step,System.Object@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Keywords.TechniqueKeywordValueConverter.TryConvertBack(System.Object,Sudoku.Analytics.Step,System.Object@)">
-            <inheritdoc/>
-        </member>
         <member name="T:Sudoku.Analytics.ParallelAsyncCollectorAwaitable">
             <summary>
             Represents an awaitable rule on collecting steps from a puzzle.
@@ -28840,13 +28452,13 @@
         <member name="M:Sudoku.Generating.Filtering.KeywordCondition.GetValue(Sudoku.Analytics.Step,System.String)">
             <summary>
             Returns the value of the property in a step instance;
-            if <see cref="P:Sudoku.Analytics.Keywords.KeywordAttribute.KeywordConverterType"/> configured,
+            if <see cref="P:Sudoku.Keywords.KeywordAttribute.KeywordConverterType"/> configured,
             a value converter will be invoked, and cast from original value into keyword-type-compatible one.
             </summary>
             <param name="instance">The instance.</param>
             <param name="keyword">The keyword.</param>
             <returns>The real value set. You should cast to target type if you want.</returns>
-            <exception cref="T:Sudoku.Analytics.Keywords.InvalidKeywordException">
+            <exception cref="T:Sudoku.Keywords.InvalidKeywordException">
             Throws when the keyword is not found in its containing type, or it is not a keyword.
             </exception>
         </member>
@@ -29278,6 +28890,394 @@
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Generating.Qualified.TechniqueGenerator.TryGenerateUnique(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Keywords.InvalidKeywordConverterTypeException">
+            <summary>
+            Represents an exception that describes "invalid keyword converter type" information.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Keywords.InvalidKeywordConverterTypeException.Message">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Keywords.InvalidKeywordException">
+            <summary>
+            Represents an exception that describes "invalid keyword" information.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Keywords.InvalidKeywordException.Message">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Keywords.Keyword">
+            <summary>
+            Provides helper methods for retrieving attributes with <see cref="T:Sudoku.Keywords.KeywordAttribute"/> inheritance rules.
+            </summary>
+            <seealso cref="T:Sudoku.Keywords.KeywordAttribute"/>
+        </member>
+        <member name="F:Sudoku.Keywords.Keyword.PropertyBindingFlags">
+            <summary>
+            Represents default binding flags on property.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Keywords.Keyword.GetName(System.String,System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            Retrieves the name of the keyword.
+            </summary>
+            <param name="keyword">The keyword.</param>
+            <param name="keywordType">The keyword containing type.</param>
+            <param name="cultureInfo">The culture information.</param>
+            <returns>The name of the keyword.</returns>
+            <exception cref="T:Sudoku.Keywords.InvalidKeywordException">Throws when the target property specified is not a valid keyword.</exception>
+        </member>
+        <member name="M:Sudoku.Keywords.Keyword.GetDescription(System.String,System.Type)">
+            <summary>
+            Retrieves the description of the keyword.
+            </summary>
+            <param name="keyword">The keyword.</param>
+            <param name="keywordType">The keyword containing type.</param>
+            <returns>The description of the keyword.</returns>
+            <exception cref="T:Sudoku.Keywords.InvalidKeywordException">Throws when the target property specified is not a valid keyword.</exception>
+        </member>
+        <member name="M:Sudoku.Keywords.Keyword.GetKeywordVerbs(System.String,System.Type)">
+            <summary>
+            Retrieves possible keyword verbs.
+            </summary>
+            <param name="keyword">The keyword.</param>
+            <param name="keywordType">The keyword containing type.</param>
+            <returns>All keyword verbs allowed.</returns>
+            <exception cref="T:Sudoku.Keywords.InvalidKeywordException">Throws when the target property specified is not a valid keyword.</exception>
+        </member>
+        <member name="M:Sudoku.Keywords.Keyword.GetKeywords(System.Type)">
+            <summary>
+            Retrieves possible keywords that are marked <see cref="T:Sudoku.Keywords.KeywordAttribute"/>.
+            </summary>
+            <param name="keywordType">The keyword type.</param>
+            <returns>A list of keywords that are marked <see cref="T:Sudoku.Keywords.KeywordAttribute"/>.</returns>
+            <exception cref="T:System.ArgumentException">Throws when the target type is not derived from <see cref="T:Sudoku.Analytics.Step"/>.</exception>
+            <seealso cref="T:Sudoku.Keywords.KeywordAttribute"/>
+        </member>
+        <member name="M:Sudoku.Keywords.Keyword.GetKeywordType(System.String,System.Type)">
+            <summary>
+            <para>Try to get the meta type of the keyword.</para>
+            <para>
+            The value will be inferred from target property type of assembly;
+            if the target type is not valid keyword type (enumeration and so on),
+            the value will be fetched from property <see cref="P:Sudoku.Keywords.KeywordAttribute.MetaType"/>.
+            </para>
+            </summary>
+            <param name="keyword">The keyword.</param>
+            <param name="keywordType">The containing type.</param>
+            <returns>The keyword type.</returns>
+            <seealso cref="P:Sudoku.Keywords.KeywordAttribute.MetaType"/>
+        </member>
+        <member name="M:Sudoku.Keywords.Keyword.GetKeywordAttribute(System.String,System.Type)">
+            <summary>
+            Gets <see cref="T:Sudoku.Keywords.KeywordAttribute"/> configured.
+            </summary>
+            <param name="keyword">The keyword.</param>
+            <param name="keywordType">The keyword type.</param>
+            <returns>
+            The <see cref="T:Sudoku.Keywords.KeywordAttribute"/> instance configured; or <see langword="null"/> if it is not a keyword.
+            </returns>
+        </member>
+        <member name="M:Sudoku.Keywords.Keyword.IsKeyword(System.String,System.Type,System.Reflection.PropertyInfo@)">
+            <summary>
+            Determine whether the specified property name is a keyword.
+            </summary>
+            <param name="propertyName">The property name.</param>
+            <param name="containingType">The property containing type.</param>
+            <param name="propertyInfo">The property information instance.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:Sudoku.Keywords.Keyword.GetAttribute``1(System.Reflection.PropertyInfo)">
+            <summary>
+            Retrieves the attribute applied to a property according to custom inheritance rules.
+            </summary>
+            <typeparam name="TAttribute">The type of the attribute to retrieve.</typeparam>
+            <param name="property">The property to inspect.</param>
+            <returns>
+            The attribute instance based on these rules:
+            <list type="bullet">
+            <item>For <see langword="override"/> properties: Returns base class attribute</item>
+            <item>For <see langword="new"/> properties: Returns only if defined on current property</item>
+            <item>For non-overridden properties: Returns base class attribute</item>
+            </list>
+            </returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when property is <see langword="null"/>.</exception>
+        </member>
+        <member name="M:Sudoku.Keywords.Keyword.IsNewProperty(System.Reflection.PropertyInfo)">
+            <summary>
+            Determines if the property is declared with the <see langword="new"/> keyword.
+            </summary>
+            <param name="property">Property to check.</param>
+            <returns>
+            True if property hides base member with <see langword="new"/> keyword, False otherwise.
+            </returns>
+        </member>
+        <member name="M:Sudoku.Keywords.Keyword.FindInBaseClasses``1(System.Reflection.PropertyInfo)">
+            <summary>
+            Finds the attribute in the property's inheritance hierarchy.
+            </summary>
+            <typeparam name="TAttribute">Attribute type to find.</typeparam>
+            <param name="property">Starting property.</param>
+            <returns>
+            First found attribute in base classes, or <see langword="null"/> if not found.
+            </returns>
+        </member>
+        <member name="T:Sudoku.Keywords.PropertyCollector">
+            <summary>
+            Collect all instance properties declared in a type and its base types,
+            including private ones, excluding static and interface properties.
+            Overrides are only counted once (even if re-<see langword="abstract"/>ed),
+            while <see langword="new"/> properties are counted separately.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Keywords.PropertyCollector.InstancePropertyFlags">
+            <summary>
+            Represents instance property flags.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Keywords.PropertyCollector.GetAllDeclaredProperties(System.Type)">
+            <summary>
+            Retrieves all instance properties declared in the given type and its base types.
+            This includes non-<see langword="public"/> properties. Overrides are only counted once.
+            Properties declared with <see langword="new"/> are treated as distinct.
+            </summary>
+            <param name="type">The leaf type to begin property collection from.</param>
+            <returns>A list of PropertyInfo instances that match the criteria.</returns>
+        </member>
+        <member name="M:Sudoku.Keywords.PropertyCollector.IsNewMethod(System.Reflection.MethodInfo)">
+            <summary>
+            Determines whether a method is using the <see langword="new"/> keyword (i.e., it hides a base method).
+            </summary>
+            <param name="method">The method to inspect.</param>
+            <returns>True if the method is <see langword="new"/>, false otherwise.</returns>
+        </member>
+        <member name="T:Sudoku.Keywords.KeywordAttribute">
+            <summary>
+            Represents an attribute type that describes the property is marked as special property to be filtered in reflection.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Keywords.KeywordAttribute.IncludesMinimum">
+            <summary>
+            Indicates whether the range includes minimum value. By default it's <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Keywords.KeywordAttribute.IncludesMaximum">
+            <summary>
+            Indicates whether the range includes maximum value. By default it's <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Keywords.KeywordAttribute.Minimum">
+            <summary>
+            Indicates the minimum value. By default it's -1.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Keywords.KeywordAttribute.Maximum">
+            <summary>
+            Indicates the maximum value. By default it's -1.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Keywords.KeywordAttribute.NameResourceKey">
+            <summary>
+            Indicates the name resource key to the property.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Keywords.KeywordAttribute.DescriptionResourceKey">
+            <summary>
+            Indicates the description resource key to the property. By default it's <see langword="null"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Keywords.KeywordAttribute.AllowedVerbs">
+            <summary>
+            Indicates the allowed verbs in runtime.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Keywords.KeywordAttribute.MetaType">
+            <summary>
+            Indicates the meta type configured.
+            </summary>
+            <remarks>
+            <para>
+            The meta type will be represented in runtime type checking and conversion,
+            in order to achieve complex conversion behaviors from the specified value into built-in types.
+            </para>
+            <para>
+            For example, if the target type mark this attribute is an enumeration type (like <see cref="P:Sudoku.Analytics.Step.Code"/>),
+            we can configure this property with value <see cref="F:Sudoku.Keywords.KeywordType.String"/>,
+            the runtime will use its string representation of target keyword property value (using <see cref="M:System.Enum.ToString"/>)
+            to convert the original value into built-in type <see cref="F:Sudoku.Keywords.KeywordType.String"/>.
+            </para>
+            </remarks>
+            <seealso cref="P:Sudoku.Analytics.Step.Code"/>
+            <seealso cref="M:System.Enum.ToString"/>
+            <seealso cref="F:Sudoku.Keywords.KeywordType.String"/>
+        </member>
+        <member name="P:Sudoku.Keywords.KeywordAttribute.KeywordConverterType">
+            <summary>
+            Indicates keyword converter type.
+            </summary>
+            <value>
+            The type to be assigned. The value shouldn't be <see langword="null"/> and must leave parameterless constructor.
+            </value>
+            <exception cref="T:Sudoku.Keywords.InvalidKeywordConverterTypeException">
+            Throws when the value is not derived from <see cref="T:Sudoku.Keywords.KeywordValueConverter"/>,
+            or doesn't contain a visible parameterless constructor to be invoked.
+            </exception>
+        </member>
+        <member name="T:Sudoku.Keywords.KeywordType">
+            <summary>
+            Represents a keyword type.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Keywords.KeywordType.Unknown">
+            <summary>
+            Indicates the keyword type is unknown. The type should be parsed if matched;
+            otherwise, you should configure them using <see cref="T:Sudoku.Keywords.KeywordAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Keywords.KeywordType.Number">
+            <summary>
+            Indicates the number.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Keywords.KeywordType.String">
+            <summary>
+            Indicates the string.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Keywords.KeywordTypeExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:Sudoku.Keywords.KeywordType"/>.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Keywords.KeywordTypeExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Keywords.KeywordType"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Keywords.KeywordTypeExtensions.&lt;&gt;E__0.AllowedVerbs">
+            <summary>
+            Indicates allowed verbs.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Keywords.KeywordTypeExtensions.get_AllowedVerbs(Sudoku.Keywords.KeywordType)">
+            <inheritdoc cref="P:Sudoku.Keywords.KeywordTypeExtensions.&lt;&gt;E__0.AllowedVerbs"/>
+        </member>
+        <member name="T:Sudoku.Keywords.KeywordValueConverter">
+            <summary>
+            Represents a value converter that can cast a value from a variant type into a keyword type
+            supported in enumeration type <see cref="T:Sudoku.Keywords.KeywordType"/>.
+            </summary>
+            <seealso cref="T:Sudoku.Keywords.KeywordType"/>
+        </member>
+        <member name="P:Sudoku.Keywords.KeywordValueConverter.TargetType">
+            <summary>
+            Indicates the target type.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Keywords.KeywordValueConverter.BaseType">
+            <summary>
+            Indicates the base type.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Keywords.KeywordValueConverter.TryConvert(System.Object,Sudoku.Analytics.Step,System.Object@)">
+            <summary>
+            Try to convert a value to the target type.
+            </summary>
+            <param name="value">The value to convert from.</param>
+            <param name="step">The step instance.</param>
+            <param name="result">The result converted.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether the conversion success.</returns>
+        </member>
+        <member name="M:Sudoku.Keywords.KeywordValueConverter.TryConvertBack(System.Object,Sudoku.Analytics.Step,System.Object@)">
+            <summary>
+            Try to convert a value back to base type.
+            </summary>
+            <param name="value">The value to convert from.</param>
+            <param name="step">The step instance.</param>
+            <param name="result">The result converted.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether the conversion success.</returns>
+            <remarks>
+            This method can keep not being implemented if the target value converter doesn't want to support this.
+            </remarks>
+        </member>
+        <member name="T:Sudoku.Keywords.KeywordVerbs">
+            <summary>
+            Represents a verb of keyword filtering rule.
+            </summary>
+            <remarks><flags-attribute>
+		<para>
+			<i>
+				This type is marked <see cref="T:System.FlagsAttribute" />, which means you can use
+				<see langword="operator" /> | to combine multiple fields.
+			</i>
+		</para>
+	</flags-attribute></remarks>
+        </member>
+        <member name="F:Sudoku.Keywords.KeywordVerbs.None">
+            <summary>
+            The placeholder of the verb enumeration type.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Keywords.KeywordVerbs.StringEqualityComparison">
+            <summary>
+            Indicates the verb is to compare string equality.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Keywords.KeywordVerbs.StringPattern">
+            <summary>
+            Indicates the verb is to check regular expression pattern of a string.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Keywords.KeywordVerbs.NumberComparison">
+            <summary>
+            Indicates the verb is to compare number equality, also includes inequality operators like greater-than <c>&gt;=</c>.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Keywords.KeywordVerbs.NumberRange">
+            <summary>
+            Indicates the verb is to check whether a number is in a range.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Keywords.StepExtensions">
+            <summary>
+            Represents extension methods on <see cref="T:Sudoku.Analytics.Step"/> instances.
+            </summary>
+            <seealso cref="T:Sudoku.Analytics.Step"/>
+        </member>
+        <member name="T:Sudoku.Keywords.StepExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Analytics.Step"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Keywords.StepExtensions.&lt;&gt;E__0.TryGetPropertyValue``1(System.String,``0@)">
+            <summary>
+            Determine whether the current instance contains a property of name <paramref name="propertyName"/>.
+            </summary>
+            <typeparam name="T">The type of property value.</typeparam>
+            <param name="propertyName">The name of property.</param>
+            <param name="result">The result value.</param>
+            <returns>A <see cref="T:System.Boolean"/> result.</returns>
+        </member>
+        <member name="M:Sudoku.Keywords.StepExtensions.TryGetPropertyValue``1(Sudoku.Analytics.Step,System.String,``0@)">
+            <inheritdoc cref="M:Sudoku.Keywords.StepExtensions.&lt;&gt;E__0.TryGetPropertyValue``1(System.String,``0@)"/>
+        </member>
+        <member name="T:Sudoku.Keywords.TechniqueKeywordValueConverter">
+            <summary>
+            Represents a keyword value converter for <see cref="T:Sudoku.Categorization.Technique"/> instance.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Keywords.TechniqueKeywordValueConverter.TargetType">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Keywords.TechniqueKeywordValueConverter.BaseType">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Keywords.TechniqueKeywordValueConverter.TryConvert(System.Object,Sudoku.Analytics.Step,System.Object@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Keywords.TechniqueKeywordValueConverter.TryConvertBack(System.Object,Sudoku.Analytics.Step,System.Object@)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Linq.AnalysisResultEnumerable">

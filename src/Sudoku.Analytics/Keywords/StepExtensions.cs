@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Keywords;
+namespace Sudoku.Keywords;
 
 /// <summary>
 /// Represents extension methods on <see cref="Step"/> instances.

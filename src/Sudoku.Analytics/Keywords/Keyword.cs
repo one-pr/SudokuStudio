@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Keywords;
+namespace Sudoku.Keywords;
 
 /// <summary>
 /// Provides helper methods for retrieving attributes with <see cref="KeywordAttribute"/> inheritance rules.
