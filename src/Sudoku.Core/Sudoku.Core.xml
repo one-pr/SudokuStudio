@@ -12922,21 +12922,6 @@
             Indicates two <see cref="T:Sudoku.Concepts.IGrid`1"/> instances compare with each other, including considerations on transforming cases.
             </summary>
         </member>
-        <member name="T:Sudoku.Shuffling.Transforming.GridTransformingExtensions">
-            <summary>
-            Provides with extension methods on <see cref="T:Sudoku.Concepts.Grid"/>.
-            </summary>
-            <seealso cref="T:Sudoku.Concepts.Grid"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.GridTransformingExtensions.Transform(Sudoku.Concepts.Grid@,Sudoku.Shuffling.Transforming.TransformType)">
-            <summary>
-            Transforms the grid by the specified type.
-            </summary>
-            <param name="grid">The grid to be transformed.</param>
-            <param name="transformTypes">
-            The transform types can be applied. You can use <c><see cref="T:Sudoku.Shuffling.Transforming.TransformType"/>.<see langword="operator"/> |</c> to combine flags.
-            </param>
-        </member>
         <member name="T:Sudoku.Shuffling.Transforming.IElementSwappingTransformable`2">
             <summary>
             Represents an object that can swap elements of itself.
@@ -13160,19 +13145,30 @@
             The table of pi-rotation.
             </summary>
         </member>
-        <member name="F:Sudoku.Shuffling.Transforming.Transformation.SwappableHouses">
+        <member name="T:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0">
             <summary>
-            Indicates the swappable pairs, which means the swappable houses.
+            Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="T:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1">
+        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0.Transform(Sudoku.Shuffling.Transforming.TransformType)">
+            <summary>
+            Transforms the grid by the specified type.
+            </summary>
+            <param name="transformTypes">
+            The transform types can be applied.
+            </param>
+        </member>
+        <member name="M:Sudoku.Shuffling.Transforming.Transformation.Transform(Sudoku.Concepts.Grid@,Sudoku.Shuffling.Transforming.TransformType)">
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0.Transform(Sudoku.Shuffling.Transforming.TransformType)"/>
+        </member>
+        <member name="T:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1">
             <summary>
             Provides extension members on <typeparamref name="TGrid"/>,
             where <typeparamref name="TGrid"/> satisfies <see langword="unmanaged"/>
             and <see cref="T:Sudoku.Concepts.IInlineArrayGrid`1"/> constraints.
             </summary>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.MirrorLeftRight">
+        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.MirrorLeftRight">
             <summary>
             Mirror left-right the grid.
             </summary>
@@ -13182,7 +13178,7 @@
             in order to inline multiple transformation operations.
             </remarks>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.MirrorTopBottom">
+        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.MirrorTopBottom">
             <summary>
             Mirror top-bottom the grid.
             </summary>
@@ -13192,7 +13188,7 @@
             in order to inline multiple transformation operations.
             </remarks>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.MirrorDiagonal">
+        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.MirrorDiagonal">
             <summary>
             Mirror diagonal the grid.
             </summary>
@@ -13202,7 +13198,7 @@
             in order to inline multiple transformation operations.
             </remarks>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.Transpose">
+        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.Transpose">
             <summary>
             Transpose the grid.
             </summary>
@@ -13212,7 +13208,7 @@
             in order to inline multiple transformation operations.
             </remarks>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.MirrorAntidiagonal">
+        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.MirrorAntidiagonal">
             <summary>
             Mirror anti-diagonal the grid.
             </summary>
@@ -13222,7 +13218,7 @@
             in order to inline multiple transformation operations.
             </remarks>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.RotateClockwise">
+        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.RotateClockwise">
             <summary>
             Rotate the grid clockwise.
             </summary>
@@ -13232,7 +13228,7 @@
             in order to inline multiple transformation operations.
             </remarks>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.RotateCounterclockwise">
+        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.RotateCounterclockwise">
             <summary>
             Rotate the grid counterclockwise.
             </summary>
@@ -13242,7 +13238,7 @@
             in order to inline multiple transformation operations.
             </remarks>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.RotatePi">
+        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.RotatePi">
             <summary>
             Rotate the grid <c><see cref="F:System.Math.PI"/></c> degrees.
             </summary>
@@ -13253,7 +13249,7 @@
             </remarks>
             <seealso cref="F:System.Math.PI"/>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.SwapDigit(System.Int32,System.Int32)">
+        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.SwapDigit(System.Int32,System.Int32)">
             <summary>
             Swap two digits.
             </summary>
@@ -13262,7 +13258,7 @@
             <returns>The reference to the current grid.</returns>
             <exception cref="T:System.ArgumentException">Throws when the puzzle is not solved.</exception>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.SwapHouse(System.Int32,System.Int32)">
+        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.SwapHouse(System.Int32,System.Int32)">
             <summary>
             Swap to houses.
             </summary>
@@ -13274,7 +13270,7 @@
             two houses are not in same house type, or are not swappable.
             </exception>
         </member>
-        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.SwapChute(System.Int32,System.Int32)">
+        <member name="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.SwapChute(System.Int32,System.Int32)">
             <summary>
             Swap chutes (i.e. mega-rows or mega-columns).
             </summary>
@@ -13284,37 +13280,37 @@
             <exception cref="T:System.ArgumentException">Throws when two specified chute index is not in valid range (0..6).</exception>
         </member>
         <member name="M:Sudoku.Shuffling.Transforming.Transformation.MirrorLeftRight``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.MirrorLeftRight"/>
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.MirrorLeftRight"/>
         </member>
         <member name="M:Sudoku.Shuffling.Transforming.Transformation.MirrorTopBottom``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.MirrorTopBottom"/>
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.MirrorTopBottom"/>
         </member>
         <member name="M:Sudoku.Shuffling.Transforming.Transformation.MirrorDiagonal``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.MirrorDiagonal"/>
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.MirrorDiagonal"/>
         </member>
         <member name="M:Sudoku.Shuffling.Transforming.Transformation.Transpose``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.Transpose"/>
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.Transpose"/>
         </member>
         <member name="M:Sudoku.Shuffling.Transforming.Transformation.MirrorAntidiagonal``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.MirrorAntidiagonal"/>
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.MirrorAntidiagonal"/>
         </member>
         <member name="M:Sudoku.Shuffling.Transforming.Transformation.RotateClockwise``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.RotateClockwise"/>
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.RotateClockwise"/>
         </member>
         <member name="M:Sudoku.Shuffling.Transforming.Transformation.RotateCounterclockwise``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.RotateCounterclockwise"/>
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.RotateCounterclockwise"/>
         </member>
         <member name="M:Sudoku.Shuffling.Transforming.Transformation.RotatePi``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.RotatePi"/>
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.RotatePi"/>
         </member>
         <member name="M:Sudoku.Shuffling.Transforming.Transformation.SwapDigit``1(``0@,System.Int32,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.SwapDigit(System.Int32,System.Int32)"/>
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.SwapDigit(System.Int32,System.Int32)"/>
         </member>
         <member name="M:Sudoku.Shuffling.Transforming.Transformation.SwapHouse``1(``0@,System.Int32,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.SwapHouse(System.Int32,System.Int32)"/>
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.SwapHouse(System.Int32,System.Int32)"/>
         </member>
         <member name="M:Sudoku.Shuffling.Transforming.Transformation.SwapChute``1(``0@,System.Int32,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__0`1.SwapChute(System.Int32,System.Int32)"/>
+            <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.SwapChute(System.Int32,System.Int32)"/>
         </member>
         <member name="T:Sudoku.Shuffling.Transforming.TransformType">
             <summary>
