@@ -1,4 +1,4 @@
-namespace Sudoku.Ranking;
+namespace Sudoku.Algorithms.Ranking;
 
 public partial struct RankPattern
 {

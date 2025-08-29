@@ -1,4 +1,4 @@
-namespace Sudoku.Ranking;
+namespace Sudoku.Algorithms.Ranking;
 
 /// <summary>
 /// Represents an option that checks for elimination zones.

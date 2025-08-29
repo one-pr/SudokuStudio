@@ -1,12 +1,12 @@
-namespace Sudoku.Cognition;
+namespace Sudoku.BehaviorRecognition;
 
 /// <summary>
-/// Represents a way to finish puzzle with block-first rule.
+/// Represents a way to finish puzzle with digit-first rule.
 /// </summary>
-public sealed class BlockFirst : IBehaviorMetric
+public sealed class DigitFirst : IBehaviorMetric
 {
 	/// <inheritdoc/>
-	public static UserBehavior MeasurableBehavior => UserBehavior.BlockFirst;
+	public static UserBehavior MeasurableBehavior => UserBehavior.DigitFirst;
 
 
 	/// <inheritdoc/>
@@ -62,7 +62,7 @@ public sealed class BlockFirst : IBehaviorMetric
 		return result.AsSpan();
 
 
-		(SingleStep Step, int Score) findNearestStep(
+		static (SingleStep Step, int Score) findNearestStep(
 			in Grid grid,
 			in Grid playground,
 			SingleStep lastStep,
@@ -72,63 +72,11 @@ public sealed class BlockFirst : IBehaviorMetric
 			var (minScore, minStep) = (int.MaxValue, default(SingleStep)!);
 			foreach (var step in stepGroups[0])
 			{
-				if (lastStep is { Cell: var lastCell, Digit: var lastDigit }
-					&& step.Cell.ToHouse(HouseType.Block) == lastCell.ToHouse(HouseType.Block)
-					&& lastDigit > step.Digit
-					&& lastCell.ToHouse(HouseType.Block) is var block
-					&& (HousesMap[block] & playground.EmptyCells).Count != 1)
-				{
-					// Special rule:
-					// If a user has found a new step that will revert filling rule,
-					// it will be allowed if and only if the step is a full house.
-					continue;
-				}
-
 				var newScore = getScore(grid, playground, lastStep?.Cell ?? -1, step.Cell);
 				if (newScore <= minScore)
 				{
 					minScore = newScore;
 					minStep = step;
-				}
-			}
-
-			// Last resort: If a 'minStep' is not found, it must be treated as a new loop to find a new step.
-			if (minStep is null)
-			{
-				minScore = int.MaxValue;
-				minStep = default!;
-				foreach (var step in stepGroups[0])
-				{
-					var s = getBottomingScore(step, playground);
-					if (s <= minScore)
-					{
-						minScore = s;
-						minStep = step;
-					}
-				}
-				return (minStep, minScore);
-
-
-				int getBottomingScore(SingleStep step, in Grid playground)
-				{
-					var lastDigit = solution.GetDigit(lastStep!.Cell);
-					var currentDigit = solution.GetDigit(step.Cell);
-					var currentCellBlock = step.Cell.ToHouse(HouseType.Block);
-					var baseScore = 0;
-					for (var (currentBlock, i) = (currentCellBlock, 0); i < 9; currentBlock = (currentBlock + 1) % 9, i++)
-					{
-						baseScore += (playground.EmptyCells & HousesMap[currentBlock]).Count;
-					}
-
-					var mask = (Mask)0;
-					for (var d = 0; d < currentDigit; d++)
-					{
-						if (playground.CandidatesMap[d] & HousesMap[currentCellBlock])
-						{
-							mask |= (Mask)(1 << d);
-						}
-					}
-					return baseScore + PopCount((uint)mask);
 				}
 			}
 			return (minStep, minScore);
@@ -141,23 +89,26 @@ public sealed class BlockFirst : IBehaviorMetric
 			// Create index table. e.g. If block 1 is missing digit 2, 5 and 7, we should make them in queue.
 			var indexedList = new List<Cell>();
 			var emptyCells = playground.EmptyCells;
-			var startBlock = lastCell == -1 ? 0 : lastCell.ToHouse(HouseType.Block);
-			for (var (block, i) = (startBlock, 0); i < 9; block = (block + 1) % 9, i++)
+			var valuesMap = playground.ValuesMap;
+			var startDigit = lastCell == -1 ? 0 : solution.GetDigit(lastCell);
+			for (var (digit, i) = (startDigit, 0); i < 9; digit = (digit + 1) % 9, i++)
 			{
-				var emptyCellsInHouse = emptyCells & HousesMap[block];
-				if (!emptyCellsInHouse)
+				if (valuesMap[digit].Count == 9)
 				{
 					continue;
 				}
 
-				foreach (var digit in playground[emptyCellsInHouse])
+				for (var block = 0; block < 9; block++)
 				{
-					foreach (var cell in emptyCellsInHouse)
+					if (!(valuesMap[digit] & HousesMap[block]))
 					{
-						if (solution.GetDigit(cell) == digit && !indexedList.Contains(cell))
+						foreach (var cell in emptyCells & HousesMap[block])
 						{
-							indexedList.Add(cell);
-							break;
+							if (solution.GetDigit(cell) == digit)
+							{
+								indexedList.Add(cell);
+								break;
+							}
 						}
 					}
 				}
@@ -165,25 +116,25 @@ public sealed class BlockFirst : IBehaviorMetric
 
 			// If a step is from the middle of the digit, we should check whether the previous step uses a different digit,
 			// and remove them to find the number of digits in the removed set.
-			var mask = playground[emptyCells & HousesMap[startBlock]];
+			var mask = Grid.MaxCandidatesMask;
 			if (lastCell != -1)
 			{
-				var maskCopied = mask;
-				foreach (var digit in maskCopied)
+				var lastBlock = lastCell.ToHouse(HouseType.Block);
+				for (var block = 0; block < 9; block++)
 				{
-					if (digit > solution.GetDigit(lastCell))
+					if (lastBlock < block || !!(valuesMap[startDigit] & HousesMap[block]))
 					{
-						mask &= (Mask)~(1 << digit);
+						mask &= (Mask)~(1 << block);
 					}
 				}
 			}
 
 			if (lastCell != -1
-				&& IsPow2((lastCell.AsCellMap() + currentCell).BlockMask)
 				&& solution.GetDigit(lastCell) is var lastDigit
 				&& solution.GetDigit(currentCell) is var currentDigit
-				&& currentDigit < lastDigit
-				&& (emptyCells & HousesMap[lastCell.ToHouse(HouseType.Block)]).Count == 1)
+				&& lastCell.ToHouse(HouseType.Block) is var lastHouse
+				&& currentCell.ToHouse(HouseType.Block) is var currentHouse
+				&& currentDigit == lastDigit && currentHouse < lastHouse)
 			{
 				// Directly measure the distance, ignoring whether two digits are filled with having reverted or not.
 				return 1;

@@ -1,4 +1,4 @@
-namespace Sudoku.Ranking;
+namespace Sudoku.Algorithms.Ranking;
 
 /// <summary>
 /// Represents too complex exception.
