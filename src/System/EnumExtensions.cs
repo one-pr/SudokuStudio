@@ -99,7 +99,6 @@ public static class EnumExtensions
 		public EnumFlagsEnumerator<T> GetEnumerator() => new(@this);
 
 
-
 		/// <inheritdoc cref="Enum.Parse{TEnum}(ReadOnlySpan{char})"/>
 		public static bool TryParse(ReadOnlySpan<char> value, out T result) => Enum.TryParse(value, out result);
 
