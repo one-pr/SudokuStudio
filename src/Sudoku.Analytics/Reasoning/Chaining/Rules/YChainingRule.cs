@@ -1,4 +1,4 @@
-namespace Sudoku.Construction.Chaining.Rules;
+namespace Sudoku.Reasoning.Chaining.Rules;
 
 /// <summary>
 /// Represents a chaining rule on Y rule (i.e. <see cref="LinkType.SingleCell"/>).

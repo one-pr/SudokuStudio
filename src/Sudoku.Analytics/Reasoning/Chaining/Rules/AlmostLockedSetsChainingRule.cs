@@ -1,4 +1,4 @@
-namespace Sudoku.Construction.Chaining.Rules;
+namespace Sudoku.Reasoning.Chaining.Rules;
 
 /// <summary>
 /// Represents a chaining rule on ALS rule (i.e. <see cref="LinkType.AlmostLockedSets"/>).
