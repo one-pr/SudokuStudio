@@ -3414,7 +3414,7 @@ public enum Technique
 	[TechniqueMetadata<RemotePairStepSearcher, RemotePairStep>(
 		Rating = 50,
 		DifficultyLevel = DifficultyLevel.Hard,
-		ContainingGroup = TechniqueGroup.BabaGrouping)]
+		ContainingGroup = TechniqueGroup.AlternatingInferenceChain)]
 	RemotePair,
 
 	/// <summary>
@@ -3423,7 +3423,7 @@ public enum Technique
 	[TechniqueMetadata<RemotePairStepSearcher, RemotePairStep>(
 		Rating = 52,
 		DifficultyLevel = DifficultyLevel.Hard,
-		ContainingGroup = TechniqueGroup.BabaGrouping)]
+		ContainingGroup = TechniqueGroup.AlternatingInferenceChain)]
 	ComplexRemotePair,
 	#endregion
 
