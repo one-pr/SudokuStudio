@@ -767,15 +767,15 @@
             <param name="truths">Indicates the truths.</param>
             <returns>The spaces of the links.</returns>
         </member>
-        <member name="T:Sudoku.Algorithms.UniquenessTest.DeadlyPatternInferrerLimitReachedException">
+        <member name="T:Sudoku.Algorithms.UniquenessTests.DeadlyPatternInferrerLimitReachedException">
             <summary>
             Represents an exception that will be thrown if more than 10000 solutions found in a possible deadly pattern to be verified.
             </summary>
         </member>
-        <member name="P:Sudoku.Algorithms.UniquenessTest.DeadlyPatternInferrerLimitReachedException.Message">
+        <member name="P:Sudoku.Algorithms.UniquenessTests.DeadlyPatternInferrerLimitReachedException.Message">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap">
+        <member name="T:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap">
             <summary>
             Represents a map of cell and mask pairs, indicating the specified cells should only use specified digits.
             </summary>
@@ -794,7 +794,7 @@
             ]]></code>
             </para>
             <para>
-            Instances of this type can be used as arguments from method <see cref="M:Sudoku.Algorithms.UniquenessTest.UniquenessChecker.CanLeadToDeadlyPatternContradiction(System.Int32,Sudoku.Algorithms.UniquenessTest.PatternAssigningMap,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Algorithms.UniquenessTest.PatternTrialNode@)"/>,
+            Instances of this type can be used as arguments from method <see cref="M:Sudoku.Algorithms.UniquenessTests.UniquenessChecker.CanLeadToDeadlyPatternContradiction(System.Int32,Sudoku.Algorithms.UniquenessTests.PatternAssigningMap,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Algorithms.UniquenessTests.PatternTrialNode@)"/>,
             representing the digits can be checked and used for the specified cells.
             For example, if we want to restrict cell <c>r2c3</c> only checks for digits 1 and 9,
             we can construct a <see cref="T:System.Collections.Generic.KeyValuePair`2"/> of cell <c>r2c3</c> (index 11) and digit 1 and 9
@@ -803,37 +803,37 @@
             var kvp = KeyValuePair.Create(11, (Mask)(1 << 0 | 1 << 8)); // r2c3(19)
             var kvp2 = new KeyValuePair<Cell, Mask>(11, (Mask)(1 << 0 | 1 << 8)); // also okay
             ]]></code>
-            In this way, method <see cref="T:Sudoku.Algorithms.UniquenessTest.UniquenessChecker"/>.TryAssign will limit digits to be checked to only digits 1 and 9,
+            In this way, method <see cref="T:Sudoku.Algorithms.UniquenessTests.UniquenessChecker"/>.TryAssign will limit digits to be checked to only digits 1 and 9,
             to optimize checking experience by reducing complexity.
             </para>
             </remarks>
-            <seealso cref="M:Sudoku.Algorithms.UniquenessTest.UniquenessChecker.CanLeadToDeadlyPatternContradiction(System.Int32,Sudoku.Algorithms.UniquenessTest.PatternAssigningMap,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Algorithms.UniquenessTest.PatternTrialNode@)"/>
+            <seealso cref="M:Sudoku.Algorithms.UniquenessTests.UniquenessChecker.CanLeadToDeadlyPatternContradiction(System.Int32,Sudoku.Algorithms.UniquenessTests.PatternAssigningMap,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Algorithms.UniquenessTests.PatternTrialNode@)"/>
             <seealso cref="T:System.Collections.Generic.KeyValuePair`2"/>
             <seealso cref="M:System.Collections.Generic.KeyValuePair.Create``2(``0,``1)"/>
         </member>
-        <member name="F:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap._maskTable">
+        <member name="F:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap._maskTable">
             <summary>
             Indicates the backing mask table.
             </summary>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.#ctor">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.#ctor">
             <summary>
-            Initializes a <see cref="T:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap"/> instance.
+            Initializes a <see cref="T:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap"/> instance.
             </summary>
         </member>
-        <member name="P:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Count">
+        <member name="P:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.Count">
             <summary>
             Indicates the number of values.
             </summary>
         </member>
-        <member name="P:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Item(System.Int32)">
+        <member name="P:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.Item(System.Int32)">
             <summary>
             Lookups the current collection to get digits limited of the specified cell.
             </summary>
             <param name="cell">The cell specified.</param>
             <returns>The mask of digits.</returns>
         </member>
-        <member name="P:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Item(System.Int32,System.Int32)">
+        <member name="P:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.Item(System.Int32,System.Int32)">
             <summary>
             Determines whether the specified cell and digit exist in the current collection.
             </summary>
@@ -841,121 +841,121 @@
             <param name="digit">The digit.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.ToString">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
             <summary>
             Converts the current instance into string representation, using the specified coordinate converter instance.
             </summary>
             <param name="converter">The converter.</param>
             <returns>The string representation.</returns>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.ToString(System.IFormatProvider)">
             <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.AsCandidateMap">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.AsCandidateMap">
             <summary>
             Converts the current instance into a <see cref="T:Sudoku.Concepts.CandidateMap"/> instance.
             </summary>
             <returns>The instance of type <see cref="T:Sudoku.Concepts.CandidateMap"/>.</returns>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.GetEnumerator">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.GetEnumerator">
             <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.ToFrozenDictionary">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.ToFrozenDictionary">
             <summary>
             Converts the current instance into a <see cref="T:System.Collections.Frozen.FrozenDictionary`2"/> of cell and mask pairs.
             </summary>
             <returns>The instance of type <see cref="T:System.Collections.Frozen.FrozenDictionary`2"/>.</returns>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.System#IFormattable#ToString(System.String,System.IFormatProvider)">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.System#IFormattable#ToString(System.String,System.IFormatProvider)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.System#Collections#IEnumerable#GetEnumerator">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.System#Collections#IEnumerable#GetEnumerator">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{System#Int32,System#Int16}}#GetEnumerator">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{System#Int32,System#Int16}}#GetEnumerator">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Create(System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{System.Int32,System.Int16}})">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.Create(System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{System.Int32,System.Int16}})">
             <summary>
-            Creates a <see cref="T:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap"/> instance.
+            Creates a <see cref="T:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap"/> instance.
             </summary>
             <param name="values">The values.</param>
             <returns>The instance.</returns>
         </member>
-        <member name="T:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Enumerator">
+        <member name="T:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.Enumerator">
             <summary>
             Represents the backing enumerator instance.
             </summary>
             <param name="_dictionary">The backing dictionary.</param>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Enumerator.#ctor(System.Collections.Generic.Dictionary{System.Int32,System.Int16})">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.Enumerator.#ctor(System.Collections.Generic.Dictionary{System.Int32,System.Int16})">
             <summary>
             Represents the backing enumerator instance.
             </summary>
             <param name="_dictionary">The backing dictionary.</param>
         </member>
-        <member name="F:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Enumerator._enumerator">
+        <member name="F:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.Enumerator._enumerator">
             <summary>
             Indicates the backing enumerator.
             </summary>
         </member>
-        <member name="P:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Enumerator.Current">
+        <member name="P:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.Enumerator.Current">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Enumerator.System#Collections#IEnumerator#Current">
+        <member name="P:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.Enumerator.System#Collections#IEnumerator#Current">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Enumerator.MoveNext">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.Enumerator.MoveNext">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Enumerator.System#IDisposable#Dispose">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.Enumerator.System#IDisposable#Dispose">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternAssigningMap.Enumerator.System#Collections#IEnumerator#Reset">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternAssigningMap.Enumerator.System#Collections#IEnumerator#Reset">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Algorithms.UniquenessTest.PatternTrialNode">
+        <member name="T:Sudoku.Algorithms.UniquenessTests.PatternTrialNode">
             <summary>
             Represents a pattern trial node.
             </summary>
             <param name="Assigned">Indicates the assigned candidate.</param>
             <param name="Parent">Indicates the parent node.</param>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternTrialNode.#ctor(System.Int32,Sudoku.Algorithms.UniquenessTest.PatternTrialNode)">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternTrialNode.#ctor(System.Int32,Sudoku.Algorithms.UniquenessTests.PatternTrialNode)">
             <summary>
             Represents a pattern trial node.
             </summary>
             <param name="Assigned">Indicates the assigned candidate.</param>
             <param name="Parent">Indicates the parent node.</param>
         </member>
-        <member name="P:Sudoku.Algorithms.UniquenessTest.PatternTrialNode.Assigned">
+        <member name="P:Sudoku.Algorithms.UniquenessTests.PatternTrialNode.Assigned">
             <summary>Indicates the assigned candidate.</summary>
         </member>
-        <member name="P:Sudoku.Algorithms.UniquenessTest.PatternTrialNode.Parent">
+        <member name="P:Sudoku.Algorithms.UniquenessTests.PatternTrialNode.Parent">
             <summary>Indicates the parent node.</summary>
         </member>
-        <member name="P:Sudoku.Algorithms.UniquenessTest.PatternTrialNode.AssignedCandidates">
+        <member name="P:Sudoku.Algorithms.UniquenessTests.PatternTrialNode.AssignedCandidates">
             <summary>
             Indicates all assigned candidates.
             </summary>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternTrialNode.Equals(Sudoku.Algorithms.UniquenessTest.PatternTrialNode)">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternTrialNode.Equals(Sudoku.Algorithms.UniquenessTests.PatternTrialNode)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternTrialNode.GetHashCode">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternTrialNode.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternTrialNode.ApplyTo(Sudoku.Concepts.Grid@)">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternTrialNode.ApplyTo(Sudoku.Concepts.Grid@)">
             <summary>
             Apply all assignments to the target grid.
             </summary>
             <param name="grid">The grid.</param>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternTrialNode.PrintMembers(System.Text.StringBuilder)">
-            <target name="method" cref="M:Sudoku.Algorithms.UniquenessTest.PatternTrialNode.PrintMembers(System.Text.StringBuilder)">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternTrialNode.PrintMembers(System.Text.StringBuilder)">
+            <target name="method" cref="M:Sudoku.Algorithms.UniquenessTests.PatternTrialNode.PrintMembers(System.Text.StringBuilder)">
 				<summary>
 					Provides an easy way to concatenate output members inside a <see langword="record" />
 					or a <see langword="record struct" /> type.
@@ -993,66 +993,66 @@
 				</remarks>
 			</target>
         </member>
-        <member name="T:Sudoku.Algorithms.UniquenessTest.PatternUniquenessInfo">
+        <member name="T:Sudoku.Algorithms.UniquenessTests.PatternUniquenessInfo">
             <summary>
-            Indicates the result value after <see cref="M:Sudoku.Algorithms.UniquenessTest.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/> called.
+            Indicates the result value after <see cref="M:Sudoku.Algorithms.UniquenessTests.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/> called.
             </summary>
-            <param name="grid"><inheritdoc cref="F:Sudoku.Algorithms.UniquenessTest.PatternUniquenessInfo.Grid" path="/summary"/></param>
-            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.Algorithms.UniquenessTest.PatternUniquenessInfo.IsDeadlyPattern" path="/summary"/></param>
-            <param name="failedCases"><inheritdoc cref="P:Sudoku.Algorithms.UniquenessTest.PatternUniquenessInfo.FailedCases" path="/summary"/></param>
-            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.Algorithms.UniquenessTest.PatternUniquenessInfo.PatternCandidates" path="/summary"/></param>
-            <seealso cref="M:Sudoku.Algorithms.UniquenessTest.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/>
+            <param name="grid"><inheritdoc cref="F:Sudoku.Algorithms.UniquenessTests.PatternUniquenessInfo.Grid" path="/summary"/></param>
+            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.Algorithms.UniquenessTests.PatternUniquenessInfo.IsDeadlyPattern" path="/summary"/></param>
+            <param name="failedCases"><inheritdoc cref="P:Sudoku.Algorithms.UniquenessTests.PatternUniquenessInfo.FailedCases" path="/summary"/></param>
+            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.Algorithms.UniquenessTests.PatternUniquenessInfo.PatternCandidates" path="/summary"/></param>
+            <seealso cref="M:Sudoku.Algorithms.UniquenessTests.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.PatternUniquenessInfo.#ctor(Sudoku.Concepts.Grid@,System.Boolean,System.ReadOnlySpan{Sudoku.Concepts.Grid},Sudoku.Concepts.CandidateMap@)">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.PatternUniquenessInfo.#ctor(Sudoku.Concepts.Grid@,System.Boolean,System.ReadOnlySpan{Sudoku.Concepts.Grid},Sudoku.Concepts.CandidateMap@)">
             <summary>
-            Indicates the result value after <see cref="M:Sudoku.Algorithms.UniquenessTest.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/> called.
+            Indicates the result value after <see cref="M:Sudoku.Algorithms.UniquenessTests.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/> called.
             </summary>
-            <param name="grid"><inheritdoc cref="F:Sudoku.Algorithms.UniquenessTest.PatternUniquenessInfo.Grid" path="/summary"/></param>
-            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.Algorithms.UniquenessTest.PatternUniquenessInfo.IsDeadlyPattern" path="/summary"/></param>
-            <param name="failedCases"><inheritdoc cref="P:Sudoku.Algorithms.UniquenessTest.PatternUniquenessInfo.FailedCases" path="/summary"/></param>
-            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.Algorithms.UniquenessTest.PatternUniquenessInfo.PatternCandidates" path="/summary"/></param>
-            <seealso cref="M:Sudoku.Algorithms.UniquenessTest.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/>
+            <param name="grid"><inheritdoc cref="F:Sudoku.Algorithms.UniquenessTests.PatternUniquenessInfo.Grid" path="/summary"/></param>
+            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.Algorithms.UniquenessTests.PatternUniquenessInfo.IsDeadlyPattern" path="/summary"/></param>
+            <param name="failedCases"><inheritdoc cref="P:Sudoku.Algorithms.UniquenessTests.PatternUniquenessInfo.FailedCases" path="/summary"/></param>
+            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.Algorithms.UniquenessTests.PatternUniquenessInfo.PatternCandidates" path="/summary"/></param>
+            <seealso cref="M:Sudoku.Algorithms.UniquenessTests.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/>
         </member>
-        <member name="F:Sudoku.Algorithms.UniquenessTest.PatternUniquenessInfo.Grid">
+        <member name="F:Sudoku.Algorithms.UniquenessTests.PatternUniquenessInfo.Grid">
             <summary>
             Indicates the grid used.
             </summary>
         </member>
-        <member name="P:Sudoku.Algorithms.UniquenessTest.PatternUniquenessInfo.IsDeadlyPattern">
+        <member name="P:Sudoku.Algorithms.UniquenessTests.PatternUniquenessInfo.IsDeadlyPattern">
             <summary>
             Indicates the pattern is a real deadly pattern.
             </summary>
         </member>
-        <member name="P:Sudoku.Algorithms.UniquenessTest.PatternUniquenessInfo.FailedCases">
+        <member name="P:Sudoku.Algorithms.UniquenessTests.PatternUniquenessInfo.FailedCases">
             <summary>
             Indicates all possible failed cases. The value can be an empty sequence if the pattern is a real deadly pattern,
             or not a deadly pattern but containing obvious invalid candidates (like containing given or modifiable cells).
             </summary>
         </member>
-        <member name="P:Sudoku.Algorithms.UniquenessTest.PatternUniquenessInfo.PatternCandidates">
+        <member name="P:Sudoku.Algorithms.UniquenessTests.PatternUniquenessInfo.PatternCandidates">
             <summary>
             Indicates the candidates the pattern used.
             </summary>
         </member>
-        <member name="T:Sudoku.Algorithms.UniquenessTest.UniquenessChecker">
+        <member name="T:Sudoku.Algorithms.UniquenessTests.UniquenessChecker">
             <summary>
             Represents a type that checks and infers for a pattern (specified as a <see cref="T:Sudoku.Concepts.Grid"/>, but invalid - multiple solutions),
             determining whether the pattern is a deadly pattern.
             </summary>
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)">
             <summary>
             Try to analyze whether a grid is a deadly pattern, by only checking the specified cells.
             </summary>
             <param name="grid">Indicates the grid. It's required that only specified cells are assigned with candidates.</param>
             <param name="cells">Indicates the cells to be checked.</param>
             <returns>The result after the analysis operation is finished.</returns>
-            <exception cref="T:Sudoku.Algorithms.UniquenessTest.DeadlyPatternInferrerLimitReachedException">
+            <exception cref="T:Sudoku.Algorithms.UniquenessTests.DeadlyPatternInferrerLimitReachedException">
             Throws when the pattern contains more than 10000 solutions.
             </exception>
         </member>
-        <member name="M:Sudoku.Algorithms.UniquenessTest.UniquenessChecker.CanLeadToDeadlyPatternContradiction(System.Int32,Sudoku.Algorithms.UniquenessTest.PatternAssigningMap,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Algorithms.UniquenessTest.PatternTrialNode@)">
+        <member name="M:Sudoku.Algorithms.UniquenessTests.UniquenessChecker.CanLeadToDeadlyPatternContradiction(System.Int32,Sudoku.Algorithms.UniquenessTests.PatternAssigningMap,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Algorithms.UniquenessTests.PatternTrialNode@)">
             <summary>
             Try to assign a candidate, and find a complete pattern where all cells are assigned,
             and then check whether the assigned pattern can form a deadly pattern.
@@ -1068,7 +1068,7 @@
             <param name="cells">The cells in the grid to be checked.</param>
             <param name="result">
             The last node assigned if return value is <see langword="true"/>; otherwise, <see langword="null"/>.
-            If non-<see langword="null"/>, you can iterate with property <see cref="P:Sudoku.Algorithms.UniquenessTest.PatternTrialNode.Parent"/>
+            If non-<see langword="null"/>, you can iterate with property <see cref="P:Sudoku.Algorithms.UniquenessTests.PatternTrialNode.Parent"/>
             to find all candidates assigned.
             </param>
             <returns>

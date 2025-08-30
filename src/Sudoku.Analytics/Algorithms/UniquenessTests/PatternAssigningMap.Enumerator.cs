@@ -1,4 +1,4 @@
-namespace Sudoku.Algorithms.UniquenessTest;
+namespace Sudoku.Algorithms.UniquenessTests;
 
 public partial class PatternAssigningMap
 {

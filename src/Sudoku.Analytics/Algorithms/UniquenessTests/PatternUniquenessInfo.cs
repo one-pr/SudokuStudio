@@ -1,4 +1,4 @@
-namespace Sudoku.Algorithms.UniquenessTest;
+namespace Sudoku.Algorithms.UniquenessTests;
 
 /// <summary>
 /// Indicates the result value after <see cref="UniquenessChecker.GetUniqueness(in Grid, in CellMap)"/> called.

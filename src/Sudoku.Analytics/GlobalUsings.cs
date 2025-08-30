@@ -24,7 +24,7 @@ global using System.Threading.Tasks;
 global using Sudoku.Algorithms;
 global using Sudoku.Algorithms.Ittoryu;
 global using Sudoku.Algorithms.Ranking;
-global using Sudoku.Algorithms.UniquenessTest;
+global using Sudoku.Algorithms.UniquenessTests;
 global using Sudoku.Analytics;
 global using Sudoku.Analytics.Caching;
 global using Sudoku.Analytics.Configuration;
