@@ -99,7 +99,8 @@ public readonly struct Conjugate(int _mask) :
 		{
 			if (s is null)
 			{
-				throw new FormatException();
+				result = default;
+				return false;
 			}
 
 			result = Parse(s, provider);
