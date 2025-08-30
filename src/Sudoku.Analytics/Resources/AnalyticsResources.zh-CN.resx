@@ -3074,7 +3074,7 @@
     <value>复杂远程数对</value>
     <comment>Technique Name</comment>
   </data>
-  <data name="TechniqueGroup_BabaGrouping" xml:space="preserve">
+  <data name="TechniqueGroup_BabaGroup" xml:space="preserve">
     <value>代数</value>
   </data>
   <data name="TechniqueFormat_RemotePairStep" xml:space="preserve">

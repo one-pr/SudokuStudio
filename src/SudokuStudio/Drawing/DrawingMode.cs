@@ -36,7 +36,7 @@ public enum DrawingMode
 	Link,
 
 	/// <summary>
-	/// Indicates the mode is baba grouping.
+	/// Indicates the mode is baba group.
 	/// </summary>
-	BabaGrouping
+	BabaGroup
 }

@@ -8515,11 +8515,11 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Baba Grouping.
+        ///   Looks up a localized string similar to Baba Group.
         /// </summary>
-        public static string TechniqueGroup_BabaGrouping {
+        public static string TechniqueGroup_BabaGroup {
             get {
-                return ResourceManager.GetString("TechniqueGroup_BabaGrouping", resourceCulture);
+                return ResourceManager.GetString("TechniqueGroup_BabaGroup", resourceCulture);
             }
         }
         

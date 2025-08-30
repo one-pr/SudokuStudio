@@ -12,7 +12,7 @@ internal static class DrawingConversion
 	public static Visibility GetColorPaletteSelectorVisibility(DrawingMode drawingMode)
 		=> drawingMode switch
 		{
-			DrawingMode.Cell or DrawingMode.Candidate or DrawingMode.Chute or DrawingMode.House or DrawingMode.BabaGrouping => Visibility.Visible,
+			DrawingMode.Cell or DrawingMode.Candidate or DrawingMode.Chute or DrawingMode.House or DrawingMode.BabaGroup => Visibility.Visible,
 			_ => Visibility.Collapsed
 		};
 
@@ -20,7 +20,7 @@ internal static class DrawingConversion
 		=> drawingMode == DrawingMode.Link ? Visibility.Visible : Visibility.Collapsed;
 
 	public static Visibility GetBabaGroupVisibility(DrawingMode drawingMode)
-		=> drawingMode == DrawingMode.BabaGrouping ? Visibility.Visible : Visibility.Collapsed;
+		=> drawingMode == DrawingMode.BabaGroup ? Visibility.Visible : Visibility.Collapsed;
 
 	public static Brush GetBrush(Color color) => new SolidColorBrush(color);
 

@@ -56,7 +56,7 @@ public enum TechniqueGroup
 	/// <summary>
 	/// Indicates the baba grouping technique.
 	/// </summary>
-	BabaGrouping,
+	BabaGroup,
 
 	/// <summary>
 	/// Indicates the wing extension (extended subset principle) technique.

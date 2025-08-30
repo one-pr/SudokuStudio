@@ -3434,9 +3434,9 @@
             Indicates the mode is link drawing.
             </summary>
         </member>
-        <member name="F:SudokuStudio.Drawing.DrawingMode.BabaGrouping">
+        <member name="F:SudokuStudio.Drawing.DrawingMode.BabaGroup">
             <summary>
-            Indicates the mode is baba grouping.
+            Indicates the mode is baba group.
             </summary>
         </member>
         <member name="T:SudokuStudio.Drawing.EliminationDisplay">

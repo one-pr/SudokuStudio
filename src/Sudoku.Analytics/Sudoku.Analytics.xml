@@ -20901,7 +20901,7 @@
             Indicates the irregular wing technique.
             </summary>
         </member>
-        <member name="F:Sudoku.Categorization.TechniqueGroup.BabaGrouping">
+        <member name="F:Sudoku.Categorization.TechniqueGroup.BabaGroup">
             <summary>
             Indicates the baba grouping technique.
             </summary>
@@ -34476,9 +34476,9 @@
               Looks up a localized string similar to Avoidable Rectangle.
             </summary>
         </member>
-        <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueGroup_BabaGrouping">
+        <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueGroup_BabaGroup">
             <summary>
-              Looks up a localized string similar to Baba Grouping.
+              Looks up a localized string similar to Baba Group.
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueGroup_BivalueOddagon">
