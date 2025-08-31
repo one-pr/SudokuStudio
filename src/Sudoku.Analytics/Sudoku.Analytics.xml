@@ -12,6 +12,98 @@
         <member name="M:Sudoku.Algorithms.Backdoor.GetBackdoors(Sudoku.Concepts.Grid@)">
             <inheritdoc/>
         </member>
+        <member name="T:Sudoku.Algorithms.BehaviorRecognition.BlockFirst">
+            <summary>
+            Represents a way to finish puzzle with block-first rule.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Algorithms.BehaviorRecognition.BlockFirst.MeasurableBehavior">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Algorithms.BehaviorRecognition.BlockFirst.GetDistanceArray(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Steps.SingleStep,Sudoku.Concepts.Grid}}@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Step,Sudoku.Concepts.Grid}}@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Algorithms.BehaviorRecognition.DigitFirst">
+            <summary>
+            Represents a way to finish puzzle with digit-first rule.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Algorithms.BehaviorRecognition.DigitFirst.MeasurableBehavior">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Algorithms.BehaviorRecognition.DigitFirst.GetDistanceArray(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Steps.SingleStep,Sudoku.Concepts.Grid}}@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Step,Sudoku.Concepts.Grid}}@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Algorithms.BehaviorRecognition.IBehaviorMetric">
+            <summary>
+            Represents a type that can measure a kind of user behavior.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Algorithms.BehaviorRecognition.IBehaviorMetric.MeasurableBehavior">
+            <summary>
+            Indicates a behavior to be measured.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Algorithms.BehaviorRecognition.IBehaviorMetric.GetDistanceArray(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Steps.SingleStep,Sudoku.Concepts.Grid}}@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Step,Sudoku.Concepts.Grid}}@)">
+            <summary>
+            Returns a list of integers representing the logical filling distance between two adjacent steps,
+            by using the current filling rule.
+            </summary>
+            <param name="collector">The collector instance.</param>
+            <param name="grid">The grid to be checked.</param>
+            <param name="steps">The steps and corresponding grid states.</param>
+            <param name="stepsAll">
+            Indicates all possible steps applied. If the puzzle cannot be solved with direct techniques,
+            this method will find indirect techniques again and again, until at least one single step can be found here.
+            </param>
+            <returns>A list of distance values.</returns>
+            <remarks>
+            This method allows solving puzzles with indirect techniques. If the puzzle cannot be solved with direct-only techniques,
+            argument <paramref name="stepsAll"/> will record the usages of all techniques (including direct and indirect techniques);
+            and argument <paramref name="steps"/> only records for direct technique usages.
+            </remarks>
+        </member>
+        <member name="T:Sudoku.Algorithms.BehaviorRecognition.UserBehavior">
+            <summary>
+            Represents a kind of user behavior.
+            </summary>
+            <remarks><flags-attribute>
+		<para>
+			<i>
+				This type is marked <see cref="T:System.FlagsAttribute" />, which means you can use
+				<see langword="operator" /> | to combine multiple fields.
+			</i>
+		</para>
+	</flags-attribute></remarks>
+            <seealso cref="T:System.FlagsAttribute" />
+            <completionlist cref="T:Sudoku.Algorithms.BehaviorRecognition.UserBehaviors" />
+        </member>
+        <member name="F:Sudoku.Algorithms.BehaviorRecognition.UserBehavior.None">
+            <summary>
+            Indicates a user doesn't contain an explicit behavior.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Algorithms.BehaviorRecognition.UserBehavior.BlockFirst">
+            <summary>
+            Indicates a user like to finish a puzzle block by block.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Algorithms.BehaviorRecognition.UserBehavior.DigitFirst">
+            <summary>
+            Indicates a user like to finish a puzzle digit by digit.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Algorithms.BehaviorRecognition.UserBehaviors">
+            <summary>
+            Represents constants of <see cref="T:Sudoku.Algorithms.BehaviorRecognition.UserBehavior"/>.
+            </summary>
+            <seealso cref="T:Sudoku.Algorithms.BehaviorRecognition.UserBehavior"/>
+        </member>
+        <member name="F:Sudoku.Algorithms.BehaviorRecognition.UserBehaviors.All">
+            <summary>
+            Indicates all possible behaviors.
+            </summary>
+        </member>
         <member name="T:Sudoku.Algorithms.GridSymmetryChecker">
             <summary>
             Represents a way to infer grid symmetry of placements.
@@ -1105,98 +1197,6 @@
             otherwise, <see langword="null"/>.
             </para>
             </remarks>
-        </member>
-        <member name="T:Sudoku.BehaviorRecognition.BlockFirst">
-            <summary>
-            Represents a way to finish puzzle with block-first rule.
-            </summary>
-        </member>
-        <member name="P:Sudoku.BehaviorRecognition.BlockFirst.MeasurableBehavior">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.BehaviorRecognition.BlockFirst.GetDistanceArray(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Steps.SingleStep,Sudoku.Concepts.Grid}}@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Step,Sudoku.Concepts.Grid}}@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.BehaviorRecognition.DigitFirst">
-            <summary>
-            Represents a way to finish puzzle with digit-first rule.
-            </summary>
-        </member>
-        <member name="P:Sudoku.BehaviorRecognition.DigitFirst.MeasurableBehavior">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.BehaviorRecognition.DigitFirst.GetDistanceArray(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Steps.SingleStep,Sudoku.Concepts.Grid}}@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Step,Sudoku.Concepts.Grid}}@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.BehaviorRecognition.IBehaviorMetric">
-            <summary>
-            Represents a type that can measure a kind of user behavior.
-            </summary>
-        </member>
-        <member name="P:Sudoku.BehaviorRecognition.IBehaviorMetric.MeasurableBehavior">
-            <summary>
-            Indicates a behavior to be measured.
-            </summary>
-        </member>
-        <member name="M:Sudoku.BehaviorRecognition.IBehaviorMetric.GetDistanceArray(Sudoku.Analytics.Collector,Sudoku.Concepts.Grid@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Steps.SingleStep,Sudoku.Concepts.Grid}}@,System.ReadOnlySpan{System.Collections.Generic.KeyValuePair{Sudoku.Analytics.Step,Sudoku.Concepts.Grid}}@)">
-            <summary>
-            Returns a list of integers representing the logical filling distance between two adjacent steps,
-            by using the current filling rule.
-            </summary>
-            <param name="collector">The collector instance.</param>
-            <param name="grid">The grid to be checked.</param>
-            <param name="steps">The steps and corresponding grid states.</param>
-            <param name="stepsAll">
-            Indicates all possible steps applied. If the puzzle cannot be solved with direct techniques,
-            this method will find indirect techniques again and again, until at least one single step can be found here.
-            </param>
-            <returns>A list of distance values.</returns>
-            <remarks>
-            This method allows solving puzzles with indirect techniques. If the puzzle cannot be solved with direct-only techniques,
-            argument <paramref name="stepsAll"/> will record the usages of all techniques (including direct and indirect techniques);
-            and argument <paramref name="steps"/> only records for direct technique usages.
-            </remarks>
-        </member>
-        <member name="T:Sudoku.BehaviorRecognition.UserBehavior">
-            <summary>
-            Represents a kind of user behavior.
-            </summary>
-            <remarks><flags-attribute>
-		<para>
-			<i>
-				This type is marked <see cref="T:System.FlagsAttribute" />, which means you can use
-				<see langword="operator" /> | to combine multiple fields.
-			</i>
-		</para>
-	</flags-attribute></remarks>
-            <seealso cref="T:System.FlagsAttribute" />
-            <completionlist cref="T:Sudoku.BehaviorRecognition.UserBehaviors" />
-        </member>
-        <member name="F:Sudoku.BehaviorRecognition.UserBehavior.None">
-            <summary>
-            Indicates a user doesn't contain an explicit behavior.
-            </summary>
-        </member>
-        <member name="F:Sudoku.BehaviorRecognition.UserBehavior.BlockFirst">
-            <summary>
-            Indicates a user like to finish a puzzle block by block.
-            </summary>
-        </member>
-        <member name="F:Sudoku.BehaviorRecognition.UserBehavior.DigitFirst">
-            <summary>
-            Indicates a user like to finish a puzzle digit by digit.
-            </summary>
-        </member>
-        <member name="T:Sudoku.BehaviorRecognition.UserBehaviors">
-            <summary>
-            Represents constants of <see cref="T:Sudoku.BehaviorRecognition.UserBehavior"/>.
-            </summary>
-            <seealso cref="T:Sudoku.BehaviorRecognition.UserBehavior"/>
-        </member>
-        <member name="F:Sudoku.BehaviorRecognition.UserBehaviors.All">
-            <summary>
-            Indicates all possible behaviors.
-            </summary>
         </member>
         <member name="T:Sudoku.Analytics.AnalysisResult">
             <summary>

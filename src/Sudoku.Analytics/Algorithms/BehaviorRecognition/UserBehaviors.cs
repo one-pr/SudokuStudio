@@ -1,4 +1,4 @@
-namespace Sudoku.BehaviorRecognition;
+namespace Sudoku.Algorithms.BehaviorRecognition;
 
 /// <summary>
 /// Represents constants of <see cref="UserBehavior"/>.

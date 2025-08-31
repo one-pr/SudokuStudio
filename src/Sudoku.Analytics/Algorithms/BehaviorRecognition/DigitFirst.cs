@@ -1,4 +1,4 @@
-namespace Sudoku.BehaviorRecognition;
+namespace Sudoku.Algorithms.BehaviorRecognition;
 
 /// <summary>
 /// Represents a way to finish puzzle with digit-first rule.
