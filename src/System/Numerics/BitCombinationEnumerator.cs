@@ -35,8 +35,8 @@ public ref struct BitCombinationEnumerator<TInteger>(int _bitCount, int _oneCoun
 
 		if (result && !_isLast)
 		{
-			// Step 1: Find the lowest set bit (the rightmost '1')
-			// e.g., if Current = 0b10100, then -Current = 0b01100 (two's complement), and smallest = 0b00100,
+			// Step 1: Find the lowest set bit (the rightmost '1'),
+			// e.g., if Current = 0b10100, then -Current = 0b01100 (two's complement), and smallest = 0b00100.
 			var smallest = Current & -Current;
 
 			// Step 2: Add smallest to Current to "ripple" the lowest set bit to the left,
