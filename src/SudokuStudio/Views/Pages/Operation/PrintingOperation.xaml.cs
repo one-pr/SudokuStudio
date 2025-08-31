@@ -183,13 +183,31 @@ file sealed class AnalysisResultDocumentCreator
 /// <include file='../../global-doc-comments.xml' path='g/csharp11/feature[@name="file-local"]/target[@name="class" and @when="extension"]'/>
 file static class Extensions
 {
-	public static void AddComment(this ColumnDescriptor @this, string comment)
-		=> @this.Item().PaddingTop(25).Element(c => c.Background(PdfColors.Grey.Lighten3).Padding(10).Column(column =>
-		{
-			column.Spacing(5);
-			column.Item().DefaultTextStyle(AnalysisResultDocumentCreator.TitleStyle).Text(SR.Get("AnalyzePage_GenerateCommentTitle", App.CurrentCulture));
-			column.Item().DefaultTextStyle(AnalysisResultDocumentCreator.DefaultStyle).Text(comment);
-		}));
+	extension(ColumnDescriptor @this)
+	{
+		public void AddComment(string comment)
+			=> @this.Item()
+				.PaddingTop(25)
+				.Element(
+					c => c.Background(PdfColors.Grey.Lighten3)
+						.Padding(10)
+						.Column(
+							column =>
+							{
+								column.Spacing(5);
+								column.Item()
+									.DefaultTextStyle(AnalysisResultDocumentCreator.TitleStyle)
+									.Text(SR.Get("AnalyzePage_GenerateCommentTitle", App.CurrentCulture));
+								column.Item()
+									.DefaultTextStyle(AnalysisResultDocumentCreator.DefaultStyle)
+									.Text(comment);
+							}
+						)
+				);
+	}
 
-	public static TextStyle SupportChineseCharacters(this TextStyle @this) => @this.Fallback(static f => f.FontFamily("Microsoft YaHei UI"));
+	extension(TextStyle @this)
+	{
+		public TextStyle SupportChineseCharacters() => @this.Fallback(static f => f.FontFamily("Microsoft YaHei UI"));
+	}
 }

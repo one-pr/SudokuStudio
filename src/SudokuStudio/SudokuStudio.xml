@@ -17638,7 +17638,12 @@
             </summary>
             <seealso cref="T:Windows.UI.Color"/>
         </member>
-        <member name="M:Windows.UI.ColorExtensions.Deconstruct(Windows.UI.Color,System.Byte@,System.Byte@,System.Byte@)">
+        <member name="T:Windows.UI.ColorExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see cref="T:Windows.UI.Color"/>.
+            </summary>
+        </member>
+        <member name="M:Windows.UI.ColorExtensions.&lt;&gt;E__0.Deconstruct(System.Byte@,System.Byte@,System.Byte@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
@@ -17646,7 +17651,7 @@
 				</summary>
 			</target>
         </member>
-        <member name="M:Windows.UI.ColorExtensions.Deconstruct(Windows.UI.Color,System.Byte@,System.Byte@,System.Byte@,System.Byte@)">
+        <member name="M:Windows.UI.ColorExtensions.&lt;&gt;E__0.Deconstruct(System.Byte@,System.Byte@,System.Byte@,System.Byte@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
@@ -17654,19 +17659,29 @@
 				</summary>
 			</target>
         </member>
-        <member name="M:Windows.UI.ColorExtensions.AsSKColor(Windows.UI.Color)">
+        <member name="M:Windows.UI.ColorExtensions.&lt;&gt;E__0.AsSKColor">
             <summary>
             Converts the specified color into equivalent <see cref="T:SkiaSharp.SKColor"/> instance.
             </summary>
-            <param name="this">The <see cref="T:Windows.UI.Color"/> instance.</param>
             <returns>Final <see cref="T:SkiaSharp.SKColor"/> instance.</returns>
         </member>
-        <member name="M:Windows.UI.ColorExtensions.GetIdentifier(Windows.UI.Color)">
+        <member name="M:Windows.UI.ColorExtensions.&lt;&gt;E__0.GetIdentifier">
             <summary>
             Gets an equivalent <see cref="T:Sudoku.Drawing.ColorIdentifier"/> instance via the current color.
             </summary>
-            <param name="color">The color.</param>
             <returns>An <see cref="T:Sudoku.Drawing.ColorIdentifier"/> instance.</returns>
+        </member>
+        <member name="M:Windows.UI.ColorExtensions.Deconstruct(Windows.UI.Color,System.Byte@,System.Byte@,System.Byte@)">
+            <inheritdoc cref="M:Windows.UI.ColorExtensions.&lt;&gt;E__0.Deconstruct(System.Byte@,System.Byte@,System.Byte@)"/>
+        </member>
+        <member name="M:Windows.UI.ColorExtensions.Deconstruct(Windows.UI.Color,System.Byte@,System.Byte@,System.Byte@,System.Byte@)">
+            <inheritdoc cref="M:Windows.UI.ColorExtensions.&lt;&gt;E__0.Deconstruct(System.Byte@,System.Byte@,System.Byte@,System.Byte@)"/>
+        </member>
+        <member name="M:Windows.UI.ColorExtensions.AsSKColor(Windows.UI.Color)">
+            <inheritdoc cref="M:Windows.UI.ColorExtensions.&lt;&gt;E__0.AsSKColor"/>
+        </member>
+        <member name="M:Windows.UI.ColorExtensions.GetIdentifier(Windows.UI.Color)">
+            <inheritdoc cref="M:Windows.UI.ColorExtensions.&lt;&gt;E__0.GetIdentifier"/>
         </member>
         <member name="T:Windows.Storage.Pickers.FileOpenPickerExtensions">
             <summary>
@@ -17696,7 +17711,12 @@
             </summary>
             <seealso cref="T:Windows.Foundation.Point"/>
         </member>
-        <member name="M:Windows.Foundation.PointExtensions.Deconstruct(Windows.Foundation.Point,System.Double@,System.Double@)">
+        <member name="T:Windows.Foundation.PointExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see cref="T:Windows.Foundation.Point"/>.
+            </summary>
+        </member>
+        <member name="M:Windows.Foundation.PointExtensions.&lt;&gt;E__0.Deconstruct(System.Double@,System.Double@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
@@ -17704,13 +17724,18 @@
 				</summary>
 			</target>
         </member>
-        <member name="M:Windows.Foundation.PointExtensions.DistanceTo(Windows.Foundation.Point,Windows.Foundation.Point)">
+        <member name="M:Windows.Foundation.PointExtensions.&lt;&gt;E__0.DistanceTo(Windows.Foundation.Point)">
             <summary>
             Gets the distance between the two points, starting with the current point, and ending with the specified point.
             </summary>
-            <param name="this">The current point.</param>
             <param name="other">The other point.</param>
             <returns>The distance of the two points.</returns>
+        </member>
+        <member name="M:Windows.Foundation.PointExtensions.Deconstruct(Windows.Foundation.Point,System.Double@,System.Double@)">
+            <inheritdoc cref="M:Windows.Foundation.PointExtensions.&lt;&gt;E__0.Deconstruct(System.Double@,System.Double@)"/>
+        </member>
+        <member name="M:Windows.Foundation.PointExtensions.DistanceTo(Windows.Foundation.Point,Windows.Foundation.Point)">
+            <inheritdoc cref="M:Windows.Foundation.PointExtensions.&lt;&gt;E__0.DistanceTo(Windows.Foundation.Point)"/>
         </member>
         <member name="T:Windows.Foundation.SizeExtensions">
             <summary>
@@ -17718,13 +17743,21 @@
             </summary>
             <seealso cref="T:Windows.Foundation.Size"/>
         </member>
-        <member name="M:Windows.Foundation.SizeExtensions.Deconstruct(Windows.Foundation.Size,System.Single@,System.Single@)">
+        <member name="T:Windows.Foundation.SizeExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see cref="T:Windows.Foundation.Size"/>.
+            </summary>
+        </member>
+        <member name="M:Windows.Foundation.SizeExtensions.&lt;&gt;E__0.Deconstruct(System.Single@,System.Single@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
 					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
 				</summary>
 			</target>
+        </member>
+        <member name="M:Windows.Foundation.SizeExtensions.Deconstruct(Windows.Foundation.Size,System.Single@,System.Single@)">
+            <inheritdoc cref="M:Windows.Foundation.SizeExtensions.&lt;&gt;E__0.Deconstruct(System.Single@,System.Single@)"/>
         </member>
         <member name="T:Windows.Win32.PInvoke">
             <content>
@@ -17782,17 +17815,22 @@
             </summary>
             <seealso cref="T:Microsoft.UI.Xaml.UIElement"/>
         </member>
-        <member name="M:Microsoft.UI.Xaml.UIElementExtensions.RenderToAsync``2(``0,``1)">
+        <member name="T:Microsoft.UI.Xaml.UIElementExtensions.&lt;&gt;E__0`1">
+            <summary>
+            Provides extension members on <typeparamref name="TUIElement"/>,
+            where <typeparamref name="TUIElement"/> satisfies <see cref="T:Microsoft.UI.Xaml.UIElement"/> constraint.
+            </summary>
+            <typeparam name="TUIElement">The type of the UI control.</typeparam>
+        </member>
+        <member name="M:Microsoft.UI.Xaml.UIElementExtensions.&lt;&gt;E__0`1.RenderToAsync``1(``0)">
             <summary>
             Draws the specified UI control to the target file as a picture.
             </summary>
-            <typeparam name="TUIElement">The type of the UI control.</typeparam>
             <typeparam name="TStorageFileOrRandomAccessStream">
             The type of the argument <paramref name="fileOrStream"/>.
             The target type can be <see cref="T:Windows.Storage.StorageFile"/> or <see cref="T:Windows.Storage.Streams.IRandomAccessStream"/>;
             otherwise, a <see cref="T:System.NotSupportedException"/> will be thrown.
             </typeparam>
-            <param name="this">The control.</param>
             <param name="fileOrStream">
             The target instance. This value can be a <see cref="T:Windows.Storage.StorageFile"/> or <see cref="T:Windows.Storage.Streams.IRandomAccessStream"/>.
             </param>
@@ -17800,19 +17838,30 @@
             Throws when the argument <paramref name="fileOrStream"/> is not supported.
             </exception>
         </member>
+        <member name="M:Microsoft.UI.Xaml.UIElementExtensions.RenderToAsync``2(``0,``1)">
+            <inheritdoc cref="M:Microsoft.UI.Xaml.UIElementExtensions.&lt;&gt;E__0`1.RenderToAsync``1(``0)"/>
+        </member>
         <member name="T:System.Numerics.Vector2Extensions">
             <summary>
             Provides with extension methods on <see cref="T:System.Numerics.Vector2"/>.
             </summary>
             <seealso cref="T:System.Numerics.Vector2"/>
         </member>
-        <member name="M:System.Numerics.Vector2Extensions.Deconstruct(System.Numerics.Vector2,System.Single@,System.Single@)">
+        <member name="T:System.Numerics.Vector2Extensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see cref="T:System.Numerics.Vector2"/>.
+            </summary>
+        </member>
+        <member name="M:System.Numerics.Vector2Extensions.&lt;&gt;E__0.Deconstruct(System.Single@,System.Single@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
 					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
 				</summary>
 			</target>
+        </member>
+        <member name="M:System.Numerics.Vector2Extensions.Deconstruct(System.Numerics.Vector2,System.Single@,System.Single@)">
+            <inheritdoc cref="M:System.Numerics.Vector2Extensions.&lt;&gt;E__0.Deconstruct(System.Single@,System.Single@)"/>
         </member>
         <member name="T:System.Text.RegularExpressions.Generated.LoadCommandPattern_0">
             <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the LoadCommandPattern method.</summary>

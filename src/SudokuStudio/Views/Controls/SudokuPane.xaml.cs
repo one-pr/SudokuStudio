@@ -1336,68 +1336,71 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 /// <include file='../../global-doc-comments.xml' path='g/csharp11/feature[@name="file-local"]/target[@name="class" and @when="extension"]'/>
 file static class Extensions
 {
-	public static ReadOnlySpan<CellMap> GetCellsOrdered(this Cell @this, House house)
+	extension(Cell @this)
 	{
-		var cells = HousesCells[house];
-		switch (house.HouseType)
+		public ReadOnlySpan<CellMap> GetCellsOrdered(House house)
 		{
-			case HouseType.Row:
+			var cells = HousesCells[house];
+			switch (house.HouseType)
 			{
-				var pos = Array.FindIndex(cells, cell => cell % 9 == @this % 9);
-				var result = new List<CellMap>(5);
-				for (var i = 1; ; i++)
+				case HouseType.Row:
 				{
-					var map = CellMap.Empty;
-					if (pos >= i)
+					var pos = Array.FindIndex(cells, cell => cell % 9 == @this % 9);
+					var result = new List<CellMap>(5);
+					for (var i = 1; ; i++)
 					{
-						map.Add(cells[pos - i]);
-					}
-					if (pos + i < cells.Length)
-					{
-						map.Add(cells[pos + i]);
-					}
+						var map = CellMap.Empty;
+						if (pos >= i)
+						{
+							map.Add(cells[pos - i]);
+						}
+						if (pos + i < cells.Length)
+						{
+							map.Add(cells[pos + i]);
+						}
 
-					if (map)
-					{
-						result.AddRef(map);
-						continue;
+						if (map)
+						{
+							result.AddRef(map);
+							continue;
+						}
+						break;
 					}
-					break;
+					return result.AsSpan();
 				}
-				return result.AsSpan();
-			}
-			case HouseType.Column:
-			{
-				var pos = Array.FindIndex(cells, cell => cell / 9 == @this / 9);
-				var result = new List<CellMap>(5);
-				for (var i = 1; ; i++)
+				case HouseType.Column:
 				{
-					var map = CellMap.Empty;
-					if (pos >= i)
+					var pos = Array.FindIndex(cells, cell => cell / 9 == @this / 9);
+					var result = new List<CellMap>(5);
+					for (var i = 1; ; i++)
 					{
-						map.Add(cells[pos - i]);
-					}
-					if (pos + i < cells.Length)
-					{
-						map.Add(cells[pos + i]);
-					}
+						var map = CellMap.Empty;
+						if (pos >= i)
+						{
+							map.Add(cells[pos - i]);
+						}
+						if (pos + i < cells.Length)
+						{
+							map.Add(cells[pos + i]);
+						}
 
-					if (map)
-					{
-						result.AddRef(map);
-						continue;
+						if (map)
+						{
+							result.AddRef(map);
+							continue;
+						}
+						break;
 					}
-					break;
+					return result.AsSpan();
 				}
-				return result.AsSpan();
-			}
-			case HouseType.Block:
-			{
-				return from cell in cells select cell.AsCellMap();
-			}
-			default:
-			{
-				throw new UnreachableException();
+				case HouseType.Block:
+				{
+					return from cell in cells select cell.AsCellMap();
+				}
+				default:
+				{
+					throw new UnreachableException();
+				}
 			}
 		}
 	}
