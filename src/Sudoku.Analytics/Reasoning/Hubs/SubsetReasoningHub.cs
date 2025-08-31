@@ -1,7 +1,7 @@
 namespace Sudoku.Reasoning.Hubs;
 
 /// <summary>
-/// Represents a subset searching driver.
+/// Represents a type that can search for subsets with general rules, which can be called by multiple different step searcher types.
 /// </summary>
 internal sealed class SubsetReasoningHub : ReasoningHubBase
 {

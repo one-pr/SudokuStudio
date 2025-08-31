@@ -1,7 +1,7 @@
 namespace Sudoku.Reasoning.Hubs;
 
 /// <summary>
-/// Provides a driver that can generate normal chains and forcing chains.
+/// Represents a type that can search for chains with general rules, which can be called by multiple different step searcher types.
 /// </summary>
 internal sealed partial class ChainingReasoningHub : ReasoningHubBase
 {

@@ -29376,7 +29376,7 @@
         </member>
         <member name="T:Sudoku.Reasoning.Hubs.ChainingReasoningHub">
             <summary>
-            Provides a driver that can generate normal chains and forcing chains.
+            Represents a type that can search for chains with general rules, which can be called by multiple different step searcher types.
             </summary>
         </member>
         <member name="M:Sudoku.Reasoning.Hubs.ChainingReasoningHub.CollectChains(Sudoku.Concepts.Grid@,System.Boolean,System.Boolean,System.Boolean)">
@@ -29705,7 +29705,7 @@
         </member>
         <member name="T:Sudoku.Reasoning.Hubs.SubsetReasoningHub">
             <summary>
-            Represents a subset searching driver.
+            Represents a type that can search for subsets with general rules, which can be called by multiple different step searcher types.
             </summary>
         </member>
         <member name="F:Sudoku.Reasoning.Hubs.SubsetReasoningHub.MethodSet1">
