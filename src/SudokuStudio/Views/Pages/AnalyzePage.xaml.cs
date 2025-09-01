@@ -931,9 +931,6 @@ public sealed partial class AnalyzePage : Page
 				}
 			}
 		}
-		catch (OperationCanceledException)
-		{
-		}
 		finally
 		{
 			_ctsForAnalyzingRelatedOperations = null;
