@@ -138,7 +138,7 @@ public static partial class GeneratorHub
 	}
 
 	/// <summary>
-	/// The backing hanlder.
+	/// The backing handler.
 	/// </summary>
 	private static unsafe Grid HandlerCore<TProgressDataProvider>(
 		ref int generatingCount,

@@ -28548,7 +28548,7 @@
         </member>
         <member name="M:Sudoku.Generating.GeneratorHub.HandlerCore``1(System.Int32@,System.Int32@,Sudoku.Generating.Filtering.ConstraintCollection,,,,System.Action{``0},Sudoku.Analytics.Analyzer,Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder,Sudoku.Bottlenecks.BottleneckFilter[],System.Threading.CancellationToken)">
             <summary>
-            The backing hanlder.
+            The backing handler.
             </summary>
         </member>
         <member name="T:Sudoku.Generating.Qualified.ComplexSingleGenerator">

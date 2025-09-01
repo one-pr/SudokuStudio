@@ -10767,7 +10767,9 @@
             </para>
             <para>The default value is -1.</para>
             </param>
-            <param name="symmetricType">The symmetric type to be specified. The value is <see cref="F:Sudoku.SymmetricType.Central"/> by default.</param>
+            <param name="symmetricType">
+            The symmetric type to be specified. The value is <see cref="F:Sudoku.SymmetricType.Central"/> by default.
+            </param>
             <param name="cancellationToken">The cancellation token that can cancel the operation.</param>
             <returns>The result grid, or <see cref="F:Sudoku.Concepts.Grid.Undefined"/> if a user cancelled the operation.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">

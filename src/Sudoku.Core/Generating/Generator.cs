@@ -87,7 +87,9 @@ public ref struct Generator() : IGenerator<Grid>
 	/// </para>
 	/// <para>The default value is -1.</para>
 	/// </param>
-	/// <param name="symmetricType">The symmetric type to be specified. The value is <see cref="SymmetricType.Central"/> by default.</param>
+	/// <param name="symmetricType">
+	/// The symmetric type to be specified. The value is <see cref="SymmetricType.Central"/> by default.
+	/// </param>
 	/// <param name="cancellationToken">The cancellation token that can cancel the operation.</param>
 	/// <returns>The result grid, or <see cref="Grid.Undefined"/> if a user cancelled the operation.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">
@@ -101,22 +103,16 @@ public ref struct Generator() : IGenerator<Grid>
 		ArgumentException.ThrowIfAssertionFailed(symmetricType.IsFlag);
 		ArgumentException.ThrowIfAssertionFailed(cluesCount is >= 17 and <= 80 or -1);
 
-		try
+		// 2024/10/25: Add this if block to skip initialization for templates.
+		// 2024/10/28: Change if statement from 'if (_newFullSudoku.IsUndefined)' to 'if (!_useCustomizedSolution)'.
+		// 2025/9/1: Use 'cancellationToken.IsCancellationRequested' flag instead of throwing exceptions.
+		if (!_useCustomizedSolution)
 		{
-			// 2024/10/25: Add this if block to skip initialization for templates.
-			// 2024/10/28: Change if statement from 'if (_newFullSudoku.IsUndefined)' to 'if (!_useCustomizedSolution)'.
-			if (!_useCustomizedSolution)
-			{
-				while (!GenerateForFullGrid()) ;
-			}
+			while (!GenerateForFullGrid()) ;
+		}
 
-			GenerateInitPos(cluesCount, symmetricType, cancellationToken);
-			return _newValidSudoku.FixedGrid;
-		}
-		catch (OperationCanceledException)
-		{
-			return Grid.Undefined;
-		}
+		GenerateInitPos(cluesCount, symmetricType, cancellationToken);
+		return cancellationToken.IsCancellationRequested ? Grid.Undefined : _newValidSudoku.FixedGrid;
 	}
 
 	/// <summary>
@@ -127,13 +123,15 @@ public ref struct Generator() : IGenerator<Grid>
 	private void GenerateInitPos(int cluesCount, SymmetricType symmetricType, CancellationToken cancellationToken = default)
 	{
 		// We start with the full board.
-		(_newValidSudoku, var (used, usedCount, remainingClues)) = (_newFullSudoku, (CellMap.Empty, 81, 81));
-		var candidateCells = new List<Cell>(8);
+		(_newValidSudoku, var (used, usedCount, remainingClues, candidateCells)) = (_newFullSudoku, (CellMap.Empty, 81, 81, new List<Cell>(8)));
 
 		// Do until we have only 17 clues left or until all cells have been tried.
 		while (remainingClues > (cluesCount == -1 ? 17 : cluesCount) && usedCount > 1)
 		{
-			cancellationToken.ThrowIfCancellationRequested();
+			if (cancellationToken.IsCancellationRequested)
+			{
+				return;
+			}
 
 			// Get the next position to try.
 			var cell = _rng.NextCell();
