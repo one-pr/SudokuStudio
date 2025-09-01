@@ -4283,56 +4283,6 @@
             <inheritdoc/>
             <remarks><i>This method cannot be used as caching because most of callers have already been cached.</i></remarks>
         </member>
-        <member name="T:Sudoku.Analytics.PencilmarkVisibilities">
-            <summary>
-            Represents a list of constants of <see cref="T:Sudoku.Analytics.PencilmarkVisibility"/>.
-            </summary>
-            <seealso cref="T:Sudoku.Analytics.PencilmarkVisibility"/>
-        </member>
-        <member name="F:Sudoku.Analytics.PencilmarkVisibilities.All">
-            <summary>
-            Indicates all visibilities.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.PencilmarkVisibilities.Marks">
-            <summary>
-            Indicates only for marks.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Analytics.PencilmarkVisibility">
-            <summary>
-            Represents a mode that describes the puzzle can be solved with what kind of pencilmark-displaying rule applied.
-            </summary>
-            <remarks><flags-attribute>
-		<para>
-			<i>
-				This type is marked <see cref="T:System.FlagsAttribute" />, which means you can use
-				<see langword="operator" /> | to combine multiple fields.
-			</i>
-		</para>
-	</flags-attribute></remarks>
-            <completionlist cref="T:Sudoku.Analytics.PencilmarkVisibilities" />
-        </member>
-        <member name="F:Sudoku.Analytics.PencilmarkVisibility.None">
-            <summary>
-            Indicates placeholder.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.PencilmarkVisibility.Direct">
-            <summary>
-            Indicates the technique can be applied to direct mode.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.PencilmarkVisibility.PartialMarking">
-            <summary>
-            Indicates the technique can be applied to partial-marking mode.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.PencilmarkVisibility.FullMarking">
-            <summary>
-            Indicates the technique can be applied to full-marking mode.
-            </summary>
-        </member>
         <member name="T:Sudoku.Analytics.PuzzleInvalidException">
             <summary>
             Represents an exception that will be thrown if an invalid case has been encountered during analyzing a sudoku puzzle.
@@ -18256,7 +18206,7 @@
             <param name="Type">Indicates the bottleneck type.</param>
             <seealso cref="M:Sudoku.Bottlenecks.AnalysisResultExtensions.GetBottlenecks(Sudoku.Analytics.AnalysisResult,System.ReadOnlySpan{Sudoku.Bottlenecks.BottleneckFilter})"/>
         </member>
-        <member name="M:Sudoku.Bottlenecks.BottleneckFilter.#ctor(Sudoku.Analytics.PencilmarkVisibility,Sudoku.Bottlenecks.BottleneckType)">
+        <member name="M:Sudoku.Bottlenecks.BottleneckFilter.#ctor(Sudoku.PencilmarkVisibility,Sudoku.Bottlenecks.BottleneckType)">
             <summary>
             Represents a bottleneck filter consumed by method <see cref="M:Sudoku.Bottlenecks.AnalysisResultExtensions.GetBottlenecks(Sudoku.Analytics.AnalysisResult,System.ReadOnlySpan{Sudoku.Bottlenecks.BottleneckFilter})"/>.
             </summary>
@@ -21607,10 +21557,10 @@
         <member name="P:Sudoku.Categorization.TechniqueMetadataAttribute.PencilmarkVisibility">
             <summary>
             Indicates the mode that the current technique can be used by solving a puzzle.
-            By default the value is both <see cref="F:Sudoku.Analytics.PencilmarkVisibility.Direct"/> and <see cref="F:Sudoku.Analytics.PencilmarkVisibility.FullMarking"/>.
+            By default the value is both <see cref="F:Sudoku.PencilmarkVisibility.Direct"/> and <see cref="F:Sudoku.PencilmarkVisibility.FullMarking"/>.
             </summary>
-            <seealso cref="F:Sudoku.Analytics.PencilmarkVisibility.Direct"/>
-            <seealso cref="F:Sudoku.Analytics.PencilmarkVisibility.FullMarking"/>
+            <seealso cref="F:Sudoku.PencilmarkVisibility.Direct"/>
+            <seealso cref="F:Sudoku.PencilmarkVisibility.FullMarking"/>
         </member>
         <member name="P:Sudoku.Categorization.TechniqueMetadataAttribute.RelatedTechnique">
             <summary>

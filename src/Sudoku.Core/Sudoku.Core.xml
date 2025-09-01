@@ -12209,6 +12209,56 @@
 				</remarks>
 			</target>
         </member>
+        <member name="T:Sudoku.PencilmarkVisibilities">
+            <summary>
+            Represents a list of constants of <see cref="T:Sudoku.PencilmarkVisibility"/>.
+            </summary>
+            <seealso cref="T:Sudoku.PencilmarkVisibility"/>
+        </member>
+        <member name="F:Sudoku.PencilmarkVisibilities.All">
+            <summary>
+            Indicates all visibilities.
+            </summary>
+        </member>
+        <member name="F:Sudoku.PencilmarkVisibilities.Marks">
+            <summary>
+            Indicates only for marks.
+            </summary>
+        </member>
+        <member name="T:Sudoku.PencilmarkVisibility">
+            <summary>
+            Represents a mode that describes the puzzle can be solved with what kind of pencilmark-displaying rule applied.
+            </summary>
+            <remarks><flags-attribute>
+		<para>
+			<i>
+				This type is marked <see cref="T:System.FlagsAttribute" />, which means you can use
+				<see langword="operator" /> | to combine multiple fields.
+			</i>
+		</para>
+	</flags-attribute></remarks>
+            <completionlist cref="T:Sudoku.PencilmarkVisibilities" />
+        </member>
+        <member name="F:Sudoku.PencilmarkVisibility.None">
+            <summary>
+            Indicates placeholder.
+            </summary>
+        </member>
+        <member name="F:Sudoku.PencilmarkVisibility.Direct">
+            <summary>
+            Indicates the technique can be applied to direct mode.
+            </summary>
+        </member>
+        <member name="F:Sudoku.PencilmarkVisibility.PartialMarking">
+            <summary>
+            Indicates the technique can be applied to partial-marking mode.
+            </summary>
+        </member>
+        <member name="F:Sudoku.PencilmarkVisibility.FullMarking">
+            <summary>
+            Indicates the technique can be applied to full-marking mode.
+            </summary>
+        </member>
         <member name="T:Sudoku.Resources.CoreResources">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
