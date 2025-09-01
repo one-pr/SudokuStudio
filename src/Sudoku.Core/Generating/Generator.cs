@@ -76,7 +76,7 @@ public ref struct Generator() : IGenerator<Grid>
 
 
 	/// <summary>
-	/// Try to generate a puzzle randomly, or return <see cref="Grid.Undefined"/> if a user cancelled the operation.
+	/// Try to generate a puzzle randomly, or return <see cref="Grid.Undefined"/> if a user canceled the operation.
 	/// </summary>
 	/// <param name="cluesCount">
 	/// <para>Indicates the number of clues of a puzzle generated. Assign -1 if the value is not required.</para>
@@ -91,7 +91,7 @@ public ref struct Generator() : IGenerator<Grid>
 	/// The symmetric type to be specified. The value is <see cref="SymmetricType.Central"/> by default.
 	/// </param>
 	/// <param name="cancellationToken">The cancellation token that can cancel the operation.</param>
-	/// <returns>The result grid, or <see cref="Grid.Undefined"/> if a user cancelled the operation.</returns>
+	/// <returns>The result grid, or <see cref="Grid.Undefined"/> if a user canceled the operation.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">
 	/// Throws when the argument <paramref name="symmetricType"/> holds multiple flags,
 	/// or the argument <paramref name="cluesCount"/> is invalid.

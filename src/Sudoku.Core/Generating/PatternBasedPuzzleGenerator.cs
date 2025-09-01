@@ -9,7 +9,7 @@ public ref struct PatternBasedPuzzleGenerator(ref readonly CellMap seedPattern, 
 {
 #pragma warning disable IDE0052, CS0414
 	/// <summary>
-	/// Indicates whether the generator is cancelled.
+	/// Indicates whether the generator is canceled.
 	/// </summary>
 	private bool? _isCancelled;
 #pragma warning restore IDE0052, CS0414
@@ -72,7 +72,7 @@ public ref struct PatternBasedPuzzleGenerator(ref readonly CellMap seedPattern, 
 	/// <param name="count">The number of puzzles generated.</param>
 	/// <param name="progress">The progress instance.</param>
 	/// <param name="cancellationToken">The cancellation token that can cancel the operation.</param>
-	/// <returns>A <see cref="bool"/> value indicating whether a puzzle was generated or a user cancelled the operation.</returns>
+	/// <returns>A <see cref="bool"/> value indicating whether a puzzle was generated or a user canceled the operation.</returns>
 	private bool GenerateCore(
 		Cell[] patternCellsSorted,
 		ref Grid playground,

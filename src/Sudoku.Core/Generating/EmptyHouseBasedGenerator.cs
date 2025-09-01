@@ -52,10 +52,10 @@ public ref partial struct EmptyHouseBasedGenerator() : IGenerator<Grid>
 
 
 	/// <summary>
-	/// Try to generate a puzzle randomly, or return <see cref="Grid.Undefined"/> if a user cancelled the operation.
+	/// Try to generate a puzzle randomly, or return <see cref="Grid.Undefined"/> if a user canceled the operation.
 	/// </summary>
 	/// <param name="cancellationToken">The cancellation token that can cancel the operation.</param>
-	/// <returns>The result grid, or <see cref="Grid.Undefined"/> if a user cancelled the operation.</returns>
+	/// <returns>The result grid, or <see cref="Grid.Undefined"/> if a user canceled the operation.</returns>
 	public Grid Generate(CancellationToken cancellationToken = default)
 	{
 		_stack.Fill(new());

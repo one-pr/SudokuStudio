@@ -113,7 +113,7 @@ public abstract class PrimaryGenerator : TechniqueGenerator, IJustOneCellGenerat
 	/// <param name="cancellationToken">The cancellation token instance that can cancel the current operation.</param>
 	/// <returns>
 	/// A <see cref="bool"/> value indicating whether the result has already been generated without any error.
-	/// For example, a user has cancelled the task, the return value should be <see langword="false"/>.
+	/// For example, a user has canceled the task, the return value should be <see langword="false"/>.
 	/// </returns>
 	public abstract bool GeneratePrimary(out Grid result, CancellationToken cancellationToken = default);
 

@@ -336,15 +336,15 @@ public sealed class Library(string _directoryPath, string _identifier) :
 
 	/// <summary>
 	/// Loads the other library, and reads for all puzzles and appends to the current library file.
-	/// If any exceptions thrown or cancelled, no updates will be applied
-	/// (the current file will keep the original state, rather than successfully written some puzzles before cancelled
+	/// If any exceptions thrown or canceled, no updates will be applied
+	/// (the current file will keep the original state, rather than successfully written some puzzles before canceled
 	/// or exception encountered).
 	/// </summary>
 	/// <param name="other">The other library to merge into the current library.</param>
 	/// <param name="cancellationToken">The cancellation token that can cancel the current operation</param>
 	/// <returns>
 	/// A <see cref="Task{TResult}"/> object that handles the asynchronous operation;
-	/// with a <see cref="bool"/> result indicating whether the operation is failed (cancelled, exception encountered, etc.).
+	/// with a <see cref="bool"/> result indicating whether the operation is failed (canceled, exception encountered, etc.).
 	/// </returns>
 	public async Task<bool> TryMergeFromAsync(Library other, CancellationToken cancellationToken = default)
 	{

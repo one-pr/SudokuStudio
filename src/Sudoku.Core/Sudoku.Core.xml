@@ -10584,10 +10584,10 @@
         </member>
         <member name="M:Sudoku.Generating.EmptyHouseBasedGenerator.Generate(System.Threading.CancellationToken)">
             <summary>
-            Try to generate a puzzle randomly, or return <see cref="F:Sudoku.Concepts.Grid.Undefined"/> if a user cancelled the operation.
+            Try to generate a puzzle randomly, or return <see cref="F:Sudoku.Concepts.Grid.Undefined"/> if a user canceled the operation.
             </summary>
             <param name="cancellationToken">The cancellation token that can cancel the operation.</param>
-            <returns>The result grid, or <see cref="F:Sudoku.Concepts.Grid.Undefined"/> if a user cancelled the operation.</returns>
+            <returns>The result grid, or <see cref="F:Sudoku.Concepts.Grid.Undefined"/> if a user canceled the operation.</returns>
         </member>
         <member name="M:Sudoku.Generating.EmptyHouseBasedGenerator.GenerateInitPos(System.Threading.CancellationToken)">
             <summary>
@@ -10756,7 +10756,7 @@
         </member>
         <member name="M:Sudoku.Generating.Generator.Generate(System.Int32,Sudoku.SymmetricType,System.Threading.CancellationToken)">
             <summary>
-            Try to generate a puzzle randomly, or return <see cref="F:Sudoku.Concepts.Grid.Undefined"/> if a user cancelled the operation.
+            Try to generate a puzzle randomly, or return <see cref="F:Sudoku.Concepts.Grid.Undefined"/> if a user canceled the operation.
             </summary>
             <param name="cluesCount">
             <para>Indicates the number of clues of a puzzle generated. Assign -1 if the value is not required.</para>
@@ -10771,7 +10771,7 @@
             The symmetric type to be specified. The value is <see cref="F:Sudoku.SymmetricType.Central"/> by default.
             </param>
             <param name="cancellationToken">The cancellation token that can cancel the operation.</param>
-            <returns>The result grid, or <see cref="F:Sudoku.Concepts.Grid.Undefined"/> if a user cancelled the operation.</returns>
+            <returns>The result grid, or <see cref="F:Sudoku.Concepts.Grid.Undefined"/> if a user canceled the operation.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">
             Throws when the argument <paramref name="symmetricType"/> holds multiple flags,
             or the argument <paramref name="cluesCount"/> is invalid.
@@ -10981,7 +10981,7 @@
         </member>
         <member name="F:Sudoku.Generating.PatternBasedPuzzleGenerator._isCancelled">
             <summary>
-            Indicates whether the generator is cancelled.
+            Indicates whether the generator is canceled.
             </summary>
         </member>
         <member name="F:Sudoku.Generating.PatternBasedPuzzleGenerator._seedPattern">
@@ -11013,7 +11013,7 @@
             <param name="count">The number of puzzles generated.</param>
             <param name="progress">The progress instance.</param>
             <param name="cancellationToken">The cancellation token that can cancel the operation.</param>
-            <returns>A <see cref="T:System.Boolean"/> value indicating whether a puzzle was generated or a user cancelled the operation.</returns>
+            <returns>A <see cref="T:System.Boolean"/> value indicating whether a puzzle was generated or a user canceled the operation.</returns>
         </member>
         <member name="M:Sudoku.Generating.PatternBasedPuzzleGenerator.OrderCellsViaConnectionComplexity">
             <summary>
@@ -11328,15 +11328,15 @@
         <member name="M:Sudoku.IO.Library.TryMergeFromAsync(Sudoku.IO.Library,System.Threading.CancellationToken)">
             <summary>
             Loads the other library, and reads for all puzzles and appends to the current library file.
-            If any exceptions thrown or cancelled, no updates will be applied
-            (the current file will keep the original state, rather than successfully written some puzzles before cancelled
+            If any exceptions thrown or canceled, no updates will be applied
+            (the current file will keep the original state, rather than successfully written some puzzles before canceled
             or exception encountered).
             </summary>
             <param name="other">The other library to merge into the current library.</param>
             <param name="cancellationToken">The cancellation token that can cancel the current operation</param>
             <returns>
             A <see cref="T:System.Threading.Tasks.Task`1"/> object that handles the asynchronous operation;
-            with a <see cref="T:System.Boolean"/> result indicating whether the operation is failed (cancelled, exception encountered, etc.).
+            with a <see cref="T:System.Boolean"/> result indicating whether the operation is failed (canceled, exception encountered, etc.).
             </returns>
         </member>
         <member name="M:Sudoku.IO.Library.SelectMultipleAsync(System.UInt64,System.Threading.CancellationToken)">
