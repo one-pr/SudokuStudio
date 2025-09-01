@@ -58,10 +58,6 @@ public sealed class Collector : StepGatherer
 		{
 			return s(progress, puzzle, cancellationToken);
 		}
-		catch (OperationCanceledException ex) when (ex.CancellationToken == cancellationToken)
-		{
-			return null;
-		}
 		catch
 		{
 			throw;
@@ -113,7 +109,10 @@ public sealed class Collector : StepGatherer
 							}
 						}
 
-						ct.ThrowIfCancellationRequested();
+						if (ct.IsCancellationRequested)
+						{
+							return null;
+						}
 
 						// Searching.
 						accumulator.Clear();

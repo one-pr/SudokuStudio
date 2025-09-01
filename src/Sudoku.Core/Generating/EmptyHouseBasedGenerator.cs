@@ -60,23 +60,21 @@ public ref partial struct EmptyHouseBasedGenerator() : IGenerator<Grid>
 	{
 		_stack.Fill(new());
 
-		try
+		while (true)
 		{
-			while (true)
-			{
-				while (!GenerateForFullGrid()) ;
+			while (!GenerateForFullGrid()) ;
 
-				if (GenerateInitPos(cancellationToken))
-				{
-					break;
-				}
+			if (GenerateInitPos(cancellationToken))
+			{
+				break;
 			}
-			return _newValidSudoku.FixedGrid;
+
+			if (cancellationToken.IsCancellationRequested)
+			{
+				return Grid.Undefined;
+			}
 		}
-		catch (OperationCanceledException)
-		{
-			return Grid.Undefined;
-		}
+		return _newValidSudoku.FixedGrid;
 	}
 
 	/// <summary>
@@ -117,7 +115,10 @@ public ref partial struct EmptyHouseBasedGenerator() : IGenerator<Grid>
 				return false;
 			}
 
-			cancellationToken.ThrowIfCancellationRequested();
+			if (cancellationToken.IsCancellationRequested)
+			{
+				return false;
+			}
 
 			// Step 1: Clear some houses.
 			// We start with the full board.
@@ -222,7 +223,10 @@ public ref partial struct EmptyHouseBasedGenerator() : IGenerator<Grid>
 				var targetRemainingClues = _rng.Next(17, 30);
 				while (remainingClues > targetRemainingClues && used != ~CellMap.Empty)
 				{
-					cancellationToken.ThrowIfCancellationRequested();
+					if (cancellationToken.IsCancellationRequested)
+					{
+						return false;
+					}
 
 					// Get the next position to try.
 					var cell = _rng.NextCell();
