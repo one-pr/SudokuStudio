@@ -28760,7 +28760,7 @@
             <param name="ittoryuFinderCreator">The method that create a ittoryu finder.</param>
             <param name="cancellationTokenSourceAssigner">The assigner operation for <see cref="T:System.Threading.CancellationTokenSource"/> object.</param>
             <param name="stateInitializer">The state-initialization operation.</param>
-            <param name="stateReverter">The state-reverting operation.</param>
+            <param name="stateRecoverer">The state-recoverage operation.</param>
             <param name="bottleneckFiltersCreator">The bottleneck filters creator.</param>
             <param name="reportAction">The progress-report action.</param>
             <param name="gridStateChanger">The grid state changer.</param>

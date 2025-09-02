@@ -16,7 +16,7 @@ public static partial class GeneratorHub
 	/// <param name="ittoryuFinderCreator">The method that create a ittoryu finder.</param>
 	/// <param name="cancellationTokenSourceAssigner">The assigner operation for <see cref="CancellationTokenSource"/> object.</param>
 	/// <param name="stateInitializer">The state-initialization operation.</param>
-	/// <param name="stateReverter">The state-reverting operation.</param>
+	/// <param name="stateRecoverer">The state-recoverage operation.</param>
 	/// <param name="bottleneckFiltersCreator">The bottleneck filters creator.</param>
 	/// <param name="reportAction">The progress-report action.</param>
 	/// <param name="gridStateChanger">The grid state changer.</param>
@@ -31,7 +31,7 @@ public static partial class GeneratorHub
 		Func<DisorderedIttoryuFinder> ittoryuFinderCreator,
 		Action<CancellationTokenSource> cancellationTokenSourceAssigner,
 		Action stateInitializer,
-		Action stateReverter,
+		Action stateRecoverer,
 		Func<BottleneckFilter[]> bottleneckFiltersCreator,
 		Action<TProgressDataProvider> reportAction,
 		GridStateChanger<Analyzer>? gridStateChanger,
@@ -39,32 +39,43 @@ public static partial class GeneratorHub
 	)
 		where TProgressDataProvider : struct, IEquatable<TProgressDataProvider>, IProgressDataProvider<TProgressDataProvider>
 	{
+		// State initializer.
 		stateInitializer();
 
+		// Cancellation token source assigner.
 		using var cts = new CancellationTokenSource();
 		cancellationTokenSourceAssigner(cts);
 
+		// Core operations.
 		var filters = bottleneckFiltersCreator();
 		var constraints = constraintsCreator();
 		var difficultyLevel = difficultyLevelCreator(constraints);
 		var analyzer = analyzerCreator(difficultyLevel);
 		var ittoryuFinder = ittoryuFinderCreator();
 		var (generatingCount, generatingFilteredCount) = (0, 0);
-		try
+		if (onlyGenerateOne)
 		{
-			if (onlyGenerateOne)
+			switch (await Task.Run(taskEntry))
 			{
-				if (await Task.Run(taskEntry) is { IsUndefined: false } grid)
+				case ({ IsUndefined: false } grid, false):
 				{
 					gridStateChanger?.Invoke(ref grid, analyzer);
 					gridTextConsumer?.Invoke(grid.ToString("#"));
+					break;
+				}
+				case (_, true):
+				{
+					break;
 				}
 			}
-			else
+		}
+		else
+		{
+			while (true)
 			{
-				while (true)
+				switch (await Task.Run(taskEntry))
 				{
-					if (await Task.Run(taskEntry) is { IsUndefined: false } grid)
+					case ({ IsUndefined: false } grid, false):
 					{
 						gridStateChanger?.Invoke(ref grid, analyzer);
 						gridTextConsumer?.Invoke(grid.ToString("#"));
@@ -72,20 +83,23 @@ public static partial class GeneratorHub
 						generatingFilteredCount++;
 						continue;
 					}
-					break;
+					case (_, true):
+					{
+						goto BreakWhileTrueLoop;
+					}
 				}
+				continue;
+
+			BreakWhileTrueLoop:
+				break;
 			}
 		}
-		catch (OperationCanceledException)
-		{
-		}
-		finally
-		{
-			stateReverter();
-		}
+
+		// State recoverer.
+		stateRecoverer();
 
 
-		unsafe Grid taskEntry()
+		unsafe (Grid TargetGrid, bool IsCanceled) taskEntry()
 		{
 			var specializedConditions = (
 				HasFullHouseConstraint:
@@ -103,7 +117,7 @@ public static partial class GeneratorHub
 				HasMissingHouseConstraint:
 					constraints.Has<EmptyHousesCountConstraint>()
 			);
-			return HandlerCore(
+			var result = HandlerCore(
 				ref generatingCount,
 				ref generatingFilteredCount,
 				constraints,
@@ -134,6 +148,7 @@ public static partial class GeneratorHub
 				filters,
 				cts.Token
 			);
+			return (result, cts.Token.IsCancellationRequested);
 		}
 	}
 
@@ -192,7 +207,10 @@ public static partial class GeneratorHub
 
 		ReportState:
 			progress.Report(TProgressDataProvider.Create(++generatingCount, generatingFilteredCount));
-			cancellationToken.ThrowIfCancellationRequested();
+			if (cancellationToken.IsCancellationRequested)
+			{
+				return Grid.Undefined;
+			}
 		}
 	}
 

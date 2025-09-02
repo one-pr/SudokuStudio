@@ -91,7 +91,7 @@ public sealed partial class GeneratingOperation : Page, IOperationProviderPage
 				BasePage.IsGeneratorLaunched = true;
 				BasePage.ClearAnalyzeTabsData();
 			},
-			stateReverter: () =>
+			stateRecoverer: () =>
 			{
 				BasePage._ctsForAnalyzingRelatedOperations = null;
 				BasePage.IsGeneratorLaunched = false;
