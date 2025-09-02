@@ -27678,8 +27678,8 @@
         <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.FirstOrDefault(System.Func{Sudoku.Generating.Filtering.Constraint,System.Boolean})">
             <inheritdoc cref="M:System.Linq.Enumerable.FirstOrDefault``1(System.Collections.Generic.IEnumerable{``0})"/>
         </member>
-        <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.OfType``1">
-            <inheritdoc cref="M:System.Linq.Providers.IOfTypeMethod`2.OfType``1"/>
+        <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.Clone">
+            <inheritdoc cref="M:System.ICloneable.Clone"/>
         </member>
         <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.Where(System.Func{Sudoku.Generating.Filtering.Constraint,System.Boolean})">
             <summary>
@@ -27688,11 +27688,17 @@
             <param name="predicate">The condition to be satisfied.</param>
             <returns>A new collection that only contains constraints satisfying the specified condition.</returns>
         </member>
+        <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.Slice(System.Int32,System.Int32)">
+            <inheritdoc cref="M:System.Linq.Providers.ISliceMethod`2.Slice(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.OfType``1">
+            <inheritdoc cref="M:System.Linq.Providers.IOfTypeMethod`2.OfType``1"/>
+        </member>
         <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.Select``1(System.Func{Sudoku.Generating.Filtering.Constraint,``0})">
             <inheritdoc cref="M:System.Linq.Providers.ISelectMethod`2.Select``1(System.Func{`1,``0})"/>
         </member>
-        <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.Slice(System.Int32,System.Int32)">
-            <inheritdoc cref="M:System.Linq.Providers.ISliceMethod`2.Slice(System.Int32,System.Int32)"/>
+        <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.System#ICloneable#Clone">
+            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Generating.Filtering.ConstraintCollection.System#Linq#Providers#IElementAtMethod{Sudoku#Generating#Filtering#ConstraintCollection,Sudoku#Generating#Filtering#Constraint}#ElementAt(System.Int32)">
             <inheritdoc/>
@@ -27769,6 +27775,33 @@
             Indicates whether the constraint can be negated by user.
             </summary>
         </member>
+        <member name="T:Sudoku.Generating.Filtering.Constraints.AllConstraint">
+            <summary>
+            Represents a constraint that determines whether all constraints are determined true.
+            </summary>
+            <param name="constraints"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.QuantifierConstraint.Constraints" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AllConstraint.#ctor(Sudoku.Generating.Filtering.ConstraintCollection)">
+            <summary>
+            Represents a constraint that determines whether all constraints are determined true.
+            </summary>
+            <param name="constraints"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.QuantifierConstraint.Constraints" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AllConstraint.Equals(Sudoku.Generating.Filtering.Constraint)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AllConstraint.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AllConstraint.ToString(System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AllConstraint.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AllConstraint.CheckCore(Sudoku.Generating.Filtering.ConstraintCheckingContext)">
+            <inheritdoc/>
+        </member>
         <member name="T:Sudoku.Generating.Filtering.Constraints.AndConstraint">
             <summary>
             Represents a constraint that determine whether two constraints are both true.
@@ -27796,6 +27829,33 @@
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Generating.Filtering.Constraints.AndConstraint.CheckCore(Sudoku.Generating.Filtering.ConstraintCheckingContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Generating.Filtering.Constraints.AnyConstraint">
+            <summary>
+            Represents a constraint that determines whether at least one of all constraints is determined true.
+            </summary>
+            <param name="constraints"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.QuantifierConstraint.Constraints" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AnyConstraint.#ctor(Sudoku.Generating.Filtering.ConstraintCollection)">
+            <summary>
+            Represents a constraint that determines whether at least one of all constraints is determined true.
+            </summary>
+            <param name="constraints"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.QuantifierConstraint.Constraints" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AnyConstraint.Equals(Sudoku.Generating.Filtering.Constraint)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AnyConstraint.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AnyConstraint.ToString(System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AnyConstraint.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AnyConstraint.CheckCore(Sudoku.Generating.Filtering.ConstraintCheckingContext)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint">
@@ -28388,6 +28448,23 @@
         </member>
         <member name="M:Sudoku.Generating.Filtering.Constraints.PrimarySingleConstraint.CheckCore(Sudoku.Generating.Filtering.ConstraintCheckingContext)">
             <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Generating.Filtering.Constraints.QuantifierConstraint">
+            <summary>
+            Represents a constraint that checks with quantifiers (i.e. "any" or "all").
+            </summary>
+            <param name="constraints"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.QuantifierConstraint.Constraints" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.QuantifierConstraint.#ctor(Sudoku.Generating.Filtering.ConstraintCollection)">
+            <summary>
+            Represents a constraint that checks with quantifiers (i.e. "any" or "all").
+            </summary>
+            <param name="constraints"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.QuantifierConstraint.Constraints" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Constraints.QuantifierConstraint.Constraints">
+            <summary>
+            Indicates the constraints.
+            </summary>
         </member>
         <member name="T:Sudoku.Generating.Filtering.Constraints.SymmetryConstraint">
             <summary>
@@ -29895,6 +29972,11 @@
               Looks up a localized string similar to Aligned Triple Exclusion.
             </summary>
         </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.AllConstraint">
+            <summary>
+              Looks up a localized string similar to Universal quantifier: all constraints should be determined true: {0}.
+            </summary>
+        </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.AlmostLockedPair">
             <summary>
               Looks up a localized string similar to Almost Locked Pair.
@@ -30055,6 +30137,11 @@
         <member name="P:Sudoku.Resources.AnalyticsResources.AntiGurthSymmetricalPlacement">
             <summary>
               Looks up a localized string similar to Anti Gurth&apos;s Symmetrical Placement.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.AnyConstraint">
+            <summary>
+              Looks up a localized string similar to Existential quantifier: at least one of all constraints should be determined true: {0}.
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.Appear">

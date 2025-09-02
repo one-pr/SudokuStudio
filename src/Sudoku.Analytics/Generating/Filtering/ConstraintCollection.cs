@@ -6,6 +6,7 @@ namespace Sudoku.Generating.Filtering;
 public sealed class ConstraintCollection :
 	List<Constraint>,
 	IAdditionOperators<ConstraintCollection, Constraint?, ConstraintCollection>,
+	ICloneable,
 	IElementAtMethod<ConstraintCollection, Constraint>,
 	IFirstLastMethod<ConstraintCollection, Constraint>,
 	IHasMethod<ConstraintCollection, Constraint>,
@@ -78,18 +79,15 @@ public sealed class ConstraintCollection :
 		return null;
 	}
 
-	/// <inheritdoc cref="IOfTypeMethod{TSelf, TSource}.OfType{TResult}"/>
-	public ReadOnlySpan<TConstraint> OfType<TConstraint>() where TConstraint : Constraint
+	/// <inheritdoc cref="ICloneable.Clone"/>
+	public ConstraintCollection Clone()
 	{
-		var result = new List<TConstraint>();
-		foreach (var element in this)
+		var result = new ConstraintCollection();
+		foreach (var constraint in this)
 		{
-			if (element is TConstraint constraint)
-			{
-				result.Add(constraint);
-			}
+			result.Add(constraint.Clone());
 		}
-		return result.AsSpan();
+		return result;
 	}
 
 	/// <summary>
@@ -110,6 +108,31 @@ public sealed class ConstraintCollection :
 		return result;
 	}
 
+	/// <inheritdoc cref="ISliceMethod{TSelf, TSource}.Slice(int, int)"/>
+	public new ConstraintCollection Slice(int start, int count)
+	{
+		var result = new ConstraintCollection(count);
+		for (var i = start; i < start + count; i++)
+		{
+			result.Add(this[i]);
+		}
+		return result;
+	}
+
+	/// <inheritdoc cref="IOfTypeMethod{TSelf, TSource}.OfType{TResult}"/>
+	public ReadOnlySpan<TConstraint> OfType<TConstraint>() where TConstraint : Constraint
+	{
+		var result = new List<TConstraint>();
+		foreach (var element in this)
+		{
+			if (element is TConstraint constraint)
+			{
+				result.Add(constraint);
+			}
+		}
+		return result.AsSpan();
+	}
+
 	/// <inheritdoc cref="ISelectMethod{TSelf, TSource}.Select{TResult}(Func{TSource, TResult})"/>
 	public ReadOnlySpan<TResult> Select<TResult>(Func<Constraint, TResult> selector)
 	{
@@ -121,16 +144,8 @@ public sealed class ConstraintCollection :
 		return result.AsSpan();
 	}
 
-	/// <inheritdoc cref="ISliceMethod{TSelf, TSource}.Slice(int, int)"/>
-	public new ConstraintCollection Slice(int start, int count)
-	{
-		var result = new ConstraintCollection(count);
-		for (var i = start; i < start + count; i++)
-		{
-			result.Add(this[i]);
-		}
-		return result;
-	}
+	/// <inheritdoc/>
+	object ICloneable.Clone() => Clone();
 
 	/// <inheritdoc/>
 	Constraint IElementAtMethod<ConstraintCollection, Constraint>.ElementAt(int index) => this[index];

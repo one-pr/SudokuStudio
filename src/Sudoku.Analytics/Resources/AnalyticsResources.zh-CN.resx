@@ -3367,4 +3367,10 @@
   <data name="NotConstraint" xml:space="preserve">
     <value>逻辑非：当指定约束不成立时该约束成立：{0}</value>
   </data>
+  <data name="AllConstraint" xml:space="preserve">
+    <value>全称量词：所有指定的约束都必须成立：{0}</value>
+  </data>
+  <data name="AnyConstraint" xml:space="preserve">
+    <value>存在量词：所有指定约束里至少有一个必须成立：{0}</value>
+  </data>
 </root>

@@ -3325,4 +3325,10 @@ Is pattern rank-0: {6}</value>
   <data name="NotConstraint" xml:space="preserve">
     <value>Logical not: the constraint should be determined true if specified constraint is false: {0}</value>
   </data>
+  <data name="AllConstraint" xml:space="preserve">
+    <value>Universal quantifier: all constraints should be determined true: {0}</value>
+  </data>
+  <data name="AnyConstraint" xml:space="preserve">
+    <value>Existential quantifier: at least one of all constraints should be determined true: {0}</value>
+  </data>
 </root>

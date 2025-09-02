@@ -6,7 +6,9 @@ namespace Sudoku.Generating.Filtering;
 [JsonPolymorphic(
 	TypeDiscriminatorPropertyName = "$typeid",
 	UnknownDerivedTypeHandling = JsonUnknownDerivedTypeHandling.FailSerialization)]
+[JsonDerivedType(typeof(AllConstraint), nameof(AllConstraint))]
 [JsonDerivedType(typeof(AndConstraint), nameof(AndConstraint))]
+[JsonDerivedType(typeof(AnyConstraint), nameof(AnyConstraint))]
 [JsonDerivedType(typeof(BottleneckTechniqueConstraint), nameof(BottleneckTechniqueConstraint))]
 [JsonDerivedType(typeof(ConclusionConstraint), nameof(ConclusionConstraint))]
 [JsonDerivedType(typeof(CountBetweenConstraint), nameof(CountBetweenConstraint))]

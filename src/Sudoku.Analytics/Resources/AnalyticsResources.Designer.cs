@@ -142,6 +142,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Universal quantifier: all constraints should be determined true: {0}.
+        /// </summary>
+        public static string AllConstraint {
+            get {
+                return ResourceManager.GetString("AllConstraint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Almost Locked Pair.
         /// </summary>
         public static string AlmostLockedPair {
@@ -428,6 +437,15 @@ namespace Sudoku.Resources {
         public static string AntiGurthSymmetricalPlacement {
             get {
                 return ResourceManager.GetString("AntiGurthSymmetricalPlacement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Existential quantifier: at least one of all constraints should be determined true: {0}.
+        /// </summary>
+        public static string AnyConstraint {
+            get {
+                return ResourceManager.GetString("AnyConstraint", resourceCulture);
             }
         }
         
