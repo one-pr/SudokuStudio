@@ -208,24 +208,19 @@ public sealed class Analyzer : StepGatherer
 		ApplySetters(this);
 
 		var result = new AnalysisResult(puzzle) { IsSolved = false };
-		var solution = puzzle.SolutionGrid;
-
 		try
 		{
 			if (puzzle.Uniqueness != Uniqueness.Bad)
 			{
-				// We should check whether the puzzle is a GSP firstly.
-				// This method doesn't check for Sukaku puzzles, or ones containing multiple solutions.
-				var symmetricType = GridSymmetryChecker.GetSymmetry(puzzle, out var mappingDigits, out var selfPairedDigitsMask);
 				try
 				{
 					// Here 'puzzle' may contains multiple solutions, so 'solution' may equal to 'Grid.Undefined'.
 					// We will defer the checking inside this method stackframe.
 					var tempResult = analyzeInternal(
 						puzzle,
-						solution,
+						puzzle.SolutionGrid,
 						result,
-						symmetricType,
+						GridSymmetryChecker.GetSymmetry(puzzle, out var mappingDigits, out var selfPairedDigitsMask),
 						mappingDigits,
 						selfPairedDigitsMask,
 						progress,
@@ -249,7 +244,7 @@ public sealed class Analyzer : StepGatherer
 							PuzzleInvalidException
 								=> result with { IsSolved = false, FailedReason = FailedReason.PuzzleIsInvalid }
 						},
-						NotImplementedException or NotSupportedException
+						StepSearcherNotImplementedException or StepSearcherNotSupportedException
 							=> result with { IsSolved = false, FailedReason = FailedReason.NotImplemented },
 						_
 							=> result with { IsSolved = false, FailedReason = FailedReason.ExceptionThrown, UnhandledException = ex }

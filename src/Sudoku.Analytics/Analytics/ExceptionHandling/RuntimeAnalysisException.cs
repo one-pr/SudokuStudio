@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics;
+namespace Sudoku.Analytics.ExceptionHandling;
 
 /// <summary>
 /// Represents an exception type that will be thrown by an <see cref="Analyzer"/> instance.
