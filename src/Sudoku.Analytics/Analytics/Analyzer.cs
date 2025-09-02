@@ -212,46 +212,38 @@ public sealed class Analyzer : StepGatherer
 		{
 			if (puzzle.Uniqueness != Uniqueness.Bad)
 			{
-				try
-				{
-					// Here 'puzzle' may contains multiple solutions, so 'solution' may equal to 'Grid.Undefined'.
-					// We will defer the checking inside this method stackframe.
-					var tempResult = analyzeInternal(
-						puzzle,
-						puzzle.SolutionGrid,
-						result,
-						GridSymmetryChecker.GetSymmetry(puzzle, out var mappingDigits, out var selfPairedDigitsMask),
-						mappingDigits,
-						selfPairedDigitsMask,
-						progress,
-						cancellationToken
-					);
-					return !cancellationToken.IsCancellationRequested
-						? tempResult
-						: result with { IsSolved = false, FailedReason = FailedReason.UserCancelled };
-				}
-				catch (Exception ex)
-				{
-					// Trigger the event.
-					ExceptionThrown?.Invoke(this, new(ex));
-
-					return ex switch
-					{
-						RuntimeAnalysisException e => e switch
-						{
-							WrongStepException
-								=> result with { IsSolved = false, FailedReason = FailedReason.WrongStep, UnhandledException = e },
-							PuzzleInvalidException
-								=> result with { IsSolved = false, FailedReason = FailedReason.PuzzleIsInvalid }
-						},
-						StepSearcherNotImplementedException or StepSearcherNotSupportedException
-							=> result with { IsSolved = false, FailedReason = FailedReason.NotImplemented },
-						_
-							=> result with { IsSolved = false, FailedReason = FailedReason.ExceptionThrown, UnhandledException = ex }
-					};
-				}
+				// Here 'puzzle' may contains multiple solutions, so 'solution' may equal to 'Grid.Undefined'.
+				// We will defer the checking inside this method stackframe.
+				var tempResult = analyzeInternal(
+					puzzle,
+					puzzle.SolutionGrid,
+					result,
+					GridSymmetryChecker.GetSymmetry(puzzle, out var mappingDigits, out var selfPairedDigitsMask),
+					mappingDigits,
+					selfPairedDigitsMask,
+					progress,
+					cancellationToken
+				);
+				return !cancellationToken.IsCancellationRequested
+					? tempResult
+					: result with { IsSolved = false, FailedReason = FailedReason.UserCancelled };
 			}
 			return result with { IsSolved = false, FailedReason = FailedReason.PuzzleHasNoSolution };
+		}
+		catch (Exception ex)
+		{
+			ExceptionThrown?.Invoke(this, new(ex));
+			return ex switch
+			{
+				PuzzleInvalidException
+					=> result with { IsSolved = false, FailedReason = FailedReason.PuzzleIsInvalid },
+				StepSearcherNotImplementedException or StepSearcherNotSupportedException
+					=> result with { IsSolved = false, FailedReason = FailedReason.NotImplemented },
+				WrongStepException e
+					=> result with { IsSolved = false, FailedReason = FailedReason.WrongStep, UnhandledException = e },
+				_
+					=> result with { IsSolved = false, FailedReason = FailedReason.ExceptionThrown, UnhandledException = ex }
+			};
 		}
 		finally
 		{
