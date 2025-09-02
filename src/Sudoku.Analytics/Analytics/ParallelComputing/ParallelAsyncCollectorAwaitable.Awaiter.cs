@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics;
+namespace Sudoku.Analytics.ParallelComputing;
 
 public partial struct ParallelAsyncCollectorAwaitable
 {

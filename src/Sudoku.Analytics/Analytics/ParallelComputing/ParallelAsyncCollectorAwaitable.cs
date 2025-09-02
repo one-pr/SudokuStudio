@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics;
+namespace Sudoku.Analytics.ParallelComputing;
 
 /// <summary>
 /// Represents an awaitable rule on collecting steps from a puzzle.

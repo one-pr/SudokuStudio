@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics;
+namespace Sudoku.Analytics.ExceptionHandling;
 
 /// <summary>
 /// Represents an exception type that will be thrown if factor resource is mismatched.

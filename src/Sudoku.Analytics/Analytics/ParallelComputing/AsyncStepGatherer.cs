@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics;
+namespace Sudoku.Analytics.ParallelComputing;
 
 /// <summary>
 /// Provides with extension methods on <see cref="StepGatherer"/>.
