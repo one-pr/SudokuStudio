@@ -27565,6 +27565,10 @@
             <summary>
             Indicates whether the constraint should be negated.
             </summary>
+            <remarks>
+            This property can be used on some necessary cases (like technique-appearance-related constraints),
+            but not all constraints will consume this property.
+            </remarks>
         </member>
         <member name="P:Sudoku.Generating.Filtering.Constraint.Description">
             <summary>
@@ -27763,6 +27767,59 @@
         <member name="P:Sudoku.Generating.Filtering.ConstraintOptionsAttribute.AllowsNegation">
             <summary>
             Indicates whether the constraint can be negated by user.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Generating.Filtering.Constraints.AndConstraint">
+            <summary>
+            Represents a constraint that determine whether two constraints are both true.
+            </summary>
+            <param name="constraint1"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint.Constraint1" path="/summary"/></param>
+            <param name="constraint2"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint.Constraint2" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AndConstraint.#ctor(Sudoku.Generating.Filtering.Constraint,Sudoku.Generating.Filtering.Constraint)">
+            <summary>
+            Represents a constraint that determine whether two constraints are both true.
+            </summary>
+            <param name="constraint1"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint.Constraint1" path="/summary"/></param>
+            <param name="constraint2"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint.Constraint2" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AndConstraint.Equals(Sudoku.Generating.Filtering.Constraint)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AndConstraint.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AndConstraint.ToString(System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AndConstraint.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.AndConstraint.CheckCore(Sudoku.Generating.Filtering.ConstraintCheckingContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint">
+            <summary>
+            Represents a constraint that checks for two constraints.
+            </summary>
+            <param name="constraint1"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint.Constraint1" path="/summary"/></param>
+            <param name="constraint2"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint.Constraint2" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint.#ctor(Sudoku.Generating.Filtering.Constraint,Sudoku.Generating.Filtering.Constraint)">
+            <summary>
+            Represents a constraint that checks for two constraints.
+            </summary>
+            <param name="constraint1"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint.Constraint1" path="/summary"/></param>
+            <param name="constraint2"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint.Constraint2" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint.Constraint1">
+            <summary>
+            Indicates the constraint #1.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint.Constraint2">
+            <summary>
+            Indicates the constraint #2.
             </summary>
         </member>
         <member name="T:Sudoku.Generating.Filtering.Constraints.BottleneckTechniqueConstraint">
@@ -28144,6 +28201,11 @@
         <member name="M:Sudoku.Generating.Filtering.Constraints.LastingConstraint.CheckCore(Sudoku.Generating.Filtering.ConstraintCheckingContext)">
             <inheritdoc/>
         </member>
+        <member name="T:Sudoku.Generating.Filtering.Constraints.LogicalConstraint">
+            <summary>
+            Represents a logical constraint.
+            </summary>
+        </member>
         <member name="T:Sudoku.Generating.Filtering.Constraints.MinimalConstraint">
             <summary>
             Represents minimal constraint.
@@ -28192,6 +28254,62 @@
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Generating.Filtering.Constraints.MissingDigitConstraint.CheckCore(Sudoku.Generating.Filtering.ConstraintCheckingContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Generating.Filtering.Constraints.NotConstraint">
+            <summary>
+            Represents a constraint that negates the result.
+            </summary>
+            <param name="constraint"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.UnaryLogicalConstraint.Constraint" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.NotConstraint.#ctor(Sudoku.Generating.Filtering.Constraint)">
+            <summary>
+            Represents a constraint that negates the result.
+            </summary>
+            <param name="constraint"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.UnaryLogicalConstraint.Constraint" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.NotConstraint.Equals(Sudoku.Generating.Filtering.Constraint)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.NotConstraint.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.NotConstraint.ToString(System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.NotConstraint.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.NotConstraint.CheckCore(Sudoku.Generating.Filtering.ConstraintCheckingContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Generating.Filtering.Constraints.OrConstraint">
+            <summary>
+            Represents a constraint that determine whether at least one of two constraints is true.
+            </summary>
+            <param name="constraint1"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint.Constraint1" path="/summary"/></param>
+            <param name="constraint2"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint.Constraint2" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.OrConstraint.#ctor(Sudoku.Generating.Filtering.Constraint,Sudoku.Generating.Filtering.Constraint)">
+            <summary>
+            Represents a constraint that determine whether at least one of two constraints is true.
+            </summary>
+            <param name="constraint1"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint.Constraint1" path="/summary"/></param>
+            <param name="constraint2"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.BinaryLogicalConstraint.Constraint2" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.OrConstraint.Equals(Sudoku.Generating.Filtering.Constraint)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.OrConstraint.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.OrConstraint.ToString(System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.OrConstraint.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.OrConstraint.CheckCore(Sudoku.Generating.Filtering.ConstraintCheckingContext)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Generating.Filtering.Constraints.PearlConstraint">
@@ -28430,6 +28548,23 @@
         </member>
         <member name="M:Sudoku.Generating.Filtering.Constraints.TechniqueSetConstraint.CheckCore(Sudoku.Generating.Filtering.ConstraintCheckingContext)">
             <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Generating.Filtering.Constraints.UnaryLogicalConstraint">
+            <summary>
+            Represents a constraint that only checks for one constraint.
+            </summary>
+            <param name="constraint"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.UnaryLogicalConstraint.Constraint" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.UnaryLogicalConstraint.#ctor(Sudoku.Generating.Filtering.Constraint)">
+            <summary>
+            Represents a constraint that only checks for one constraint.
+            </summary>
+            <param name="constraint"><inheritdoc cref="P:Sudoku.Generating.Filtering.Constraints.UnaryLogicalConstraint.Constraint" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Constraints.UnaryLogicalConstraint.Constraint">
+            <summary>
+            Indicates the constraint.
+            </summary>
         </member>
         <member name="T:Sudoku.Generating.Filtering.KeywordCondition">
             <summary>
@@ -29884,6 +30019,13 @@
             <summary>
               Looks up a localized string similar to total.
             </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.AndConstraint">
+             <summary>
+               Looks up a localized string similar to Logical and: two constraints must be both determined to be true:
+            #1: {0}
+            #2: {1}.
+             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.AnonymousDeadlyPatternType1">
             <summary>
@@ -32083,6 +32225,11 @@
               Looks up a localized string similar to not .
             </summary>
         </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.NotConstraint">
+            <summary>
+              Looks up a localized string similar to Logical not: the constraint should be determined true if specified constraint is false: {0}.
+            </summary>
+        </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.NounPluralSuffix">
             <summary>
               Looks up a localized string similar to s.
@@ -32097,6 +32244,13 @@
             <summary>
               Looks up a localized string similar to .
             </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.OrConstraint">
+             <summary>
+               Looks up a localized string similar to Logical or: at least one of two constraints should be true.
+            #1: {0}
+            #2: {1}.
+             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.OrKeywordWithSpaces">
             <summary>

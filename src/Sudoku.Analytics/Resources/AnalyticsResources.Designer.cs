@@ -367,6 +367,17 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logical and: two constraints must be both determined to be true:
+        ///#1: {0}
+        ///#2: {1}.
+        /// </summary>
+        public static string AndConstraint {
+            get {
+                return ResourceManager.GetString("AndConstraint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Anonymous Deadly Pattern Type 1.
         /// </summary>
         public static string AnonymousDeadlyPatternType1 {
@@ -4321,6 +4332,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logical not: the constraint should be determined true if specified constraint is false: {0}.
+        /// </summary>
+        public static string NotConstraint {
+            get {
+                return ResourceManager.GetString("NotConstraint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to s.
         /// </summary>
         public static string NounPluralSuffix {
@@ -4344,6 +4364,17 @@ namespace Sudoku.Resources {
         public static string Only {
             get {
                 return ResourceManager.GetString("Only", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logical or: at least one of two constraints should be true.
+        ///#1: {0}
+        ///#2: {1}.
+        /// </summary>
+        public static string OrConstraint {
+            get {
+                return ResourceManager.GetString("OrConstraint", resourceCulture);
             }
         }
         

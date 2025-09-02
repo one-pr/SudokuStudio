@@ -3354,4 +3354,17 @@
   <data name="Message_InvalidKeywordConverterType" xml:space="preserve">
     <value />
   </data>
+  <data name="AndConstraint" xml:space="preserve">
+    <value>逻辑且：两个约束必须同时成立。
+#1：{0}
+#2：{1}</value>
+  </data>
+  <data name="OrConstraint" xml:space="preserve">
+    <value>逻辑或：至少有一个约束必须是成立的。
+#1：{0}
+#2：{1}</value>
+  </data>
+  <data name="NotConstraint" xml:space="preserve">
+    <value>逻辑非：当指定约束不成立时该约束成立：{0}</value>
+  </data>
 </root>

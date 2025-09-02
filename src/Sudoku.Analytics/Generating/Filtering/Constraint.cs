@@ -3,7 +3,10 @@ namespace Sudoku.Generating.Filtering;
 /// <summary>
 /// Represents a rule that checks whether a grid or its relied analysis information is passed the constraint.
 /// </summary>
-[JsonPolymorphic(TypeDiscriminatorPropertyName = "$typeid", UnknownDerivedTypeHandling = JsonUnknownDerivedTypeHandling.FailSerialization)]
+[JsonPolymorphic(
+	TypeDiscriminatorPropertyName = "$typeid",
+	UnknownDerivedTypeHandling = JsonUnknownDerivedTypeHandling.FailSerialization)]
+[JsonDerivedType(typeof(AndConstraint), nameof(AndConstraint))]
 [JsonDerivedType(typeof(BottleneckTechniqueConstraint), nameof(BottleneckTechniqueConstraint))]
 [JsonDerivedType(typeof(ConclusionConstraint), nameof(ConclusionConstraint))]
 [JsonDerivedType(typeof(CountBetweenConstraint), nameof(CountBetweenConstraint))]
@@ -16,6 +19,8 @@ namespace Sudoku.Generating.Filtering;
 [JsonDerivedType(typeof(LastingConstraint), nameof(LastingConstraint))]
 [JsonDerivedType(typeof(MinimalConstraint), nameof(MinimalConstraint))]
 [JsonDerivedType(typeof(MissingDigitConstraint), nameof(MissingDigitConstraint))]
+[JsonDerivedType(typeof(NotConstraint), nameof(NotConstraint))]
+[JsonDerivedType(typeof(OrConstraint), nameof(OrConstraint))]
 [JsonDerivedType(typeof(PearlConstraint), nameof(PearlConstraint))]
 [JsonDerivedType(typeof(PrimarySingleConstraint), nameof(PrimarySingleConstraint))]
 [JsonDerivedType(typeof(SymmetryConstraint), nameof(SymmetryConstraint))]
@@ -28,6 +33,10 @@ public abstract class Constraint : IEquatable<Constraint>, IEqualityOperators<Co
 	/// <summary>
 	/// Indicates whether the constraint should be negated.
 	/// </summary>
+	/// <remarks>
+	/// This property can be used on some necessary cases (like technique-appearance-related constraints),
+	/// but not all constraints will consume this property.
+	/// </remarks>
 	public bool IsNegated { get; set; }
 
 	/// <summary>
