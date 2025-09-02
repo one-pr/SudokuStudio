@@ -1,11 +1,11 @@
-namespace Sudoku.Analytics.ParallelComputing;
+namespace Sudoku.Analytics.Parallelization;
 
-public partial struct AsyncAnalyzerAwaitable
+public partial struct AsyncCollectorAwaitable
 {
 	/// <summary>
-	/// Represents an awaiter object that analyzes the specified puzzle.
+	/// Represents an awaiter object that collects steps for the specified puzzle.
 	/// </summary>
-	public sealed class Awaiter : IStepGathererAwaiter<AnalysisResult>
+	public sealed class Awaiter : IStepGathererAwaiter<ReadOnlySpan<Step>>
 	{
 		/// <summary>
 		/// Indicates whether to continue works on captured context instead of reverting back to previous context.
@@ -28,9 +28,9 @@ public partial struct AsyncAnalyzerAwaitable
 		private readonly Lock _lock = new();
 
 		/// <summary>
-		/// Indicates the backing analyzer.
+		/// Indicates the backing collector.
 		/// </summary>
-		private readonly Analyzer _analyzer;
+		private readonly Collector _collector;
 
 		/// <summary>
 		/// Indicates the progress reporter.
@@ -56,7 +56,7 @@ public partial struct AsyncAnalyzerAwaitable
 		/// <remarks>
 		/// <inheritdoc cref="_isCompleted" path="/remarks"/>
 		/// </remarks>
-		private AnalysisResult? _result;
+		private Step[]? _result;
 
 		/// <summary>
 		/// Indicates the exception thrown.
@@ -78,7 +78,7 @@ public partial struct AsyncAnalyzerAwaitable
 		/// <summary>
 		/// Initializes an <see cref="Awaiter"/> instance via the specified analyzer.
 		/// </summary>
-		/// <param name="analyzer">Indicates the analyzer.</param>
+		/// <param name="collector">Indicates the collector.</param>
 		/// <param name="grid">Indicates the grid.</param>
 		/// <param name="progress">Indicates the progress reporter.</param>
 		/// <param name="continueOnCapturedContext">
@@ -86,14 +86,14 @@ public partial struct AsyncAnalyzerAwaitable
 		/// </param>
 		/// <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
 		public Awaiter(
-			Analyzer analyzer,
+			Collector collector,
 			in Grid grid,
 			IProgress<StepGathererProgressPresenter>? progress,
 			bool continueOnCapturedContext,
 			CancellationToken cancellationToken
 		)
 		{
-			(_grid, _analyzer, _progress, _cancellationToken) = (grid, analyzer, progress, cancellationToken);
+			(_grid, _collector, _progress, _cancellationToken) = (grid, collector, progress, cancellationToken);
 			_continueOnCapturedContext = continueOnCapturedContext;
 
 			// Use thread pool to execute the analysis operation.
@@ -116,13 +116,13 @@ public partial struct AsyncAnalyzerAwaitable
 		}
 
 		/// <inheritdoc/>
-		public AnalysisResult? Result
+		public ReadOnlySpan<Step> Result
 		{
 			get
 			{
 				lock (_lock)
 				{
-					return _result;
+					return _result.AsSpan();
 				}
 			}
 		}
@@ -140,14 +140,14 @@ public partial struct AsyncAnalyzerAwaitable
 		}
 
 		/// <inheritdoc/>
-		AnalysisResult? IStepGathererAwaiter<AnalysisResult>.Result => Result;
+		ReadOnlySpan<Step> IStepGathererAwaiter<ReadOnlySpan<Step>>.Result => Result;
 
 		/// <inheritdoc/>
-		Lock IStepGathererAwaiter<AnalysisResult>.Lock => _lock;
+		Lock IStepGathererAwaiter<ReadOnlySpan<Step>>.Lock => _lock;
 
 
 		/// <inheritdoc/>
-		public AnalysisResult GetResult() => _exception is null ? _result! : throw _exception;
+		public ReadOnlySpan<Step> GetResult() => _exception is null ? _result! : throw _exception;
 
 		/// <inheritdoc/>
 		public void OnCompleted(Action continuation) => OnCompletedInternal(false, continuation);
@@ -156,15 +156,15 @@ public partial struct AsyncAnalyzerAwaitable
 		public void UnsafeOnCompleted(Action continuation) => OnCompletedInternal(true, continuation);
 
 		/// <inheritdoc/>
-		void IStepGathererAwaiter<AnalysisResult>.OnCompletedInternal(bool continueOnCapturedContext, Action continuation)
+		void IStepGathererAwaiter<ReadOnlySpan<Step>>.OnCompletedInternal(bool continueOnCapturedContext, Action continuation)
 			=> OnCompletedInternal(continueOnCapturedContext, continuation);
 
 		/// <inheritdoc/>
-		void IStepGathererAwaiter<AnalysisResult>.StartContinuation(bool continueOnCapturedContext, Action continuation)
+		void IStepGathererAwaiter<ReadOnlySpan<Step>>.StartContinuation(bool continueOnCapturedContext, Action continuation)
 			=> StartContinuation(continueOnCapturedContext, continuation);
 
 		/// <inheritdoc/>
-		void IStepGathererAwaiter<AnalysisResult>.CoreOperation(object? state) => CoreOperation(state);
+		void IStepGathererAwaiter<ReadOnlySpan<Step>>.CoreOperation(object? state) => CoreOperation(state);
 
 		/// <summary>
 		/// Executes a custom method on work having been completed.
@@ -215,7 +215,7 @@ public partial struct AsyncAnalyzerAwaitable
 		{
 			try
 			{
-				_result = _analyzer.Analyze(_grid, _progress, _cancellationToken);
+				_result = _collector.Collect(_grid, _progress, _cancellationToken).ToArray();
 			}
 			catch (Exception ex)
 			{
