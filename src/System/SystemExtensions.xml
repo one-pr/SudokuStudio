@@ -4557,6 +4557,9 @@
         <member name="M:System.Linq.SpanEnumerable.Where``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})">
             <inheritdoc cref="M:System.Linq.Providers.IWhereMethod`2.Where(System.Func{`1,System.Boolean})"/>
         </member>
+        <member name="M:System.Linq.SpanEnumerable.Where``1(System.ReadOnlySpan{``0},System.Func{``0,System.Int32,System.Boolean})">
+            <inheritdoc cref="M:System.Linq.Providers.IWhereMethod`2.Where(System.Func{`1,System.Int32,System.Boolean})"/>
+        </member>
         <member name="M:System.Linq.SpanEnumerable.Min``1(System.ReadOnlySpan{``0})">
             <inheritdoc cref="M:System.Linq.Providers.IMinMaxMethod`2.Min"/>
         </member>

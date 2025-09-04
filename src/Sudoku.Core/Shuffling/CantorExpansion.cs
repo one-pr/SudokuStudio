@@ -189,13 +189,13 @@ public static class CantorExpansion
 	private static int Rank3(House[] perm)
 	{
 		ArgumentException.ThrowIfAssertionFailed(perm.Length == 3);
-		var items = (int[])[0, 1, 2];
+		var items = (ReadOnlySpan<int>)[0, 1, 2];
 		var rank = 0;
 		for (var i = 0; i < 2; i++)
 		{
-			var j = Array.IndexOf(items, perm[i]);
+			var j = items.IndexOf(perm[i]);
 			rank += j * (i == 0 ? 2 : 1);
-			items = [.. items.Where((_, k) => k != j)];
+			items = items.Where((_, k) => k != j);
 		}
 		return rank;
 	}
@@ -213,14 +213,14 @@ public static class CantorExpansion
 			throw new ArgumentOutOfRangeException(nameof(rank));
 		}
 
-		var items = (int[])[0, 1, 2];
+		var items = (ReadOnlySpan<int>)[0, 1, 2];
 		var result = new int[3];
 		var r = rank;
 		var c0 = r / 2;
 		r %= 2;
 		var c1 = r;
 		result[0] = items[c0];
-		items = [.. items.Where((_, i) => i != c0)];
+		items = items.Where((_, i) => i != c0);
 		result[1] = items[c1];
 		result[2] = items.First(e => e != result[0] && e != result[1]);
 		return result;

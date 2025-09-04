@@ -16,4 +16,19 @@ public partial class SpanEnumerable
 		}
 		return result.AsReadOnlySpan()[..i];
 	}
+
+	/// <inheritdoc cref="IWhereMethod{TSelf, TSource}.Where(Func{TSource, int, bool})"/>
+	public static ReadOnlySpan<TSource> Where<TSource>(this ReadOnlySpan<TSource> @this, Func<TSource, int, bool> predicate)
+	{
+		var result = new TSource[@this.Length];
+		var i = 0;
+		for (var j = 0; j < @this.Length; j++)
+		{
+			if (predicate(@this[j], j))
+			{
+				result[i++] = @this[j];
+			}
+		}
+		return result.AsReadOnlySpan()[..i];
+	}
 }
