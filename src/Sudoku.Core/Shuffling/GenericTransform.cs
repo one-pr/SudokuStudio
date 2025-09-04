@@ -101,28 +101,28 @@ public readonly record struct GenericTransform(int TransposeRank, int RelabeledR
 	/// <summary>
 	/// Initializes a <see cref="GenericTransform"/> via the base-mixed rank.
 	/// </summary>
-	/// <param name="baseMixedRank">The base-mixed rank.</param>
-	public GenericTransform(long baseMixedRank) :
+	/// <param name="rank">The base-mixed rank.</param>
+	public GenericTransform(long rank) :
 		this(
 			(int)(
-				baseMixedRank
+				rank
 					/ GridTransformIdentifier.RelabelDigitsPermutationsCount
 					/ GridTransformIdentifier.RelabelLinesPermutationsCount
 					/ GridTransformIdentifier.RelabelLinesPermutationsCount
 					% GridTransformIdentifier.TransposePermutationsCount
 			),
 			(int)(
-				baseMixedRank
+				rank
 					/ GridTransformIdentifier.RelabelDigitsPermutationsCount
 					/ GridTransformIdentifier.RelabelLinesPermutationsCount
 					% GridTransformIdentifier.RelabelLinesPermutationsCount
 			),
 			(int)(
-				baseMixedRank
+				rank
 					/ GridTransformIdentifier.RelabelDigitsPermutationsCount
 					% GridTransformIdentifier.RelabelLinesPermutationsCount
 			),
-			(int)(baseMixedRank % GridTransformIdentifier.RelabelDigitsPermutationsCount)
+			(int)(rank % GridTransformIdentifier.RelabelDigitsPermutationsCount)
 		)
 	{
 	}
