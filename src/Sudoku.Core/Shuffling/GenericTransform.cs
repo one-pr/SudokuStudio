@@ -136,11 +136,11 @@ public readonly record struct GenericTransform(int TransposeRank, int RelabeledR
 	/// <summary>
 	/// Indicates the base-mixed rank.
 	/// </summary>
-	public long BaseMixedRank
+	public long Rank
 		=> TransposeRank * GridTransformIdentifier.RelabelLinesPermutationsCount * GridTransformIdentifier.RelabelLinesPermutationsCount * GridTransformIdentifier.RelabelDigitsPermutationsCount
-		+ RelabeledRowsRank * GridTransformIdentifier.RelabelLinesPermutationsCount * GridTransformIdentifier.RelabelDigitsPermutationsCount
-		+ RelabeledColumnsRank * GridTransformIdentifier.RelabelDigitsPermutationsCount
-		+ RelabeledDigitsRank;
+			+ RelabeledRowsRank * GridTransformIdentifier.RelabelLinesPermutationsCount * GridTransformIdentifier.RelabelDigitsPermutationsCount
+			+ RelabeledColumnsRank * GridTransformIdentifier.RelabelDigitsPermutationsCount
+			+ RelabeledDigitsRank;
 
 	/// <summary>
 	/// Represents a value that displays relabeled row indices.
@@ -158,17 +158,23 @@ public readonly record struct GenericTransform(int TransposeRank, int RelabeledR
 	public ReadOnlySpan<Digit> DigitsRelabeled => CantorExpansion.UnrankRelabeledDigits(RelabeledDigitsRank, SpanEnumerable.Range(9));
 
 
+	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
+	[OverloadResolutionPriority(1)]
+	public bool Equals(in GenericTransform other) => Rank == other.Rank;
+
 	/// <inheritdoc cref="IComparable{T}.CompareTo(T)"/>
-	public int CompareTo(in GenericTransform other) => BaseMixedRank.CompareTo(other.BaseMixedRank);
+	public int CompareTo(in GenericTransform other) => Rank.CompareTo(other.Rank);
 
 	/// <inheritdoc/>
 	int IComparable<GenericTransform>.CompareTo(GenericTransform other) => CompareTo(other);
 
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
+	[OverloadResolutionPriority(1)]
 	public static bool operator ==(in GenericTransform left, in GenericTransform right) => left.Equals(right);
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
+	[OverloadResolutionPriority(1)]
 	public static bool operator !=(in GenericTransform left, in GenericTransform right) => !(left == right);
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
@@ -231,5 +237,5 @@ public readonly record struct GenericTransform(int TransposeRank, int RelabeledR
 	/// Implicit cast from <see cref="GenericTransform"/> to <see cref="long"/>.
 	/// </summary>
 	/// <param name="transform">The transform.</param>
-	public static implicit operator long(GenericTransform transform) => transform.BaseMixedRank;
+	public static implicit operator long(GenericTransform transform) => transform.Rank;
 }

@@ -12913,7 +12913,7 @@
             Indicates whether to transpose.
             </summary>
         </member>
-        <member name="P:Sudoku.Shuffling.GenericTransform.BaseMixedRank">
+        <member name="P:Sudoku.Shuffling.GenericTransform.Rank">
             <summary>
             Indicates the base-mixed rank.
             </summary>
@@ -12932,6 +12932,9 @@
             <summary>
             Represents a value that displays relabeled digits.
             </summary>
+        </member>
+        <member name="M:Sudoku.Shuffling.GenericTransform.Equals(Sudoku.Shuffling.GenericTransform@)">
+            <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
         </member>
         <member name="M:Sudoku.Shuffling.GenericTransform.CompareTo(Sudoku.Shuffling.GenericTransform@)">
             <inheritdoc cref="M:System.IComparable`1.CompareTo(`0)"/>
