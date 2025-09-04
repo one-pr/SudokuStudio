@@ -162,7 +162,7 @@ public readonly struct GridTransformIdentifier :
 		{
 			var index = i >> 5;
 			var position = i & (1 << 5) - 1;
-			if ((value >> i & 1) != 0)
+			if ((value >>> i & 1) != 0)
 			{
 				_elements[index] |= 1 << position;
 			}
