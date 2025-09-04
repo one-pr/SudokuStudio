@@ -1,9 +1,9 @@
-namespace Sudoku.Shuffling.Transforming;
+namespace Sudoku.Shuffling;
 
 /// <summary>
 /// Provides a way to rank and unrank permutation. The ranking algorithm is called "Cantor Expansion".
 /// </summary>
-public static class PermutationRanker
+public static class CantorExpansion
 {
 	/// <summary>
 	/// Rank the current permutation from the base order.
@@ -181,7 +181,12 @@ public static class PermutationRanker
 		return fact;
 	}
 
-	private static int Rank3(int[] perm)
+	/// <summary>
+	/// Rank for 3 lines in a chute.
+	/// </summary>
+	/// <param name="perm">The permutation (row indices or column indices).</param>
+	/// <returns>The rank.</returns>
+	private static int Rank3(House[] perm)
 	{
 		ArgumentException.ThrowIfAssertionFailed(perm.Length == 3);
 		var items = (int[])[0, 1, 2];
@@ -195,16 +200,22 @@ public static class PermutationRanker
 		return rank;
 	}
 
-	private static int[] Unrank3(int k)
+	/// <summary>
+	/// Unrank for 3 lines in a chute.
+	/// </summary>
+	/// <param name="rank">The rank.</param>
+	/// <returns>The permutation.</returns>
+	/// <exception cref="ArgumentOutOfRangeException">Throws when <paramref name="rank"/> is out of range.</exception>
+	private static House[] Unrank3(int rank)
 	{
-		if (k is < 0 or >= 6)
+		if (rank is < 0 or >= 6)
 		{
-			throw new ArgumentOutOfRangeException(nameof(k));
+			throw new ArgumentOutOfRangeException(nameof(rank));
 		}
 
 		var items = (int[])[0, 1, 2];
 		var result = new int[3];
-		var r = k;
+		var r = rank;
 		var c0 = r / 2;
 		r %= 2;
 		var c1 = r;

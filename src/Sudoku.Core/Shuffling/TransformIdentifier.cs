@@ -1,4 +1,4 @@
-namespace Sudoku.Shuffling.Transforming;
+namespace Sudoku.Shuffling;
 
 /// <summary>
 /// Represents an identifier that describes the transforming cases.
@@ -176,18 +176,18 @@ public readonly struct TransformIdentifier :
 	/// <summary>
 	/// Represents a value that displays relabeled row indices.
 	/// </summary>
-	public ReadOnlySpan<RowIndex> RowIndicesRelabeled => PermutationRanker.UnrankLine(TransformationMasks.RemapRows);
+	public ReadOnlySpan<RowIndex> RowIndicesRelabeled => CantorExpansion.UnrankLine(TransformationMasks.RemapRows);
 
 	/// <summary>
 	/// Represents a value that displays relabeled column indices.
 	/// </summary>
-	public ReadOnlySpan<ColumnIndex> ColumnIndicesRelabeled => PermutationRanker.UnrankLine(TransformationMasks.RemapColumns);
+	public ReadOnlySpan<ColumnIndex> ColumnIndicesRelabeled => CantorExpansion.UnrankLine(TransformationMasks.RemapColumns);
 
 	/// <summary>
 	/// Represents a value that displayes relabeled digits.
 	/// </summary>
 	public ReadOnlySpan<Digit> DigitsRelabeled
-		=> PermutationRanker.UnrankDigit(TransformationMasks.RelabelDigits, [0, 1, 2, 3, 4, 5, 6, 7, 8]);
+		=> CantorExpansion.UnrankDigit(TransformationMasks.RelabelDigits, [0, 1, 2, 3, 4, 5, 6, 7, 8]);
 
 	/// <summary>
 	/// Represents identifier value.

@@ -12724,6 +12724,77 @@
             Indicates the default behavior is to throw a <see cref="T:System.NotSupportedException"/>.
             </summary>
         </member>
+        <member name="T:Sudoku.Shuffling.CantorExpansion">
+            <summary>
+            Provides a way to rank and unrank permutation. The ranking algorithm is called "Cantor Expansion".
+            </summary>
+        </member>
+        <member name="M:Sudoku.Shuffling.CantorExpansion.RankDigit(System.ReadOnlySpan{System.Int32},System.ReadOnlySpan{System.Int32})">
+            <summary>
+            Rank the current permutation from the base order.
+            </summary>
+            <param name="perm">The permutation sequence.</param>
+            <param name="baseOrder">The base-ordered sequence.</param>
+            <returns>The rank.</returns>
+            <exception cref="T:System.ArgumentException">
+            Throws when the arguments <paramref name="baseOrder"/> and <paramref name="perm"/> has different lengths.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Throws when the permutation has incorrect value that cannot be found in source sequence.
+            </exception>
+        </member>
+        <member name="M:Sudoku.Shuffling.CantorExpansion.RankLine(System.Int32[])">
+            <summary>
+            Rank the current label permutation (row or column labels).
+            </summary>
+            <param name="labels">The permutation sequence.</param>
+            <returns>The rank.</returns>
+            <exception cref="T:System.ArgumentException">
+            Throws when the argument <paramref name="labels"/> doesn't contain 9 elements.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Throws when the original label contains invalid digits.
+            </exception>
+        </member>
+        <member name="M:Sudoku.Shuffling.CantorExpansion.UnrankDigit(System.Int32,System.ReadOnlySpan{System.Int32})">
+            <summary>
+            Unrank the permutation via the base order.
+            </summary>
+            <param name="rank">The rank.</param>
+            <param name="baseOrder">The base-ordered sequence.</param>
+            <returns>The unranked permutation.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Throws when rank is out of range.</exception>
+        </member>
+        <member name="M:Sudoku.Shuffling.CantorExpansion.UnrankLine(System.Int32)">
+            <summary>
+            Unrank the permutation.
+            </summary>
+            <param name="rank">The rank.</param>
+            <returns>The unranked sequence.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Throws when rank is out of range.</exception>
+        </member>
+        <member name="M:Sudoku.Shuffling.CantorExpansion.Factorials(System.Int32)">
+            <summary>
+            Extracts an array of factorial values to optimize calculation.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The sequence of factorial values (1!, 2!, 3!, etc.).</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.CantorExpansion.Rank3(System.Int32[])">
+            <summary>
+            Rank for 3 lines in a chute.
+            </summary>
+            <param name="perm">The permutation (row indices or column indices).</param>
+            <returns>The rank.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.CantorExpansion.Unrank3(System.Int32)">
+            <summary>
+            Unrank for 3 lines in a chute.
+            </summary>
+            <param name="rank">The rank.</param>
+            <returns>The permutation.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Throws when <paramref name="rank"/> is out of range.</exception>
+        </member>
         <member name="T:Sudoku.Shuffling.Minlex.BestTripletPermutation">
             <summary>
             Represents the permutation information for best triplet.
@@ -12955,6 +13026,231 @@
         <member name="M:Sudoku.Shuffling.Minlex.MinlexFinder.Find(Sudoku.Concepts.Grid@)">
             <inheritdoc cref="M:Sudoku.Shuffling.Minlex.MinlexFinder.Find(System.String)"/>
         </member>
+        <member name="T:Sudoku.Shuffling.TransformIdentifier">
+            <summary>
+            Represents an identifier that describes the transforming cases.
+            </summary>
+            <remarks>
+            <para><developer-notes>
+		<para>
+			<b>Developer Notes</b>
+		</para>
+	</developer-notes></para>
+            <para>
+            This data type is used to represent an encoding of a transformation.
+            It stores a global code derived from a Sudoku puzzle through a minimum lexicographic order (min-lex) mapping.
+            The backing identifier is <b>globally unique</b>: identical identifiers represent identical grids,
+            while different identifiers represent different grids.
+            </para>
+            <para>
+            We summarize the data structure into three parts:
+            <list type="number">
+            <item>The global identifier of the minimum lexicographic (min-lex) form</item>
+            <item>The transformation form</item>
+            <item>The list of empty cell positions</item>
+            </list>
+            </para>
+            <para>
+            There are approximately <b>5.4e9</b> inequivalent (essentially different, ED) Sudoku solutions in total.
+            By listing them in min-lex order, we can perform both sorting and deduplication. This part can be stored using 33 bits.
+            </para>
+            <para>
+            For the transformation form, we encode the following four types of transformations:
+            <list type="number">
+            <item><b>Transpose</b> - swap row and column indices (i.e., <c>(x, y) -&gt; (y, x)</c>)</item>
+            <item><b>Row remapping</b> - remap rows 1–9 to target positions</item>
+            <item><b>Column remapping</b> - remap columns 1–9 to target positions</item>
+            <item><b>Digit remapping</b> - relabel digits 1–9 to target positions</item>
+            </list>
+            </para>
+            <para>
+            All equivalent transformations of Sudoku puzzles can be achieved using the above four types,
+            so this scheme can represent all transformation cases.
+            </para>
+            <para>
+            The total number of cases for these four transformations is 2, 1296, 1296, and 362880, respectively.
+            Multiplying them together gives the total number of possible cases, which is approximately <b>1.219e12</b>.
+            This value covers all possible transformation cases.
+            By storing the four transformation modes in bit form, the result can be represented by a single number, requiring 41 bits.
+            </para>
+            <para>
+            Finally, we need the list of empty cell positions. We only need 0 to represent an empty cell and 1 to represent a digit.
+            This part requires 81 bits.
+            </para>
+            <para>
+            Therefore, the entire data structure theoretically requires only <b>33 + 41 + 81 = 155</b> bits.
+            However, to align with bit size boundaries, this data structure uses the inline array feature and stores the data in 5 integers,
+            which can theoretically hold 160 bits.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:Sudoku.Shuffling.TransformIdentifier.AllTransformationsPermutationsCount">
+            <summary>
+            Indicates the numebr of all transformations permutation cases.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.TransformIdentifier.InequivalentSolutionsCount">
+            <summary>
+            Indicates the number of all inequivalent solutions.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.TransformIdentifier.RemapRowsPermutationsCount">
+            <summary>
+            Indicates the number of remapping row cases.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.TransformIdentifier.RemapColumnsPermutationsCount">
+            <summary>
+            Indicates the number of remapping column cases.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.TransformIdentifier.RequiredBitsCount">
+            <summary>
+            Indicates the number of required bits.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.TransformIdentifier.TransposePermutationsCount">
+            <summary>
+            Indicates the number of transposing cases.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.TransformIdentifier.RelabelDigitsPermutationsCount">
+            <summary>
+            Indicates the number of relabelling digit cases.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.TransformIdentifier.MinlexPartBitsCount">
+            <summary>
+            Indicates the number of bits used in min-lex part.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.TransformIdentifier.TransformationPartBitsCount">
+            <summary>
+            Indicates the number of bits used in transformation part.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.TransformIdentifier.CellStatePartBitsCount">
+            <summary>
+            Indicates the number of bits used in cell states part.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.TransformIdentifier.MinlexPartShiftAmount">
+            <summary>
+            Indicates the shift amount of min-lex part.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.TransformIdentifier.TransformationPartShiftAmount">
+            <summary>
+            Indicates the shift amount of transformation part.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.TransformIdentifier._elements">
+            <summary>
+            Indicates the backing elements.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Shuffling.TransformIdentifier.ShouldTranspose">
+            <summary>
+            Indicates whether to transpose.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Shuffling.TransformIdentifier.GlobalMinlexIndex">
+            <summary>
+            Indicates the number of global min-lex index.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Shuffling.TransformIdentifier.GivenCells">
+            <summary>
+            Indicates given cells.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Shuffling.TransformIdentifier.RowIndicesRelabeled">
+            <summary>
+            Represents a value that displays relabeled row indices.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Shuffling.TransformIdentifier.ColumnIndicesRelabeled">
+            <summary>
+            Represents a value that displays relabeled column indices.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Shuffling.TransformIdentifier.DigitsRelabeled">
+            <summary>
+            Represents a value that displayes relabeled digits.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Shuffling.TransformIdentifier.IdentifierValue">
+            <summary>
+            Represents identifier value.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Shuffling.TransformIdentifier.TransformationMasks">
+            <summary>
+            Indicates the quadruple of tranformation masks.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.Equals(Sudoku.Shuffling.TransformIdentifier@)">
+            <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.CompareTo(Sudoku.Shuffling.TransformIdentifier@)">
+            <inheritdoc cref="M:System.IComparable`1.CompareTo(`0)"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.System#IEquatable{Sudoku#Shuffling#TransformIdentifier}#Equals(Sudoku.Shuffling.TransformIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.System#IComparable{Sudoku#Shuffling#TransformIdentifier}#CompareTo(Sudoku.Shuffling.TransformIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.GetSlice(System.Int32,System.Int32)">
+            <summary>
+            Gets a <see cref="T:System.Collections.BitArray"/> instance that displays the slice.
+            </summary>
+            <param name="startIndex">The start index.</param>
+            <param name="count">The number of bits.</param>
+            <returns>A <see cref="T:System.Collections.BitArray"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.op_Equality(Sudoku.Shuffling.TransformIdentifier@,Sudoku.Shuffling.TransformIdentifier@)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.op_Inequality(Sudoku.Shuffling.TransformIdentifier@,Sudoku.Shuffling.TransformIdentifier@)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.op_GreaterThan(Sudoku.Shuffling.TransformIdentifier@,Sudoku.Shuffling.TransformIdentifier@)">
+            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThan(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.op_LessThan(Sudoku.Shuffling.TransformIdentifier@,Sudoku.Shuffling.TransformIdentifier@)">
+            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThan(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.op_GreaterThanOrEqual(Sudoku.Shuffling.TransformIdentifier@,Sudoku.Shuffling.TransformIdentifier@)">
+            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThanOrEqual(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.op_LessThanOrEqual(Sudoku.Shuffling.TransformIdentifier@,Sudoku.Shuffling.TransformIdentifier@)">
+            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThanOrEqual(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.System#Numerics#IEqualityOperators{Sudoku#Shuffling#TransformIdentifier,Sudoku#Shuffling#TransformIdentifier,System#Boolean}#op_Equality(Sudoku.Shuffling.TransformIdentifier,Sudoku.Shuffling.TransformIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.System#Numerics#IEqualityOperators{Sudoku#Shuffling#TransformIdentifier,Sudoku#Shuffling#TransformIdentifier,System#Boolean}#op_Inequality(Sudoku.Shuffling.TransformIdentifier,Sudoku.Shuffling.TransformIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.System#Numerics#IComparisonOperators{Sudoku#Shuffling#TransformIdentifier,Sudoku#Shuffling#TransformIdentifier,System#Boolean}#op_GreaterThan(Sudoku.Shuffling.TransformIdentifier,Sudoku.Shuffling.TransformIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.System#Numerics#IComparisonOperators{Sudoku#Shuffling#TransformIdentifier,Sudoku#Shuffling#TransformIdentifier,System#Boolean}#op_LessThan(Sudoku.Shuffling.TransformIdentifier,Sudoku.Shuffling.TransformIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.System#Numerics#IComparisonOperators{Sudoku#Shuffling#TransformIdentifier,Sudoku#Shuffling#TransformIdentifier,System#Boolean}#op_GreaterThanOrEqual(Sudoku.Shuffling.TransformIdentifier,Sudoku.Shuffling.TransformIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Shuffling.TransformIdentifier.System#Numerics#IComparisonOperators{Sudoku#Shuffling#TransformIdentifier,Sudoku#Shuffling#TransformIdentifier,System#Boolean}#op_LessThanOrEqual(Sudoku.Shuffling.TransformIdentifier,Sudoku.Shuffling.TransformIdentifier)">
+            <inheritdoc/>
+        </member>
         <member name="T:Sudoku.Shuffling.Transforming.IElementSwappingTransformable`2">
             <summary>
             Represents an object that can swap elements of itself.
@@ -13070,62 +13366,6 @@
         </member>
         <member name="M:Sudoku.Shuffling.Transforming.LibraryTransformationExtensions.RandomReadOneAsync(Sudoku.IO.Library,Sudoku.Shuffling.Transforming.TransformType,System.Threading.CancellationToken)">
             <inheritdoc cref="M:Sudoku.Shuffling.Transforming.LibraryTransformationExtensions.&lt;&gt;E__0.RandomReadOneAsync(Sudoku.Shuffling.Transforming.TransformType,System.Threading.CancellationToken)"/>
-        </member>
-        <member name="T:Sudoku.Shuffling.Transforming.PermutationRanker">
-            <summary>
-            Provides a way to rank and unrank permutation. The ranking algorithm is called "Cantor Expansion".
-            </summary>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.PermutationRanker.RankDigit(System.ReadOnlySpan{System.Int32},System.ReadOnlySpan{System.Int32})">
-            <summary>
-            Rank the current permutation from the base order.
-            </summary>
-            <param name="perm">The permutation sequence.</param>
-            <param name="baseOrder">The base-ordered sequence.</param>
-            <returns>The rank.</returns>
-            <exception cref="T:System.ArgumentException">
-            Throws when the arguments <paramref name="baseOrder"/> and <paramref name="perm"/> has different lengths.
-            </exception>
-            <exception cref="T:System.InvalidOperationException">
-            Throws when the permutation has incorrect value that cannot be found in source sequence.
-            </exception>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.PermutationRanker.RankLine(System.Int32[])">
-            <summary>
-            Rank the current label permutation (row or column labels).
-            </summary>
-            <param name="labels">The permutation sequence.</param>
-            <returns>The rank.</returns>
-            <exception cref="T:System.ArgumentException">
-            Throws when the argument <paramref name="labels"/> doesn't contain 9 elements.
-            </exception>
-            <exception cref="T:System.InvalidOperationException">
-            Throws when the original label contains invalid digits.
-            </exception>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.PermutationRanker.UnrankDigit(System.Int32,System.ReadOnlySpan{System.Int32})">
-            <summary>
-            Unrank the permutation via the base order.
-            </summary>
-            <param name="rank">The rank.</param>
-            <param name="baseOrder">The base-ordered sequence.</param>
-            <returns>The unranked permutation.</returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">Throws when rank is out of range.</exception>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.PermutationRanker.UnrankLine(System.Int32)">
-            <summary>
-            Unrank the permutation.
-            </summary>
-            <param name="rank">The rank.</param>
-            <returns>The unranked sequence.</returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">Throws when rank is out of range.</exception>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.PermutationRanker.Factorials(System.Int32)">
-            <summary>
-            Extracts an array of factorial values to optimize calculation.
-            </summary>
-            <param name="n">The number.</param>
-            <returns>The sequence of factorial values (1!, 2!, 3!, etc.).</returns>
         </member>
         <member name="T:Sudoku.Shuffling.Transforming.RandomShufflingExtensions">
             <summary>
@@ -13400,231 +13640,6 @@
         </member>
         <member name="M:Sudoku.Shuffling.Transforming.Transformation.SwapChute``1(``0@,System.Int32,System.Int32)">
             <inheritdoc cref="M:Sudoku.Shuffling.Transforming.Transformation.&lt;&gt;E__1`1.SwapChute(System.Int32,System.Int32)"/>
-        </member>
-        <member name="T:Sudoku.Shuffling.Transforming.TransformIdentifier">
-            <summary>
-            Represents an identifier that describes the transforming cases.
-            </summary>
-            <remarks>
-            <para><developer-notes>
-		<para>
-			<b>Developer Notes</b>
-		</para>
-	</developer-notes></para>
-            <para>
-            This data type is used to represent an encoding of a transformation.
-            It stores a global code derived from a Sudoku puzzle through a minimum lexicographic order (min-lex) mapping.
-            The backing identifier is <b>globally unique</b>: identical identifiers represent identical grids,
-            while different identifiers represent different grids.
-            </para>
-            <para>
-            We summarize the data structure into three parts:
-            <list type="number">
-            <item>The global identifier of the minimum lexicographic (min-lex) form</item>
-            <item>The transformation form</item>
-            <item>The list of empty cell positions</item>
-            </list>
-            </para>
-            <para>
-            There are approximately <b>5.4e9</b> inequivalent (essentially different, ED) Sudoku solutions in total.
-            By listing them in min-lex order, we can perform both sorting and deduplication. This part can be stored using 33 bits.
-            </para>
-            <para>
-            For the transformation form, we encode the following four types of transformations:
-            <list type="number">
-            <item><b>Transpose</b> - swap row and column indices (i.e., <c>(x, y) -&gt; (y, x)</c>)</item>
-            <item><b>Row remapping</b> - remap rows 1–9 to target positions</item>
-            <item><b>Column remapping</b> - remap columns 1–9 to target positions</item>
-            <item><b>Digit remapping</b> - relabel digits 1–9 to target positions</item>
-            </list>
-            </para>
-            <para>
-            All equivalent transformations of Sudoku puzzles can be achieved using the above four types,
-            so this scheme can represent all transformation cases.
-            </para>
-            <para>
-            The total number of cases for these four transformations is 2, 1296, 1296, and 362880, respectively.
-            Multiplying them together gives the total number of possible cases, which is approximately <b>1.219e12</b>.
-            This value covers all possible transformation cases.
-            By storing the four transformation modes in bit form, the result can be represented by a single number, requiring 41 bits.
-            </para>
-            <para>
-            Finally, we need the list of empty cell positions. We only need 0 to represent an empty cell and 1 to represent a digit.
-            This part requires 81 bits.
-            </para>
-            <para>
-            Therefore, the entire data structure theoretically requires only <b>33 + 41 + 81 = 155</b> bits.
-            However, to align with bit size boundaries, this data structure uses the inline array feature and stores the data in 5 integers,
-            which can theoretically hold 160 bits.
-            </para>
-            </remarks>
-        </member>
-        <member name="F:Sudoku.Shuffling.Transforming.TransformIdentifier.AllTransformationsPermutationsCount">
-            <summary>
-            Indicates the numebr of all transformations permutation cases.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Transforming.TransformIdentifier.InequivalentSolutionsCount">
-            <summary>
-            Indicates the number of all inequivalent solutions.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Transforming.TransformIdentifier.RemapRowsPermutationsCount">
-            <summary>
-            Indicates the number of remapping row cases.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Transforming.TransformIdentifier.RemapColumnsPermutationsCount">
-            <summary>
-            Indicates the number of remapping column cases.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Transforming.TransformIdentifier.RequiredBitsCount">
-            <summary>
-            Indicates the number of required bits.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Transforming.TransformIdentifier.TransposePermutationsCount">
-            <summary>
-            Indicates the number of transposing cases.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Transforming.TransformIdentifier.RelabelDigitsPermutationsCount">
-            <summary>
-            Indicates the number of relabelling digit cases.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Transforming.TransformIdentifier.MinlexPartBitsCount">
-            <summary>
-            Indicates the number of bits used in min-lex part.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Transforming.TransformIdentifier.TransformationPartBitsCount">
-            <summary>
-            Indicates the number of bits used in transformation part.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Transforming.TransformIdentifier.CellStatePartBitsCount">
-            <summary>
-            Indicates the number of bits used in cell states part.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Transforming.TransformIdentifier.MinlexPartShiftAmount">
-            <summary>
-            Indicates the shift amount of min-lex part.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Transforming.TransformIdentifier.TransformationPartShiftAmount">
-            <summary>
-            Indicates the shift amount of transformation part.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Transforming.TransformIdentifier._elements">
-            <summary>
-            Indicates the backing elements.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Shuffling.Transforming.TransformIdentifier.ShouldTranspose">
-            <summary>
-            Indicates whether to transpose.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Shuffling.Transforming.TransformIdentifier.GlobalMinlexIndex">
-            <summary>
-            Indicates the number of global min-lex index.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Shuffling.Transforming.TransformIdentifier.GivenCells">
-            <summary>
-            Indicates given cells.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Shuffling.Transforming.TransformIdentifier.RowIndicesRelabeled">
-            <summary>
-            Represents a value that displays relabeled row indices.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Shuffling.Transforming.TransformIdentifier.ColumnIndicesRelabeled">
-            <summary>
-            Represents a value that displays relabeled column indices.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Shuffling.Transforming.TransformIdentifier.DigitsRelabeled">
-            <summary>
-            Represents a value that displayes relabeled digits.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Shuffling.Transforming.TransformIdentifier.IdentifierValue">
-            <summary>
-            Represents identifier value.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Shuffling.Transforming.TransformIdentifier.TransformationMasks">
-            <summary>
-            Indicates the quadruple of tranformation masks.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.Equals(System.Object)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.Equals(Sudoku.Shuffling.Transforming.TransformIdentifier@)">
-            <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.GetHashCode">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.CompareTo(Sudoku.Shuffling.Transforming.TransformIdentifier@)">
-            <inheritdoc cref="M:System.IComparable`1.CompareTo(`0)"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.System#IEquatable{Sudoku#Shuffling#Transforming#TransformIdentifier}#Equals(Sudoku.Shuffling.Transforming.TransformIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.System#IComparable{Sudoku#Shuffling#Transforming#TransformIdentifier}#CompareTo(Sudoku.Shuffling.Transforming.TransformIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.GetSlice(System.Int32,System.Int32)">
-            <summary>
-            Gets a <see cref="T:System.Collections.BitArray"/> instance that displays the slice.
-            </summary>
-            <param name="startIndex">The start index.</param>
-            <param name="count">The number of bits.</param>
-            <returns>A <see cref="T:System.Collections.BitArray"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.op_Equality(Sudoku.Shuffling.Transforming.TransformIdentifier@,Sudoku.Shuffling.Transforming.TransformIdentifier@)">
-            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.op_Inequality(Sudoku.Shuffling.Transforming.TransformIdentifier@,Sudoku.Shuffling.Transforming.TransformIdentifier@)">
-            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.op_GreaterThan(Sudoku.Shuffling.Transforming.TransformIdentifier@,Sudoku.Shuffling.Transforming.TransformIdentifier@)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThan(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.op_LessThan(Sudoku.Shuffling.Transforming.TransformIdentifier@,Sudoku.Shuffling.Transforming.TransformIdentifier@)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThan(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.op_GreaterThanOrEqual(Sudoku.Shuffling.Transforming.TransformIdentifier@,Sudoku.Shuffling.Transforming.TransformIdentifier@)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThanOrEqual(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.op_LessThanOrEqual(Sudoku.Shuffling.Transforming.TransformIdentifier@,Sudoku.Shuffling.Transforming.TransformIdentifier@)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThanOrEqual(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.System#Numerics#IEqualityOperators{Sudoku#Shuffling#Transforming#TransformIdentifier,Sudoku#Shuffling#Transforming#TransformIdentifier,System#Boolean}#op_Equality(Sudoku.Shuffling.Transforming.TransformIdentifier,Sudoku.Shuffling.Transforming.TransformIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.System#Numerics#IEqualityOperators{Sudoku#Shuffling#Transforming#TransformIdentifier,Sudoku#Shuffling#Transforming#TransformIdentifier,System#Boolean}#op_Inequality(Sudoku.Shuffling.Transforming.TransformIdentifier,Sudoku.Shuffling.Transforming.TransformIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.System#Numerics#IComparisonOperators{Sudoku#Shuffling#Transforming#TransformIdentifier,Sudoku#Shuffling#Transforming#TransformIdentifier,System#Boolean}#op_GreaterThan(Sudoku.Shuffling.Transforming.TransformIdentifier,Sudoku.Shuffling.Transforming.TransformIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.System#Numerics#IComparisonOperators{Sudoku#Shuffling#Transforming#TransformIdentifier,Sudoku#Shuffling#Transforming#TransformIdentifier,System#Boolean}#op_LessThan(Sudoku.Shuffling.Transforming.TransformIdentifier,Sudoku.Shuffling.Transforming.TransformIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.System#Numerics#IComparisonOperators{Sudoku#Shuffling#Transforming#TransformIdentifier,Sudoku#Shuffling#Transforming#TransformIdentifier,System#Boolean}#op_GreaterThanOrEqual(Sudoku.Shuffling.Transforming.TransformIdentifier,Sudoku.Shuffling.Transforming.TransformIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transforming.TransformIdentifier.System#Numerics#IComparisonOperators{Sudoku#Shuffling#Transforming#TransformIdentifier,Sudoku#Shuffling#Transforming#TransformIdentifier,System#Boolean}#op_LessThanOrEqual(Sudoku.Shuffling.Transforming.TransformIdentifier,Sudoku.Shuffling.Transforming.TransformIdentifier)">
-            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Shuffling.Transforming.TransformType">
             <summary>
