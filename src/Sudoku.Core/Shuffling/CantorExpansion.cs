@@ -48,7 +48,7 @@ public static class CantorExpansion
 	/// <exception cref="InvalidOperationException">
 	/// Throws when the original label contains invalid digits.
 	/// </exception>
-	public static int RankLine(Digit[] labels)
+	public static int RankLine(House[] labels)
 	{
 		ArgumentException.ThrowIfAssertionFailed(labels.Length == 9);
 
@@ -130,7 +130,7 @@ public static class CantorExpansion
 	/// <param name="rank">The rank.</param>
 	/// <returns>The unranked sequence.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Throws when rank is out of range.</exception>
-	public static Digit[] UnrankLine(int rank)
+	public static House[] UnrankLine(int rank)
 	{
 		if (rank is < 0 or >= TransformIdentifier.RemapRowsPermutationsCount)
 		{
@@ -149,7 +149,7 @@ public static class CantorExpansion
 		var intraB = Unrank3(intra1);
 		var intraC = Unrank3(intra2);
 
-		var map = new int[9];
+		var result = new House[9];
 		for (var newBand = 0; newBand < 3; newBand++)
 		{
 			var origBand = bandPerm[newBand];
@@ -159,10 +159,10 @@ public static class CantorExpansion
 			{
 				var newRow = newBand * 3 + j;
 				var origRow = origBand * 3 + intra[j];
-				map[origRow] = newRow;
+				result[origRow] = newRow;
 			}
 		}
-		return map;
+		return result;
 	}
 
 	/// <summary>
@@ -172,13 +172,13 @@ public static class CantorExpansion
 	/// <returns>The sequence of factorial values (1!, 2!, 3!, etc.).</returns>
 	private static int[] Factorials(int n)
 	{
-		var fact = new int[n + 1];
-		fact[0] = 1;
+		var result = new int[n + 1];
+		result[0] = 1;
 		for (var i = 1; i <= n; i++)
 		{
-			fact[i] = fact[i - 1] * i;
+			result[i] = result[i - 1] * i;
 		}
-		return fact;
+		return result;
 	}
 
 	/// <summary>
