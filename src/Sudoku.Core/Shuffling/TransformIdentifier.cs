@@ -86,9 +86,7 @@ public readonly struct TransformIdentifier :
 	/// <summary>
 	/// Indicates the number of geometry permutations.
 	/// </summary>
-	public const long GeometryPermutationsCount = (long)RelabelLinesPermutationsCount
-		* RelabelLinesPermutationsCount
-		* TransposePermutationsCount;
+	public const long GeometryPermutationsCount = RelabelLinesPermutationsCount * RelabelLinesPermutationsCount * TransposePermutationsCount;
 
 	/// <summary>
 	/// Indicates the number of relabelling row cases.
