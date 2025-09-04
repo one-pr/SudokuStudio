@@ -12729,21 +12729,17 @@
             Provides a way to rank and unrank permutation. The ranking algorithm is called "Cantor Expansion".
             </summary>
         </member>
-        <member name="M:Sudoku.Shuffling.CantorExpansion.RankRelabeledDigits(System.ReadOnlySpan{System.Int32},System.ReadOnlySpan{System.Int32})">
+        <member name="M:Sudoku.Shuffling.CantorExpansion.RankRelabeledDigits(System.ReadOnlySpan{System.Int32})">
             <summary>
             Rank the current permutation from the base order.
             </summary>
-            <param name="perm">The permutation sequence.</param>
-            <param name="baseOrder">The base-ordered sequence.</param>
+            <param name="digits">The digits permutation sequence.</param>
             <returns>The rank.</returns>
-            <exception cref="T:System.ArgumentException">
-            Throws when the arguments <paramref name="baseOrder"/> and <paramref name="perm"/> has different lengths.
-            </exception>
             <exception cref="T:System.InvalidOperationException">
             Throws when the permutation has incorrect value that cannot be found in source sequence.
             </exception>
         </member>
-        <member name="M:Sudoku.Shuffling.CantorExpansion.RankRelabeledLines(System.Int32[])">
+        <member name="M:Sudoku.Shuffling.CantorExpansion.RankRelabeledLines(System.ReadOnlySpan{System.Int32})">
             <summary>
             Rank the current label permutation (row or column labels).
             </summary>
@@ -12880,11 +12876,6 @@
             Represents a transform that mirrors anti-diagonal.
             </summary>
         </member>
-        <member name="F:Sudoku.Shuffling.GenericTransform.Transpose">
-            <summary>
-            Represents a transpose transform.
-            </summary>
-        </member>
         <member name="M:Sudoku.Shuffling.GenericTransform.#ctor(System.Int32,System.Index,System.Index,System.Index)">
             <summary>
             Initializes a <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance.
@@ -12941,6 +12932,9 @@
         </member>
         <member name="M:Sudoku.Shuffling.GenericTransform.System#IComparable{Sudoku#Shuffling#GenericTransform}#CompareTo(Sudoku.Shuffling.GenericTransform)">
             <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Shuffling.GenericTransform.op_OnesComplement(Sudoku.Shuffling.GenericTransform@)">
+            <inheritdoc cref="M:System.Numerics.IBitwiseOperators`3.op_OnesComplement(`0)"/>
         </member>
         <member name="M:Sudoku.Shuffling.GenericTransform.op_Equality(Sudoku.Shuffling.GenericTransform@,Sudoku.Shuffling.GenericTransform@)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
@@ -13020,11 +13014,71 @@
         </member>
         <member name="M:Sudoku.Shuffling.GenericTransform.SwapDigit(System.Int32,System.Int32)">
             <summary>
-            Creates a <see cref="T:Sudoku.Shuffling.GenericTransform"/> with two digits swapped.
+            Creates a <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance with two digits swapped.
             </summary>
             <param name="digit1">Indicates the digit 1 to be swapped.</param>
             <param name="digit2">Indicates the digit 2 to be swapped.</param>
-            <returns>The <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance that swapped the digits.</returns>
+            <returns>A <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.GenericTransform.SwapRow(System.Int32,System.Int32)">
+            <summary>
+            Creates a <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance with two rows swapped.
+            </summary>
+            <param name="rowIndex1">Indicates the row 1 to be swapped.</param>
+            <param name="rowIndex2">Indicates the row 2 to be swapped.</param>
+            <returns>A <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.GenericTransform.SwapColumn(System.Int32,System.Int32)">
+            <summary>
+            Creates a <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance with two columns swapped.
+            </summary>
+            <param name="columnIndex1">Indicates the column 1 to be swapped.</param>
+            <param name="columnIndex2">Indicates the column 2 to be swapped.</param>
+            <returns>A <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.GenericTransform.SwapBand(System.Int32,System.Int32)">
+            <summary>
+            Creates a <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance with two bands swapped.
+            </summary>
+            <param name="bandIndex1">Indicates the band 1 to be swapped.</param>
+            <param name="bandIndex2">Indicates the band 2 to be swapped.</param>
+            <returns>A <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.GenericTransform.SwapTower(System.Int32,System.Int32)">
+            <summary>
+            Creates a <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance with two towers swapped.
+            </summary>
+            <param name="towerIndex1">Indicates the tower 1 to be swapped.</param>
+            <param name="towerIndex2">Indicates the tower 2 to be swapped.</param>
+            <returns>A <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.GenericTransform.Transpose(System.Boolean)">
+            <summary>
+            Creates a <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance with specified value indicating whether to transpose.
+            </summary>
+            <param name="transpose">Whether to transpose.</param>
+            <returns>A <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.GenericTransform.RelabelRows(System.ReadOnlySpan{System.Int32})">
+            <summary>
+            Creates a <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance with specified relabeled rows.
+            </summary>
+            <param name="rows">The relabeled rows.</param>
+            <returns>A <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.GenericTransform.RelabelColumns(System.ReadOnlySpan{System.Int32})">
+            <summary>
+            Creates a <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance with specified relabeled columns.
+            </summary>
+            <param name="columns">The relabeled columns.</param>
+            <returns>A <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.GenericTransform.RelabelDigits(System.ReadOnlySpan{System.Int32})">
+            <summary>
+            Creates a <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance with specified relabeled digits.
+            </summary>
+            <param name="digits">The relabeled digits.</param>
+            <returns>A <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance.</returns>
         </member>
         <member name="T:Sudoku.Shuffling.GridTransformIdentifier">
             <summary>

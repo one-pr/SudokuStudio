@@ -8,18 +8,16 @@ public static class CantorExpansion
 	/// <summary>
 	/// Rank the current permutation from the base order.
 	/// </summary>
-	/// <param name="perm">The permutation sequence.</param>
-	/// <param name="baseOrder">The base-ordered sequence.</param>
+	/// <param name="digits">The digits permutation sequence.</param>
 	/// <returns>The rank.</returns>
-	/// <exception cref="ArgumentException">
-	/// Throws when the arguments <paramref name="baseOrder"/> and <paramref name="perm"/> has different lengths.
-	/// </exception>
 	/// <exception cref="InvalidOperationException">
 	/// Throws when the permutation has incorrect value that cannot be found in source sequence.
 	/// </exception>
-	public static int RankRelabeledDigits(ReadOnlySpan<Digit> perm, ReadOnlySpan<Digit> baseOrder)
+	public static int RankRelabeledDigits(ReadOnlySpan<Digit> digits)
 	{
-		var n = perm.Length;
+		var baseOrder = SpanEnumerable.Range(9);
+
+		var n = digits.Length;
 		ArgumentException.ThrowIfAssertionFailed(baseOrder.Length == n);
 		var fact = Factorials(n);
 		var remaining = new List<Digit>();
@@ -28,7 +26,7 @@ public static class CantorExpansion
 		var rank = 0;
 		for (var i = 0; i < n; i++)
 		{
-			var j = remaining.IndexOf(perm[i]);
+			var j = remaining.IndexOf(digits[i]);
 			InvalidOperationException.ThrowIf(j != -1);
 
 			rank += j * fact[n - 1 - i];
@@ -48,7 +46,7 @@ public static class CantorExpansion
 	/// <exception cref="InvalidOperationException">
 	/// Throws when the original label contains invalid digits.
 	/// </exception>
-	public static int RankRelabeledLines(House[] lines)
+	public static int RankRelabeledLines(ReadOnlySpan<House> lines)
 	{
 		ArgumentException.ThrowIfAssertionFailed(lines.Length == 9);
 
@@ -130,7 +128,7 @@ public static class CantorExpansion
 	/// <param name="rank">The rank.</param>
 	/// <returns>The unranked sequence.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Throws when rank is out of range.</exception>
-	public static House[] UnrankRelabeledLines(int rank)
+	public static ReadOnlySpan<House> UnrankRelabeledLines(int rank)
 	{
 		if (rank is < 0 or >= (int)GridTransformIdentifier.RelabelLinesPermutationsCount)
 		{

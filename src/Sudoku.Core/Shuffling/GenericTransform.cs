@@ -73,11 +73,6 @@ public readonly partial record struct GenericTransform(
 	/// </summary>
 	public static readonly GenericTransform MirrorAntidiagonal = new(1, ^1, ^1, 0);
 
-	/// <summary>
-	/// Represents a transpose transform.
-	/// </summary>
-	public static readonly GenericTransform Transpose = new(1, 0, 0, 0);
-
 
 	/// <summary>
 	/// Initializes a <see cref="GenericTransform"/> instance.
@@ -175,6 +170,15 @@ public readonly partial record struct GenericTransform(
 	int IComparable<GenericTransform>.CompareTo(GenericTransform other) => CompareTo(other);
 
 
+	/// <inheritdoc cref="IBitwiseOperators{TSelf, TOther, TResult}.op_OnesComplement(TSelf)"/>
+	public static GenericTransform operator ~(in GenericTransform value)
+		=> new(
+			Math.UnsignedMod(~value.TransposeRank, (int)GridTransformIdentifier.TransposePermutationsCount),
+			Math.UnsignedMod(~value.RelabeledRowsRank, (int)GridTransformIdentifier.RelabelLinesPermutationsCount),
+			Math.UnsignedMod(~value.RelabeledColumnsRank, (int)GridTransformIdentifier.RelabelLinesPermutationsCount),
+			Math.UnsignedMod(~value.RelabeledDigitsRank, (int)GridTransformIdentifier.RelabelDigitsPermutationsCount)
+		);
+
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
 	[OverloadResolutionPriority(1)]
 	public static bool operator ==(in GenericTransform left, in GenericTransform right) => left.Equals(right);
@@ -259,9 +263,8 @@ public readonly partial record struct GenericTransform(
 		=> left ^ right;
 
 	/// <inheritdoc/>
-	[DoesNotReturn]
 	static GenericTransform IBitwiseOperators<GenericTransform, GenericTransform, GenericTransform>.operator ~(GenericTransform value)
-		=> throw new NotImplementedException();
+		=> ~value;
 
 
 	/// <summary>
