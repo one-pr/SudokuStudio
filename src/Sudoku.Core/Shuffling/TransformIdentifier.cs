@@ -27,8 +27,8 @@ namespace Sudoku.Shuffling;
 /// For the transformation form, we encode the following four types of transformations:
 /// <list type="number">
 /// <item><b>Transpose</b> - swap row and column indices (i.e., <c>(x, y) -> (y, x)</c>)</item>
-/// <item><b>Row remapping</b> - remap rows 1–9 to target positions</item>
-/// <item><b>Column remapping</b> - remap columns 1–9 to target positions</item>
+/// <item><b>Row remapping</b> - relabel rows 1–9 to target positions</item>
+/// <item><b>Column remapping</b> - relabel columns 1–9 to target positions</item>
 /// <item><b>Digit remapping</b> - relabel digits 1–9 to target positions</item>
 /// </list>
 /// </para>
@@ -176,18 +176,18 @@ public readonly struct TransformIdentifier :
 	/// <summary>
 	/// Represents a value that displays relabeled row indices.
 	/// </summary>
-	public ReadOnlySpan<RowIndex> RowIndicesRelabeled => CantorExpansion.UnrankLine(TransformationMasks.RemapRows);
+	public ReadOnlySpan<RowIndex> RowIndicesRelabeled => CantorExpansion.UnrankLine(TransformationMasks.RelabeledRows);
 
 	/// <summary>
 	/// Represents a value that displays relabeled column indices.
 	/// </summary>
-	public ReadOnlySpan<ColumnIndex> ColumnIndicesRelabeled => CantorExpansion.UnrankLine(TransformationMasks.RemapColumns);
+	public ReadOnlySpan<ColumnIndex> ColumnIndicesRelabeled => CantorExpansion.UnrankLine(TransformationMasks.RelabeledColumns);
 
 	/// <summary>
 	/// Represents a value that displayes relabeled digits.
 	/// </summary>
 	public ReadOnlySpan<Digit> DigitsRelabeled
-		=> CantorExpansion.UnrankDigit(TransformationMasks.RelabelDigits, [0, 1, 2, 3, 4, 5, 6, 7, 8]);
+		=> CantorExpansion.UnrankDigit(TransformationMasks.RelabeledDigits, [0, 1, 2, 3, 4, 5, 6, 7, 8]);
 
 	/// <summary>
 	/// Represents identifier value.
@@ -214,7 +214,7 @@ public readonly struct TransformIdentifier :
 	/// <summary>
 	/// Indicates the quadruple of tranformation masks.
 	/// </summary>
-	private (bool ShouldTranspose, int RemapRows, int RemapColumns, int RelabelDigits) TransformationMasks
+	private (bool ShouldTranspose, int RelabeledRows, int RelabeledColumns, int RelabeledDigits) TransformationMasks
 	{
 		get
 		{
