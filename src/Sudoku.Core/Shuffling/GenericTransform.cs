@@ -8,6 +8,8 @@ namespace Sudoku.Shuffling;
 /// <param name="RelabeledColumnsRank">Indicates the rank of relabeled columns.</param>
 /// <param name="RelabeledDigitsRank">Indicates the rank of relabeled digits.</param>
 public readonly record struct GenericTransform(int TransposeRank, int RelabeledRowsRank, int RelabeledColumnsRank, int RelabeledDigitsRank) :
+	IComparable<GenericTransform>,
+	IComparisonOperators<GenericTransform, GenericTransform, bool>,
 	IEqualityOperators<GenericTransform, GenericTransform, bool>
 {
 	/// <summary>
@@ -89,9 +91,9 @@ public readonly record struct GenericTransform(int TransposeRank, int RelabeledR
 	public GenericTransform(int transposeRank, Index relabeledRowsRank, Index relabeledColumnsRank, Index relabeledDigitsRank) :
 		this(
 			transposeRank,
-			relabeledRowsRank.GetOffset((int)TransformIdentifier.RelabelLinesPermutationsCount),
-			relabeledColumnsRank.GetOffset((int)TransformIdentifier.RelabelLinesPermutationsCount),
-			relabeledDigitsRank.GetOffset((int)TransformIdentifier.RelabelDigitsPermutationsCount)
+			relabeledRowsRank.GetOffset((int)GridTransformIdentifier.RelabelLinesPermutationsCount),
+			relabeledColumnsRank.GetOffset((int)GridTransformIdentifier.RelabelLinesPermutationsCount),
+			relabeledDigitsRank.GetOffset((int)GridTransformIdentifier.RelabelDigitsPermutationsCount)
 		)
 	{
 	}
@@ -104,23 +106,23 @@ public readonly record struct GenericTransform(int TransposeRank, int RelabeledR
 		this(
 			(int)(
 				baseMixedRank
-					/ TransformIdentifier.RelabelDigitsPermutationsCount
-					/ TransformIdentifier.RelabelLinesPermutationsCount
-					/ TransformIdentifier.RelabelLinesPermutationsCount
-					% TransformIdentifier.TransposePermutationsCount
+					/ GridTransformIdentifier.RelabelDigitsPermutationsCount
+					/ GridTransformIdentifier.RelabelLinesPermutationsCount
+					/ GridTransformIdentifier.RelabelLinesPermutationsCount
+					% GridTransformIdentifier.TransposePermutationsCount
 			),
 			(int)(
 				baseMixedRank
-					/ TransformIdentifier.RelabelDigitsPermutationsCount
-					/ TransformIdentifier.RelabelLinesPermutationsCount
-					% TransformIdentifier.RelabelLinesPermutationsCount
+					/ GridTransformIdentifier.RelabelDigitsPermutationsCount
+					/ GridTransformIdentifier.RelabelLinesPermutationsCount
+					% GridTransformIdentifier.RelabelLinesPermutationsCount
 			),
 			(int)(
 				baseMixedRank
-					/ TransformIdentifier.RelabelDigitsPermutationsCount
-					% TransformIdentifier.RelabelLinesPermutationsCount
+					/ GridTransformIdentifier.RelabelDigitsPermutationsCount
+					% GridTransformIdentifier.RelabelLinesPermutationsCount
 			),
-			(int)(baseMixedRank % TransformIdentifier.RelabelDigitsPermutationsCount)
+			(int)(baseMixedRank % GridTransformIdentifier.RelabelDigitsPermutationsCount)
 		)
 	{
 	}
@@ -135,9 +137,9 @@ public readonly record struct GenericTransform(int TransposeRank, int RelabeledR
 	/// Indicates the base-mixed rank.
 	/// </summary>
 	public long BaseMixedRank
-		=> TransposeRank * TransformIdentifier.RelabelLinesPermutationsCount * TransformIdentifier.RelabelLinesPermutationsCount * TransformIdentifier.RelabelDigitsPermutationsCount
-		+ RelabeledRowsRank * TransformIdentifier.RelabelLinesPermutationsCount * TransformIdentifier.RelabelDigitsPermutationsCount
-		+ RelabeledColumnsRank * TransformIdentifier.RelabelDigitsPermutationsCount
+		=> TransposeRank * GridTransformIdentifier.RelabelLinesPermutationsCount * GridTransformIdentifier.RelabelLinesPermutationsCount * GridTransformIdentifier.RelabelDigitsPermutationsCount
+		+ RelabeledRowsRank * GridTransformIdentifier.RelabelLinesPermutationsCount * GridTransformIdentifier.RelabelDigitsPermutationsCount
+		+ RelabeledColumnsRank * GridTransformIdentifier.RelabelDigitsPermutationsCount
 		+ RelabeledDigitsRank;
 
 	/// <summary>
@@ -151,9 +153,59 @@ public readonly record struct GenericTransform(int TransposeRank, int RelabeledR
 	public ReadOnlySpan<ColumnIndex> ColumnIndicesRelabeled => CantorExpansion.UnrankRelabeledLines(RelabeledColumnsRank);
 
 	/// <summary>
-	/// Represents a value that displayes relabeled digits.
+	/// Represents a value that displays relabeled digits.
 	/// </summary>
 	public ReadOnlySpan<Digit> DigitsRelabeled => CantorExpansion.UnrankRelabeledDigits(RelabeledDigitsRank, SpanEnumerable.Range(9));
+
+
+	/// <inheritdoc cref="IComparable{T}.CompareTo(T)"/>
+	public int CompareTo(in GenericTransform other) => BaseMixedRank.CompareTo(other.BaseMixedRank);
+
+	/// <inheritdoc/>
+	int IComparable<GenericTransform>.CompareTo(GenericTransform other) => CompareTo(other);
+
+
+	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
+	public static bool operator ==(in GenericTransform left, in GenericTransform right) => left.Equals(right);
+
+	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
+	public static bool operator !=(in GenericTransform left, in GenericTransform right) => !(left == right);
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
+	public static bool operator >(in GenericTransform left, in GenericTransform right) => left.CompareTo(right) > 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThan(TSelf, TOther)"/>
+	public static bool operator <(in GenericTransform left, in GenericTransform right) => left.CompareTo(right) < 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThanOrEqual(TSelf, TOther)"/>
+	public static bool operator >=(in GenericTransform left, in GenericTransform right) => left.CompareTo(right) >= 0;
+
+	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
+	public static bool operator <=(in GenericTransform left, in GenericTransform right) => left.CompareTo(right) <= 0;
+
+	/// <inheritdoc/>
+	static bool IEqualityOperators<GenericTransform, GenericTransform, bool>.operator ==(GenericTransform left, GenericTransform right)
+		=> left == right;
+
+	/// <inheritdoc/>
+	static bool IEqualityOperators<GenericTransform, GenericTransform, bool>.operator !=(GenericTransform left, GenericTransform right)
+		=> left != right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<GenericTransform, GenericTransform, bool>.operator >(GenericTransform left, GenericTransform right)
+		=> left > right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<GenericTransform, GenericTransform, bool>.operator <(GenericTransform left, GenericTransform right)
+		=> left < right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<GenericTransform, GenericTransform, bool>.operator >=(GenericTransform left, GenericTransform right)
+		=> left >= right;
+
+	/// <inheritdoc/>
+	static bool IComparisonOperators<GenericTransform, GenericTransform, bool>.operator <=(GenericTransform left, GenericTransform right)
+		=> left <= right;
 
 
 	/// <summary>
@@ -161,7 +213,7 @@ public readonly record struct GenericTransform(int TransposeRank, int RelabeledR
 	/// </summary>
 	/// <param name="baseMixedRank">The base-mixed rank.</param>
 	public static explicit operator GenericTransform(long baseMixedRank)
-		=> new(Math.Abs(baseMixedRank) % TransformIdentifier.AllPermutationsCount);
+		=> new(Math.Abs(baseMixedRank) % GridTransformIdentifier.AllPermutationsCount);
 
 	/// <summary>
 	/// Explicit cast from <see cref="long"/> to <see cref="GenericTransform"/>, with range check.
@@ -170,7 +222,7 @@ public readonly record struct GenericTransform(int TransposeRank, int RelabeledR
 	/// <exception cref="OverflowException">Throws when <paramref name="baseMixedRank"/> is invalid.</exception>
 	public static explicit operator checked GenericTransform(long baseMixedRank)
 		=> new(
-			baseMixedRank is >= 0 and < TransformIdentifier.AllPermutationsCount
+			baseMixedRank is >= 0 and < GridTransformIdentifier.AllPermutationsCount
 				? baseMixedRank
 				: throw new OverflowException()
 		);

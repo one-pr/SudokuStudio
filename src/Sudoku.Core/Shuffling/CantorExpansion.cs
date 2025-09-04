@@ -132,7 +132,7 @@ public static class CantorExpansion
 	/// <exception cref="ArgumentOutOfRangeException">Throws when rank is out of range.</exception>
 	public static House[] UnrankRelabeledLines(int rank)
 	{
-		if (rank is < 0 or >= (int)TransformIdentifier.RelabelLinesPermutationsCount)
+		if (rank is < 0 or >= (int)GridTransformIdentifier.RelabelLinesPermutationsCount)
 		{
 			throw new ArgumentOutOfRangeException(nameof(rank));
 		}

@@ -52,11 +52,11 @@ namespace Sudoku.Shuffling;
 /// which can theoretically hold 160 bits.
 /// </para>
 /// </remarks>
-public readonly struct TransformIdentifier :
-	IComparable<TransformIdentifier>,
-	IComparisonOperators<TransformIdentifier, TransformIdentifier, bool>,
-	IEquatable<TransformIdentifier>,
-	IEqualityOperators<TransformIdentifier, TransformIdentifier, bool>
+public readonly struct GridTransformIdentifier :
+	IComparable<GridTransformIdentifier>,
+	IComparisonOperators<GridTransformIdentifier, GridTransformIdentifier, bool>,
+	IEquatable<GridTransformIdentifier>,
+	IEqualityOperators<GridTransformIdentifier, GridTransformIdentifier, bool>
 {
 	/// <summary>
 	/// Indicates the numebr of all transformations permutation cases.
@@ -226,22 +226,22 @@ public readonly struct TransformIdentifier :
 
 
 	/// <inheritdoc/>
-	public override bool Equals([NotNullWhen(true)] object? obj) => obj is TransformIdentifier comparer && Equals(comparer);
+	public override bool Equals([NotNullWhen(true)] object? obj) => obj is GridTransformIdentifier comparer && Equals(comparer);
 
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
-	public bool Equals(in TransformIdentifier other) => _elements[..].SequenceEqual(other._elements);
+	public bool Equals(in GridTransformIdentifier other) => _elements[..].SequenceEqual(other._elements);
 
 	/// <inheritdoc/>
 	public override int GetHashCode() => IdentifierValue.GetHashCode();
 
 	/// <inheritdoc cref="IComparable{T}.CompareTo(T)"/>
-	public int CompareTo(in TransformIdentifier other) => IdentifierValue.CompareTo(other.IdentifierValue);
+	public int CompareTo(in GridTransformIdentifier other) => IdentifierValue.CompareTo(other.IdentifierValue);
 
 	/// <inheritdoc/>
-	bool IEquatable<TransformIdentifier>.Equals(TransformIdentifier other) => Equals(other);
+	bool IEquatable<GridTransformIdentifier>.Equals(GridTransformIdentifier other) => Equals(other);
 
 	/// <inheritdoc/>
-	int IComparable<TransformIdentifier>.CompareTo(TransformIdentifier other) => CompareTo(other);
+	int IComparable<GridTransformIdentifier>.CompareTo(GridTransformIdentifier other) => CompareTo(other);
 
 	/// <summary>
 	/// Gets a <see cref="BitArray"/> instance that displays the slice.
@@ -263,44 +263,44 @@ public readonly struct TransformIdentifier :
 
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
-	public static bool operator ==(in TransformIdentifier left, in TransformIdentifier right) => left.Equals(right);
+	public static bool operator ==(in GridTransformIdentifier left, in GridTransformIdentifier right) => left.Equals(right);
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
-	public static bool operator !=(in TransformIdentifier left, in TransformIdentifier right) => !(left == right);
+	public static bool operator !=(in GridTransformIdentifier left, in GridTransformIdentifier right) => !(left == right);
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
-	public static bool operator >(in TransformIdentifier left, in TransformIdentifier right) => left.CompareTo(right) > 0;
+	public static bool operator >(in GridTransformIdentifier left, in GridTransformIdentifier right) => left.CompareTo(right) > 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThan(TSelf, TOther)"/>
-	public static bool operator <(in TransformIdentifier left, in TransformIdentifier right) => left.CompareTo(right) < 0;
+	public static bool operator <(in GridTransformIdentifier left, in GridTransformIdentifier right) => left.CompareTo(right) < 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThanOrEqual(TSelf, TOther)"/>
-	public static bool operator >=(in TransformIdentifier left, in TransformIdentifier right) => left.CompareTo(right) >= 0;
+	public static bool operator >=(in GridTransformIdentifier left, in GridTransformIdentifier right) => left.CompareTo(right) >= 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
-	public static bool operator <=(in TransformIdentifier left, in TransformIdentifier right) => left.CompareTo(right) <= 0;
+	public static bool operator <=(in GridTransformIdentifier left, in GridTransformIdentifier right) => left.CompareTo(right) <= 0;
 
 	/// <inheritdoc/>
-	static bool IEqualityOperators<TransformIdentifier, TransformIdentifier, bool>.operator ==(TransformIdentifier left, TransformIdentifier right)
+	static bool IEqualityOperators<GridTransformIdentifier, GridTransformIdentifier, bool>.operator ==(GridTransformIdentifier left, GridTransformIdentifier right)
 		=> left == right;
 
 	/// <inheritdoc/>
-	static bool IEqualityOperators<TransformIdentifier, TransformIdentifier, bool>.operator !=(TransformIdentifier left, TransformIdentifier right)
+	static bool IEqualityOperators<GridTransformIdentifier, GridTransformIdentifier, bool>.operator !=(GridTransformIdentifier left, GridTransformIdentifier right)
 		=> left != right;
 
 	/// <inheritdoc/>
-	static bool IComparisonOperators<TransformIdentifier, TransformIdentifier, bool>.operator >(TransformIdentifier left, TransformIdentifier right)
+	static bool IComparisonOperators<GridTransformIdentifier, GridTransformIdentifier, bool>.operator >(GridTransformIdentifier left, GridTransformIdentifier right)
 		=> left > right;
 
 	/// <inheritdoc/>
-	static bool IComparisonOperators<TransformIdentifier, TransformIdentifier, bool>.operator <(TransformIdentifier left, TransformIdentifier right)
+	static bool IComparisonOperators<GridTransformIdentifier, GridTransformIdentifier, bool>.operator <(GridTransformIdentifier left, GridTransformIdentifier right)
 		=> left < right;
 
 	/// <inheritdoc/>
-	static bool IComparisonOperators<TransformIdentifier, TransformIdentifier, bool>.operator >=(TransformIdentifier left, TransformIdentifier right)
+	static bool IComparisonOperators<GridTransformIdentifier, GridTransformIdentifier, bool>.operator >=(GridTransformIdentifier left, GridTransformIdentifier right)
 		=> left >= right;
 
 	/// <inheritdoc/>
-	static bool IComparisonOperators<TransformIdentifier, TransformIdentifier, bool>.operator <=(TransformIdentifier left, TransformIdentifier right)
+	static bool IComparisonOperators<GridTransformIdentifier, GridTransformIdentifier, bool>.operator <=(GridTransformIdentifier left, GridTransformIdentifier right)
 		=> left <= right;
 }
