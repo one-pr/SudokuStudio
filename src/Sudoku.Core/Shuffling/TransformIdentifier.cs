@@ -187,7 +187,7 @@ public readonly struct TransformIdentifier :
 	/// Represents a value that displayes relabeled digits.
 	/// </summary>
 	public ReadOnlySpan<Digit> DigitsRelabeled
-		=> CantorExpansion.UnrankDigit(TransformationMasks.RelabeledDigits, [0, 1, 2, 3, 4, 5, 6, 7, 8]);
+		=> CantorExpansion.UnrankDigit(TransformationMasks.RelabeledDigits, SpanEnumerable.Range(9));
 
 	/// <summary>
 	/// Represents identifier value.
