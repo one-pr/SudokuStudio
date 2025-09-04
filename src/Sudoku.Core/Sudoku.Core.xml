@@ -13058,9 +13058,9 @@
             For the transformation form, we encode the following four types of transformations:
             <list type="number">
             <item><b>Transpose</b> - swap row and column indices (i.e., <c>(x, y) -&gt; (y, x)</c>)</item>
-            <item><b>Row remapping</b> - relabel rows 1–9 to target positions</item>
-            <item><b>Column remapping</b> - relabel columns 1–9 to target positions</item>
-            <item><b>Digit remapping</b> - relabel digits 1–9 to target positions</item>
+            <item><b>Row relabelling</b> - relabel rows 1–9 to target positions</item>
+            <item><b>Column relabelling</b> - relabel columns 1–9 to target positions</item>
+            <item><b>Digit relabelling</b> - relabel digits 1–9 to target positions</item>
             </list>
             </para>
             <para>
@@ -13096,12 +13096,12 @@
         </member>
         <member name="F:Sudoku.Shuffling.TransformIdentifier.RemapRowsPermutationsCount">
             <summary>
-            Indicates the number of remapping row cases.
+            Indicates the number of relabelling row cases.
             </summary>
         </member>
         <member name="F:Sudoku.Shuffling.TransformIdentifier.RemapColumnsPermutationsCount">
             <summary>
-            Indicates the number of remapping column cases.
+            Indicates the number of relabelling column cases.
             </summary>
         </member>
         <member name="F:Sudoku.Shuffling.TransformIdentifier.RequiredBitsCount">

@@ -80,7 +80,7 @@ public static class CantorExpansion
 				{
 					if (inversed[newBand * 3 + j] / 3 != bperm[newBand])
 					{
-						throw new ArgumentException("Provided map is not a valid band-preserving line remapping.");
+						throw new ArgumentException("Provided map is not a valid band-preserving line relabelling.");
 					}
 				}
 			}

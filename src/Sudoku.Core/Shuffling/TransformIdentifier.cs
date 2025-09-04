@@ -27,9 +27,9 @@ namespace Sudoku.Shuffling;
 /// For the transformation form, we encode the following four types of transformations:
 /// <list type="number">
 /// <item><b>Transpose</b> - swap row and column indices (i.e., <c>(x, y) -> (y, x)</c>)</item>
-/// <item><b>Row remapping</b> - relabel rows 1–9 to target positions</item>
-/// <item><b>Column remapping</b> - relabel columns 1–9 to target positions</item>
-/// <item><b>Digit remapping</b> - relabel digits 1–9 to target positions</item>
+/// <item><b>Row relabelling</b> - relabel rows 1–9 to target positions</item>
+/// <item><b>Column relabelling</b> - relabel columns 1–9 to target positions</item>
+/// <item><b>Digit relabelling</b> - relabel digits 1–9 to target positions</item>
 /// </list>
 /// </para>
 /// <para>
@@ -72,12 +72,12 @@ public readonly struct TransformIdentifier :
 	public const long InequivalentSolutionsCount = 5_472_730_538L;
 
 	/// <summary>
-	/// Indicates the number of remapping row cases.
+	/// Indicates the number of relabelling row cases.
 	/// </summary>
 	internal const int RemapRowsPermutationsCount = 1_296;
 
 	/// <summary>
-	/// Indicates the number of remapping column cases.
+	/// Indicates the number of relabelling column cases.
 	/// </summary>
 	internal const int RemapColumnsPermutationsCount = RemapRowsPermutationsCount;
 
