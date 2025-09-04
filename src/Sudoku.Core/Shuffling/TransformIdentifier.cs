@@ -69,7 +69,7 @@ public readonly struct TransformIdentifier :
 	public const long InequivalentSolutionsCount = 5_472_730_538L;
 
 	/// <summary>
-	/// Indicates the number of deficiency .
+	/// Indicates the number of deficiency permutations.
 	/// </summary>
 	/// <remarks>
 	/// <para>

@@ -13253,7 +13253,7 @@
         </member>
         <member name="F:Sudoku.Shuffling.TransformIdentifier.DeficiencyPermutationsCount">
             <summary>
-            Indicates the number of deficiency .
+            Indicates the number of deficiency permutations.
             </summary>
             <remarks>
             <para>
