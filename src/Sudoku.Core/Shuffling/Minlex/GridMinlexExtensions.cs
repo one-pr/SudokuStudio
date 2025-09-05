@@ -29,7 +29,7 @@ public static class GridMinlexExtensions
 		/// </summary>
 		public bool IsMinLex
 			=> @this.PuzzleType != SudokuType.Sukaku && @this.Uniqueness == Uniqueness.Unique && @this.ToString("0") is var s
-				? new MinlexFinder().Find(s) == s
+				? new MinlexFinder().Find(s, out _) == s
 				: throw new InvalidOperationException(SR.ExceptionMessage("MinLexShouldBeUniqueAndNotSukaku"));
 
 		/// <summary>

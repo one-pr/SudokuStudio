@@ -6,6 +6,11 @@ namespace Sudoku.Shuffling.Minlex;
 public sealed unsafe class MinlexFinder
 {
 	/// <summary>
+	/// Represents empty cell placeholder.
+	/// </summary>
+	internal const byte EmptyCellPlaceholder = 99;
+
+	/// <summary>
 	/// Indicates the total number of candidate list, which means the worst case.
 	/// </summary>
 	private const int CandidateListTotal = 15552;
@@ -17,11 +22,7 @@ public sealed unsafe class MinlexFinder
 	private readonly List<Mapper> _mappers = [];
 
 
-	/// <summary>
-	/// Finds the minimal lexicographical form of the source grid code.
-	/// </summary>
-	/// <param name="grid">Indicates the source grid.</param>
-	/// <returns>The corresponding minimal lexicographical form of the grid.</returns>
+	/// <inheritdoc cref="Find(string)"/>
 	public string Find(string grid)
 	{
 		_mappers.Clear();
@@ -44,7 +45,7 @@ public sealed unsafe class MinlexFinder
 		// Step 1: Determine for top rows.
 		var candidatesRow02468 = (stackalloc MinlexCandidate[CandidateListTotal]);
 		var candidatesRow1357 = (stackalloc MinlexCandidate[CandidateListTotal]);
-		var currentCandidatesCount = 0;
+		var casesCount = 0;
 		for (var nowTransposed = (sbyte)0; nowTransposed < 2; nowTransposed++)
 		{
 			if (minTopRowScores[nowTransposed] > minTopRowScore)
@@ -61,7 +62,7 @@ public sealed unsafe class MinlexFinder
 					var cand = new MinlexCandidate(nowTransposed, topRow);
 
 					// To fix all minimal stack permutations and store for later row expansion
-					cand.ExpandStacks(pair, minTopRowScore, candidatesRow02468, ref currentCandidatesCount);
+					cand.ExpandStacks(pair, minTopRowScore, candidatesRow02468, ref casesCount);
 				}
 			}
 		}
@@ -74,9 +75,9 @@ public sealed unsafe class MinlexFinder
 		for (var toRow = 1; toRow < 9; toRow++)
 		{
 			var (bestTriplets0, bestTriplets1, bestTriplets2, rowInBand) = (7, 7, 7, toRow % 3);
-			for (var curCandidateIndex = 0; curCandidateIndex < currentCandidatesCount; curCandidateIndex++)
+			for (var caseIndex = 0; caseIndex < casesCount; caseIndex++)
 			{
-				ref readonly var old = ref Unsafe.Add(ref currentCandidates, curCandidateIndex);
+				ref readonly var old = ref Unsafe.Add(ref currentCandidates, caseIndex);
 				var (startRow, endRow) = rowInBand != 0 && old.MapRowsBackward[3 * (toRow / 3)] / 3 is var band
 					? (band * 3, (band + 1) * 3) // Combine with unmapped rows from the same band.
 					: (0, 9); // Try any unmapped row.
@@ -146,7 +147,7 @@ public sealed unsafe class MinlexFinder
 			ref var tmp = ref currentCandidates;
 			currentCandidates = ref nextCandidates;
 			nextCandidates = ref tmp;
-			currentCandidatesCount = nextCandidatesCount;
+			casesCount = nextCandidatesCount;
 			nextCandidatesCount = 0;
 
 			// Store the best result.
@@ -162,7 +163,7 @@ public sealed unsafe class MinlexFinder
 			Unsafe.Add(ref r, 8) = (char)((bestTriplets2) & 1);
 		}
 
-		if (currentCandidatesCount == 0)
+		if (casesCount == 0)
 		{
 			throw new InvalidOperationException("bad news: no candidatesRow02468 for minlex due to program errors");
 		}
@@ -176,7 +177,7 @@ public sealed unsafe class MinlexFinder
 			minlex[cell] = result[cell] << 5; // Initially set to large values.
 		}
 
-		for (var currentCandidateIndex = 0; currentCandidateIndex < currentCandidatesCount; currentCandidateIndex++)
+		for (var currentCandidateIndex = 0; currentCandidateIndex < casesCount; currentCandidateIndex++)
 		{
 			ref var target = ref Unsafe.Add(ref currentCandidates, currentCandidateIndex);
 			var toTriplets = new int[3];
@@ -214,7 +215,7 @@ public sealed unsafe class MinlexFinder
 						toColsInStack[6 + BestTripletPermutation.Perm[colsPerm2][0]] = toTriplets[2];
 						toColsInStack[6 + BestTripletPermutation.Perm[colsPerm2][1]] = toTriplets[2] + 1;
 						toColsInStack[6 + BestTripletPermutation.Perm[colsPerm2][2]] = toTriplets[2] + 2;
-						var (labelPerm, nextFreeLabel, nSet) = (new int[10], 1, 0);
+						var (labelPerm, nextFreeLabel, setCellsCount) = (new int[10], 1, 0);
 						for (var toRow = 0; toRow < 9; toRow++)
 						{
 							ref readonly var rowGivens = ref pair[target.IsTransposed].Digits[target.MapRowsBackward[toRow] * 9];
@@ -235,7 +236,7 @@ public sealed unsafe class MinlexFinder
 									goto NextColsPerm;
 								}
 
-								nSet++;
+								setCellsCount++;
 								if (labelPerm[fromDigit] < minlex[toRow * 9 + col])
 								{
 									for (var i = toRow * 9 + col + 1; i < 81; i++)
@@ -248,7 +249,7 @@ public sealed unsafe class MinlexFinder
 									// The buffered transformations become invalid at this point.
 									_mappers.Clear();
 								}
-								if (nSet == givensCount)
+								if (setCellsCount == givensCount)
 								{
 									// An isomorph of the currently best ordering
 									// at this point we have the necessary information
@@ -261,8 +262,8 @@ public sealed unsafe class MinlexFinder
 												? target.MapRowsBackward[r] + 9 * toColsInStack[c]
 												: target.MapRowsBackward[r] * 9 + toColsInStack[c];
 
-											// Map all non-givens to 99, this masking irrelevant permutations.
-											map.Cell[src] = (byte)(minlex[r * 9 + c] != 0 ? r * 9 + c : 99);
+											// Map all non-givens to 'EmptyCellPlaceholder', this masking irrelevant permutations.
+											map.Cell[src] = (byte)(minlex[r * 9 + c] != 0 ? r * 9 + c : EmptyCellPlaceholder);
 										}
 									}
 									for (var d = 0; d < 10; d++)
@@ -292,6 +293,97 @@ public sealed unsafe class MinlexFinder
 		return result.ToString();
 	}
 
+	/// <summary>
+	/// Finds the minimal lexicographical form of the source grid code.
+	/// </summary>
+	/// <param name="grid">Indicates the source grid.</param>
+	/// <param name="transform">The transform.</param>
+	/// <returns>The corresponding minimal lexicographical form of the grid.</returns>
+	public string Find(string grid, out GenericTransform transform)
+	{
+		var (minlexed, mappers) = FindWithMappers(grid);
+		foreach (var mapper in mappers)
+		{
+			var reconstructed = ReconstructOriginal(mapper, minlexed);
+			if (reconstructed == grid)
+			{
+				transform = mapper.FromMapperInfer();
+				return minlexed;
+			}
+		}
+		throw new InvalidOperationException();
+	}
+
 	/// <inheritdoc cref="Find(string)"/>
 	public Grid Find(in Grid grid) => Grid.Parse(Find(grid.ToString("0")));
+
+	/// <inheritdoc cref="Find(string, out GenericTransform)"/>
+	public Grid Find(in Grid grid, out GenericTransform transform) => Grid.Parse(Find(grid.ToString("0"), out transform));
+
+	/// <summary>
+	/// Calls <see cref="Find(string)"/>, with <see cref="Mapper"/> instances returned.
+	/// </summary>
+	/// <param name="grid">The grid.</param>
+	/// <returns>The found result pair.</returns>
+	/// <seealso cref="Find(string)"/>
+	/// <seealso cref="Mapper"/>
+	internal (string, Mapper[]) FindWithMappers(string grid) => (Find(grid), [.. _mappers]);
+
+	/// <summary>
+	/// Reconstruct original.
+	/// </summary>
+	/// <param name="mapper">The mapper instance.</param>
+	/// <param name="minlex">The min-lex grid string.</param>
+	/// <returns>The target string.</returns>
+	/// <exception cref="InvalidOperationException">Throws when label is invalid.</exception>
+	internal string ReconstructOriginal(in Mapper mapper, string minlex)
+	{
+		var inversed = (stackalloc int[81]);
+		inversed.Fill(-1);
+		fixed (byte* cells = mapper.Cell)
+		{
+			for (var source = 0; source < 81; source++)
+			{
+				var c = cells[source];
+				if (c < EmptyCellPlaceholder)
+				{
+					inversed[c] = source;
+				}
+			}
+		}
+
+		var resultCharacters = (stackalloc char[81]);
+		resultCharacters.Fill('.');
+		fixed (byte* labels = mapper.Label)
+		{
+			for (var canon = 0; canon < 81; canon++)
+			{
+				var dst = inversed[canon];
+				if (dst < 0)
+				{
+					// Skip - canonical position cannot be found in source cell.
+					continue;
+				}
+
+				var ch = minlex[canon];
+				if (ch == '0')
+				{
+					// Canonical is empty -> Original is empty.
+					resultCharacters[dst] = '0';
+				}
+				else
+				{
+					var label = ch - '0';
+					if (label is < 0 or > 9)
+					{
+						throw new InvalidOperationException("bad canonical label");
+					}
+
+					var origDigit = labels[label]; // map.Label[labelIndex] = original digit.
+					resultCharacters[dst] = origDigit == 0 ? '0' : (char)('0' + origDigit);
+				}
+			}
+		}
+		return resultCharacters.ToString();
+	}
 }

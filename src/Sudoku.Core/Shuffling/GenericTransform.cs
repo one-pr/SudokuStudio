@@ -7,6 +7,7 @@ namespace Sudoku.Shuffling;
 /// <param name="RelabeledRowsRank">Indicates the rank of relabeled rows.</param>
 /// <param name="RelabeledColumnsRank">Indicates the rank of relabeled columns.</param>
 /// <param name="RelabeledDigitsRank">Indicates the rank of relabeled digits.</param>
+/// <completionlist cref="GenericTransform"/>
 public readonly partial record struct GenericTransform(
 	int TransposeRank,
 	int RelabeledRowsRank,
@@ -174,6 +175,21 @@ public readonly partial record struct GenericTransform(
 
 	/// <inheritdoc/>
 	int IComparable<GenericTransform>.CompareTo(GenericTransform other) => CompareTo(other);
+
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp9/feature[@name='records']/target[@name='method' and @cref='PrintMembers']"/>
+	private bool PrintMembers(StringBuilder builder)
+	{
+		builder.Append($"{nameof(TransposeRank)} = {TransposeRank} ({TransposeRank != 0}), ");
+		builder.Append($"{nameof(RelabeledRowsRank)} = {RelabeledRowsRank}");
+		builder.Append($" ({string.Concat(from r in RowIndicesRelabeled select (r + 1).ToString())}), ");
+		builder.Append($"{nameof(RelabeledColumnsRank)} = {RelabeledColumnsRank}");
+		builder.Append($" ({string.Concat(from c in ColumnIndicesRelabeled select (c + 1).ToString())}), ");
+		builder.Append($"{nameof(RelabeledDigitsRank)} = {RelabeledDigitsRank}");
+		builder.Append($" ({string.Concat(from d in DigitsRelabeled select (d + 1).ToString())})");
+		return true;
+	}
 
 
 	/// <inheritdoc cref="IBitwiseOperators{TSelf, TOther, TResult}.op_OnesComplement(TSelf)"/>

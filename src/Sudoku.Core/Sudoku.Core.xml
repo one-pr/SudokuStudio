@@ -12799,6 +12799,7 @@
             <param name="RelabeledRowsRank">Indicates the rank of relabeled rows.</param>
             <param name="RelabeledColumnsRank">Indicates the rank of relabeled columns.</param>
             <param name="RelabeledDigitsRank">Indicates the rank of relabeled digits.</param>
+            <completionlist cref="T:Sudoku.Shuffling.GenericTransform"/>
         </member>
         <member name="M:Sudoku.Shuffling.GenericTransform.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -12808,6 +12809,7 @@
             <param name="RelabeledRowsRank">Indicates the rank of relabeled rows.</param>
             <param name="RelabeledColumnsRank">Indicates the rank of relabeled columns.</param>
             <param name="RelabeledDigitsRank">Indicates the rank of relabeled digits.</param>
+            <completionlist cref="T:Sudoku.Shuffling.GenericTransform"/>
         </member>
         <member name="P:Sudoku.Shuffling.GenericTransform.TransposeRank">
             <summary>Indicates the rank of transpose.</summary>
@@ -12932,6 +12934,45 @@
         </member>
         <member name="M:Sudoku.Shuffling.GenericTransform.System#IComparable{Sudoku#Shuffling#GenericTransform}#CompareTo(Sudoku.Shuffling.GenericTransform)">
             <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Shuffling.GenericTransform.PrintMembers(System.Text.StringBuilder)">
+            <target name="method" cref="M:Sudoku.Shuffling.GenericTransform.PrintMembers(System.Text.StringBuilder)">
+				<summary>
+					Provides an easy way to concatenate output members inside a <see langword="record" />
+					or a <see langword="record struct" /> type.
+				</summary>
+				<param name="builder">
+					A <see cref="T:System.Text.StringBuilder" /> instance to concatenate values.
+				</param>
+				<returns>
+					A <see cref="T:System.Boolean" /> value indicating whether the method should be consumed by compiler,
+					by implementing to-string method <c>ToString</c>.
+				</returns>
+				<remarks>
+					<para>
+						By design of <see langword="record" /> and <see langword="record struct" /> types,
+						emit text should be formatted as follows:
+						<code><![CDATA[RecordType { Property1 = Value1, Property2 = Value2, Property3 = { NestedProperty = Value3 } }]]></code>
+					</para>
+					<para>
+						This method won't emit type name and curly brackets. If you want to customize emit text,
+						you can only change values inside a pair of brackets.
+					</para>
+					<para>
+						The suggested implementation is like this:
+						<code><![CDATA[private bool PrintMembers(StringBuilder builder)
+{
+    builder.Append($"{nameof(Property1)} = {Property1}");
+    builder.Append(", ");
+    builder.Append($"{nameof(Property2)} = {Property2}");
+    builder.Append(", ");
+    builder.Append($"{nameof(Property3)} = {{ {Property3} }}");
+    return true;
+}]]>
+						</code>
+					</para>
+				</remarks>
+			</target>
         </member>
         <member name="M:Sudoku.Shuffling.GenericTransform.op_OnesComplement(Sudoku.Shuffling.GenericTransform@)">
             <inheritdoc cref="M:System.Numerics.IBitwiseOperators`3.op_OnesComplement(`0)"/>
@@ -13079,6 +13120,28 @@
             </summary>
             <param name="digits">The relabeled digits.</param>
             <returns>A <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="T:Sudoku.Shuffling.GridGenericTransformExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+            <seealso cref="T:Sudoku.Concepts.Grid"/>
+        </member>
+        <member name="T:Sudoku.Shuffling.GridGenericTransformExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridGenericTransformExtensions.&lt;&gt;E__0.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Shuffling.GenericTransform@)">
+            <summary>
+            Applies transform with the specified <see cref="T:Sudoku.Shuffling.GenericTransform"/>.
+            </summary>
+            <param name="original">The original grid.</param>
+            <param name="transform">The transform.</param>
+            <returns>The grid transformed.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridGenericTransformExtensions.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Shuffling.GenericTransform@)">
+            <inheritdoc cref="M:Sudoku.Shuffling.GridGenericTransformExtensions.&lt;&gt;E__0.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Shuffling.GenericTransform@)"/>
         </member>
         <member name="T:Sudoku.Shuffling.GridTransformIdentifier">
             <summary>
@@ -13498,6 +13561,35 @@
             Indicates the label <see cref="T:System.Byte"/> values.
             </summary>
         </member>
+        <member name="T:Sudoku.Shuffling.Minlex.MapperExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:Sudoku.Shuffling.Minlex.Mapper"/> instances.
+            </summary>
+            <seealso cref="T:Sudoku.Shuffling.Minlex.Mapper"/>
+        </member>
+        <member name="T:Sudoku.Shuffling.Minlex.MapperExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Shuffling.Minlex.Mapper"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Shuffling.Minlex.MapperExtensions.&lt;&gt;E__0.FromMapper(Sudoku.Shuffling.Minlex.MinlexCandidate@)">
+            <summary>
+            Converts <see cref="T:Sudoku.Shuffling.Minlex.Mapper"/> and <see cref="T:Sudoku.Shuffling.Minlex.MinlexCandidate"/> into a readable <see cref="T:Sudoku.Shuffling.GenericTransform"/> instance.
+            </summary>
+            <seealso cref="T:Sudoku.Shuffling.Minlex.MinlexCandidate"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.Minlex.MapperExtensions.&lt;&gt;E__0.FromMapperInfer">
+            <summary>
+            Converts <see cref="T:Sudoku.Shuffling.Minlex.Mapper"/> into <see cref="T:Sudoku.Shuffling.GenericTransform"/>, without using <see cref="T:Sudoku.Shuffling.Minlex.MinlexCandidate"/>.
+            This method will do a heuristics search, trying to infer target grid with ordering of "fitness" of transformations.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Shuffling.Minlex.MapperExtensions.FromMapper(Sudoku.Shuffling.Minlex.Mapper@,Sudoku.Shuffling.Minlex.MinlexCandidate@)">
+            <inheritdoc cref="M:Sudoku.Shuffling.Minlex.MapperExtensions.&lt;&gt;E__0.FromMapper(Sudoku.Shuffling.Minlex.MinlexCandidate@)"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.Minlex.MapperExtensions.FromMapperInfer(Sudoku.Shuffling.Minlex.Mapper@)">
+            <inheritdoc cref="M:Sudoku.Shuffling.Minlex.MapperExtensions.&lt;&gt;E__0.FromMapperInfer"/>
+        </member>
         <member name="T:Sudoku.Shuffling.Minlex.MinlexCandidate">
             <summary>
             Indicates a node representing the min-lexicographical candidate.
@@ -13562,6 +13654,11 @@
             Represents a finder type.
             </summary>
         </member>
+        <member name="F:Sudoku.Shuffling.Minlex.MinlexFinder.EmptyCellPlaceholder">
+            <summary>
+            Represents empty cell placeholder.
+            </summary>
+        </member>
         <member name="F:Sudoku.Shuffling.Minlex.MinlexFinder.CandidateListTotal">
             <summary>
             Indicates the total number of candidate list, which means the worst case.
@@ -13573,14 +13670,39 @@
             </summary>
         </member>
         <member name="M:Sudoku.Shuffling.Minlex.MinlexFinder.Find(System.String)">
+            <inheritdoc cref="M:Sudoku.Shuffling.Minlex.MinlexFinder.Find(System.String)"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.Minlex.MinlexFinder.Find(System.String,Sudoku.Shuffling.GenericTransform@)">
             <summary>
             Finds the minimal lexicographical form of the source grid code.
             </summary>
             <param name="grid">Indicates the source grid.</param>
+            <param name="transform">The transform.</param>
             <returns>The corresponding minimal lexicographical form of the grid.</returns>
         </member>
         <member name="M:Sudoku.Shuffling.Minlex.MinlexFinder.Find(Sudoku.Concepts.Grid@)">
             <inheritdoc cref="M:Sudoku.Shuffling.Minlex.MinlexFinder.Find(System.String)"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.Minlex.MinlexFinder.Find(Sudoku.Concepts.Grid@,Sudoku.Shuffling.GenericTransform@)">
+            <inheritdoc cref="M:Sudoku.Shuffling.Minlex.MinlexFinder.Find(System.String,Sudoku.Shuffling.GenericTransform@)"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.Minlex.MinlexFinder.FindWithMappers(System.String)">
+            <summary>
+            Calls <see cref="M:Sudoku.Shuffling.Minlex.MinlexFinder.Find(System.String)"/>, with <see cref="T:Sudoku.Shuffling.Minlex.Mapper"/> instances returned.
+            </summary>
+            <param name="grid">The grid.</param>
+            <returns>The found result pair.</returns>
+            <seealso cref="M:Sudoku.Shuffling.Minlex.MinlexFinder.Find(System.String)"/>
+            <seealso cref="T:Sudoku.Shuffling.Minlex.Mapper"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.Minlex.MinlexFinder.ReconstructOriginal(Sudoku.Shuffling.Minlex.Mapper@,System.String)">
+            <summary>
+            Reconstruct original.
+            </summary>
+            <param name="mapper">The mapper instance.</param>
+            <param name="minlex">The min-lex grid string.</param>
+            <returns>The target string.</returns>
+            <exception cref="T:System.InvalidOperationException">Throws when label is invalid.</exception>
         </member>
         <member name="T:Sudoku.Shuffling.Transforming.IElementSwappingTransformable`2">
             <summary>
