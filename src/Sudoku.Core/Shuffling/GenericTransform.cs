@@ -138,9 +138,15 @@ public readonly partial record struct GenericTransform(
 	/// Indicates the base-mixed rank.
 	/// </summary>
 	public long Rank
-		=> TransposeRank * GridTransformIdentifier.RelabelLinesPermutationsCount * GridTransformIdentifier.RelabelLinesPermutationsCount * GridTransformIdentifier.RelabelDigitsPermutationsCount
-			+ RelabeledRowsRank * GridTransformIdentifier.RelabelLinesPermutationsCount * GridTransformIdentifier.RelabelDigitsPermutationsCount
-			+ RelabeledColumnsRank * GridTransformIdentifier.RelabelDigitsPermutationsCount
+		=> TransposeRank
+			* GridTransformIdentifier.RelabelLinesPermutationsCount
+			* GridTransformIdentifier.RelabelLinesPermutationsCount
+			* GridTransformIdentifier.RelabelDigitsPermutationsCount
+			+ RelabeledRowsRank
+			* GridTransformIdentifier.RelabelLinesPermutationsCount
+			* GridTransformIdentifier.RelabelDigitsPermutationsCount
+			+ RelabeledColumnsRank
+			* GridTransformIdentifier.RelabelDigitsPermutationsCount
 			+ RelabeledDigitsRank;
 
 	/// <summary>
