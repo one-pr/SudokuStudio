@@ -93,9 +93,9 @@ public readonly partial record struct GenericTransform(
 	public GenericTransform(int transposeRank, Index relabeledRowsRank, Index relabeledColumnsRank, Index relabeledDigitsRank) :
 		this(
 			transposeRank,
-			relabeledRowsRank.GetOffset((int)GridTransformIdentifier.RelabelLinesPermutationsCount),
-			relabeledColumnsRank.GetOffset((int)GridTransformIdentifier.RelabelLinesPermutationsCount),
-			relabeledDigitsRank.GetOffset((int)GridTransformIdentifier.RelabelDigitsPermutationsCount)
+			relabeledRowsRank.GetOffset((int)GridIdentifier.RelabelLinesPermutationsCount),
+			relabeledColumnsRank.GetOffset((int)GridIdentifier.RelabelLinesPermutationsCount),
+			relabeledDigitsRank.GetOffset((int)GridIdentifier.RelabelDigitsPermutationsCount)
 		)
 	{
 	}
@@ -108,23 +108,23 @@ public readonly partial record struct GenericTransform(
 		this(
 			(int)(
 				rank
-					/ GridTransformIdentifier.RelabelDigitsPermutationsCount
-					/ GridTransformIdentifier.RelabelLinesPermutationsCount
-					/ GridTransformIdentifier.RelabelLinesPermutationsCount
-					% GridTransformIdentifier.TransposePermutationsCount
+					/ GridIdentifier.RelabelDigitsPermutationsCount
+					/ GridIdentifier.RelabelLinesPermutationsCount
+					/ GridIdentifier.RelabelLinesPermutationsCount
+					% GridIdentifier.TransposePermutationsCount
 			),
 			(int)(
 				rank
-					/ GridTransformIdentifier.RelabelDigitsPermutationsCount
-					/ GridTransformIdentifier.RelabelLinesPermutationsCount
-					% GridTransformIdentifier.RelabelLinesPermutationsCount
+					/ GridIdentifier.RelabelDigitsPermutationsCount
+					/ GridIdentifier.RelabelLinesPermutationsCount
+					% GridIdentifier.RelabelLinesPermutationsCount
 			),
 			(int)(
 				rank
-					/ GridTransformIdentifier.RelabelDigitsPermutationsCount
-					% GridTransformIdentifier.RelabelLinesPermutationsCount
+					/ GridIdentifier.RelabelDigitsPermutationsCount
+					% GridIdentifier.RelabelLinesPermutationsCount
 			),
-			(int)(rank % GridTransformIdentifier.RelabelDigitsPermutationsCount)
+			(int)(rank % GridIdentifier.RelabelDigitsPermutationsCount)
 		)
 	{
 	}
@@ -140,14 +140,14 @@ public readonly partial record struct GenericTransform(
 	/// </summary>
 	public long Rank
 		=> TransposeRank
-			* GridTransformIdentifier.RelabelLinesPermutationsCount
-			* GridTransformIdentifier.RelabelLinesPermutationsCount
-			* GridTransformIdentifier.RelabelDigitsPermutationsCount
+			* GridIdentifier.RelabelLinesPermutationsCount
+			* GridIdentifier.RelabelLinesPermutationsCount
+			* GridIdentifier.RelabelDigitsPermutationsCount
 			+ RelabeledRowsRank
-			* GridTransformIdentifier.RelabelLinesPermutationsCount
-			* GridTransformIdentifier.RelabelDigitsPermutationsCount
+			* GridIdentifier.RelabelLinesPermutationsCount
+			* GridIdentifier.RelabelDigitsPermutationsCount
 			+ RelabeledColumnsRank
-			* GridTransformIdentifier.RelabelDigitsPermutationsCount
+			* GridIdentifier.RelabelDigitsPermutationsCount
 			+ RelabeledDigitsRank;
 
 	/// <summary>
@@ -195,10 +195,10 @@ public readonly partial record struct GenericTransform(
 	/// <inheritdoc cref="IBitwiseOperators{TSelf, TOther, TResult}.op_OnesComplement(TSelf)"/>
 	public static GenericTransform operator ~(in GenericTransform value)
 		=> new(
-			Math.UnsignedMod(~value.TransposeRank, (int)GridTransformIdentifier.TransposePermutationsCount),
-			Math.UnsignedMod(~value.RelabeledRowsRank, (int)GridTransformIdentifier.RelabelLinesPermutationsCount),
-			Math.UnsignedMod(~value.RelabeledColumnsRank, (int)GridTransformIdentifier.RelabelLinesPermutationsCount),
-			Math.UnsignedMod(~value.RelabeledDigitsRank, (int)GridTransformIdentifier.RelabelDigitsPermutationsCount)
+			Math.UnsignedMod(~value.TransposeRank, (int)GridIdentifier.TransposePermutationsCount),
+			Math.UnsignedMod(~value.RelabeledRowsRank, (int)GridIdentifier.RelabelLinesPermutationsCount),
+			Math.UnsignedMod(~value.RelabeledColumnsRank, (int)GridIdentifier.RelabelLinesPermutationsCount),
+			Math.UnsignedMod(~value.RelabeledDigitsRank, (int)GridIdentifier.RelabelDigitsPermutationsCount)
 		);
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
@@ -294,7 +294,7 @@ public readonly partial record struct GenericTransform(
 	/// </summary>
 	/// <param name="baseMixedRank">The base-mixed rank.</param>
 	public static explicit operator GenericTransform(long baseMixedRank)
-		=> new(Math.UnsignedMod(baseMixedRank, GridTransformIdentifier.AllPermutationsCount));
+		=> new(Math.UnsignedMod(baseMixedRank, GridIdentifier.AllPermutationsCount));
 
 	/// <summary>
 	/// Explicit cast from <see cref="long"/> to <see cref="GenericTransform"/>, with range check.
@@ -303,7 +303,7 @@ public readonly partial record struct GenericTransform(
 	/// <exception cref="OverflowException">Throws when <paramref name="baseMixedRank"/> is invalid.</exception>
 	public static explicit operator checked GenericTransform(long baseMixedRank)
 		=> new(
-			baseMixedRank is >= 0 and < GridTransformIdentifier.AllPermutationsCount
+			baseMixedRank is >= 0 and < GridIdentifier.AllPermutationsCount
 				? baseMixedRank
 				: throw new OverflowException()
 		);

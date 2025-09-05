@@ -13143,7 +13143,7 @@
         <member name="M:Sudoku.Shuffling.GridGenericTransformExtensions.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Shuffling.GenericTransform@)">
             <inheritdoc cref="M:Sudoku.Shuffling.GridGenericTransformExtensions.&lt;&gt;E__0.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Shuffling.GenericTransform@)"/>
         </member>
-        <member name="T:Sudoku.Shuffling.GridTransformIdentifier">
+        <member name="T:Sudoku.Shuffling.GridIdentifier">
             <summary>
             Represents an identifier that describes the transforming cases.
             </summary>
@@ -13201,17 +13201,17 @@
             </para>
             </remarks>
         </member>
-        <member name="F:Sudoku.Shuffling.GridTransformIdentifier.AllPermutationsCount">
+        <member name="F:Sudoku.Shuffling.GridIdentifier.AllPermutationsCount">
             <summary>
             Indicates the numebr of all transformations permutation cases.
             </summary>
         </member>
-        <member name="F:Sudoku.Shuffling.GridTransformIdentifier.InequivalentSolutionsCount">
+        <member name="F:Sudoku.Shuffling.GridIdentifier.InequivalentSolutionsCount">
             <summary>
             Indicates the number of all inequivalent permutations (i.e. solutions).
             </summary>
         </member>
-        <member name="F:Sudoku.Shuffling.GridTransformIdentifier.DeficiencyPermutationsCount">
+        <member name="F:Sudoku.Shuffling.GridIdentifier.DeficiencyPermutationsCount">
             <summary>
             Indicates the number of deficiency permutations.
             </summary>
@@ -13227,119 +13227,119 @@
             </para>
             </remarks>
         </member>
-        <member name="F:Sudoku.Shuffling.GridTransformIdentifier.GeometryPermutationsCount">
+        <member name="F:Sudoku.Shuffling.GridIdentifier.GeometryPermutationsCount">
             <summary>
             Indicates the number of geometry permutations.
             </summary>
         </member>
-        <member name="F:Sudoku.Shuffling.GridTransformIdentifier.RelabelLinesPermutationsCount">
+        <member name="F:Sudoku.Shuffling.GridIdentifier.RelabelLinesPermutationsCount">
             <summary>
             Indicates the number of relabelling row cases.
             </summary>
         </member>
-        <member name="F:Sudoku.Shuffling.GridTransformIdentifier.TransposePermutationsCount">
+        <member name="F:Sudoku.Shuffling.GridIdentifier.TransposePermutationsCount">
             <summary>
             Indicates the number of transposing cases.
             </summary>
         </member>
-        <member name="F:Sudoku.Shuffling.GridTransformIdentifier.RelabelDigitsPermutationsCount">
+        <member name="F:Sudoku.Shuffling.GridIdentifier.RelabelDigitsPermutationsCount">
             <summary>
             Indicates the number of relabelling digit cases.
             </summary>
         </member>
-        <member name="F:Sudoku.Shuffling.GridTransformIdentifier.RequiredBitsCount">
+        <member name="F:Sudoku.Shuffling.GridIdentifier.RequiredBitsCount">
             <summary>
             Indicates the number of required bits.
             </summary>
         </member>
-        <member name="F:Sudoku.Shuffling.GridTransformIdentifier.MinlexPartBitsCount">
+        <member name="F:Sudoku.Shuffling.GridIdentifier.MinlexPartBitsCount">
             <summary>
             Indicates the number of bits used in min-lex part.
             </summary>
         </member>
-        <member name="F:Sudoku.Shuffling.GridTransformIdentifier.TransformationPartBitsCount">
+        <member name="F:Sudoku.Shuffling.GridIdentifier.TransformationPartBitsCount">
             <summary>
             Indicates the number of bits used in transformation part.
             </summary>
         </member>
-        <member name="F:Sudoku.Shuffling.GridTransformIdentifier.CellStatePartBitsCount">
+        <member name="F:Sudoku.Shuffling.GridIdentifier.CellStatePartBitsCount">
             <summary>
             Indicates the number of bits used in cell states part.
             </summary>
         </member>
-        <member name="F:Sudoku.Shuffling.GridTransformIdentifier.MinlexPartShiftAmount">
+        <member name="F:Sudoku.Shuffling.GridIdentifier.MinlexPartShiftAmount">
             <summary>
             Indicates the shift amount of min-lex part.
             </summary>
         </member>
-        <member name="F:Sudoku.Shuffling.GridTransformIdentifier.TransformationPartShiftAmount">
+        <member name="F:Sudoku.Shuffling.GridIdentifier.TransformationPartShiftAmount">
             <summary>
             Indicates the shift amount of transformation part.
             </summary>
         </member>
-        <member name="F:Sudoku.Shuffling.GridTransformIdentifier.FixedLength">
+        <member name="F:Sudoku.Shuffling.GridIdentifier.FixedLength">
             <summary>
             Indicates the fixed serialization length.
             </summary>
         </member>
-        <member name="F:Sudoku.Shuffling.GridTransformIdentifier.Characters">
+        <member name="F:Sudoku.Shuffling.GridIdentifier.Characters">
             <summary>
             Indicates characters.
             </summary>
         </member>
-        <member name="F:Sudoku.Shuffling.GridTransformIdentifier._elements">
+        <member name="F:Sudoku.Shuffling.GridIdentifier._elements">
             <summary>
             Indicates the backing elements.
             </summary>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.#ctor(System.Numerics.BigInteger)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.#ctor(System.Numerics.BigInteger)">
             <summary>
-            Initializes a <see cref="T:Sudoku.Shuffling.GridTransformIdentifier"/> instance.
+            Initializes a <see cref="T:Sudoku.Shuffling.GridIdentifier"/> instance.
             </summary>
             <param name="value">The value.</param>
         </member>
-        <member name="P:Sudoku.Shuffling.GridTransformIdentifier.GlobalMinlexIndex">
+        <member name="P:Sudoku.Shuffling.GridIdentifier.GlobalMinlexIndex">
             <summary>
             Indicates the number of global min-lex index.
             </summary>
         </member>
-        <member name="P:Sudoku.Shuffling.GridTransformIdentifier.GivenCells">
+        <member name="P:Sudoku.Shuffling.GridIdentifier.GivenCells">
             <summary>
             Indicates given cells.
             </summary>
         </member>
-        <member name="P:Sudoku.Shuffling.GridTransformIdentifier.Transform">
+        <member name="P:Sudoku.Shuffling.GridIdentifier.Transform">
             <summary>
             Indicates target tranform.
             </summary>
         </member>
-        <member name="P:Sudoku.Shuffling.GridTransformIdentifier.IdentifierValue">
+        <member name="P:Sudoku.Shuffling.GridIdentifier.IdentifierValue">
             <summary>
             Represents identifier value.
             </summary>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.Equals(System.Object)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.Equals(System.Object)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.Equals(Sudoku.Shuffling.GridTransformIdentifier@)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.Equals(Sudoku.Shuffling.GridIdentifier@)">
             <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.GetHashCode">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.CompareTo(Sudoku.Shuffling.GridTransformIdentifier@)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.CompareTo(Sudoku.Shuffling.GridIdentifier@)">
             <inheritdoc cref="M:System.IComparable`1.CompareTo(`0)"/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.ToString">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.ToString">
             <inheritdoc cref="M:System.Object.ToString"/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.System#IEquatable{Sudoku#Shuffling#GridTransformIdentifier}#Equals(Sudoku.Shuffling.GridTransformIdentifier)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.System#IEquatable{Sudoku#Shuffling#GridIdentifier}#Equals(Sudoku.Shuffling.GridIdentifier)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.System#IComparable{Sudoku#Shuffling#GridTransformIdentifier}#CompareTo(Sudoku.Shuffling.GridTransformIdentifier)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.System#IComparable{Sudoku#Shuffling#GridIdentifier}#CompareTo(Sudoku.Shuffling.GridIdentifier)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.GetSlice(System.Int32,System.Int32)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.GetSlice(System.Int32,System.Int32)">
             <summary>
             Gets a <see cref="T:System.Collections.BitArray"/> instance that displays the slice.
             </summary>
@@ -13347,72 +13347,260 @@
             <param name="count">The number of bits.</param>
             <returns>A <see cref="T:System.Collections.BitArray"/> instance.</returns>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.TryParse(System.String,Sudoku.Shuffling.GridTransformIdentifier@)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.TryParse(System.String,Sudoku.Shuffling.GridIdentifier@)">
             <inheritdoc cref="M:System.IParsable`1.TryParse(System.String,System.IFormatProvider,`0@)"/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.Parse(System.String)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.Parse(System.String)">
             <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.System#IParsable{Sudoku#Shuffling#GridTransformIdentifier}#TryParse(System.String,System.IFormatProvider,Sudoku.Shuffling.GridTransformIdentifier@)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.System#IParsable{Sudoku#Shuffling#GridIdentifier}#TryParse(System.String,System.IFormatProvider,Sudoku.Shuffling.GridIdentifier@)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.System#IParsable{Sudoku#Shuffling#GridTransformIdentifier}#Parse(System.String,System.IFormatProvider)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.System#IParsable{Sudoku#Shuffling#GridIdentifier}#Parse(System.String,System.IFormatProvider)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.op_Equality(Sudoku.Shuffling.GridTransformIdentifier@,Sudoku.Shuffling.GridTransformIdentifier@)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.op_Equality(Sudoku.Shuffling.GridIdentifier@,Sudoku.Shuffling.GridIdentifier@)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.op_Inequality(Sudoku.Shuffling.GridTransformIdentifier@,Sudoku.Shuffling.GridTransformIdentifier@)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.op_Inequality(Sudoku.Shuffling.GridIdentifier@,Sudoku.Shuffling.GridIdentifier@)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.op_GreaterThan(Sudoku.Shuffling.GridTransformIdentifier@,Sudoku.Shuffling.GridTransformIdentifier@)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.op_GreaterThan(Sudoku.Shuffling.GridIdentifier@,Sudoku.Shuffling.GridIdentifier@)">
             <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThan(`0,`1)"/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.op_LessThan(Sudoku.Shuffling.GridTransformIdentifier@,Sudoku.Shuffling.GridTransformIdentifier@)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.op_LessThan(Sudoku.Shuffling.GridIdentifier@,Sudoku.Shuffling.GridIdentifier@)">
             <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThan(`0,`1)"/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.op_GreaterThanOrEqual(Sudoku.Shuffling.GridTransformIdentifier@,Sudoku.Shuffling.GridTransformIdentifier@)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.op_GreaterThanOrEqual(Sudoku.Shuffling.GridIdentifier@,Sudoku.Shuffling.GridIdentifier@)">
             <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThanOrEqual(`0,`1)"/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.op_LessThanOrEqual(Sudoku.Shuffling.GridTransformIdentifier@,Sudoku.Shuffling.GridTransformIdentifier@)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.op_LessThanOrEqual(Sudoku.Shuffling.GridIdentifier@,Sudoku.Shuffling.GridIdentifier@)">
             <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThanOrEqual(`0,`1)"/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.System#Numerics#IEqualityOperators{Sudoku#Shuffling#GridTransformIdentifier,Sudoku#Shuffling#GridTransformIdentifier,System#Boolean}#op_Equality(Sudoku.Shuffling.GridTransformIdentifier,Sudoku.Shuffling.GridTransformIdentifier)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.System#Numerics#IEqualityOperators{Sudoku#Shuffling#GridIdentifier,Sudoku#Shuffling#GridIdentifier,System#Boolean}#op_Equality(Sudoku.Shuffling.GridIdentifier,Sudoku.Shuffling.GridIdentifier)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.System#Numerics#IEqualityOperators{Sudoku#Shuffling#GridTransformIdentifier,Sudoku#Shuffling#GridTransformIdentifier,System#Boolean}#op_Inequality(Sudoku.Shuffling.GridTransformIdentifier,Sudoku.Shuffling.GridTransformIdentifier)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.System#Numerics#IEqualityOperators{Sudoku#Shuffling#GridIdentifier,Sudoku#Shuffling#GridIdentifier,System#Boolean}#op_Inequality(Sudoku.Shuffling.GridIdentifier,Sudoku.Shuffling.GridIdentifier)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.System#Numerics#IComparisonOperators{Sudoku#Shuffling#GridTransformIdentifier,Sudoku#Shuffling#GridTransformIdentifier,System#Boolean}#op_GreaterThan(Sudoku.Shuffling.GridTransformIdentifier,Sudoku.Shuffling.GridTransformIdentifier)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.System#Numerics#IComparisonOperators{Sudoku#Shuffling#GridIdentifier,Sudoku#Shuffling#GridIdentifier,System#Boolean}#op_GreaterThan(Sudoku.Shuffling.GridIdentifier,Sudoku.Shuffling.GridIdentifier)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.System#Numerics#IComparisonOperators{Sudoku#Shuffling#GridTransformIdentifier,Sudoku#Shuffling#GridTransformIdentifier,System#Boolean}#op_LessThan(Sudoku.Shuffling.GridTransformIdentifier,Sudoku.Shuffling.GridTransformIdentifier)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.System#Numerics#IComparisonOperators{Sudoku#Shuffling#GridIdentifier,Sudoku#Shuffling#GridIdentifier,System#Boolean}#op_LessThan(Sudoku.Shuffling.GridIdentifier,Sudoku.Shuffling.GridIdentifier)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.System#Numerics#IComparisonOperators{Sudoku#Shuffling#GridTransformIdentifier,Sudoku#Shuffling#GridTransformIdentifier,System#Boolean}#op_GreaterThanOrEqual(Sudoku.Shuffling.GridTransformIdentifier,Sudoku.Shuffling.GridTransformIdentifier)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.System#Numerics#IComparisonOperators{Sudoku#Shuffling#GridIdentifier,Sudoku#Shuffling#GridIdentifier,System#Boolean}#op_GreaterThanOrEqual(Sudoku.Shuffling.GridIdentifier,Sudoku.Shuffling.GridIdentifier)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.System#Numerics#IComparisonOperators{Sudoku#Shuffling#GridTransformIdentifier,Sudoku#Shuffling#GridTransformIdentifier,System#Boolean}#op_LessThanOrEqual(Sudoku.Shuffling.GridTransformIdentifier,Sudoku.Shuffling.GridTransformIdentifier)">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.System#Numerics#IComparisonOperators{Sudoku#Shuffling#GridIdentifier,Sudoku#Shuffling#GridIdentifier,System#Boolean}#op_LessThanOrEqual(Sudoku.Shuffling.GridIdentifier,Sudoku.Shuffling.GridIdentifier)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.op_Explicit(System.Numerics.BigInteger)~Sudoku.Shuffling.GridTransformIdentifier">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.op_Explicit(System.Numerics.BigInteger)~Sudoku.Shuffling.GridIdentifier">
             <summary>
-            Explicit cast from <see cref="T:System.Numerics.BigInteger"/> to <see cref="T:Sudoku.Shuffling.GridTransformIdentifier"/>.
+            Explicit cast from <see cref="T:System.Numerics.BigInteger"/> to <see cref="T:Sudoku.Shuffling.GridIdentifier"/>.
             </summary>
             <param name="identifierValue">The identifier value.</param>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.op_CheckedExplicit(System.Numerics.BigInteger)~Sudoku.Shuffling.GridTransformIdentifier">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.op_CheckedExplicit(System.Numerics.BigInteger)~Sudoku.Shuffling.GridIdentifier">
             <summary>
             Explicit cast from <see cref="T:System.Numerics.BigInteger"/> to <see cref="T:Sudoku.Shuffling.GenericTransform"/>, with range check.
             </summary>
             <param name="identifierValue">The identifier value.</param>
             <exception cref="T:System.OverflowException">Throws when <paramref name="identifierValue"/> is invalid.</exception>
         </member>
-        <member name="M:Sudoku.Shuffling.GridTransformIdentifier.op_Implicit(Sudoku.Shuffling.GridTransformIdentifier)~System.Numerics.BigInteger">
+        <member name="M:Sudoku.Shuffling.GridIdentifier.op_Implicit(Sudoku.Shuffling.GridIdentifier)~System.Numerics.BigInteger">
             <summary>
-            Implicit cast from <see cref="T:Sudoku.Shuffling.GridTransformIdentifier"/> to <see cref="T:System.Numerics.BigInteger"/>.
+            Implicit cast from <see cref="T:Sudoku.Shuffling.GridIdentifier"/> to <see cref="T:System.Numerics.BigInteger"/>.
             </summary>
             <param name="transform">The transform.</param>
+        </member>
+        <member name="T:Sudoku.Shuffling.GridTransformationExtensions">
+            <summary>
+            Provides methods for <see cref="T:Sudoku.Concepts.Grid"/> instances on transformations.
+            </summary>
+            <seealso cref="T:Sudoku.Concepts.Grid"/>
+        </member>
+        <member name="F:Sudoku.Shuffling.GridTransformationExtensions.ClockwiseTable">
+            <summary>
+            The table of clockwise rotation.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.GridTransformationExtensions.CounterclockwiseTable">
+            <summary>
+            The table of counter-clockwise rotation.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.GridTransformationExtensions.PiRotateTable">
+            <summary>
+            The table of pi-rotation.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__0.Transform(Sudoku.Shuffling.TransformType)">
+            <summary>
+            Transforms the grid by the specified type.
+            </summary>
+            <param name="transformTypes">
+            The transform types can be applied.
+            </param>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.Transform(Sudoku.Concepts.Grid@,Sudoku.Shuffling.TransformType)">
+            <inheritdoc cref="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__0.Transform(Sudoku.Shuffling.TransformType)"/>
+        </member>
+        <member name="T:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1">
+            <summary>
+            Provides extension members on <typeparamref name="TGrid"/>,
+            where <typeparamref name="TGrid"/> satisfies <see langword="unmanaged"/>
+            and <see cref="T:Sudoku.Concepts.IInlineArrayGrid`1"/> constraints.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.MirrorLeftRight">
+            <summary>
+            Mirror left-right the grid.
+            </summary>
+            <returns>The reference to the current grid.</returns>
+            <remarks>
+            This method will return the reference that is same as the argument,
+            in order to inline multiple transformation operations.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.MirrorTopBottom">
+            <summary>
+            Mirror top-bottom the grid.
+            </summary>
+            <returns>The reference to the current grid.</returns>
+            <remarks>
+            This method will return the reference that is same as the argument,
+            in order to inline multiple transformation operations.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.MirrorDiagonal">
+            <summary>
+            Mirror diagonal the grid.
+            </summary>
+            <returns>The reference to the current grid.</returns>
+            <remarks>
+            This method will return the reference that is same as the argument,
+            in order to inline multiple transformation operations.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.Transpose">
+            <summary>
+            Transpose the grid.
+            </summary>
+            <returns>The reference to the current grid.</returns>
+            <remarks>
+            This method will return the reference that is same as the argument,
+            in order to inline multiple transformation operations.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.MirrorAntidiagonal">
+            <summary>
+            Mirror anti-diagonal the grid.
+            </summary>
+            <returns>The reference to the current grid.</returns>
+            <remarks>
+            This method will return the reference that is same as the argument,
+            in order to inline multiple transformation operations.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.RotateClockwise">
+            <summary>
+            Rotate the grid clockwise.
+            </summary>
+            <returns>The reference to the current grid.</returns>
+            <remarks>
+            This method will return the reference that is same as the argument,
+            in order to inline multiple transformation operations.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.RotateCounterclockwise">
+            <summary>
+            Rotate the grid counterclockwise.
+            </summary>
+            <returns>The reference to the current grid.</returns>
+            <remarks>
+            This method will return the reference that is same as the argument,
+            in order to inline multiple transformation operations.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.RotatePi">
+            <summary>
+            Rotate the grid <c><see cref="F:System.Math.PI"/></c> degrees.
+            </summary>
+            <returns>The reference to the current grid.</returns>
+            <remarks>
+            This method will return the reference that is same as the argument,
+            in order to inline multiple transformation operations.
+            </remarks>
+            <seealso cref="F:System.Math.PI"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.SwapDigit(System.Int32,System.Int32)">
+            <summary>
+            Swap two digits.
+            </summary>
+            <param name="digit1">The digit 1 to be swapped.</param>
+            <param name="digit2">The digit 2 to be swapped.</param>
+            <returns>The reference to the current grid.</returns>
+            <exception cref="T:System.ArgumentException">Throws when the puzzle is not solved.</exception>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.SwapHouse(System.Int32,System.Int32)">
+            <summary>
+            Swap to houses.
+            </summary>
+            <param name="houseIndex1">The house 1 to be swapped.</param>
+            <param name="houseIndex2">The house 2 to be swapped.</param>
+            <returns>The reference to the current grid.</returns>
+            <exception cref="T:System.ArgumentException">
+            Throws when two specified house argument is not in valid range (0..27),
+            two houses are not in same house type, or are not swappable.
+            </exception>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.SwapChute(System.Int32,System.Int32)">
+            <summary>
+            Swap chutes (i.e. mega-rows or mega-columns).
+            </summary>
+            <param name="chuteIndex1">The first chute to be swapped.</param>
+            <param name="chuteIndex2">The second chute to be swapped.</param>
+            <returns>The reference to the current grid.</returns>
+            <exception cref="T:System.ArgumentException">Throws when two specified chute index is not in valid range (0..6).</exception>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.MirrorLeftRight``1(``0@)">
+            <inheritdoc cref="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.MirrorLeftRight"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.MirrorTopBottom``1(``0@)">
+            <inheritdoc cref="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.MirrorTopBottom"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.MirrorDiagonal``1(``0@)">
+            <inheritdoc cref="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.MirrorDiagonal"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.Transpose``1(``0@)">
+            <inheritdoc cref="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.Transpose"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.MirrorAntidiagonal``1(``0@)">
+            <inheritdoc cref="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.MirrorAntidiagonal"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.RotateClockwise``1(``0@)">
+            <inheritdoc cref="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.RotateClockwise"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.RotateCounterclockwise``1(``0@)">
+            <inheritdoc cref="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.RotateCounterclockwise"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.RotatePi``1(``0@)">
+            <inheritdoc cref="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.RotatePi"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.SwapDigit``1(``0@,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.SwapDigit(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.SwapHouse``1(``0@,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.SwapHouse(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.GridTransformationExtensions.SwapChute``1(``0@,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Shuffling.GridTransformationExtensions.&lt;&gt;E__1`1.SwapChute(System.Int32,System.Int32)"/>
         </member>
         <member name="T:Sudoku.Shuffling.IElementSwappingTransformable`2">
             <summary>
@@ -13905,194 +14093,6 @@
         </member>
         <member name="M:Sudoku.Shuffling.RandomShufflingExtensions.CreateCandidateMap(System.Random,System.Int32)">
             <inheritdoc cref="M:Sudoku.Shuffling.RandomShufflingExtensions.&lt;&gt;E__0.CreateCandidateMap(System.Int32)"/>
-        </member>
-        <member name="T:Sudoku.Shuffling.Transformation">
-            <summary>
-            Provides methods for <see cref="T:Sudoku.Concepts.Grid"/> instances on transformations.
-            </summary>
-            <seealso cref="T:Sudoku.Concepts.Grid"/>
-        </member>
-        <member name="F:Sudoku.Shuffling.Transformation.ClockwiseTable">
-            <summary>
-            The table of clockwise rotation.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Transformation.CounterclockwiseTable">
-            <summary>
-            The table of counter-clockwise rotation.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Transformation.PiRotateTable">
-            <summary>
-            The table of pi-rotation.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Shuffling.Transformation.&lt;&gt;E__0">
-            <summary>
-            Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__0.Transform(Sudoku.Shuffling.TransformType)">
-            <summary>
-            Transforms the grid by the specified type.
-            </summary>
-            <param name="transformTypes">
-            The transform types can be applied.
-            </param>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.Transform(Sudoku.Concepts.Grid@,Sudoku.Shuffling.TransformType)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__0.Transform(Sudoku.Shuffling.TransformType)"/>
-        </member>
-        <member name="T:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1">
-            <summary>
-            Provides extension members on <typeparamref name="TGrid"/>,
-            where <typeparamref name="TGrid"/> satisfies <see langword="unmanaged"/>
-            and <see cref="T:Sudoku.Concepts.IInlineArrayGrid`1"/> constraints.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.MirrorLeftRight">
-            <summary>
-            Mirror left-right the grid.
-            </summary>
-            <returns>The reference to the current grid.</returns>
-            <remarks>
-            This method will return the reference that is same as the argument,
-            in order to inline multiple transformation operations.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.MirrorTopBottom">
-            <summary>
-            Mirror top-bottom the grid.
-            </summary>
-            <returns>The reference to the current grid.</returns>
-            <remarks>
-            This method will return the reference that is same as the argument,
-            in order to inline multiple transformation operations.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.MirrorDiagonal">
-            <summary>
-            Mirror diagonal the grid.
-            </summary>
-            <returns>The reference to the current grid.</returns>
-            <remarks>
-            This method will return the reference that is same as the argument,
-            in order to inline multiple transformation operations.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.Transpose">
-            <summary>
-            Transpose the grid.
-            </summary>
-            <returns>The reference to the current grid.</returns>
-            <remarks>
-            This method will return the reference that is same as the argument,
-            in order to inline multiple transformation operations.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.MirrorAntidiagonal">
-            <summary>
-            Mirror anti-diagonal the grid.
-            </summary>
-            <returns>The reference to the current grid.</returns>
-            <remarks>
-            This method will return the reference that is same as the argument,
-            in order to inline multiple transformation operations.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.RotateClockwise">
-            <summary>
-            Rotate the grid clockwise.
-            </summary>
-            <returns>The reference to the current grid.</returns>
-            <remarks>
-            This method will return the reference that is same as the argument,
-            in order to inline multiple transformation operations.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.RotateCounterclockwise">
-            <summary>
-            Rotate the grid counterclockwise.
-            </summary>
-            <returns>The reference to the current grid.</returns>
-            <remarks>
-            This method will return the reference that is same as the argument,
-            in order to inline multiple transformation operations.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.RotatePi">
-            <summary>
-            Rotate the grid <c><see cref="F:System.Math.PI"/></c> degrees.
-            </summary>
-            <returns>The reference to the current grid.</returns>
-            <remarks>
-            This method will return the reference that is same as the argument,
-            in order to inline multiple transformation operations.
-            </remarks>
-            <seealso cref="F:System.Math.PI"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.SwapDigit(System.Int32,System.Int32)">
-            <summary>
-            Swap two digits.
-            </summary>
-            <param name="digit1">The digit 1 to be swapped.</param>
-            <param name="digit2">The digit 2 to be swapped.</param>
-            <returns>The reference to the current grid.</returns>
-            <exception cref="T:System.ArgumentException">Throws when the puzzle is not solved.</exception>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.SwapHouse(System.Int32,System.Int32)">
-            <summary>
-            Swap to houses.
-            </summary>
-            <param name="houseIndex1">The house 1 to be swapped.</param>
-            <param name="houseIndex2">The house 2 to be swapped.</param>
-            <returns>The reference to the current grid.</returns>
-            <exception cref="T:System.ArgumentException">
-            Throws when two specified house argument is not in valid range (0..27),
-            two houses are not in same house type, or are not swappable.
-            </exception>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.SwapChute(System.Int32,System.Int32)">
-            <summary>
-            Swap chutes (i.e. mega-rows or mega-columns).
-            </summary>
-            <param name="chuteIndex1">The first chute to be swapped.</param>
-            <param name="chuteIndex2">The second chute to be swapped.</param>
-            <returns>The reference to the current grid.</returns>
-            <exception cref="T:System.ArgumentException">Throws when two specified chute index is not in valid range (0..6).</exception>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.MirrorLeftRight``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.MirrorLeftRight"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.MirrorTopBottom``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.MirrorTopBottom"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.MirrorDiagonal``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.MirrorDiagonal"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.Transpose``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.Transpose"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.MirrorAntidiagonal``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.MirrorAntidiagonal"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.RotateClockwise``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.RotateClockwise"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.RotateCounterclockwise``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.RotateCounterclockwise"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.RotatePi``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.RotatePi"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.SwapDigit``1(``0@,System.Int32,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.SwapDigit(System.Int32,System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.SwapHouse``1(``0@,System.Int32,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.SwapHouse(System.Int32,System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Transformation.SwapChute``1(``0@,System.Int32,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Shuffling.Transformation.&lt;&gt;E__1`1.SwapChute(System.Int32,System.Int32)"/>
         </member>
         <member name="T:Sudoku.Shuffling.TransformType">
             <summary>

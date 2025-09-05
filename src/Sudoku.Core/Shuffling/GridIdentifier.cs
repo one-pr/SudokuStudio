@@ -52,12 +52,12 @@ namespace Sudoku.Shuffling;
 /// which can theoretically hold 160 bits.
 /// </para>
 /// </remarks>
-public readonly struct GridTransformIdentifier :
-	IComparable<GridTransformIdentifier>,
-	IComparisonOperators<GridTransformIdentifier, GridTransformIdentifier, bool>,
-	IEquatable<GridTransformIdentifier>,
-	IEqualityOperators<GridTransformIdentifier, GridTransformIdentifier, bool>,
-	IParsable<GridTransformIdentifier>
+public readonly struct GridIdentifier :
+	IComparable<GridIdentifier>,
+	IComparisonOperators<GridIdentifier, GridIdentifier, bool>,
+	IEquatable<GridIdentifier>,
+	IEqualityOperators<GridIdentifier, GridIdentifier, bool>,
+	IParsable<GridIdentifier>
 {
 	/// <summary>
 	/// Indicates the numebr of all transformations permutation cases.
@@ -153,10 +153,10 @@ public readonly struct GridTransformIdentifier :
 
 
 	/// <summary>
-	/// Initializes a <see cref="GridTransformIdentifier"/> instance.
+	/// Initializes a <see cref="GridIdentifier"/> instance.
 	/// </summary>
 	/// <param name="value">The value.</param>
-	private GridTransformIdentifier(BigInteger value)
+	private GridIdentifier(BigInteger value)
 	{
 		for (var i = 0; i < RequiredBitsCount; i++)
 		{
@@ -255,16 +255,16 @@ public readonly struct GridTransformIdentifier :
 
 
 	/// <inheritdoc/>
-	public override bool Equals([NotNullWhen(true)] object? obj) => obj is GridTransformIdentifier comparer && Equals(comparer);
+	public override bool Equals([NotNullWhen(true)] object? obj) => obj is GridIdentifier comparer && Equals(comparer);
 
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
-	public bool Equals(in GridTransformIdentifier other) => _elements[..].SequenceEqual(other._elements);
+	public bool Equals(in GridIdentifier other) => _elements[..].SequenceEqual(other._elements);
 
 	/// <inheritdoc/>
 	public override int GetHashCode() => IdentifierValue.GetHashCode();
 
 	/// <inheritdoc cref="IComparable{T}.CompareTo(T)"/>
-	public int CompareTo(in GridTransformIdentifier other) => IdentifierValue.CompareTo(other.IdentifierValue);
+	public int CompareTo(in GridIdentifier other) => IdentifierValue.CompareTo(other.IdentifierValue);
 
 	/// <inheritdoc cref="object.ToString"/>
 	public override string ToString()
@@ -287,10 +287,10 @@ public readonly struct GridTransformIdentifier :
 	}
 
 	/// <inheritdoc/>
-	bool IEquatable<GridTransformIdentifier>.Equals(GridTransformIdentifier other) => Equals(other);
+	bool IEquatable<GridIdentifier>.Equals(GridIdentifier other) => Equals(other);
 
 	/// <inheritdoc/>
-	int IComparable<GridTransformIdentifier>.CompareTo(GridTransformIdentifier other) => CompareTo(other);
+	int IComparable<GridIdentifier>.CompareTo(GridIdentifier other) => CompareTo(other);
 
 	/// <summary>
 	/// Gets a <see cref="BitArray"/> instance that displays the slice.
@@ -312,7 +312,7 @@ public readonly struct GridTransformIdentifier :
 
 
 	/// <inheritdoc cref="IParsable{TSelf}.TryParse(string?, IFormatProvider?, out TSelf)"/>
-	public static bool TryParse([NotNullWhen(true)] string? s, out GridTransformIdentifier result)
+	public static bool TryParse([NotNullWhen(true)] string? s, out GridIdentifier result)
 	{
 		try
 		{
@@ -333,7 +333,7 @@ public readonly struct GridTransformIdentifier :
 	}
 
 	/// <inheritdoc cref="IParsable{TSelf}.Parse(string, IFormatProvider?)"/>
-	public static GridTransformIdentifier Parse(string s)
+	public static GridIdentifier Parse(string s)
 	{
 		if (string.IsNullOrEmpty(s))
 		{
@@ -358,61 +358,61 @@ public readonly struct GridTransformIdentifier :
 	}
 
 	/// <inheritdoc/>
-	static bool IParsable<GridTransformIdentifier>.TryParse([NotNullWhen(true)] string? s, [NotNullWhen(true)] IFormatProvider? provider, out GridTransformIdentifier result)
+	static bool IParsable<GridIdentifier>.TryParse([NotNullWhen(true)] string? s, [NotNullWhen(true)] IFormatProvider? provider, out GridIdentifier result)
 		=> TryParse(s, out result);
 
 	/// <inheritdoc/>
-	static GridTransformIdentifier IParsable<GridTransformIdentifier>.Parse(string s, IFormatProvider? provider) => Parse(s);
+	static GridIdentifier IParsable<GridIdentifier>.Parse(string s, IFormatProvider? provider) => Parse(s);
 
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
-	public static bool operator ==(in GridTransformIdentifier left, in GridTransformIdentifier right) => left.Equals(right);
+	public static bool operator ==(in GridIdentifier left, in GridIdentifier right) => left.Equals(right);
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
-	public static bool operator !=(in GridTransformIdentifier left, in GridTransformIdentifier right) => !(left == right);
+	public static bool operator !=(in GridIdentifier left, in GridIdentifier right) => !(left == right);
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
-	public static bool operator >(in GridTransformIdentifier left, in GridTransformIdentifier right) => left.CompareTo(right) > 0;
+	public static bool operator >(in GridIdentifier left, in GridIdentifier right) => left.CompareTo(right) > 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThan(TSelf, TOther)"/>
-	public static bool operator <(in GridTransformIdentifier left, in GridTransformIdentifier right) => left.CompareTo(right) < 0;
+	public static bool operator <(in GridIdentifier left, in GridIdentifier right) => left.CompareTo(right) < 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThanOrEqual(TSelf, TOther)"/>
-	public static bool operator >=(in GridTransformIdentifier left, in GridTransformIdentifier right) => left.CompareTo(right) >= 0;
+	public static bool operator >=(in GridIdentifier left, in GridIdentifier right) => left.CompareTo(right) >= 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
-	public static bool operator <=(in GridTransformIdentifier left, in GridTransformIdentifier right) => left.CompareTo(right) <= 0;
+	public static bool operator <=(in GridIdentifier left, in GridIdentifier right) => left.CompareTo(right) <= 0;
 
 	/// <inheritdoc/>
-	static bool IEqualityOperators<GridTransformIdentifier, GridTransformIdentifier, bool>.operator ==(GridTransformIdentifier left, GridTransformIdentifier right)
+	static bool IEqualityOperators<GridIdentifier, GridIdentifier, bool>.operator ==(GridIdentifier left, GridIdentifier right)
 		=> left == right;
 
 	/// <inheritdoc/>
-	static bool IEqualityOperators<GridTransformIdentifier, GridTransformIdentifier, bool>.operator !=(GridTransformIdentifier left, GridTransformIdentifier right)
+	static bool IEqualityOperators<GridIdentifier, GridIdentifier, bool>.operator !=(GridIdentifier left, GridIdentifier right)
 		=> left != right;
 
 	/// <inheritdoc/>
-	static bool IComparisonOperators<GridTransformIdentifier, GridTransformIdentifier, bool>.operator >(GridTransformIdentifier left, GridTransformIdentifier right)
+	static bool IComparisonOperators<GridIdentifier, GridIdentifier, bool>.operator >(GridIdentifier left, GridIdentifier right)
 		=> left > right;
 
 	/// <inheritdoc/>
-	static bool IComparisonOperators<GridTransformIdentifier, GridTransformIdentifier, bool>.operator <(GridTransformIdentifier left, GridTransformIdentifier right)
+	static bool IComparisonOperators<GridIdentifier, GridIdentifier, bool>.operator <(GridIdentifier left, GridIdentifier right)
 		=> left < right;
 
 	/// <inheritdoc/>
-	static bool IComparisonOperators<GridTransformIdentifier, GridTransformIdentifier, bool>.operator >=(GridTransformIdentifier left, GridTransformIdentifier right)
+	static bool IComparisonOperators<GridIdentifier, GridIdentifier, bool>.operator >=(GridIdentifier left, GridIdentifier right)
 		=> left >= right;
 
 	/// <inheritdoc/>
-	static bool IComparisonOperators<GridTransformIdentifier, GridTransformIdentifier, bool>.operator <=(GridTransformIdentifier left, GridTransformIdentifier right)
+	static bool IComparisonOperators<GridIdentifier, GridIdentifier, bool>.operator <=(GridIdentifier left, GridIdentifier right)
 		=> left <= right;
 
 
 	/// <summary>
-	/// Explicit cast from <see cref="BigInteger"/> to <see cref="GridTransformIdentifier"/>.
+	/// Explicit cast from <see cref="BigInteger"/> to <see cref="GridIdentifier"/>.
 	/// </summary>
 	/// <param name="identifierValue">The identifier value.</param>
-	public static explicit operator GridTransformIdentifier(BigInteger identifierValue)
+	public static explicit operator GridIdentifier(BigInteger identifierValue)
 		=> new(Math.UnsignedMod(identifierValue, (BigInteger)AllPermutationsCount * InequivalentSolutionsCount));
 
 	/// <summary>
@@ -420,7 +420,7 @@ public readonly struct GridTransformIdentifier :
 	/// </summary>
 	/// <param name="identifierValue">The identifier value.</param>
 	/// <exception cref="OverflowException">Throws when <paramref name="identifierValue"/> is invalid.</exception>
-	public static explicit operator checked GridTransformIdentifier(BigInteger identifierValue)
+	public static explicit operator checked GridIdentifier(BigInteger identifierValue)
 		=> new(
 			identifierValue >= 0 && identifierValue < (BigInteger)AllPermutationsCount * InequivalentSolutionsCount
 				? identifierValue
@@ -428,8 +428,8 @@ public readonly struct GridTransformIdentifier :
 		);
 
 	/// <summary>
-	/// Implicit cast from <see cref="GridTransformIdentifier"/> to <see cref="BigInteger"/>.
+	/// Implicit cast from <see cref="GridIdentifier"/> to <see cref="BigInteger"/>.
 	/// </summary>
 	/// <param name="transform">The transform.</param>
-	public static implicit operator BigInteger(GridTransformIdentifier transform) => transform.IdentifierValue;
+	public static implicit operator BigInteger(GridIdentifier transform) => transform.IdentifierValue;
 }
