@@ -61,13 +61,11 @@ internal unsafe struct MinlexCandidate
 			{
 				result.MapRowsForward[i] = -1;
 				result.MapRowsBackward[i] = -1;
-
 				if (i < 3)
 				{
 					result.ColumnsPermutationMask[i] = 63;
 				}
 			}
-
 			return result;
 		}
 	}
