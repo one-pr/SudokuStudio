@@ -3,7 +3,7 @@ namespace Sudoku.Shuffling.Minlex;
 /// <summary>
 /// Represents a pattern for a sudoku grid.
 /// </summary>
-public unsafe struct GridPattern
+internal unsafe struct GridPattern
 {
 	/// <summary>
 	/// A precomputed min-lexicographical-ordered recompositing of the bit triplets for a 9-bits input.

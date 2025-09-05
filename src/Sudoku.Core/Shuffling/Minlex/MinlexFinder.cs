@@ -170,10 +170,10 @@ public sealed unsafe class MinlexFinder
 		// Step 3: Find the lexicographically minimal representative within the morphs.
 		// This time taking into account the real values of the input givens.
 		Unsafe.SkipInit<Mapper>(out var map);
-		var minLex = (stackalloc int[81]); // The best result so far.
+		var minlex = (stackalloc int[81]); // The best result so far.
 		for (var cell = 0; cell < 81; cell++)
 		{
-			minLex[cell] = result[cell] << 5; // Initially set to large values.
+			minlex[cell] = result[cell] << 5; // Initially set to large values.
 		}
 
 		for (var currentCandidateIndex = 0; currentCandidateIndex < currentCandidatesCount; currentCandidateIndex++)
@@ -230,20 +230,20 @@ public sealed unsafe class MinlexFinder
 								{
 									labelPerm[fromDigit] = nextFreeLabel++;
 								}
-								if (labelPerm[fromDigit] > minLex[toRow * 9 + col])
+								if (labelPerm[fromDigit] > minlex[toRow * 9 + col])
 								{
 									goto NextColsPerm;
 								}
 
 								nSet++;
-								if (labelPerm[fromDigit] < minLex[toRow * 9 + col])
+								if (labelPerm[fromDigit] < minlex[toRow * 9 + col])
 								{
 									for (var i = toRow * 9 + col + 1; i < 81; i++)
 									{
-										minLex[i] = result[i] << 5; // Invalidate the rest.
+										minlex[i] = result[i] << 5; // Invalidate the rest.
 									}
 
-									minLex[toRow * 9 + col] = labelPerm[fromDigit];
+									minlex[toRow * 9 + col] = labelPerm[fromDigit];
 
 									// The buffered transformations become invalid at this point.
 									_mappers.Clear();
@@ -262,7 +262,7 @@ public sealed unsafe class MinlexFinder
 												: target.MapRowsBackward[r] * 9 + toColsInStack[c];
 
 											// Map all non-givens to 99, this masking irrelevant permutations.
-											map.Cell[src] = (byte)(minLex[r * 9 + c] != 0 ? r * 9 + c : 99);
+											map.Cell[src] = (byte)(minlex[r * 9 + c] != 0 ? r * 9 + c : 99);
 										}
 									}
 									for (var d = 0; d < 10; d++)
@@ -287,9 +287,8 @@ public sealed unsafe class MinlexFinder
 		}
 		for (var cell = 0; cell < 81; cell++)
 		{
-			result[cell] = minLex[cell] != 0 ? (char)(minLex[cell] + '0') : '0';
+			result[cell] = minlex[cell] != 0 ? (char)(minlex[cell] + '0') : '0';
 		}
-
 		return result.ToString();
 	}
 
