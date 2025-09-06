@@ -1,4 +1,4 @@
-namespace Sudoku.Shuffling.Minlex;
+namespace Sudoku.MinlexOrder;
 
 /// <summary>
 /// Provides with extension methods on <see cref="Mapper"/> instances.

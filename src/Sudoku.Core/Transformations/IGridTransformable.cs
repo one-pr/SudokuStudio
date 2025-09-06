@@ -1,4 +1,4 @@
-namespace Sudoku.Shuffling;
+namespace Sudoku.Transformations;
 
 /// <summary>
 /// Represents an object that can be transformed into another kind of value.

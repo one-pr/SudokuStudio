@@ -1,4 +1,6 @@
-namespace Sudoku.Shuffling;
+using Sudoku.Transformations;
+
+namespace Sudoku.Transformations;
 
 /// <summary>
 /// Provides with extension methods on <see cref="Grid"/>.

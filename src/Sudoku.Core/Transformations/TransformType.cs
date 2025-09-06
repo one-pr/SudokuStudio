@@ -1,4 +1,4 @@
-namespace Sudoku.Shuffling;
+namespace Sudoku.Transformations;
 
 /// <summary>
 /// Represents a type of transformation.

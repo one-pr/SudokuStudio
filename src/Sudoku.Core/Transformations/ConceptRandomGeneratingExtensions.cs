@@ -1,4 +1,6 @@
-namespace Sudoku.Shuffling;
+using Sudoku.Transformations;
+
+namespace Sudoku.Transformations;
 
 /// <summary>
 /// Provides with some methods that generates randomized elements or types defined in sudoku basic concepts.

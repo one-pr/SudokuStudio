@@ -77,7 +77,7 @@ global using Sudoku.Resources;
 global using Sudoku.Runtime.InteropServices.Hodoku;
 global using Sudoku.Runtime.InteropServices.SudokuExplainer;
 global using Sudoku.Shuffling;
-global using Sudoku.Shuffling.Minlex;
+global using Sudoku.MinlexOrder;
 global using Sudoku.Solving;
 global using Sudoku.Solving.Bitwise;
 global using SudokuStudio;

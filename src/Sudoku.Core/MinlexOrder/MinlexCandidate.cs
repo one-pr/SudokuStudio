@@ -1,4 +1,4 @@
-namespace Sudoku.Shuffling.Minlex;
+namespace Sudoku.MinlexOrder;
 
 /// <summary>
 /// Indicates a node representing the min-lexicographical candidate.

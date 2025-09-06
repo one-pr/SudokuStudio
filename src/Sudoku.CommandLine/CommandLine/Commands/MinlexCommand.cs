@@ -8,7 +8,7 @@ internal sealed class MinlexCommand : CommandBase
 	/// <summary>
 	/// Initializes a <see cref="MinlexCommand"/> instance.
 	/// </summary>
-	public MinlexCommand() : base("minlex", "To find a minlex (minimal lexicographical) grid of the specified grid")
+	public MinlexCommand() : base("minlex", "To find a minlex (minimum lexicographical order) grid of the specified grid")
 	{
 		ArgumentsCore = [new GridArgument()];
 		this.AddRange(ArgumentsCore);

@@ -1,4 +1,4 @@
-namespace Sudoku.Shuffling.Minlex;
+namespace Sudoku.MinlexOrder;
 
 public partial class MinlexRanker
 {

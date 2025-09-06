@@ -1,4 +1,6 @@
-namespace Sudoku.Shuffling;
+using Sudoku.Transformations;
+
+namespace Sudoku.Transformations;
 
 /// <summary>
 /// Provides a way to rank and unrank permutation. The ranking algorithm is called "Cantor Expansion".
@@ -151,7 +153,7 @@ public static class CantorExpansion
 		for (var newBand = 0; newBand < 3; newBand++)
 		{
 			var origBand = bandPerm[newBand];
-			var intra = newBand == 0 ? intraA : (newBand == 1 ? intraB : intraC);
+			var intra = newBand == 0 ? intraA : newBand == 1 ? intraB : intraC;
 
 			for (var j = 0; j < 3; j++)
 			{

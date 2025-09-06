@@ -1,3 +1,5 @@
+using Sudoku.Transformations;
+
 namespace Sudoku.Shuffling;
 
 public partial record struct GenericTransform

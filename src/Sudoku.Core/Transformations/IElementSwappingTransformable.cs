@@ -1,4 +1,4 @@
-namespace Sudoku.Shuffling;
+namespace Sudoku.Transformations;
 
 /// <summary>
 /// Represents an object that can swap elements of itself.

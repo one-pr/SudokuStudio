@@ -1,4 +1,4 @@
-namespace Sudoku.Shuffling.Minlex;
+namespace Sudoku.MinlexOrder;
 
 /// <summary>
 /// Represents an equality comparer that checks for min-lex transformations.

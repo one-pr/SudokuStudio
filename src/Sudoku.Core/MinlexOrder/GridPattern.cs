@@ -1,4 +1,4 @@
-namespace Sudoku.Shuffling.Minlex;
+namespace Sudoku.MinlexOrder;
 
 /// <summary>
 /// Represents a pattern for a sudoku grid.

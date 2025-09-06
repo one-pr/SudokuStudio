@@ -1,4 +1,6 @@
-namespace Sudoku.Shuffling;
+using Sudoku.Transformations;
+
+namespace Sudoku.Transformations;
 
 /// <summary>
 /// Represents an identifier that describes the transforming cases.

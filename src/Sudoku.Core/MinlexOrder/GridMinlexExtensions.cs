@@ -1,4 +1,4 @@
-namespace Sudoku.Shuffling.Minlex;
+namespace Sudoku.MinlexOrder;
 
 /// <summary>
 /// Provides with extension methods on <see cref="Grid"/> for minlex.
@@ -12,7 +12,7 @@ public static class GridMinlexExtensions
 	extension(ref Grid @this)
 	{
 		/// <summary>
-		/// Adjust the grid to minimal lexicographical form.
+		/// Adjust the grid to minimum lexicographical form.
 		/// </summary>
 		public void MakeMinLex() => @this = @this.MinLexGrid;
 	}
@@ -23,7 +23,7 @@ public static class GridMinlexExtensions
 	extension(in Grid @this)
 	{
 		/// <summary>
-		/// Indicates whether the current grid is the minimal lexicographical form,
+		/// Indicates whether the current grid is the minimum lexicographical form,
 		/// meaning the corresponding string text code is the minimum value in all equivalent transforming cases
 		/// in lexicographical order.
 		/// </summary>

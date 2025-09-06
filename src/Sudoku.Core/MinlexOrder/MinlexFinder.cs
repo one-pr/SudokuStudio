@@ -1,4 +1,4 @@
-namespace Sudoku.Shuffling.Minlex;
+namespace Sudoku.MinlexOrder;
 
 /// <summary>
 /// Represents a finder type.
@@ -297,11 +297,11 @@ public sealed unsafe class MinlexFinder
 	public Grid Find(in Grid grid) => Grid.Parse(Find(grid.ToString("0")));
 
 	/// <summary>
-	/// Finds the minimal lexicographical form of the source grid code.
+	/// Finds the minimum lexicographical form of the source grid code.
 	/// </summary>
 	/// <param name="grid">Indicates the source grid.</param>
 	/// <param name="transform">The transform.</param>
-	/// <returns>The corresponding minimal lexicographical form of the grid.</returns>
+	/// <returns>The corresponding minimum lexicographical form of the grid.</returns>
 	internal string Find(string grid, out GenericTransform transform)
 	{
 		var minlexed = Find(grid);

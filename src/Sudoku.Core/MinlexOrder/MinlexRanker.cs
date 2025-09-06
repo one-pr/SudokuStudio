@@ -1,4 +1,4 @@
-namespace Sudoku.Shuffling.Minlex;
+namespace Sudoku.MinlexOrder;
 
 /// <summary>
 /// Represents a ranker type that can rank a min-lex grid, or unrank a value to target grid.
