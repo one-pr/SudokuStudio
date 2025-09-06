@@ -14010,6 +14010,86 @@
         <member name="M:Sudoku.Shuffling.Minlex.MinlexFinder.Find(Sudoku.Concepts.Grid@,Sudoku.Shuffling.GenericTransform@)">
             <inheritdoc cref="M:Sudoku.Shuffling.Minlex.MinlexFinder.Find(System.String,Sudoku.Shuffling.GenericTransform@)"/>
         </member>
+        <member name="T:Sudoku.Shuffling.Minlex.MinlexRanker">
+            <summary>
+            Represents a ranker type that can rank a min-lex grid, or unrank a value to target grid.
+            </summary>
+            <remarks>
+            This type is implemented externally. You should copy <c>*.dll</c> files in folder <c>minlex-rank</c>
+            defined in <c>miscellaneous</c> folder in this repository to your device before consume methods defined in this type.
+            </remarks>
+            <seealso href="https://github.com/GPenet/Virtual-calatog">Virtual Catalog (GitHub repository)</seealso>
+            <seealso href="http://forum.enjoysudoku.com/virtual-catalog-dll-t45193.html">Virtual catalog DLL (EnjoySudoku forum)</seealso>
+        </member>
+        <member name="T:Sudoku.Shuffling.Minlex.VCDESC">
+            <summary>
+            Represents a stack-allocated memory exchanging area.
+            </summary>
+            <remarks>
+            This type is defined
+            <see href="https://github.com/GPenet/Virtual-catalog-DLL/blob/f8bca9fab905e1bbb8acaefdc4a5b4f185fdf2fa/skvcats.h#L30">here</see>.
+            </remarks>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.VCDESC.rank">
+            <summary>
+            Indicates the rank.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.VCDESC.i416">
+            <summary>
+            Indicates the calculated values to represent.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.VCDESC.i9992">
+            <summary>
+            Indicates the calculated values to represent.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.VCDESC.i660k1">
+            <summary>
+            Indicates the calculated values to represent.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.VCDESC.ir1">
+            <summary>
+            Indicates the calculated values to represent.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.VCDESC.i660k2">
+            <summary>
+            Indicates the calculated values to represent.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.VCDESC.ir2">
+            <summary>
+            Indicates the calculated values to represent.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.VCDESC.g">
+            <summary>
+            Indicates the nested type that stores the backing data.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Shuffling.Minlex.VCDESC.G">
+            <summary>
+            Represents the backing values storage.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.VCDESC.G.b1">
+            <summary>
+            The <c>b1</c> field.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.VCDESC.G.r4">
+            <summary>
+            The <c>r4</c> field.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.VCDESC.G.rx">
+            <summary>
+            The <c>rx</c> field.
+            </summary>
+        </member>
         <member name="T:Sudoku.Shuffling.RandomShufflingExtensions">
             <summary>
             Provides with extension methods for <see cref="T:System.Random"/>.
