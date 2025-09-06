@@ -305,6 +305,13 @@ public sealed unsafe class MinlexFinder
 	internal string Find(string grid, out GenericTransform transform)
 	{
 		var minlexed = Find(grid);
+		if (grid == minlexed)
+		{
+			// Already min-lex.
+			transform = GenericTransform.Equivalent;
+			return minlexed;
+		}
+
 		var mappers = _mappers.AsSpan();
 		foreach (ref readonly var mapper in mappers)
 		{

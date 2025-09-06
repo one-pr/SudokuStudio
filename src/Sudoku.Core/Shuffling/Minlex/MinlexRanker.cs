@@ -3,62 +3,66 @@ namespace Sudoku.Shuffling.Minlex;
 /// <summary>
 /// Represents a ranker type that can rank a min-lex grid, or unrank a value to target grid.
 /// </summary>
-/// <remarks>
-/// This type is implemented externally. You should copy <c>*.dll</c> files in folder <c>minlex-rank</c>
-/// defined in <c>miscellaneous</c> folder in this repository to your device before consume methods defined in this type.
-/// </remarks>
-/// <seealso href="https://github.com/GPenet/Virtual-calatog">Virtual Catalog (GitHub repository)</seealso>
-/// <seealso href="http://forum.enjoysudoku.com/virtual-catalog-dll-t45193.html">Virtual catalog DLL (EnjoySudoku forum)</seealso>
-public static class MinlexRanker
-{
-
-}
-
-/// <summary>
-/// Represents a stack-allocated memory exchanging area.
-/// </summary>
-/// <remarks>
-/// This type is defined
-/// <see href="https://github.com/GPenet/Virtual-catalog-DLL/blob/f8bca9fab905e1bbb8acaefdc4a5b4f185fdf2fa/skvcats.h#L30">here</see>.
-/// </remarks>
-[StructLayout(LayoutKind.Sequential)]
-internal unsafe struct VCDESC
+public static partial class MinlexRanker
 {
 	/// <summary>
-	/// Indicates the rank.
+	/// Gets the rank of the specified grid.
 	/// </summary>
-	public ulong rank;
-
-	/// <summary>
-	/// Indicates the calculated values to represent.
-	/// </summary>
-	public int i416, i9992, i660k1, ir1, i660k2, ir2;
-
-	/// <summary>
-	/// Indicates the nested type that stores the backing data.
-	/// </summary>
-	public G g;
-
-
-	/// <summary>
-	/// Represents the backing values storage.
-	/// </summary>
-	[StructLayout(LayoutKind.Sequential)]
-	public struct G
+	/// <param name="grid">The grid, min-lex.</param>
+	/// <param name="transform">
+	/// <para>The transform that the grid can be transform from min-lex state to <paramref name="grid"/>.</para>
+	/// <para>
+	/// If the grid is not min-lex, it will transform to min-lex grid
+	/// and assign its transformation to parameter <paramref name="transform"/>;
+	/// otherwise, <see cref="GenericTransform.Equivalent"/> will be returned.
+	/// </para>
+	/// </param>
+	/// <returns>
+	/// The rank returned, or 0 if the source grid is invalid (not a grid string of 81 digit characters, without empty cells).
+	/// </returns>
+	public static unsafe ulong GetRankFromGrid(string grid, out GenericTransform transform)
 	{
-		/// <summary>
-		/// The <c>b1</c> field.
-		/// </summary>
-		public fixed sbyte b1[27];
+		new MinlexFinder().Find(grid, out transform);
+		VCDESC* pvcdesc;
+		if (MinlexRankerInterop.SkvcatSetModeGetVCDESK(2, &pvcdesc) != 0)
+		{
+			return 0;
+		}
 
-		/// <summary>
-		/// The <c>r4</c> field.
-		/// </summary>
-		public fixed sbyte r4[9];
+		var givens = stackalloc sbyte[81];
+		for (var i = 0; i < 81; i++)
+		{
+			givens[i] = (sbyte)grid[i];
+		}
+		return MinlexRankerInterop.SkvcatGetRankFromSolCharMin(givens);
+	}
 
-		/// <summary>
-		/// The <c>rx</c> field.
-		/// </summary>
-		public fixed sbyte rx[45];
+	/// <summary>
+	/// Gets the min-lex form from the specified rank.
+	/// </summary>
+	/// <param name="rank">The desired rank.</param>
+	/// <returns>
+	/// The grid returned, with 81 digit characters representing the target grid.
+	/// If argument <paramref name="rank"/> is invalid, <see langword="null"/> will be returned.
+	/// </returns>
+	public static unsafe string? GetGridFromRank(ulong rank)
+	{
+		VCDESC* pvcdesc;
+		var resultCharacters = stackalloc sbyte[82];
+		resultCharacters[81] = 0;
+
+		if (MinlexRankerInterop.SkvcatSetModeGetVCDESK(1, &pvcdesc) != 0)
+		{
+			return null;
+		}
+
+		if (MinlexRankerInterop.SkvcatFinSolForRank(rank) != 0)
+		{
+			return null;
+		}
+
+		var wsSpan = new Span<sbyte>(resultCharacters, 81);
+		new Span<sbyte>(pvcdesc->g.b1, 81).CopyTo(wsSpan);
+		return (from e in wsSpan select (char)e).ToString();
 	}
 }
