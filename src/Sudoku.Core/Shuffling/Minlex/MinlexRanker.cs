@@ -3,7 +3,7 @@ namespace Sudoku.Shuffling.Minlex;
 /// <summary>
 /// Represents a ranker type that can rank a min-lex grid, or unrank a value to target grid.
 /// </summary>
-public static partial class MinlexRanker
+public static class MinlexRanker
 {
 	/// <summary>
 	/// Gets the rank of the specified grid.
