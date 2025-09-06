@@ -13861,154 +13861,6 @@
             <param name="resultPair">Indicates the 2 <see cref="T:Sudoku.Shuffling.Minlex.GridPattern"/> instances for normal and transposed cases.</param>
             <returns>An <see cref="T:System.Int32"/> value indicating the number of given cells.</returns>
         </member>
-        <member name="T:Sudoku.Shuffling.Minlex.Interoperability.MinlexRankerInterop">
-            <summary>
-            Provides interoperability for type <see cref="T:Sudoku.Shuffling.Minlex.MinlexRanker"/>.
-            </summary>
-            <remarks>
-            <para>
-            This type is implemented in external code.
-            You must copy all <c>*.dll</c> files in folder <c>miscellaneous/minlex-rank</c> in this repository to your device,
-            before consuming functions defined in this type;
-            otherwise, <see cref="T:System.BadImageFormatException"/> or <see cref="T:System.EntryPointNotFoundException"/> will be thrown.
-            </para>
-            <para>
-            For more information you can visit test code:
-            <see href="https://github.com/GPenet/Virtual-catalog-DLL/blob/main/sktestvcat.cpp"/>.
-            </para>
-            </remarks>
-            <seealso href="https://github.com/GPenet/Virtual-calatog">Virtual Catalog (GitHub repository)</seealso>
-            <seealso href="http://forum.enjoysudoku.com/virtual-catalog-dll-t45193.html">Virtual catalog DLL (EnjoySudoku forum)</seealso>
-            <seealso cref="T:Sudoku.Shuffling.Minlex.MinlexRanker"/>
-            <seealso cref="T:System.BadImageFormatException"/>
-            <seealso cref="T:System.EntryPointNotFoundException"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Minlex.Interoperability.MinlexRankerInterop.SkvcatSetModeGetVCDESK(System.Int32,Sudoku.Shuffling.Minlex.Interoperability.VCDESC**)">
-            <summary>
-            Init memory via the specified mode.
-            </summary>
-            <param name="mode">
-            The mode. There're 3 possible values to set:
-            <list type="table">
-            <listheader>
-            <term>Mode</term>
-            <description>Meaning</description>
-            </listheader>
-            <item>
-            <term>0</term>
-            <description>Sequential process on a virtual file</description>
-            </item>
-            <item>
-            <term>1</term>
-            <description>Rank to solution grid</description>
-            </item>
-            <item>
-            <term>2</term>
-            <description>Solution grid to rank</description>
-            </item>
-            </list>
-            </param>
-            <param name="pe">The memory to exchange.</param>
-            <returns>-1 for invalid execution and 0 for success.</returns>
-        </member>
-        <member name="M:Sudoku.Shuffling.Minlex.Interoperability.MinlexRankerInterop.SkvcatSetChangeMode(System.Int32)">
-            <summary>
-            Updates mode value. The mode value can be checked in method <see cref="M:Sudoku.Shuffling.Minlex.Interoperability.MinlexRankerInterop.SkvcatSetModeGetVCDESK(System.Int32,Sudoku.Shuffling.Minlex.Interoperability.VCDESC**)"/>.
-            </summary>
-            <param name="mode">The mode.</param>
-            <returns>An integer that describes whether the operation is success.</returns>
-            <remarks>
-            This method may not be used at present.
-            </remarks>
-            <seealso cref="M:Sudoku.Shuffling.Minlex.Interoperability.MinlexRankerInterop.SkvcatSetModeGetVCDESK(System.Int32,Sudoku.Shuffling.Minlex.Interoperability.VCDESC**)"/>
-        </member>
-        <member name="M:Sudoku.Shuffling.Minlex.Interoperability.MinlexRankerInterop.SkvcatGetRankFromSolCharMin(System.SByte*)">
-            <summary>
-            Try to get rank from a min-lex grid specified as characters.
-            </summary>
-            <param name="sgiven">Characters of 81 elements.</param>
-            <returns>The rank. If failed to find, 0 will be returned; otherwise, a positive integer.</returns>
-        </member>
-        <member name="M:Sudoku.Shuffling.Minlex.Interoperability.MinlexRankerInterop.SkvcatFinSolForRank(System.UInt64)">
-            <summary>
-            Try to get min-lex grid via rank value. The result value will be set in specified exchanging buffer variable
-            defined in method <see cref="M:Sudoku.Shuffling.Minlex.Interoperability.MinlexRankerInterop.SkvcatSetModeGetVCDESK(System.Int32,Sudoku.Shuffling.Minlex.Interoperability.VCDESC**)"/>.
-            </summary>
-            <param name="rank">The rank value.</param>
-            <returns>0 if success or -1 is failed.</returns>
-            <seealso cref="M:Sudoku.Shuffling.Minlex.Interoperability.MinlexRankerInterop.SkvcatSetModeGetVCDESK(System.Int32,Sudoku.Shuffling.Minlex.Interoperability.VCDESC**)"/>
-        </member>
-        <member name="T:Sudoku.Shuffling.Minlex.Interoperability.VCDESC">
-            <summary>
-            Represents a stack-allocated memory exchanging area.
-            </summary>
-            <remarks>
-            This type is defined
-            <see href="https://github.com/GPenet/Virtual-catalog-DLL/blob/f8bca9fab905e1bbb8acaefdc4a5b4f185fdf2fa/skvcats.h#L30">here</see>.
-            </remarks>
-            <seealso href="https://github.com/GPenet/Virtual-calatog">Virtual Catalog (GitHub repository)</seealso>
-            <seealso href="http://forum.enjoysudoku.com/virtual-catalog-dll-t45193.html">Virtual catalog DLL (EnjoySudoku forum)</seealso>
-        </member>
-        <member name="F:Sudoku.Shuffling.Minlex.Interoperability.VCDESC.rank">
-            <summary>
-            Indicates the rank.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Minlex.Interoperability.VCDESC.i416">
-            <summary>
-            Indicates the calculated values to represent.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Minlex.Interoperability.VCDESC.i9992">
-            <summary>
-            Indicates the calculated values to represent.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Minlex.Interoperability.VCDESC.i660k1">
-            <summary>
-            Indicates the calculated values to represent.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Minlex.Interoperability.VCDESC.ir1">
-            <summary>
-            Indicates the calculated values to represent.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Minlex.Interoperability.VCDESC.i660k2">
-            <summary>
-            Indicates the calculated values to represent.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Minlex.Interoperability.VCDESC.ir2">
-            <summary>
-            Indicates the calculated values to represent.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Minlex.Interoperability.VCDESC.g">
-            <summary>
-            Indicates the nested type that stores the backing data.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Shuffling.Minlex.Interoperability.VCDESC.G">
-            <summary>
-            Represents the backing values storage.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Minlex.Interoperability.VCDESC.G.b1">
-            <summary>
-            The <c>b1</c> field.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Minlex.Interoperability.VCDESC.G.r4">
-            <summary>
-            The <c>r4</c> field.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Shuffling.Minlex.Interoperability.VCDESC.G.rx">
-            <summary>
-            The <c>rx</c> field.
-            </summary>
-        </member>
         <member name="T:Sudoku.Shuffling.Minlex.Mapper">
             <summary>
             Indicates a data structure that describes the cell and label handled.
@@ -14201,6 +14053,154 @@
             The grid returned, with 81 digit characters representing the target grid.
             If argument <paramref name="rank"/> is invalid, <see langword="null"/> will be returned.
             </returns>
+        </member>
+        <member name="T:Sudoku.Shuffling.Minlex.MinlexRanker.Interop">
+            <summary>
+            Provides interoperability for type <see cref="T:Sudoku.Shuffling.Minlex.MinlexRanker"/>.
+            </summary>
+            <remarks>
+            <para>
+            This type is implemented in external code.
+            You must copy all <c>*.dll</c> files in folder <c>miscellaneous/minlex-rank</c> in this repository to your device,
+            before consuming functions defined in this type;
+            otherwise, <see cref="T:System.BadImageFormatException"/> or <see cref="T:System.EntryPointNotFoundException"/> will be thrown.
+            </para>
+            <para>
+            For more information you can visit test code:
+            <see href="https://github.com/GPenet/Virtual-catalog-DLL/blob/main/sktestvcat.cpp"/>.
+            </para>
+            </remarks>
+            <seealso href="https://github.com/GPenet/Virtual-calatog">Virtual Catalog (GitHub repository)</seealso>
+            <seealso href="http://forum.enjoysudoku.com/virtual-catalog-dll-t45193.html">Virtual catalog DLL (EnjoySudoku forum)</seealso>
+            <seealso cref="T:Sudoku.Shuffling.Minlex.MinlexRanker"/>
+            <seealso cref="T:System.BadImageFormatException"/>
+            <seealso cref="T:System.EntryPointNotFoundException"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.Minlex.MinlexRanker.Interop.SkvcatSetModeGetVCDESK(System.Int32,Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC*@)">
+            <summary>
+            Init memory via the specified mode.
+            </summary>
+            <param name="mode">
+            The mode. There're 3 possible values to set:
+            <list type="table">
+            <listheader>
+            <term>Mode</term>
+            <description>Meaning</description>
+            </listheader>
+            <item>
+            <term>0</term>
+            <description>Sequential process on a virtual file</description>
+            </item>
+            <item>
+            <term>1</term>
+            <description>Rank to solution grid</description>
+            </item>
+            <item>
+            <term>2</term>
+            <description>Solution grid to rank</description>
+            </item>
+            </list>
+            </param>
+            <param name="pe">The memory to exchange.</param>
+            <returns>-1 for invalid execution and 0 for success.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.Minlex.MinlexRanker.Interop.SkvcatSetChangeMode(System.Int32)">
+            <summary>
+            Updates mode value. The mode value can be checked in method <see cref="M:Sudoku.Shuffling.Minlex.MinlexRanker.Interop.SkvcatSetModeGetVCDESK(System.Int32,Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC*@)"/>.
+            </summary>
+            <param name="mode">The mode.</param>
+            <returns>An integer that describes whether the operation is success.</returns>
+            <remarks>
+            This method may not be used at present.
+            </remarks>
+            <seealso cref="M:Sudoku.Shuffling.Minlex.MinlexRanker.Interop.SkvcatSetModeGetVCDESK(System.Int32,Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC*@)"/>
+        </member>
+        <member name="M:Sudoku.Shuffling.Minlex.MinlexRanker.Interop.SkvcatGetRankFromSolCharMin(System.SByte*)">
+            <summary>
+            Try to get rank from a min-lex grid specified as characters.
+            </summary>
+            <param name="sgiven">Characters of 81 elements.</param>
+            <returns>The rank. If failed to find, 0 will be returned; otherwise, a positive integer.</returns>
+        </member>
+        <member name="M:Sudoku.Shuffling.Minlex.MinlexRanker.Interop.SkvcatFinSolForRank(System.UInt64)">
+            <summary>
+            Try to get min-lex grid via rank value. The result value will be set in specified exchanging buffer variable
+            defined in method <see cref="M:Sudoku.Shuffling.Minlex.MinlexRanker.Interop.SkvcatSetModeGetVCDESK(System.Int32,Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC*@)"/>.
+            </summary>
+            <param name="rank">The rank value.</param>
+            <returns>0 if success or -1 is failed.</returns>
+            <seealso cref="M:Sudoku.Shuffling.Minlex.MinlexRanker.Interop.SkvcatSetModeGetVCDESK(System.Int32,Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC*@)"/>
+        </member>
+        <member name="T:Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC">
+            <summary>
+            Represents a stack-allocated memory exchanging area.
+            </summary>
+            <remarks>
+            This type is defined
+            <see href="https://github.com/GPenet/Virtual-catalog-DLL/blob/f8bca9fab905e1bbb8acaefdc4a5b4f185fdf2fa/skvcats.h#L30">here</see>.
+            </remarks>
+            <seealso href="https://github.com/GPenet/Virtual-calatog">Virtual Catalog (GitHub repository)</seealso>
+            <seealso href="http://forum.enjoysudoku.com/virtual-catalog-dll-t45193.html">Virtual catalog DLL (EnjoySudoku forum)</seealso>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC.rank">
+            <summary>
+            Indicates the rank.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC.i416">
+            <summary>
+            Indicates the calculated values to represent.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC.i9992">
+            <summary>
+            Indicates the calculated values to represent.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC.i660k1">
+            <summary>
+            Indicates the calculated values to represent.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC.ir1">
+            <summary>
+            Indicates the calculated values to represent.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC.i660k2">
+            <summary>
+            Indicates the calculated values to represent.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC.ir2">
+            <summary>
+            Indicates the calculated values to represent.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC.g">
+            <summary>
+            Indicates the nested type that stores the backing data.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC.G">
+            <summary>
+            Represents the backing values storage.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC.G.b1">
+            <summary>
+            The <c>b1</c> field.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC.G.r4">
+            <summary>
+            The <c>r4</c> field.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Shuffling.Minlex.MinlexRanker.VCDESC.G.rx">
+            <summary>
+            The <c>rx</c> field.
+            </summary>
         </member>
         <member name="T:Sudoku.Shuffling.RandomShufflingExtensions">
             <summary>

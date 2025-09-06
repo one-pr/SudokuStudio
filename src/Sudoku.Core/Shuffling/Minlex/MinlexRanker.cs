@@ -3,7 +3,7 @@ namespace Sudoku.Shuffling.Minlex;
 /// <summary>
 /// Represents a ranker type that can rank a min-lex grid, or unrank a value to target grid.
 /// </summary>
-public static class MinlexRanker
+public static partial class MinlexRanker
 {
 	/// <summary>
 	/// Gets the rank of the specified grid.
@@ -14,14 +14,13 @@ public static class MinlexRanker
 	/// </returns>
 	public static unsafe ulong GetRankFromGrid(string grid)
 	{
-		VCDESC* pvcdesc;
-		if (MinlexRankerInterop.SkvcatSetModeGetVCDESK(2, &pvcdesc) != 0)
+		if (Interop.SkvcatSetModeGetVCDESK(2, out _) != 0)
 		{
 			return 0;
 		}
 
 		var givens = (sbyte*)Marshal.StringToHGlobalAnsi(grid);
-		var result = MinlexRankerInterop.SkvcatGetRankFromSolCharMin(givens);
+		var result = Interop.SkvcatGetRankFromSolCharMin(givens);
 		Marshal.FreeHGlobal((nint)givens);
 		return result;
 	}
@@ -63,14 +62,13 @@ public static class MinlexRanker
 		}
 
 		minlexGrid = new MinlexFinder().Find(grid, out transform);
-		VCDESC* pvcdesc;
-		if (MinlexRankerInterop.SkvcatSetModeGetVCDESK(2, &pvcdesc) != 0)
+		if (Interop.SkvcatSetModeGetVCDESK(2, out _) != 0)
 		{
 			return 0;
 		}
 
 		var givens = (sbyte*)Marshal.StringToHGlobalAnsi(minlexGrid);
-		var result = MinlexRankerInterop.SkvcatGetRankFromSolCharMin(givens);
+		var result = Interop.SkvcatGetRankFromSolCharMin(givens);
 		Marshal.FreeHGlobal((nint)givens);
 		return result;
 
@@ -90,16 +88,15 @@ public static class MinlexRanker
 	/// </returns>
 	public static unsafe string? GetGridFromRank(ulong rank)
 	{
-		VCDESC* pvcdesc;
 		var resultCharacters = stackalloc sbyte[82];
 		resultCharacters[81] = 0;
 
-		if (MinlexRankerInterop.SkvcatSetModeGetVCDESK(1, &pvcdesc) != 0)
+		if (Interop.SkvcatSetModeGetVCDESK(1, out var pvcdesc) != 0)
 		{
 			return null;
 		}
 
-		if (MinlexRankerInterop.SkvcatFinSolForRank(rank) != 0)
+		if (Interop.SkvcatFinSolForRank(rank) != 0)
 		{
 			return null;
 		}

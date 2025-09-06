@@ -39,7 +39,6 @@ global using Sudoku.Linq;
 global using Sudoku.Resources;
 global using Sudoku.Shuffling;
 global using Sudoku.Shuffling.Minlex;
-global using Sudoku.Shuffling.Minlex.Interoperability;
 global using Sudoku.Solving;
 global using Sudoku.Solving.Backtracking;
 global using Sudoku.Solving.Bitwise;
