@@ -27,9 +27,11 @@ public static class MinlexRanker
 	}
 
 	/// <summary>
-	/// Gets the rank of the specified grid.
+	/// Gets the rank of the specified grid. If the grid is not min-lex, it will transform to min-lex state and calculate rank;
+	/// if the grid is not solved, it will be solved internally without returning 0.
 	/// </summary>
 	/// <param name="grid">The grid with 81 digit characters.</param>
+	/// <param name="minlexGrid">The min-lex state if the argument <paramref name="grid"/> is not min-lex.</param>
 	/// <param name="transform">
 	/// <para>The transform that the grid can be transform from min-lex state to <paramref name="grid"/>.</para>
 	/// <para>
@@ -42,14 +44,14 @@ public static class MinlexRanker
 	/// The rank returned, or 0 if the source grid is invalid (not a grid string of 81 digit characters).
 	/// </returns>
 	/// <seealso cref="GenericTransform.Equivalent"/>
-	public static unsafe ulong GetRankFromGrid(string grid, out GenericTransform transform)
+	public static unsafe ulong GetRankFromGrid(string grid, out string? minlexGrid, out GenericTransform transform)
 	{
-		if (!Grid.TryParse(grid, out var tempGrid))
+		if (grid.Length != 81)
 		{
 			goto InvalidGrid;
 		}
 
-		if (!tempGrid.IsSolved)
+		if (grid.ContainsAny('.', '0'))
 		{
 			var buffer = stackalloc char[82];
 			buffer[81] = '\0';
@@ -60,20 +62,21 @@ public static class MinlexRanker
 			grid = new(buffer);
 		}
 
-		grid = new MinlexFinder().Find(grid, out transform);
+		minlexGrid = new MinlexFinder().Find(grid, out transform);
 		VCDESC* pvcdesc;
 		if (MinlexRankerInterop.SkvcatSetModeGetVCDESK(2, &pvcdesc) != 0)
 		{
 			return 0;
 		}
 
-		var givens = (sbyte*)Marshal.StringToHGlobalAnsi(grid);
+		var givens = (sbyte*)Marshal.StringToHGlobalAnsi(minlexGrid);
 		var result = MinlexRankerInterop.SkvcatGetRankFromSolCharMin(givens);
 		Marshal.FreeHGlobal((nint)givens);
 		return result;
 
 	InvalidGrid:
 		transform = default;
+		minlexGrid = null;
 		return 0;
 	}
 
