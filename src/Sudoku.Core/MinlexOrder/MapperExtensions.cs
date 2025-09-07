@@ -20,67 +20,57 @@ internal static unsafe class MapperExtensions
 			// Use MapRowsBackward (canonicalRow -> sourceRow).
 			var rows = new RowIndex[9];
 			Array.Fill(rows, -1);
-			fixed (sbyte* mrows = cand.MapRowsBackward)
+			for (var r = 0; r < 9; r++)
 			{
-				for (var r = 0; r < 9; r++)
-				{
-					var sr = mrows[r];
-					rows[r] = sr >= 0 ? sr : -1;
-				}
+				rows[r] = cand.MapRowsBackward[r] is var sr and >= 0 ? sr : -1;
 			}
 
 			// Scan map.Cell to infer columns (and cross-check rows if candidate inconsistent).
 			var columns = new ColumnIndex[9];
 			Array.Fill(columns, -1);
 			var transpose = cand.IsTransposed != 0;
-			fixed (byte* cell = map.Cell)
+			for (var s = 0; s < 81; s++)
 			{
-				for (var s = 0; s < 81; s++)
+				var canon = map.Cell[s];
+				if (canon >= MinlexFinder.EmptyCellPlaceholder)
 				{
-					var canon = cell[s];
-					if (canon >= MinlexFinder.EmptyCellPlaceholder)
-					{
-						continue; // Masked / Non-given.
-					}
-					var canonicalRow = canon / 9;
-					var canonicalCol = canon % 9;
-					var sourceRow = s / 9;
-					var sourceColumn = s % 9;
+					continue; // Masked / Non-given.
+				}
+				var canonicalRow = canon / 9;
+				var canonicalCol = canon % 9;
+				var sourceRow = s / 9;
+				var sourceColumn = s % 9;
 
-					// If not transposed: source column -> canonical column.
-					if (!transpose)
+				// If not transposed: source column -> canonical column.
+				if (!transpose)
+				{
+					// Fill column mapping if not already set.
+					if (columns[canonicalCol] == -1)
 					{
-						// Fill column mapping if not already set.
-						if (columns[canonicalCol] == -1)
-						{
-							columns[canonicalCol] = sourceColumn;
-						}
+						columns[canonicalCol] = sourceColumn;
 					}
-					else
+				}
+				else
+				{
+					// Transposed: source row acts as column.
+					if (columns[canonicalCol] == -1)
 					{
-						// Transposed: source row acts as column.
-						if (columns[canonicalCol] == -1)
-						{
-							columns[canonicalCol] = sourceRow;
-						}
+						columns[canonicalCol] = sourceRow;
 					}
+				}
 
-					// (Optional) sanity: if rows[] not set from candidate, infer from cell.
-					if (rows[canonicalRow] == -1)
-					{
-						rows[canonicalRow] = transpose ? sourceColumn : sourceRow;
-					}
+				// (Optional) sanity: if rows[] not set from candidate, infer from cell.
+				if (rows[canonicalRow] == -1)
+				{
+					rows[canonicalRow] = transpose ? sourceColumn : sourceRow;
 				}
 			}
 
 			// map.Label[canonicalLabel] = original digit.
 			var digits = (stackalloc Digit[10]);
-			fixed (byte* lab = map.Label)
+			for (var i = 0; i < 10; i++)
 			{
-				for (var i = 0; i < 10; i++)
-				{
-					digits[i] = lab[i] - 1;
-				}
+				digits[i] = map.Label[i] - 1;
 			}
 
 			return new(
@@ -109,54 +99,48 @@ internal static unsafe class MapperExtensions
 			Array.Fill(rows_Transposed, -1);
 			Array.Fill(columns_Transposed, -1);
 
-			fixed (byte* cell = map.Cell)
+			for (var cell = 0; cell < 81; cell++)
 			{
-				for (var s = 0; s < 81; s++)
+				var canonicalCell = map.Cell[cell];
+				if (canonicalCell >= MinlexFinder.EmptyCellPlaceholder)
 				{
-					var canon = cell[s];
-					if (canon >= MinlexFinder.EmptyCellPlaceholder)
-					{
-						continue;
-					}
+					continue;
+				}
 
-					var canonicalRow = canon / 9;
-					var canonicalColumn = canon % 9;
-					var sourceRow = s / 9;
-					var sourceColumn = s % 9;
+				var canonicalRow = canonicalCell / 9;
+				var canonicalColumn = canonicalCell % 9;
+				var sourceRow = cell / 9;
+				var sourceColumn = cell % 9;
 
-					// Non-transpose interpretation.
-					if (rows_NotTransposed[canonicalRow] == -1 || rows_NotTransposed[canonicalRow] == sourceRow)
-					{
-						rows_NotTransposed[canonicalRow] = sourceRow;
-						score_NotTransposed++;
-					}
-					if (columns_NotTransposed[canonicalColumn] == -1 || columns_NotTransposed[canonicalColumn] == sourceColumn)
-					{
-						columns_NotTransposed[canonicalColumn] = sourceColumn;
-						score_NotTransposed++;
-					}
+				// Non-transpose interpretation.
+				if (rows_NotTransposed[canonicalRow] == -1 || rows_NotTransposed[canonicalRow] == sourceRow)
+				{
+					rows_NotTransposed[canonicalRow] = sourceRow;
+					score_NotTransposed++;
+				}
+				if (columns_NotTransposed[canonicalColumn] == -1 || columns_NotTransposed[canonicalColumn] == sourceColumn)
+				{
+					columns_NotTransposed[canonicalColumn] = sourceColumn;
+					score_NotTransposed++;
+				}
 
-					// Transpose interpretation.
-					if (rows_Transposed[canonicalRow] == -1 || rows_Transposed[canonicalRow] == sourceColumn)
-					{
-						rows_Transposed[canonicalRow] = sourceColumn;
-						score_Transposed++;
-					}
-					if (columns_Transposed[canonicalColumn] == -1 || columns_Transposed[canonicalColumn] == sourceRow)
-					{
-						columns_Transposed[canonicalColumn] = sourceRow;
-						score_Transposed++;
-					}
+				// Transpose interpretation.
+				if (rows_Transposed[canonicalRow] == -1 || rows_Transposed[canonicalRow] == sourceColumn)
+				{
+					rows_Transposed[canonicalRow] = sourceColumn;
+					score_Transposed++;
+				}
+				if (columns_Transposed[canonicalColumn] == -1 || columns_Transposed[canonicalColumn] == sourceRow)
+				{
+					columns_Transposed[canonicalColumn] = sourceRow;
+					score_Transposed++;
 				}
 			}
 
 			var digits = (stackalloc Digit[10]);
-			fixed (byte* lab = map.Label)
+			for (var i = 0; i < 10; i++)
 			{
-				for (var i = 0; i < 10; i++)
-				{
-					digits[i] = lab[i] - 1;
-				}
+				digits[i] = map.Label[i] - 1;
 			}
 			return score_NotTransposed >= score_Transposed
 				? new(
