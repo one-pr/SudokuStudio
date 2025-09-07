@@ -11,6 +11,6 @@ public sealed class GridMinlexComparer : IComparer<Grid>
 	{
 		var left = x.MinLexGrid.ToString("0");
 		var right = y.MinLexGrid.ToString("0");
-		return MinlexRanker.GetRankFromGrid(left).CompareTo(MinlexRanker.GetRankFromGrid(right));
+		return MinlexRanker.GetRank(left).CompareTo(MinlexRanker.GetRank(right));
 	}
 }

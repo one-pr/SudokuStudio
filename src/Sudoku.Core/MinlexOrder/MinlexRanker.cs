@@ -6,13 +6,49 @@ namespace Sudoku.MinlexOrder;
 public static partial class MinlexRanker
 {
 	/// <summary>
+	/// Provides extension members on <see cref="Grid"/>.
+	/// </summary>
+	extension(Grid)
+	{
+		/// <summary>
+		/// Indicates the minimum value in min-lex representation, in string.
+		/// </summary>
+		public static string MinlexMinValueGridString => Grid.MinlexMinValueGrid.ToString("0");
+
+		/// <summary>
+		/// Indicates the maximum value in min-lex representation, in string.
+		/// </summary>
+		public static string MinlexMaxValueGridString => Grid.MinlexMaxValueGrid.ToString("0");
+
+		/// <summary>
+		/// Indicates the minimum value in min-lex representation.
+		/// </summary>
+		public static Grid MinlexMinValueGrid
+		{
+			get
+			{
+				return getMinValue<Grid>();
+
+
+				static T getMinValue<T>() where T : IMinMaxValue<T> => T.MinValue;
+			}
+		}
+
+		/// <summary>
+		/// Indicates the maximum value in min-lex representation.
+		/// </summary>
+		public static Grid MinlexMaxValueGrid => Grid.Parse("123456789457893612986217354274538196531964827698721435342685971715349268869172543");
+	}
+
+
+	/// <summary>
 	/// Gets the rank of the specified grid.
 	/// </summary>
 	/// <param name="grid">The min-lex grid.</param>
 	/// <returns>
 	/// The rank returned, or 0 if the source grid is invalid or not min-lex.
 	/// </returns>
-	public static unsafe ulong GetRankFromGrid(string grid)
+	public static unsafe ulong GetRank(string grid)
 	{
 		if (Interop.SkvcatSetModeGetVCDESK(2, out _) != 0)
 		{
@@ -43,7 +79,7 @@ public static partial class MinlexRanker
 	/// The rank returned, or 0 if the source grid is invalid (not a grid string of 81 digit characters).
 	/// </returns>
 	/// <seealso cref="GenericTransform.Equivalent"/>
-	public static unsafe ulong GetRankFromGrid(string grid, out string? minlexGrid, out GenericTransform transform)
+	public static unsafe ulong GetRank(string grid, out string? minlexGrid, out GenericTransform transform)
 	{
 		if (grid.Length != 81)
 		{
@@ -86,7 +122,7 @@ public static partial class MinlexRanker
 	/// The grid returned, with 81 digit characters representing the target grid.
 	/// If argument <paramref name="rank"/> is invalid, <see langword="null"/> will be returned.
 	/// </returns>
-	public static unsafe string? GetGridFromRank(ulong rank)
+	public static unsafe string? GetGrid(ulong rank)
 	{
 		var resultCharacters = stackalloc sbyte[82];
 		resultCharacters[81] = 0;

@@ -19,6 +19,6 @@ public sealed class GridRawStringMinlexComparer : IComparer<string>
 			(null, null) => 0,
 			(null, not null) => -1,
 			(not null, null) => 1,
-			_ => MinlexRanker.GetRankFromGrid(_finder.Find(x)).CompareTo(MinlexRanker.GetRankFromGrid(_finder.Find(y)))
+			_ => MinlexRanker.GetRank(_finder.Find(x)).CompareTo(MinlexRanker.GetRank(_finder.Find(y)))
 		};
 }

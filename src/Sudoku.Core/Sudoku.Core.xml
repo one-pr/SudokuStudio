@@ -12538,7 +12538,44 @@
             Represents a ranker type that can rank a min-lex grid, or unrank a value to target grid.
             </summary>
         </member>
-        <member name="M:Sudoku.MinlexOrder.MinlexRanker.GetRankFromGrid(System.String)">
+        <member name="T:Sudoku.MinlexOrder.MinlexRanker.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.MinlexOrder.MinlexRanker.&lt;&gt;E__0.MinlexMinValueGridString">
+            <summary>
+            Indicates the minimum value in min-lex representation, in string.
+            </summary>
+        </member>
+        <member name="P:Sudoku.MinlexOrder.MinlexRanker.&lt;&gt;E__0.MinlexMaxValueGridString">
+            <summary>
+            Indicates the maximum value in min-lex representation, in string.
+            </summary>
+        </member>
+        <member name="P:Sudoku.MinlexOrder.MinlexRanker.&lt;&gt;E__0.MinlexMinValueGrid">
+            <summary>
+            Indicates the minimum value in min-lex representation.
+            </summary>
+        </member>
+        <member name="P:Sudoku.MinlexOrder.MinlexRanker.&lt;&gt;E__0.MinlexMaxValueGrid">
+            <summary>
+            Indicates the maximum value in min-lex representation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.MinlexOrder.MinlexRanker.get_MinlexMinValueGridString">
+            <inheritdoc cref="P:Sudoku.MinlexOrder.MinlexRanker.&lt;&gt;E__0.MinlexMinValueGridString"/>
+        </member>
+        <member name="M:Sudoku.MinlexOrder.MinlexRanker.get_MinlexMaxValueGridString">
+            <inheritdoc cref="P:Sudoku.MinlexOrder.MinlexRanker.&lt;&gt;E__0.MinlexMaxValueGridString"/>
+        </member>
+        <member name="M:Sudoku.MinlexOrder.MinlexRanker.get_MinlexMinValueGrid">
+            <inheritdoc cref="P:Sudoku.MinlexOrder.MinlexRanker.&lt;&gt;E__0.MinlexMinValueGrid"/>
+        </member>
+        <member name="M:Sudoku.MinlexOrder.MinlexRanker.get_MinlexMaxValueGrid">
+            <inheritdoc cref="P:Sudoku.MinlexOrder.MinlexRanker.&lt;&gt;E__0.MinlexMaxValueGrid"/>
+        </member>
+        <member name="M:Sudoku.MinlexOrder.MinlexRanker.GetRank(System.String)">
             <summary>
             Gets the rank of the specified grid.
             </summary>
@@ -12547,7 +12584,7 @@
             The rank returned, or 0 if the source grid is invalid or not min-lex.
             </returns>
         </member>
-        <member name="M:Sudoku.MinlexOrder.MinlexRanker.GetRankFromGrid(System.String,System.String@,Sudoku.Transformations.GenericTransform@)">
+        <member name="M:Sudoku.MinlexOrder.MinlexRanker.GetRank(System.String,System.String@,Sudoku.Transformations.GenericTransform@)">
             <summary>
             Gets the rank of the specified grid. If the grid is not min-lex, it will transform to min-lex state and calculate rank;
             if the grid is not solved, it will be solved internally without returning 0.
@@ -12567,7 +12604,7 @@
             </returns>
             <seealso cref="F:Sudoku.Transformations.GenericTransform.Equivalent"/>
         </member>
-        <member name="M:Sudoku.MinlexOrder.MinlexRanker.GetGridFromRank(System.UInt64)">
+        <member name="M:Sudoku.MinlexOrder.MinlexRanker.GetGrid(System.UInt64)">
             <summary>
             Gets the min-lex form from the specified rank.
             </summary>
