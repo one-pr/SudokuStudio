@@ -1,3 +1,5 @@
+#undef EXTENSION_OPEARTORS_SUPPORT_ON_NULLABLE_GENERIC_TYPES
+
 namespace System;
 
 /// <summary>
@@ -11,7 +13,7 @@ public static class GenericExtensions
 	/// </summary>
 	extension<T>(T?) where T : class?
 	{
-#if EXTENSION_OPERATORS
+#if EXTENSION_OPERATORS && EXTENSION_OPEARTORS_SUPPORT_ON_NULLABLE_GENERIC_TYPES
 		/// <summary>
 		/// Determines whether the current value is <see langword="null"/>.
 		/// </summary>
@@ -42,7 +44,7 @@ public static class GenericExtensions
 	/// </summary>
 	extension<T>(T?) where T : struct
 	{
-#if EXTENSION_OPERATORS
+#if EXTENSION_OPERATORS && EXTENSION_OPEARTORS_SUPPORT_ON_NULLABLE_GENERIC_TYPES
 		/// <summary>
 		/// Determines whether the current value is <see langword="null"/>.
 		/// </summary>

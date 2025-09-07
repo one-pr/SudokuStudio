@@ -1989,71 +1989,11 @@
             where <typeparamref name="T"/> satisfies <see langword="class"/>? constraint.
             </summary>
         </member>
-        <member name="M:System.GenericExtensions.&lt;&gt;E__0`1.op_LogicalNot(`0)">
-            <summary>
-            Determines whether the current value is <see langword="null"/>.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:System.GenericExtensions.&lt;&gt;E__0`1.op_True(`0)">
-            <summary>
-            Determines whether the current value is non-<see langword="null"/>.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:System.GenericExtensions.&lt;&gt;E__0`1.op_False(`0)">
-            <summary>
-            Determines whether the current value is <see langword="null"/>.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:System.GenericExtensions.op_LogicalNot``1(``0)">
-            <inheritdoc cref="M:System.GenericExtensions.&lt;&gt;E__0`1.op_LogicalNot(`0)"/>
-        </member>
-        <member name="M:System.GenericExtensions.op_True``1(``0)">
-            <inheritdoc cref="M:System.GenericExtensions.&lt;&gt;E__0`1.op_True(`0)"/>
-        </member>
-        <member name="M:System.GenericExtensions.op_False``1(``0)">
-            <inheritdoc cref="M:System.GenericExtensions.&lt;&gt;E__0`1.op_False(`0)"/>
-        </member>
         <member name="T:System.GenericExtensions.&lt;&gt;E__1`1">
             <summary>
             Provides extension members on <typeparamref name="T"/>? (i.e. <see cref="T:System.Nullable`1"/>),
             where <typeparamref name="T"/> satisfies <see langword="struct"/> constraint.
             </summary>
-        </member>
-        <member name="M:System.GenericExtensions.&lt;&gt;E__1`1.op_LogicalNot(System.Nullable{`0})">
-            <summary>
-            Determines whether the current value is <see langword="null"/>.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:System.GenericExtensions.&lt;&gt;E__1`1.op_True(System.Nullable{`0})">
-            <summary>
-            Determines whether the current value is non-<see langword="null"/>.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:System.GenericExtensions.&lt;&gt;E__1`1.op_False(System.Nullable{`0})">
-            <summary>
-            Determines whether the current value is <see langword="null"/>.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:System.GenericExtensions.op_LogicalNot``1(System.Nullable{``0})">
-            <inheritdoc cref="M:System.GenericExtensions.&lt;&gt;E__1`1.op_LogicalNot(System.Nullable{`0})"/>
-        </member>
-        <member name="M:System.GenericExtensions.op_True``1(System.Nullable{``0})">
-            <inheritdoc cref="M:System.GenericExtensions.&lt;&gt;E__1`1.op_True(System.Nullable{`0})"/>
-        </member>
-        <member name="M:System.GenericExtensions.op_False``1(System.Nullable{``0})">
-            <inheritdoc cref="M:System.GenericExtensions.&lt;&gt;E__1`1.op_False(System.Nullable{`0})"/>
         </member>
         <member name="T:System.GenericExtensions.&lt;&gt;E__2`1">
             <summary>

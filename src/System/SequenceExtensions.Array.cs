@@ -67,7 +67,7 @@ public partial class SequenceExtensions
 		/// <returns>The string representation.</returns>
 		public static string ToArrayString<T>(T[] array, Func<T, string?>? valueConverter)
 		{
-			valueConverter ??= (static value => value?.ToString());
+			valueConverter ??= static value => value?.ToString();
 			return $"[{string.Join(", ", from element in array select valueConverter(element))}]";
 		}
 
