@@ -15342,6 +15342,16 @@
             Represents identifier value.
             </summary>
         </member>
+        <member name="P:Sudoku.Transformations.GridIdentifier.OriginalGrid">
+            <summary>
+            Indicates the original grid.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Transformations.GridIdentifier.TargetGrid">
+            <summary>
+            Indicates the target grid applied such transformations.
+            </summary>
+        </member>
         <member name="M:Sudoku.Transformations.GridIdentifier.Equals(System.Object)">
             <inheritdoc/>
         </member>

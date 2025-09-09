@@ -269,6 +269,28 @@ public readonly struct GridIdentifier :
 		}
 	}
 
+	/// <summary>
+	/// Indicates the original grid.
+	/// </summary>
+	public Grid OriginalGrid => Grid.Parse(MinlexRanker.GetGrid(Index));
+
+	/// <summary>
+	/// Indicates the target grid applied such transformations.
+	/// </summary>
+	public Grid TargetGrid
+	{
+		get
+		{
+			var g = OriginalGrid >> Transform;
+			preserveGrid(ref g, GivenCells);
+			return g;
+
+
+			[UnsafeAccessor(UnsafeAccessorKind.Method, Name = "Preserve")]
+			static extern Grid preserveGrid(ref Grid grid, in CellMap pattern);
+		}
+	}
+
 
 	/// <inheritdoc/>
 	public override bool Equals([NotNullWhen(true)] object? obj) => obj is GridIdentifier comparer && Equals(comparer);
