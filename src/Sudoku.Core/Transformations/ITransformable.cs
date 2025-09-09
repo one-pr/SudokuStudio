@@ -4,7 +4,7 @@ namespace Sudoku.Transformations;
 /// Represents an object that can be transformed into another kind of value.
 /// </summary>
 /// <typeparam name="TSelf"><include file="../../global-doc-comments.xml" path="/g/self-type-constraint"/></typeparam>
-public interface IGridTransformable<TSelf> where TSelf : IGridTransformable<TSelf>, allows ref struct
+public interface ITransformable<TSelf> where TSelf : ITransformable<TSelf>, allows ref struct
 {
 	/// <summary>
 	/// Rotate <typeparamref name="TSelf"/> instance clockwisely.

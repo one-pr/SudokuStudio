@@ -5,7 +5,7 @@ namespace Sudoku.Concepts;
 /// </summary>
 /// <typeparam name="TSelf"><include file="../../global-doc-comments.xml" path="/g/self-type-constraint"/></typeparam>
 public interface IGrid<TSelf> :
-	IGridTransformable<TSelf>,
+	ITransformable<TSelf>,
 	IComparable<TSelf>,
 	IComparisonOperators<TSelf, TSelf, bool>,
 	IElementSwappingTransformable<TSelf, Digit>,

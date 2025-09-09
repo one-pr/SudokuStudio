@@ -4996,22 +4996,22 @@
         <member name="M:Sudoku.Concepts.Grid.System#Linq#Providers#ISelectMethod{Sudoku#Concepts#Grid,System#Int32}#Select``1(System.Func{System.Int32,``0})">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Grid.Sudoku#Transformations#IGridTransformable{Sudoku#Concepts#Grid}#MirrorLeftRight">
+        <member name="M:Sudoku.Concepts.Grid.Sudoku#Transformations#ITransformable{Sudoku#Concepts#Grid}#MirrorLeftRight">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Grid.Sudoku#Transformations#IGridTransformable{Sudoku#Concepts#Grid}#MirrorTopBottom">
+        <member name="M:Sudoku.Concepts.Grid.Sudoku#Transformations#ITransformable{Sudoku#Concepts#Grid}#MirrorTopBottom">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Grid.Sudoku#Transformations#IGridTransformable{Sudoku#Concepts#Grid}#MirrorDiagonal">
+        <member name="M:Sudoku.Concepts.Grid.Sudoku#Transformations#ITransformable{Sudoku#Concepts#Grid}#MirrorDiagonal">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Grid.Sudoku#Transformations#IGridTransformable{Sudoku#Concepts#Grid}#MirrorAntidiagonal">
+        <member name="M:Sudoku.Concepts.Grid.Sudoku#Transformations#ITransformable{Sudoku#Concepts#Grid}#MirrorAntidiagonal">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Grid.Sudoku#Transformations#IGridTransformable{Sudoku#Concepts#Grid}#RotateClockwise">
+        <member name="M:Sudoku.Concepts.Grid.Sudoku#Transformations#ITransformable{Sudoku#Concepts#Grid}#RotateClockwise">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Grid.Sudoku#Transformations#IGridTransformable{Sudoku#Concepts#Grid}#RotateCounterclockwise">
+        <member name="M:Sudoku.Concepts.Grid.Sudoku#Transformations#ITransformable{Sudoku#Concepts#Grid}#RotateCounterclockwise">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Concepts.Grid.Sudoku#Transformations#IElementSwappingTransformable{Sudoku#Concepts#Grid,System#Int32}#SwapElement(System.Int32,System.Int32)">
@@ -7085,19 +7085,19 @@
         <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Concepts#IGrid{Sudoku#Concepts#MarkerGrid}#SetMask(System.Int32,System.Int16)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Transformations#IGridTransformable{Sudoku#Concepts#MarkerGrid}#RotateClockwise">
+        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Transformations#ITransformable{Sudoku#Concepts#MarkerGrid}#RotateClockwise">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Transformations#IGridTransformable{Sudoku#Concepts#MarkerGrid}#MirrorLeftRight">
+        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Transformations#ITransformable{Sudoku#Concepts#MarkerGrid}#MirrorLeftRight">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Transformations#IGridTransformable{Sudoku#Concepts#MarkerGrid}#MirrorTopBottom">
+        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Transformations#ITransformable{Sudoku#Concepts#MarkerGrid}#MirrorTopBottom">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Transformations#IGridTransformable{Sudoku#Concepts#MarkerGrid}#MirrorDiagonal">
+        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Transformations#ITransformable{Sudoku#Concepts#MarkerGrid}#MirrorDiagonal">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Transformations#IGridTransformable{Sudoku#Concepts#MarkerGrid}#MirrorAntidiagonal">
+        <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Transformations#ITransformable{Sudoku#Concepts#MarkerGrid}#MirrorAntidiagonal">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Concepts.MarkerGrid.Sudoku#Transformations#IElementSwappingTransformable{Sudoku#Concepts#MarkerGrid,System#Int32}#SwapElement(System.Int32,System.Int32)">
@@ -14907,6 +14907,21 @@
         <member name="M:Sudoku.Transformations.GenericTransform.System#IComparable{Sudoku#Transformations#GenericTransform}#CompareTo(Sudoku.Transformations.GenericTransform)">
             <inheritdoc/>
         </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.Sudoku#Transformations#ITransformable{Sudoku#Transformations#GenericTransform}#RotateClockwise">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.Sudoku#Transformations#ITransformable{Sudoku#Transformations#GenericTransform}#MirrorLeftRight">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.Sudoku#Transformations#ITransformable{Sudoku#Transformations#GenericTransform}#MirrorTopBottom">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.Sudoku#Transformations#ITransformable{Sudoku#Transformations#GenericTransform}#MirrorDiagonal">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.Sudoku#Transformations#ITransformable{Sudoku#Transformations#GenericTransform}#MirrorAntidiagonal">
+            <inheritdoc/>
+        </member>
         <member name="M:Sudoku.Transformations.GenericTransform.PrintMembers(System.Text.StringBuilder)">
             <target name="method" cref="M:Sudoku.Transformations.GenericTransform.PrintMembers(System.Text.StringBuilder)">
 				<summary>
@@ -15604,7 +15619,7 @@
             </summary>
             <returns>The result shuffled.</returns>
         </member>
-        <member name="T:Sudoku.Transformations.IGridTransformable`1">
+        <member name="T:Sudoku.Transformations.ITransformable`1">
             <summary>
             Represents an object that can be transformed into another kind of value.
             </summary>
@@ -15619,49 +15634,49 @@
 		</para>
 	</self-type-constraint></typeparam>
         </member>
-        <member name="M:Sudoku.Transformations.IGridTransformable`1.RotateClockwise">
+        <member name="M:Sudoku.Transformations.ITransformable`1.RotateClockwise">
             <summary>
             Rotate <typeparamref name="TSelf"/> instance clockwisely.
             </summary>
             <returns>The result rotated.</returns>
         </member>
-        <member name="M:Sudoku.Transformations.IGridTransformable`1.RotateCounterclockwise">
+        <member name="M:Sudoku.Transformations.ITransformable`1.RotateCounterclockwise">
             <summary>
             Rotate <typeparamref name="TSelf"/> instance counter-clockwisely.
             </summary>
             <returns>The result rotated.</returns>
         </member>
-        <member name="M:Sudoku.Transformations.IGridTransformable`1.RotatePi">
+        <member name="M:Sudoku.Transformations.ITransformable`1.RotatePi">
             <summary>
             Rotate <typeparamref name="TSelf"/> instance 180 degrees.
             </summary>
             <returns>The result rotated.</returns>
         </member>
-        <member name="M:Sudoku.Transformations.IGridTransformable`1.MirrorLeftRight">
+        <member name="M:Sudoku.Transformations.ITransformable`1.MirrorLeftRight">
             <summary>
             Mirror <typeparamref name="TSelf"/> instance in left-right side.
             </summary>
             <returns>The result fliped.</returns>
         </member>
-        <member name="M:Sudoku.Transformations.IGridTransformable`1.MirrorTopBottom">
+        <member name="M:Sudoku.Transformations.ITransformable`1.MirrorTopBottom">
             <summary>
             Mirror <typeparamref name="TSelf"/> instance in top-bottom side.
             </summary>
             <returns>The result fliped.</returns>
         </member>
-        <member name="M:Sudoku.Transformations.IGridTransformable`1.MirrorDiagonal">
+        <member name="M:Sudoku.Transformations.ITransformable`1.MirrorDiagonal">
             <summary>
             Mirror <typeparamref name="TSelf"/> instance in diagonal.
             </summary>
             <returns>The result fliped.</returns>
         </member>
-        <member name="M:Sudoku.Transformations.IGridTransformable`1.Transpose">
+        <member name="M:Sudoku.Transformations.ITransformable`1.Transpose">
             <summary>
-            Simply calls <see cref="M:Sudoku.Transformations.IGridTransformable`1.MirrorDiagonal"/>.
+            Simply calls <see cref="M:Sudoku.Transformations.ITransformable`1.MirrorDiagonal"/>.
             </summary>
             <returns>The result fliped.</returns>
         </member>
-        <member name="M:Sudoku.Transformations.IGridTransformable`1.MirrorAntidiagonal">
+        <member name="M:Sudoku.Transformations.ITransformable`1.MirrorAntidiagonal">
             <summary>
             Mirror <typeparamref name="TSelf"/> instance in anti-diagonal.
             </summary>

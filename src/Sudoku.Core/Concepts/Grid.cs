@@ -969,22 +969,22 @@ public struct Grid : InlineArrayGridBase
 		=> this.Select(selector).ToArray();
 
 	/// <inheritdoc/>
-	Grid IGridTransformable<Grid>.MirrorLeftRight() => this.MirrorLeftRight();
+	Grid ITransformable<Grid>.MirrorLeftRight() => this.MirrorLeftRight();
 
 	/// <inheritdoc/>
-	Grid IGridTransformable<Grid>.MirrorTopBottom() => this.MirrorTopBottom();
+	Grid ITransformable<Grid>.MirrorTopBottom() => this.MirrorTopBottom();
 
 	/// <inheritdoc/>
-	Grid IGridTransformable<Grid>.MirrorDiagonal() => this.MirrorDiagonal();
+	Grid ITransformable<Grid>.MirrorDiagonal() => this.MirrorDiagonal();
 
 	/// <inheritdoc/>
-	Grid IGridTransformable<Grid>.MirrorAntidiagonal() => this.MirrorAntidiagonal();
+	Grid ITransformable<Grid>.MirrorAntidiagonal() => this.MirrorAntidiagonal();
 
 	/// <inheritdoc/>
-	Grid IGridTransformable<Grid>.RotateClockwise() => this.RotateClockwise();
+	Grid ITransformable<Grid>.RotateClockwise() => this.RotateClockwise();
 
 	/// <inheritdoc/>
-	Grid IGridTransformable<Grid>.RotateCounterclockwise() => this.RotateCounterclockwise();
+	Grid ITransformable<Grid>.RotateCounterclockwise() => this.RotateCounterclockwise();
 
 	/// <inheritdoc/>
 	Grid IElementSwappingTransformable<Grid, Digit>.SwapElement(Digit element1, Digit element2) => this.SwapDigit(element1, element2);

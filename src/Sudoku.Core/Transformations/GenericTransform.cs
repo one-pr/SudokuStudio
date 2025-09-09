@@ -17,7 +17,8 @@ public readonly partial record struct GenericTransform(
 	IBitwiseOperators<GenericTransform, GenericTransform, GenericTransform>,
 	IComparable<GenericTransform>,
 	IComparisonOperators<GenericTransform, GenericTransform, bool>,
-	IEqualityOperators<GenericTransform, GenericTransform, bool>
+	IEqualityOperators<GenericTransform, GenericTransform, bool>,
+	ITransformable<GenericTransform>
 {
 	/// <summary>
 	/// Represents equivalent transform (no transform).
@@ -175,6 +176,21 @@ public readonly partial record struct GenericTransform(
 
 	/// <inheritdoc/>
 	int IComparable<GenericTransform>.CompareTo(GenericTransform other) => CompareTo(other);
+
+	/// <inheritdoc/>
+	GenericTransform ITransformable<GenericTransform>.RotateClockwise() => this | ClockwiseRotate90Degrees;
+
+	/// <inheritdoc/>
+	GenericTransform ITransformable<GenericTransform>.MirrorLeftRight() => this | MirrorLeftRight;
+
+	/// <inheritdoc/>
+	GenericTransform ITransformable<GenericTransform>.MirrorTopBottom() => this | MirrorTopBottom;
+
+	/// <inheritdoc/>
+	GenericTransform ITransformable<GenericTransform>.MirrorDiagonal() => this | MirrorDiagonal;
+
+	/// <inheritdoc/>
+	GenericTransform ITransformable<GenericTransform>.MirrorAntidiagonal() => this | MirrorAntidiagonal;
 
 	/// <include
 	///     file="../../global-doc-comments.xml"
