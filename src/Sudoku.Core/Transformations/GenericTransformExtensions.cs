@@ -7,10 +7,17 @@ namespace Sudoku.Transformations;
 public static class GridGenericTransformExtensions
 {
 	/// <summary>
-	/// Provides extension members on <see cref="Grid"/>.
+	/// Provides extension members on <see langword="ref"/> <see cref="Grid"/>.
 	/// </summary>
-	extension(Grid)
+	extension(ref Grid @this)
 	{
+		/// <summary>
+		/// Applies transform with the specified <see cref="GenericTransform"/>.
+		/// </summary>
+		/// <param name="transform">The transform.</param>
+		public void Apply(in GenericTransform transform) => @this >>= transform;
+
+
 #if EXTENSION_OPERATORS
 		/// <summary>
 		/// Applies transform with the specified <see cref="GenericTransform"/>.

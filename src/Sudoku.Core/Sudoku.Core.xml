@@ -15146,8 +15146,14 @@
         </member>
         <member name="T:Sudoku.Transformations.GridGenericTransformExtensions.&lt;&gt;E__0">
             <summary>
-            Provides extension members on <see cref="T:Sudoku.Concepts.Grid"/>.
+            Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
+        </member>
+        <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;&gt;E__0.Apply(Sudoku.Transformations.GenericTransform@)">
+            <summary>
+            Applies transform with the specified <see cref="T:Sudoku.Transformations.GenericTransform"/>.
+            </summary>
+            <param name="transform">The transform.</param>
         </member>
         <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;&gt;E__0.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)">
             <summary>
@@ -15156,6 +15162,9 @@
             <param name="original">The original grid.</param>
             <param name="transform">The transform.</param>
             <returns>The grid transformed.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.Apply(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;&gt;E__0.Apply(Sudoku.Transformations.GenericTransform@)"/>
         </member>
         <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)">
             <inheritdoc cref="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;&gt;E__0.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)"/>
