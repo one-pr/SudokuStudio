@@ -15192,9 +15192,9 @@
             For the transformation form, we encode the following four types of transformations:
             <list type="number">
             <item><b>Transpose</b> - swap row and column indices (i.e., <c>(x, y) -&gt; (y, x)</c>)</item>
-            <item><b>Row relabelling</b> - relabel rows 1–9 to target positions</item>
-            <item><b>Column relabelling</b> - relabel columns 1–9 to target positions</item>
-            <item><b>Digit relabelling</b> - relabel digits 1–9 to target positions</item>
+            <item><b>Row relabelling</b> - relabel rows 1-9 to target positions</item>
+            <item><b>Column relabelling</b> - relabel columns 1-9 to target positions</item>
+            <item><b>Digit relabelling</b> - relabel digits 1-9 to target positions</item>
             </list>
             </para>
             <para>
@@ -15309,15 +15309,22 @@
             Indicates the backing elements.
             </summary>
         </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.#ctor(Sudoku.Concepts.Grid@)">
+            <summary>
+            Creates a <see cref="T:Sudoku.Transformations.GridIdentifier"/> via a grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <exception cref="T:System.ArgumentException">Throws when the grid is invalid (not unique).</exception>
+        </member>
         <member name="M:Sudoku.Transformations.GridIdentifier.#ctor(System.Numerics.BigInteger)">
             <summary>
             Initializes a <see cref="T:Sudoku.Transformations.GridIdentifier"/> instance.
             </summary>
             <param name="value">The value.</param>
         </member>
-        <member name="P:Sudoku.Transformations.GridIdentifier.GlobalMinlexIndex">
+        <member name="P:Sudoku.Transformations.GridIdentifier.Index">
             <summary>
-            Indicates the number of global min-lex index.
+            Indicates the number of global index.
             </summary>
         </member>
         <member name="P:Sudoku.Transformations.GridIdentifier.GivenCells">

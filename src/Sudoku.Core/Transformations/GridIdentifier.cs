@@ -27,9 +27,9 @@ namespace Sudoku.Transformations;
 /// For the transformation form, we encode the following four types of transformations:
 /// <list type="number">
 /// <item><b>Transpose</b> - swap row and column indices (i.e., <c>(x, y) -> (y, x)</c>)</item>
-/// <item><b>Row relabelling</b> - relabel rows 1–9 to target positions</item>
-/// <item><b>Column relabelling</b> - relabel columns 1–9 to target positions</item>
-/// <item><b>Digit relabelling</b> - relabel digits 1–9 to target positions</item>
+/// <item><b>Row relabelling</b> - relabel rows 1-9 to target positions</item>
+/// <item><b>Column relabelling</b> - relabel columns 1-9 to target positions</item>
+/// <item><b>Digit relabelling</b> - relabel digits 1-9 to target positions</item>
 /// </list>
 /// </para>
 /// <para>
@@ -138,7 +138,7 @@ public readonly struct GridIdentifier :
 	/// <summary>
 	/// Indicates the fixed serialization length.
 	/// </summary>
-	private const int FixedLength = 25;
+	private const int FixedLength = 26;
 
 	/// <summary>
 	/// Indicates characters.
@@ -151,6 +151,22 @@ public readonly struct GridIdentifier :
 	/// </summary>
 	private readonly InlineArray5<int> _elements;
 
+
+	/// <summary>
+	/// Creates a <see cref="GridIdentifier"/> via a grid.
+	/// </summary>
+	/// <param name="grid">The grid.</param>
+	/// <exception cref="ArgumentException">Throws when the grid is invalid (not unique).</exception>
+	public GridIdentifier(in Grid grid) :
+		this(
+			grid.SolutionGrid is { IsUndefined: false } solution
+				? (BigInteger)MinlexRanker.GetRank(solution.ToString("0"), out var minlexGrid, out var transform) << MinlexPartShiftAmount
+					| (BigInteger)(long)transform << TransformationPartShiftAmount
+					| grid.GivenCells.Aggregate(BigInteger.Zero, static (interim, next) => interim | BigInteger.One << next)
+				: throw new ArgumentException(SR.ExceptionMessage("GridInvalid"), nameof(grid))
+		)
+	{
+	}
 
 	/// <summary>
 	/// Initializes a <see cref="GridIdentifier"/> instance.
@@ -171,19 +187,19 @@ public readonly struct GridIdentifier :
 
 
 	/// <summary>
-	/// Indicates the number of global min-lex index.
+	/// Indicates the number of global index.
 	/// </summary>
-	public long GlobalMinlexIndex
+	public ulong Index
 	{
 		get
 		{
 			var bits = GetSlice(MinlexPartShiftAmount, MinlexPartBitsCount);
-			var result = 0L;
+			var result = 0UL;
 			for (var i = 0; i < MinlexPartBitsCount; i++)
 			{
 				if (bits[i])
 				{
-					result |= 1L << i;
+					result |= 1UL << i;
 				}
 			}
 			return result;
