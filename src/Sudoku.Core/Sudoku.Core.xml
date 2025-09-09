@@ -5145,6 +5145,37 @@
         <member name="M:Sudoku.Concepts.Converter.Write(System.Text.Json.Utf8JsonWriter,Sudoku.Concepts.Grid,System.Text.Json.JsonSerializerOptions)">
             <inheritdoc/>
         </member>
+        <member name="T:Sudoku.Concepts.GridConclusionExtensions">
+            <summary>
+            Provides with extension members on <see cref="T:Sudoku.Concepts.Grid"/> instances.
+            </summary>
+            <seealso cref="T:Sudoku.Concepts.Grid"/>
+        </member>
+        <member name="T:Sudoku.Concepts.GridConclusionExtensions.&lt;&gt;E__0">
+            <summary>
+            Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Concepts.GridConclusionExtensions.&lt;&gt;E__0.op_RightShiftAssignment(Sudoku.Concepts.Conclusion)">
+            <summary>
+            Applies the conclusion to the current grid.
+            </summary>
+            <param name="conclusion">The conclusion.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.GridConclusionExtensions.&lt;&gt;E__0.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Concepts.Conclusion)">
+            <summary>
+            Applies the conclusion to the target grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="conclusion">The conclusion.</param>
+            <returns>The target grid.</returns>
+        </member>
+        <member name="M:Sudoku.Concepts.GridConclusionExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Concepts.Conclusion)">
+            <inheritdoc cref="M:Sudoku.Concepts.GridConclusionExtensions.&lt;&gt;E__0.op_RightShiftAssignment(Sudoku.Concepts.Conclusion)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.GridConclusionExtensions.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Concepts.Conclusion)">
+            <inheritdoc cref="M:Sudoku.Concepts.GridConclusionExtensions.&lt;&gt;E__0.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Concepts.Conclusion)"/>
+        </member>
         <member name="T:Sudoku.Concepts.GridCreatingOption">
             <summary>
             Indicates the grid creating option.
