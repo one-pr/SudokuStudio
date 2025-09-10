@@ -25,40 +25,40 @@ public partial struct CellMap : CellMapBase
 	/// <summary>
 	/// Indicates the constant that will be used on bitwise not operation.
 	/// </summary>
-	public static readonly Vector128<ulong> BitwiseNotConstant = CV(0xFF_FFFF_FFFFUL, 0x1FF_FFFF_FFFFUL);
+	public static readonly Vector128<long> BitwiseNotConstant = CV(0xFF_FFFF_FFFFL, 0x1FF_FFFF_FFFFL);
 
 	/// <summary>
 	/// Indicates the <see cref="Vector128{T}"/> instances to be used for checking shared houses.
 	/// </summary>
 	/// <seealso cref="Vector128{T}"/>
-	public static readonly ReadOnlyMemory<Vector128<ulong>> SharedHouseConstants = (Vector128<ulong>[])[
-		CV(~0b_000000000_000000000_000000000_000000000_0000UL, ~0b_00000_000000000_000000111_000000111_000000111UL),
-		CV(~0b_000000000_000000000_000000000_000000000_0000UL, ~0b_00000_000000000_000111000_000111000_000111000UL),
-		CV(~0b_000000000_000000000_000000000_000000000_0000UL, ~0b_00000_000000000_111000000_111000000_111000000UL),
-		CV(~0b_000000000_000000000_000000000_000000111_0000UL, ~0b_00111_000000111_000000000_000000000_000000000UL),
-		CV(~0b_000000000_000000000_000000000_000111000_0001UL, ~0b_11000_000111000_000000000_000000000_000000000UL),
-		CV(~0b_000000000_000000000_000000000_111000000_1110UL, ~0b_00000_111000000_000000000_000000000_000000000UL),
-		CV(~0b_000000111_000000111_000000111_000000000_0000UL, ~0b_00000_000000000_000000000_000000000_000000000UL),
-		CV(~0b_000111000_000111000_000111000_000000000_0000UL, ~0b_00000_000000000_000000000_000000000_000000000UL),
-		CV(~0b_111000000_111000000_111000000_000000000_0000UL, ~0b_00000_000000000_000000000_000000000_000000000UL),
-		CV(~0b_000000000_000000000_000000000_000000000_0000UL, ~0b_00000_000000000_000000000_000000000_111111111UL),
-		CV(~0b_000000000_000000000_000000000_000000000_0000UL, ~0b_00000_000000000_000000000_111111111_000000000UL),
-		CV(~0b_000000000_000000000_000000000_000000000_0000UL, ~0b_00000_000000000_111111111_000000000_000000000UL),
-		CV(~0b_000000000_000000000_000000000_000000000_0000UL, ~0b_00000_111111111_000000000_000000000_000000000UL),
-		CV(~0b_000000000_000000000_000000000_000000000_1111UL, ~0b_11111_000000000_000000000_000000000_000000000UL),
-		CV(~0b_000000000_000000000_000000000_111111111_0000UL, ~0b_00000_000000000_000000000_000000000_000000000UL),
-		CV(~0b_000000000_000000000_111111111_000000000_0000UL, ~0b_00000_000000000_000000000_000000000_000000000UL),
-		CV(~0b_000000000_111111111_000000000_000000000_0000UL, ~0b_00000_000000000_000000000_000000000_000000000UL),
-		CV(~0b_111111111_000000000_000000000_000000000_0000UL, ~0b_00000_000000000_000000000_000000000_000000000UL),
-		CV(~0b_000000001_000000001_000000001_000000001_0000UL, ~0b_00001_000000001_000000001_000000001_000000001UL),
-		CV(~0b_000000010_000000010_000000010_000000010_0000UL, ~0b_00010_000000010_000000010_000000010_000000010UL),
-		CV(~0b_000000100_000000100_000000100_000000100_0000UL, ~0b_00100_000000100_000000100_000000100_000000100UL),
-		CV(~0b_000001000_000001000_000001000_000001000_0000UL, ~0b_01000_000001000_000001000_000001000_000001000UL),
-		CV(~0b_000010000_000010000_000010000_000010000_0000UL, ~0b_10000_000010000_000010000_000010000_000010000UL),
-		CV(~0b_000100000_000100000_000100000_000100000_0001UL, ~0b_00000_000100000_000100000_000100000_000100000UL),
-		CV(~0b_001000000_001000000_001000000_001000000_0010UL, ~0b_00000_001000000_001000000_001000000_001000000UL),
-		CV(~0b_010000000_010000000_010000000_010000000_0100UL, ~0b_00000_010000000_010000000_010000000_010000000UL),
-		CV(~0b_100000000_100000000_100000000_100000000_1000UL, ~0b_00000_100000000_100000000_100000000_100000000UL)
+	public static readonly ReadOnlyMemory<Vector128<long>> SharedHouseConstants = (Vector128<long>[])[
+		CV(~0b_000000000_000000000_000000000_000000000_0000L, ~0b_00000_000000000_000000111_000000111_000000111L),
+		CV(~0b_000000000_000000000_000000000_000000000_0000L, ~0b_00000_000000000_000111000_000111000_000111000L),
+		CV(~0b_000000000_000000000_000000000_000000000_0000L, ~0b_00000_000000000_111000000_111000000_111000000L),
+		CV(~0b_000000000_000000000_000000000_000000111_0000L, ~0b_00111_000000111_000000000_000000000_000000000L),
+		CV(~0b_000000000_000000000_000000000_000111000_0001L, ~0b_11000_000111000_000000000_000000000_000000000L),
+		CV(~0b_000000000_000000000_000000000_111000000_1110L, ~0b_00000_111000000_000000000_000000000_000000000L),
+		CV(~0b_000000111_000000111_000000111_000000000_0000L, ~0b_00000_000000000_000000000_000000000_000000000L),
+		CV(~0b_000111000_000111000_000111000_000000000_0000L, ~0b_00000_000000000_000000000_000000000_000000000L),
+		CV(~0b_111000000_111000000_111000000_000000000_0000L, ~0b_00000_000000000_000000000_000000000_000000000L),
+		CV(~0b_000000000_000000000_000000000_000000000_0000L, ~0b_00000_000000000_000000000_000000000_111111111L),
+		CV(~0b_000000000_000000000_000000000_000000000_0000L, ~0b_00000_000000000_000000000_111111111_000000000L),
+		CV(~0b_000000000_000000000_000000000_000000000_0000L, ~0b_00000_000000000_111111111_000000000_000000000L),
+		CV(~0b_000000000_000000000_000000000_000000000_0000L, ~0b_00000_111111111_000000000_000000000_000000000L),
+		CV(~0b_000000000_000000000_000000000_000000000_1111L, ~0b_11111_000000000_000000000_000000000_000000000L),
+		CV(~0b_000000000_000000000_000000000_111111111_0000L, ~0b_00000_000000000_000000000_000000000_000000000L),
+		CV(~0b_000000000_000000000_111111111_000000000_0000L, ~0b_00000_000000000_000000000_000000000_000000000L),
+		CV(~0b_000000000_111111111_000000000_000000000_0000L, ~0b_00000_000000000_000000000_000000000_000000000L),
+		CV(~0b_111111111_000000000_000000000_000000000_0000L, ~0b_00000_000000000_000000000_000000000_000000000L),
+		CV(~0b_000000001_000000001_000000001_000000001_0000L, ~0b_00001_000000001_000000001_000000001_000000001L),
+		CV(~0b_000000010_000000010_000000010_000000010_0000L, ~0b_00010_000000010_000000010_000000010_000000010L),
+		CV(~0b_000000100_000000100_000000100_000000100_0000L, ~0b_00100_000000100_000000100_000000100_000000100L),
+		CV(~0b_000001000_000001000_000001000_000001000_0000L, ~0b_01000_000001000_000001000_000001000_000001000L),
+		CV(~0b_000010000_000010000_000010000_000010000_0000L, ~0b_10000_000010000_000010000_000010000_000010000L),
+		CV(~0b_000100000_000100000_000100000_000100000_0001L, ~0b_00000_000100000_000100000_000100000_000100000L),
+		CV(~0b_001000000_001000000_001000000_001000000_0010L, ~0b_00000_001000000_001000000_001000000_001000000L),
+		CV(~0b_010000000_010000000_010000000_010000000_0100L, ~0b_00000_010000000_010000000_010000000_010000000L),
+		CV(~0b_100000000_100000000_100000000_100000000_1000L, ~0b_00000_100000000_100000000_100000000_100000000L)
 	];
 
 	/// <inheritdoc cref="CellMapBase.Empty"/>
@@ -92,7 +92,7 @@ public partial struct CellMap : CellMapBase
 	/// </item>
 	/// </list>
 	/// </summary>
-	internal Vector128<ulong> _vector;
+	internal Vector128<long> _vector;
 
 
 	/// <summary>
@@ -154,7 +154,7 @@ public partial struct CellMap : CellMapBase
 	}
 
 	/// <inheritdoc/>
-	public readonly int Count => PopCount(_vector[1]) + PopCount(_vector[0]);
+	public readonly int Count => PopCount((ulong)_vector[1]) + PopCount((ulong)_vector[0]);
 
 	/// <inheritdoc/>
 	[JsonInclude]
@@ -281,7 +281,7 @@ public partial struct CellMap : CellMapBase
 			var tempSpan = SharedHouseConstants.Span;
 			for (var i = 0; i < 27; i++)
 			{
-				if ((_vector & tempSpan[i]) == Vector128<ulong>.Zero)
+				if ((_vector & tempSpan[i]) == Vector128<long>.Zero)
 				{
 					result |= SharedHouseFactorValues[i];
 				}
@@ -355,13 +355,13 @@ public partial struct CellMap : CellMapBase
 	{
 		get
 		{
-			var (lowerBits, higherBits, i) = (0UL, 0UL, 0);
+			var (lowerBits, higherBits, i) = (0L, 0L, 0);
 			foreach (var offset in Offsets)
 			{
-				var (low, high) = (0UL, 0UL);
+				var (low, high) = (0L, 0L);
 				foreach (var peer in PeersMap[offset])
 				{
-					(peer / Shifting == 0 ? ref low : ref high) |= 1UL << peer % Shifting;
+					(peer / Shifting == 0 ? ref low : ref high) |= 1L << peer % Shifting;
 				}
 
 				if (i++ == 0)
@@ -435,10 +435,10 @@ public partial struct CellMap : CellMapBase
 			if (Bmi2.X64.IsSupported)
 			{
 				// https://stackoverflow.com/questions/7669057/find-nth-set-bit-in-an-int
-				return TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << index, low)) switch
+				return TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << index, (ulong)low)) switch
 				{
 					var l and not FallbackConstants.@long => l,
-					_ => TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << index - PopCount(low), high)) switch
+					_ => TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << index - PopCount((ulong)low), (ulong)high)) switch
 					{
 						var h and not FallbackConstants.@long => h + Shifting,
 						_ => -1
@@ -446,8 +446,8 @@ public partial struct CellMap : CellMapBase
 				};
 			}
 
-			return PopCount(low) is var popCountLow && popCountLow == index
-				? FallbackConstants.@long - 1 - LeadingZeroCount(low)
+			return PopCount((ulong)low) is var popCountLow && popCountLow == index
+				? FallbackConstants.@long - 1 - LeadingZeroCount((ulong)low)
 				: popCountLow > index
 					? low.SetAt(index)
 					: high.SetAt(index - popCountLow) is var z and not FallbackConstants.@long ? z + Shifting : -1;
@@ -473,7 +473,7 @@ public partial struct CellMap : CellMapBase
 	/// </summary>
 	/// <param name="item">The offset.</param>
 	/// <returns>A <see cref="bool"/> value indicating that.</returns>
-	public readonly bool Contains(Cell item) => (_vector[item < Shifting ? 0 : 1] >> item % Shifting & 1) != 0;
+	public readonly bool Contains(Cell item) => (_vector[item < Shifting ? 0 : 1] >>> item % Shifting & 1) != 0;
 
 	/// <inheritdoc cref="ISpanFormattable.TryFormat(Span{char}, out int, ReadOnlySpan{char}, IFormatProvider?)"/>
 	public readonly bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
@@ -593,7 +593,7 @@ public partial struct CellMap : CellMapBase
 			return false;
 		}
 
-		_vector = _vector.WithElement(item / Shifting, _vector[item / Shifting] | 1UL << item % Shifting);
+		_vector = _vector.WithElement(item / Shifting, _vector[item / Shifting] | 1L << item % Shifting);
 		return true;
 	}
 
@@ -623,7 +623,7 @@ public partial struct CellMap : CellMapBase
 			return false;
 		}
 
-		_vector = _vector.WithElement(item / Shifting, _vector[item / Shifting] & ~(1UL << item % Shifting));
+		_vector = _vector.WithElement(item / Shifting, _vector[item / Shifting] & ~(1L << item % Shifting));
 		return true;
 	}
 
@@ -790,16 +790,16 @@ public partial struct CellMap : CellMapBase
 	public static CellMap Parse(ReadOnlySpan<char> s, IFormatProvider? provider) => Parse(s.ToString(), provider);
 
 	/// <summary>
-	/// Creates a <see cref="Vector128{T}"/> of <see cref="ulong"/> instance.
+	/// Creates a <see cref="Vector128{T}"/> of <see cref="long"/> instance.
 	/// </summary>
 	/// <param name="e1">The higher 64 bits.</param>
 	/// <param name="e0">The lower 64 bits.</param>
-	/// <returns>A <see cref="Vector128{T}"/> of <see cref="ulong"/> instance.</returns>
+	/// <returns>A <see cref="Vector128{T}"/> of <see cref="long"/> instance.</returns>
 	/// <remarks><b>
 	/// This method will only be used in constant creation, just for readability on binary integers' positions.
 	/// </b></remarks>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	internal static Vector128<ulong> CV(ulong e1, ulong e0) => Vector128.Create(e0, e1);
+	internal static Vector128<long> CV(long e1, long e0) => Vector128.Create(e0, e1);
 
 
 	/// <inheritdoc/>
@@ -813,11 +813,11 @@ public partial struct CellMap : CellMapBase
 
 	/// <inheritdoc/>
 	public void operator +=(Cell offset)
-		=> _vector = _vector.WithElement(offset / Shifting, _vector[offset / Shifting] | 1UL << offset % Shifting);
+		=> _vector = _vector.WithElement(offset / Shifting, _vector[offset / Shifting] | 1L << offset % Shifting);
 
 	/// <inheritdoc/>
 	public void operator -=(Cell offset)
-		=> _vector = _vector.WithElement(offset / Shifting, _vector[offset / Shifting] & ~(1UL << offset % Shifting));
+		=> _vector = _vector.WithElement(offset / Shifting, _vector[offset / Shifting] & ~(1L << offset % Shifting));
 
 
 	/// <inheritdoc/>

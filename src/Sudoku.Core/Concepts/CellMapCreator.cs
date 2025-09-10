@@ -16,7 +16,7 @@ public static class CellMapCreator
 		/// <param name="high">Higher 40 bits.</param>
 		/// <param name="low">Lower 41 bits.</param>
 		/// <returns>The result instance created.</returns>
-		public static CellMap Create(ulong high, ulong low)
+		public static CellMap Create(long high, long low)
 		{
 			CellMap result;
 			result._vector = CellMap.CV(high, low);
@@ -32,8 +32,8 @@ public static class CellMapCreator
 		/// <returns>The result instance created.</returns>
 		public static CellMap Create(int high, int mid, int low)
 			=> Create(
-				((ulong)high & 0x7FFFFFFUL) << 13 | (ulong)mid >> 14 & 0x1FFFUL,
-				((ulong)mid & 0x3FFFL) << 27 | (ulong)low & 0x7FFFFFFUL
+				(high & 0x7FFFFFFL) << 13 | mid >>> 14 & 0x1FFFL,
+				(mid & 0x3FFFL) << 27 | low & 0x7FFFFFFL
 			);
 
 		/// <summary>
@@ -41,7 +41,7 @@ public static class CellMapCreator
 		/// </summary>
 		/// <param name="vector">Two bits, represented as high 41 and low 40 bits.</param>
 		/// <returns>A <see cref="CellMap"/> instance.</returns>
-		public static CellMap Create(Vector128<ulong> vector)
+		public static CellMap Create(Vector128<long> vector)
 		{
 			CellMap result;
 			result._vector = vector;

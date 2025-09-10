@@ -1031,13 +1031,13 @@
         <member name="M:Sudoku.Concepts.CellMap.Parse(System.ReadOnlySpan{System.Char},System.IFormatProvider)">
             <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
         </member>
-        <member name="M:Sudoku.Concepts.CellMap.CV(System.UInt64,System.UInt64)">
+        <member name="M:Sudoku.Concepts.CellMap.CV(System.Int64,System.Int64)">
             <summary>
-            Creates a <see cref="T:System.Runtime.Intrinsics.Vector128`1"/> of <see cref="T:System.UInt64"/> instance.
+            Creates a <see cref="T:System.Runtime.Intrinsics.Vector128`1"/> of <see cref="T:System.Int64"/> instance.
             </summary>
             <param name="e1">The higher 64 bits.</param>
             <param name="e0">The lower 64 bits.</param>
-            <returns>A <see cref="T:System.Runtime.Intrinsics.Vector128`1"/> of <see cref="T:System.UInt64"/> instance.</returns>
+            <returns>A <see cref="T:System.Runtime.Intrinsics.Vector128`1"/> of <see cref="T:System.Int64"/> instance.</returns>
             <remarks><b>
             This method will only be used in constant creation, just for readability on binary integers' positions.
             </b></remarks>
@@ -1181,21 +1181,21 @@
             Represents a list of creating methods.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.CellMapCreator.Create(System.UInt64,System.UInt64)">
-            <inheritdoc cref="M:Sudoku.Concepts.CellMapCreator.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Create(System.UInt64,System.UInt64)"/>
+        <member name="M:Sudoku.Concepts.CellMapCreator.Create(System.Int64,System.Int64)">
+            <inheritdoc cref="M:Sudoku.Concepts.CellMapCreator.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Create(System.Int64,System.Int64)"/>
         </member>
         <member name="M:Sudoku.Concepts.CellMapCreator.Create(System.Int32,System.Int32,System.Int32)">
             <inheritdoc cref="M:Sudoku.Concepts.CellMapCreator.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Create(System.Int32,System.Int32,System.Int32)"/>
         </member>
-        <member name="M:Sudoku.Concepts.CellMapCreator.Create(System.Runtime.Intrinsics.Vector128{System.UInt64})">
-            <inheritdoc cref="M:Sudoku.Concepts.CellMapCreator.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Create(System.Runtime.Intrinsics.Vector128{System.UInt64})"/>
+        <member name="M:Sudoku.Concepts.CellMapCreator.Create(System.Runtime.Intrinsics.Vector128{System.Int64})">
+            <inheritdoc cref="M:Sudoku.Concepts.CellMapCreator.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Create(System.Runtime.Intrinsics.Vector128{System.Int64})"/>
         </member>
         <member name="T:Sudoku.Concepts.CellMapCreator.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.&lt;M&gt;$4B60D02A5F703296D232D9A415F3C20B">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Concepts.CellMap"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.CellMapCreator.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Create(System.UInt64,System.UInt64)">
+        <member name="M:Sudoku.Concepts.CellMapCreator.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Create(System.Int64,System.Int64)">
             <summary>
             Initializes an instance with two binary values.
             </summary>
@@ -1212,7 +1212,7 @@
             <param name="low">Lower 27 bits.</param>
             <returns>The result instance created.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.CellMapCreator.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Create(System.Runtime.Intrinsics.Vector128{System.UInt64})">
+        <member name="M:Sudoku.Concepts.CellMapCreator.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Create(System.Runtime.Intrinsics.Vector128{System.Int64})">
             <summary>
             Initializes an instance with a <see cref="T:System.Runtime.Intrinsics.Vector128`1"/> of <see cref="T:System.Int64"/>.
             </summary>
