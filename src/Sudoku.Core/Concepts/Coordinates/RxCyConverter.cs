@@ -254,7 +254,7 @@ public sealed record RxCyConverter(
 	public override Func<ReadOnlySpan<Miniline>, string> IntersectionConverter
 		=> intersections => DefaultSeparator switch
 		{
-			null or [] => string.Concat(
+			null or [] => +(
 				from intersection in intersections
 				let baseSet = intersection.Base.Line
 				let coverSet = intersection.Base.Block

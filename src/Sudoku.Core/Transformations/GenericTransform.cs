@@ -199,11 +199,11 @@ public readonly partial record struct GenericTransform(
 	{
 		builder.Append($"{nameof(TransposeRank)} = {TransposeRank} ({TransposeRank != 0}), ");
 		builder.Append($"{nameof(RelabeledRowsRank)} = {RelabeledRowsRank}");
-		builder.Append($" ({string.Concat(from r in RowIndicesRelabeled select (r + 1).ToString())}), ");
+		builder.Append($" ({+(from r in RowIndicesRelabeled select (r + 1).ToString())}), ");
 		builder.Append($"{nameof(RelabeledColumnsRank)} = {RelabeledColumnsRank}");
-		builder.Append($" ({string.Concat(from c in ColumnIndicesRelabeled select (c + 1).ToString())}), ");
+		builder.Append($" ({+(from c in ColumnIndicesRelabeled select (c + 1).ToString())}), ");
 		builder.Append($"{nameof(RelabeledDigitsRank)} = {RelabeledDigitsRank}");
-		builder.Append($" ({string.Concat(from d in DigitsRelabeled select (d + 1).ToString())})");
+		builder.Append($" ({+(from d in DigitsRelabeled select (d + 1).ToString())})");
 		return true;
 	}
 

@@ -30,13 +30,14 @@ public partial class CharSetExtensions
 		/// <returns>The result string value after removal.</returns>
 		public string RemoveAll(char character) => @this.Replace(character.ToString(), string.Empty);
 
-		/// <summary>
-		/// Gets a new <see cref="string"/>[] result, with each element (a <see cref="string"/> with a single character)
-		/// from the specified <see cref="string"/>.
-		/// </summary>
-		/// <returns>An array of <see cref="string"/> elements.</returns>
-		public ReadOnlySpan<string> ExpandCharacters() => from c in @this.Span select c.ToString();
 
+		/// <summary>
+		/// Unpacks a string into multiple characters.
+		/// For example, <c>-"hello!"</c>will become <c>['h', 'e', 'l', 'l', 'o', '!']</c>.
+		/// </summary>
+		/// <param name="str">The string.</param>
+		/// <returns>A sequence of characters.</returns>
+		public static ReadOnlySpan<char> operator -(string str) => str.ToCharArray();
 
 		/// <summary>
 		/// Repeats the specified string specified times.
@@ -90,5 +91,18 @@ public partial class CharSetExtensions
 		/// An array whose elements contain the substrings from this instance that are delimited by separator.
 		/// </returns>
 		public static ReadOnlySpan<string> operator /(string value, string separator) => value.Split(separator);
+	}
+
+	/// <summary>
+	/// Provides extension members on <see cref="ReadOnlySpan{T}"/> of <see cref="string"/>.
+	/// </summary>
+	extension(ReadOnlySpan<string>)
+	{
+		/// <summary>
+		/// Pack strings into a string. For example, <c>+["hello", ", ", "world", "!"]</c> will become <c>"hello, world!"</c>.
+		/// </summary>
+		/// <param name="strings">Strings.</param>
+		/// <returns>A string.</returns>
+		public static string operator +(ReadOnlySpan<string> strings) => string.Concat(strings);
 	}
 }

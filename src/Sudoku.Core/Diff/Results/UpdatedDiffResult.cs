@@ -26,7 +26,7 @@ public abstract class UpdatedDiffResult(CandidateMap candidates) : DiffResult
 	/// <summary>
 	/// Indicates the candidates string.
 	/// </summary>
-	protected string CandidatesRawString => string.Concat(from element in Candidates select element.ToString("000"));
+	protected string CandidatesRawString => +(from element in Candidates select element.ToString("000"));
 
 	/// <summary>
 	/// Indicates the target cell type string.

@@ -203,7 +203,7 @@ public sealed record K9Converter(
 							},
 							TargetCurrentCulture
 						),
-						string.Concat(from house in h select (house % 9 + 1).ToString())
+						+(from house in h select (house % 9 + 1).ToString())
 					)
 				);
 			}
@@ -272,7 +272,7 @@ public sealed record K9Converter(
 	public override Func<ReadOnlySpan<Miniline>, string> IntersectionConverter
 		=> intersections => DefaultSeparator switch
 		{
-			null or [] => string.Concat(
+			null or [] => +(
 				from intersection in intersections
 				let baseSet = intersection.Base.Line
 				let coverSet = intersection.Base.Block

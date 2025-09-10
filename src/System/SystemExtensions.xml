@@ -151,6 +151,9 @@
         <member name="M:System.CharSetExtensions.get_LowerCasing(System.Char)">
             <inheritdoc cref="P:System.CharSetExtensions.&lt;G&gt;$617F055EF883302AD66AFAF0ACA83DC6.LowerCasing"/>
         </member>
+        <member name="M:System.CharSetExtensions.op_UnaryPlus(System.ReadOnlySpan{System.Char})">
+            <inheritdoc cref="M:System.CharSetExtensions.&lt;G&gt;$7E0B8C73485617FC5155886DD83A182C.op_UnaryPlus(System.ReadOnlySpan{System.Char})"/>
+        </member>
         <member name="M:System.CharSetExtensions.get_UpperCasing(System.String)">
             <inheritdoc cref="P:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.UpperCasing"/>
         </member>
@@ -163,8 +166,8 @@
         <member name="M:System.CharSetExtensions.RemoveAll(System.String,System.Char)">
             <inheritdoc cref="M:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.RemoveAll(System.Char)"/>
         </member>
-        <member name="M:System.CharSetExtensions.ExpandCharacters(System.String)">
-            <inheritdoc cref="M:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.ExpandCharacters"/>
+        <member name="M:System.CharSetExtensions.op_UnaryNegation(System.String)">
+            <inheritdoc cref="M:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.op_UnaryNegation(System.String)"/>
         </member>
         <member name="M:System.CharSetExtensions.op_Multiply(System.String,System.Int32)">
             <inheritdoc cref="M:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.op_Multiply(System.String,System.Int32)"/>
@@ -177,6 +180,9 @@
         </member>
         <member name="M:System.CharSetExtensions.op_Division(System.String,System.String)">
             <inheritdoc cref="M:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.op_Division(System.String,System.String)"/>
+        </member>
+        <member name="M:System.CharSetExtensions.op_UnaryPlus(System.ReadOnlySpan{System.String})">
+            <inheritdoc cref="M:System.CharSetExtensions.&lt;G&gt;$8FC959905A84761690F4F259EF1753AC.op_UnaryPlus(System.ReadOnlySpan{System.String})"/>
         </member>
         <member name="T:System.CharSetExtensions.&lt;G&gt;$617F055EF883302AD66AFAF0ACA83DC6.&lt;M&gt;$CF87249665CE7DA578808CB26A348861">
             <summary>
@@ -192,6 +198,18 @@
             <summary>
             Indicates the lower-casing of the current character.
             </summary>
+        </member>
+        <member name="T:System.CharSetExtensions.&lt;G&gt;$7E0B8C73485617FC5155886DD83A182C.&lt;M&gt;$6B763DF8736ED423C3A2755D256AB881">
+            <summary>
+            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <see cref="T:System.Char"/>.
+            </summary>
+        </member>
+        <member name="M:System.CharSetExtensions.&lt;G&gt;$7E0B8C73485617FC5155886DD83A182C.op_UnaryPlus(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Pack characters into a string.
+            </summary>
+            <param name="chars">Characters.</param>
+            <returns>A string.</returns>
         </member>
         <member name="T:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.&lt;M&gt;$A56E4B15CBFDA0052F9BF9FD000FA868">
             <summary>
@@ -220,12 +238,13 @@
             <param name="character">The character to be removed from the base string.</param>
             <returns>The result string value after removal.</returns>
         </member>
-        <member name="M:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.ExpandCharacters">
+        <member name="M:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.op_UnaryNegation(System.String)">
             <summary>
-            Gets a new <see cref="T:System.String"/>[] result, with each element (a <see cref="T:System.String"/> with a single character)
-            from the specified <see cref="T:System.String"/>.
+            Unpacks a string into multiple characters.
+            For example, <c>-"hello!"</c>will become <c>['h', 'e', 'l', 'l', 'o', '!']</c>.
             </summary>
-            <returns>An array of <see cref="T:System.String"/> elements.</returns>
+            <param name="str">The string.</param>
+            <returns>A sequence of characters.</returns>
         </member>
         <member name="M:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.op_Multiply(System.String,System.Int32)">
             <summary>
@@ -262,6 +281,18 @@
             <returns>
             An array whose elements contain the substrings from this instance that are delimited by separator.
             </returns>
+        </member>
+        <member name="T:System.CharSetExtensions.&lt;G&gt;$8FC959905A84761690F4F259EF1753AC.&lt;M&gt;$C0DC0E93A7552BE82F73E299271E4EC3">
+            <summary>
+            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="M:System.CharSetExtensions.&lt;G&gt;$8FC959905A84761690F4F259EF1753AC.op_UnaryPlus(System.ReadOnlySpan{System.String})">
+            <summary>
+            Pack strings into a string. For example, <c>+["hello", ", ", "world", "!"]</c> will become <c>"hello, world!"</c>.
+            </summary>
+            <param name="strings">Strings.</param>
+            <returns>A string.</returns>
         </member>
         <member name="T:System.Collections.BitArrayConverter">
             <summary>

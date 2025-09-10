@@ -153,7 +153,7 @@ public sealed record LiteralCoordinateConverter(
 	public override Func<Mask, string> DigitConverter
 		=> mask => DigitsSeparator switch
 		{
-			null or [] => string.Concat(from digit in mask select (digit + 1).ToString()),
+			null or [] => +(from digit in mask select (digit + 1).ToString()),
 			_ => string.Join(DigitsSeparator, from digit in mask select (digit + 1).ToString())
 		};
 

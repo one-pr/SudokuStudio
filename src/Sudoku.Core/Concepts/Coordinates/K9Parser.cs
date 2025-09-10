@@ -24,7 +24,7 @@ public sealed partial record K9Parser : CoordinateParser
 			foreach (var match in matches.Cast<Match>())
 			{
 				var s = match.Value;
-				var indexOfTheFirstDigit = Array.FindIndex(s.ToCharArray(), char.IsDigit);
+				var indexOfTheFirstDigit = (-s).FindIndex(char.IsDigit);
 				var rows = s[..indexOfTheFirstDigit];
 				var columns = s[(indexOfTheFirstDigit + 1)..];
 				foreach (var row in rows)

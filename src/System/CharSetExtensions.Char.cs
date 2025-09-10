@@ -34,4 +34,17 @@ public partial class CharSetExtensions
 		}
 #endif
 	}
+
+	/// <summary>
+	/// Provides extension members on <see cref="ReadOnlySpan{T}"/> of <see cref="char"/>.
+	/// </summary>
+	extension(ReadOnlySpan<char>)
+	{
+		/// <summary>
+		/// Pack characters into a string.
+		/// </summary>
+		/// <param name="chars">Characters.</param>
+		/// <returns>A string.</returns>
+		public static string operator +(ReadOnlySpan<char> chars) => new(chars);
+	}
 }
