@@ -274,7 +274,7 @@
         </member>
         <member name="F:Sudoku.Concepts.CandidateMap._bits">
             <summary>
-            Indicates the internal field that represents a list of <see cref="T:System.UInt64"/> bits.
+            Indicates the internal field that represents a list of <see cref="T:System.Int64"/> bits.
             </summary>
         </member>
         <member name="M:Sudoku.Concepts.CandidateMap.#ctor(System.String[])">
@@ -334,7 +334,7 @@
         </member>
         <member name="P:Sudoku.Concepts.CandidateMap.Vectors">
             <summary>
-            Returns a sequence of <see cref="T:System.Runtime.Intrinsics.Vector256`1"/> of <see cref="T:System.UInt64"/> values that can be used in SIMD scenarios.
+            Returns a sequence of <see cref="T:System.Runtime.Intrinsics.Vector256`1"/> of <see cref="T:System.Int64"/> values that can be used in SIMD scenarios.
             </summary>
         </member>
         <member name="P:Sudoku.Concepts.CandidateMap.Sudoku#Concepts#ICellMapOrCandidateMap{Sudoku#Concepts#CandidateMap,System#Int32}#Shifting">
@@ -540,9 +540,9 @@
         <member name="M:Sudoku.Concepts.CandidateMap.Parse(System.ReadOnlySpan{System.Char},System.IFormatProvider)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.CandidateMap.CreateByVectors(System.Runtime.Intrinsics.Vector256{System.UInt64}@,System.Runtime.Intrinsics.Vector256{System.UInt64}@,System.Runtime.Intrinsics.Vector256{System.UInt64}@)">
+        <member name="M:Sudoku.Concepts.CandidateMap.CreateByVectors(System.Runtime.Intrinsics.Vector256{System.Int64}@,System.Runtime.Intrinsics.Vector256{System.Int64}@,System.Runtime.Intrinsics.Vector256{System.Int64}@)">
             <summary>
-            Creates a <see cref="T:Sudoku.Concepts.CandidateMap"/> via a triplet of <see cref="T:System.Runtime.Intrinsics.Vector256`1"/> of <see cref="T:System.UInt64"/> values.
+            Creates a <see cref="T:Sudoku.Concepts.CandidateMap"/> via a triplet of <see cref="T:System.Runtime.Intrinsics.Vector256`1"/> of <see cref="T:System.Int64"/> values.
             </summary>
             <param name="e0">The lower 256 bits.</param>
             <param name="e1">The middle 256 bits.</param>

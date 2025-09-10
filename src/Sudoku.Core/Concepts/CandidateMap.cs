@@ -28,9 +28,9 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 
 
 	/// <summary>
-	/// Indicates the internal field that represents a list of <see cref="ulong"/> bits.
+	/// Indicates the internal field that represents a list of <see cref="long"/> bits.
 	/// </summary>
-	private InlineArray12<ulong> _bits;
+	private InlineArray12<long> _bits;
 
 
 	/// <summary>
@@ -89,7 +89,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 			{
 				for (var i = 0; i < 4; i++)
 				{
-					result += PopCount(vector[i]);
+					result += PopCount((ulong)vector[i]);
 				}
 			}
 			return result;
@@ -210,10 +210,10 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <summary>
-	/// Returns a sequence of <see cref="Vector256{T}"/> of <see cref="ulong"/> values that can be used in SIMD scenarios.
+	/// Returns a sequence of <see cref="Vector256{T}"/> of <see cref="long"/> values that can be used in SIMD scenarios.
 	/// </summary>
-	internal readonly ReadOnlySpan<Vector256<ulong>> Vectors
-		=> (Vector256<ulong>[])[Vector256.Create(_bits[..4]), Vector256.Create(_bits[4..8]), Vector256.Create(_bits[8..])];
+	internal readonly ReadOnlySpan<Vector256<long>> Vectors
+		=> (Vector256<long>[])[Vector256.Create(_bits[..4]), Vector256.Create(_bits[4..8]), Vector256.Create(_bits[8..])];
 
 	/// <inheritdoc/>
 	readonly int CandidateMapBase.Shifting => sizeof(long) << 3;
@@ -254,7 +254,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 			{
 				var bits = _bits[i];
 				var z = bmi2IsSupported
-					? TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << index - popCountSum, bits))
+					? TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << index - popCountSum, (ulong)bits))
 					: bits.SetAt(index - popCountSum);
 				switch (bmi2IsSupported)
 				{
@@ -265,7 +265,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 					}
 				}
 
-				popCountSum += PopCount(bits);
+				popCountSum += PopCount((ulong)bits);
 			}
 			return -1;
 		}
@@ -473,7 +473,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 			return false;
 		}
 
-		_bits[item >> 6] |= 1UL << (item & 63);
+		_bits[item >> 6] |= 1L << (item & 63);
 		return true;
 	}
 
@@ -503,7 +503,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 			return false;
 		}
 
-		_bits[item >> 6] &= ~(1UL << (item & 63));
+		_bits[item >> 6] &= ~(1L << (item & 63));
 		return true;
 	}
 
@@ -686,13 +686,13 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	public static CandidateMap Parse(ReadOnlySpan<char> s, IFormatProvider? provider) => Parse(s.ToString(), provider);
 
 	/// <summary>
-	/// Creates a <see cref="CandidateMap"/> via a triplet of <see cref="Vector256{T}"/> of <see cref="ulong"/> values.
+	/// Creates a <see cref="CandidateMap"/> via a triplet of <see cref="Vector256{T}"/> of <see cref="long"/> values.
 	/// </summary>
 	/// <param name="e0">The lower 256 bits.</param>
 	/// <param name="e1">The middle 256 bits.</param>
 	/// <param name="e2">The higher 256 bits.</param>
 	/// <returns>A <see cref="CandidateMap"/> instance.</returns>
-	public static CandidateMap CreateByVectors(in Vector256<ulong> e0, in Vector256<ulong> e1, in Vector256<ulong> e2)
+	public static CandidateMap CreateByVectors(in Vector256<long> e0, in Vector256<long> e1, in Vector256<long> e2)
 	{
 		Unsafe.SkipInit<CandidateMap>(out var result);
 		e0.CopyTo(result._bits[..4]);
@@ -730,10 +730,10 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc/>
-	public void operator +=(Candidate offset) => _bits[offset >> 6] |= 1UL << (offset & 63);
+	public void operator +=(Candidate offset) => _bits[offset >> 6] |= 1L << (offset & 63);
 
 	/// <inheritdoc/>
-	public void operator -=(Candidate offset) => _bits[offset >> 6] &= ~(1UL << (offset & 63));
+	public void operator -=(Candidate offset) => _bits[offset >> 6] &= ~(1L << (offset & 63));
 
 
 	/// <inheritdoc/>
