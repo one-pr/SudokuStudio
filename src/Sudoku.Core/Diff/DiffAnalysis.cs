@@ -203,7 +203,6 @@ public static class DiffAnalysis
 		}
 
 
-#if EXTENSION_OPERATORS
 		/// <summary>
 		/// Analyzes difference between two grids.
 		/// If two grids are not same from given cells, the return value will be <see langword="null"/>.
@@ -227,6 +226,5 @@ public static class DiffAnalysis
 		/// <exception cref="GridDiffTooMuchException">Throws when two grids are not same from given cells.</exception>
 		public static DiffResult operator checked -(in Grid left, in Grid right)
 			=> left - right ?? throw new GridDiffTooMuchException();
-#endif
 	}
 }

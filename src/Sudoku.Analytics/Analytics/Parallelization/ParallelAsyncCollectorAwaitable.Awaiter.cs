@@ -262,11 +262,7 @@ public partial struct ParallelAsyncCollectorAwaitable
 						}
 						case { Level: var currentLevel }:
 						{
-#if EXTENSION_OPERATORS
 							if (!_cancellationToken)
-#else
-							if (_cancellationToken.IsCancellationRequested)
-#endif
 							{
 								return;
 							}

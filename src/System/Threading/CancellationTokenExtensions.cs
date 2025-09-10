@@ -11,7 +11,6 @@ public static class CancellationTokenExtensions
 	/// </summary>
 	extension(CancellationToken)
 	{
-#if EXTENSION_OPERATORS
 		/// <summary>
 		/// Indicates whether the cancellation token is cancellation-requested.
 		/// </summary>
@@ -32,6 +31,5 @@ public static class CancellationTokenExtensions
 		/// <param name="value">The value.</param>
 		/// <returns>A <see cref="bool"/> result indicating that.</returns>
 		public static bool operator false(CancellationToken value) => value.IsCancellationRequested;
-#endif
 	}
 }

@@ -133,7 +133,6 @@ public static class ListExtensions
 		}
 
 
-#if EXTENSION_OPERATORS
 #if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
 		/// <summary>
 		/// Performs add operation.
@@ -146,7 +145,6 @@ public static class ListExtensions
 		/// </summary>
 		/// <param name="item">The item to remove.</param>
 		public void operator -=(T item) => @this.Remove(item);
-#endif
 #endif
 	}
 

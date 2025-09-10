@@ -11,7 +11,6 @@ public static class EnumerableExtensions
 	/// </summary>
 	extension<T>(IEnumerable<T>)
 	{
-#if EXTENSION_OPERATORS
 		/// <summary>
 		/// Concats two collection.
 		/// </summary>
@@ -28,6 +27,5 @@ public static class EnumerableExtensions
 		/// <param name="aggregateFunc">Aggregate function.</param>
 		/// <returns>The result.</returns>
 		public static T operator *(IEnumerable<T> value, Func<T, T, T> aggregateFunc) => value.Aggregate(aggregateFunc);
-#endif
 	}
 }

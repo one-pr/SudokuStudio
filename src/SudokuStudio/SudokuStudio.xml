@@ -193,34 +193,34 @@
             </summary>
             <seealso cref="T:SudokuStudio.App"/>
         </member>
-        <member name="T:SudokuStudio.AppExtensions.&lt;&gt;E__0">
+        <member name="M:SudokuStudio.AppExtensions.GetStepSearchers(SudokuStudio.App)">
+            <inheritdoc cref="M:SudokuStudio.AppExtensions.&lt;G&gt;$8870D109CBB55E5F608E76711615B86A.GetStepSearchers"/>
+        </member>
+        <member name="M:SudokuStudio.AppExtensions.AsApp(Microsoft.UI.Xaml.Application)">
+            <inheritdoc cref="M:SudokuStudio.AppExtensions.&lt;G&gt;$BA25A5DC2D5ECDFAB0CDAF49939E8048.AsApp"/>
+        </member>
+        <member name="T:SudokuStudio.AppExtensions.&lt;G&gt;$8870D109CBB55E5F608E76711615B86A.&lt;M&gt;$6DC3A46C313EAC6D72FD6C06129CFC51">
             <summary>
             Provides extension members on <see cref="T:SudokuStudio.App"/>.
             </summary>
         </member>
-        <member name="M:SudokuStudio.AppExtensions.&lt;&gt;E__0.GetStepSearchers">
+        <member name="M:SudokuStudio.AppExtensions.&lt;G&gt;$8870D109CBB55E5F608E76711615B86A.GetStepSearchers">
             <summary>
             Try to get <see cref="T:Sudoku.Analytics.StepSearcher"/> instances via configuration for the specified application.
             </summary>
             <returns>A list of <see cref="T:Sudoku.Analytics.StepSearcher"/> instances.</returns>
         </member>
-        <member name="M:SudokuStudio.AppExtensions.GetStepSearchers(SudokuStudio.App)">
-            <inheritdoc cref="M:SudokuStudio.AppExtensions.&lt;&gt;E__0.GetStepSearchers"/>
-        </member>
-        <member name="T:SudokuStudio.AppExtensions.&lt;&gt;E__1">
+        <member name="T:SudokuStudio.AppExtensions.&lt;G&gt;$BA25A5DC2D5ECDFAB0CDAF49939E8048.&lt;M&gt;$2502E03BA46EC582201F228E156C0B29">
             <summary>
             Provides extension members on <see cref="T:Microsoft.UI.Xaml.Application"/>.
             </summary>
         </member>
-        <member name="M:SudokuStudio.AppExtensions.&lt;&gt;E__1.AsApp">
+        <member name="M:SudokuStudio.AppExtensions.&lt;G&gt;$BA25A5DC2D5ECDFAB0CDAF49939E8048.AsApp">
             <summary>
             Converts the current instance into an <see cref="T:SudokuStudio.App"/> instance;
             throw <see cref="T:System.InvalidCastException"/> if the current object is not an <see cref="T:SudokuStudio.App"/> instance.
             </summary>
             <returns>The result casted.</returns>
-        </member>
-        <member name="M:SudokuStudio.AppExtensions.AsApp(Microsoft.UI.Xaml.Application)">
-            <inheritdoc cref="M:SudokuStudio.AppExtensions.&lt;&gt;E__1.AsApp"/>
         </member>
         <member name="T:SudokuStudio.BindableSource.AnalyzeTabPageBindableSource">
             <summary>
@@ -3328,27 +3328,27 @@
 				</summary>
 			</target>
         </member>
-        <member name="T:SudokuStudio.Drawing.Extensions.&lt;&gt;E__0">
+        <member name="M:SudokuStudio.Drawing.Extensions.RemoveAllViewUnitControls(Microsoft.UI.Xaml.Controls.UIElementCollection)">
+            <inheritdoc cref="M:SudokuStudio.Drawing.Extensions.&lt;G&gt;$D0A041DC94BABB7413571448407CE803.RemoveAllViewUnitControls"/>
+        </member>
+        <member name="M:SudokuStudio.Drawing.Extensions.FindDrawableControls(Microsoft.UI.Xaml.Controls.UIElementCollection)">
+            <inheritdoc cref="M:SudokuStudio.Drawing.Extensions.&lt;G&gt;$D0A041DC94BABB7413571448407CE803.FindDrawableControls"/>
+        </member>
+        <member name="T:SudokuStudio.Drawing.Extensions.&lt;G&gt;$D0A041DC94BABB7413571448407CE803.&lt;M&gt;$D3DCE9AC78532663B5A784BF20338EFC">
             <summary>
             Provides extension members on <see cref="T:Microsoft.UI.Xaml.Controls.UIElementCollection"/> instance.
             </summary>
         </member>
-        <member name="M:SudokuStudio.Drawing.Extensions.&lt;&gt;E__0.RemoveAllViewUnitControls">
+        <member name="M:SudokuStudio.Drawing.Extensions.&lt;G&gt;$D0A041DC94BABB7413571448407CE803.RemoveAllViewUnitControls">
             <summary>
             Removes all possible <see cref="T:Microsoft.UI.Xaml.FrameworkElement"/>s that is used for displaying elements
             in a <see cref="T:SudokuStudio.BindableSource.ViewUnitBindableSource"/>.
             </summary>
         </member>
-        <member name="M:SudokuStudio.Drawing.Extensions.&lt;&gt;E__0.FindDrawableControls">
+        <member name="M:SudokuStudio.Drawing.Extensions.&lt;G&gt;$D0A041DC94BABB7413571448407CE803.FindDrawableControls">
             <summary>
             Returns a list of <see cref="T:Microsoft.UI.Xaml.FrameworkElement"/> instances that bound with drawable items.
             </summary>
-        </member>
-        <member name="M:SudokuStudio.Drawing.Extensions.RemoveAllViewUnitControls(Microsoft.UI.Xaml.Controls.UIElementCollection)">
-            <inheritdoc cref="M:SudokuStudio.Drawing.Extensions.&lt;&gt;E__0.RemoveAllViewUnitControls"/>
-        </member>
-        <member name="M:SudokuStudio.Drawing.Extensions.FindDrawableControls(Microsoft.UI.Xaml.Controls.UIElementCollection)">
-            <inheritdoc cref="M:SudokuStudio.Drawing.Extensions.&lt;&gt;E__0.FindDrawableControls"/>
         </member>
         <member name="T:SudokuStudio.Drawing.Extensions">
             <target name="class" when="extension">
@@ -3978,12 +3978,15 @@
 				</summary>
 			</target>
         </member>
-        <member name="T:SudokuStudio.Interaction.Conversions.Extensions.&lt;&gt;E__0">
+        <member name="M:SudokuStudio.Interaction.Conversions.Extensions.ToString(Sudoku.Analytics.Factor,Sudoku.Analytics.Step,System.Decimal,System.IFormatProvider)">
+            <inheritdoc cref="M:SudokuStudio.Interaction.Conversions.Extensions.&lt;G&gt;$EB1323430AE283AAF1610D439170F7ED.ToString(Sudoku.Analytics.Step,System.Decimal,System.IFormatProvider)"/>
+        </member>
+        <member name="T:SudokuStudio.Interaction.Conversions.Extensions.&lt;G&gt;$EB1323430AE283AAF1610D439170F7ED.&lt;M&gt;$D1807C59820321B01F40B9FDA124C1E6">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Factor"/>.
             </summary>
         </member>
-        <member name="M:SudokuStudio.Interaction.Conversions.Extensions.&lt;&gt;E__0.ToString(Sudoku.Analytics.Step,System.Decimal,System.IFormatProvider)">
+        <member name="M:SudokuStudio.Interaction.Conversions.Extensions.&lt;G&gt;$EB1323430AE283AAF1610D439170F7ED.ToString(Sudoku.Analytics.Step,System.Decimal,System.IFormatProvider)">
             <summary>
             Calculates the rating from the specified <see cref="T:Sudoku.Analytics.Step"/> instance, and return the string representation
             of the rating text.
@@ -3992,9 +3995,6 @@
             <param name="scale">The scale value to be used.</param>
             <param name="formatProvider">The culture to be used.</param>
             <returns>The string representation of final rating text.</returns>
-        </member>
-        <member name="M:SudokuStudio.Interaction.Conversions.Extensions.ToString(Sudoku.Analytics.Factor,Sudoku.Analytics.Step,System.Decimal,System.IFormatProvider)">
-            <inheritdoc cref="M:SudokuStudio.Interaction.Conversions.Extensions.&lt;&gt;E__0.ToString(Sudoku.Analytics.Step,System.Decimal,System.IFormatProvider)"/>
         </member>
         <member name="T:SudokuStudio.Interaction.Conversions.BackdropConversion">
             <summary>
@@ -4886,19 +4886,19 @@
             </summary>
             <seealso cref="T:SudokuStudio.Interaction.SudokuFormatFlags"/>
         </member>
-        <member name="T:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.&lt;&gt;E__0">
+        <member name="M:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.get_Converter(SudokuStudio.Interaction.SudokuFormatFlags)">
+            <inheritdoc cref="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.&lt;G&gt;$831724A3875A25A142781824A23012D1.Converter"/>
+        </member>
+        <member name="T:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.&lt;G&gt;$831724A3875A25A142781824A23012D1.&lt;M&gt;$10ED192D97D1E63AC20F1E1642B328FC">
             <summary>
             Provides extension members on <see cref="T:SudokuStudio.Interaction.SudokuFormatFlags"/>.
             </summary>
         </member>
-        <member name="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.&lt;&gt;E__0.Converter">
+        <member name="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.&lt;G&gt;$831724A3875A25A142781824A23012D1.Converter">
             <summary>
             Try to get target <see cref="T:Sudoku.Concepts.Coordinates.Formatting.GridFormatInfo`1"/> instance of type <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is not defined.</exception>
-        </member>
-        <member name="M:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.get_Converter(SudokuStudio.Interaction.SudokuFormatFlags)">
-            <inheritdoc cref="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.&lt;&gt;E__0.Converter"/>
         </member>
         <member name="T:SudokuStudio.Interaction.SudokuPaneMouseWheelChangedEventArgs">
             <summary>
@@ -11008,34 +11008,34 @@
             Indicates the user preference file format (SSP - Sudoku Studio Preference format).
             </summary>
         </member>
-        <member name="T:SudokuStudio.Storage.FileFormats.&lt;&gt;E__0">
+        <member name="M:SudokuStudio.Storage.FileFormats.AddFileFormat(Windows.Storage.Pickers.FileSavePicker,SudokuStudio.Storage.FileFormat)">
+            <inheritdoc cref="M:SudokuStudio.Storage.FileFormats.&lt;G&gt;$A065CF8670CC728645FF3396A2B8C05A.AddFileFormat(SudokuStudio.Storage.FileFormat)"/>
+        </member>
+        <member name="M:SudokuStudio.Storage.FileFormats.AddFileFormat(Windows.Storage.Pickers.FileOpenPicker,SudokuStudio.Storage.FileFormat)">
+            <inheritdoc cref="M:SudokuStudio.Storage.FileFormats.&lt;G&gt;$7C56FB134EF893A33DC98E5C8F3635B9.AddFileFormat(SudokuStudio.Storage.FileFormat)"/>
+        </member>
+        <member name="T:SudokuStudio.Storage.FileFormats.&lt;G&gt;$A065CF8670CC728645FF3396A2B8C05A.&lt;M&gt;$54B9ACB0B3E98B60F0088CEA4A0E6E04">
             <summary>
             Provides extension members on <see cref="T:Windows.Storage.Pickers.FileSavePicker"/>.
             </summary>
         </member>
-        <member name="M:SudokuStudio.Storage.FileFormats.&lt;&gt;E__0.AddFileFormat(SudokuStudio.Storage.FileFormat)">
+        <member name="M:SudokuStudio.Storage.FileFormats.&lt;G&gt;$A065CF8670CC728645FF3396A2B8C05A.AddFileFormat(SudokuStudio.Storage.FileFormat)">
             <summary>
             Add a new format into the collection of file-type choices for a <see cref="T:Windows.Storage.Pickers.FileSavePicker"/> instance.
             </summary>
             <param name="format">The format to be added.</param>
         </member>
-        <member name="M:SudokuStudio.Storage.FileFormats.AddFileFormat(Windows.Storage.Pickers.FileSavePicker,SudokuStudio.Storage.FileFormat)">
-            <inheritdoc cref="M:SudokuStudio.Storage.FileFormats.&lt;&gt;E__0.AddFileFormat(SudokuStudio.Storage.FileFormat)"/>
-        </member>
-        <member name="T:SudokuStudio.Storage.FileFormats.&lt;&gt;E__1">
+        <member name="T:SudokuStudio.Storage.FileFormats.&lt;G&gt;$7C56FB134EF893A33DC98E5C8F3635B9.&lt;M&gt;$9AA68181A89F8595CE431B1C53485711">
             <summary>
             Provides extension members on <see cref="T:Windows.Storage.Pickers.FileOpenPicker"/>.
             </summary>
         </member>
-        <member name="M:SudokuStudio.Storage.FileFormats.&lt;&gt;E__1.AddFileFormat(SudokuStudio.Storage.FileFormat)">
+        <member name="M:SudokuStudio.Storage.FileFormats.&lt;G&gt;$7C56FB134EF893A33DC98E5C8F3635B9.AddFileFormat(SudokuStudio.Storage.FileFormat)">
             <summary>
             Add a new format into the filtering collection for a <see cref="T:Windows.Storage.Pickers.FileOpenPicker"/> instance.
             </summary>
             <param name="format">The format to be added.</param>
             <exception cref="T:System.InvalidOperationException">Throws when the format value is invalid.</exception>
-        </member>
-        <member name="M:SudokuStudio.Storage.FileFormats.AddFileFormat(Windows.Storage.Pickers.FileOpenPicker,SudokuStudio.Storage.FileFormat)">
-            <inheritdoc cref="M:SudokuStudio.Storage.FileFormats.&lt;&gt;E__1.AddFileFormat(SudokuStudio.Storage.FileFormat)"/>
         </member>
         <member name="T:SudokuStudio.Storage.IProgramSupportedFileHandler`1">
             <summary>
@@ -11279,39 +11279,11 @@
         <member name="P:SudokuStudio.Views.Attached.AnalyzerProperties.AnalyzerUseIttoryuMode">
             <inheritdoc cref="P:Sudoku.Analytics.Configuration.StepGathererOptions.UseIttoryuMode"/>
         </member>
-        <member name="T:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;&gt;E__0`1">
-            <summary>
-            Provides extension members on <see cref="T:Sudoku.Analytics.StepGatherer"/>.
-            </summary>
-        </member>
-        <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;&gt;E__0`1.WithRuntimeIdentifierSetter(System.Object,System.String,System.Boolean@)">
-            <summary>
-            Sets the specified property in a <see cref="T:Sudoku.Analytics.StepSearcher"/> with the target value via attached properties
-            stored in type <see cref="T:SudokuStudio.Views.Attached.AnalyzerProperties"/>.
-            </summary>
-            <param name="attachedPropertyValue">The attached property.</param>
-            <param name="methodName">The name of the property <paramref name="attachedPropertyValue"/>.</param>
-            <param name="propertyMatched">
-            A <see cref="T:System.Boolean"/> value indicating whether the property in <see cref="T:Sudoku.Analytics.StepSearcher"/> collection is found,
-            and the target type of that property is same as argument <paramref name="attachedPropertyValue"/>.
-            </param>
-            <returns>The same reference as the current instance.</returns>
-            <seealso cref="T:SudokuStudio.Views.Attached.AnalyzerProperties"/>
-        </member>
-        <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;&gt;E__0`1.WithRuntimeIdentifierSetters(SudokuStudio.Views.Controls.SudokuPane)">
-            <summary>
-            Calls the method <see cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.WithRuntimeIdentifierSetter``1(``0,System.Object,System.String,System.Boolean@)"/> for all properties in type <see cref="T:SudokuStudio.Views.Attached.AnalyzerProperties"/>.
-            </summary>
-            <param name="attachedPane">Indicates the <see cref="T:SudokuStudio.Views.Controls.SudokuPane"/> instance that all properties in this type attached to.</param>
-            <returns>The same reference as the current instance.</returns>
-            <exception cref="T:System.InvalidOperationException">Throws when the matched property is invalid.</exception>
-            <seealso cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.WithRuntimeIdentifierSetter``1(``0,System.Object,System.String,System.Boolean@)"/>
-        </member>
         <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.WithRuntimeIdentifierSetter``1(``0,System.Object,System.String,System.Boolean@)">
-            <inheritdoc cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;&gt;E__0`1.WithRuntimeIdentifierSetter(System.Object,System.String,System.Boolean@)"/>
+            <inheritdoc cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithRuntimeIdentifierSetter(System.Object,System.String,System.Boolean@)"/>
         </member>
         <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.WithRuntimeIdentifierSetters``1(``0,SudokuStudio.Views.Controls.SudokuPane)">
-            <inheritdoc cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;&gt;E__0`1.WithRuntimeIdentifierSetters(SudokuStudio.Views.Controls.SudokuPane)"/>
+            <inheritdoc cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithRuntimeIdentifierSetters(SudokuStudio.Views.Controls.SudokuPane)"/>
         </member>
         <member name="F:SudokuStudio.Views.Attached.AnalyzerProperties.AnalyzerIsFullApplyingProperty">
             <summary>
@@ -12104,6 +12076,34 @@
             <param name="obj">The containing object of the property.</param>
             <returns>The value returned.</returns>
             <seealso cref="P:SudokuStudio.Views.Attached.AnalyzerProperties.AnalyzerUseIttoryuMode"/>
+        </member>
+        <member name="T:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.&lt;M&gt;$DB32F42FFB7A39E1D137C17C0AEFC1BF">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Analytics.StepGatherer"/>.
+            </summary>
+        </member>
+        <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithRuntimeIdentifierSetter(System.Object,System.String,System.Boolean@)">
+            <summary>
+            Sets the specified property in a <see cref="T:Sudoku.Analytics.StepSearcher"/> with the target value via attached properties
+            stored in type <see cref="T:SudokuStudio.Views.Attached.AnalyzerProperties"/>.
+            </summary>
+            <param name="attachedPropertyValue">The attached property.</param>
+            <param name="methodName">The name of the property <paramref name="attachedPropertyValue"/>.</param>
+            <param name="propertyMatched">
+            A <see cref="T:System.Boolean"/> value indicating whether the property in <see cref="T:Sudoku.Analytics.StepSearcher"/> collection is found,
+            and the target type of that property is same as argument <paramref name="attachedPropertyValue"/>.
+            </param>
+            <returns>The same reference as the current instance.</returns>
+            <seealso cref="T:SudokuStudio.Views.Attached.AnalyzerProperties"/>
+        </member>
+        <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithRuntimeIdentifierSetters(SudokuStudio.Views.Controls.SudokuPane)">
+            <summary>
+            Calls the method <see cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.WithRuntimeIdentifierSetter``1(``0,System.Object,System.String,System.Boolean@)"/> for all properties in type <see cref="T:SudokuStudio.Views.Attached.AnalyzerProperties"/>.
+            </summary>
+            <param name="attachedPane">Indicates the <see cref="T:SudokuStudio.Views.Controls.SudokuPane"/> instance that all properties in this type attached to.</param>
+            <returns>The same reference as the current instance.</returns>
+            <exception cref="T:System.InvalidOperationException">Throws when the matched property is invalid.</exception>
+            <seealso cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.WithRuntimeIdentifierSetter``1(``0,System.Object,System.String,System.Boolean@)"/>
         </member>
         <member name="T:SudokuStudio.Views.Attached.CollectorProperties">
             <summary>
@@ -14865,7 +14865,7 @@
             ○ Match a whitespace character greedily at least once.<br/>
             ○ Optional (greedy).<br/>
                 ○ 1st capture group.<br/>
-                    ○ Match a character in the set [+-].<br/>
+                    ○ Match a character in the set [+\-].<br/>
                     ○ Match a character in the set [Cc].<br/>
                     ○ Match a whitespace character greedily at least once.<br/>
             ○ Match a character other than '\n' atomically at least once.<br/>
@@ -15510,18 +15510,18 @@
 				</summary>
 			</target>
         </member>
-        <member name="T:SudokuStudio.Views.Pages.Extensions.&lt;&gt;E__0">
+        <member name="M:SudokuStudio.Views.Pages.Extensions.get_TechniqueString(Sudoku.Categorization.TechniqueSet)">
+            <inheritdoc cref="P:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$0DBF1C20496CFCD9C2348A0194CB91C1.TechniqueString"/>
+        </member>
+        <member name="T:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$0DBF1C20496CFCD9C2348A0194CB91C1.&lt;M&gt;$7DDE55DFC48707B9DBE76C8930857A0E">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Categorization.TechniqueSet"/>.
             </summary>
         </member>
-        <member name="P:SudokuStudio.Views.Pages.Extensions.&lt;&gt;E__0.TechniqueString">
+        <member name="P:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$0DBF1C20496CFCD9C2348A0194CB91C1.TechniqueString">
             <summary>
             Try to fetch the string representation of the techniques chosen in UI.
             </summary>
-        </member>
-        <member name="M:SudokuStudio.Views.Pages.Extensions.get_TechniqueString(Sudoku.Categorization.TechniqueSet)">
-            <inheritdoc cref="P:SudokuStudio.Views.Pages.Extensions.&lt;&gt;E__0.TechniqueString"/>
         </member>
         <member name="T:SudokuStudio.Views.Pages.LibraryPage">
             <summary>
@@ -17638,12 +17638,24 @@
             </summary>
             <seealso cref="T:Windows.UI.Color"/>
         </member>
-        <member name="T:Windows.UI.ColorExtensions.&lt;&gt;E__0">
+        <member name="M:Windows.UI.ColorExtensions.Deconstruct(Windows.UI.Color,System.Byte@,System.Byte@,System.Byte@)">
+            <inheritdoc cref="M:Windows.UI.ColorExtensions.&lt;G&gt;$BB16C40F20C63E9DB9FEB07C52A6A7C6.Deconstruct(System.Byte@,System.Byte@,System.Byte@)"/>
+        </member>
+        <member name="M:Windows.UI.ColorExtensions.Deconstruct(Windows.UI.Color,System.Byte@,System.Byte@,System.Byte@,System.Byte@)">
+            <inheritdoc cref="M:Windows.UI.ColorExtensions.&lt;G&gt;$BB16C40F20C63E9DB9FEB07C52A6A7C6.Deconstruct(System.Byte@,System.Byte@,System.Byte@,System.Byte@)"/>
+        </member>
+        <member name="M:Windows.UI.ColorExtensions.AsSKColor(Windows.UI.Color)">
+            <inheritdoc cref="M:Windows.UI.ColorExtensions.&lt;G&gt;$BB16C40F20C63E9DB9FEB07C52A6A7C6.AsSKColor"/>
+        </member>
+        <member name="M:Windows.UI.ColorExtensions.GetIdentifier(Windows.UI.Color)">
+            <inheritdoc cref="M:Windows.UI.ColorExtensions.&lt;G&gt;$BB16C40F20C63E9DB9FEB07C52A6A7C6.GetIdentifier"/>
+        </member>
+        <member name="T:Windows.UI.ColorExtensions.&lt;G&gt;$BB16C40F20C63E9DB9FEB07C52A6A7C6.&lt;M&gt;$79B7CC6B96879A7697C259BC05F3662B">
             <summary>
             Provides extension members on <see cref="T:Windows.UI.Color"/>.
             </summary>
         </member>
-        <member name="M:Windows.UI.ColorExtensions.&lt;&gt;E__0.Deconstruct(System.Byte@,System.Byte@,System.Byte@)">
+        <member name="M:Windows.UI.ColorExtensions.&lt;G&gt;$BB16C40F20C63E9DB9FEB07C52A6A7C6.Deconstruct(System.Byte@,System.Byte@,System.Byte@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
@@ -17651,7 +17663,7 @@
 				</summary>
 			</target>
         </member>
-        <member name="M:Windows.UI.ColorExtensions.&lt;&gt;E__0.Deconstruct(System.Byte@,System.Byte@,System.Byte@,System.Byte@)">
+        <member name="M:Windows.UI.ColorExtensions.&lt;G&gt;$BB16C40F20C63E9DB9FEB07C52A6A7C6.Deconstruct(System.Byte@,System.Byte@,System.Byte@,System.Byte@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
@@ -17659,29 +17671,17 @@
 				</summary>
 			</target>
         </member>
-        <member name="M:Windows.UI.ColorExtensions.&lt;&gt;E__0.AsSKColor">
+        <member name="M:Windows.UI.ColorExtensions.&lt;G&gt;$BB16C40F20C63E9DB9FEB07C52A6A7C6.AsSKColor">
             <summary>
             Converts the specified color into equivalent <see cref="T:SkiaSharp.SKColor"/> instance.
             </summary>
             <returns>Final <see cref="T:SkiaSharp.SKColor"/> instance.</returns>
         </member>
-        <member name="M:Windows.UI.ColorExtensions.&lt;&gt;E__0.GetIdentifier">
+        <member name="M:Windows.UI.ColorExtensions.&lt;G&gt;$BB16C40F20C63E9DB9FEB07C52A6A7C6.GetIdentifier">
             <summary>
             Gets an equivalent <see cref="T:Sudoku.Drawing.ColorIdentifier"/> instance via the current color.
             </summary>
             <returns>An <see cref="T:Sudoku.Drawing.ColorIdentifier"/> instance.</returns>
-        </member>
-        <member name="M:Windows.UI.ColorExtensions.Deconstruct(Windows.UI.Color,System.Byte@,System.Byte@,System.Byte@)">
-            <inheritdoc cref="M:Windows.UI.ColorExtensions.&lt;&gt;E__0.Deconstruct(System.Byte@,System.Byte@,System.Byte@)"/>
-        </member>
-        <member name="M:Windows.UI.ColorExtensions.Deconstruct(Windows.UI.Color,System.Byte@,System.Byte@,System.Byte@,System.Byte@)">
-            <inheritdoc cref="M:Windows.UI.ColorExtensions.&lt;&gt;E__0.Deconstruct(System.Byte@,System.Byte@,System.Byte@,System.Byte@)"/>
-        </member>
-        <member name="M:Windows.UI.ColorExtensions.AsSKColor(Windows.UI.Color)">
-            <inheritdoc cref="M:Windows.UI.ColorExtensions.&lt;&gt;E__0.AsSKColor"/>
-        </member>
-        <member name="M:Windows.UI.ColorExtensions.GetIdentifier(Windows.UI.Color)">
-            <inheritdoc cref="M:Windows.UI.ColorExtensions.&lt;&gt;E__0.GetIdentifier"/>
         </member>
         <member name="T:Windows.Storage.Pickers.FileOpenPickerExtensions">
             <summary>
@@ -17689,7 +17689,7 @@
             </summary>
             <seealso cref="T:Windows.Storage.Pickers.FileOpenPicker"/>
         </member>
-        <member name="T:Windows.Storage.Pickers.FileOpenPickerExtensions.&lt;&gt;E__0">
+        <member name="T:Windows.Storage.Pickers.FileOpenPickerExtensions.&lt;G&gt;$7C56FB134EF893A33DC98E5C8F3635B9.&lt;M&gt;$9AA68181A89F8595CE431B1C53485711">
             <summary>
             Provides extension memebers on <see cref="T:Windows.Storage.Pickers.FileOpenPicker"/>.
             </summary>
@@ -17700,7 +17700,7 @@
             </summary>
             <seealso cref="T:Windows.Storage.Pickers.FileSavePicker"/>
         </member>
-        <member name="T:Windows.Storage.Pickers.FileSavePickerExtensions.&lt;&gt;E__0">
+        <member name="T:Windows.Storage.Pickers.FileSavePickerExtensions.&lt;G&gt;$A065CF8670CC728645FF3396A2B8C05A.&lt;M&gt;$54B9ACB0B3E98B60F0088CEA4A0E6E04">
             <summary>
             Provides extension memebers on <see cref="T:Windows.Storage.Pickers.FileSavePicker"/>.
             </summary>
@@ -17711,12 +17711,18 @@
             </summary>
             <seealso cref="T:Windows.Foundation.Point"/>
         </member>
-        <member name="T:Windows.Foundation.PointExtensions.&lt;&gt;E__0">
+        <member name="M:Windows.Foundation.PointExtensions.Deconstruct(Windows.Foundation.Point,System.Double@,System.Double@)">
+            <inheritdoc cref="M:Windows.Foundation.PointExtensions.&lt;G&gt;$E5CBC5819895488B0E2A580EC6C7E2E1.Deconstruct(System.Double@,System.Double@)"/>
+        </member>
+        <member name="M:Windows.Foundation.PointExtensions.DistanceTo(Windows.Foundation.Point,Windows.Foundation.Point)">
+            <inheritdoc cref="M:Windows.Foundation.PointExtensions.&lt;G&gt;$E5CBC5819895488B0E2A580EC6C7E2E1.DistanceTo(Windows.Foundation.Point)"/>
+        </member>
+        <member name="T:Windows.Foundation.PointExtensions.&lt;G&gt;$E5CBC5819895488B0E2A580EC6C7E2E1.&lt;M&gt;$5CE4EC99141C292792ED6453DA3BBD07">
             <summary>
             Provides extension members on <see cref="T:Windows.Foundation.Point"/>.
             </summary>
         </member>
-        <member name="M:Windows.Foundation.PointExtensions.&lt;&gt;E__0.Deconstruct(System.Double@,System.Double@)">
+        <member name="M:Windows.Foundation.PointExtensions.&lt;G&gt;$E5CBC5819895488B0E2A580EC6C7E2E1.Deconstruct(System.Double@,System.Double@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
@@ -17724,18 +17730,12 @@
 				</summary>
 			</target>
         </member>
-        <member name="M:Windows.Foundation.PointExtensions.&lt;&gt;E__0.DistanceTo(Windows.Foundation.Point)">
+        <member name="M:Windows.Foundation.PointExtensions.&lt;G&gt;$E5CBC5819895488B0E2A580EC6C7E2E1.DistanceTo(Windows.Foundation.Point)">
             <summary>
             Gets the distance between the two points, starting with the current point, and ending with the specified point.
             </summary>
             <param name="other">The other point.</param>
             <returns>The distance of the two points.</returns>
-        </member>
-        <member name="M:Windows.Foundation.PointExtensions.Deconstruct(Windows.Foundation.Point,System.Double@,System.Double@)">
-            <inheritdoc cref="M:Windows.Foundation.PointExtensions.&lt;&gt;E__0.Deconstruct(System.Double@,System.Double@)"/>
-        </member>
-        <member name="M:Windows.Foundation.PointExtensions.DistanceTo(Windows.Foundation.Point,Windows.Foundation.Point)">
-            <inheritdoc cref="M:Windows.Foundation.PointExtensions.&lt;&gt;E__0.DistanceTo(Windows.Foundation.Point)"/>
         </member>
         <member name="T:Windows.Foundation.SizeExtensions">
             <summary>
@@ -17743,21 +17743,21 @@
             </summary>
             <seealso cref="T:Windows.Foundation.Size"/>
         </member>
-        <member name="T:Windows.Foundation.SizeExtensions.&lt;&gt;E__0">
+        <member name="M:Windows.Foundation.SizeExtensions.Deconstruct(Windows.Foundation.Size,System.Single@,System.Single@)">
+            <inheritdoc cref="M:Windows.Foundation.SizeExtensions.&lt;G&gt;$F18D57BD98D8C041A664D2CF6D588B0E.Deconstruct(System.Single@,System.Single@)"/>
+        </member>
+        <member name="T:Windows.Foundation.SizeExtensions.&lt;G&gt;$F18D57BD98D8C041A664D2CF6D588B0E.&lt;M&gt;$23DB45B863A7AE1B4D5BBA234D7A2480">
             <summary>
             Provides extension members on <see cref="T:Windows.Foundation.Size"/>.
             </summary>
         </member>
-        <member name="M:Windows.Foundation.SizeExtensions.&lt;&gt;E__0.Deconstruct(System.Single@,System.Single@)">
+        <member name="M:Windows.Foundation.SizeExtensions.&lt;G&gt;$F18D57BD98D8C041A664D2CF6D588B0E.Deconstruct(System.Single@,System.Single@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
 					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
 				</summary>
 			</target>
-        </member>
-        <member name="M:Windows.Foundation.SizeExtensions.Deconstruct(Windows.Foundation.Size,System.Single@,System.Single@)">
-            <inheritdoc cref="M:Windows.Foundation.SizeExtensions.&lt;&gt;E__0.Deconstruct(System.Single@,System.Single@)"/>
         </member>
         <member name="T:Windows.Win32.PInvoke">
             <content>
@@ -17795,19 +17795,19 @@
             </summary>
             <seealso cref="T:Microsoft.UI.Xaml.Documents.Run"/>
         </member>
-        <member name="T:Microsoft.UI.Xaml.Documents.RunExtensions.&lt;&gt;E__0">
+        <member name="M:Microsoft.UI.Xaml.Documents.RunExtensions.SingletonSpan``1(Microsoft.UI.Xaml.Documents.Run)">
+            <inheritdoc cref="M:Microsoft.UI.Xaml.Documents.RunExtensions.&lt;G&gt;$D9754C7FE36C276142D9B65FC7810E7B.SingletonSpan``1"/>
+        </member>
+        <member name="T:Microsoft.UI.Xaml.Documents.RunExtensions.&lt;G&gt;$D9754C7FE36C276142D9B65FC7810E7B.&lt;M&gt;$61B5500EFA56C9F120FCDFE9FA682325">
             <summary>
             Provides extension members on <see cref="T:Microsoft.UI.Xaml.Documents.Run"/>.
             </summary>
         </member>
-        <member name="M:Microsoft.UI.Xaml.Documents.RunExtensions.&lt;&gt;E__0.SingletonSpan``1">
+        <member name="M:Microsoft.UI.Xaml.Documents.RunExtensions.&lt;G&gt;$D9754C7FE36C276142D9B65FC7810E7B.SingletonSpan``1">
             <summary>
             Creates a <see cref="T:Microsoft.UI.Xaml.Documents.Bold"/> instance with a singleton value of <see cref="T:Microsoft.UI.Xaml.Documents.Run"/>.
             </summary>
             <returns>A <see cref="T:Microsoft.UI.Xaml.Documents.Bold"/> instance.</returns>
-        </member>
-        <member name="M:Microsoft.UI.Xaml.Documents.RunExtensions.SingletonSpan``1(Microsoft.UI.Xaml.Documents.Run)">
-            <inheritdoc cref="M:Microsoft.UI.Xaml.Documents.RunExtensions.&lt;&gt;E__0.SingletonSpan``1"/>
         </member>
         <member name="T:Microsoft.UI.Xaml.UIElementExtensions">
             <summary>
@@ -17815,14 +17815,17 @@
             </summary>
             <seealso cref="T:Microsoft.UI.Xaml.UIElement"/>
         </member>
-        <member name="T:Microsoft.UI.Xaml.UIElementExtensions.&lt;&gt;E__0`1">
+        <member name="M:Microsoft.UI.Xaml.UIElementExtensions.RenderToAsync``2(``0,``1)">
+            <inheritdoc cref="M:Microsoft.UI.Xaml.UIElementExtensions.&lt;G&gt;$173E6A2B7FF026B3BC4CBA9988C29F4F.RenderToAsync``1(``0)"/>
+        </member>
+        <member name="T:Microsoft.UI.Xaml.UIElementExtensions.&lt;G&gt;$173E6A2B7FF026B3BC4CBA9988C29F4F.&lt;M&gt;$41B91CF64347DB343D740780ED03C5F1">
             <summary>
             Provides extension members on <typeparamref name="TUIElement"/>,
             where <typeparamref name="TUIElement"/> satisfies <see cref="T:Microsoft.UI.Xaml.UIElement"/> constraint.
             </summary>
             <typeparam name="TUIElement">The type of the UI control.</typeparam>
         </member>
-        <member name="M:Microsoft.UI.Xaml.UIElementExtensions.&lt;&gt;E__0`1.RenderToAsync``1(``0)">
+        <member name="M:Microsoft.UI.Xaml.UIElementExtensions.&lt;G&gt;$173E6A2B7FF026B3BC4CBA9988C29F4F.RenderToAsync``1(``0)">
             <summary>
             Draws the specified UI control to the target file as a picture.
             </summary>
@@ -17838,30 +17841,27 @@
             Throws when the argument <paramref name="fileOrStream"/> is not supported.
             </exception>
         </member>
-        <member name="M:Microsoft.UI.Xaml.UIElementExtensions.RenderToAsync``2(``0,``1)">
-            <inheritdoc cref="M:Microsoft.UI.Xaml.UIElementExtensions.&lt;&gt;E__0`1.RenderToAsync``1(``0)"/>
-        </member>
         <member name="T:System.Numerics.Vector2Extensions">
             <summary>
             Provides with extension methods on <see cref="T:System.Numerics.Vector2"/>.
             </summary>
             <seealso cref="T:System.Numerics.Vector2"/>
         </member>
-        <member name="T:System.Numerics.Vector2Extensions.&lt;&gt;E__0">
+        <member name="M:System.Numerics.Vector2Extensions.Deconstruct(System.Numerics.Vector2,System.Single@,System.Single@)">
+            <inheritdoc cref="M:System.Numerics.Vector2Extensions.&lt;G&gt;$31F76E721F56097EE9FE33FA9ECF3447.Deconstruct(System.Single@,System.Single@)"/>
+        </member>
+        <member name="T:System.Numerics.Vector2Extensions.&lt;G&gt;$31F76E721F56097EE9FE33FA9ECF3447.&lt;M&gt;$A64F2B590DF18DB8776CFA3D848CF8A5">
             <summary>
             Provides extension members on <see cref="T:System.Numerics.Vector2"/>.
             </summary>
         </member>
-        <member name="M:System.Numerics.Vector2Extensions.&lt;&gt;E__0.Deconstruct(System.Single@,System.Single@)">
+        <member name="M:System.Numerics.Vector2Extensions.&lt;G&gt;$31F76E721F56097EE9FE33FA9ECF3447.Deconstruct(System.Single@,System.Single@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
 					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
 				</summary>
 			</target>
-        </member>
-        <member name="M:System.Numerics.Vector2Extensions.Deconstruct(System.Numerics.Vector2,System.Single@,System.Single@)">
-            <inheritdoc cref="M:System.Numerics.Vector2Extensions.&lt;&gt;E__0.Deconstruct(System.Single@,System.Single@)"/>
         </member>
         <member name="T:System.Text.RegularExpressions.Generated.LoadCommandPattern_0">
             <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the LoadCommandPattern method.</summary>

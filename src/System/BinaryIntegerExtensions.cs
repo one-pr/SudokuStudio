@@ -12,7 +12,6 @@ public static class BinaryIntegerExtensions
 	/// </summary>
 	extension<TSelf>(TSelf) where TSelf : IBinaryInteger<TSelf>
 	{
-#if EXTENSION_OPERATORS
 		/// <summary>
 		/// Determine whether the specified value isn't equal to 0.
 		/// </summary>
@@ -26,6 +25,5 @@ public static class BinaryIntegerExtensions
 		/// <param name="value">The value.</param>
 		/// <returns>A <see cref="bool"/> result indicating that.</returns>
 		public static bool operator false(TSelf value) => value == TSelf.Zero;
-#endif
 	}
 }

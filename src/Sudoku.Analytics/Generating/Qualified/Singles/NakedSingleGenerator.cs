@@ -33,11 +33,7 @@ public sealed class NakedSingleGenerator : SingleGenerator
 			return true;
 
 		NextLoop:
-#if EXTENSION_OPERATORS
 			if (!cancellationToken)
-#else
-			if (cancellationToken.IsCancellationRequested)
-#endif
 			{
 				result = Grid.Undefined;
 				return false;
@@ -140,11 +136,7 @@ public sealed class NakedSingleGenerator : SingleGenerator
 				}
 				default:
 				{
-#if EXTENSION_OPERATORS
 					if (!cancellationToken)
-#else
-					if (cancellationToken.IsCancellationRequested)
-#endif
 					{
 						(result, phasedGrid, step) = (Grid.Undefined, Grid.Undefined, null);
 						return false;

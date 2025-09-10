@@ -20,15 +20,9 @@ public static class DiffTechniqueAnalysis
 		/// <returns>A <see cref="bool"/> result indicating whether such step can be inferred.</returns>
 		public static bool TryAnalyzeTechnique(in Grid left, in Grid right, Collector collector, [NotNullWhen(true)] out Step? step)
 		{
-			if (
-#if EXTENSION_OPERATORS
-				left - right is not { } result
-#else
-				!Grid.TryAnalyzeDiff(left, right, out var result)
-#endif
+			if (left - right is not { } result
 				|| result.Type is not (DiffType.AddModifiable or DiffType.RemoveCandidate)
-				|| left.Uniqueness == Uniqueness.Bad || right.Uniqueness == Uniqueness.Bad
-			)
+				|| left.Uniqueness == Uniqueness.Bad || right.Uniqueness == Uniqueness.Bad)
 			{
 				step = null;
 				return false;

@@ -11,7 +11,6 @@ public static class GridConclusionExtensions
 	/// </summary>
 	extension(ref Grid @this)
 	{
-#if EXTENSION_OPERATORS
 #if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
 		/// <summary>
 		/// Applies the conclusion to the current grid.
@@ -33,6 +32,5 @@ public static class GridConclusionExtensions
 			tempGrid.Apply(conclusion);
 			return tempGrid;
 		}
-#endif
 	}
 }

@@ -26,11 +26,7 @@ public static class SolutionEnumerableSolverExtensions
 			await foreach (var _ in @this.EnumerateSolutionsAsync(grid, cancellationToken))
 			{
 				result++;
-#if EXTENSION_OPERATORS
 				if (!cancellationToken)
-#else
-				if (cancellationToken.IsCancellationRequested)
-#endif
 				{
 					return 0;
 				}

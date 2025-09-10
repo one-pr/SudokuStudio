@@ -59,22 +59,7 @@ public static class Combinatorics
 		/// <returns>
 		/// All possible subsets returned.
 		/// </returns>
-		public ReadOnlySpan<T[]> GetSubsets()
-#if EXTENSION_OPERATORS
-			=> @this | @this.Length;
-#else
-		{
-			var result = new List<T[]>();
-			for (var size = 1; size <= @this.Length; size++)
-			{
-				foreach (var element in @this.GetSubsets(size))
-				{
-					result.Add(element);
-				}
-			}
-			return result.AsSpan();
-		}
-#endif
+		public ReadOnlySpan<T[]> GetSubsets() => @this | @this.Length;
 
 		/// <summary>
 		/// Get all subsets from the specified number of the values to take.
@@ -89,23 +74,7 @@ public static class Combinatorics
 		/// 3 cases.
 		/// </returns>
 		/// <exception cref="ArgumentException">Throws when the argument is negative.</exception>
-		public ReadOnlySpan<T[]> GetSubsets(int count)
-#if EXTENSION_OPERATORS
-			=> @this & count;
-#else
-		{
-			ArgumentException.ThrowIfAssertionFailed(count >= 0);
-
-			if (count == 0)
-			{
-				return [];
-			}
-
-			var result = new List<T[]>();
-			GetSubsetsCore(@this.Length, count, count, stackalloc int[count], @this, result);
-			return result.AsSpan();
-		}
-#endif
+		public ReadOnlySpan<T[]> GetSubsets(int count) => @this & count;
 
 		/// <summary>
 		/// Get all permutations from the collection.
@@ -211,7 +180,6 @@ public static class Combinatorics
 		}
 
 
-#if EXTENSION_OPERATORS
 		/// <summary>
 		/// Get all subsets from the specified number of the values to take.
 		/// </summary>
@@ -259,7 +227,6 @@ public static class Combinatorics
 			}
 			return result.AsSpan();
 		}
-#endif
 	}
 
 	/// <summary>

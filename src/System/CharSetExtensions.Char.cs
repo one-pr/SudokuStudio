@@ -18,7 +18,6 @@ public partial class CharSetExtensions
 		public char LowerCasing => char.ToLower(@this);
 
 
-#if EXTENSION_OPERATORS
 #if false
 		/// <summary>
 		/// Repeats the specified string specified times.
@@ -33,7 +32,6 @@ public partial class CharSetExtensions
 			result.AsSpan().Fill(value);
 			return new(result);
 		}
-#endif
 #endif
 	}
 }

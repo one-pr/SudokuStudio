@@ -5,13 +5,8 @@ namespace Sudoku.Generating;
 /// </summary>
 /// <param name="missingDigit"><inheritdoc cref="MissingDigit" path="/summary"/></param>
 /// <param name="seedPattern"><inheritdoc cref="_seedPattern" path="/summary"/></param>
-public ref struct PatternBasedPuzzleGenerator(ref readonly CellMap seedPattern, Digit missingDigit = -1) : IGenerator<Grid>
+public readonly ref struct PatternBasedPuzzleGenerator(ref readonly CellMap seedPattern, Digit missingDigit = -1) : IGenerator<Grid>
 {
-	/// <summary>
-	/// Indicates whether the generator is canceled.
-	/// </summary>
-	private bool? _isCancelled;
-
 	/// <summary>
 	/// Indicates the predefind pattern used.
 	/// </summary>
@@ -32,32 +27,18 @@ public ref struct PatternBasedPuzzleGenerator(ref readonly CellMap seedPattern, 
 	/// <inheritdoc cref="IGenerator{TResult}.Generate(IProgress{GeneratorProgress}, CancellationToken)"/>
 	public Grid Generate(IProgress<GeneratorProgress>? progress = null, CancellationToken cancellationToken = default)
 	{
-		// Reset the state.
-		_isCancelled = false;
-
-		try
+		if (_seedPattern.Count < 17)
 		{
-			if (_seedPattern.Count < 17)
-			{
-				return Grid.Undefined;
-			}
+			return Grid.Undefined;
+		}
 
-			var resultGrid = Grid.Undefined;
-			try
-			{
-				var (playground, count, cellsOrdered) = (Grid.Empty, 0, OrderCellsViaConnectionComplexity());
-				GenerateCore(cellsOrdered, ref playground, ref resultGrid, 0, ref count, progress, cancellationToken);
-			}
-			catch
-			{
-				throw;
-			}
-			return resultGrid;
-		}
-		finally
-		{
-			_isCancelled = null;
-		}
+		var resultGrid = Grid.Undefined;
+		var (playground, count, cellsOrdered) = (Grid.Empty, 0, OrderCellsViaConnectionComplexity());
+
+		// Generate puzzles.
+		// If canceled, the return value 'resultGrid' will be 'Grid.Undefined', which is also expected value to be returned.
+		GenerateCore(cellsOrdered, ref playground, ref resultGrid, 0, ref count, progress, cancellationToken);
+		return resultGrid;
 	}
 
 	/// <summary>
@@ -109,13 +90,8 @@ public ref struct PatternBasedPuzzleGenerator(ref readonly CellMap seedPattern, 
 				continue;
 			}
 
-#if EXTENSION_OPERATORS
 			if (!cancellationToken)
-#else
-			if (cancellationToken.IsCancellationRequested)
-#endif
 			{
-				_isCancelled = true;
 				return true;
 			}
 

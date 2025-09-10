@@ -53,7 +53,6 @@ public partial class CharSetExtensions
 		}
 
 
-#if EXTENSION_OPERATORS
 		/// <summary>
 		/// Repeats the specified string specified times.
 		/// </summary>
@@ -98,6 +97,5 @@ public partial class CharSetExtensions
 		/// An array whose elements contain the substrings from this instance that are delimited by separator.
 		/// </returns>
 		public static ReadOnlySpan<string> operator /(string value, string separator) => value.Split(separator);
-#endif
 	}
 }
