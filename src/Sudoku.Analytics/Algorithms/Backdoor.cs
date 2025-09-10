@@ -1,11 +1,19 @@
 namespace Sudoku.Algorithms;
 
 /// <summary>
-/// Represents a type that searches for backdoors.
+/// Represents a type that checks for concept "<see href="http://sudopedia.enjoysudoku.com/Backdoor.html">Backdoor</see>".
 /// </summary>
+/// <remarks>
+/// A backdoor is a placement of one or more candidates in their respective cells,
+/// which allows the player to complete the puzzle with relatively simple solving techniques.
+/// </remarks>
 public static class Backdoor
 {
-	/// <inheritdoc/>
+	/// <summary>
+	/// Try to find backdoors of the grid.
+	/// </summary>
+	/// <param name="grid">The grid.</param>
+	/// <returns>All backdoors found.</returns>
 	public static ReadOnlySpan<Conclusion> GetBackdoors(in Grid grid)
 	{
 		if (grid.PuzzleType != SudokuType.Standard || grid.IsSolved || !grid.IsValid)
