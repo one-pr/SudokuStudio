@@ -1288,11 +1288,15 @@
             </listheader>
             <item>
             <term><see langword="true"/></term>
-            <description>The puzzle has a unique solution, and the first deletion step has same difficulty with the whole steps.</description>
+            <description>
+            The puzzle has a unique solution, and the first deletion step has same difficulty with the whole steps.
+            </description>
             </item>
             <item>
             <term><see langword="false"/></term>
-            <description>The puzzle has a unique solution, but the first deletion step does not have same difficulty with the whole steps.</description>
+            <description>
+            The puzzle has a unique solution, but the first deletion step does not have same difficulty with the whole steps.
+            </description>
             </item>
             <item>
             <term><see langword="null"/></term>

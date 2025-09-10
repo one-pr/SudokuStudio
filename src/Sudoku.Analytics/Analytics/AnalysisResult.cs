@@ -85,7 +85,8 @@ public sealed record AnalysisResult(in Grid Puzzle) :
 	public bool? IsPearl
 		=> this switch
 		{
-			{ IsSolved: true, PearlStep: { Difficulty: var ep } step } => ep == MaxDifficulty && step is not SingleStep,
+			{ IsSolved: true, PearlStep: { Difficulty: var ep } and not SingleStep } when ep == MaxDifficulty => true,
+			{ IsSolved: true } => false,
 			_ => null
 		};
 
@@ -102,11 +103,15 @@ public sealed record AnalysisResult(in Grid Puzzle) :
 	/// </listheader>
 	/// <item>
 	/// <term><see langword="true"/></term>
-	/// <description>The puzzle has a unique solution, and the first deletion step has same difficulty with the whole steps.</description>
+	/// <description>
+	/// The puzzle has a unique solution, and the first deletion step has same difficulty with the whole steps.
+	/// </description>
 	/// </item>
 	/// <item>
 	/// <term><see langword="false"/></term>
-	/// <description>The puzzle has a unique solution, but the first deletion step does not have same difficulty with the whole steps.</description>
+	/// <description>
+	/// The puzzle has a unique solution, but the first deletion step does not have same difficulty with the whole steps.
+	/// </description>
 	/// </item>
 	/// <item>
 	/// <term><see langword="null"/></term>
@@ -117,8 +122,12 @@ public sealed record AnalysisResult(in Grid Puzzle) :
 	public bool? IsDiamond
 		=> this switch
 		{
-			{ IsSolved: true, PearlStep: { Difficulty: var ep } pStep, DiamondStep: { Difficulty: var ed } dStep }
-				=> ed == MaxDifficulty && ep == ed && (pStep, dStep) is (not SingleStep, not SingleStep),
+			{
+				IsSolved: true,
+				PearlStep: { Difficulty: var ep } and not SingleStep,
+				DiamondStep: { Difficulty: var ed } and not SingleStep
+			} when ed == MaxDifficulty && ep == ed => true,
+			{ IsSolved: true } => false,
 			_ => null
 		};
 
