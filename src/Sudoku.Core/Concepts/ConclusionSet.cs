@@ -477,7 +477,6 @@ public sealed class ConclusionSet :
 		=> CoordinateParser.GetInstance(provider).ConclusionParser(s);
 
 
-#if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
 	/// <summary>
 	/// Adds a new technique into the current collection.
 	/// </summary>
@@ -507,7 +506,7 @@ public sealed class ConclusionSet :
 	/// </summary>
 	/// <param name="value">The instance.</param>
 	public void operator ^=(ConclusionSet value) => _bitArray.Xor(value._bitArray);
-#endif
+
 
 	/// <inheritdoc/>
 	public static bool operator !(ConclusionSet value) => value.Count == 0;

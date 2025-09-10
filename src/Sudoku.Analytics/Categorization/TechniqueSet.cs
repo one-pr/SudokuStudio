@@ -475,7 +475,6 @@ public sealed partial class TechniqueSet() :
 	private static Technique TechniqueProjectionBack(int index) => (Technique)index + 1;
 
 
-#if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
 	/// <summary>
 	/// Adds a new technique into the current collection.
 	/// </summary>
@@ -517,7 +516,7 @@ public sealed partial class TechniqueSet() :
 	/// </summary>
 	/// <param name="value">The instance.</param>
 	public void operator ^=(TechniqueSet value) => _bitArray.Xor(value._bitArray);
-#endif
+
 
 	/// <inheritdoc/>
 	public static bool operator !(TechniqueSet value) => value.Count == 0;

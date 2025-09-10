@@ -702,7 +702,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 
-#if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
 	/// <inheritdoc/>
 	public void operator &=(in CandidateMap value)
 	{
@@ -735,7 +734,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 
 	/// <inheritdoc/>
 	public void operator -=(Candidate offset) => _bits[offset >> 6] &= ~(1UL << (offset & 63));
-#endif
+
 
 	/// <inheritdoc/>
 	public static bool operator !(in CandidateMap value) => value.Count == 0;

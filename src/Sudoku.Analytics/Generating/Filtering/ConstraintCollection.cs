@@ -197,7 +197,6 @@ public sealed class ConstraintCollection :
 	IEnumerable<TResult> IOfTypeMethod<ConstraintCollection, Constraint>.OfType<TResult>() => OfType<TResult>().ToArray();
 
 
-#if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
 	/// <summary>
 	/// Adds a new constraint into the current collection, or do nothing if <paramref name="value"/> is <see langword="null"/>.
 	/// </summary>
@@ -221,7 +220,7 @@ public sealed class ConstraintCollection :
 			Remove(value);
 		}
 	}
-#endif
+
 
 	/// <inheritdoc/>
 	public static ConstraintCollection operator +(ConstraintCollection left, Constraint? right)

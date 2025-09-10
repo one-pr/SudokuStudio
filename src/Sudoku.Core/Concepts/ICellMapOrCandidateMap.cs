@@ -414,7 +414,6 @@ public interface ICellMapOrCandidateMap<TSelf, TElement> :
 	}
 
 
-#if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
 	/// <summary>
 	/// Performs bitwise-and operation and assign the value to the current instance.
 	/// </summary>
@@ -444,7 +443,7 @@ public interface ICellMapOrCandidateMap<TSelf, TElement> :
 	/// </summary>
 	/// <param name="offset">The offset.</param>
 	void operator -=(TElement offset) => Remove(offset);
-#endif
+
 
 	/// <summary>
 	/// Determines whether the current collection is empty.

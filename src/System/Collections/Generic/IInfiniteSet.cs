@@ -17,13 +17,12 @@ public interface IInfiniteSet<TSelf, T> : ISet<T> where TSelf : IInfiniteSet<TSe
 	TSelf ExceptWith(TSelf other);
 
 
-#if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
 	/// <summary>
 	/// Calls <see cref="ExceptWith(TSelf)"/>.
 	/// </summary>
 	/// <param name="value">The value.</param>
 	void operator -=(TSelf value) => ExceptWith(value);
-#endif
+
 
 	/// <inheritdoc cref="ISubtractionOperators{TSelf, TOther, TResult}.op_Subtraction(TSelf, TOther)"/>
 	static virtual TSelf operator -(TSelf left, TSelf right)

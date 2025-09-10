@@ -11,13 +11,11 @@ public static class GridConclusionExtensions
 	/// </summary>
 	extension(ref Grid @this)
 	{
-#if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
 		/// <summary>
 		/// Applies the conclusion to the current grid.
 		/// </summary>
 		/// <param name="conclusion">The conclusion.</param>
 		public void operator >>=(Conclusion conclusion) => @this.Apply(conclusion);
-#endif
 
 
 		/// <summary>

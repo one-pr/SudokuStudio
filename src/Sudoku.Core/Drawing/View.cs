@@ -159,7 +159,6 @@ public sealed class View :
 	IEnumerable<TResult> IOfTypeMethod<View, ViewNode>.OfType<TResult>() => this.OfType<TResult>().ToArray();
 
 
-#if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
 	/// <summary>
 	/// Performs bitwise-and operation and assign the value to the current instance.
 	/// </summary>
@@ -177,7 +176,7 @@ public sealed class View :
 	/// </summary>
 	/// <param name="value">The instance.</param>
 	public void operator ^=(View value) => SymmetricExceptWith(value);
-#endif
+
 
 	/// <inheritdoc/>
 	public static bool operator ==(View? left, View? right)

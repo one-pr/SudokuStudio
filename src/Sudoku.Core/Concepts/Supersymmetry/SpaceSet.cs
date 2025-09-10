@@ -35,7 +35,7 @@ public partial struct SpaceSet :
 	/// <summary>
 	/// Indicates the buffer entry field.
 	/// </summary>
-	private BackingBuffer _field;
+	private InlineArray4<CellMap> _field;
 
 
 	/// <inheritdoc/>
@@ -381,7 +381,6 @@ public partial struct SpaceSet :
 	static SpaceSet IParsable<SpaceSet>.Parse(string s, IFormatProvider? provider) => Parse(s);
 
 
-#if USER_DEFINED_COMPOUND_ASSIGNMENT_OPERATORS
 	/// <summary>
 	/// Adds a new space into the current collection.
 	/// </summary>
@@ -429,7 +428,6 @@ public partial struct SpaceSet :
 		_field[2] ^= value._field[2];
 		_field[3] ^= value._field[3];
 	}
-#endif
 
 	/// <inheritdoc cref="ILogicalOperators{TSelf}.op_LogicalNot(TSelf)"/>
 	public static bool operator !(in SpaceSet value) => value.Count == 0;
