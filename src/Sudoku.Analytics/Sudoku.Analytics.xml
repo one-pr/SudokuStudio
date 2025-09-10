@@ -21693,10 +21693,10 @@
         <member name="F:Sudoku.Categorization.TechniqueSet.ConfigurableTechniqueRelationGroups">
             <summary>
             Indicates the technique groups and its containing techniques that supports customization on difficulty rating and level.
-            Call <see cref="M:Sudoku.Categorization.TechniqueExtensions.get_SupportsCustomizingDifficulty(Sudoku.Categorization.Technique)"/>
+            Call <see cref="P:Sudoku.Categorization.TechniqueExtensions.&lt;G&gt;$ECC22D9E429C37D2A85F42507A06382E.SupportsCustomizingDifficulty"/>
             to check whether a technique supports configuration.
             </summary>
-            <seealso cref="M:Sudoku.Categorization.TechniqueExtensions.get_SupportsCustomizingDifficulty(Sudoku.Categorization.Technique)"/>
+            <seealso cref="P:Sudoku.Categorization.TechniqueExtensions.&lt;G&gt;$ECC22D9E429C37D2A85F42507A06382E.SupportsCustomizingDifficulty"/>
         </member>
         <member name="F:Sudoku.Categorization.TechniqueSet.TechniquesCount">
             <summary>
@@ -21739,9 +21739,9 @@
             <remarks>
             This property returns a list of <see cref="T:Sudoku.Analytics.DifficultyLevel"/> flags, merged into one instance.
             If you want to get the internal fields of flags the return value contains, use <see langword="foreach"/> loop to iterate them,
-            or use method <see cref="M:System.EnumExtensions.get_AllFlags``1(``0)"/>.
+            or use method <see cref="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285.AllFlags"/>.
             </remarks>
-            <seealso cref="M:System.EnumExtensions.get_AllFlags``1(``0)"/>
+            <seealso cref="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285.AllFlags"/>
         </member>
         <member name="P:Sudoku.Categorization.TechniqueSet.TechniqueGroups">
             <summary>

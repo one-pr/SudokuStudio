@@ -43,10 +43,10 @@ public sealed partial class TechniqueSet() :
 
 	/// <summary>
 	/// Indicates the technique groups and its containing techniques that supports customization on difficulty rating and level.
-	/// Call <see cref="TechniqueExtensions.get_SupportsCustomizingDifficulty(Technique)"/>
+	/// Call <see cref="TechniqueExtensions.extension(Technique).SupportsCustomizingDifficulty"/>
 	/// to check whether a technique supports configuration.
 	/// </summary>
-	/// <seealso cref="TechniqueExtensions.get_SupportsCustomizingDifficulty(Technique)"/>
+	/// <seealso cref="TechniqueExtensions.extension(Technique).SupportsCustomizingDifficulty"/>
 	public static readonly FrozenDictionary<TechniqueGroup, TechniqueSet> ConfigurableTechniqueRelationGroups;
 
 	/// <summary>
@@ -111,9 +111,9 @@ public sealed partial class TechniqueSet() :
 	/// <remarks>
 	/// This property returns a list of <see cref="DifficultyLevel"/> flags, merged into one instance.
 	/// If you want to get the internal fields of flags the return value contains, use <see langword="foreach"/> loop to iterate them,
-	/// or use method <see cref="EnumExtensions.get_AllFlags{T}(T)"/>.
+	/// or use method <see cref="EnumExtensions.extension{T}(T).AllFlags"/>.
 	/// </remarks>
-	/// <seealso cref="EnumExtensions.get_AllFlags{T}(T)"/>
+	/// <seealso cref="EnumExtensions.extension{T}(T).AllFlags"/>
 	public DifficultyLevel DifficultyRange
 	{
 		get
