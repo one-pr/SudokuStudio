@@ -105,13 +105,19 @@
             </summary>
             <seealso cref="T:Sudoku.CommandLine.CommandBase"/>
         </member>
-        <member name="T:Sudoku.CommandLine.CommandBaseExtensions.&lt;&gt;E__0`1">
+        <member name="M:Sudoku.CommandLine.CommandBaseExtensions.Deconstruct``1(``0,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@)">
+            <inheritdoc cref="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@)"/>
+        </member>
+        <member name="M:Sudoku.CommandLine.CommandBaseExtensions.Deconstruct``1(``0,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@)">
+            <inheritdoc cref="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@)"/>
+        </member>
+        <member name="T:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749.&lt;M&gt;$7201DC8AC8BD890CA6049EA76DA40E5F">
             <summary>
             Provides extension members on <typeparamref name="TCommand"/>,
             where <typeparamref name="TCommand"/> satisfies <see cref="T:Sudoku.CommandLine.CommandBase"/> constraint.
             </summary>
         </member>
-        <member name="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;&gt;E__0`1.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@)">
+        <member name="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
@@ -119,19 +125,13 @@
 				</summary>
 			</target>
         </member>
-        <member name="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;&gt;E__0`1.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@)">
+        <member name="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
 					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
 				</summary>
 			</target>
-        </member>
-        <member name="M:Sudoku.CommandLine.CommandBaseExtensions.Deconstruct``1(``0,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@)">
-            <inheritdoc cref="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;&gt;E__0`1.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@)"/>
-        </member>
-        <member name="M:Sudoku.CommandLine.CommandBaseExtensions.Deconstruct``1(``0,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@)">
-            <inheritdoc cref="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;&gt;E__0`1.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@)"/>
         </member>
         <member name="T:Sudoku.CommandLine.CommandLineParser">
             <summary>
@@ -892,47 +892,47 @@
             </summary>
             <seealso cref="T:System.CommandLine.Command"/>
         </member>
-        <member name="T:System.CommandLine.CommandExtensions.&lt;&gt;E__0">
+        <member name="M:System.CommandLine.CommandExtensions.AddRange(System.CommandLine.Command,Sudoku.CommandLine.SymbolList{System.CommandLine.Option})">
+            <inheritdoc cref="M:System.CommandLine.CommandExtensions.&lt;G&gt;$81468004E349C15CBD0731E19E5DDDFA.AddRange(Sudoku.CommandLine.SymbolList{System.CommandLine.Option})"/>
+        </member>
+        <member name="M:System.CommandLine.CommandExtensions.AddRange(System.CommandLine.Command,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument})">
+            <inheritdoc cref="M:System.CommandLine.CommandExtensions.&lt;G&gt;$81468004E349C15CBD0731E19E5DDDFA.AddRange(Sudoku.CommandLine.SymbolList{System.CommandLine.Argument})"/>
+        </member>
+        <member name="M:System.CommandLine.CommandExtensions.AddRange(System.CommandLine.Command,Sudoku.CommandLine.SymbolList{System.CommandLine.Command})">
+            <inheritdoc cref="M:System.CommandLine.CommandExtensions.&lt;G&gt;$81468004E349C15CBD0731E19E5DDDFA.AddRange(Sudoku.CommandLine.SymbolList{System.CommandLine.Command})"/>
+        </member>
+        <member name="M:System.CommandLine.CommandExtensions.AddRangeGlobal(System.CommandLine.Command,Sudoku.CommandLine.SymbolList{System.CommandLine.Option})">
+            <inheritdoc cref="M:System.CommandLine.CommandExtensions.&lt;G&gt;$81468004E349C15CBD0731E19E5DDDFA.AddRangeGlobal(Sudoku.CommandLine.SymbolList{System.CommandLine.Option})"/>
+        </member>
+        <member name="T:System.CommandLine.CommandExtensions.&lt;G&gt;$81468004E349C15CBD0731E19E5DDDFA.&lt;M&gt;$3F160269C8AC7C7E16D6B5878BE5EA5D">
             <summary>
             Provides extension members on <see cref="T:System.CommandLine.Command"/>.
             </summary>
         </member>
-        <member name="M:System.CommandLine.CommandExtensions.&lt;&gt;E__0.AddRange(Sudoku.CommandLine.SymbolList{System.CommandLine.Option})">
+        <member name="M:System.CommandLine.CommandExtensions.&lt;G&gt;$81468004E349C15CBD0731E19E5DDDFA.AddRange(Sudoku.CommandLine.SymbolList{System.CommandLine.Option})">
             <summary>
             Adds a list of <see cref="T:System.CommandLine.Option"/> instances into the command.
             </summary>
             <param name="options">The options.</param>
         </member>
-        <member name="M:System.CommandLine.CommandExtensions.&lt;&gt;E__0.AddRange(Sudoku.CommandLine.SymbolList{System.CommandLine.Argument})">
+        <member name="M:System.CommandLine.CommandExtensions.&lt;G&gt;$81468004E349C15CBD0731E19E5DDDFA.AddRange(Sudoku.CommandLine.SymbolList{System.CommandLine.Argument})">
             <summary>
             Adds a list of <see cref="T:System.CommandLine.Argument"/> instances into the command.
             </summary>
             <param name="arguments">The arguments.</param>
         </member>
-        <member name="M:System.CommandLine.CommandExtensions.&lt;&gt;E__0.AddRange(Sudoku.CommandLine.SymbolList{System.CommandLine.Command})">
+        <member name="M:System.CommandLine.CommandExtensions.&lt;G&gt;$81468004E349C15CBD0731E19E5DDDFA.AddRange(Sudoku.CommandLine.SymbolList{System.CommandLine.Command})">
             <summary>
             Adds a list of <see cref="T:System.CommandLine.Command"/> instances into the command.
             </summary>
             <param name="subcommands">The subcommands.</param>
         </member>
-        <member name="M:System.CommandLine.CommandExtensions.&lt;&gt;E__0.AddRangeGlobal(Sudoku.CommandLine.SymbolList{System.CommandLine.Option})">
+        <member name="M:System.CommandLine.CommandExtensions.&lt;G&gt;$81468004E349C15CBD0731E19E5DDDFA.AddRangeGlobal(Sudoku.CommandLine.SymbolList{System.CommandLine.Option})">
             <summary>
             Adds a list of <see cref="T:System.CommandLine.Option"/> instances into the command,
             as global ones applying to the current command and its sub-commands.
             </summary>
             <param name="options">The options.</param>
-        </member>
-        <member name="M:System.CommandLine.CommandExtensions.AddRange(System.CommandLine.Command,Sudoku.CommandLine.SymbolList{System.CommandLine.Option})">
-            <inheritdoc cref="M:System.CommandLine.CommandExtensions.&lt;&gt;E__0.AddRange(Sudoku.CommandLine.SymbolList{System.CommandLine.Option})"/>
-        </member>
-        <member name="M:System.CommandLine.CommandExtensions.AddRange(System.CommandLine.Command,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument})">
-            <inheritdoc cref="M:System.CommandLine.CommandExtensions.&lt;&gt;E__0.AddRange(Sudoku.CommandLine.SymbolList{System.CommandLine.Argument})"/>
-        </member>
-        <member name="M:System.CommandLine.CommandExtensions.AddRange(System.CommandLine.Command,Sudoku.CommandLine.SymbolList{System.CommandLine.Command})">
-            <inheritdoc cref="M:System.CommandLine.CommandExtensions.&lt;&gt;E__0.AddRange(Sudoku.CommandLine.SymbolList{System.CommandLine.Command})"/>
-        </member>
-        <member name="M:System.CommandLine.CommandExtensions.AddRangeGlobal(System.CommandLine.Command,Sudoku.CommandLine.SymbolList{System.CommandLine.Option})">
-            <inheritdoc cref="M:System.CommandLine.CommandExtensions.&lt;&gt;E__0.AddRangeGlobal(Sudoku.CommandLine.SymbolList{System.CommandLine.Option})"/>
         </member>
     </members>
 </doc>
