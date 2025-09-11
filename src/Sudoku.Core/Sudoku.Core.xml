@@ -11683,66 +11683,89 @@
             <seealso cref="T:Sudoku.Concepts.CandidateMap"/>
         </member>
         <member name="M:Sudoku.Linq.CandidateMapEnumerable.First(Sudoku.Concepts.CandidateMap@,System.Func{System.Int32,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.First(System.Func{System.Int32,System.Boolean})"/>
+        </member>
+        <member name="M:Sudoku.Linq.CandidateMapEnumerable.First(Sudoku.Concepts.CandidateMap@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMapOrCandidateMapPredicate{Sudoku.Concepts.CandidateMap,System.Int32})">
+            <inheritdoc cref="M:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.First(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMapOrCandidateMapPredicate{Sudoku.Concepts.CandidateMap,System.Int32})"/>
+        </member>
+        <member name="M:Sudoku.Linq.CandidateMapEnumerable.Select``1(Sudoku.Concepts.CandidateMap@,System.Func{System.Int32,``0})">
+            <inheritdoc cref="M:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.Select``1(System.Func{System.Int32,``0})"/>
+        </member>
+        <member name="M:Sudoku.Linq.CandidateMapEnumerable.Where(Sudoku.Concepts.CandidateMap@,System.Func{System.Int32,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.Where(System.Func{System.Int32,System.Boolean})"/>
+        </member>
+        <member name="M:Sudoku.Linq.CandidateMapEnumerable.GroupBy``1(Sudoku.Concepts.CandidateMap@,System.Func{System.Int32,``0})">
+            <inheritdoc cref="M:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.GroupBy``1(System.Func{System.Int32,``0})"/>
+        </member>
+        <member name="M:Sudoku.Linq.CandidateMapEnumerable.SelectMany``1(Sudoku.Concepts.CandidateMap@,System.Func{System.Int32,System.Int16},System.Func{System.Int32,System.Int32,``0})">
+            <inheritdoc cref="M:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.SelectMany``1(System.Func{System.Int32,System.Int16},System.Func{System.Int32,System.Int32,``0})"/>
+        </member>
+        <member name="M:Sudoku.Linq.CandidateMapEnumerable.Any(Sudoku.Concepts.CandidateMap@,System.Func{System.Int32,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.Any(System.Func{System.Int32,System.Boolean})"/>
+        </member>
+        <member name="M:Sudoku.Linq.CandidateMapEnumerable.All(Sudoku.Concepts.CandidateMap@,System.Func{System.Int32,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.All(System.Func{System.Int32,System.Boolean})"/>
+        </member>
+        <member name="T:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.&lt;M&gt;$F028596358D6242F1F904DC1F6A5BA37">
+            <summary>
+            Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.CandidateMap"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.First(System.Func{System.Int32,System.Boolean})">
             <summary>
             Finds the first candidate that satisfies the specified condition.
             </summary>
-            <param name="this">Indicates the current instance.</param>
             <param name="match">The condition to be used.</param>
             <returns>The first found candidate or -1 if none found.</returns>
         </member>
-        <member name="M:Sudoku.Linq.CandidateMapEnumerable.First(Sudoku.Concepts.CandidateMap@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMapOrCandidateMapPredicate{Sudoku.Concepts.CandidateMap,System.Int32})">
+        <member name="M:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.First(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMapOrCandidateMapPredicate{Sudoku.Concepts.CandidateMap,System.Int32})">
             <summary>
             Finds the first candidate that satisfies the specified condition.
             </summary>
-            <param name="this">Indicates the current instance.</param>
             <param name="grid">The grid to be used.</param>
             <param name="match">The condition to be used.</param>
             <returns>The first found candidate or -1 if none found.</returns>
         </member>
-        <member name="M:Sudoku.Linq.CandidateMapEnumerable.Select``1(Sudoku.Concepts.CandidateMap@,System.Func{System.Int32,``0})">
+        <member name="M:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.Select``1(System.Func{System.Int32,``0})">
             <inheritdoc cref="M:Sudoku.Linq.CellMapEnumerable.Select``1(Sudoku.Concepts.CellMap@,System.Func{System.Int32,``0})"/>
         </member>
-        <member name="M:Sudoku.Linq.CandidateMapEnumerable.Where(Sudoku.Concepts.CandidateMap@,System.Func{System.Int32,System.Boolean})">
+        <member name="M:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.Where(System.Func{System.Int32,System.Boolean})">
             <summary>
             Filters a <see cref="T:Sudoku.Concepts.CandidateMap"/> collection based on a predicate.
             </summary>
-            <param name="this">The current instance.</param>
             <param name="predicate">A function to test each element for a condition.</param>
             <returns>
             A <see cref="T:Sudoku.Concepts.CandidateMap"/> that contains elements from the input <see cref="T:Sudoku.Concepts.CandidateMap"/> satisfying the condition.
             </returns>
         </member>
-        <member name="M:Sudoku.Linq.CandidateMapEnumerable.GroupBy``1(Sudoku.Concepts.CandidateMap@,System.Func{System.Int32,``0})">
+        <member name="M:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.GroupBy``1(System.Func{System.Int32,``0})">
             <inheritdoc cref="M:Sudoku.Linq.CellMapEnumerable.GroupBy``1(Sudoku.Concepts.CellMap@,System.Func{System.Int32,``0})"/>
         </member>
-        <member name="M:Sudoku.Linq.CandidateMapEnumerable.SelectMany``1(Sudoku.Concepts.CandidateMap@,System.Func{System.Int32,System.Int16},System.Func{System.Int32,System.Int32,``0})">
+        <member name="M:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.SelectMany``1(System.Func{System.Int32,System.Int16},System.Func{System.Int32,System.Int32,``0})">
             <summary>
             Projects each candidate (of type <see cref="T:System.Int32"/>) of a <see cref="T:Sudoku.Concepts.CandidateMap"/> to a mask (of type <see cref="T:System.Int16"/>),
             flattens the resulting sequence into one sequence, and invokes a result selector function on each element therein.
             </summary>
             <typeparam name="TResult">The type of the elements of the resulting sequence.</typeparam>
-            <param name="this">A sequence of values to project.</param>
             <param name="collectionSelector">A transform function to apply to each element of the input <see cref="T:Sudoku.Concepts.CandidateMap"/>.</param>
             <param name="resultSelector">A transform function to apply to each element of the intermediate mask (of type <see cref="T:System.Int16"/>).</param>
             <returns>
             A <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TResult"/> whose elements are the result
-            of invoking the one-to-many transform function <paramref name="collectionSelector"/> on each element of <paramref name="this"/>
-            and then mapping each of those sequences and their corresponding source element to a result element.
+            of invoking the one-to-many transform function <paramref name="collectionSelector"/> on each element
+            of the current instance and then mapping each of those sequences and their corresponding source element to a result element.
             </returns>
         </member>
-        <member name="M:Sudoku.Linq.CandidateMapEnumerable.Any(Sudoku.Concepts.CandidateMap@,System.Func{System.Int32,System.Boolean})">
+        <member name="M:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.Any(System.Func{System.Int32,System.Boolean})">
             <summary>
             Indicates whether at least one element satisfies the specified condition.
             </summary>
-            <param name="this">The cell to be checked.</param>
             <param name="match">The match method.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating whether at least one element satisfies the specified condition.</returns>
         </member>
-        <member name="M:Sudoku.Linq.CandidateMapEnumerable.All(Sudoku.Concepts.CandidateMap@,System.Func{System.Int32,System.Boolean})">
+        <member name="M:Sudoku.Linq.CandidateMapEnumerable.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.All(System.Func{System.Int32,System.Boolean})">
             <summary>
             Determine whether all <see cref="T:System.Int32"/>s satisfy the specified condition.
             </summary>
-            <param name="this">The candidate to be checked.</param>
             <param name="match">The match method.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating whether all elements satisfy the specified condition.</returns>
         </member>
@@ -11753,50 +11776,74 @@
             <seealso cref="T:Sudoku.Concepts.CellMap"/>
         </member>
         <member name="M:Sudoku.Linq.CellMapEnumerable.First(Sudoku.Concepts.CellMap@,System.Func{System.Int32,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.First(System.Func{System.Int32,System.Boolean})"/>
+        </member>
+        <member name="M:Sudoku.Linq.CellMapEnumerable.First(Sudoku.Concepts.CellMap@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMapOrCandidateMapPredicate{Sudoku.Concepts.CellMap,System.Int32})">
+            <inheritdoc cref="M:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.First(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMapOrCandidateMapPredicate{Sudoku.Concepts.CellMap,System.Int32})"/>
+        </member>
+        <member name="M:Sudoku.Linq.CellMapEnumerable.Select``1(Sudoku.Concepts.CellMap@,System.Func{System.Int32,``0})">
+            <inheritdoc cref="M:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Select``1(System.Func{System.Int32,``0})"/>
+        </member>
+        <member name="M:Sudoku.Linq.CellMapEnumerable.Where(Sudoku.Concepts.CellMap@,System.Func{System.Int32,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Where(System.Func{System.Int32,System.Boolean})"/>
+        </member>
+        <member name="M:Sudoku.Linq.CellMapEnumerable.GroupBy``1(Sudoku.Concepts.CellMap@,System.Func{System.Int32,``0})">
+            <inheritdoc cref="M:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.GroupBy``1(System.Func{System.Int32,``0})"/>
+        </member>
+        <member name="M:Sudoku.Linq.CellMapEnumerable.SelectMany``1(Sudoku.Concepts.CellMap@,System.Func{System.Int32,System.Int16},System.Func{System.Int32,System.Int32,``0})">
+            <inheritdoc cref="M:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.SelectMany``1(System.Func{System.Int32,System.Int16},System.Func{System.Int32,System.Int32,``0})"/>
+        </member>
+        <member name="M:Sudoku.Linq.CellMapEnumerable.Any(Sudoku.Concepts.CellMap@,System.Func{System.Int32,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Any(System.Func{System.Int32,System.Boolean})"/>
+        </member>
+        <member name="M:Sudoku.Linq.CellMapEnumerable.All(Sudoku.Concepts.CellMap@,System.Func{System.Int32,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.All(System.Func{System.Int32,System.Boolean})"/>
+        </member>
+        <member name="T:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.&lt;M&gt;$CFDAB610D2DB1FF86E39720542ECF2FC">
+            <summary>
+            Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.CellMap"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.First(System.Func{System.Int32,System.Boolean})">
             <summary>
             Finds the first cell that satisfies the specified condition.
             </summary>
-            <param name="this">Indicates the current instance.</param>
             <param name="match">The condition to be used.</param>
             <returns>The first found cell or -1 if none found.</returns>
         </member>
-        <member name="M:Sudoku.Linq.CellMapEnumerable.First(Sudoku.Concepts.CellMap@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMapOrCandidateMapPredicate{Sudoku.Concepts.CellMap,System.Int32})">
+        <member name="M:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.First(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMapOrCandidateMapPredicate{Sudoku.Concepts.CellMap,System.Int32})">
             <summary>
             Finds the first cell that satisfies the specified condition.
             </summary>
-            <param name="this">Indicates the current instance.</param>
             <param name="grid">The grid to be used.</param>
             <param name="match">The condition to be used.</param>
             <returns>The first found cell or -1 if none found.</returns>
         </member>
-        <member name="M:Sudoku.Linq.CellMapEnumerable.Select``1(Sudoku.Concepts.CellMap@,System.Func{System.Int32,``0})">
+        <member name="M:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Select``1(System.Func{System.Int32,``0})">
             <summary>
             Projects each element in the current instance into the target-typed <typeparamref name="TResult"/> array,
             using the specified function to convert.
             </summary>
             <typeparam name="TResult">The type of target value.</typeparam>
-            <param name="this">The current instance.</param>
             <param name="selector">The selector.</param>
             <returns>An array of <typeparamref name="TResult"/> elements.</returns>
         </member>
-        <member name="M:Sudoku.Linq.CellMapEnumerable.Where(Sudoku.Concepts.CellMap@,System.Func{System.Int32,System.Boolean})">
+        <member name="M:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Where(System.Func{System.Int32,System.Boolean})">
             <summary>
             Filters a <see cref="T:Sudoku.Concepts.CellMap"/> collection based on a predicate.
             </summary>
-            <param name="this">The current instance.</param>
             <param name="predicate">A function to test each element for a condition.</param>
             <returns>
             A <see cref="T:Sudoku.Concepts.CellMap"/> that contains elements from the input <see cref="T:Sudoku.Concepts.CellMap"/> satisfying the condition.
             </returns>
         </member>
-        <member name="M:Sudoku.Linq.CellMapEnumerable.GroupBy``1(Sudoku.Concepts.CellMap@,System.Func{System.Int32,``0})">
+        <member name="M:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.GroupBy``1(System.Func{System.Int32,``0})">
             <summary>
             Groups the elements of a sequence according to a specified key selector function.
             </summary>
             <typeparam name="TKey">
             <inheritdoc cref="M:System.Linq.Enumerable.GroupBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})" path="/typeparam[@name='TKey']"/>
             </typeparam>
-            <param name="this">The current instance.</param>
             <param name="keySelector">
             <inheritdoc cref="M:System.Linq.Enumerable.GroupBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})" path="/param[@name='keySelector']"/>
             </param>
@@ -11805,34 +11852,31 @@
             </returns>
             <seealso cref="T:Sudoku.Linq.CellMapOrCandidateMapGrouping`3"/>
         </member>
-        <member name="M:Sudoku.Linq.CellMapEnumerable.SelectMany``1(Sudoku.Concepts.CellMap@,System.Func{System.Int32,System.Int16},System.Func{System.Int32,System.Int32,``0})">
+        <member name="M:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.SelectMany``1(System.Func{System.Int32,System.Int16},System.Func{System.Int32,System.Int32,``0})">
             <summary>
             Projects each cell (of type <see cref="T:System.Int32"/>) of a <see cref="T:Sudoku.Concepts.CellMap"/> to a mask (of type <see cref="T:System.Int16"/>),
             flattens the resulting sequence into one sequence, and invokes a result selector function on each element therein.
             </summary>
             <typeparam name="TResult">The type of the elements of the resulting sequence.</typeparam>
-            <param name="this">A sequence of values to project.</param>
             <param name="collectionSelector">A transform function to apply to each element of the input <see cref="T:Sudoku.Concepts.CellMap"/>.</param>
             <param name="resultSelector">A transform function to apply to each element of the intermediate mask (of type <see cref="T:System.Int16"/>).</param>
             <returns>
             A <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TResult"/> whose elements are the result
-            of invoking the one-to-many transform function <paramref name="collectionSelector"/> on each element of <paramref name="this"/>
-            and then mapping each of those sequences and their corresponding source element to a result element.
+            of invoking the one-to-many transform function <paramref name="collectionSelector"/> on each element
+            of the current instance and then mapping each of those sequences and their corresponding source element to a result element.
             </returns>
         </member>
-        <member name="M:Sudoku.Linq.CellMapEnumerable.Any(Sudoku.Concepts.CellMap@,System.Func{System.Int32,System.Boolean})">
+        <member name="M:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Any(System.Func{System.Int32,System.Boolean})">
             <summary>
             Indicates whether at least one element satisfies the specified condition.
             </summary>
-            <param name="this">The cell to be checked.</param>
             <param name="match">The match method.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating whether at least one element satisfies the specified condition.</returns>
         </member>
-        <member name="M:Sudoku.Linq.CellMapEnumerable.All(Sudoku.Concepts.CellMap@,System.Func{System.Int32,System.Boolean})">
+        <member name="M:Sudoku.Linq.CellMapEnumerable.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.All(System.Func{System.Int32,System.Boolean})">
             <summary>
             Determine whether all <see cref="T:System.Int32"/>s satisfy the specified condition.
             </summary>
-            <param name="this">The candidate to be checked.</param>
             <param name="match">The match method.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating whether all elements satisfy the specified condition.</returns>
         </member>
@@ -12015,11 +12059,18 @@
             <seealso cref="T:Sudoku.Concepts.Conclusion"/>
         </member>
         <member name="M:Sudoku.Linq.ConclusionsEnumerable.Select(System.ReadOnlySpan{Sudoku.Concepts.Conclusion},System.Func{Sudoku.Concepts.Conclusion,System.Int32})">
+            <inheritdoc cref="M:Sudoku.Linq.ConclusionsEnumerable.&lt;G&gt;$8D3A0BABF83D596289F435C91830C8CC.Select(System.Func{Sudoku.Concepts.Conclusion,System.Int32})"/>
+        </member>
+        <member name="T:Sudoku.Linq.ConclusionsEnumerable.&lt;G&gt;$8D3A0BABF83D596289F435C91830C8CC.&lt;M&gt;$6F5495E2C90DA8EF0802749C6857C9BE">
+            <summary>
+            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <see cref="T:Sudoku.Concepts.Conclusion"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Linq.ConclusionsEnumerable.&lt;G&gt;$8D3A0BABF83D596289F435C91830C8CC.Select(System.Func{Sudoku.Concepts.Conclusion,System.Int32})">
             <summary>
             Projects a list of <see cref="T:Sudoku.Concepts.Conclusion"/> instances, converted each instances into a <see cref="T:System.Int32"/> value,
             and merge them into a <see cref="T:Sudoku.Concepts.CellMap"/> and return it.
             </summary>
-            <param name="this">A list of <see cref="T:Sudoku.Concepts.Conclusion"/> instances.</param>
             <param name="selector">The selector to project the values.</param>
             <returns>A <see cref="T:Sudoku.Concepts.CellMap"/> result.</returns>
         </member>
@@ -12030,19 +12081,28 @@
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
         <member name="M:Sudoku.Linq.GridEnumerable.Where(Sudoku.Concepts.Grid@,System.Func{System.Int32,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Linq.GridEnumerable.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Where(System.Func{System.Int32,System.Boolean})"/>
+        </member>
+        <member name="M:Sudoku.Linq.GridEnumerable.Select``1(Sudoku.Concepts.Grid@,System.Func{System.Int32,``0})">
+            <inheritdoc cref="M:Sudoku.Linq.GridEnumerable.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Select``1(System.Func{System.Int32,``0})"/>
+        </member>
+        <member name="T:Sudoku.Linq.GridEnumerable.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$4FBDD4478CFAA5DAE39645DF9E3BC758">
+            <summary>
+            Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Linq.GridEnumerable.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Where(System.Func{System.Int32,System.Boolean})">
             <summary>
             Filters the candidates that satisfies the specified condition.
             </summary>
-            <param name="this">The instance to be iterated.</param>
             <param name="predicate">The condition to filter candidates.</param>
             <returns>All candidates satisfied the specified condition.</returns>
         </member>
-        <member name="M:Sudoku.Linq.GridEnumerable.Select``1(Sudoku.Concepts.Grid@,System.Func{System.Int32,``0})">
+        <member name="M:Sudoku.Linq.GridEnumerable.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Select``1(System.Func{System.Int32,``0})">
             <summary>
             Projects each element of a sequence into a new form.
             </summary>
             <typeparam name="TResult">The type of the value returned by <paramref name="selector"/>.</typeparam>
-            <param name="this">The instance to be iterated.</param>
             <param name="selector">A transform function to apply to each element.</param>
             <returns>
             An array of <typeparamref name="TResult"/> elements converted.
@@ -12055,37 +12115,48 @@
             <seealso cref="T:System.Int32"/>
         </member>
         <member name="M:Sudoku.Linq.HouseMaskEnumerable.Select``1(System.Int32,System.Func{System.Int32,``0})">
+            <inheritdoc cref="M:Sudoku.Linq.HouseMaskEnumerable.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Select``1(System.Func{System.Int32,``0})"/>
+        </member>
+        <member name="M:Sudoku.Linq.HouseMaskEnumerable.Where(System.Int32,System.Func{System.Int32,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Linq.HouseMaskEnumerable.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Where(System.Func{System.Int32,System.Boolean})"/>
+        </member>
+        <member name="M:Sudoku.Linq.HouseMaskEnumerable.SelectMany``1(System.Int32,System.Func{System.Int32,Sudoku.Concepts.CellMap},System.Func{System.Int32,System.Int32,``0})">
+            <inheritdoc cref="M:Sudoku.Linq.HouseMaskEnumerable.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.SelectMany``1(System.Func{System.Int32,Sudoku.Concepts.CellMap},System.Func{System.Int32,System.Int32,``0})"/>
+        </member>
+        <member name="T:Sudoku.Linq.HouseMaskEnumerable.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.&lt;M&gt;$51B2989A609F7566ED3112AEC750A666">
+            <summary>
+            Provides extension members on <see cref="T:System.Int32"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Linq.HouseMaskEnumerable.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Select``1(System.Func{System.Int32,``0})">
             <summary>
             Projects each bit from a specified mask, converting it into a (an) <typeparamref name="T"/> instance,
             with specified method to be called.
             </summary>
             <typeparam name="T">The target type of values for each bit converted.</typeparam>
-            <param name="this">A mask instance.</param>
             <param name="selector">The selector method to be converted.</param>
             <returns>A list of converted result, encapsulated by a <see cref="T:System.ReadOnlySpan`1"/> type.</returns>
         </member>
-        <member name="M:Sudoku.Linq.HouseMaskEnumerable.SelectMany``1(System.Int32,System.Func{System.Int32,Sudoku.Concepts.CellMap},System.Func{System.Int32,System.Int32,``0})">
+        <member name="M:Sudoku.Linq.HouseMaskEnumerable.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Where(System.Func{System.Int32,System.Boolean})">
+            <summary>
+            Filters bits via the specified condition.
+            </summary>
+            <param name="predicate">The condition that filters bits, removing bits not satisfying the condition.</param>
+            <returns>A new <see cref="T:System.Int32"/> result.</returns>
+        </member>
+        <member name="M:Sudoku.Linq.HouseMaskEnumerable.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.SelectMany``1(System.Func{System.Int32,Sudoku.Concepts.CellMap},System.Func{System.Int32,System.Int32,``0})">
             <summary>
             Projects each <see cref="T:System.Int32"/> of a <see cref="T:System.Int32"/> to a <see cref="T:Sudoku.Concepts.CellMap"/>,
             flattens the resulting sequence into one sequence, and invokes a result selector function on each element therein.
             </summary>
             <typeparam name="TResult">The type of the elements of the resulting sequence.</typeparam>
-            <param name="source">A sequence of values to project.</param>
             <param name="collectionSelector">A transform function to apply to each element of the input <see cref="T:System.Int32"/>.</param>
             <param name="resultSelector">A transform function to apply to each element of the intermediate <see cref="T:Sudoku.Concepts.CellMap"/>.</param>
             <returns>
             A <see cref="T:System.ReadOnlySpan`1"/> whose elements are the result of invoking the one-to-many transform function
-            <paramref name="collectionSelector"/> on each element of <paramref name="source"/> and then mapping each of those sequences
+            <paramref name="collectionSelector"/> on each element of the current instance and then mapping each of those sequences
             and their corresponding source element to a result element.
             </returns>
-        </member>
-        <member name="M:Sudoku.Linq.HouseMaskEnumerable.Where(System.Int32,System.Func{System.Int32,System.Boolean})">
-            <summary>
-            Filters bits via the specified condition.
-            </summary>
-            <param name="this">The mask type of bits.</param>
-            <param name="predicate">The condition that filters bits, removing bits not satisfying the condition.</param>
-            <returns>A new <see cref="T:System.Int32"/> result.</returns>
         </member>
         <member name="T:Sudoku.Linq.ListEnumerable">
             <summary>
@@ -12132,37 +12203,48 @@
             <seealso cref="T:System.Int16"/>
         </member>
         <member name="M:Sudoku.Linq.MaskEnumerable.Select``1(System.Int16,System.Func{System.Int32,``0})">
+            <inheritdoc cref="M:Sudoku.Linq.MaskEnumerable.&lt;G&gt;$390DAE713F975834EF0C1ED2BEC2DBAC.Select``1(System.Func{System.Int32,``0})"/>
+        </member>
+        <member name="M:Sudoku.Linq.MaskEnumerable.Where(System.Int16,System.Func{System.Int32,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Linq.MaskEnumerable.&lt;G&gt;$390DAE713F975834EF0C1ED2BEC2DBAC.Where(System.Func{System.Int32,System.Boolean})"/>
+        </member>
+        <member name="M:Sudoku.Linq.MaskEnumerable.SelectMany``1(System.Int16,System.Func{System.Int32,Sudoku.Concepts.CellMap},System.Func{System.Int32,System.Int32,``0})">
+            <inheritdoc cref="M:Sudoku.Linq.MaskEnumerable.&lt;G&gt;$390DAE713F975834EF0C1ED2BEC2DBAC.SelectMany``1(System.Func{System.Int32,Sudoku.Concepts.CellMap},System.Func{System.Int32,System.Int32,``0})"/>
+        </member>
+        <member name="T:Sudoku.Linq.MaskEnumerable.&lt;G&gt;$390DAE713F975834EF0C1ED2BEC2DBAC.&lt;M&gt;$D511367ABC9C5BD33E665354AA08DFAC">
+            <summary>
+            Provides extension members on <see cref="T:System.Int16"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Linq.MaskEnumerable.&lt;G&gt;$390DAE713F975834EF0C1ED2BEC2DBAC.Select``1(System.Func{System.Int32,``0})">
             <summary>
             Projects each bit from a specified mask, converting it into a (an) <typeparamref name="T"/> instance,
             with specified method to be called.
             </summary>
             <typeparam name="T">The target type of values for each bit converted.</typeparam>
-            <param name="this">A mask instance.</param>
             <param name="selector">The selector method to be converted.</param>
             <returns>A list of converted result, encapsulated by a <see cref="T:System.ReadOnlySpan`1"/> type.</returns>
         </member>
-        <member name="M:Sudoku.Linq.MaskEnumerable.SelectMany``1(System.Int16,System.Func{System.Int32,Sudoku.Concepts.CellMap},System.Func{System.Int32,System.Int32,``0})">
+        <member name="M:Sudoku.Linq.MaskEnumerable.&lt;G&gt;$390DAE713F975834EF0C1ED2BEC2DBAC.Where(System.Func{System.Int32,System.Boolean})">
+            <summary>
+            Filters bits via the specified condition.
+            </summary>
+            <param name="predicate">The condition that filters bits, removing bits not satisfying the condition.</param>
+            <returns>A new <see cref="T:System.Int16"/> result.</returns>
+        </member>
+        <member name="M:Sudoku.Linq.MaskEnumerable.&lt;G&gt;$390DAE713F975834EF0C1ED2BEC2DBAC.SelectMany``1(System.Func{System.Int32,Sudoku.Concepts.CellMap},System.Func{System.Int32,System.Int32,``0})">
             <summary>
             Projects each <see cref="T:System.Int32"/> of a <see cref="T:System.Int16"/> to a <see cref="T:Sudoku.Concepts.CellMap"/>, flattens the resulting sequence into one sequence,
             and invokes a result selector function on each element therein.
             </summary>
             <typeparam name="TResult">The type of the elements of the resulting sequence.</typeparam>
-            <param name="source">A sequence of values to project.</param>
             <param name="collectionSelector">A transform function to apply to each element of the input <see cref="T:System.Int16"/>.</param>
             <param name="resultSelector">A transform function to apply to each element of the intermediate <see cref="T:Sudoku.Concepts.CellMap"/>.</param>
             <returns>
             A <see cref="T:System.ReadOnlySpan`1"/> whose elements are the result of invoking the one-to-many transform function
-            <paramref name="collectionSelector"/> on each element of <paramref name="source"/> and then mapping each of those sequences
+            <paramref name="collectionSelector"/> on each element of the current instance and then mapping each of those sequences
             and their corresponding source element to a result element.
             </returns>
-        </member>
-        <member name="M:Sudoku.Linq.MaskEnumerable.Where(System.Int16,System.Func{System.Int32,System.Boolean})">
-            <summary>
-            Filters bits via the specified condition.
-            </summary>
-            <param name="this">The mask type of bits.</param>
-            <param name="predicate">The condition that filters bits, removing bits not satisfying the condition.</param>
-            <returns>A new <see cref="T:System.Int16"/> result.</returns>
         </member>
         <member name="T:Sudoku.Linq.ViewEnumerable">
             <summary>
@@ -12171,30 +12253,51 @@
             <seealso cref="T:Sudoku.Drawing.View"/>
         </member>
         <member name="M:Sudoku.Linq.ViewEnumerable.Select``1(Sudoku.Drawing.View,System.Func{Sudoku.Drawing.ViewNode,``0})">
+            <inheritdoc cref="M:Sudoku.Linq.ViewEnumerable.&lt;G&gt;$162A34ED4A21DE7A53A9B73499FB1600.Select``1(System.Func{Sudoku.Drawing.ViewNode,``0})"/>
+        </member>
+        <member name="M:Sudoku.Linq.ViewEnumerable.Where(Sudoku.Drawing.View,System.Func{Sudoku.Drawing.ViewNode,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Linq.ViewEnumerable.&lt;G&gt;$162A34ED4A21DE7A53A9B73499FB1600.Where(System.Func{Sudoku.Drawing.ViewNode,System.Boolean})"/>
+        </member>
+        <member name="M:Sudoku.Linq.ViewEnumerable.OfType``1(Sudoku.Drawing.View)">
+            <inheritdoc cref="M:Sudoku.Linq.ViewEnumerable.&lt;G&gt;$162A34ED4A21DE7A53A9B73499FB1600.OfType``1"/>
+        </member>
+        <member name="M:Sudoku.Linq.ViewEnumerable.First(Sudoku.Drawing.View,System.Func{Sudoku.Drawing.ViewNode,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Linq.ViewEnumerable.&lt;G&gt;$162A34ED4A21DE7A53A9B73499FB1600.First(System.Func{Sudoku.Drawing.ViewNode,System.Boolean})"/>
+        </member>
+        <member name="M:Sudoku.Linq.ViewEnumerable.FirstOrDefault(Sudoku.Drawing.View,System.Func{Sudoku.Drawing.ViewNode,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Linq.ViewEnumerable.&lt;G&gt;$162A34ED4A21DE7A53A9B73499FB1600.FirstOrDefault(System.Func{Sudoku.Drawing.ViewNode,System.Boolean})"/>
+        </member>
+        <member name="M:Sudoku.Linq.ViewEnumerable.SelectMany(Sudoku.Drawing.View[],System.Func{Sudoku.Drawing.View,Sudoku.Drawing.View},System.Func{Sudoku.Drawing.View,Sudoku.Drawing.ViewNode,Sudoku.Drawing.ViewNode})">
+            <inheritdoc cref="M:Sudoku.Linq.ViewEnumerable.&lt;G&gt;$D9F0B113374911B5649D51A7C2C564DF.SelectMany(System.Func{Sudoku.Drawing.View,Sudoku.Drawing.View},System.Func{Sudoku.Drawing.View,Sudoku.Drawing.ViewNode,Sudoku.Drawing.ViewNode})"/>
+        </member>
+        <member name="T:Sudoku.Linq.ViewEnumerable.&lt;G&gt;$162A34ED4A21DE7A53A9B73499FB1600.&lt;M&gt;$7820C94D44B049791FED6D0BD0D609C6">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Drawing.View"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Linq.ViewEnumerable.&lt;G&gt;$162A34ED4A21DE7A53A9B73499FB1600.Select``1(System.Func{Sudoku.Drawing.ViewNode,``0})">
             <summary>
             Projects with a new transform of elements.
             </summary>
             <typeparam name="T">The type of target element.</typeparam>
-            <param name="this">The view.</param>
             <param name="selector">The method to transform each element.</param>
             <returns>A <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="T"/> elements.</returns>
         </member>
-        <member name="M:Sudoku.Linq.ViewEnumerable.Where(Sudoku.Drawing.View,System.Func{Sudoku.Drawing.ViewNode,System.Boolean})">
+        <member name="M:Sudoku.Linq.ViewEnumerable.&lt;G&gt;$162A34ED4A21DE7A53A9B73499FB1600.Where(System.Func{Sudoku.Drawing.ViewNode,System.Boolean})">
             <summary>
             Filters a <see cref="T:Sudoku.Drawing.View"/>, only reserves the <see cref="T:Sudoku.Drawing.ViewNode"/> instances satisfying the specified condition.
             </summary>
-            <param name="this">The view.</param>
             <param name="predicate">The filter.</param>
             <returns>A list of <see cref="T:Sudoku.Drawing.ViewNode"/> filtered.</returns>
         </member>
-        <member name="M:Sudoku.Linq.ViewEnumerable.OfType``1(Sudoku.Drawing.View)">
+        <member name="M:Sudoku.Linq.ViewEnumerable.&lt;G&gt;$162A34ED4A21DE7A53A9B73499FB1600.OfType``1">
             <summary>
             Filters the view nodes, only returns nodes of type <typeparamref name="TViewNode"/>.
             </summary>
             <typeparam name="TViewNode">The type of the node.</typeparam>
             <returns>The target collection of element type <typeparamref name="TViewNode"/>.</returns>
         </member>
-        <member name="M:Sudoku.Linq.ViewEnumerable.First(Sudoku.Drawing.View,System.Func{Sudoku.Drawing.ViewNode,System.Boolean})">
+        <member name="M:Sudoku.Linq.ViewEnumerable.&lt;G&gt;$162A34ED4A21DE7A53A9B73499FB1600.First(System.Func{Sudoku.Drawing.ViewNode,System.Boolean})">
             <returns>
             The first element that matches the conditions defined by the specified predicate, if found;
             otherwise, throw an <see cref="T:System.InvalidOperationException"/>.
@@ -12204,18 +12307,22 @@
             </exception>
             <inheritdoc cref="M:Sudoku.Linq.ViewEnumerable.FirstOrDefault(Sudoku.Drawing.View,System.Func{Sudoku.Drawing.ViewNode,System.Boolean})"/>
         </member>
-        <member name="M:Sudoku.Linq.ViewEnumerable.FirstOrDefault(Sudoku.Drawing.View,System.Func{Sudoku.Drawing.ViewNode,System.Boolean})">
+        <member name="M:Sudoku.Linq.ViewEnumerable.&lt;G&gt;$162A34ED4A21DE7A53A9B73499FB1600.FirstOrDefault(System.Func{Sudoku.Drawing.ViewNode,System.Boolean})">
             <summary>
             Searches for an element that matches the conditions defined by the specified predicate,
             and returns the first occurrence within the entire <see cref="T:Sudoku.Drawing.View"/>.
             </summary>
-            <param name="this">The view to be checked.</param>
             <param name="match">The <see cref="T:System.Func`2"/> delegate that defines the conditions of the element to search for.</param>
             <returns>
             The first element that matches the conditions defined by the specified predicate, if found; otherwise, <see langword="null"/>.
             </returns>
         </member>
-        <member name="M:Sudoku.Linq.ViewEnumerable.SelectMany(Sudoku.Drawing.View[],System.Func{Sudoku.Drawing.View,Sudoku.Drawing.View},System.Func{Sudoku.Drawing.View,Sudoku.Drawing.ViewNode,Sudoku.Drawing.ViewNode})">
+        <member name="T:Sudoku.Linq.ViewEnumerable.&lt;G&gt;$D9F0B113374911B5649D51A7C2C564DF.&lt;M&gt;$FF845B714374F5BC1F45DF484D2CD5AD">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Drawing.View"/>[].
+            </summary>
+        </member>
+        <member name="M:Sudoku.Linq.ViewEnumerable.&lt;G&gt;$D9F0B113374911B5649D51A7C2C564DF.SelectMany(System.Func{Sudoku.Drawing.View,Sudoku.Drawing.View},System.Func{Sudoku.Drawing.View,Sudoku.Drawing.ViewNode,Sudoku.Drawing.ViewNode})">
             <inheritdoc cref="M:System.Linq.ArrayEnumerable.SelectMany``3(``0[],System.Func{``0,System.ReadOnlySpan{``1}},System.Func{``0,``1,``2})"/>
         </member>
         <member name="T:Sudoku.MinlexOrder.BestTripletPermutation">

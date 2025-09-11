@@ -7,19 +7,24 @@ namespace Sudoku.Linq;
 public static class ConclusionsEnumerable
 {
 	/// <summary>
-	/// Projects a list of <see cref="Conclusion"/> instances, converted each instances into a <see cref="Cell"/> value,
-	/// and merge them into a <see cref="CellMap"/> and return it.
+	/// Provides extension members on <see cref="ReadOnlySpan{T}"/> of <see cref="Conclusion"/>.
 	/// </summary>
-	/// <param name="this">A list of <see cref="Conclusion"/> instances.</param>
-	/// <param name="selector">The selector to project the values.</param>
-	/// <returns>A <see cref="CellMap"/> result.</returns>
-	public static CellMap Select(this ReadOnlySpan<Conclusion> @this, Func<Conclusion, Cell> selector)
+	extension(ReadOnlySpan<Conclusion> @this)
 	{
-		var result = CellMap.Empty;
-		foreach (var element in @this)
+		/// <summary>
+		/// Projects a list of <see cref="Conclusion"/> instances, converted each instances into a <see cref="Cell"/> value,
+		/// and merge them into a <see cref="CellMap"/> and return it.
+		/// </summary>
+		/// <param name="selector">The selector to project the values.</param>
+		/// <returns>A <see cref="CellMap"/> result.</returns>
+		public CellMap Select(Func<Conclusion, Cell> selector)
 		{
-			result.Add(selector(element));
+			var result = CellMap.Empty;
+			foreach (var element in @this)
+			{
+				result.Add(selector(element));
+			}
+			return result;
 		}
-		return result;
 	}
 }

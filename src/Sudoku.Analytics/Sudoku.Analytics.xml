@@ -29545,38 +29545,51 @@
             <seealso cref="T:Sudoku.Analytics.AnalysisResult"/>
         </member>
         <member name="M:Sudoku.Linq.AnalysisResultEnumerable.Cast``1(Sudoku.Analytics.AnalysisResult)">
+            <inheritdoc cref="M:Sudoku.Linq.AnalysisResultEnumerable.&lt;G&gt;$1C6AF9D2BEB1A6FA3DB1FD73C848F372.Cast``1"/>
+        </member>
+        <member name="M:Sudoku.Linq.AnalysisResultEnumerable.Where(Sudoku.Analytics.AnalysisResult,System.Func{Sudoku.Analytics.Step,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Linq.AnalysisResultEnumerable.&lt;G&gt;$1C6AF9D2BEB1A6FA3DB1FD73C848F372.Where(System.Func{Sudoku.Analytics.Step,System.Boolean})"/>
+        </member>
+        <member name="M:Sudoku.Linq.AnalysisResultEnumerable.Select``1(Sudoku.Analytics.AnalysisResult,System.Func{Sudoku.Analytics.Step,``0})">
+            <inheritdoc cref="M:Sudoku.Linq.AnalysisResultEnumerable.&lt;G&gt;$1C6AF9D2BEB1A6FA3DB1FD73C848F372.Select``1(System.Func{Sudoku.Analytics.Step,``0})"/>
+        </member>
+        <member name="M:Sudoku.Linq.AnalysisResultEnumerable.OfType``1(Sudoku.Analytics.AnalysisResult)">
+            <inheritdoc cref="M:Sudoku.Linq.AnalysisResultEnumerable.&lt;G&gt;$1C6AF9D2BEB1A6FA3DB1FD73C848F372.OfType``1"/>
+        </member>
+        <member name="T:Sudoku.Linq.AnalysisResultEnumerable.&lt;G&gt;$1C6AF9D2BEB1A6FA3DB1FD73C848F372.&lt;M&gt;$344643FD42741682446669C448439BB4">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Analytics.AnalysisResult"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Linq.AnalysisResultEnumerable.&lt;G&gt;$1C6AF9D2BEB1A6FA3DB1FD73C848F372.Cast``1">
             <summary>
             Cast the object into a <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TStep"/> instances.
             </summary>
             <typeparam name="TStep">The type of each element casted.</typeparam>
-            <param name="this">The instance to be casted.</param>
             <returns>A list of <typeparamref name="TStep"/> instances.</returns>
         </member>
-        <member name="M:Sudoku.Linq.AnalysisResultEnumerable.Where(Sudoku.Analytics.AnalysisResult,System.Func{Sudoku.Analytics.Step,System.Boolean})">
+        <member name="M:Sudoku.Linq.AnalysisResultEnumerable.&lt;G&gt;$1C6AF9D2BEB1A6FA3DB1FD73C848F372.Where(System.Func{Sudoku.Analytics.Step,System.Boolean})">
             <summary>
             Filters the current collection, preserving <see cref="T:Sudoku.Analytics.Step"/> instances that are satisfied the specified condition.
             </summary>
-            <param name="this">The instance.</param>
             <param name="condition">The condition to be satisfied.</param>
             <returns>An array of <see cref="T:Sudoku.Analytics.Step"/> instances.</returns>
         </member>
-        <member name="M:Sudoku.Linq.AnalysisResultEnumerable.Select``1(Sudoku.Analytics.AnalysisResult,System.Func{Sudoku.Analytics.Step,``0})">
+        <member name="M:Sudoku.Linq.AnalysisResultEnumerable.&lt;G&gt;$1C6AF9D2BEB1A6FA3DB1FD73C848F372.Select``1(System.Func{Sudoku.Analytics.Step,``0})">
             <summary>
             Projects the collection, to an immutable result of target type.
             </summary>
             <typeparam name="TResult">The type of the result.</typeparam>
-            <param name="this">The instance.</param>
             <param name="selector">
             The selector to project the <see cref="T:Sudoku.Analytics.Step"/> instance into type <typeparamref name="TResult"/>.
             </param>
             <returns>The projected collection of element type <typeparamref name="TResult"/>.</returns>
         </member>
-        <member name="M:Sudoku.Linq.AnalysisResultEnumerable.OfType``1(Sudoku.Analytics.AnalysisResult)">
+        <member name="M:Sudoku.Linq.AnalysisResultEnumerable.&lt;G&gt;$1C6AF9D2BEB1A6FA3DB1FD73C848F372.OfType``1">
             <summary>
             Filters the current collection, preserving steps that are of type <typeparamref name="TStep"/>.
             </summary>
             <typeparam name="TStep">The type of the step you want to get.</typeparam>
-            <param name="this">The instance.</param>
             <returns>An array of <typeparamref name="TStep"/> instances.</returns>
         </member>
         <member name="T:Sudoku.Linq.TechniqueSetEnumerable">
@@ -29586,9 +29599,20 @@
             <seealso cref="T:Sudoku.Categorization.TechniqueSet"/>
         </member>
         <member name="M:Sudoku.Linq.TechniqueSetEnumerable.Select``1(Sudoku.Categorization.TechniqueSet,System.Func{Sudoku.Categorization.Technique,``0})">
-            <inheritdoc cref="M:System.Linq.ArrayEnumerable.Select``2(``0[],System.Func{``0,``1})"/>
+            <inheritdoc cref="M:Sudoku.Linq.TechniqueSetEnumerable.&lt;G&gt;$0DBF1C20496CFCD9C2348A0194CB91C1.Select``1(System.Func{Sudoku.Categorization.Technique,``0})"/>
         </member>
         <member name="M:Sudoku.Linq.TechniqueSetEnumerable.Where(Sudoku.Categorization.TechniqueSet,System.Func{Sudoku.Categorization.Technique,System.Boolean})">
+            <inheritdoc cref="M:Sudoku.Linq.TechniqueSetEnumerable.&lt;G&gt;$0DBF1C20496CFCD9C2348A0194CB91C1.Where(System.Func{Sudoku.Categorization.Technique,System.Boolean})"/>
+        </member>
+        <member name="T:Sudoku.Linq.TechniqueSetEnumerable.&lt;G&gt;$0DBF1C20496CFCD9C2348A0194CB91C1.&lt;M&gt;$7DDE55DFC48707B9DBE76C8930857A0E">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Categorization.TechniqueSet"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Linq.TechniqueSetEnumerable.&lt;G&gt;$0DBF1C20496CFCD9C2348A0194CB91C1.Select``1(System.Func{Sudoku.Categorization.Technique,``0})">
+            <inheritdoc cref="M:System.Linq.ArrayEnumerable.Select``2(``0[],System.Func{``0,``1})"/>
+        </member>
+        <member name="M:Sudoku.Linq.TechniqueSetEnumerable.&lt;G&gt;$0DBF1C20496CFCD9C2348A0194CB91C1.Where(System.Func{Sudoku.Categorization.Technique,System.Boolean})">
             <inheritdoc cref="M:System.Linq.ArrayEnumerable.Where``1(``0[],System.Func{``0,System.Boolean})"/>
         </member>
         <member name="T:Sudoku.ModuleInitializer">

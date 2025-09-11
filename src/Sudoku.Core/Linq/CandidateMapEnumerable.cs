@@ -7,167 +7,161 @@ namespace Sudoku.Linq;
 public static class CandidateMapEnumerable
 {
 	/// <summary>
-	/// Finds the first candidate that satisfies the specified condition.
+	/// Provides extension members on <see langword="in"/> <see cref="CandidateMap"/>.
 	/// </summary>
-	/// <param name="this">Indicates the current instance.</param>
-	/// <param name="match">The condition to be used.</param>
-	/// <returns>The first found candidate or -1 if none found.</returns>
-	public static Candidate First(this in CandidateMap @this, Func<Candidate, bool> match)
+	extension(scoped in CandidateMap @this)
 	{
-		foreach (var candidate in @this.Offsets)
+		/// <summary>
+		/// Finds the first candidate that satisfies the specified condition.
+		/// </summary>
+		/// <param name="match">The condition to be used.</param>
+		/// <returns>The first found candidate or -1 if none found.</returns>
+		public Candidate First(Func<Candidate, bool> match)
 		{
-			if (match(candidate))
+			foreach (var candidate in @this.Offsets)
 			{
-				return candidate;
+				if (match(candidate))
+				{
+					return candidate;
+				}
 			}
+			return -1;
 		}
-		return -1;
-	}
 
-	/// <summary>
-	/// Finds the first candidate that satisfies the specified condition.
-	/// </summary>
-	/// <param name="this">Indicates the current instance.</param>
-	/// <param name="grid">The grid to be used.</param>
-	/// <param name="match">The condition to be used.</param>
-	/// <returns>The first found candidate or -1 if none found.</returns>
-	public static Candidate First(this in CandidateMap @this, in Grid grid, CellMapOrCandidateMapPredicate<CandidateMap, Candidate> match)
-	{
-		foreach (var candidate in @this.Offsets)
+		/// <summary>
+		/// Finds the first candidate that satisfies the specified condition.
+		/// </summary>
+		/// <param name="grid">The grid to be used.</param>
+		/// <param name="match">The condition to be used.</param>
+		/// <returns>The first found candidate or -1 if none found.</returns>
+		public Candidate First(in Grid grid, CellMapOrCandidateMapPredicate<CandidateMap, Candidate> match)
 		{
-			if (match(candidate, grid))
+			foreach (var candidate in @this.Offsets)
 			{
-				return candidate;
+				if (match(candidate, grid))
+				{
+					return candidate;
+				}
 			}
+			return -1;
 		}
-		return -1;
-	}
 
-	/// <inheritdoc cref="CellMapEnumerable.Select{TResult}(in CellMap, Func{int, TResult})"/>
-	public static ReadOnlySpan<TResult> Select<TResult>(this scoped in CandidateMap @this, Func<Candidate, TResult> selector)
-	{
-		var offsets = @this.Offsets;
-		var result = new TResult[offsets.Length];
-		for (var i = 0; i < offsets.Length; i++)
+		/// <inheritdoc cref="CellMapEnumerable.Select{TResult}(in CellMap, Func{int, TResult})"/>
+		public ReadOnlySpan<TResult> Select<TResult>(Func<Candidate, TResult> selector)
 		{
-			result[i] = selector(offsets[i]);
-		}
-		return result;
-	}
-
-	/// <summary>
-	/// Filters a <see cref="CandidateMap"/> collection based on a predicate.
-	/// </summary>
-	/// <param name="this">The current instance.</param>
-	/// <param name="predicate">A function to test each element for a condition.</param>
-	/// <returns>
-	/// A <see cref="CandidateMap"/> that contains elements from the input <see cref="CandidateMap"/> satisfying the condition.
-	/// </returns>
-	public static CandidateMap Where(this in CandidateMap @this, Func<Candidate, bool> predicate)
-	{
-		var result = @this;
-		foreach (var cell in @this.Offsets)
-		{
-			if (!predicate(cell))
+			var offsets = @this.Offsets;
+			var result = new TResult[offsets.Length];
+			for (var i = 0; i < offsets.Length; i++)
 			{
-				result.Remove(cell);
+				result[i] = selector(offsets[i]);
 			}
+			return result;
 		}
-		return result;
-	}
 
-	/// <inheritdoc cref="CellMapEnumerable.GroupBy{TKey}(in CellMap, Func{int, TKey})"/>
-	public static ReadOnlySpan<CellMapOrCandidateMapGrouping<CandidateMap, Candidate, TKey>> GroupBy<TKey>(
-		this scoped in CandidateMap @this,
-		Func<Candidate, TKey> keySelector
-	) where TKey : notnull
-	{
-		var dictionary = new Dictionary<TKey, CandidateMap>();
-		foreach (var candidate in @this)
+		/// <summary>
+		/// Filters a <see cref="CandidateMap"/> collection based on a predicate.
+		/// </summary>
+		/// <param name="predicate">A function to test each element for a condition.</param>
+		/// <returns>
+		/// A <see cref="CandidateMap"/> that contains elements from the input <see cref="CandidateMap"/> satisfying the condition.
+		/// </returns>
+		public CandidateMap Where(Func<Candidate, bool> predicate)
 		{
-			var key = keySelector(candidate);
-			if (!dictionary.TryAdd(key, [candidate]))
+			var result = @this;
+			foreach (var cell in @this.Offsets)
 			{
-				var originalElement = dictionary[key];
-				originalElement.Add(candidate);
-				dictionary[key] = originalElement;
+				if (!predicate(cell))
+				{
+					result.Remove(cell);
+				}
 			}
+			return result;
 		}
 
-		var result = new CellMapOrCandidateMapGrouping<CandidateMap, Candidate, TKey>[dictionary.Count];
-		var i = 0;
-		foreach (var kvp in dictionary)
+		/// <inheritdoc cref="CellMapEnumerable.GroupBy{TKey}(in CellMap, Func{int, TKey})"/>
+		public ReadOnlySpan<CellMapOrCandidateMapGrouping<CandidateMap, Candidate, TKey>> GroupBy<TKey>(Func<Candidate, TKey> keySelector)
+			where TKey : notnull
 		{
-			ref readonly var key = ref kvp.KeyRef;
-			ref readonly var value = ref kvp.ValueRef;
-			result[i++] = new(key, value);
-		}
-		return result;
-	}
-
-	/// <summary>
-	/// Projects each candidate (of type <see cref="Candidate"/>) of a <see cref="CandidateMap"/> to a mask (of type <see cref="Mask"/>),
-	/// flattens the resulting sequence into one sequence, and invokes a result selector function on each element therein.
-	/// </summary>
-	/// <typeparam name="TResult">The type of the elements of the resulting sequence.</typeparam>
-	/// <param name="this">A sequence of values to project.</param>
-	/// <param name="collectionSelector">A transform function to apply to each element of the input <see cref="CandidateMap"/>.</param>
-	/// <param name="resultSelector">A transform function to apply to each element of the intermediate mask (of type <see cref="Mask"/>).</param>
-	/// <returns>
-	/// A <see cref="ReadOnlySpan{T}"/> of <typeparamref name="TResult"/> whose elements are the result
-	/// of invoking the one-to-many transform function <paramref name="collectionSelector"/> on each element of <paramref name="this"/>
-	/// and then mapping each of those sequences and their corresponding source element to a result element.
-	/// </returns>
-	public static ReadOnlySpan<TResult> SelectMany<TResult>(
-		this in CandidateMap @this,
-		Func<Candidate, Mask> collectionSelector,
-		Func<Candidate, Digit, TResult> resultSelector
-	)
-	{
-		var result = new List<TResult>(@this.Count << 1);
-		foreach (var candidate in @this)
-		{
-			foreach (var digit in collectionSelector(candidate))
+			var dictionary = new Dictionary<TKey, CandidateMap>();
+			foreach (var candidate in @this)
 			{
-				result.AddRef(resultSelector(candidate, digit));
+				var key = keySelector(candidate);
+				if (!dictionary.TryAdd(key, [candidate]))
+				{
+					var originalElement = dictionary[key];
+					originalElement.Add(candidate);
+					dictionary[key] = originalElement;
+				}
 			}
-		}
-		return result.AsSpan();
-	}
 
-	/// <summary>
-	/// Indicates whether at least one element satisfies the specified condition.
-	/// </summary>
-	/// <param name="this">The cell to be checked.</param>
-	/// <param name="match">The match method.</param>
-	/// <returns>A <see cref="bool"/> result indicating whether at least one element satisfies the specified condition.</returns>
-	public static bool Any(this in CandidateMap @this, Func<Candidate, bool> match)
-	{
-		foreach (var candidate in @this)
-		{
-			if (match(candidate))
+			var result = new CellMapOrCandidateMapGrouping<CandidateMap, Candidate, TKey>[dictionary.Count];
+			var i = 0;
+			foreach (var kvp in dictionary)
 			{
-				return true;
+				ref readonly var key = ref kvp.KeyRef;
+				ref readonly var value = ref kvp.ValueRef;
+				result[i++] = new(key, value);
 			}
+			return result;
 		}
-		return false;
-	}
 
-	/// <summary>
-	/// Determine whether all <see cref="Candidate"/>s satisfy the specified condition.
-	/// </summary>
-	/// <param name="this">The candidate to be checked.</param>
-	/// <param name="match">The match method.</param>
-	/// <returns>A <see cref="bool"/> result indicating whether all elements satisfy the specified condition.</returns>
-	public static bool All(this in CandidateMap @this, Func<Candidate, bool> match)
-	{
-		foreach (var candidate in @this)
+		/// <summary>
+		/// Projects each candidate (of type <see cref="Candidate"/>) of a <see cref="CandidateMap"/> to a mask (of type <see cref="Mask"/>),
+		/// flattens the resulting sequence into one sequence, and invokes a result selector function on each element therein.
+		/// </summary>
+		/// <typeparam name="TResult">The type of the elements of the resulting sequence.</typeparam>
+		/// <param name="collectionSelector">A transform function to apply to each element of the input <see cref="CandidateMap"/>.</param>
+		/// <param name="resultSelector">A transform function to apply to each element of the intermediate mask (of type <see cref="Mask"/>).</param>
+		/// <returns>
+		/// A <see cref="ReadOnlySpan{T}"/> of <typeparamref name="TResult"/> whose elements are the result
+		/// of invoking the one-to-many transform function <paramref name="collectionSelector"/> on each element
+		/// of the current instance and then mapping each of those sequences and their corresponding source element to a result element.
+		/// </returns>
+		public ReadOnlySpan<TResult> SelectMany<TResult>(Func<Candidate, Mask> collectionSelector, Func<Candidate, Digit, TResult> resultSelector)
 		{
-			if (!match(candidate))
+			var result = new List<TResult>(@this.Count << 1);
+			foreach (var candidate in @this)
 			{
-				return false;
+				foreach (var digit in collectionSelector(candidate))
+				{
+					result.AddRef(resultSelector(candidate, digit));
+				}
 			}
+			return result.AsSpan();
 		}
-		return true;
+
+		/// <summary>
+		/// Indicates whether at least one element satisfies the specified condition.
+		/// </summary>
+		/// <param name="match">The match method.</param>
+		/// <returns>A <see cref="bool"/> result indicating whether at least one element satisfies the specified condition.</returns>
+		public bool Any(Func<Candidate, bool> match)
+		{
+			foreach (var candidate in @this)
+			{
+				if (match(candidate))
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		/// <summary>
+		/// Determine whether all <see cref="Candidate"/>s satisfy the specified condition.
+		/// </summary>
+		/// <param name="match">The match method.</param>
+		/// <returns>A <see cref="bool"/> result indicating whether all elements satisfy the specified condition.</returns>
+		public bool All(Func<Candidate, bool> match)
+		{
+			foreach (var candidate in @this)
+			{
+				if (!match(candidate))
+				{
+					return false;
+				}
+			}
+			return true;
+		}
 	}
 }

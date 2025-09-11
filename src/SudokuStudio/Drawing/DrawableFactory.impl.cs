@@ -629,25 +629,31 @@ internal partial class DrawableFactory
 file static class Extensions
 {
 	/// <summary>
-	/// <para>Fast determines whether the specified conclusion list contains the specified candidate.</para>
-	/// <para>This method is used for checking cannibalism.</para>
+	/// Provides extension members on <see cref="ReadOnlyMemory{T}"/> of <see cref="Conclusion"/>.
 	/// </summary>
 	/// <param name="conclusions">The conclusion collection.</param>
-	/// <param name="candidate">The candidate to be determined.</param>
-	/// <param name="conclusion">The overlapped result.</param>
-	/// <returns>A <see cref="bool"/> result indicating that.</returns>
-	public static bool ConflictWith(this ReadOnlyMemory<Conclusion> conclusions, Candidate candidate, [NotNullWhen(true)] out Conclusion? conclusion)
+	extension(ReadOnlyMemory<Conclusion> conclusions)
 	{
-		foreach (var current in conclusions)
+		/// <summary>
+		/// <para>Fast determines whether the specified conclusion list contains the specified candidate.</para>
+		/// <para>This method is used for checking cannibalism.</para>
+		/// </summary>
+		/// <param name="candidate">The candidate to be determined.</param>
+		/// <param name="conclusion">The overlapped result.</param>
+		/// <returns>A <see cref="bool"/> result indicating that.</returns>
+		public bool ConflictWith(Candidate candidate, [NotNullWhen(true)] out Conclusion? conclusion)
 		{
-			if (current.Candidate == candidate)
+			foreach (var current in conclusions)
 			{
-				conclusion = current;
-				return true;
+				if (current.Candidate == candidate)
+				{
+					conclusion = current;
+					return true;
+				}
 			}
-		}
 
-		conclusion = null;
-		return false;
+			conclusion = null;
+			return false;
+		}
 	}
 }

@@ -7,40 +7,44 @@ namespace Sudoku.Linq;
 public static class GridEnumerable
 {
 	/// <summary>
-	/// Filters the candidates that satisfies the specified condition.
+	/// Provides extension members on <see langword="in"/> <see cref="Grid"/>.
 	/// </summary>
-	/// <param name="this">The instance to be iterated.</param>
-	/// <param name="predicate">The condition to filter candidates.</param>
-	/// <returns>All candidates satisfied the specified condition.</returns>
-	public static ReadOnlySpan<Candidate> Where(this in Grid @this, Func<Candidate, bool> predicate)
+	extension(in Grid @this)
 	{
-		var (result, i) = (new Candidate[@this.CandidatesCount], 0);
-		foreach (var candidate in @this.Candidates)
+		/// <summary>
+		/// Filters the candidates that satisfies the specified condition.
+		/// </summary>
+		/// <param name="predicate">The condition to filter candidates.</param>
+		/// <returns>All candidates satisfied the specified condition.</returns>
+		public ReadOnlySpan<Candidate> Where(Func<Candidate, bool> predicate)
 		{
-			if (predicate(candidate))
+			var (result, i) = (new Candidate[@this.CandidatesCount], 0);
+			foreach (var candidate in @this.Candidates)
 			{
-				result[i++] = candidate;
+				if (predicate(candidate))
+				{
+					result[i++] = candidate;
+				}
 			}
+			return result.AsReadOnlySpan()[..i];
 		}
-		return result.AsReadOnlySpan()[..i];
-	}
 
-	/// <summary>
-	/// Projects each element of a sequence into a new form.
-	/// </summary>
-	/// <typeparam name="TResult">The type of the value returned by <paramref name="selector"/>.</typeparam>
-	/// <param name="this">The instance to be iterated.</param>
-	/// <param name="selector">A transform function to apply to each element.</param>
-	/// <returns>
-	/// An array of <typeparamref name="TResult"/> elements converted.
-	/// </returns>
-	public static ReadOnlySpan<TResult> Select<TResult>(this scoped in Grid @this, Func<Candidate, TResult> selector)
-	{
-		var (result, i) = (new TResult[@this.CandidatesCount], 0);
-		foreach (var candidate in @this.Candidates)
+		/// <summary>
+		/// Projects each element of a sequence into a new form.
+		/// </summary>
+		/// <typeparam name="TResult">The type of the value returned by <paramref name="selector"/>.</typeparam>
+		/// <param name="selector">A transform function to apply to each element.</param>
+		/// <returns>
+		/// An array of <typeparamref name="TResult"/> elements converted.
+		/// </returns>
+		public ReadOnlySpan<TResult> Select<TResult>(Func<Candidate, TResult> selector)
 		{
-			result[i++] = selector(candidate);
+			var (result, i) = (new TResult[@this.CandidatesCount], 0);
+			foreach (var candidate in @this.Candidates)
+			{
+				result[i++] = selector(candidate);
+			}
+			return result.AsReadOnlySpan()[..i];
 		}
-		return result.AsReadOnlySpan()[..i];
 	}
 }

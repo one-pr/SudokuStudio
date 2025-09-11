@@ -3358,11 +3358,19 @@
 			</target>
         </member>
         <member name="M:SudokuStudio.Drawing.Extensions.ConflictWith(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},System.Int32,System.Nullable{Sudoku.Concepts.Conclusion}@)">
+            <inheritdoc cref="M:SudokuStudio.Drawing.Extensions.&lt;G&gt;$970916A189419611DDDEAC9AB092AA10.ConflictWith(System.Int32,System.Nullable{Sudoku.Concepts.Conclusion}@)"/>
+        </member>
+        <member name="T:SudokuStudio.Drawing.Extensions.&lt;G&gt;$970916A189419611DDDEAC9AB092AA10.&lt;M&gt;$14E2F3B8923C5DBA2560C824D2385A9C">
+            <summary>
+            Provides extension members on <see cref="T:System.ReadOnlyMemory`1"/> of <see cref="T:Sudoku.Concepts.Conclusion"/>.
+            </summary>
+            <param name="conclusions">The conclusion collection.</param>
+        </member>
+        <member name="M:SudokuStudio.Drawing.Extensions.&lt;G&gt;$970916A189419611DDDEAC9AB092AA10.ConflictWith(System.Int32,System.Nullable{Sudoku.Concepts.Conclusion}@)">
             <summary>
             <para>Fast determines whether the specified conclusion list contains the specified candidate.</para>
             <para>This method is used for checking cannibalism.</para>
             </summary>
-            <param name="conclusions">The conclusion collection.</param>
             <param name="candidate">The candidate to be determined.</param>
             <param name="conclusion">The overlapped result.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
