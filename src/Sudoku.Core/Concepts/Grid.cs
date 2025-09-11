@@ -812,22 +812,8 @@ public struct Grid : InlineArrayGridBase
 	}
 
 	/// <inheritdoc/>
-	public void Apply(Conclusion conclusion)
+	public readonly void Apply(Conclusion conclusion)
 	{
-		var (type, cell, digit) = conclusion;
-		switch (type)
-		{
-			case Assignment:
-			{
-				SetDigit(cell, digit);
-				break;
-			}
-			case Elimination:
-			{
-				SetExistence(cell, digit, false);
-				break;
-			}
-		}
 	}
 
 	/// <inheritdoc/>
@@ -1317,6 +1303,26 @@ public struct Grid : InlineArrayGridBase
 	}
 
 
+	/// <inheritdoc/>
+	public void operator >>=(Conclusion conclusion)
+	{
+		var (type, cell, digit) = conclusion;
+		switch (type)
+		{
+			case Assignment:
+			{
+				SetDigit(cell, digit);
+				break;
+			}
+			case Elimination:
+			{
+				SetExistence(cell, digit, false);
+				break;
+			}
+		}
+	}
+
+
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
 	public static bool operator ==(in Grid left, in Grid right) => left.Equals(right);
 
@@ -1334,6 +1340,14 @@ public struct Grid : InlineArrayGridBase
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
 	public static bool operator <=(in Grid left, in Grid right) => left.CompareTo(right) <= 0;
+
+	/// <inheritdoc/>
+	public static Grid operator >>(in Grid grid, Conclusion conclusion)
+	{
+		var tempGrid = grid;
+		tempGrid >>= conclusion;
+		return tempGrid;
+	}
 
 
 	/// <inheritdoc/>

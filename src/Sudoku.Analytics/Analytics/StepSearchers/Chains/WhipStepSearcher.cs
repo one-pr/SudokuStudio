@@ -174,14 +174,14 @@ public sealed partial class WhipStepSearcher : StepSearcher
 			{
 				case NormalWhipAssignment { Candidate: var candidate }:
 				{
-					grid.Apply(new(Assignment, candidate));
+					grid >>= new Conclusion(Assignment, candidate);
 					break;
 				}
 				case GroupedWhipAssignment { Digit: var digit, Cells: var cells }:
 				{
 					foreach (var cell in grid.CandidatesMap[digit] & cells.PeerIntersection)
 					{
-						grid.Apply(new(Elimination, cell, digit));
+						grid >>= new Conclusion(Elimination, cell, digit);
 					}
 					break;
 				}

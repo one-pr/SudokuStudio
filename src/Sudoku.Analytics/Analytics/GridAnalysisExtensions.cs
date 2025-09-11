@@ -19,7 +19,7 @@ public static class GridAnalysisExtensions
 		{
 			foreach (var conclusion in step.Conclusions)
 			{
-				@this.Apply(conclusion);
+				@this >>= conclusion;
 			}
 		}
 	}

@@ -541,25 +541,6 @@ public struct MarkerGrid : InlineArrayGridBase
 	}
 
 	/// <inheritdoc/>
-	public void Apply(Conclusion conclusion)
-	{
-		var (type, cell, digit) = conclusion;
-		switch (type)
-		{
-			case Assignment:
-			{
-				SetDigit(cell, digit);
-				break;
-			}
-			case Elimination:
-			{
-				SetExistence(cell, digit, false);
-				break;
-			}
-		}
-	}
-
-	/// <inheritdoc/>
 	readonly bool IEquatable<MarkerGrid>.Equals(MarkerGrid other) => Equals(other);
 
 	/// <inheritdoc/>
@@ -717,6 +698,25 @@ public struct MarkerGrid : InlineArrayGridBase
 		=> (provider as SusserGridFormatInfo<MarkerGrid> ?? new()).ParseCore(s);
 
 
+	/// <inheritdoc/>
+	public void operator >>=(Conclusion conclusion)
+	{
+		var (type, cell, digit) = conclusion;
+		switch (type)
+		{
+			case Assignment:
+			{
+				SetDigit(cell, digit);
+				break;
+			}
+			case Elimination:
+			{
+				SetExistence(cell, digit, false);
+				break;
+			}
+		}
+	}
+
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
 	public static bool operator >(in MarkerGrid left, in MarkerGrid right) => left.CompareTo(right) > 0;
@@ -735,6 +735,14 @@ public struct MarkerGrid : InlineArrayGridBase
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
 	public static bool operator !=(in MarkerGrid left, in MarkerGrid right) => !(left == right);
+
+	/// <inheritdoc/>
+	public static MarkerGrid operator >>(in MarkerGrid grid, Conclusion conclusion)
+	{
+		var tempGrid = grid;
+		tempGrid >>= conclusion;
+		return tempGrid;
+	}
 
 	/// <inheritdoc/>
 	static bool IEqualityOperators<MarkerGrid, MarkerGrid, bool>.operator ==(MarkerGrid left, MarkerGrid right) => left == right;

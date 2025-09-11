@@ -47,7 +47,7 @@ public sealed class BlockFirst : IBehaviorMetric
 				result.Add(s);
 				resultStepsAll.Add(kvp.Cast<SingleStep, Grid, Step, Grid>());
 				resultSteps.Add(kvp);
-				playground.Apply(new(Assignment, lastStep.Cell, solution.GetDigit(lastStep.Cell)));
+				playground >>= new Conclusion(Assignment, lastStep.Cell, solution.GetDigit(lastStep.Cell));
 				continue;
 			}
 

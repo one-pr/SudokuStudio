@@ -278,12 +278,6 @@ public interface IGrid<TSelf> :
 	void Unfix();
 
 	/// <summary>
-	/// Try to apply the specified conclusion.
-	/// </summary>
-	/// <param name="conclusion">The conclusion to be applied.</param>
-	void Apply(Conclusion conclusion);
-
-	/// <summary>
 	/// Set the specified cell to the specified state.
 	/// </summary>
 	/// <param name="cell">The cell.</param>
@@ -612,6 +606,13 @@ public interface IGrid<TSelf> :
 	}
 
 
+	/// <summary>
+	/// Applies the conclusion to the current grid.
+	/// </summary>
+	/// <param name="conclusion">The conclusion.</param>
+	void operator >>=(Conclusion conclusion);
+
+
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
 	static abstract bool operator ==(in TSelf left, in TSelf right);
 
@@ -629,6 +630,14 @@ public interface IGrid<TSelf> :
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
 	static abstract bool operator <=(in TSelf left, in TSelf right);
+
+	/// <summary>
+	/// Applies the conclusion to the target grid.
+	/// </summary>
+	/// <param name="grid">The grid.</param>
+	/// <param name="conclusion">The conclusion.</param>
+	/// <returns>The target grid.</returns>
+	static abstract TSelf operator >>(in TSelf grid, Conclusion conclusion);
 
 	/// <inheritdoc/>
 	static bool IEqualityOperators<TSelf, TSelf, bool>.operator ==(TSelf left, TSelf right) => left == right;
