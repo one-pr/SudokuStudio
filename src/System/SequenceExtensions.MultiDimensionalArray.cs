@@ -1,10 +1,6 @@
 namespace System;
 
-/// <summary>
-/// Provides with extension methods on <see cref="Array"/> and its derived concrete types.
-/// </summary>
-/// <seealso cref="Array"/>
-public static class ArrayExtensions
+public partial class SequenceExtensions
 {
 	/// <summary>
 	/// Provides extension members on <typeparamref name="T"/>[][].
