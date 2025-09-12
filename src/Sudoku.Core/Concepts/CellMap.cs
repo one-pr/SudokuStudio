@@ -305,7 +305,7 @@ public partial struct CellMap : CellMapBase
 	{
 		get
 		{
-			foreach (var symmetry in -SymmetricType.Values[1..])
+			foreach (var symmetry in ~SymmetricType.Values[1..])
 			{
 				var isThisSymmetry = true;
 				foreach (var cell in this)

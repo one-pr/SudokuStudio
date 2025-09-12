@@ -238,7 +238,7 @@ public class MultipleForcingChains(params Conclusion[] conclusions) :
 
 		// If so, a finned chain is found. Now we should merge two branches into one, by rotating one of two branches,
 		// and concat two branches.
-		(result, fins) = (c([.. -firstKraken, .. secondKraken], conclusion), finsFound);
+		(result, fins) = (c([.. ~firstKraken, .. secondKraken], conclusion), finsFound);
 		return true;
 
 	ReturnFalse:

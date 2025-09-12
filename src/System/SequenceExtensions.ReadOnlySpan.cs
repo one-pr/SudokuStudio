@@ -176,18 +176,11 @@ public partial class SequenceExtensions
 
 
 		/// <summary>
-		/// Returns <paramref name="value"/>.
-		/// </summary>
-		/// <param name="value">The value.</param>
-		/// <returns>The instance same as <paramref name="value"/>.</returns>
-		public static ReadOnlySpan<T> operator +(ReadOnlySpan<T> value) => value;
-
-		/// <summary>
 		/// Creates a reversed collection of <paramref name="value"/>.
 		/// </summary>
 		/// <param name="value">The value.</param>
 		/// <returns>The reversed collection.</returns>
-		public static ReadOnlySpan<T> operator -(scoped ReadOnlySpan<T> value)
+		public static ReadOnlySpan<T> operator ~(scoped ReadOnlySpan<T> value)
 		{
 			var result = new T[value.Length];
 			for (var (i, j) = (value.Length - 1, 0); i >= 0; i--, j++)
@@ -334,6 +327,6 @@ public partial class SequenceExtensions
 		/// <returns>A new collection whose elements are in reversed order.</returns>
 		[OverloadResolutionPriority(1)]
 		[Obsolete(DeprecatedMessages.ExtensionOperator_Reverse, false)]
-		public ReadOnlySpan<T> Reverse() => -@this;
+		public ReadOnlySpan<T> Reverse() => ~@this;
 	}
 }

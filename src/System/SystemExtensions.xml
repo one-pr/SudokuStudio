@@ -7568,11 +7568,8 @@
         <member name="M:System.SequenceExtensions.GetPermutations``1(System.ReadOnlySpan{``0},System.Int32)">
             <inheritdoc cref="M:System.SequenceExtensions.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94.GetPermutations(System.Int32)"/>
         </member>
-        <member name="M:System.SequenceExtensions.op_UnaryPlus``1(System.ReadOnlySpan{``0})">
-            <inheritdoc cref="M:System.SequenceExtensions.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94.op_UnaryPlus(System.ReadOnlySpan{`0})"/>
-        </member>
-        <member name="M:System.SequenceExtensions.op_UnaryNegation``1(System.ReadOnlySpan{``0})">
-            <inheritdoc cref="M:System.SequenceExtensions.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94.op_UnaryNegation(System.ReadOnlySpan{`0})"/>
+        <member name="M:System.SequenceExtensions.op_OnesComplement``1(System.ReadOnlySpan{``0})">
+            <inheritdoc cref="M:System.SequenceExtensions.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94.op_OnesComplement(System.ReadOnlySpan{`0})"/>
         </member>
         <member name="M:System.SequenceExtensions.op_Division``1(System.ReadOnlySpan{``0},System.Int32)">
             <inheritdoc cref="M:System.SequenceExtensions.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94.op_Division(System.ReadOnlySpan{`0},System.Int32)"/>
@@ -7791,14 +7788,7 @@
             6 cases.
             </returns>
         </member>
-        <member name="M:System.SequenceExtensions.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94.op_UnaryPlus(System.ReadOnlySpan{`0})">
-            <summary>
-            Returns <paramref name="value"/>.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>The instance same as <paramref name="value"/>.</returns>
-        </member>
-        <member name="M:System.SequenceExtensions.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94.op_UnaryNegation(System.ReadOnlySpan{`0})">
+        <member name="M:System.SequenceExtensions.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94.op_OnesComplement(System.ReadOnlySpan{`0})">
             <summary>
             Creates a reversed collection of <paramref name="value"/>.
             </summary>

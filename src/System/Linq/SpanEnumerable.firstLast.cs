@@ -63,7 +63,7 @@ public partial class SpanEnumerable
 	/// <inheritdoc cref="IFirstLastMethod{TSelf, TSource}.Last(Func{TSource, bool})"/>
 	public static T Last<T>(this ReadOnlySpan<T> @this, Func<T, bool> predicate)
 	{
-		foreach (var element in -@this)
+		foreach (var element in ~@this)
 		{
 			if (predicate(element))
 			{
@@ -76,7 +76,7 @@ public partial class SpanEnumerable
 	/// <inheritdoc cref="IFirstLastMethod{TSelf, TSource}.LastOrDefault(Func{TSource, bool})"/>
 	public static T? LastOrDefault<T>(this ReadOnlySpan<T> @this, Func<T, bool> predicate)
 	{
-		foreach (var element in -@this)
+		foreach (var element in ~@this)
 		{
 			if (predicate(element))
 			{
