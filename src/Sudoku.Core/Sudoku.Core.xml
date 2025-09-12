@@ -4924,6 +4924,9 @@
         <member name="M:Sudoku.Concepts.Grid.Unfix">
             <inheritdoc/>
         </member>
+        <member name="M:Sudoku.Concepts.Grid.Apply(Sudoku.Concepts.Conclusion)">
+            <inheritdoc/>
+        </member>
         <member name="M:Sudoku.Concepts.Grid.SetState(System.Int32,Sudoku.Concepts.CellState)">
             <inheritdoc/>
         </member>
@@ -6448,6 +6451,9 @@
             doesn't exist in this current sudoku grid; otherwise, <see langword="true"/>.
             </param>
         </member>
+        <member name="M:Sudoku.Concepts.IGrid`1.Apply(Sudoku.Concepts.Conclusion)">
+            <inheritdoc cref="M:Sudoku.Concepts.IGrid`1.op_RightShiftAssignment(Sudoku.Concepts.Conclusion)"/>
+        </member>
         <member name="M:Sudoku.Concepts.IGrid`1.GetExistence(System.Int32,System.Int32)">
             <summary>
             Sets a candidate existence case with a <see cref="T:System.Boolean"/> value.
@@ -7028,6 +7034,9 @@
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Concepts.MarkerGrid.Unfix">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.MarkerGrid.Apply(Sudoku.Concepts.Conclusion)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Concepts.MarkerGrid.SetState(System.Int32,Sudoku.Concepts.CellState)">
@@ -15220,6 +15229,9 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
+        <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.Apply(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Transformations.GenericTransform@)"/>
+        </member>
         <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)">
             <inheritdoc cref="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Transformations.GenericTransform@)"/>
         </member>
@@ -15230,6 +15242,9 @@
             <summary>
             Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
+        </member>
+        <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridGenericTransformExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)"/>
         </member>
         <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Transformations.GenericTransform@)">
             <summary>

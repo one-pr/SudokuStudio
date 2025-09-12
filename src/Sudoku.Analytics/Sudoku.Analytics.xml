@@ -3022,8 +3022,14 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
+        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.Apply(Sudoku.Concepts.Grid@,Sudoku.Analytics.Step)">
+            <inheritdoc cref="M:Sudoku.Analytics.GridAnalysisExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Analytics.Step)"/>
+        </member>
         <member name="M:Sudoku.Analytics.GridAnalysisExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Analytics.Step)">
             <inheritdoc cref="M:Sudoku.Analytics.GridAnalysisExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Analytics.Step)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Analytics.Step)">
+            <inheritdoc cref="M:Sudoku.Analytics.GridAnalysisExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Analytics.Step)"/>
         </member>
         <member name="M:Sudoku.Analytics.GridAnalysisExtensions.get_CanPrimaryFullHouse(Sudoku.Concepts.Grid@)">
             <inheritdoc cref="P:Sudoku.Analytics.GridAnalysisExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.CanPrimaryFullHouse"/>
@@ -3039,11 +3045,22 @@
             Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
+        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Analytics.Step)">
+            <inheritdoc cref="M:Sudoku.Analytics.GridAnalysisExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Analytics.Step)"/>
+        </member>
         <member name="M:Sudoku.Analytics.GridAnalysisExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Analytics.Step)">
             <summary>
             Applies for all conclusions into the current <see cref="T:Sudoku.Concepts.Grid"/> instance.
             </summary>
             <param name="step">A conclusion-provider <see cref="T:Sudoku.Analytics.Step"/> instance.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Analytics.Step)">
+            <summary>
+            Applies the grid with specified step.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="step">The step.</param>
+            <returns>The target grid.</returns>
         </member>
         <member name="T:Sudoku.Analytics.GridAnalysisExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$4FBDD4478CFAA5DAE39645DF9E3BC758">
             <summary>

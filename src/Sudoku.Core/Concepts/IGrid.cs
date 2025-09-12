@@ -326,6 +326,9 @@ public interface IGrid<TSelf> :
 	/// </param>
 	void SetExistence(Cell cell, Digit digit, bool isOn);
 
+	/// <inheritdoc cref="op_RightShiftAssignment(Conclusion)"/>
+	void Apply(Conclusion conclusion);
+
 	/// <summary>
 	/// Sets a candidate existence case with a <see cref="bool"/> value.
 	/// </summary>

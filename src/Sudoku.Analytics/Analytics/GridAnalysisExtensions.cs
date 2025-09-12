@@ -11,6 +11,11 @@ public static class GridAnalysisExtensions
 	/// </summary>
 	extension(ref Grid @this)
 	{
+		/// <inheritdoc cref="op_RightShiftAssignment(ref Grid, Step)"/>
+		[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
+		public void Apply(Step step) => @this >>= step;
+
+
 		/// <summary>
 		/// Applies for all conclusions into the current <see cref="Grid"/> instance.
 		/// </summary>
@@ -21,6 +26,20 @@ public static class GridAnalysisExtensions
 			{
 				@this >>= conclusion;
 			}
+		}
+
+
+		/// <summary>
+		/// Applies the grid with specified step.
+		/// </summary>
+		/// <param name="grid">The grid.</param>
+		/// <param name="step">The step.</param>
+		/// <returns>The target grid.</returns>
+		public static Grid operator >>(in Grid grid, Step step)
+		{
+			var tempGrid = grid;
+			tempGrid >>= step;
+			return tempGrid;
 		}
 	}
 

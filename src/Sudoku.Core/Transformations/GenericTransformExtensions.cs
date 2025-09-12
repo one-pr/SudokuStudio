@@ -11,6 +11,11 @@ public static class GridGenericTransformExtensions
 	/// </summary>
 	extension(ref Grid @this)
 	{
+		/// <inheritdoc cref="op_RightShiftAssignment(ref Grid, in GenericTransform)"/>
+		[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
+		public void Apply(in GenericTransform transform) => @this >>= transform;
+
+
 		/// <summary>
 		/// Applies transform with the specified <see cref="GenericTransform"/>.
 		/// </summary>

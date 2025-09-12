@@ -1,9 +1,11 @@
+#pragma warning disable CS1591
+
 namespace System;
 
 /// <summary>
 /// Provides deprecated messages.
 /// </summary>
-internal static class DeprecatedMessages
+public static class DeprecatedMessages
 {
 	public const string ExtensionOperator_Reverse = "Use extension operator 'operator ~' instead: '~collection'";
 
@@ -18,4 +20,6 @@ internal static class DeprecatedMessages
 	public const string ExtensionOperator_Unpack = "Use extension operator 'operator -' instead: '-string'";
 
 	//public const string ExtensionOperator_Equality = "Use extension operator 'operator ==' instead: 'left == right'";
+
+	public const string ExtensionOperator_Apply = "Use extension operator 'operator >>=' instead: 'instance >>= value'";
 }

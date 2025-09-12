@@ -812,6 +812,10 @@ public struct Grid : InlineArrayGridBase
 	}
 
 	/// <inheritdoc/>
+	[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
+	public void Apply(Conclusion conclusion) => this >>= conclusion;
+
+	/// <inheritdoc/>
 	public void SetState(Cell cell, CellState state)
 	{
 		ref var mask = ref this[cell];
