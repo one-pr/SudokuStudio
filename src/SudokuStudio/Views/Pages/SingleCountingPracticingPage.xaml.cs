@@ -260,45 +260,51 @@ public sealed partial class SingleCountingPracticingPage : Page
 file static class Extensions
 {
 	/// <summary>
-	/// Counts up the number of instances that satisfies the specified condition, with the specified instance as the reference,
-	/// using index from another collection.
+	/// Provides extension members on <see cref="List{T}"/> of <typeparamref name="T1"/>.
 	/// </summary>
-	/// <typeparam name="T1">The type of elements from the current collection.</typeparam>
-	/// <typeparam name="T2">The type of elements from the other collection.</typeparam>
-	/// <param name="this">The collection.</param>
-	/// <param name="other">The other collection.</param>
-	/// <param name="predicate">The condition.</param>
-	/// <param name="count">The number of elements.</param>
-	/// <returns>An <see cref="int"/> result.</returns>
-	public static int CountWithSameIndex<T1, T2>(this List<T1?> @this, List<T2?> other, Func<T1?, T2?, bool> predicate, int count)
-		where T1 : notnull
-		where T2 : notnull
+	extension<T1>(List<T1?> @this) where T1 : notnull
 	{
-		Debug.Assert(@this.Count == other.Count);
-
-		var result = 0;
-		for (var i = 0; i < count; i++)
+		/// <summary>
+		/// Counts up the number of instances that satisfies the specified condition, with the specified instance as the reference,
+		/// using index from another collection.
+		/// </summary>
+		/// <typeparam name="T2">The type of elements from the other collection.</typeparam>
+		/// <param name="other">The other collection.</param>
+		/// <param name="predicate">The condition.</param>
+		/// <param name="count">The number of elements.</param>
+		/// <returns>An <see cref="int"/> result.</returns>
+		public int CountWithSameIndex<T2>(List<T2?> other, Func<T1?, T2?, bool> predicate, int count) where T2 : notnull
 		{
-			if (predicate(@this[i], other[i]))
+			Debug.Assert(@this.Count == other.Count);
+
+			var result = 0;
+			for (var i = 0; i < count; i++)
 			{
-				result++;
+				if (predicate(@this[i], other[i]))
+				{
+					result++;
+				}
 			}
+			return result;
 		}
-		return result;
 	}
 
 	/// <summary>
-	/// Refresh the collection.
+	/// Provides extension members on <see cref="List{T}"/> of <typeparamref name="T"/>?.
 	/// </summary>
-	/// <typeparam name="T">The type of each element.</typeparam>
-	/// <param name="this">The collection.</param>
-	/// <param name="count">The number of elements to be created.</param>
-	public static void Refresh<T>(this List<T?> @this, int count) where T : notnull
+	extension<T>(List<T?> @this) where T : notnull
 	{
-		@this.Clear();
-		for (var i = 0; i < count; i++)
+		/// <summary>
+		/// Refresh the collection.
+		/// </summary>
+		/// <param name="count">The number of elements to be created.</param>
+		public void Refresh(int count)
 		{
-			@this.Add(default);
+			@this.Clear();
+			for (var i = 0; i < count; i++)
+			{
+				@this.Add(default);
+			}
 		}
 	}
 }

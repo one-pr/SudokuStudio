@@ -29,25 +29,31 @@ public static class KeyValuePairExtensions
 		public (TKey, TValue) ToTuple() => (@this.Key, @this.Value);
 	}
 
-
 	/// <summary>
-	/// Casts the current instance into a new type of <see cref="KeyValuePair{TKey, TValue}"/>
-	/// with type projection:
-	/// <list type="bullet">
-	/// <item><typeparamref name="TKey"/> -> <typeparamref name="TKeyResult"/></item>
-	/// <item><typeparamref name="TValue"/> -> <typeparamref name="TValueResult"/></item>
-	/// </list>
+	/// Provides extension members on <see cref="KeyValuePair{TKey, TValue}"/>
+	/// of <typeparamref name="TKey"/> and <typeparamref name="TValue"/>.
 	/// </summary>
 	/// <typeparam name="TKey">The type of key.</typeparam>
 	/// <typeparam name="TValue">The type of value.</typeparam>
 	/// <typeparam name="TKeyResult">The type of result key.</typeparam>
 	/// <typeparam name="TValueResult">The type of result value.</typeparam>
 	/// <param name="this">The instance.</param>
-	/// <returns>The casted result.</returns>
-	public static KeyValuePair<TKeyResult, TValueResult> Cast<TKey, TValue, TKeyResult, TValueResult>(this in KeyValuePair<TKey, TValue> @this)
+	extension<TKey, TValue, TKeyResult, TValueResult>(in KeyValuePair<TKey, TValue> @this)
 		where TKey : TKeyResult
 		where TValue : TValueResult
-		=> KeyValuePair.Create((TKeyResult)@this.Key, (TValueResult)@this.Value);
+	{
+		/// <summary>
+		/// Casts the current instance into a new type of <see cref="KeyValuePair{TKey, TValue}"/>
+		/// with type projection:
+		/// <list type="bullet">
+		/// <item><typeparamref name="TKey"/> -> <typeparamref name="TKeyResult"/></item>
+		/// <item><typeparamref name="TValue"/> -> <typeparamref name="TValueResult"/></item>
+		/// </list>
+		/// </summary>
+		/// <returns>The casted result.</returns>
+		public KeyValuePair<TKeyResult, TValueResult> Cast()
+			=> KeyValuePair.Create((TKeyResult)@this.Key, (TValueResult)@this.Value);
+	}
 }
 
 /// <summary>

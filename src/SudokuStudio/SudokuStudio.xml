@@ -17232,24 +17232,36 @@
 			</target>
         </member>
         <member name="M:SudokuStudio.Views.Pages.Extensions.CountWithSameIndex``2(System.Collections.Generic.List{``0},System.Collections.Generic.List{``1},System.Func{``0,``1,System.Boolean},System.Int32)">
+            <inheritdoc cref="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.CountWithSameIndex``1(System.Collections.Generic.List{``0},System.Func{`0,``0,System.Boolean},System.Int32)"/>
+        </member>
+        <member name="M:SudokuStudio.Views.Pages.Extensions.Refresh``1(System.Collections.Generic.List{``0},System.Int32)">
+            <inheritdoc cref="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.Refresh(System.Int32)"/>
+        </member>
+        <member name="T:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.&lt;M&gt;$EFA650F559D5ACD0707B73B431B82A87">
+            <summary>
+            Provides extension members on <see cref="T:System.Collections.Generic.List`1"/> of <typeparamref name="T1"/>.
+            </summary>
+        </member>
+        <member name="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.CountWithSameIndex``1(System.Collections.Generic.List{``0},System.Func{`0,``0,System.Boolean},System.Int32)">
             <summary>
             Counts up the number of instances that satisfies the specified condition, with the specified instance as the reference,
             using index from another collection.
             </summary>
-            <typeparam name="T1">The type of elements from the current collection.</typeparam>
             <typeparam name="T2">The type of elements from the other collection.</typeparam>
-            <param name="this">The collection.</param>
             <param name="other">The other collection.</param>
             <param name="predicate">The condition.</param>
             <param name="count">The number of elements.</param>
             <returns>An <see cref="T:System.Int32"/> result.</returns>
         </member>
-        <member name="M:SudokuStudio.Views.Pages.Extensions.Refresh``1(System.Collections.Generic.List{``0},System.Int32)">
+        <member name="T:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.&lt;M&gt;$2C2C34D30F0D33A0DD68C9EE7E68192F">
+            <summary>
+            Provides extension members on <see cref="T:System.Collections.Generic.List`1"/> of <typeparamref name="T"/>?.
+            </summary>
+        </member>
+        <member name="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.Refresh(System.Int32)">
             <summary>
             Refresh the collection.
             </summary>
-            <typeparam name="T">The type of each element.</typeparam>
-            <param name="this">The collection.</param>
             <param name="count">The number of elements to be created.</param>
         </member>
         <member name="T:SudokuStudio.Views.Pages.GeneratingMode">

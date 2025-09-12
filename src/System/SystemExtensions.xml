@@ -941,20 +941,7 @@
             <inheritdoc cref="M:System.Collections.Generic.KeyValuePairExtensions.&lt;G&gt;$F9A05F0C2727948431BAFCE09F60AA7B.ToTuple"/>
         </member>
         <member name="M:System.Collections.Generic.KeyValuePairExtensions.Cast``4(System.Collections.Generic.KeyValuePair{``0,``1}@)">
-            <summary>
-            Casts the current instance into a new type of <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
-            with type projection:
-            <list type="bullet">
-            <item><typeparamref name="TKey"/> -> <typeparamref name="TKeyResult"/></item>
-            <item><typeparamref name="TValue"/> -> <typeparamref name="TValueResult"/></item>
-            </list>
-            </summary>
-            <typeparam name="TKey">The type of key.</typeparam>
-            <typeparam name="TValue">The type of value.</typeparam>
-            <typeparam name="TKeyResult">The type of result key.</typeparam>
-            <typeparam name="TValueResult">The type of result value.</typeparam>
-            <param name="this">The instance.</param>
-            <returns>The casted result.</returns>
+            <inheritdoc cref="M:System.Collections.Generic.KeyValuePairExtensions.&lt;G&gt;$B281A3C1D608A468FAC8C39B46A096F5.Cast"/>
         </member>
         <member name="T:System.Collections.Generic.KeyValuePairExtensions.&lt;G&gt;$F9A05F0C2727948431BAFCE09F60AA7B.&lt;M&gt;$C5BBFEAD36134C5F855BE69560346159">
             <summary>
@@ -976,6 +963,28 @@
             Converts the current <see cref="T:System.Collections.Generic.KeyValuePair`2"/> instance into a pair of values.
             </summary>
             <returns>The final pair of values converted.</returns>
+        </member>
+        <member name="T:System.Collections.Generic.KeyValuePairExtensions.&lt;G&gt;$B281A3C1D608A468FAC8C39B46A096F5.&lt;M&gt;$DF0C790EDB30A880EE82E30A2C279C68">
+            <summary>
+            Provides extension members on <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            of <typeparamref name="TKey"/> and <typeparamref name="TValue"/>.
+            </summary>
+            <typeparam name="TKey">The type of key.</typeparam>
+            <typeparam name="TValue">The type of value.</typeparam>
+            <typeparam name="TKeyResult">The type of result key.</typeparam>
+            <typeparam name="TValueResult">The type of result value.</typeparam>
+            <param name="this">The instance.</param>
+        </member>
+        <member name="M:System.Collections.Generic.KeyValuePairExtensions.&lt;G&gt;$B281A3C1D608A468FAC8C39B46A096F5.Cast">
+            <summary>
+            Casts the current instance into a new type of <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            with type projection:
+            <list type="bullet">
+            <item><typeparamref name="TKey"/> -> <typeparamref name="TKeyResult"/></item>
+            <item><typeparamref name="TValue"/> -> <typeparamref name="TValueResult"/></item>
+            </list>
+            </summary>
+            <returns>The casted result.</returns>
         </member>
         <member name="T:System.Collections.Generic.Entry`2">
             <summary>

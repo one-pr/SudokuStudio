@@ -12,7 +12,6 @@ public sealed class ArrayPrependIterator<T>(T[] _array, T value) : IIterator<Arr
 	/// <summary>
 	/// The final element to be iterated.
 	/// </summary>
-	[SuppressMessage("Style", "IDE0032:Use auto property", Justification = "<Pending>")]
 	private readonly T _value = value;
 
 	/// <summary>
