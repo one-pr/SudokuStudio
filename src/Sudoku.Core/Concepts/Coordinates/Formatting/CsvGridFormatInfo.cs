@@ -27,9 +27,9 @@ public sealed class CsvGridFormatInfo : GridFormatInfo<Grid>
 				}
 				sb.Append('\t');
 			}
-			sb.RemoveFrom(^1).AppendLine();
+			sb.RemoveFromEnd(1).AppendLine();
 		}
-		return sb.RemoveFrom(^Environment.NewLine.Length).ToString();
+		return sb.RemoveFromEnd(Environment.NewLine.Length).ToString();
 	}
 
 	/// <inheritdoc/>

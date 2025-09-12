@@ -5577,11 +5577,8 @@
             </summary>
             <seealso cref="T:System.Text.StringBuilder"/>
         </member>
-        <member name="M:System.Text.StringBuilderExtensions.RemoveFrom(System.Text.StringBuilder,System.Int32)">
-            <inheritdoc cref="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.RemoveFrom(System.Int32)"/>
-        </member>
-        <member name="M:System.Text.StringBuilderExtensions.RemoveFrom(System.Text.StringBuilder,System.Index)">
-            <inheritdoc cref="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.RemoveFrom(System.Index)"/>
+        <member name="M:System.Text.StringBuilderExtensions.RemoveFromEnd(System.Text.StringBuilder,System.Int32)">
+            <inheritdoc cref="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.RemoveFromEnd(System.Int32)"/>
         </member>
         <member name="M:System.Text.StringBuilderExtensions.AppendRange``1(System.Text.StringBuilder,System.Func{``0,System.String},System.Func{System.Text.StringBuilder,System.String,System.Text.StringBuilder},System.ReadOnlySpan{``0})">
             <inheritdoc cref="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.AppendRange``1(System.Func{``0,System.String},System.Func{System.Text.StringBuilder,System.String,System.Text.StringBuilder},System.ReadOnlySpan{``0})"/>
@@ -5591,18 +5588,11 @@
             Provides extension members on <see cref="T:System.Text.StringBuilder"/>.
             </summary>
         </member>
-        <member name="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.RemoveFrom(System.Int32)">
+        <member name="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.RemoveFromEnd(System.Int32)">
             <summary>
-            Remove all characters behind the character whose index is specified.
+            Removes the specified number of characters from end, from the current <see cref="T:System.Text.StringBuilder"/> instance.
             </summary>
-            <param name="startIndex">The start index.</param>
-            <returns>The reference of the current instance.</returns>
-        </member>
-        <member name="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.RemoveFrom(System.Index)">
-            <summary>
-            Remove all characters behind the character whose index is specified.
-            </summary>
-            <param name="startIndex">The start index.</param>
+            <param name="count">The desired number of characters to remove.</param>
             <returns>The reference of the current instance.</returns>
         </member>
         <member name="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.AppendRange``1(System.Func{``0,System.String},System.Func{System.Text.StringBuilder,System.String,System.Text.StringBuilder},System.ReadOnlySpan{``0})">

@@ -127,7 +127,7 @@ public sealed partial class PencilmarkGridFormatInfo : GridFormatInfo<Grid>
 		}
 
 		// The last step: returns the value.
-		sb.RemoveFrom(^Environment.NewLine.Length);
+		sb.RemoveFromEnd(Environment.NewLine.Length);
 		return sb.ToString();
 
 

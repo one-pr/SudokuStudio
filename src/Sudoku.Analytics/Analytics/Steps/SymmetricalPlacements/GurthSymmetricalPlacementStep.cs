@@ -69,7 +69,7 @@ public class GurthSymmetricalPlacementStep(
 				sb.Append(currentMappingRelationDigit is { } c && c != i ? $" -> {c + 1}" : string.Empty);
 				sb.Append(comma);
 			}
-			return sb.RemoveFrom(^comma.Length).ToString();
+			return sb.RemoveFromEnd(comma.Length).ToString();
 		}
 		return SR.Get("NoMappingRelation", culture);
 	}

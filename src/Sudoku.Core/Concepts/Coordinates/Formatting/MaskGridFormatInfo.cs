@@ -30,7 +30,7 @@ public sealed class MaskGridFormatInfo : GridFormatInfo<Grid>
 		{
 			sb.Append(mask).Append(Separator);
 		}
-		return sb.RemoveFrom(^Separator.Length).ToString();
+		return sb.RemoveFromEnd(Separator.Length).ToString();
 	}
 
 	/// <inheritdoc/>

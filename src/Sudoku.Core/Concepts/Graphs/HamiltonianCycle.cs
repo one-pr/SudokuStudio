@@ -170,7 +170,7 @@ public readonly struct HamiltonianCycle(Cell[] cells) :
 			sb.Append(converter.CellConverter(cell.AsCellMap()));
 			sb.Append(separator);
 		}
-		return sb.RemoveFrom(^separator.Length).ToString();
+		return sb.RemoveFromEnd(separator.Length).ToString();
 	}
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>

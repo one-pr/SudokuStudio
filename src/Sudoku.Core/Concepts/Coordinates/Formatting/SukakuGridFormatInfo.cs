@@ -52,7 +52,7 @@ public sealed partial class SukakuGridFormatInfo : GridFormatInfo<Grid>
 					var cell = row * 9 + column;
 					sb.Append(builders[cell].ToString().PadLeft(span[column])).Append(' ');
 				}
-				sb.RemoveFrom(^1).AppendLine(); // Remove last whitespace.
+				sb.RemoveFromEnd(1).AppendLine(); // Remove last whitespace.
 			}
 
 			return sb.ToString();

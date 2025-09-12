@@ -26,7 +26,7 @@ public sealed class HodokuTripletCandidateMapFormatInfo : CandidateMapFormatInfo
 				var (cell, digit) = (candidate / 9, candidate % 9);
 				sb.Append($"{digit + 1}{cell / 9 + 1}{cell % 9 + 1} ");
 			}
-			return sb.RemoveFrom(^1).ToString();
+			return sb.RemoveFromEnd(1).ToString();
 		}
 	}
 

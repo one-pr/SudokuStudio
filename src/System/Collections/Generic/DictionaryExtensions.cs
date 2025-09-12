@@ -45,7 +45,7 @@ public static class DictionaryExtensions
 				sb.Append(separator);
 			}
 
-			sb.RemoveFrom(^separator.Length);
+			sb.RemoveFromEnd(separator.Length);
 			return $"[{sb}]";
 		}
 	}

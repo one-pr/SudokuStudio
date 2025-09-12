@@ -134,7 +134,7 @@ public sealed record LiteralCoordinateConverter(
 						sb.Append(DefaultSeparator);
 					}
 
-					sb.RemoveFrom(^DefaultSeparator.Length);
+					sb.RemoveFromEnd(DefaultSeparator.Length);
 					if (!hasOnlyOneType)
 					{
 						sb.Append(DefaultSeparator);
@@ -143,7 +143,7 @@ public sealed record LiteralCoordinateConverter(
 
 				if (!hasOnlyOneType)
 				{
-					sb.RemoveFrom(^DefaultSeparator.Length);
+					sb.RemoveFromEnd(DefaultSeparator.Length);
 				}
 				return sb.ToString();
 			}

@@ -101,7 +101,7 @@ public sealed record K9Converter(
 					sb.AppendRange(d => DigitConverter((Mask)(1 << d)), elements: columns);
 					sb.Append(DefaultSeparator);
 				}
-				sb.RemoveFrom(^DefaultSeparator.Length);
+				sb.RemoveFromEnd(DefaultSeparator.Length);
 				if (needAddingBrackets)
 				{
 					sb.Append(NotationBracket.ClosedBracket);
@@ -147,7 +147,7 @@ public sealed record K9Converter(
 
 				sb.Append(DefaultSeparator);
 			}
-			return sb.RemoveFrom(^DefaultSeparator.Length).ToString();
+			return sb.RemoveFromEnd(DefaultSeparator.Length).ToString();
 		};
 
 	/// <inheritdoc/>
@@ -248,7 +248,7 @@ public sealed record K9Converter(
 						sb.Append(DefaultSeparator);
 					}
 
-					sb.RemoveFrom(^DefaultSeparator.Length);
+					sb.RemoveFromEnd(DefaultSeparator.Length);
 					if (!hasOnlyOneType)
 					{
 						sb.Append(DefaultSeparator);
@@ -257,7 +257,7 @@ public sealed record K9Converter(
 
 				if (!hasOnlyOneType)
 				{
-					sb.RemoveFrom(^DefaultSeparator.Length);
+					sb.RemoveFromEnd(DefaultSeparator.Length);
 				}
 
 				return sb.ToString();
@@ -372,7 +372,7 @@ public sealed record K9Converter(
 				sb.Append($"{fromCellString} == {toCellString}.{DigitConverter((Mask)(1 << conjugatePair.Digit))}");
 				sb.Append(DefaultSeparator);
 			}
-			return sb.RemoveFrom(^DefaultSeparator.Length).ToString();
+			return sb.RemoveFromEnd(DefaultSeparator.Length).ToString();
 		};
 
 

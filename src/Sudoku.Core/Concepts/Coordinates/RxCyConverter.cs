@@ -81,7 +81,7 @@ public sealed record RxCyConverter(
 					sb.AppendRange(d => DigitConverter((Mask)(1 << d)), elements: columns);
 					sb.Append(DefaultSeparator);
 				}
-				sb.RemoveFrom(^DefaultSeparator.Length);
+				sb.RemoveFromEnd(DefaultSeparator.Length);
 				if (needAddingBrackets)
 				{
 					sb.Append(NotationBracket.ClosedBracket);
@@ -132,7 +132,7 @@ public sealed record RxCyConverter(
 
 				sb.Append(DefaultSeparator);
 			}
-			return sb.RemoveFrom(^DefaultSeparator.Length).ToString();
+			return sb.RemoveFromEnd(DefaultSeparator.Length).ToString();
 		};
 
 	/// <inheritdoc/>
@@ -230,7 +230,7 @@ public sealed record RxCyConverter(
 						sb.Append(DefaultSeparator);
 					}
 
-					sb.RemoveFrom(^DefaultSeparator.Length);
+					sb.RemoveFromEnd(DefaultSeparator.Length);
 					if (!hasOnlyOneType)
 					{
 						sb.Append(DefaultSeparator);
@@ -239,7 +239,7 @@ public sealed record RxCyConverter(
 
 				if (!hasOnlyOneType)
 				{
-					sb.RemoveFrom(^DefaultSeparator.Length);
+					sb.RemoveFromEnd(DefaultSeparator.Length);
 				}
 
 				return sb.ToString();
@@ -326,7 +326,7 @@ public sealed record RxCyConverter(
 				);
 				sb.Append(DefaultSeparator);
 			}
-			return sb.RemoveFrom(^DefaultSeparator.Length).ToString();
+			return sb.RemoveFromEnd(DefaultSeparator.Length).ToString();
 		};
 
 	/// <summary>

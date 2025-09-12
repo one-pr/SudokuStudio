@@ -12,19 +12,15 @@ public static class StringBuilderExtensions
 	extension(StringBuilder @this)
 	{
 		/// <summary>
-		/// Remove all characters behind the character whose index is specified.
+		/// Removes the specified number of characters from end, from the current <see cref="StringBuilder"/> instance.
 		/// </summary>
-		/// <param name="startIndex">The start index.</param>
+		/// <param name="count">The desired number of characters to remove.</param>
 		/// <returns>The reference of the current instance.</returns>
-		public StringBuilder RemoveFrom(int startIndex) => @this.Remove(startIndex, @this.Length - startIndex);
-
-		/// <summary>
-		/// Remove all characters behind the character whose index is specified.
-		/// </summary>
-		/// <param name="startIndex">The start index.</param>
-		/// <returns>The reference of the current instance.</returns>
-		public StringBuilder RemoveFrom(Index startIndex)
-			=> @this.Remove(startIndex.GetOffset(@this.Length), startIndex.Value);
+		public StringBuilder RemoveFromEnd(int count)
+		{
+			var index = ^count;
+			return @this.Remove(index.GetOffset(@this.Length), index.Value);
+		}
 
 		/// <summary>
 		/// Appends a list of elements of type <typeparamref name="T"/> into the <see cref="StringBuilder"/> instance,
