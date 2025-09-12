@@ -26,12 +26,11 @@ public readonly record struct DisorderedIttoryuDigitPath(Digit[] Digits) :
 	public override int GetHashCode()
 	{
 		var (result, multiplicativeIdentity) = (0, 1);
-		foreach (var digit in Digits.AsReadOnlySpan().EnumerateReversely())
+		foreach (var digit in -Digits.AsReadOnlySpan())
 		{
 			result += digit * multiplicativeIdentity;
 			multiplicativeIdentity *= 10;
 		}
-
 		return result;
 	}
 

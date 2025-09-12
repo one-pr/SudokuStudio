@@ -516,7 +516,7 @@ public sealed partial class ChainFormatInfo : FormatInfo<Chain>
 			}
 		}
 
-		var candidatesSpan = candidates.AsSpan().Reverse();
+		var candidatesSpan = -candidates.AsSpan();
 		var isLoop = candidatesSpan[^1] == candidatesSpan[0] && tokens[0] == '=';
 		var (isOn, previousNode, nodesStored) = (false, default(Node), new List<Node>());
 		for (var index = 1; index < candidatesSpan.Length; index++, isOn = !isOn)

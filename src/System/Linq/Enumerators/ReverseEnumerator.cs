@@ -5,6 +5,7 @@ namespace System.Linq.Enumerators;
 /// </summary>
 /// <typeparam name="T">The type of the element.</typeparam>
 /// <param name="sequence"><inheritdoc cref="_sequence" path="/summary"/></param>
+[Obsolete(DeprecatedMessages.ExtensionOperator_Reverse, false)]
 public ref struct ReverseEnumerator<T>(ReadOnlySpan<T> sequence) : IEnumerator<T>
 {
 	/// <summary>

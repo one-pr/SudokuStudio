@@ -5,6 +5,7 @@ namespace System.Linq.Enumerators;
 /// </summary>
 /// <typeparam name="T">The type of each element to be iterated.</typeparam>
 /// <param name="sequence"><inheritdoc cref="_sequence" path="/summary"/></param>
+[Obsolete(DeprecatedMessages.ExtensionOperator_Chunk, false)]
 public ref struct PairEnumerator<T>(ReadOnlySpan<T> sequence) : IEnumerator<(T First, T Second)> where T : notnull
 {
 	/// <summary>

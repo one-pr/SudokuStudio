@@ -62,6 +62,7 @@ public partial class SequenceExtensions
 		/// Iterates on each element, in reverse order.
 		/// </summary>
 		/// <returns>An enumerator type that iterates on each element.</returns>
+		[Obsolete(DeprecatedMessages.ExtensionOperator_Reverse, false)]
 		public ReverseEnumerator<T> EnumerateReversely() => new(@this);
 
 		/// <summary>
@@ -84,6 +85,64 @@ public partial class SequenceExtensions
 			}
 			return result.AsSpan();
 		}
+
+		/// <inheritdoc cref="op_Division{T}(ReadOnlySpan{T}, int)"/>
+		[Obsolete(DeprecatedMessages.ExtensionOperator_Chunk, false)]
+		public ReadOnlySpan<T[]> Chunk(int size) => @this / size;
+
+
+		/// <summary>
+		/// Returns <paramref name="value"/>.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>The instance same as <paramref name="value"/>.</returns>
+		public static ReadOnlySpan<T> operator +(ReadOnlySpan<T> value) => value;
+
+		/// <summary>
+		/// Creates a reversed collection of <paramref name="value"/>.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>The reversed collection.</returns>
+		public static ReadOnlySpan<T> operator -(scoped ReadOnlySpan<T> value)
+		{
+			var result = new T[value.Length];
+			for (var (i, j) = (value.Length - 1, 0); i >= 0; i--, j++)
+			{
+				result[j] = value[i];
+			}
+			return result;
+		}
+
+		/// <summary>
+		/// Splits a sequence into multiple sub-arrays ("chunks") of the specified size.
+		/// The elements are grouped in their original order, and the last chunk may contain fewer elements
+		/// if the total length of the array is not evenly divisible by the chunk size.
+		/// </summary>
+		/// <param name="source">The one-dimensional array to be divided into chunks.</param>
+		/// <param name="size">
+		/// The maximum number of elements in each chunk. Must be greater than zero.
+		/// </param>
+		/// <returns>
+		/// An array of sub-arrays, where each sub-array contains up to <paramref name="size"/> elements
+		/// in the same order as they appear in the <paramref name="source"/> array.
+		/// </returns>
+		/// <exception cref="ArgumentOutOfRangeException">
+		/// Thrown when <paramref name="size"/> is less than or equal to zero.
+		/// </exception>
+		public static ReadOnlySpan<T[]> operator /(ReadOnlySpan<T> source, int size)
+		{
+			var result = new List<T[]>((source.Length + size - 1) / size);
+			for (var i = 0; i < source.Length; i += size)
+			{
+				var subarray = new T[size];
+				for (var j = 0; j < size; j++)
+				{
+					subarray[j] = source[i * size + j];
+				}
+				result.Add(subarray);
+			}
+			return result.AsSpan();
+		}
 	}
 
 	/// <summary>
@@ -96,6 +155,7 @@ public partial class SequenceExtensions
 		/// Creates a <see cref="PairEnumerator{T}"/> instance that iterates on each element of pair elements.
 		/// </summary>
 		/// <returns>An enumerable collection.</returns>
+		[Obsolete(DeprecatedMessages.ExtensionOperator_Chunk, false)]
 		public PairEnumerator<T> EnumeratePaired()
 			=> new(
 				(@this.Length & 1) == 0
@@ -115,14 +175,7 @@ public partial class SequenceExtensions
 		/// </summary>
 		/// <returns>A new collection whose elements are in reversed order.</returns>
 		[OverloadResolutionPriority(1)]
-		public ReadOnlySpan<T> Reverse()
-		{
-			var result = new T[@this.Length];
-			for (var (i, j) = (@this.Length - 1, 0); i >= 0; i--, j++)
-			{
-				result[j] = @this[i];
-			}
-			return result;
-		}
+		[Obsolete(DeprecatedMessages.ExtensionOperator_Reverse, false)]
+		public ReadOnlySpan<T> Reverse() => -@this;
 	}
 }
