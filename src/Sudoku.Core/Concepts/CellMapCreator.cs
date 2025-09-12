@@ -31,10 +31,7 @@ public static class CellMapCreator
 		/// <param name="low">Lower 27 bits.</param>
 		/// <returns>The result instance created.</returns>
 		public static CellMap Create(int high, int mid, int low)
-			=> Create(
-				(high & 0x7FFFFFFL) << 13 | mid >>> 14 & 0x1FFFL,
-				(mid & 0x3FFFL) << 27 | low & 0x7FFFFFFL
-			);
+			=> Create((high & 0x7FFFFFFL) << 13 | mid >>> 14 & 0x1FFFL, (mid & 0x3FFFL) << 27 | low & 0x7FFFFFFL);
 
 		/// <summary>
 		/// Initializes an instance with a <see cref="Vector128{T}"/> of <see cref="long"/>.
