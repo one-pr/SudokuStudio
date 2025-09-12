@@ -803,29 +803,6 @@
             </remarks>
             <seealso cref="T:System.Collections.Generic.Dictionary`2" />
         </member>
-        <member name="T:System.Collections.Generic.IEnumerableExtensions">
-            <summary>
-            Provides with extension methods on <see cref="T:System.Collections.Generic.IEnumerable`1"/> instances.
-            </summary>
-            <seealso cref="T:System.Collections.Generic.IEnumerable`1"/>
-        </member>
-        <member name="M:System.Collections.Generic.IEnumerableExtensions.Slice``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
-            <inheritdoc cref="M:System.Collections.Generic.IEnumerableExtensions.&lt;G&gt;$E09FCB5EB13C1AE2FC524F6744DE5322.Slice(System.Int32,System.Int32)"/>
-        </member>
-        <member name="T:System.Collections.Generic.IEnumerableExtensions.&lt;G&gt;$E09FCB5EB13C1AE2FC524F6744DE5322.&lt;M&gt;$4682AFC9469976CF854DD8E6DA5A92DE">
-            <summary>
-            Provides extension members on <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
-            </summary>
-        </member>
-        <member name="M:System.Collections.Generic.IEnumerableExtensions.&lt;G&gt;$E09FCB5EB13C1AE2FC524F6744DE5322.Slice(System.Int32,System.Int32)">
-            <summary>
-            Slices the current sequence.
-            </summary>
-            <param name="start">The start index.</param>
-            <param name="length">The desired length.</param>
-            <returns>A new sequence start at index <paramref name="start"/>.</returns>
-            <exception cref="T:System.InvalidOperationException">Throws when the sequence has no valid elements to be iterated.</exception>
-        </member>
         <member name="T:System.Collections.Generic.IFiniteSet`2">
             <summary>
             Represents an object that is a set of elements of type <typeparamref name="T" />, and is a closed set,
