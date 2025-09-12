@@ -4,10 +4,10 @@ namespace System.Numerics;
 /// Represents an enumerator that iterates a <see cref="long"/> or <see cref="ulong"/> value.
 /// </summary>
 /// <param name="_value">The value to be iterated.</param>
-public ref struct Int64Enumerator(ulong _value) : IBitEnumerator
+public ref struct Int64Enumerator(long _value) : IBitEnumerator
 {
 	/// <inheritdoc/>
-	public readonly int PopulationCount => PopCount(_value);
+	public readonly int PopulationCount => PopCount((ulong)_value);
 
 	/// <inheritdoc/>
 	public readonly ReadOnlySpan<int> Bits => _value.AllSets;
@@ -31,8 +31,8 @@ public ref struct Int64Enumerator(ulong _value) : IBitEnumerator
 			return false;
 		}
 
-		var mask = (ulong)((long)_value & -(long)_value);
-		Current = Log2(mask);
+		var mask = _value & -_value;
+		Current = Log2((ulong)mask);
 		_value &= ~mask;
 		return true;
 	}

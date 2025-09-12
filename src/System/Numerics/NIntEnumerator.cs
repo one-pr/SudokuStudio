@@ -4,16 +4,12 @@ namespace System.Numerics;
 /// Represents an enumerator that iterates an <see cref="nint"/> or <see cref="nuint"/> value.
 /// </summary>
 /// <param name="_value">The value to be iterated.</param>
-public ref struct NIntEnumerator(nuint _value) : IEnumerator<int>
+public ref struct NIntEnumerator(nint _value) : IBitEnumerator
 {
-	/// <summary>
-	/// Indicates the population count of the value.
-	/// </summary>
-	public readonly int PopulationCount => (int)nuint.PopCount(_value);
+	/// <inheritdoc/>
+	public readonly int PopulationCount => PopCount((nuint)_value);
 
-	/// <summary>
-	/// Indicates the bits set.
-	/// </summary>
+	/// <inheritdoc/>
 	public readonly ReadOnlySpan<int> Bits => _value.AllSets;
 
 	/// <inheritdoc cref="IEnumerator{T}.Current"/>
@@ -32,7 +28,7 @@ public ref struct NIntEnumerator(nuint _value) : IEnumerator<int>
 	{
 		while (++Current < sizeof(nuint) << 3)
 		{
-			if ((_value >> Current & 1) != 0)
+			if ((_value >>> Current & 1) != 0)
 			{
 				return true;
 			}

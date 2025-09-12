@@ -76,7 +76,7 @@ public static partial class BitOperationsExtensions
 		/// </summary>
 		/// <returns>An enumerator object that can iterate on each position.</returns>
 		[OverloadResolutionPriority(2)]
-		public Int32Enumerator GetEnumerator() => new((uint)@this);
+		public Int32Enumerator GetEnumerator() => new(@this);
 	}
 
 	/// <summary>
@@ -271,7 +271,7 @@ public static partial class BitOperationsExtensions
 
 		/// <inheritdoc cref="GetEnumerator(sbyte)"/>
 		[OverloadResolutionPriority(2)]
-		public Int32Enumerator GetEnumerator() => new((uint)@this);
+		public Int32Enumerator GetEnumerator() => new(@this);
 	}
 
 	/// <summary>
@@ -408,7 +408,7 @@ public static partial class BitOperationsExtensions
 
 		/// <inheritdoc cref="GetEnumerator(sbyte)"/>
 		[OverloadResolutionPriority(2)]
-		public Int32Enumerator GetEnumerator() => new((uint)@this);
+		public Int32Enumerator GetEnumerator() => new(@this);
 	}
 
 	/// <summary>
@@ -469,7 +469,7 @@ public static partial class BitOperationsExtensions
 
 		/// <inheritdoc cref="GetEnumerator(sbyte)"/>
 		[OverloadResolutionPriority(2)]
-		public Int32Enumerator GetEnumerator() => new(@this);
+		public Int32Enumerator GetEnumerator() => new((int)@this);
 	}
 
 	/// <summary>
@@ -535,7 +535,7 @@ public static partial class BitOperationsExtensions
 
 		/// <inheritdoc cref="GetEnumerator(sbyte)"/>
 		[OverloadResolutionPriority(2)]
-		public Int64Enumerator GetEnumerator() => new((ulong)@this);
+		public Int64Enumerator GetEnumerator() => new(@this);
 	}
 
 	/// <summary>
@@ -610,7 +610,7 @@ public static partial class BitOperationsExtensions
 
 		/// <inheritdoc cref="GetEnumerator(sbyte)"/>
 		[OverloadResolutionPriority(2)]
-		public Int64Enumerator GetEnumerator() => new(@this);
+		public Int64Enumerator GetEnumerator() => new((long)@this);
 	}
 
 	/// <summary>
@@ -655,7 +655,7 @@ public static partial class BitOperationsExtensions
 
 		/// <inheritdoc cref="GetEnumerator(sbyte)"/>
 		[OverloadResolutionPriority(2)]
-		public Int128Enumerator GetEnumerator() => new((UInt128)@this);
+		public Int128Enumerator GetEnumerator() => new(@this);
 	}
 
 	/// <summary>
@@ -700,7 +700,7 @@ public static partial class BitOperationsExtensions
 
 		/// <inheritdoc cref="GetEnumerator(sbyte)"/>
 		[OverloadResolutionPriority(2)]
-		public Int128Enumerator GetEnumerator() => new(@this);
+		public Int128Enumerator GetEnumerator() => new((Int128)@this);
 	}
 
 	/// <summary>
@@ -745,7 +745,7 @@ public static partial class BitOperationsExtensions
 
 		/// <inheritdoc cref="GetEnumerator(sbyte)"/>
 		[OverloadResolutionPriority(2)]
-		public NIntEnumerator GetEnumerator() => new((nuint)@this);
+		public NIntEnumerator GetEnumerator() => new(@this);
 	}
 
 	/// <summary>
@@ -790,7 +790,7 @@ public static partial class BitOperationsExtensions
 
 		/// <inheritdoc cref="GetEnumerator(sbyte)"/>
 		[OverloadResolutionPriority(2)]
-		public NIntEnumerator GetEnumerator() => new(@this);
+		public NIntEnumerator GetEnumerator() => new((nint)@this);
 	}
 
 	/// <summary>

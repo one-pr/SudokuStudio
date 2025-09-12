@@ -4,10 +4,11 @@ namespace System.Numerics;
 /// Represents an enumerator that iterates a <see cref="Int128"/> or <see cref="UInt128"/> value.
 /// </summary>
 /// <param name="_value">The value to be iterated.</param>
-public ref struct Int128Enumerator(UInt128 _value) : IBitEnumerator
+public ref struct Int128Enumerator(Int128 _value) : IBitEnumerator
 {
 	/// <inheritdoc/>
-	public readonly int PopulationCount => (int)UInt128.PopCount(_value);
+	public readonly int PopulationCount
+		=> PopCount((ulong)(_value >>> 64)) + PopCount((ulong)(_value & (Int128.One << 64) - 1));
 
 	/// <inheritdoc/>
 	public readonly ReadOnlySpan<int> Bits => _value.AllSets;
@@ -31,8 +32,8 @@ public ref struct Int128Enumerator(UInt128 _value) : IBitEnumerator
 			return false;
 		}
 
-		var mask = (UInt128)((Int128)_value & -(Int128)_value);
-		Current = (int)UInt128.Log2(mask);
+		var mask = _value & -_value;
+		Current = (int)Int128.Log2(mask);
 		_value &= ~mask;
 		return true;
 	}
