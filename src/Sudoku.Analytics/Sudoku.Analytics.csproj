@@ -22,10 +22,10 @@
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
 		</Compile>
-		<Compile Update="Resources\FilteringPropertyResources.Designer.cs">
+		<Compile Update="Resources\KeywordResources.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
-			<DependentUpon>FilteringPropertyResources.resx</DependentUpon>
+			<DependentUpon>KeywordResources.resx</DependentUpon>
 		</Compile>
 		<EmbeddedResource Update="Resources\AnalyticsResources.resx">
 			<SubType>Designer</SubType>
@@ -35,9 +35,9 @@
 		<EmbeddedResource Update="Resources\AnalyticsResources.zh-CN.resx">
 			<SubType>Designer</SubType>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Resources\FilteringPropertyResources.resx">
+		<EmbeddedResource Update="Resources\KeywordResources.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>FilteringPropertyResources.Designer.cs</LastGenOutput>
+			<LastGenOutput>KeywordResources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 	</ItemGroup>
 

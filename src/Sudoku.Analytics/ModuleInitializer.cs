@@ -9,6 +9,6 @@ internal static class ModuleInitializer
 	public static void Initialize()
 	{
 		SR.RegisterResourceManager<AnalyticsResources>();
-		SR.RegisterResourceManager<FilteringPropertyResources>();
+		SR.RegisterResourceManager<KeywordResources>();
 	}
 }

@@ -35336,97 +35336,6 @@
               Looks up a localized string similar to Y-Chain.
             </summary>
         </member>
-        <member name="T:Sudoku.Resources.FilteringPropertyResources">
-            <summary>
-              A strongly-typed resource class, for looking up localized strings, etc.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.ResourceManager">
-            <summary>
-              Returns the cached ResourceManager instance used by this class.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.Culture">
-            <summary>
-              Overrides the current thread's CurrentUICulture property for all
-              resource lookups using this strongly typed resource class.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.FullHouseStep_House_Description">
-            <summary>
-              Looks up a localized string similar to The label of house: 0-8 is for block 1 to 9, 9-17 is for row 1 to 9 and 18-26 is for column 1 to 9.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.FullHouseStep_House_Name">
-            <summary>
-              Looks up a localized string similar to House.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.FullHouseStep_Lasting_Description">
-            <summary>
-              Looks up a localized string similar to The number for empty cells in target house.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.FullHouseStep_Lasting_Name">
-            <summary>
-              Looks up a localized string similar to Lasting.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.HiddenSingleStep_House_Description">
-            <summary>
-              Looks up a localized string similar to The label of house: 0-8 is for block 1 to 9, 9-17 is for row 1 to 9 and 18-26 is for column 1 to 9.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.HiddenSingleStep_House_Name">
-            <summary>
-              Looks up a localized string similar to House.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.HiddenSingleStep_Lasting_Description">
-            <summary>
-              Looks up a localized string similar to The number for empty cells in target house.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.HiddenSingleStep_Lasting_Name">
-            <summary>
-              Looks up a localized string similar to Lasting.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.NakedSingleStep_House_Description">
-            <summary>
-              Looks up a localized string similar to The house with the least number of empty cells.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.NakedSingleStep_House_Name">
-            <summary>
-              Looks up a localized string similar to House.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.NakedSingleStep_Lasting_Description">
-            <summary>
-              Looks up a localized string similar to The number for the house with the least number of empty cells.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.NakedSingleStep_Lasting_Name">
-            <summary>
-              Looks up a localized string similar to Lasting.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.Step_BaseDifficulty_Name">
-            <summary>
-              Looks up a localized string similar to Base difficulty.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.Step_Code_Name">
-            <summary>
-              Looks up a localized string similar to Technique name.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.FilteringPropertyResources.Step_EnglishName_Name">
-            <summary>
-              Looks up a localized string similar to Technique name (only in English).
-            </summary>
-        </member>
         <member name="T:Sudoku.Resources.Interpolation">
             <summary>
             Defines a type that represents the resource interpolated values used by <see cref="P:Sudoku.Analytics.Step.Interpolations"/>.
@@ -35604,6 +35513,97 @@
         </member>
         <member name="M:Sudoku.Resources.InterpolationArray.Enumerator.System#Collections#IEnumerator#Reset">
             <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Resources.KeywordResources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.FullHouseStep_House_Description">
+            <summary>
+              Looks up a localized string similar to The label of house: 0-8 is for block 1 to 9, 9-17 is for row 1 to 9 and 18-26 is for column 1 to 9.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.FullHouseStep_House_Name">
+            <summary>
+              Looks up a localized string similar to House.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.FullHouseStep_Lasting_Description">
+            <summary>
+              Looks up a localized string similar to The number for empty cells in target house.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.FullHouseStep_Lasting_Name">
+            <summary>
+              Looks up a localized string similar to Lasting.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.HiddenSingleStep_House_Description">
+            <summary>
+              Looks up a localized string similar to The label of house: 0-8 is for block 1 to 9, 9-17 is for row 1 to 9 and 18-26 is for column 1 to 9.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.HiddenSingleStep_House_Name">
+            <summary>
+              Looks up a localized string similar to House.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.HiddenSingleStep_Lasting_Description">
+            <summary>
+              Looks up a localized string similar to The number for empty cells in target house.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.HiddenSingleStep_Lasting_Name">
+            <summary>
+              Looks up a localized string similar to Lasting.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.NakedSingleStep_House_Description">
+            <summary>
+              Looks up a localized string similar to The house with the least number of empty cells.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.NakedSingleStep_House_Name">
+            <summary>
+              Looks up a localized string similar to House.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.NakedSingleStep_Lasting_Description">
+            <summary>
+              Looks up a localized string similar to The number for the house with the least number of empty cells.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.NakedSingleStep_Lasting_Name">
+            <summary>
+              Looks up a localized string similar to Lasting.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.Step_BaseDifficulty_Name">
+            <summary>
+              Looks up a localized string similar to Base difficulty.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.Step_Code_Name">
+            <summary>
+              Looks up a localized string similar to Technique name.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.KeywordResources.Step_EnglishName_Name">
+            <summary>
+              Looks up a localized string similar to Technique name (only in English).
+            </summary>
         </member>
         <member name="T:Sudoku.Runtime.InterceptorServices.CachedAttribute">
              <summary>
