@@ -2475,15 +2475,6 @@
         <member name="M:System.Linq.ArrayEnumerable.Zip``2(``0[],``1[])">
             <inheritdoc cref="M:System.Linq.Enumerable.Zip``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1})"/>
         </member>
-        <member name="T:System.Linq.__ImplementedTypes`1">
-            <summary>
-            This type provides a way to record LINQ methods and interfaces implemented on <typeparamref name="T"/>[].
-            This recording will be consumed by future C# <see langword="extension"/> feature
-            that may be allowed implementing interface types with some types that I cannot modify them,
-            just like <typeparamref name="T"/>[].
-            </summary>
-            <typeparam name="T">The generic type argument.</typeparam>
-        </member>
         <member name="T:System.Linq.ArrayGrouping`2">
             <summary>
             Represents a type that enumerates elements of type <typeparamref name="TSource"/>[],
@@ -4839,15 +4830,6 @@
         </member>
         <member name="M:System.Linq.SpanEnumerable.ToLookup``3(System.ReadOnlySpan{``0},System.Func{``0,``1},System.Func{``0,``2},System.Collections.Generic.IEqualityComparer{``1})">
             <inheritdoc cref="M:System.Linq.Enumerable.ToLookup``3(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Func{``0,``2},System.Collections.Generic.IEqualityComparer{``1})"/>
-        </member>
-        <member name="T:System.Linq.__ImplementedTypes`1">
-            <summary>
-            This type provides a way to record LINQ methods and interfaces implemented on <see cref="T:System.ReadOnlySpan`1"/>.
-            This recording will be consumed by future C# <see langword="extension"/> feature
-            that may be allowed implementing interface types with some types that I cannot modify them,
-            just like <see cref="T:System.ReadOnlySpan`1"/>.
-            </summary>
-            <typeparam name="T">The generic type argument.</typeparam>
         </member>
         <member name="T:System.Linq.SpanGrouping`2">
             <summary>
