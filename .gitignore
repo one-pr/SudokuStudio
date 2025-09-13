@@ -13,6 +13,7 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 /desktop.ini
+settings.VisualStudio.json
 src/ConsoleTest/
 src/Sudoku.Logging/
 
