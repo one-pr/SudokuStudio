@@ -178,10 +178,14 @@ public sealed partial class SingleStepSearcher : StepSearcher
 				var (count, resultCell, flag) = (0, -1, true);
 				foreach (var cell in HousesMap[house])
 				{
-					if (grid.GetState(cell) == CellState.Empty && (resultCell = cell) is var _ && ++count > 1)
+					if (grid.GetState(cell) == CellState.Empty)
 					{
-						flag = false;
-						break;
+						resultCell = cell;
+						if (++count > 1)
+						{
+							flag = false;
+							break;
+						}
 					}
 				}
 				if (!flag || count == 0)
