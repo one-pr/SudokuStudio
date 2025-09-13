@@ -124,7 +124,7 @@ public enum Technique
 	CrosshatchingColumn,
 
 	/// <summary>
-	/// Indicates naked single.
+	/// Indicates naked single, but all 8 excluders can be found in givens or modifiables.
 	/// </summary>
 	[Hodoku(Rating = 4, DifficultyLevel = HodokuDifficultyLevel.Easy, Prefix = "0003")]
 	[SudokuExplainer(Technique = SudokuExplainerTechnique.NakedSingle, RatingOriginal = [2.3])]
@@ -136,6 +136,20 @@ public enum Technique
 		ContainingGroup = TechniqueGroup.Single,
 		Links = ["http://sudopedia.enjoysudoku.com/Naked_Single.html"])]
 	NakedSingle,
+
+	/// <summary>
+	/// Indicates naked single, but it only appears in non-direct views.
+	/// </summary>
+	[Hodoku(Rating = 4, DifficultyLevel = HodokuDifficultyLevel.Easy, Prefix = "0003")]
+	[SudokuExplainer(Technique = SudokuExplainerTechnique.NakedSingle, RatingOriginal = [2.3])]
+	[TechniqueMetadata<SingleStepSearcher, NakedSingleStep>(
+		Rating = 23,
+		DirectRating = 10,
+		Abbreviation = "NS",
+		DifficultyLevel = DifficultyLevel.Easy,
+		ContainingGroup = TechniqueGroup.Single,
+		Links = ["http://sudopedia.enjoysudoku.com/Naked_Single.html"])]
+	NakedSingleIndirect,
 	#endregion
 
 	//

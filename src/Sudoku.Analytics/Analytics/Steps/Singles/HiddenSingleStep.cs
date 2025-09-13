@@ -38,10 +38,11 @@ public class HiddenSingleStep(
 
 	/// <inheritdoc/>
 	public sealed override Technique Code
-		=> (Options.IsDirectMode, EnableAndIsLastDigit) switch
+		=> (Options.IsDirectMode, EnableAndIsLastDigit, ExcluderInfo) switch
 		{
-			(_, true) => Technique.LastDigit,
-			(true, false) => (Technique)((int)Technique.CrosshatchingBlock + (int)House.HouseType),
+			(_, true, _) => Technique.LastDigit,
+			(true, false, { ExcludedCells.Count: 0 }) => (Technique)((int)Technique.CrosshatchingBlock + (int)House.HouseType),
+			(true, false, _) => (Technique)((int)Technique.HiddenSingleBlock + (int)House.HouseType),
 			_ => (Technique)((int)Technique.HiddenSingleBlock + (int)House.HouseType)
 		};
 

@@ -11,6 +11,7 @@ namespace Sudoku.Analytics.Steps;
 /// <param name="subtype"><inheritdoc cref="SingleStep.Subtype" path="/summary"/></param>
 /// <param name="lasting"><inheritdoc cref="Lasting" path="/summary"/></param>
 /// <param name="lastingHouseType"><inheritdoc cref="LastingHouseType" path="/summary"/></param>
+/// <param name="excluderHouses"><inheritdoc cref="ExcluderHouses" path="/summary"/></param>
 public sealed class NakedSingleStep(
 	ReadOnlyMemory<Conclusion> conclusions,
 	View[]? views,
@@ -19,7 +20,8 @@ public sealed class NakedSingleStep(
 	Digit digit,
 	SingleSubtype subtype,
 	Digit lasting,
-	HouseType lastingHouseType
+	HouseType lastingHouseType,
+	ReadOnlySpan<House> excluderHouses
 ) :
 	SingleStep(conclusions, views, options, cell, digit, subtype),
 	ILastingTrait
@@ -28,7 +30,8 @@ public sealed class NakedSingleStep(
 	public override int BaseDifficulty => Options.IsDirectMode ? 23 : 10;
 
 	/// <inheritdoc/>
-	public override Technique Code => Technique.NakedSingle;
+	public override Technique Code
+		=> ExcluderHouses.Length == 8 ? Technique.NakedSingle : Technique.NakedSingleIndirect;
 
 	/// <summary>
 	/// Indicates the lasting house type.
@@ -53,6 +56,11 @@ public sealed class NakedSingleStep(
 		Minimum = 0,
 		Maximum = 27)]
 	public House House => Cell >> LastingHouseType;
+
+	/// <summary>
+	/// Indicates excluder houses.
+	/// </summary>
+	public ReadOnlyMemory<House> ExcluderHouses { get; } = excluderHouses.ToArray();
 
 
 	/// <inheritdoc/>

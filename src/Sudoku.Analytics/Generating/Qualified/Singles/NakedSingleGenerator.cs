@@ -74,6 +74,7 @@ public sealed class NakedSingleGenerator : SingleGenerator
 		}
 
 		var targetDigit = Log2((uint)digitsMask);
+		Excluder.GetNakedSingleExcluders(puzzle, targetCell, targetDigit, out var excluderHouses);
 		step = new NakedSingleStep(
 			null!,
 			null,
@@ -82,7 +83,8 @@ public sealed class NakedSingleGenerator : SingleGenerator
 			targetDigit,
 			TechniqueNaming.Single.GetNakedSingleSubtype(puzzle, targetCell),
 			Lasting.GetLastingAllHouses(puzzle, targetCell, out var lastingHouse),
-			lastingHouse.HouseType
+			lastingHouse.HouseType,
+			excluderHouses
 		);
 		result = puzzle.FixedGrid;
 		return true;

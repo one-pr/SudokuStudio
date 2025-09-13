@@ -280,13 +280,14 @@ public sealed partial class SingleStepSearcher : StepSearcher
 
 				var step = new NakedSingleStep(
 					new SingletonArray<Conclusion>(new(Assignment, cell, digit)),
-					[[.. Excluder.GetNakedSingleExcluders(grid, cell, digit, out _)]],
+					[[.. Excluder.GetNakedSingleExcluders(grid, cell, digit, out var excluderHouses)]],
 					context.Options,
 					cell,
 					digit,
 					subtype,
 					Lasting.GetLastingAllHouses(grid, cell, out var lastingHouse),
-					lastingHouse.HouseType
+					lastingHouse.HouseType,
+					excluderHouses
 				);
 				if (context.OnlyFindOne)
 				{
@@ -468,13 +469,14 @@ public sealed partial class SingleStepSearcher : StepSearcher
 			var digit = TrailingZeroCount(mask);
 			var step = new NakedSingleStep(
 				new SingletonArray<Conclusion>(new(Assignment, cell, digit)),
-				[[.. Excluder.GetNakedSingleExcluders(grid, cell, digit, out _)]],
+				[[.. Excluder.GetNakedSingleExcluders(grid, cell, digit, out var excluderHouses)]],
 				context.Options,
 				cell,
 				digit,
 				TechniqueNaming.Single.GetNakedSingleSubtype(grid, cell),
 				Lasting.GetLastingAllHouses(grid, cell, out var lastingHouse),
-				lastingHouse.HouseType
+				lastingHouse.HouseType,
+				excluderHouses
 			);
 			if (context.OnlyFindOne)
 			{

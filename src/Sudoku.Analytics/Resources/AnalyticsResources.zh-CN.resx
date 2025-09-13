@@ -3373,4 +3373,8 @@
   <data name="AnyConstraint" xml:space="preserve">
     <value>存在量词：所有指定约束里至少有一个必须成立：{0}</value>
   </data>
+  <data name="NakedSingleIndirect" xml:space="preserve">
+    <value>显性唯一</value>
+    <comment>Technique Name</comment>
+  </data>
 </root>

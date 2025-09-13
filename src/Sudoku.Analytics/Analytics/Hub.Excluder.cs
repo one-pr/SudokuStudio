@@ -129,7 +129,9 @@ public partial class Hub
 					}
 				}
 			}
-			return result;
+
+			excluderHouses = excluderHouses[..i];
+			return result.AsReadOnlySpan()[..i];
 		}
 
 		/// <summary>

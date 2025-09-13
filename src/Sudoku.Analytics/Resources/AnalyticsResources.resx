@@ -3331,4 +3331,7 @@ Is pattern rank-0: {6}</value>
   <data name="AnyConstraint" xml:space="preserve">
     <value>Existential quantifier: at least one of all constraints should be determined true: {0}</value>
   </data>
+  <data name="NakedSingleIndirect" xml:space="preserve">
+    <value>Naked Single</value>
+  </data>
 </root>

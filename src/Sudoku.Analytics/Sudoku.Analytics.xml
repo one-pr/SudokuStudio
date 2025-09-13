@@ -13471,8 +13471,9 @@
             <param name="subtype"><inheritdoc cref="P:Sudoku.Analytics.Steps.SingleStep.Subtype" path="/summary"/></param>
             <param name="lasting"><inheritdoc cref="P:Sudoku.Analytics.Steps.NakedSingleStep.Lasting" path="/summary"/></param>
             <param name="lastingHouseType"><inheritdoc cref="P:Sudoku.Analytics.Steps.NakedSingleStep.LastingHouseType" path="/summary"/></param>
+            <param name="excluderHouses"><inheritdoc cref="P:Sudoku.Analytics.Steps.NakedSingleStep.ExcluderHouses" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Analytics.Steps.NakedSingleStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.Int32,System.Int32,Sudoku.Categorization.SingleSubtype,System.Int32,Sudoku.Concepts.HouseType)">
+        <member name="M:Sudoku.Analytics.Steps.NakedSingleStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.Int32,System.Int32,Sudoku.Categorization.SingleSubtype,System.Int32,Sudoku.Concepts.HouseType,System.ReadOnlySpan{System.Int32})">
             <summary>
             Represents a data structure that describes for a technique of <b>Naked Single</b>.
             </summary>
@@ -13484,6 +13485,7 @@
             <param name="subtype"><inheritdoc cref="P:Sudoku.Analytics.Steps.SingleStep.Subtype" path="/summary"/></param>
             <param name="lasting"><inheritdoc cref="P:Sudoku.Analytics.Steps.NakedSingleStep.Lasting" path="/summary"/></param>
             <param name="lastingHouseType"><inheritdoc cref="P:Sudoku.Analytics.Steps.NakedSingleStep.LastingHouseType" path="/summary"/></param>
+            <param name="excluderHouses"><inheritdoc cref="P:Sudoku.Analytics.Steps.NakedSingleStep.ExcluderHouses" path="/summary"/></param>
         </member>
         <member name="P:Sudoku.Analytics.Steps.NakedSingleStep.BaseDifficulty">
             <inheritdoc/>
@@ -13502,6 +13504,11 @@
         <member name="P:Sudoku.Analytics.Steps.NakedSingleStep.House">
             <summary>
             The house to be displayed.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.NakedSingleStep.ExcluderHouses">
+            <summary>
+            Indicates excluder houses.
             </summary>
         </member>
         <member name="M:Sudoku.Analytics.Steps.NakedSingleStep.GetName(System.IFormatProvider)">
@@ -19150,7 +19157,12 @@
         </member>
         <member name="F:Sudoku.Categorization.Technique.NakedSingle">
             <summary>
-            Indicates naked single.
+            Indicates naked single, but all 8 excluders can be found in givens or modifiables.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Categorization.Technique.NakedSingleIndirect">
+            <summary>
+            Indicates naked single, but it only appears in non-direct views.
             </summary>
         </member>
         <member name="F:Sudoku.Categorization.Technique.ComplexFullHouse">
@@ -32296,6 +32308,11 @@
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.NakedSingle">
+            <summary>
+              Looks up a localized string similar to Naked Single.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.NakedSingleIndirect">
             <summary>
               Looks up a localized string similar to Naked Single.
             </summary>
