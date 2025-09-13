@@ -137,6 +137,9 @@
   * [内鱼鳍的基本推理](rank-theory/04-complex-fish/05-reasoning-of-endofin.md)
   * [复杂鱼的自噬](rank-theory/04-complex-fish/06-cannibalism-in-fish.md)
   * [复杂鱼的命名系统](rank-theory/04-complex-fish/07-naming-system-of-complex-fish.md)
+* [守护者](rank-theory/05-guardian-logic/README.md)
+  * [守护者的基本推理](rank-theory/05-guardian-logic/01-reasoning-of-guardian.md)
+  * [死环](rank-theory/05-guardian-logic/02-bivalue-oddagon.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
