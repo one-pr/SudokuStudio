@@ -487,11 +487,11 @@
     <value>真</value>
   </data>
   <data name="FullHouse" xml:space="preserve">
-    <value>同区九缺一</value>
+    <value>单元唯一</value>
     <comment>Technique Name</comment>
   </data>
   <data name="LastDigit" xml:space="preserve">
-    <value>同数九缺一</value>
+    <value>数字唯一</value>
     <comment>Technique Name</comment>
   </data>
   <data name="HiddenSingleBlock" xml:space="preserve">
@@ -2407,7 +2407,7 @@
     <comment>Technique Name</comment>
   </data>
   <data name="Single" xml:space="preserve">
-    <value>同区九缺一</value>
+    <value>单元唯一</value>
     <comment>Technique Name</comment>
   </data>
   <data name="ExtendedSubsetPrinciple" xml:space="preserve">
@@ -2838,7 +2838,7 @@
     <comment>Step Searcher Name</comment>
   </data>
   <data name="ComplexFullHouse" xml:space="preserve">
-    <value>复杂同区九缺一</value>
+    <value>复杂单元唯一</value>
   </data>
   <data name="ComplexCrosshatchingBlock" xml:space="preserve">
     <value>复杂宫排除</value>

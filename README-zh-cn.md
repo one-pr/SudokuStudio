@@ -1,4 +1,4 @@
-<center>Language switch to: <a href="README.md">English</a><br/><img src="miscellaneous/pic/icon.png" /></center>
+﻿<center>Language switch to: <a href="README.md">English</a><br/><img src="miscellaneous/pic/icon.png" /></center>
 
 [![stars](https://img.shields.io/github/stars/kyoyama-kazusa/Sudoku?color=097abb)](https://github.com/kyoyama-kazusa/Sudoku/stargazers)
 [![issues](https://img.shields.io/github/issues/kyoyama-kazusa/Sudoku?color=097abb)](https://github.com/kyoyama-kazusa/Sudoku/issues)
@@ -69,10 +69,10 @@
 ### 技巧支持
 
 * 直观技巧
-  * 同区九缺一（Full House）
-  * 同数九缺一（Last Digit）
-  * 排除
-  * 唯一余数
+  * 单元唯一（Full House）
+  * 数字唯一（Last Digit）
+  * 排除（隐性唯一）
+  * 唯一余数（显性唯一）
 * 局标候选数技巧
   * 直观区块（区块排除、区块唯一余数）
   * 直观数组（数组排除、数组唯一余数）

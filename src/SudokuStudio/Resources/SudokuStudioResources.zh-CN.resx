@@ -1445,13 +1445,13 @@
 不过需要注意的是，不是所有页面的数独盘面都会关联到该设置，因为有些页面的盘面不需要候选数，也就不存在该设置项的配置功能的生效与否了。</value>
   </data>
   <data name="SettingsPage_EnableFullHouse" xml:space="preserve">
-    <value>启用“同区九缺一”技巧</value>
+    <value>启用“单元唯一”技巧</value>
   </data>
   <data name="SettingsPage_EnableFullHouseDescription" xml:space="preserve">
     <value>如果禁用此选项，所有同一个区域里只有一个空格的技巧会被视为“唯一余数”</value>
   </data>
   <data name="SettingsPage_EnableLastDigit" xml:space="preserve">
-    <value>启用“同数九缺一”技巧</value>
+    <value>启用“数字唯一”技巧</value>
   </data>
   <data name="SettingsPage_EnableRightTapRemovingForSudokuPane" xml:space="preserve">
     <value>允许鼠标右键点击候选数删除该数字</value>
@@ -1539,10 +1539,10 @@
     <value>一刀流题目检测所需技巧</value>
   </data>
   <data name="SettingsPage_IttoryuSupportedTechniquesDescription" xml:space="preserve">
-    <value>该项设置的是检测题目是否一刀流期间，需要轮番计算的使用技巧。默认情况下，所有出数类型技巧都列入计算之中：排除（Hidden Single）、唯一余数（Naked Single）和同区九缺一（Full House）。同数九缺一（Last Digit）会使用宫排除代替。</value>
+    <value>该项设置的是检测题目是否一刀流期间，需要轮番计算的使用技巧。默认情况下，所有出数类型技巧都列入计算之中：排除（Hidden Single）、唯一余数（Naked Single）和单元唯一（Full House）。数字唯一（Last Digit）会使用宫排除代替。</value>
   </data>
   <data name="SettingsPage_IttoryuTechnique_FullHouse" xml:space="preserve">
-    <value>同区九缺一（不支持取消）</value>
+    <value>单元唯一（不支持取消）</value>
   </data>
   <data name="SettingsPage_IttoryuTechnique_HiddenSingleBlock" xml:space="preserve">
     <value>宫排除（不建议取消）</value>
@@ -1840,7 +1840,7 @@
     <value>两种都有</value>
   </data>
   <data name="SingleCountingPracticingPage_FullHouseMode" xml:space="preserve">
-    <value>只有同区九缺一</value>
+    <value>只有单元唯一</value>
   </data>
   <data name="SingleCountingPracticingPage_Index5Only" xml:space="preserve">
     <value>只使用第 5 行/列/宫</value>
@@ -2379,7 +2379,7 @@
     <value>直观难度分</value>
   </data>
   <data name="GeneratedPuzzleConstraintPage_PrimaryFullHouse" xml:space="preserve">
-    <value>同区九缺一</value>
+    <value>单元唯一</value>
   </data>
   <data name="GeneratedPuzzleConstraintPage_NegatingLogic" xml:space="preserve">
     <value>取反</value>
@@ -2826,7 +2826,7 @@
     <value>这个页面可以修改卡点的定义，以便你用于搜索关于卡点的相关内容时可以变动处理过程。</value>
   </data>
   <data name="SettingsPage_BottleneckDirectModeDescription" xml:space="preserve">
-    <value>只包含同区九缺一、排除和唯一余数技巧</value>
+    <value>只包含单元唯一、排除和唯一余数技巧</value>
   </data>
   <data name="SettingsPage_BottleneckPartialMarkingModeDescription" xml:space="preserve">
     <value>包含一些复杂的出数，例如使用区块和数组来出数</value>
@@ -2856,10 +2856,10 @@
     <value>优先以剩余数进行排序</value>
   </data>
   <data name="SettingsPage_EnableOrderingStepsByLastingValueDescription" xml:space="preserve">
-    <value>替换出数技巧模块的步骤排序机制，使得以剩余数来作为衡量难度的指标。剩余数越大的技巧越难。例如说先找剩余数为2的同区九缺一、同数九缺一、排除和唯余，然后才是剩余3的、接着是剩余数4的情况，以此类推。</value>
+    <value>替换出数技巧模块的步骤排序机制，使得以剩余数来作为衡量难度的指标。剩余数越大的技巧越难。例如说先找剩余数为2的单元唯一、数字唯一、排除和唯余，然后才是剩余3的、接着是剩余数4的情况，以此类推。</value>
   </data>
   <data name="SettingsPage_EnableOrderingStepsByLastingValueDescription2" xml:space="preserve">
-    <value>一般情况下，搜索模块会严格按技巧来排序。如唯一余数比排除难，排除比同数九缺一难，同数九缺一又会比同区九缺一难。</value>
+    <value>一般情况下，搜索模块会严格按技巧来排序。如唯一余数比排除难，排除比数字唯一难，数字唯一又会比单元唯一难。</value>
   </data>
   <data name="SettingsPage_RectangleColors" xml:space="preserve">
     <value>矩形（唯一矩形、可规避矩形）配色</value>
