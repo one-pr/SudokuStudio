@@ -38,15 +38,9 @@ description: Reasoning of Bivalue Oddagon
 
 如图所示。这个例子搭配了一个比较大规格的数组结构。不过你也可以看 7 和 8 的隐性数对来解决大规格数组难理解的问题，毕竟在类型 3 逻辑里，显隐性数组也是互补的，在这里也一样。
 
-## 死环有类型 1 和 4 吗？ <a href="#is-there-any-bivalue-oddagon-type-1-and-4" id="is-there-any-bivalue-oddagon-type-1-and-4"></a>
+## 死环有类型 4 吗？ <a href="#is-there-any-bivalue-oddagon-type-4" id="is-there-any-bivalue-oddagon-type-4"></a>
 
-可以从前文里看出，我们压根就没有想提及类型 1 和 4 的欲望。那么，死环有类型 1 和 4 吗？
-
-对于我们想象的死环类型 1，它理应是一个奇数长度的环，然后某一个单元格除了这两个必需的候选数外，还带有额外的数字，这就和类型 1 匹配上了。不过，我们其实可以不看这个多出来的单元格。它其实是远程数对。
-
-<figure><img src="../../.gitbook/assets/images_0596.png" alt="" width="375"><figcaption><p>死环类型 1</p></figcaption></figure>
-
-如图所示。这便是类型 1 的一个例子。不过很明显，我们完全可以不算上删数单元格，这样看的话其实就是简单的远程数对技巧，因为余下的单元格长度一定是偶数个（奇数个单元格减去 1），所以链路的头尾一定是两个不同的填数。
+可以从前文里看出，我们压根就没有想提及类型 4 的欲望。那么，死环有类型 4 吗？
 
 至于类型 4 的话，这个说起来会稍微麻烦一些。
 
@@ -66,4 +60,25 @@ description: Reasoning of Bivalue Oddagon
 
 如图所示，这样我们就可以得到这样的删数位置是两种情况均可产生的结论，也就是说，`{r12c4,r2c6} <> 24` 是这个示意图里可以产生的结论。
 
-看起来这似乎是存在的。但是为什么没讲呢？因为我没有例子……
+## 死环类型 4（Bivalue Oddagon Type 4） <a href="#bivalue-oddagon-type-4" id="bivalue-oddagon-type-4"></a>
+
+下面我们来看一下类型 4 的实际例子。
+
+<figure><img src="../../.gitbook/assets/images_0610.png" alt="" width="375"><figcaption><p>死环类型 4</p></figcaption></figure>
+
+如图所示。我们需要假设两头 `r1c3` 和 `r5c5` 的填数（比如这里显然都是同一个数，我们这里用 $$a$$ 表示）。为什么非得是同一个数呢？因为是奇数长度的环路，共轭对占用的两个格子一定相邻出现，所以余下的单元格满足两点特征：
+
+1. 余下的单元格数量也是个奇数，因为奇数 - 2 还是个奇数；
+2. 因为是串联起来的 $$\text{r1c3} \rightarrow A \rightarrow B \rightarrow \text{r5c5}$$，而 $$A$$ 和 $$B$$（即图中的 `r1c4` 和 `r2c5`）显然相邻，所以它俩填的数一定有一个 $$b$$ 和一个 4（4 是共轭对，所以必须填一个），故 `r1c3` 和 `r5c5` 填的肯定是相同的数字 $$a$$。
+
+这么组起来，我们会得到两个两头 `r1c3` 和 `r5c5` 结合共轭对的单元格构成关于 1 和 2 的显性数对，于是两种情况取交集可得到结论一定是 `r1c6 <> 12`。
+
+## 死环类型 1 = 远程数对 <a href="#bivalue-oddagon-type-1-is-equivalent-to-remote-pair" id="bivalue-oddagon-type-1-is-equivalent-to-remote-pair"></a>
+
+那么，死环有类型 1 吗？
+
+对于我们想象的死环类型 1，它理应是一个奇数长度的环，然后某一个单元格除了这两个必需的候选数外，还带有额外的数字，这就和类型 1 匹配上了。不过，我们其实可以不看这个多出来的单元格。它其实是远程数对。
+
+<figure><img src="../../.gitbook/assets/images_0596.png" alt="" width="375"><figcaption><p>死环类型 1</p></figcaption></figure>
+
+如图所示。这便是类型 1 的一个例子。不过很明显，我们完全可以不算上删数单元格，这样看的话其实就是简单的远程数对技巧，因为余下的单元格长度一定是偶数个（奇数个单元格减去 1），所以链路的头尾一定是两个不同的填数。
