@@ -3269,59 +3269,59 @@ public enum Technique
 	#endregion
 
 	//
-	// Chromatic Pattern
+	// Tri-value oddagon
 	//
-	#region Chromatic Pattern
+	#region Trivalue Oddagon
 	/// <summary>
-	/// Indicates chromatic pattern (tri-value oddagon) type 1.
+	/// Indicates tri-value oddagon type 1.
 	/// </summary>
-	[TechniqueMetadata<ChromaticPatternStepSearcher, ChromaticPatternType1Step>(
+	[TechniqueMetadata<TrivalueOddagonStepSearcher, TrivalueOddagonType1Step>(
 		Rating = 65,
 		DifficultyLevel = DifficultyLevel.Fiendish,
 		ContainingGroup = TechniqueGroup.RankTheory,
 		Features = TechniqueFeatures.HardToBeGenerated,
 		Links = ["http://forum.enjoysudoku.com/chromatic-patterns-t39885.html", "http://forum.enjoysudoku.com/the-tridagon-rule-t39859.html"])]
-	ChromaticPatternType1,
+	TrivalueOddagonType1,
 
 	/// <summary>
-	/// Indicates chromatic pattern (tri-value oddagon) type 2.
+	/// Indicates tri-value oddagon type 2.
 	/// </summary>
 	[TechniqueMetadata(
 		DifficultyLevel = DifficultyLevel.Fiendish,
 		ContainingGroup = TechniqueGroup.RankTheory,
 		Features = TechniqueFeatures.HardToBeGenerated | TechniqueFeatures.NotImplemented,
 		Links = ["http://forum.enjoysudoku.com/chromatic-patterns-t39885.html", "http://forum.enjoysudoku.com/the-tridagon-rule-t39859.html"])]
-	ChromaticPatternType2,
+	TrivalueOddagonType2,
 
 	/// <summary>
-	/// Indicates chromatic pattern (tri-value oddagon) type 3.
+	/// Indicates tri-value oddagon type 3.
 	/// </summary>
 	[TechniqueMetadata(
 		DifficultyLevel = DifficultyLevel.Fiendish,
 		ContainingGroup = TechniqueGroup.RankTheory,
 		Features = TechniqueFeatures.HardToBeGenerated | TechniqueFeatures.NotImplemented,
 		Links = ["http://forum.enjoysudoku.com/chromatic-patterns-t39885.html", "http://forum.enjoysudoku.com/the-tridagon-rule-t39859.html"])]
-	ChromaticPatternType3,
+	TrivalueOddagonType3,
 
 	/// <summary>
-	/// Indicates chromatic pattern (tri-value oddagon) type 4.
+	/// Indicates tri-value oddagon type 4.
 	/// </summary>
 	[TechniqueMetadata(
 		DifficultyLevel = DifficultyLevel.Fiendish,
 		ContainingGroup = TechniqueGroup.RankTheory,
 		Features = TechniqueFeatures.HardToBeGenerated | TechniqueFeatures.NotImplemented,
 		Links = ["http://forum.enjoysudoku.com/chromatic-patterns-t39885.html", "http://forum.enjoysudoku.com/the-tridagon-rule-t39859.html"])]
-	ChromaticPatternType4,
+	TrivalueOddagonType4,
 
 	/// <summary>
-	/// Indicates chromatic pattern (tri-value oddagon) XZ rule.
+	/// Indicates tri-value oddagon XZ rule.
 	/// </summary>
-	[TechniqueMetadata<ChromaticPatternStepSearcher, ChromaticPatternXzStep>(
+	[TechniqueMetadata<TrivalueOddagonStepSearcher, TrivalueOddagonXzStep>(
 		Rating = 67,
 		DifficultyLevel = DifficultyLevel.Fiendish,
 		ContainingGroup = TechniqueGroup.RankTheory,
 		Features = TechniqueFeatures.HardToBeGenerated)]
-	ChromaticPatternXzRule,
+	TrivalueOddagonXzRule,
 	#endregion
 
 	//

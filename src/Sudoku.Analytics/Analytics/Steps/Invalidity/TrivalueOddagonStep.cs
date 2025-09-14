@@ -1,7 +1,7 @@
 namespace Sudoku.Analytics.Steps;
 
 /// <summary>
-/// Provides with a step that is a <b>Chromatic Pattern</b> technique.
+/// Provides with a step that is a <b>Trivalue Oddagon</b> technique.
 /// </summary>
 /// <param name="conclusions"><inheritdoc cref="Step.Conclusions" path="/summary"/></param>
 /// <param name="views"><inheritdoc cref="Step.Views" path="/summary"/></param>
@@ -9,7 +9,7 @@ namespace Sudoku.Analytics.Steps;
 /// <param name="blocks"><inheritdoc cref="Blocks" path="/summary"/></param>
 /// <param name="pattern"><inheritdoc cref="Pattern" path="/summary"/></param>
 /// <param name="digitsMask"><inheritdoc cref="DigitsMask" path="/summary"/></param>
-public abstract class ChromaticPatternStep(
+public abstract class TrivalueOddagonStep(
 	ReadOnlyMemory<Conclusion> conclusions,
 	View[]? views,
 	StepGathererOptions options,

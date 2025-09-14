@@ -196,9 +196,9 @@ public enum TechniqueGroup
 	BivalueOddagon,
 
 	/// <summary>
-	/// Indicates the chromatic pattern technique.
+	/// Indicates the tri-value oddagon technique.
 	/// </summary>
-	ChromaticPattern,
+	TrivalueOddagon,
 
 	/// <summary>
 	/// Indicates the sue de coq (SdC) technique.

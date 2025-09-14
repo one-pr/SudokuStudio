@@ -954,51 +954,6 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chromatic Pattern Type 1.
-        /// </summary>
-        public static string ChromaticPatternType1 {
-            get {
-                return ResourceManager.GetString("ChromaticPatternType1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Chromatic Pattern Type 2.
-        /// </summary>
-        public static string ChromaticPatternType2 {
-            get {
-                return ResourceManager.GetString("ChromaticPatternType2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Chromatic Pattern Type 3.
-        /// </summary>
-        public static string ChromaticPatternType3 {
-            get {
-                return ResourceManager.GetString("ChromaticPatternType3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Chromatic Pattern Type 4.
-        /// </summary>
-        public static string ChromaticPatternType4 {
-            get {
-                return ResourceManager.GetString("ChromaticPatternType4", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Chromatic Pattern XZ Rule.
-        /// </summary>
-        public static string ChromaticPatternXzRule {
-            get {
-                return ResourceManager.GetString("ChromaticPatternXzRule", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Claiming.
         /// </summary>
         public static string Claiming {
@@ -5468,15 +5423,6 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chromatic Pattern.
-        /// </summary>
-        public static string StepSearcherName_ChromaticPatternStepSearcher {
-            get {
-                return ResourceManager.GetString("StepSearcherName_ChromaticPatternStepSearcher", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Complex Fishes.
         /// </summary>
         public static string StepSearcherName_ComplexFishStepSearcher {
@@ -5833,6 +5779,15 @@ namespace Sudoku.Resources {
         public static string StepSearcherName_TemplateStepSearcher {
             get {
                 return ResourceManager.GetString("StepSearcherName_TemplateStepSearcher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trivalue Oddagon.
+        /// </summary>
+        public static string StepSearcherName_TrivalueOddagonStepSearcher {
+            get {
+                return ResourceManager.GetString("StepSearcherName_TrivalueOddagonStepSearcher", resourceCulture);
             }
         }
         
@@ -7628,24 +7583,6 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cells {0} in blocks {1} will form an invalid pattern if these cells only contain the digits {2}.
-        /// </summary>
-        public static string TechniqueFormat_ChromaticPatternType1Step {
-            get {
-                return ResourceManager.GetString("TechniqueFormat_ChromaticPatternType1Step", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Digits {0} in cells {1} in blocks {2}, with extra cell {3}.
-        /// </summary>
-        public static string TechniqueFormat_ChromaticPatternXzStep {
-            get {
-                return ResourceManager.GetString("TechniqueFormat_ChromaticPatternXzStep", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0}.
         /// </summary>
         public static string TechniqueFormat_ComplexFishStep {
@@ -8249,6 +8186,24 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cells {0} in blocks {1} will form an invalid pattern if these cells only contain the digits {2}.
+        /// </summary>
+        public static string TechniqueFormat_TrivalueOddagonType1Step {
+            get {
+                return ResourceManager.GetString("TechniqueFormat_TrivalueOddagonType1Step", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Digits {0} in cells {1} in blocks {2}, with extra cell {3}.
+        /// </summary>
+        public static string TechniqueFormat_TrivalueOddagonXzStep {
+            get {
+                return ResourceManager.GetString("TechniqueFormat_TrivalueOddagonXzStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} in {1}\{2}.
         /// </summary>
         public static string TechniqueFormat_TwoStrongLinksStep {
@@ -8645,15 +8600,6 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chromatic Pattern.
-        /// </summary>
-        public static string TechniqueGroup_ChromaticPattern {
-            get {
-                return ResourceManager.GetString("TechniqueGroup_ChromaticPattern", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Complex Fish.
         /// </summary>
         public static string TechniqueGroup_ComplexFish {
@@ -8915,6 +8861,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Trivalue Oddagon.
+        /// </summary>
+        public static string TechniqueGroup_TrivalueOddagon {
+            get {
+                return ResourceManager.GetString("TechniqueGroup_TrivalueOddagon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unique Loop.
         /// </summary>
         public static string TechniqueGroup_UniqueLoop {
@@ -8983,6 +8938,51 @@ namespace Sudoku.Resources {
         public static string TechniqueSetConstraint {
             get {
                 return ResourceManager.GetString("TechniqueSetConstraint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trivalue Oddagon Type 1.
+        /// </summary>
+        public static string TrivalueOddagonType1 {
+            get {
+                return ResourceManager.GetString("TrivalueOddagonType1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trivalue Oddagon Type 2.
+        /// </summary>
+        public static string TrivalueOddagonType2 {
+            get {
+                return ResourceManager.GetString("TrivalueOddagonType2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trivalue Oddagon Type 3.
+        /// </summary>
+        public static string TrivalueOddagonType3 {
+            get {
+                return ResourceManager.GetString("TrivalueOddagonType3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trivalue Oddagon Type 4.
+        /// </summary>
+        public static string TrivalueOddagonType4 {
+            get {
+                return ResourceManager.GetString("TrivalueOddagonType4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trivalue Oddagon XZ Rule.
+        /// </summary>
+        public static string TrivalueOddagonXzRule {
+            get {
+                return ResourceManager.GetString("TrivalueOddagonXzRule", resourceCulture);
             }
         }
         

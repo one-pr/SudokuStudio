@@ -1,18 +1,18 @@
 namespace Sudoku.Analytics.Steps;
 
 /// <summary>
-/// Provides with a step that is a <b>Chromatic Pattern XZ</b> technique.
+/// Provides with a step that is a <b>Trivalue Oddagon XZ</b> technique.
 /// </summary>
 /// <param name="conclusions"><inheritdoc cref="Step.Conclusions" path="/summary"/></param>
 /// <param name="views"><inheritdoc cref="Step.Views" path="/summary"/></param>
 /// <param name="options"><inheritdoc cref="Step.Options" path="/summary"/></param>
-/// <param name="blocks"><inheritdoc cref="ChromaticPatternStep.Blocks" path="/summary"/></param>
-/// <param name="pattern"><inheritdoc cref="ChromaticPatternStep.Pattern" path="/summary"/></param>
+/// <param name="blocks"><inheritdoc cref="TrivalueOddagonStep.Blocks" path="/summary"/></param>
+/// <param name="pattern"><inheritdoc cref="TrivalueOddagonStep.Pattern" path="/summary"/></param>
 /// <param name="cells"><inheritdoc cref="Cells" path="/summary"/></param>
 /// <param name="extraCell"><inheritdoc cref="ExtraCell" path="/summary"/></param>
-/// <param name="digitsMask"><inheritdoc cref="ChromaticPatternStep.DigitsMask" path="/summary"/></param>
+/// <param name="digitsMask"><inheritdoc cref="TrivalueOddagonStep.DigitsMask" path="/summary"/></param>
 /// <param name="extraDigitsMask"><inheritdoc cref="ExtraDigitsMask" path="/summary"/></param>
-public sealed class ChromaticPatternXzStep(
+public sealed class TrivalueOddagonXzStep(
 	ReadOnlyMemory<Conclusion> conclusions,
 	View[]? views,
 	StepGathererOptions options,
@@ -22,13 +22,13 @@ public sealed class ChromaticPatternXzStep(
 	Cell extraCell,
 	Mask digitsMask,
 	Mask extraDigitsMask
-) : ChromaticPatternStep(conclusions, views, options, blocks, pattern, digitsMask)
+) : TrivalueOddagonStep(conclusions, views, options, blocks, pattern, digitsMask)
 {
 	/// <inheritdoc/>
 	public override int BaseDifficulty => base.BaseDifficulty + 2;
 
 	/// <inheritdoc/>
-	public override Technique Code => Technique.ChromaticPatternXzRule;
+	public override Technique Code => Technique.TrivalueOddagonXzRule;
 
 	/// <inheritdoc/>
 	public override Mask DigitsUsed => (Mask)(DigitsMask | ExtraDigitsMask);

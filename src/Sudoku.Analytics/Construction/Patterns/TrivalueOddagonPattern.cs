@@ -1,18 +1,18 @@
 namespace Sudoku.Construction.Patterns;
 
 /// <summary>
-/// Represents a chromatic pattern.
+/// Represents a trivalue oddagon pattern.
 /// </summary>
 /// <param name="block1Cells"><inheritdoc cref="Block1Cells" path="/summary"/></param>
 /// <param name="block2Cells"><inheritdoc cref="Block2Cells" path="/summary"/></param>
 /// <param name="block3Cells"><inheritdoc cref="Block3Cells" path="/summary"/></param>
 /// <param name="block4Cells"><inheritdoc cref="Block4Cells" path="/summary"/></param>
-public sealed class ChromaticPatternPattern(Cell[] block1Cells, Cell[] block2Cells, Cell[] block3Cells, Cell[] block4Cells) : Pattern
+public sealed class TrivalueOddagonPattern(Cell[] block1Cells, Cell[] block2Cells, Cell[] block3Cells, Cell[] block4Cells) : Pattern
 {
 	/// <summary>
 	/// All possible blocks combinations being reserved for chromatic pattern searcher's usages.
 	/// </summary>
-	internal static readonly Mask[] ChromaticPatternBlocksCombinations = [
+	internal static readonly Mask[] BlocksCombinations = [
 		0b000_011_011, 0b000_101_101, 0b000_110_110,
 		0b011_000_011, 0b101_000_101, 0b110_000_110,
 		0b011_011_000, 0b101_101_000, 0b110_110_000
@@ -21,7 +21,7 @@ public sealed class ChromaticPatternPattern(Cell[] block1Cells, Cell[] block2Cel
 	/// <summary>
 	/// The possible pattern offsets.
 	/// </summary>
-	internal static readonly ChromaticPatternPattern[] Patterns;
+	internal static readonly TrivalueOddagonPattern[] Patterns;
 
 	/// <summary>
 	/// Indicates the possible offset values for diagonal cases.
@@ -41,9 +41,9 @@ public sealed class ChromaticPatternPattern(Cell[] block1Cells, Cell[] block2Cel
 
 
 	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
-	static ChromaticPatternPattern()
+	static TrivalueOddagonPattern()
 	{
-		var patternOffsetsList = new List<ChromaticPatternPattern>();
+		var patternOffsetsList = new List<TrivalueOddagonPattern>();
 		foreach (var (aCase, bCase, cCase, dCase) in (
 			(true, false, false, false),
 			(false, true, false, false),
@@ -89,7 +89,7 @@ public sealed class ChromaticPatternPattern(Cell[] block1Cells, Cell[] block2Cel
 	public override bool IsChainingCompatible => false;
 
 	/// <inheritdoc/>
-	public override PatternType Type => PatternType.ChromaticPattern;
+	public override PatternType Type => PatternType.TrivalueOddagon;
 
 	/// <summary>
 	/// Indicates the cells used in first block.
@@ -123,11 +123,11 @@ public sealed class ChromaticPatternPattern(Cell[] block1Cells, Cell[] block2Cel
 
 	/// <inheritdoc/>
 	public override bool Equals([NotNullWhen(true)] Pattern? other)
-		=> other is ChromaticPatternPattern comparer && Map == comparer.Map;
+		=> other is TrivalueOddagonPattern comparer && Map == comparer.Map;
 
 	/// <inheritdoc/>
 	public override int GetHashCode() => Map.GetHashCode();
 
 	/// <inheritdoc/>
-	public override ChromaticPatternPattern Clone() => new(Block1Cells, Block2Cells, Block3Cells, Block4Cells);
+	public override TrivalueOddagonPattern Clone() => new(Block1Cells, Block2Cells, Block3Cells, Block4Cells);
 }

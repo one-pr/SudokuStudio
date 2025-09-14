@@ -1272,25 +1272,25 @@
   <data name="RemotePair" xml:space="preserve">
     <value>Remote Pair</value>
   </data>
-  <data name="ChromaticPatternType1" xml:space="preserve">
-    <value>Chromatic Pattern Type 1</value>
+  <data name="TrivalueOddagonType1" xml:space="preserve">
+    <value>Trivalue Oddagon Type 1</value>
   </data>
-  <data name="ChromaticPatternType2" xml:space="preserve">
-    <value>Chromatic Pattern Type 2</value>
+  <data name="TrivalueOddagonType2" xml:space="preserve">
+    <value>Trivalue Oddagon Type 2</value>
   </data>
-  <data name="ChromaticPatternType3" xml:space="preserve">
-    <value>Chromatic Pattern Type 3</value>
+  <data name="TrivalueOddagonType3" xml:space="preserve">
+    <value>Trivalue Oddagon Type 3</value>
   </data>
-  <data name="ChromaticPatternType4" xml:space="preserve">
-    <value>Chromatic Pattern Type 4</value>
+  <data name="TrivalueOddagonType4" xml:space="preserve">
+    <value>Trivalue Oddagon Type 4</value>
   </data>
-  <data name="TechniqueFormat_ChromaticPatternType1Step" xml:space="preserve">
+  <data name="TechniqueFormat_TrivalueOddagonType1Step" xml:space="preserve">
     <value>Cells {0} in blocks {1} will form an invalid pattern if these cells only contain the digits {2}</value>
   </data>
-  <data name="ChromaticPatternXzRule" xml:space="preserve">
-    <value>Chromatic Pattern XZ Rule</value>
+  <data name="TrivalueOddagonXzRule" xml:space="preserve">
+    <value>Trivalue Oddagon XZ Rule</value>
   </data>
-  <data name="TechniqueFormat_ChromaticPatternXzStep" xml:space="preserve">
+  <data name="TechniqueFormat_TrivalueOddagonXzStep" xml:space="preserve">
     <value>Digits {0} in cells {1} in blocks {2}, with extra cell {3}</value>
   </data>
   <data name="TechniqueFormat_JuniorExocetStep" xml:space="preserve">
@@ -1512,8 +1512,8 @@
   <data name="StepSearcherName_BruteForceStepSearcher" xml:space="preserve">
     <value>Brute Force</value>
   </data>
-  <data name="StepSearcherName_ChromaticPatternStepSearcher" xml:space="preserve">
-    <value>Chromatic Pattern</value>
+  <data name="StepSearcherName_TrivalueOddagonStepSearcher" xml:space="preserve">
+    <value>Trivalue Oddagon</value>
   </data>
   <data name="StepSearcherName_ComplexFishStepSearcher" xml:space="preserve">
     <value>Complex Fishes</value>
@@ -2097,8 +2097,8 @@
   <data name="TechniqueGroup_BruteForce" xml:space="preserve">
     <value>Brute Force</value>
   </data>
-  <data name="TechniqueGroup_ChromaticPattern" xml:space="preserve">
-    <value>Chromatic Pattern</value>
+  <data name="TechniqueGroup_TrivalueOddagon" xml:space="preserve">
+    <value>Trivalue Oddagon</value>
   </data>
   <data name="TechniqueGroup_ComplexFish" xml:space="preserve">
     <value>Complex Fish</value>

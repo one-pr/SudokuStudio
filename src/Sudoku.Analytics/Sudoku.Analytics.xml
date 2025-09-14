@@ -8753,44 +8753,44 @@
             <param name="context">The context.</param>
             <returns>The dictionary that contains all eliminations grouped by digit used.</returns>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.ChromaticPatternStepSearcher">
+        <member name="T:Sudoku.Analytics.StepSearchers.TrivalueOddagonStepSearcher">
             <summary>
-            Provides with a <b>Chromatic Pattern</b> step searcher.
+            Provides with a <b>Trivalue Oddagon</b> step searcher.
             The step searcher will include the following techniques:
             <list type="bullet">
             <item>
             Basic types:
             <list type="bullet">
-            <item>Chromatic Pattern type 1</item>
+            <item>Trivalue Oddagon type 1</item>
             <!--
-            <item>Chromatic Pattern type 2</item>
-            <item>Chromatic Pattern type 3</item>
-            <item>Chromatic Pattern type 4</item>
+            <item>Trivalue Oddagon type 2</item>
+            <item>Trivalue Oddagon type 3</item>
+            <item>Trivalue Oddagon type 4</item>
             -->
             </list>
             </item>
             <item>
             Extended types:
             <list type="bullet">
-            <item>Chromatic Pattern XZ</item>
+            <item>Trivalue Oddagon XZ</item>
             </list>
             </item>
             </list>
             </summary>
             <remarks>
-            For more information about a "chromatic pattern",
+            For more information about a "tridagon" (tri-value oddagon),
             please visit <see href="http://forum.enjoysudoku.com/chromatic-patterns-t39885.html">this link</see>.
             </remarks>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.ChromaticPatternStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
+        <member name="M:Sudoku.Analytics.StepSearchers.TrivalueOddagonStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.ChromaticPatternStepSearcher.CheckType1(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.CellMap@,System.Int32[])">
+        <member name="M:Sudoku.Analytics.StepSearchers.TrivalueOddagonStepSearcher.CheckType1(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.CellMap@,System.Int32[])">
             <summary>
             Checks for the type 1.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.ChromaticPatternStepSearcher.CheckXz(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.CellMap@,System.Int32[])">
+        <member name="M:Sudoku.Analytics.StepSearchers.TrivalueOddagonStepSearcher.CheckXz(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.CellMap@,System.Int32[])">
             <summary>
             Checks for XZ rule.
             </summary>
@@ -12271,142 +12271,6 @@
         <member name="P:Sudoku.Analytics.Steps.BivalueOddagonType3Step.Sudoku#Analytics#Traits#IExtraCellListTrait#ExtraCellSize">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Analytics.Steps.ChromaticPatternStep">
-            <summary>
-            Provides with a step that is a <b>Chromatic Pattern</b> technique.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-            <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.Blocks" path="/summary"/></param>
-            <param name="pattern"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.Pattern" path="/summary"/></param>
-            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.DigitsMask" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Analytics.Steps.ChromaticPatternStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.Int32[],Sudoku.Concepts.CellMap@,System.Int16)">
-            <summary>
-            Provides with a step that is a <b>Chromatic Pattern</b> technique.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-            <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.Blocks" path="/summary"/></param>
-            <param name="pattern"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.Pattern" path="/summary"/></param>
-            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.DigitsMask" path="/summary"/></param>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ChromaticPatternStep.BaseDifficulty">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ChromaticPatternStep.DigitsUsed">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ChromaticPatternStep.Blocks">
-            <summary>
-            Indicates the blocks that the current pattern lies in.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ChromaticPatternStep.Pattern">
-            <summary>
-            Indicates the cells used.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ChromaticPatternStep.DigitsMask">
-            <summary>
-            Indicates the mask of digits.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Analytics.Steps.ChromaticPatternType1Step">
-            <summary>
-            Provides with a step that is a <b>Chromatic Pattern Type 1</b> technique.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-            <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.Blocks" path="/summary"/></param>
-            <param name="pattern"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.Pattern" path="/summary"/></param>
-            <param name="extraCell"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternType1Step.ExtraCell" path="/summary"/></param>
-            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.DigitsMask" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Analytics.Steps.ChromaticPatternType1Step.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.Int32[],Sudoku.Concepts.CellMap@,System.Int32,System.Int16)">
-            <summary>
-            Provides with a step that is a <b>Chromatic Pattern Type 1</b> technique.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-            <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.Blocks" path="/summary"/></param>
-            <param name="pattern"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.Pattern" path="/summary"/></param>
-            <param name="extraCell"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternType1Step.ExtraCell" path="/summary"/></param>
-            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.DigitsMask" path="/summary"/></param>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ChromaticPatternType1Step.Code">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ChromaticPatternType1Step.DigitsUsed">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ChromaticPatternType1Step.ExtraCell">
-            <summary>
-            Indicates the extra cell used.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ChromaticPatternType1Step.Interpolations">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Steps.ChromaticPatternXzStep">
-            <summary>
-            Provides with a step that is a <b>Chromatic Pattern XZ</b> technique.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-            <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.Blocks" path="/summary"/></param>
-            <param name="pattern"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.Pattern" path="/summary"/></param>
-            <param name="cells"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternXzStep.Cells" path="/summary"/></param>
-            <param name="extraCell"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternXzStep.ExtraCell" path="/summary"/></param>
-            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.DigitsMask" path="/summary"/></param>
-            <param name="extraDigitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternXzStep.ExtraDigitsMask" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Analytics.Steps.ChromaticPatternXzStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.Int32[],Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.Int32,System.Int16,System.Int16)">
-            <summary>
-            Provides with a step that is a <b>Chromatic Pattern XZ</b> technique.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-            <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.Blocks" path="/summary"/></param>
-            <param name="pattern"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.Pattern" path="/summary"/></param>
-            <param name="cells"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternXzStep.Cells" path="/summary"/></param>
-            <param name="extraCell"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternXzStep.ExtraCell" path="/summary"/></param>
-            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternStep.DigitsMask" path="/summary"/></param>
-            <param name="extraDigitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.ChromaticPatternXzStep.ExtraDigitsMask" path="/summary"/></param>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ChromaticPatternXzStep.BaseDifficulty">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ChromaticPatternXzStep.Code">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ChromaticPatternXzStep.DigitsUsed">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ChromaticPatternXzStep.Cells">
-            <summary>
-            Indicates the cells that contains extra digit.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ChromaticPatternXzStep.ExtraCell">
-            <summary>
-            Indicates the extra cell used.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ChromaticPatternXzStep.ExtraDigitsMask">
-            <summary>
-            Indicates the mask of extra digits.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.ChromaticPatternXzStep.Interpolations">
-            <inheritdoc/>
-        </member>
         <member name="T:Sudoku.Analytics.Steps.GuardianStep">
             <summary>
             Provides with a step that is a <b>Guardian</b> technique.
@@ -12489,6 +12353,142 @@
             <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
             <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
             <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+        </member>
+        <member name="T:Sudoku.Analytics.Steps.TrivalueOddagonStep">
+            <summary>
+            Provides with a step that is a <b>Trivalue Oddagon</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.Blocks" path="/summary"/></param>
+            <param name="pattern"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.Pattern" path="/summary"/></param>
+            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.DigitsMask" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Analytics.Steps.TrivalueOddagonStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.Int32[],Sudoku.Concepts.CellMap@,System.Int16)">
+            <summary>
+            Provides with a step that is a <b>Trivalue Oddagon</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.Blocks" path="/summary"/></param>
+            <param name="pattern"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.Pattern" path="/summary"/></param>
+            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.DigitsMask" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.BaseDifficulty">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.DigitsUsed">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.Blocks">
+            <summary>
+            Indicates the blocks that the current pattern lies in.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.Pattern">
+            <summary>
+            Indicates the cells used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.DigitsMask">
+            <summary>
+            Indicates the mask of digits.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Analytics.Steps.TrivalueOddagonType1Step">
+            <summary>
+            Provides with a step that is a <b>Trivalue Oddagon Type 1</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.Blocks" path="/summary"/></param>
+            <param name="pattern"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.Pattern" path="/summary"/></param>
+            <param name="extraCell"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonType1Step.ExtraCell" path="/summary"/></param>
+            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.DigitsMask" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Analytics.Steps.TrivalueOddagonType1Step.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.Int32[],Sudoku.Concepts.CellMap@,System.Int32,System.Int16)">
+            <summary>
+            Provides with a step that is a <b>Trivalue Oddagon Type 1</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.Blocks" path="/summary"/></param>
+            <param name="pattern"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.Pattern" path="/summary"/></param>
+            <param name="extraCell"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonType1Step.ExtraCell" path="/summary"/></param>
+            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.DigitsMask" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.TrivalueOddagonType1Step.Code">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.TrivalueOddagonType1Step.DigitsUsed">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.TrivalueOddagonType1Step.ExtraCell">
+            <summary>
+            Indicates the extra cell used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.TrivalueOddagonType1Step.Interpolations">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.Steps.TrivalueOddagonXzStep">
+            <summary>
+            Provides with a step that is a <b>Trivalue Oddagon XZ</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.Blocks" path="/summary"/></param>
+            <param name="pattern"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.Pattern" path="/summary"/></param>
+            <param name="cells"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonXzStep.Cells" path="/summary"/></param>
+            <param name="extraCell"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonXzStep.ExtraCell" path="/summary"/></param>
+            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.DigitsMask" path="/summary"/></param>
+            <param name="extraDigitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonXzStep.ExtraDigitsMask" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Analytics.Steps.TrivalueOddagonXzStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.Int32[],Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.Int32,System.Int16,System.Int16)">
+            <summary>
+            Provides with a step that is a <b>Trivalue Oddagon XZ</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="blocks"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.Blocks" path="/summary"/></param>
+            <param name="pattern"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.Pattern" path="/summary"/></param>
+            <param name="cells"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonXzStep.Cells" path="/summary"/></param>
+            <param name="extraCell"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonXzStep.ExtraCell" path="/summary"/></param>
+            <param name="digitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonStep.DigitsMask" path="/summary"/></param>
+            <param name="extraDigitsMask"><inheritdoc cref="P:Sudoku.Analytics.Steps.TrivalueOddagonXzStep.ExtraDigitsMask" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.TrivalueOddagonXzStep.BaseDifficulty">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.TrivalueOddagonXzStep.Code">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.TrivalueOddagonXzStep.DigitsUsed">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.TrivalueOddagonXzStep.Cells">
+            <summary>
+            Indicates the cells that contains extra digit.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.TrivalueOddagonXzStep.ExtraCell">
+            <summary>
+            Indicates the extra cell used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.TrivalueOddagonXzStep.ExtraDigitsMask">
+            <summary>
+            Indicates the mask of extra digits.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.TrivalueOddagonXzStep.Interpolations">
+            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Steps.BowmanBingoStep">
             <summary>
@@ -20398,29 +20398,29 @@
             Indicates bi-value oddagon type 3.
             </summary>
         </member>
-        <member name="F:Sudoku.Categorization.Technique.ChromaticPatternType1">
+        <member name="F:Sudoku.Categorization.Technique.TrivalueOddagonType1">
             <summary>
-            Indicates chromatic pattern (tri-value oddagon) type 1.
+            Indicates tri-value oddagon type 1.
             </summary>
         </member>
-        <member name="F:Sudoku.Categorization.Technique.ChromaticPatternType2">
+        <member name="F:Sudoku.Categorization.Technique.TrivalueOddagonType2">
             <summary>
-            Indicates chromatic pattern (tri-value oddagon) type 2.
+            Indicates tri-value oddagon type 2.
             </summary>
         </member>
-        <member name="F:Sudoku.Categorization.Technique.ChromaticPatternType3">
+        <member name="F:Sudoku.Categorization.Technique.TrivalueOddagonType3">
             <summary>
-            Indicates chromatic pattern (tri-value oddagon) type 3.
+            Indicates tri-value oddagon type 3.
             </summary>
         </member>
-        <member name="F:Sudoku.Categorization.Technique.ChromaticPatternType4">
+        <member name="F:Sudoku.Categorization.Technique.TrivalueOddagonType4">
             <summary>
-            Indicates chromatic pattern (tri-value oddagon) type 4.
+            Indicates tri-value oddagon type 4.
             </summary>
         </member>
-        <member name="F:Sudoku.Categorization.Technique.ChromaticPatternXzRule">
+        <member name="F:Sudoku.Categorization.Technique.TrivalueOddagonXzRule">
             <summary>
-            Indicates chromatic pattern (tri-value oddagon) XZ rule.
+            Indicates tri-value oddagon XZ rule.
             </summary>
         </member>
         <member name="F:Sudoku.Categorization.Technique.Skyscraper">
@@ -21407,9 +21407,9 @@
             Indicates the bi-value oddagon technique.
             </summary>
         </member>
-        <member name="F:Sudoku.Categorization.TechniqueGroup.ChromaticPattern">
+        <member name="F:Sudoku.Categorization.TechniqueGroup.TrivalueOddagon">
             <summary>
-            Indicates the chromatic pattern technique.
+            Indicates the tri-value oddagon technique.
             </summary>
         </member>
         <member name="F:Sudoku.Categorization.TechniqueGroup.SueDeCoq">
@@ -26129,119 +26129,6 @@
 				</summary>
 			</target>
         </member>
-        <member name="T:Sudoku.Construction.Patterns.ChromaticPatternPattern">
-            <summary>
-            Represents a chromatic pattern.
-            </summary>
-            <param name="block1Cells"><inheritdoc cref="P:Sudoku.Construction.Patterns.ChromaticPatternPattern.Block1Cells" path="/summary"/></param>
-            <param name="block2Cells"><inheritdoc cref="P:Sudoku.Construction.Patterns.ChromaticPatternPattern.Block2Cells" path="/summary"/></param>
-            <param name="block3Cells"><inheritdoc cref="P:Sudoku.Construction.Patterns.ChromaticPatternPattern.Block3Cells" path="/summary"/></param>
-            <param name="block4Cells"><inheritdoc cref="P:Sudoku.Construction.Patterns.ChromaticPatternPattern.Block4Cells" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Construction.Patterns.ChromaticPatternPattern.#ctor(System.Int32[],System.Int32[],System.Int32[],System.Int32[])">
-            <summary>
-            Represents a chromatic pattern.
-            </summary>
-            <param name="block1Cells"><inheritdoc cref="P:Sudoku.Construction.Patterns.ChromaticPatternPattern.Block1Cells" path="/summary"/></param>
-            <param name="block2Cells"><inheritdoc cref="P:Sudoku.Construction.Patterns.ChromaticPatternPattern.Block2Cells" path="/summary"/></param>
-            <param name="block3Cells"><inheritdoc cref="P:Sudoku.Construction.Patterns.ChromaticPatternPattern.Block3Cells" path="/summary"/></param>
-            <param name="block4Cells"><inheritdoc cref="P:Sudoku.Construction.Patterns.ChromaticPatternPattern.Block4Cells" path="/summary"/></param>
-        </member>
-        <member name="F:Sudoku.Construction.Patterns.ChromaticPatternPattern.ChromaticPatternBlocksCombinations">
-            <summary>
-            All possible blocks combinations being reserved for chromatic pattern searcher's usages.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Construction.Patterns.ChromaticPatternPattern.Patterns">
-            <summary>
-            The possible pattern offsets.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Construction.Patterns.ChromaticPatternPattern.DiagonalCases">
-            <summary>
-            Indicates the possible offset values for diagonal cases.
-            </summary>
-            <remarks>
-            <requires-static-constructor-invocation>
-		<i>
-			This field will only be used in the static constructor of this type. Please don't use this field in the user code.
-		</i>
-	</requires-static-constructor-invocation>
-            </remarks>
-        </member>
-        <member name="F:Sudoku.Construction.Patterns.ChromaticPatternPattern.AntidiagonalCases">
-            <summary>
-            Indicates the possible offset values for anti-diagonal cases.
-            </summary>
-            <remarks>
-            <requires-static-constructor-invocation>
-		<i>
-			This field will only be used in the static constructor of this type. Please don't use this field in the user code.
-		</i>
-	</requires-static-constructor-invocation>
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Construction.Patterns.ChromaticPatternPattern.#cctor">
-            <static-constructor>
-		<summary>
-			<para>
-				Indicates the <see langword="static" /> constructor of the current type.
-			</para>
-			<para>
-				This constructor will initialize some <see langword="static readonly" /> data members
-				of this type that can't use a simple expression to describe the initial value.
-			</para>
-		</summary>
-	</static-constructor>
-        </member>
-        <member name="P:Sudoku.Construction.Patterns.ChromaticPatternPattern.IsChainingCompatible">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Construction.Patterns.ChromaticPatternPattern.Type">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Construction.Patterns.ChromaticPatternPattern.Block1Cells">
-            <summary>
-            Indicates the cells used in first block.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Construction.Patterns.ChromaticPatternPattern.Block2Cells">
-            <summary>
-            Indicates the cells used in second block.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Construction.Patterns.ChromaticPatternPattern.Block3Cells">
-            <summary>
-            Indicates the cells used in third block.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Construction.Patterns.ChromaticPatternPattern.Block4Cells">
-            <summary>
-            Indicates the cells used in fourth block.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Construction.Patterns.ChromaticPatternPattern.Map">
-            <summary>
-            Indicates all cells used.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Construction.Patterns.ChromaticPatternPattern.Deconstruct(System.Int32[]@,System.Int32[]@,System.Int32[]@,System.Int32[]@)">
-            <target name="method">
-				<summary>
-					Deconstruct the current instance into multiple values, which means you can use
-					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
-				</summary>
-			</target>
-        </member>
-        <member name="M:Sudoku.Construction.Patterns.ChromaticPatternPattern.Equals(Sudoku.Construction.Pattern)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Construction.Patterns.ChromaticPatternPattern.GetHashCode">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Construction.Patterns.ChromaticPatternPattern.Clone">
-            <inheritdoc/>
-        </member>
         <member name="T:Sudoku.Construction.Patterns.DominoLoopPattern">
             <summary>
             Represents a domino loop pattern.
@@ -26984,6 +26871,119 @@
         <member name="M:Sudoku.Construction.Patterns.QiuDeadlyPattern2Pattern.Clone">
             <inheritdoc/>
         </member>
+        <member name="T:Sudoku.Construction.Patterns.TrivalueOddagonPattern">
+            <summary>
+            Represents a trivalue oddagon pattern.
+            </summary>
+            <param name="block1Cells"><inheritdoc cref="P:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Block1Cells" path="/summary"/></param>
+            <param name="block2Cells"><inheritdoc cref="P:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Block2Cells" path="/summary"/></param>
+            <param name="block3Cells"><inheritdoc cref="P:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Block3Cells" path="/summary"/></param>
+            <param name="block4Cells"><inheritdoc cref="P:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Block4Cells" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Construction.Patterns.TrivalueOddagonPattern.#ctor(System.Int32[],System.Int32[],System.Int32[],System.Int32[])">
+            <summary>
+            Represents a trivalue oddagon pattern.
+            </summary>
+            <param name="block1Cells"><inheritdoc cref="P:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Block1Cells" path="/summary"/></param>
+            <param name="block2Cells"><inheritdoc cref="P:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Block2Cells" path="/summary"/></param>
+            <param name="block3Cells"><inheritdoc cref="P:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Block3Cells" path="/summary"/></param>
+            <param name="block4Cells"><inheritdoc cref="P:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Block4Cells" path="/summary"/></param>
+        </member>
+        <member name="F:Sudoku.Construction.Patterns.TrivalueOddagonPattern.BlocksCombinations">
+            <summary>
+            All possible blocks combinations being reserved for chromatic pattern searcher's usages.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Patterns">
+            <summary>
+            The possible pattern offsets.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Construction.Patterns.TrivalueOddagonPattern.DiagonalCases">
+            <summary>
+            Indicates the possible offset values for diagonal cases.
+            </summary>
+            <remarks>
+            <requires-static-constructor-invocation>
+		<i>
+			This field will only be used in the static constructor of this type. Please don't use this field in the user code.
+		</i>
+	</requires-static-constructor-invocation>
+            </remarks>
+        </member>
+        <member name="F:Sudoku.Construction.Patterns.TrivalueOddagonPattern.AntidiagonalCases">
+            <summary>
+            Indicates the possible offset values for anti-diagonal cases.
+            </summary>
+            <remarks>
+            <requires-static-constructor-invocation>
+		<i>
+			This field will only be used in the static constructor of this type. Please don't use this field in the user code.
+		</i>
+	</requires-static-constructor-invocation>
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Construction.Patterns.TrivalueOddagonPattern.#cctor">
+            <static-constructor>
+		<summary>
+			<para>
+				Indicates the <see langword="static" /> constructor of the current type.
+			</para>
+			<para>
+				This constructor will initialize some <see langword="static readonly" /> data members
+				of this type that can't use a simple expression to describe the initial value.
+			</para>
+		</summary>
+	</static-constructor>
+        </member>
+        <member name="P:Sudoku.Construction.Patterns.TrivalueOddagonPattern.IsChainingCompatible">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Type">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Block1Cells">
+            <summary>
+            Indicates the cells used in first block.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Block2Cells">
+            <summary>
+            Indicates the cells used in second block.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Block3Cells">
+            <summary>
+            Indicates the cells used in third block.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Block4Cells">
+            <summary>
+            Indicates the cells used in fourth block.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Map">
+            <summary>
+            Indicates all cells used.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Deconstruct(System.Int32[]@,System.Int32[]@,System.Int32[]@,System.Int32[]@)">
+            <target name="method">
+				<summary>
+					Deconstruct the current instance into multiple values, which means you can use
+					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+				</summary>
+			</target>
+        </member>
+        <member name="M:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Equals(Sudoku.Construction.Pattern)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Construction.Patterns.TrivalueOddagonPattern.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Construction.Patterns.TrivalueOddagonPattern.Clone">
+            <inheritdoc/>
+        </member>
         <member name="T:Sudoku.Construction.Patterns.UniqueLoopPattern">
             <summary>
             Represents for a data set that describes the complete information about a unique loop technique.
@@ -27289,14 +27289,14 @@
             Indicates bi-value oddagon.
             </summary>
         </member>
+        <member name="F:Sudoku.Construction.PatternType.TrivalueOddagon">
+            <summary>
+            Indicates tri-value oddagon.
+            </summary>
+        </member>
         <member name="F:Sudoku.Construction.PatternType.BorescoperDeadlyPattern">
             <summary>
             Indicates Borescoper's deadly pattern.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Construction.PatternType.ChromaticPattern">
-            <summary>
-            Indicates chromatic pattern.
             </summary>
         </member>
         <member name="F:Sudoku.Construction.PatternType.DominoLoop">
@@ -30499,31 +30499,6 @@
               Looks up a localized string similar to , .
             </summary>
         </member>
-        <member name="P:Sudoku.Resources.AnalyticsResources.ChromaticPatternType1">
-            <summary>
-              Looks up a localized string similar to Chromatic Pattern Type 1.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.AnalyticsResources.ChromaticPatternType2">
-            <summary>
-              Looks up a localized string similar to Chromatic Pattern Type 2.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.AnalyticsResources.ChromaticPatternType3">
-            <summary>
-              Looks up a localized string similar to Chromatic Pattern Type 3.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.AnalyticsResources.ChromaticPatternType4">
-            <summary>
-              Looks up a localized string similar to Chromatic Pattern Type 4.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.AnalyticsResources.ChromaticPatternXzRule">
-            <summary>
-              Looks up a localized string similar to Chromatic Pattern XZ Rule.
-            </summary>
-        </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.Claiming">
             <summary>
               Looks up a localized string similar to Claiming.
@@ -33013,11 +32988,6 @@
               Looks up a localized string similar to Chain.
             </summary>
         </member>
-        <member name="P:Sudoku.Resources.AnalyticsResources.StepSearcherName_ChromaticPatternStepSearcher">
-            <summary>
-              Looks up a localized string similar to Chromatic Pattern.
-            </summary>
-        </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.StepSearcherName_ComplexFishStepSearcher">
             <summary>
               Looks up a localized string similar to Complex Fishes.
@@ -33216,6 +33186,11 @@
         <member name="P:Sudoku.Resources.AnalyticsResources.StepSearcherName_TemplateStepSearcher">
             <summary>
               Looks up a localized string similar to Templates.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.StepSearcherName_TrivalueOddagonStepSearcher">
+            <summary>
+              Looks up a localized string similar to Trivalue Oddagon.
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.StepSearcherName_TwoStrongLinksStepSearcher">
@@ -34213,16 +34188,6 @@
               Looks up a localized string similar to It is proved that all candidates in cell {0} will lead to a same conclusion.
             </summary>
         </member>
-        <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueFormat_ChromaticPatternType1Step">
-            <summary>
-              Looks up a localized string similar to Cells {0} in blocks {1} will form an invalid pattern if these cells only contain the digits {2}.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueFormat_ChromaticPatternXzStep">
-            <summary>
-              Looks up a localized string similar to Digits {0} in cells {1} in blocks {2}, with extra cell {3}.
-            </summary>
-        </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueFormat_ComplexFishStep">
             <summary>
               Looks up a localized string similar to {0}.
@@ -34558,6 +34523,16 @@
               Looks up a localized string similar to Digit {DigitStr}.
             </summary>
         </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueFormat_TrivalueOddagonType1Step">
+            <summary>
+              Looks up a localized string similar to Cells {0} in blocks {1} will form an invalid pattern if these cells only contain the digits {2}.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueFormat_TrivalueOddagonXzStep">
+            <summary>
+              Looks up a localized string similar to Digits {0} in cells {1} in blocks {2}, with extra cell {3}.
+            </summary>
+        </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueFormat_TwoStrongLinksStep">
             <summary>
               Looks up a localized string similar to {0} in {1}\{2}.
@@ -34778,11 +34753,6 @@
               Looks up a localized string similar to Brute Force.
             </summary>
         </member>
-        <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueGroup_ChromaticPattern">
-            <summary>
-              Looks up a localized string similar to Chromatic Pattern.
-            </summary>
-        </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueGroup_ComplexFish">
             <summary>
               Looks up a localized string similar to Complex Fish.
@@ -34928,6 +34898,11 @@
               Looks up a localized string similar to Symmetry.
             </summary>
         </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueGroup_TrivalueOddagon">
+            <summary>
+              Looks up a localized string similar to Trivalue Oddagon.
+            </summary>
+        </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueGroup_UniqueLoop">
             <summary>
               Looks up a localized string similar to Unique Loop.
@@ -34966,6 +34941,31 @@
         <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueSetConstraint">
             <summary>
               Looks up a localized string similar to Technique sets: a puzzle can be solved by using only techniques {0}.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.TrivalueOddagonType1">
+            <summary>
+              Looks up a localized string similar to Trivalue Oddagon Type 1.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.TrivalueOddagonType2">
+            <summary>
+              Looks up a localized string similar to Trivalue Oddagon Type 2.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.TrivalueOddagonType3">
+            <summary>
+              Looks up a localized string similar to Trivalue Oddagon Type 3.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.TrivalueOddagonType4">
+            <summary>
+              Looks up a localized string similar to Trivalue Oddagon Type 4.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.TrivalueOddagonXzRule">
+            <summary>
+              Looks up a localized string similar to Trivalue Oddagon XZ Rule.
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.TrueKeyword">

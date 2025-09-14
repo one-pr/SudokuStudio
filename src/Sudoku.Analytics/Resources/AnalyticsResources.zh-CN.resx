@@ -1533,30 +1533,30 @@
     <value>远程数对</value>
     <comment>Technique Name</comment>
   </data>
-  <data name="ChromaticPatternType1" xml:space="preserve">
+  <data name="TrivalueOddagonType1" xml:space="preserve">
     <value>三值死环类型 1</value>
     <comment>Technique Name</comment>
   </data>
-  <data name="ChromaticPatternType2" xml:space="preserve">
+  <data name="TrivalueOddagonType2" xml:space="preserve">
     <value>三值死环类型 2</value>
     <comment>Technique Name</comment>
   </data>
-  <data name="ChromaticPatternType3" xml:space="preserve">
+  <data name="TrivalueOddagonType3" xml:space="preserve">
     <value>三值死环类型 3</value>
     <comment>Technique Name</comment>
   </data>
-  <data name="ChromaticPatternType4" xml:space="preserve">
+  <data name="TrivalueOddagonType4" xml:space="preserve">
     <value>三值死环类型 4</value>
     <comment>Technique Name</comment>
   </data>
-  <data name="TechniqueFormat_ChromaticPatternType1Step" xml:space="preserve">
+  <data name="TechniqueFormat_TrivalueOddagonType1Step" xml:space="preserve">
     <value>位于第 {0} 宫的单元格 {1} 如果只有数字 {2}，结构将直接无解</value>
   </data>
-  <data name="ChromaticPatternXzRule" xml:space="preserve">
+  <data name="TrivalueOddagonXzRule" xml:space="preserve">
     <value>三值死环・双强链</value>
     <comment>Technique Name</comment>
   </data>
-  <data name="TechniqueFormat_ChromaticPatternXzStep" xml:space="preserve">
+  <data name="TechniqueFormat_TrivalueOddagonXzStep" xml:space="preserve">
     <value>位于 {0} 的 {1} 单元格包含数字 {2}，额外单元格为 {3}</value>
   </data>
   <data name="TechniqueFormat_JuniorExocetStep" xml:space="preserve">
@@ -1809,7 +1809,7 @@
     <value>计算机试数</value>
     <comment>Step Searcher Name</comment>
   </data>
-  <data name="StepSearcherName_ChromaticPatternStepSearcher" xml:space="preserve">
+  <data name="StepSearcherName_TrivalueOddagonStepSearcher" xml:space="preserve">
     <value>三值死环</value>
     <comment>Step Searcher Name</comment>
   </data>
@@ -2140,7 +2140,7 @@
   <data name="TechniqueGroup_BruteForce" xml:space="preserve">
     <value>计算机试数</value>
   </data>
-  <data name="TechniqueGroup_ChromaticPattern" xml:space="preserve">
+  <data name="TechniqueGroup_TrivalueOddagon" xml:space="preserve">
     <value>三值死环</value>
   </data>
   <data name="TechniqueGroup_ComplexFish" xml:space="preserve">

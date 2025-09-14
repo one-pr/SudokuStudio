@@ -48,7 +48,7 @@ public partial class GroupedChainStepSearcher						(): StepSearcher(36, 2);
 public partial class AlignedExclusionStepSearcher					(): StepSearcher(37, 2);
 public partial class GuardianStepSearcher							(): StepSearcher(38, 2);
 public partial class ComplexFishStepSearcher						(): StepSearcher(39, 2);
-public partial class ChromaticPatternStepSearcher					(): StepSearcher(40, 2);
+public partial class TrivalueOddagonStepSearcher					(): StepSearcher(40, 2);
 public partial class BlossomLoopStepSearcher						(): StepSearcher(41, 3);
 public partial class FinnedChainStepSearcher						(): StepSearcher(42, 2);
 public partial class GroupedFinnedChainStepSearcher					(): StepSearcher(43, 2);

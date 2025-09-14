@@ -1,4 +1,4 @@
-<center>语言切换：<a href="README-zh-cn.md">简体中文</a><br/><img src="miscellaneous/pic/icon.png" /></center>
+﻿<center>语言切换：<a href="README-zh-cn.md">简体中文</a><br/><img src="miscellaneous/pic/icon.png" /></center>
 
 [![stars](https://img.shields.io/github/stars/kyoyama-kazusa/Sudoku?color=097abb)](https://github.com/kyoyama-kazusa/Sudoku/stargazers)
 [![issues](https://img.shields.io/github/issues/kyoyama-kazusa/Sudoku?color=097abb)](https://github.com/kyoyama-kazusa/Sudoku/issues)
@@ -178,7 +178,7 @@ This solution supports many kinds of human-friendly techniques. Here I will list
     * Negative Ranks
       * Guardian
       * Bi-value Oddagon
-      * Chromatic Pattern (i.e. Tri-value Oddagon)
+      * Tri-value Oddagon
   * Exocets
     * Junior Exocet (*JE*)
     * Senior Exocet (*SE*)

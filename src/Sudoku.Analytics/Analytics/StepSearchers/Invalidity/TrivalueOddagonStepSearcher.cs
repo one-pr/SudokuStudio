@@ -1,37 +1,37 @@
 namespace Sudoku.Analytics.StepSearchers;
 
 /// <summary>
-/// Provides with a <b>Chromatic Pattern</b> step searcher.
+/// Provides with a <b>Trivalue Oddagon</b> step searcher.
 /// The step searcher will include the following techniques:
 /// <list type="bullet">
 /// <item>
 /// Basic types:
 /// <list type="bullet">
-/// <item>Chromatic Pattern type 1</item>
+/// <item>Trivalue Oddagon type 1</item>
 /// <!--
-/// <item>Chromatic Pattern type 2</item>
-/// <item>Chromatic Pattern type 3</item>
-/// <item>Chromatic Pattern type 4</item>
+/// <item>Trivalue Oddagon type 2</item>
+/// <item>Trivalue Oddagon type 3</item>
+/// <item>Trivalue Oddagon type 4</item>
 /// -->
 /// </list>
 /// </item>
 /// <item>
 /// Extended types:
 /// <list type="bullet">
-/// <item>Chromatic Pattern XZ</item>
+/// <item>Trivalue Oddagon XZ</item>
 /// </list>
 /// </item>
 /// </list>
 /// </summary>
 /// <remarks>
-/// For more information about a "chromatic pattern",
+/// For more information about a "tridagon" (tri-value oddagon),
 /// please visit <see href="http://forum.enjoysudoku.com/chromatic-patterns-t39885.html">this link</see>.
 /// </remarks>
 [StepSearcher(
-	"StepSearcherName_ChromaticPatternStepSearcher",
-	Technique.ChromaticPatternType1, Technique.ChromaticPatternType2, Technique.ChromaticPatternType3, Technique.ChromaticPatternType4,
-	Technique.ChromaticPatternXzRule)]
-public sealed partial class ChromaticPatternStepSearcher : StepSearcher
+	"StepSearcherName_TrivalueOddagonStepSearcher",
+	Technique.TrivalueOddagonType1, Technique.TrivalueOddagonType2, Technique.TrivalueOddagonType3, Technique.TrivalueOddagonType4,
+	Technique.TrivalueOddagonXzRule)]
+public sealed partial class TrivalueOddagonStepSearcher : StepSearcher
 {
 	/// <inheritdoc/>
 	protected internal override Step? Collect(ref StepAnalysisContext context)
@@ -62,7 +62,7 @@ public sealed partial class ChromaticPatternStepSearcher : StepSearcher
 		{
 			var blocksMask = Mask.Create(blocks);
 			var flag = false;
-			foreach (var tempBlocksMask in ChromaticPatternPattern.ChromaticPatternBlocksCombinations)
+			foreach (var tempBlocksMask in TrivalueOddagonPattern.BlocksCombinations)
 			{
 				if ((tempBlocksMask & blocksMask) == blocksMask)
 				{
@@ -79,7 +79,7 @@ public sealed partial class ChromaticPatternStepSearcher : StepSearcher
 			var c2 = HousesCells[blocks[1]][0];
 			var c3 = HousesCells[blocks[2]][0];
 			var c4 = HousesCells[blocks[3]][0];
-			foreach (var (a, b, c, d) in ChromaticPatternPattern.Patterns)
+			foreach (var (a, b, c, d) in TrivalueOddagonPattern.Patterns)
 			{
 				var pattern = f(a, c1) | f(b, c2) | f(c, c3) | f(d, c4);
 				if ((EmptyCells & pattern) != pattern)
@@ -124,7 +124,7 @@ public sealed partial class ChromaticPatternStepSearcher : StepSearcher
 	/// <summary>
 	/// Checks for the type 1.
 	/// </summary>
-	private ChromaticPatternType1Step? CheckType1(ref StepAnalysisContext context, in CellMap pattern, House[] blocks)
+	private TrivalueOddagonType1Step? CheckType1(ref StepAnalysisContext context, in CellMap pattern, House[] blocks)
 	{
 		ref readonly var grid = ref context.Grid;
 		foreach (var extraCell in pattern)
@@ -152,7 +152,7 @@ public sealed partial class ChromaticPatternStepSearcher : StepSearcher
 				}
 			}
 
-			var step = new ChromaticPatternType1Step(
+			var step = new TrivalueOddagonType1Step(
 				(from digit in elimDigitsMask select new Conclusion(Elimination, extraCell, digit)).ToArray(),
 				[[.. candidateOffsets, .. from house in blocks select new HouseViewNode(ColorIdentifier.Normal, house)]],
 				context.Options,
@@ -175,7 +175,7 @@ public sealed partial class ChromaticPatternStepSearcher : StepSearcher
 	/// <summary>
 	/// Checks for XZ rule.
 	/// </summary>
-	private ChromaticPatternXzStep? CheckXz(ref StepAnalysisContext context, in CellMap pattern, House[] blocks)
+	private TrivalueOddagonXzStep? CheckXz(ref StepAnalysisContext context, in CellMap pattern, House[] blocks)
 	{
 		ref readonly var grid = ref context.Grid;
 		var allDigitsMask = grid[pattern];
@@ -239,7 +239,7 @@ public sealed partial class ChromaticPatternStepSearcher : StepSearcher
 					}
 				}
 
-				var step = new ChromaticPatternXzStep(
+				var step = new TrivalueOddagonXzStep(
 					conclusions.AsMemory(),
 					[
 						[

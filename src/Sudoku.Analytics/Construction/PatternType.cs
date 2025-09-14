@@ -31,14 +31,14 @@ public enum PatternType : short
 	BivalueOddagon,
 
 	/// <summary>
+	/// Indicates tri-value oddagon.
+	/// </summary>
+	TrivalueOddagon,
+
+	/// <summary>
 	/// Indicates Borescoper's deadly pattern.
 	/// </summary>
 	BorescoperDeadlyPattern,
-
-	/// <summary>
-	/// Indicates chromatic pattern.
-	/// </summary>
-	ChromaticPattern,
 
 	/// <summary>
 	/// Indicates domino loop.
