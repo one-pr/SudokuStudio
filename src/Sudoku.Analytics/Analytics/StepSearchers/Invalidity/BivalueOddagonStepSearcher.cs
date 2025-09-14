@@ -493,7 +493,7 @@ public sealed partial class BivalueOddagonStepSearcher : StepSearcher
 			var localElimMap = CandidateMap.Empty;
 			foreach (var loopCellCanSeeConjugatePair in loopCellsCanSeeAnyCellOfConjugatePair)
 			{
-				foreach (var cell in (extraCell.AsCellMap() + loopCellCanSeeConjugatePair).PeerIntersection & elimMapTemplate)
+				foreach (var cell in (extraCell.AsCellMap() + loopCellCanSeeConjugatePair).PeerIntersection & elimMapTemplate & ~loop)
 				{
 					if (grid.Exists(cell, d1) is true)
 					{
