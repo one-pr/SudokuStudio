@@ -4172,10 +4172,16 @@
             <param name="cells">The cells to be used.</param>
             <returns>An <see cref="T:Sudoku.Concepts.Graphs.CellGraph"/> instance.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.Graphs.CellGraph.op_Equality(Sudoku.Concepts.Graphs.CellGraph,Sudoku.Concepts.Graphs.CellGraph)">
+        <member name="M:Sudoku.Concepts.Graphs.CellGraph.op_Equality(Sudoku.Concepts.Graphs.CellGraph@,Sudoku.Concepts.Graphs.CellGraph@)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.Graphs.CellGraph.op_Inequality(Sudoku.Concepts.Graphs.CellGraph@,Sudoku.Concepts.Graphs.CellGraph@)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.Graphs.CellGraph.System#Numerics#IEqualityOperators{Sudoku#Concepts#Graphs#CellGraph,Sudoku#Concepts#Graphs#CellGraph,System#Boolean}#op_Equality(Sudoku.Concepts.Graphs.CellGraph,Sudoku.Concepts.Graphs.CellGraph)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Graphs.CellGraph.op_Inequality(Sudoku.Concepts.Graphs.CellGraph,Sudoku.Concepts.Graphs.CellGraph)">
+        <member name="M:Sudoku.Concepts.Graphs.CellGraph.System#Numerics#IEqualityOperators{Sudoku#Concepts#Graphs#CellGraph,Sudoku#Concepts#Graphs#CellGraph,System#Boolean}#op_Inequality(Sudoku.Concepts.Graphs.CellGraph,Sudoku.Concepts.Graphs.CellGraph)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Concepts.Graphs.CellGraph.Enumerator">

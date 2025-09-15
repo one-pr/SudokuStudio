@@ -9,7 +9,11 @@ namespace Sudoku.Concepts.Graphs;
 /// </summary>
 /// <seealso href="https://en.wikipedia.org/wiki/Component_(graph_theory)">Wikipedia - Component (Graph Theory)</seealso>
 [CollectionBuilder(typeof(CellGraph), nameof(Create))]
-public readonly partial struct CellGraph : IEquatable<CellGraph>, IFormattable, IReadOnlyCollection<Cell>
+public readonly partial struct CellGraph :
+	IEquatable<CellGraph>,
+	IEqualityOperators<CellGraph, CellGraph, bool>,
+	IFormattable,
+	IReadOnlyCollection<Cell>
 {
 	/// <summary>
 	/// Indicates the default empty graph without any cells.
@@ -381,9 +385,15 @@ public readonly partial struct CellGraph : IEquatable<CellGraph>, IFormattable, 
 	}
 
 
-	/// <inheritdoc/>
-	public static bool operator ==(CellGraph left, CellGraph right) => left.Equals(right);
+	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
+	public static bool operator ==(in CellGraph left, in CellGraph right) => left.Equals(right);
+
+	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
+	public static bool operator !=(in CellGraph left, in CellGraph right) => !(left == right);
 
 	/// <inheritdoc/>
-	public static bool operator !=(CellGraph left, CellGraph right) => !(left == right);
+	static bool IEqualityOperators<CellGraph, CellGraph, bool>.operator ==(CellGraph left, CellGraph right) => left == right;
+
+	/// <inheritdoc/>
+	static bool IEqualityOperators<CellGraph, CellGraph, bool>.operator !=(CellGraph left, CellGraph right) => left != right;
 }
