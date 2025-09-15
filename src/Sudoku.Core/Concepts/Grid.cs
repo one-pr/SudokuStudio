@@ -318,7 +318,7 @@ public struct Grid : InlineArrayGridBase
 	}
 
 	/// <inheritdoc/>
-	public readonly Grid ResetGrid => Preserve(GivenCells);
+	public readonly Grid ResetGrid => this % GivenCells;
 
 	/// <summary>
 	/// Gets the grid where all empty cells are filled with all possible candidates.
@@ -896,6 +896,10 @@ public struct Grid : InlineArrayGridBase
 		}
 	}
 
+	/// <inheritdoc cref="op_ModulusAssignment(in CellMap)"/>
+	[Obsolete("Use 'operator %=' instead: 'grid %= template'", false)]
+	public Grid Preserve(in CellMap template) => this %= template;
+
 	/// <summary>
 	/// Gets the header 4 bits. The value can be <see cref="SudokuType.Sukaku"/> if and only if the puzzle is Sukaku,
 	/// and the argument <paramref name="cell"/> is 0.
@@ -973,26 +977,6 @@ public struct Grid : InlineArrayGridBase
 
 	/// <inheritdoc/>
 	Grid IElementSwappingTransformable<Grid, Digit>.SwapElement(Digit element1, Digit element2) => this.SwapDigit(element1, element2);
-
-	/// <summary>
-	/// Gets a sudoku grid, removing all value digits not appearing in the specified <paramref name="pattern"/>.
-	/// </summary>
-	/// <param name="pattern">The pattern.</param>
-	/// <returns>The result grid.</returns>
-	private readonly Grid Preserve(in CellMap pattern)
-	{
-		if (PuzzleType != SudokuType.Standard)
-		{
-			return this;
-		}
-
-		var result = this;
-		foreach (var cell in ~pattern)
-		{
-			result.SetDigit(cell, -1);
-		}
-		return result;
-	}
 
 
 	/// <inheritdoc/>
@@ -1303,6 +1287,20 @@ public struct Grid : InlineArrayGridBase
 
 
 	/// <inheritdoc/>
+	public void operator %=(in CellMap template)
+	{
+		if (PuzzleType != SudokuType.Standard)
+		{
+			return;
+		}
+
+		foreach (var cell in ~template)
+		{
+			SetDigit(cell, -1);
+		}
+	}
+
+	/// <inheritdoc/>
 	public void operator >>=(Conclusion conclusion)
 	{
 		var (type, cell, digit) = conclusion;
@@ -1339,6 +1337,14 @@ public struct Grid : InlineArrayGridBase
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
 	public static bool operator <=(in Grid left, in Grid right) => left.CompareTo(right) <= 0;
+
+	/// <inheritdoc/>
+	public static Grid operator %(in Grid grid, in CellMap template)
+	{
+		var tempGrid = grid;
+		tempGrid %= template;
+		return tempGrid;
+	}
 
 	/// <inheritdoc/>
 	public static Grid operator >>(in Grid grid, Conclusion conclusion)

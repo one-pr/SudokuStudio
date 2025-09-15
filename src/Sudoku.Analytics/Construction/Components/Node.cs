@@ -215,6 +215,15 @@ public sealed class Node(in CandidateMap map, bool isOn, NodeSet? parents = null
 
 
 	/// <inheritdoc/>
+	[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
+	public static Node Create(Node node, Node? parent) => node >> parent;
+
+	/// <inheritdoc cref="op_RightShift(Node, NodeSet?)"/>
+	[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
+	public static Node Create(Node node, NodeSet? parents) => node >> parents;
+
+
+	/// <inheritdoc/>
 	public static bool operator ==(Node? left, Node? right)
 		=> (left, right) switch { (null, null) => true, (not null, not null) => left.Equals(right), _ => false };
 

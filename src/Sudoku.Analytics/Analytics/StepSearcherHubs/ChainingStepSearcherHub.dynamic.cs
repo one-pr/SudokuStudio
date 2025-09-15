@@ -649,8 +649,13 @@ file static class GridNodeExtensions
 	/// <summary>
 	/// Provides extension members on <see langword="ref"/> <see cref="Grid"/>.
 	/// </summary>
-	extension(ref Grid grid)
+	extension(ref Grid @this)
 	{
+		/// <inheritdoc cref="op_RightShiftAssignment(ref Grid, Node)"/>
+		[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
+		public void Apply(Node node) => @this >>= node;
+
+
 		/// <summary>
 		/// Treat the specified node as a real conclusion, and apply to a grid.
 		/// </summary>
@@ -663,15 +668,15 @@ file static class GridNodeExtensions
 				// Find intersections to be removed; or assign it directly if the node only uses 1 candidate.
 				if (map is [var onlyCandidate])
 				{
-					grid.SetDigit(onlyCandidate / 9, onlyCandidate % 9);
+					@this.SetDigit(onlyCandidate / 9, onlyCandidate % 9);
 				}
 				else
 				{
 					foreach (var candidate in map.PeerIntersection)
 					{
-						if (grid.GetState(candidate / 9) == CellState.Empty)
+						if (@this.GetState(candidate / 9) == CellState.Empty)
 						{
-							grid[candidate / 9] &= (Mask)~(1 << candidate % 9);
+							@this[candidate / 9] &= (Mask)~(1 << candidate % 9);
 						}
 					}
 				}
@@ -681,9 +686,18 @@ file static class GridNodeExtensions
 				// If a node is considered as false, we should remove all possible candidates of the node.
 				foreach (var candidate in map)
 				{
-					grid[candidate / 9] &= (Mask)~(1 << candidate % 9);
+					@this[candidate / 9] &= (Mask)~(1 << candidate % 9);
 				}
 			}
+		}
+
+
+		/// <inheritdoc cref="op_RightShiftAssignment(ref Grid, Node)"/>
+		public static Grid operator >>(in Grid grid, Node node)
+		{
+			var tempGrid = grid;
+			tempGrid >>= node;
+			return tempGrid;
 		}
 	}
 }

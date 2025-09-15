@@ -610,6 +610,12 @@ public interface IGrid<TSelf> :
 
 
 	/// <summary>
+	/// Preserves the grid, removing cells not specified in <paramref name="template"/>.
+	/// </summary>
+	/// <param name="template">The cells specified to be preserved.</param>
+	void operator %=(in CellMap template);
+
+	/// <summary>
 	/// Applies the conclusion to the current grid.
 	/// </summary>
 	/// <param name="conclusion">The conclusion.</param>
@@ -634,12 +640,10 @@ public interface IGrid<TSelf> :
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
 	static abstract bool operator <=(in TSelf left, in TSelf right);
 
-	/// <summary>
-	/// Applies the conclusion to the target grid.
-	/// </summary>
-	/// <param name="grid">The grid.</param>
-	/// <param name="conclusion">The conclusion.</param>
-	/// <returns>The target grid.</returns>
+	/// <inheritdoc cref="op_ModulusAssignment(in CellMap)"/>
+	static abstract TSelf operator %(in TSelf grid, in CellMap template);
+
+	/// <inheritdoc cref="op_RightShiftAssignment(Conclusion)"/>
 	static abstract TSelf operator >>(in TSelf grid, Conclusion conclusion);
 
 	/// <inheritdoc/>

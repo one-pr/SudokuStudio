@@ -8,8 +8,7 @@ internal interface IParentLinkedNode<TSelf> :
 	IComponent,
 	IEquatable<TSelf>,
 	IFormattable,
-	IEqualityOperators<TSelf, TSelf, bool>,
-	IShiftOperators<TSelf, TSelf, TSelf>
+	IEqualityOperators<TSelf, TSelf, bool>
 	where TSelf : IParentLinkedNode<TSelf>
 {
 	/// <summary>
@@ -80,6 +79,11 @@ internal interface IParentLinkedNode<TSelf> :
 	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
 
 
+	/// <inheritdoc cref="op_RightShift(TSelf, TSelf?)"/>
+	[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
+	static virtual TSelf Create(TSelf current, TSelf? parent) => current >> parent;
+
+
 	/// <summary>
 	/// Creates a <see cref="WhipNode"/> instance with parent node.
 	/// </summary>
@@ -87,10 +91,4 @@ internal interface IParentLinkedNode<TSelf> :
 	/// <param name="parent">The parent node.</param>
 	/// <returns>The new node created.</returns>
 	static abstract TSelf operator >>(TSelf current, TSelf? parent);
-
-	/// <inheritdoc cref="IShiftOperators{TSelf, TOther, TResult}.op_LeftShift(TSelf, TOther)"/>
-	static TSelf IShiftOperators<TSelf, TSelf, TSelf>.operator <<(TSelf? parent, TSelf current) => current >> parent;
-
-	/// <inheritdoc/>
-	static TSelf IShiftOperators<TSelf, TSelf, TSelf>.operator >>>(TSelf value, TSelf shiftAmount) => value >> shiftAmount;
 }

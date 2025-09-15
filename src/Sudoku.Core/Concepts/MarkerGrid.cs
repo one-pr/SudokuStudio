@@ -92,7 +92,7 @@ public struct MarkerGrid : InlineArrayGridBase
 	}
 
 	/// <inheritdoc/>
-	public readonly MarkerGrid ResetGrid => Preserve(GivenCells);
+	public readonly MarkerGrid ResetGrid => this % GivenCells;
 
 	/// <inheritdoc/>
 	public readonly MarkerGrid UnfixedGrid
@@ -432,7 +432,7 @@ public struct MarkerGrid : InlineArrayGridBase
 	}
 
 	/// <inheritdoc/>
-	public void Reset() => this = Preserve(GivenCells);
+	public void Reset() => this %= GivenCells;
 
 	/// <inheritdoc/>
 	public void Fix()
@@ -597,21 +597,6 @@ public struct MarkerGrid : InlineArrayGridBase
 	MarkerGrid IElementSwappingTransformable<MarkerGrid, Digit>.SwapElement(Digit element1, Digit element2)
 		=> this.SwapDigit(element1, element2);
 
-	/// <summary>
-	/// Gets a sudoku grid, removing all value digits not appearing in the specified <paramref name="pattern"/>.
-	/// </summary>
-	/// <param name="pattern">The pattern.</param>
-	/// <returns>The result grid.</returns>
-	private readonly MarkerGrid Preserve(in CellMap pattern)
-	{
-		var result = this;
-		foreach (var cell in ~pattern)
-		{
-			result.SetDigit(cell, -1);
-		}
-		return result;
-	}
-
 
 	/// <inheritdoc/>
 	public static bool TryParse(ReadOnlySpan<char> s, out MarkerGrid result) => TryParse(s.ToString(), null, out result);
@@ -703,6 +688,15 @@ public struct MarkerGrid : InlineArrayGridBase
 
 
 	/// <inheritdoc/>
+	public void operator %=(in CellMap template)
+	{
+		foreach (var cell in ~template)
+		{
+			SetDigit(cell, -1);
+		}
+	}
+
+	/// <inheritdoc/>
 	public void operator >>=(Conclusion conclusion)
 	{
 		var (type, cell, digit) = conclusion;
@@ -739,6 +733,14 @@ public struct MarkerGrid : InlineArrayGridBase
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
 	public static bool operator !=(in MarkerGrid left, in MarkerGrid right) => !(left == right);
+
+	/// <inheritdoc/>
+	public static MarkerGrid operator %(in MarkerGrid grid, in CellMap template)
+	{
+		var tempGrid = grid;
+		tempGrid %= template;
+		return tempGrid;
+	}
 
 	/// <inheritdoc/>
 	public static MarkerGrid operator >>(in MarkerGrid grid, Conclusion conclusion)

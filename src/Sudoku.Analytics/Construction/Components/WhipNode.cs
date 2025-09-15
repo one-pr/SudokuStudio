@@ -72,6 +72,18 @@ public sealed class WhipNode(WhipAssignment assignment, ReadOnlyMemory<WhipAssig
 	}
 
 
+	/// <inheritdoc/>
+	[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
+	public static WhipNode Create(WhipNode current, WhipNode? parent) => current >> parent;
+
+
+	/// <inheritdoc/>
+	public static bool operator ==(WhipNode? left, WhipNode? right)
+		=> (left, right) switch { (null, null) => true, (not null, not null) => left.Equals(right), _ => false };
+
+	/// <inheritdoc/>
+	public static bool operator !=(WhipNode? left, WhipNode? right) => !(left == right);
+
 	/// <summary>
 	/// Creates a <see cref="WhipNode"/> instance with parent node.
 	/// </summary>
@@ -80,11 +92,4 @@ public sealed class WhipNode(WhipAssignment assignment, ReadOnlyMemory<WhipAssig
 	/// <returns>The new node created.</returns>
 	public static WhipNode operator >>(WhipNode current, WhipNode? parent)
 		=> new(current.Assignment, current.AvailableAssignments, parent);
-
-	/// <inheritdoc/>
-	public static bool operator ==(WhipNode? left, WhipNode? right)
-		=> (left, right) switch { (null, null) => true, (not null, not null) => left.Equals(right), _ => false };
-
-	/// <inheritdoc/>
-	public static bool operator !=(WhipNode? left, WhipNode? right) => !(left == right);
 }
