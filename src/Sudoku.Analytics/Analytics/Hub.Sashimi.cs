@@ -17,7 +17,7 @@ public partial class Hub
 		/// <returns>
 		/// <para>A <see cref="bool"/> value indicating that.</para>
 		/// </returns>
-		[Cached]
+		[MemoryCached]
 		public static bool? IsSashimi(in Grid grid, House[] baseSets, in CellMap fins, Digit digit)
 		{
 			if (!fins)

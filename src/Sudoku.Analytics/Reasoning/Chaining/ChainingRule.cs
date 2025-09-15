@@ -36,7 +36,7 @@ public abstract class ChainingRule
 	/// <param name="strongLinks">Indicates the strong links.</param>
 	/// <param name="weakLinks">Indicates the weak links.</param>
 	/// <param name="options">Indicates the options.</param>
-	[Cached]
+	[MemoryCached]
 	public abstract void GetLinks(in Grid grid, LinkDictionary strongLinks, LinkDictionary weakLinks, StepGathererOptions options);
 
 	/// <summary>
@@ -97,7 +97,7 @@ public abstract class ChainingRule
 	/// <param name="links">Indicates the links.</param>
 	/// <param name="conclusions">Indicates the conclusions.</param>
 	/// <returns>A list of found conclusions.</returns>
-	[Cached]
+	[MemoryCached]
 	public virtual void GetLoopConclusions(in Grid grid, ReadOnlySpan<Link> links, ref ConclusionSet conclusions)
 	{
 	}

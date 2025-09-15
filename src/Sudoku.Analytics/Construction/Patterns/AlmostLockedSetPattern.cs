@@ -161,7 +161,7 @@ public sealed class AlmostLockedSetPattern(Mask digitsMask, in CellMap cells, in
 	/// </summary>
 	/// <param name="grid">The grid.</param>
 	/// <returns>All possible found <see cref="AlmostLockedSetPattern"/> instances.</returns>
-	[Cached]
+	[MemoryCached]
 	public static ReadOnlySpan<AlmostLockedSetPattern> Collect(in Grid grid)
 	{
 		// VARIABLE_DECLARATION_BEGIN

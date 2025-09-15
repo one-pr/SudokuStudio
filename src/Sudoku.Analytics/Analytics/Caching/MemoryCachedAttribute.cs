@@ -1,4 +1,4 @@
-namespace Sudoku.Runtime.InterceptorServices;
+namespace Sudoku.Analytics.Caching;
 
 /// <summary>
 /// Represents an attribute type that can be applied to a method,
@@ -45,4 +45,4 @@ namespace Sudoku.Runtime.InterceptorServices;
 /// <seealso cref="Grid"/>
 /// <seealso cref="MemoryCachedData"/>
 [AttributeUsage(AttributeTargets.Method, Inherited = false)]
-public sealed class CachedAttribute : Attribute;
+public sealed class MemoryCachedAttribute : Attribute;

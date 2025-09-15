@@ -14,7 +14,7 @@ public partial class Hub
 		/// <param name="cancellationToken">The cancellation token to cancel the operation.</param>
 		/// <returns>All true candidates.</returns>
 		/// <exception cref="ArgumentException">Throws when the puzzle is invalid.</exception>
-		[Cached]
+		[MemoryCached]
 		public static CandidateMap GetAllTrueCandidates(in Grid grid, CancellationToken cancellationToken = default)
 		{
 			if (!grid.IsValid)

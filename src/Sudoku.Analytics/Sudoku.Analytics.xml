@@ -1970,6 +1970,52 @@
             <param name="linkType">The link type.</param>
             <returns>The created <see cref="T:Sudoku.Reasoning.Chaining.ChainingRule"/> instance created.</returns>
         </member>
+        <member name="T:Sudoku.Analytics.Caching.MemoryCachedAttribute">
+             <summary>
+             Represents an attribute type that can be applied to a method,
+             to tell interceptor source generator to produce a new method that copies full implementation from this method,
+             with <see cref="T:Sudoku.Concepts.Grid"/> properties replaced with corresponding properties in <see cref="T:Sudoku.Analytics.Caching.MemoryCachedData"/>.
+             </summary>
+             <remarks>
+             Usage:
+             <code><![CDATA[
+             [Cached]
+             public static ReadOnlySpan<AlmostLockedSetPattern> Collect(in Grid grid)
+             {
+            	    // VARIABLE_DECLARATION_BEGIN
+                 _ = grid is { EmptyCells: var __EmptyCells, BivalueCells: var __BivalueCells, CandidatesMap: var __CandidatesMap };
+                 // VARIABLE_DECLARATION_END
+            
+                 // Get all bi-value-cell ALSes.
+                 var result = new List<AlmostLockedSetPattern>();
+                 foreach (var cell in __BivalueCells)
+                 {
+                     var eliminationMap = new CellMap[9];
+                     foreach (var digit in grid.GetCandidates(cell))
+                         eliminationMap[digit] = PeersMap[cell] & __CandidatesMap[digit];
+                     result.Add(new(grid.GetCandidates(cell), cell.AsCellMap(), PeersMap[cell] & __EmptyCells, eliminationMap));
+                 }
+            
+                 // ...
+             }
+             ]]></code>
+             Such code will be intercepted, by replacing variables <c>__EmptyCells</c>, <c>__BivalueCells</c> and <c>__CandidatesMap</c>
+             with properties in <see cref="T:Sudoku.Analytics.Caching.MemoryCachedData"/>:
+             <code><![CDATA[
+             // Get all bi-value-cell ALSes.
+             var result = new List<AlmostLockedSetPattern>();
+             foreach (var cell in MemoryCachedData.BivalueCells)
+             {
+                 var eliminationMap = new CellMap[9];
+                 foreach (var digit in grid.GetCandidates(cell))
+                     eliminationMap[digit] = PeersMap[cell] & MemoryCachedData.CandidatesMap[digit];
+                 result.Add(new(grid.GetCandidates(cell), cell.AsCellMap(), PeersMap[cell] & MemoryCachedData.EmptyCells, eliminationMap));
+             }
+             ]]></code>
+             </remarks>
+             <seealso cref="T:Sudoku.Concepts.Grid"/>
+             <seealso cref="T:Sudoku.Analytics.Caching.MemoryCachedData"/>
+        </member>
         <member name="T:Sudoku.Analytics.Caching.MemoryCachedData">
             <summary>
             Represents cached fields used by solving and analyzing for a sudoku puzzle, reducing repeated and redundant calculations.
@@ -35620,277 +35666,6 @@
               Looks up a localized string similar to Technique name (only in English).
             </summary>
         </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.CachedAttribute">
-             <summary>
-             Represents an attribute type that can be applied to a method,
-             to tell interceptor source generator to produce a new method that copies full implementation from this method,
-             with <see cref="T:Sudoku.Concepts.Grid"/> properties replaced with corresponding properties in <see cref="T:Sudoku.Analytics.Caching.MemoryCachedData"/>.
-             </summary>
-             <remarks>
-             Usage:
-             <code><![CDATA[
-             [Cached]
-             public static ReadOnlySpan<AlmostLockedSetPattern> Collect(in Grid grid)
-             {
-            	    // VARIABLE_DECLARATION_BEGIN
-                 _ = grid is { EmptyCells: var __EmptyCells, BivalueCells: var __BivalueCells, CandidatesMap: var __CandidatesMap };
-                 // VARIABLE_DECLARATION_END
-            
-                 // Get all bi-value-cell ALSes.
-                 var result = new List<AlmostLockedSetPattern>();
-                 foreach (var cell in __BivalueCells)
-                 {
-                     var eliminationMap = new CellMap[9];
-                     foreach (var digit in grid.GetCandidates(cell))
-                         eliminationMap[digit] = PeersMap[cell] & __CandidatesMap[digit];
-                     result.Add(new(grid.GetCandidates(cell), cell.AsCellMap(), PeersMap[cell] & __EmptyCells, eliminationMap));
-                 }
-            
-                 // ...
-             }
-             ]]></code>
-             Such code will be intercepted, by replacing variables <c>__EmptyCells</c>, <c>__BivalueCells</c> and <c>__CandidatesMap</c>
-             with properties in <see cref="T:Sudoku.Analytics.Caching.MemoryCachedData"/>:
-             <code><![CDATA[
-             // Get all bi-value-cell ALSes.
-             var result = new List<AlmostLockedSetPattern>();
-             foreach (var cell in MemoryCachedData.BivalueCells)
-             {
-                 var eliminationMap = new CellMap[9];
-                 foreach (var digit in grid.GetCandidates(cell))
-                     eliminationMap[digit] = PeersMap[cell] & MemoryCachedData.CandidatesMap[digit];
-                 result.Add(new(grid.GetCandidates(cell), cell.AsCellMap(), PeersMap[cell] & MemoryCachedData.EmptyCells, eliminationMap));
-             }
-             ]]></code>
-             </remarks>
-             <seealso cref="T:Sudoku.Concepts.Grid"/>
-             <seealso cref="T:Sudoku.Analytics.Caching.MemoryCachedData"/>
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__ChainingRule_GetLinks_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__ChainingRule_GetLinks_Intercepted.GetLinks_SwitchEntry(Sudoku.Reasoning.Chaining.ChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <summary>
-            The backing entry that can route functions by checking the target type of instance parameter <paramref cref="!:this"/>.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__XChainingRule_GetLinks_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__XChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.XChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__YChainingRule_GetLinks_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__YChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.YChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__LockedCandidatesChainingRule_GetLinks_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__LockedCandidatesChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.LockedCandidatesChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__AlmostLockedSetsChainingRule_GetLinks_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__AlmostLockedSetsChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.AlmostLockedSetsChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleSameDigitChainingRule_GetLinks_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleSameDigitChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.UniqueRectangleSameDigitChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleDifferentDigitChainingRule_GetLinks_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleDifferentDigitChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.UniqueRectangleDifferentDigitChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleSingleSideExternalChainingRule_GetLinks_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleSingleSideExternalChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.UniqueRectangleSingleSideExternalChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleDoubleSideExternalChainingRule_GetLinks_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleDoubleSideExternalChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.UniqueRectangleDoubleSideExternalChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleDifferentDigitWeakChainingRule_GetLinks_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleDifferentDigitWeakChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.UniqueRectangleDifferentDigitWeakChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__AvoidableRectangleChainingRule_GetLinks_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__AvoidableRectangleChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.AvoidableRectangleChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__KrakenNormalFishChainingRule_GetLinks_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__KrakenNormalFishChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.KrakenNormalFishChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__XyzWingChainingRule_GetLinks_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__XyzWingChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.XyzWingChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__ChainingRule_GetLoopConclusions_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__ChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions_SwitchEntry(Sudoku.Reasoning.Chaining.ChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
-            <summary>
-            The backing entry that can route functions by checking the target type of instance parameter <paramref cref="!:this"/>.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__AlmostLockedSetsChainingRule_GetLoopConclusions_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__AlmostLockedSetsChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Reasoning.Chaining.Rules.AlmostLockedSetsChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__KrakenNormalFishChainingRule_GetLoopConclusions_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__KrakenNormalFishChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Reasoning.Chaining.Rules.KrakenNormalFishChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__LockedCandidatesChainingRule_GetLoopConclusions_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__LockedCandidatesChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Reasoning.Chaining.Rules.LockedCandidatesChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleSameDigitChainingRule_GetLoopConclusions_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleSameDigitChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Reasoning.Chaining.Rules.UniqueRectangleSameDigitChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleDifferentDigitChainingRule_GetLoopConclusions_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleDifferentDigitChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Reasoning.Chaining.Rules.UniqueRectangleDifferentDigitChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleSingleSideExternalChainingRule_GetLoopConclusions_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleSingleSideExternalChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Reasoning.Chaining.Rules.UniqueRectangleSingleSideExternalChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
-            <inheritdoc/>
-            <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__TrueCandidate_GetAllTrueCandidates_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__TrueCandidate_GetAllTrueCandidates_Intercepted.GetAllTrueCandidates(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
-            <summary>
-            Get all true candidates when the number of empty cells is below than the argument.
-            </summary>
-            <param name="grid">Indicates the puzzle.</param>
-            <param name="cancellationToken">The cancellation token to cancel the operation.</param>
-            <returns>All true candidates.</returns>
-            <exception cref="T:System.ArgumentException">Throws when the puzzle is invalid.</exception>
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__AlmostLockedSetPattern_Collect_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__AlmostLockedSetPattern_Collect_Intercepted.Collect(Sudoku.Concepts.Grid@)">
-            <summary>
-            Collects all possible <see cref="T:Sudoku.Construction.Patterns.AlmostLockedSetPattern"/>s in the specified grid.
-            </summary>
-            <param name="grid">The grid.</param>
-            <returns>All possible found <see cref="T:Sudoku.Construction.Patterns.AlmostLockedSetPattern"/> instances.</returns>
-        </member>
-        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__Sashimi_IsSashimi_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__Sashimi_IsSashimi_Intercepted.IsSashimi(Sudoku.Concepts.Grid@,System.Int32[],Sudoku.Concepts.CellMap@,System.Int32)">
-            <summary>
-            Check whether the fish is sashimi.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="baseSets">The base sets.</param>
-            <param name="fins">All fins.</param>
-            <param name="digit">The digit.</param>
-            <returns>
-            <para>A <see cref="T:System.Boolean"/> value indicating that.</para>
-            </returns>
-        </member>
         <member name="T:Sudoku.Runtime.InteropServices.Hodoku.HodokuAttribute">
             <summary>
             Represents compatibility rules for Hodoku.
@@ -36387,6 +36162,231 @@
             <summary>
             Represents brute force.
             </summary>
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__ChainingRule_GetLinks_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__ChainingRule_GetLinks_Intercepted.GetLinks_SwitchEntry(Sudoku.Reasoning.Chaining.ChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <summary>
+            The backing entry that can route functions by checking the target type of instance parameter <paramref cref="!:this"/>.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__XChainingRule_GetLinks_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__XChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.XChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__YChainingRule_GetLinks_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__YChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.YChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__LockedCandidatesChainingRule_GetLinks_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__LockedCandidatesChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.LockedCandidatesChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__AlmostLockedSetsChainingRule_GetLinks_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__AlmostLockedSetsChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.AlmostLockedSetsChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleSameDigitChainingRule_GetLinks_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleSameDigitChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.UniqueRectangleSameDigitChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleDifferentDigitChainingRule_GetLinks_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleDifferentDigitChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.UniqueRectangleDifferentDigitChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleSingleSideExternalChainingRule_GetLinks_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleSingleSideExternalChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.UniqueRectangleSingleSideExternalChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleDoubleSideExternalChainingRule_GetLinks_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleDoubleSideExternalChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.UniqueRectangleDoubleSideExternalChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleDifferentDigitWeakChainingRule_GetLinks_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleDifferentDigitWeakChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.UniqueRectangleDifferentDigitWeakChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__AvoidableRectangleChainingRule_GetLinks_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__AvoidableRectangleChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.AvoidableRectangleChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__KrakenNormalFishChainingRule_GetLinks_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__KrakenNormalFishChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.KrakenNormalFishChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__XyzWingChainingRule_GetLinks_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__XyzWingChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Reasoning.Chaining.Rules.XyzWingChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__ChainingRule_GetLoopConclusions_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__ChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions_SwitchEntry(Sudoku.Reasoning.Chaining.ChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+            <summary>
+            The backing entry that can route functions by checking the target type of instance parameter <paramref cref="!:this"/>.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__AlmostLockedSetsChainingRule_GetLoopConclusions_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__AlmostLockedSetsChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Reasoning.Chaining.Rules.AlmostLockedSetsChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__KrakenNormalFishChainingRule_GetLoopConclusions_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__KrakenNormalFishChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Reasoning.Chaining.Rules.KrakenNormalFishChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__LockedCandidatesChainingRule_GetLoopConclusions_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__LockedCandidatesChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Reasoning.Chaining.Rules.LockedCandidatesChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleSameDigitChainingRule_GetLoopConclusions_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleSameDigitChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Reasoning.Chaining.Rules.UniqueRectangleSameDigitChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleDifferentDigitChainingRule_GetLoopConclusions_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleDifferentDigitChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Reasoning.Chaining.Rules.UniqueRectangleDifferentDigitChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleSingleSideExternalChainingRule_GetLoopConclusions_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__UniqueRectangleSingleSideExternalChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Reasoning.Chaining.Rules.UniqueRectangleSingleSideExternalChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+            <inheritdoc/>
+            <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__TrueCandidate_GetAllTrueCandidates_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__TrueCandidate_GetAllTrueCandidates_Intercepted.GetAllTrueCandidates(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
+            <summary>
+            Get all true candidates when the number of empty cells is below than the argument.
+            </summary>
+            <param name="grid">Indicates the puzzle.</param>
+            <param name="cancellationToken">The cancellation token to cancel the operation.</param>
+            <returns>All true candidates.</returns>
+            <exception cref="T:System.ArgumentException">Throws when the puzzle is invalid.</exception>
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__AlmostLockedSetPattern_Collect_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__AlmostLockedSetPattern_Collect_Intercepted.Collect(Sudoku.Concepts.Grid@)">
+            <summary>
+            Collects all possible <see cref="T:Sudoku.Construction.Patterns.AlmostLockedSetPattern"/>s in the specified grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <returns>All possible found <see cref="T:Sudoku.Construction.Patterns.AlmostLockedSetPattern"/> instances.</returns>
+        </member>
+        <member name="T:Sudoku.Runtime.InterceptorServices.Generated.__Sashimi_IsSashimi_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Runtime.InterceptorServices.Generated.__Sashimi_IsSashimi_Intercepted.IsSashimi(Sudoku.Concepts.Grid@,System.Int32[],Sudoku.Concepts.CellMap@,System.Int32)">
+            <summary>
+            Check whether the fish is sashimi.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="baseSets">The base sets.</param>
+            <param name="fins">All fins.</param>
+            <param name="digit">The digit.</param>
+            <returns>
+            <para>A <see cref="T:System.Boolean"/> value indicating that.</para>
+            </returns>
         </member>
         <member name="T:Sudoku.Text.AnalysisResultOutput">
             <summary>
