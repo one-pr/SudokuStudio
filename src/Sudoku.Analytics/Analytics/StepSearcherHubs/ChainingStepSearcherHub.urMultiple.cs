@@ -47,7 +47,7 @@ internal partial class ChainingStepSearcherHub
 				{
 					foreach (var digit in (Mask)(grid.GetCandidates(cell) & ~(1 << d1 | 1 << d2)))
 					{
-						branchStartCandidates.Add(cell * 9 + digit);
+						branchStartCandidates += cell * 9 + digit;
 					}
 				}
 

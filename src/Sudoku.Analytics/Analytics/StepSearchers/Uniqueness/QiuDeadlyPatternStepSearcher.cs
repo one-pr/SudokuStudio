@@ -758,7 +758,7 @@ public sealed partial class QiuDeadlyPatternStepSearcher : StepSearcher
 		{
 			foreach (var cell in HousesMap[house] & CandidatesMap[digit])
 			{
-				lockedMap.Add(cell * 9 + digit);
+				lockedMap += cell * 9 + digit;
 			}
 		}
 

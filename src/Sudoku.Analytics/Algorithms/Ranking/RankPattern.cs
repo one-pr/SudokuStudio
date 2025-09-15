@@ -103,7 +103,7 @@ public readonly ref partial struct RankPattern(ref readonly Grid grid, ref reado
 				{
 					foreach (var digit in grid.GetCandidates(cell))
 					{
-						result.Add(cell * 9 + digit);
+						result += cell * 9 + digit;
 					}
 					break;
 				}
@@ -111,7 +111,7 @@ public readonly ref partial struct RankPattern(ref readonly Grid grid, ref reado
 				{
 					foreach (var cell in HousesMap[house] & candidatesMap[digit])
 					{
-						result.Add(cell * 9 + digit);
+						result += cell * 9 + digit;
 					}
 					break;
 				}

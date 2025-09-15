@@ -156,7 +156,7 @@ public partial class Hub
 							// Here, the cell is the "true candidate cell".
 							foreach (var cell in __CandidatesMap[digit] & ~stack[currentIndex, digit])
 							{
-								result.Add(cell * 9 + digit);
+								result += cell * 9 + digit;
 							}
 						}
 

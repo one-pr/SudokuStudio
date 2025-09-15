@@ -36,7 +36,7 @@ public static class UniquenessChecker
 
 			foreach (var digit in mask)
 			{
-				patternCandidates.Add(cell * 9 + digit);
+				patternCandidates += cell * 9 + digit;
 			}
 		}
 

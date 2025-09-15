@@ -646,7 +646,7 @@ public sealed partial class DeathBlossomStepSearcher : StepSearcher
 						view.Add(candidateNode);
 						candidateOffsets.Add(candidateNode);
 
-						branchCandidates.Add(cell * 9 + currentDigit);
+						branchCandidates += cell * 9 + currentDigit;
 					}
 
 					var node = new CellViewNode(ColorIdentifier.Normal, cell);

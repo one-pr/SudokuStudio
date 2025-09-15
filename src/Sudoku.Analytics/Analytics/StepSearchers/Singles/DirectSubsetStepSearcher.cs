@@ -151,7 +151,7 @@ public sealed partial class DirectSubsetStepSearcher : StepSearcher
 				{
 					foreach (var cell in cells & candidatesMap[digit])
 					{
-						conclusions.Add(cell * 9 + digit);
+						conclusions += cell * 9 + digit;
 					}
 				}
 				if (conclusions.Count == 0)
@@ -186,7 +186,7 @@ public sealed partial class DirectSubsetStepSearcher : StepSearcher
 							{
 								if ((grid.GetCandidates(cell) >> digit & 1) != 0)
 								{
-									conclusions.Add(cell * 9 + digit);
+									conclusions += cell * 9 + digit;
 									containsExtraEliminations = true;
 								}
 							}

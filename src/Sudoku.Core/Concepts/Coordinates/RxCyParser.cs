@@ -70,7 +70,7 @@ public sealed partial record RxCyParser : CoordinateParser
 						{
 							foreach (var digit in digitDigits)
 							{
-								result.Add(((row - '1') * 9 + column - '1') * 9 + digit - '1');
+								result += ((row - '1') * 9 + column - '1') * 9 + digit - '1';
 							}
 						}
 					}
@@ -88,7 +88,7 @@ public sealed partial record RxCyParser : CoordinateParser
 						{
 							foreach (var digit in digitDigits)
 							{
-								result.Add(((row - '1') * 9 + column - '1') * 9 + digit - '1');
+								result += ((row - '1') * 9 + column - '1') * 9 + digit - '1';
 							}
 						}
 					}

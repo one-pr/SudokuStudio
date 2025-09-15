@@ -250,7 +250,7 @@ public sealed partial class AlignedExclusionStepSearcher : StepSearcher
 							{
 								// Yeah, value p can be excluded from cell.
 								conclusions.Add(new(Elimination, cell, p));
-								conclusionCandidates.Add(cell * 9 + p);
+								conclusionCandidates += cell * 9 + p;
 							}
 						}
 					}

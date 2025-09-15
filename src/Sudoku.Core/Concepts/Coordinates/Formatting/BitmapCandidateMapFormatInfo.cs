@@ -37,17 +37,17 @@ public sealed class BitmapCandidateMapFormatInfo : CandidateMapFormatInfo
 		}
 
 		var result = CandidateMap.Empty;
-		for (var cell = 0; cell < 729; cell++)
+		for (var candidate = 0; candidate < 729; candidate++)
 		{
-			var character = str[cell];
+			var character = str[candidate];
 			if (character is '.' or '0')
 			{
 				continue;
 			}
 
-			if (str[cell] - '0' == 1)
+			if (str[candidate] - '0' == 1)
 			{
-				result.Add(cell);
+				result += candidate;
 				continue;
 			}
 

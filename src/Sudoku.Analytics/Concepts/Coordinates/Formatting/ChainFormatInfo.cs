@@ -462,7 +462,7 @@ public sealed partial class ChainFormatInfo : FormatInfo<Chain>
 				{
 					foreach (var cell in cells)
 					{
-						targetCandidates.Add(cell * 9 + ch - '1');
+						targetCandidates += cell * 9 + ch - '1';
 					}
 				}
 				candidates.AddRef(targetCandidates);
@@ -508,7 +508,7 @@ public sealed partial class ChainFormatInfo : FormatInfo<Chain>
 					{
 						foreach (var cell in cells)
 						{
-							result.Add(cell * 9 + ch - '1');
+							result += cell * 9 + ch - '1';
 						}
 					}
 					candidates.AddRef(result);

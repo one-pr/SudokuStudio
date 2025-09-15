@@ -72,7 +72,7 @@ public static class CandidateMapEnumerable
 			{
 				if (!predicate(cell))
 				{
-					result.Remove(cell);
+					result -= cell;
 				}
 			}
 			return result;
@@ -88,9 +88,7 @@ public static class CandidateMapEnumerable
 				var key = keySelector(candidate);
 				if (!dictionary.TryAdd(key, [candidate]))
 				{
-					var originalElement = dictionary[key];
-					originalElement.Add(candidate);
-					dictionary[key] = originalElement;
+					dictionary.GetValueRef(key) += candidate;
 				}
 			}
 

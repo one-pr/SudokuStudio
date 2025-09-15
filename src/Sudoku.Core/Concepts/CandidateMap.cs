@@ -67,13 +67,13 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 		(this, var (cell, digit)) = ([], (candidate / 9, candidate % 9));
 		foreach (var c in PeersMap[cell])
 		{
-			Add(c * 9 + digit);
+			this += c * 9 + digit;
 		}
 		for (var d = 0; d < 9; d++)
 		{
 			if (d != digit || d == digit && withItself)
 			{
-				Add(cell * 9 + d);
+				this += cell * 9 + d;
 			}
 		}
 	}
@@ -456,7 +456,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 		var offsets = Offsets;
 		for (int i = start, end = start + count; i < end; i++)
 		{
-			result.Add(offsets[i]);
+			result += offsets[i];
 		}
 		return result;
 	}
@@ -536,7 +536,13 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc/>
-	public void Toggle(Candidate offset) => _ = Contains(offset) ? Remove(offset) : Add(offset);
+	public void Toggle(Candidate offset)
+	{
+		if (!Add(offset))
+		{
+			this -= offset;
+		}
+	}
 
 	/// <summary>
 	/// Remove all elements stored in the current collection, and set the property <see cref="Count"/> to zero.
@@ -648,7 +654,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 		var result = default(CandidateMap);
 		foreach (var candidate in candidates)
 		{
-			result.Add(candidate);
+			result += candidate;
 		}
 		return result;
 	}
@@ -774,7 +780,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	public static CandidateMap operator +(in CandidateMap collection, Candidate offset)
 	{
 		var result = collection;
-		result.Add(offset);
+		result += offset;
 		return result;
 	}
 
@@ -782,7 +788,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	public static CandidateMap operator -(in CandidateMap collection, Candidate offset)
 	{
 		var result = collection;
-		result.Remove(offset);
+		result -= offset;
 		return result;
 	}
 

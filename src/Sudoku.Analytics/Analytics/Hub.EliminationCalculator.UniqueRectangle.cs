@@ -218,7 +218,7 @@ public partial class Hub
 					{
 						foreach (var digit in (Mask)(grid.GetCandidates(cell) & ~comparer))
 						{
-							internalNodeElims.Add(cell * 9 + digit);
+							internalNodeElims += cell * 9 + digit;
 						}
 					}
 
@@ -289,7 +289,7 @@ public partial class Hub
 
 								foreach (var otherDigit in (Mask)(grid.GetCandidates(abxCell) & ~comparer))
 								{
-									externalNodeElims.Add(abxCell * 9 + otherDigit);
+									externalNodeElims += abxCell * 9 + otherDigit;
 								}
 								break;
 							}

@@ -2159,7 +2159,7 @@ public sealed partial class ExocetStepSearcher : StepSearcher
 				if (incompatibleCombinationsGroupedByDigit[elimDigit] == (Mask)(allDigits & ~(1 << elimDigit)))
 				{
 					conclusions.Add(new(Elimination, elimCell, elimDigit));
-					incompatibleCandidates.Add(elimCell * 9 + elimDigit);
+					incompatibleCandidates += elimCell * 9 + elimDigit;
 				}
 			}
 		}

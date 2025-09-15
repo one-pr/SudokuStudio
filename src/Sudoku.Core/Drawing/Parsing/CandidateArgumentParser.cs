@@ -25,7 +25,7 @@ internal sealed class CandidateArgumentParser : ArgumentParser
 			{
 				foreach (var digit in grid.GetCandidates(cell))
 				{
-					result.Add(cell * 9 + digit);
+					result += cell * 9 + digit;
 				}
 			}
 			return from candidate in result select new CandidateViewNode(colorIdentifier, candidate);

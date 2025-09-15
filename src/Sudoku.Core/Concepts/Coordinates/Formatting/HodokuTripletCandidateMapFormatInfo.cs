@@ -44,7 +44,7 @@ public sealed class HodokuTripletCandidateMapFormatInfo : CandidateMapFormatInfo
 		{
 			if (segment is [var d and >= '1' and <= '9', var r and >= '1' and <= '9', var c and >= '1' and <= '9'])
 			{
-				result.Add(((r - '1') * 9 + c - '1') * 9 + d - '1');
+				result += ((r - '1') * 9 + c - '1') * 9 + d - '1';
 				continue;
 			}
 			throw new FormatException(SR.ExceptionMessage("StringValueInvalidToBeParsed"));

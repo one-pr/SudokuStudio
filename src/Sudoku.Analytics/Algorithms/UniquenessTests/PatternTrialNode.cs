@@ -18,7 +18,7 @@ public sealed record PatternTrialNode(Candidate Assigned, PatternTrialNode? Pare
 			var result = CandidateMap.Empty;
 			for (var node = this; node is not null; node = node.Parent)
 			{
-				result.Add(node.Assigned);
+				result += node.Assigned;
 			}
 			return result;
 		}

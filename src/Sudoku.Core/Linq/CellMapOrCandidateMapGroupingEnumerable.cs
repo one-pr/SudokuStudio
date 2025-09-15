@@ -121,7 +121,7 @@ public static class CellMapOrCandidateMapGroupingEnumerable
 		var result = CandidateMap.Empty;
 		foreach (var group in @this)
 		{
-			result.Add(selector(group));
+			result += selector(group);
 		}
 		return result;
 	}

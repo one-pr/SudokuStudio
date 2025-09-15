@@ -170,18 +170,18 @@ public partial struct RankPattern
 					var assignmentToCheckPeerCandidates = CandidateMap.Empty;
 					foreach (var c in Grid.CandidatesMap[digit] & PeersMap[cell])
 					{
-						assignmentToCheckPeerCandidates.Add(c * 9 + digit);
+						assignmentToCheckPeerCandidates += c * 9 + digit;
 						if (!_candidates.Contains(c * 9 + digit))
 						{
-							subpatternEliminations.Add(c * 9 + digit);
+							subpatternEliminations += c * 9 + digit;
 						}
 					}
 					foreach (var d in Grid.GetCandidates(cell))
 					{
-						assignmentToCheckPeerCandidates.Add(cell * 9 + d);
+						assignmentToCheckPeerCandidates += cell * 9 + d;
 						if (!_candidates.Contains(cell * 9 + d))
 						{
-							subpatternEliminations.Add(cell * 9 + d);
+							subpatternEliminations += cell * 9 + d;
 						}
 					}
 
@@ -192,7 +192,7 @@ public partial struct RankPattern
 						{
 							// They are in a same link, but the link is supposed to be disappeared.
 							// So we cannot link they up and remove the elimination.
-							subpatternEliminations.Remove(eliminationToCheck);
+							subpatternEliminations -= eliminationToCheck;
 						}
 
 						// Here is a rescue:
@@ -216,7 +216,7 @@ public partial struct RankPattern
 						}
 						if (rescueFlag)
 						{
-							subpatternEliminations.Add(eliminationToCheck);
+							subpatternEliminations += eliminationToCheck;
 						}
 					}
 				}

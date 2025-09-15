@@ -118,7 +118,7 @@ public sealed class UniqueRectanglePattern(in CellMap cells, Mask digitsMask, Ma
 		{
 			foreach (var digit in (Mask)(grid.GetCandidates(cell) & OtherDigitsMask))
 			{
-				result.Add(cell * 9 + digit);
+				result += cell * 9 + digit;
 			}
 		}
 		return result;

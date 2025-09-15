@@ -87,7 +87,7 @@ internal partial class ChainingStepSearcherHub
 						return new SingletonArray<NamedChain>(chain1);
 					}
 				}
-				traversedCandidates.Add(cell * 9 + digit);
+				traversedCandidates += cell * 9 + digit;
 			}
 		}
 

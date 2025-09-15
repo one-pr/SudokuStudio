@@ -137,7 +137,7 @@ file sealed record CombinationQueueNode(Candidate Set, int[] RemainingTruthIndic
 			var result = CandidateMap.Empty;
 			for (var node = this; node.Parent is not null; node = node.Parent)
 			{
-				result.Add(node.Set);
+				result += node.Set;
 			}
 			return result;
 		}
@@ -162,7 +162,7 @@ file sealed record CombinationQueueNode(Candidate Set, int[] RemainingTruthIndic
 				pattern.Add(candidate);
 				if (!truthLookup.TryAdd(candidate, [truth]))
 				{
-					truthLookup[candidate].Add(truth);
+					truthLookup[candidate] += truth;
 				}
 			}
 		}
@@ -219,7 +219,7 @@ file sealed record CombinationQueueNode(Candidate Set, int[] RemainingTruthIndic
 					var cellLink = Space.RowColumn(removedCell / 9, removedCell % 9);
 					if (!truths.Contains(cellLink) && !linkLookup.TryAdd(cellLink, removedCandidate.AsCandidateMap()))
 					{
-						linkLookup[cellLink].Add(removedCandidate);
+						linkLookup[cellLink] += removedCandidate;
 					}
 					continue;
 				}
@@ -244,7 +244,7 @@ file sealed record CombinationQueueNode(Candidate Set, int[] RemainingTruthIndic
 					};
 					if (!truths.Contains(lineLink) && !linkLookup.TryAdd(lineLink, removedCandidate.AsCandidateMap()))
 					{
-						linkLookup[lineLink].Add(removedCandidate);
+						linkLookup[lineLink] += removedCandidate;
 					}
 				}
 
@@ -257,7 +257,7 @@ file sealed record CombinationQueueNode(Candidate Set, int[] RemainingTruthIndic
 					var blockLink = Space.BlockDigit(block, removedDigit);
 					if (!truths.Contains(blockLink) && !linkLookup.TryAdd(blockLink, removedCandidate.AsCandidateMap()))
 					{
-						linkLookup[blockLink].Add(removedCandidate);
+						linkLookup[blockLink] += removedCandidate;
 					}
 				}
 			}

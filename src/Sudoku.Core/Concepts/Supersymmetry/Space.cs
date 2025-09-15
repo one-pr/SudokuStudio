@@ -88,7 +88,7 @@ public readonly struct Space(Mask mask) :
 					var result = CandidateMap.Empty;
 					for (var digit = 0; digit < 9; digit++)
 					{
-						result.Add(cell * 9 + digit);
+						result += cell * 9 + digit;
 					}
 					return result;
 				}
@@ -97,7 +97,7 @@ public readonly struct Space(Mask mask) :
 					var result = CandidateMap.Empty;
 					foreach (var cell in HousesMap[house])
 					{
-						result.Add(cell * 9 + digit);
+						result += cell * 9 + digit;
 					}
 					return result;
 				}
@@ -180,7 +180,7 @@ public readonly struct Space(Mask mask) :
 				var result = CandidateMap.Empty;
 				foreach (var digit in grid.GetCandidates(cell))
 				{
-					result.Add(cell * 9 + digit);
+					result += cell * 9 + digit;
 				}
 				return result;
 			}
@@ -191,7 +191,7 @@ public readonly struct Space(Mask mask) :
 				{
 					if (grid.Exists(cell, digit) is true)
 					{
-						result.Add(cell * 9 + digit);
+						result += cell * 9 + digit;
 					}
 				}
 				return result;

@@ -52,7 +52,7 @@ public static class DiffAnalysis
 					var givenCandidates = CandidateMap.Empty;
 					foreach (var cell in rightResetGridGivens & ~leftResetGridGivens)
 					{
-						givenCandidates.Add(cell * 9 + rr.GetDigit(cell));
+						givenCandidates += cell * 9 + rr.GetDigit(cell);
 					}
 
 					// Check validity of the second puzzle.
@@ -65,7 +65,7 @@ public static class DiffAnalysis
 					var givenCandidates = CandidateMap.Empty;
 					foreach (var cell in leftResetGridGivens & ~rightResetGridGivens)
 					{
-						givenCandidates.Add(cell * 9 + lr.GetDigit(cell));
+						givenCandidates += cell * 9 + lr.GetDigit(cell);
 					}
 
 					result = new RemoveGivenDiffResult(givenCandidates);
@@ -78,7 +78,7 @@ public static class DiffAnalysis
 					{
 						if (left.GetDigit(cell) != right.GetDigit(cell))
 						{
-							changedCandidates.Add(cell * 9 + right.GetDigit(cell));
+							changedCandidates += cell * 9 + right.GetDigit(cell);
 						}
 					}
 
@@ -98,7 +98,7 @@ public static class DiffAnalysis
 				var modifiableCandidates = CandidateMap.Empty;
 				foreach (var cell in rightModifiables & ~leftModifiables)
 				{
-					modifiableCandidates.Add(cell * 9 + right.GetDigit(cell));
+					modifiableCandidates += cell * 9 + right.GetDigit(cell);
 				}
 
 				// Check validity of the second puzzle.
@@ -110,7 +110,7 @@ public static class DiffAnalysis
 				var modifiableCandidates = CandidateMap.Empty;
 				foreach (var cell in leftModifiables & ~rightModifiables)
 				{
-					modifiableCandidates.Add(cell * 9 + left.GetDigit(cell));
+					modifiableCandidates += cell * 9 + left.GetDigit(cell);
 				}
 
 				result = new RemoveModifiableDiffResult(modifiableCandidates);
@@ -123,7 +123,7 @@ public static class DiffAnalysis
 				{
 					if (left.GetDigit(cell) != right.GetDigit(cell))
 					{
-						changedCandidates.Add(cell * 9 + right.GetDigit(cell));
+						changedCandidates += cell * 9 + right.GetDigit(cell);
 					}
 				}
 				if (changedCandidates)
@@ -156,21 +156,21 @@ public static class DiffAnalysis
 					{
 						foreach (var digit in (Mask)(rightCandidates & ~leftCandidates))
 						{
-							addedCandidates.Add(cell * 9 + digit);
+							addedCandidates += cell * 9 + digit;
 						}
 					}
 					else if ((leftCandidates & rightCandidates) == rightCandidates)
 					{
 						foreach (var digit in (Mask)(leftCandidates & ~rightCandidates))
 						{
-							removedCandidates.Add(cell * 9 + digit);
+							removedCandidates += cell * 9 + digit;
 						}
 					}
 					else
 					{
 						foreach (var digit in rightCandidates)
 						{
-							changedCandidates.Add(cell * 9 + digit);
+							changedCandidates += cell * 9 + digit;
 						}
 					}
 				}

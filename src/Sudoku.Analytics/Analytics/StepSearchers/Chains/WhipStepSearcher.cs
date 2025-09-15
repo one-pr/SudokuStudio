@@ -557,7 +557,7 @@ public sealed partial class WhipStepSearcher : StepSearcher
 						var missingDigits = initialGrid.GetCandidates(space.Cell) & ~link.Start.Digits & ~link.End.Digits;
 						foreach (var digit in missingDigits)
 						{
-							result.Add(space.Cell * 9 + digit);
+							result += space.Cell * 9 + digit;
 						}
 					}
 					else
@@ -565,7 +565,7 @@ public sealed partial class WhipStepSearcher : StepSearcher
 						var missingCells = HousesMap[space.House] & CandidatesMap[space.Digit] & ~link.Start.Cells & ~link.End.Cells;
 						foreach (var cell in missingCells)
 						{
-							result.Add(cell * 9 + space.Digit);
+							result += cell * 9 + space.Digit;
 						}
 					}
 				}

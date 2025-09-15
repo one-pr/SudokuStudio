@@ -68,7 +68,7 @@ public sealed partial record K9Parser : CoordinateParser
 					{
 						foreach (var digit in digits)
 						{
-							result.Add(((finalRow - 'A') * 9 + column - '1') * 9 + digit - '1');
+							result += ((finalRow - 'A') * 9 + column - '1') * 9 + digit - '1';
 						}
 					}
 				}

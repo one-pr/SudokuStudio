@@ -73,7 +73,7 @@ internal partial class ChainingStepSearcherHub
 			var rootMap = CandidateMap.Empty;
 			foreach (var node in distribution)
 			{
-				rootMap.Add(node.Root.Map[0]);
+				rootMap += node.Root.Map[0];
 			}
 			return rootMap;
 		}

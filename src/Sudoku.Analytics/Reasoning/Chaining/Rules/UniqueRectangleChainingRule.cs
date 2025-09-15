@@ -52,7 +52,7 @@ public abstract class UniqueRectangleChainingRule : ChainingRule
 					if (!existsCandidate && !processedViewNodesMap.TryAdd(id, (CellMap.Empty, candidate.AsCandidateMap())))
 					{
 						var pair = processedViewNodesMap[id];
-						pair.Candidates.Add(candidate);
+						pair.Candidates += candidate;
 						processedViewNodesMap[id] = pair;
 					}
 

@@ -496,11 +496,11 @@ public sealed partial class BivalueOddagonStepSearcher : StepSearcher
 				{
 					if (grid.Exists(cell, d1) is true)
 					{
-						localElimMap.Add(cell * 9 + d1);
+						localElimMap += cell * 9 + d1;
 					}
 					if (grid.Exists(cell, d2) is true)
 					{
-						localElimMap.Add(cell * 9 + d2);
+						localElimMap += cell * 9 + d2;
 					}
 				}
 			}

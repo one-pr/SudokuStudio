@@ -278,7 +278,7 @@ public sealed partial class PatternBasedPuzzleGeneratingPage : Page
 		}
 		else
 		{
-			originalMap.Add(e.Candidate);
+			originalMap += e.Candidate;
 		}
 
 		FixedCandidates = originalMap;

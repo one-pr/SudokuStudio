@@ -61,11 +61,11 @@ public partial struct RankPattern
 				var digit = assignment % 9;
 				foreach (var otherDigit in otherDigitCalculator(in Grid, cell, digit))
 				{
-					current.Add(cell * 9 + otherDigit);
+					current += cell * 9 + otherDigit;
 				}
 				foreach (var otherCell in otherCellsCalculator(in Grid, cell, digit))
 				{
-					current.Add(otherCell * 9 + digit);
+					current += otherCell * 9 + digit;
 				}
 			}
 
@@ -88,7 +88,7 @@ public partial struct RankPattern
 				{
 					foreach (var digit in (Mask)(Grid.MaxCandidatesMask & ~Grid.GetCandidates(cell)))
 					{
-						result.Remove(cell * 9 + digit);
+						result -= cell * 9 + digit;
 					}
 					break;
 				}

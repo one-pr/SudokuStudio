@@ -109,7 +109,7 @@ public sealed partial class PatternAssigningMap : IEnumerable<KeyValuePair<Cell,
 		{
 			foreach (var digit in mask)
 			{
-				result.Add(cell * 9 + digit);
+				result += cell * 9 + digit;
 			}
 		}
 		return result;

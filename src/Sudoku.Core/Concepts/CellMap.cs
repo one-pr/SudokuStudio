@@ -993,7 +993,7 @@ public partial struct CellMap : CellMapBase
 		var result = CandidateMap.Empty;
 		foreach (var cell in cells.Offsets)
 		{
-			result.Add(cell * 9 + digit);
+			result += cell * 9 + digit;
 		}
 		return result;
 	}

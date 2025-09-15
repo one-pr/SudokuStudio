@@ -99,7 +99,7 @@ public sealed partial class SusserGridFormatInfo<TGrid> : GridFormatInfo<TGrid> 
 						if (!grid.GetExistence(c, i))
 						{
 							// The value is 'false', which means the digit has already been deleted.
-							eliminatedCandidates.Add(c * 9 + i);
+							eliminatedCandidates += c * 9 + i;
 						}
 					}
 				}
@@ -163,7 +163,7 @@ public sealed partial class SusserGridFormatInfo<TGrid> : GridFormatInfo<TGrid> 
 				{
 					foreach (var digit in digitsMask)
 					{
-						result.Add(cell * 9 + digit);
+						result += cell * 9 + digit;
 					}
 				}
 			}
@@ -179,7 +179,7 @@ public sealed partial class SusserGridFormatInfo<TGrid> : GridFormatInfo<TGrid> 
 				{
 					foreach (var digit in grid.GetCandidates(cell))
 					{
-						result.Add(cell * 9 + digit);
+						result += cell * 9 + digit;
 					}
 				}
 			}
