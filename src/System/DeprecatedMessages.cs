@@ -49,4 +49,9 @@ public static class DeprecatedMessages
 	/// Describes extension "<c><see langword="operator"/> *</c>" on collections to repeat specified times of them.
 	/// </summary>
 	public const string ExtensionOperator_Repeat = "Use extension operator 'operator *' instead: 'string * times'";
+
+	/// <summary>
+	/// Describes extension "<c><see langword="operator"/> &gt;&gt;</c>" on instance that changes the state.
+	/// </summary>
+	public const string ExtensionOperator_StateChange = "Use extension operator 'operator >>' instead. 'instance >> state'";
 }

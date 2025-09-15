@@ -82,6 +82,10 @@ public static class CellOrCandidateMapExtensions
 			Unsafe.Add(ref reference, 2) = ColumnTable[@this];
 		}
 
+		/// <inheritdoc cref="op_RightShift(int, HouseType)"/>
+		[Obsolete(DeprecatedMessages.ExtensionOperator_StateChange, false)]
+		public House ToHouse(HouseType houseType) => @this >> houseType;
+
 		/// <summary>
 		/// Converts the specified <see cref="Cell"/> into a singleton <see cref="CellMap"/> instance.
 		/// </summary>
