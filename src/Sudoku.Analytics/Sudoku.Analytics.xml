@@ -8209,47 +8209,6 @@
             <param name="externalDigitsMaskToBeChecked">A mask value that holds digits should be checked.</param>
             <returns><inheritdoc cref="M:Sudoku.Analytics.StepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)" path="/returns"/></returns>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.BivalueOddagonStepSearcher">
-            <summary>
-            <para>
-            Provides with a <b>Bi-value Oddagon</b> step searcher.
-            The step searcher will include the following techniques:
-            <list type="bullet">
-            <!--<item>Bi-value Oddagon Type 1</item>-->
-            <item>Bi-value Oddagon Type 2</item>
-            <item>Bi-value Oddagon Type 3</item>
-            <item>Bi-value Oddagon Type 4</item>
-            </list>
-            </para>
-            <para>
-            In practicing, type 1 doesn't exist. A bi-value oddagon type 1 is a remote pair.
-            A Remote Pair is a XY-Chain, only using two digits.
-            </para>
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.StepSearchers.BivalueOddagonStepSearcher.MaximumCount">
-            <summary>
-            The maximum number of loops can be searched for in code.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BivalueOddagonStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BivalueOddagonStepSearcher.CheckType2(System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.BivalueOddagonStep},Sudoku.Concepts.Grid@,Sudoku.Analytics.StepAnalysisContext@,System.Int32,System.Int32,Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.Int16)">
-            <summary>
-            Check for type 2.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BivalueOddagonStepSearcher.CheckType3(System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.BivalueOddagonStep},Sudoku.Concepts.Grid@,Sudoku.Analytics.StepAnalysisContext@,System.Int32,System.Int32,Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.Int16)">
-            <summary>
-            Check for type 3.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BivalueOddagonStepSearcher.CheckType4(System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.BivalueOddagonStep},Sudoku.Concepts.Grid@,Sudoku.Analytics.StepAnalysisContext@,System.Int32,System.Int32,Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.Int16)">
-            <summary>
-            Check for type 4.
-            </summary>
-        </member>
         <member name="T:Sudoku.Analytics.StepSearchers.ReverseBivalueUniversalGraveStepSearcher">
             <summary>
             Provides with a <b>Reverse Bivalue Universal Grave</b> step searcher.
@@ -8522,6 +8481,89 @@
             <param name="selfPairedDigitsMask">Self-paired digits.</param>
             <returns>A <see cref="T:System.Boolean"/> mask.</returns>
         </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.BivalueOddagonStepSearcher">
+            <summary>
+            <para>
+            Provides with a <b>Bi-value Oddagon</b> step searcher.
+            The step searcher will include the following techniques:
+            <list type="bullet">
+            <!--<item>Bi-value Oddagon Type 1</item>-->
+            <item>Bi-value Oddagon Type 2</item>
+            <item>Bi-value Oddagon Type 3</item>
+            <item>Bi-value Oddagon Type 4</item>
+            </list>
+            </para>
+            <para>
+            In practicing, type 1 doesn't exist. A bi-value oddagon type 1 is a remote pair.
+            A Remote Pair is a XY-Chain, only using two digits.
+            </para>
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.StepSearchers.BivalueOddagonStepSearcher.MaximumCount">
+            <summary>
+            The maximum number of loops can be searched for in code.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BivalueOddagonStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BivalueOddagonStepSearcher.CheckType2(System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.BivalueOddagonStep},Sudoku.Concepts.Grid@,Sudoku.Analytics.StepAnalysisContext@,System.Int32,System.Int32,Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.Int16)">
+            <summary>
+            Check for type 2.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BivalueOddagonStepSearcher.CheckType3(System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.BivalueOddagonStep},Sudoku.Concepts.Grid@,Sudoku.Analytics.StepAnalysisContext@,System.Int32,System.Int32,Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.Int16)">
+            <summary>
+            Check for type 3.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BivalueOddagonStepSearcher.CheckType4(System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.BivalueOddagonStep},Sudoku.Concepts.Grid@,Sudoku.Analytics.StepAnalysisContext@,System.Int32,System.Int32,Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.Int16)">
+            <summary>
+            Check for type 4.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.TrivalueOddagonStepSearcher">
+            <summary>
+            Provides with a <b>Trivalue Oddagon</b> step searcher.
+            The step searcher will include the following techniques:
+            <list type="bullet">
+            <item>
+            Basic types:
+            <list type="bullet">
+            <item>Trivalue Oddagon type 1</item>
+            <!--
+            <item>Trivalue Oddagon type 2</item>
+            <item>Trivalue Oddagon type 3</item>
+            <item>Trivalue Oddagon type 4</item>
+            -->
+            </list>
+            </item>
+            <item>
+            Extended types:
+            <list type="bullet">
+            <item>Trivalue Oddagon XZ</item>
+            </list>
+            </item>
+            </list>
+            </summary>
+            <remarks>
+            For more information about a "tridagon" (tri-value oddagon),
+            please visit <see href="http://forum.enjoysudoku.com/chromatic-patterns-t39885.html">this link</see>.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.TrivalueOddagonStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.TrivalueOddagonStepSearcher.CheckType1(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.CellMap@,System.Int32[])">
+            <summary>
+            Checks for the type 1.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.TrivalueOddagonStepSearcher.CheckXz(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.CellMap@,System.Int32[])">
+            <summary>
+            Checks for XZ rule.
+            </summary>
+        </member>
         <member name="T:Sudoku.Analytics.StepSearchers.XyzRingStepSearcher">
             <summary>
             Provides with an <b>XYZ-Ring</b> step searcher.
@@ -8636,24 +8678,6 @@
             </para>
             </remarks>
             <seealso cref="T:Sudoku.Analytics.StepSearcherHubs.ChainingStepSearcherHub" />
-        </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.GroupedChainStepSearcher">
-            <summary>
-            Provides with a <b>Grouped Chain</b> step searcher.
-            The step searcher will include the following techniques:
-            <list type="bullet">
-            <item>Grouped Alternating Inference Chains</item>
-            <item>Grouped Continuous Nice Loops</item>
-            </list>
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.StepSearchers.GroupedChainStepSearcher.MakeConclusionAroundBackdoors">
-            <summary>
-            Indicates whether conclusions will firstly aim to backdoors.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.GroupedChainStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
-            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.AlignedExclusionStepSearcher">
             <summary>
@@ -8770,47 +8794,23 @@
             <param name="context">The context.</param>
             <returns>The dictionary that contains all eliminations grouped by digit used.</returns>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.TrivalueOddagonStepSearcher">
+        <member name="T:Sudoku.Analytics.StepSearchers.GroupedChainStepSearcher">
             <summary>
-            Provides with a <b>Trivalue Oddagon</b> step searcher.
+            Provides with a <b>Grouped Chain</b> step searcher.
             The step searcher will include the following techniques:
             <list type="bullet">
-            <item>
-            Basic types:
-            <list type="bullet">
-            <item>Trivalue Oddagon type 1</item>
-            <!--
-            <item>Trivalue Oddagon type 2</item>
-            <item>Trivalue Oddagon type 3</item>
-            <item>Trivalue Oddagon type 4</item>
-            -->
-            </list>
-            </item>
-            <item>
-            Extended types:
-            <list type="bullet">
-            <item>Trivalue Oddagon XZ</item>
-            </list>
-            </item>
+            <item>Grouped Alternating Inference Chains</item>
+            <item>Grouped Continuous Nice Loops</item>
             </list>
             </summary>
-            <remarks>
-            For more information about a "tridagon" (tri-value oddagon),
-            please visit <see href="http://forum.enjoysudoku.com/chromatic-patterns-t39885.html">this link</see>.
-            </remarks>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.TrivalueOddagonStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
+        <member name="P:Sudoku.Analytics.StepSearchers.GroupedChainStepSearcher.MakeConclusionAroundBackdoors">
+            <summary>
+            Indicates whether conclusions will firstly aim to backdoors.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.GroupedChainStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
             <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.TrivalueOddagonStepSearcher.CheckType1(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.CellMap@,System.Int32[])">
-            <summary>
-            Checks for the type 1.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.TrivalueOddagonStepSearcher.CheckXz(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.CellMap@,System.Int32[])">
-            <summary>
-            Checks for XZ rule.
-            </summary>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.BlossomLoopStepSearcher">
             <summary>

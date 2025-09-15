@@ -1,6 +1,5 @@
 #pragma warning disable IDE0055
 #pragma warning disable CS1591
-#pragma warning disable format
 
 namespace Sudoku.Analytics.StepSearchers;
 
@@ -36,19 +35,19 @@ public partial class UniqueMatrixStepSearcher						(): StepSearcher(24, 1);
 public partial class AnonymousDeadlyPatternStepSearcher				(): StepSearcher(25, 1);
 public partial class BivalueUniversalGraveStepSearcher				(): StepSearcher(26, 1);
 public partial class QiuDeadlyPatternStepSearcher					(): StepSearcher(27, 1);
-public partial class BivalueOddagonStepSearcher						(): StepSearcher(28, 2);
-public partial class ReverseBivalueUniversalGraveStepSearcher		(): StepSearcher(29, 2);
-public partial class EmptyRectangleIntersectionPairStepSearcher		(): StepSearcher(30, 1);
-public partial class FireworkStepSearcher							(): StepSearcher(31, 1);
-public partial class AntiGurthSymmetricalPlacementStepSearcher		(): StepSearcher(32, 0);
-public partial class XyzRingStepSearcher							(): StepSearcher(33, 1);
-public partial class UniquenessClueCoverStepSearcher				(): StepSearcher(34, 2);
-public partial class ChainStepSearcher								(): StepSearcher(35, 2);
-public partial class GroupedChainStepSearcher						(): StepSearcher(36, 2);
+public partial class ReverseBivalueUniversalGraveStepSearcher		(): StepSearcher(28, 2);
+public partial class EmptyRectangleIntersectionPairStepSearcher		(): StepSearcher(29, 1);
+public partial class FireworkStepSearcher							(): StepSearcher(30, 1);
+public partial class AntiGurthSymmetricalPlacementStepSearcher		(): StepSearcher(31, 0);
+public partial class BivalueOddagonStepSearcher						(): StepSearcher(32, 2);
+public partial class TrivalueOddagonStepSearcher					(): StepSearcher(33, 2);
+public partial class XyzRingStepSearcher							(): StepSearcher(34, 2);
+public partial class UniquenessClueCoverStepSearcher				(): StepSearcher(35, 2);
+public partial class ChainStepSearcher								(): StepSearcher(36, 2);
 public partial class AlignedExclusionStepSearcher					(): StepSearcher(37, 2);
 public partial class GuardianStepSearcher							(): StepSearcher(38, 2);
 public partial class ComplexFishStepSearcher						(): StepSearcher(39, 2);
-public partial class TrivalueOddagonStepSearcher					(): StepSearcher(40, 2);
+public partial class GroupedChainStepSearcher						(): StepSearcher(40, 2);
 public partial class BlossomLoopStepSearcher						(): StepSearcher(41, 3);
 public partial class FinnedChainStepSearcher						(): StepSearcher(42, 2);
 public partial class GroupedFinnedChainStepSearcher					(): StepSearcher(43, 2);
