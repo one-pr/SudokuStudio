@@ -104,10 +104,10 @@ public readonly struct CellMapOrCandidateMapGrouping<TMap, TElement, TKey>(TKey 
 		=> !(left == right);
 
 	/// <inheritdoc/>
-	static bool IEqualityOperators<CellMapOrCandidateMapGrouping<TMap, TElement, TKey>, CellMapOrCandidateMapGrouping<TMap, TElement, TKey>, bool>.operator ==(global::Sudoku.Linq.CellMapOrCandidateMapGrouping<TMap, TElement, TKey> left, CellMapOrCandidateMapGrouping<TMap, TElement, TKey> right)
+	static bool IEqualityOperators<CellMapOrCandidateMapGrouping<TMap, TElement, TKey>, CellMapOrCandidateMapGrouping<TMap, TElement, TKey>, bool>.operator ==(CellMapOrCandidateMapGrouping<TMap, TElement, TKey> left, CellMapOrCandidateMapGrouping<TMap, TElement, TKey> right)
 		=> left == right;
 
 	/// <inheritdoc/>
-	static bool IEqualityOperators<CellMapOrCandidateMapGrouping<TMap, TElement, TKey>, CellMapOrCandidateMapGrouping<TMap, TElement, TKey>, bool>.operator !=(global::Sudoku.Linq.CellMapOrCandidateMapGrouping<TMap, TElement, TKey> left, CellMapOrCandidateMapGrouping<TMap, TElement, TKey> right)
+	static bool IEqualityOperators<CellMapOrCandidateMapGrouping<TMap, TElement, TKey>, CellMapOrCandidateMapGrouping<TMap, TElement, TKey>, bool>.operator !=(CellMapOrCandidateMapGrouping<TMap, TElement, TKey> left, CellMapOrCandidateMapGrouping<TMap, TElement, TKey> right)
 		=> left != right;
 }
