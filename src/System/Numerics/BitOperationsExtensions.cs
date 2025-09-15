@@ -59,17 +59,7 @@ public static partial class BitOperationsExtensions
 
 		/// <inheritdoc cref="SetAt(byte, int)"/>
 		[OverloadResolutionPriority(2)]
-		public int SetAt(int order)
-		{
-			for (int i = 0, count = -1; i < sizeof(sbyte) << 3; i++, @this >>= 1)
-			{
-				if ((@this & 1) != 0 && ++count == order)
-				{
-					return i;
-				}
-			}
-			return -1;
-		}
+		public int SetAt(int order) => ((uint)@this).SetAt(order);
 
 		/// <summary>
 		/// Returns an enumerator type that can iterate on each position (index) whose cooresponding bit is set 1.
@@ -163,17 +153,7 @@ public static partial class BitOperationsExtensions
 		/// <param name="order">The number of the order of set bits.</param>
 		/// <returns>The position.</returns>
 		[OverloadResolutionPriority(2)]
-		public int SetAt(int order)
-		{
-			for (int i = 0, count = -1; i < sizeof(byte) << 3; i++, @this >>= 1)
-			{
-				if ((@this & 1) != 0 && ++count == order)
-				{
-					return i;
-				}
-			}
-			return -1;
-		}
+		public int SetAt(int order) => ((uint)@this).SetAt(order);
 
 		/// <inheritdoc cref="GetEnumerator(sbyte)"/>
 		[OverloadResolutionPriority(2)]
@@ -257,17 +237,7 @@ public static partial class BitOperationsExtensions
 
 		/// <inheritdoc cref="SetAt(byte, int)"/>
 		[OverloadResolutionPriority(2)]
-		public int SetAt(int order)
-		{
-			for (int i = 0, count = -1; i < sizeof(short) << 3; i++, @this >>= 1)
-			{
-				if ((@this & 1) != 0 && ++count == order)
-				{
-					return i;
-				}
-			}
-			return -1;
-		}
+		public int SetAt(int order) => ((uint)@this).SetAt(order);
 
 		/// <inheritdoc cref="GetEnumerator(sbyte)"/>
 		[OverloadResolutionPriority(2)]
@@ -317,17 +287,7 @@ public static partial class BitOperationsExtensions
 
 		/// <inheritdoc cref="SetAt(byte, int)"/>
 		[OverloadResolutionPriority(2)]
-		public int SetAt(int order)
-		{
-			for (int i = 0, count = -1; i < sizeof(ushort) << 3; i++, @this >>= 1)
-			{
-				if ((@this & 1) != 0 && ++count == order)
-				{
-					return i;
-				}
-			}
-			return -1;
-		}
+		public int SetAt(int order) => ((uint)@this).SetAt(order);
 
 		/// <inheritdoc cref="GetEnumerator(sbyte)"/>
 		[OverloadResolutionPriority(2)]
@@ -394,17 +354,7 @@ public static partial class BitOperationsExtensions
 
 		/// <inheritdoc cref="SetAt(byte, int)"/>
 		[OverloadResolutionPriority(2)]
-		public int SetAt(int order)
-		{
-			for (int i = 0, count = -1; i < sizeof(int) << 3; i++, @this >>= 1)
-			{
-				if ((@this & 1) != 0 && ++count == order)
-				{
-					return i;
-				}
-			}
-			return -1;
-		}
+		public int SetAt(int order) => ((uint)@this).SetAt(order);
 
 		/// <inheritdoc cref="GetEnumerator(sbyte)"/>
 		[OverloadResolutionPriority(2)]
@@ -457,6 +407,13 @@ public static partial class BitOperationsExtensions
 		[OverloadResolutionPriority(2)]
 		public int SetAt(int order)
 		{
+			if (Bmi2.IsSupported)
+			{
+				return TrailingZeroCount(Bmi2.ParallelBitDeposit(1U << order, @this)) is var result and not FallbackConstants.@int
+					? result
+					: -1;
+			}
+
 			for (int i = 0, count = -1; i < sizeof(uint) << 3; i++, @this >>= 1)
 			{
 				if ((@this & 1) != 0 && ++count == order)
@@ -585,6 +542,13 @@ public static partial class BitOperationsExtensions
 		[OverloadResolutionPriority(2)]
 		public int SetAt(int order)
 		{
+			if (Bmi2.X64.IsSupported)
+			{
+				return TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << order, @this)) is var result and not FallbackConstants.@long
+					? result
+					: -1;
+			}
+
 			var (mask, size, @base) = (0x0000FFFFU, 16U, 0U);
 			if (order++ >= PopCount(@this))
 			{
@@ -946,9 +910,9 @@ public static partial class BitOperationsExtensions
 			{
 				for (var i = 0; i < 8; i++)
 				{
-					if (((b >> i) & 1) != 0)
+					if (((b >> i) & 1) != 0 && --k == 0)
 					{
-						if (--k == 0) return i;
+						return i;
 					}
 				}
 				return -1;
