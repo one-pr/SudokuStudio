@@ -6,7 +6,7 @@ public partial class GeneratorHub
 		=> (
 			from c in constraints.OfType<DifficultyLevelConstraint>()
 			select c.ValidDifficultyLevels.AllFlags.ToArray()
-		) is [var d] ? d[rng.Next(0, d.Length)] : DifficultyLevels.AllValid;
+		) is [var d] ? rng.Choose(d) : DifficultyLevels.AllValid;
 
 	private static partial Cell GetGivensCount(Random rng, (Cell, Cell) chosenGivensCountSeed)
 		=> chosenGivensCountSeed is (var s and not -1, var e and not -1) ? rng.Next(s, e + 1) : -1;

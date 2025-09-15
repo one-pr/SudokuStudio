@@ -3,7 +3,7 @@ namespace Sudoku.Transformations;
 /// <summary>
 /// Provides with some methods that generates randomized elements or types defined in sudoku basic concepts.
 /// </summary>
-public static class ConceptRandomGeneratingExtensions
+public static class ConceptRandomExtensions
 {
 	/// <summary>
 	/// Provides extension members on <see cref="Random"/>.
@@ -33,6 +33,20 @@ public static class ConceptRandomGeneratingExtensions
 		/// An integer that represents a valid <see cref="House"/>.
 		/// </returns>
 		public House NextHouse() => random.Next(0, 27);
+
+		/// <summary>
+		/// Randomly select one cell from the specified cells.
+		/// </summary>
+		/// <param name="cells">The cells.</param>
+		/// <returns>The chosen cell.</returns>
+		public Cell Choose(in CellMap cells) => cells[random.Next(0, cells.Count)];
+
+		/// <summary>
+		/// Randomly select one candidate from the specified candidates.
+		/// </summary>
+		/// <param name="candidates">The candidates.</param>
+		/// <returns>The chosen candidate.</returns>
+		public Candidate Choose(in CandidateMap candidates) => candidates[random.Next(0, candidates.Count)];
 
 		/// <summary>
 		/// Randomly select the specified number of elements from the current collection.

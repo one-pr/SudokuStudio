@@ -52,7 +52,7 @@ public sealed class NakedSingleGenerator : SingleGenerator
 		var targetCell = Alignment switch
 		{
 			ConclusionCellAlignment.NotLimited => Rng.NextCell(),
-			ConclusionCellAlignment.CenterHouse => (PeersMap[40] + 40)[Rng.Next(CellMap.PeersCount + 1)],
+			ConclusionCellAlignment.CenterHouse => Rng.Choose(PeersMap[40] + 40),
 			ConclusionCellAlignment.CenterBlock => HousesMap[4][Rng.NextDigit()],
 			_ => 40
 		};

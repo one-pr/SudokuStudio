@@ -401,7 +401,7 @@ public sealed class Analyzer : StepGatherer
 						}
 						else
 						{
-							var chosenStep = RandomizedChoosing ? chosenSteps[_random.Next(0, chosenSteps.Count)] : chosenSteps[0];
+							var chosenStep = RandomizedChoosing ? _random.Choose(chosenSteps.AsSpan()) : chosenSteps[0];
 							if (!verifyConclusionValidity(searcher, solution, chosenStep))
 							{
 								throw new WrongStepException(playground, chosenStep);
@@ -428,7 +428,7 @@ public sealed class Analyzer : StepGatherer
 						}
 
 						// Here will fetch a correct step to be applied.
-						var chosenStep = accumulator[_random.Next(0, accumulator.Count)];
+						var chosenStep = _random.Choose(accumulator.AsSpan());
 						if (!verifyConclusionValidity(searcher, solution, chosenStep))
 						{
 							throw new WrongStepException(playground, chosenStep);
@@ -456,7 +456,7 @@ public sealed class Analyzer : StepGatherer
 						if (RandomizedChoosing)
 						{
 							// Here will fetch a correct step to be applied.
-							var chosenStep = accumulator[_random.Next(0, accumulator.Count)];
+							var chosenStep = _random.Choose(accumulator.AsSpan());
 							if (!verifyConclusionValidity(searcher, solution, chosenStep))
 							{
 								throw new WrongStepException(playground, chosenStep);

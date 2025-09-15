@@ -187,7 +187,7 @@ public static partial class GeneratorHub
 		var progress = new SelfReportingProgress<TProgressDataProvider>(reporter);
 		while (true)
 		{
-			var chosenSymmetricType = symmetries.Length == 0 ? SymmetricType.None : symmetries[rng.Next(0, symmetries.Length)];
+			var chosenSymmetricType = symmetries.Length == 0 ? SymmetricType.None : rng.Choose(symmetries);
 			var grid = gridCreator(givensCount, chosenSymmetricType, constraints, cancellationToken);
 			if (grid.IsEmpty || analyzer.Analyze(grid, cancellationToken: cancellationToken) is not { IsSolved: true } analysisResult)
 			{

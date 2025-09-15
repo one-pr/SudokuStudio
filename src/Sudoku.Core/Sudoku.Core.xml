@@ -8351,6 +8351,1224 @@
             <param name="column">The column value.</param>
             <returns>The cells.</returns>
         </member>
+        <member name="T:Sudoku.Transformations.ConceptRandomExtensions">
+            <summary>
+            Provides with some methods that generates randomized elements or types defined in sudoku basic concepts.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.NextDigit(System.Random)">
+            <inheritdoc cref="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.NextDigit"/>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.NextCell(System.Random)">
+            <inheritdoc cref="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.NextCell"/>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.NextHouse(System.Random)">
+            <inheritdoc cref="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.NextHouse"/>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.Choose(System.Random,Sudoku.Concepts.CellMap@)">
+            <inheritdoc cref="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.Choose(Sudoku.Concepts.CellMap@)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.Choose(System.Random,Sudoku.Concepts.CandidateMap@)">
+            <inheritdoc cref="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.Choose(Sudoku.Concepts.CandidateMap@)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.RandomlySelect(System.Random,Sudoku.Concepts.CellMap@,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.RandomlySelect(Sudoku.Concepts.CellMap@,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.RandomlySelect(System.Random,Sudoku.Concepts.CandidateMap@,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.RandomlySelect(Sudoku.Concepts.CandidateMap@,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.CreateCellMap(System.Random,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.CreateCellMap(System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.CreateCandidateMap(System.Random,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.CreateCandidateMap(System.Int32)"/>
+        </member>
+        <member name="T:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.&lt;M&gt;$29C0070C9E480B242E1A2897065AD833">
+            <summary>
+            Provides extension members on <see cref="T:System.Random"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.NextDigit">
+            <summary>
+            Returns a random integer that is within valid digit range (0..9).
+            </summary>
+            <returns>
+            An integer that represents a valid <see cref="T:System.Int32"/>.
+            </returns>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.NextCell">
+            <summary>
+            Returns a random integer that is within valid cell range (0..81).
+            </summary>
+            <returns>
+            An integer that represents a valid <see cref="T:System.Int32"/>.
+            </returns>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.NextHouse">
+            <summary>
+            Returns a random integer that is within valid house range (0..27).
+            </summary>
+            <returns>
+            An integer that represents a valid <see cref="T:System.Int32"/>.
+            </returns>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.Choose(Sudoku.Concepts.CellMap@)">
+            <summary>
+            Randomly select one cell from the specified cells.
+            </summary>
+            <param name="cells">The cells.</param>
+            <returns>The chosen cell.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.Choose(Sudoku.Concepts.CandidateMap@)">
+            <summary>
+            Randomly select one candidate from the specified candidates.
+            </summary>
+            <param name="candidates">The candidates.</param>
+            <returns>The chosen candidate.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.RandomlySelect(Sudoku.Concepts.CellMap@,System.Int32)">
+            <summary>
+            Randomly select the specified number of elements from the current collection.
+            </summary>
+            <param name="cells">The cells to be chosen.</param>
+            <param name="count">The desired number of elements.</param>
+            <returns>The specified number of elements returned, represented as a <see cref="T:Sudoku.Concepts.CellMap"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.RandomlySelect(Sudoku.Concepts.CandidateMap@,System.Int32)">
+            <summary>
+            Randomly select the specified number of elements from the current collection.
+            </summary>
+            <param name="cells">The cells to be chosen.</param>
+            <param name="count">The desired number of elements.</param>
+            <returns>The specified number of elements returned, represented as a <see cref="T:Sudoku.Concepts.CandidateMap"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.CreateCellMap(System.Int32)">
+            <summary>
+            Creates a <see cref="T:Sudoku.Concepts.CellMap"/> instance, with the specified number of <see cref="T:System.Int32"/>s stored in the collection.
+            </summary>
+            <param name="count">The desired number of elements.</param>
+            <returns>A <see cref="T:Sudoku.Concepts.CellMap"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.ConceptRandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.CreateCandidateMap(System.Int32)">
+            <summary>
+            Creates a <see cref="T:Sudoku.Concepts.CandidateMap"/> instance, with the specified number of <see cref="T:System.Int32"/>s stored in the collection.
+            </summary>
+            <param name="count">The desired number of elements.</param>
+            <returns>A <see cref="T:Sudoku.Concepts.CandidateMap"/> instance.</returns>
+        </member>
+        <member name="T:Sudoku.Transformations.CantorExpansion">
+            <summary>
+            Provides a way to rank and unrank permutation. The ranking algorithm is called "Cantor Expansion".
+            </summary>
+        </member>
+        <member name="M:Sudoku.Transformations.CantorExpansion.RankRelabeledDigits(System.ReadOnlySpan{System.Int32})">
+            <summary>
+            Rank the current permutation from the base order.
+            </summary>
+            <param name="digits">The digits permutation sequence.</param>
+            <returns>The rank.</returns>
+            <exception cref="T:System.InvalidOperationException">
+            Throws when the permutation has incorrect value that cannot be found in source sequence.
+            </exception>
+        </member>
+        <member name="M:Sudoku.Transformations.CantorExpansion.RankRelabeledLines(System.ReadOnlySpan{System.Int32})">
+            <summary>
+            Rank the current label permutation (row or column labels).
+            </summary>
+            <param name="lines">The permutation sequence.</param>
+            <returns>The rank.</returns>
+            <exception cref="T:System.ArgumentException">
+            Throws when the argument <paramref name="lines"/> doesn't contain 9 elements.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Throws when the original label contains invalid digits.
+            </exception>
+        </member>
+        <member name="M:Sudoku.Transformations.CantorExpansion.UnrankRelabeledDigits(System.Int32)">
+            <summary>
+            Unrank the permutation via the base order.
+            </summary>
+            <param name="rank">The rank.</param>
+            <returns>The unranked permutation.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Throws when rank is out of range.</exception>
+        </member>
+        <member name="M:Sudoku.Transformations.CantorExpansion.UnrankRelabeledLines(System.Int32)">
+            <summary>
+            Unrank the permutation.
+            </summary>
+            <param name="rank">The rank.</param>
+            <returns>The unranked sequence.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Throws when rank is out of range.</exception>
+        </member>
+        <member name="M:Sudoku.Transformations.CantorExpansion.Factorials(System.Int32)">
+            <summary>
+            Extracts an array of factorial values to optimize calculation.
+            </summary>
+            <param name="n">The number.</param>
+            <returns>The sequence of factorial values (1!, 2!, 3!, etc.).</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.CantorExpansion.Rank3(System.Int32[])">
+            <summary>
+            Rank for 3 lines in a chute.
+            </summary>
+            <param name="perm">The permutation (row indices or column indices).</param>
+            <returns>The rank.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.CantorExpansion.Unrank3(System.Int32)">
+            <summary>
+            Unrank for 3 lines in a chute.
+            </summary>
+            <param name="rank">The rank.</param>
+            <returns>The permutation.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Throws when <paramref name="rank"/> is out of range.</exception>
+        </member>
+        <member name="T:Sudoku.Transformations.GenericTransform">
+            <summary>
+            Represents a generic transform that includes the ranks of morphing types.
+            </summary>
+            <param name="TransposeRank">Indicates the rank of transpose.</param>
+            <param name="RelabeledRowsRank">Indicates the rank of relabeled rows.</param>
+            <param name="RelabeledColumnsRank">Indicates the rank of relabeled columns.</param>
+            <param name="RelabeledDigitsRank">Indicates the rank of relabeled digits.</param>
+            <completionlist cref="T:Sudoku.Transformations.GenericTransform"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Represents a generic transform that includes the ranks of morphing types.
+            </summary>
+            <param name="TransposeRank">Indicates the rank of transpose.</param>
+            <param name="RelabeledRowsRank">Indicates the rank of relabeled rows.</param>
+            <param name="RelabeledColumnsRank">Indicates the rank of relabeled columns.</param>
+            <param name="RelabeledDigitsRank">Indicates the rank of relabeled digits.</param>
+            <completionlist cref="T:Sudoku.Transformations.GenericTransform"/>
+        </member>
+        <member name="P:Sudoku.Transformations.GenericTransform.TransposeRank">
+            <summary>Indicates the rank of transpose.</summary>
+        </member>
+        <member name="P:Sudoku.Transformations.GenericTransform.RelabeledRowsRank">
+            <summary>Indicates the rank of relabeled rows.</summary>
+        </member>
+        <member name="P:Sudoku.Transformations.GenericTransform.RelabeledColumnsRank">
+            <summary>Indicates the rank of relabeled columns.</summary>
+        </member>
+        <member name="P:Sudoku.Transformations.GenericTransform.RelabeledDigitsRank">
+            <summary>Indicates the rank of relabeled digits.</summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GenericTransform.Equivalent">
+            <summary>
+            Represents equivalent transform (no transform).
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GenericTransform.ClockwiseRotate90Degrees">
+            <summary>
+            Represents a transform that rotates 90 degrees clockwise.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GenericTransform.ClockwiseRotate180Degrees">
+            <summary>
+            Represents a transform that rotates 180 degrees clockwise.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GenericTransform.ClockwiseRotate270Degrees">
+            <summary>
+            Represents a transform that rotates 270 degrees clockwise.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GenericTransform.CounterclockwiseRotate90Degrees">
+            <summary>
+            Represents a transform that rotates 90 degrees counterclockwise.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GenericTransform.CounterclockwiseRotate180Degrees">
+            <summary>
+            Represents a transform that rotates 180 degrees counterclockwise.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GenericTransform.CounterclockwiseRotate270Degrees">
+            <summary>
+            Represents a transform that rotates 270 degrees counterclockwise.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GenericTransform.MirrorLeftRight">
+            <summary>
+            Represents a transform that mirrors left-right side.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GenericTransform.MirrorTopBottom">
+            <summary>
+            Represents a transform that mirrors top-bottom side.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GenericTransform.MirrorDiagonal">
+            <summary>
+            Represents a transform that mirrors diagonal.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GenericTransform.MirrorAntidiagonal">
+            <summary>
+            Represents a transform that mirrors anti-diagonal.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.#ctor(System.Int32,System.Index,System.Index,System.Index)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.
+            </summary>
+            <param name="transposeRank">
+            <inheritdoc cref="M:Sudoku.Transformations.GenericTransform.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)" path="/param[@name='TransposeRank']"/>
+            </param>
+            <param name="relabeledRowsRank">
+            <inheritdoc cref="M:Sudoku.Transformations.GenericTransform.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)" path="/param[@name='RelabeledRowsRank']"/>
+            </param>
+            <param name="relabeledColumnsRank">
+            <inheritdoc cref="M:Sudoku.Transformations.GenericTransform.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)" path="/param[@name='RelabeledColumnsRank']"/>
+            </param>
+            <param name="relabeledDigitsRank">
+            <inheritdoc cref="M:Sudoku.Transformations.GenericTransform.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)" path="/param[@name='RelabeledDigitsRank']"/>
+            </param>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.#ctor(System.Int64)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Transformations.GenericTransform"/> via the base-mixed rank.
+            </summary>
+            <param name="rank">The base-mixed rank.</param>
+        </member>
+        <member name="P:Sudoku.Transformations.GenericTransform.ShouldTranspose">
+            <summary>
+            Indicates whether to transpose.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Transformations.GenericTransform.Rank">
+            <summary>
+            Indicates the base-mixed rank.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Transformations.GenericTransform.RowIndicesRelabeled">
+            <summary>
+            Represents a value that displays relabeled row indices.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Transformations.GenericTransform.ColumnIndicesRelabeled">
+            <summary>
+            Represents a value that displays relabeled column indices.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Transformations.GenericTransform.DigitsRelabeled">
+            <summary>
+            Represents a value that displays relabeled digits.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.Equals(Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.CompareTo(Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:System.IComparable`1.CompareTo(`0)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.System#IComparable{Sudoku#Transformations#GenericTransform}#CompareTo(Sudoku.Transformations.GenericTransform)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.Sudoku#Transformations#ITransformable{Sudoku#Transformations#GenericTransform}#RotateClockwise">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.Sudoku#Transformations#ITransformable{Sudoku#Transformations#GenericTransform}#MirrorLeftRight">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.Sudoku#Transformations#ITransformable{Sudoku#Transformations#GenericTransform}#MirrorTopBottom">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.Sudoku#Transformations#ITransformable{Sudoku#Transformations#GenericTransform}#MirrorDiagonal">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.Sudoku#Transformations#ITransformable{Sudoku#Transformations#GenericTransform}#MirrorAntidiagonal">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.PrintMembers(System.Text.StringBuilder)">
+            <target name="method" cref="M:Sudoku.Transformations.GenericTransform.PrintMembers(System.Text.StringBuilder)">
+				<summary>
+					Provides an easy way to concatenate output members inside a <see langword="record" />
+					or a <see langword="record struct" /> type.
+				</summary>
+				<param name="builder">
+					A <see cref="T:System.Text.StringBuilder" /> instance to concatenate values.
+				</param>
+				<returns>
+					A <see cref="T:System.Boolean" /> value indicating whether the method should be consumed by compiler,
+					by implementing to-string method <c>ToString</c>.
+				</returns>
+				<remarks>
+					<para>
+						By design of <see langword="record" /> and <see langword="record struct" /> types,
+						emit text should be formatted as follows:
+						<code><![CDATA[RecordType { Property1 = Value1, Property2 = Value2, Property3 = { NestedProperty = Value3 } }]]></code>
+					</para>
+					<para>
+						This method won't emit type name and curly brackets. If you want to customize emit text,
+						you can only change values inside a pair of brackets.
+					</para>
+					<para>
+						The suggested implementation is like this:
+						<code><![CDATA[private bool PrintMembers(StringBuilder builder)
+{
+    builder.Append($"{nameof(Property1)} = {Property1}");
+    builder.Append(", ");
+    builder.Append($"{nameof(Property2)} = {Property2}");
+    builder.Append(", ");
+    builder.Append($"{nameof(Property3)} = {{ {Property3} }}");
+    return true;
+}]]>
+						</code>
+					</para>
+				</remarks>
+			</target>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.op_OnesComplement(Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:System.Numerics.IBitwiseOperators`3.op_OnesComplement(`0)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.op_Equality(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.op_Inequality(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.op_GreaterThan(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThan(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.op_LessThan(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThan(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.op_GreaterThanOrEqual(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThanOrEqual(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.op_LessThanOrEqual(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThanOrEqual(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.op_BitwiseAnd(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:System.Numerics.IBitwiseOperators`3.op_BitwiseAnd(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.op_BitwiseOr(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:System.Numerics.IBitwiseOperators`3.op_BitwiseOr(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.op_ExclusiveOr(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:System.Numerics.IBitwiseOperators`3.op_ExclusiveOr(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IEqualityOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,System#Boolean}#op_Equality(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IEqualityOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,System#Boolean}#op_Inequality(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IComparisonOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,System#Boolean}#op_GreaterThan(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IComparisonOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,System#Boolean}#op_LessThan(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IComparisonOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,System#Boolean}#op_GreaterThanOrEqual(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IComparisonOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,System#Boolean}#op_LessThanOrEqual(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IBitwiseOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform}#op_BitwiseAnd(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IBitwiseOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform}#op_BitwiseOr(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IBitwiseOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform}#op_ExclusiveOr(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IBitwiseOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform}#op_OnesComplement(Sudoku.Transformations.GenericTransform)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.op_Explicit(System.Int64)~Sudoku.Transformations.GenericTransform">
+            <summary>
+            Explicit cast from <see cref="T:System.Int64"/> to <see cref="T:Sudoku.Transformations.GenericTransform"/>.
+            </summary>
+            <param name="baseMixedRank">The base-mixed rank.</param>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.op_CheckedExplicit(System.Int64)~Sudoku.Transformations.GenericTransform">
+            <summary>
+            Explicit cast from <see cref="T:System.Int64"/> to <see cref="T:Sudoku.Transformations.GenericTransform"/>, with range check.
+            </summary>
+            <param name="baseMixedRank">The base-mixed rank.</param>
+            <exception cref="T:System.OverflowException">Throws when <paramref name="baseMixedRank"/> is invalid.</exception>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.op_Implicit(Sudoku.Transformations.GenericTransform)~System.Int64">
+            <summary>
+            Implicit cast from <see cref="T:Sudoku.Transformations.GenericTransform"/> to <see cref="T:System.Int64"/>.
+            </summary>
+            <param name="transform">The transform.</param>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.SwapDigit(System.Int32,System.Int32)">
+            <summary>
+            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with two digits swapped.
+            </summary>
+            <param name="digit1">Indicates the digit 1 to be swapped.</param>
+            <param name="digit2">Indicates the digit 2 to be swapped.</param>
+            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.SwapRow(System.Int32,System.Int32)">
+            <summary>
+            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with two rows swapped.
+            </summary>
+            <param name="rowIndex1">Indicates the row 1 to be swapped.</param>
+            <param name="rowIndex2">Indicates the row 2 to be swapped.</param>
+            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.SwapColumn(System.Int32,System.Int32)">
+            <summary>
+            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with two columns swapped.
+            </summary>
+            <param name="columnIndex1">Indicates the column 1 to be swapped.</param>
+            <param name="columnIndex2">Indicates the column 2 to be swapped.</param>
+            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.SwapBand(System.Int32,System.Int32)">
+            <summary>
+            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with two bands swapped.
+            </summary>
+            <param name="bandIndex1">Indicates the band 1 to be swapped.</param>
+            <param name="bandIndex2">Indicates the band 2 to be swapped.</param>
+            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.SwapTower(System.Int32,System.Int32)">
+            <summary>
+            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with two towers swapped.
+            </summary>
+            <param name="towerIndex1">Indicates the tower 1 to be swapped.</param>
+            <param name="towerIndex2">Indicates the tower 2 to be swapped.</param>
+            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.Transpose(System.Boolean)">
+            <summary>
+            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with specified value indicating whether to transpose.
+            </summary>
+            <param name="transpose">Whether to transpose.</param>
+            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.RelabelRows(System.ReadOnlySpan{System.Int32})">
+            <summary>
+            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with specified relabeled rows.
+            </summary>
+            <param name="rows">The relabeled rows.</param>
+            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.RelabelColumns(System.ReadOnlySpan{System.Int32})">
+            <summary>
+            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with specified relabeled columns.
+            </summary>
+            <param name="columns">The relabeled columns.</param>
+            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.GenericTransform.RelabelDigits(System.ReadOnlySpan{System.Int32})">
+            <summary>
+            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with specified relabeled digits.
+            </summary>
+            <param name="digits">The relabeled digits.</param>
+            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
+        </member>
+        <member name="T:Sudoku.Transformations.GridGenericTransformExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+            <seealso cref="T:Sudoku.Concepts.Grid"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.Apply(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Transformations.GenericTransform@)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Transformations.GenericTransform@)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)"/>
+        </member>
+        <member name="T:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$25EDD80A63D287142C5EEC5FEE4D06CD">
+            <summary>
+            Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Transformations.GenericTransform@)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridGenericTransformExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Transformations.GenericTransform@)">
+            <summary>
+            Applies transform with the specified <see cref="T:Sudoku.Transformations.GenericTransform"/>.
+            </summary>
+            <param name="transform">The transform.</param>
+        </member>
+        <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)">
+            <summary>
+            Applies the grid with specified transform.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="transform">The transform.</param>
+            <returns>The target grid.</returns>
+        </member>
+        <member name="T:Sudoku.Transformations.GridIdentifier">
+            <summary>
+            Represents an identifier that describes the transforming cases.
+            </summary>
+            <remarks>
+            <para><developer-notes>
+		<para>
+			<b>Developer Notes</b>
+		</para>
+	</developer-notes></para>
+            <para>
+            This data type is used to represent an encoding of a transformation.
+            It stores a global mask derived from a Sudoku puzzle through a minimum lexicographic order (min-lex) mapping.
+            The backing identifier is <b>globally unique</b>: identical identifiers represent identical grids,
+            while different identifiers represent different grids.
+            </para>
+            <para>
+            We summarize the data structure into three parts:
+            <list type="number">
+            <item>The global identifier of the minimum lexicographic (min-lex) form</item>
+            <item>The transformation form</item>
+            <item>The list of empty cell positions</item>
+            </list>
+            </para>
+            <para>
+            There are approximately <b>5.4e9</b> inequivalent (essentially different, ED) Sudoku solutions in total.
+            By listing them in min-lex order, we can perform both sorting and deduplication. This part can be stored using 33 bits.
+            </para>
+            <para>
+            For the transformation form, we encode the following four types of transformations:
+            <list type="number">
+            <item><b>Transpose</b> - swap row and column indices (i.e., <c>(x, y) -&gt; (y, x)</c>)</item>
+            <item><b>Row relabelling</b> - relabel rows 1-9 to target positions</item>
+            <item><b>Column relabelling</b> - relabel columns 1-9 to target positions</item>
+            <item><b>Digit relabelling</b> - relabel digits 1-9 to target positions</item>
+            </list>
+            </para>
+            <para>
+            All equivalent transformations of puzzles can be achieved using the above four types,
+            so this scheme can represent all transformation cases.
+            </para>
+            <para>
+            The total number of cases for these four transformations is 2, 1296, 1296, and 362880, respectively.
+            Multiplying them together gives the total number of possible cases, which is approximately <b>1.219e12</b>.
+            This value covers all possible transformation cases.
+            By storing the four transformation modes in bit form, the result can be represented by a single number, requiring 41 bits.
+            </para>
+            <para>
+            Finally, we need the list of empty cell positions. We only need 0 to represent an empty cell and 1 to represent a digit.
+            This part requires 81 bits.
+            </para>
+            <para>
+            Therefore, the entire data structure theoretically requires only <b>33 + 41 + 81 = 155</b> bits.
+            However, to align with bit size boundaries, this data structure uses the inline array feature and stores the data in 5 integers,
+            which can theoretically hold 160 bits.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:Sudoku.Transformations.GridIdentifier.AllPermutationsCount">
+            <summary>
+            Indicates the numebr of all transformations permutation cases.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GridIdentifier.InequivalentSolutionsCount">
+            <summary>
+            Indicates the number of all inequivalent permutations (i.e. solutions).
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GridIdentifier.DeficiencyPermutationsCount">
+            <summary>
+            Indicates the number of deficiency permutations.
+            </summary>
+            <remarks>
+            <para>
+            The reason that there is a deficiency of grids is due to the fact
+            that some of the permutations create automorphic grids. Automorphic grids are the permutations which have duplicates.
+            </para>
+            <para>
+            The total number of sudoku permutations is equal to <b>6,671,248,172,291,458,990,080</b> (approximately <b>6.67e21</b>),
+            which is <b>5,472,730,538 * (2 * 1,296 * 1,296 * 362,880) - 344,420,270,386,053,120</b>,
+            where all constants in this expression can be found in this type.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:Sudoku.Transformations.GridIdentifier.GeometryPermutationsCount">
+            <summary>
+            Indicates the number of geometry permutations.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GridIdentifier.RelabelLinesPermutationsCount">
+            <summary>
+            Indicates the number of relabelling row cases.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GridIdentifier.TransposePermutationsCount">
+            <summary>
+            Indicates the number of transposing cases.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GridIdentifier.RelabelDigitsPermutationsCount">
+            <summary>
+            Indicates the number of relabelling digit cases.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GridIdentifier.RequiredBitsCount">
+            <summary>
+            Indicates the number of required bits.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GridIdentifier.MinlexPartBitsCount">
+            <summary>
+            Indicates the number of bits used in min-lex part.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GridIdentifier.TransformationPartBitsCount">
+            <summary>
+            Indicates the number of bits used in transformation part.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GridIdentifier.CellStatePartBitsCount">
+            <summary>
+            Indicates the number of bits used in cell states part.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GridIdentifier.MinlexPartShiftAmount">
+            <summary>
+            Indicates the shift amount of min-lex part.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GridIdentifier.TransformationPartShiftAmount">
+            <summary>
+            Indicates the shift amount of transformation part.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GridIdentifier.FixedLength">
+            <summary>
+            Indicates the fixed serialization length.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GridIdentifier.Characters">
+            <summary>
+            Indicates characters.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GridIdentifier._elements">
+            <summary>
+            Indicates the backing elements.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.#ctor(Sudoku.Concepts.Grid@)">
+            <summary>
+            Creates a <see cref="T:Sudoku.Transformations.GridIdentifier"/> via a grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <exception cref="T:System.ArgumentException">Throws when the grid is invalid (not unique).</exception>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.#ctor(System.Numerics.BigInteger)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Transformations.GridIdentifier"/> instance.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:Sudoku.Transformations.GridIdentifier.Index">
+            <summary>
+            Indicates the number of global index.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Transformations.GridIdentifier.GivenCells">
+            <summary>
+            Indicates given cells.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Transformations.GridIdentifier.Transform">
+            <summary>
+            Indicates target tranform.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Transformations.GridIdentifier.IdentifierValue">
+            <summary>
+            Represents identifier value.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Transformations.GridIdentifier.OriginalGrid">
+            <summary>
+            Indicates the original grid.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Transformations.GridIdentifier.TargetGrid">
+            <summary>
+            Indicates the target grid applied such transformations.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.Equals(Sudoku.Transformations.GridIdentifier@)">
+            <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.CompareTo(Sudoku.Transformations.GridIdentifier@)">
+            <inheritdoc cref="M:System.IComparable`1.CompareTo(`0)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.System#IEquatable{Sudoku#Transformations#GridIdentifier}#Equals(Sudoku.Transformations.GridIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.System#IComparable{Sudoku#Transformations#GridIdentifier}#CompareTo(Sudoku.Transformations.GridIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.GetSlice(System.Int32,System.Int32)">
+            <summary>
+            Gets a <see cref="T:System.Collections.BitArray"/> instance that displays the slice.
+            </summary>
+            <param name="startIndex">The start index.</param>
+            <param name="count">The number of bits.</param>
+            <returns>A <see cref="T:System.Collections.BitArray"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.TryParse(System.String,Sudoku.Transformations.GridIdentifier@)">
+            <inheritdoc cref="M:System.IParsable`1.TryParse(System.String,System.IFormatProvider,`0@)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.Parse(System.String)">
+            <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.System#IParsable{Sudoku#Transformations#GridIdentifier}#TryParse(System.String,System.IFormatProvider,Sudoku.Transformations.GridIdentifier@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.System#IParsable{Sudoku#Transformations#GridIdentifier}#Parse(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.op_Equality(Sudoku.Transformations.GridIdentifier@,Sudoku.Transformations.GridIdentifier@)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.op_Inequality(Sudoku.Transformations.GridIdentifier@,Sudoku.Transformations.GridIdentifier@)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.op_GreaterThan(Sudoku.Transformations.GridIdentifier@,Sudoku.Transformations.GridIdentifier@)">
+            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThan(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.op_LessThan(Sudoku.Transformations.GridIdentifier@,Sudoku.Transformations.GridIdentifier@)">
+            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThan(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.op_GreaterThanOrEqual(Sudoku.Transformations.GridIdentifier@,Sudoku.Transformations.GridIdentifier@)">
+            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThanOrEqual(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.op_LessThanOrEqual(Sudoku.Transformations.GridIdentifier@,Sudoku.Transformations.GridIdentifier@)">
+            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThanOrEqual(`0,`1)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.System#Numerics#IEqualityOperators{Sudoku#Transformations#GridIdentifier,Sudoku#Transformations#GridIdentifier,System#Boolean}#op_Equality(Sudoku.Transformations.GridIdentifier,Sudoku.Transformations.GridIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.System#Numerics#IEqualityOperators{Sudoku#Transformations#GridIdentifier,Sudoku#Transformations#GridIdentifier,System#Boolean}#op_Inequality(Sudoku.Transformations.GridIdentifier,Sudoku.Transformations.GridIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.System#Numerics#IComparisonOperators{Sudoku#Transformations#GridIdentifier,Sudoku#Transformations#GridIdentifier,System#Boolean}#op_GreaterThan(Sudoku.Transformations.GridIdentifier,Sudoku.Transformations.GridIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.System#Numerics#IComparisonOperators{Sudoku#Transformations#GridIdentifier,Sudoku#Transformations#GridIdentifier,System#Boolean}#op_LessThan(Sudoku.Transformations.GridIdentifier,Sudoku.Transformations.GridIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.System#Numerics#IComparisonOperators{Sudoku#Transformations#GridIdentifier,Sudoku#Transformations#GridIdentifier,System#Boolean}#op_GreaterThanOrEqual(Sudoku.Transformations.GridIdentifier,Sudoku.Transformations.GridIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.System#Numerics#IComparisonOperators{Sudoku#Transformations#GridIdentifier,Sudoku#Transformations#GridIdentifier,System#Boolean}#op_LessThanOrEqual(Sudoku.Transformations.GridIdentifier,Sudoku.Transformations.GridIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.op_Explicit(System.Numerics.BigInteger)~Sudoku.Transformations.GridIdentifier">
+            <summary>
+            Explicit cast from <see cref="T:System.Numerics.BigInteger"/> to <see cref="T:Sudoku.Transformations.GridIdentifier"/>.
+            </summary>
+            <param name="identifierValue">The identifier value.</param>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.op_CheckedExplicit(System.Numerics.BigInteger)~Sudoku.Transformations.GridIdentifier">
+            <summary>
+            Explicit cast from <see cref="T:System.Numerics.BigInteger"/> to <see cref="T:Sudoku.Transformations.GenericTransform"/>, with range check.
+            </summary>
+            <param name="identifierValue">The identifier value.</param>
+            <exception cref="T:System.OverflowException">Throws when <paramref name="identifierValue"/> is invalid.</exception>
+        </member>
+        <member name="M:Sudoku.Transformations.GridIdentifier.op_Implicit(Sudoku.Transformations.GridIdentifier)~System.Numerics.BigInteger">
+            <summary>
+            Implicit cast from <see cref="T:Sudoku.Transformations.GridIdentifier"/> to <see cref="T:System.Numerics.BigInteger"/>.
+            </summary>
+            <param name="transform">The transform.</param>
+        </member>
+        <member name="T:Sudoku.Transformations.GridTransformationExtensions">
+            <summary>
+            Provides methods for <see cref="T:Sudoku.Concepts.Grid"/> instances on transformations.
+            </summary>
+            <seealso cref="T:Sudoku.Concepts.Grid"/>
+        </member>
+        <member name="F:Sudoku.Transformations.GridTransformationExtensions.ClockwiseTable">
+            <summary>
+            The table of clockwise rotation.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GridTransformationExtensions.CounterclockwiseTable">
+            <summary>
+            The table of counter-clockwise rotation.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.GridTransformationExtensions.PiRotateTable">
+            <summary>
+            The table of pi-rotation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.Transform(Sudoku.Concepts.Grid@,Sudoku.Transformations.TransformType)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Transform(Sudoku.Transformations.TransformType)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.MirrorLeftRight``1(``0@)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorLeftRight"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.MirrorTopBottom``1(``0@)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorTopBottom"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.MirrorDiagonal``1(``0@)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorDiagonal"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.Transpose``1(``0@)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.Transpose"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.MirrorAntidiagonal``1(``0@)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorAntidiagonal"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.RotateClockwise``1(``0@)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotateClockwise"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.RotateCounterclockwise``1(``0@)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotateCounterclockwise"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.RotatePi``1(``0@)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotatePi"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.SwapDigit``1(``0@,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapDigit(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.SwapHouse``1(``0@,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapHouse(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.SwapChute``1(``0@,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapChute(System.Int32,System.Int32)"/>
+        </member>
+        <member name="T:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$25EDD80A63D287142C5EEC5FEE4D06CD">
+            <summary>
+            Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Transform(Sudoku.Transformations.TransformType)">
+            <summary>
+            Transforms the grid by the specified type.
+            </summary>
+            <param name="transformTypes">
+            The transform types can be applied.
+            </param>
+        </member>
+        <member name="T:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.&lt;M&gt;$9384A8651E054DEAF4C2F586D924DC91">
+            <summary>
+            Provides extension members on <typeparamref name="TGrid"/>,
+            where <typeparamref name="TGrid"/> satisfies <see langword="unmanaged"/>
+            and <see cref="T:Sudoku.Concepts.IInlineArrayGrid`1"/> constraints.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorLeftRight">
+            <summary>
+            Mirror left-right the grid.
+            </summary>
+            <returns>The reference to the current grid.</returns>
+            <remarks>
+            This method will return the reference that is same as the argument,
+            in order to inline multiple transformation operations.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorTopBottom">
+            <summary>
+            Mirror top-bottom the grid.
+            </summary>
+            <returns>The reference to the current grid.</returns>
+            <remarks>
+            This method will return the reference that is same as the argument,
+            in order to inline multiple transformation operations.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorDiagonal">
+            <summary>
+            Mirror diagonal the grid.
+            </summary>
+            <returns>The reference to the current grid.</returns>
+            <remarks>
+            This method will return the reference that is same as the argument,
+            in order to inline multiple transformation operations.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.Transpose">
+            <summary>
+            Transpose the grid.
+            </summary>
+            <returns>The reference to the current grid.</returns>
+            <remarks>
+            This method will return the reference that is same as the argument,
+            in order to inline multiple transformation operations.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorAntidiagonal">
+            <summary>
+            Mirror anti-diagonal the grid.
+            </summary>
+            <returns>The reference to the current grid.</returns>
+            <remarks>
+            This method will return the reference that is same as the argument,
+            in order to inline multiple transformation operations.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotateClockwise">
+            <summary>
+            Rotate the grid clockwise.
+            </summary>
+            <returns>The reference to the current grid.</returns>
+            <remarks>
+            This method will return the reference that is same as the argument,
+            in order to inline multiple transformation operations.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotateCounterclockwise">
+            <summary>
+            Rotate the grid counterclockwise.
+            </summary>
+            <returns>The reference to the current grid.</returns>
+            <remarks>
+            This method will return the reference that is same as the argument,
+            in order to inline multiple transformation operations.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotatePi">
+            <summary>
+            Rotate the grid <c><see cref="F:System.Math.PI"/></c> degrees.
+            </summary>
+            <returns>The reference to the current grid.</returns>
+            <remarks>
+            This method will return the reference that is same as the argument,
+            in order to inline multiple transformation operations.
+            </remarks>
+            <seealso cref="F:System.Math.PI"/>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapDigit(System.Int32,System.Int32)">
+            <summary>
+            Swap two digits.
+            </summary>
+            <param name="digit1">The digit 1 to be swapped.</param>
+            <param name="digit2">The digit 2 to be swapped.</param>
+            <returns>The reference to the current grid.</returns>
+            <exception cref="T:System.ArgumentException">Throws when the puzzle is not solved.</exception>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapHouse(System.Int32,System.Int32)">
+            <summary>
+            Swap to houses.
+            </summary>
+            <param name="houseIndex1">The house 1 to be swapped.</param>
+            <param name="houseIndex2">The house 2 to be swapped.</param>
+            <returns>The reference to the current grid.</returns>
+            <exception cref="T:System.ArgumentException">
+            Throws when two specified house argument is not in valid range (0..27),
+            two houses are not in same house type, or are not swappable.
+            </exception>
+        </member>
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapChute(System.Int32,System.Int32)">
+            <summary>
+            Swap chutes (i.e. mega-rows or mega-columns).
+            </summary>
+            <param name="chuteIndex1">The first chute to be swapped.</param>
+            <param name="chuteIndex2">The second chute to be swapped.</param>
+            <returns>The reference to the current grid.</returns>
+            <exception cref="T:System.ArgumentException">Throws when two specified chute index is not in valid range (0..6).</exception>
+        </member>
+        <member name="T:Sudoku.Transformations.IElementSwappingTransformable`2">
+            <summary>
+            Represents an object that can swap elements of itself.
+            </summary>
+            <typeparam name="TSelf"><self-type-constraint>
+		<para>Indicates the type implementing this interface.</para>
+		<para>
+			This type doesn't use any extra syntax to constraint such usage, but C# will check for it.
+			The type will include a <see langword="where" /> constraint that implements the interface itself
+			to declare such "self constraint" usage:
+			<code><![CDATA[interface ISelfType<TSelf> where TSelf : ISelfType<TSelf>]]></code>
+			In addition, the type should be named <c>TSelf</c> in order to tell type parameters with the others.
+		</para>
+	</self-type-constraint></typeparam>
+            <typeparam name="TElement">The type of each element.</typeparam>
+        </member>
+        <member name="M:Sudoku.Transformations.IElementSwappingTransformable`2.SwapElement(`1,`1)">
+            <summary>
+            Swaps all elements whose values are equal to <paramref name="element1"/> and <paramref name="element2"/>.
+            </summary>
+            <param name="element1">The first element to be swapped.</param>
+            <param name="element2">The second element to be swapped.</param>
+            <returns>The result swapped.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.IElementSwappingTransformable`2.Shuffle">
+            <summary>
+            Try to shuffle <typeparamref name="TSelf"/> instance of elements, keeping equality with the current instance.
+            </summary>
+            <returns>The result shuffled.</returns>
+        </member>
+        <member name="T:Sudoku.Transformations.ITransformable`1">
+            <summary>
+            Represents an object that can be transformed into another kind of value.
+            </summary>
+            <typeparam name="TSelf"><self-type-constraint>
+		<para>Indicates the type implementing this interface.</para>
+		<para>
+			This type doesn't use any extra syntax to constraint such usage, but C# will check for it.
+			The type will include a <see langword="where" /> constraint that implements the interface itself
+			to declare such "self constraint" usage:
+			<code><![CDATA[interface ISelfType<TSelf> where TSelf : ISelfType<TSelf>]]></code>
+			In addition, the type should be named <c>TSelf</c> in order to tell type parameters with the others.
+		</para>
+	</self-type-constraint></typeparam>
+        </member>
+        <member name="M:Sudoku.Transformations.ITransformable`1.RotateClockwise">
+            <summary>
+            Rotate <typeparamref name="TSelf"/> instance clockwisely.
+            </summary>
+            <returns>The result rotated.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.ITransformable`1.RotateCounterclockwise">
+            <summary>
+            Rotate <typeparamref name="TSelf"/> instance counter-clockwisely.
+            </summary>
+            <returns>The result rotated.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.ITransformable`1.RotatePi">
+            <summary>
+            Rotate <typeparamref name="TSelf"/> instance 180 degrees.
+            </summary>
+            <returns>The result rotated.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.ITransformable`1.MirrorLeftRight">
+            <summary>
+            Mirror <typeparamref name="TSelf"/> instance in left-right side.
+            </summary>
+            <returns>The result fliped.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.ITransformable`1.MirrorTopBottom">
+            <summary>
+            Mirror <typeparamref name="TSelf"/> instance in top-bottom side.
+            </summary>
+            <returns>The result fliped.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.ITransformable`1.MirrorDiagonal">
+            <summary>
+            Mirror <typeparamref name="TSelf"/> instance in diagonal.
+            </summary>
+            <returns>The result fliped.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.ITransformable`1.Transpose">
+            <summary>
+            Simply calls <see cref="M:Sudoku.Transformations.ITransformable`1.MirrorDiagonal"/>.
+            </summary>
+            <returns>The result fliped.</returns>
+        </member>
+        <member name="M:Sudoku.Transformations.ITransformable`1.MirrorAntidiagonal">
+            <summary>
+            Mirror <typeparamref name="TSelf"/> instance in anti-diagonal.
+            </summary>
+            <returns>The result fliped.</returns>
+        </member>
+        <member name="T:Sudoku.Transformations.LibraryTransformationExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:Sudoku.IO.Library"/>.
+            </summary>
+            <seealso cref="T:Sudoku.IO.Library"/>
+        </member>
+        <member name="M:Sudoku.Transformations.LibraryTransformationExtensions.RandomReadOneAsync(Sudoku.IO.Library,Sudoku.Transformations.TransformType,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Sudoku.Transformations.LibraryTransformationExtensions.&lt;G&gt;$A803FD7D8659C722C45349B07CA6260C.RandomReadOneAsync(Sudoku.Transformations.TransformType,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="T:Sudoku.Transformations.LibraryTransformationExtensions.&lt;G&gt;$A803FD7D8659C722C45349B07CA6260C.&lt;M&gt;$7648230B5EE6B31661CAF688538A7FC1">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.IO.Library"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Transformations.LibraryTransformationExtensions.&lt;G&gt;$A803FD7D8659C722C45349B07CA6260C.RandomReadOneAsync(Sudoku.Transformations.TransformType,System.Threading.CancellationToken)">
+            <summary>
+            Randomly read one puzzle in the specified file, and return it.
+            </summary>
+            <param name="transformTypes">Indicates the available transform type that the chosen grid can be transformed.</param>
+            <param name="cancellationToken">The cancellation token that can cancel the current asynchronous operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> of <see cref="T:Sudoku.Concepts.Grid"/> instance as the result.</returns>
+            <exception cref="T:System.InvalidOperationException">Throw when the library file is not initialized.</exception>
+        </member>
+        <member name="T:Sudoku.Transformations.TransformType">
+            <summary>
+            Represents a type of transformation.
+            </summary>
+            <remarks><flags-attribute>
+		<para>
+			<i>
+				This type is marked <see cref="T:System.FlagsAttribute" />, which means you can use
+				<see langword="operator" /> | to combine multiple fields.
+			</i>
+		</para>
+	</flags-attribute></remarks>
+        </member>
+        <member name="F:Sudoku.Transformations.TransformType.None">
+            <summary>
+            The placeholder of this type.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.TransformType.DigitSwap">
+            <summary>
+            Indicates the transform type is to swap digits.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.TransformType.RowSwap">
+            <summary>
+            Indicates the transform type is to swap rows.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.TransformType.ColumnSwap">
+            <summary>
+            Indicates the transform type is to swap columns.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.TransformType.BandSwap">
+            <summary>
+            Indicates the transform type is to swap bands.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.TransformType.TowerSwap">
+            <summary>
+            Indicates the transform type is to swap towers.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.TransformType.MirrorLeftRight">
+            <summary>
+            Indicates the transform type is to mirror left and right.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.TransformType.MirrorTopBottom">
+            <summary>
+            Indicates the transform type is to mirror top and bottom.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.TransformType.MirrorDiagonal">
+            <summary>
+            Indicates the transform type is to mirror diagonal.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.TransformType.MirrorAntidiagonal">
+            <summary>
+            Indicates the transform type is to mirror anti-diagonal.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.TransformType.RotateClockwise">
+            <summary>
+            Indicates the transform type is to rotate clockwise.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Transformations.TransformType.RotateCounterclockwise">
+            <summary>
+            Indicates the transform type is to ratate counter-clockwise.
+            </summary>
+        </member>
         <member name="T:Sudoku.Diff.DiffAnalysis">
             <summary>
             Provides a way to analyze difference between two grids.
@@ -14746,1204 +15964,6 @@
         <member name="M:Sudoku.Text.GridBitOutput.GetTextCore``1(``0@,System.String,System.String,System.String)">
             <summary>
             The core method to output text.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Transformations.CantorExpansion">
-            <summary>
-            Provides a way to rank and unrank permutation. The ranking algorithm is called "Cantor Expansion".
-            </summary>
-        </member>
-        <member name="M:Sudoku.Transformations.CantorExpansion.RankRelabeledDigits(System.ReadOnlySpan{System.Int32})">
-            <summary>
-            Rank the current permutation from the base order.
-            </summary>
-            <param name="digits">The digits permutation sequence.</param>
-            <returns>The rank.</returns>
-            <exception cref="T:System.InvalidOperationException">
-            Throws when the permutation has incorrect value that cannot be found in source sequence.
-            </exception>
-        </member>
-        <member name="M:Sudoku.Transformations.CantorExpansion.RankRelabeledLines(System.ReadOnlySpan{System.Int32})">
-            <summary>
-            Rank the current label permutation (row or column labels).
-            </summary>
-            <param name="lines">The permutation sequence.</param>
-            <returns>The rank.</returns>
-            <exception cref="T:System.ArgumentException">
-            Throws when the argument <paramref name="lines"/> doesn't contain 9 elements.
-            </exception>
-            <exception cref="T:System.InvalidOperationException">
-            Throws when the original label contains invalid digits.
-            </exception>
-        </member>
-        <member name="M:Sudoku.Transformations.CantorExpansion.UnrankRelabeledDigits(System.Int32)">
-            <summary>
-            Unrank the permutation via the base order.
-            </summary>
-            <param name="rank">The rank.</param>
-            <returns>The unranked permutation.</returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">Throws when rank is out of range.</exception>
-        </member>
-        <member name="M:Sudoku.Transformations.CantorExpansion.UnrankRelabeledLines(System.Int32)">
-            <summary>
-            Unrank the permutation.
-            </summary>
-            <param name="rank">The rank.</param>
-            <returns>The unranked sequence.</returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">Throws when rank is out of range.</exception>
-        </member>
-        <member name="M:Sudoku.Transformations.CantorExpansion.Factorials(System.Int32)">
-            <summary>
-            Extracts an array of factorial values to optimize calculation.
-            </summary>
-            <param name="n">The number.</param>
-            <returns>The sequence of factorial values (1!, 2!, 3!, etc.).</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.CantorExpansion.Rank3(System.Int32[])">
-            <summary>
-            Rank for 3 lines in a chute.
-            </summary>
-            <param name="perm">The permutation (row indices or column indices).</param>
-            <returns>The rank.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.CantorExpansion.Unrank3(System.Int32)">
-            <summary>
-            Unrank for 3 lines in a chute.
-            </summary>
-            <param name="rank">The rank.</param>
-            <returns>The permutation.</returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">Throws when <paramref name="rank"/> is out of range.</exception>
-        </member>
-        <member name="T:Sudoku.Transformations.ConceptRandomGeneratingExtensions">
-            <summary>
-            Provides with some methods that generates randomized elements or types defined in sudoku basic concepts.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.NextDigit(System.Random)">
-            <inheritdoc cref="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.NextDigit"/>
-        </member>
-        <member name="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.NextCell(System.Random)">
-            <inheritdoc cref="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.NextCell"/>
-        </member>
-        <member name="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.NextHouse(System.Random)">
-            <inheritdoc cref="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.NextHouse"/>
-        </member>
-        <member name="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.RandomlySelect(System.Random,Sudoku.Concepts.CellMap@,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.RandomlySelect(Sudoku.Concepts.CellMap@,System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.RandomlySelect(System.Random,Sudoku.Concepts.CandidateMap@,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.RandomlySelect(Sudoku.Concepts.CandidateMap@,System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.CreateCellMap(System.Random,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.CreateCellMap(System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.CreateCandidateMap(System.Random,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.CreateCandidateMap(System.Int32)"/>
-        </member>
-        <member name="T:Sudoku.Transformations.ConceptRandomGeneratingExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.&lt;M&gt;$29C0070C9E480B242E1A2897065AD833">
-            <summary>
-            Provides extension members on <see cref="T:System.Random"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.NextDigit">
-            <summary>
-            Returns a random integer that is within valid digit range (0..9).
-            </summary>
-            <returns>
-            An integer that represents a valid <see cref="T:System.Int32"/>.
-            </returns>
-        </member>
-        <member name="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.NextCell">
-            <summary>
-            Returns a random integer that is within valid cell range (0..81).
-            </summary>
-            <returns>
-            An integer that represents a valid <see cref="T:System.Int32"/>.
-            </returns>
-        </member>
-        <member name="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.NextHouse">
-            <summary>
-            Returns a random integer that is within valid house range (0..27).
-            </summary>
-            <returns>
-            An integer that represents a valid <see cref="T:System.Int32"/>.
-            </returns>
-        </member>
-        <member name="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.RandomlySelect(Sudoku.Concepts.CellMap@,System.Int32)">
-            <summary>
-            Randomly select the specified number of elements from the current collection.
-            </summary>
-            <param name="cells">The cells to be chosen.</param>
-            <param name="count">The desired number of elements.</param>
-            <returns>The specified number of elements returned, represented as a <see cref="T:Sudoku.Concepts.CellMap"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.RandomlySelect(Sudoku.Concepts.CandidateMap@,System.Int32)">
-            <summary>
-            Randomly select the specified number of elements from the current collection.
-            </summary>
-            <param name="cells">The cells to be chosen.</param>
-            <param name="count">The desired number of elements.</param>
-            <returns>The specified number of elements returned, represented as a <see cref="T:Sudoku.Concepts.CandidateMap"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.CreateCellMap(System.Int32)">
-            <summary>
-            Creates a <see cref="T:Sudoku.Concepts.CellMap"/> instance, with the specified number of <see cref="T:System.Int32"/>s stored in the collection.
-            </summary>
-            <param name="count">The desired number of elements.</param>
-            <returns>A <see cref="T:Sudoku.Concepts.CellMap"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.ConceptRandomGeneratingExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.CreateCandidateMap(System.Int32)">
-            <summary>
-            Creates a <see cref="T:Sudoku.Concepts.CandidateMap"/> instance, with the specified number of <see cref="T:System.Int32"/>s stored in the collection.
-            </summary>
-            <param name="count">The desired number of elements.</param>
-            <returns>A <see cref="T:Sudoku.Concepts.CandidateMap"/> instance.</returns>
-        </member>
-        <member name="T:Sudoku.Transformations.GenericTransform">
-            <summary>
-            Represents a generic transform that includes the ranks of morphing types.
-            </summary>
-            <param name="TransposeRank">Indicates the rank of transpose.</param>
-            <param name="RelabeledRowsRank">Indicates the rank of relabeled rows.</param>
-            <param name="RelabeledColumnsRank">Indicates the rank of relabeled columns.</param>
-            <param name="RelabeledDigitsRank">Indicates the rank of relabeled digits.</param>
-            <completionlist cref="T:Sudoku.Transformations.GenericTransform"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Represents a generic transform that includes the ranks of morphing types.
-            </summary>
-            <param name="TransposeRank">Indicates the rank of transpose.</param>
-            <param name="RelabeledRowsRank">Indicates the rank of relabeled rows.</param>
-            <param name="RelabeledColumnsRank">Indicates the rank of relabeled columns.</param>
-            <param name="RelabeledDigitsRank">Indicates the rank of relabeled digits.</param>
-            <completionlist cref="T:Sudoku.Transformations.GenericTransform"/>
-        </member>
-        <member name="P:Sudoku.Transformations.GenericTransform.TransposeRank">
-            <summary>Indicates the rank of transpose.</summary>
-        </member>
-        <member name="P:Sudoku.Transformations.GenericTransform.RelabeledRowsRank">
-            <summary>Indicates the rank of relabeled rows.</summary>
-        </member>
-        <member name="P:Sudoku.Transformations.GenericTransform.RelabeledColumnsRank">
-            <summary>Indicates the rank of relabeled columns.</summary>
-        </member>
-        <member name="P:Sudoku.Transformations.GenericTransform.RelabeledDigitsRank">
-            <summary>Indicates the rank of relabeled digits.</summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GenericTransform.Equivalent">
-            <summary>
-            Represents equivalent transform (no transform).
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GenericTransform.ClockwiseRotate90Degrees">
-            <summary>
-            Represents a transform that rotates 90 degrees clockwise.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GenericTransform.ClockwiseRotate180Degrees">
-            <summary>
-            Represents a transform that rotates 180 degrees clockwise.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GenericTransform.ClockwiseRotate270Degrees">
-            <summary>
-            Represents a transform that rotates 270 degrees clockwise.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GenericTransform.CounterclockwiseRotate90Degrees">
-            <summary>
-            Represents a transform that rotates 90 degrees counterclockwise.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GenericTransform.CounterclockwiseRotate180Degrees">
-            <summary>
-            Represents a transform that rotates 180 degrees counterclockwise.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GenericTransform.CounterclockwiseRotate270Degrees">
-            <summary>
-            Represents a transform that rotates 270 degrees counterclockwise.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GenericTransform.MirrorLeftRight">
-            <summary>
-            Represents a transform that mirrors left-right side.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GenericTransform.MirrorTopBottom">
-            <summary>
-            Represents a transform that mirrors top-bottom side.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GenericTransform.MirrorDiagonal">
-            <summary>
-            Represents a transform that mirrors diagonal.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GenericTransform.MirrorAntidiagonal">
-            <summary>
-            Represents a transform that mirrors anti-diagonal.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.#ctor(System.Int32,System.Index,System.Index,System.Index)">
-            <summary>
-            Initializes a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.
-            </summary>
-            <param name="transposeRank">
-            <inheritdoc cref="M:Sudoku.Transformations.GenericTransform.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)" path="/param[@name='TransposeRank']"/>
-            </param>
-            <param name="relabeledRowsRank">
-            <inheritdoc cref="M:Sudoku.Transformations.GenericTransform.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)" path="/param[@name='RelabeledRowsRank']"/>
-            </param>
-            <param name="relabeledColumnsRank">
-            <inheritdoc cref="M:Sudoku.Transformations.GenericTransform.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)" path="/param[@name='RelabeledColumnsRank']"/>
-            </param>
-            <param name="relabeledDigitsRank">
-            <inheritdoc cref="M:Sudoku.Transformations.GenericTransform.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)" path="/param[@name='RelabeledDigitsRank']"/>
-            </param>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.#ctor(System.Int64)">
-            <summary>
-            Initializes a <see cref="T:Sudoku.Transformations.GenericTransform"/> via the base-mixed rank.
-            </summary>
-            <param name="rank">The base-mixed rank.</param>
-        </member>
-        <member name="P:Sudoku.Transformations.GenericTransform.ShouldTranspose">
-            <summary>
-            Indicates whether to transpose.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Transformations.GenericTransform.Rank">
-            <summary>
-            Indicates the base-mixed rank.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Transformations.GenericTransform.RowIndicesRelabeled">
-            <summary>
-            Represents a value that displays relabeled row indices.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Transformations.GenericTransform.ColumnIndicesRelabeled">
-            <summary>
-            Represents a value that displays relabeled column indices.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Transformations.GenericTransform.DigitsRelabeled">
-            <summary>
-            Represents a value that displays relabeled digits.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.Equals(Sudoku.Transformations.GenericTransform@)">
-            <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.CompareTo(Sudoku.Transformations.GenericTransform@)">
-            <inheritdoc cref="M:System.IComparable`1.CompareTo(`0)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.System#IComparable{Sudoku#Transformations#GenericTransform}#CompareTo(Sudoku.Transformations.GenericTransform)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.Sudoku#Transformations#ITransformable{Sudoku#Transformations#GenericTransform}#RotateClockwise">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.Sudoku#Transformations#ITransformable{Sudoku#Transformations#GenericTransform}#MirrorLeftRight">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.Sudoku#Transformations#ITransformable{Sudoku#Transformations#GenericTransform}#MirrorTopBottom">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.Sudoku#Transformations#ITransformable{Sudoku#Transformations#GenericTransform}#MirrorDiagonal">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.Sudoku#Transformations#ITransformable{Sudoku#Transformations#GenericTransform}#MirrorAntidiagonal">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.PrintMembers(System.Text.StringBuilder)">
-            <target name="method" cref="M:Sudoku.Transformations.GenericTransform.PrintMembers(System.Text.StringBuilder)">
-				<summary>
-					Provides an easy way to concatenate output members inside a <see langword="record" />
-					or a <see langword="record struct" /> type.
-				</summary>
-				<param name="builder">
-					A <see cref="T:System.Text.StringBuilder" /> instance to concatenate values.
-				</param>
-				<returns>
-					A <see cref="T:System.Boolean" /> value indicating whether the method should be consumed by compiler,
-					by implementing to-string method <c>ToString</c>.
-				</returns>
-				<remarks>
-					<para>
-						By design of <see langword="record" /> and <see langword="record struct" /> types,
-						emit text should be formatted as follows:
-						<code><![CDATA[RecordType { Property1 = Value1, Property2 = Value2, Property3 = { NestedProperty = Value3 } }]]></code>
-					</para>
-					<para>
-						This method won't emit type name and curly brackets. If you want to customize emit text,
-						you can only change values inside a pair of brackets.
-					</para>
-					<para>
-						The suggested implementation is like this:
-						<code><![CDATA[private bool PrintMembers(StringBuilder builder)
-{
-    builder.Append($"{nameof(Property1)} = {Property1}");
-    builder.Append(", ");
-    builder.Append($"{nameof(Property2)} = {Property2}");
-    builder.Append(", ");
-    builder.Append($"{nameof(Property3)} = {{ {Property3} }}");
-    return true;
-}]]>
-						</code>
-					</para>
-				</remarks>
-			</target>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.op_OnesComplement(Sudoku.Transformations.GenericTransform@)">
-            <inheritdoc cref="M:System.Numerics.IBitwiseOperators`3.op_OnesComplement(`0)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.op_Equality(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
-            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.op_Inequality(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
-            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.op_GreaterThan(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThan(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.op_LessThan(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThan(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.op_GreaterThanOrEqual(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThanOrEqual(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.op_LessThanOrEqual(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThanOrEqual(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.op_BitwiseAnd(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
-            <inheritdoc cref="M:System.Numerics.IBitwiseOperators`3.op_BitwiseAnd(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.op_BitwiseOr(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
-            <inheritdoc cref="M:System.Numerics.IBitwiseOperators`3.op_BitwiseOr(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.op_ExclusiveOr(Sudoku.Transformations.GenericTransform@,Sudoku.Transformations.GenericTransform@)">
-            <inheritdoc cref="M:System.Numerics.IBitwiseOperators`3.op_ExclusiveOr(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IEqualityOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,System#Boolean}#op_Equality(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IEqualityOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,System#Boolean}#op_Inequality(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IComparisonOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,System#Boolean}#op_GreaterThan(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IComparisonOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,System#Boolean}#op_LessThan(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IComparisonOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,System#Boolean}#op_GreaterThanOrEqual(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IComparisonOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,System#Boolean}#op_LessThanOrEqual(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IBitwiseOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform}#op_BitwiseAnd(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IBitwiseOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform}#op_BitwiseOr(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IBitwiseOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform}#op_ExclusiveOr(Sudoku.Transformations.GenericTransform,Sudoku.Transformations.GenericTransform)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.System#Numerics#IBitwiseOperators{Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform,Sudoku#Transformations#GenericTransform}#op_OnesComplement(Sudoku.Transformations.GenericTransform)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.op_Explicit(System.Int64)~Sudoku.Transformations.GenericTransform">
-            <summary>
-            Explicit cast from <see cref="T:System.Int64"/> to <see cref="T:Sudoku.Transformations.GenericTransform"/>.
-            </summary>
-            <param name="baseMixedRank">The base-mixed rank.</param>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.op_CheckedExplicit(System.Int64)~Sudoku.Transformations.GenericTransform">
-            <summary>
-            Explicit cast from <see cref="T:System.Int64"/> to <see cref="T:Sudoku.Transformations.GenericTransform"/>, with range check.
-            </summary>
-            <param name="baseMixedRank">The base-mixed rank.</param>
-            <exception cref="T:System.OverflowException">Throws when <paramref name="baseMixedRank"/> is invalid.</exception>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.op_Implicit(Sudoku.Transformations.GenericTransform)~System.Int64">
-            <summary>
-            Implicit cast from <see cref="T:Sudoku.Transformations.GenericTransform"/> to <see cref="T:System.Int64"/>.
-            </summary>
-            <param name="transform">The transform.</param>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.SwapDigit(System.Int32,System.Int32)">
-            <summary>
-            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with two digits swapped.
-            </summary>
-            <param name="digit1">Indicates the digit 1 to be swapped.</param>
-            <param name="digit2">Indicates the digit 2 to be swapped.</param>
-            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.SwapRow(System.Int32,System.Int32)">
-            <summary>
-            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with two rows swapped.
-            </summary>
-            <param name="rowIndex1">Indicates the row 1 to be swapped.</param>
-            <param name="rowIndex2">Indicates the row 2 to be swapped.</param>
-            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.SwapColumn(System.Int32,System.Int32)">
-            <summary>
-            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with two columns swapped.
-            </summary>
-            <param name="columnIndex1">Indicates the column 1 to be swapped.</param>
-            <param name="columnIndex2">Indicates the column 2 to be swapped.</param>
-            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.SwapBand(System.Int32,System.Int32)">
-            <summary>
-            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with two bands swapped.
-            </summary>
-            <param name="bandIndex1">Indicates the band 1 to be swapped.</param>
-            <param name="bandIndex2">Indicates the band 2 to be swapped.</param>
-            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.SwapTower(System.Int32,System.Int32)">
-            <summary>
-            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with two towers swapped.
-            </summary>
-            <param name="towerIndex1">Indicates the tower 1 to be swapped.</param>
-            <param name="towerIndex2">Indicates the tower 2 to be swapped.</param>
-            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.Transpose(System.Boolean)">
-            <summary>
-            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with specified value indicating whether to transpose.
-            </summary>
-            <param name="transpose">Whether to transpose.</param>
-            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.RelabelRows(System.ReadOnlySpan{System.Int32})">
-            <summary>
-            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with specified relabeled rows.
-            </summary>
-            <param name="rows">The relabeled rows.</param>
-            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.RelabelColumns(System.ReadOnlySpan{System.Int32})">
-            <summary>
-            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with specified relabeled columns.
-            </summary>
-            <param name="columns">The relabeled columns.</param>
-            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.GenericTransform.RelabelDigits(System.ReadOnlySpan{System.Int32})">
-            <summary>
-            Creates a <see cref="T:Sudoku.Transformations.GenericTransform"/> instance with specified relabeled digits.
-            </summary>
-            <param name="digits">The relabeled digits.</param>
-            <returns>A <see cref="T:Sudoku.Transformations.GenericTransform"/> instance.</returns>
-        </member>
-        <member name="T:Sudoku.Transformations.GridGenericTransformExtensions">
-            <summary>
-            Provides with extension methods on <see cref="T:Sudoku.Concepts.Grid"/>.
-            </summary>
-            <seealso cref="T:Sudoku.Concepts.Grid"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.Apply(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Transformations.GenericTransform@)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Transformations.GenericTransform@)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)"/>
-        </member>
-        <member name="T:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$25EDD80A63D287142C5EEC5FEE4D06CD">
-            <summary>
-            Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Transformations.GenericTransform@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridGenericTransformExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Transformations.GenericTransform@)">
-            <summary>
-            Applies transform with the specified <see cref="T:Sudoku.Transformations.GenericTransform"/>.
-            </summary>
-            <param name="transform">The transform.</param>
-        </member>
-        <member name="M:Sudoku.Transformations.GridGenericTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Transformations.GenericTransform@)">
-            <summary>
-            Applies the grid with specified transform.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="transform">The transform.</param>
-            <returns>The target grid.</returns>
-        </member>
-        <member name="T:Sudoku.Transformations.GridIdentifier">
-            <summary>
-            Represents an identifier that describes the transforming cases.
-            </summary>
-            <remarks>
-            <para><developer-notes>
-		<para>
-			<b>Developer Notes</b>
-		</para>
-	</developer-notes></para>
-            <para>
-            This data type is used to represent an encoding of a transformation.
-            It stores a global mask derived from a Sudoku puzzle through a minimum lexicographic order (min-lex) mapping.
-            The backing identifier is <b>globally unique</b>: identical identifiers represent identical grids,
-            while different identifiers represent different grids.
-            </para>
-            <para>
-            We summarize the data structure into three parts:
-            <list type="number">
-            <item>The global identifier of the minimum lexicographic (min-lex) form</item>
-            <item>The transformation form</item>
-            <item>The list of empty cell positions</item>
-            </list>
-            </para>
-            <para>
-            There are approximately <b>5.4e9</b> inequivalent (essentially different, ED) Sudoku solutions in total.
-            By listing them in min-lex order, we can perform both sorting and deduplication. This part can be stored using 33 bits.
-            </para>
-            <para>
-            For the transformation form, we encode the following four types of transformations:
-            <list type="number">
-            <item><b>Transpose</b> - swap row and column indices (i.e., <c>(x, y) -&gt; (y, x)</c>)</item>
-            <item><b>Row relabelling</b> - relabel rows 1-9 to target positions</item>
-            <item><b>Column relabelling</b> - relabel columns 1-9 to target positions</item>
-            <item><b>Digit relabelling</b> - relabel digits 1-9 to target positions</item>
-            </list>
-            </para>
-            <para>
-            All equivalent transformations of puzzles can be achieved using the above four types,
-            so this scheme can represent all transformation cases.
-            </para>
-            <para>
-            The total number of cases for these four transformations is 2, 1296, 1296, and 362880, respectively.
-            Multiplying them together gives the total number of possible cases, which is approximately <b>1.219e12</b>.
-            This value covers all possible transformation cases.
-            By storing the four transformation modes in bit form, the result can be represented by a single number, requiring 41 bits.
-            </para>
-            <para>
-            Finally, we need the list of empty cell positions. We only need 0 to represent an empty cell and 1 to represent a digit.
-            This part requires 81 bits.
-            </para>
-            <para>
-            Therefore, the entire data structure theoretically requires only <b>33 + 41 + 81 = 155</b> bits.
-            However, to align with bit size boundaries, this data structure uses the inline array feature and stores the data in 5 integers,
-            which can theoretically hold 160 bits.
-            </para>
-            </remarks>
-        </member>
-        <member name="F:Sudoku.Transformations.GridIdentifier.AllPermutationsCount">
-            <summary>
-            Indicates the numebr of all transformations permutation cases.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GridIdentifier.InequivalentSolutionsCount">
-            <summary>
-            Indicates the number of all inequivalent permutations (i.e. solutions).
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GridIdentifier.DeficiencyPermutationsCount">
-            <summary>
-            Indicates the number of deficiency permutations.
-            </summary>
-            <remarks>
-            <para>
-            The reason that there is a deficiency of grids is due to the fact
-            that some of the permutations create automorphic grids. Automorphic grids are the permutations which have duplicates.
-            </para>
-            <para>
-            The total number of sudoku permutations is equal to <b>6,671,248,172,291,458,990,080</b> (approximately <b>6.67e21</b>),
-            which is <b>5,472,730,538 * (2 * 1,296 * 1,296 * 362,880) - 344,420,270,386,053,120</b>,
-            where all constants in this expression can be found in this type.
-            </para>
-            </remarks>
-        </member>
-        <member name="F:Sudoku.Transformations.GridIdentifier.GeometryPermutationsCount">
-            <summary>
-            Indicates the number of geometry permutations.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GridIdentifier.RelabelLinesPermutationsCount">
-            <summary>
-            Indicates the number of relabelling row cases.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GridIdentifier.TransposePermutationsCount">
-            <summary>
-            Indicates the number of transposing cases.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GridIdentifier.RelabelDigitsPermutationsCount">
-            <summary>
-            Indicates the number of relabelling digit cases.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GridIdentifier.RequiredBitsCount">
-            <summary>
-            Indicates the number of required bits.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GridIdentifier.MinlexPartBitsCount">
-            <summary>
-            Indicates the number of bits used in min-lex part.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GridIdentifier.TransformationPartBitsCount">
-            <summary>
-            Indicates the number of bits used in transformation part.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GridIdentifier.CellStatePartBitsCount">
-            <summary>
-            Indicates the number of bits used in cell states part.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GridIdentifier.MinlexPartShiftAmount">
-            <summary>
-            Indicates the shift amount of min-lex part.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GridIdentifier.TransformationPartShiftAmount">
-            <summary>
-            Indicates the shift amount of transformation part.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GridIdentifier.FixedLength">
-            <summary>
-            Indicates the fixed serialization length.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GridIdentifier.Characters">
-            <summary>
-            Indicates characters.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GridIdentifier._elements">
-            <summary>
-            Indicates the backing elements.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.#ctor(Sudoku.Concepts.Grid@)">
-            <summary>
-            Creates a <see cref="T:Sudoku.Transformations.GridIdentifier"/> via a grid.
-            </summary>
-            <param name="grid">The grid.</param>
-            <exception cref="T:System.ArgumentException">Throws when the grid is invalid (not unique).</exception>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.#ctor(System.Numerics.BigInteger)">
-            <summary>
-            Initializes a <see cref="T:Sudoku.Transformations.GridIdentifier"/> instance.
-            </summary>
-            <param name="value">The value.</param>
-        </member>
-        <member name="P:Sudoku.Transformations.GridIdentifier.Index">
-            <summary>
-            Indicates the number of global index.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Transformations.GridIdentifier.GivenCells">
-            <summary>
-            Indicates given cells.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Transformations.GridIdentifier.Transform">
-            <summary>
-            Indicates target tranform.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Transformations.GridIdentifier.IdentifierValue">
-            <summary>
-            Represents identifier value.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Transformations.GridIdentifier.OriginalGrid">
-            <summary>
-            Indicates the original grid.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Transformations.GridIdentifier.TargetGrid">
-            <summary>
-            Indicates the target grid applied such transformations.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.Equals(System.Object)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.Equals(Sudoku.Transformations.GridIdentifier@)">
-            <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.GetHashCode">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.CompareTo(Sudoku.Transformations.GridIdentifier@)">
-            <inheritdoc cref="M:System.IComparable`1.CompareTo(`0)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.ToString">
-            <inheritdoc cref="M:System.Object.ToString"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.System#IEquatable{Sudoku#Transformations#GridIdentifier}#Equals(Sudoku.Transformations.GridIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.System#IComparable{Sudoku#Transformations#GridIdentifier}#CompareTo(Sudoku.Transformations.GridIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.GetSlice(System.Int32,System.Int32)">
-            <summary>
-            Gets a <see cref="T:System.Collections.BitArray"/> instance that displays the slice.
-            </summary>
-            <param name="startIndex">The start index.</param>
-            <param name="count">The number of bits.</param>
-            <returns>A <see cref="T:System.Collections.BitArray"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.TryParse(System.String,Sudoku.Transformations.GridIdentifier@)">
-            <inheritdoc cref="M:System.IParsable`1.TryParse(System.String,System.IFormatProvider,`0@)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.Parse(System.String)">
-            <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.System#IParsable{Sudoku#Transformations#GridIdentifier}#TryParse(System.String,System.IFormatProvider,Sudoku.Transformations.GridIdentifier@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.System#IParsable{Sudoku#Transformations#GridIdentifier}#Parse(System.String,System.IFormatProvider)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.op_Equality(Sudoku.Transformations.GridIdentifier@,Sudoku.Transformations.GridIdentifier@)">
-            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.op_Inequality(Sudoku.Transformations.GridIdentifier@,Sudoku.Transformations.GridIdentifier@)">
-            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.op_GreaterThan(Sudoku.Transformations.GridIdentifier@,Sudoku.Transformations.GridIdentifier@)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThan(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.op_LessThan(Sudoku.Transformations.GridIdentifier@,Sudoku.Transformations.GridIdentifier@)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThan(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.op_GreaterThanOrEqual(Sudoku.Transformations.GridIdentifier@,Sudoku.Transformations.GridIdentifier@)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThanOrEqual(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.op_LessThanOrEqual(Sudoku.Transformations.GridIdentifier@,Sudoku.Transformations.GridIdentifier@)">
-            <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThanOrEqual(`0,`1)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.System#Numerics#IEqualityOperators{Sudoku#Transformations#GridIdentifier,Sudoku#Transformations#GridIdentifier,System#Boolean}#op_Equality(Sudoku.Transformations.GridIdentifier,Sudoku.Transformations.GridIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.System#Numerics#IEqualityOperators{Sudoku#Transformations#GridIdentifier,Sudoku#Transformations#GridIdentifier,System#Boolean}#op_Inequality(Sudoku.Transformations.GridIdentifier,Sudoku.Transformations.GridIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.System#Numerics#IComparisonOperators{Sudoku#Transformations#GridIdentifier,Sudoku#Transformations#GridIdentifier,System#Boolean}#op_GreaterThan(Sudoku.Transformations.GridIdentifier,Sudoku.Transformations.GridIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.System#Numerics#IComparisonOperators{Sudoku#Transformations#GridIdentifier,Sudoku#Transformations#GridIdentifier,System#Boolean}#op_LessThan(Sudoku.Transformations.GridIdentifier,Sudoku.Transformations.GridIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.System#Numerics#IComparisonOperators{Sudoku#Transformations#GridIdentifier,Sudoku#Transformations#GridIdentifier,System#Boolean}#op_GreaterThanOrEqual(Sudoku.Transformations.GridIdentifier,Sudoku.Transformations.GridIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.System#Numerics#IComparisonOperators{Sudoku#Transformations#GridIdentifier,Sudoku#Transformations#GridIdentifier,System#Boolean}#op_LessThanOrEqual(Sudoku.Transformations.GridIdentifier,Sudoku.Transformations.GridIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.op_Explicit(System.Numerics.BigInteger)~Sudoku.Transformations.GridIdentifier">
-            <summary>
-            Explicit cast from <see cref="T:System.Numerics.BigInteger"/> to <see cref="T:Sudoku.Transformations.GridIdentifier"/>.
-            </summary>
-            <param name="identifierValue">The identifier value.</param>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.op_CheckedExplicit(System.Numerics.BigInteger)~Sudoku.Transformations.GridIdentifier">
-            <summary>
-            Explicit cast from <see cref="T:System.Numerics.BigInteger"/> to <see cref="T:Sudoku.Transformations.GenericTransform"/>, with range check.
-            </summary>
-            <param name="identifierValue">The identifier value.</param>
-            <exception cref="T:System.OverflowException">Throws when <paramref name="identifierValue"/> is invalid.</exception>
-        </member>
-        <member name="M:Sudoku.Transformations.GridIdentifier.op_Implicit(Sudoku.Transformations.GridIdentifier)~System.Numerics.BigInteger">
-            <summary>
-            Implicit cast from <see cref="T:Sudoku.Transformations.GridIdentifier"/> to <see cref="T:System.Numerics.BigInteger"/>.
-            </summary>
-            <param name="transform">The transform.</param>
-        </member>
-        <member name="T:Sudoku.Transformations.GridTransformationExtensions">
-            <summary>
-            Provides methods for <see cref="T:Sudoku.Concepts.Grid"/> instances on transformations.
-            </summary>
-            <seealso cref="T:Sudoku.Concepts.Grid"/>
-        </member>
-        <member name="F:Sudoku.Transformations.GridTransformationExtensions.ClockwiseTable">
-            <summary>
-            The table of clockwise rotation.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GridTransformationExtensions.CounterclockwiseTable">
-            <summary>
-            The table of counter-clockwise rotation.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.GridTransformationExtensions.PiRotateTable">
-            <summary>
-            The table of pi-rotation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.Transform(Sudoku.Concepts.Grid@,Sudoku.Transformations.TransformType)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Transform(Sudoku.Transformations.TransformType)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.MirrorLeftRight``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorLeftRight"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.MirrorTopBottom``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorTopBottom"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.MirrorDiagonal``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorDiagonal"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.Transpose``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.Transpose"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.MirrorAntidiagonal``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorAntidiagonal"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.RotateClockwise``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotateClockwise"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.RotateCounterclockwise``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotateCounterclockwise"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.RotatePi``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotatePi"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.SwapDigit``1(``0@,System.Int32,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapDigit(System.Int32,System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.SwapHouse``1(``0@,System.Int32,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapHouse(System.Int32,System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.SwapChute``1(``0@,System.Int32,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapChute(System.Int32,System.Int32)"/>
-        </member>
-        <member name="T:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$25EDD80A63D287142C5EEC5FEE4D06CD">
-            <summary>
-            Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Transform(Sudoku.Transformations.TransformType)">
-            <summary>
-            Transforms the grid by the specified type.
-            </summary>
-            <param name="transformTypes">
-            The transform types can be applied.
-            </param>
-        </member>
-        <member name="T:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.&lt;M&gt;$9384A8651E054DEAF4C2F586D924DC91">
-            <summary>
-            Provides extension members on <typeparamref name="TGrid"/>,
-            where <typeparamref name="TGrid"/> satisfies <see langword="unmanaged"/>
-            and <see cref="T:Sudoku.Concepts.IInlineArrayGrid`1"/> constraints.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorLeftRight">
-            <summary>
-            Mirror left-right the grid.
-            </summary>
-            <returns>The reference to the current grid.</returns>
-            <remarks>
-            This method will return the reference that is same as the argument,
-            in order to inline multiple transformation operations.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorTopBottom">
-            <summary>
-            Mirror top-bottom the grid.
-            </summary>
-            <returns>The reference to the current grid.</returns>
-            <remarks>
-            This method will return the reference that is same as the argument,
-            in order to inline multiple transformation operations.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorDiagonal">
-            <summary>
-            Mirror diagonal the grid.
-            </summary>
-            <returns>The reference to the current grid.</returns>
-            <remarks>
-            This method will return the reference that is same as the argument,
-            in order to inline multiple transformation operations.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.Transpose">
-            <summary>
-            Transpose the grid.
-            </summary>
-            <returns>The reference to the current grid.</returns>
-            <remarks>
-            This method will return the reference that is same as the argument,
-            in order to inline multiple transformation operations.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorAntidiagonal">
-            <summary>
-            Mirror anti-diagonal the grid.
-            </summary>
-            <returns>The reference to the current grid.</returns>
-            <remarks>
-            This method will return the reference that is same as the argument,
-            in order to inline multiple transformation operations.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotateClockwise">
-            <summary>
-            Rotate the grid clockwise.
-            </summary>
-            <returns>The reference to the current grid.</returns>
-            <remarks>
-            This method will return the reference that is same as the argument,
-            in order to inline multiple transformation operations.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotateCounterclockwise">
-            <summary>
-            Rotate the grid counterclockwise.
-            </summary>
-            <returns>The reference to the current grid.</returns>
-            <remarks>
-            This method will return the reference that is same as the argument,
-            in order to inline multiple transformation operations.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotatePi">
-            <summary>
-            Rotate the grid <c><see cref="F:System.Math.PI"/></c> degrees.
-            </summary>
-            <returns>The reference to the current grid.</returns>
-            <remarks>
-            This method will return the reference that is same as the argument,
-            in order to inline multiple transformation operations.
-            </remarks>
-            <seealso cref="F:System.Math.PI"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapDigit(System.Int32,System.Int32)">
-            <summary>
-            Swap two digits.
-            </summary>
-            <param name="digit1">The digit 1 to be swapped.</param>
-            <param name="digit2">The digit 2 to be swapped.</param>
-            <returns>The reference to the current grid.</returns>
-            <exception cref="T:System.ArgumentException">Throws when the puzzle is not solved.</exception>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapHouse(System.Int32,System.Int32)">
-            <summary>
-            Swap to houses.
-            </summary>
-            <param name="houseIndex1">The house 1 to be swapped.</param>
-            <param name="houseIndex2">The house 2 to be swapped.</param>
-            <returns>The reference to the current grid.</returns>
-            <exception cref="T:System.ArgumentException">
-            Throws when two specified house argument is not in valid range (0..27),
-            two houses are not in same house type, or are not swappable.
-            </exception>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapChute(System.Int32,System.Int32)">
-            <summary>
-            Swap chutes (i.e. mega-rows or mega-columns).
-            </summary>
-            <param name="chuteIndex1">The first chute to be swapped.</param>
-            <param name="chuteIndex2">The second chute to be swapped.</param>
-            <returns>The reference to the current grid.</returns>
-            <exception cref="T:System.ArgumentException">Throws when two specified chute index is not in valid range (0..6).</exception>
-        </member>
-        <member name="T:Sudoku.Transformations.IElementSwappingTransformable`2">
-            <summary>
-            Represents an object that can swap elements of itself.
-            </summary>
-            <typeparam name="TSelf"><self-type-constraint>
-		<para>Indicates the type implementing this interface.</para>
-		<para>
-			This type doesn't use any extra syntax to constraint such usage, but C# will check for it.
-			The type will include a <see langword="where" /> constraint that implements the interface itself
-			to declare such "self constraint" usage:
-			<code><![CDATA[interface ISelfType<TSelf> where TSelf : ISelfType<TSelf>]]></code>
-			In addition, the type should be named <c>TSelf</c> in order to tell type parameters with the others.
-		</para>
-	</self-type-constraint></typeparam>
-            <typeparam name="TElement">The type of each element.</typeparam>
-        </member>
-        <member name="M:Sudoku.Transformations.IElementSwappingTransformable`2.SwapElement(`1,`1)">
-            <summary>
-            Swaps all elements whose values are equal to <paramref name="element1"/> and <paramref name="element2"/>.
-            </summary>
-            <param name="element1">The first element to be swapped.</param>
-            <param name="element2">The second element to be swapped.</param>
-            <returns>The result swapped.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.IElementSwappingTransformable`2.Shuffle">
-            <summary>
-            Try to shuffle <typeparamref name="TSelf"/> instance of elements, keeping equality with the current instance.
-            </summary>
-            <returns>The result shuffled.</returns>
-        </member>
-        <member name="T:Sudoku.Transformations.ITransformable`1">
-            <summary>
-            Represents an object that can be transformed into another kind of value.
-            </summary>
-            <typeparam name="TSelf"><self-type-constraint>
-		<para>Indicates the type implementing this interface.</para>
-		<para>
-			This type doesn't use any extra syntax to constraint such usage, but C# will check for it.
-			The type will include a <see langword="where" /> constraint that implements the interface itself
-			to declare such "self constraint" usage:
-			<code><![CDATA[interface ISelfType<TSelf> where TSelf : ISelfType<TSelf>]]></code>
-			In addition, the type should be named <c>TSelf</c> in order to tell type parameters with the others.
-		</para>
-	</self-type-constraint></typeparam>
-        </member>
-        <member name="M:Sudoku.Transformations.ITransformable`1.RotateClockwise">
-            <summary>
-            Rotate <typeparamref name="TSelf"/> instance clockwisely.
-            </summary>
-            <returns>The result rotated.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.ITransformable`1.RotateCounterclockwise">
-            <summary>
-            Rotate <typeparamref name="TSelf"/> instance counter-clockwisely.
-            </summary>
-            <returns>The result rotated.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.ITransformable`1.RotatePi">
-            <summary>
-            Rotate <typeparamref name="TSelf"/> instance 180 degrees.
-            </summary>
-            <returns>The result rotated.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.ITransformable`1.MirrorLeftRight">
-            <summary>
-            Mirror <typeparamref name="TSelf"/> instance in left-right side.
-            </summary>
-            <returns>The result fliped.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.ITransformable`1.MirrorTopBottom">
-            <summary>
-            Mirror <typeparamref name="TSelf"/> instance in top-bottom side.
-            </summary>
-            <returns>The result fliped.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.ITransformable`1.MirrorDiagonal">
-            <summary>
-            Mirror <typeparamref name="TSelf"/> instance in diagonal.
-            </summary>
-            <returns>The result fliped.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.ITransformable`1.Transpose">
-            <summary>
-            Simply calls <see cref="M:Sudoku.Transformations.ITransformable`1.MirrorDiagonal"/>.
-            </summary>
-            <returns>The result fliped.</returns>
-        </member>
-        <member name="M:Sudoku.Transformations.ITransformable`1.MirrorAntidiagonal">
-            <summary>
-            Mirror <typeparamref name="TSelf"/> instance in anti-diagonal.
-            </summary>
-            <returns>The result fliped.</returns>
-        </member>
-        <member name="T:Sudoku.Transformations.LibraryTransformationExtensions">
-            <summary>
-            Provides with extension methods on <see cref="T:Sudoku.IO.Library"/>.
-            </summary>
-            <seealso cref="T:Sudoku.IO.Library"/>
-        </member>
-        <member name="M:Sudoku.Transformations.LibraryTransformationExtensions.RandomReadOneAsync(Sudoku.IO.Library,Sudoku.Transformations.TransformType,System.Threading.CancellationToken)">
-            <inheritdoc cref="M:Sudoku.Transformations.LibraryTransformationExtensions.&lt;G&gt;$A803FD7D8659C722C45349B07CA6260C.RandomReadOneAsync(Sudoku.Transformations.TransformType,System.Threading.CancellationToken)"/>
-        </member>
-        <member name="T:Sudoku.Transformations.LibraryTransformationExtensions.&lt;G&gt;$A803FD7D8659C722C45349B07CA6260C.&lt;M&gt;$7648230B5EE6B31661CAF688538A7FC1">
-            <summary>
-            Provides extension members on <see cref="T:Sudoku.IO.Library"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Transformations.LibraryTransformationExtensions.&lt;G&gt;$A803FD7D8659C722C45349B07CA6260C.RandomReadOneAsync(Sudoku.Transformations.TransformType,System.Threading.CancellationToken)">
-            <summary>
-            Randomly read one puzzle in the specified file, and return it.
-            </summary>
-            <param name="transformTypes">Indicates the available transform type that the chosen grid can be transformed.</param>
-            <param name="cancellationToken">The cancellation token that can cancel the current asynchronous operation.</param>
-            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> of <see cref="T:Sudoku.Concepts.Grid"/> instance as the result.</returns>
-            <exception cref="T:System.InvalidOperationException">Throw when the library file is not initialized.</exception>
-        </member>
-        <member name="T:Sudoku.Transformations.TransformType">
-            <summary>
-            Represents a type of transformation.
-            </summary>
-            <remarks><flags-attribute>
-		<para>
-			<i>
-				This type is marked <see cref="T:System.FlagsAttribute" />, which means you can use
-				<see langword="operator" /> | to combine multiple fields.
-			</i>
-		</para>
-	</flags-attribute></remarks>
-        </member>
-        <member name="F:Sudoku.Transformations.TransformType.None">
-            <summary>
-            The placeholder of this type.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.TransformType.DigitSwap">
-            <summary>
-            Indicates the transform type is to swap digits.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.TransformType.RowSwap">
-            <summary>
-            Indicates the transform type is to swap rows.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.TransformType.ColumnSwap">
-            <summary>
-            Indicates the transform type is to swap columns.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.TransformType.BandSwap">
-            <summary>
-            Indicates the transform type is to swap bands.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.TransformType.TowerSwap">
-            <summary>
-            Indicates the transform type is to swap towers.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.TransformType.MirrorLeftRight">
-            <summary>
-            Indicates the transform type is to mirror left and right.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.TransformType.MirrorTopBottom">
-            <summary>
-            Indicates the transform type is to mirror top and bottom.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.TransformType.MirrorDiagonal">
-            <summary>
-            Indicates the transform type is to mirror diagonal.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.TransformType.MirrorAntidiagonal">
-            <summary>
-            Indicates the transform type is to mirror anti-diagonal.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.TransformType.RotateClockwise">
-            <summary>
-            Indicates the transform type is to rotate clockwise.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Transformations.TransformType.RotateCounterclockwise">
-            <summary>
-            Indicates the transform type is to ratate counter-clockwise.
             </summary>
         </member>
         <member name="T:Sudoku.Uniqueness">

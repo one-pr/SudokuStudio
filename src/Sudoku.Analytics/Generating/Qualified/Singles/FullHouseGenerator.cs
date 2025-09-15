@@ -89,7 +89,7 @@ public sealed class FullHouseGenerator : SingleGenerator
 			(ConclusionCellAlignment.CenterBlock, 4) when Rng.NextDigit() is var missingPos
 				=> (HousesCells[selectedHouse][missingPos], DigitSeed[missingPos]),
 			(ConclusionCellAlignment.CenterBlock, _)
-				when (HousesMap[selectedHouse] & HousesMap[4]) is var a && a[Rng.Next(0, a.Count)] is var t
+				when (HousesMap[selectedHouse] & HousesMap[4]) is var a && Rng.Choose(a) is var t
 				=> (t, puzzle.GetDigit(t)),
 			(ConclusionCellAlignment.CenterCell, _) => (40, puzzle.GetDigit(40)),
 			_ => (-1, -1)

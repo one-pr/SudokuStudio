@@ -66,7 +66,7 @@ public abstract class PrimaryGenerator : TechniqueGenerator, IJustOneCellGenerat
 		SingleSubtype subtype;
 		do
 		{
-			subtype = range[Rng.Next(0, range.Length)];
+			subtype = Rng.Choose(range);
 		} while (!match(subtype) || subtype is SingleSubtype.None or SingleSubtype.Unknown || !subtype.ToString().StartsWith(prefixMustBe) || subtype.IsUnnecessary);
 		return subtype;
 	}
@@ -100,8 +100,8 @@ public abstract class PrimaryGenerator : TechniqueGenerator, IJustOneCellGenerat
 		{
 			ConclusionCellAlignment.NotLimited => Rng.NextHouse(),
 			ConclusionCellAlignment.CenterHouse => 9 * Rng.Next(0, 3) + 4,
-			ConclusionCellAlignment.CenterBlock => CenterHouses[Rng.Next(0, CenterHouses.Length)],
-			_ => StrictCenterHouses[Rng.Next(0, StrictCenterHouses.Length)]
+			ConclusionCellAlignment.CenterBlock => Rng.Choose(CenterHouses),
+			_ => Rng.Choose(StrictCenterHouses)
 		};
 
 

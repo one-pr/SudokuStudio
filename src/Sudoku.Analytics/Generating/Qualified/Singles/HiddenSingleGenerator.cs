@@ -99,12 +99,12 @@ public sealed class HiddenSingleGenerator : SingleGenerator
 				foreach (var r in excluderRows)
 				{
 					var lastCellsAvailable = HousesMap[r] & ~cellsInHouse & ~excluders.ExpandedPeers;
-					excluders += lastCellsAvailable[Rng.Next(0, lastCellsAvailable.Count)];
+					excluders += Rng.Choose(lastCellsAvailable);
 				}
 				foreach (var c in excluderColumns)
 				{
 					var lastCellsAvailable = HousesMap[c] & ~cellsInHouse & ~excluders.ExpandedPeers;
-					excluders += lastCellsAvailable[Rng.Next(0, lastCellsAvailable.Count)];
+					excluders += Rng.Choose(lastCellsAvailable);
 				}
 				if (!excluders)
 				{
@@ -118,7 +118,7 @@ public sealed class HiddenSingleGenerator : SingleGenerator
 				var targetDigit = DigitSeed[Rng.NextDigit()];
 				var puzzle = Grid.Empty;
 				var uncoveredCells = cellsInHouse & ~excluders.ExpandedPeers;
-				var targetCell = uncoveredCells[Rng.Next(0, uncoveredCells.Count)];
+				var targetCell = Rng.Choose(uncoveredCells);
 				var tempIndex = 0;
 				foreach (var placeholderCell in uncoveredCells - targetCell)
 				{
@@ -269,12 +269,12 @@ public sealed class HiddenSingleGenerator : SingleGenerator
 				foreach (var r in excluderBlocks)
 				{
 					var lastCellsAvailable = HousesMap[r] & ~cellsInHouse & ~excluders.ExpandedPeers;
-					excluders += lastCellsAvailable[Rng.Next(0, lastCellsAvailable.Count)];
+					excluders += Rng.Choose(lastCellsAvailable);
 				}
 				foreach (var c in excluderLines)
 				{
 					var lastCellsAvailable = HousesMap[c] & ~cellsInHouse & ~excluders.ExpandedPeers;
-					excluders += lastCellsAvailable[Rng.Next(0, lastCellsAvailable.Count)];
+					excluders += Rng.Choose(lastCellsAvailable);
 				}
 				if (!excluders)
 				{
@@ -288,7 +288,7 @@ public sealed class HiddenSingleGenerator : SingleGenerator
 				var targetDigit = DigitSeed[Rng.NextDigit()];
 				var puzzle = Grid.Empty;
 				var uncoveredCells = cellsInHouse & ~excluders.ExpandedPeers;
-				var targetCell = uncoveredCells[Rng.Next(0, uncoveredCells.Count)];
+				var targetCell = Rng.Choose(uncoveredCells);
 				var tempIndex = 0;
 				foreach (var placeholderCell in uncoveredCells - targetCell)
 				{
