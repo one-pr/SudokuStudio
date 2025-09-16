@@ -93,13 +93,15 @@ public sealed partial class UniqueLoopStepSearcher : StepSearcher
 		var result = new HashSet<UniqueLoopPattern>();
 		foreach (var cell in BivalueCells)
 		{
-			var queue = LinkedList.Singleton(LinkedList.Singleton(cell));
+			var queue = new Queue<LinkedList<Cell>>();
+			queue.Enqueue(LinkedList.Singleton(cell));
+
 			var comparer = grid.GetCandidates(cell);
 			var d1 = BitOperations.PopTwo((uint)comparer, out var d2);
 			var pairMap = CandidatesMap[d1] & CandidatesMap[d2];
 			while (queue.Count != 0)
 			{
-				var currentBranch = queue.RemoveFirstNode();
+				var currentBranch = queue.Dequeue();
 
 				// The node should be appended after the last node, and its start node is the first node of the linked list.
 				var previousCell = currentBranch.LastValue;
@@ -117,7 +119,7 @@ public sealed partial class UniqueLoopStepSearcher : StepSearcher
 						&& (hasBivalueCell(previousCell, currentCell) || hasConjugatePair(previousCell, currentCell, d1, d2)))
 					{
 						// Create a new link with original value, and a new value at the last position.
-						queue.AddLast(LinkedList.Create(currentBranch, currentCell));
+						queue.Enqueue(LinkedList.Create(currentBranch, currentCell));
 					}
 				}
 			}
