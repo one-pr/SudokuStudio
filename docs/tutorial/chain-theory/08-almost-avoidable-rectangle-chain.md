@@ -4,7 +4,7 @@ description: Almost Avoidable Rectangle Chain
 
 # 待定可规避矩形链（AAR 链）
 
-今天来看一篇短小的内容。因为这种用法并不算多，所以本文只有一个例子。
+今天来看一篇短小的内容。因为这种用法并不算多，但也挺新奇的。
 
 ## 待定可规避矩形的弱链关系 <a href="#weak-inference-in-almost-avoidable-rectangle" id="weak-inference-in-almost-avoidable-rectangle"></a>
 
