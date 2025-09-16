@@ -11288,10 +11288,10 @@
             <inheritdoc cref="P:Sudoku.Analytics.Configuration.StepGathererOptions.UseIttoryuMode"/>
         </member>
         <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.WithRuntimeIdentifierSetter``1(``0,System.Object,System.String,System.Boolean@)">
-            <inheritdoc cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithRuntimeIdentifierSetter(System.Object,System.String,System.Boolean@)"/>
+            <inheritdoc cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$E099BA5ECC219EF92F1D8F36A1998A49.WithRuntimeIdentifierSetter(System.Object,System.String,System.Boolean@)"/>
         </member>
         <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.WithRuntimeIdentifierSetters``1(``0,SudokuStudio.Views.Controls.SudokuPane)">
-            <inheritdoc cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithRuntimeIdentifierSetters(SudokuStudio.Views.Controls.SudokuPane)"/>
+            <inheritdoc cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$E099BA5ECC219EF92F1D8F36A1998A49.WithRuntimeIdentifierSetters(SudokuStudio.Views.Controls.SudokuPane)"/>
         </member>
         <member name="F:SudokuStudio.Views.Attached.AnalyzerProperties.AnalyzerIsFullApplyingProperty">
             <summary>
@@ -12085,12 +12085,12 @@
             <returns>The value returned.</returns>
             <seealso cref="P:SudokuStudio.Views.Attached.AnalyzerProperties.AnalyzerUseIttoryuMode"/>
         </member>
-        <member name="T:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.&lt;M&gt;$DB32F42FFB7A39E1D137C17C0AEFC1BF">
+        <member name="T:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$E099BA5ECC219EF92F1D8F36A1998A49.&lt;M&gt;$9516BD8A019D93E080B7BF0B1180F6C5">
             <summary>
-            Provides extension members on <see cref="T:Sudoku.Analytics.StepGatherer"/>.
+            Provides extension members on <see cref="T:Sudoku.Analytics.Primitives.StepGatherer"/>.
             </summary>
         </member>
-        <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithRuntimeIdentifierSetter(System.Object,System.String,System.Boolean@)">
+        <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$E099BA5ECC219EF92F1D8F36A1998A49.WithRuntimeIdentifierSetter(System.Object,System.String,System.Boolean@)">
             <summary>
             Sets the specified property in a <see cref="T:Sudoku.Analytics.StepSearcher"/> with the target value via attached properties
             stored in type <see cref="T:SudokuStudio.Views.Attached.AnalyzerProperties"/>.
@@ -12104,7 +12104,7 @@
             <returns>The same reference as the current instance.</returns>
             <seealso cref="T:SudokuStudio.Views.Attached.AnalyzerProperties"/>
         </member>
-        <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithRuntimeIdentifierSetters(SudokuStudio.Views.Controls.SudokuPane)">
+        <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$E099BA5ECC219EF92F1D8F36A1998A49.WithRuntimeIdentifierSetters(SudokuStudio.Views.Controls.SudokuPane)">
             <summary>
             Calls the method <see cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.WithRuntimeIdentifierSetter``1(``0,System.Object,System.String,System.Boolean@)"/> for all properties in type <see cref="T:SudokuStudio.Views.Attached.AnalyzerProperties"/>.
             </summary>

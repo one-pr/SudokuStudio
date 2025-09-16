@@ -2800,7 +2800,7 @@
             For example, setting notation to the coordinates.
             </para>
             </summary>
-            <seealso cref="T:Sudoku.Analytics.StepGatherer"/>
+            <seealso cref="T:Sudoku.Analytics.Primitives.StepGatherer"/>
             <seealso cref="T:Sudoku.Analytics.StepSearcher"/>
             <seealso cref="T:Sudoku.Analytics.Analyzer"/>
             <seealso cref="T:Sudoku.Analytics.Collector"/>
@@ -4159,10 +4159,10 @@
         <member name="P:Sudoku.Analytics.Parallelization.AsyncAnalyzerAwaitable.Awaiter.Exception">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Analytics.Parallelization.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#Primitives#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#Result">
+        <member name="P:Sudoku.Analytics.Parallelization.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#Parallelization#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#Result">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Analytics.Parallelization.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#Primitives#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#Lock">
+        <member name="P:Sudoku.Analytics.Parallelization.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#Parallelization#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#Lock">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Parallelization.AsyncAnalyzerAwaitable.Awaiter.GetResult">
@@ -4174,13 +4174,13 @@
         <member name="M:Sudoku.Analytics.Parallelization.AsyncAnalyzerAwaitable.Awaiter.UnsafeOnCompleted(System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Parallelization.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#Primitives#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#OnCompletedInternal(System.Boolean,System.Action)">
+        <member name="M:Sudoku.Analytics.Parallelization.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#Parallelization#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#OnCompletedInternal(System.Boolean,System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Parallelization.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#Primitives#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#StartContinuation(System.Boolean,System.Action)">
+        <member name="M:Sudoku.Analytics.Parallelization.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#Parallelization#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#StartContinuation(System.Boolean,System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Parallelization.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#Primitives#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#CoreOperation(System.Object)">
+        <member name="M:Sudoku.Analytics.Parallelization.AsyncAnalyzerAwaitable.Awaiter.Sudoku#Analytics#Parallelization#IStepGathererAwaiter{Sudoku#Analytics#AnalysisResult}#CoreOperation(System.Object)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Parallelization.AsyncAnalyzerAwaitable.Awaiter.OnCompletedInternal(System.Boolean,System.Action)">
@@ -4361,10 +4361,10 @@
         <member name="P:Sudoku.Analytics.Parallelization.AsyncCollectorAwaitable.Awaiter.Exception">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Analytics.Parallelization.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Primitives#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#Result">
+        <member name="P:Sudoku.Analytics.Parallelization.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Parallelization#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#Result">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Analytics.Parallelization.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Primitives#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#Lock">
+        <member name="P:Sudoku.Analytics.Parallelization.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Parallelization#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#Lock">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Parallelization.AsyncCollectorAwaitable.Awaiter.GetResult">
@@ -4376,13 +4376,13 @@
         <member name="M:Sudoku.Analytics.Parallelization.AsyncCollectorAwaitable.Awaiter.UnsafeOnCompleted(System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Parallelization.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Primitives#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#OnCompletedInternal(System.Boolean,System.Action)">
+        <member name="M:Sudoku.Analytics.Parallelization.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Parallelization#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#OnCompletedInternal(System.Boolean,System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Parallelization.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Primitives#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#StartContinuation(System.Boolean,System.Action)">
+        <member name="M:Sudoku.Analytics.Parallelization.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Parallelization#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#StartContinuation(System.Boolean,System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Parallelization.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Primitives#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#CoreOperation(System.Object)">
+        <member name="M:Sudoku.Analytics.Parallelization.AsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Parallelization#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#CoreOperation(System.Object)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Parallelization.AsyncCollectorAwaitable.Awaiter.OnCompletedInternal(System.Boolean,System.Action)">
@@ -4464,7 +4464,7 @@
         </member>
         <member name="T:Sudoku.Analytics.Parallelization.AsyncStepGatherer">
             <summary>
-            Provides with extension methods on <see cref="T:Sudoku.Analytics.StepGatherer"/>.
+            Provides with extension methods on <see cref="T:Sudoku.Analytics.Primitives.StepGatherer"/>.
             </summary>
         </member>
         <member name="M:Sudoku.Analytics.Parallelization.AsyncStepGatherer.AnalyzeAsync(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid@,System.IProgress{Sudoku.Analytics.StepGathererProgressPresenter},System.Threading.CancellationToken)">
@@ -4522,6 +4522,70 @@
             <param name="grid">The grid to be analyzed.</param>
             <param name="cancellationToken">The cancellation token that can cancel the current operation.</param>
             <returns>An <see cref="T:Sudoku.Analytics.Parallelization.ParallelAsyncCollectorAwaitable"/> object that can analyze the puzzle asynchronously.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.Parallelization.IStepGathererAwaitable`1">
+            <summary>
+            Represents an awaitable object that runs for step gathering rule (analysis or collecting operation).
+            </summary>
+            <typeparam name="TAwaiter">The type of awaiter.</typeparam>
+        </member>
+        <member name="M:Sudoku.Analytics.Parallelization.IStepGathererAwaitable`1.GetAwaiter">
+            <summary>
+            Returns an object of type <typeparamref name="TAwaiter"/> that supports the internal awaiting rule of analyzing a puzzle.
+            </summary>
+            <returns>An object of type <typeparamref name="TAwaiter"/>.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.Parallelization.IStepGathererAwaiter`1">
+            <summary>
+            Represents an awaiter object that handles the backing logic on asynchronous programming.
+            </summary>
+            <typeparam name="TResult">The type of result.</typeparam>
+        </member>
+        <member name="P:Sudoku.Analytics.Parallelization.IStepGathererAwaiter`1.IsCompleted">
+            <summary>
+            Indicates whether the operation is completed.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Parallelization.IStepGathererAwaiter`1.Result">
+            <summary>
+            Indicates the result.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Parallelization.IStepGathererAwaiter`1.Exception">
+            <summary>
+            Indicates the exception thrown.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Parallelization.IStepGathererAwaiter`1.Lock">
+            <summary>
+            Indicates the backing lock.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Parallelization.IStepGathererAwaiter`1.GetResult">
+            <summary>
+            Returns the result value, or throw the internal exception if unhandled exception is encountered.
+            </summary>
+            <returns>The result value.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Parallelization.IStepGathererAwaiter`1.OnCompletedInternal(System.Boolean,System.Action)">
+            <summary>
+            Executes a custom method on work having been completed.
+            </summary>
+            <param name="continueOnCapturedContext">Indicates whether to capture and marshal back to the current context.</param>
+            <param name="continuation">The method to be executed.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.Parallelization.IStepGathererAwaiter`1.StartContinuation(System.Boolean,System.Action)">
+            <summary>
+            Determine whether we should switch execution context, and start continuation in thread pool from the context decided.
+            </summary>
+            <param name="continueOnCapturedContext">Indicates whether to capture and marshal back to the current context.</param>
+            <param name="continuation">The method to be executed.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.Parallelization.IStepGathererAwaiter`1.CoreOperation(System.Object)">
+            <summary>
+            Indicates the backing operation.
+            </summary>
+            <param name="state">An object containing information to be used by the callback method.</param>
         </member>
         <member name="T:Sudoku.Analytics.Parallelization.ParallelAsyncCollectorAwaitable">
             <summary>
@@ -4590,7 +4654,7 @@
         <member name="P:Sudoku.Analytics.Parallelization.ParallelAsyncCollectorAwaitable.Awaiter.Exception">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Analytics.Parallelization.ParallelAsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Primitives#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#Lock">
+        <member name="P:Sudoku.Analytics.Parallelization.ParallelAsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Parallelization#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#Lock">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Parallelization.ParallelAsyncCollectorAwaitable.Awaiter.GetResult">
@@ -4605,13 +4669,13 @@
         <member name="M:Sudoku.Analytics.Parallelization.ParallelAsyncCollectorAwaitable.Awaiter.UnsafeOnCompleted(System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Parallelization.ParallelAsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Primitives#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#OnCompletedInternal(System.Boolean,System.Action)">
+        <member name="M:Sudoku.Analytics.Parallelization.ParallelAsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Parallelization#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#OnCompletedInternal(System.Boolean,System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Parallelization.ParallelAsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Primitives#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#StartContinuation(System.Boolean,System.Action)">
+        <member name="M:Sudoku.Analytics.Parallelization.ParallelAsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Parallelization#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#StartContinuation(System.Boolean,System.Action)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Parallelization.ParallelAsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Primitives#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#CoreOperation(System.Object)">
+        <member name="M:Sudoku.Analytics.Parallelization.ParallelAsyncCollectorAwaitable.Awaiter.Sudoku#Analytics#Parallelization#IStepGathererAwaiter{System#ReadOnlySpan{Sudoku#Analytics#Step}}#CoreOperation(System.Object)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Parallelization.ParallelAsyncCollectorAwaitable.Awaiter.OnCompletedInternal(System.Boolean,System.Action)">
@@ -4675,70 +4739,6 @@
             <inheritdoc/>
             <remarks><i>This method cannot be used as caching because most of callers have already been cached.</i></remarks>
         </member>
-        <member name="T:Sudoku.Analytics.Primitives.IStepGathererAwaitable`1">
-            <summary>
-            Represents an awaitable object that runs for step gathering rule (analysis or collecting operation).
-            </summary>
-            <typeparam name="TAwaiter">The type of awaiter.</typeparam>
-        </member>
-        <member name="M:Sudoku.Analytics.Primitives.IStepGathererAwaitable`1.GetAwaiter">
-            <summary>
-            Returns an object of type <typeparamref name="TAwaiter"/> that supports the internal awaiting rule of analyzing a puzzle.
-            </summary>
-            <returns>An object of type <typeparamref name="TAwaiter"/>.</returns>
-        </member>
-        <member name="T:Sudoku.Analytics.Primitives.IStepGathererAwaiter`1">
-            <summary>
-            Represents an awaiter object that handles the backing logic on asynchronous programming.
-            </summary>
-            <typeparam name="TResult">The type of result.</typeparam>
-        </member>
-        <member name="P:Sudoku.Analytics.Primitives.IStepGathererAwaiter`1.IsCompleted">
-            <summary>
-            Indicates whether the operation is completed.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Primitives.IStepGathererAwaiter`1.Result">
-            <summary>
-            Indicates the result.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Primitives.IStepGathererAwaiter`1.Exception">
-            <summary>
-            Indicates the exception thrown.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Primitives.IStepGathererAwaiter`1.Lock">
-            <summary>
-            Indicates the backing lock.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Primitives.IStepGathererAwaiter`1.GetResult">
-            <summary>
-            Returns the result value, or throw the internal exception if unhandled exception is encountered.
-            </summary>
-            <returns>The result value.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Primitives.IStepGathererAwaiter`1.OnCompletedInternal(System.Boolean,System.Action)">
-            <summary>
-            Executes a custom method on work having been completed.
-            </summary>
-            <param name="continueOnCapturedContext">Indicates whether to capture and marshal back to the current context.</param>
-            <param name="continuation">The method to be executed.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Primitives.IStepGathererAwaiter`1.StartContinuation(System.Boolean,System.Action)">
-            <summary>
-            Determine whether we should switch execution context, and start continuation in thread pool from the context decided.
-            </summary>
-            <param name="continueOnCapturedContext">Indicates whether to capture and marshal back to the current context.</param>
-            <param name="continuation">The method to be executed.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Primitives.IStepGathererAwaiter`1.CoreOperation(System.Object)">
-            <summary>
-            Indicates the backing operation.
-            </summary>
-            <param name="state">An object containing information to be used by the callback method.</param>
-        </member>
         <member name="T:Sudoku.Analytics.Primitives.PatternSearcherBase`1">
             <summary>
             Represents a pattern searcher type.
@@ -4751,6 +4751,57 @@
             </summary>
             <param name="grid">The grid to be checked.</param>
             <returns>The found patterns.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.Primitives.StepGatherer">
+            <summary>
+            Represents a type that support collecting <see cref="T:Sudoku.Analytics.Step"/> instances on a certain checking logic for a grid.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Primitives.StepGatherer.StepSearchers">
+            <summary>
+            <para>
+            Indicates the <see cref="T:Sudoku.Analytics.StepSearcher"/> instances to run.
+            By default, the solver will use <see cref="P:Sudoku.Analytics.StepSearcherFactory.StepSearchers"/> to solve a puzzle.
+            If you assign a new array of <see cref="T:Sudoku.Analytics.StepSearcher"/>s into this property
+            the step searchers will use this property instead of <see cref="P:Sudoku.Analytics.StepSearcherFactory.StepSearchers"/> to solve a puzzle.
+            </para>
+            <para>
+            Please note that the property will keep the <see langword="null"/> value if you don't assign any values into it;
+            however, if you want to use the customized collection to solve a puzzle, assign a non-<see langword="null"/> array into it.
+            </para>
+            </summary>
+            <seealso cref="P:Sudoku.Analytics.StepSearcherFactory.StepSearchers"/>
+        </member>
+        <member name="P:Sudoku.Analytics.Primitives.StepGatherer.ResultStepSearchers">
+            <summary>
+            Indicates the result step searchers used in the current analyzer or collector.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Primitives.StepGatherer.Options">
+            <summary>
+            Indicates the extra options to be set. The options will be passed into <see cref="T:Sudoku.Analytics.Step"/> instances collected
+            in internal method called <c>Collect</c>, and create <see cref="T:Sudoku.Analytics.Step"/> instances and pass into constructor.
+            </summary>
+            <seealso cref="T:Sudoku.Analytics.Step"/>
+        </member>
+        <member name="P:Sudoku.Analytics.Primitives.StepGatherer.Setters">
+            <summary>
+            Represents a list of <see cref="T:System.Action`1"/> of <see cref="T:Sudoku.Analytics.StepSearcher"/> instances
+            to assign extra configuration to step searcher instances.
+            </summary>
+            <seealso cref="T:System.Action`1"/>
+            <seealso cref="T:Sudoku.Analytics.StepSearcher"/>
+        </member>
+        <member name="P:Sudoku.Analytics.Primitives.StepGatherer.RunningArea">
+            <summary>
+            Indicates the running area.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Primitives.StepGatherer.ApplySetters(Sudoku.Analytics.Primitives.StepGatherer)">
+            <summary>
+            Try to apply setters.
+            </summary>
+            <param name="instance">The instance itself.</param>
         </member>
         <member name="T:Sudoku.Analytics.Primitives.StepSearcherHubBase">
             <summary>
@@ -5176,63 +5227,12 @@
             Throws when the length of arguments <paramref name="interimGrids"/> and <paramref name="interimSteps"/> aren't same.
             </exception>
         </member>
-        <member name="T:Sudoku.Analytics.StepGatherer">
-            <summary>
-            Represents a type that support collecting <see cref="T:Sudoku.Analytics.Step"/> instances on a certain checking logic for a grid.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.StepGatherer.StepSearchers">
-            <summary>
-            <para>
-            Indicates the <see cref="T:Sudoku.Analytics.StepSearcher"/> instances to run.
-            By default, the solver will use <see cref="P:Sudoku.Analytics.StepSearcherFactory.StepSearchers"/> to solve a puzzle.
-            If you assign a new array of <see cref="T:Sudoku.Analytics.StepSearcher"/>s into this property
-            the step searchers will use this property instead of <see cref="P:Sudoku.Analytics.StepSearcherFactory.StepSearchers"/> to solve a puzzle.
-            </para>
-            <para>
-            Please note that the property will keep the <see langword="null"/> value if you don't assign any values into it;
-            however, if you want to use the customized collection to solve a puzzle, assign a non-<see langword="null"/> array into it.
-            </para>
-            </summary>
-            <seealso cref="P:Sudoku.Analytics.StepSearcherFactory.StepSearchers"/>
-        </member>
-        <member name="P:Sudoku.Analytics.StepGatherer.ResultStepSearchers">
-            <summary>
-            Indicates the result step searchers used in the current analyzer or collector.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.StepGatherer.Options">
-            <summary>
-            Indicates the extra options to be set. The options will be passed into <see cref="T:Sudoku.Analytics.Step"/> instances collected
-            in internal method called <c>Collect</c>, and create <see cref="T:Sudoku.Analytics.Step"/> instances and pass into constructor.
-            </summary>
-            <seealso cref="T:Sudoku.Analytics.Step"/>
-        </member>
-        <member name="P:Sudoku.Analytics.StepGatherer.Setters">
-            <summary>
-            Represents a list of <see cref="T:System.Action`1"/> of <see cref="T:Sudoku.Analytics.StepSearcher"/> instances
-            to assign extra configuration to step searcher instances.
-            </summary>
-            <seealso cref="T:System.Action`1"/>
-            <seealso cref="T:Sudoku.Analytics.StepSearcher"/>
-        </member>
-        <member name="P:Sudoku.Analytics.StepGatherer.RunningArea">
-            <summary>
-            Indicates the running area.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.StepGatherer.ApplySetters(Sudoku.Analytics.StepGatherer)">
-            <summary>
-            Try to apply setters.
-            </summary>
-            <param name="instance">The instance itself.</param>
-        </member>
         <member name="T:Sudoku.Analytics.StepGathererFactory">
             <summary>
             Provides a list of methods that can be used for construct chaining method invocations for configuration,
-            applying to a <see cref="T:Sudoku.Analytics.StepGatherer"/> instance.
+            applying to a <see cref="T:Sudoku.Analytics.Primitives.StepGatherer"/> instance.
             </summary>
-            <seealso cref="T:Sudoku.Analytics.StepGatherer"/>
+            <seealso cref="T:Sudoku.Analytics.Primitives.StepGatherer"/>
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.WithRandomizedChoosing(Sudoku.Analytics.Analyzer,System.Boolean)">
             <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$9A39AEA43E9CBA20DE81811823A51AAE.WithRandomizedChoosing(System.Boolean)"/>
@@ -5300,31 +5300,31 @@
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$9A39AEA43E9CBA20DE81811823A51AAE.WithStepSearchers(Sudoku.Analytics.StepSearcher[])">
             <summary>
-            Sets the property <see cref="P:Sudoku.Analytics.StepGatherer.StepSearchers"/> with the target value.
+            Sets the property <see cref="P:Sudoku.Analytics.Primitives.StepGatherer.StepSearchers"/> with the target value.
             </summary>
             <param name="stepSearchers">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$9A39AEA43E9CBA20DE81811823A51AAE.WithUserDefinedOptions(Sudoku.Analytics.Configuration.StepGathererOptions)">
             <summary>
-            Sets the property <see cref="P:Sudoku.Analytics.StepGatherer.Options"/> with the target value.
+            Sets the property <see cref="P:Sudoku.Analytics.Primitives.StepGatherer.Options"/> with the target value.
             </summary>
             <param name="options">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$9A39AEA43E9CBA20DE81811823A51AAE.WithStepSearchers(Sudoku.Analytics.StepSearcher[],Sudoku.Analytics.DifficultyLevel)">
             <summary>
-            Try to set property <see cref="P:Sudoku.Analytics.StepGatherer.StepSearchers"/> with the specified value.
+            Try to set property <see cref="P:Sudoku.Analytics.Primitives.StepGatherer.StepSearchers"/> with the specified value.
             </summary>
             <param name="stepSearchers">The custom collection of <see cref="T:Sudoku.Analytics.StepSearcher"/>s.</param>
             <param name="level">Indicates the difficulty level preserved.</param>
             <returns>The result.</returns>
-            <seealso cref="P:Sudoku.Analytics.StepGatherer.StepSearchers"/>
+            <seealso cref="P:Sudoku.Analytics.Primitives.StepGatherer.StepSearchers"/>
             <seealso cref="T:Sudoku.Analytics.StepSearcher"/>
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$9A39AEA43E9CBA20DE81811823A51AAE.ApplySetter``1(System.Action{``0})">
             <summary>
-            Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
+            Appends an element into the property <see cref="P:Sudoku.Analytics.Primitives.StepGatherer.Setters"/>.
             </summary>
             <typeparam name="TStepSearcher">The type of step searcher.</typeparam>
             <param name="setter">The value to be added.</param>
@@ -5332,14 +5332,14 @@
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$9A39AEA43E9CBA20DE81811823A51AAE.ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})">
             <summary>
-            Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
+            Appends an element into the property <see cref="P:Sudoku.Analytics.Primitives.StepGatherer.Setters"/>.
             </summary>
             <param name="setters">The value to be added.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$9A39AEA43E9CBA20DE81811823A51AAE.ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
             <summary>
-            Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
+            Appends an element into the property <see cref="P:Sudoku.Analytics.Primitives.StepGatherer.Setters"/>.
             </summary>
             <param name="setters">A list of values to be added.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Analyzer"/>.</returns>
@@ -5365,21 +5365,21 @@
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$7F8D808ABBF8D7891EE3C21A4D81AB79.WithStepSearchers(Sudoku.Analytics.StepSearcher[])">
             <summary>
-            Sets the property <see cref="P:Sudoku.Analytics.StepGatherer.StepSearchers"/> with the target value.
+            Sets the property <see cref="P:Sudoku.Analytics.Primitives.StepGatherer.StepSearchers"/> with the target value.
             </summary>
             <param name="stepSearchers">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$7F8D808ABBF8D7891EE3C21A4D81AB79.WithUserDefinedOptions(Sudoku.Analytics.Configuration.StepGathererOptions)">
             <summary>
-            Sets the property <see cref="P:Sudoku.Analytics.StepGatherer.Options"/> with the target value.
+            Sets the property <see cref="P:Sudoku.Analytics.Primitives.StepGatherer.Options"/> with the target value.
             </summary>
             <param name="options">The value to be set or updated.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$7F8D808ABBF8D7891EE3C21A4D81AB79.ApplySetter``1(System.Action{``0})">
             <summary>
-            Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
+            Appends an element into the property <see cref="P:Sudoku.Analytics.Primitives.StepGatherer.Setters"/>.
             </summary>
             <typeparam name="TStepSearcher">The type of step searcher.</typeparam>
             <param name="setter">The value to be added.</param>
@@ -5387,33 +5387,33 @@
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$7F8D808ABBF8D7891EE3C21A4D81AB79.ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})">
             <summary>
-            Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
+            Appends an element into the property <see cref="P:Sudoku.Analytics.Primitives.StepGatherer.Setters"/>.
             </summary>
             <param name="setters">The value to be added.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$7F8D808ABBF8D7891EE3C21A4D81AB79.ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
             <summary>
-            Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
+            Appends an element into the property <see cref="P:Sudoku.Analytics.Primitives.StepGatherer.Setters"/>.
             </summary>
             <param name="setters">A list of values to be added.</param>
             <returns>The value same as <see cref="T:Sudoku.Analytics.Collector"/>.</returns>
         </member>
         <member name="T:Sudoku.Analytics.StepGathererProgressPresenter">
             <summary>
-            Represents a progress used by <see cref="T:Sudoku.Analytics.StepGatherer"/> instances.
+            Represents a progress used by <see cref="T:Sudoku.Analytics.Primitives.StepGatherer"/> instances.
             </summary>
             <param name="StepSearcherName">Indicates the currently used step searcher.</param>
             <param name="Percent">The percent value.</param>
-            <seealso cref="T:Sudoku.Analytics.StepGatherer"/>
+            <seealso cref="T:Sudoku.Analytics.Primitives.StepGatherer"/>
         </member>
         <member name="M:Sudoku.Analytics.StepGathererProgressPresenter.#ctor(System.String,System.Double)">
             <summary>
-            Represents a progress used by <see cref="T:Sudoku.Analytics.StepGatherer"/> instances.
+            Represents a progress used by <see cref="T:Sudoku.Analytics.Primitives.StepGatherer"/> instances.
             </summary>
             <param name="StepSearcherName">Indicates the currently used step searcher.</param>
             <param name="Percent">The percent value.</param>
-            <seealso cref="T:Sudoku.Analytics.StepGatherer"/>
+            <seealso cref="T:Sudoku.Analytics.Primitives.StepGatherer"/>
         </member>
         <member name="P:Sudoku.Analytics.StepGathererProgressPresenter.StepSearcherName">
             <summary>Indicates the currently used step searcher.</summary>

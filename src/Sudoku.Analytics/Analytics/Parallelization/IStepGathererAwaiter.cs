@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Primitives;
+namespace Sudoku.Analytics.Parallelization;
 
 /// <summary>
 /// Represents an awaiter object that handles the backing logic on asynchronous programming.
