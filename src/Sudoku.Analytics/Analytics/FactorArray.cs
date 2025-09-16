@@ -6,7 +6,7 @@ namespace Sudoku.Analytics;
 /// <param name="_values">Indicates the values.</param>
 /// <seealso cref="Factor"/>
 [CollectionBuilder(typeof(FactorArray), nameof(Create))]
-public readonly ref partial struct FactorArray(ReadOnlyMemory<Factor> _values) :
+public readonly ref struct FactorArray(ReadOnlyMemory<Factor> _values) :
 	IEnumerable<Factor>,
 	ISliceMethod<FactorArray, Factor>,
 	IToArrayMethod<FactorArray, Factor>,
@@ -81,7 +81,7 @@ public readonly ref partial struct FactorArray(ReadOnlyMemory<Factor> _values) :
 	}
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
-	public Enumerator GetEnumerator() => new(_values.Span);
+	public AnonymousSpanEnumerator<Factor> GetEnumerator() => new(_values.Span);
 
 	/// <summary>
 	/// Slices the collection via the specified index as the start, and the number of elements to be sliced.

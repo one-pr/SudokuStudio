@@ -3306,43 +3306,6 @@
             </param>
             <returns>A <see cref="T:Sudoku.Analytics.FactorArray" /> instance.</returns>
         </member>
-        <member name="T:Sudoku.Analytics.FactorArray.Enumerator">
-            <summary>
-            The back enumerator of this type.
-            </summary>
-            <param name="factors">Indicates the back factors to be iterated.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.FactorArray.Enumerator.#ctor(System.ReadOnlySpan{Sudoku.Analytics.Factor})">
-            <summary>
-            The back enumerator of this type.
-            </summary>
-            <param name="factors">Indicates the back factors to be iterated.</param>
-        </member>
-        <member name="F:Sudoku.Analytics.FactorArray.Enumerator._factors">
-            <summary>
-            Indicates the field of factors.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.FactorArray.Enumerator._index">
-            <summary>
-            Indicates the currently-iterated index.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.FactorArray.Enumerator.Current">
-            <inheritdoc cref="P:System.Collections.Generic.IEnumerator`1.Current"/>
-        </member>
-        <member name="P:Sudoku.Analytics.FactorArray.Enumerator.System#Collections#IEnumerator#Current">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.FactorArray.Enumerator.MoveNext">
-            <inheritdoc cref="M:System.Collections.IEnumerator.MoveNext"/>
-        </member>
-        <member name="M:Sudoku.Analytics.FactorArray.Enumerator.System#IDisposable#Dispose">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.FactorArray.Enumerator.System#Collections#IEnumerator#Reset">
-            <inheritdoc/>
-        </member>
         <member name="T:Sudoku.Analytics.FailedReason">
             <summary>
             Defines a reason why the puzzle is failed to be analyzed.
