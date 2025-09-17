@@ -35,19 +35,18 @@ public sealed class DisorderedIttoryuFinder(params TechniqueSet _supportedTechni
 	public DisorderedIttoryuDigitPath FindPath(in Grid grid, CancellationToken cancellationToken = default)
 	{
 		var digitsStack = new Stack<Digit>();
-		try
+		var (isCanceled, isFinished) = (false, false);
+		for (var digit = 0; digit < 9; digit++)
 		{
-			for (var digit = 0; digit < 9; digit++)
+			dfs(grid, digit, digitsStack, [], 0, ref isCanceled, ref isFinished, true);
+			if (isFinished)
 			{
-				dfs(grid, digit, digitsStack, [], 0, true);
+				return [.. ~digitsStack];
 			}
-		}
-		catch (OperationCanceledException)
-		{
-		}
-		catch (DisorderedIttoryuModuleAlreadyFinishedException)
-		{
-			return [.. digitsStack.Reverse()];
+			if (isCanceled)
+			{
+				break;
+			}
 		}
 		return null;
 
@@ -58,6 +57,8 @@ public sealed class DisorderedIttoryuFinder(params TechniqueSet _supportedTechni
 			Stack<Digit> digitsStack,
 			ReadOnlySpan<IttoryuPathNode> foundNodes,
 			Mask finishedDigits,
+			ref bool isCanceled,
+			ref bool isFinished,
 			bool skipApplying = false
 		)
 		{
@@ -75,10 +76,7 @@ public sealed class DisorderedIttoryuFinder(params TechniqueSet _supportedTechni
 			// Apply all digits for the currently-found nodes.
 			foreach (var node in foundNodes)
 			{
-				if (grid.GetState(node.Cell) == CellState.Empty)
-				{
-					grid.SetDigit(node.Cell, node.Digit);
-				}
+				grid >>= node;
 			}
 
 		StartCheckingWithoutApplying:
@@ -90,7 +88,11 @@ public sealed class DisorderedIttoryuFinder(params TechniqueSet _supportedTechni
 				hiddenSingles(grid, tempNodes, digit);
 				nakedSingles(grid, tempNodes, digit);
 
-				dfs(grid, digit, digitsStack, [.. tempNodes], finishedDigits);
+				dfs(grid, digit, digitsStack, [.. tempNodes], finishedDigits, ref isCanceled, ref isFinished);
+				if (isCanceled || isFinished)
+				{
+					return;
+				}
 			}
 			else
 			{
@@ -103,7 +105,8 @@ public sealed class DisorderedIttoryuFinder(params TechniqueSet _supportedTechni
 				if (finishedDigits == Grid.MaxCandidatesMask)
 				{
 					// Just find one.
-					throw new DisorderedIttoryuModuleAlreadyFinishedException();
+					isFinished = true;
+					return;
 				}
 
 				// If not, we should search for available path nodes again, and iterate on them.
@@ -123,15 +126,25 @@ public sealed class DisorderedIttoryuFinder(params TechniqueSet _supportedTechni
 						anotherDigit,
 						digitsStack,
 						from node in tempNodes where node.Digit == anotherDigit select node,
-						finishedDigits
+						finishedDigits,
+						ref isCanceled,
+						ref isFinished
 					);
+					if (isCanceled || isFinished)
+					{
+						return;
+					}
 				}
 
 				// If all available found path nodes cannot make the path complete, pop it.
 				digitsStack.Pop();
 			}
 
-			cancellationToken.ThrowIfCancellationRequested();
+			if (!cancellationToken)
+			{
+				isCanceled = true;
+				return;
+			}
 		}
 
 		void fullHouses(in Grid grid, List<IttoryuPathNode> foundNodes, Digit digit)

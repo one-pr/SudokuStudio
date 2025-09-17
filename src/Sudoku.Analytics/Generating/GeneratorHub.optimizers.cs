@@ -39,8 +39,7 @@ public partial class GeneratorHub
 
 			if (finder.FindPath(puzzle, ct) is { IsComplete: true } path)
 			{
-				puzzle.MakeIttoryu(path);
-				return puzzle;
+				return puzzle >>= path;
 			}
 		}
 	}

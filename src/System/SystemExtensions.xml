@@ -1462,6 +1462,9 @@
         <member name="M:System.Collections.Generic.StackExtensions.GetCount``1(System.Collections.Generic.Stack{``0})">
             <inheritdoc cref="M:System.Collections.Generic.StackExtensions.&lt;G&gt;$A47296F3FDF8EE0A5D7B65850C19E135.GetCount"/>
         </member>
+        <member name="M:System.Collections.Generic.StackExtensions.op_OnesComplement``1(System.Collections.Generic.Stack{``0})">
+            <inheritdoc cref="M:System.Collections.Generic.StackExtensions.&lt;G&gt;$A47296F3FDF8EE0A5D7B65850C19E135.op_OnesComplement(System.Collections.Generic.Stack{`0})"/>
+        </member>
         <member name="T:System.Collections.Generic.StackExtensions.&lt;G&gt;$A47296F3FDF8EE0A5D7B65850C19E135.&lt;M&gt;$7F12285DB5F3FCD87611064A9451F74C">
             <summary>
             Provides extension members on <see cref="T:System.Collections.Generic.Stack`1"/>.
@@ -1509,6 +1512,9 @@
 				</para>
 			</feature>
             </remarks>
+        </member>
+        <member name="M:System.Collections.Generic.StackExtensions.&lt;G&gt;$A47296F3FDF8EE0A5D7B65850C19E135.op_OnesComplement(System.Collections.Generic.Stack{`0})">
+            <inheritdoc cref="M:System.Linq.Enumerable.Reverse``1(System.Collections.Generic.IEnumerable{``0})" />
         </member>
         <member name="T:System.Collections.Generic.StackEntry`1">
             <summary>

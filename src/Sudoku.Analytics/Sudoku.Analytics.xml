@@ -336,14 +336,6 @@
             The target digit path. If none found, a longest path will be returned.
             </returns>
         </member>
-        <member name="T:Sudoku.Algorithms.Ittoryu.DisorderedIttoryuModuleAlreadyFinishedException">
-            <summary>
-            The internal exception type that reports "Already finished" information, breaking the recursion.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Algorithms.Ittoryu.DisorderedIttoryuModuleAlreadyFinishedException.Message">
-            <inheritdoc/>
-        </member>
         <member name="T:Sudoku.Algorithms.Ittoryu.GridIttoryuExtensions">
             <summary>
             Provides with extension methods on <see cref="T:Sudoku.Concepts.Grid"/>.
@@ -352,6 +344,12 @@
         </member>
         <member name="M:Sudoku.Algorithms.Ittoryu.GridIttoryuExtensions.MakeIttoryu(Sudoku.Concepts.Grid@,Sudoku.Algorithms.Ittoryu.DisorderedIttoryuDigitPath)">
             <inheritdoc cref="M:Sudoku.Algorithms.Ittoryu.GridIttoryuExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.MakeIttoryu(Sudoku.Algorithms.Ittoryu.DisorderedIttoryuDigitPath)"/>
+        </member>
+        <member name="M:Sudoku.Algorithms.Ittoryu.GridIttoryuExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Algorithms.Ittoryu.DisorderedIttoryuDigitPath)">
+            <inheritdoc cref="M:Sudoku.Algorithms.Ittoryu.GridIttoryuExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Algorithms.Ittoryu.DisorderedIttoryuDigitPath)"/>
+        </member>
+        <member name="M:Sudoku.Algorithms.Ittoryu.GridIttoryuExtensions.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Algorithms.Ittoryu.DisorderedIttoryuDigitPath)">
+            <inheritdoc cref="M:Sudoku.Algorithms.Ittoryu.GridIttoryuExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Algorithms.Ittoryu.DisorderedIttoryuDigitPath)"/>
         </member>
         <member name="M:Sudoku.Algorithms.Ittoryu.GridIttoryuExtensions.IsIttoryu(Sudoku.Concepts.Grid@,System.Nullable{Sudoku.Algorithms.Ittoryu.DisorderedIttoryuDigitPath}@)">
             <inheritdoc cref="M:Sudoku.Algorithms.Ittoryu.GridIttoryuExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.IsIttoryu(System.Nullable{Sudoku.Algorithms.Ittoryu.DisorderedIttoryuDigitPath}@)"/>
@@ -365,14 +363,20 @@
             </summary>
         </member>
         <member name="M:Sudoku.Algorithms.Ittoryu.GridIttoryuExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.MakeIttoryu(Sudoku.Algorithms.Ittoryu.DisorderedIttoryuDigitPath)">
+            <inheritdoc cref="M:Sudoku.Algorithms.Ittoryu.GridIttoryuExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Algorithms.Ittoryu.DisorderedIttoryuDigitPath)"/>
+        </member>
+        <member name="M:Sudoku.Algorithms.Ittoryu.GridIttoryuExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Algorithms.Ittoryu.DisorderedIttoryuDigitPath)">
             <summary>
             Try to reproduce ittoryu ordering for the specified grid whose path can be found by <see cref="T:Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder"/>.
             </summary>
-            <param name="ittoryuPath">
+            <param name="path">
             The path to be used. The argument isn't required to be a complete path. It's considered to be OK if a path contains at least 2 digits.
             </param>
             <exception cref="T:System.ArgumentException">Throws when the ittoryu path contains a digit series of length 0 or 1.</exception>
             <seealso cref="T:Sudoku.Algorithms.Ittoryu.DisorderedIttoryuFinder"/>
+        </member>
+        <member name="M:Sudoku.Algorithms.Ittoryu.GridIttoryuExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Algorithms.Ittoryu.DisorderedIttoryuDigitPath)">
+            <inheritdoc cref="M:Sudoku.Algorithms.Ittoryu.GridIttoryuExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Algorithms.Ittoryu.DisorderedIttoryuDigitPath)"/>
         </member>
         <member name="T:Sudoku.Algorithms.Ittoryu.GridIttoryuExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$4FBDD4478CFAA5DAE39645DF9E3BC758">
             <summary>
@@ -456,6 +460,39 @@
         </member>
         <member name="M:Sudoku.Algorithms.Ittoryu.IttoryuPathNode.System#IFormattable#ToString(System.String,System.IFormatProvider)">
             <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Algorithms.Ittoryu.IttoryuPathNodeExtensions">
+            <summary>
+            Provides extension methods on <see cref="T:Sudoku.Concepts.Grid"/> on applying <see cref="T:Sudoku.Algorithms.Ittoryu.IttoryuPathNode"/> instances.
+            </summary>
+            <seealso cref="T:Sudoku.Concepts.Grid"/>
+            <seealso cref="T:Sudoku.Algorithms.Ittoryu.IttoryuPathNode"/>
+        </member>
+        <member name="M:Sudoku.Algorithms.Ittoryu.IttoryuPathNodeExtensions.Apply(Sudoku.Concepts.Grid@,Sudoku.Algorithms.Ittoryu.IttoryuPathNode)">
+            <inheritdoc cref="M:Sudoku.Algorithms.Ittoryu.IttoryuPathNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Algorithms.Ittoryu.IttoryuPathNode)"/>
+        </member>
+        <member name="M:Sudoku.Algorithms.Ittoryu.IttoryuPathNodeExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Algorithms.Ittoryu.IttoryuPathNode)">
+            <inheritdoc cref="M:Sudoku.Algorithms.Ittoryu.IttoryuPathNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Algorithms.Ittoryu.IttoryuPathNode)"/>
+        </member>
+        <member name="M:Sudoku.Algorithms.Ittoryu.IttoryuPathNodeExtensions.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Algorithms.Ittoryu.IttoryuPathNode)">
+            <inheritdoc cref="M:Sudoku.Algorithms.Ittoryu.IttoryuPathNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Algorithms.Ittoryu.IttoryuPathNode)"/>
+        </member>
+        <member name="T:Sudoku.Algorithms.Ittoryu.IttoryuPathNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$25EDD80A63D287142C5EEC5FEE4D06CD">
+            <summary>
+            Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Algorithms.Ittoryu.IttoryuPathNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Algorithms.Ittoryu.IttoryuPathNode)">
+            <inheritdoc cref="M:Sudoku.Algorithms.Ittoryu.IttoryuPathNodeExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Algorithms.Ittoryu.IttoryuPathNode)"/>
+        </member>
+        <member name="M:Sudoku.Algorithms.Ittoryu.IttoryuPathNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Algorithms.Ittoryu.IttoryuPathNode)">
+            <summary>
+            Applies the node to the current grid.
+            </summary>
+            <param name="node">The node.</param>
+        </member>
+        <member name="M:Sudoku.Algorithms.Ittoryu.IttoryuPathNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Algorithms.Ittoryu.IttoryuPathNode)">
+            <inheritdoc cref="M:Sudoku.Algorithms.Ittoryu.IttoryuPathNodeExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Algorithms.Ittoryu.IttoryuPathNode)"/>
         </member>
         <member name="T:Sudoku.Algorithms.Ittoryu.TechniqueIttoryuSets">
             <summary>
@@ -32210,11 +32247,6 @@
         <member name="P:Sudoku.Resources.AnalyticsResources.Message_DeadlyPatternInferrerLimitReachedException">
             <summary>
               Looks up a localized string similar to More than 10000 solutions are found in the module, which will produce large memory on checking for the pattern. Currently the module disallows checking for such patterns. Please reduce such patterns and try again..
-            </summary>
-        </member>
-        <member name="P:Sudoku.Resources.AnalyticsResources.Message_DisorderedIttoryuModuleAlreadyFinished">
-            <summary>
-              Looks up a localized string similar to Disordered ittoryu module has already finished..
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.Message_FactorResourceMismatchedException">

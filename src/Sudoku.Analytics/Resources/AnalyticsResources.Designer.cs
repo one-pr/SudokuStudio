@@ -3888,15 +3888,6 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disordered ittoryu module has already finished..
-        /// </summary>
-        public static string Message_DisorderedIttoryuModuleAlreadyFinished {
-            get {
-                return ResourceManager.GetString("Message_DisorderedIttoryuModuleAlreadyFinished", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Factor resource mismatched..
         /// </summary>
         public static string Message_FactorResourceMismatchedException {

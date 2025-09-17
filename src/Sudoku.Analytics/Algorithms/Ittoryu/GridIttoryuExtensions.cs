@@ -11,22 +11,27 @@ public static class GridIttoryuExtensions
 	/// </summary>
 	extension(ref Grid @this)
 	{
+		/// <inheritdoc cref="op_RightShiftAssignment(ref Grid, DisorderedIttoryuDigitPath)"/>
+		[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
+		public void MakeIttoryu(DisorderedIttoryuDigitPath path) => @this >>= path;
+
+
 		/// <summary>
 		/// Try to reproduce ittoryu ordering for the specified grid whose path can be found by <see cref="DisorderedIttoryuFinder"/>.
 		/// </summary>
-		/// <param name="ittoryuPath">
+		/// <param name="path">
 		/// The path to be used. The argument isn't required to be a complete path. It's considered to be OK if a path contains at least 2 digits.
 		/// </param>
 		/// <exception cref="ArgumentException">Throws when the ittoryu path contains a digit series of length 0 or 1.</exception>
 		/// <seealso cref="DisorderedIttoryuFinder"/>
-		public void MakeIttoryu(DisorderedIttoryuDigitPath ittoryuPath)
+		public void operator >>=(DisorderedIttoryuDigitPath path)
 		{
-			if (ittoryuPath.Digits is not { Length: >= 2 })
+			if (path.Digits is not { Length: >= 2 })
 			{
-				throw new ArgumentException($"The argument '{nameof(ittoryuPath)}' requires a digit series of length greater than 1.", nameof(ittoryuPath));
+				throw new ArgumentException($"The argument '{nameof(path)}' requires a digit series of length greater than 1.", nameof(path));
 			}
 
-			if (ittoryuPath == Digits)
+			if (path == Digits)
 			{
 				// The puzzle won't be changed.
 				return;
@@ -35,9 +40,9 @@ public static class GridIttoryuExtensions
 			// Try to replace digits.
 			var result = Grid.Empty;
 			var valuesMap = @this.ValuesMap;
-			for (var digit = 0; digit < ittoryuPath.Digits.Length; digit++)
+			for (var digit = 0; digit < path.Digits.Length; digit++)
 			{
-				ref readonly var valueMap = ref valuesMap[ittoryuPath.Digits[digit]];
+				ref readonly var valueMap = ref valuesMap[path.Digits[digit]];
 				foreach (var cell in valueMap)
 				{
 					result.SetDigit(cell, digit);
@@ -54,6 +59,15 @@ public static class GridIttoryuExtensions
 			}
 
 			@this = result.ResetGrid;
+		}
+
+
+		/// <inheritdoc cref="op_RightShiftAssignment(ref Grid, DisorderedIttoryuDigitPath)"/>
+		public static Grid operator >>(in Grid grid, DisorderedIttoryuDigitPath path)
+		{
+			var tempGrid = grid;
+			tempGrid >>= path;
+			return tempGrid;
 		}
 	}
 

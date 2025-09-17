@@ -12,15 +12,8 @@ public static class StackExtensions
 	extension<T>(Stack<T> @this)
 	{
 		/// <inheritdoc cref="Enumerable.Reverse{TSource}(IEnumerable{TSource})" />
-		public Stack<T> Reverse()
-		{
-			var result = new Stack<T>(@this.Count);
-			foreach (var element in @this)
-			{
-				result.Push(element);
-			}
-			return result;
-		}
+		[Obsolete(DeprecatedMessages.ExtensionOperator_Reverse, false)]
+		public Stack<T> Reverse() => ~@this;
 
 		/// <summary>
 		/// Returns the internal array of <see cref="Stack{T}"/>.
@@ -49,6 +42,18 @@ public static class StackExtensions
 		///     path="//g/dotnet/version[@value='9' and @preview-value='4']/feature[@name='unsafe-accessor']"/>
 		/// </remarks>
 		public ref int GetCount() => ref StackEntry<T>.GetCount(@this);
+
+
+		/// <inheritdoc cref="Enumerable.Reverse{TSource}(IEnumerable{TSource})" />
+		public static Stack<T> operator ~(Stack<T> value) 
+		{
+			var result = new Stack<T>(value.Count);
+			foreach (var element in value)
+			{
+				result.Push(element);
+			}
+			return result;
+		}
 	}
 }
 
