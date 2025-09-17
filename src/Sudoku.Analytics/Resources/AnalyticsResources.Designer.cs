@@ -1233,6 +1233,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Catch a puzzle having specified number of technique group in a puzzle solving path.
+        /// </summary>
+        public static string ConstraintDescription_TechniqueGroupCountConstraint {
+            get {
+                return ResourceManager.GetString("ConstraintDescription_TechniqueGroupCountConstraint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Catch a puzzle with specified ordering rules of two techniques&apos; precedence relation.
         /// </summary>
         public static string ConstraintDescription_TechniquePrecedenceConstraint {
@@ -8938,6 +8947,15 @@ namespace Sudoku.Resources {
         public static string TechniqueGroup_XyzRing {
             get {
                 return ResourceManager.GetString("TechniqueGroup_XyzRing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technique group appearing times rule: {0} appears {1} {2} time(s).
+        /// </summary>
+        public static string TechniqueGroupCountConstraint {
+            get {
+                return ResourceManager.GetString("TechniqueGroupCountConstraint", resourceCulture);
             }
         }
         

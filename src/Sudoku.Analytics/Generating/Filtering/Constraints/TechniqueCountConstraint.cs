@@ -20,10 +20,10 @@ public sealed class TechniqueCountConstraint : Constraint, IComparisonOperatorCo
 
 
 	/// <inheritdoc/>
-	public static int Minimum => 0;
+	static int ILimitCountConstraint<int>.Minimum => 0;
 
 	/// <inheritdoc/>
-	public static int Maximum => 20;
+	static int ILimitCountConstraint<int>.Maximum => 20;
 
 
 	/// <inheritdoc/>

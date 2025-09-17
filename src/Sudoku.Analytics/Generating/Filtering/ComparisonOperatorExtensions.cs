@@ -25,6 +25,16 @@ public static class ComparisonOperatorExtensions
 				ComparisonOperator.LessThanOrEqual => "<="
 			};
 
+		/// <summary>
+		/// Create a <see cref="Func{T1, T2, TResult}"/> that compares two <see cref="int"/> values.
+		/// </summary>
+		public Func<int, int, bool> OperatorInt32 => @this.GetOperator<int>();
+
+		/// <summary>
+		/// Creates a <see cref="Func{T1, T2, TResult}"/> that compares two <see cref="double"/> values.
+		/// </summary>
+		public Func<double, double, bool> OperatorDouble => @this.GetOperator<double>();
+
 
 		/// <summary>
 		/// Creates a delegate method that executes the specified rule of comparison.

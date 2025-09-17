@@ -3340,4 +3340,10 @@ Is pattern rank-0: {6}</value>
   <data name="BivalueOddagonType4" xml:space="preserve">
     <value>Bi-value Oddagon Type 4</value>
   </data>
+  <data name="ConstraintDescription_TechniqueGroupCountConstraint" xml:space="preserve">
+    <value>Catch a puzzle having specified number of technique group in a puzzle solving path</value>
+  </data>
+  <data name="TechniqueGroupCountConstraint" xml:space="preserve">
+    <value>Technique group appearing times rule: {0} appears {1} {2} time(s)</value>
+  </data>
 </root>

@@ -27865,6 +27865,12 @@
         <member name="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.get_OperatorString(Sudoku.Generating.Filtering.ComparisonOperator)">
             <inheritdoc cref="P:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.&lt;G&gt;$E99F183A5675FB622676A25013E903E5.OperatorString"/>
         </member>
+        <member name="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.get_OperatorInt32(Sudoku.Generating.Filtering.ComparisonOperator)">
+            <inheritdoc cref="P:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.&lt;G&gt;$E99F183A5675FB622676A25013E903E5.OperatorInt32"/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.get_OperatorDouble(Sudoku.Generating.Filtering.ComparisonOperator)">
+            <inheritdoc cref="P:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.&lt;G&gt;$E99F183A5675FB622676A25013E903E5.OperatorDouble"/>
+        </member>
         <member name="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.GetOperator``1(Sudoku.Generating.Filtering.ComparisonOperator)">
             <inheritdoc cref="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.&lt;G&gt;$E99F183A5675FB622676A25013E903E5.GetOperator``1"/>
         </member>
@@ -27876,6 +27882,16 @@
         <member name="P:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.&lt;G&gt;$E99F183A5675FB622676A25013E903E5.OperatorString">
             <summary>
             Indicates the string representation of the operator.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.&lt;G&gt;$E99F183A5675FB622676A25013E903E5.OperatorInt32">
+            <summary>
+            Create a <see cref="T:System.Func`3"/> that compares two <see cref="T:System.Int32"/> values.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.&lt;G&gt;$E99F183A5675FB622676A25013E903E5.OperatorDouble">
+            <summary>
+            Creates a <see cref="T:System.Func`3"/> that compares two <see cref="T:System.Double"/> values.
             </summary>
         </member>
         <member name="M:Sudoku.Generating.Filtering.ComparisonOperatorExtensions.&lt;G&gt;$E99F183A5675FB622676A25013E903E5.GetOperator``1">
@@ -29015,10 +29031,10 @@
             Indicates the technique used.
             </summary>
         </member>
-        <member name="P:Sudoku.Generating.Filtering.Constraints.TechniqueCountConstraint.Minimum">
+        <member name="P:Sudoku.Generating.Filtering.Constraints.TechniqueCountConstraint.Sudoku#Generating#Filtering#Constraints#ILimitCountConstraint{System#Int32}#Minimum">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Generating.Filtering.Constraints.TechniqueCountConstraint.Maximum">
+        <member name="P:Sudoku.Generating.Filtering.Constraints.TechniqueCountConstraint.Sudoku#Generating#Filtering#Constraints#ILimitCountConstraint{System#Int32}#Maximum">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Generating.Filtering.Constraints.TechniqueCountConstraint.Equals(Sudoku.Generating.Filtering.Constraint)">
@@ -29034,6 +29050,43 @@
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Generating.Filtering.Constraints.TechniqueCountConstraint.CheckCore(Sudoku.Generating.Filtering.ConstraintCheckingContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Generating.Filtering.Constraints.TechniqueGroupCountConstraint">
+            <summary>
+            Represents a technique group count constraint.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Constraints.TechniqueGroupCountConstraint.LimitCount">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Constraints.TechniqueGroupCountConstraint.Operator">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Constraints.TechniqueGroupCountConstraint.TechniqueGroup">
+            <summary>
+            Indicates the technique group.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Constraints.TechniqueGroupCountConstraint.Sudoku#Generating#Filtering#Constraints#ILimitCountConstraint{System#Int32}#Minimum">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Generating.Filtering.Constraints.TechniqueGroupCountConstraint.Sudoku#Generating#Filtering#Constraints#ILimitCountConstraint{System#Int32}#Maximum">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.TechniqueGroupCountConstraint.Equals(Sudoku.Generating.Filtering.Constraint)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.TechniqueGroupCountConstraint.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.TechniqueGroupCountConstraint.ToString(System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.TechniqueGroupCountConstraint.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Generating.Filtering.Constraints.TechniqueGroupCountConstraint.CheckCore(Sudoku.Generating.Filtering.ConstraintCheckingContext)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Generating.Filtering.Constraints.TechniquePrecedenceConstraint">
@@ -30682,6 +30735,11 @@
         <member name="P:Sudoku.Resources.AnalyticsResources.ConstraintDescription_TechniqueCountConstraint">
             <summary>
               Looks up a localized string similar to Catch a puzzle having specified number of usages in a puzzle solving path.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.ConstraintDescription_TechniqueGroupCountConstraint">
+            <summary>
+              Looks up a localized string similar to Catch a puzzle having specified number of technique group in a puzzle solving path.
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.ConstraintDescription_TechniquePrecedenceConstraint">
@@ -34971,6 +35029,11 @@
         <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueGroup_XyzRing">
             <summary>
               Looks up a localized string similar to XYZ-Ring.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueGroupCountConstraint">
+            <summary>
+              Looks up a localized string similar to Technique group appearing times rule: {0} appears {1} {2} time(s).
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.TechniquePrecedenceConstraint">

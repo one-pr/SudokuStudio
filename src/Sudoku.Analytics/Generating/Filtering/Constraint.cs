@@ -28,6 +28,7 @@ namespace Sudoku.Generating.Filtering;
 [JsonDerivedType(typeof(SymmetryConstraint), nameof(SymmetryConstraint))]
 [JsonDerivedType(typeof(TechniqueConstraint), nameof(TechniqueConstraint))]
 [JsonDerivedType(typeof(TechniqueCountConstraint), nameof(TechniqueCountConstraint))]
+[JsonDerivedType(typeof(TechniqueGroupCountConstraint), nameof(TechniqueGroupCountConstraint))]
 [JsonDerivedType(typeof(TechniquePrecedenceConstraint), nameof(TechniquePrecedenceConstraint))]
 [JsonDerivedType(typeof(TechniqueSetConstraint), nameof(TechniqueSetConstraint))]
 public abstract class Constraint : IEquatable<Constraint>, IEqualityOperators<Constraint, Constraint, bool>, IFormattable

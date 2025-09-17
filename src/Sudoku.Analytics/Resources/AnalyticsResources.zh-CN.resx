@@ -3384,4 +3384,10 @@
     <value>死环类型 4</value>
     <comment>Technique Name</comment>
   </data>
+  <data name="ConstraintDescription_TechniqueGroupCountConstraint" xml:space="preserve">
+    <value>限制题目解题使用的某技巧父类型（分类）的次数</value>
+  </data>
+  <data name="TechniqueGroupCountConstraint" xml:space="preserve">
+    <value>技巧分类出现次数：“{0}”需要出现 {1} {2} 次</value>
+  </data>
 </root>
