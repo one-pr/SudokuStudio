@@ -162,3 +162,37 @@ public sealed partial class UniqueLoopStepSearcher : StepSearcher
 	private static partial UniqueLoopStep? CheckType4(SortedSet<UniqueLoopStep> accumulator, in Grid grid, ref StepAnalysisContext context, Digit d1, Digit d2, in CellMap loop, in CellMap extraCellsMap, Mask comparer, Cell[] path);
 	private static partial UniqueLoopStep? CheckStrongLinkType(SortedSet<UniqueLoopStep> accumulator, in Grid grid, ref StepAnalysisContext context, Digit d1, Digit d2, in CellMap loop, in CellMap extraCellsMap, Mask comparer, Cell[] path);
 }
+
+/// <summary>
+/// Represents a type that creates a <see cref="LinkedList{T}"/> instance.
+/// </summary>
+/// <seealso cref="LinkedList{T}"/>
+file static class LinkedList
+{
+	/// <summary>
+	/// Creates a <see cref="LinkedList{T}"/> with only one element.
+	/// </summary>
+	/// <typeparam name="T">The type of each element of the return value.</typeparam>
+	/// <param name="value">The value to be created.</param>
+	/// <returns>A <see cref="LinkedList{T}"/> instance, with only one element inside it.</returns>
+	public static LinkedList<T> Singleton<T>(T value)
+	{
+		var result = new LinkedList<T>();
+		result.AddLast(value);
+		return result;
+	}
+
+	/// <summary>
+	/// Creates a <see cref="LinkedList{T}"/> with the original values and a new value.
+	/// </summary>
+	/// <typeparam name="T">The type of each element.</typeparam>
+	/// <param name="original">The original collection.</param>
+	/// <param name="newValue">The new value to be added.</param>
+	/// <returns>A <see cref="LinkedList{T}"/> instance.</returns>
+	public static LinkedList<T> Create<T>(LinkedList<T> original, T newValue)
+	{
+		var result = new LinkedList<T>(original);
+		result.AddLast(newValue);
+		return result;
+	}
+}

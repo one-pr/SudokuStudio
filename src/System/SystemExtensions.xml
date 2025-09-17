@@ -834,25 +834,6 @@
             </summary>
             <param name="elements">The collection whose elements should be added to the end of the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
         </member>
-        <member name="T:System.Collections.Generic.IDictionaryEntry`1">
-            <summary>
-            Represents an entry that can be used as a type parameter <c>TKey</c> in <see cref="T:System.Collections.Generic.Dictionary`2" />.
-            </summary>
-            <typeparam name="TSelf"><self-type-constraint>
-		<para>Indicates the type implementing this interface.</para>
-		<para>
-			This type doesn't use any extra syntax to constraint such usage, but C# will check for it.
-			The type will include a <see langword="where" /> constraint that implements the interface itself
-			to declare such "self constraint" usage:
-			<code><![CDATA[interface ISelfType<TSelf> where TSelf : ISelfType<TSelf>]]></code>
-			In addition, the type should be named <c>TSelf</c> in order to tell type parameters with the others.
-		</para>
-	</self-type-constraint></typeparam>
-            <remarks>
-            <b>The type is only used as a constraint, while implementing a data type for key usages temporarily.</b>
-            </remarks>
-            <seealso cref="T:System.Collections.Generic.Dictionary`2" />
-        </member>
         <member name="T:System.Collections.Generic.IFiniteSet`2">
             <summary>
             Represents an object that is a set of elements of type <typeparamref name="T" />, and is a closed set,
@@ -1047,29 +1028,6 @@
 					</para>
 				</target>
             </remarks>
-        </member>
-        <member name="T:System.Collections.Generic.LinkedList">
-            <summary>
-            Represents a type that creates a <see cref="T:System.Collections.Generic.LinkedList`1"/> instance.
-            </summary>
-            <seealso cref="T:System.Collections.Generic.LinkedList`1"/>
-        </member>
-        <member name="M:System.Collections.Generic.LinkedList.Singleton``1(``0)">
-            <summary>
-            Creates a <see cref="T:System.Collections.Generic.LinkedList`1"/> with only one element.
-            </summary>
-            <typeparam name="T">The type of each element of the return value.</typeparam>
-            <param name="value">The value to be created.</param>
-            <returns>A <see cref="T:System.Collections.Generic.LinkedList`1"/> instance, with only one element inside it.</returns>
-        </member>
-        <member name="M:System.Collections.Generic.LinkedList.Create``1(System.Collections.Generic.LinkedList{``0},``0)">
-            <summary>
-            Creates a <see cref="T:System.Collections.Generic.LinkedList`1"/> with the original values and a new value.
-            </summary>
-            <typeparam name="T">The type of each element.</typeparam>
-            <param name="original">The original collection.</param>
-            <param name="newValue">The new value to be added.</param>
-            <returns>A <see cref="T:System.Collections.Generic.LinkedList`1"/> instance.</returns>
         </member>
         <member name="T:System.Collections.Generic.LinkedListExtensions">
             <summary>
