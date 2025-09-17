@@ -10,7 +10,9 @@
 
 * [排除](direct-technique/01-crosshatching.md)
 * [唯一余数](direct-technique/02-naked-single.md)
-* [剩余数的概念](direct-technique/03-concept-of-lasting.md)
+* [做题策略](direct-technique/03-strategying/README.md)
+  * [数字锁定策略](direct-technique/03-strategying/01-digit-locking-strategy.md)
+  * [剩余数的概念](direct-technique/03-strategying/02-concept-of-lasting.md)
 
 ## 局部标记技巧 <a href="#partial-marking-technique" id="partial-marking-technique"></a>
 

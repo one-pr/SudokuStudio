@@ -1,10 +1,10 @@
-﻿---
+---
 description: Concept of Lasting
 ---
 
 # 剩余数的概念
 
-在讲解前面的两种技巧[排除](01-crosshatching.md)和[唯一余数](02-naked-single.md)时，我们用到了排除项得到结论的推理套路。为了更方便描述一些后续的东西，我想安排一个额外的文章篇目给各位介绍一下**剩余数**（Lasting，简称**余数**）的概念。
+在前面讲过的两种技巧[排除](../01-crosshatching.md)和[唯一余数](../02-naked-single.md)里，我们用到了排除项得到结论的推理套路。为了更方便描述一些后续的东西，我想安排一个额外的文章篇目给各位介绍一下**剩余数**（Lasting，简称**余数**）的概念。
 
 > 本文主要是为了讲解题目的难度衡量，所以不讲技巧。它说起来也确实有些晦涩，如果你不想看也可以跳过它。不过，它对你认知题目的难度，以及一些额外定义上来说会有帮助。
 
@@ -19,19 +19,19 @@ description: Concept of Lasting
 
 既然说明白了这两个概念，那么剩余数的概念就很清晰了。我们来看一个例子。
 
-<figure><img src="../.gitbook/assets/images_0031.png" alt="" width="375"><figcaption><p>行排除，行余 2</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0031.png" alt="" width="375"><figcaption><p>行排除，行余 2</p></figcaption></figure>
 
 这个例子里，我们可得到行排除结论是填入 6 在 `r9`。目标区域就是 `r9`，而里面只有两个空格，因此 `r9` 剩余数为 2，或者直接简单叫它**行余二**。这个说法是不是听起来蛮“古色古香”的？
 
 我们再来看一个例子。
 
-<figure><img src="../.gitbook/assets/images_0044.png" alt="" width="375"><figcaption><p>列排除，列余 3</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0044.png" alt="" width="375"><figcaption><p>列排除，列余 3</p></figcaption></figure>
 
 这个的结论在 `c9`，空格数量为 3，所以称为**列余三**。
 
 排除很好定义余数的概念，但是唯一余数似乎不太容易。对于唯一余数而言，我们选取的是，按照前面介绍的观察方式（选取空格剩余少的区域，在数出剩余的可选项后，再在外面找可排除的项），对那个排除项更多、空格数量更少的区域作为目标区域。
 
-<figure><img src="../.gitbook/assets/images_0048.png" alt="" width="375"><figcaption><p>唯一余数，宫余 3</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0048.png" alt="" width="375"><figcaption><p>唯一余数，宫余 3</p></figcaption></figure>
 
 比如这个例子里，目标单元格（结论单元格，即 `r9c7`）所在的行上有 3 个空格，列上有 7 个空格，宫内有 3 个空格。而因为宫的观察方式优于行和列，因此我们把这个唯一余数定义为**宫余三**。
 
@@ -66,7 +66,7 @@ description: Concept of Lasting
 
 我举个例子。
 
-<figure><img src="../.gitbook/assets/images_0052.png" alt="" width="375"><figcaption><p>一个例子</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0052.png" alt="" width="375"><figcaption><p>一个例子</p></figcaption></figure>
 
 这个题要完成它，会用到除了宫排除外的直观技巧。按余数排列出来，会用到这些：
 
@@ -77,7 +77,7 @@ description: Concept of Lasting
 
 显然，余四的行排除空格数量要求最多，所以我们把这个余四的行排除作为这个题目的最大难度的技巧使用步骤。我们也可称它为**卡（kǎ）点**（Bottleneck）。它在这个题的这个位置：
 
-<figure><img src="../.gitbook/assets/images_0056.png" alt="" width="375"><figcaption><p>行排除，行余 4</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0056.png" alt="" width="375"><figcaption><p>行排除，行余 4</p></figcaption></figure>
 
 如图所示。这是这个题目的卡点。
 
@@ -89,32 +89,32 @@ description: Concept of Lasting
 
 为了让我们使用技巧的列表更加饱满，剩余数只有 1 的两种技巧还有单独的名字，我打算放这里说。
 
-### 同区剩余（Full House） <a href="#full-house" id="full-house"></a>
+### 单元唯一（Full House） <a href="#full-house" id="full-house"></a>
 
-**同区剩余**（Full House），也叫**单元唯一法**或**区域唯一法**，有时候也直接用它的英文名 Full House，指的是某个行、列、宫里仅剩下唯一一个空格的技巧。是的，它其实就是剩余数为 1 的特殊情况。
+**单元唯一**（Full House），有时候也直接用它的英文名 Full House，指的是某个行、列、宫里仅剩下唯一一个空格的技巧。是的，它其实就是剩余数为 1 的特殊情况。
 
 我们来看一个例子。
 
-<figure><img src="../.gitbook/assets/images_0060.png" alt="" width="375"><figcaption><p>同数剩余</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0060.png" alt="" width="375"><figcaption><p>单元唯一</p></figcaption></figure>
 
 显然，在 `b8` 里，只有 8 没有填。直接填入 `r8c5 = 8` 便是这个技巧的结论。
 
-### 同数剩余（Last Digit） <a href="#last-digit" id="last-digit"></a>
+### 数字唯一（Last Digit） <a href="#last-digit" id="last-digit"></a>
 
-和同区剩余的用法相反，**同数剩余**（Last Digit）是同一个数字，在全盘里只剩唯一一处没填的特殊技巧用法。
+和单元唯一的用法相反，**数字唯一**（Last Digit）是同一个数字，在全盘里只剩唯一一处没填的特殊技巧用法。
 
-<figure><img src="../.gitbook/assets/images_0063.png" alt="" width="375"><figcaption><p>同数剩余</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0063.png" alt="" width="375"><figcaption><p>数字唯一</p></figcaption></figure>
 
 比如这个题里，7 全盘只有一个没填了。赶紧填进去，就是这个技巧的结论。
 
-可以看到，同数剩余其实就是特殊情况下的宫排除。不论宫内空格剩几个（余数是多少），难度始终是一致的：因为直接看哪些宫没有这个数就行了。一旦只有一个宫没有填这个数了之后，那么这个数必然可以在这一步里得到。
+可以看到，数字唯一其实就是特殊情况下的宫排除。不论宫内空格剩几个（余数是多少），难度始终是一致的：因为直接看哪些宫没有这个数就行了。一旦只有一个宫没有填这个数了之后，那么这个数必然可以在这一步里得到。
 
 为了迎合这一点，我们把前面衡量难度的描述内容稍微扩充一下，使得更严谨一点。
 
-1. 如果一个题只用同数剩余或同区剩余就可以完成，那么这个题不论啥样，我们都人为规定为难度是一样的；
+1. 如果一个题只用数字唯一或单元唯一就可以完成，那么这个题不论啥样，我们都人为规定为难度是一样的；
 2. 如果一个题要用不超过宫排除的技巧才可以完成题目，那么：
-   1. 如果得出的宫排除是同数剩余所得到的，则不论它的余数是多少，用到外围多少个排除项，都不记录到题目难度之中；
-   2. 如果不是同数剩余，则：
+   1. 如果得出的宫排除是数字剩余所得到的，则不论它的余数是多少，用到外围多少个排除项，都不记录到题目难度之中；
+   2. 如果不是数字唯一，则：
       1. 如果宫排除只会用到外围 1 到 2 个排除项就可以得到目标结论，则它是第一档（最简单）的难度；
       2. 如果宫排除用到外围 3 个或 4 个排除项才能得到结论，则它是第二挡（稍微难一点）的难度。
 3. 如果一个题需要用到行列排除和唯一余数，则统统都归为第三档。还要细分的话，就按下面这样的规则细分：
