@@ -1,3 +1,4 @@
+#if OCR
 namespace Sudoku.Ocr;
 
 /// <summary>
@@ -84,3 +85,4 @@ public sealed class Recognizer : IDisposable
 	/// <returns>The grid.</returns>
 	public async Task<Grid> RecognizeAsync(Bitmap image) => await Task.Run(() => Recognize(image));
 }
+#endif

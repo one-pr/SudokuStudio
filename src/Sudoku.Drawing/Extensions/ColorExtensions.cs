@@ -17,7 +17,16 @@ public static class ColorExtensions
 		public Color QuarterAlpha => Color.FromArgb(@this.A >> 2, @this);
 
 
+#if !COMPATIBLE_EXTENSION_DECONSTRUCT_METHOD
 		/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-		public void Deconstruct(out byte a, out byte r, out byte g, out byte b) => (a, r, g, b) = (@this.A, @this.R, @this.G, @this.B);
+		public void Deconstruct(out byte a, out byte r, out byte g, out byte b)
+			=> (a, r, g, b) = (@this.A, @this.R, @this.G, @this.B);
+#endif
 	}
+
+#if COMPATIBLE_EXTENSION_DECONSTRUCT_METHOD
+	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
+	public static void Deconstruct(this Color @this, out byte a, out byte r, out byte g, out byte b)
+		=> (a, r, g, b) = (@this.A, @this.R, @this.G, @this.B);
+#endif
 }

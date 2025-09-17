@@ -21,8 +21,10 @@ public static class RectangleOrRectangleFExtensions
 		public Rectangle Zoom(int offset)
 			=> @this with { X = @this.X - offset, Y = @this.Y - offset, Width = @this.Width + offset * 2, Height = @this.Height + offset * 2 };
 
+#if !COMPATIBLE_EXTENSION_DECONSTRUCT_METHOD
 		/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
 		public void Deconstruct(out Point point, out Size size) => (point, size) = (new(@this.X, @this.Y), @this.Size);
+#endif
 	}
 
 	/// <summary>
@@ -90,11 +92,26 @@ public static class RectangleOrRectangleFExtensions
 		/// <returns>The result.</returns>
 		public Rectangle Truncate() => new((int)@this.X, (int)@this.Y, (int)@this.Width, (int)@this.Height);
 
+#if !COMPATIBLE_EXTENSION_DECONSTRUCT_METHOD
 		/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
 		public void Deconstruct(out PointF point, out SizeF size) => (point, size) = (@this.Location, @this.Size);
 
 		/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
 		public void Deconstruct(out float x, out float y, out float width, out float height)
 			=> (x, y, width, height) = (@this.X, @this.Y, @this.Width, @this.Height);
+#endif
 	}
+
+#if COMPATIBLE_EXTENSION_DECONSTRUCT_METHOD
+	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
+	public static void Deconstruct(this Rectangle @this, out Point point, out Size size)
+		=> (point, size) = (new(@this.X, @this.Y), @this.Size);
+
+	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
+	public static void Deconstruct(this RectangleF @this, out PointF point, out SizeF size) => (point, size) = (@this.Location, @this.Size);
+
+	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
+	public static void Deconstruct(this RectangleF @this, out float x, out float y, out float width, out float height)
+		=> (x, y, width, height) = (@this.X, @this.Y, @this.Width, @this.Height);
+#endif
 }

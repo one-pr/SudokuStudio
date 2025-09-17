@@ -14,3 +14,16 @@ global using Sudoku.Concepts;
 global using Sudoku.Drawing.Nodes;
 global using static System.MathF;
 global using static Sudoku.Concepts.ConclusionType;
+#if OCR
+global using System.ComponentModel;
+global using System.Diagnostics.CodeAnalysis;
+global using System.Resources;
+global using System.Runtime.InteropServices;
+global using System.Threading.Tasks;
+global using Emgu.CV;
+global using Emgu.CV.CvEnum;
+global using Emgu.CV.OCR;
+global using Emgu.CV.Structure;
+global using Emgu.CV.Util;
+global using Sudoku.Resources;
+#endif

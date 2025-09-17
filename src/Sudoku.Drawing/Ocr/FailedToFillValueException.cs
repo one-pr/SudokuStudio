@@ -1,3 +1,4 @@
+#if OCR
 namespace Sudoku.Ocr;
 
 /// <summary>
@@ -14,3 +15,4 @@ public sealed class FailedToFillValueException(Cell _cell, Digit _digit) : Excep
 	/// <inheritdoc/>
 	public override string? HelpLink => null;
 }
+#endif

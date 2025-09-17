@@ -1,3 +1,4 @@
+#if OCR
 namespace Sudoku.Ocr;
 
 /// <summary>
@@ -528,3 +529,4 @@ file static class ImageHandler
 		}
 	}
 }
+#endif

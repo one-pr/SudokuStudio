@@ -1,3 +1,4 @@
+#if OCR
 namespace Sudoku.Ocr;
 
 /// <summary>
@@ -161,3 +162,4 @@ internal sealed class InternalServiceProvider : IDisposable
 		}
 	}
 }
+#endif

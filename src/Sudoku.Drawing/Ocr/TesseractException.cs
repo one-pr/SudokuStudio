@@ -1,3 +1,4 @@
+#if OCR
 namespace Sudoku.Ocr;
 
 /// <summary>
@@ -12,3 +13,4 @@ public sealed class TesseractException(string _detail) : Exception
 	/// <inheritdoc/>
 	public override string? HelpLink => null;
 }
+#endif
