@@ -284,9 +284,9 @@ public sealed partial class SingleStepSearcher : StepSearcher
 						[
 							..
 							Excluder.GetNakedSingleExcluders(grid, cell, digit, out var excluderHouses) is var iconOffsets
-								 && excluderHouses.Length == 8
-								 ? iconOffsets
-								 : []
+							&& excluderHouses.Length == 8
+								? iconOffsets
+								: []
 						]
 					],
 					context.Options,
