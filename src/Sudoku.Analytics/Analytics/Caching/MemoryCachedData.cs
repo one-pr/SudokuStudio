@@ -5,61 +5,74 @@ namespace Sudoku.Analytics.Caching;
 /// </summary>
 internal static class MemoryCachedData
 {
+#nullable disable
 	/// <summary>
 	/// The backing field storing on strong links.
 	/// </summary>
-	public static readonly LinkDictionary StrongLinkDictionary = [];
+	[ThreadStatic]
+	public static LinkDictionary StrongLinkDictionary;
 
 	/// <summary>
 	/// The backing field storing on weak links.
 	/// </summary>
-	public static readonly LinkDictionary WeakLinkDictionary = [];
+	[ThreadStatic]
+	public static LinkDictionary WeakLinkDictionary;
 
 
 	/// <summary>
 	/// Backing field of <see cref="EmptyCells"/>.
 	/// </summary>
+	[ThreadStatic]
 	private static CellMap _cachedEmptyCells;
 
 	/// <summary>
 	/// Backing field of <see cref="BivalueCells"/>.
 	/// </summary>
+	[ThreadStatic]
 	private static CellMap _cachedBivalueCells;
 
 	/// <summary>
 	/// Backing field of <see cref="CandidatesMap"/>.
 	/// </summary>
-	private static CellMap[] _cachedCandidatesMap = null!;
+	[ThreadStatic]
+	private static CellMap[] _cachedCandidatesMap;
 
 	/// <summary>
 	/// Backing field of <see cref="DigitsMap"/>.
 	/// </summary>
-	private static CellMap[] _cachedDigitsMap = null!;
+	[ThreadStatic]
+	private static CellMap[] _cachedDigitsMap;
 
 	/// <summary>
 	/// Backing field of <see cref="ValuesMap"/>.
 	/// </summary>
-	private static CellMap[] _cachedValuesMap = null!;
+	[ThreadStatic]
+	private static CellMap[] _cachedValuesMap;
+#nullable enable
 
 	/// <summary>
 	/// Backing field of <see cref="Solution"/>.
 	/// </summary>
+	[ThreadStatic]
 	private static Grid _cachedSolution;
 
 
 	/// <summary>
 	/// The backing field storing on strong links, grouped by link type.
 	/// </summary>
+	[field: ThreadStatic]
 	public static LinkType StrongLinkTypesCollected { get; private set; }
 
 	/// <summary>
 	/// The backing field storing on weak links, grouped by link type.
 	/// </summary>
+	[field: ThreadStatic]
 	public static LinkType WeakLinkTypesCollected { get; private set; }
 
 	/// <summary>
 	/// Indicates the number of candidates appeared in the puzzle.
 	/// </summary>
+	[field: ThreadStatic]
 	public static Candidate CandidatesCount { get; private set; }
 
 	/// <summary>
@@ -137,8 +150,8 @@ internal static class MemoryCachedData
 
 		if (analyzer is null || analyzer.ResultStepSearchers.Span.Any(match))
 		{
-			StrongLinkDictionary.Clear();
-			WeakLinkDictionary.Clear();
+			StrongLinkDictionary = [];
+			WeakLinkDictionary = [];
 		}
 
 
