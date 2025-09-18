@@ -36,9 +36,9 @@ public partial class Hub
 				return SingleSubtype.Parse(
 					house switch
 					{
-						>= 0 and < 9 => $"{HouseType.Block}HiddenSingle0{r}{c}",
-						>= 9 and < 18 => $"{HouseType.Row}HiddenSingle{b}0{c}",
-						>= 18 and < 27 => $"{HouseType.Column}HiddenSingle{b}{r}0"
+						>= 0 and < 9 => $"BlockHiddenSingle0{r}{c}",
+						>= 9 and < 18 => $"RowHiddenSingle{b}0{c}",
+						>= 18 and < 27 => $"ColumnHiddenSingle{b}{r}0"
 					}
 				);
 			}
