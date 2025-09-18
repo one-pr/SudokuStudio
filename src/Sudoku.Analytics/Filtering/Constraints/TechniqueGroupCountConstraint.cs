@@ -50,6 +50,11 @@ public sealed class TechniqueGroupCountConstraint : Constraint, IComparisonOpera
 	/// <inheritdoc/>
 	protected override bool CheckCore(ConstraintCheckingContext context) 
 	{
+		if (TechniqueGroup == TechniqueGroup.None)
+		{
+			return true;
+		}
+
 		var times = 0;
 		foreach (var step in context.AnalysisResult)
 		{
