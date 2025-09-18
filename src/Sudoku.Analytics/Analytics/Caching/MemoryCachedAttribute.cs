@@ -3,7 +3,7 @@ namespace Sudoku.Analytics.Caching;
 /// <summary>
 /// Represents an attribute type that can be applied to a method,
 /// to tell interceptor source generator to produce a new method that copies full implementation from this method,
-/// with <see cref="Grid"/> properties replaced with corresponding properties in <see cref="MemoryCachedData"/>.
+/// with <see cref="Grid"/> properties replaced with corresponding properties in <see cref="MemoryCached"/>.
 /// </summary>
 /// <remarks>
 /// Usage:
@@ -29,7 +29,7 @@ namespace Sudoku.Analytics.Caching;
 /// }
 /// ]]></code>
 /// Such code will be intercepted, by replacing variables <c>__EmptyCells</c>, <c>__BivalueCells</c> and <c>__CandidatesMap</c>
-/// with properties in <see cref="MemoryCachedData"/>:
+/// with properties in <see cref="MemoryCached"/>:
 /// <code><![CDATA[
 /// // Get all bi-value-cell ALSes.
 /// var result = new List<AlmostLockedSetPattern>();
@@ -43,6 +43,6 @@ namespace Sudoku.Analytics.Caching;
 /// ]]></code>
 /// </remarks>
 /// <seealso cref="Grid"/>
-/// <seealso cref="MemoryCachedData"/>
+/// <seealso cref="MemoryCached"/>
 [AttributeUsage(AttributeTargets.Method, Inherited = false)]
 public sealed class MemoryCachedAttribute : Attribute;

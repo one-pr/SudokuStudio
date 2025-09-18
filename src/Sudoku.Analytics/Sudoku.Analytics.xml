@@ -2007,11 +2007,150 @@
             <param name="linkType">The link type.</param>
             <returns>The created <see cref="T:Sudoku.Analytics.Chaining.ChainingRule"/> instance created.</returns>
         </member>
+        <member name="T:Sudoku.Analytics.Caching.MemoryCached">
+            <summary>
+            Represents cached fields used by solving and analyzing for a sudoku puzzle, reducing repeated and redundant calculations.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Caching.MemoryCached.StrongLinkDictionary">
+            <summary>
+            The backing field storing on strong links.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Caching.MemoryCached.WeakLinkDictionary">
+            <summary>
+            The backing field storing on weak links.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Caching.MemoryCached._cachedEmptyCells">
+            <summary>
+            Backing field of <see cref="P:Sudoku.Analytics.Caching.MemoryCached.EmptyCells"/>.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Caching.MemoryCached._cachedBivalueCells">
+            <summary>
+            Backing field of <see cref="P:Sudoku.Analytics.Caching.MemoryCached.BivalueCells"/>.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Caching.MemoryCached._cachedCandidatesMap">
+            <summary>
+            Backing field of <see cref="P:Sudoku.Analytics.Caching.MemoryCached.CandidatesMap"/>.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Caching.MemoryCached._cachedDigitsMap">
+            <summary>
+            Backing field of <see cref="P:Sudoku.Analytics.Caching.MemoryCached.DigitsMap"/>.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Caching.MemoryCached._cachedValuesMap">
+            <summary>
+            Backing field of <see cref="P:Sudoku.Analytics.Caching.MemoryCached.ValuesMap"/>.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Caching.MemoryCached._cachedSolution">
+            <summary>
+            Backing field of <see cref="P:Sudoku.Analytics.Caching.MemoryCached.Solution"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Caching.MemoryCached.StrongLinkTypesCollected">
+            <summary>
+            The backing field storing on strong links, grouped by link type.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Caching.MemoryCached.WeakLinkTypesCollected">
+            <summary>
+            The backing field storing on weak links, grouped by link type.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Caching.MemoryCached.CandidatesCount">
+            <summary>
+            Indicates the number of candidates appeared in the puzzle.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Caching.MemoryCached.Solution">
+            <summary>
+            Indicates the solution.
+            </summary>
+            <remarks><b>
+            Please note that a puzzle may contain multiple solutions, leading to this field <see cref="F:Sudoku.Concepts.Grid.Undefined"/>.
+            You must check validity of this field before using this field.
+            </b></remarks>
+            <seealso cref="F:Sudoku.Concepts.Grid.Undefined"/>
+        </member>
+        <member name="P:Sudoku.Analytics.Caching.MemoryCached.EmptyCells">
+            <summary>
+            <inheritdoc cref="P:Sudoku.Concepts.Grid.EmptyCells"/>
+            </summary>
+            <remarks>
+            This map <b>should</b> be used after <see cref="M:Sudoku.Analytics.Caching.MemoryCached.Initialize(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)"/> called,
+            and you<b>'d better</b> not use this field on instances which are set <see langword="true"/>
+            for property <see cref="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.IsCachingSafe"/>.
+            </remarks>
+            <seealso cref="M:Sudoku.Analytics.Caching.MemoryCached.Initialize(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)"/>
+            <seealso cref="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.IsCachingSafe"/>
+        </member>
+        <member name="P:Sudoku.Analytics.Caching.MemoryCached.BivalueCells">
+            <summary>
+            <inheritdoc cref="P:Sudoku.Concepts.Grid.BivalueCells"/>
+            </summary>
+            <remarks>
+            <inheritdoc cref="P:Sudoku.Analytics.Caching.MemoryCached.EmptyCells" path="/remarks"/>
+            </remarks>
+        </member>
+        <member name="P:Sudoku.Analytics.Caching.MemoryCached.CandidatesMap">
+            <summary>
+            <inheritdoc cref="P:Sudoku.Concepts.Grid.CandidatesMap"/>
+            </summary>
+            <remarks>
+            <inheritdoc cref="P:Sudoku.Analytics.Caching.MemoryCached.EmptyCells" path="/remarks"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException">Throws when not initialized.</exception>
+        </member>
+        <member name="P:Sudoku.Analytics.Caching.MemoryCached.DigitsMap">
+            <summary>
+            <inheritdoc cref="P:Sudoku.Concepts.Grid.DigitsMap"/>
+            </summary>
+            <remarks>
+            <inheritdoc cref="P:Sudoku.Analytics.Caching.MemoryCached.EmptyCells" path="/remarks"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException">Throws when not initialized.</exception>
+        </member>
+        <member name="P:Sudoku.Analytics.Caching.MemoryCached.ValuesMap">
+            <summary>
+            <inheritdoc cref="P:Sudoku.Concepts.Grid.ValuesMap"/>
+            </summary>
+            <remarks>
+            <inheritdoc cref="P:Sudoku.Analytics.Caching.MemoryCached.EmptyCells" path="/remarks"/>
+            </remarks>
+            <exception cref="T:System.NullReferenceException">Throws when not initialized.</exception>
+        </member>
+        <member name="M:Sudoku.Analytics.Caching.MemoryCached.Initialize(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)">
+            <inheritdoc cref="M:Sudoku.Analytics.Caching.MemoryCached.Initialize(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Caching.MemoryCached.Initialize(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)">
+            <summary>
+            Initialize the maps that used later.
+            </summary>
+            <param name="analyzer">The analyzer.</param>
+            <param name="g">The grid.</param>
+            <param name="s">The solution of <paramref name="g"/>.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.Caching.MemoryCached.InitializeLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkType,Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Analytics.Chaining.ChainingRuleCollection@)">
+            <summary>
+            Try to collect strong and weak links appeared in a grid.
+            If all links are "up-to-date" (i.e. meaning there's no extra links to be checked), this method will do nothing,
+            in order to enhance performance.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="linkTypes">The link types to be checked.</param>
+            <param name="options">The options used by step searchers.</param>
+            <param name="rules">The <see cref="T:Sudoku.Analytics.Chaining.ChainingRule"/> instance that collects with strong and weak links if worth.</param>
+        </member>
         <member name="T:Sudoku.Analytics.Caching.MemoryCachedAttribute">
              <summary>
              Represents an attribute type that can be applied to a method,
              to tell interceptor source generator to produce a new method that copies full implementation from this method,
-             with <see cref="T:Sudoku.Concepts.Grid"/> properties replaced with corresponding properties in <see cref="T:Sudoku.Analytics.Caching.MemoryCachedData"/>.
+             with <see cref="T:Sudoku.Concepts.Grid"/> properties replaced with corresponding properties in <see cref="T:Sudoku.Analytics.Caching.MemoryCached"/>.
              </summary>
              <remarks>
              Usage:
@@ -2037,7 +2176,7 @@
              }
              ]]></code>
              Such code will be intercepted, by replacing variables <c>__EmptyCells</c>, <c>__BivalueCells</c> and <c>__CandidatesMap</c>
-             with properties in <see cref="T:Sudoku.Analytics.Caching.MemoryCachedData"/>:
+             with properties in <see cref="T:Sudoku.Analytics.Caching.MemoryCached"/>:
              <code><![CDATA[
              // Get all bi-value-cell ALSes.
              var result = new List<AlmostLockedSetPattern>();
@@ -2051,146 +2190,7 @@
              ]]></code>
              </remarks>
              <seealso cref="T:Sudoku.Concepts.Grid"/>
-             <seealso cref="T:Sudoku.Analytics.Caching.MemoryCachedData"/>
-        </member>
-        <member name="T:Sudoku.Analytics.Caching.MemoryCachedData">
-            <summary>
-            Represents cached fields used by solving and analyzing for a sudoku puzzle, reducing repeated and redundant calculations.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Caching.MemoryCachedData.StrongLinkDictionary">
-            <summary>
-            The backing field storing on strong links.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Caching.MemoryCachedData.WeakLinkDictionary">
-            <summary>
-            The backing field storing on weak links.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Caching.MemoryCachedData._cachedEmptyCells">
-            <summary>
-            Backing field of <see cref="P:Sudoku.Analytics.Caching.MemoryCachedData.EmptyCells"/>.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Caching.MemoryCachedData._cachedBivalueCells">
-            <summary>
-            Backing field of <see cref="P:Sudoku.Analytics.Caching.MemoryCachedData.BivalueCells"/>.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Caching.MemoryCachedData._cachedCandidatesMap">
-            <summary>
-            Backing field of <see cref="P:Sudoku.Analytics.Caching.MemoryCachedData.CandidatesMap"/>.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Caching.MemoryCachedData._cachedDigitsMap">
-            <summary>
-            Backing field of <see cref="P:Sudoku.Analytics.Caching.MemoryCachedData.DigitsMap"/>.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Caching.MemoryCachedData._cachedValuesMap">
-            <summary>
-            Backing field of <see cref="P:Sudoku.Analytics.Caching.MemoryCachedData.ValuesMap"/>.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Caching.MemoryCachedData._cachedSolution">
-            <summary>
-            Backing field of <see cref="P:Sudoku.Analytics.Caching.MemoryCachedData.Solution"/>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Caching.MemoryCachedData.StrongLinkTypesCollected">
-            <summary>
-            The backing field storing on strong links, grouped by link type.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Caching.MemoryCachedData.WeakLinkTypesCollected">
-            <summary>
-            The backing field storing on weak links, grouped by link type.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Caching.MemoryCachedData.CandidatesCount">
-            <summary>
-            Indicates the number of candidates appeared in the puzzle.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Caching.MemoryCachedData.Solution">
-            <summary>
-            Indicates the solution.
-            </summary>
-            <remarks><b>
-            Please note that a puzzle may contain multiple solutions, leading to this field <see cref="F:Sudoku.Concepts.Grid.Undefined"/>.
-            You must check validity of this field before using this field.
-            </b></remarks>
-            <seealso cref="F:Sudoku.Concepts.Grid.Undefined"/>
-        </member>
-        <member name="P:Sudoku.Analytics.Caching.MemoryCachedData.EmptyCells">
-            <summary>
-            <inheritdoc cref="P:Sudoku.Concepts.Grid.EmptyCells"/>
-            </summary>
-            <remarks>
-            This map <b>should</b> be used after <see cref="M:Sudoku.Analytics.Caching.MemoryCachedData.Initialize(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)"/> called,
-            and you<b>'d better</b> not use this field on instances which are set <see langword="true"/>
-            for property <see cref="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.IsCachingSafe"/>.
-            </remarks>
-            <seealso cref="M:Sudoku.Analytics.Caching.MemoryCachedData.Initialize(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)"/>
-            <seealso cref="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.IsCachingSafe"/>
-        </member>
-        <member name="P:Sudoku.Analytics.Caching.MemoryCachedData.BivalueCells">
-            <summary>
-            <inheritdoc cref="P:Sudoku.Concepts.Grid.BivalueCells"/>
-            </summary>
-            <remarks>
-            <inheritdoc cref="P:Sudoku.Analytics.Caching.MemoryCachedData.EmptyCells" path="/remarks"/>
-            </remarks>
-        </member>
-        <member name="P:Sudoku.Analytics.Caching.MemoryCachedData.CandidatesMap">
-            <summary>
-            <inheritdoc cref="P:Sudoku.Concepts.Grid.CandidatesMap"/>
-            </summary>
-            <remarks>
-            <inheritdoc cref="P:Sudoku.Analytics.Caching.MemoryCachedData.EmptyCells" path="/remarks"/>
-            </remarks>
-            <exception cref="T:System.NullReferenceException">Throws when not initialized.</exception>
-        </member>
-        <member name="P:Sudoku.Analytics.Caching.MemoryCachedData.DigitsMap">
-            <summary>
-            <inheritdoc cref="P:Sudoku.Concepts.Grid.DigitsMap"/>
-            </summary>
-            <remarks>
-            <inheritdoc cref="P:Sudoku.Analytics.Caching.MemoryCachedData.EmptyCells" path="/remarks"/>
-            </remarks>
-            <exception cref="T:System.NullReferenceException">Throws when not initialized.</exception>
-        </member>
-        <member name="P:Sudoku.Analytics.Caching.MemoryCachedData.ValuesMap">
-            <summary>
-            <inheritdoc cref="P:Sudoku.Concepts.Grid.ValuesMap"/>
-            </summary>
-            <remarks>
-            <inheritdoc cref="P:Sudoku.Analytics.Caching.MemoryCachedData.EmptyCells" path="/remarks"/>
-            </remarks>
-            <exception cref="T:System.NullReferenceException">Throws when not initialized.</exception>
-        </member>
-        <member name="M:Sudoku.Analytics.Caching.MemoryCachedData.Initialize(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)">
-            <inheritdoc cref="M:Sudoku.Analytics.Caching.MemoryCachedData.Initialize(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Caching.MemoryCachedData.Initialize(Sudoku.Analytics.Analyzer,Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)">
-            <summary>
-            Initialize the maps that used later.
-            </summary>
-            <param name="analyzer">The analyzer.</param>
-            <param name="g">The grid.</param>
-            <param name="s">The solution of <paramref name="g"/>.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Caching.MemoryCachedData.InitializeLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkType,Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Analytics.Chaining.ChainingRuleCollection@)">
-            <summary>
-            Try to collect strong and weak links appeared in a grid.
-            If all links are "up-to-date" (i.e. meaning there's no extra links to be checked), this method will do nothing,
-            in order to enhance performance.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="linkTypes">The link types to be checked.</param>
-            <param name="options">The options used by step searchers.</param>
-            <param name="rules">The <see cref="T:Sudoku.Analytics.Chaining.ChainingRule"/> instance that collects with strong and weak links if worth.</param>
+             <seealso cref="T:Sudoku.Analytics.Caching.MemoryCached"/>
         </member>
         <member name="T:Sudoku.Analytics.Chaining.ChainingRule">
             <summary>
@@ -5813,8 +5813,8 @@
             that can implicitly connects to the current node via the whole forcing chain, grouped by their own initial states,
             encapsulating with type <see cref="T:Sudoku.Construction.Components.ForcingChainsInfo"/>.
             </returns>
-            <seealso cref="F:Sudoku.Analytics.Caching.MemoryCachedData.StrongLinkDictionary"/>
-            <seealso cref="F:Sudoku.Analytics.Caching.MemoryCachedData.WeakLinkDictionary"/>
+            <seealso cref="F:Sudoku.Analytics.Caching.MemoryCached.StrongLinkDictionary"/>
+            <seealso cref="F:Sudoku.Analytics.Caching.MemoryCached.WeakLinkDictionary"/>
             <seealso cref="T:System.Collections.Generic.HashSet`1"/>
             <seealso cref="T:Sudoku.Construction.Components.Node"/>
             <seealso cref="T:Sudoku.Construction.Components.ForcingChainsInfo"/>
@@ -5862,7 +5862,7 @@
         <member name="M:Sudoku.Analytics.StepSearcherHubs.ChainingStepSearcherHub.FindForcingChains(Sudoku.Construction.Components.Node)">
             <summary>
             <para>Finds a list of nodes that can implicitly connects to current node via a forcing chain.</para>
-            <para>This method only uses cached fields <see cref="F:Sudoku.Analytics.Caching.MemoryCachedData.StrongLinkDictionary"/> and <see cref="F:Sudoku.Analytics.Caching.MemoryCachedData.WeakLinkDictionary"/>.</para>
+            <para>This method only uses cached fields <see cref="F:Sudoku.Analytics.Caching.MemoryCached.StrongLinkDictionary"/> and <see cref="F:Sudoku.Analytics.Caching.MemoryCached.WeakLinkDictionary"/>.</para>
             </summary>
             <param name="startNode">The current instance.</param>
             <returns>
@@ -5870,8 +5870,8 @@
             that can implicitly connects to the current node via the whole forcing chain, grouped by their own initial states,
             encapsulating with type <see cref="T:Sudoku.Construction.Components.ForcingChainsInfo"/>.
             </returns>
-            <seealso cref="F:Sudoku.Analytics.Caching.MemoryCachedData.StrongLinkDictionary"/>
-            <seealso cref="F:Sudoku.Analytics.Caching.MemoryCachedData.WeakLinkDictionary"/>
+            <seealso cref="F:Sudoku.Analytics.Caching.MemoryCached.StrongLinkDictionary"/>
+            <seealso cref="F:Sudoku.Analytics.Caching.MemoryCached.WeakLinkDictionary"/>
             <seealso cref="T:System.Collections.Generic.HashSet`1"/>
             <seealso cref="T:Sudoku.Construction.Components.Node"/>
             <seealso cref="T:Sudoku.Construction.Components.ForcingChainsInfo"/>
