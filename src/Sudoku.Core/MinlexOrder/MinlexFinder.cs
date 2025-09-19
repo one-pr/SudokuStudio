@@ -22,7 +22,7 @@ public sealed unsafe class MinlexFinder
 	private readonly List<Mapper> _mappers = [];
 
 
-	/// <inheritdoc cref="Find(string, out GenericTransform)"/>
+	/// <inheritdoc cref="Find(string, out Transform)"/>
 	public string Find(string grid)
 	{
 		_mappers.Clear();
@@ -302,13 +302,13 @@ public sealed unsafe class MinlexFinder
 	/// <param name="grid">Indicates the source grid.</param>
 	/// <param name="transform">The transform.</param>
 	/// <returns>The corresponding minimum lexicographical form of the grid.</returns>
-	internal string Find(string grid, out GenericTransform transform)
+	internal string Find(string grid, out Transform transform)
 	{
 		var minlexed = Find(grid);
 		if (grid == minlexed)
 		{
 			// Already min-lex.
-			transform = GenericTransform.Equivalent;
+			transform = Transform.Equivalent;
 			return minlexed;
 		}
 
@@ -383,6 +383,6 @@ public sealed unsafe class MinlexFinder
 		return resultCharacters.ToString();
 	}
 
-	/// <inheritdoc cref="Find(string, out GenericTransform)"/>
-	internal Grid Find(in Grid grid, out GenericTransform transform) => Grid.Parse(Find(grid.ToString("0"), out transform));
+	/// <inheritdoc cref="Find(string, out Transform)"/>
+	internal Grid Find(in Grid grid, out Transform transform) => Grid.Parse(Find(grid.ToString("0"), out transform));
 }

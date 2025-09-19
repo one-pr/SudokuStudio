@@ -39,12 +39,12 @@ public static class GridMinlexExtensions
 
 
 		/// <summary>
-		/// Returns a <see cref="GenericTransform"/> instance that is the necessary transformation to the current grid,
+		/// Returns a <see cref="Transform"/> instance that is the necessary transformation to the current grid,
 		/// starting from <paramref name="minlex"/>.
 		/// </summary>
 		/// <param name="minlex">The min-lex grid.</param>
 		/// <returns>The target transformation.</returns>
-		public GenericTransform GetTransformFromMinlex(out Grid minlex)
+		public Transform GetTransformFromMinlex(out Grid minlex)
 		{
 			minlex = new MinlexFinder().Find(@this, out var result);
 			return result;

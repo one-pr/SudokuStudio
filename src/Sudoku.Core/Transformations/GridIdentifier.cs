@@ -229,7 +229,7 @@ public readonly struct GridIdentifier :
 	/// <summary>
 	/// Indicates target tranform.
 	/// </summary>
-	public GenericTransform Transform
+	public Transform Transform
 	{
 		get
 		{
@@ -454,7 +454,7 @@ public readonly struct GridIdentifier :
 		=> new(Math.UnsignedMod(identifierValue, (BigInteger)AllPermutationsCount * InequivalentSolutionsCount));
 
 	/// <summary>
-	/// Explicit cast from <see cref="BigInteger"/> to <see cref="GenericTransform"/>, with range check.
+	/// Explicit cast from <see cref="BigInteger"/> to <see cref="Transformations.Transform"/>, with range check.
 	/// </summary>
 	/// <param name="identifierValue">The identifier value.</param>
 	/// <exception cref="OverflowException">Throws when <paramref name="identifierValue"/> is invalid.</exception>

@@ -12,10 +12,10 @@ internal static unsafe class MapperExtensions
 	extension(in Mapper map)
 	{
 		/// <summary>
-		/// Converts <see cref="Mapper"/> and <see cref="MinlexCandidate"/> into a readable <see cref="GenericTransform"/> instance.
+		/// Converts <see cref="Mapper"/> and <see cref="MinlexCandidate"/> into a readable <see cref="Transform"/> instance.
 		/// </summary>
 		/// <seealso cref="MinlexCandidate"/>
-		public GenericTransform FromMapper(in MinlexCandidate cand)
+		public Transform FromMapper(in MinlexCandidate cand)
 		{
 			// Use MapRowsBackward (canonicalRow -> sourceRow).
 			var rows = new RowIndex[9];
@@ -82,10 +82,10 @@ internal static unsafe class MapperExtensions
 		}
 
 		/// <summary>
-		/// Converts <see cref="Mapper"/> into <see cref="GenericTransform"/>, without using <see cref="MinlexCandidate"/>.
+		/// Converts <see cref="Mapper"/> into <see cref="Transform"/>, without using <see cref="MinlexCandidate"/>.
 		/// This method will do a heuristics search, trying to infer target grid with ordering of "fitness" of transformations.
 		/// </summary>
-		public GenericTransform FromMapperInfer()
+		public Transform FromMapperInfer()
 		{
 			// Quick heuristics: count how many cell mappings are consistent with "no-transpose".
 			var score_NotTransposed = 0;

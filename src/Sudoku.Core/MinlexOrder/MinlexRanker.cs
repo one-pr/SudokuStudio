@@ -72,14 +72,14 @@ public static partial class MinlexRanker
 	/// <para>
 	/// If the grid is not min-lex, it will transform to min-lex grid
 	/// and assign its transformation to parameter <paramref name="transform"/>;
-	/// otherwise, <see cref="GenericTransform.Equivalent"/> will be returned.
+	/// otherwise, <see cref="Transform.Equivalent"/> will be returned.
 	/// </para>
 	/// </param>
 	/// <returns>
 	/// The rank returned, or 0 if the source grid is invalid (not a grid string of 81 digit characters).
 	/// </returns>
-	/// <seealso cref="GenericTransform.Equivalent"/>
-	public static unsafe ulong GetRank(string grid, out string? minlexGrid, out GenericTransform transform)
+	/// <seealso cref="Transform.Equivalent"/>
+	public static unsafe ulong GetRank(string grid, out string? minlexGrid, out Transform transform)
 	{
 		if (grid.Length != 81)
 		{

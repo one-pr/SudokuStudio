@@ -7,91 +7,91 @@ namespace Sudoku.Transformations;
 /// <param name="RelabeledRowsRank">Indicates the rank of relabeled rows.</param>
 /// <param name="RelabeledColumnsRank">Indicates the rank of relabeled columns.</param>
 /// <param name="RelabeledDigitsRank">Indicates the rank of relabeled digits.</param>
-/// <completionlist cref="GenericTransform"/>
-public readonly partial record struct GenericTransform(
+/// <completionlist cref="Transform"/>
+public readonly partial record struct Transform(
 	int TransposeRank,
 	int RelabeledRowsRank,
 	int RelabeledColumnsRank,
 	int RelabeledDigitsRank
 ) :
-	IBitwiseOperators<GenericTransform, GenericTransform, GenericTransform>,
-	IComparable<GenericTransform>,
-	IComparisonOperators<GenericTransform, GenericTransform, bool>,
-	IEqualityOperators<GenericTransform, GenericTransform, bool>,
-	ITransformable<GenericTransform>
+	IBitwiseOperators<Transform, Transform, Transform>,
+	IComparable<Transform>,
+	IComparisonOperators<Transform, Transform, bool>,
+	IEqualityOperators<Transform, Transform, bool>,
+	ITransformable<Transform>
 {
 	/// <summary>
 	/// Represents equivalent transform (no transform).
 	/// </summary>
-	public static readonly GenericTransform Equivalent = new(0, 0, 0, 0);
+	public static readonly Transform Equivalent = new(0, 0, 0, 0);
 
 	/// <summary>
 	/// Represents a transform that rotates 90 degrees clockwise.
 	/// </summary>
-	public static readonly GenericTransform ClockwiseRotate90Degrees = new(1, 0, ^1, 0);
+	public static readonly Transform ClockwiseRotate90Degrees = new(1, 0, ^1, 0);
 
 	/// <summary>
 	/// Represents a transform that rotates 180 degrees clockwise.
 	/// </summary>
-	public static readonly GenericTransform ClockwiseRotate180Degrees = new(0, ^1, ^1, 0);
+	public static readonly Transform ClockwiseRotate180Degrees = new(0, ^1, ^1, 0);
 
 	/// <summary>
 	/// Represents a transform that rotates 270 degrees clockwise.
 	/// </summary>
-	public static readonly GenericTransform ClockwiseRotate270Degrees = new(1, ^1, 0, 0);
+	public static readonly Transform ClockwiseRotate270Degrees = new(1, ^1, 0, 0);
 
 	/// <summary>
 	/// Represents a transform that rotates 90 degrees counterclockwise.
 	/// </summary>
-	public static readonly GenericTransform CounterclockwiseRotate90Degrees = new(1, ^1, 0, 0);
+	public static readonly Transform CounterclockwiseRotate90Degrees = new(1, ^1, 0, 0);
 
 	/// <summary>
 	/// Represents a transform that rotates 180 degrees counterclockwise.
 	/// </summary>
-	public static readonly GenericTransform CounterclockwiseRotate180Degrees = new(0, ^1, ^1, 0);
+	public static readonly Transform CounterclockwiseRotate180Degrees = new(0, ^1, ^1, 0);
 
 	/// <summary>
 	/// Represents a transform that rotates 270 degrees counterclockwise.
 	/// </summary>
-	public static readonly GenericTransform CounterclockwiseRotate270Degrees = new(1, 0, ^1, 0);
+	public static readonly Transform CounterclockwiseRotate270Degrees = new(1, 0, ^1, 0);
 
 	/// <summary>
 	/// Represents a transform that mirrors left-right side.
 	/// </summary>
-	public static readonly GenericTransform MirrorLeftRight = new(0, ^1, 0, 0);
+	public static readonly Transform MirrorLeftRight = new(0, ^1, 0, 0);
 
 	/// <summary>
 	/// Represents a transform that mirrors top-bottom side.
 	/// </summary>
-	public static readonly GenericTransform MirrorTopBottom = new(0, 0, ^1, 0);
+	public static readonly Transform MirrorTopBottom = new(0, 0, ^1, 0);
 
 	/// <summary>
 	/// Represents a transform that mirrors diagonal.
 	/// </summary>
-	public static readonly GenericTransform MirrorDiagonal = new(1, 0, 0, 0);
+	public static readonly Transform MirrorDiagonal = new(1, 0, 0, 0);
 
 	/// <summary>
 	/// Represents a transform that mirrors anti-diagonal.
 	/// </summary>
-	public static readonly GenericTransform MirrorAntidiagonal = new(1, ^1, ^1, 0);
+	public static readonly Transform MirrorAntidiagonal = new(1, ^1, ^1, 0);
 
 
 	/// <summary>
-	/// Initializes a <see cref="GenericTransform"/> instance.
+	/// Initializes a <see cref="Transform"/> instance.
 	/// </summary>
 	/// <param name="transposeRank">
-	/// <inheritdoc cref="GenericTransform(int, int, int, int)" path="/param[@name='TransposeRank']"/>
+	/// <inheritdoc cref="Transform(int, int, int, int)" path="/param[@name='TransposeRank']"/>
 	/// </param>
 	/// <param name="relabeledRowsRank">
-	/// <inheritdoc cref="GenericTransform(int, int, int, int)" path="/param[@name='RelabeledRowsRank']"/>
+	/// <inheritdoc cref="Transform(int, int, int, int)" path="/param[@name='RelabeledRowsRank']"/>
 	/// </param>
 	/// <param name="relabeledColumnsRank">
-	/// <inheritdoc cref="GenericTransform(int, int, int, int)" path="/param[@name='RelabeledColumnsRank']"/>
+	/// <inheritdoc cref="Transform(int, int, int, int)" path="/param[@name='RelabeledColumnsRank']"/>
 	/// </param>
 	/// <param name="relabeledDigitsRank">
-	/// <inheritdoc cref="GenericTransform(int, int, int, int)" path="/param[@name='RelabeledDigitsRank']"/>
+	/// <inheritdoc cref="Transform(int, int, int, int)" path="/param[@name='RelabeledDigitsRank']"/>
 	/// </param>
-	public GenericTransform(int transposeRank, Index relabeledRowsRank, Index relabeledColumnsRank, Index relabeledDigitsRank) :
+	public Transform(int transposeRank, Index relabeledRowsRank, Index relabeledColumnsRank, Index relabeledDigitsRank) :
 		this(
 			transposeRank,
 			relabeledRowsRank.GetOffset((int)GridIdentifier.RelabelLinesPermutationsCount),
@@ -102,10 +102,10 @@ public readonly partial record struct GenericTransform(
 	}
 
 	/// <summary>
-	/// Initializes a <see cref="GenericTransform"/> via the base-mixed rank.
+	/// Initializes a <see cref="Transform"/> via the base-mixed rank.
 	/// </summary>
 	/// <param name="rank">The base-mixed rank.</param>
-	public GenericTransform(long rank) :
+	public Transform(long rank) :
 		this(
 			(int)(
 				rank
@@ -169,28 +169,28 @@ public readonly partial record struct GenericTransform(
 
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
 	[OverloadResolutionPriority(1)]
-	public bool Equals(in GenericTransform other) => Rank == other.Rank;
+	public bool Equals(in Transform other) => Rank == other.Rank;
 
 	/// <inheritdoc cref="IComparable{T}.CompareTo(T)"/>
-	public int CompareTo(in GenericTransform other) => Rank.CompareTo(other.Rank);
+	public int CompareTo(in Transform other) => Rank.CompareTo(other.Rank);
 
 	/// <inheritdoc/>
-	int IComparable<GenericTransform>.CompareTo(GenericTransform other) => CompareTo(other);
+	int IComparable<Transform>.CompareTo(Transform other) => CompareTo(other);
 
 	/// <inheritdoc/>
-	GenericTransform ITransformable<GenericTransform>.RotateClockwise() => this | ClockwiseRotate90Degrees;
+	Transform ITransformable<Transform>.RotateClockwise() => this | ClockwiseRotate90Degrees;
 
 	/// <inheritdoc/>
-	GenericTransform ITransformable<GenericTransform>.MirrorLeftRight() => this | MirrorLeftRight;
+	Transform ITransformable<Transform>.MirrorLeftRight() => this | MirrorLeftRight;
 
 	/// <inheritdoc/>
-	GenericTransform ITransformable<GenericTransform>.MirrorTopBottom() => this | MirrorTopBottom;
+	Transform ITransformable<Transform>.MirrorTopBottom() => this | MirrorTopBottom;
 
 	/// <inheritdoc/>
-	GenericTransform ITransformable<GenericTransform>.MirrorDiagonal() => this | MirrorDiagonal;
+	Transform ITransformable<Transform>.MirrorDiagonal() => this | MirrorDiagonal;
 
 	/// <inheritdoc/>
-	GenericTransform ITransformable<GenericTransform>.MirrorAntidiagonal() => this | MirrorAntidiagonal;
+	Transform ITransformable<Transform>.MirrorAntidiagonal() => this | MirrorAntidiagonal;
 
 	/// <include
 	///     file="../../global-doc-comments.xml"
@@ -209,7 +209,7 @@ public readonly partial record struct GenericTransform(
 
 
 	/// <inheritdoc cref="IBitwiseOperators{TSelf, TOther, TResult}.op_OnesComplement(TSelf)"/>
-	public static GenericTransform operator ~(in GenericTransform value)
+	public static Transform operator ~(in Transform value)
 		=> new(
 			Math.UnsignedMod(~value.TransposeRank, (int)GridIdentifier.TransposePermutationsCount),
 			Math.UnsignedMod(~value.RelabeledRowsRank, (int)GridIdentifier.RelabelLinesPermutationsCount),
@@ -219,26 +219,26 @@ public readonly partial record struct GenericTransform(
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
 	[OverloadResolutionPriority(1)]
-	public static bool operator ==(in GenericTransform left, in GenericTransform right) => left.Equals(right);
+	public static bool operator ==(in Transform left, in Transform right) => left.Equals(right);
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
 	[OverloadResolutionPriority(1)]
-	public static bool operator !=(in GenericTransform left, in GenericTransform right) => !(left == right);
+	public static bool operator !=(in Transform left, in Transform right) => !(left == right);
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
-	public static bool operator >(in GenericTransform left, in GenericTransform right) => left.CompareTo(right) > 0;
+	public static bool operator >(in Transform left, in Transform right) => left.CompareTo(right) > 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThan(TSelf, TOther)"/>
-	public static bool operator <(in GenericTransform left, in GenericTransform right) => left.CompareTo(right) < 0;
+	public static bool operator <(in Transform left, in Transform right) => left.CompareTo(right) < 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThanOrEqual(TSelf, TOther)"/>
-	public static bool operator >=(in GenericTransform left, in GenericTransform right) => left.CompareTo(right) >= 0;
+	public static bool operator >=(in Transform left, in Transform right) => left.CompareTo(right) >= 0;
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
-	public static bool operator <=(in GenericTransform left, in GenericTransform right) => left.CompareTo(right) <= 0;
+	public static bool operator <=(in Transform left, in Transform right) => left.CompareTo(right) <= 0;
 
 	/// <inheritdoc cref="IBitwiseOperators{TSelf, TOther, TResult}.op_BitwiseAnd(TSelf, TOther)"/>
-	public static GenericTransform operator &(in GenericTransform left, in GenericTransform right)
+	public static Transform operator &(in Transform left, in Transform right)
 		=> new(
 			left.TransposeRank & right.TransposeRank,
 			left.RelabeledRowsRank & right.RelabeledRowsRank,
@@ -247,7 +247,7 @@ public readonly partial record struct GenericTransform(
 		);
 
 	/// <inheritdoc cref="IBitwiseOperators{TSelf, TOther, TResult}.op_BitwiseOr(TSelf, TOther)"/>
-	public static GenericTransform operator |(in GenericTransform left, in GenericTransform right)
+	public static Transform operator |(in Transform left, in Transform right)
 		=> new(
 			left.TransposeRank | right.TransposeRank,
 			left.RelabeledRowsRank | right.RelabeledRowsRank,
@@ -256,7 +256,7 @@ public readonly partial record struct GenericTransform(
 		);
 
 	/// <inheritdoc cref="IBitwiseOperators{TSelf, TOther, TResult}.op_ExclusiveOr(TSelf, TOther)"/>
-	public static GenericTransform operator ^(in GenericTransform left, in GenericTransform right)
+	public static Transform operator ^(in Transform left, in Transform right)
 		=> new(
 			left.TransposeRank ^ right.TransposeRank,
 			left.RelabeledRowsRank ^ right.RelabeledRowsRank,
@@ -265,59 +265,59 @@ public readonly partial record struct GenericTransform(
 		);
 
 	/// <inheritdoc/>
-	static bool IEqualityOperators<GenericTransform, GenericTransform, bool>.operator ==(GenericTransform left, GenericTransform right)
+	static bool IEqualityOperators<Transform, Transform, bool>.operator ==(Transform left, Transform right)
 		=> left == right;
 
 	/// <inheritdoc/>
-	static bool IEqualityOperators<GenericTransform, GenericTransform, bool>.operator !=(GenericTransform left, GenericTransform right)
+	static bool IEqualityOperators<Transform, Transform, bool>.operator !=(Transform left, Transform right)
 		=> left != right;
 
 	/// <inheritdoc/>
-	static bool IComparisonOperators<GenericTransform, GenericTransform, bool>.operator >(GenericTransform left, GenericTransform right)
+	static bool IComparisonOperators<Transform, Transform, bool>.operator >(Transform left, Transform right)
 		=> left > right;
 
 	/// <inheritdoc/>
-	static bool IComparisonOperators<GenericTransform, GenericTransform, bool>.operator <(GenericTransform left, GenericTransform right)
+	static bool IComparisonOperators<Transform, Transform, bool>.operator <(Transform left, Transform right)
 		=> left < right;
 
 	/// <inheritdoc/>
-	static bool IComparisonOperators<GenericTransform, GenericTransform, bool>.operator >=(GenericTransform left, GenericTransform right)
+	static bool IComparisonOperators<Transform, Transform, bool>.operator >=(Transform left, Transform right)
 		=> left >= right;
 
 	/// <inheritdoc/>
-	static bool IComparisonOperators<GenericTransform, GenericTransform, bool>.operator <=(GenericTransform left, GenericTransform right)
+	static bool IComparisonOperators<Transform, Transform, bool>.operator <=(Transform left, Transform right)
 		=> left <= right;
 
 	/// <inheritdoc/>
-	static GenericTransform IBitwiseOperators<GenericTransform, GenericTransform, GenericTransform>.operator &(GenericTransform left, GenericTransform right)
+	static Transform IBitwiseOperators<Transform, Transform, Transform>.operator &(Transform left, Transform right)
 		=> left & right;
 
 	/// <inheritdoc/>
-	static GenericTransform IBitwiseOperators<GenericTransform, GenericTransform, GenericTransform>.operator |(GenericTransform left, GenericTransform right)
+	static Transform IBitwiseOperators<Transform, Transform, Transform>.operator |(Transform left, Transform right)
 		=> left | right;
 
 	/// <inheritdoc/>
-	static GenericTransform IBitwiseOperators<GenericTransform, GenericTransform, GenericTransform>.operator ^(GenericTransform left, GenericTransform right)
+	static Transform IBitwiseOperators<Transform, Transform, Transform>.operator ^(Transform left, Transform right)
 		=> left ^ right;
 
 	/// <inheritdoc/>
-	static GenericTransform IBitwiseOperators<GenericTransform, GenericTransform, GenericTransform>.operator ~(GenericTransform value)
+	static Transform IBitwiseOperators<Transform, Transform, Transform>.operator ~(Transform value)
 		=> ~value;
 
 
 	/// <summary>
-	/// Explicit cast from <see cref="long"/> to <see cref="GenericTransform"/>.
+	/// Explicit cast from <see cref="long"/> to <see cref="Transform"/>.
 	/// </summary>
 	/// <param name="baseMixedRank">The base-mixed rank.</param>
-	public static explicit operator GenericTransform(long baseMixedRank)
+	public static explicit operator Transform(long baseMixedRank)
 		=> new(Math.UnsignedMod(baseMixedRank, GridIdentifier.AllPermutationsCount));
 
 	/// <summary>
-	/// Explicit cast from <see cref="long"/> to <see cref="GenericTransform"/>, with range check.
+	/// Explicit cast from <see cref="long"/> to <see cref="Transform"/>, with range check.
 	/// </summary>
 	/// <param name="baseMixedRank">The base-mixed rank.</param>
 	/// <exception cref="OverflowException">Throws when <paramref name="baseMixedRank"/> is invalid.</exception>
-	public static explicit operator checked GenericTransform(long baseMixedRank)
+	public static explicit operator checked Transform(long baseMixedRank)
 		=> new(
 			baseMixedRank is >= 0 and < GridIdentifier.AllPermutationsCount
 				? baseMixedRank
@@ -325,8 +325,8 @@ public readonly partial record struct GenericTransform(
 		);
 
 	/// <summary>
-	/// Implicit cast from <see cref="GenericTransform"/> to <see cref="long"/>.
+	/// Implicit cast from <see cref="Transform"/> to <see cref="long"/>.
 	/// </summary>
 	/// <param name="transform">The transform.</param>
-	public static implicit operator long(GenericTransform transform) => transform.Rank;
+	public static implicit operator long(Transform transform) => transform.Rank;
 }
