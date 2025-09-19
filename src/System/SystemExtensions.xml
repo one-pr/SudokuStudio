@@ -1284,6 +1284,29 @@
 				</target>
             </remarks>
         </member>
+        <member name="T:System.Collections.Generic.QueueExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:System.Collections.Generic.Queue`1"/>.
+            </summary>
+            <seealso cref="T:System.Collections.Generic.Queue`1"/>
+        </member>
+        <member name="M:System.Collections.Generic.QueueExtensions.Reverse``1(System.Collections.Generic.Queue{``0})">
+            <inheritdoc cref="M:System.Collections.Generic.QueueExtensions.&lt;G&gt;$C5EF5A7E90394A1582FCF646449A8690.Reverse"/>
+        </member>
+        <member name="M:System.Collections.Generic.QueueExtensions.op_OnesComplement``1(System.Collections.Generic.Queue{``0})">
+            <inheritdoc cref="M:System.Collections.Generic.QueueExtensions.&lt;G&gt;$C5EF5A7E90394A1582FCF646449A8690.op_OnesComplement(System.Collections.Generic.Queue{`0})"/>
+        </member>
+        <member name="T:System.Collections.Generic.QueueExtensions.&lt;G&gt;$C5EF5A7E90394A1582FCF646449A8690.&lt;M&gt;$2B6BC373F880F5D74B556B93202DCE33">
+            <summary>
+            Provides extension members on <see cref="T:System.Collections.Generic.Queue`1"/>.
+            </summary>
+        </member>
+        <member name="M:System.Collections.Generic.QueueExtensions.&lt;G&gt;$C5EF5A7E90394A1582FCF646449A8690.Reverse">
+            <inheritdoc cref="M:System.Linq.Enumerable.Reverse``1(System.Collections.Generic.IEnumerable{``0})" />
+        </member>
+        <member name="M:System.Collections.Generic.QueueExtensions.&lt;G&gt;$C5EF5A7E90394A1582FCF646449A8690.op_OnesComplement(System.Collections.Generic.Queue{`0})">
+            <inheritdoc cref="M:System.Linq.Enumerable.Reverse``1(System.Collections.Generic.IEnumerable{``0})" />
+        </member>
         <member name="T:System.Collections.Generic.SortedDictionaryExtensions">
             <summary>
             Provides with extension methods on <see cref="T:System.Collections.Generic.SortedDictionary`2"/>.
