@@ -351,7 +351,7 @@ public readonly ref struct SpanOrderedEnumerable<T>(
 		comparer ??= Comparer<TKey>.Default;
 		return new(
 			values,
-			new SingletonArray<Func<T, T, int>>(
+			Array.Single<Func<T, T, int>>(
 				descending
 					? (left, right) => -comparer.Compare(keySelector(left), keySelector(right))
 					: (left, right) => comparer.Compare(keySelector(left), keySelector(right))

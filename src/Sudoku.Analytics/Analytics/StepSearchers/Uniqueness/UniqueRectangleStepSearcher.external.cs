@@ -989,7 +989,7 @@ public partial class UniqueRectangleStepSearcher
 
 					accumulator.Add(
 						new UniqueRectangleExternalXyWingStep(
-							new SingletonArray<Conclusion>(new(Elimination, cell1, elimDigit)),
+							Array.Single(new Conclusion(Elimination, cell1, elimDigit)),
 							[[.. cellOffsets, .. candidateOffsets]],
 							context.Options,
 							d1,

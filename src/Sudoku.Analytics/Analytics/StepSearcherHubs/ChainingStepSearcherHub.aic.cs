@@ -76,7 +76,7 @@ internal partial class ChainingStepSearcherHub
 					var node = new Node((cell * 9 + digit).AsCandidateMap(), true);
 					if (FindChains(node, grid, onlyFindOne, result) is { } chain1)
 					{
-						return new SingletonArray<NamedChain>(chain1);
+						return ReadOnlySpan.Single(chain1);
 					}
 				}
 				else
@@ -84,7 +84,7 @@ internal partial class ChainingStepSearcherHub
 					var node = new Node((cell * 9 + digit).AsCandidateMap(), false);
 					if (FindChains(node, grid, onlyFindOne, result) is { } chain1)
 					{
-						return new SingletonArray<NamedChain>(chain1);
+						return ReadOnlySpan.Single(chain1);
 					}
 				}
 				traversedCandidates += cell * 9 + digit;
@@ -110,7 +110,7 @@ internal partial class ChainingStepSearcherHub
 				if ((trueDigit != -1 && digit != trueDigit || trueDigit == -1)
 					&& FindChains(node, grid, onlyFindOne, result) is { } chain1)
 				{
-					return new SingletonArray<NamedChain>(chain1);
+					return ReadOnlySpan.Single(chain1);
 				}
 
 #if STRICT_LENGTH_CHECKING && STRICT_LENGTH_CHECKING_OPTIMIZATION
@@ -119,13 +119,13 @@ internal partial class ChainingStepSearcherHub
 				{
 					// Optimization: Directly returns the searching if we can assert the chain is already shortest,
 					// This binds with issue #730: https://github.com/kyoyama-kazusa/Sudoku/issues/730
-					return new SingletonArray<NamedChain>(lengthOptimizedChain1);
+					return ReadOnlySpan.Single(lengthOptimizedChain1);
 				}
 #endif
 				// Same reason as above - only correct digits can be formed a chain that makes an assignment.
 				if ((digit == trueDigit || trueDigit == -1) && FindChains(~node, grid, onlyFindOne, result) is { } chain2)
 				{
-					return new SingletonArray<NamedChain>(chain2);
+					return ReadOnlySpan.Single(chain2);
 				}
 			}
 		}

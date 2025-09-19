@@ -18,7 +18,7 @@ public partial class SpanEnumerable
 		public SpanOrderedEnumerable<TSource> OrderBy<TKey>(Func<TSource, TKey> selector)
 			=> new(
 				source,
-				new SingletonArray<Func<TSource, TSource, int>>(
+				Array.Single<Func<TSource, TSource, int>>(
 					(l, r) => (selector(l), selector(r)) switch
 					{
 						(IComparable<TKey> left, var right) => left.CompareTo(right),
@@ -36,7 +36,7 @@ public partial class SpanEnumerable
 		public SpanOrderedEnumerable<TSource> OrderByDescending<TKey>(Func<TSource, TKey> selector)
 			=> new(
 				source,
-				new SingletonArray<Func<TSource, TSource, int>>(
+				Array.Single<Func<TSource, TSource, int>>(
 					(l, r) => (selector(l), selector(r)) switch
 					{
 						(IComparable<TKey> left, var right) => -left.CompareTo(right),

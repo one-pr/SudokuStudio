@@ -31,6 +31,14 @@ public partial class SequenceExtensions
 		}
 
 		/// <summary>
+		/// Creates an array that only contains one element.
+		/// </summary>
+		/// <typeparam name="T">The type of element.</typeparam>
+		/// <param name="value">The value.</param>
+		/// <returns>The result.</returns>
+		public static T[] Single<T>(T value) => [value];
+
+		/// <summary>
 		/// Flats the specified 2D array into an 1D array.
 		/// </summary>
 		/// <typeparam name="T">The type of each element.</typeparam>

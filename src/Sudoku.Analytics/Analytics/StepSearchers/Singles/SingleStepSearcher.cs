@@ -220,7 +220,7 @@ public sealed partial class SingleStepSearcher : StepSearcher
 				}
 
 				var step = new FullHouseStep(
-					new SingletonArray<Conclusion>(new(Assignment, resultCell, digit)),
+					Array.Single(new Conclusion(Assignment, resultCell, digit)),
 					[[new HouseViewNode(ColorIdentifier.Normal, house)]],
 					context.Options,
 					house,
@@ -279,7 +279,7 @@ public sealed partial class SingleStepSearcher : StepSearcher
 				}
 
 				var step = new NakedSingleStep(
-					new SingletonArray<Conclusion>(new(Assignment, cell, digit)),
+					Array.Single(new Conclusion(Assignment, cell, digit)),
 					[
 						[
 							..
@@ -364,7 +364,7 @@ public sealed partial class SingleStepSearcher : StepSearcher
 
 			var digit = TrailingZeroCount(grid.GetCandidates(resultCell));
 			var step = new FullHouseStep(
-				new SingletonArray<Conclusion>(new(Assignment, resultCell, digit)),
+				Array.Single(new Conclusion(Assignment, resultCell, digit)),
 				[[new HouseViewNode(ColorIdentifier.Normal, house)]],
 				context.Options,
 				house,
@@ -475,12 +475,12 @@ public sealed partial class SingleStepSearcher : StepSearcher
 
 			var digit = TrailingZeroCount(mask);
 			var step = new NakedSingleStep(
-				new SingletonArray<Conclusion>(new(Assignment, cell, digit)),
+				Array.Single(new Conclusion(Assignment, cell, digit)),
 				[
 					[
 						..
 						Excluder.GetNakedSingleExcluders(grid, cell, digit, out var excluderHouses) is var iconOffsets
-							&& excluderHouses.Length == 8
+						&& excluderHouses.Length == 8
 							? iconOffsets
 							: []
 					]
@@ -571,7 +571,7 @@ public sealed partial class SingleStepSearcher : StepSearcher
 			case (true, _):
 			{
 				return new LastDigitStep(
-					new SingletonArray<Conclusion>(new(Assignment, resultCell, digit)),
+					Array.Single(new Conclusion(Assignment, resultCell, digit)),
 					[[.. cellOffsets]],
 					context.Options,
 					resultCell,
@@ -587,7 +587,7 @@ public sealed partial class SingleStepSearcher : StepSearcher
 				{
 					var subtype when subtype.IsUnnecessary && grid.PuzzleType != SudokuType.Sukaku => null,
 					var subtype => new HiddenSingleStep(
-						new SingletonArray<Conclusion>(new(Assignment, resultCell, digit)),
+						Array.Single(new Conclusion(Assignment, resultCell, digit)),
 						[
 							[
 								.. excluderInfo.ExcludedCells.Count == 0 ? cellOffsets2 : [],

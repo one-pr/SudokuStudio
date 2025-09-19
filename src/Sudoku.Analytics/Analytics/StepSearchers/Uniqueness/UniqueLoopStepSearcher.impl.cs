@@ -549,7 +549,7 @@ public partial class UniqueLoopStepSearcher
 					}
 
 					var step = new UniqueLoopConjugatePairsTypeStep(
-						new SingletonArray<Conclusion>(new(Elimination, cell, digit)),
+						Array.Single(new Conclusion(Elimination, cell, digit)),
 						[
 							[
 								.. candidateOffsets,

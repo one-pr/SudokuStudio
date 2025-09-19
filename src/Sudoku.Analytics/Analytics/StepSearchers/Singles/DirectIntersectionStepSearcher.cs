@@ -153,7 +153,7 @@ public sealed partial class DirectIntersectionStepSearcher : StepSearcher
 			var lastDigit = Log2((uint)lastDigitMask);
 			var lastCell = (emptyCellsInHouse & elimMap)[0];
 			var step = new DirectIntersectionStep(
-				new SingletonArray<Conclusion>(new(Assignment, lastCell, lastDigit)),
+				Array.Single(new Conclusion(Assignment, lastCell, lastDigit)),
 				[
 					[
 						.. from cell in intersection select new CandidateViewNode(ColorIdentifier.Normal, cell * 9 + digit),
@@ -225,7 +225,7 @@ public sealed partial class DirectIntersectionStepSearcher : StepSearcher
 			}
 
 			var step = new DirectIntersectionStep(
-				new SingletonArray<Conclusion>(new(Assignment, lastCell, digit)),
+				Array.Single(new Conclusion(Assignment, lastCell, digit)),
 				[
 					[
 						.. Excluder.GetHiddenSingleExcluders(grid, digit, house, lastCell, out var chosenCells, out _),
@@ -300,7 +300,7 @@ public sealed partial class DirectIntersectionStepSearcher : StepSearcher
 
 			var lastDigit = TrailingZeroCount((Mask)(digitsMask & ~(1 << digit)));
 			var step = new DirectIntersectionStep(
-				new SingletonArray<Conclusion>(new(Assignment, lastCell, lastDigit)),
+				Array.Single(new Conclusion(Assignment, lastCell, lastDigit)),
 				[
 					[
 						.. from cell in intersection select new CandidateViewNode(ColorIdentifier.Normal, cell * 9 + digit),

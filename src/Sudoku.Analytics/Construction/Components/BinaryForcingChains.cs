@@ -68,7 +68,7 @@ public sealed class BinaryForcingChains(UnnamedChain branch1, UnnamedChain branc
 	ComponentType IComponent.Type => ComponentType.BinaryForcingChains;
 
 	/// <inheritdoc/>
-	ReadOnlyMemory<Conclusion> IForcingChains.Conclusions => new SingletonArray<Conclusion>(Conclusion);
+	ReadOnlyMemory<Conclusion> IForcingChains.Conclusions => Array.Single(Conclusion);
 
 	/// <inheritdoc/>
 	ReadOnlySpan<UnnamedChain> IForcingChains.Branches => Branches;

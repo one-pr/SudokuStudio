@@ -374,7 +374,7 @@ public sealed partial class WhipStepSearcher : StepSearcher
 	)
 	{
 		return new(
-			new SingletonArray<Conclusion>(new(Elimination, startCandidate)),
+			Array.Single(new Conclusion(Elimination, startCandidate)),
 			getViews(initialGrid, out var burredCandidates, out var truths, out var links),
 			context.Options,
 			truths,

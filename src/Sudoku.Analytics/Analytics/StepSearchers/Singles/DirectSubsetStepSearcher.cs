@@ -390,7 +390,7 @@ public sealed partial class DirectSubsetStepSearcher : StepSearcher
 				}
 
 				var step = new DirectSubsetStep(
-					new SingletonArray<Conclusion>(new(Assignment, cell, lastDigit)),
+					Array.Single(new Conclusion(Assignment, cell, lastDigit)),
 					[
 						[
 							.. candidateOffsets,
@@ -472,7 +472,7 @@ public sealed partial class DirectSubsetStepSearcher : StepSearcher
 				}
 
 				var step = new DirectSubsetStep(
-					new SingletonArray<Conclusion>(new(Assignment, lastCell, digit)),
+					Array.Single(new Conclusion(Assignment, lastCell, digit)),
 					[
 						[
 							.. candidateOffsets,
@@ -556,7 +556,7 @@ public sealed partial class DirectSubsetStepSearcher : StepSearcher
 
 			var lastDigit = Log2((uint)availableDigitsMask);
 			var step = new DirectSubsetStep(
-				new SingletonArray<Conclusion>(new(Assignment, cell, lastDigit)),
+				Array.Single(new Conclusion(Assignment, cell, lastDigit)),
 				[
 					[
 						.. candidateOffsets,
@@ -660,7 +660,7 @@ public sealed partial class DirectSubsetStepSearcher : StepSearcher
 				}
 
 				var step = new DirectSubsetStep(
-					new SingletonArray<Conclusion>(new(Assignment, cell, lastDigit)),
+					Array.Single(new Conclusion(Assignment, cell, lastDigit)),
 					[
 						[
 							.. candidateOffsets,
@@ -746,7 +746,7 @@ public sealed partial class DirectSubsetStepSearcher : StepSearcher
 				}
 
 				var step = new DirectSubsetStep(
-					new SingletonArray<Conclusion>(new(Assignment, lastCell, digit)),
+					Array.Single(new Conclusion(Assignment, lastCell, digit)),
 					[
 						[
 							.. candidateOffsets,
@@ -831,7 +831,7 @@ public sealed partial class DirectSubsetStepSearcher : StepSearcher
 
 			var lastDigit = Log2((uint)availableDigitsMask);
 			var step = new DirectSubsetStep(
-				new SingletonArray<Conclusion>(new(Assignment, cell, lastDigit)),
+				Array.Single(new Conclusion(Assignment, cell, lastDigit)),
 				[
 					[
 						.. candidateOffsets,

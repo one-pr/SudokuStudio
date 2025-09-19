@@ -265,7 +265,7 @@ internal sealed partial class ChainingStepSearcherHub : StepSearcherHubBase
 			PatternBasedChainStep step = forcingChains switch
 			{
 				BinaryForcingChains b => new BinaryForcingChainsStep(
-					new SingletonArray<Conclusion>(b.Conclusion),
+					Array.Single(b.Conclusion),
 					b.Cast().GetViews(grid, [b.Conclusion], supportedRules),
 					context.Options,
 					b

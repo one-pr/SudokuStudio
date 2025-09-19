@@ -77,7 +77,7 @@ public sealed partial class BivalueUniversalGraveStepSearcher : StepSearcher
 			{
 				// BUG + 1 found.
 				var step = new BivalueUniversalGraveType1Step(
-					new SingletonArray<Conclusion>(new(Assignment, trueCandidate)),
+					Array.Single(new Conclusion(Assignment, trueCandidate)),
 					[[new CandidateViewNode(ColorIdentifier.Normal, trueCandidate)]],
 					context.Options
 				);
@@ -178,7 +178,7 @@ public sealed partial class BivalueUniversalGraveStepSearcher : StepSearcher
 				}
 
 				var step = new BivalueUniversalGraveFalseCandidateTypeStep(
-					new SingletonArray<Conclusion>(new(Elimination, cell, digit)),
+					Array.Single(new Conclusion(Elimination, cell, digit)),
 					[[.. from multiValueCell in multivalueCells select new CellViewNode(ColorIdentifier.Normal, multiValueCell)]],
 					context.Options,
 					cell * 9 + digit

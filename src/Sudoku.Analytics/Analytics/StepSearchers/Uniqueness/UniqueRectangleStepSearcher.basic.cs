@@ -741,7 +741,7 @@ public partial class UniqueRectangleStepSearcher
 
 			accumulator.Add(
 				new HiddenUniqueRectangleStep(
-					new SingletonArray<Conclusion>(new(Elimination, abzCell, elimDigit)),
+					Array.Single(new Conclusion(Elimination, abzCell, elimDigit)),
 					[
 						[
 							.. arMode ? GetHighlightCells(urCells) : [],

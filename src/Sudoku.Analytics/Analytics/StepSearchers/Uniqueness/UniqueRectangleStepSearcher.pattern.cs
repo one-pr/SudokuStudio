@@ -136,7 +136,7 @@ public partial class UniqueRectangleStepSearcher
 
 						accumulator.Add(
 							new UniqueRectangleBurredSubsetStep(
-								new SingletonArray<Conclusion>(new(Elimination, elimCorner, elimDigit)),
+								Array.Single(new Conclusion(Elimination, elimCorner, elimDigit)),
 								[[.. candidateOffsets, new HouseViewNode(ColorIdentifier.Normal, house)]],
 								context.Options,
 								d1,
@@ -1195,7 +1195,7 @@ public partial class UniqueRectangleStepSearcher
 
 					accumulator.Add(
 						new AvoidableRectangleHiddenSingleStep(
-							new SingletonArray<Conclusion>(new(Elimination, baseCell, otherDigit)),
+							Array.Single(new Conclusion(Elimination, baseCell, otherDigit)),
 							[
 								[
 									.. from cell in urCells select new CellViewNode(ColorIdentifier.Normal, cell),

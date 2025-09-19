@@ -80,7 +80,7 @@ public sealed partial class BruteForceStepSearcher : StepSearcher
 			if (grid.GetState(offset) == CellState.Empty)
 			{
 				var step = new BruteForceStep(
-					new SingletonArray<Conclusion>(new(Assignment, offset * 9 + Solution.GetDigit(offset))),
+					Array.Single(new Conclusion(Assignment, offset * 9 + Solution.GetDigit(offset))),
 					context.Options
 				);
 				if (context.OnlyFindOne)

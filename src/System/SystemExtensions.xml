@@ -8579,6 +8579,20 @@
             Throws when the specified collection doesn't contain enough elements to get.
             </exception>
         </member>
+        <member name="T:System.ReadOnlySpan">
+            <summary>
+            Provides a way to create <see cref="T:System.ReadOnlySpan`1"/>.
+            </summary>
+            <seealso cref="T:System.ReadOnlySpan`1"/>
+        </member>
+        <member name="M:System.ReadOnlySpan.Single``1(``0@)">
+            <summary>
+            Creates a <see cref="T:System.ReadOnlySpan`1"/> that only contains one element.
+            </summary>
+            <typeparam name="T">The type of the element.</typeparam>
+            <param name="value">The value.</param>
+            <returns>The result.</returns>
+        </member>
         <member name="T:System.ReadOnlySpanUnsafeExtensions">
             <summary>
             Provides with extension methods on <see cref="T:System.ReadOnlySpan`1"/>.
@@ -9289,6 +9303,9 @@
         <member name="M:System.SequenceExtensions.InitializeArray``1(``0[],System.ArrayInitializer{``0})">
             <inheritdoc cref="M:System.SequenceExtensions.&lt;G&gt;$5826E9994B69910B49B9282D8BFF5922.InitializeArray``1(``0[],System.ArrayInitializer{``0})"/>
         </member>
+        <member name="M:System.SequenceExtensions.Single``1(``0)">
+            <inheritdoc cref="M:System.SequenceExtensions.&lt;G&gt;$5826E9994B69910B49B9282D8BFF5922.Single``1(``0)"/>
+        </member>
         <member name="M:System.SequenceExtensions.Flat``1(``0[0:,0:])">
             <inheritdoc cref="M:System.SequenceExtensions.&lt;G&gt;$5826E9994B69910B49B9282D8BFF5922.Flat``1(``0[0:,0:])"/>
         </member>
@@ -9399,6 +9416,14 @@
             <typeparam name="T">The type of each element.</typeparam>
             <param name="array">The array.</param>
             <param name="initializer">The initializer callback method.</param>
+        </member>
+        <member name="M:System.SequenceExtensions.&lt;G&gt;$5826E9994B69910B49B9282D8BFF5922.Single``1(``0)">
+            <summary>
+            Creates an array that only contains one element.
+            </summary>
+            <typeparam name="T">The type of element.</typeparam>
+            <param name="value">The value.</param>
+            <returns>The result.</returns>
         </member>
         <member name="M:System.SequenceExtensions.&lt;G&gt;$5826E9994B69910B49B9282D8BFF5922.Flat``1(``0[0:,0:])">
             <summary>
@@ -9654,40 +9679,6 @@
             with reversed order.
             </summary>
             <returns>A new collection whose elements are in reversed order.</returns>
-        </member>
-        <member name="T:System.SingletonArray`1">
-            <summary>
-            Represents an array with only one element.
-            </summary>
-            <typeparam name="T">The type of the only element of array.</typeparam>
-            <param name="value"><inheritdoc cref="F:System.SingletonArray`1._value" path="/summary"/></param>
-        </member>
-        <member name="M:System.SingletonArray`1.#ctor(`0)">
-            <summary>
-            Represents an array with only one element.
-            </summary>
-            <typeparam name="T">The type of the only element of array.</typeparam>
-            <param name="value"><inheritdoc cref="F:System.SingletonArray`1._value" path="/summary"/></param>
-        </member>
-        <member name="F:System.SingletonArray`1._value">
-            <summary>
-            Indicates the value.
-            </summary>
-        </member>
-        <member name="M:System.SingletonArray`1.ToString">
-            <inheritdoc/>
-        </member>
-        <member name="M:System.SingletonArray`1.op_Implicit(System.SingletonArray{`0})~System.ReadOnlySpan{`0}">
-            <summary>
-            Creates a <see cref="T:System.ReadOnlySpan`1"/> from the current instance without any copy operation.
-            </summary>
-            <param name="value">The value to be casted from.</param>
-        </member>
-        <member name="M:System.SingletonArray`1.op_Implicit(System.SingletonArray{`0})~System.ReadOnlyMemory{`0}">
-            <summary>
-            Creates a <see cref="T:System.ReadOnlyMemory`1"/> from the current instance without any copy operation.
-            </summary>
-            <param name="value">The value to be casted from.</param>
         </member>
         <member name="T:System.SpanUnsafeExtensions">
             <summary>
