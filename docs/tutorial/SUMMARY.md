@@ -148,6 +148,8 @@
   * [三顺一逆现象](rank-theory/05-guardian-logic/03-rebellious-block-phenomenon.md)
   * [三值死环](rank-theory/05-guardian-logic/04-trivalue-oddagon.md)
   * [负秩结构和无解局面的区别](rank-theory/05-guardian-logic/05-difference-between-negative-rank-patterns-and-invalid-grids.md)
+* [网](rank-theory/06-multisector-locked-set/README.md)
+  * [从融合待定数组谈起](rank-theory/06-multisector-locked-set/01-starting-with-sue-de-coq.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
