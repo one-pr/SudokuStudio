@@ -79,6 +79,14 @@ candidate <color-identifier> <candidate|candidate-group>
 
 另外，你也可以使用 `r1c1` 这种单元格语法来直接高亮这个单元格里的全部候选数。不过这个用法只支持在你前面用了 `load` 指令导入了盘面的情况。
 
+你也可以使用区域高亮来对一整个行、列、宫的某数字进行高亮：
+
+```bash
+house <color-identifier> <house|house-group>(digit) [+including-cells|-including-cells]
+```
+
+这个的意思是，高亮一整个行列宫的某个数字。使用 `+单元格` 来控制整个区域下的哪些单元格里的这个候选数要高亮，使用 `-单元格` 来控制整个区域里哪些单元格里的整个候选数不被高亮。
+
 ### 区域高亮 <a href="#house-highlight" id="house-highlight"></a>
 
 如果你要展示区域的高亮，就使用 `house` 指令：
