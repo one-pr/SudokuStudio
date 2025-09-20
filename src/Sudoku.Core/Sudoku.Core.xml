@@ -10718,6 +10718,22 @@
         <member name="M:Sudoku.Drawing.Parsing.HouseArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
             <inheritdoc/>
         </member>
+        <member name="P:Sudoku.Drawing.Parsing.HouseArgumentParser.HouseWithDigitPattern">
+            <remarks>
+            Pattern:<br/>
+            <code>.+(?:\\([1-9]+\\))?</code><br/>
+            Options:<br/>
+            <code>RegexOptions.Compiled</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match a character other than '\n' greedily at least once.<br/>
+            ○ Optional (greedy).<br/>
+                ○ Match '('.<br/>
+                ○ Match a character in the set [1-9] atomically at least once.<br/>
+                ○ Match ')'.<br/>
+            </code>
+            </remarks>
+        </member>
         <member name="T:Sudoku.Drawing.Parsing.IconArgumentParser">
             <summary>
             Represents an icon argument parser.
@@ -16671,6 +16687,38 @@
             <returns>true if a possible match was found; false if no more matches are possible.</returns>
         </member>
         <member name="M:System.Text.RegularExpressions.Generated.SpaceSegmentPattern_23.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.HouseWithDigitPattern_24">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the HouseWithDigitPattern method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.HouseWithDigitPattern_24.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.HouseWithDigitPattern_24.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.HouseWithDigitPattern_24.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.HouseWithDigitPattern_24.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.HouseWithDigitPattern_24.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.HouseWithDigitPattern_24.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.HouseWithDigitPattern_24.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.HouseWithDigitPattern_24.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
             <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
             <param name="inputSpan">The text being scanned by the regular expression.</param>
             <returns>true if the regular expression matches at the current position; otherwise, false.</returns>

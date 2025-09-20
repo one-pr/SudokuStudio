@@ -43,6 +43,11 @@ public sealed partial class CommandBasedDrawingPage : Page
 					"ColorLight": "#808080"
 				},
 				{
+					"Pattern": "[+-](?:[Rr][1-9]+[Cc][1-9]+(?:,[Rr][1-9]+[Cc][1-9]+)*|[A-K]+[1-9]+(?:,[A-K]+[1-9]+)*)",
+					"ColorDark": "#c0c0c0",
+					"ColorLight": "#808080"
+				},
+				{
 					"Pattern": "(?<=!)\\w+|(?<=#)[\\dA-Fa-f]{6}|(?<=#)[\\dA-Fa-f]{8}|(?<=&)(\\d{1,2}|[A-Fa-f])",
 					"ColorDark": "#4ec9b0",
 					"ColorLight": "#2f91af"
