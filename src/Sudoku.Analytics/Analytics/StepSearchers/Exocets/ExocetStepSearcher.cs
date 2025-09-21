@@ -140,7 +140,10 @@ public sealed partial class ExocetStepSearcher : StepSearcher
 							foreach (ref readonly var minilineBaseCells in Miniline.MinilinesGroupedByChuteIndex[i].AsReadOnlySpan())
 							{
 								// Set cancellation token handling logic here.
-								context.CancellationToken.ThrowIfCancellationRequested();
+								if (!context.CancellationToken)
+								{
+									return null;
+								}
 
 								if ((minilineBaseCells & EmptyCells) is not (var baseEmptyCellsToBeIterated and not []))
 								{
