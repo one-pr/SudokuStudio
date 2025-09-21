@@ -77,6 +77,14 @@ candidate <color-identifier> <candidate|candidate-group>
 
 In addition, if you want to append all candidates from a cell appeared in a grid, you can just use cell notation instead. For example, `r1c1` represents all candidates in `r1c1`, instead of writting multiple candidates like `r1c1(13579)`. However, this command must be placed after `load` command because it relies on a real grid to reference states of candidates.
 
+In addition, you can also use `house` command to highlight all candidates of one specified digit, inside a whole house:
+
+```bash
+house <color-identifier> <house|house-group>(digits) [+including-cells|-excluding-cells]
+```
+
+This will highlight all candidates of specified digits inside the specified houses. You can use `+cells` clause to limit cells the target candidates should be within, or specify `-cells` to exclude cells.
+
 ### House highlight
 
 If you want to highlight a house, you should use `house` command:
