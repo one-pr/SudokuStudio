@@ -8,7 +8,7 @@
 		<DefineConstants>$(DefineConstants)</DefineConstants>
 
 		<Features>Interceptors</Features>
-		<InterceptorsNamespaces>$(InterceptorsNamespaces);Sudoku.Runtime.InterceptorServices.Generated</InterceptorsNamespaces>
+		<InterceptorsNamespaces>$(InterceptorsNamespaces);Sudoku.Analytics.InterceptorGenerated</InterceptorsNamespaces>
 	</PropertyGroup>
 
 	<ItemGroup>
