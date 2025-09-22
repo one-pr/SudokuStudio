@@ -3,7 +3,7 @@ namespace Sudoku.Analytics.StepSearcherHubs;
 /// <summary>
 /// Represents a type that can search for rectangle forcing chains.
 /// </summary>
-internal sealed class RectangleForcingChainsStepSearcherHub : MultipleForcingChainsStepSearcherHub
+internal sealed class RectangleForcingChainsStepSearcherHub : MultipleForcingChainsStepSearcherHubBase
 {
 	/// <inheritdoc/>
 	public override ReadOnlyMemory<Type> SupportedStepSearcherTypes

@@ -3,7 +3,7 @@ namespace Sudoku.Analytics.StepSearcherHubs;
 /// <summary>
 /// Represents a type that can search for bivalue universal grave forcing chains.
 /// </summary>
-internal sealed class BivalueUniversalGraveForcingChainsStepSearcherHub : MultipleForcingChainsStepSearcherHub
+internal sealed class BivalueUniversalGraveForcingChainsStepSearcherHub : MultipleForcingChainsStepSearcherHubBase
 {
 	/// <inheritdoc/>
 	public override ReadOnlyMemory<Type> SupportedStepSearcherTypes => (Type[])[typeof(MultipleForcingChainsStepSearcher)];
