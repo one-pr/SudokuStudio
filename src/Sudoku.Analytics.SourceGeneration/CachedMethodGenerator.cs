@@ -504,7 +504,7 @@ public sealed class CachedMethodGenerator : IIncrementalGenerator
 										public static class __{{referencedMethodSymbol.ContainingType.Name}}_{{referencedMethodName}}_Intercepted
 										{
 											/// <summary>
-											/// The backing entry that can route functions by checking the target type of instance parameter <paramref cref="this"/>.
+											/// The backing entry that can route functions by checking the target type of instance parameter <paramref name="this"/>.
 											/// </summary>
 											{{AttributeInsertionMatchString}}
 											[global::System.CodeDom.Compiler.GeneratedCodeAttribute("CachedMethodGenerator", "1.0")]

@@ -18661,7 +18661,7 @@
         </member>
         <member name="M:Sudoku.Analytics.InterceptorGenerated.__ChainingRule_GetLinks_Intercepted.GetLinks_SwitchEntry(Sudoku.Analytics.Chaining.ChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
             <summary>
-            The backing entry that can route functions by checking the target type of instance parameter <paramref cref="!:this"/>.
+            The backing entry that can route functions by checking the target type of instance parameter <paramref name="this"/>.
             </summary>
         </member>
         <member name="T:Sudoku.Analytics.InterceptorGenerated.__XChainingRule_GetLinks_Intercepted">
@@ -18805,7 +18805,7 @@
         </member>
         <member name="M:Sudoku.Analytics.InterceptorGenerated.__ChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions_SwitchEntry(Sudoku.Analytics.Chaining.ChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
             <summary>
-            The backing entry that can route functions by checking the target type of instance parameter <paramref cref="!:this"/>.
+            The backing entry that can route functions by checking the target type of instance parameter <paramref name="this"/>.
             </summary>
         </member>
         <member name="T:Sudoku.Analytics.InterceptorGenerated.__AlmostLockedSetsChainingRule_GetLoopConclusions_Intercepted">
