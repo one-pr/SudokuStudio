@@ -3393,4 +3393,18 @@
   <data name="TechniqueGroup_None" xml:space="preserve">
     <value>无</value>
   </data>
+  <data name="Multifish" xml:space="preserve">
+    <value>复数鱼</value>
+    <comment>Technique Name</comment>
+  </data>
+  <data name="TechniqueGroup_Multifish" xml:space="preserve">
+    <value>复数鱼</value>
+  </data>
+  <data name="StepSearcherName_MultifishStepSearcher" xml:space="preserve">
+    <value>复数鱼</value>
+    <comment>Step Searcher Name</comment>
+  </data>
+  <data name="TechniqueFormat_MultifishStep" xml:space="preserve">
+    <value>{0}/{1}（强区域：{2}，弱区域：{3}）</value>
+  </data>
 </root>

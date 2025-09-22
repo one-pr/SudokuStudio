@@ -3999,6 +3999,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Multifish.
+        /// </summary>
+        public static string Multifish {
+            get {
+                return ResourceManager.GetString("Multifish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Multi-sector Locked Sets.
         /// </summary>
         public static string MultisectorLockedSets {
@@ -5644,6 +5653,15 @@ namespace Sudoku.Resources {
         public static string StepSearcherName_LockedSubsetStepSearcher {
             get {
                 return ResourceManager.GetString("StepSearcherName_LockedSubsetStepSearcher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multifish.
+        /// </summary>
+        public static string StepSearcherName_MultifishStepSearcher {
+            get {
+                return ResourceManager.GetString("StepSearcherName_MultifishStepSearcher", resourceCulture);
             }
         }
         
@@ -7907,6 +7925,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0}/{1} (truths: {2}, links: {3}).
+        /// </summary>
+        public static string TechniqueFormat_MultifishStep {
+            get {
+                return ResourceManager.GetString("TechniqueFormat_MultifishStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0}.
         /// </summary>
         public static string TechniqueFormat_MultipleForcingChainsStep {
@@ -8749,6 +8776,15 @@ namespace Sudoku.Resources {
         public static string TechniqueGroup_LockedCandidates {
             get {
                 return ResourceManager.GetString("TechniqueGroup_LockedCandidates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multifish.
+        /// </summary>
+        public static string TechniqueGroup_Multifish {
+            get {
+                return ResourceManager.GetString("TechniqueGroup_Multifish", resourceCulture);
             }
         }
         

@@ -244,6 +244,11 @@ public enum TechniqueGroup
 	MultisectorLockedSets,
 
 	/// <summary>
+	/// Indicates the multi-fish technique.
+	/// </summary>
+	Multifish,
+
+	/// <summary>
 	/// Indicates the exocet technique.
 	/// </summary>
 	Exocet,

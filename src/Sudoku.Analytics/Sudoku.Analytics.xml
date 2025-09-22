@@ -9666,6 +9666,18 @@
         <member name="M:Sudoku.Analytics.StepSearchers.MultisectorLockedSetsStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
             <inheritdoc/>
         </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.MultifishStepSearcher">
+            <summary>
+            Provides with a <b>Multifish</b> step searcher.
+            The step searcher will include the following techniques:
+            <list type="bullet">
+            <item>Multifish</item>
+            </list>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.MultifishStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
+            <inheritdoc/>
+        </member>
         <member name="T:Sudoku.Analytics.StepSearchers.BruteForceStepSearcher">
             <summary>
             Provides with a <b>Brute Force</b> step searcher.
@@ -12158,7 +12170,7 @@
         </member>
         <member name="T:Sudoku.Analytics.Steps.NormalFishStep">
             <summary>
-            Provides with a step that is an <b>Normal Fish</b> technique.
+            Provides with a step that is a <b>Normal Fish</b> technique.
             </summary>
             <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
             <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
@@ -12172,7 +12184,7 @@
         </member>
         <member name="M:Sudoku.Analytics.Steps.NormalFishStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.Int32,System.Int32,System.Int32,Sudoku.Concepts.CellMap@,System.Nullable{System.Boolean},System.Boolean)">
             <summary>
-            Provides with a step that is an <b>Normal Fish</b> technique.
+            Provides with a step that is a <b>Normal Fish</b> technique.
             </summary>
             <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
             <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
@@ -13335,6 +13347,48 @@
             <inheritdoc/>
         </member>
         <member name="P:Sudoku.Analytics.Steps.SueDeCoqStep.Sudoku#Analytics#Traits#IIsolatedDigitTrait#IsolatedDigitsCount">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.Steps.MultifishStep">
+            <summary>
+            Provides with a step that is a <b>Multifish</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="truths"><inheritdoc cref="P:Sudoku.Analytics.Steps.MultifishStep.Truths" path="/summary"/></param>
+            <param name="links"><inheritdoc cref="P:Sudoku.Analytics.Steps.MultifishStep.Links" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Analytics.Steps.MultifishStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Supersymmetry.SpaceSet@)">
+            <summary>
+            Provides with a step that is a <b>Multifish</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="truths"><inheritdoc cref="P:Sudoku.Analytics.Steps.MultifishStep.Truths" path="/summary"/></param>
+            <param name="links"><inheritdoc cref="P:Sudoku.Analytics.Steps.MultifishStep.Links" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.MultifishStep.BaseDifficulty">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.MultifishStep.Code">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.MultifishStep.Truths">
+            <summary>
+            Indicates the truths.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.MultifishStep.Links">
+            <summary>
+            Indicates the links.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.MultifishStep.DigitsUsed">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.MultifishStep.Interpolations">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Steps.PartialPencilmarkingStep">
@@ -21408,6 +21462,11 @@
             Indicates multi-sector locked sets.
             </summary>
         </member>
+        <member name="F:Sudoku.Categorization.Technique.Multifish">
+            <summary>
+            Indicates multi-fish.
+            </summary>
+        </member>
         <member name="F:Sudoku.Categorization.Technique.PatternOverlay">
             <summary>
             Indicates pattern overlay method.
@@ -21891,6 +21950,11 @@
         <member name="F:Sudoku.Categorization.TechniqueGroup.MultisectorLockedSets">
             <summary>
             Indicates the multi-sector locked sets (MSLS) technique.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Categorization.TechniqueGroup.Multifish">
+            <summary>
+            Indicates the multi-fish technique.
             </summary>
         </member>
         <member name="F:Sudoku.Categorization.TechniqueGroup.Exocet">
@@ -32301,6 +32365,11 @@
               Looks up a localized string similar to W-Wing Multiple Branches.
             </summary>
         </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.Multifish">
+            <summary>
+              Looks up a localized string similar to Multifish.
+            </summary>
+        </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.MultisectorLockedSets">
             <summary>
               Looks up a localized string similar to Multi-sector Locked Sets.
@@ -33220,6 +33289,11 @@
         <member name="P:Sudoku.Resources.AnalyticsResources.StepSearcherName_LockedSubsetStepSearcher">
             <summary>
               Looks up a localized string similar to Locked Subsets.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.StepSearcherName_MultifishStepSearcher">
+            <summary>
+              Looks up a localized string similar to Multifish.
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.StepSearcherName_MultipleForcingChainsStepSearcher">
@@ -34477,6 +34551,11 @@
               Looks up a localized string similar to Leaves {0}, root cells {1} in house {2}.
             </summary>
         </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueFormat_MultifishStep">
+            <summary>
+              Looks up a localized string similar to {0}/{1} (truths: {2}, links: {3}).
+            </summary>
+        </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueFormat_MultipleForcingChainsStep">
             <summary>
               Looks up a localized string similar to {0}.
@@ -34945,6 +35024,11 @@
         <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueGroup_LockedCandidates">
             <summary>
               Looks up a localized string similar to Locked Candidates.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueGroup_Multifish">
+            <summary>
+              Looks up a localized string similar to Multifish.
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueGroup_MultisectorLockedSets">

@@ -3346,4 +3346,16 @@ Is pattern rank-0: {6}</value>
   <data name="TechniqueGroup_None" xml:space="preserve">
     <value>None</value>
   </data>
+  <data name="Multifish" xml:space="preserve">
+    <value>Multifish</value>
+  </data>
+  <data name="TechniqueGroup_Multifish" xml:space="preserve">
+    <value>Multifish</value>
+  </data>
+  <data name="StepSearcherName_MultifishStepSearcher" xml:space="preserve">
+    <value>Multifish</value>
+  </data>
+  <data name="TechniqueFormat_MultifishStep" xml:space="preserve">
+    <value>{0}/{1} (truths: {2}, links: {3})</value>
+  </data>
 </root>

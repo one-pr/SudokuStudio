@@ -4566,6 +4566,21 @@ public enum Technique
 	#endregion
 
 	//
+	// Multi-fish
+	//
+	#region Multifish
+	/// <summary>
+	/// Indicates multi-fish.
+	/// </summary>
+	[TechniqueMetadata<MultisectorLockedSetsStepSearcher, MultisectorLockedSetsStep>(
+		Rating = 96,
+		DifficultyLevel = DifficultyLevel.Nightmare,
+		ContainingGroup = TechniqueGroup.Multifish,
+		Features = TechniqueFeatures.HardToBeGenerated)]
+	Multifish,
+	#endregion
+
+	//
 	// Pattern Overlay
 	//
 	#region Pattern Overlay

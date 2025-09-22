@@ -97,10 +97,10 @@ public abstract class FishStep(
 			Digit,
 			BaseSetsMask,
 			CoverSetsMask,
-			in this is NormalFishStep { Fins: var f }
+			this is NormalFishStep { Fins: var f }
 				? ref f
 				: ref this is ComplexFishStep { Exofins: var f2 } ? ref f2 : ref CellMap.Empty,
-			in this is NormalFishStep
+			this is NormalFishStep
 				? ref CellMap.Empty
 				: ref this is ComplexFishStep { Endofins: var f3 } ? ref f3 : ref CellMap.Empty
 		);

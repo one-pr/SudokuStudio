@@ -1,11 +1,11 @@
 #pragma warning disable IDE0055
 #pragma warning disable CS1591
 
-namespace Sudoku.Analytics.StepSearchers;
-
 // This file stores built-in step searchers used.
 // You can modify the ordering of step searchers to control the priority on invocation
 // by an Analyzer instance.
+
+namespace Sudoku.Analytics.StepSearchers;
 
 public partial class SingleStepSearcher								(): StepSearcher(00, 0);
 public partial class LawOfLeftoverStepSearcher						(): StepSearcher(01, 0);
@@ -63,4 +63,5 @@ public partial class PatternOverlayStepSearcher						(): StepSearcher(52, 3, Ste
 public partial class ExocetStepSearcher								(): StepSearcher(53, 3);
 public partial class DominoLoopStepSearcher							(): StepSearcher(54, 3);
 public partial class MultisectorLockedSetsStepSearcher				(): StepSearcher(55, 3);
-public partial class BruteForceStepSearcher							(): StepSearcher(56, 4, StepSearcherRunningArea.Searching);
+public partial class MultifishStepSearcher							(): StepSearcher(56, 3);
+public partial class BruteForceStepSearcher							(): StepSearcher(57, 4, StepSearcherRunningArea.Searching);
