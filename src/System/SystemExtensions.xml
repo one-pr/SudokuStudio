@@ -8593,26 +8593,32 @@
             <param name="value">The value.</param>
             <returns>The result.</returns>
         </member>
-        <member name="T:System.ReadOnlySpanUnsafeExtensions">
-            <summary>
-            Provides with extension methods on <see cref="T:System.ReadOnlySpan`1"/>.
-            </summary>
-        </member>
-        <member name="M:System.ReadOnlySpanUnsafeExtensions.Create``1(``0@,System.Int32)">
-            <inheritdoc cref="M:System.ReadOnlySpanUnsafeExtensions.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94.Create(`0@,System.Int32)"/>
-        </member>
-        <member name="T:System.ReadOnlySpanUnsafeExtensions.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94.&lt;M&gt;$E055CBCE87C338EE5C812845CB0DF126">
-            <summary>
-            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/>.
-            </summary>
-        </member>
-        <member name="M:System.ReadOnlySpanUnsafeExtensions.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94.Create(`0@,System.Int32)">
+        <member name="M:System.ReadOnlySpan.Create``1(``0@,System.Int32)">
             <summary>
             Creates a <see cref="T:System.ReadOnlySpan`1"/> instance.
             </summary>
-            <param name="reference">The reference to the first element.</param>
+            <typeparam name="T">The type of each element.</typeparam>
+            <param name="value">The reference to the first element.</param>
             <param name="length">The length.</param>
             <returns><see cref="T:System.ReadOnlySpan`1"/> instance.</returns>
+        </member>
+        <member name="T:System.Span">
+            <summary>
+            Provides a way to create <see cref="T:System.Span`1"/>.
+            </summary>
+            <seealso cref="T:System.Span`1"/>
+        </member>
+        <member name="M:System.Span.Create``1(``0@,System.Int32)">
+            <summary>
+            Creates a <see cref="T:System.Span`1"/> instance.
+            </summary>
+            <typeparam name="T">The type of each element.</typeparam>
+            <param name="value">The reference to the first element.</param>
+            <param name="length">The length.</param>
+            <returns><see cref="T:System.Span`1"/> instance.</returns>
+        </member>
+        <member name="M:System.Span.Create``1(``0*,System.Int32)">
+            <inheritdoc cref="M:System.Span.Create``1(``0@,System.Int32)"/>
         </member>
         <member name="T:System.Reflection.AssemblyExtensions">
             <summary>

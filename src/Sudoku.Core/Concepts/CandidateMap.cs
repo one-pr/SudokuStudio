@@ -274,7 +274,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 
 	/// <inheritdoc/>
 	public readonly void CopyTo(ref Candidate sequence, Candidate length)
-		=> Offsets.AsReadOnlySpan().TryCopyTo(Span<int>.Create(ref sequence, length));
+		=> Offsets.AsReadOnlySpan().TryCopyTo(Span.Create(ref sequence, length));
 
 	/// <inheritdoc/>
 	public readonly void ForEach(Action<Candidate> action)

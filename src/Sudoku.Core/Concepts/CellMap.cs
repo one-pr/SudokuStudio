@@ -457,7 +457,7 @@ public partial struct CellMap : CellMapBase
 
 	/// <inheritdoc/>
 	public readonly void CopyTo(ref Cell sequence, Cell length)
-		=> Offsets.AsReadOnlySpan().TryCopyTo(Span<int>.Create(ref sequence, length));
+		=> Offsets.AsReadOnlySpan().TryCopyTo(Span.Create(ref sequence, length));
 
 	/// <inheritdoc/>
 	public readonly void ForEach(Action<Cell> action)
