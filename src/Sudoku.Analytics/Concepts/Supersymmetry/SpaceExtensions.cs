@@ -21,9 +21,9 @@ public static class SpaceExtensions
 			=> (isTruth, @this) switch
 			{
 				(true, { Cell: var cell and not -1 }) => IsPow2(assignments.GetDigitsFor(cell)),
-				(true, { House: var house, Digit: var digit }) => IsPow2(assignments.GetPositionsFor(house, digit)),
+				(true, { HouseDigit: (var house and not -1, var digit and not -1) }) => IsPow2(assignments.GetPositionsFor(house, digit)),
 				(_, { Cell: var cell and not -1 }) => PopCount((uint)assignments.GetDigitsFor(cell)) <= 1,
-				(_, { House: var house, Digit: var digit }) => PopCount((uint)assignments.GetPositionsFor(house, digit)) <= 1
+				(_, { HouseDigit: (var house and not -1, var digit and not -1) }) => PopCount((uint)assignments.GetPositionsFor(house, digit)) <= 1
 			};
 	}
 }

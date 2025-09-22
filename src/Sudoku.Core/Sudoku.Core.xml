@@ -7841,6 +7841,12 @@
             Indicates the target house, or -1 if <see cref="P:Sudoku.Concepts.Supersymmetry.Space.Type"/> is <see cref="F:Sudoku.Concepts.Supersymmetry.SpaceType.RowColumn"/>.
             </summary>
         </member>
+        <member name="P:Sudoku.Concepts.Supersymmetry.Space.HouseDigit">
+            <summary>
+            Indicates identifier for house-digit pair. If eiither <see cref="P:Sudoku.Concepts.Supersymmetry.Space.House"/> or <see cref="P:Sudoku.Concepts.Supersymmetry.Space.Digit"/> returns -1,
+            the return value will be <see langword="default"/>(<see cref="T:Sudoku.Concepts.HouseDigitIdentifier"/>).
+            </summary>
+        </member>
         <member name="P:Sudoku.Concepts.Supersymmetry.Space.Range">
             <summary>
             Returns a list of candidates that are in the current set.

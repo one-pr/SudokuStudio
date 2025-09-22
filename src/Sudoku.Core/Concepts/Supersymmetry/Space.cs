@@ -74,6 +74,12 @@ public readonly struct Space(Mask mask) :
 		};
 
 	/// <summary>
+	/// Indicates identifier for house-digit pair. If eiither <see cref="House"/> or <see cref="Digit"/> returns -1,
+	/// the return value will be <see langword="default"/>(<see cref="HouseDigitIdentifier"/>).
+	/// </summary>
+	public HouseDigitIdentifier HouseDigit => House == -1 || Digit == -1 ? default : new(House, Digit);
+
+	/// <summary>
 	/// Returns a list of candidates that are in the current set.
 	/// </summary>
 	/// <returns>The candidates.</returns>
@@ -92,7 +98,7 @@ public readonly struct Space(Mask mask) :
 					}
 					return result;
 				}
-				case { House: var house, Digit: var digit }:
+				case { HouseDigit: var (house, digit) }:
 				{
 					var result = CandidateMap.Empty;
 					foreach (var cell in HousesMap[house])
@@ -151,7 +157,7 @@ public readonly struct Space(Mask mask) :
 		=> this switch
 		{
 			{ Cell: var cell and not -1 } => candidate / 9 == cell,
-			{ House: var house, Digit: var digit } => candidate % 9 == digit && HousesMap[house].Contains(candidate / 9)
+			{ HouseDigit: var (house, digit) } => candidate % 9 == digit && HousesMap[house].Contains(candidate / 9)
 		};
 
 	/// <inheritdoc/>
@@ -184,7 +190,7 @@ public readonly struct Space(Mask mask) :
 				}
 				return result;
 			}
-			case { House: var house, Digit: var digit }:
+			case { HouseDigit: var (house, digit) }:
 			{
 				var result = CandidateMap.Empty;
 				foreach (var cell in HousesMap[house])

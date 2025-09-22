@@ -353,7 +353,7 @@ public sealed record RxCyConverter(
 							}
 							break;
 						}
-						case { House: var house, Digit: var digit }:
+						case { HouseDigit: var (house, digit) }:
 						{
 							var houseType = (HouseType)(house / 9);
 							var index = house % 9;

@@ -92,7 +92,7 @@ public partial struct RankPattern
 					}
 					break;
 				}
-				case { IsHouseRelated: true, House: var house, Digit: var digit }:
+				case { IsHouseRelated: true, HouseDigit: var (house, digit) }:
 				{
 					result &= ~(HousesMap[house] * digit & ~truth.GetAvailableRange(Grid));
 					break;

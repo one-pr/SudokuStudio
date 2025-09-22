@@ -107,7 +107,7 @@ public readonly ref partial struct RankPattern(ref readonly Grid grid, ref reado
 					}
 					break;
 				}
-				case { IsHouseRelated: true, House: var house, Digit: var digit }:
+				case { IsHouseRelated: true, HouseDigit: var (house, digit) }:
 				{
 					foreach (var cell in HousesMap[house] & candidatesMap[digit])
 					{
