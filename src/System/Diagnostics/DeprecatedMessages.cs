@@ -1,4 +1,4 @@
-namespace System;
+namespace System.Diagnostics;
 
 /// <summary>
 /// Provides deprecated messages.

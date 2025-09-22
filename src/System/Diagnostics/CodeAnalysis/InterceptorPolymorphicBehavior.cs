@@ -1,4 +1,4 @@
-namespace Sudoku.Runtime.InterceptorServices;
+namespace System.Diagnostics.CodeAnalysis;
 
 /// <summary>
 /// Indicates the default behavior on routing for interceptor instance type checking.

@@ -1,4 +1,4 @@
-namespace Sudoku.Runtime.InterceptorServices;
+namespace System.Diagnostics.CodeAnalysis;
 
 /// <summary>
 /// Indicates the target method marked this attribute will be replaced with intercepted methods.

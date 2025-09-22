@@ -1665,57 +1665,138 @@
              </summary>
              <returns>A function that creates a nesting lambda that is a recursive lambda.</returns>
         </member>
-        <member name="T:System.DeprecatedMessages">
+        <member name="T:System.Diagnostics.CodeAnalysis.InterceptorMethodCallerAttribute">
+            <summary>
+            Indicates the target method marked this attribute will be replaced with intercepted methods.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.InterceptorPolymorphicAttribute">
+            <summary>
+            Represents an attribute type that can be applied to a method, indicating the method uses interceptor,
+            but the target method is an instance method with inheritance. Specified types are the possible derived types of the instance.
+            </summary>
+            <param name="types"><inheritdoc cref="P:System.Diagnostics.CodeAnalysis.InterceptorPolymorphicAttribute.Types" path="/summary"/></param>
+            <remarks>
+            <para>
+            This attribute will be used by source generator to generate an extra entry to consume all possible types,
+            which is useful for <see langword="abstract"/>, <see langword="virtual"/> and <see langword="sealed"/> methods.
+            </para>
+            <para>
+            Usage:
+            <code><![CDATA[
+            [InterceptorMethodCaller]
+            [InterceptorPolymorphic(typeof(A), typeof(B))]
+            public static void Method()
+            {
+                // Implementation may use a method whose bound instance type is the base type of 'A' and 'B',
+                // specified in 'InterceptorPolymorphicAttribute'.
+            }
+            ]]></code>
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.InterceptorPolymorphicAttribute.#ctor(System.Type[])">
+            <summary>
+            Represents an attribute type that can be applied to a method, indicating the method uses interceptor,
+            but the target method is an instance method with inheritance. Specified types are the possible derived types of the instance.
+            </summary>
+            <param name="types"><inheritdoc cref="P:System.Diagnostics.CodeAnalysis.InterceptorPolymorphicAttribute.Types" path="/summary"/></param>
+            <remarks>
+            <para>
+            This attribute will be used by source generator to generate an extra entry to consume all possible types,
+            which is useful for <see langword="abstract"/>, <see langword="virtual"/> and <see langword="sealed"/> methods.
+            </para>
+            <para>
+            Usage:
+            <code><![CDATA[
+            [InterceptorMethodCaller]
+            [InterceptorPolymorphic(typeof(A), typeof(B))]
+            public static void Method()
+            {
+                // Implementation may use a method whose bound instance type is the base type of 'A' and 'B',
+                // specified in 'InterceptorPolymorphicAttribute'.
+            }
+            ]]></code>
+            </para>
+            </remarks>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.InterceptorPolymorphicAttribute.DefaultBehavior">
+            <summary>
+            Indicates the routing default behavior on generated method for <see langword="default"/> label
+            or <see langword="_"/> token in <see langword="switch"/> statement or expression respectively.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.InterceptorPolymorphicAttribute.Types">
+            <summary>
+            Indicates all possible types.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.InterceptorPolymorphicBehavior">
+            <summary>
+            Indicates the default behavior on routing for interceptor instance type checking.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.InterceptorPolymorphicBehavior.DoNothingOrReturnDefault">
+            <summary>
+            Indicates the default behavior is to return <see langword="default"/> or do nothing.
+            </summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.InterceptorPolymorphicBehavior.ThrowNotSupportedException">
+            <summary>
+            Indicates the default behavior is to throw a <see cref="T:System.NotSupportedException"/>.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.DeprecatedMessages">
             <summary>
             Provides deprecated messages.
             </summary>
         </member>
-        <member name="F:System.DeprecatedMessages.ExtensionOperator_Reverse">
+        <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_Reverse">
             <summary>
             Describes extension "<c><see langword="operator"/> ~</c>" on collections to reverse them.
             </summary>
         </member>
-        <member name="F:System.DeprecatedMessages.ExtensionOperator_Chunk">
+        <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_Chunk">
             <summary>
             Describes extension "<c><see langword="operator"/> /</c>" on collections to chunk them.
             </summary>
         </member>
-        <member name="F:System.DeprecatedMessages.ExtensionOperator_Subset">
+        <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_Subset">
             <summary>
             Describes extension "<c><see langword="operator"/> &amp;</c>" on collections to get subsets from them.
             </summary>
         </member>
-        <member name="F:System.DeprecatedMessages.ExtensionOperator_AllSubset">
+        <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_AllSubset">
             <summary>
             Describes extension "<c><see langword="operator"/> |</c>" on collections to get subsets from them.
             </summary>
         </member>
-        <member name="F:System.DeprecatedMessages.ExtensionOperator_Pack">
+        <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_Pack">
             <summary>
             Describes extension "<c><see langword="operator"/> +</c>" on characters to get packed string.
             </summary>
         </member>
-        <member name="F:System.DeprecatedMessages.ExtensionOperator_Unpack">
+        <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_Unpack">
             <summary>
             Describes extension "<c><see langword="operator"/> -</c>" on string to get unpacked sequence.
             </summary>
         </member>
-        <member name="F:System.DeprecatedMessages.ExtensionOperator_Equality">
+        <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_Equality">
             <summary>
             Describes extension "<c><see langword="operator"/> ==</c>" on instances to compare equality.
             </summary>
         </member>
-        <member name="F:System.DeprecatedMessages.ExtensionOperator_Apply">
+        <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_Apply">
             <summary>
             Describes extension "<c><see langword="operator"/> >>=</c>" on collections to apply instances to them.
             </summary>
         </member>
-        <member name="F:System.DeprecatedMessages.ExtensionOperator_Repeat">
+        <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_Repeat">
             <summary>
             Describes extension "<c><see langword="operator"/> *</c>" on collections to repeat specified times of them.
             </summary>
         </member>
-        <member name="F:System.DeprecatedMessages.ExtensionOperator_StateChange">
+        <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_StateChange">
             <summary>
             Describes extension "<c><see langword="operator"/> &gt;&gt;</c>" on instance that changes the state.
             </summary>

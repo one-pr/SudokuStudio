@@ -21,9 +21,9 @@ public sealed class CachedMethodGenerator : IIncrementalGenerator
 {
 	#region String constants
 
-	private const string InterceptorMethodCallerAttributeTypeFullName = "Sudoku.Runtime.InterceptorServices.InterceptorMethodCallerAttribute";
+	private const string InterceptorMethodCallerAttributeTypeFullName = "System.Diagnotics.CodeAnalysis.InterceptorMethodCallerAttribute";
 
-	private const string InterceptorPolymorphicAttributeTypeFullName = "Sudoku.Runtime.InterceptorServices.InterceptorPolymorphicAttribute";
+	private const string InterceptorPolymorphicAttributeTypeFullName = "System.Diagnotics.CodeAnalysis.InterceptorPolymorphicAttribute";
 
 	private const string CachedAttributeTypeFullName = "Sudoku.Analytics.Caching.MemoryCachedAttribute";
 
