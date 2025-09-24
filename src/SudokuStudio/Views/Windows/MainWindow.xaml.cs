@@ -205,16 +205,11 @@ public sealed partial class MainWindow :
 		if (_configurationSource is not null)
 		{
 			// Make sure any Mica/Acrylic controller is disposed so it doesn't try to use this closed window.
-			if (_micaController is not null)
-			{
-				_micaController.Dispose();
-				_micaController = null;
-			}
-			if (_acrylicController is not null)
-			{
-				_acrylicController.Dispose();
-				_acrylicController = null;
-			}
+			_micaController?.Dispose();
+			_micaController = null;
+
+			_acrylicController?.Dispose();
+			_acrylicController = null;
 
 			Activated -= Window_Activated;
 			_configurationSource = null;
