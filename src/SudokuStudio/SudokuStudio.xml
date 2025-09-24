@@ -3108,6 +3108,18 @@
             Indicates the display mode is to draw a hollow rounded rectangle.
             </summary>
         </member>
+        <member name="T:SudokuStudio.Drawing.ColorConverter">
+            <summary>
+            Represents a converter that serialize and deserialize with a <see cref="T:Windows.UI.Color"/> instance.
+            </summary>
+            <seealso cref="T:Windows.UI.Color"/>
+        </member>
+        <member name="M:SudokuStudio.Drawing.ColorConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:SudokuStudio.Drawing.ColorConverter.Write(System.Text.Json.Utf8JsonWriter,Windows.UI.Color,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
         <member name="T:SudokuStudio.Drawing.CoordinateLabelDisplay">
             <summary>
             Defines a mode that is used for describing a kind of displaying case on coordinate labels.
@@ -10908,7 +10920,6 @@
             Creates a default option instance with:
             <list type="bullet">
             <item><see cref="P:System.Text.Json.JsonSerializerOptions.WriteIndented"/> is <see langword="true"/></item>
-            <item><see cref="P:System.Text.Json.JsonSerializerOptions.IgnoreReadOnlyProperties"/> is <see langword="true"/></item>
             <item>
             <see cref="P:System.Text.Json.JsonSerializerOptions.Encoder"/> is <see cref="P:System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping"/>
             </item>

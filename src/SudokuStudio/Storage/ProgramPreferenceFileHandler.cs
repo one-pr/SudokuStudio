@@ -11,9 +11,17 @@ public sealed class ProgramPreferenceFileHandler : IProgramSupportedFileHandler<
 	/// </summary>
 	private static readonly JsonSerializerOptions Options = new(CommonSerializerOptions.PascalCasing)
 	{
-		IncludeFields = true,
-		IgnoreReadOnlyProperties = false,
-		Converters = { new JsonStringEnumConverter(PascalCaseJsonNamingPolicy.PascalCase, true), new RangeConverter() },
+		IndentCharacter = ' ',
+		IndentSize = 4,
+		IncludeFields = false,
+		IgnoreReadOnlyProperties = true,
+		IgnoreReadOnlyFields = true,
+		Converters =
+		{
+			new JsonStringEnumConverter(PascalCaseJsonNamingPolicy.PascalCase, true),
+			new RangeConverter(),
+			new ColorConverter()
+		},
 		UnmappedMemberHandling = JsonUnmappedMemberHandling.Skip
 	};
 
@@ -23,7 +31,8 @@ public sealed class ProgramPreferenceFileHandler : IProgramSupportedFileHandler<
 
 
 	/// <inheritdoc/>
-	public static ProgramPreference? Read(string filePath) => JsonSerializer.Deserialize<ProgramPreference>(File.ReadAllText(filePath), Options);
+	public static ProgramPreference? Read(string filePath)
+		=> JsonSerializer.Deserialize<ProgramPreference>(File.ReadAllText(filePath), Options);
 
 	/// <inheritdoc/>
 	public static void Write(string filePath, ProgramPreference instance)

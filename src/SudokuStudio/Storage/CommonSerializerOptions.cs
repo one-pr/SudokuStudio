@@ -9,7 +9,6 @@ public static class CommonSerializerOptions
 	/// Creates a default option instance with:
 	/// <list type="bullet">
 	/// <item><see cref="JsonSerializerOptions.WriteIndented"/> is <see langword="true"/></item>
-	/// <item><see cref="JsonSerializerOptions.IgnoreReadOnlyProperties"/> is <see langword="true"/></item>
 	/// <item>
 	/// <see cref="JsonSerializerOptions.Encoder"/> is <see cref="JavaScriptEncoder.UnsafeRelaxedJsonEscaping"/>
 	/// </item>
@@ -21,7 +20,6 @@ public static class CommonSerializerOptions
 		new()
 		{
 			WriteIndented = true,
-			IgnoreReadOnlyProperties = true,
 			Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
 			ReadCommentHandling = JsonCommentHandling.Skip,
 			UnmappedMemberHandling = JsonUnmappedMemberHandling.Disallow
