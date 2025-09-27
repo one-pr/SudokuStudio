@@ -75,7 +75,7 @@ description: Reasoning of Endofin
 
 ### 五阶宫内退化鱼（Finned Franken Squirmbag） <a href="#sashimi-franken-squirmbag" id="sashimi-franken-squirmbag"></a>
 
-<figure><img src="../../.gitbook/assets/image.png" alt="" width="375"><figcaption><p>五阶宫内退化鱼</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt="" width="375"><figcaption><p>五阶宫内退化鱼</p></figcaption></figure>
 
 如图所示。这个题的两个鱼鳍一个位于 `r1c5(7)`，一个位于 `r9c1(7)`。
 
