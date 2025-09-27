@@ -1,3 +1,7 @@
+#undef DRAW_TRUTH_SPACES
+#define DRAW_LINK_SPACES
+#define USE_DIFFERENT_COLOR_FOR_CELL_VIEW_NODES
+
 namespace Sudoku.Analytics.StepSearchers;
 
 /// <summary>
@@ -19,6 +23,26 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 	/// <inheritdoc/>
 	protected internal override Step? Collect(ref StepAnalysisContext context)
 	{
+		var tempAccumulator = new List<MultifishStep>();
+		if (CollectCore(in context, tempAccumulator) is { } step)
+		{
+			return step;
+		}
+
+		if (!context.OnlyFindOne && tempAccumulator.Count != 0)
+		{
+			context.Accumulator.AddRange(
+				from s in tempAccumulator.AsSpan()
+				orderby s.Truths.Count
+				select s into s
+				select s
+			);
+		}
+		return null;
+	}
+
+	private MultifishStep? CollectCore(ref readonly StepAnalysisContext context, List<MultifishStep> accumulator)
+	{
 		ref readonly var grid = ref context.Grid;
 
 		var notSolved = new Mask[27];
@@ -34,34 +58,38 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 		for (var digitSize = 2; digitSize <= 4; digitSize++)
 		{
 			// Iterate each digit combination of length 'digitSize'.
-			foreach (var digitsMask in new BitCombinationGenerator<Mask>(9, digitSize))
+			foreach (var d in SpanEnumerable.Range(0, 9) & digitSize)
 			{
-				// Iterate main line type. The multifish "bones" should be either in rows or in columns.
-				foreach (var isRow in (true, false))
-				{
-					// Iterate on houses offsets, also via bit enumerator.
-					for (var houseOffsetsSize = digitSize == 2 ? 3 : 2; houseOffsetsSize <= 5; houseOffsetsSize++)
-					{
-						// Here variable is a 9-bit integer, with some bits set 1 of length 'houseOffsetsSize' exactly.
-						// The variable will be used for house checking (via operations << 9 and << 18).
-						foreach (var houseOffsets in new BitCombinationGenerator<Mask>(9, houseOffsetsSize))
-						{
-							// Skip cases when the chosen houses don't use important 3 lines in a chute.
-							if ((houseOffsets & ~7) == 0 || (houseOffsets & ~56) == 0 || (houseOffsets & ~448) == 0)
-							{
-								continue;
-							}
+				var digitsMask = Mask.Create(d);
 
-							var housesMask = houseOffsets << (isRow ? 9 : 18);
+				// Iterate on houses offsets, also via bit enumerator.
+				for (var houseOffsetsSize = digitSize == 2 ? 3 : 2; houseOffsetsSize <= 5; houseOffsetsSize++)
+				{
+					// Here variable is a 9-bit integer, with some bits set 1 of length 'houseOffsetsSize' exactly.
+					// The variable will be used for house checking (via operations << 9 and << 18).
+					foreach (var h in SpanEnumerable.Range(0, 9) & houseOffsetsSize)
+					{
+						var chosenHouseOffsets = Mask.Create(h);
+
+						// Skip cases when the chosen houses don't use important 3 lines in a chute.
+						if ((chosenHouseOffsets & ~7) == 0 || (chosenHouseOffsets & ~56) == 0 || (chosenHouseOffsets & ~448) == 0)
+						{
+							continue;
+						}
+
+						// Iterate main line type. The multifish "bones" should be either in rows or in columns.
+						foreach (var isRow in (true, false))
+						{
+							var housesMask = chosenHouseOffsets << (isRow ? 9 : 18);
 
 							// Iterate on each house.
 							var patternCells = CellMap.Empty;
 							var patternCellsGroupedByDigit = new CellMap[9];
-							var rctValidDigitsMask = new Mask[27];
+							var rct = new Mask[27];
 							var availableDigitsMask = (Mask)0;
 							foreach (var house in housesMask)
 							{
-								ref var rctValidDigitsMaskCurrentHouse = ref rctValidDigitsMask[house];
+								ref var rcTruthsCurrentHouse = ref rct[house];
 								foreach (var digit in digitsMask)
 								{
 									var cells = HousesMap[house] & CandidatesMap[digit];
@@ -71,18 +99,18 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 										continue;
 									}
 
-									rctValidDigitsMaskCurrentHouse |= (Mask)(1 << digit);
+									rcTruthsCurrentHouse |= (Mask)(1 << digit);
 									patternCellsGroupedByDigit[digit] |= cells;
 									patternCells |= cells;
 								}
 
-								if (PopCount((uint)rctValidDigitsMaskCurrentHouse) < 2)
+								if (PopCount((uint)rcTruthsCurrentHouse) < 2)
 								{
 									// We cannot choose such houses with specified line type.
 									goto NextLineTypeCase;
 								}
 
-								availableDigitsMask |= rctValidDigitsMaskCurrentHouse;
+								availableDigitsMask |= rcTruthsCurrentHouse;
 							}
 							if (availableDigitsMask != digitsMask)
 							{
@@ -93,44 +121,43 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 							// Here we know that the houses can be treated as valid truths. Now we should find for links.
 
 							// Iterate on each pattern cell, to collect all possible links that can be iterated.
-							var houseDigitTruths = new Mask[27];
-							var houseDigitLinks = new Mask[27];
+							var tcl = new Mask[27];
+							var tbl = new Mask[27];
 							foreach (var cell in patternCells)
 							{
-								var oppositeLineToCell = cell >> (isRow ? HouseType.Column : HouseType.Row);
+								var block = cell >> HouseType.Block;
+								var line = cell >> (isRow ? HouseType.Column : HouseType.Row);
 								var candidates = (Mask)(grid.GetCandidates(cell) & digitsMask);
-								houseDigitTruths[oppositeLineToCell] |= candidates;
-								houseDigitLinks[oppositeLineToCell] |= candidates;
-								houseDigitTruths[cell >> HouseType.Block] |= candidates;
-								houseDigitLinks[cell >> HouseType.Block] |= candidates;
+								tbl[line] = tcl[line] |= candidates;
+								tbl[block] = tcl[block] |= candidates;
 							}
 
-							var removedHouses = new House[27];
+							var removedHouseTable = new House[27];
 							var isWorthTable = new bool[3];
 
-							// Let's suppose we should choose line links. Block links can be adjusted later.
-							var (tempLineLinksCount, tempBlockLinksCount) = (0, 0);
-
 							// Iterate on each house.
-							for (var (house, houseIteration) = (isRow ? 18 : 9, 0); houseIteration < 3; house += 3, houseIteration++)
+							for (var (house, i) = (isRow ? 18 : 9, 0); i < 3; house += 3, i++)
 							{
+								// Let's suppose we should choose line links. Block links can be adjusted later.
+								var (llk, blk) = (0, 0);
+
 								// Define a local counter to sum up usage cases on 3 bands or towers having any house-digit truths.
 								// This value can be used for rank-balancing operations.
-								var localCounter = (houseDigitTruths[house] != 0 ? 1 : 0)
-									+ (houseDigitTruths[house + 1] != 0 ? 1 : 0)
-									+ (houseDigitTruths[house + 2] != 0 ? 1 : 0);
+								var localCounter = (tcl[house] != 0 ? 1 : 0)
+									+ (tcl[house + 1] != 0 ? 1 : 0)
+									+ (tcl[house + 2] != 0 ? 1 : 0);
 
 								// House type index: 9..18 => 0..3, 18..27 => 3..6.
-								var chuteIndex = (house - 9) / 3;
+								var targetChuteIndex = (house - 9) / 3;
 								switch (localCounter)
 								{
 									// There'll be only one line link. We don't consider any conversions to block links.
 									case 1:
 									{
 										// Set cached truths in blocks to 0 (ignore block links to be calculated).
-										houseDigitTruths[ChuteBlocks[chuteIndex][0]] = 0;
-										houseDigitTruths[ChuteBlocks[chuteIndex][1]] = 0;
-										houseDigitTruths[ChuteBlocks[chuteIndex][2]] = 0;
+										tcl[ChuteBlocks[targetChuteIndex][0]] = 0;
+										tcl[ChuteBlocks[targetChuteIndex][1]] = 0;
+										tcl[ChuteBlocks[targetChuteIndex][2]] = 0;
 										break;
 									}
 
@@ -139,47 +166,46 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 									{
 										for (var line = house; line < house + 3; line++)
 										{
-											if (houseDigitTruths[line] == 0)
+											if (tcl[line] == 0)
 											{
 												continue;
 											}
 
 											var cells = patternCells & HousesMap[line];
-											tempLineLinksCount += Math.Min(PopCount((uint)houseDigitTruths[line]), cells.Count);
+											llk += Math.Min(PopCount((uint)tcl[line]), cells.Count);
 										}
-										for (var i = 0; i < 3; i++)
+										foreach (var block in ChuteBlocks[targetChuteIndex])
 										{
-											var block = ChuteBlocks[chuteIndex][i];
-											if (houseDigitTruths[block] == 0)
+											if (tcl[block] == 0)
 											{
 												continue;
 											}
 
 											var cells = patternCells & HousesMap[block];
-											tempBlockLinksCount += Math.Min(PopCount((uint)houseDigitTruths[block]), cells.Count);
+											blk += Math.Min(PopCount((uint)tcl[block]), cells.Count);
 										}
-										if (tempBlockLinksCount < tempLineLinksCount)
+										if (blk < llk)
 										{
-											houseDigitTruths[ChuteBlocks[chuteIndex][0]] = 0;
-											houseDigitTruths[ChuteBlocks[chuteIndex][1]] = 0;
-											houseDigitTruths[ChuteBlocks[chuteIndex][2]] = 0;
+											tcl[house] = 0;
+											tcl[house + 1] = 0;
+											tcl[house + 2] = 0;
 										}
 										else
 										{
 											// Worth to adjust.
-											if (tempLineLinksCount == tempBlockLinksCount && tempBlockLinksCount != 0)
+											if (blk == llk && blk != 0)
 											{
 												isWorthTable[house % 9 / 3] = true;
 											}
 
-											houseDigitTruths[ChuteBlocks[chuteIndex][0]] = 0;
-											houseDigitTruths[ChuteBlocks[chuteIndex][1]] = 0;
-											houseDigitTruths[ChuteBlocks[chuteIndex][2]] = 0;
+											tcl[ChuteBlocks[targetChuteIndex][0]] = 0;
+											tcl[ChuteBlocks[targetChuteIndex][1]] = 0;
+											tcl[ChuteBlocks[targetChuteIndex][2]] = 0;
 										}
 
-										removedHouses[ChuteBlocks[chuteIndex][0]] = -1;
-										removedHouses[ChuteBlocks[chuteIndex][1]] = -1;
-										removedHouses[ChuteBlocks[chuteIndex][2]] = -1;
+										removedHouseTable[ChuteBlocks[targetChuteIndex][0]] = -1;
+										removedHouseTable[ChuteBlocks[targetChuteIndex][1]] = -1;
+										removedHouseTable[ChuteBlocks[targetChuteIndex][2]] = -1;
 										break;
 									}
 
@@ -187,71 +213,62 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 									case 3:
 									{
 										var minInLine = new int[3];
-										for (var i = 0; i < 3; i++)
+										for (var offset = 0; offset < 3; offset++)
 										{
-											var currentHouse = house + i;
+											var currentHouse = house + offset;
 											var cells = patternCells & HousesMap[currentHouse];
-											if (PopCount((uint)houseDigitTruths[currentHouse]) is var p && p <= cells.Count)
-											{
-												tempLineLinksCount += p;
-												minInLine[i] = p;
-											}
+											llk += minInLine[offset] = Math.Min(PopCount((uint)tcl[currentHouse]), cells.Count);
 										}
 
 										var flag = false;
-
-										for (var i = 0; i < 3; i++)
+										foreach (var block in ChuteBlocks[targetChuteIndex])
 										{
-											var block = ChuteBlocks[chuteIndex][i];
-											if (houseDigitTruths[block] == 0)
+											if (tcl[block] == 0)
 											{
 												continue;
 											}
 
 											var cells = patternCells & HousesMap[block];
-											if (cells.Count >= houseOffsetsSize)
+											if (cells.Count >= digitSize)
 											{
 												flag = true;
 											}
 
-											tempBlockLinksCount += Math.Min(PopCount((uint)houseDigitTruths[block]), cells.Count);
+											blk += Math.Min(PopCount((uint)tcl[block]), cells.Count);
 										}
 
-										var (state, count) = tempBlockLinksCount < tempLineLinksCount
-											|| tempBlockLinksCount == tempLineLinksCount && flag
-											? (4, tempBlockLinksCount)
-											: (0, tempLineLinksCount);
+										var (state, count) = blk < llk || blk == llk && flag ? (4, blk) : (0, llk);
 										var temp = 0;
-										var blockLinkTable = new Mask[3];
+										var boxLk = new Mask[3];
 										var bbl = new Mask[3];
-										for (var i = 0; i < 2; i++)
+										for (var offset1 = 0; offset1 < 2; offset1++)
 										{
-											for (var j = 1; j < 3; j++)
+											for (var offset2 = offset1 + 1; offset2 < 3; offset2++)
 											{
 												temp++;
 												var deletedCount = 0;
-												var cells = patternCells & (HousesMap[house + i] | HousesMap[house + j]);
-												for (var k = 0; k < 3; k++)
+												var cells = patternCells & (HousesMap[house + offset1] | HousesMap[house + offset2]);
+												for (var offset3 = 0; offset3 < 3; offset3++)
 												{
-													var other = cells & HousesMap[ChuteBlocks[chuteIndex][k]];
-													blockLinkTable[k] = 0;
+													var t = cells & HousesMap[ChuteBlocks[targetChuteIndex][offset3]];
+													boxLk[offset3] = 0;
 
-													if (!other)
+													if (!t)
 													{
 														continue;
 													}
 
-													foreach (var cell in other)
+													foreach (var cell in t)
 													{
-														blockLinkTable[k] |= (Mask)(grid.GetCandidates(cell) & digitsMask);
+														boxLk[offset3] |= (Mask)(grid.GetCandidates(cell) & digitsMask);
 													}
-													deletedCount += Math.Min(PopCount((uint)blockLinkTable[k]), other.Count);
+													deletedCount += Math.Min(PopCount((uint)boxLk[offset3]), t.Count);
 												}
-												if (deletedCount + minInLine[3 - i - j] is var p && p < count)
+												if (deletedCount + minInLine[3 - offset1 - offset2] is var p && p < count)
 												{
 													state = temp;
 													count = deletedCount + p;
-													blockLinkTable.AsReadOnlySpan().CopyTo(bbl);
+													boxLk.CopyTo(bbl);
 												}
 											}
 										}
@@ -260,10 +277,10 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 										{
 											case 0:
 											{
-												houseDigitTruths[ChuteBlocks[chuteIndex][0]] = 0;
-												houseDigitTruths[ChuteBlocks[chuteIndex][1]] = 0;
-												houseDigitTruths[ChuteBlocks[chuteIndex][2]] = 0;
-												if (tempBlockLinksCount == tempLineLinksCount && tempBlockLinksCount != 0)
+												tcl[ChuteBlocks[targetChuteIndex][0]] = 0;
+												tcl[ChuteBlocks[targetChuteIndex][1]] = 0;
+												tcl[ChuteBlocks[targetChuteIndex][2]] = 0;
+												if (blk == llk && blk != 0)
 												{
 													isWorthTable[house % 9 / 3] = true;
 												}
@@ -271,26 +288,26 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 											}
 											case 4:
 											{
-												houseDigitTruths[house] = 0;
-												houseDigitTruths[house + 1] = 0;
-												houseDigitTruths[house + 2] = 0;
-												removedHouses[ChuteBlocks[chuteIndex][0]] = -1;
-												removedHouses[ChuteBlocks[chuteIndex][1]] = -1;
-												removedHouses[ChuteBlocks[chuteIndex][2]] = -1;
+												tcl[house] = 0;
+												tcl[house + 1] = 0;
+												tcl[house + 2] = 0;
+												removedHouseTable[ChuteBlocks[targetChuteIndex][0]] = -1;
+												removedHouseTable[ChuteBlocks[targetChuteIndex][1]] = -1;
+												removedHouseTable[ChuteBlocks[targetChuteIndex][2]] = -1;
 												break;
 											}
 											default:
 											{
 												// Performs an adjustment to block link.
 												var chuteLinesArray = (int[][])[[], [0, 1], [0, 2], [1, 2]];
-												houseDigitTruths[house + chuteLinesArray[state][0]] = 0;
-												houseDigitTruths[house + chuteLinesArray[state][1]] = 0;
-												houseDigitTruths[ChuteBlocks[chuteIndex][0]] = bbl[0];
-												houseDigitTruths[ChuteBlocks[chuteIndex][1]] = bbl[1];
-												houseDigitTruths[ChuteBlocks[chuteIndex][2]] = bbl[2];
-												removedHouses[ChuteBlocks[chuteIndex][0]] = 3 - state + house;
-												removedHouses[ChuteBlocks[chuteIndex][1]] = 3 - state + house;
-												removedHouses[ChuteBlocks[chuteIndex][2]] = 3 - state + house;
+												tcl[house + chuteLinesArray[state][0]] = 0;
+												tcl[house + chuteLinesArray[state][1]] = 0;
+												tcl[ChuteBlocks[targetChuteIndex][0]] = bbl[0];
+												tcl[ChuteBlocks[targetChuteIndex][1]] = bbl[1];
+												tcl[ChuteBlocks[targetChuteIndex][2]] = bbl[2];
+												removedHouseTable[ChuteBlocks[targetChuteIndex][0]] = 3 - state + house;
+												removedHouseTable[ChuteBlocks[targetChuteIndex][1]] = 3 - state + house;
+												removedHouseTable[ChuteBlocks[targetChuteIndex][2]] = 3 - state + house;
 												break;
 											}
 										}
@@ -299,17 +316,16 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 								}
 							}
 
-							var cellTruths = CellMap.Empty;
+							var other = CellMap.Empty;
 
 							// According to previous judgement of line links, we should here find a best rank of link combinations,
 							// which is an optimization of a single house
 							// (choosing four kinds of links in order to make rank to be a minimum value).
-							var rcTruths = new Mask[27];
-							var rcLinks = new Mask[27];
+							var rcl = new Mask[27];
 							var cellLinks = CellMap.Empty;
 							for (var house = 0; house < 27; house++)
 							{
-								if (houseDigitTruths[house] == 0)
+								if (tcl[house] == 0)
 								{
 									continue;
 								}
@@ -317,24 +333,24 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 								ChooseLink(
 									grid,
 									patternCells,
-									ref cellTruths,
+									ref other,
 									ref cellLinks,
-									rcTruths,
-									rcLinks,
-									houseDigitTruths,
+									rct,
+									rcl,
+									tcl,
 									house,
 									notSolved,
-									removedHouses
+									removedHouseTable
 								);
 							}
 
-							var truthsCount = cellTruths.Count;
+							var truthsCount = other.Count;
 							var linksCount = cellLinks.Count;
-							foreach (var mask in rcTruths)
+							foreach (var mask in rct)
 							{
 								truthsCount += PopCount((uint)mask);
 							}
-							foreach (var mask in rcLinks)
+							foreach (var mask in rcl)
 							{
 								linksCount += PopCount((uint)mask);
 							}
@@ -348,7 +364,7 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 								foreach (var cell in cellLinks)
 								{
 									var linkHouse = cell >> (isRow ? HouseType.Column : HouseType.Row);
-									var candidates = (Mask)((Mask)(grid.GetCandidates(cell) & digitsMask) | rcLinks[linkHouse]);
+									var candidates = (Mask)((Mask)(grid.GetCandidates(cell) & digitsMask) | rct[linkHouse]);
 									if (PopCount((uint)candidates) != 1)
 									{
 										continue;
@@ -360,24 +376,25 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 										1 => (linkHouse - 1, linkHouse + 1),
 										_ => (linkHouse - 2, linkHouse - 1)
 									};
-									for (var i = 0; i < 2; i++)
+									for (var offset = 0; offset < 2; offset++)
 									{
-										var house = i == 0 ? first : second;
-										if ((rcLinks[house] & candidates) == 0)
+										var house = offset == 0 ? first : second;
+										if ((rcl[house] & candidates) == 0)
 										{
 											continue;
 										}
 
 										var tempCells = CandidatesMap[Log2((uint)candidates)]
 											& HousesMap[house]
-											& (patternCells | cellTruths);
+											& (patternCells | other);
 										if (tempCells.PeerIntersection.Contains(cell))
 										{
 											// This cell can be cleared, to form a block link.
-											rcLinks[cell >> HouseType.Block] |= candidates;
-											rcLinks[house] &= (Mask)~candidates;
+											rcl[cell >> HouseType.Block] |= candidates;
+											rcl[house] &= (Mask)~candidates;
 											cellLinks -= cell;
 											linksCount--;
+											break;
 										}
 									}
 								}
@@ -395,13 +412,13 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 										// Calculate truths in chute row (band) and chute column (tower) and its containing block,
 										// in order to avoid truth triplets.
 										var candidatesMask = (Mask)(
-											rcTruths[chuteRow]
-												| rcTruths[chuteRow + 1]
-												| rcTruths[chuteRow + 2]
-												| rcTruths[chuteColumn]
-												| rcTruths[chuteColumn + 1]
-												| rcTruths[chuteColumn + 2]
-												| rcTruths[block]
+											rct[chuteRow]
+												| rct[chuteRow + 1]
+												| rct[chuteRow + 2]
+												| rct[chuteColumn]
+												| rct[chuteColumn + 1]
+												| rct[chuteColumn + 2]
+												| rct[block]
 										);
 #pragma warning restore CS0675
 										candidatesMask = (Mask)(notSolved[block] & ~candidatesMask);
@@ -411,11 +428,10 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 										}
 
 										var candidates = candidatesMask.AllSets;
-										foreach (var digitCombination in candidates | candidates.Length - 1)
+										foreach (var digitCombination in candidates | candidates.Length)
 										{
-											var digitCombinationMask = Mask.Create(digitCombination);
 											var cells = CellMap.Empty;
-											foreach (var digit in digitCombinationMask)
+											foreach (var digit in digitCombination)
 											{
 												cells |= CandidatesMap[digit];
 											}
@@ -427,14 +443,20 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 
 											// The new block link is found here.
 											truthsCount += digitCombination.Length;
+											linksCount += cells.Count;
 											cellLinks |= cells;
-											rcTruths[block] |= candidatesMask;
+											rct[block] |= Mask.Create(digitCombination);
 											if (linksCount == truthsCount)
 											{
-												// Okay for now.
 												goto ExitForAdjustmentPhase2;
 											}
+											else
+											{
+												goto NextBlock;
+											}
 										}
+
+									NextBlock:;
 									}
 
 								ExitForAdjustmentPhase2:;
@@ -447,60 +469,61 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 									var rebalanced = false;
 									for (var (house, i) = (isRow ? 18 : 9, 0); i < 3; house += 3, i++)
 									{
+										var targetChuteIndex = (house - 9) / 3;
 										if (!isWorthTable[house % 9 / 3]
-											|| rcTruths[HousesCells[house][0] >> HouseType.Block] != 0
-											|| rcTruths[HousesCells[house][3] >> HouseType.Block] != 0
-											|| rcTruths[HousesCells[house][6] >> HouseType.Block] != 0)
+											|| rct[HousesCells[house][0] >> HouseType.Block] != 0
+											|| rct[HousesCells[house][3] >> HouseType.Block] != 0
+											|| rct[HousesCells[house][6] >> HouseType.Block] != 0)
 										{
 											continue;
 										}
 
-										var cells = HousesMap[house] | HousesMap[house + 1] | HousesMap[house + 2] & cellTruths;
+										var cells = (HousesMap[house] | HousesMap[house + 1] | HousesMap[house + 2]) & other;
 										rebalanced = true;
 
-										houseDigitTruths[house] = 0;
-										houseDigitTruths[house + 1] = 0;
-										houseDigitTruths[house + 2] = 0;
-										rcLinks[house] = 0;
-										rcLinks[house + 1] = 0;
-										rcLinks[house + 2] = 0;
-										rcTruths[house] = 0;
-										rcTruths[house + 1] = 0;
-										rcTruths[house + 2] = 0;
-										rcLinks[ChuteBlocks[house / 3][0]] = houseDigitLinks[ChuteBlocks[house / 3][0]];
-										rcLinks[ChuteBlocks[house / 3][1]] = houseDigitLinks[ChuteBlocks[house / 3][1]];
-										rcLinks[ChuteBlocks[house / 3][2]] = houseDigitLinks[ChuteBlocks[house / 3][2]];
+										tcl[house] = 0;
+										tcl[house + 1] = 0;
+										tcl[house + 2] = 0;
+										rcl[house] = 0;
+										rcl[house + 1] = 0;
+										rcl[house + 2] = 0;
+										rct[house] = 0;
+										rct[house + 1] = 0;
+										rct[house + 2] = 0;
+										tcl[ChuteBlocks[targetChuteIndex][0]] = tbl[ChuteBlocks[targetChuteIndex][0]];
+										tcl[ChuteBlocks[targetChuteIndex][1]] = tbl[ChuteBlocks[targetChuteIndex][1]];
+										tcl[ChuteBlocks[targetChuteIndex][2]] = tbl[ChuteBlocks[targetChuteIndex][2]];
 
 										cellLinks &= ~(HousesMap[house] | HousesMap[house + 1] | HousesMap[house + 2]);
-										cellTruths &= ~cells;
-										removedHouses[ChuteBlocks[house / 3][0]] = -1;
-										removedHouses[ChuteBlocks[house / 3][1]] = -1;
-										removedHouses[ChuteBlocks[house / 3][2]] = -1;
+										other &= ~cells;
+										removedHouseTable[ChuteBlocks[targetChuteIndex][0]] = -1;
+										removedHouseTable[ChuteBlocks[targetChuteIndex][1]] = -1;
+										removedHouseTable[ChuteBlocks[targetChuteIndex][2]] = -1;
 										for (var j = 0; j < 3; j++)
 										{
 											ChooseLink(
 												grid,
 												patternCells,
-												ref cellTruths,
+												ref other,
 												ref cellLinks,
-												rcTruths,
-												rcLinks,
-												houseDigitTruths,
-												house,
+												rct,
+												rcl,
+												tcl,
+												ChuteBlocks[targetChuteIndex][j],
 												notSolved,
-												removedHouses
+												removedHouseTable
 											);
 										}
 									}
 									if (rebalanced)
 									{
-										truthsCount += cellTruths.Count;
-										linksCount += cellLinks.Count;
-										foreach (var mask in rcTruths)
+										truthsCount = other.Count;
+										linksCount = cellLinks.Count;
+										foreach (var mask in rct)
 										{
 											truthsCount += PopCount((uint)mask);
 										}
-										foreach (var mask in rcLinks)
+										foreach (var mask in rcl)
 										{
 											linksCount += PopCount((uint)mask);
 										}
@@ -523,7 +546,7 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 								var block = cell >> HouseType.Block;
 								foreach (var digit in
 #pragma warning disable CS0675
-									(Mask)(grid.GetCandidates(cell) & ~(rcTruths[block] | digitsMask | rcTruths[line])))
+									(Mask)(grid.GetCandidates(cell) & ~(rct[block] | digitsMask | rct[line])))
 #pragma warning restore CS0675
 								{
 									conclusions.Add(new(Elimination, cell, digit));
@@ -531,70 +554,58 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 							}
 
 							// Elimination phase - cannibalism on cell links.
-							var cannibalismDigitsMaskTable = new Mask[81];
 							foreach (var cell in cellLinks)
 							{
-								var cannibalismDigitsMask = (Mask)(grid.GetCandidates(cell) & rcLinks[cell >> HouseType.Block]);
-								foreach (var digit in cannibalismDigitsMask)
+								foreach (var digit in (Mask)(grid.GetCandidates(cell) & rcl[cell >> HouseType.Block]))
 								{
 									conclusions.Add(new(Elimination, cell, digit));
 								}
-								cannibalismDigitsMaskTable[cell] |= cannibalismDigitsMask;
 							}
 
 							// Elimination phase - house-digit links.
 							for (var house = 0; house < 27; house++)
 							{
-								if (rcLinks[house] == 0)
+								if (rcl[house] == 0)
 								{
 									continue;
 								}
 
-								foreach (var cell in HousesMap[house] & EmptyCells & ~(cellTruths | patternCells))
+								foreach (var cell in HousesMap[house] & EmptyCells & ~(other | patternCells))
 								{
-									foreach (var digit in (Mask)(grid.GetCandidates(cell) & rcLinks[house]))
+									foreach (var digit in (Mask)(grid.GetCandidates(cell) & rcl[house]))
 									{
 										conclusions.Add(new(Elimination, cell, digit));
 									}
 								}
 
-								foreach (var cell in HousesMap[house] & EmptyCells & ~(cellTruths | cellLinks))
+								foreach (var cell in HousesMap[house] & EmptyCells & ~(other | cellLinks))
 								{
-									foreach (var digit in (Mask)(houseDigitTruths[house] & ~digitsMask))
+									foreach (var digit in (Mask)(grid.GetCandidates(cell) & tcl[house] & ~digitsMask))
 									{
 										conclusions.Add(new(Elimination, cell, digit));
 									}
 								}
 
-								if ((HousesMap[house] & (patternCells | cellTruths) & ~cellLinks) is var rebalancedLinkCells
-									&& rebalancedLinkCells.Count == PopCount((uint)rcLinks[house]))
+								if ((HousesMap[house] & (patternCells | other) & ~cellLinks) is var rebalancedLinkCells
+									&& rebalancedLinkCells.Count == PopCount((uint)rcl[house]))
 								{
 									foreach (var cell in rebalancedLinkCells)
 									{
-										foreach (var digit in (Mask)(grid.GetCandidates(cell) & ~houseDigitTruths[house]))
+										foreach (var digit in (Mask)(grid.GetCandidates(cell) & ~tcl[house]))
 										{
 											conclusions.Add(new(Elimination, cell, digit));
 										}
 									}
 								}
 
-								foreach (var digit in rcLinks[house])
+								foreach (var digit in rcl[house])
 								{
-									var cannibalismCells = ((patternCellsGroupedByDigit[digit] | cellTruths) & HousesMap[house] & CandidatesMap[digit]).PeerIntersection
-										& CandidatesMap[digit]
-										& ~HousesMap[house];
-									if (!cannibalismCells)
+									foreach (var cell in (
+										(patternCellsGroupedByDigit[digit] | other)
+											& HousesMap[house]
+											& CandidatesMap[digit]
+									).PeerIntersection & CandidatesMap[digit] & ~HousesMap[house])
 									{
-										continue;
-									}
-
-									var cells = patternCellsGroupedByDigit[digit] | cellTruths;
-									foreach (var cell in cannibalismCells)
-									{
-										if (cells.Contains(cell))
-										{
-											cannibalismDigitsMaskTable[cell] |= (Mask)(1 << digit);
-										}
 										conclusions.Add(new(Elimination, cell, digit));
 									}
 								}
@@ -604,8 +615,8 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 							{
 								foreach (var digit in (Mask)(
 									grid.GetCandidates(cell)
-										& rcLinks[cell >> (isRow ? HouseType.Column : HouseType.Row)]
-										& rcLinks[cell >> HouseType.Block]
+										& rcl[cell >> (isRow ? HouseType.Column : HouseType.Row)]
+										& rcl[cell >> HouseType.Block]
 								))
 								{
 									conclusions.Add(new(Elimination, cell, digit));
@@ -614,14 +625,14 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 
 							for (var house = 0; house < 27; house++)
 							{
-								if (rcLinks[house] == 0)
+								if (rcl[house] == 0)
 								{
 									continue;
 								}
 
 								foreach (var cell in cellLinks & HousesMap[house])
 								{
-									foreach (var digit in (Mask)(grid.GetCandidates(cell) & rcLinks[house]))
+									foreach (var digit in (Mask)(grid.GetCandidates(cell) & rcl[house]))
 									{
 										conclusions.Add(new(Elimination, cell, digit));
 									}
@@ -634,10 +645,12 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 							}
 
 							var candidateOffsets = new List<CandidateViewNode>();
+							var cellOffsets = new List<CellViewNode>();
+							var houseOffsets = new List<HouseViewNode>();
 							var (truths, links) = (SpaceSet.Empty, SpaceSet.Empty);
 
 							// Collect for cell truths & candidate view nodes.
-							foreach (var cell in cellTruths)
+							foreach (var cell in other)
 							{
 								truths += Space.RowColumn(cell / 9, cell % 9);
 								foreach (var digit in grid.GetCandidates(cell))
@@ -649,7 +662,7 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 							// Collect for house-digit truths & candidate view nodes.
 							for (var house = 0; house < 27; house++)
 							{
-								if (rcTruths[house] == 0)
+								if (rct[house] == 0)
 								{
 									continue;
 								}
@@ -660,7 +673,7 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 									< 18 => ColorIdentifier.Normal,
 									_ => ColorIdentifier.Auxiliary1
 								};
-								foreach (var digit in rcTruths[house])
+								foreach (var digit in rct[house])
 								{
 									truths += house switch
 									{
@@ -670,13 +683,13 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 									};
 								}
 								var cells = CellMap.Empty;
-								foreach (var digit in rcTruths[house])
+								foreach (var digit in rct[house])
 								{
 									cells |= CandidatesMap[digit];
 								}
 								foreach (var cell in cells & HousesMap[house])
 								{
-									foreach (var digit in (Mask)(grid.GetCandidates(cell) & rcTruths[house]))
+									foreach (var digit in (Mask)(grid.GetCandidates(cell) & rct[house]))
 									{
 										candidateOffsets.Add(new(houseColorIdentifier, cell * 9 + digit));
 									}
@@ -690,7 +703,7 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 							}
 							for (var house = 0; house < 27; house++)
 							{
-								foreach (var digit in rcLinks[house])
+								foreach (var digit in rcl[house])
 								{
 									links += house switch
 									{
@@ -701,10 +714,65 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 								}
 							}
 
+#if DRAW_TRUTH_SPACES
+							foreach (var truth in truths)
+							{
+								switch (truth)
+								{
+									case { House: var house and not -1 }:
+									{
+										houseOffsets.Add(new(ColorIdentifier.Normal, house));
+										break;
+									}
+									case { Cell: var cell }:
+									{
+										cellOffsets.Add(
+											new(
+#if USE_DIFFERENT_COLOR_FOR_CELL_VIEW_NODES
+												ColorIdentifier.Auxiliary3,
+#else
+												ColorIdentifier.Auxiliary2,
+#endif
+												cell
+											)
+										);
+										break;
+									}
+								}
+							}
+#endif
+#if DRAW_LINK_SPACES
+							foreach (var link in links)
+							{
+								switch (link)
+								{
+									case { House: var house and not -1 }:
+									{
+										houseOffsets.Add(new(ColorIdentifier.Auxiliary2, house));
+										break;
+									}
+									case { Cell: var cell }:
+									{
+										cellOffsets.Add(
+											new(
+#if USE_DIFFERENT_COLOR_FOR_CELL_VIEW_NODES
+												ColorIdentifier.Auxiliary3,
+#else
+												ColorIdentifier.Auxiliary2,
+#endif
+												cell
+											)
+										);
+										break;
+									}
+								}
+							}
+#endif
+
 							// Add step to the target collection or just return if only-one mode is enabled.
 							var step = new MultifishStep(
 								conclusions.AsMemory(),
-								[[.. candidateOffsets]],
+								[[.. candidateOffsets, .. cellOffsets, .. houseOffsets]],
 								context.Options,
 								truths,
 								links
@@ -714,7 +782,7 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 								return step;
 							}
 
-							context.Accumulator.Add(step);
+							accumulator.Add(step);
 						}
 					}
 
@@ -730,60 +798,54 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 	/// </summary>
 	/// <param name="grid">The target grid.</param>
 	/// <param name="patternCells">The pattern cells.</param>
-	/// <param name="cellTruths">The cell truths.</param>
+	/// <param name="other">The cell truths.</param>
 	/// <param name="cellLinks">The cell links.</param>
-	/// <param name="rcTruths">The house-digit truths.</param>
-	/// <param name="rcLinks">The house-digit links.</param>
-	/// <param name="houseDigitTruths">The house-digit truths.</param>
+	/// <param name="rct">The house-digit truths.</param>
+	/// <param name="rcl">The house-digit links.</param>
+	/// <param name="tcl">The house-digit truths.</param>
 	/// <param name="house">The house.</param>
 	/// <param name="notSolved">Unsolved candidates table.</param>
 	/// <param name="removedHouses">Removed houses.</param>
 	private void ChooseLink(
 		in Grid grid,
 		in CellMap patternCells,
-		ref CellMap cellTruths,
+		ref CellMap other,
 		ref CellMap cellLinks,
-		Span<Mask> rcTruths,
-		Span<Mask> rcLinks,
-		ReadOnlySpan<Mask> houseDigitTruths,
+		Span<Mask> rct,
+		Span<Mask> rcl,
+		ReadOnlySpan<Mask> tcl,
 		House house,
 		ReadOnlySpan<Mask> notSolved,
 		ReadOnlySpan<House> removedHouses
 	)
 	{
 		var cells = patternCells & HousesMap[house];
-		if (house < 9 && removedHouses[house] != -1)
+		if (house < 9 && removedHouses[house] is var removedHouse and not -1)
 		{
-			// Previous cases on adjustment from line links to block links.
-			cells &= ~HousesMap[removedHouses[house]];
+			// Previous cases on adjustment from line links to block links in case 2 and 3.
+			cells &= ~HousesMap[removedHouse];
 		}
 
 		var possibleTruthTripletDigitsMask = (Mask)0;
 		if (house < 9)
 		{
-			for (var pos = 0; pos < 9; pos++)
+			foreach (var cell in HousesMap[house] & EmptyCells)
 			{
-				var cell = HousesCells[house][pos];
-				if (grid.GetState(cell) != CellState.Empty)
-				{
-					continue;
-				}
-
 				possibleTruthTripletDigitsMask |= (Mask)(
-					grid.GetCandidates(cell) & (rcTruths[cell >> HouseType.Row] | rcTruths[cell >> HouseType.Column])
+					grid.GetCandidates(cell) & (rct[cell >> HouseType.Row] | rct[cell >> HouseType.Column])
 				);
 			}
 		}
 
-		var reduction = int.MinValue;
-		var addedDigitsCombination = (Mask)0;
+		var reduction = 0;
+		var addRct = (Mask)0;
 		var addedCellLink = CellMap.Empty;
-		if (cells.Count <= PopCount((uint)houseDigitTruths[house]))
+		if (cells.Count <= PopCount((uint)tcl[house]))
 		{
 			// Add line truths.
-			var candidatesMask = (Mask)(notSolved[house] & ~(houseDigitTruths[house] | possibleTruthTripletDigitsMask));
+			var candidatesMask = (Mask)(notSolved[house] & ~(tcl[house] | possibleTruthTripletDigitsMask));
 			var candidates = candidatesMask.AllSets;
-			foreach (var candidateCombination in candidates | candidates.Length - 1)
+			foreach (var candidateCombination in candidates | candidates.Length)
 			{
 				var candidateCombinationMask = Mask.Create(candidateCombination);
 				var tempCells = CellMap.Empty;
@@ -793,48 +855,48 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 				}
 				tempCells &= HousesMap[house] & ~cells;
 
-				if (candidateCombination.Length > reduction)
+				if (candidateCombination.Length - tempCells.Count is var p && p > reduction)
 				{
-					reduction = candidateCombination.Length;
-					addedDigitsCombination = candidateCombinationMask;
+					reduction = p;
+					addRct = candidateCombinationMask;
 					addedCellLink = tempCells;
 				}
 			}
 			if (reduction > 0)
 			{
-				rcTruths[house] |= addedDigitsCombination;
+				rct[house] |= addRct;
 				cellLinks |= addedCellLink | cells;
 				return;
 			}
 
-			if (cells.Count < PopCount((uint)houseDigitTruths[house]))
+			if (cells.Count < PopCount((uint)tcl[house]))
 			{
 				cellLinks |= cells;
 			}
 		}
 
 		var isAnyCellsAdded = false;
-		if (cells.Count >= PopCount((uint)houseDigitTruths[house]))
+		if (cells.Count >= PopCount((uint)tcl[house]))
 		{
 			// Add cell truths.
 			var tempCells = HousesMap[house] & EmptyCells & ~cells;
 			if (tempCells.Count < 2)
 			{
-				rcLinks[house] |= houseDigitTruths[house];
+				rcl[house] |= tcl[house];
 				return;
 			}
 
 			foreach (var cell in tempCells)
 			{
-				if ((grid.GetCandidates(cell) & ~houseDigitTruths[house]) == 0)
+				if ((grid.GetCandidates(cell) & ~tcl[house]) == 0)
 				{
-					cellTruths += cell;
+					other += cell;
 					isAnyCellsAdded = true;
 				}
 			}
 			if (isAnyCellsAdded)
 			{
-				rcLinks[house] |= houseDigitTruths[house];
+				rcl[house] |= tcl[house];
 				return;
 			}
 
@@ -847,27 +909,26 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 					{
 						candidates |= grid.GetCandidates(cell);
 					}
-
-					candidates &= (Mask)~houseDigitTruths[house];
+					candidates &= (Mask)~tcl[house];
 
 					if (PopCount((uint)candidates) < cellSize)
 					{
-						cellTruths |= cellCombination;
-						rcLinks[house] |= (Mask)(candidates | houseDigitTruths[house]);
+						other |= cellCombination;
+						rcl[house] |= (Mask)(candidates | tcl[house]);
 						return;
 					}
 				}
 			}
 
-			if (cells.Count > PopCount((uint)houseDigitTruths[house]))
+			if (cells.Count > PopCount((uint)tcl[house]))
 			{
-				rcLinks[house] |= houseDigitTruths[house];
+				rcl[house] |= tcl[house];
 			}
 		}
 
-		if (cells.Count == PopCount((uint)houseDigitTruths[house]))
+		if (cells.Count == PopCount((uint)tcl[house]))
 		{
-			rcLinks[house] |= houseDigitTruths[house];
+			rcl[house] |= tcl[house];
 		}
 	}
 }

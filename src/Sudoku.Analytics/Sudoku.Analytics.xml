@@ -9719,11 +9719,11 @@
             </summary>
             <param name="grid">The target grid.</param>
             <param name="patternCells">The pattern cells.</param>
-            <param name="cellTruths">The cell truths.</param>
+            <param name="other">The cell truths.</param>
             <param name="cellLinks">The cell links.</param>
-            <param name="rcTruths">The house-digit truths.</param>
-            <param name="rcLinks">The house-digit links.</param>
-            <param name="houseDigitTruths">The house-digit truths.</param>
+            <param name="rct">The house-digit truths.</param>
+            <param name="rcl">The house-digit links.</param>
+            <param name="tcl">The house-digit truths.</param>
             <param name="house">The house.</param>
             <param name="notSolved">Unsolved candidates table.</param>
             <param name="removedHouses">Removed houses.</param>
