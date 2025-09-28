@@ -9292,180 +9292,6 @@
         <member name="M:Sudoku.Analytics.StepSearchers.BivalueUniversalGraveForcingChainsStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.WhipStepSearcher">
-            <summary>
-            Provides with a <b>Whip</b> step searcher.
-            The step searcher will include the following techniques:
-            <list type="bullet">
-            <item>Whip</item>
-            <item>Grouped Whip</item>
-            </list>
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.WhipStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.WhipStepSearcher.UpdateGrid(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.WhipNode)">
-            <summary>
-            Try to assign the grid with all conclusions produced by the specified whip chain.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="currentNode">The node.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.WhipStepSearcher.IsGroupedWhip(Sudoku.Construction.Components.WhipNode)">
-            <summary>
-            Determine whether the whip chain is grouped whip.
-            </summary>
-            <param name="lastNode">The last node.</param>
-            <returns>A <see cref="T:System.Boolean"/> result.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.WhipStepSearcher.ExistsContradiction(Sudoku.Concepts.Grid,Sudoku.Construction.Components.WhipNode,Sudoku.Concepts.Supersymmetry.Space@)">
-            <summary>
-            Determine whether the specified grid state contains any contradiction.
-            </summary>
-            <param name="playground">The grid.</param>
-            <param name="currentNode">Indicates the current node.</param>
-            <param name="failedSpace">The failed space.</param>
-            <returns>A <see cref="T:System.Boolean"/> result whether any contradiction is found.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.WhipStepSearcher.GetNextAssignments(Sudoku.Concepts.Grid,Sudoku.Construction.Components.WhipNode,System.Boolean)">
-            <summary>
-            Try to find all possible conclusions inside the grid.
-            </summary>
-            <param name="playground">The grid.</param>
-            <param name="currentNode">Indicates the current node.</param>
-            <param name="groupedWhip">Indicates whether the searcher allows for searching grouped whip nodes.</param>
-            <returns>All conclusions and reason why the assignment raised.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.WhipStepSearcher.CreateStep(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Construction.Components.WhipNode,System.Int32,Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.Space,System.Boolean)">
-            <summary>
-            Create a <see cref="T:Sudoku.Analytics.Steps.WhipStep"/> instance via the current conflict rule.
-            </summary>
-            <param name="context">The context.</param>
-            <param name="contradictionNode">The node that makes such contradiction.</param>
-            <param name="startCandidate">Indicates the start candidate.</param>
-            <param name="initialGrid">Indicates the initial grid.</param>
-            <param name="failedSpace">Indicates the space indicating where such contradiction is raised.</param>
-            <param name="isGrouped">Indicates whether the pattern is grouped.</param>
-            <returns>The final <see cref="T:Sudoku.Analytics.Steps.WhipStep"/> instance.</returns>
-        </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.DynamicForcingChainsStepSearcher">
-            <summary>
-            Provides with a <b>Dynamic Forcing Chains</b> step searcher.
-            The step searcher will include the following techniques:
-            <list type="bullet">
-            <item>Dynamic Cell Forcing Chains</item>
-            <item>Dynamic Region Forcing Chains (i.e. Dynamic House Forcing Chains)</item>
-            <item>Dynamic Contradiction Forcing Chains</item>
-            <item>Dynamic Double Forcing Chains</item>
-            </list>
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.DynamicForcingChainsStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher">
-            <summary>
-            Provides with a <b>Bowman's Bingo</b> step searcher.
-            The step searcher will include the following techniques:
-            <list type="bullet">
-            <item>Bowman's Bingo</item>
-            </list>
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.SinglesSearcher">
-            <summary>
-            The singles searcher.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher._tempConclusions">
-            <summary>
-            All temporary conclusions.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.MaxLength">
-            <summary>
-            Indicates the maximum length of the bowman bingo you want to search for. The maximum possible value is 64 (81 - 17).
-            The default value is 32.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.Collect(System.Collections.Generic.List{Sudoku.Analytics.Steps.BowmanBingoStep},Sudoku.Concepts.Grid@,Sudoku.Analytics.StepAnalysisContext@,System.Int32,System.Int32)">
-            <summary>
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)" path="/summary"/>
-            </summary>
-            <param name="result">The accumulator.</param>
-            <param name="grid">The sudoku grid to be checked.</param>
-            <param name="context">The context.</param>
-            <param name="startCand">The start candidate to be assumed.</param>
-            <param name="length">The whole length to be searched.</param>
-            <returns><inheritdoc cref="M:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)" path="/returns"/></returns>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.GetLinks">
-            <summary>
-            Get links.
-            </summary>
-            <returns>The links.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.RecordUndoInfo(Sudoku.Concepts.Grid@,System.Int32,System.Int32)">
-            <summary>
-            Record all information to be used in undo grid.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="cell">The cell.</param>
-            <param name="digit">The digit.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.UndoGrid(Sudoku.Concepts.Grid@,Sudoku.Concepts.CandidateMap@,System.Int32,System.Int16)">
-            <summary>
-            Undo the grid.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="list">The list.</param>
-            <param name="cell">The cell.</param>
-            <param name="mask">The mask.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.IsValidGrid(Sudoku.Concepts.Grid@,System.Int32)">
-            <summary>
-            To check the specified cell has a same digit filled in a cell
-            which is same house with the current one.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="cell">The cell.</param>
-            <returns>The result.</returns>
-        </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.PatternOverlayStepSearcher">
-            <summary>
-            Provides with a <b>Pattern Overlay</b> step searcher.
-            The step searcher will include the following techniques:
-            <list type="bullet">
-            <item>Pattern Overlay</item>
-            </list>
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.StepSearchers.PatternOverlayStepSearcher.TemplateCellMaps">
-            <summary>
-            The pre-defined template cell maps.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.PatternOverlayStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.PatternOverlayStepSearcher.GetInvalidPos(Sudoku.Concepts.Grid@)">
-            <summary>
-            Get all invalid positions.
-            </summary>
-            <param name="grid">The grid.</param>
-            <returns>The 9 maps for invalid positions of each digit.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.PatternOverlayStepSearcher.GetTemplates">
-            <summary>
-            Get all possible templates. The total number of all possible pattern overlay templates is 46656.
-            </summary>
-            <returns>The templates.</returns>
-        </member>
         <member name="T:Sudoku.Analytics.StepSearchers.ExocetStepSearcher">
             <summary>
             Provides with an <b>Exocet</b> step searcher.
@@ -9735,6 +9561,180 @@
             <param name="house">The house.</param>
             <param name="notSolved">Unsolved candidates table.</param>
             <param name="removedHouses">Removed houses.</param>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.WhipStepSearcher">
+            <summary>
+            Provides with a <b>Whip</b> step searcher.
+            The step searcher will include the following techniques:
+            <list type="bullet">
+            <item>Whip</item>
+            <item>Grouped Whip</item>
+            </list>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.WhipStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.WhipStepSearcher.UpdateGrid(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.WhipNode)">
+            <summary>
+            Try to assign the grid with all conclusions produced by the specified whip chain.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="currentNode">The node.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.WhipStepSearcher.IsGroupedWhip(Sudoku.Construction.Components.WhipNode)">
+            <summary>
+            Determine whether the whip chain is grouped whip.
+            </summary>
+            <param name="lastNode">The last node.</param>
+            <returns>A <see cref="T:System.Boolean"/> result.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.WhipStepSearcher.ExistsContradiction(Sudoku.Concepts.Grid,Sudoku.Construction.Components.WhipNode,Sudoku.Concepts.Supersymmetry.Space@)">
+            <summary>
+            Determine whether the specified grid state contains any contradiction.
+            </summary>
+            <param name="playground">The grid.</param>
+            <param name="currentNode">Indicates the current node.</param>
+            <param name="failedSpace">The failed space.</param>
+            <returns>A <see cref="T:System.Boolean"/> result whether any contradiction is found.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.WhipStepSearcher.GetNextAssignments(Sudoku.Concepts.Grid,Sudoku.Construction.Components.WhipNode,System.Boolean)">
+            <summary>
+            Try to find all possible conclusions inside the grid.
+            </summary>
+            <param name="playground">The grid.</param>
+            <param name="currentNode">Indicates the current node.</param>
+            <param name="groupedWhip">Indicates whether the searcher allows for searching grouped whip nodes.</param>
+            <returns>All conclusions and reason why the assignment raised.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.WhipStepSearcher.CreateStep(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Construction.Components.WhipNode,System.Int32,Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.Space,System.Boolean)">
+            <summary>
+            Create a <see cref="T:Sudoku.Analytics.Steps.WhipStep"/> instance via the current conflict rule.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="contradictionNode">The node that makes such contradiction.</param>
+            <param name="startCandidate">Indicates the start candidate.</param>
+            <param name="initialGrid">Indicates the initial grid.</param>
+            <param name="failedSpace">Indicates the space indicating where such contradiction is raised.</param>
+            <param name="isGrouped">Indicates whether the pattern is grouped.</param>
+            <returns>The final <see cref="T:Sudoku.Analytics.Steps.WhipStep"/> instance.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.DynamicForcingChainsStepSearcher">
+            <summary>
+            Provides with a <b>Dynamic Forcing Chains</b> step searcher.
+            The step searcher will include the following techniques:
+            <list type="bullet">
+            <item>Dynamic Cell Forcing Chains</item>
+            <item>Dynamic Region Forcing Chains (i.e. Dynamic House Forcing Chains)</item>
+            <item>Dynamic Contradiction Forcing Chains</item>
+            <item>Dynamic Double Forcing Chains</item>
+            </list>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.DynamicForcingChainsStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher">
+            <summary>
+            Provides with a <b>Bowman's Bingo</b> step searcher.
+            The step searcher will include the following techniques:
+            <list type="bullet">
+            <item>Bowman's Bingo</item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.SinglesSearcher">
+            <summary>
+            The singles searcher.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher._tempConclusions">
+            <summary>
+            All temporary conclusions.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.MaxLength">
+            <summary>
+            Indicates the maximum length of the bowman bingo you want to search for. The maximum possible value is 64 (81 - 17).
+            The default value is 32.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.Collect(System.Collections.Generic.List{Sudoku.Analytics.Steps.BowmanBingoStep},Sudoku.Concepts.Grid@,Sudoku.Analytics.StepAnalysisContext@,System.Int32,System.Int32)">
+            <summary>
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)" path="/summary"/>
+            </summary>
+            <param name="result">The accumulator.</param>
+            <param name="grid">The sudoku grid to be checked.</param>
+            <param name="context">The context.</param>
+            <param name="startCand">The start candidate to be assumed.</param>
+            <param name="length">The whole length to be searched.</param>
+            <returns><inheritdoc cref="M:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)" path="/returns"/></returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.GetLinks">
+            <summary>
+            Get links.
+            </summary>
+            <returns>The links.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.RecordUndoInfo(Sudoku.Concepts.Grid@,System.Int32,System.Int32)">
+            <summary>
+            Record all information to be used in undo grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="cell">The cell.</param>
+            <param name="digit">The digit.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.UndoGrid(Sudoku.Concepts.Grid@,Sudoku.Concepts.CandidateMap@,System.Int32,System.Int16)">
+            <summary>
+            Undo the grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="list">The list.</param>
+            <param name="cell">The cell.</param>
+            <param name="mask">The mask.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BowmanBingoStepSearcher.IsValidGrid(Sudoku.Concepts.Grid@,System.Int32)">
+            <summary>
+            To check the specified cell has a same digit filled in a cell
+            which is same house with the current one.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="cell">The cell.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.PatternOverlayStepSearcher">
+            <summary>
+            Provides with a <b>Pattern Overlay</b> step searcher.
+            The step searcher will include the following techniques:
+            <list type="bullet">
+            <item>Pattern Overlay</item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.StepSearchers.PatternOverlayStepSearcher.TemplateCellMaps">
+            <summary>
+            The pre-defined template cell maps.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.PatternOverlayStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.PatternOverlayStepSearcher.GetInvalidPos(Sudoku.Concepts.Grid@)">
+            <summary>
+            Get all invalid positions.
+            </summary>
+            <param name="grid">The grid.</param>
+            <returns>The 9 maps for invalid positions of each digit.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.PatternOverlayStepSearcher.GetTemplates">
+            <summary>
+            Get all possible templates. The total number of all possible pattern overlay templates is 46656.
+            </summary>
+            <returns>The templates.</returns>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.BruteForceStepSearcher">
             <summary>
