@@ -1,4 +1,4 @@
-#define DRAW_TRUTH_SPACES
+#undef DRAW_TRUTH_SPACES
 #define DRAW_LINK_SPACES
 #define USE_DIFFERENT_COLOR_FOR_CELL_VIEW_NODES
 
@@ -60,38 +60,50 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 			notSolved[cell >> HouseType.Column] |= mask;
 		}
 
+		// Create some buffered arrays.
+		var patternCellsGroupedByDigit = (stackalloc CellMap[9]);
+		var rct = (stackalloc Mask[27]);
+		var tcl = (stackalloc Mask[27]);
+		var tbl = (stackalloc Mask[27]);
+		var rcl = (stackalloc Mask[27]);
+		var removedHouseTable = (stackalloc House[27]);
+		var isWorthTable = (stackalloc bool[3]);
+		var boxLk = (stackalloc Mask[3]);
+		var bbl = (stackalloc Mask[3]);
+		var minInLine = (stackalloc int[3]);
+
 		// Iterate digit combinations via bit enumerator.
 		for (var digitSize = 2; digitSize <= 4; digitSize++)
 		{
 			// Iterate each digit combination of length 'digitSize'.
-			foreach (var d in SpanEnumerable.Range(0, 9) & digitSize)
+			foreach (var d in Digits & digitSize)
 			{
 				var digitsMask = Mask.Create(d);
 
-				// Iterate on houses offsets, also via bit enumerator.
-				for (var houseOffsetsSize = digitSize == 2 ? 3 : 2; houseOffsetsSize <= 5; houseOffsetsSize++)
+				// Iterate main line type. The multifish "bones" should be either in rows or in columns.
+				foreach (var isRow in (true, false))
 				{
-					// Here variable is a 9-bit integer, with some bits set 1 of length 'houseOffsetsSize' exactly.
-					// The variable will be used for house checking (via operations << 9 and << 18).
-					foreach (var h in SpanEnumerable.Range(0, 9) & houseOffsetsSize)
+					// Iterate on houses offsets, also via bit enumerator.
+					for (var houseOffsetsSize = digitSize == 2 ? 3 : 2; houseOffsetsSize <= 5; houseOffsetsSize++)
 					{
-						var chosenHouseOffsets = Mask.Create(h);
-
-						// Skip cases when the chosen houses only uses 3 lines in a same chute.
-						if ((chosenHouseOffsets & ~7) == 0 || (chosenHouseOffsets & ~56) == 0 || (chosenHouseOffsets & ~448) == 0)
+						// Here variable is a 9-bit integer, with some bits set 1 of length 'houseOffsetsSize' exactly.
+						// The variable will be used for house checking (via operations << 9 and << 18).
+						foreach (var h in Digits & houseOffsetsSize)
 						{
-							continue;
-						}
+							var chosenHouseOffsets = Mask.Create(h);
 
-						// Iterate main line type. The multifish "bones" should be either in rows or in columns.
-						foreach (var isRow in (true, false))
-						{
+							// Skip cases when the chosen houses only uses 3 lines in a same chute.
+							if ((chosenHouseOffsets & ~7) == 0 || (chosenHouseOffsets & ~56) == 0 || (chosenHouseOffsets & ~448) == 0)
+							{
+								continue;
+							}
+
 							var housesMask = chosenHouseOffsets << (isRow ? 9 : 18);
 
 							// Iterate on each house.
 							var patternCells = CellMap.Empty;
-							var patternCellsGroupedByDigit = new CellMap[9];
-							var rct = new Mask[27];
+							patternCellsGroupedByDigit.Clear();
+							rct.Clear();
 							var availableDigitsMask = (Mask)0;
 							foreach (var house in housesMask)
 							{
@@ -127,8 +139,8 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 							// Here we know that the houses can be treated as valid truths. Now we should find for links.
 
 							// Iterate on each pattern cell, to collect all possible links that can be iterated.
-							var tcl = new Mask[27];
-							var tbl = new Mask[27];
+							tcl.Clear();
+							tbl.Clear();
 							foreach (var cell in patternCells)
 							{
 								var block = cell >> HouseType.Block;
@@ -138,9 +150,8 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 								tbl[block] = tcl[block] |= candidates;
 							}
 
-							var removedHouseTable = new House[27];
-							var isWorthTable = new bool[3];
-
+							removedHouseTable.Clear();
+							isWorthTable.Clear();
 							// Iterate on each house.
 							for (var (house, i) = (isRow ? 18 : 9, 0); i < 3; house += 3, i++)
 							{
@@ -218,7 +229,7 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 									// There'll be 3 line links.
 									case 3:
 									{
-										var minInLine = new int[3];
+										minInLine.Clear();
 										for (var offset = 0; offset < 3; offset++)
 										{
 											var currentHouse = house + offset;
@@ -245,8 +256,8 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 
 										var (state, count) = blk < llk || blk == llk && flag ? (4, blk) : (0, llk);
 										var temp = 0;
-										var boxLk = new Mask[3];
-										var bbl = new Mask[3];
+										boxLk.Clear();
+										bbl.Clear();
 										for (var offset1 = 0; offset1 < 2; offset1++)
 										{
 											for (var offset2 = offset1 + 1; offset2 < 3; offset2++)
@@ -327,7 +338,7 @@ public sealed partial class MultifishStepSearcher : StepSearcher
 							// According to previous judgement of line links, we should here find a best rank of link combinations,
 							// which is an optimization of a single house
 							// (choosing four kinds of links in order to make rank to be a minimum value).
-							var rcl = new Mask[27];
+							rcl.Clear();
 							var cellLinks = CellMap.Empty;
 							for (var house = 0; house < 27; house++)
 							{
