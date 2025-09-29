@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Primitives;
+namespace Sudoku.Analytics.StepSearcherHubs;
 
 /// <summary>
 /// Represents searcher hub type.

@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Primitives;
+namespace Sudoku.Analytics;
 
 /// <summary>
 /// Represents a type that support collecting <see cref="Step"/> instances on a certain checking logic for a grid.

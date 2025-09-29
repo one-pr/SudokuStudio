@@ -54,7 +54,6 @@ global using Sudoku.Algorithms.Ittoryu;
 global using Sudoku.Analytics;
 global using Sudoku.Analytics.Configuration;
 global using Sudoku.Analytics.ExceptionHandling;
-global using Sudoku.Analytics.Primitives;
 global using Sudoku.Analytics.Steps;
 global using Sudoku.Analytics.StepSearchers;
 global using Sudoku.Bottlenecks;

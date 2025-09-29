@@ -33,7 +33,6 @@ global using Sudoku.Analytics.Configuration;
 global using Sudoku.Analytics.EventHandling;
 global using Sudoku.Analytics.ExceptionHandling;
 global using Sudoku.Analytics.PatternSearchers;
-global using Sudoku.Analytics.Primitives;
 global using Sudoku.Analytics.Steps;
 global using Sudoku.Analytics.StepSearcherHubs;
 global using Sudoku.Analytics.StepSearchers;
