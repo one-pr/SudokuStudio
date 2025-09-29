@@ -2,7 +2,7 @@ namespace Sudoku.Analytics;
 
 /// <summary>
 /// Provides an analyzer that solves a sudoku puzzle using the human-friendly logics,
-/// and creates an <see cref="AnalysisResult"/> instance indicating the analytics data.
+/// and creates an <see cref="AnalysisResult"/> instance indicating the analysis data.
 /// </summary>
 /// <seealso cref="AnalysisResult"/>
 /// <seealso cref="Analyzer"/>
