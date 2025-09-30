@@ -26,10 +26,14 @@ public static class IndexRangeExtensions
 	/// <summary>
 	/// Provides extension members on <see cref="Range"/>.
 	/// </summary>
-	extension(Range @this)
+	extension(in Range @this)
 	{
 		/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
 		public void Deconstruct(out Index start, out Index end) => (start, end) = (@this.Start, @this.End);
+
+
+		/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
+		public RangeEnumerator GetEnumerator() => new(@this);
 
 
 		/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>

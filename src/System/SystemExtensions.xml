@@ -2178,8 +2178,11 @@
         <member name="M:System.IndexRangeExtensions.op_Inequality(System.Index,System.Index)">
             <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$884281F282080FCB4345EB7F01A5EF3F.op_Inequality(System.Index,System.Index)"/>
         </member>
-        <member name="M:System.IndexRangeExtensions.Deconstruct(System.Range,System.Index@,System.Index@)">
+        <member name="M:System.IndexRangeExtensions.Deconstruct(System.Range@,System.Index@,System.Index@)">
             <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.Deconstruct(System.Index@,System.Index@)"/>
+        </member>
+        <member name="M:System.IndexRangeExtensions.GetEnumerator(System.Range@)">
+            <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.GetEnumerator"/>
         </member>
         <member name="M:System.IndexRangeExtensions.op_Equality(System.Range@,System.Range@)">
             <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.op_Equality(System.Range@,System.Range@)"/>
@@ -2206,7 +2209,7 @@
         <member name="M:System.IndexRangeExtensions.&lt;G&gt;$884281F282080FCB4345EB7F01A5EF3F.op_Inequality(System.Index,System.Index)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
         </member>
-        <member name="T:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.&lt;M&gt;$53A4D297AD1C0FDE4A71386485C32ED2">
+        <member name="T:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.&lt;M&gt;$55C99093876990A7A78743FFE475DB19">
             <summary>
             Provides extension members on <see cref="T:System.Range"/>.
             </summary>
@@ -2218,6 +2221,9 @@
 					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
 				</summary>
 			</target>
+        </member>
+        <member name="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.GetEnumerator">
+            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
         </member>
         <member name="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.op_Equality(System.Range@,System.Range@)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
@@ -8652,6 +8658,43 @@
             <exception cref="T:System.InvalidOperationException">
             Throws when the specified collection doesn't contain enough elements to get.
             </exception>
+        </member>
+        <member name="T:System.RangeEnumerator">
+            <summary>
+            Represents an enumerator type that iterates elements in a range.
+            </summary>
+        </member>
+        <member name="F:System.RangeEnumerator._start">
+            <summary>
+            Indicates start index.
+            </summary>
+        </member>
+        <member name="F:System.RangeEnumerator._end">
+            <summary>
+            Indicates end index.
+            </summary>
+        </member>
+        <member name="M:System.RangeEnumerator.#ctor(System.Range@)">
+            <summary>
+            Initializes a <see cref="T:System.RangeEnumerator"/> instance via specified range.
+            </summary>
+            <param name="range">The range.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Throws when <paramref name="range"/> has from-end index.</exception>
+        </member>
+        <member name="P:System.RangeEnumerator.Current">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.RangeEnumerator.System#Collections#IEnumerator#Current">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.RangeEnumerator.MoveNext">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.RangeEnumerator.System#IDisposable#Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.RangeEnumerator.System#Collections#IEnumerator#Reset">
+            <inheritdoc/>
         </member>
         <member name="T:System.ReadOnlySpan">
             <summary>
