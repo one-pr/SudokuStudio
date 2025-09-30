@@ -50,11 +50,7 @@ public sealed partial class MultisectorLockedSetStepSearcher : StepSearcher
 					var rMask = currentMap.RowMask;
 					var cMask = currentMap.ColumnMask;
 					var bMask = currentMap.BlockMask;
-					var temp = Math.Min(
-						PopCount((uint)rMask),
-						PopCount((uint)cMask),
-						PopCount((uint)bMask)
-					);
+					var temp = Math.Min(PopCount((uint)rMask), PopCount((uint)cMask), PopCount((uint)bMask));
 					var elimMap = CellMap.Empty;
 					var check = 0;
 					if (PopCount((uint)rMask) == temp)
