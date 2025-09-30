@@ -1053,12 +1053,6 @@
         <member name="M:System.Collections.Generic.ListExtensions.GetNewCapacity``1(System.Collections.Generic.List{``0},System.Int32)">
             <inheritdoc cref="M:System.Collections.Generic.ListExtensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.GetNewCapacity(System.Int32)"/>
         </member>
-        <member name="M:System.Collections.Generic.ListExtensions.op_AdditionAssignment``1(System.Collections.Generic.List{``0},``0)">
-            <inheritdoc cref="M:System.Collections.Generic.ListExtensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.op_AdditionAssignment(`0)"/>
-        </member>
-        <member name="M:System.Collections.Generic.ListExtensions.op_SubtractionAssignment``1(System.Collections.Generic.List{``0},``0)">
-            <inheritdoc cref="M:System.Collections.Generic.ListExtensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.op_SubtractionAssignment(`0)"/>
-        </member>
         <member name="M:System.Collections.Generic.ListExtensions.SequenceEqual``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{``0})">
             <inheritdoc cref="M:System.Collections.Generic.ListExtensions.&lt;G&gt;$68E6C75876B651AEFF021E4A09314FB5.SequenceEqual(System.Collections.Generic.List{`0})"/>
         </member>
@@ -1172,18 +1166,6 @@
 					</para>
 				</target>
             </remarks>
-        </member>
-        <member name="M:System.Collections.Generic.ListExtensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.op_AdditionAssignment(`0)">
-            <summary>
-            Performs add operation.
-            </summary>
-            <param name="item">The new item.</param>
-        </member>
-        <member name="M:System.Collections.Generic.ListExtensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.op_SubtractionAssignment(`0)">
-            <summary>
-            Performs remove operation.
-            </summary>
-            <param name="item">The item to remove.</param>
         </member>
         <member name="T:System.Collections.Generic.ListExtensions.&lt;G&gt;$68E6C75876B651AEFF021E4A09314FB5.&lt;M&gt;$963CAE85483B1202984D8842A9E8C690">
             <summary>
