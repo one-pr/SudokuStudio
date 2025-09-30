@@ -2190,8 +2190,20 @@
         <member name="M:System.IndexRangeExtensions.Deconstruct(System.Index,System.Int32@,System.Boolean@)">
             <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$884281F282080FCB4345EB7F01A5EF3F.Deconstruct(System.Int32@,System.Boolean@)"/>
         </member>
+        <member name="M:System.IndexRangeExtensions.op_Equality(System.Index,System.Index)">
+            <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$884281F282080FCB4345EB7F01A5EF3F.op_Equality(System.Index,System.Index)"/>
+        </member>
+        <member name="M:System.IndexRangeExtensions.op_Inequality(System.Index,System.Index)">
+            <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$884281F282080FCB4345EB7F01A5EF3F.op_Inequality(System.Index,System.Index)"/>
+        </member>
         <member name="M:System.IndexRangeExtensions.Deconstruct(System.Range,System.Index@,System.Index@)">
             <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.Deconstruct(System.Index@,System.Index@)"/>
+        </member>
+        <member name="M:System.IndexRangeExtensions.op_Equality(System.Range@,System.Range@)">
+            <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.op_Equality(System.Range@,System.Range@)"/>
+        </member>
+        <member name="M:System.IndexRangeExtensions.op_Inequality(System.Range@,System.Range@)">
+            <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.op_Inequality(System.Range@,System.Range@)"/>
         </member>
         <member name="T:System.IndexRangeExtensions.&lt;G&gt;$884281F282080FCB4345EB7F01A5EF3F.&lt;M&gt;$63920E9D99D3FF049EAE4485624B52D0">
             <summary>
@@ -2206,6 +2218,12 @@
 				</summary>
 			</target>
         </member>
+        <member name="M:System.IndexRangeExtensions.&lt;G&gt;$884281F282080FCB4345EB7F01A5EF3F.op_Equality(System.Index,System.Index)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
+        </member>
+        <member name="M:System.IndexRangeExtensions.&lt;G&gt;$884281F282080FCB4345EB7F01A5EF3F.op_Inequality(System.Index,System.Index)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
+        </member>
         <member name="T:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.&lt;M&gt;$53A4D297AD1C0FDE4A71386485C32ED2">
             <summary>
             Provides extension members on <see cref="T:System.Range"/>.
@@ -2218,6 +2236,12 @@
 					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
 				</summary>
 			</target>
+        </member>
+        <member name="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.op_Equality(System.Range@,System.Range@)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
+        </member>
+        <member name="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.op_Inequality(System.Range@,System.Range@)">
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
         </member>
         <member name="T:System.IO.FileExtensions">
             <summary>

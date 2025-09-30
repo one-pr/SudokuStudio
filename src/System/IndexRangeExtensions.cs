@@ -14,6 +14,13 @@ public static class IndexRangeExtensions
 	{
 		/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
 		public void Deconstruct(out int value, out bool isFromEnd) => (value, isFromEnd) = (@this.Value, @this.IsFromEnd);
+
+
+		/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
+		public static bool operator ==(Index left, Index right) => left.Equals(right);
+
+		/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
+		public static bool operator !=(Index left, Index right) => !(left == right);
 	}
 
 	/// <summary>
@@ -23,5 +30,12 @@ public static class IndexRangeExtensions
 	{
 		/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
 		public void Deconstruct(out Index start, out Index end) => (start, end) = (@this.Start, @this.End);
+
+
+		/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
+		public static bool operator ==(in Range left, in Range right) => left.Equals(right);
+
+		/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
+		public static bool operator !=(in Range left, in Range right) => !(left == right);
 	}
 }
