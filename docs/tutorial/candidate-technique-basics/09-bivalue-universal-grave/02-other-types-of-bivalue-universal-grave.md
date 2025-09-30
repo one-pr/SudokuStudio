@@ -224,7 +224,7 @@ description: Other Types of Bi-value Universal Grave
 
 我直接说答案吧。全双值格致死解法最少需要 11 个单元格构成。这个数比较难以从数字本身上猜出来，因为它非常不像是一些常见常数那样容易被“触发”到。
 
-下面我们来看一个例子，只有 11 个真数的情况。
+下面我们来看一个例子，只有 11 个单元格的情况。
 
 <figure><img src="../../.gitbook/assets/images_0024.png" alt="" width="375"><figcaption><p>只有 11 个单元格的情况</p></figcaption></figure>
 

@@ -1,5 +1,5 @@
 ---
-description: Author Information
+description: About Author
 ---
 
 # 作者介绍
@@ -40,4 +40,4 @@ description: Author Information
 
 也正是因为起源于笔记，所以我写的内容会更加贴近我自己对技巧的诠释和描述，带有一些主观内容。话是啰嗦一些，但一来是为了给你讲明白我是怎么想到的，二来是为了防止我遗忘他们，故意写得这么细。
 
-教程文档全部开源到我的数独开源代码仓库里，以 `docs` 目录下存储。
+教程文档全部开源到我的数独开源代码仓库里，以 `docs/tutorial` 目录下存储。
