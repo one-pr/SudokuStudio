@@ -2,9 +2,9 @@ namespace System.Numerics;
 
 /// <summary>
 /// Provides with fallback constants that will be used for checking target values,
-/// e.g. method <see cref="BitOperations.TrailingZeroCount(int)"/>.
+/// e.g. method <see cref="TrailingZeroCount(int)"/>.
 /// </summary>
-/// <seealso cref="BitOperations.TrailingZeroCount(int)"/>
+/// <seealso cref="TrailingZeroCount(int)"/>
 [SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 public static class FallbackConstants
 {
