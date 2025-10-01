@@ -152,6 +152,7 @@
   * [从融合待定数组谈起](rank-theory/06-multisector-locked-set/01-starting-with-sue-de-coq.md)
   * [网的基本推理](rank-theory/06-multisector-locked-set/02-reasoning-of-multisector-locked-set.md)
   * [不规则网](rank-theory/06-multisector-locked-set/03-irregular-multisector-locked-set.md)
+  * [网的直观和互补性](rank-theory/06-multisector-locked-set/04-direct-view-and-law-of-complement-of-multisector-locked-set.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
