@@ -157,18 +157,15 @@
 ## 附录 <a href="#appendix" id="appendix"></a>
 
 * [术语索引](appendix/01-terms.md)
-* [HoDoKu 技巧编号一览表](appendix/hodoku-library-technique-codes.md)
-
-## 逻辑学基础 <a href="#logic-basics" id="logic-basics"></a>
-
-* [逻辑学简要介绍](logic-basics/01-brief-introduction-to-logic.md)
-* [分情况讨论和析取消去](logic-basics/02-proof-of-cases-and-disjunction-elimination.md)
-* [反证法](logic-basics/03-proof-by-contradiction.md)
-* [逻辑蕴含](logic-basics/04-entailment.md)
-
-## 组合数学基础 <a href="#combinatorics" id="combinatorics"></a>
-
-* [抽屉原理](combinatorics/01-pigeonhole-principle.md)
+* [逻辑学基础](appendix/02-logic-basics/README.md)
+  * [逻辑学简要介绍](appendix/02-logic-basics/01-brief-introduction-to-logic.md)
+  * [分情况讨论和析取消去](appendix/02-logic-basics/02-proof-of-cases-and-disjunction-elimination.md)
+  * [反证法](appendix/02-logic-basics/03-proof-by-contradiction.md)
+  * [逻辑蕴含](appendix/02-logic-basics/04-entailment.md)
+* [组合数学基础](appendix/03-combinatorics-basics/README.md)
+  * [抽屉原理](appendix/03-combinatorics-basics/01-pigeonhole-principle.md)
+* [HoDoKu 软件互操作性](appendix/04-interoperability-with-hodoku/README.md)
+  * [HoDoKu 技巧编号一览表](appendix/04-interoperability-with-hodoku/01-hodoku-library-technique-codes.md)
 
 ## 其他 <a href="#miscellaneous" id="miscellaneous"></a>
 
