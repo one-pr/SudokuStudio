@@ -157,6 +157,7 @@
 ## 附录 <a href="#appendix" id="appendix"></a>
 
 * [术语索引](appendix/01-terms.md)
+* [HoDoKu 技巧编号一览表](appendix/hodoku-library-technique-codes.md)
 
 ## 逻辑学基础 <a href="#logic-basics" id="logic-basics"></a>
 
