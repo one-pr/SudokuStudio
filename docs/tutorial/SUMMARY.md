@@ -164,8 +164,8 @@
   * [逻辑蕴含](appendix/02-logic-basics/04-entailment.md)
 * [组合数学基础](appendix/03-combinatorics-basics/README.md)
   * [抽屉原理](appendix/03-combinatorics-basics/01-pigeonhole-principle.md)
-* [HoDoKu 软件互操作性](appendix/04-interoperability-with-hodoku/README.md)
-  * [HoDoKu 技巧编号一览表](appendix/04-interoperability-with-hodoku/01-hodoku-library-technique-codes.md)
+* [HoDoKu 参考](appendix/04-hodoku-information/README.md)
+  * [HoDoKu 技巧编号一览表](appendix/04-hodoku-information/01-hodoku-library-technique-codes.md)
 
 ## 其他 <a href="#miscellaneous" id="miscellaneous"></a>
 
