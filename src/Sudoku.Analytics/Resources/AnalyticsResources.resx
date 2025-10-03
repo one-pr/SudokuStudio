@@ -3358,4 +3358,19 @@ Is pattern rank-0: {6}</value>
   <data name="TechniqueFormat_MultifishStep" xml:space="preserve">
     <value>{0}/{1} (truths: {2}, links: {3})</value>
   </data>
+  <data name="BrokenLoopType1" xml:space="preserve">
+    <value>Broken Loop Type 1</value>
+  </data>
+  <data name="TechniqueGroup_BrokenLoop" xml:space="preserve">
+    <value>Broken Loop</value>
+  </data>
+  <data name="StepSearcherName_BrokenLoopStepSearcher" xml:space="preserve">
+    <value>Broken Loop</value>
+  </data>
+  <data name="Factor_BrokenLoopLengthFactor" xml:space="preserve">
+    <value>Length of Broken Loop</value>
+  </data>
+  <data name="TechniqueFormat_BrokenLoopType1Step" xml:space="preserve">
+    <value>Loop: {0}, guardians: {1}</value>
+  </data>
 </root>

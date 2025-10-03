@@ -8957,6 +8957,33 @@
             Checks for XZ rule.
             </summary>
         </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher">
+            <summary>
+            Provides with a <b>Broken Loop</b> step searcher.
+            The step searcher will include the following techniques:
+            <list type="bullet">
+            <item>Broken Loop Type 1</item>
+            <!--
+            <item>Broken Loop Type 2</item>
+            <item>Broken Loop Type 3</item>
+            <item>Broken Loop Type 4</item>
+            -->
+            </list>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher.CheckType1(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,System.Int32,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Check type 1.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="grid">The grid.</param>
+            <param name="guardian">The guardian.</param>
+            <param name="loop">The loop.</param>
+            <returns>The step found.</returns>
+        </member>
         <member name="T:Sudoku.Analytics.StepSearchers.XyzRingStepSearcher">
             <summary>
             Provides with an <b>XYZ-Ring</b> step searcher.
@@ -12774,6 +12801,89 @@
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.Steps.BivalueOddagonType4Step.Interpolations">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.Steps.BrokenLoopStep">
+            <summary>
+            Provides with a step that is a <b>Broken Loop</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="loop"><inheritdoc cref="P:Sudoku.Analytics.Steps.BrokenLoopStep.Loop" path="/summary"/></param>
+            <param name="guardians"><inheritdoc cref="P:Sudoku.Analytics.Steps.BrokenLoopStep.Guardians" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Analytics.Steps.BrokenLoopStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.ReadOnlyMemory{System.Int32},Sudoku.Concepts.CandidateMap@)">
+            <summary>
+            Provides with a step that is a <b>Broken Loop</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="loop"><inheritdoc cref="P:Sudoku.Analytics.Steps.BrokenLoopStep.Loop" path="/summary"/></param>
+            <param name="guardians"><inheritdoc cref="P:Sudoku.Analytics.Steps.BrokenLoopStep.Guardians" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.BrokenLoopStep.BaseDifficulty">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.BrokenLoopStep.Type">
+            <summary>
+            Indicates the type of the pattern.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.BrokenLoopStep.LoopLength">
+            <summary>
+            Indicates the length of loop.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.BrokenLoopStep.Code">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.BrokenLoopStep.Loop">
+            <summary>
+            Indicates the loop.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.BrokenLoopStep.Guardians">
+            <summary>
+            Indicates the guardians.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.BrokenLoopStep.DigitsUsed">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.BrokenLoopStep.Factors">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.Steps.BrokenLoopType1Step">
+            <summary>
+            Provides with a step that is a <b>Broken Loop</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="loop"><inheritdoc cref="P:Sudoku.Analytics.Steps.BrokenLoopStep.Loop" path="/summary"/></param>
+            <param name="guardian"><inheritdoc cref="P:Sudoku.Analytics.Steps.BrokenLoopType1Step.Guardian" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Analytics.Steps.BrokenLoopType1Step.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.ReadOnlyMemory{System.Int32},System.Int32)">
+            <summary>
+            Provides with a step that is a <b>Broken Loop</b> technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="loop"><inheritdoc cref="P:Sudoku.Analytics.Steps.BrokenLoopStep.Loop" path="/summary"/></param>
+            <param name="guardian"><inheritdoc cref="P:Sudoku.Analytics.Steps.BrokenLoopType1Step.Guardian" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.BrokenLoopType1Step.Type">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.BrokenLoopType1Step.Guardian">
+            <summary>
+            Indicates the guardian.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.BrokenLoopType1Step.Interpolations">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Steps.GuardianStep">
@@ -21160,6 +21270,11 @@
             Indicates broken wing.
             </summary>
         </member>
+        <member name="F:Sudoku.Categorization.Technique.BrokenLoopType1">
+            <summary>
+            Indicates broken loop type 1.
+            </summary>
+        </member>
         <member name="F:Sudoku.Categorization.Technique.BivalueOddagonType2">
             <summary>
             Indicates bi-value oddagon type 2.
@@ -22185,6 +22300,21 @@
             Indicates the uniqueness clue cover.
             </summary>
         </member>
+        <member name="F:Sudoku.Categorization.TechniqueGroup.AlignedExclusion">
+            <summary>
+            Indicates the aligned exclusion technique.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Categorization.TechniqueGroup.SueDeCoq">
+            <summary>
+            Indicates the sue de coq (SdC) technique.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Categorization.TechniqueGroup.XyzRing">
+            <summary>
+            Indicates the XYZ-Ring technique.
+            </summary>
+        </member>
         <member name="F:Sudoku.Categorization.TechniqueGroup.BivalueOddagon">
             <summary>
             Indicates the bi-value oddagon technique.
@@ -22195,9 +22325,9 @@
             Indicates the tri-value oddagon technique.
             </summary>
         </member>
-        <member name="F:Sudoku.Categorization.TechniqueGroup.SueDeCoq">
+        <member name="F:Sudoku.Categorization.TechniqueGroup.BrokenLoop">
             <summary>
-            Indicates the sue de coq (SdC) technique.
+            Indicates the broken loop technique.
             </summary>
         </member>
         <member name="F:Sudoku.Categorization.TechniqueGroup.BrokenWing">
@@ -22205,19 +22335,9 @@
             Indicates the broken wing technique.
             </summary>
         </member>
-        <member name="F:Sudoku.Categorization.TechniqueGroup.XyzRing">
-            <summary>
-            Indicates the XYZ-Ring technique.
-            </summary>
-        </member>
         <member name="F:Sudoku.Categorization.TechniqueGroup.AlmostLockedSetsChainingLike">
             <summary>
             Indicates the ALS chaining-like (ALS-XZ, ALS-XY-Wing, ALS-W-Wing) technique.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Categorization.TechniqueGroup.AlignedExclusion">
-            <summary>
-            Indicates the aligned exclusion technique.
             </summary>
         </member>
         <member name="F:Sudoku.Categorization.TechniqueGroup.DeathBlossom">
@@ -30900,6 +31020,11 @@
               Looks up a localized string similar to Bowman&apos;s Bingo.
             </summary>
         </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.BrokenLoopType1">
+            <summary>
+              Looks up a localized string similar to Broken Loop Type 1.
+            </summary>
+        </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.BrokenWing">
             <summary>
               Looks up a localized string similar to Guardian.
@@ -31598,6 +31723,11 @@
         <member name="P:Sudoku.Resources.AnalyticsResources.Factor_BowmanBingoLengthFactor">
             <summary>
               Looks up a localized string similar to Length of Bowman&apos;s bingo.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.Factor_BrokenLoopLengthFactor">
+            <summary>
+              Looks up a localized string similar to Length of Broken Loop.
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.Factor_ChainGroupedFactor">
@@ -33444,6 +33574,11 @@
               Looks up a localized string similar to Bowman&apos;s Bingo.
             </summary>
         </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.StepSearcherName_BrokenLoopStepSearcher">
+            <summary>
+              Looks up a localized string similar to Broken Loop.
+            </summary>
+        </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.StepSearcherName_BruteForceStepSearcher">
             <summary>
               Looks up a localized string similar to Brute Force.
@@ -34649,6 +34784,11 @@
               Looks up a localized string similar to Try {0}.
             </summary>
         </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueFormat_BrokenLoopType1Step">
+            <summary>
+              Looks up a localized string similar to Loop: {0}, guardians: {1}.
+            </summary>
+        </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueFormat_BruteForceStep">
             <summary>
               Looks up a localized string similar to {0}.
@@ -35222,6 +35362,11 @@
         <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueGroup_BowmanBingo">
             <summary>
               Looks up a localized string similar to Bowman&apos;s Bingo.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueGroup_BrokenLoop">
+            <summary>
+              Looks up a localized string similar to Broken Loop.
             </summary>
         </member>
         <member name="P:Sudoku.Resources.AnalyticsResources.TechniqueGroup_BrokenWing">

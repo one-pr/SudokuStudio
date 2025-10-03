@@ -191,6 +191,23 @@ public enum TechniqueGroup
 	UniquenessClueCover,
 
 	/// <summary>
+	/// Indicates the aligned exclusion technique.
+	/// </summary>
+	AlignedExclusion,
+
+	/// <summary>
+	/// Indicates the sue de coq (SdC) technique.
+	/// </summary>
+	[TechniqueMetadata(Abbreviation = "SdC")]
+	SueDeCoq,
+
+	/// <summary>
+	/// Indicates the XYZ-Ring technique.
+	/// </summary>
+	[TechniqueMetadata(SupportsSiamese = true)]
+	XyzRing,
+
+	/// <summary>
 	/// Indicates the bi-value oddagon technique.
 	/// </summary>
 	BivalueOddagon,
@@ -201,10 +218,9 @@ public enum TechniqueGroup
 	TrivalueOddagon,
 
 	/// <summary>
-	/// Indicates the sue de coq (SdC) technique.
+	/// Indicates the broken loop technique.
 	/// </summary>
-	[TechniqueMetadata(Abbreviation = "SdC")]
-	SueDeCoq,
+	BrokenLoop,
 
 	/// <summary>
 	/// Indicates the broken wing technique.
@@ -212,20 +228,9 @@ public enum TechniqueGroup
 	BrokenWing,
 
 	/// <summary>
-	/// Indicates the XYZ-Ring technique.
-	/// </summary>
-	[TechniqueMetadata(SupportsSiamese = true)]
-	XyzRing,
-
-	/// <summary>
 	/// Indicates the ALS chaining-like (ALS-XZ, ALS-XY-Wing, ALS-W-Wing) technique.
 	/// </summary>
 	AlmostLockedSetsChainingLike,
-
-	/// <summary>
-	/// Indicates the aligned exclusion technique.
-	/// </summary>
-	AlignedExclusion,
 
 	/// <summary>
 	/// Indicates the death blossom technique.

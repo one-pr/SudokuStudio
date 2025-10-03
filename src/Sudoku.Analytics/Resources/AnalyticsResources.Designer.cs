@@ -855,6 +855,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Broken Loop Type 1.
+        /// </summary>
+        public static string BrokenLoopType1 {
+            get {
+                return ResourceManager.GetString("BrokenLoopType1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Guardian.
         /// </summary>
         public static string BrokenWing {
@@ -2111,6 +2120,15 @@ namespace Sudoku.Resources {
         public static string Factor_BowmanBingoLengthFactor {
             get {
                 return ResourceManager.GetString("Factor_BowmanBingoLengthFactor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Length of Broken Loop.
+        /// </summary>
+        public static string Factor_BrokenLoopLengthFactor {
+            get {
+                return ResourceManager.GetString("Factor_BrokenLoopLengthFactor", resourceCulture);
             }
         }
         
@@ -5423,6 +5441,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Broken Loop.
+        /// </summary>
+        public static string StepSearcherName_BrokenLoopStepSearcher {
+            get {
+                return ResourceManager.GetString("StepSearcherName_BrokenLoopStepSearcher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Brute Force.
         /// </summary>
         public static string StepSearcherName_BruteForceStepSearcher {
@@ -7592,6 +7619,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Loop: {0}, guardians: {1}.
+        /// </summary>
+        public static string TechniqueFormat_BrokenLoopType1Step {
+            get {
+                return ResourceManager.GetString("TechniqueFormat_BrokenLoopType1Step", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0}.
         /// </summary>
         public static string TechniqueFormat_BruteForceStep {
@@ -8623,6 +8659,15 @@ namespace Sudoku.Resources {
         public static string TechniqueGroup_BowmanBingo {
             get {
                 return ResourceManager.GetString("TechniqueGroup_BowmanBingo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Broken Loop.
+        /// </summary>
+        public static string TechniqueGroup_BrokenLoop {
+            get {
+                return ResourceManager.GetString("TechniqueGroup_BrokenLoop", resourceCulture);
             }
         }
         

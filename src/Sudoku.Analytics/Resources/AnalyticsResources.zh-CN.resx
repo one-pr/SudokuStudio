@@ -3407,4 +3407,21 @@
   <data name="TechniqueFormat_MultifishStep" xml:space="preserve">
     <value>{0}/{1}（强区域：{2}，弱区域：{3}）</value>
   </data>
+  <data name="BrokenLoopType1" xml:space="preserve">
+    <value>全强链死环类型 1</value>
+    <comment>Technique Name</comment>
+  </data>
+  <data name="TechniqueGroup_BrokenLoop" xml:space="preserve">
+    <value>全强链死环</value>
+  </data>
+  <data name="StepSearcherName_BrokenLoopStepSearcher" xml:space="preserve">
+    <value>全强链死环</value>
+    <comment>Step Searcher Name</comment>
+  </data>
+  <data name="Factor_BrokenLoopLengthFactor" xml:space="preserve">
+    <value>全强链死环的长度</value>
+  </data>
+  <data name="TechniqueFormat_BrokenLoopType1Step" xml:space="preserve">
+    <value>环：{0}，守护者：{1}</value>
+  </data>
 </root>

@@ -3244,6 +3244,20 @@ public enum Technique
 	#endregion
 
 	//
+	// Broken Loop
+	//
+	#region Broken Loop
+	/// <summary>
+	/// Indicates broken loop type 1.
+	/// </summary>
+	[TechniqueMetadata<BrokenLoopStepSearcher, BrokenLoopType1Step>(
+		Rating = 52,
+		DifficultyLevel = DifficultyLevel.Fiendish,
+		ContainingGroup = TechniqueGroup.BrokenLoop)]
+	BrokenLoopType1,
+	#endregion
+
+	//
 	// Bi-value Oddagon
 	//
 	#region Bivalue Oddagon
