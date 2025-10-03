@@ -122,7 +122,7 @@
   * [牺牲的例子](construction/06-sacrifice/02-examples-of-sacrifice.md)
   * [牺牲绽放环](construction/06-sacrifice/03-sacrifice-blossom-loop.md)
 
-## 秩理论 <a href="#rank-theory" id="rank-theory"></a>
+## 秩理论（基础） <a href="#rank-theory" id="rank-theory"></a>
 
 * [秩理论初步](rank-theory/01-introduction-to-rank-theory.md)
 * [秩的三种取值](rank-theory/02-range-of-rank/README.md)
@@ -156,6 +156,11 @@
 * [复数鱼](rank-theory/07-multifish/README.md)
   * [复数鱼的基本推理](rank-theory/07-multifish/01-reasoning-of-multifish.md)
   * [复杂复数鱼](rank-theory/07-multifish/02-complex-multifish.md)
+  * [多米诺环和复数鱼的关系](rank-theory/07-multifish/03-relations-between-domino-loop-and-multifish.md)
+
+## 秩理论（进阶） <a href="#rank-theory-advance" id="rank-theory-advance"></a>
+
+* [弱区域和删数的秩](rank-theory-advance/01-rank-of-link-and-elimination.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 

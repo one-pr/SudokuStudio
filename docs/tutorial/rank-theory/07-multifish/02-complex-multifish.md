@@ -30,19 +30,7 @@ description: Complex Multifish
 
 如图所示。这个题会用到两个（或者说 1 个也行）宫内的强区域：`9b1` 和 `9b9`。细数一下，强区域数量是 21 个，弱区域数量也是 21 个。数的方式和前文一样就不再重复了。
 
-## 例子 4：多米诺环的复数鱼视角 <a href="#example-4" id="example-4"></a>
-
-<figure><img src="../../.gitbook/assets/images_0659.png" alt="" width="375"><figcaption><p>多米诺环例子</p></figcaption></figure>
-
-如图所示。这是一个多米诺环。这个结构想必就不用我多介绍了吧。它的复数鱼画法是将 `c47` 或 `r47` 分别转移到 `b23` 或 `b47` 里去，然后改变一下链接的数字就行。
-
-比如这个题，它对应了两个复数鱼的视角。
-
-<figure><img src="../../.gitbook/assets/images_0660.png" alt=""><figcaption><p>多米诺环，复数鱼视角</p></figcaption></figure>
-
-如图所示。有些怪，是吗？它利用了一个特殊的覆盖规则，宫内的弱区域。左图里将 `b47` 视为了宫内的弱区域进行覆盖，其实也可以按列弱区域覆盖，因为这两种数出来都是会记 6 次（6 个弱区域）。比如按宫的话就是 `679b4` 和 `367b7`，而按列的话就是 `7c1`、`679c2` 和 `36c3`。这都刚好是 6 个弱区域。不过宫的话归纳起来只需要两个宫就完事了，但列上需要三个不同的列参与进来。
-
-## 例子 5：行列宫强区域 <a href="#example-5" id="example-5"></a>
+## 例子 4：行列宫强区域 <a href="#example-4" id="example-4"></a>
 
 <figure><img src="../../.gitbook/assets/images_0661.png" alt="" width="375"><figcaption><p>例子 5</p></figcaption></figure>
 
