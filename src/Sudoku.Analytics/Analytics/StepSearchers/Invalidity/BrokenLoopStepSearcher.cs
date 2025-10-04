@@ -5,14 +5,13 @@ namespace Sudoku.Analytics.StepSearchers;
 /// The step searcher will include the following techniques:
 /// <list type="bullet">
 /// <item>Broken Loop Type 1</item>
-/// <!--
 /// <item>Broken Loop Type 2</item>
 /// <item>Broken Loop Type 3</item>
-/// <item>Broken Loop Type 4</item>
-/// -->
 /// </list>
 /// </summary>
-[StepSearcher("StepSearcherName_BrokenLoopStepSearcher", Technique.BrokenLoopType1)]
+[StepSearcher(
+	"StepSearcherName_BrokenLoopStepSearcher",
+	Technique.BrokenLoopType1, Technique.BrokenLoopType2, Technique.BrokenLoopType3)]
 public sealed partial class BrokenLoopStepSearcher
 {
 	/// <inheritdoc/>
