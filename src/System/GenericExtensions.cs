@@ -73,12 +73,18 @@ public static class GenericExtensions
 	/// Provides extension members on <typeparamref name="T"/>,
 	/// where <typeparamref name="T"/> satisfies <see langword="struct"/> constraint.
 	/// </summary>
-	extension<T>(T) where T : struct, allows ref struct
+	extension<T>(T) where T : allows ref struct
 	{
 		/// <summary>
-		/// Represents null reference of the type <typeparamref name="T"/>.
+		/// Represents null reference of type <typeparamref name="T"/>.
 		/// </summary>
 		[SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public static ref T nullref => ref Unsafe.NullRef<T>();
+
+		/// <summary>
+		/// Represents null pointer of type <typeparamref name="T"/>.
+		/// </summary>
+		[SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public static unsafe T* nullptr => (T*)(void*)0;
 	}
 }

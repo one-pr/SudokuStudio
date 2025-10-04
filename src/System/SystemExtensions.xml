@@ -2101,7 +2101,10 @@
             </summary>
         </member>
         <member name="M:System.GenericExtensions.get_nullref``1">
-            <inheritdoc cref="P:System.GenericExtensions.&lt;G&gt;$749FE2F97CEAD1F3A8AD366620896682.nullref"/>
+            <inheritdoc cref="P:System.GenericExtensions.&lt;G&gt;$DBAE595DB498992DE4A7A33CF46DEC36.nullref"/>
+        </member>
+        <member name="M:System.GenericExtensions.get_nullptr``1">
+            <inheritdoc cref="P:System.GenericExtensions.&lt;G&gt;$DBAE595DB498992DE4A7A33CF46DEC36.nullptr"/>
         </member>
         <member name="T:System.GenericExtensions.&lt;G&gt;$66F77D1E46F965A5B22D4932892FA78B.&lt;M&gt;$BEB388E40418861A9E2CF67054B57E08">
             <summary>
@@ -2115,15 +2118,20 @@
             where <typeparamref name="T"/> satisfies <see langword="struct"/> constraint.
             </summary>
         </member>
-        <member name="T:System.GenericExtensions.&lt;G&gt;$749FE2F97CEAD1F3A8AD366620896682.&lt;M&gt;$C92E29B1D10BD86637DB4946645A878E">
+        <member name="T:System.GenericExtensions.&lt;G&gt;$DBAE595DB498992DE4A7A33CF46DEC36.&lt;M&gt;$3B8A6DBEF69D3D2C252353677A52BB9A">
             <summary>
             Provides extension members on <typeparamref name="T"/>,
             where <typeparamref name="T"/> satisfies <see langword="struct"/> constraint.
             </summary>
         </member>
-        <member name="P:System.GenericExtensions.&lt;G&gt;$749FE2F97CEAD1F3A8AD366620896682.nullref">
+        <member name="P:System.GenericExtensions.&lt;G&gt;$DBAE595DB498992DE4A7A33CF46DEC36.nullref">
             <summary>
-            Represents null reference of the type <typeparamref name="T"/>.
+            Represents null reference of type <typeparamref name="T"/>.
+            </summary>
+        </member>
+        <member name="P:System.GenericExtensions.&lt;G&gt;$DBAE595DB498992DE4A7A33CF46DEC36.nullptr">
+            <summary>
+            Represents null pointer of type <typeparamref name="T"/>.
             </summary>
         </member>
         <member name="T:System.ILogicalOperators`1">
