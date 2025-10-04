@@ -161,6 +161,7 @@
 ## 秩理论（进阶） <a href="#rank-theory-advance" id="rank-theory-advance"></a>
 
 * [弱区域和删数的秩](rank-theory-advance/01-rank-of-link-and-elimination.md)
+* [递归分析](rank-theory-advance/02-recursive-analysis.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
