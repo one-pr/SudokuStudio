@@ -162,6 +162,7 @@
 
 * [弱区域和删数的秩](rank-theory-advance/01-rank-of-link-and-elimination.md)
 * [递归分析](rank-theory-advance/02-recursive-analysis.md)
+* [自增和自减](rank-theory-advance/03-auto-increment-and-auto-decrement.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
