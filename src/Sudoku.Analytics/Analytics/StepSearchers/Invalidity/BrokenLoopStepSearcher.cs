@@ -17,16 +17,13 @@ public sealed partial class BrokenLoopStepSearcher
 	/// <inheritdoc/>
 	protected internal override Step? Collect(ref StepAnalysisContext context)
 	{
-		// Modes: 0 - Cell, 1 - Block, 2 - Row, 3 - Column.
-		const byte mode_CellNext = 0, mode_ColumnNext = 3;
-		var foundLoopsGroupedByGuardians = new Dictionary<CandidateMap, List<Candidate>>();
-
 		ref readonly var grid = ref context.Grid;
 
 		// Iterate on all non-bivalue cells.
 		var tempLoop = CandidateMap.Empty;
 		var traversedSpaces = SpaceSet.Empty;
 		var tempGuardians = CandidateMap.Empty;
+		var foundLoopsGroupedByGuardians = new Dictionary<CandidateMap, List<Candidate>>();
 		foreach (var cell in EmptyCells & BivalueCells)
 		{
 			// Iterate on each extra start.
@@ -43,7 +40,7 @@ public sealed partial class BrokenLoopStepSearcher
 				d2,
 				cell,
 				d2,
-				byte.MaxValue,
+				(NextSpaceType)(-1),
 				[cell * 9 + d1, cell * 9 + d2],
 				tempGuardians,
 				ref traversedSpaces,
@@ -112,7 +109,7 @@ public sealed partial class BrokenLoopStepSearcher
 			Digit currentDigit,
 			Cell previousCell,
 			Digit previousDigit,
-			byte unitTypeMode,
+			NextSpaceType unitTypeMode,
 			List<Candidate> loopCandidates,
 			CandidateMap guardians,
 			ref SpaceSet traversedSpaces,
@@ -132,18 +129,19 @@ public sealed partial class BrokenLoopStepSearcher
 				return;
 			}
 
-			var availableNext = new List<(byte NextMode, Candidate NextCandidate, Candidate? NewGuardian)>();
-			for (var mode = mode_CellNext; mode <= mode_ColumnNext; mode++)
+			var availableNext = new List<(NextSpaceType NextMode, Candidate NextCandidate, Candidate? NewGuardian)>();
+			for (var mode = NextSpaceType.Cell; mode <= NextSpaceType.Column; mode++)
 			{
 				if (mode == unitTypeMode)
 				{
 					continue;
 				}
 
-				if (mode == mode_CellNext)
+				if (mode == NextSpaceType.Cell)
 				{
 					if (previousCell == currentCell)
 					{
+						// Same cell.
 						continue;
 					}
 
@@ -181,8 +179,7 @@ public sealed partial class BrokenLoopStepSearcher
 				{
 					// Check the previous house.
 					var sharedHouse = (previousCell.AsCellMap() + currentCell).FirstSharedHouse;
-					var houseType = (int)sharedHouse.HouseType;
-					if (houseType == mode - 1)
+					if ((int)sharedHouse.HouseType == (int)(mode - 1))
 					{
 						// Same house.
 						continue;
@@ -265,9 +262,9 @@ public sealed partial class BrokenLoopStepSearcher
 				var nextCell = nextCandidate / 9;
 				var nextSpace = nextMode switch
 				{
-					mode_CellNext => Space.RowColumn(nextCell / 9, nextCell % 9),
-					mode_CellNext + 1 => Space.BlockDigit(nextCell >> HouseType.Block, nextCandidate % 9),
-					mode_CellNext + 2 => Space.RowDigit((nextCell >> HouseType.Row) - 9, nextCandidate % 9),
+					NextSpaceType.Cell => Space.RowColumn(nextCell / 9, nextCell % 9),
+					NextSpaceType.Block => Space.BlockDigit(nextCell >> HouseType.Block, nextCandidate % 9),
+					NextSpaceType.Row => Space.RowDigit((nextCell >> HouseType.Row) - 9, nextCandidate % 9),
 					_ => Space.RowDigit((nextCell >> HouseType.Column) - 18, nextCandidate % 9)
 				};
 
@@ -520,4 +517,30 @@ public sealed partial class BrokenLoopStepSearcher
 		}
 		return linkOffsets.AsSpan();
 	}
+}
+
+/// <summary>
+/// Represents a file-local type defining four kinds of spaces to be searched.
+/// </summary>
+file enum NextSpaceType : sbyte
+{
+	/// <summary>
+	/// Indicates the mode is to search for cell.
+	/// </summary>
+	Cell,
+
+	/// <summary>
+	/// Indicates the mode is to search for block.
+	/// </summary>
+	Block,
+
+	/// <summary>
+	/// Indicates the mode is to search for row.
+	/// </summary>
+	Row,
+
+	/// <summary>
+	/// Indicates the mode is to search for column.
+	/// </summary>
+	Column
 }

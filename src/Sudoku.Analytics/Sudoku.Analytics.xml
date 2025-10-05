@@ -9935,6 +9935,31 @@
             <param name="map">The map.</param>
             <returns>A <see cref="T:System.Boolean"/> result.</returns>
         </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.NextSpaceType">
+            <summary>
+            Represents a file-local type defining four kinds of spaces to be searched.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.StepSearchers.NextSpaceType.Cell">
+            <summary>
+            Indicates the mode is to search for cell.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.StepSearchers.NextSpaceType.Block">
+            <summary>
+            Indicates the mode is to search for block.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.StepSearchers.NextSpaceType.Row">
+            <summary>
+            Indicates the mode is to search for row.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.StepSearchers.NextSpaceType.Column">
+            <summary>
+            Indicates the mode is to search for column.
+            </summary>
+        </member>
         <member name="T:Sudoku.Analytics.StepSearchers.StepSearcherAttribute">
             <summary>
             Indicates a type marked this attribute is a runnable <see cref="T:Sudoku.Analytics.StepSearcher"/>.
