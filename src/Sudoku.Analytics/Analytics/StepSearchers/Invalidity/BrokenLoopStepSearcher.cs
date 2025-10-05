@@ -126,8 +126,8 @@ public sealed partial class BrokenLoopStepSearcher
 			}
 
 			if (!!guardians
-				&& PopCount((uint)guardians.Digits) != 1
-				&& (guardians.Cells.FirstSharedHouse == FallbackConstants.@int || guardians.Count > 2))
+				&& PopCount((uint)guardians.Digits) != 1 // Type 1 and 2
+				&& guardians.Cells is not { Count: 2, FirstSharedHouse: not FallbackConstants.@int }) // Type 3 and 4
 			{
 				return;
 			}
