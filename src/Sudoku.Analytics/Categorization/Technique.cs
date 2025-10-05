@@ -4604,7 +4604,7 @@ public enum Technique
 	/// <summary>
 	/// Indicates multi-fish.
 	/// </summary>
-	[TechniqueMetadata<MultisectorLockedSetStepSearcher, MultisectorLockedSetStep>(
+	[TechniqueMetadata<MultifishStepSearcher, MultifishStep>(
 		Rating = 96,
 		DifficultyLevel = DifficultyLevel.Nightmare,
 		ContainingGroup = TechniqueGroup.Multifish,
