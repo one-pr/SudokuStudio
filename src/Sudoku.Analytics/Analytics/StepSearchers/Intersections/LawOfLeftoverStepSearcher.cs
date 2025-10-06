@@ -1,7 +1,7 @@
 namespace Sudoku.Analytics.StepSearchers;
 
 /// <summary>
-/// Provides with an <b>Law of Leftover</b> step searcher.
+/// Provides with a <b>Law of Leftover</b> step searcher.
 /// The step searcher will include the following techniques:
 /// <list type="bullet">
 /// <item>Law of leftover</item>

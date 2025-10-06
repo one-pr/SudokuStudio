@@ -3203,6 +3203,21 @@ public enum Technique
 	#endregion
 
 	//
+	// Braid Analysis
+	//
+	#region Braid Analysis
+	/// <summary>
+	/// Indicates braid analysis.
+	/// </summary>
+	[TechniqueMetadata<BraidAnalysisStepSearcher, BraidAnalysisStep>(
+		Rating = 60,
+		DifficultyLevel = DifficultyLevel.Fiendish,
+		ContainingGroup = TechniqueGroup.BraidAnalysis,
+		Links = ["http://sudopedia.enjoysudoku.com/Braid_Analysis.html"])]
+	BraidAnalysis,
+	#endregion
+
+	//
 	// Fireworks
 	//
 	#region Fireworks

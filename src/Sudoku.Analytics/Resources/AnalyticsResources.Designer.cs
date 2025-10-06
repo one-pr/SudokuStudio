@@ -855,6 +855,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Braid Analysis.
+        /// </summary>
+        public static string BraidAnalysis {
+            get {
+                return ResourceManager.GetString("BraidAnalysis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Broken Loop Type 1.
         /// </summary>
         public static string BrokenLoopType1 {
@@ -5477,6 +5486,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Braid Analysis.
+        /// </summary>
+        public static string StepSearcherName_BraidAnalysisStepSearcher {
+            get {
+                return ResourceManager.GetString("StepSearcherName_BraidAnalysisStepSearcher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Broken Loop.
         /// </summary>
         public static string StepSearcherName_BrokenLoopStepSearcher {
@@ -7655,6 +7673,15 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Digits {0} in cells {1} will cause contradiction if any of digits {2} exists, due to valid combinations.
+        /// </summary>
+        public static string TechniqueFormat_BraidAnalysisStep {
+            get {
+                return ResourceManager.GetString("TechniqueFormat_BraidAnalysisStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Loop: {0}, guardians: {1}.
         /// </summary>
         public static string TechniqueFormat_BrokenLoopStep {
@@ -8713,6 +8740,15 @@ namespace Sudoku.Resources {
         public static string TechniqueGroup_BowmanBingo {
             get {
                 return ResourceManager.GetString("TechniqueGroup_BowmanBingo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Braid Analysis.
+        /// </summary>
+        public static string TechniqueGroup_BraidAnalysis {
+            get {
+                return ResourceManager.GetString("TechniqueGroup_BraidAnalysis", resourceCulture);
             }
         }
         

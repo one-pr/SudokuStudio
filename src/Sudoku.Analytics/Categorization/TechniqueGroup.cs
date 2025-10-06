@@ -94,6 +94,11 @@ public enum TechniqueGroup
 	AlmostLockedCandidates,
 
 	/// <summary>
+	/// Indicates the braid analysis technique.
+	/// </summary>
+	BraidAnalysis,
+
+	/// <summary>
 	/// Indicates the firework technique.
 	/// </summary>
 	Firework,

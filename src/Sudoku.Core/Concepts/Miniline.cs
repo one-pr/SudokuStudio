@@ -49,7 +49,7 @@ public readonly record struct Miniline(in MinilineBase Base, in MinilineResult R
 		for (var i = 0; i < 6; i++)
 		{
 			ref var currentMinilineGroup = ref MinilinesGroupedByChuteIndex[i];
-			currentMinilineGroup = [[], [], [], [], [], [], [], [], []];
+			currentMinilineGroup = new CellMap[9];
 
 			var ((_, _, chuteHouses), isRow, tempIndex) = (Chutes[i], i is 0 or 1 or 2, 0);
 			foreach (var chuteHouse in chuteHouses)
