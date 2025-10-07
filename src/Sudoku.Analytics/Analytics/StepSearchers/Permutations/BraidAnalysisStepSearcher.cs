@@ -28,20 +28,6 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 		var cellsGroup = stackalloc CellMap*[3];
 		var transitionPath = stackalloc CellMap*[3];
 
-		// Construct non-given cells map.
-		var nonGivenCellsMap = (stackalloc CellMap[9]);
-		nonGivenCellsMap.Clear();
-		for (var digit = 0; digit < 9; digit++)
-		{
-			for (var cell = 0; cell < 81; cell++)
-			{
-				if (grid.GetState(cell) != CellState.Given && DigitsMap[digit].Contains(cell))
-				{
-					nonGivenCellsMap[digit] += cell;
-				}
-			}
-		}
-
 		// Iterate on each chute.
 		for (var chuteIndex = 0; chuteIndex < 6; chuteIndex++)
 		{
@@ -60,7 +46,7 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 				cellsGroup[2] = &cells3;
 
 				// Check whether every miniline has enough cells to be iterated.
-				if (!CheckWhetherEveryMinilineHasAtLeastTwoNonGivenCells(grid, cellsGroup, chuteCells, indices))
+				if (!CheckWhetherEveryMinilineHasAtLeastTwoEmptyCells(grid, cellsGroup, chuteCells, indices))
 				{
 					continue;
 				}
@@ -69,11 +55,7 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 				foreach (ref readonly var a in cells1 & 2)
 				{
 					// The digits appeared in group 'a'.
-					var digitsMask = (Mask)0;
-					foreach (var cell in a)
-					{
-						digitsMask |= grid.GetCandidates(cell);
-					}
+					var digitsMask = grid[a];
 
 					// Check whether digits are enough to be checked.
 					if (PopCount((uint)digitsMask) <= 2)
@@ -81,14 +63,16 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 						continue;
 					}
 
+					// The other unused cell in this miniline shouldn't contain same digits to be checked.
+					if ((grid.GetCandidates((chuteCells[indices[0]] & ~a)[0]) & digitsMask) != 0)
+					{
+						continue;
+					}
+
 					foreach (ref readonly var b in cells2 & 2)
 					{
 						// The digits appeared in group 'b'.
-						var bDigitsMask = (Mask)0;
-						foreach (var cell in b)
-						{
-							bDigitsMask |= grid.GetCandidates(cell);
-						}
+						var bDigitsMask = grid[b];
 
 						// Check 'a = b' on digits appeared.
 						if (digitsMask != bDigitsMask)
@@ -96,17 +80,25 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 							continue;
 						}
 
+						// The other unused cell in this miniline shouldn't contain same digits to be checked.
+						if ((grid.GetCandidates((chuteCells[indices[1]] & ~b)[0]) & digitsMask) != 0)
+						{
+							continue;
+						}
+
 						foreach (ref readonly var c in cells3 & 2)
 						{
 							// The digits appeared in group 'c'.
-							var cDigitsMask = (Mask)0;
-							foreach (var cell in c)
-							{
-								cDigitsMask |= grid.GetCandidates(cell);
-							}
+							var cDigitsMask = grid[c];
 
 							// Check 'a = b = c' on digits appeared.
 							if (digitsMask != cDigitsMask)
+							{
+								continue;
+							}
+
+							// The other unused cell in this miniline shouldn't contain same digits to be checked.
+							if ((grid.GetCandidates((chuteCells[indices[2]] & ~c)[0]) & digitsMask) != 0)
 							{
 								continue;
 							}
@@ -115,8 +107,7 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 							// and the number of digits are at least 3 (having enough digits to be checked).
 
 							// Check whether the cell group is valid or not.
-							if (!CheckWhetherAll3TransitionPathsDifferentStartAreOkay(
-								grid, digitsMask, transitionPath, cellsGroup, nonGivenCellsMap))
+							if (!CheckWhetherAll3TransitionPathsDifferentStartAreOkay(grid, digitsMask, transitionPath, cellsGroup))
 							{
 								continue;
 							}
@@ -241,21 +232,21 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 	/// <param name="chuteCells">The chute cells.</param>
 	/// <param name="indices">The chosen chute indices.</param>
 	/// <returns>A <see cref="bool"/> result.</returns>
-	private static unsafe bool CheckWhetherEveryMinilineHasAtLeastTwoNonGivenCells(
+	private static unsafe bool CheckWhetherEveryMinilineHasAtLeastTwoEmptyCells(
 		in Grid grid,
 		CellMap** cellsGroup,
 		ReadOnlySpan<CellMap> chuteCells,
 		int[] indices
 	)
 	{
-		// Check whether all 3 minilines contain at least 2 non-given cells.
+		// Check whether all 3 minilines contain at least 2 empty cells.
 		for (var i = 0; i < 3; i++)
 		{
 			ref var cellsToCheck = ref *cellsGroup[i];
 			var counter = 0;
 			foreach (var cell in chuteCells[indices[i]])
 			{
-				if (grid.GetState(cell) == CellState.Given)
+				if (grid.GetState(cell) != CellState.Empty)
 				{
 					cellsToCheck -= cell;
 					if (++counter >= 2)
@@ -275,14 +266,12 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 	/// <param name="digitsMask">The digits.</param>
 	/// <param name="transitionPath">The transition path array.</param>
 	/// <param name="cellsGroup">The cells group array.</param>
-	/// <param name="nonGivenCellsMap">Non-given cells map.</param>
 	/// <returns>A <see cref="bool"/> result.</returns>
 	private static unsafe bool CheckWhetherAll3TransitionPathsDifferentStartAreOkay(
 		in Grid grid,
 		Mask digitsMask,
 		CellMap** transitionPath,
-		CellMap** cellsGroup,
-		ReadOnlySpan<CellMap> nonGivenCellsMap
+		CellMap** cellsGroup
 	)
 	{
 		// Now, we should check whether the following statement can be true:
@@ -323,8 +312,8 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 				foreach (var digit in digitsMask)
 				{
 					// Check both cases [0] -> [1] and [1] -> [2].
-					if (!checkSubcase(in *transitionPath[0], in *transitionPath[1], digit, nonGivenCellsMap)
-						|| !checkSubcase(in *transitionPath[1], in *transitionPath[2], digit, nonGivenCellsMap))
+					if (!checkSubcase(in *transitionPath[0], in *transitionPath[1], digit)
+						|| !checkSubcase(in *transitionPath[1], in *transitionPath[2], digit))
 					{
 						// Such digit is invalid.
 						// But we expect all digits should be passed to be checked - so invalid.
@@ -347,16 +336,11 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 		return all3DifferentStartsAreValid;
 
 
-		static bool checkSubcase(
-			ref readonly CellMap cells1,
-			ref readonly CellMap cells2,
-			Digit digit,
-			ReadOnlySpan<CellMap> nonGivenCellsMap
-		)
+		static bool checkSubcase(ref readonly CellMap cells1, ref readonly CellMap cells2, Digit digit)
 		{
 			var block = cells2.SharedBlock;
 			Debug.Assert(block != FallbackConstants.@int);
-			var lastCells = HousesMap[block] & ~cells1.PeerIntersection & nonGivenCellsMap[digit];
+			var lastCells = HousesMap[block] & ~cells1.PeerIntersection & CandidatesMap[digit];
 			return (cells2 & lastCells) == lastCells;
 		}
 	}

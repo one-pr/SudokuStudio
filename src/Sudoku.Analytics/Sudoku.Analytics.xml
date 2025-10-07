@@ -8873,7 +8873,7 @@
         <member name="M:Sudoku.Analytics.StepSearchers.BraidAnalysisStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BraidAnalysisStepSearcher.CheckWhetherEveryMinilineHasAtLeastTwoNonGivenCells(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap**,System.ReadOnlySpan{Sudoku.Concepts.CellMap},System.Int32[])">
+        <member name="M:Sudoku.Analytics.StepSearchers.BraidAnalysisStepSearcher.CheckWhetherEveryMinilineHasAtLeastTwoEmptyCells(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap**,System.ReadOnlySpan{Sudoku.Concepts.CellMap},System.Int32[])">
             <summary>
             Check whether every miniline has enough cells to be iterated.
             </summary>
@@ -8883,7 +8883,7 @@
             <param name="indices">The chosen chute indices.</param>
             <returns>A <see cref="T:System.Boolean"/> result.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BraidAnalysisStepSearcher.CheckWhetherAll3TransitionPathsDifferentStartAreOkay(Sudoku.Concepts.Grid@,System.Int16,Sudoku.Concepts.CellMap**,Sudoku.Concepts.CellMap**,System.ReadOnlySpan{Sudoku.Concepts.CellMap})">
+        <member name="M:Sudoku.Analytics.StepSearchers.BraidAnalysisStepSearcher.CheckWhetherAll3TransitionPathsDifferentStartAreOkay(Sudoku.Concepts.Grid@,System.Int16,Sudoku.Concepts.CellMap**,Sudoku.Concepts.CellMap**)">
             <summary>
             Check whether all 3 transition paths with different starts are okay.
             </summary>
@@ -8891,7 +8891,6 @@
             <param name="digitsMask">The digits.</param>
             <param name="transitionPath">The transition path array.</param>
             <param name="cellsGroup">The cells group array.</param>
-            <param name="nonGivenCellsMap">Non-given cells map.</param>
             <returns>A <see cref="T:System.Boolean"/> result.</returns>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.AntiGurthSymmetricalPlacementStepSearcher">
