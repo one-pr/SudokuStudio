@@ -1,8 +1,8 @@
 ---
-description: Rank Fixing
+description: Solution to Rank Fixing
 ---
 
-# 秩的修正
+# 秩的修正方式
 
 之前我们学到了两个内容：自增和自减现象，以及 XSudo 软件对结构的秩的定义，还简单提及了一些结构的特殊属性，比如最小结构等。
 
@@ -53,7 +53,7 @@ description: Rank Fixing
 
 ### 自增修正 <a href="#auto-increment" id="auto-increment"></a>
 
-<figure><img src="../.gitbook/assets/images_0695.png" alt="" width="375"><figcaption><p>烟花数组自增修正</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0695.png" alt="" width="375"><figcaption><p>烟花数组自增修正</p></figcaption></figure>
 
 如图所示。按照 XSudo 的规定，我们需要对每一个删数进行分析。拆开后发现结构的每一个强弱区域都会被用到，所以它是最小结构。但因为通过穷举知道，实际所有的最小子结构里都只能填 5 个数字进去，但有 6 个弱区域，所以秩是按 1 处理的，故这个结构是秩为 1 的。
 
@@ -79,7 +79,7 @@ description: Rank Fixing
 
 再比如这个题。
 
-<figure><img src="../.gitbook/assets/images_0696.png" alt="" width="375"><figcaption><p>胖姨环自减修正</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0696.png" alt="" width="375"><figcaption><p>胖姨环自减修正</p></figcaption></figure>
 
 左下角数字 1 是自减现象。它出现了 4 个弱区域。根据 XSudo 的算法，因为实际上讨论的每一个删数对应的最小子结构都有 7 个弱区域，所以是使用 7 - 6 = 1 得到秩为 1 的结果的。
 
@@ -91,13 +91,13 @@ description: Rank Fixing
 
 对于有些题而言，它既不存在自增也不存在自减现象，当使用此修正方式对结构的秩进行修正后，我们可能会得到多重秩。
 
-<figure><img src="../.gitbook/assets/images_0697.png" alt="" width="375"><figcaption><p>修正成多重秩的例子</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0697.png" alt="" width="375"><figcaption><p>修正成多重秩的例子</p></figcaption></figure>
 
 如图所示。这个也是之前出现过的一个题目。这个题里一共有 6 个弱区域和 5 个强区域构成。在查验删数的时候，我们发现结构里有一个弱三元组 `r5c5`，它的占位与否可能会影响强弱区域数量的计算。标准意义上来看，它需要检查每一个删数的最小子结构，然后确保它的出现的弱区域数量都是多少个。对于此题，每一个删数都会全部用完所有的弱区域和强区域，因此其秩一定为 6 - 5 = 1。
 
 不过具体讨论就省略了，因为这里也不是讲讨论过程的，而且这个题之前也讨论过一次了。不过，为了方便你稍后理解我想说的东西，我还是把它的全部填法展示一遍。
 
-<figure><img src="../.gitbook/assets/images_0698.png" alt=""><figcaption><p>结构所有填的情况</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0698.png" alt=""><figcaption><p>结构所有填的情况</p></figcaption></figure>
 
 如图所示。可以看到，这个结构有些时候（例如第一个图）会覆盖全部 6 个弱区域；但也有时候（例如最后一个图）只会覆盖到 5 个弱区域。
 
