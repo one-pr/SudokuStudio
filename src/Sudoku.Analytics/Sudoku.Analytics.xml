@@ -9050,70 +9050,6 @@
             Checks for XZ rule.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher">
-            <summary>
-            Provides with a <b>Broken Loop</b> step searcher.
-            The step searcher will include the following techniques:
-            <list type="bullet">
-            <item>Broken Loop Type 1</item>
-            <item>Broken Loop Type 2</item>
-            <item>Broken Loop Type 3</item>
-            <item>Broken Loop Type 4</item>
-            </list>
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher.CheckType1(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,System.Int32,System.Collections.Generic.List{System.Int32})">
-            <summary>
-            Check type 1.
-            </summary>
-            <param name="context">The context.</param>
-            <param name="grid">The grid.</param>
-            <param name="guardian">The guardian.</param>
-            <param name="loop">The loop.</param>
-            <returns>The step found.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher.CheckType2(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CandidateMap@,System.Collections.Generic.List{System.Int32})">
-            <summary>
-            Check type 2.
-            </summary>
-            <param name="context">The context.</param>
-            <param name="grid">The grid.</param>
-            <param name="guardians">The guardians.</param>
-            <param name="loop">The loop.</param>
-            <returns>The step found.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher.CheckType3(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CandidateMap@,System.Collections.Generic.List{System.Int32})">
-            <summary>
-            Check type 3.
-            </summary>
-            <param name="context">The context.</param>
-            <param name="grid">The grid.</param>
-            <param name="guardians">The guardians.</param>
-            <param name="loop">The loop.</param>
-            <returns>The step found.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher.CheckType4(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CandidateMap@,System.Collections.Generic.List{System.Int32})">
-            <summary>
-            Check type 4.
-            </summary>
-            <param name="context">The context.</param>
-            <param name="grid">The grid.</param>
-            <param name="guardians">The guardians.</param>
-            <param name="loop">The loop.</param>
-            <returns>The step found.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher.GetLinkViewNodes(System.Collections.Generic.List{System.Int32},Sudoku.Concepts.CandidateMap@,System.Collections.Generic.List{Sudoku.Drawing.Nodes.CandidateViewNode}@)">
-            <summary>
-            Construct view nodes.
-            </summary>
-            <param name="loop">The loop.</param>
-            <param name="guardians">The guardians.</param>
-            <param name="candidateOffsets">Candidate view nodes.</param>
-            <returns>Link view nodes.</returns>
-        </member>
         <member name="T:Sudoku.Analytics.StepSearchers.XyzRingStepSearcher">
             <summary>
             Provides with an <b>XYZ-Ring</b> step searcher.
@@ -9228,6 +9164,70 @@
             </para>
             </remarks>
             <seealso cref="T:Sudoku.Analytics.StepSearcherHubs.ChainingStepSearcherHub" />
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher">
+            <summary>
+            Provides with a <b>Broken Loop</b> step searcher.
+            The step searcher will include the following techniques:
+            <list type="bullet">
+            <item>Broken Loop Type 1</item>
+            <item>Broken Loop Type 2</item>
+            <item>Broken Loop Type 3</item>
+            <item>Broken Loop Type 4</item>
+            </list>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher.CheckType1(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,System.Int32,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Check type 1.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="grid">The grid.</param>
+            <param name="guardian">The guardian.</param>
+            <param name="loop">The loop.</param>
+            <returns>The step found.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher.CheckType2(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CandidateMap@,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Check type 2.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="grid">The grid.</param>
+            <param name="guardians">The guardians.</param>
+            <param name="loop">The loop.</param>
+            <returns>The step found.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher.CheckType3(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CandidateMap@,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Check type 3.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="grid">The grid.</param>
+            <param name="guardians">The guardians.</param>
+            <param name="loop">The loop.</param>
+            <returns>The step found.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher.CheckType4(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CandidateMap@,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Check type 4.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="grid">The grid.</param>
+            <param name="guardians">The guardians.</param>
+            <param name="loop">The loop.</param>
+            <returns>The step found.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher.GetLinkViewNodes(System.Collections.Generic.List{System.Int32},Sudoku.Concepts.CandidateMap@,System.Collections.Generic.List{Sudoku.Drawing.Nodes.CandidateViewNode}@)">
+            <summary>
+            Construct view nodes.
+            </summary>
+            <param name="loop">The loop.</param>
+            <param name="guardians">The guardians.</param>
+            <param name="candidateOffsets">Candidate view nodes.</param>
+            <returns>Link view nodes.</returns>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.AlignedExclusionStepSearcher">
             <summary>
