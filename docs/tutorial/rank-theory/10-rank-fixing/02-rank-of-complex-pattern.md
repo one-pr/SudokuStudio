@@ -22,7 +22,7 @@ description: Rank of Complex Pattern
 
 ### 示例 <a href="#example" id="example"></a>
 
-<figure><img src="../.gitbook/assets/images_0689.png" alt="" width="375"><figcaption><p>还是熟悉的胖姨环</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0689.png" alt="" width="375"><figcaption><p>还是熟悉的胖姨环</p></figcaption></figure>
 
 如图所示。这是之前那个胖姨环。这个结构能删的数字是 2、3、5、9。不过这次按 XSudo 的定义，我们可以得到这个特殊结构的秩的结果，这在之前的定义里是无法计算的。
 
@@ -32,7 +32,7 @@ description: Rank of Complex Pattern
 
 同理，如果你要删除 `r4c5(9)`，最小子结构也是 7 个弱区域（这次 `1r6` 则不需要）。视图拆解开来是这样的：
 
-<figure><img src="../.gitbook/assets/images_0699.png" alt=""><figcaption><p>视图拆解</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0699.png" alt=""><figcaption><p>视图拆解</p></figcaption></figure>
 
 如图所示。所以，这两处删数能得到的最小子结构，两个子结构都是 6 个强区域和 7 个弱区域构成，因此这两个子结构的秩都是 1。又因为这个结构整体所有删数的对应子结构的秩全部都相同（两个都是 1），所以 1 便是这个结构的秩。
 
@@ -40,11 +40,11 @@ description: Rank of Complex Pattern
 
 什么时候结构会有多重秩呢？当删数的来源不同的时候。比如下面这个之前讲到过的鱼结构，他就是一个多重秩的结构。
 
-<figure><img src="../.gitbook/assets/images_0690.png" alt="" width="375"><figcaption><p>复杂鱼</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0690.png" alt="" width="375"><figcaption><p>复杂鱼</p></figcaption></figure>
 
 如图所示。这个鱼有 4 个删数，删数是分成了两种不同的情况。
 
-<figure><img src="../.gitbook/assets/images_0691.png" alt=""><figcaption><p>视图拆解</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0691.png" alt=""><figcaption><p>视图拆解</p></figcaption></figure>
 
 如图所示。当你要删除 `r4c7(4)` 的时候（左图），最小子结构是不需要 `1c1` 这个强区域的，因为到不了这里，结构就能矛盾；而如果你要删除 `r5c568(4)` 的其一的时候（右图），最小子结构则可同时去掉 `4b6` 弱区域和 `4c8` 强区域。
 
@@ -54,7 +54,7 @@ description: Rank of Complex Pattern
 
 当一个结构的所有强弱区域都无法去掉的时候，这种结构被定义为**最小结构**（Minimal Pattern）。从上述的秩的定义来看，一个结构是最小结构当且仅当它的所有删数造成的子结构和它自身相等（使用的强弱区域全部一样，不多不少）。例如，下面这个结构就是一个最小结构。
 
-<figure><img src="../.gitbook/assets/images_0692.png" alt="" width="375"><figcaption><p>最小结构示例</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0692.png" alt="" width="375"><figcaption><p>最小结构示例</p></figcaption></figure>
 
 如图所示。这个结构的所有删数的最小子结构均为它本身，所以它是一个最小结构。这个题还比较特殊，整个结构的秩为 0，因为它的全部删数的最小结构都需要用到全部 6 个强区域和 6 个弱区域。
 
@@ -62,7 +62,7 @@ description: Rank of Complex Pattern
 
 另外，烟花数组也是零秩结构，也是最小结构。
 
-<figure><img src="../.gitbook/assets/images_0693.png" alt="" width="375"><figcaption><p>烟花三数组也是最小结构</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0693.png" alt="" width="375"><figcaption><p>烟花三数组也是最小结构</p></figcaption></figure>
 
 如图所示。不过要注意的是，实际上这个结构是用不上 `3c9` 或者说 `3b3` 这个强区域的，实际上这个结构的强弱区域数都是 5。这一点之前是为了补齐 1、2、3 结构构成数组的设定才加上的，它是冗余的强区域。
 
@@ -78,7 +78,7 @@ description: Rank of Complex Pattern
 
 下面给各位一道题留作练习。
 
-<figure><img src="../.gitbook/assets/images_0694.png" alt="" width="375"><figcaption><p>练习题</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0694.png" alt="" width="375"><figcaption><p>练习题</p></figcaption></figure>
 
 如图所示。该结构为正确结构，请判断此结构的如下一些信息：
 

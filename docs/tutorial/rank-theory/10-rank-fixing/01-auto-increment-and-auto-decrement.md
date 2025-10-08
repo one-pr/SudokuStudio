@@ -14,7 +14,7 @@ description: Auto-increment & Auto-decrement
 
 ### 引例 <a href="#auto-increment-example" id="auto-increment-example"></a>
 
-<figure><img src="../.gitbook/assets/images_0681.png" alt="" width="375"><figcaption><p>烟花四数组</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0681.png" alt="" width="375"><figcaption><p>烟花四数组</p></figcaption></figure>
 
 如图所示。这是之前介绍过的一个例子，不过这里改用了秩的画法来呈现。
 
@@ -30,7 +30,7 @@ description: Auto-increment & Auto-decrement
 
 我们将这个题里用到的 8 个强弱区域拆开看。我们先看左下角 1 和 2 的这一部分，然后我们暂时忽略掉 `b7` 其他位置的 1 和 2（因为讲解期间用不上他们）。
 
-<figure><img src="../.gitbook/assets/images_0682.png" alt="" width="375"><figcaption><p>1 和 2 的局部结构</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0682.png" alt="" width="375"><figcaption><p>1 和 2 的局部结构</p></figcaption></figure>
 
 如图所示。这能看出来个什么呢？别急。首先我们知道，1 和 2 必须在强区域里填入一次，理应 4 个强区域会安排 4 个数字的填入，两个 1 和两个 2。
 
@@ -46,7 +46,7 @@ description: Auto-increment & Auto-decrement
 
 下面我们来看一个自增现象的实例。
 
-<figure><img src="../.gitbook/assets/images_0683.png" alt="" width="375"><figcaption><p>烟花……数对？</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0683.png" alt="" width="375"><figcaption><p>烟花……数对？</p></figcaption></figure>
 
 如图所示。这是一个**烟花数对**（Firework Pair）技巧。之前我们提到过，烟花数组要成立必须至少需要 3 个数（或者说结构能稳定出现在题目里，必须要 3 个数字及以上），但实际上两个数也可以构成，不过需要给结构动手脚加点东西才能稳定存在。
 
@@ -62,7 +62,7 @@ description: Auto-increment & Auto-decrement
 
 我们再来看一个例子。
 
-<figure><img src="../.gitbook/assets/images_0684.png" alt="" width="375"><figcaption><p>双烟花数对联立</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0684.png" alt="" width="375"><figcaption><p>双烟花数对联立</p></figcaption></figure>
 
 如图所示。这个例子和刚才那个差不多，不过是两个烟花数对要联立起来才能看。首先是 `12c1` 和 `12r9` 这一个局部结构可以得到 1 和 2 肯定会出现在要么 `r5c1` 里要么 `r9c5` 里，然后是 `12r1` 和 `12c9` 这一个局部结构可以得到 1 和 2 肯定会出现在要么 `r1c5` 里要么 `r5c9` 里。
 
@@ -78,7 +78,7 @@ description: Auto-increment & Auto-decrement
 
 ### 引例 <a href="#auto-decrement-example" id="auto-decrement-example"></a>
 
-<figure><img src="../.gitbook/assets/images_0685.png" alt="" width="375"><figcaption><p>胖姨环</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0685.png" alt="" width="375"><figcaption><p>胖姨环</p></figcaption></figure>
 
 如图所示。这是一个胖姨环。这个题一共有 6 个强区域 `6n18`、`269n5` 和 `1b7`，以及 8 个弱区域 `123r6`、`1r9`、`1c1` 和 `159c5`。
 
@@ -96,7 +96,7 @@ description: Auto-increment & Auto-decrement
 
 ### 实例 <a href="#real-example-auto-decrement" id="real-example-auto-decrement"></a>
 
-<figure><img src="../.gitbook/assets/images_0686.png" alt="" width="375"><figcaption><p>胖姨环，另一个例子</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0686.png" alt="" width="375"><figcaption><p>胖姨环，另一个例子</p></figcaption></figure>
 
 如图所示。这个题一共有 5 个强区域和 7 个弱区域。和刚才一样，数字 3 形成了自减，所以虽然标了 4 个弱区域，但实际只能填两次：其他的数字 1、5、7 则刚好最多都只能放一个，所以安排下来，1 必须填入两个才行。
 
@@ -104,7 +104,7 @@ description: Auto-increment & Auto-decrement
 
 我们再来看一个题。
 
-<figure><img src="../.gitbook/assets/images_0687.png" alt="" width="375"><figcaption><p>胖姨环，没有自减就会直接自噬</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0687.png" alt="" width="375"><figcaption><p>胖姨环，没有自减就会直接自噬</p></figcaption></figure>
 
 如图所示。这是另一个胖姨环用法。首先，这个结构用到了 7 个强区域和 7 个弱区域。数字 9 这次学乖了，`r6c9` 原本这种单元格上应该有它的出现，这次它没有。
 
@@ -114,7 +114,7 @@ description: Auto-increment & Auto-decrement
 
 最后来看一个例子。
 
-<figure><img src="../.gitbook/assets/images_0688.png" alt="" width="375"><figcaption><p>胖姨环，但是有 2 个自减和 1 个自噬</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0688.png" alt="" width="375"><figcaption><p>胖姨环，但是有 2 个自减和 1 个自噬</p></figcaption></figure>
 
 如图所示。这个题比较难数，但是有自减的知识储备之后就会比较好理解一些了。这个题一共有 9 个强区域和 13 个弱区域。其中，1、2、7 有自噬/自减现象出现，而 5、6、8 则都只能最多出现一次。
 
