@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Chaining;
+namespace Sudoku.Analytics.StepSearcherHelpers.Chaining;
 
 /// <summary>
 /// Represents a rule that make inferences (strong or weak) between two <see cref="Node"/> instances.

@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.StepSearcherHubs;
+namespace Sudoku.Analytics.StepSearcherHelpers;
 
 using CellsDistribution = Dictionary<Cell, SortedSet<Node>>;
 using HousesDistribution = Dictionary<HouseDigitIdentifier, SortedSet<Node>>;
@@ -6,7 +6,7 @@ using HousesDistribution = Dictionary<HouseDigitIdentifier, SortedSet<Node>>;
 /// <summary>
 /// Represents a type that can search for blossom loops.
 /// </summary>
-internal sealed class BlossomLoopStepSearcherHub : MultipleForcingChainsStepSearcherHubBase
+internal sealed class BlossomLoopStepSearcherHelper : ForcingChainsStepSearcherHelper
 {
 	/// <inheritdoc/>
 	public override ReadOnlyMemory<Type> SupportedStepSearcherTypes => (Type[])[typeof(BlossomLoopStepSearcher)];

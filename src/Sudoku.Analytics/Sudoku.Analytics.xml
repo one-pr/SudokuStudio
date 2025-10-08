@@ -1986,9 +1986,9 @@
         </member>
         <member name="T:Sudoku.Analytics.Caching.ChainingRulePool">
             <summary>
-            Provides with an easy way to create <see cref="T:Sudoku.Analytics.Chaining.ChainingRule"/> instances.
+            Provides with an easy way to create <see cref="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule"/> instances.
             </summary>
-            <seealso cref="T:Sudoku.Analytics.Chaining.ChainingRule"/>
+            <seealso cref="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule"/>
         </member>
         <member name="F:Sudoku.Analytics.Caching.ChainingRulePool.CachedRules">
             <summary>
@@ -2002,10 +2002,10 @@
         </member>
         <member name="M:Sudoku.Analytics.Caching.ChainingRulePool.TryCreate(Sudoku.Construction.Components.LinkType)">
             <summary>
-            Creates a <see cref="T:Sudoku.Analytics.Chaining.ChainingRule"/> instance via the specified link type.
+            Creates a <see cref="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule"/> instance via the specified link type.
             </summary>
             <param name="linkType">The link type.</param>
-            <returns>The created <see cref="T:Sudoku.Analytics.Chaining.ChainingRule"/> instance created.</returns>
+            <returns>The created <see cref="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule"/> instance created.</returns>
         </member>
         <member name="T:Sudoku.Analytics.Caching.MemoryCached">
             <summary>
@@ -2135,7 +2135,7 @@
             <param name="g">The grid.</param>
             <param name="s">The solution of <paramref name="g"/>.</param>
         </member>
-        <member name="M:Sudoku.Analytics.Caching.MemoryCached.InitializeLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkType,Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Analytics.Chaining.ChainingRuleCollection@)">
+        <member name="M:Sudoku.Analytics.Caching.MemoryCached.InitializeLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkType,Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection@)">
             <summary>
             Try to collect strong and weak links appeared in a grid.
             If all links are "up-to-date" (i.e. meaning there's no extra links to be checked), this method will do nothing,
@@ -2144,7 +2144,7 @@
             <param name="grid">The grid.</param>
             <param name="linkTypes">The link types to be checked.</param>
             <param name="options">The options used by step searchers.</param>
-            <param name="rules">The <see cref="T:Sudoku.Analytics.Chaining.ChainingRule"/> instance that collects with strong and weak links if worth.</param>
+            <param name="rules">The <see cref="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule"/> instance that collects with strong and weak links if worth.</param>
         </member>
         <member name="T:Sudoku.Analytics.Caching.MemoryCachedAttribute">
              <summary>
@@ -2242,318 +2242,6 @@
         </member>
         <member name="M:Sudoku.Analytics.CellMapOrCandidateMapExtensions.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.op_Modulus(Sudoku.Concepts.CandidateMap@,Sudoku.Concepts.CandidateMap@)">
             <inheritdoc cref="M:Sudoku.Analytics.CellMapOrCandidateMapExtensions.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.op_Modulus(Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@)"/>
-        </member>
-        <member name="T:Sudoku.Analytics.Chaining.ChainingRule">
-            <summary>
-            Represents a rule that make inferences (strong or weak) between two <see cref="T:Sudoku.Construction.Components.Node"/> instances.
-            </summary>
-            <seealso cref="T:Sudoku.Construction.Components.Node"/>
-        </member>
-        <member name="F:Sudoku.Analytics.Chaining.ChainingRule.ElementaryLinkTypes">
-            <summary>
-            Indicates the elementary link types.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Chaining.ChainingRule.AdvancedLinkTypes">
-            <summary>
-            Indicates the advanced link types.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.ChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <summary>
-            Collects for both strong links and weak links appeared in <paramref name="grid"/>,
-            and insert all found links into <paramref name="strongLinks"/> and <paramref name="weakLinks"/> respectively.
-            </summary>
-            <param name="grid">Indicates the grid used.</param>
-            <param name="strongLinks">Indicates the strong links.</param>
-            <param name="weakLinks">Indicates the weak links.</param>
-            <param name="options">Indicates the options.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.ChainingRule.CollectOnNodes(Sudoku.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node},Sudoku.Analytics.Configuration.StepGathererOptions,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node}@)">
-            <summary>
-            Collects nodes that is supposed to "on" from the current node supposed to "off", storing them into <paramref name="nodes"/>.
-            </summary>
-            <param name="currentNode">Indicates the current node.</param>
-            <param name="grid">Indicates the grid.</param>
-            <param name="originalGrid">Indicates the original grid.</param>
-            <param name="nodesSupposedOff">Indicates the nodes that are supposed to "off".</param>
-            <param name="options">Indicates the options.</param>
-            <param name="nodes">The nodes collected.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.ChainingRule.CollectOffNodes(Sudoku.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node}@)">
-            <summary>
-            Collects nodes that is supposed to "off" from the current node supposed to "on", storing them into <paramref name="nodes"/>.
-            </summary>
-            <param name="currentNode">Indicates the current node.</param>
-            <param name="grid">Indicates the grid.</param>
-            <param name="options">Indicates the options.</param>
-            <param name="nodes">The nodes collected.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.ChainingRule.GetViewNodes(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Chain,Sudoku.Drawing.View,Sudoku.Analytics.Chaining.ProcessedViewNodeMap,System.ReadOnlySpan{Sudoku.Drawing.ViewNode}@)">
-            <summary>
-            Collects for extra view nodes for the pattern.
-            This method will be useful in advanced chaining rules such as ALS and AUR extra maps checking.
-            </summary>
-            <param name="grid">Indicates the grid used.</param>
-            <param name="pattern">Indicates the chain pattern.</param>
-            <param name="view">Indicates the view.</param>
-            <param name="processedViewNodesMap">
-            Provides an interaction map that stores processed view nodes and its bound color identifier.
-            </param>
-            <param name="producedViewNodes">Indicates the produced view nodes.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.ChainingRule.GetLoopConclusions(Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
-            <summary>
-            Try to find extra eliminations that can only be created inside a Grouped Continuous Nice Loop.
-            This method will be useful in advanced chaining rules such as ALS, AHS and AUR eliminations checking.
-            </summary>
-            <param name="grid">Indicates the grid.</param>
-            <param name="links">Indicates the links.</param>
-            <param name="conclusions">Indicates the conclusions.</param>
-            <returns>A list of found conclusions.</returns>
-        </member>
-        <member name="T:Sudoku.Analytics.Chaining.ChainingRuleCollection">
-            <summary>
-            Represents a list of <see cref="T:Sudoku.Analytics.Chaining.ChainingRule"/> instances.
-            </summary>
-            <param name="rules"><inheritdoc cref="P:Sudoku.Analytics.Chaining.ChainingRuleCollection.Rules" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.ChainingRuleCollection.#ctor(System.ReadOnlySpan{Sudoku.Analytics.Chaining.ChainingRule})">
-            <summary>
-            Represents a list of <see cref="T:Sudoku.Analytics.Chaining.ChainingRule"/> instances.
-            </summary>
-            <param name="rules"><inheritdoc cref="P:Sudoku.Analytics.Chaining.ChainingRuleCollection.Rules" path="/summary"/></param>
-        </member>
-        <member name="P:Sudoku.Analytics.Chaining.ChainingRuleCollection.Length">
-            <summary>
-            Indicates the length of rules.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Chaining.ChainingRuleCollection.Rules">
-            <summary>
-            Indicates the rules.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Chaining.ChainingRuleCollection.Item(System.Int32)">
-            <summary>
-            Gets a <see cref="T:Sudoku.Analytics.Chaining.ChainingRule"/> instance at the specified index.
-            </summary>
-            <param name="index">The desired index.</param>
-            <returns>A <see cref="T:Sudoku.Analytics.Chaining.ChainingRule"/> instance returned.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.ChainingRuleCollection.GetEnumerator">
-            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.ChainingRuleCollection.ToArray">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.ChainingRuleCollection.System#Collections#IEnumerable#GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.ChainingRuleCollection.System#Collections#Generic#IEnumerable{Sudoku#Analytics#Chaining#ChainingRule}#GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.ChainingRuleCollection.Create(System.ReadOnlySpan{Sudoku.Analytics.Chaining.ChainingRule})">
-            <summary>
-            Creates a <see cref="T:Sudoku.Analytics.Chaining.ChainingRuleCollection"/> instance via a list of <see cref="T:Sudoku.Analytics.Chaining.ChainingRule"/> instances.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>A <see cref="T:Sudoku.Analytics.Chaining.ChainingRuleCollection"/> instance.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.ChainingRuleCollection.op_Implicit(System.ReadOnlySpan{Sudoku.Analytics.Chaining.ChainingRule})~Sudoku.Analytics.Chaining.ChainingRuleCollection">
-            <summary>
-            Initializes a <see cref="T:Sudoku.Analytics.Chaining.ChainingRuleCollection"/> instance.
-            </summary>
-            <param name="rules">The rules.</param>
-        </member>
-        <member name="T:Sudoku.Analytics.Chaining.ProcessedViewNodeMap">
-            <summary>
-            Represents a processed view nodes map.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Chaining.ProcessedViewNodeMap.MaxKeyInAlmostLockedSet">
-            <summary>
-            Indicates the maximal key in ALS set.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Chaining.ProcessedViewNodeMap.MaxKeyInRectangle">
-            <summary>
-            Indicates the maximal key in rectangle set.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.ProcessedViewNodeMap.ContainsCell(System.Int32,Sudoku.Drawing.WellKnownColorIdentifierKind@)">
-            <summary>
-            Determines whether the specified cell is stored in the table; if so, return the corresponding key.
-            </summary>
-            <param name="cell">The cell.</param>
-            <param name="identifierKind">The cooresponding identifier kind.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.ProcessedViewNodeMap.ContainsCandidate(System.Int32,Sudoku.Drawing.WellKnownColorIdentifierKind@)">
-            <summary>
-            Determines whether the specified candidate is stored in the table; if so, return the corresponding key.
-            </summary>
-            <param name="candidate">The candidate.</param>
-            <param name="identifierKind">The cooresponding identifier kind.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="T:Sudoku.Analytics.Chaining.Rules.AlmostLockedSetsChainingRule">
-            <summary>
-            Represents a chaining rule on ALS rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.AlmostLockedSets"/>).
-            </summary>
-            <seealso cref="F:Sudoku.Construction.Components.LinkType.AlmostLockedSets"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.AlmostLockedSetsChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.AlmostLockedSetsChainingRule.GetViewNodes(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Chain,Sudoku.Drawing.View,Sudoku.Analytics.Chaining.ProcessedViewNodeMap,System.ReadOnlySpan{Sudoku.Drawing.ViewNode}@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.AlmostLockedSetsChainingRule.GetLoopConclusions(Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Chaining.Rules.AvoidableRectangleChainingRule">
-            <summary>
-            Represents a chaining rule on AAR rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.AvoidableRectangle"/>).
-            </summary>
-            <seealso cref="F:Sudoku.Construction.Components.LinkType.AvoidableRectangle"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.AvoidableRectangleChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.AvoidableRectangleChainingRule.GetViewNodes(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Chain,Sudoku.Drawing.View,Sudoku.Analytics.Chaining.ProcessedViewNodeMap,System.ReadOnlySpan{Sudoku.Drawing.ViewNode}@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Chaining.Rules.KrakenNormalFishChainingRule">
-            <summary>
-            Represents a chaining rule on normal fish rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.KrakenNormalFish"/>).
-            </summary>
-            <seealso cref="F:Sudoku.Construction.Components.LinkType.KrakenNormalFish"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.KrakenNormalFishChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.KrakenNormalFishChainingRule.GetViewNodes(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Chain,Sudoku.Drawing.View,Sudoku.Analytics.Chaining.ProcessedViewNodeMap,System.ReadOnlySpan{Sudoku.Drawing.ViewNode}@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.KrakenNormalFishChainingRule.GetLoopConclusions(Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Chaining.Rules.LockedCandidatesChainingRule">
-            <summary>
-            Represents a chaining rule on locked candidates (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.LockedCandidates"/>).
-            </summary>
-            <seealso cref="F:Sudoku.Construction.Components.LinkType.LockedCandidates"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.LockedCandidatesChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.LockedCandidatesChainingRule.GetLoopConclusions(Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Chaining.Rules.UniqueRectangleChainingRule">
-            <summary>
-            Represents a chaining rule on AUR rule.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.UniqueRectangleChainingRule.GetViewNodes(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Chain,Sudoku.Drawing.View,Sudoku.Analytics.Chaining.ProcessedViewNodeMap,System.ReadOnlySpan{Sudoku.Drawing.ViewNode}@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Chaining.Rules.UniqueRectangleDifferentDigitChainingRule">
-            <summary>
-            Represents a chaining rule on AUR rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_DifferentDigit"/>).
-            </summary>
-            <seealso cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_DifferentDigit"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.UniqueRectangleDifferentDigitChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.UniqueRectangleDifferentDigitChainingRule.GetLoopConclusions(Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Chaining.Rules.UniqueRectangleDifferentDigitWeakChainingRule">
-            <summary>
-            Represents a chaining rule on AUR rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_DifferentDigitWeak"/>).
-            </summary>
-            <seealso cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_DifferentDigitWeak"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.UniqueRectangleDifferentDigitWeakChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Chaining.Rules.UniqueRectangleDoubleSideExternalChainingRule">
-            <summary>
-            Represents a chaining rule on AUR rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_DoubleSideExternal"/>).
-            </summary>
-            <seealso cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_DoubleSideExternal"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.UniqueRectangleDoubleSideExternalChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Chaining.Rules.UniqueRectangleSameDigitChainingRule">
-            <summary>
-            Represents a chaining rule on AUR rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_SameDigit"/>).
-            </summary>
-            <seealso cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_SameDigit"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.UniqueRectangleSameDigitChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.UniqueRectangleSameDigitChainingRule.GetLoopConclusions(Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Chaining.Rules.UniqueRectangleSingleSideExternalChainingRule">
-            <summary>
-            Represents a chaining rule on AUR rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_SingleSideExternal"/>).
-            </summary>
-            <seealso cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_SingleSideExternal"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.UniqueRectangleSingleSideExternalChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.UniqueRectangleSingleSideExternalChainingRule.GetLoopConclusions(Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Chaining.Rules.XChainingRule">
-            <summary>
-            Represents a chaining rule on X rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.SingleDigit"/>).
-            </summary>
-            <seealso cref="F:Sudoku.Construction.Components.LinkType.SingleDigit"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.XChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.XChainingRule.CollectOnNodes(Sudoku.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node},Sudoku.Analytics.Configuration.StepGathererOptions,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node}@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.XChainingRule.CollectOffNodes(Sudoku.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node}@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Chaining.Rules.XyzWingChainingRule">
-            <summary>
-            Represents a chaining rule on XYZ-Wing rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.XyzWing"/>).
-            </summary>
-            <seealso cref="F:Sudoku.Construction.Components.LinkType.XyzWing"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.XyzWingChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.XyzWingChainingRule.GetViewNodes(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Chain,Sudoku.Drawing.View,Sudoku.Analytics.Chaining.ProcessedViewNodeMap,System.ReadOnlySpan{Sudoku.Drawing.ViewNode}@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Chaining.Rules.YChainingRule">
-            <summary>
-            Represents a chaining rule on Y rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.SingleCell"/>).
-            </summary>
-            <seealso cref="F:Sudoku.Construction.Components.LinkType.SingleCell"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.YChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.YChainingRule.CollectOnNodes(Sudoku.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node},Sudoku.Analytics.Configuration.StepGathererOptions,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node}@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Chaining.Rules.YChainingRule.CollectOffNodes(Sudoku.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node}@)">
-            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Collector">
             <summary>
@@ -5637,15 +5325,15 @@
             <param name="type">The type of the step searcher.</param>
             <returns>An array of <see cref="T:Sudoku.Analytics.StepSearcher"/> instances found.</returns>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearcherHubs.BivalueUniversalGraveForcingChainsStepSearcherHub">
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.BivalueUniversalGraveForcingChainsStepSearcherHelper">
             <summary>
             Represents a type that can search for bivalue universal grave forcing chains.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.StepSearcherHubs.BivalueUniversalGraveForcingChainsStepSearcherHub.SupportedStepSearcherTypes">
+        <member name="P:Sudoku.Analytics.StepSearcherHelpers.BivalueUniversalGraveForcingChainsStepSearcherHelper.SupportedStepSearcherTypes">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.BivalueUniversalGraveForcingChainsStepSearcherHub.CollectCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.ChainStep},System.Boolean,System.Boolean)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.BivalueUniversalGraveForcingChainsStepSearcherHelper.CollectCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.ChainStep},System.Boolean,System.Boolean)">
             <summary>
             The collect method called by rectangle forcing chains step searcher.
             </summary>
@@ -5655,7 +5343,7 @@
             <param name="onlyFindFinnedChain">Indicates whether the method only finds for (grouped) finned chains.</param>
             <returns>The first found step.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.BivalueUniversalGraveForcingChainsStepSearcherHub.CollectBivalueUniversalGraveMultipleForcingChains(Sudoku.Concepts.Grid@,System.Boolean)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.BivalueUniversalGraveForcingChainsStepSearcherHelper.CollectBivalueUniversalGraveMultipleForcingChains(Sudoku.Concepts.Grid@,System.Boolean)">
             <summary>
             Collect all multiple forcing chains on applying to a bi-value universal grave, appeared in a grid.
             </summary>
@@ -5663,15 +5351,15 @@
             <param name="onlyFindOne">Indicates whether the method only find one valid chain.</param>
             <returns>All possible multiple forcing chain instances.</returns>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearcherHubs.BlossomLoopStepSearcherHub">
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.BlossomLoopStepSearcherHelper">
             <summary>
             Represents a type that can search for blossom loops.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.StepSearcherHubs.BlossomLoopStepSearcherHub.SupportedStepSearcherTypes">
+        <member name="P:Sudoku.Analytics.StepSearcherHelpers.BlossomLoopStepSearcherHelper.SupportedStepSearcherTypes">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.BlossomLoopStepSearcherHub.CollectCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.BlossomLoopStep})">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.BlossomLoopStepSearcherHelper.CollectCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.BlossomLoopStep})">
             <summary>
             The collect method called by blossom loop step searchers.
             </summary>
@@ -5679,7 +5367,7 @@
             <param name="accumulator">The instance that temporarily records for chain steps.</param>
             <returns>The first found step.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.BlossomLoopStepSearcherHub.CollectBlossomLoops(Sudoku.Concepts.Grid@,System.Boolean,Sudoku.Analytics.Chaining.ChainingRuleCollection)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.BlossomLoopStepSearcherHelper.CollectBlossomLoops(Sudoku.Concepts.Grid@,System.Boolean,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection)">
             <summary>
             Collect all blossom loops appeared in a grid.
             </summary>
@@ -5688,7 +5376,7 @@
             <param name="supportedRules">Indicates all supported rules to be used by checking eliminations.</param>
             <returns>All possible multiple forcing chain instances.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.BlossomLoopStepSearcherHub.CollectBlossomConclusions(Sudoku.Concepts.Grid@,System.Collections.Generic.List{Sudoku.Construction.Components.Link},Sudoku.Concepts.CandidateMap@,Sudoku.Analytics.Chaining.ChainingRuleCollection)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.BlossomLoopStepSearcherHelper.CollectBlossomConclusions(Sudoku.Concepts.Grid@,System.Collections.Generic.List{Sudoku.Construction.Components.Link},Sudoku.Concepts.CandidateMap@,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection)">
             <summary>
             The backing method to collect blossom conclusions.
             </summary>
@@ -5698,21 +5386,333 @@
             <param name="supportedRules">All supported rules used.</param>
             <returns>Found conclusions.</returns>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearcherHubs.ChainingStepSearcherHub">
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.ChainingStepSearcherHelper">
             <summary>
             Represents a type that can search for chains with general rules, which can be called by multiple different step searcher types.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearcherHubs.ChainStepSearcherHub">
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule">
+            <summary>
+            Represents a rule that make inferences (strong or weak) between two <see cref="T:Sudoku.Construction.Components.Node"/> instances.
+            </summary>
+            <seealso cref="T:Sudoku.Construction.Components.Node"/>
+        </member>
+        <member name="F:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule.ElementaryLinkTypes">
+            <summary>
+            Indicates the elementary link types.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule.AdvancedLinkTypes">
+            <summary>
+            Indicates the advanced link types.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <summary>
+            Collects for both strong links and weak links appeared in <paramref name="grid"/>,
+            and insert all found links into <paramref name="strongLinks"/> and <paramref name="weakLinks"/> respectively.
+            </summary>
+            <param name="grid">Indicates the grid used.</param>
+            <param name="strongLinks">Indicates the strong links.</param>
+            <param name="weakLinks">Indicates the weak links.</param>
+            <param name="options">Indicates the options.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule.CollectOnNodes(Sudoku.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node},Sudoku.Analytics.Configuration.StepGathererOptions,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node}@)">
+            <summary>
+            Collects nodes that is supposed to "on" from the current node supposed to "off", storing them into <paramref name="nodes"/>.
+            </summary>
+            <param name="currentNode">Indicates the current node.</param>
+            <param name="grid">Indicates the grid.</param>
+            <param name="originalGrid">Indicates the original grid.</param>
+            <param name="nodesSupposedOff">Indicates the nodes that are supposed to "off".</param>
+            <param name="options">Indicates the options.</param>
+            <param name="nodes">The nodes collected.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule.CollectOffNodes(Sudoku.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node}@)">
+            <summary>
+            Collects nodes that is supposed to "off" from the current node supposed to "on", storing them into <paramref name="nodes"/>.
+            </summary>
+            <param name="currentNode">Indicates the current node.</param>
+            <param name="grid">Indicates the grid.</param>
+            <param name="options">Indicates the options.</param>
+            <param name="nodes">The nodes collected.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule.GetViewNodes(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Chain,Sudoku.Drawing.View,Sudoku.Analytics.StepSearcherHelpers.Chaining.ProcessedViewNodeMap,System.ReadOnlySpan{Sudoku.Drawing.ViewNode}@)">
+            <summary>
+            Collects for extra view nodes for the pattern.
+            This method will be useful in advanced chaining rules such as ALS and AUR extra maps checking.
+            </summary>
+            <param name="grid">Indicates the grid used.</param>
+            <param name="pattern">Indicates the chain pattern.</param>
+            <param name="view">Indicates the view.</param>
+            <param name="processedViewNodesMap">
+            Provides an interaction map that stores processed view nodes and its bound color identifier.
+            </param>
+            <param name="producedViewNodes">Indicates the produced view nodes.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule.GetLoopConclusions(Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+            <summary>
+            Try to find extra eliminations that can only be created inside a Grouped Continuous Nice Loop.
+            This method will be useful in advanced chaining rules such as ALS, AHS and AUR eliminations checking.
+            </summary>
+            <param name="grid">Indicates the grid.</param>
+            <param name="links">Indicates the links.</param>
+            <param name="conclusions">Indicates the conclusions.</param>
+            <returns>A list of found conclusions.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection">
+            <summary>
+            Represents a list of <see cref="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule"/> instances.
+            </summary>
+            <param name="rules"><inheritdoc cref="P:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection.Rules" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection.#ctor(System.ReadOnlySpan{Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule})">
+            <summary>
+            Represents a list of <see cref="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule"/> instances.
+            </summary>
+            <param name="rules"><inheritdoc cref="P:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection.Rules" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection.Length">
+            <summary>
+            Indicates the length of rules.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection.Rules">
+            <summary>
+            Indicates the rules.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection.Item(System.Int32)">
+            <summary>
+            Gets a <see cref="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule"/> instance at the specified index.
+            </summary>
+            <param name="index">The desired index.</param>
+            <returns>A <see cref="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule"/> instance returned.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection.GetEnumerator">
+            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection.ToArray">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection.System#Collections#Generic#IEnumerable{Sudoku#Analytics#StepSearcherHelpers#Chaining#ChainingRule}#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection.Create(System.ReadOnlySpan{Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule})">
+            <summary>
+            Creates a <see cref="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection"/> instance via a list of <see cref="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule"/> instances.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A <see cref="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection.op_Implicit(System.ReadOnlySpan{Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule})~Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection"/> instance.
+            </summary>
+            <param name="rules">The rules.</param>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ProcessedViewNodeMap">
+            <summary>
+            Represents a processed view nodes map.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.StepSearcherHelpers.Chaining.ProcessedViewNodeMap.MaxKeyInAlmostLockedSet">
+            <summary>
+            Indicates the maximal key in ALS set.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.StepSearcherHelpers.Chaining.ProcessedViewNodeMap.MaxKeyInRectangle">
+            <summary>
+            Indicates the maximal key in rectangle set.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ProcessedViewNodeMap.ContainsCell(System.Int32,Sudoku.Drawing.WellKnownColorIdentifierKind@)">
+            <summary>
+            Determines whether the specified cell is stored in the table; if so, return the corresponding key.
+            </summary>
+            <param name="cell">The cell.</param>
+            <param name="identifierKind">The cooresponding identifier kind.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ProcessedViewNodeMap.ContainsCandidate(System.Int32,Sudoku.Drawing.WellKnownColorIdentifierKind@)">
+            <summary>
+            Determines whether the specified candidate is stored in the table; if so, return the corresponding key.
+            </summary>
+            <param name="candidate">The candidate.</param>
+            <param name="identifierKind">The cooresponding identifier kind.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.AlmostLockedSetsChainingRule">
+            <summary>
+            Represents a chaining rule on ALS rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.AlmostLockedSets"/>).
+            </summary>
+            <seealso cref="F:Sudoku.Construction.Components.LinkType.AlmostLockedSets"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.AlmostLockedSetsChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.AlmostLockedSetsChainingRule.GetViewNodes(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Chain,Sudoku.Drawing.View,Sudoku.Analytics.StepSearcherHelpers.Chaining.ProcessedViewNodeMap,System.ReadOnlySpan{Sudoku.Drawing.ViewNode}@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.AlmostLockedSetsChainingRule.GetLoopConclusions(Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.AvoidableRectangleChainingRule">
+            <summary>
+            Represents a chaining rule on AAR rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.AvoidableRectangle"/>).
+            </summary>
+            <seealso cref="F:Sudoku.Construction.Components.LinkType.AvoidableRectangle"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.AvoidableRectangleChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.AvoidableRectangleChainingRule.GetViewNodes(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Chain,Sudoku.Drawing.View,Sudoku.Analytics.StepSearcherHelpers.Chaining.ProcessedViewNodeMap,System.ReadOnlySpan{Sudoku.Drawing.ViewNode}@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.KrakenNormalFishChainingRule">
+            <summary>
+            Represents a chaining rule on normal fish rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.KrakenNormalFish"/>).
+            </summary>
+            <seealso cref="F:Sudoku.Construction.Components.LinkType.KrakenNormalFish"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.KrakenNormalFishChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.KrakenNormalFishChainingRule.GetViewNodes(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Chain,Sudoku.Drawing.View,Sudoku.Analytics.StepSearcherHelpers.Chaining.ProcessedViewNodeMap,System.ReadOnlySpan{Sudoku.Drawing.ViewNode}@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.KrakenNormalFishChainingRule.GetLoopConclusions(Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.LockedCandidatesChainingRule">
+            <summary>
+            Represents a chaining rule on locked candidates (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.LockedCandidates"/>).
+            </summary>
+            <seealso cref="F:Sudoku.Construction.Components.LinkType.LockedCandidates"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.LockedCandidatesChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.LockedCandidatesChainingRule.GetLoopConclusions(Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleChainingRule">
+            <summary>
+            Represents a chaining rule on AUR rule.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleChainingRule.GetViewNodes(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Chain,Sudoku.Drawing.View,Sudoku.Analytics.StepSearcherHelpers.Chaining.ProcessedViewNodeMap,System.ReadOnlySpan{Sudoku.Drawing.ViewNode}@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleDifferentDigitChainingRule">
+            <summary>
+            Represents a chaining rule on AUR rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_DifferentDigit"/>).
+            </summary>
+            <seealso cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_DifferentDigit"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleDifferentDigitChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleDifferentDigitChainingRule.GetLoopConclusions(Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleDifferentDigitWeakChainingRule">
+            <summary>
+            Represents a chaining rule on AUR rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_DifferentDigitWeak"/>).
+            </summary>
+            <seealso cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_DifferentDigitWeak"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleDifferentDigitWeakChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleDoubleSideExternalChainingRule">
+            <summary>
+            Represents a chaining rule on AUR rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_DoubleSideExternal"/>).
+            </summary>
+            <seealso cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_DoubleSideExternal"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleDoubleSideExternalChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleSameDigitChainingRule">
+            <summary>
+            Represents a chaining rule on AUR rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_SameDigit"/>).
+            </summary>
+            <seealso cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_SameDigit"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleSameDigitChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleSameDigitChainingRule.GetLoopConclusions(Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleSingleSideExternalChainingRule">
+            <summary>
+            Represents a chaining rule on AUR rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_SingleSideExternal"/>).
+            </summary>
+            <seealso cref="F:Sudoku.Construction.Components.LinkType.UniqueRectangle_SingleSideExternal"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleSingleSideExternalChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleSingleSideExternalChainingRule.GetLoopConclusions(Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.XChainingRule">
+            <summary>
+            Represents a chaining rule on X rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.SingleDigit"/>).
+            </summary>
+            <seealso cref="F:Sudoku.Construction.Components.LinkType.SingleDigit"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.XChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.XChainingRule.CollectOnNodes(Sudoku.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node},Sudoku.Analytics.Configuration.StepGathererOptions,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node}@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.XChainingRule.CollectOffNodes(Sudoku.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node}@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.XyzWingChainingRule">
+            <summary>
+            Represents a chaining rule on XYZ-Wing rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.XyzWing"/>).
+            </summary>
+            <seealso cref="F:Sudoku.Construction.Components.LinkType.XyzWing"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.XyzWingChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.XyzWingChainingRule.GetViewNodes(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Chain,Sudoku.Drawing.View,Sudoku.Analytics.StepSearcherHelpers.Chaining.ProcessedViewNodeMap,System.ReadOnlySpan{Sudoku.Drawing.ViewNode}@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.YChainingRule">
+            <summary>
+            Represents a chaining rule on Y rule (i.e. <see cref="F:Sudoku.Construction.Components.LinkType.SingleCell"/>).
+            </summary>
+            <seealso cref="F:Sudoku.Construction.Components.LinkType.SingleCell"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.YChainingRule.GetLinks(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.YChainingRule.CollectOnNodes(Sudoku.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node},Sudoku.Analytics.Configuration.StepGathererOptions,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node}@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.YChainingRule.CollectOffNodes(Sudoku.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Analytics.Configuration.StepGathererOptions,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node}@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.ChainStepSearcherHelper">
             <summary>
             Represents a type that can search for chains.
             This type can be used for searching both normal chains and grouped chains.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.StepSearcherHubs.ChainStepSearcherHub.SupportedStepSearcherTypes">
+        <member name="P:Sudoku.Analytics.StepSearcherHelpers.ChainStepSearcherHelper.SupportedStepSearcherTypes">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.ChainStepSearcherHub.CollectCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.NormalChainStep},System.Boolean,System.Boolean)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.ChainStepSearcherHelper.CollectCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.NormalChainStep},System.Boolean,System.Boolean)">
             <summary>
             The collect method called by chain step searchers.
             </summary>
@@ -5724,7 +5724,7 @@
             </param>
             <returns>The first found step.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.ChainStepSearcherHub.CollectChainConclusions(Sudoku.Construction.Components.NamedChain,Sudoku.Concepts.Grid@,Sudoku.Analytics.Chaining.ChainingRuleCollection)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.ChainStepSearcherHelper.CollectChainConclusions(Sudoku.Construction.Components.NamedChain,Sudoku.Concepts.Grid@,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection)">
             <summary>
             The backing method to collect chain conclusions.
             </summary>
@@ -5733,7 +5733,7 @@
             <param name="supportedRules">All supported rules used.</param>
             <returns>Found conclusions.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.ChainStepSearcherHub.CollectChains(Sudoku.Concepts.Grid@,System.Boolean,System.Boolean,System.Boolean)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.ChainStepSearcherHelper.CollectChains(Sudoku.Concepts.Grid@,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
             Collect all chains and loops appeared in a grid.
             </summary>
@@ -5776,7 +5776,7 @@
             </list>
             </remarks>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.ChainStepSearcherHub.FindChains(Sudoku.Construction.Components.Node,Sudoku.Concepts.Grid@,System.Boolean,System.Collections.Generic.SortedSet{Sudoku.Construction.Components.NamedChain})">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.ChainStepSearcherHelper.FindChains(Sudoku.Construction.Components.Node,Sudoku.Concepts.Grid@,System.Boolean,System.Collections.Generic.SortedSet{Sudoku.Construction.Components.NamedChain})">
             <summary>
             <para>
             Find all possible <see cref="T:Sudoku.Construction.Components.NamedChain"/> patterns starting with the current node,
@@ -5797,15 +5797,15 @@
             <returns>The first found <see cref="T:Sudoku.Construction.Components.NamedChain"/> pattern.</returns>
             <seealso cref="T:Sudoku.Construction.Components.NamedChain"/>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearcherHubs.DynamicForcingChainsStepSearcherHub">
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.DynamicForcingChainsStepSearcherHelper">
             <summary>
             Represents a type that can search for dynamic multiple forcing chains.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.StepSearcherHubs.DynamicForcingChainsStepSearcherHub.SupportedStepSearcherTypes">
+        <member name="P:Sudoku.Analytics.StepSearcherHelpers.DynamicForcingChainsStepSearcherHelper.SupportedStepSearcherTypes">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.DynamicForcingChainsStepSearcherHub.CollectCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.List{Sudoku.Analytics.Steps.PatternBasedChainStep})">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.DynamicForcingChainsStepSearcherHelper.CollectCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.List{Sudoku.Analytics.Steps.PatternBasedChainStep})">
             <summary>
             The collect method called by dynamic forcing chains step searchers.
             </summary>
@@ -5813,7 +5813,7 @@
             <param name="accumulator">The instance that temporarily records for chain steps.</param>
             <returns>The first found step.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.DynamicForcingChainsStepSearcherHub.CollectDynamicForcingChains(Sudoku.Concepts.Grid@,Sudoku.Analytics.StepAnalysisContext@,Sudoku.Analytics.Chaining.ChainingRuleCollection)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.DynamicForcingChainsStepSearcherHelper.CollectDynamicForcingChains(Sudoku.Concepts.Grid@,Sudoku.Analytics.StepAnalysisContext@,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection)">
             <summary>
             Collect all dynamic multiple forcing chains and dynamic binary forcing chains appeared in a grid.
             </summary>
@@ -5822,7 +5822,7 @@
             <param name="chainingRules">Indicates the chaining rules used.</param>
             <returns>All possible dynamic forcing chains instances.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.DynamicForcingChainsStepSearcherHub.FindDynamicForcingChains(Sudoku.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Analytics.Chaining.ChainingRuleCollection,Sudoku.Analytics.Configuration.StepGathererOptions,System.Nullable{System.ValueTuple{Sudoku.Construction.Components.Node,Sudoku.Construction.Components.Node}}@)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.DynamicForcingChainsStepSearcherHelper.FindDynamicForcingChains(Sudoku.Construction.Components.Node,Sudoku.Concepts.Grid@,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection,Sudoku.Analytics.Configuration.StepGathererOptions,System.Nullable{System.ValueTuple{Sudoku.Construction.Components.Node,Sudoku.Construction.Components.Node}}@)">
             <summary>
             Finds a list of nodes that can implicitly connects to current node via a dynamic forcing chain.
             This method won't use cached dictionary.
@@ -5853,7 +5853,7 @@
             <seealso cref="T:Sudoku.Construction.Components.Node"/>
             <seealso cref="T:Sudoku.Construction.Components.ForcingChainsInfo"/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.DynamicForcingChainsStepSearcherHub.GetNodesFromOnToOff(Sudoku.Construction.Components.Node,Sudoku.Analytics.Chaining.ChainingRuleCollection,Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Concepts.Grid@)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.DynamicForcingChainsStepSearcherHelper.GetNodesFromOnToOff(Sudoku.Construction.Components.Node,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection,Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Concepts.Grid@)">
             <summary>
             Try to find nodes that will be considered as "off" state if the specified node is "on" state.
             </summary>
@@ -5868,7 +5868,7 @@
             </i></remarks>
             <seealso cref="T:System.Diagnostics.CodeAnalysis.InterceptorMethodCallerAttribute"/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.DynamicForcingChainsStepSearcherHub.GetNodesFromOffToOn(Sudoku.Construction.Components.Node,Sudoku.Analytics.Chaining.ChainingRuleCollection,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node},Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.DynamicForcingChainsStepSearcherHelper.GetNodesFromOffToOn(Sudoku.Construction.Components.Node,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection,System.Collections.Generic.HashSet{Sudoku.Construction.Components.Node},Sudoku.Analytics.Configuration.StepGathererOptions,Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)">
             <summary>
             Try to find nodes that will be considered as "on" state if the specified node is "off" state.
             </summary>
@@ -5885,70 +5885,44 @@
             </i></remarks>
             <seealso cref="T:System.Diagnostics.CodeAnalysis.InterceptorMethodCallerAttribute"/>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearcherHubs.GridNodeExtensions">
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions">
             <summary>
             Provides with extension methods on <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.GridNodeExtensions.Apply(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Node)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearcherHubs.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Construction.Components.Node)"/>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.Apply(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Node)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Construction.Components.Node)"/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.GridNodeExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Node)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearcherHubs.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Construction.Components.Node)"/>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Node)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Construction.Components.Node)"/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.GridNodeExtensions.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Node)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearcherHubs.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Node)"/>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Node)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Node)"/>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearcherHubs.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$25EDD80A63D287142C5EEC5FEE4D06CD">
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$25EDD80A63D287142C5EEC5FEE4D06CD">
             <summary>
             Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Construction.Components.Node)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearcherHubs.GridNodeExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Node)"/>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Construction.Components.Node)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Node)"/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Construction.Components.Node)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Construction.Components.Node)">
             <summary>
             Treat the specified node as a real conclusion, and apply to a grid.
             </summary>
             <param name="node">The node.</param>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Node)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearcherHubs.GridNodeExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Node)"/>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Node)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Construction.Components.Node)"/>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearcherHubs.MultipleForcingChainsStepSearcherHub">
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.ForcingChainsStepSearcherHelper">
             <summary>
-            Represents a type that can search for multiple forcing chains. This type can also search for finned chains.
+            Represents a type that can search for forcing chains and its related techniques.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.StepSearcherHubs.MultipleForcingChainsStepSearcherHub.SupportedStepSearcherTypes">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.MultipleForcingChainsStepSearcherHub.CollectCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.ChainStep},System.Boolean,System.Boolean)">
-            <summary>
-            The collect method called by multiple forcing chains step searcher.
-            </summary>
-            <param name="context">The context.</param>
-            <param name="accumulator">The instance that temporarily records for chain steps.</param>
-            <param name="allowsAdvancedLinks">Indicates whether the method allows advanced links.</param>
-            <param name="onlyFindFinnedChain">Indicates whether the method only finds for (grouped) finned chains.</param>
-            <returns>The first found step.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.MultipleForcingChainsStepSearcherHub.CollectMultipleForcingChains(Sudoku.Concepts.Grid@,System.Boolean)">
-            <summary>
-            Collect all multiple forcing chains appeared in a grid.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="onlyFindOne">Indicates whether the method only find one valid chain.</param>
-            <returns>All possible multiple forcing chains instances.</returns>
-        </member>
-        <member name="T:Sudoku.Analytics.StepSearcherHubs.MultipleForcingChainsStepSearcherHubBase">
-            <summary>
-            Represents a type that can search for multiple forcing chains.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.MultipleForcingChainsStepSearcherHubBase.CollectGeneralizedMultipleCore``2(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.ChainStep},System.Boolean,System.Boolean,,,)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.ForcingChainsStepSearcherHelper.CollectGeneralizedMultipleCore``2(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.ChainStep},System.Boolean,System.Boolean,,,)">
             <summary>
             The internal method that can collect for general-typed multiple forcing chains.
             </summary>
@@ -5965,7 +5939,7 @@
             <param name="stepCreator">The creator method that can create a chain step.</param>
             <returns>The first found step.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.MultipleForcingChainsStepSearcherHubBase.FindForcingChains(Sudoku.Construction.Components.Node)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.ForcingChainsStepSearcherHelper.FindForcingChains(Sudoku.Construction.Components.Node)">
             <summary>
             <para>Finds a list of nodes that can implicitly connects to current node via a forcing chain.</para>
             <para>This method only uses cached fields <see cref="F:Sudoku.Analytics.Caching.MemoryCached.StrongLinkDictionary"/> and <see cref="F:Sudoku.Analytics.Caching.MemoryCached.WeakLinkDictionary"/>.</para>
@@ -5982,15 +5956,41 @@
             <seealso cref="T:Sudoku.Construction.Components.Node"/>
             <seealso cref="T:Sudoku.Construction.Components.ForcingChainsInfo"/>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearcherHubs.RectangleForcingChainsStepSearcherHub">
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.MultipleForcingChainsStepSearcherHelper">
+            <summary>
+            Represents a type that can search for multiple forcing chains. This type can also search for finned chains.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.StepSearcherHelpers.MultipleForcingChainsStepSearcherHelper.SupportedStepSearcherTypes">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.MultipleForcingChainsStepSearcherHelper.CollectCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.ChainStep},System.Boolean,System.Boolean)">
+            <summary>
+            The collect method called by multiple forcing chains step searcher.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="accumulator">The instance that temporarily records for chain steps.</param>
+            <param name="allowsAdvancedLinks">Indicates whether the method allows advanced links.</param>
+            <param name="onlyFindFinnedChain">Indicates whether the method only finds for (grouped) finned chains.</param>
+            <returns>The first found step.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.MultipleForcingChainsStepSearcherHelper.CollectMultipleForcingChains(Sudoku.Concepts.Grid@,System.Boolean)">
+            <summary>
+            Collect all multiple forcing chains appeared in a grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="onlyFindOne">Indicates whether the method only find one valid chain.</param>
+            <returns>All possible multiple forcing chains instances.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.RectangleForcingChainsStepSearcherHelper">
             <summary>
             Represents a type that can search for rectangle forcing chains.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.StepSearcherHubs.RectangleForcingChainsStepSearcherHub.SupportedStepSearcherTypes">
+        <member name="P:Sudoku.Analytics.StepSearcherHelpers.RectangleForcingChainsStepSearcherHelper.SupportedStepSearcherTypes">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.RectangleForcingChainsStepSearcherHub.CollectCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.ChainStep},System.Boolean,System.Boolean)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.RectangleForcingChainsStepSearcherHelper.CollectCore(Sudoku.Analytics.StepAnalysisContext@,System.Collections.Generic.SortedSet{Sudoku.Analytics.Steps.ChainStep},System.Boolean,System.Boolean)">
             <summary>
             The collect method called by rectangle forcing chains step searcher.
             </summary>
@@ -6000,7 +6000,7 @@
             <param name="onlyFindFinnedChain">Indicates whether the method only finds for (grouped) finned chains.</param>
             <returns>The first found step.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.RectangleForcingChainsStepSearcherHub.CollectRectangleMultipleForcingChains(Sudoku.Concepts.Grid@,System.Boolean)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.RectangleForcingChainsStepSearcherHelper.CollectRectangleMultipleForcingChains(Sudoku.Concepts.Grid@,System.Boolean)">
             <summary>
             Collect all multiple forcing chains on applying to a unique rectangle, appeared in a grid.
             </summary>
@@ -6008,35 +6008,36 @@
             <param name="onlyFindOne">Indicates whether the method only find one valid chain.</param>
             <returns>All possible multiple forcing chain instances.</returns>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearcherHubs.StepSearcherHubBase">
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.StepSearcherHelper">
             <summary>
-            Represents searcher hub type.
+            Represents a type that creates some members helping for target <see cref="T:Sudoku.Analytics.StepSearcher"/> instances.
             </summary>
+            <seealso cref="T:Sudoku.Analytics.StepSearcher"/>
         </member>
-        <member name="P:Sudoku.Analytics.StepSearcherHubs.StepSearcherHubBase.SupportedStepSearcherTypes">
+        <member name="P:Sudoku.Analytics.StepSearcherHelpers.StepSearcherHelper.SupportedStepSearcherTypes">
             <summary>
             Indicates supported step searcher types.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.StepSearcherHubs.SubsetStepSearcherHub">
+        <member name="T:Sudoku.Analytics.StepSearcherHelpers.SubsetStepSearcherHelper">
             <summary>
             Represents a type that can search for subsets with general rules, which can be called by multiple different step searcher types.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.StepSearcherHubs.SubsetStepSearcherHub.MethodSet1">
+        <member name="F:Sudoku.Analytics.StepSearcherHelpers.SubsetStepSearcherHelper.MethodSet1">
             <summary>
             Represents a method set.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.StepSearcherHubs.SubsetStepSearcherHub.MethodSet2">
+        <member name="F:Sudoku.Analytics.StepSearcherHelpers.SubsetStepSearcherHelper.MethodSet2">
             <summary>
             Represents a method set.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.StepSearcherHubs.SubsetStepSearcherHub.SupportedStepSearcherTypes">
+        <member name="P:Sudoku.Analytics.StepSearcherHelpers.SubsetStepSearcherHelper.SupportedStepSearcherTypes">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.SubsetStepSearcherHub.CollectCore(System.Boolean,Sudoku.Analytics.StepAnalysisContext@)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.SubsetStepSearcherHelper.CollectCore(System.Boolean,Sudoku.Analytics.StepAnalysisContext@)">
             <summary>
             The internal method to create subset steps.
             </summary>
@@ -6044,12 +6045,12 @@
             <param name="context">The context.</param>
             <returns>The collected steps.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.SubsetStepSearcherHub.HiddenSubset(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Concepts.CellMap},System.Int32,System.Boolean)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.SubsetStepSearcherHelper.HiddenSubset(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Concepts.CellMap},System.Int32,System.Boolean)">
             <summary>
             Search for hidden subsets.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHubs.SubsetStepSearcherHub.NakedSubset(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Concepts.CellMap},System.Int32,System.Boolean)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.SubsetStepSearcherHelper.NakedSubset(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Concepts.CellMap},System.Int32,System.Boolean)">
             <summary>
             Search for naked subsets.
             </summary>
@@ -9160,10 +9161,10 @@
 		</para>
 	</developer-notes>
             <para>
-            All implementations are extracted in type <see cref="T:Sudoku.Analytics.StepSearcherHubs.ChainingStepSearcherHub" />. Please visit it to learn more information.
+            All implementations are extracted in type <see cref="T:Sudoku.Analytics.StepSearcherHelpers.ChainingStepSearcherHelper" />. Please visit it to learn more information.
             </para>
             </remarks>
-            <seealso cref="T:Sudoku.Analytics.StepSearcherHubs.ChainingStepSearcherHub" />
+            <seealso cref="T:Sudoku.Analytics.StepSearcherHelpers.ChainingStepSearcherHelper" />
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.BrokenLoopStepSearcher">
             <summary>
@@ -19194,7 +19195,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__ChainingRule_GetLinks_Intercepted.GetLinks_SwitchEntry(Sudoku.Analytics.Chaining.ChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__ChainingRule_GetLinks_Intercepted.GetLinks_SwitchEntry(Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
             <summary>
             The backing entry that can route functions by checking the target type of instance parameter <paramref name="this"/>.
             </summary>
@@ -19204,7 +19205,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__XChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.Chaining.Rules.XChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__XChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.XChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
         </member>
@@ -19213,7 +19214,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__YChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.Chaining.Rules.YChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__YChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.YChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
         </member>
@@ -19222,7 +19223,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__LockedCandidatesChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.Chaining.Rules.LockedCandidatesChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__LockedCandidatesChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.LockedCandidatesChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
         </member>
@@ -19231,7 +19232,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__AlmostLockedSetsChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.Chaining.Rules.AlmostLockedSetsChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__AlmostLockedSetsChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.AlmostLockedSetsChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
         </member>
@@ -19240,7 +19241,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__UniqueRectangleSameDigitChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.Chaining.Rules.UniqueRectangleSameDigitChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__UniqueRectangleSameDigitChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleSameDigitChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
         </member>
@@ -19249,7 +19250,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__UniqueRectangleDifferentDigitChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.Chaining.Rules.UniqueRectangleDifferentDigitChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__UniqueRectangleDifferentDigitChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleDifferentDigitChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
         </member>
@@ -19258,7 +19259,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__UniqueRectangleSingleSideExternalChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.Chaining.Rules.UniqueRectangleSingleSideExternalChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__UniqueRectangleSingleSideExternalChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleSingleSideExternalChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
         </member>
@@ -19267,7 +19268,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__UniqueRectangleDoubleSideExternalChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.Chaining.Rules.UniqueRectangleDoubleSideExternalChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__UniqueRectangleDoubleSideExternalChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleDoubleSideExternalChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
         </member>
@@ -19276,7 +19277,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__UniqueRectangleDifferentDigitWeakChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.Chaining.Rules.UniqueRectangleDifferentDigitWeakChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__UniqueRectangleDifferentDigitWeakChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleDifferentDigitWeakChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
         </member>
@@ -19285,7 +19286,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__AvoidableRectangleChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.Chaining.Rules.AvoidableRectangleChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__AvoidableRectangleChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.AvoidableRectangleChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
         </member>
@@ -19294,7 +19295,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__KrakenNormalFishChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.Chaining.Rules.KrakenNormalFishChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__KrakenNormalFishChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.KrakenNormalFishChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
         </member>
@@ -19303,21 +19304,9 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__XyzWingChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.Chaining.Rules.XyzWingChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__XyzWingChainingRule_GetLinks_Intercepted.GetLinks(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.XyzWingChainingRule,Sudoku.Concepts.Grid@,Sudoku.Construction.Components.LinkDictionary,Sudoku.Construction.Components.LinkDictionary,Sudoku.Analytics.Configuration.StepGathererOptions)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
-        </member>
-        <member name="T:Sudoku.Analytics.InterceptorGenerated.__AlmostLockedSetPattern_Collect_Intercepted">
-            <summary>
-            Interceptor method that will replace implementation on such referenced method invocation.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__AlmostLockedSetPattern_Collect_Intercepted.Collect(Sudoku.Concepts.Grid@)">
-            <summary>
-            Collects all possible <see cref="T:Sudoku.Construction.Patterns.AlmostLockedSetPattern"/>s in the specified grid.
-            </summary>
-            <param name="grid">The grid.</param>
-            <returns>All possible found <see cref="T:Sudoku.Construction.Patterns.AlmostLockedSetPattern"/> instances.</returns>
         </member>
         <member name="T:Sudoku.Analytics.InterceptorGenerated.__TrueCandidate_GetAllTrueCandidates_Intercepted">
             <summary>
@@ -19338,7 +19327,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__ChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions_SwitchEntry(Sudoku.Analytics.Chaining.ChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__ChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions_SwitchEntry(Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
             <summary>
             The backing entry that can route functions by checking the target type of instance parameter <paramref name="this"/>.
             </summary>
@@ -19348,7 +19337,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__AlmostLockedSetsChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Analytics.Chaining.Rules.AlmostLockedSetsChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__AlmostLockedSetsChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.AlmostLockedSetsChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
         </member>
@@ -19357,7 +19346,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__KrakenNormalFishChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Analytics.Chaining.Rules.KrakenNormalFishChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__KrakenNormalFishChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.KrakenNormalFishChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
         </member>
@@ -19366,7 +19355,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__LockedCandidatesChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Analytics.Chaining.Rules.LockedCandidatesChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__LockedCandidatesChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.LockedCandidatesChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
         </member>
@@ -19375,7 +19364,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__UniqueRectangleSameDigitChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Analytics.Chaining.Rules.UniqueRectangleSameDigitChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__UniqueRectangleSameDigitChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleSameDigitChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
         </member>
@@ -19384,7 +19373,7 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__UniqueRectangleDifferentDigitChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Analytics.Chaining.Rules.UniqueRectangleDifferentDigitChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__UniqueRectangleDifferentDigitChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleDifferentDigitChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
         </member>
@@ -19393,9 +19382,21 @@
             Interceptor method that will replace implementation on such referenced method invocation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.InterceptorGenerated.__UniqueRectangleSingleSideExternalChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Analytics.Chaining.Rules.UniqueRectangleSingleSideExternalChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__UniqueRectangleSingleSideExternalChainingRule_GetLoopConclusions_Intercepted.GetLoopConclusions(Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules.UniqueRectangleSingleSideExternalChainingRule,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Construction.Components.Link},Sudoku.Concepts.ConclusionSet@)">
             <inheritdoc/>
             <!-- Nothing inserts here -->
+        </member>
+        <member name="T:Sudoku.Analytics.InterceptorGenerated.__AlmostLockedSetPattern_Collect_Intercepted">
+            <summary>
+            Interceptor method that will replace implementation on such referenced method invocation.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.InterceptorGenerated.__AlmostLockedSetPattern_Collect_Intercepted.Collect(Sudoku.Concepts.Grid@)">
+            <summary>
+            Collects all possible <see cref="T:Sudoku.Construction.Patterns.AlmostLockedSetPattern"/>s in the specified grid.
+            </summary>
+            <param name="grid">The grid.</param>
+            <returns>All possible found <see cref="T:Sudoku.Construction.Patterns.AlmostLockedSetPattern"/> instances.</returns>
         </member>
         <member name="T:Sudoku.Analytics.InterceptorGenerated.__Sashimi_IsSashimi_Intercepted">
             <summary>
@@ -24013,7 +24014,7 @@
         <member name="M:Sudoku.Construction.Components.BinaryForcingChains.ToString(System.IFormatProvider)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Construction.Components.BinaryForcingChains.Sudoku#Construction#Components#IForcingChains#GetViewsCore(Sudoku.Concepts.Grid@,Sudoku.Analytics.Chaining.ChainingRuleCollection,Sudoku.Concepts.Conclusion[])">
+        <member name="M:Sudoku.Construction.Components.BinaryForcingChains.Sudoku#Construction#Components#IForcingChains#GetViewsCore(Sudoku.Concepts.Grid@,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection,Sudoku.Concepts.Conclusion[])">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Construction.Components.BivalueUniversalGraveForcingChains">
@@ -24044,7 +24045,7 @@
             Indicates all true candidates.
             </summary>
         </member>
-        <member name="M:Sudoku.Construction.Components.BivalueUniversalGraveForcingChains.PrepareFinnedChainViewNodes(Sudoku.Construction.Components.NamedChain,Sudoku.Analytics.Chaining.ChainingRuleCollection,Sudoku.Concepts.Grid@,Sudoku.Concepts.CandidateMap@,Sudoku.Drawing.View[]@)">
+        <member name="M:Sudoku.Construction.Components.BivalueUniversalGraveForcingChains.PrepareFinnedChainViewNodes(Sudoku.Construction.Components.NamedChain,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection,Sudoku.Concepts.Grid@,Sudoku.Concepts.CandidateMap@,Sudoku.Drawing.View[]@)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Construction.Components.BivalueUniversalGraveForcingChains.GetInitialViewNodes(Sudoku.Concepts.Grid@)">
@@ -24530,8 +24531,8 @@
         <member name="M:Sudoku.Construction.Components.ChainExtensions.get_IsWeakLinksStrictlyGrouped(Sudoku.Construction.Components.Chain)">
             <inheritdoc cref="P:Sudoku.Construction.Components.ChainExtensions.&lt;G&gt;$216A5CC00AB4232A7958EB7F525081CC.IsWeakLinksStrictlyGrouped"/>
         </member>
-        <member name="M:Sudoku.Construction.Components.ChainExtensions.MonoparentChainGetViews(Sudoku.Construction.Components.Chain,Sudoku.Concepts.Grid@,Sudoku.Analytics.Chaining.ChainingRuleCollection)">
-            <inheritdoc cref="M:Sudoku.Construction.Components.ChainExtensions.&lt;G&gt;$216A5CC00AB4232A7958EB7F525081CC.MonoparentChainGetViews(Sudoku.Concepts.Grid@,Sudoku.Analytics.Chaining.ChainingRuleCollection)"/>
+        <member name="M:Sudoku.Construction.Components.ChainExtensions.MonoparentChainGetViews(Sudoku.Construction.Components.Chain,Sudoku.Concepts.Grid@,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection)">
+            <inheritdoc cref="M:Sudoku.Construction.Components.ChainExtensions.&lt;G&gt;$216A5CC00AB4232A7958EB7F525081CC.MonoparentChainGetViews(Sudoku.Concepts.Grid@,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection)"/>
         </member>
         <member name="T:Sudoku.Construction.Components.ChainExtensions.&lt;G&gt;$216A5CC00AB4232A7958EB7F525081CC.&lt;M&gt;$624CC8F94DBBC479FC1127D5D48FF5CB">
             <summary>
@@ -24570,7 +24571,7 @@
             and is not advanced node (i.e. contains grouped pattern).
             </summary>
         </member>
-        <member name="M:Sudoku.Construction.Components.ChainExtensions.&lt;G&gt;$216A5CC00AB4232A7958EB7F525081CC.MonoparentChainGetViews(Sudoku.Concepts.Grid@,Sudoku.Analytics.Chaining.ChainingRuleCollection)">
+        <member name="M:Sudoku.Construction.Components.ChainExtensions.&lt;G&gt;$216A5CC00AB4232A7958EB7F525081CC.MonoparentChainGetViews(Sudoku.Concepts.Grid@,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection)">
             <summary>
             Collect views for the current chain, without nested paths checking.
             </summary>
@@ -25218,7 +25219,7 @@
             Indicates all possible branches.
             </summary>
         </member>
-        <member name="M:Sudoku.Construction.Components.IForcingChains.GetViews(Sudoku.Concepts.Grid@,Sudoku.Concepts.Conclusion[],Sudoku.Analytics.Chaining.ChainingRuleCollection)">
+        <member name="M:Sudoku.Construction.Components.IForcingChains.GetViews(Sudoku.Concepts.Grid@,Sudoku.Concepts.Conclusion[],Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection)">
             <summary>
             Collect views for the current chain.
             </summary>
@@ -25227,7 +25228,7 @@
             <param name="supportedRules">The supported rules.</param>
             <returns>The views.</returns>
         </member>
-        <member name="M:Sudoku.Construction.Components.IForcingChains.GetViewsCore(Sudoku.Concepts.Grid@,Sudoku.Analytics.Chaining.ChainingRuleCollection,Sudoku.Concepts.Conclusion[])">
+        <member name="M:Sudoku.Construction.Components.IForcingChains.GetViewsCore(Sudoku.Concepts.Grid@,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection,Sudoku.Concepts.Conclusion[])">
             <summary>
             Represents a method that creates a list of views.
             </summary>
@@ -25671,9 +25672,9 @@
         </member>
         <member name="P:Sudoku.Construction.Components.LinkTypeExtensions.&lt;G&gt;$9BD09275A38EED7E3C456634F54EE17A.RuleInstance">
             <summary>
-            Indicates a <see cref="T:Sudoku.Analytics.Chaining.ChainingRule"/> instance from the specified link type.
+            Indicates a <see cref="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule"/> instance from the specified link type.
             </summary>
-            <returns>The target <see cref="T:Sudoku.Analytics.Chaining.ChainingRule"/> instance.</returns>
+            <returns>The target <see cref="T:Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRule"/> instance.</returns>
         </member>
         <member name="T:Sudoku.Construction.Components.LockedMember">
             <summary>
@@ -25897,7 +25898,7 @@
             <returns>The pattern converted.</returns>
             <exception cref="T:System.InvalidOperationException">Throws when the current instance cannot be converted.</exception>
         </member>
-        <member name="M:Sudoku.Construction.Components.MultipleForcingChains.PrepareFinnedChainViewNodes(Sudoku.Construction.Components.NamedChain,Sudoku.Analytics.Chaining.ChainingRuleCollection,Sudoku.Concepts.Grid@,Sudoku.Concepts.CandidateMap@,Sudoku.Drawing.View[]@)">
+        <member name="M:Sudoku.Construction.Components.MultipleForcingChains.PrepareFinnedChainViewNodes(Sudoku.Construction.Components.NamedChain,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection,Sudoku.Concepts.Grid@,Sudoku.Concepts.CandidateMap@,Sudoku.Drawing.View[]@)">
             <summary>
             Try to prepare initial view nodes that will be displayed as a finned chain.
             </summary>
@@ -25923,7 +25924,7 @@
         <member name="M:Sudoku.Construction.Components.MultipleForcingChains.System#Linq#Providers#IAnyAllMethod{Sudoku#Construction#Components#MultipleForcingChains,System#Collections#Generic#KeyValuePair{System#Int32,Sudoku#Construction#Components#UnnamedChain}}#All(System.Func{System.Collections.Generic.KeyValuePair{System.Int32,Sudoku.Construction.Components.UnnamedChain},System.Boolean})">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Construction.Components.MultipleForcingChains.Sudoku#Construction#Components#IForcingChains#GetViewsCore(Sudoku.Concepts.Grid@,Sudoku.Analytics.Chaining.ChainingRuleCollection,Sudoku.Concepts.Conclusion[])">
+        <member name="M:Sudoku.Construction.Components.MultipleForcingChains.Sudoku#Construction#Components#IForcingChains#GetViewsCore(Sudoku.Concepts.Grid@,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection,Sudoku.Concepts.Conclusion[])">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Construction.Components.MultipleForcingChains.op_Equality(Sudoku.Construction.Components.MultipleForcingChains,Sudoku.Construction.Components.MultipleForcingChains)">
@@ -26400,7 +26401,7 @@
             Indicates the pattern cells.
             </summary>
         </member>
-        <member name="M:Sudoku.Construction.Components.RectangleForcingChains.PrepareFinnedChainViewNodes(Sudoku.Construction.Components.NamedChain,Sudoku.Analytics.Chaining.ChainingRuleCollection,Sudoku.Concepts.Grid@,Sudoku.Concepts.CandidateMap@,Sudoku.Drawing.View[]@)">
+        <member name="M:Sudoku.Construction.Components.RectangleForcingChains.PrepareFinnedChainViewNodes(Sudoku.Construction.Components.NamedChain,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection,Sudoku.Concepts.Grid@,Sudoku.Concepts.CandidateMap@,Sudoku.Drawing.View[]@)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Construction.Components.RectangleForcingChains.GetInitialViewNodes(Sudoku.Concepts.Grid@)">

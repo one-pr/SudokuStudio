@@ -40,7 +40,7 @@ public sealed partial class GroupedChainStepSearcher : StepSearcher
 	protected internal override Step? Collect(ref StepAnalysisContext context)
 	{
 		var accumulator = new SortedSet<NormalChainStep>();
-		if (ChainStepSearcherHub.CollectCore(ref context, accumulator, true, MakeConclusionAroundBackdoors) is { } step)
+		if (ChainStepSearcherHelper.CollectCore(ref context, accumulator, true, MakeConclusionAroundBackdoors) is { } step)
 		{
 			return step;
 		}

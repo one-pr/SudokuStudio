@@ -20,7 +20,7 @@ public sealed partial class DynamicForcingChainsStepSearcher : StepSearcher
 	protected internal override Step? Collect(ref StepAnalysisContext context)
 	{
 		var accumulator = new List<PatternBasedChainStep>();
-		if (DynamicForcingChainsStepSearcherHub.CollectCore(ref context, accumulator) is { } step)
+		if (DynamicForcingChainsStepSearcherHelper.CollectCore(ref context, accumulator) is { } step)
 		{
 			return step;
 		}

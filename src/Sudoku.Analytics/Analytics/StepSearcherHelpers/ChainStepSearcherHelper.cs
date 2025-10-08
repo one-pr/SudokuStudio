@@ -7,13 +7,13 @@
 #warning 'STRICT_LENGTH_CHECKING_OPTIMIZATION' won't work if 'STRICT_LENGTH_CHECKING' is not configured.
 #endif
 
-namespace Sudoku.Analytics.StepSearcherHubs;
+namespace Sudoku.Analytics.StepSearcherHelpers;
 
 /// <summary>
 /// Represents a type that can search for chains.
 /// This type can be used for searching both normal chains and grouped chains.
 /// </summary>
-internal sealed class ChainStepSearcherHub : ChainingStepSearcherHub
+internal sealed class ChainStepSearcherHelper : ChainingStepSearcherHelper
 {
 	/// <inheritdoc/>
 	public override ReadOnlyMemory<Type> SupportedStepSearcherTypes

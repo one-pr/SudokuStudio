@@ -1,9 +1,9 @@
-namespace Sudoku.Analytics.StepSearcherHubs;
+namespace Sudoku.Analytics.StepSearcherHelpers;
 
 /// <summary>
-/// Represents a type that can search for multiple forcing chains.
+/// Represents a type that can search for forcing chains and its related techniques.
 /// </summary>
-internal abstract class MultipleForcingChainsStepSearcherHubBase : ChainingStepSearcherHub
+internal abstract class ForcingChainsStepSearcherHelper : ChainingStepSearcherHelper
 {
 	/// <summary>
 	/// The internal method that can collect for general-typed multiple forcing chains.

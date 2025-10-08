@@ -14,7 +14,7 @@ public sealed partial class BivalueUniversalGraveForcingChainsStepSearcher : Ste
 	protected internal override Step? Collect(ref StepAnalysisContext context)
 	{
 		var accumulator = new SortedSet<ChainStep>();
-		if (BivalueUniversalGraveForcingChainsStepSearcherHub.CollectCore(ref context, accumulator, true, false) is { } step)
+		if (BivalueUniversalGraveForcingChainsStepSearcherHelper.CollectCore(ref context, accumulator, true, false) is { } step)
 		{
 			return step;
 		}

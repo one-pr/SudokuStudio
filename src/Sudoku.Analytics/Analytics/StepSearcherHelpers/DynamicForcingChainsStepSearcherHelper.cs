@@ -1,9 +1,9 @@
-namespace Sudoku.Analytics.StepSearcherHubs;
+namespace Sudoku.Analytics.StepSearcherHelpers;
 
 /// <summary>
 /// Represents a type that can search for dynamic multiple forcing chains.
 /// </summary>
-internal sealed class DynamicForcingChainsStepSearcherHub : MultipleForcingChainsStepSearcherHubBase
+internal sealed class DynamicForcingChainsStepSearcherHelper : ForcingChainsStepSearcherHelper
 {
 	/// <inheritdoc/>
 	public override ReadOnlyMemory<Type> SupportedStepSearcherTypes => (Type[])[typeof(DynamicForcingChainsStepSearcher)];

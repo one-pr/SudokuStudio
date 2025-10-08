@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Chaining.Rules;
+namespace Sudoku.Analytics.StepSearcherHelpers.Chaining.Rules;
 
 /// <summary>
 /// Represents a chaining rule on normal fish rule (i.e. <see cref="LinkType.KrakenNormalFish"/>).

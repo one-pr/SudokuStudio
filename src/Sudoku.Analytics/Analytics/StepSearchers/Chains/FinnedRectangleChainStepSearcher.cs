@@ -14,7 +14,7 @@ public sealed partial class FinnedRectangleChainStepSearcher : StepSearcher
 	protected internal override Step? Collect(ref StepAnalysisContext context)
 	{
 		var accumulator = new SortedSet<ChainStep>();
-		if (RectangleForcingChainsStepSearcherHub.CollectCore(ref context, accumulator, true, true) is { } step)
+		if (RectangleForcingChainsStepSearcherHelper.CollectCore(ref context, accumulator, true, true) is { } step)
 		{
 			return step;
 		}

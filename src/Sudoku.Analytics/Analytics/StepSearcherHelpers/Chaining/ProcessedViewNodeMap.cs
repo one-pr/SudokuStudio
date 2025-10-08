@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Chaining;
+namespace Sudoku.Analytics.StepSearcherHelpers.Chaining;
 
 /// <summary>
 /// Represents a processed view nodes map.
