@@ -12,39 +12,6 @@
             <typeparam name="T">The type of the element.</typeparam>
             <param name="value">The value to be initialized.</param>
         </member>
-        <member name="T:System.Buffers.ReadOnlyMemoryOfCharComparer">
-            <summary>
-            Represents an equality comparer of <see cref="T:System.ReadOnlySpan`1"/> of <see cref="T:System.Char"/> object,
-            but it can also be created by comparing <see cref="T:System.String"/> values as an efficient way in variant collection types
-            like <see cref="T:System.Collections.Generic.HashSet`1.AlternateLookup`1"/>.
-            </summary>
-            <seealso cref="T:System.Collections.Generic.HashSet`1.AlternateLookup`1"/>
-        </member>
-        <member name="F:System.Buffers.ReadOnlyMemoryOfCharComparer.Instance">
-            <summary>
-            Indicates the singleton object of this type.
-            </summary>
-        </member>
-        <member name="M:System.Buffers.ReadOnlyMemoryOfCharComparer.#ctor">
-            <summary>
-            Initializes a <see cref="T:System.Buffers.ReadOnlyMemoryOfCharComparer"/> instance.
-            </summary>
-        </member>
-        <member name="M:System.Buffers.ReadOnlyMemoryOfCharComparer.Equals(System.ReadOnlyMemory{System.Char},System.ReadOnlyMemory{System.Char})">
-            <inheritdoc/>
-        </member>
-        <member name="M:System.Buffers.ReadOnlyMemoryOfCharComparer.Equals(System.ReadOnlySpan{System.Char},System.ReadOnlyMemory{System.Char})">
-            <inheritdoc/>
-        </member>
-        <member name="M:System.Buffers.ReadOnlyMemoryOfCharComparer.GetHashCode(System.ReadOnlyMemory{System.Char})">
-            <inheritdoc/>
-        </member>
-        <member name="M:System.Buffers.ReadOnlyMemoryOfCharComparer.GetHashCode(System.ReadOnlySpan{System.Char})">
-            <inheritdoc/>
-        </member>
-        <member name="M:System.Buffers.ReadOnlyMemoryOfCharComparer.Create(System.ReadOnlySpan{System.Char})">
-            <inheritdoc/>
-        </member>
         <member name="T:System.CharSetExtensions">
             <summary>
             Provides with extension members on <see cref="T:System.Char"/> and <see cref="T:System.String"/>.
