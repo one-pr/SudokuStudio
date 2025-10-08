@@ -49,20 +49,9 @@ public class HiddenSingleStep(
 	/// <summary>
 	/// The house to be displayed.
 	/// </summary>
-	[Keyword(
-		NameResourceKey = "HiddenSingleStep_House_Name",
-		DescriptionResourceKey = "HiddenSingleStep_House_Description",
-		Minimum = 0,
-		Maximum = 27)]
 	public House House { get; } = house;
 
 	/// <inheritdoc cref="ILastingTrait.Lasting"/>
-	[Keyword(
-		NameResourceKey = "HiddenSingleStep_Lasting_Name",
-		DescriptionResourceKey = "HiddenSingleStep_Lasting_Description",
-		Minimum = 2,
-		Maximum = 9,
-		IncludesMaximum = true)]
 	public Digit Lasting { get; } = lasting;
 
 	/// <inheritdoc/>

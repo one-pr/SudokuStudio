@@ -17,7 +17,6 @@ namespace Sudoku.Filtering;
 [JsonDerivedType(typeof(EliminationCountConstraint), nameof(EliminationCountConstraint))]
 [JsonDerivedType(typeof(EmptyHousesCountConstraint), nameof(EmptyHousesCountConstraint))]
 [JsonDerivedType(typeof(IttoryuConstraint), nameof(IttoryuConstraint))]
-[JsonDerivedType(typeof(KeywordConditionConstraint), nameof(KeywordConditionConstraint))]
 [JsonDerivedType(typeof(LastingConstraint), nameof(LastingConstraint))]
 [JsonDerivedType(typeof(MinimalConstraint), nameof(MinimalConstraint))]
 [JsonDerivedType(typeof(MissingDigitConstraint), nameof(MissingDigitConstraint))]

@@ -48,7 +48,6 @@ public abstract class Step(ReadOnlyMemory<Conclusion> conclusions, View[]? views
 	/// <summary>
 	/// Indicates the English name of the technique.
 	/// </summary>
-	[Keyword(NameResourceKey = "Step_EnglishName_Name")]
 	public virtual string EnglishName => Code.EnglishName;
 
 	/// <summary>
@@ -60,7 +59,6 @@ public abstract class Step(ReadOnlyMemory<Conclusion> conclusions, View[]? views
 	/// as elementary and default rating value; other factors will be given in the other property <see cref="Factors"/>.
 	/// </remarks>
 	/// <seealso cref="Factors"/>
-	[Keyword(NameResourceKey = "Step_BaseDifficulty_Name", AllowedVerbs = KeywordVerbs.NumberComparison)]
 	public abstract int BaseDifficulty { get; }
 
 	/// <summary>
@@ -80,10 +78,6 @@ public abstract class Step(ReadOnlyMemory<Conclusion> conclusions, View[]? views
 	/// <summary>
 	/// The technique code of this instance used for comparison (e.g. search for specified puzzle that contains this technique).
 	/// </summary>
-	[Keyword(
-		NameResourceKey = "Step_Code_Name",
-		MetaType = KeywordType.String,
-		KeywordConverterType = typeof(TechniqueKeywordValueConverter))]
 	public abstract Technique Code { get; }
 
 	/// <summary>

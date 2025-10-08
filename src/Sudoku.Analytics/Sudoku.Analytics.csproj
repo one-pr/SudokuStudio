@@ -22,11 +22,6 @@
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
 		</Compile>
-		<Compile Update="Resources\KeywordResources.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>KeywordResources.resx</DependentUpon>
-		</Compile>
 		<EmbeddedResource Update="Resources\AnalyticsResources.resx">
 			<SubType>Designer</SubType>
 			<LastGenOutput>AnalyticsResources.Designer.cs</LastGenOutput>
@@ -34,10 +29,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="Resources\AnalyticsResources.zh-CN.resx">
 			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Resources\KeywordResources.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>KeywordResources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 	</ItemGroup>
 

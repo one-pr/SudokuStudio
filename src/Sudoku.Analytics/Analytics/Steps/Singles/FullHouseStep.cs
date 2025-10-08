@@ -41,21 +41,10 @@ public sealed class FullHouseStep(
 	public override Technique Code => Technique.FullHouse;
 
 	/// <inheritdoc cref="ILastingTrait.Lasting"/>
-	[Keyword(
-		NameResourceKey = "FullHouseStep_Lasting_Name",
-		DescriptionResourceKey = "FullHouseStep_Lasting_Description",
-		Minimum = 1,
-		Maximum = 1,
-		IncludesMaximum = true)]
 	public Digit Lasting { get; } = lasting;
 
 	/// <summary>
 	/// The house to be displayed.
 	/// </summary>
-	[Keyword(
-		NameResourceKey = "FullHouseStep_House_Name",
-		DescriptionResourceKey = "FullHouseStep_House_Description",
-		Minimum = 0,
-		Maximum = 27)]
 	public House House { get; } = house;
 }

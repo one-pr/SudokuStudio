@@ -1593,15 +1593,6 @@ namespace Sudoku.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Argument &apos;{0}&apos; must be the type derived from &apos;Step&apos;..
-        /// </summary>
-        public static string ErrorInfo_ArgumentMustBeDerivedFromStepType {
-            get {
-                return ResourceManager.GetString("ErrorInfo_ArgumentMustBeDerivedFromStepType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The argument must be a single..
         /// </summary>
         public static string ErrorInfo_ArgumentMustBeSingle {
@@ -3956,24 +3947,6 @@ namespace Sudoku.Resources {
         public static string Message_FactorResourceMismatchedException {
             get {
                 return ResourceManager.GetString("Message_FactorResourceMismatchedException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This is an invalid keyword. The reason why this exception thrown is that the target property specified by argument isn&apos;t marked attribute &apos;KeywordAttribute&apos;, or the specified name is misspelt. Please check your input and try again..
-        /// </summary>
-        public static string Message_InvalidKeyword {
-            get {
-                return ResourceManager.GetString("Message_InvalidKeyword", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The type is invalid. The type must be derived from type &apos;{0}&apos; and must contain a visible parameterless constructor to be invoked..
-        /// </summary>
-        public static string Message_InvalidKeywordConverterType {
-            get {
-                return ResourceManager.GetString("Message_InvalidKeywordConverterType", resourceCulture);
             }
         }
         

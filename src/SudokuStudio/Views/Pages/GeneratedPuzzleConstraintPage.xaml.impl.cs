@@ -613,11 +613,6 @@ public partial class GeneratedPuzzleConstraintPage
 			=> constraint.IsStrictIttoryu = ((ToggleSwitch)d).IsOn;
 	}
 
-	private partial SettingsCard? Create_KeywordCondition(KeywordConditionConstraint constraint)
-	{
-		return null;
-	}
-
 	private partial SettingsExpander? Create_Technique(TechniqueConstraint constraint)
 	{
 		if (constraint is not { Techniques: var techniques })

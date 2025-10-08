@@ -39,22 +39,11 @@ public sealed class NakedSingleStep(
 	public HouseType LastingHouseType { get; } = lastingHouseType;
 
 	/// <inheritdoc cref="ILastingTrait.Lasting"/>
-	[Keyword(
-		NameResourceKey = "NakedSingleStep_Lasting_Name",
-		DescriptionResourceKey = "NakedSingleStep_Lasting_Description",
-		Minimum = 3,
-		Maximum = 6,
-		IncludesMaximum = true)]
 	public Digit Lasting { get; } = lasting;
 
 	/// <summary>
 	/// The house to be displayed.
 	/// </summary>
-	[Keyword(
-		NameResourceKey = "NakedSingleStep_House_Name",
-		DescriptionResourceKey = "NakedSingleStep_House_Description",
-		Minimum = 0,
-		Maximum = 27)]
 	public House House => Cell >> LastingHouseType;
 
 	/// <summary>

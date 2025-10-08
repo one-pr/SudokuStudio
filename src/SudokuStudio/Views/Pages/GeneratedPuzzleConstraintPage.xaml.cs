@@ -18,7 +18,6 @@ public sealed partial class GeneratedPuzzleConstraintPage : Page
 		{ typeof(EliminationCountConstraint), static (@this, s) => @this.Create_EliminationCount((EliminationCountConstraint)s) },
 		{ typeof(EmptyHousesCountConstraint), static (@this, s) => @this.Create_EmptyHousesCount((EmptyHousesCountConstraint)s) },
 		{ typeof(IttoryuConstraint), static (@this, s) => @this.Create_Ittoryu((IttoryuConstraint)s) },
-		{ typeof(KeywordConditionConstraint), static (@this, s) => @this.Create_KeywordCondition((KeywordConditionConstraint)s) },
 		{ typeof(LastingConstraint), static (@this, s) => @this.Create_Lasting((LastingConstraint)s) },
 		{ typeof(MinimalConstraint), static (@this, s) => @this.Create_Minimal((MinimalConstraint)s) },
 		{ typeof(MissingDigitConstraint), static (@this, s) => @this.Create_MissingDigit((MissingDigitConstraint)s) },
@@ -144,7 +143,6 @@ public sealed partial class GeneratedPuzzleConstraintPage : Page
 	private partial SettingsExpander? Create_EliminationCount(EliminationCountConstraint constraint);
 	private partial SettingsCard? Create_EmptyHousesCount(EmptyHousesCountConstraint constraint);
 	private partial SettingsCard? Create_Ittoryu(IttoryuConstraint constraint);
-	private partial SettingsCard? Create_KeywordCondition(KeywordConditionConstraint constraint);
 	private partial SettingsCard? Create_Lasting(LastingConstraint constraint);
 	private partial SettingsCard? Create_Minimal(MinimalConstraint constraint);
 	private partial SettingsCard? Create_MissingDigit(MissingDigitConstraint constraint);

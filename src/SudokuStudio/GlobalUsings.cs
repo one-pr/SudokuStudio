@@ -68,7 +68,6 @@ global using Sudoku.Drawing.Nodes;
 global using Sudoku.Drawing.Parsing;
 global using Sudoku.Filtering;
 global using Sudoku.Filtering.Constraints;
-global using Sudoku.Filtering.Keywords;
 global using Sudoku.Generating;
 global using Sudoku.Generating.Qualified;
 global using Sudoku.IO;
