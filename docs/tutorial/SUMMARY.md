@@ -163,6 +163,7 @@
   * [自增和自减](rank-theory/10-rank-fixing/01-auto-increment-and-auto-decrement.md)
   * [复杂结构的秩](rank-theory/10-rank-fixing/02-rank-of-complex-pattern.md)
   * [秩的修正方式](rank-theory/10-rank-fixing/03-solution-to-rank-fixing.md)
+* [不饱和鱼](rank-theory/11-unsaturated-fish.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
