@@ -686,38 +686,6 @@
             <param name="digit">The digit to be checked.</param>
             <returns>A <see cref="T:Sudoku.Concepts.CellMap"/> instance.</returns>
         </member>
-        <member name="T:Sudoku.Concepts.CandidateMap.Enumerator">
-            <summary>
-            Represents an enumerator type that iterates on each candidate offsets.
-            </summary>
-            <param name="_offsets">Indicates the offsets.</param>
-        </member>
-        <member name="M:Sudoku.Concepts.CandidateMap.Enumerator.#ctor(System.Int32[])">
-            <summary>
-            Represents an enumerator type that iterates on each candidate offsets.
-            </summary>
-            <param name="_offsets">Indicates the offsets.</param>
-        </member>
-        <member name="F:Sudoku.Concepts.CandidateMap.Enumerator._index">
-            <summary>
-            Indicates the index.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Concepts.CandidateMap.Enumerator.Current">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Concepts.CandidateMap.Enumerator.System#Collections#IEnumerator#Current">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Concepts.CandidateMap.Enumerator.MoveNext">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Concepts.CandidateMap.Enumerator.System#IDisposable#Dispose">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Concepts.CandidateMap.Enumerator.System#Collections#IEnumerator#Reset">
-            <inheritdoc/>
-        </member>
         <member name="T:Sudoku.Concepts.Converter">
             <summary>
             Represents JSON serialization rules on type <see cref="T:Sudoku.Concepts.CandidateMap"/>.
@@ -1257,38 +1225,6 @@
             <param name="cells">The cells to be checked.</param>
             <param name="house">The house to be checked.</param>
             <returns>A <see cref="T:System.Int16"/> instance.</returns>
-        </member>
-        <member name="T:Sudoku.Concepts.CellMap.Enumerator">
-            <summary>
-            Represents an enumerator type that iterates on each cell offsets.
-            </summary>
-            <param name="_offset">Indicates the offsets.</param>
-        </member>
-        <member name="M:Sudoku.Concepts.CellMap.Enumerator.#ctor(System.Int32[])">
-            <summary>
-            Represents an enumerator type that iterates on each cell offsets.
-            </summary>
-            <param name="_offset">Indicates the offsets.</param>
-        </member>
-        <member name="F:Sudoku.Concepts.CellMap.Enumerator._index">
-            <summary>
-            Indicates the index.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Concepts.CellMap.Enumerator.Current">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Concepts.CellMap.Enumerator.System#Collections#IEnumerator#Current">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Concepts.CellMap.Enumerator.MoveNext">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Concepts.CellMap.Enumerator.System#IDisposable#Dispose">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Concepts.CellMap.Enumerator.System#Collections#IEnumerator#Reset">
-            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Concepts.Converter">
             <summary>
@@ -7674,6 +7610,22 @@
         <member name="P:Sudoku.Concepts.Orbit.Cells">
             <summary>Indicates the cells.</summary>
         </member>
+        <member name="M:Sudoku.Concepts.Orbit.GetEnumerator">
+            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+        </member>
+        <member name="M:Sudoku.Concepts.Orbit.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.Orbit.System#Collections#Generic#IEnumerable{System#Int32}#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.Orbit.Create(System.ReadOnlySpan{System.Int32})">
+            <summary>
+            Creates a <see cref="T:Sudoku.Concepts.Orbit"/> instance via a list of cells.
+            </summary>
+            <param name="cells">The cells.</param>
+            <returns>Result instance.</returns>
+        </member>
         <member name="M:Sudoku.Concepts.Orbit.op_Explicit(Sudoku.Concepts.CellMap@)~Sudoku.Concepts.Orbit">
             <summary>
             Explicit cast from <see cref="T:Sudoku.Concepts.CellMap"/> to <see cref="T:Sudoku.Concepts.Orbit"/>.
@@ -8505,7 +8457,7 @@
             <exception cref="T:System.InvalidOperationException">Throws when the argument holds multiple flag values.</exception>
         </member>
         <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.&lt;G&gt;$BC1BCDF0F678E530C54E7C578A063DA3.GetCells(System.Int32)">
-            <inheritdoc cref="M:Sudoku.Concepts.SymmetricTypeExtensions.&lt;G&gt;$BC1BCDF0F678E530C54E7C578A063DA3.GetCells(System.Int32,System.Int32)"/>
+            <inheritdoc cref="!:extension(SymmetricType).GetCells(RowIndex, ColumnIndex)"/>
             <param name="cell">Indicates the target cell to be checked.</param>
         </member>
         <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.&lt;G&gt;$BC1BCDF0F678E530C54E7C578A063DA3.GetCells(System.Int32,System.Int32)">
@@ -8517,10 +8469,10 @@
             <returns>The cells.</returns>
         </member>
         <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.&lt;G&gt;$BC1BCDF0F678E530C54E7C578A063DA3.GetOrbit(System.Int32)">
-            <inheritdoc cref="M:Sudoku.Concepts.SymmetricTypeExtensions.&lt;G&gt;$BC1BCDF0F678E530C54E7C578A063DA3.GetCells(System.Int32)"/>
+            <inheritdoc cref="!:extension(SymmetricType).GetCells(Cell)"/>
         </member>
         <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.&lt;G&gt;$BC1BCDF0F678E530C54E7C578A063DA3.GetOrbit(System.Int32,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Concepts.SymmetricTypeExtensions.&lt;G&gt;$BC1BCDF0F678E530C54E7C578A063DA3.GetCells(System.Int32,System.Int32)"/>
+            <inheritdoc cref="!:extension(SymmetricType).GetCells(RowIndex, ColumnIndex)"/>
         </member>
         <member name="T:Sudoku.Transformations.ConceptRandomExtensions">
             <summary>

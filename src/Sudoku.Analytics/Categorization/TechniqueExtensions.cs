@@ -22,12 +22,12 @@ public static class TechniqueExtensions
 		/// </para>
 		/// <para>
 		/// If you want to check whether the technique is a single,
-		/// please call <see cref="TechniqueExtensions.extension(Technique).IsDirect"/>
-		/// or <see cref="TechniqueExtensions.extension(Technique).IsSingle"/> instead.
+		/// please call <see cref="extension(Technique).IsDirect"/>
+		/// or <see cref="extension(Technique).IsSingle"/> instead.
 		/// </para>
 		/// </remarks>
-		/// <seealso cref="TechniqueExtensions.extension(Technique).IsDirect"/>
-		/// <seealso cref="TechniqueExtensions.extension(Technique).IsSingle"/>
+		/// <seealso cref="extension(Technique).IsDirect"/>
+		/// <seealso cref="extension(Technique).IsSingle"/>
 		public bool IsAssignment => @this.Group is TechniqueGroup.Single or TechniqueGroup.ComplexSingle;
 
 		/// <summary>

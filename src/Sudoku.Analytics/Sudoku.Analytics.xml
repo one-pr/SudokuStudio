@@ -2241,7 +2241,7 @@
             </summary>
         </member>
         <member name="M:Sudoku.Analytics.CellMapOrCandidateMapExtensions.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.op_Modulus(Sudoku.Concepts.CandidateMap@,Sudoku.Concepts.CandidateMap@)">
-            <inheritdoc cref="M:Sudoku.Analytics.CellMapOrCandidateMapExtensions.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.op_Modulus(Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@)"/>
+            <inheritdoc cref="!:extension(CellMap).op_Modulus(in CellMap, in CellMap)"/>
         </member>
         <member name="T:Sudoku.Analytics.Collector">
             <summary>
@@ -22324,12 +22324,12 @@
             </para>
             <para>
             If you want to check whether the technique is a single,
-            please call <see cref="P:Sudoku.Categorization.TechniqueExtensions.&lt;G&gt;$ECC22D9E429C37D2A85F42507A06382E.IsDirect"/>
-            or <see cref="P:Sudoku.Categorization.TechniqueExtensions.&lt;G&gt;$ECC22D9E429C37D2A85F42507A06382E.IsSingle"/> instead.
+            please call <see cref="!:extension(Technique).IsDirect"/>
+            or <see cref="!:extension(Technique).IsSingle"/> instead.
             </para>
             </remarks>
-            <seealso cref="P:Sudoku.Categorization.TechniqueExtensions.&lt;G&gt;$ECC22D9E429C37D2A85F42507A06382E.IsDirect"/>
-            <seealso cref="P:Sudoku.Categorization.TechniqueExtensions.&lt;G&gt;$ECC22D9E429C37D2A85F42507A06382E.IsSingle"/>
+            <seealso cref="!:extension(Technique).IsDirect"/>
+            <seealso cref="!:extension(Technique).IsSingle"/>
         </member>
         <member name="P:Sudoku.Categorization.TechniqueExtensions.&lt;G&gt;$ECC22D9E429C37D2A85F42507A06382E.IsSingle">
             <summary>

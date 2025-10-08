@@ -96,7 +96,7 @@ public partial class GridCanvas
 		{
 			var originalPoint = _calculator.GetMousePointInCenter(cell, digit);
 			var point = originalPoint with { Y = originalPoint.Y + vOffsetCandidate };
-			_g.DrawValue<Digit>(digit + 1, fCandidate, brush, point, _stringAligner);
+			_g.DrawValue(digit + 1, fCandidate, brush, point, _stringAligner);
 		}
 	}
 
@@ -386,7 +386,7 @@ public partial class GridCanvas
 			// Draw values.
 			var originalPoint = _calculator.GetMousePointInCenter(cell);
 			var point = originalPoint with { Y = originalPoint.Y + vOffsetValue };
-			_g.DrawValue<char>(character, font, brush, point, _stringAligner);
+			_g.DrawValue(character, font, brush, point, _stringAligner);
 		}
 	}
 }

@@ -42,7 +42,7 @@ public static class Utf8JsonWriterExtensions
 					case float f: { @this.WriteNumberValue(f); break; }
 					case double d: { @this.WriteNumberValue(d); break; }
 					case decimal d: { @this.WriteNumberValue(d); break; }
-					default: { @this.WriteNestedObject<T>(element, options); break; }
+					default: { @this.WriteNestedObject(element, options); break; }
 				}
 			}
 			@this.WriteEndArray();

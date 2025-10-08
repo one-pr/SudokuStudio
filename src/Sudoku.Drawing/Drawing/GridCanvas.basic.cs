@@ -109,7 +109,7 @@ public partial class GridCanvas
 					{
 						var originalPoint = _calculator.GetMousePointInCenter(cell, digit);
 						var point = originalPoint with { Y = originalPoint.Y + vOffsetCandidate };
-						_g.DrawValue<Digit>(digit + 1, fCandidate, bCandidate, point, _stringAligner);
+						_g.DrawValue(digit + 1, fCandidate, bCandidate, point, _stringAligner);
 					}
 					break;
 				}
@@ -119,7 +119,7 @@ public partial class GridCanvas
 					{
 						var originalPoint = _calculator.GetMousePointInCenter(cell, digit);
 						var point = originalPoint with { Y = originalPoint.Y + vOffsetCandidate };
-						_g.DrawValue<Digit>(digit + 1, fCandidate, bCandidate, point, _stringAligner);
+						_g.DrawValue(digit + 1, fCandidate, bCandidate, point, _stringAligner);
 					}
 					break;
 				}
@@ -128,7 +128,7 @@ public partial class GridCanvas
 					// Draw values.
 					var originalPoint = _calculator.GetMousePointInCenter(cell);
 					var point = originalPoint with { Y = originalPoint.Y + vOffsetValue };
-					_g.DrawValue<Digit>(grid.GetDigit(cell) + 1, f(state, fGiven, fModifiable), f(state, bGiven, bModifiable), point, _stringAligner);
+					_g.DrawValue(grid.GetDigit(cell) + 1, f(state, fGiven, fModifiable), f(state, bGiven, bModifiable), point, _stringAligner);
 					break;
 
 

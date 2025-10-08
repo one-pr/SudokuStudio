@@ -43,7 +43,7 @@ public static class CellMapOrCandidateMapExtensions
 	/// </summary>
 	extension(CandidateMap)
 	{
-		/// <inheritdoc cref="CellMapOrCandidateMapExtensions.extension(CellMap).op_Modulus(in CellMap, in CellMap)"/>
+		/// <inheritdoc cref="extension(CellMap).op_Modulus(in CellMap, in CellMap)"/>
 		public static CandidateMap operator %(in CandidateMap @base, in CandidateMap template)
 			=> (@base & template).PeerIntersection & template;
 	}
