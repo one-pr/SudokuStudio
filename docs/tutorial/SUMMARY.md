@@ -169,6 +169,7 @@
 ## 附录 <a href="#appendix" id="appendix"></a>
 
 * [术语索引](appendix/01-terms.md)
+* [数独文本格式](appendix/sudoku-text-format.md)
 * [逻辑学基础](appendix/02-logic-basics/README.md)
   * [逻辑学简要介绍](appendix/02-logic-basics/01-brief-introduction-to-logic.md)
   * [分情况讨论和析取消去](appendix/02-logic-basics/02-proof-of-cases-and-disjunction-elimination.md)
