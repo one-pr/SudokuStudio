@@ -142,7 +142,7 @@ internal static class SetSolver
 			}
 			else
 			{
-				dlx.AddRow(candidate, columns);
+				dlx.AddRow(candidate, columns.AsSpan());
 			}
 			rowId++;
 		}
@@ -155,16 +155,6 @@ internal static class SetSolver
 		var rawSolutions = dlx.Solve(maxSolutions);
 
 		// Raw solutions are arrays of 'rowIds' which we set equal to candidates, so directly add them into result collection.
-		var results = new List<Permutation>();
-		foreach (var solution in rawSolutions)
-		{
-			var arr = solution.ToArray();
-#if SORT_SOLUTION_ASSIGNMENTS
-			Array.Sort(arr);
-#endif
-			results.Add(new(arr));
-		}
-
-		return results.AsSpan();
+		return rawSolutions.AsSpan();
 	}
 }

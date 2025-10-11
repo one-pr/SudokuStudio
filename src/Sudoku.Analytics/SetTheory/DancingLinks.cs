@@ -8,7 +8,7 @@ namespace Sudoku.SetTheory;
 /// <item>Primary columns are covered/selected by algorithm; secondary columns are "optional"</item>
 /// </list>
 /// </summary>
-public sealed class DancingLinks
+internal sealed class DancingLinks
 {
 	/// <summary>
 	/// Indicates head.
@@ -28,12 +28,12 @@ public sealed class DancingLinks
 	/// <summary>
 	/// Indicates list of row IDs chosen. This will be a solution stored.
 	/// </summary>
-	private readonly List<int> _solutionStack = [];
+	private readonly List<Candidate> _solutionStack = [];
 
 	/// <summary>
 	/// Indicates results.
 	/// </summary>
-	private readonly List<ReadOnlyMemory<Candidate>> _results = [];
+	private readonly List<Permutation> _results = [];
 
 	/// <summary>
 	/// Indicates limit maximum solutions to be checked.
@@ -74,7 +74,7 @@ public sealed class DancingLinks
 	/// </summary>
 	/// <param name="rowId">The row ID.</param>
 	/// <param name="colIndices">Column indices.</param>
-	public void AddRow(int rowId, IEnumerable<int> colIndices)
+	public void AddRow(Candidate rowId, ReadOnlySpan<Candidate> colIndices)
 	{
 		var first = default(Node);
 		var prev = default(Node);
@@ -203,10 +203,10 @@ public sealed class DancingLinks
 
 	/// <summary>
 	/// Enumerate solutions up to <paramref name="maxSolutions"/>.
-	/// The row IDs in each solution correspond to those given in <see cref="AddRow(int, IEnumerable{int})"/>.
+	/// The row IDs in each solution correspond to those given in <see cref="AddRow(Candidate, ReadOnlySpan{Candidate})"/>.
 	/// </summary>
-	/// <seealso cref="AddRow(int, IEnumerable{int})"/>
-	public List<ReadOnlyMemory<Candidate>> Solve(int maxSolutions = int.MaxValue)
+	/// <seealso cref="AddRow(Candidate, ReadOnlySpan{Candidate})"/>
+	public List<Permutation> Solve(int maxSolutions = int.MaxValue)
 	{
 		_limitMaxSolutions = maxSolutions;
 		_results.Clear();
@@ -237,7 +237,7 @@ public sealed class DancingLinks
 		if (!hasPrimary)
 		{
 			// Record current copy.
-			_results.Add(_solutionStack.ToArray());
+			_results.Add(new(_solutionStack.ToArray()));
 			return;
 		}
 

@@ -36492,7 +36492,7 @@
             <param name="columnCount">The number of columns.</param>
             <param name="isPrimary">Is-primary property to every column header.</param>
         </member>
-        <member name="M:Sudoku.SetTheory.DancingLinks.AddRow(System.Int32,System.Collections.Generic.IEnumerable{System.Int32})">
+        <member name="M:Sudoku.SetTheory.DancingLinks.AddRow(System.Int32,System.ReadOnlySpan{System.Int32})">
             <summary>
             Add a row with given <paramref name="rowId"/> and column indices <paramref name="colIndices"/> (may be empty list).
             </summary>
@@ -36520,9 +36520,9 @@
         <member name="M:Sudoku.SetTheory.DancingLinks.Solve(System.Int32)">
             <summary>
             Enumerate solutions up to <paramref name="maxSolutions"/>.
-            The row IDs in each solution correspond to those given in <see cref="M:Sudoku.SetTheory.DancingLinks.AddRow(System.Int32,System.Collections.Generic.IEnumerable{System.Int32})"/>.
+            The row IDs in each solution correspond to those given in <see cref="M:Sudoku.SetTheory.DancingLinks.AddRow(System.Int32,System.ReadOnlySpan{System.Int32})"/>.
             </summary>
-            <seealso cref="M:Sudoku.SetTheory.DancingLinks.AddRow(System.Int32,System.Collections.Generic.IEnumerable{System.Int32})"/>
+            <seealso cref="M:Sudoku.SetTheory.DancingLinks.AddRow(System.Int32,System.ReadOnlySpan{System.Int32})"/>
         </member>
         <member name="M:Sudoku.SetTheory.DancingLinks.Search(System.Int32)">
             <summary>
