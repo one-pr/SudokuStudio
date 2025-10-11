@@ -12,4 +12,45 @@ public static class PatternReasoner
 	/// <returns>The permutations.</returns>
 	public static ReadOnlySpan<Permutation> GetPermutations(in Pattern pattern)
 		=> SetSolver.Solve(pattern.Grid, pattern.Truths, pattern.Links);
+
+	/// <summary>
+	/// Try to find all conclusions.
+	/// </summary>
+	/// <param name="pattern">The pattern.</param>
+	/// <returns>All conclusions.</returns>
+	public static ReadOnlySpan<Conclusion> GetConclusions(in Pattern pattern)
+	{
+		var result = ConclusionSet.Empty;
+		ref readonly var grid = ref pattern.Grid;
+		var candidatesMap = grid.CandidatesMap;
+		var i = 0;
+		foreach (var permutation in GetPermutations(pattern))
+		{
+			var tempConclusions = ConclusionSet.Empty;
+			foreach (var candidate in permutation)
+			{
+				var cell = candidate / 9;
+				var digit = candidate % 9;
+				foreach (var c in PeersMap[cell] & candidatesMap[digit])
+				{
+					tempConclusions.Add(new(Elimination, c, digit));
+				}
+				foreach (var d in (Mask)(grid.GetCandidates(cell) & ~(1 << digit)))
+				{
+					tempConclusions.Add(new(Elimination, cell, d));
+				}
+				tempConclusions.Add(new(Assignment, cell, digit));
+			}
+
+			if (i++ == 0)
+			{
+				result |= tempConclusions;
+			}
+			else
+			{
+				result &= tempConclusions;
+			}
+		}
+		return result.AsSpan();
+	}
 }

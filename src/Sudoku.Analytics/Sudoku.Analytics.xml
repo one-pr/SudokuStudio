@@ -36675,6 +36675,13 @@
             <param name="pattern">The pattern.</param>
             <returns>The permutations.</returns>
         </member>
+        <member name="M:Sudoku.SetTheory.PatternReasoner.GetConclusions(Sudoku.SetTheory.Pattern@)">
+            <summary>
+            Try to find all conclusions.
+            </summary>
+            <param name="pattern">The pattern.</param>
+            <returns>All conclusions.</returns>
+        </member>
         <member name="T:Sudoku.SetTheory.Permutation">
             <summary>
             Represents a permutation of assigned candidates, indicating such candidates can satisfy specified truths and links.
@@ -36711,6 +36718,15 @@
             <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
         </member>
         <member name="M:Sudoku.SetTheory.Permutation.ToString(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.SetTheory.Permutation.GetEnumerator">
+            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+        </member>
+        <member name="M:Sudoku.SetTheory.Permutation.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.SetTheory.Permutation.System#Collections#Generic#IEnumerable{System#Int32}#GetEnumerator">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.SetTheory.Permutation.op_GreaterThan(Sudoku.SetTheory.Permutation,Sudoku.SetTheory.Permutation)">

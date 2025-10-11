@@ -8,6 +8,7 @@ public readonly record struct Permutation(ReadOnlyMemory<Candidate> Assignments)
 	IComparable<Permutation>,
 	IComparisonOperators<Permutation, Permutation, bool>,
 	IEqualityOperators<Permutation, Permutation, bool>,
+	IEnumerable<Candidate>,
 	IFormattable
 {
 	/// <summary>
@@ -36,6 +37,15 @@ public readonly record struct Permutation(ReadOnlyMemory<Candidate> Assignments)
 		=> formatProvider is ICustomFormatter customFormatter
 			? customFormatter.Format(format, this, formatProvider)
 			: CoordinateConverter.GetInstance(formatProvider).CandidateConverter(Candidates);
+
+	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
+	public AnonymousSpanEnumerator<Candidate> GetEnumerator() => new(Assignments.Span);
+
+	/// <inheritdoc/>
+	IEnumerator IEnumerable.GetEnumerator() => Assignments.ToArray().GetEnumerator();
+
+	/// <inheritdoc/>
+	IEnumerator<Candidate> IEnumerable<Candidate>.GetEnumerator() => Assignments.ToArray().AsEnumerable().GetEnumerator();
 
 
 	/// <inheritdoc/>
