@@ -36682,6 +36682,13 @@
             <param name="pattern">The pattern.</param>
             <returns>All conclusions.</returns>
         </member>
+        <member name="M:Sudoku.SetTheory.PatternReasoner.GetRank0Links(Sudoku.SetTheory.Pattern@)">
+            <summary>
+            Gets all rank-0 links.
+            </summary>
+            <param name="pattern">The pattern.</param>
+            <returns>All rank-0 links.</returns>
+        </member>
         <member name="T:Sudoku.SetTheory.Permutation">
             <summary>
             Represents a permutation of assigned candidates, indicating such candidates can satisfy specified truths and links.
