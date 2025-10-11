@@ -36751,9 +36751,10 @@
             If you really want to include unconstrained candidates (combinatorial), set <see langword="true"/> (dangerous).
             </param>
             <returns>
-            List of solutions; each solution is <see cref="T:System.Int32"/>[] of candidates (0..728) that are true.
+            List of solutions; each solution is a <see cref="T:Sudoku.SetTheory.Permutation"/> of assigned candidates (0..728).
             </returns>
             <seealso cref="T:Sudoku.Concepts.CandidateMap"/>
+            <seealso cref="T:Sudoku.SetTheory.Permutation"/>
         </member>
         <member name="M:Sudoku.SetTheory.SetSolver.Solve(Sudoku.SetTheory.Pattern@,System.Int32,System.Boolean)">
             <inheritdoc cref="M:Sudoku.SetTheory.SetSolver.Solve(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Supersymmetry.SpaceSet@,System.Int32,System.Boolean)"/>

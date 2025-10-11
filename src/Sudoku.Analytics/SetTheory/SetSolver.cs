@@ -27,9 +27,10 @@ internal static class SetSolver
 	/// If you really want to include unconstrained candidates (combinatorial), set <see langword="true"/> (dangerous).
 	/// </param>
 	/// <returns>
-	/// List of solutions; each solution is <see cref="Candidate"/>[] of candidates (0..728) that are true.
+	/// List of solutions; each solution is a <see cref="Permutation"/> of assigned candidates (0..728).
 	/// </returns>
 	/// <seealso cref="CandidateMap"/>
+	/// <seealso cref="Permutation"/>
 	public static ReadOnlySpan<Permutation> Solve(
 		in Grid grid,
 		in SpaceSet truths,
