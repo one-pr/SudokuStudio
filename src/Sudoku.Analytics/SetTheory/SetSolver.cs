@@ -1,5 +1,3 @@
-#undef SORT_SOLUTION_ASSIGNMENTS
-
 namespace Sudoku.SetTheory;
 
 /// <summary>
