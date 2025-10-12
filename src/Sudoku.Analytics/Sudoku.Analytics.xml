@@ -36826,20 +36826,20 @@
         <member name="T:Sudoku.SetTheory.AssignmentCountRange">
             <summary>
             Represents a range of number of permutations found in a pattern.
-            Instances of this type will be returned by method <see cref="!:PatternReasoner.GetAssignementsCount(in Pattern)"/>.
+            Instances of this type will be returned by method <see cref="M:Sudoku.SetTheory.PatternReasoner.GetAssignmentsCount(Sudoku.SetTheory.Pattern@)"/>.
             </summary>
             <param name="Min">Indicates the minimum number of a permutation.</param>
             <param name="Max">Indicates the maximum number of a permutation.</param>
-            <seealso cref="!:PatternReasoner.GetAssignementsCount(in Pattern)"/>
+            <seealso cref="M:Sudoku.SetTheory.PatternReasoner.GetAssignmentsCount(Sudoku.SetTheory.Pattern@)"/>
         </member>
         <member name="M:Sudoku.SetTheory.AssignmentCountRange.#ctor(System.Int32,System.Int32)">
             <summary>
             Represents a range of number of permutations found in a pattern.
-            Instances of this type will be returned by method <see cref="!:PatternReasoner.GetAssignementsCount(in Pattern)"/>.
+            Instances of this type will be returned by method <see cref="M:Sudoku.SetTheory.PatternReasoner.GetAssignmentsCount(Sudoku.SetTheory.Pattern@)"/>.
             </summary>
             <param name="Min">Indicates the minimum number of a permutation.</param>
             <param name="Max">Indicates the maximum number of a permutation.</param>
-            <seealso cref="!:PatternReasoner.GetAssignementsCount(in Pattern)"/>
+            <seealso cref="M:Sudoku.SetTheory.PatternReasoner.GetAssignmentsCount(Sudoku.SetTheory.Pattern@)"/>
         </member>
         <member name="P:Sudoku.SetTheory.AssignmentCountRange.Min">
             <summary>Indicates the minimum number of a permutation.</summary>
