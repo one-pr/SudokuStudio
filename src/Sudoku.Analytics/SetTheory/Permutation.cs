@@ -12,21 +12,21 @@ public readonly record struct Permutation(ReadOnlyMemory<Candidate> Assignments)
 	IFormattable
 {
 	/// <summary>
-	/// Indicates candidates.
+	/// Indicates candidates used.
 	/// </summary>
-	private CandidateMap Candidates => Assignments.Span.AsCandidateMap();
+	public CandidateMap Map => Assignments.Span.AsCandidateMap();
 
 
 	/// <inheritdoc/>
-	public bool Equals(Permutation other) => Candidates == other.Candidates;
+	public bool Equals(Permutation other) => Map == other.Map;
 
 	/// <inheritdoc/>
-	public override int GetHashCode() => Candidates.GetHashCode();
+	public override int GetHashCode() => Map.GetHashCode();
 
 	/// <inheritdoc/>
-	public int CompareTo(Permutation other) => Candidates.CompareTo(other.Candidates);
+	public int CompareTo(Permutation other) => Map.CompareTo(other.Map);
 
-	/// <inheritdoc/>
+	/// <inheritdoc cref="object.ToString"/>
 	public override string ToString() => ToString(null);
 
 	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
@@ -36,7 +36,7 @@ public readonly record struct Permutation(ReadOnlyMemory<Candidate> Assignments)
 	public string ToString(string? format, IFormatProvider? formatProvider)
 		=> formatProvider is ICustomFormatter customFormatter
 			? customFormatter.Format(format, this, formatProvider)
-			: CoordinateConverter.GetInstance(formatProvider).CandidateConverter(Candidates);
+			: CoordinateConverter.GetInstance(formatProvider).CandidateConverter(Map);
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
 	public AnonymousSpanEnumerator<Candidate> GetEnumerator() => new(Assignments.Span);

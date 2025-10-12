@@ -206,7 +206,7 @@ internal sealed class DancingLinks
 	/// The row IDs in each solution correspond to those given in <see cref="AddRow(Candidate, ReadOnlySpan{Candidate})"/>.
 	/// </summary>
 	/// <seealso cref="AddRow(Candidate, ReadOnlySpan{Candidate})"/>
-	public List<Permutation> Solve(int maxSolutions = int.MaxValue)
+	public List<Permutation> Solve(int maxSolutions)
 	{
 		_limitMaxSolutions = maxSolutions;
 		_results.Clear();

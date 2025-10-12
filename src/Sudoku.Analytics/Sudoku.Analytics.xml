@@ -36719,9 +36719,9 @@
         <member name="P:Sudoku.SetTheory.Permutation.Assignments">
             <summary>Indicates the assignments.</summary>
         </member>
-        <member name="P:Sudoku.SetTheory.Permutation.Candidates">
+        <member name="P:Sudoku.SetTheory.Permutation.Map">
             <summary>
-            Indicates candidates.
+            Indicates candidates used.
             </summary>
         </member>
         <member name="M:Sudoku.SetTheory.Permutation.Equals(Sudoku.SetTheory.Permutation)">
@@ -36734,7 +36734,7 @@
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.SetTheory.Permutation.ToString">
-            <inheritdoc/>
+            <inheritdoc cref="M:System.Object.ToString"/>
         </member>
         <member name="M:Sudoku.SetTheory.Permutation.ToString(System.IFormatProvider)">
             <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
