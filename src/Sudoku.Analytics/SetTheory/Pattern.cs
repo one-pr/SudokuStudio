@@ -4,7 +4,7 @@ namespace Sudoku.SetTheory;
 /// Represents a pattern, defining sets of truths and links.
 /// </summary>
 /// <remarks>
-/// This type uses 400 bytes.
+/// This type uses 496 bytes.
 /// </remarks>
 public readonly struct Pattern : IEquatable<Pattern>, IEqualityOperators<Pattern, Pattern, bool>
 {
