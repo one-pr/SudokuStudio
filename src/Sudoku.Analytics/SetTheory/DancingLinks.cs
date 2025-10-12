@@ -1,3 +1,8 @@
+#if SET_THROW_IF_LIMIT_IS_REACHED && !SET_LIMIT_MAX_SOLUTIONS
+#warning Symbol 'SET_THROW_IF_LIMIT_IS_REACHED' cannot work if 'SET_LIMIT_MAX_SOLUTIONS' is unset. 'SET_LIMIT_MAX_SOLUTIONS' now re-defined.
+#define SET_LIMIT_MAX_SOLUTIONS
+#endif
+
 namespace Sudoku.SetTheory;
 
 /// <summary>
@@ -35,10 +40,12 @@ internal sealed class DancingLinks
 	/// </summary>
 	private readonly List<Permutation> _results = [];
 
+#if SET_LIMIT_MAX_SOLUTIONS
 	/// <summary>
 	/// Indicates limit maximum solutions to be checked.
 	/// </summary>
 	private int _limitMaxSolutions = int.MaxValue;
+#endif
 
 
 	/// <summary>
@@ -67,6 +74,29 @@ internal sealed class DancingLinks
 
 			_columns[i] = ch;
 		}
+	}
+
+
+	/// <summary>
+	/// Enumerate solutions up to <paramref name="maxSolutions"/>.
+	/// The row IDs in each solution correspond to those given in <see cref="AddRow(Candidate, ReadOnlySpan{Candidate})"/>.
+	/// </summary>
+	/// <exception cref="DancingLinksToComplexException">
+	/// Throws when pattern is too complex to be calculated,
+	/// and symbol <c>SET_THROW_IF_LIMIT_IS_REACHED</c> is enabled.
+	/// </exception>
+	/// <seealso cref="AddRow(Candidate, ReadOnlySpan{Candidate})"/>
+	public List<Permutation> Solve(int maxSolutions)
+	{
+#if SET_LIMIT_MAX_SOLUTIONS
+		_limitMaxSolutions = maxSolutions;
+#endif
+		_results.Clear();
+		_solutionStack.Clear();
+
+		Search(0);
+
+		return _results;
 	}
 
 	/// <summary>
@@ -202,25 +232,10 @@ internal sealed class DancingLinks
 	}
 
 	/// <summary>
-	/// Enumerate solutions up to <paramref name="maxSolutions"/>.
-	/// The row IDs in each solution correspond to those given in <see cref="AddRow(Candidate, ReadOnlySpan{Candidate})"/>.
-	/// </summary>
-	/// <seealso cref="AddRow(Candidate, ReadOnlySpan{Candidate})"/>
-	public List<Permutation> Solve(int maxSolutions)
-	{
-		_limitMaxSolutions = maxSolutions;
-		_results.Clear();
-		_solutionStack.Clear();
-
-		Search(0);
-
-		return _results;
-	}
-
-	/// <summary>
 	/// Perform depth-first searching to find solutions.
 	/// </summary>
 	/// <param name="k">The current index.</param>
+	/// <exception cref="DancingLinksToComplexException">Throws when pattern is too complex.</exception>
 	private void Search(int k)
 	{
 		// If no primary columns remain, we have a valid partial cover -> record solution.
@@ -261,10 +276,14 @@ internal sealed class DancingLinks
 			}
 
 			// Recurse.
+#if SET_LIMIT_MAX_SOLUTIONS
 			if (_results.Count < _limitMaxSolutions)
 			{
 				Search(k + 1);
 			}
+#else
+			Search(k + 1);
+#endif
 
 			// Backtrack.
 			for (var j = r.L; !ReferenceEquals(j, r); j = j.L)
@@ -273,10 +292,16 @@ internal sealed class DancingLinks
 			}
 			_solutionStack.RemoveAt(^1);
 
+#if SET_LIMIT_MAX_SOLUTIONS
 			if (_results.Count >= _limitMaxSolutions)
 			{
+#if SET_THROW_IF_LIMIT_IS_REACHED
+				throw new DancingLinksToComplexException();
+#else
 				break;
+#endif
 			}
+#endif
 		}
 		Uncover(col);
 	}

@@ -5,7 +5,7 @@
 		<RootNamespace>Sudoku</RootNamespace>
 		<Description>Provides analytical APIs for solving and analyzing a sudoku puzzle.</Description>
 		<DocumentationFile>Sudoku.Analytics.xml</DocumentationFile>
-		<DefineConstants>$(DefineConstants)</DefineConstants>
+		<DefineConstants>$(DefineConstants);SET_LIMIT_MAX_SOLUTIONS;SET_THROW_IF_LIMIT_IS_REACHED</DefineConstants>
 
 		<Features>Interceptors</Features>
 		<InterceptorsNamespaces>$(InterceptorsNamespaces);Sudoku.Analytics.InterceptorGenerated</InterceptorsNamespaces>
