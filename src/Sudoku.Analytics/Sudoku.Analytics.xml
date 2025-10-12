@@ -36445,6 +36445,33 @@
             <param name="id">The ID.</param>
             <param name="isPrimary">Is-primary property.</param>
         </member>
+        <member name="T:Sudoku.SetTheory.CoveredSetsCount">
+            <summary>
+            Represents a result value of covered sets, returned by <see cref="M:Sudoku.SetTheory.PatternReasoner.GetCoveredSetsCount(Sudoku.SetTheory.Pattern@,System.Int32)"/>.
+            </summary>
+            <param name="TruthsCount">Indicates the number of truths covered.</param>
+            <param name="LinksCount">Indicates the number of links covered.</param>
+            <seealso cref="M:Sudoku.SetTheory.PatternReasoner.GetCoveredSetsCount(Sudoku.SetTheory.Pattern@,System.Int32)"/>.
+        </member>
+        <member name="M:Sudoku.SetTheory.CoveredSetsCount.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Represents a result value of covered sets, returned by <see cref="M:Sudoku.SetTheory.PatternReasoner.GetCoveredSetsCount(Sudoku.SetTheory.Pattern@,System.Int32)"/>.
+            </summary>
+            <param name="TruthsCount">Indicates the number of truths covered.</param>
+            <param name="LinksCount">Indicates the number of links covered.</param>
+            <seealso cref="M:Sudoku.SetTheory.PatternReasoner.GetCoveredSetsCount(Sudoku.SetTheory.Pattern@,System.Int32)"/>.
+        </member>
+        <member name="P:Sudoku.SetTheory.CoveredSetsCount.TruthsCount">
+            <summary>Indicates the number of truths covered.</summary>
+        </member>
+        <member name="P:Sudoku.SetTheory.CoveredSetsCount.LinksCount">
+            <summary>Indicates the number of links covered.</summary>
+        </member>
+        <member name="P:Sudoku.SetTheory.CoveredSetsCount.IsExactCovered">
+            <summary>
+            Indicates whether a candidate is exact-covered.
+            </summary>
+        </member>
         <member name="T:Sudoku.SetTheory.DancingLinks">
             <summary>
             Dancing Links implementation that supports primary (must-cover exactly once) and secondary (at-most-one) columns.
@@ -36687,14 +36714,6 @@
             Provides a list of members to get pattern detailed information that should be inferred.
             </summary>
         </member>
-        <member name="M:Sudoku.SetTheory.PatternReasoner.GetCoveredSetsCount(Sudoku.SetTheory.Pattern@,System.Int32)">
-            <summary>
-            Totals up how many truths and links covered for a specified candidate.
-            </summary>
-            <param name="pattern">The pattern.</param>
-            <param name="candidate">The candidate to check.</param>
-            <returns>A pair of numbers indicating that.</returns>
-        </member>
         <member name="M:Sudoku.SetTheory.PatternReasoner.GetExactCoveredCandidates(Sudoku.SetTheory.Pattern@)">
             <summary>
             Find for exact-covered candidates in the pattern.
@@ -36722,6 +36741,14 @@
             </summary>
             <param name="pattern">The pattern.</param>
             <returns>All rank-0 links.</returns>
+        </member>
+        <member name="M:Sudoku.SetTheory.PatternReasoner.GetCoveredSetsCount(Sudoku.SetTheory.Pattern@,System.Int32)">
+            <summary>
+            Totals up how many truths and links covered for a specified candidate.
+            </summary>
+            <param name="pattern">The pattern.</param>
+            <param name="candidate">The candidate to check.</param>
+            <returns>A pair of numbers indicating that.</returns>
         </member>
         <member name="T:Sudoku.SetTheory.Permutation">
             <summary>
