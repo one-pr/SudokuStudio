@@ -3,30 +3,45 @@ namespace Sudoku.SetTheory;
 /// <summary>
 /// Represents a pattern, defining sets of truths and links.
 /// </summary>
-/// <param name="truths"><inheritdoc cref="Truths" path="/summary"/></param>
-/// <param name="links"><inheritdoc cref="Links" path="/summary"/></param>
-/// <param name="grid"><inheritdoc cref="Grid" path="/summary"/></param>
 /// <remarks>
 /// This type uses 400 bytes.
 /// </remarks>
-public readonly struct Pattern(in SpaceSet truths, in SpaceSet links, in Grid grid) :
-	IEquatable<Pattern>,
-	IEqualityOperators<Pattern, Pattern, bool>
+public readonly struct Pattern : IEquatable<Pattern>, IEqualityOperators<Pattern, Pattern, bool>
 {
 	/// <summary>
 	/// Indicates truths and links.
 	/// </summary>
-	private readonly SpaceSet _truths = truths, _links = links;
+	private readonly SpaceSet _truths, _links;
 
 	/// <summary>
-	/// Indicates grid candidates used.
+	/// Indicates all candidates used in truths.
 	/// </summary>
-	private readonly CandidateMap _map = BuildMap(in truths, in grid);
+	private readonly CandidateMap _map;
+
+	/// <summary>
+	/// Indicates all candidates used in both truths and links.
+	/// </summary>
+	private readonly CandidateMap _mapIncludingLinks;
 
 	/// <summary>
 	/// Indicates original grid.
 	/// </summary>
-	private readonly Grid _originalGrid = grid;
+	private readonly Grid _originalGrid;
+
+
+	/// <summary>
+	/// Initializes a <see cref="Pattern"/> instance via the specified truths, links and original grid.
+	/// </summary>
+	/// <param name="truths"><inheritdoc cref="Truths" path="/summary"/></param>
+	/// <param name="links"><inheritdoc cref="Links" path="/summary"/></param>
+	/// <param name="grid"><inheritdoc cref="Grid" path="/summary"/></param>
+	public Pattern(in SpaceSet truths, in SpaceSet links, in Grid grid)
+	{
+		_truths = truths;
+		_links = links;
+		_map = BuildMap(in truths, in links, in grid, out _mapIncludingLinks);
+		_originalGrid = grid;
+	}
 
 
 	/// <summary>
@@ -42,10 +57,16 @@ public readonly struct Pattern(in SpaceSet truths, in SpaceSet links, in Grid gr
 	public ref readonly SpaceSet Links => ref _links;
 
 	/// <summary>
-	/// Indicates the target candidates used.
+	/// Indicates all candidates used in truths.
 	/// </summary>
 	[UnscopedRef]
 	public ref readonly CandidateMap Map => ref _map;
+
+	/// <summary>
+	/// Indicates all candidates used in both truths and links.
+	/// </summary>
+	[UnscopedRef]
+	public ref readonly CandidateMap FullMap => ref _mapIncludingLinks;
 
 	/// <summary>
 	/// Indicates original grid.
@@ -74,14 +95,27 @@ public readonly struct Pattern(in SpaceSet truths, in SpaceSet links, in Grid gr
 	/// Creates a <see cref="CandidateMap"/> via the specified truths.
 	/// </summary>
 	/// <param name="truths">The truths.</param>
+	/// <param name="links">The links.</param>
 	/// <param name="grid">The grid.</param>
-	/// <returns>The grid.</returns>
-	private static CandidateMap BuildMap(ref readonly SpaceSet truths, ref readonly Grid grid)
+	/// <param name="mapIncludingLinks">The map including links.</param>
+	/// <returns>The candidates used only in truths.</returns>
+	private static CandidateMap BuildMap(
+		ref readonly SpaceSet truths,
+		ref readonly SpaceSet links,
+		ref readonly Grid grid,
+		out CandidateMap mapIncludingLinks
+	)
 	{
-		var result = CandidateMap.Empty;
+		(mapIncludingLinks, var result) = (CandidateMap.Empty, CandidateMap.Empty);
 		foreach (var truth in truths)
 		{
-			result |= truth.GetAvailableRange(grid);
+			var map = truth.GetAvailableRange(grid);
+			result |= map;
+			mapIncludingLinks |= map;
+		}
+		foreach (var link in links)
+		{
+			mapIncludingLinks |= link.GetAvailableRange(grid);
 		}
 		return result;
 	}

@@ -36587,20 +36587,6 @@
             <summary>
             Represents a pattern, defining sets of truths and links.
             </summary>
-            <param name="truths"><inheritdoc cref="P:Sudoku.SetTheory.Pattern.Truths" path="/summary"/></param>
-            <param name="links"><inheritdoc cref="P:Sudoku.SetTheory.Pattern.Links" path="/summary"/></param>
-            <param name="grid"><inheritdoc cref="P:Sudoku.SetTheory.Pattern.Grid" path="/summary"/></param>
-            <remarks>
-            This type uses 400 bytes.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.SetTheory.Pattern.#ctor(Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Grid@)">
-            <summary>
-            Represents a pattern, defining sets of truths and links.
-            </summary>
-            <param name="truths"><inheritdoc cref="P:Sudoku.SetTheory.Pattern.Truths" path="/summary"/></param>
-            <param name="links"><inheritdoc cref="P:Sudoku.SetTheory.Pattern.Links" path="/summary"/></param>
-            <param name="grid"><inheritdoc cref="P:Sudoku.SetTheory.Pattern.Grid" path="/summary"/></param>
             <remarks>
             This type uses 400 bytes.
             </remarks>
@@ -36617,13 +36603,26 @@
         </member>
         <member name="F:Sudoku.SetTheory.Pattern._map">
             <summary>
-            Indicates grid candidates used.
+            Indicates all candidates used in truths.
+            </summary>
+        </member>
+        <member name="F:Sudoku.SetTheory.Pattern._mapIncludingLinks">
+            <summary>
+            Indicates all candidates used in both truths and links.
             </summary>
         </member>
         <member name="F:Sudoku.SetTheory.Pattern._originalGrid">
             <summary>
             Indicates original grid.
             </summary>
+        </member>
+        <member name="M:Sudoku.SetTheory.Pattern.#ctor(Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Grid@)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.SetTheory.Pattern"/> instance via the specified truths, links and original grid.
+            </summary>
+            <param name="truths"><inheritdoc cref="P:Sudoku.SetTheory.Pattern.Truths" path="/summary"/></param>
+            <param name="links"><inheritdoc cref="P:Sudoku.SetTheory.Pattern.Links" path="/summary"/></param>
+            <param name="grid"><inheritdoc cref="P:Sudoku.SetTheory.Pattern.Grid" path="/summary"/></param>
         </member>
         <member name="P:Sudoku.SetTheory.Pattern.Truths">
             <summary>
@@ -36637,7 +36636,12 @@
         </member>
         <member name="P:Sudoku.SetTheory.Pattern.Map">
             <summary>
-            Indicates the target candidates used.
+            Indicates all candidates used in truths.
+            </summary>
+        </member>
+        <member name="P:Sudoku.SetTheory.Pattern.FullMap">
+            <summary>
+            Indicates all candidates used in both truths and links.
             </summary>
         </member>
         <member name="P:Sudoku.SetTheory.Pattern.Grid">
@@ -36660,13 +36664,15 @@
         <member name="M:Sudoku.SetTheory.Pattern.System#IEquatable{Sudoku#SetTheory#Pattern}#Equals(Sudoku.SetTheory.Pattern)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.SetTheory.Pattern.BuildMap(Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Grid@)">
+        <member name="M:Sudoku.SetTheory.Pattern.BuildMap(Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CandidateMap@)">
             <summary>
             Creates a <see cref="T:Sudoku.Concepts.CandidateMap"/> via the specified truths.
             </summary>
             <param name="truths">The truths.</param>
+            <param name="links">The links.</param>
             <param name="grid">The grid.</param>
-            <returns>The grid.</returns>
+            <param name="mapIncludingLinks">The map including links.</param>
+            <returns>The candidates used only in truths.</returns>
         </member>
         <member name="M:Sudoku.SetTheory.Pattern.op_Equality(Sudoku.SetTheory.Pattern@,Sudoku.SetTheory.Pattern@)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>

@@ -65,9 +65,11 @@ public static class PatternReasoner
 	/// <returns>All conclusions.</returns>
 	public static ReadOnlySpan<Conclusion> GetConclusions(in Pattern pattern)
 	{
-		var result = ConclusionSet.Empty;
 		ref readonly var grid = ref pattern.Grid;
+		ref readonly var fullMap = ref pattern.FullMap;
 		var candidatesMap = grid.CandidatesMap;
+
+		var result = ConclusionSet.Empty;
 		var i = 0;
 		foreach (var permutation in GetPermutations(pattern))
 		{
@@ -78,11 +80,17 @@ public static class PatternReasoner
 				var digit = candidate % 9;
 				foreach (var c in PeersMap[cell] & candidatesMap[digit])
 				{
-					tempConclusions.Add(new(Elimination, c, digit));
+					if (fullMap.Contains(c * 9 + digit))
+					{
+						tempConclusions.Add(new(Elimination, c, digit));
+					}
 				}
 				foreach (var d in (Mask)(grid.GetCandidates(cell) & ~(1 << digit)))
 				{
-					tempConclusions.Add(new(Elimination, cell, d));
+					if (fullMap.Contains(cell * 9 + d))
+					{
+						tempConclusions.Add(new(Elimination, cell, d));
+					}
 				}
 				tempConclusions.Add(new(Assignment, cell, digit));
 			}
