@@ -2,20 +2,21 @@ namespace Sudoku.SetTheory;
 
 /// <summary>
 /// Represents a range of number of permutations found in a pattern.
-/// Instances of this type will be returned by method .
+/// Instances of this type will be returned by method <see cref="PatternReasoner.GetAssignementsCount(in Pattern)"/>.
 /// </summary>
-/// <param name="MinimumCount">Indicates the minimum number of a permutation.</param>
-/// <param name="MaximumCount">Indicates the maximum number of a permutation.</param>
-public readonly record struct PermutationCountRange(int MinimumCount, int MaximumCount) :
-	IEqualityOperators<PermutationCountRange, PermutationCountRange, bool>
+/// <param name="Min">Indicates the minimum number of a permutation.</param>
+/// <param name="Max">Indicates the maximum number of a permutation.</param>
+/// <seealso cref="PatternReasoner.GetAssignementsCount(in Pattern)"/>
+public readonly record struct AssignmentCountRange(int Min, int Max) :
+	IEqualityOperators<AssignmentCountRange, AssignmentCountRange, bool>
 {
 	/// <summary>
 	/// Indicates whether the pattern is stable.
 	/// </summary>
-	public bool IsStable => MinimumCount == MaximumCount;
+	public bool IsStable => Min == Max;
 
 	/// <summary>
 	/// Indicates the delta value.
 	/// </summary>
-	public int Delta => MaximumCount - MinimumCount;
+	public int Delta => Max - Min;
 }

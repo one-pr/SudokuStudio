@@ -36721,7 +36721,7 @@
             <param name="pattern">The pattern.</param>
             <returns>All exact-covered candidates.</returns>
         </member>
-        <member name="M:Sudoku.SetTheory.PatternReasoner.GetPermutationCount(Sudoku.SetTheory.Pattern@)">
+        <member name="M:Sudoku.SetTheory.PatternReasoner.GetAssignmentsCount(Sudoku.SetTheory.Pattern@)">
             <summary>
             Gets the number of assigned candidates that can make a pattern satisfied with all truths and links.
             </summary>
@@ -36748,6 +36748,13 @@
             </summary>
             <param name="pattern">The pattern.</param>
             <returns>All rank-0 links.</returns>
+        </member>
+        <member name="M:Sudoku.SetTheory.PatternReasoner.GetRank0Eliminations(Sudoku.SetTheory.Pattern@)">
+            <summary>
+            Gets all rank-0 eliminations.
+            </summary>
+            <param name="pattern">The pattern.</param>
+            <returns>All rank-0 eliminations.</returns>
         </member>
         <member name="M:Sudoku.SetTheory.PatternReasoner.GetCoveredSetsCount(Sudoku.SetTheory.Pattern@,System.Int32)">
             <summary>
@@ -36816,34 +36823,36 @@
         <member name="M:Sudoku.SetTheory.Permutation.op_LessThanOrEqual(Sudoku.SetTheory.Permutation,Sudoku.SetTheory.Permutation)">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.SetTheory.PermutationCountRange">
+        <member name="T:Sudoku.SetTheory.AssignmentCountRange">
             <summary>
             Represents a range of number of permutations found in a pattern.
-            Instances of this type will be returned by method .
+            Instances of this type will be returned by method <see cref="!:PatternReasoner.GetAssignementsCount(in Pattern)"/>.
             </summary>
-            <param name="MinimumCount">Indicates the minimum number of a permutation.</param>
-            <param name="MaximumCount">Indicates the maximum number of a permutation.</param>
+            <param name="Min">Indicates the minimum number of a permutation.</param>
+            <param name="Max">Indicates the maximum number of a permutation.</param>
+            <seealso cref="!:PatternReasoner.GetAssignementsCount(in Pattern)"/>
         </member>
-        <member name="M:Sudoku.SetTheory.PermutationCountRange.#ctor(System.Int32,System.Int32)">
+        <member name="M:Sudoku.SetTheory.AssignmentCountRange.#ctor(System.Int32,System.Int32)">
             <summary>
             Represents a range of number of permutations found in a pattern.
-            Instances of this type will be returned by method .
+            Instances of this type will be returned by method <see cref="!:PatternReasoner.GetAssignementsCount(in Pattern)"/>.
             </summary>
-            <param name="MinimumCount">Indicates the minimum number of a permutation.</param>
-            <param name="MaximumCount">Indicates the maximum number of a permutation.</param>
+            <param name="Min">Indicates the minimum number of a permutation.</param>
+            <param name="Max">Indicates the maximum number of a permutation.</param>
+            <seealso cref="!:PatternReasoner.GetAssignementsCount(in Pattern)"/>
         </member>
-        <member name="P:Sudoku.SetTheory.PermutationCountRange.MinimumCount">
+        <member name="P:Sudoku.SetTheory.AssignmentCountRange.Min">
             <summary>Indicates the minimum number of a permutation.</summary>
         </member>
-        <member name="P:Sudoku.SetTheory.PermutationCountRange.MaximumCount">
+        <member name="P:Sudoku.SetTheory.AssignmentCountRange.Max">
             <summary>Indicates the maximum number of a permutation.</summary>
         </member>
-        <member name="P:Sudoku.SetTheory.PermutationCountRange.IsStable">
+        <member name="P:Sudoku.SetTheory.AssignmentCountRange.IsStable">
             <summary>
             Indicates whether the pattern is stable.
             </summary>
         </member>
-        <member name="P:Sudoku.SetTheory.PermutationCountRange.Delta">
+        <member name="P:Sudoku.SetTheory.AssignmentCountRange.Delta">
             <summary>
             Indicates the delta value.
             </summary>
@@ -36853,7 +36862,7 @@
             Represents an internal entry for dancing links solver.
             </summary>
         </member>
-        <member name="M:Sudoku.SetTheory.SetSolver.Solve(Sudoku.SetTheory.Pattern@,System.Int32,System.Boolean)">
+        <member name="M:Sudoku.SetTheory.SetSolver.Solve(Sudoku.SetTheory.Pattern@,System.Int32)">
             <summary>
             Solve for all selections of candidates that satisfy:
             <list type="bullet">
@@ -36863,17 +36872,12 @@
             </summary>
             <param name="pattern">The pattern to be used.</param>
             <param name="maxSolutions">The limit maximum solutions can be found.</param>
-            <param name="includeUnconstrained">
-            Indicates whether unconstrained candidates will be included to check.
-            By default we <b>skip</b> candidates that are not present in any set (to avoid combinatorial explosion).
-            If you really want to include unconstrained candidates (combinatorial), set <see langword="true"/> (dangerous).
-            </param>
             <returns>
             List of solutions; each solution is a <see cref="T:Sudoku.SetTheory.Permutation"/> of assigned candidates (0..728).
             </returns>
             <seealso cref="T:Sudoku.SetTheory.Permutation"/>
         </member>
-        <member name="M:Sudoku.SetTheory.SetSolver.Solve(Sudoku.Concepts.CandidateMap@,System.ReadOnlySpan{Sudoku.Concepts.CandidateMap},System.ReadOnlySpan{Sudoku.Concepts.CandidateMap},System.Int32,System.Boolean)">
+        <member name="M:Sudoku.SetTheory.SetSolver.Solve(Sudoku.Concepts.CandidateMap@,System.ReadOnlySpan{Sudoku.Concepts.CandidateMap},System.ReadOnlySpan{Sudoku.Concepts.CandidateMap},System.Int32)">
             <summary>
             The backing method.
             </summary>

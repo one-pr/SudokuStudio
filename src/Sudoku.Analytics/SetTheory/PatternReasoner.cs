@@ -28,7 +28,7 @@ public static class PatternReasoner
 	/// </summary>
 	/// <param name="pattern">The pattern.</param>
 	/// <returns>The permutation count value.</returns>
-	public static PermutationCountRange GetPermutationCount(in Pattern pattern)
+	public static AssignmentCountRange GetAssignmentsCount(in Pattern pattern)
 	{
 		var (min, max) = (int.MaxValue, int.MinValue);
 		foreach (var permutation in GetPermutations(pattern))
@@ -124,6 +124,34 @@ public static class PatternReasoner
 				lightUpLinks.Add(Space.ColumnDigit((cell >> HouseType.Column) - 18, digit));
 			}
 			result &= lightUpLinks;
+		}
+		return result;
+	}
+
+	/// <summary>
+	/// Gets all rank-0 eliminations.
+	/// </summary>
+	/// <param name="pattern">The pattern.</param>
+	/// <returns>All rank-0 eliminations.</returns>
+	public static CandidateMap GetRank0Eliminations(in Pattern pattern)
+	{
+		var conclusions = GetConclusions(pattern);
+		var result = CandidateMap.Empty;
+		foreach (var (type, candidate) in conclusions)
+		{
+			if (type != Elimination)
+			{
+				continue;
+			}
+
+			// TODO: construct a cache. Unnecessary to calculate permutations twice.
+			foreach (var link in GetRank0Links(pattern))
+			{
+				if (link.Contains(candidate))
+				{
+					result.Add(candidate);
+				}
+			}
 		}
 		return result;
 	}
