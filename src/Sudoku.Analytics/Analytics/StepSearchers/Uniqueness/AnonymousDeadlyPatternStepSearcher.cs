@@ -4,90 +4,54 @@ namespace Sudoku.Analytics.StepSearchers;
 /// Provides with an <b>Anonymous Deadly Pattern</b> step searcher.
 /// The step searcher will include the following techniques:
 /// <list type="bullet">
+/// <item>
+/// Anonymous Deadly Pattern:
+/// <list type="bullet">
 /// <item>Anonymous Deadly Pattern Type 1</item>
 /// <item>Anonymous Deadly Pattern Type 2</item>
 /// <item>Anonymous Deadly Pattern Type 3</item>
 /// <item>Anonymous Deadly Pattern Type 4</item>
+/// </list>
+/// </item>
+/// <item>
+/// Rotating Deadly Pattern:
+/// <list type="bullet">
+/// <item>Rotating Deadly Pattern Type 1</item>
+/// <item>Rotating Deadly Pattern Type 2</item>
+/// <item>Rotating Deadly Pattern Type 3</item>
+/// <item>Rotating Deadly Pattern Type 4</item>
+/// </list>
+/// </item>
 /// </list>
 /// </summary>
 [StepSearcher(
 	"StepSearcherName_AnonymousDeadlyPatternStepSearcher",
 	Technique.AnonymousDeadlyPatternType1, Technique.AnonymousDeadlyPatternType2,
 	Technique.AnonymousDeadlyPatternType3, Technique.AnonymousDeadlyPatternType4,
+	Technique.RotatingDeadlyPatternType1, Technique.RotatingDeadlyPatternType2,
+	Technique.RotatingDeadlyPatternType3, Technique.RotatingDeadlyPatternType4,
 	SupportedSudokuTypes = SudokuType.Standard,
 	SupportAnalyzingMultipleSolutionsPuzzle = false)]
 public sealed partial class AnonymousDeadlyPatternStepSearcher : StepSearcher
 {
 	/// <summary>
-	/// Indicates all eight-cell patterns.
+	/// Indicates all 7-cell patterns.
 	/// </summary>
-	private static readonly ReadOnlyMemory<CellMap> EightCellPatterns;
+	private static readonly ReadOnlyMemory<CellMap> SevenCellPatterns = Construct7Cells();
 
-
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
-	static AnonymousDeadlyPatternStepSearcher()
-	{
-		// Construct patterns of 8 cells.
-		// We can unify two patterns of 8 cells into one, by using extended rectangles.
-		// Enumerate all possible XR patterns with 6 cells, and enumerate all cells.
-		// For each cell, we will remove it and insert a unique rectangle pattern that covers the current cell.
-		var eightCellPatterns = new HashSet<CellMap>();
-		foreach (var pattern in ExtendedRectanglePattern.AllPatterns[..1620]) // [0..1620] -> XR size 6
-		{
-			var patternCells = pattern.PatternCells;
-			foreach (var missingCell in patternCells)
-			{
-				// Determine which side has more cells (row or column).
-				var lastPatternCells = patternCells - missingCell;
-				var row = missingCell >> HouseType.Row;
-				var column = missingCell >> HouseType.Column;
-				var rowCells = patternCells & HousesMap[row];
-				var columnCells = patternCells & HousesMap[column];
-				var isRow = rowCells.Count > columnCells.Count;
-				var targetHouse = pattern.IsFat ? isRow ? column : row : isRow ? row : column;
-				var chute = default(Chute);
-				foreach (ref readonly var c in Chutes)
-				{
-					if ((c.HousesMask >> targetHouse & 1) != 0)
-					{
-						chute = c;
-						break;
-					}
-				}
-
-				// Iterate the other two houses that exclude the current cell, and find all possible cells.
-				// For each cell, we should treat it as the diagonal cell of UR pattern with the missing cell.
-				// If two cells are RxCy and RzCw, all 4 UR cells are RxCy, RxCw, RzCy and RzCw.
-				var (x, y) = (missingCell / 9, missingCell % 9);
-				foreach (var house in chute.HousesMask & ~(1 << targetHouse))
-				{
-					foreach (var cell in HousesMap[house])
-					{
-						if ((missingCell.AsCellMap() + cell).FirstSharedHouse != FallbackConstants.@int)
-						{
-							continue;
-						}
-
-						// Add it into the whole pattern.
-						var (z, w) = (cell / 9, cell % 9);
-						var extraCells = cell.AsCellMap() + (x * 9 + w) + (z * 9 + y);
-						if (lastPatternCells & extraCells)
-						{
-							continue;
-						}
-
-						eightCellPatterns.Add(lastPatternCells | extraCells);
-					}
-				}
-			}
-		}
-		EightCellPatterns = eightCellPatterns.ToArray();
-	}
+	/// <summary>
+	/// Indicates all 8-cell patterns.
+	/// </summary>
+	private static readonly ReadOnlyMemory<CellMap> EightCellPatterns = Construct8Cells();
 
 
 	/// <inheritdoc/>
 	protected internal override Step? Collect(ref StepAnalysisContext context)
 	{
+		if (Collect_7Cells(ref context) is { } sevenCellsStep)
+		{
+			return sevenCellsStep;
+		}
 		if (Collect_8Cells(ref context) is { } eightCellsStep)
 		{
 			return eightCellsStep;
@@ -99,6 +63,116 @@ public sealed partial class AnonymousDeadlyPatternStepSearcher : StepSearcher
 		if (Collect_9Cells(ref context) is { } nineCellsStep)
 		{
 			return nineCellsStep;
+		}
+		return null;
+	}
+
+	/// <remarks>
+	/// There's only 1 pattern:
+	/// <code><![CDATA[
+	/// 123 .  .  |  123 .  .  |  123 .  .
+	/// 123 .  .  |  123 .  .  |  .   .  .
+	/// 123 .  .  |  .   .  .  |  123 .  .
+	/// ]]></code>
+	/// </remarks>
+	private AnonymousDeadlyPatternStep? Collect_7Cells(ref StepAnalysisContext context)
+	{
+		ref readonly var grid = ref context.Grid;
+
+		// Iterate on each pattern.
+		foreach (ref readonly var pattern in SevenCellPatterns)
+		{
+			if ((EmptyCells & pattern) != pattern)
+			{
+				// There's any non-empty cell.
+				continue;
+			}
+
+			// Check the number of digits appeared in the pattern, and determine which type it would be.
+			var digitsMask = grid[pattern];
+
+			// Adds an filter nearly same as anonymous deadly pattern, but with 3 different digits.
+			var possiblePatternDigitsMask = (Mask)0;
+			foreach (var digit in digitsMask)
+			{
+				if ((pattern & CandidatesMap[digit]).Count >= 3)
+				{
+					possiblePatternDigitsMask |= (Mask)(1 << digit);
+				}
+			}
+			if (PopCount((uint)possiblePatternDigitsMask) < 3)
+			{
+				continue;
+			}
+
+			// Iterate on each combination.
+			foreach (var combination in possiblePatternDigitsMask.AllSets & 3)
+			{
+				// Try to get all cells that holds extra digits.
+				var currentCombinationDigitsMask = Mask.Create(combination);
+				var extraDigitsMask = (Mask)(digitsMask & ~currentCombinationDigitsMask);
+				var extraCells = CellMap.Empty;
+				foreach (var cell in pattern)
+				{
+					if ((grid.GetCandidates(cell) & extraDigitsMask) != 0)
+					{
+						extraCells += cell;
+					}
+				}
+				if (extraCells.Count >= 2 && extraCells.FirstSharedHouse == FallbackConstants.@int)
+				{
+					// All extra cells must share with a same house.
+					continue;
+				}
+
+				if (!VerifyPattern(grid, pattern, extraDigitsMask, out var p))
+				{
+					// The pattern cannot be passed to be verified.
+					continue;
+				}
+
+				switch (PopCount((uint)extraDigitsMask))
+				{
+					case 0:
+					{
+						throw new PuzzleInvalidException(grid, typeof(AnonymousDeadlyPatternStep));
+					}
+					case 1:
+					{
+						var extraDigit = Log2((uint)extraDigitsMask);
+						if (CheckType1Or2(
+							ref context, grid, pattern, currentCombinationDigitsMask, extraDigit, p,
+							(pattern & CandidatesMap[extraDigit]).Count == 1
+								? Technique.AnonymousDeadlyPatternType1
+								: Technique.AnonymousDeadlyPatternType2
+						) is { } type1Or2Step)
+						{
+							return type1Or2Step;
+						}
+						continue;
+					}
+					case 2:
+					{
+						if (CheckType3(
+							ref context, grid, pattern, currentCombinationDigitsMask,
+							extraDigitsMask, extraCells, p, Technique.AnonymousDeadlyPatternType3) is { } type3Step)
+						{
+							return type3Step;
+						}
+						goto default;
+					}
+					default:
+					{
+						if (CheckType4(
+							ref context, grid, pattern, currentCombinationDigitsMask,
+							extraDigitsMask, extraCells, p, Technique.AnonymousDeadlyPatternType4) is { } type4Step)
+						{
+							return type4Step;
+						}
+						break;
+					}
+				}
+			}
 		}
 		return null;
 	}
@@ -698,5 +772,124 @@ public sealed partial class AnonymousDeadlyPatternStepSearcher : StepSearcher
 		var result = UniquenessChecker.GetUniqueness(emptyGrid, pattern);
 		c = result.PatternCandidates;
 		return result.IsDeadlyPattern;
+	}
+
+	/// <summary>
+	/// Construct patterns for 7 cells.
+	/// </summary>
+	private static ReadOnlyMemory<CellMap> Construct7Cells()
+	{
+		var result = new List<CellMap>();
+		foreach (var rowsCombination in Digits & 3)
+		{
+			foreach (var columnsCombination in Digits & 3)
+			{
+				// Find for each 3 * 3 cells.
+				var originalPatternCells = (rowsCombination[0] * 9 + columnsCombination[0]).AsCellMap()
+					+ (rowsCombination[0] * 9 + columnsCombination[1])
+					+ (rowsCombination[0] * 9 + columnsCombination[2])
+					+ (rowsCombination[1] * 9 + columnsCombination[0])
+					+ (rowsCombination[1] * 9 + columnsCombination[1])
+					+ (rowsCombination[1] * 9 + columnsCombination[2])
+					+ (rowsCombination[2] * 9 + columnsCombination[0])
+					+ (rowsCombination[2] * 9 + columnsCombination[1])
+					+ (rowsCombination[2] * 9 + columnsCombination[2]);
+				if (PopCount((uint)originalPatternCells.BlockMask) != 3)
+				{
+					// Skip for same-block cells.
+					continue;
+				}
+
+				// Now we have a standard 3 * 3 cells.
+
+				// We should remove out 2 cells from the pattern. Iterate on all pair combinations of 9 cells.
+				foreach (ref readonly var pair in originalPatternCells & 2)
+				{
+					// Remove out those two.
+					var patternCells = originalPatternCells & ~pair;
+
+					// Check whether all houses the pattern spanned have at least 2 cells or not.
+					var isFailed = false;
+					foreach (var house in patternCells.Houses)
+					{
+						if ((HousesMap[house] & patternCells).Count == 1)
+						{
+							isFailed = true;
+							break;
+						}
+					}
+					if (isFailed)
+					{
+						// Skip for this combination.
+						continue;
+					}
+
+					// Add result into collection.
+					result.AddRef(patternCells);
+				}
+			}
+		}
+		return result.AsMemory();
+	}
+
+	/// <summary>
+	/// Construct patterns for 8 cells.
+	/// </summary>
+	private static ReadOnlyMemory<CellMap> Construct8Cells()
+	{
+		// We can unify two patterns of 8 cells into one, by using extended rectangles.
+		// Enumerate all possible XR patterns with 6 cells, and enumerate all cells.
+		// For each cell, we will remove it and insert a unique rectangle pattern that covers the current cell.
+		var result = new HashSet<CellMap>();
+		foreach (var pattern in ExtendedRectanglePattern.AllPatterns[..1620]) // [0..1620] -> XR size 6
+		{
+			var patternCells = pattern.PatternCells;
+			foreach (var missingCell in patternCells)
+			{
+				// Determine which side has more cells (row or column).
+				var lastPatternCells = patternCells - missingCell;
+				var row = missingCell >> HouseType.Row;
+				var column = missingCell >> HouseType.Column;
+				var rowCells = patternCells & HousesMap[row];
+				var columnCells = patternCells & HousesMap[column];
+				var isRow = rowCells.Count > columnCells.Count;
+				var targetHouse = pattern.IsFat ? isRow ? column : row : isRow ? row : column;
+				var chute = default(Chute);
+				foreach (ref readonly var c in Chutes)
+				{
+					if ((c.HousesMask >> targetHouse & 1) != 0)
+					{
+						chute = c;
+						break;
+					}
+				}
+
+				// Iterate the other two houses that exclude the current cell, and find all possible cells.
+				// For each cell, we should treat it as the diagonal cell of UR pattern with the missing cell.
+				// If two cells are RxCy and RzCw, all 4 UR cells are RxCy, RxCw, RzCy and RzCw.
+				var (x, y) = (missingCell / 9, missingCell % 9);
+				foreach (var house in chute.HousesMask & ~(1 << targetHouse))
+				{
+					foreach (var cell in HousesMap[house])
+					{
+						if ((missingCell.AsCellMap() + cell).FirstSharedHouse != FallbackConstants.@int)
+						{
+							continue;
+						}
+
+						// Add it into the whole pattern.
+						var (z, w) = (cell / 9, cell % 9);
+						var extraCells = cell.AsCellMap() + (x * 9 + w) + (z * 9 + y);
+						if (lastPatternCells & extraCells)
+						{
+							continue;
+						}
+
+						result.Add(lastPatternCells | extraCells);
+					}
+				}
+			}
+		}
+		return result.ToArray();
 	}
 }

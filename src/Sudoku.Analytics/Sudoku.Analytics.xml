@@ -8302,33 +8302,49 @@
             Provides with an <b>Anonymous Deadly Pattern</b> step searcher.
             The step searcher will include the following techniques:
             <list type="bullet">
+            <item>
+            Anonymous Deadly Pattern:
+            <list type="bullet">
             <item>Anonymous Deadly Pattern Type 1</item>
             <item>Anonymous Deadly Pattern Type 2</item>
             <item>Anonymous Deadly Pattern Type 3</item>
             <item>Anonymous Deadly Pattern Type 4</item>
             </list>
+            </item>
+            <item>
+            Rotating Deadly Pattern:
+            <list type="bullet">
+            <item>Rotating Deadly Pattern Type 1</item>
+            <item>Rotating Deadly Pattern Type 2</item>
+            <item>Rotating Deadly Pattern Type 3</item>
+            <item>Rotating Deadly Pattern Type 4</item>
+            </list>
+            </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.StepSearchers.AnonymousDeadlyPatternStepSearcher.SevenCellPatterns">
+            <summary>
+            Indicates all 7-cell patterns.
             </summary>
         </member>
         <member name="F:Sudoku.Analytics.StepSearchers.AnonymousDeadlyPatternStepSearcher.EightCellPatterns">
             <summary>
-            Indicates all eight-cell patterns.
+            Indicates all 8-cell patterns.
             </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.AnonymousDeadlyPatternStepSearcher.#cctor">
-            <static-constructor>
-		<summary>
-			<para>
-				Indicates the <see langword="static" /> constructor of the current type.
-			</para>
-			<para>
-				This constructor will initialize some <see langword="static readonly" /> data members
-				of this type that can't use a simple expression to describe the initial value.
-			</para>
-		</summary>
-	</static-constructor>
         </member>
         <member name="M:Sudoku.Analytics.StepSearchers.AnonymousDeadlyPatternStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
             <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.AnonymousDeadlyPatternStepSearcher.Collect_7Cells(Sudoku.Analytics.StepAnalysisContext@)">
+            <remarks>
+            There's only 1 pattern:
+            <code><![CDATA[
+            123 .  .  |  123 .  .  |  123 .  .
+            123 .  .  |  123 .  .  |  .   .  .
+            123 .  .  |  .   .  .  |  123 .  .
+            ]]></code>
+            </remarks>
         </member>
         <member name="M:Sudoku.Analytics.StepSearchers.AnonymousDeadlyPatternStepSearcher.Collect_8Cells(Sudoku.Analytics.StepAnalysisContext@)">
              <remarks>
@@ -8447,6 +8463,16 @@
             <param name="digits">The digits.</param>
             <param name="c">Indicates all candidates used.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.AnonymousDeadlyPatternStepSearcher.Construct7Cells">
+            <summary>
+            Construct patterns for 7 cells.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearchers.AnonymousDeadlyPatternStepSearcher.Construct8Cells">
+            <summary>
+            Construct patterns for 8 cells.
+            </summary>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.BivalueUniversalGraveStepSearcher">
             <summary>

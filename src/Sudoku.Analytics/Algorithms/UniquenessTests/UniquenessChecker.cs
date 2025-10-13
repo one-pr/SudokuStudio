@@ -131,7 +131,6 @@ public static class UniquenessChecker
 				}
 				result.AddRef(emptyGrid);
 			}
-
 			return result.AsSpan();
 		}
 	}
