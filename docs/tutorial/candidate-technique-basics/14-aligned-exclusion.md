@@ -66,3 +66,23 @@ description: Aligned Exclusion
 我们把这个规格称为**均衡四数组**（Aligned Quadruple Exclusion，简称 AQE）。
 
 至此，我们就把均衡数组的内容全部讲完了。虽然它看起来仍旧很暴力，但它的本质逻辑“笛卡尔积”并不是一个很难以理解的东西。
+
+## 均衡五数组（Aligned Quintuple Exclusion） <a href="#aligned-quintuple-exclusion" id="aligned-quintuple-exclusion"></a>
+
+<figure><img src="../.gitbook/assets/images_0726.png" alt="" width="375"><figcaption><p>均衡五数组</p></figcaption></figure>
+
+如图所示。这个例子展示了单元格 `r7c9`、`r89c56` 五个单元格的讨论情况。整体讨论了之后造成矛盾的反而只用了 `r7c456` 三个单元格而已。这个例子已经来到五个单元格了，被称为**均衡五数组**（Aligned Quintuple Exclusion）。
+
+## 均衡数组和 Wing 的转化 <a href="#some-aligned-exclusion-can-be-transformed-to-wings" id="some-aligned-exclusion-can-be-transformed-to-wings"></a>
+
+不知道你是否有这种感觉，均衡数组和 Wing 看起来有一些关联。实际上他们确实有一定的转化关系。
+
+<figure><img src="../.gitbook/assets/images_0725.png" alt=""><figcaption><p>直接将删数单元格纳入</p></figcaption></figure>
+
+如图所示。左图是残缺 WXYZ-Wing 的样子，右图则是均衡数组的样子。显然右图的意思是想按 9 的排列然后得到 9 全部的组合都无效的结论。不过这种讨论显然和左图的删数思路是刚好反过来的。
+
+当然，这个不总是满足的，因为讨论的单元格并不足够多，有些时候可能需要更多枚举的单元格数量。仅依赖删数单元格肯定是不够的。下面是均衡五数组（刚才的例子）的 VWXYZ-Wing 互相转化视角。
+
+<figure><img src="../.gitbook/assets/images_0727.png" alt=""><figcaption><p>VWXYZ-Wing 和均衡五数组</p></figcaption></figure>
+
+如图所示。
