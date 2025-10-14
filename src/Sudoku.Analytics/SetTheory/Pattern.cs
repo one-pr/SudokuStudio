@@ -6,22 +6,22 @@ namespace Sudoku.SetTheory;
 /// <remarks>
 /// This type uses 496 bytes.
 /// </remarks>
-public readonly struct Pattern : IEquatable<Pattern>, IEqualityOperators<Pattern, Pattern, bool>
+public struct Pattern : IEquatable<Pattern>, IEqualityOperators<Pattern, Pattern, bool>
 {
-	/// <summary>
-	/// Indicates truths and links.
-	/// </summary>
-	private readonly SpaceSet _truths, _links;
-
-	/// <summary>
-	/// Indicates all candidates used in truths and links.
-	/// </summary>
-	private readonly CandidateMap _map, _mapIncludingLinks;
-
 	/// <summary>
 	/// Indicates original grid.
 	/// </summary>
 	private readonly Grid _originalGrid;
+
+	/// <summary>
+	/// Indicates truths and links.
+	/// </summary>
+	private SpaceSet _truths, _links;
+
+	/// <summary>
+	/// Indicates all candidates used in truths and links.
+	/// </summary>
+	private CandidateMap _map, _mapIncludingLinks;
 
 
 	/// <summary>
@@ -42,43 +42,43 @@ public readonly struct Pattern : IEquatable<Pattern>, IEqualityOperators<Pattern
 	/// <summary>
 	/// Indicates whether all candidates used in truths are exact-covered or not.
 	/// </summary>
-	public bool IsExactCovered => ExactCoveredCandidates == Map;
+	public readonly bool IsExactCovered => ExactCoveredCandidates == Map;
 
 	/// <summary>
 	/// Indicates the number of candidates used in the pattern.
 	/// Candidates from links (but not from truths) will be ignored.
 	/// </summary>
-	public int CandidatesCount => Map.Count;
+	public readonly int CandidatesCount => Map.Count;
 
 	/// <summary>
 	/// Indicates truths.
 	/// </summary>
 	[UnscopedRef]
-	public ref readonly SpaceSet Truths => ref _truths;
+	public readonly ref readonly SpaceSet Truths => ref _truths;
 
 	/// <summary>
 	/// Indicates links.
 	/// </summary>
 	[UnscopedRef]
-	public ref readonly SpaceSet Links => ref _links;
+	public readonly ref readonly SpaceSet Links => ref _links;
 
 	/// <summary>
 	/// Indicates all candidates used in truths.
 	/// </summary>
 	[UnscopedRef]
-	public ref readonly CandidateMap Map => ref _map;
+	public readonly ref readonly CandidateMap Map => ref _map;
 
 	/// <summary>
 	/// Indicates all candidates used in both truths and links.
 	/// </summary>
 	[UnscopedRef]
-	public ref readonly CandidateMap FullMap => ref _mapIncludingLinks;
+	public readonly ref readonly CandidateMap FullMap => ref _mapIncludingLinks;
 
 	/// <summary>
 	/// Find for exact-covered candidates in the pattern.
 	/// </summary>
 	/// <returns>All exact-covered candidates.</returns>
-	public CandidateMap ExactCoveredCandidates
+	public readonly CandidateMap ExactCoveredCandidates
 	{
 		get
 		{
@@ -98,20 +98,20 @@ public readonly struct Pattern : IEquatable<Pattern>, IEqualityOperators<Pattern
 	/// Indicates original grid.
 	/// </summary>
 	[UnscopedRef]
-	public ref readonly Grid Grid => ref _originalGrid;
+	public readonly ref readonly Grid Grid => ref _originalGrid;
 
 
 	/// <inheritdoc/>
-	public override bool Equals([NotNullWhen(true)] object? obj) => obj is Pattern comparer && Equals(comparer);
+	public readonly override bool Equals([NotNullWhen(true)] object? obj) => obj is Pattern comparer && Equals(comparer);
 
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
-	public bool Equals(in Pattern other)
+	public readonly bool Equals(in Pattern other)
 		=> Map == other.Map && FullMap == other.FullMap
 		&& Grid == other.Grid
 		&& Truths == other.Truths && Links == other.Links;
 
 	/// <inheritdoc/>
-	public override int GetHashCode()
+	public readonly override int GetHashCode()
 		=> HashCode.Combine(
 			Map.GetHashCode(),
 			FullMap.GetHashCode(),
@@ -121,14 +121,14 @@ public readonly struct Pattern : IEquatable<Pattern>, IEqualityOperators<Pattern
 		);
 
 	/// <inheritdoc cref="object.ToString"/>
-	public override string ToString() => $"T{_truths.Count} = {_truths}, L{_links.Count} = {_links}";
+	public readonly override string ToString() => $"T{_truths.Count} = {_truths}, L{_links.Count} = {_links}";
 
 	/// <summary>
 	/// Totals up how many truths and links covered for a specified candidate.
 	/// </summary>
 	/// <param name="candidate">The candidate to check.</param>
 	/// <returns>A pair of numbers indicating that.</returns>
-	public CoveredSetsCount GetCoveredSetsCount(Candidate candidate)
+	public readonly CoveredSetsCount GetCoveredSetsCount(Candidate candidate)
 	{
 		var truthsCount = 0;
 		var linksCount = 0;
@@ -150,7 +150,7 @@ public readonly struct Pattern : IEquatable<Pattern>, IEqualityOperators<Pattern
 	}
 
 	/// <inheritdoc/>
-	bool IEquatable<Pattern>.Equals(Pattern other) => Equals(other);
+	readonly bool IEquatable<Pattern>.Equals(Pattern other) => Equals(other);
 
 
 	/// <summary>

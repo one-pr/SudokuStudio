@@ -36640,6 +36640,11 @@
             This type uses 496 bytes.
             </remarks>
         </member>
+        <member name="F:Sudoku.SetTheory.Pattern._originalGrid">
+            <summary>
+            Indicates original grid.
+            </summary>
+        </member>
         <member name="F:Sudoku.SetTheory.Pattern._truths">
             <summary>
             Indicates truths and links.
@@ -36658,11 +36663,6 @@
         <member name="F:Sudoku.SetTheory.Pattern._mapIncludingLinks">
             <summary>
             Indicates all candidates used in truths and links.
-            </summary>
-        </member>
-        <member name="F:Sudoku.SetTheory.Pattern._originalGrid">
-            <summary>
-            Indicates original grid.
             </summary>
         </member>
         <member name="M:Sudoku.SetTheory.Pattern.#ctor(Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Grid@)">
