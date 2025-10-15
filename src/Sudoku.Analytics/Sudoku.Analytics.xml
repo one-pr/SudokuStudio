@@ -36788,6 +36788,11 @@
             Provides a list of members to get pattern detailed information that should be inferred.
             </summary>
         </member>
+        <member name="T:Sudoku.SetTheory.PatternReasoner.Cached">
+            <summary>
+            Represents equivalent implementation of the parent type, but an extra parameter <c>permutations</c> is required.
+            </summary>
+        </member>
         <member name="M:Sudoku.SetTheory.PatternReasoner.GetEliminationRank(Sudoku.SetTheory.Pattern@,System.Int32)">
             <summary>
             Gets rank of specified elimination. The rank of elimination is defined as <c>n(links) - n(lightup_links)</c>.
