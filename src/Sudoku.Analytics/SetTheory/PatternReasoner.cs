@@ -6,6 +6,61 @@ namespace Sudoku.SetTheory;
 public static class PatternReasoner
 {
 	/// <summary>
+	/// Gets rank of specified elimination. The rank of elimination is defined as <c>n(links) - n(lightup_links)</c>.
+	/// </summary>
+	/// <param name="pattern">The pattern.</param>
+	/// <param name="candidate">The candidate.</param>
+	/// <returns>The rank of elimination. -1 will be returned if candidate is not an eliminiation.</returns>
+	public static int GetEliminationRank(in Pattern pattern, Candidate candidate)
+	{
+		ref readonly var links = ref pattern.Links;
+		var (maxOccupied, minOccupied) = (0, links.Count);
+		foreach (var permutation in GetPermutations(pattern))
+		{
+			var lightupLinks = SpaceSet.Empty;
+			foreach (var assigned in permutation)
+			{
+				var cell = assigned / 9;
+				var digit = assigned % 9;
+				var cellLink = Space.RowColumn(cell / 9, cell % 9);
+				if (links.Contains(cellLink))
+				{
+					lightupLinks += cellLink;
+				}
+
+				var blockLink = Space.BlockDigit(cell >> HouseType.Block, digit);
+				if (links.Contains(blockLink))
+				{
+					lightupLinks += blockLink;
+				}
+
+				var rowLink = Space.RowDigit((cell >> HouseType.Row) - 9, digit);
+				if (links.Contains(rowLink))
+				{
+					lightupLinks += rowLink;
+				}
+
+				var columnLink = Space.ColumnDigit((cell >> HouseType.Column) - 18, digit);
+				if (links.Contains(columnLink))
+				{
+					lightupLinks += columnLink;
+				}
+			}
+
+			var occupied = lightupLinks.Count;
+			if (occupied >= maxOccupied)
+			{
+				maxOccupied = occupied;
+			}
+			if (occupied <= minOccupied)
+			{
+				minOccupied = occupied;
+			}
+		}
+		return maxOccupied - minOccupied;
+	}
+
+	/// <summary>
 	/// <para>
 	/// Gets the number of assigned candidates that can make a pattern satisfied with all truths and links.
 	/// </para>
