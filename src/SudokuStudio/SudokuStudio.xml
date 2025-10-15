@@ -11329,10 +11329,10 @@
             <inheritdoc cref="P:Sudoku.Analytics.Configuration.StepGathererOptions.UseIttoryuMode"/>
         </member>
         <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.WithRuntimeIdentifierSetter``1(``0,System.Object,System.String,System.Boolean@)">
-            <inheritdoc cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithRuntimeIdentifierSetter(System.Object,System.String,System.Boolean@)"/>
+            <inheritdoc cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.WithRuntimeIdentifierSetter(System.Object,System.String,System.Boolean@)"/>
         </member>
         <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.WithRuntimeIdentifierSetters``1(``0,SudokuStudio.Views.Controls.SudokuPane)">
-            <inheritdoc cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithRuntimeIdentifierSetters(SudokuStudio.Views.Controls.SudokuPane)"/>
+            <inheritdoc cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.WithRuntimeIdentifierSetters(SudokuStudio.Views.Controls.SudokuPane)"/>
         </member>
         <member name="F:SudokuStudio.Views.Attached.AnalyzerProperties.AnalyzerIsFullApplyingProperty">
             <summary>
@@ -12126,12 +12126,12 @@
             <returns>The value returned.</returns>
             <seealso cref="P:SudokuStudio.Views.Attached.AnalyzerProperties.AnalyzerUseIttoryuMode"/>
         </member>
-        <member name="T:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.&lt;M&gt;$DB32F42FFB7A39E1D137C17C0AEFC1BF">
+        <member name="T:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.&lt;M&gt;$DB32F42FFB7A39E1D137C17C0AEFC1BF">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.StepGatherer"/>.
             </summary>
         </member>
-        <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithRuntimeIdentifierSetter(System.Object,System.String,System.Boolean@)">
+        <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.WithRuntimeIdentifierSetter(System.Object,System.String,System.Boolean@)">
             <summary>
             Sets the specified property in a <see cref="T:Sudoku.Analytics.StepSearcher"/> with the target value via attached properties
             stored in type <see cref="T:SudokuStudio.Views.Attached.AnalyzerProperties"/>.
@@ -12145,7 +12145,7 @@
             <returns>The same reference as the current instance.</returns>
             <seealso cref="T:SudokuStudio.Views.Attached.AnalyzerProperties"/>
         </member>
-        <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithRuntimeIdentifierSetters(SudokuStudio.Views.Controls.SudokuPane)">
+        <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.WithRuntimeIdentifierSetters(SudokuStudio.Views.Controls.SudokuPane)">
             <summary>
             Calls the method <see cref="M:SudokuStudio.Views.Attached.AnalyzerProperties.WithRuntimeIdentifierSetter``1(``0,System.Object,System.String,System.Boolean@)"/> for all properties in type <see cref="T:SudokuStudio.Views.Attached.AnalyzerProperties"/>.
             </summary>
@@ -17317,17 +17317,17 @@
 			</target>
         </member>
         <member name="M:SudokuStudio.Views.Pages.Extensions.CountWithSameIndex``2(System.Collections.Generic.List{``0},System.Collections.Generic.List{``1},System.Func{``0,``1,System.Boolean},System.Int32)">
-            <inheritdoc cref="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.CountWithSameIndex``1(System.Collections.Generic.List{``0},System.Func{`0,``0,System.Boolean},System.Int32)"/>
+            <inheritdoc cref="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2`1.CountWithSameIndex``1(System.Collections.Generic.List{``0},System.Func{`0,``0,System.Boolean},System.Int32)"/>
         </member>
         <member name="M:SudokuStudio.Views.Pages.Extensions.Refresh``1(System.Collections.Generic.List{``0},System.Int32)">
-            <inheritdoc cref="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.Refresh(System.Int32)"/>
+            <inheritdoc cref="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2`1.Refresh(System.Int32)"/>
         </member>
-        <member name="T:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.&lt;M&gt;$EFA650F559D5ACD0707B73B431B82A87">
+        <member name="T:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2`1.&lt;M&gt;$EFA650F559D5ACD0707B73B431B82A87">
             <summary>
             Provides extension members on <see cref="T:System.Collections.Generic.List`1"/> of <typeparamref name="T1"/>.
             </summary>
         </member>
-        <member name="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.CountWithSameIndex``1(System.Collections.Generic.List{``0},System.Func{`0,``0,System.Boolean},System.Int32)">
+        <member name="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2`1.CountWithSameIndex``1(System.Collections.Generic.List{``0},System.Func{`0,``0,System.Boolean},System.Int32)">
             <summary>
             Counts up the number of instances that satisfies the specified condition, with the specified instance as the reference,
             using index from another collection.
@@ -17356,12 +17356,12 @@
 			</target>
             </remarks>
         </member>
-        <member name="T:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.&lt;M&gt;$2C2C34D30F0D33A0DD68C9EE7E68192F">
+        <member name="T:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2`1.&lt;M&gt;$2C2C34D30F0D33A0DD68C9EE7E68192F">
             <summary>
             Provides extension members on <see cref="T:System.Collections.Generic.List`1"/> of <typeparamref name="T"/>?.
             </summary>
         </member>
-        <member name="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2.Refresh(System.Int32)">
+        <member name="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2`1.Refresh(System.Int32)">
             <summary>
             Refresh the collection.
             </summary>
@@ -17939,16 +17939,16 @@
             <seealso cref="T:Microsoft.UI.Xaml.UIElement"/>
         </member>
         <member name="M:Microsoft.UI.Xaml.UIElementExtensions.RenderToAsync``2(``0,``1)">
-            <inheritdoc cref="M:Microsoft.UI.Xaml.UIElementExtensions.&lt;G&gt;$173E6A2B7FF026B3BC4CBA9988C29F4F.RenderToAsync``1(``0)"/>
+            <inheritdoc cref="M:Microsoft.UI.Xaml.UIElementExtensions.&lt;G&gt;$173E6A2B7FF026B3BC4CBA9988C29F4F`1.RenderToAsync``1(``0)"/>
         </member>
-        <member name="T:Microsoft.UI.Xaml.UIElementExtensions.&lt;G&gt;$173E6A2B7FF026B3BC4CBA9988C29F4F.&lt;M&gt;$41B91CF64347DB343D740780ED03C5F1">
+        <member name="T:Microsoft.UI.Xaml.UIElementExtensions.&lt;G&gt;$173E6A2B7FF026B3BC4CBA9988C29F4F`1.&lt;M&gt;$41B91CF64347DB343D740780ED03C5F1">
             <summary>
             Provides extension members on <typeparamref name="TUIElement"/>,
             where <typeparamref name="TUIElement"/> satisfies <see cref="T:Microsoft.UI.Xaml.UIElement"/> constraint.
             </summary>
             <typeparam name="TUIElement">The type of the UI control.</typeparam>
         </member>
-        <member name="M:Microsoft.UI.Xaml.UIElementExtensions.&lt;G&gt;$173E6A2B7FF026B3BC4CBA9988C29F4F.RenderToAsync``1(``0)">
+        <member name="M:Microsoft.UI.Xaml.UIElementExtensions.&lt;G&gt;$173E6A2B7FF026B3BC4CBA9988C29F4F`1.RenderToAsync``1(``0)">
             <summary>
             Draws the specified UI control to the target file as a picture.
             </summary>

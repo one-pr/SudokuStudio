@@ -8484,7 +8484,7 @@
             <exception cref="T:System.InvalidOperationException">Throws when the argument holds multiple flag values.</exception>
         </member>
         <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.&lt;G&gt;$BC1BCDF0F678E530C54E7C578A063DA3.GetCells(System.Int32)">
-            <inheritdoc cref="!:extension(SymmetricType).GetCells(RowIndex, ColumnIndex)"/>
+            <inheritdoc cref="M:Sudoku.Concepts.SymmetricTypeExtensions.&lt;G&gt;$BC1BCDF0F678E530C54E7C578A063DA3.GetCells(System.Int32,System.Int32)"/>
             <param name="cell">Indicates the target cell to be checked.</param>
         </member>
         <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.&lt;G&gt;$BC1BCDF0F678E530C54E7C578A063DA3.GetCells(System.Int32,System.Int32)">
@@ -8496,10 +8496,10 @@
             <returns>The cells.</returns>
         </member>
         <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.&lt;G&gt;$BC1BCDF0F678E530C54E7C578A063DA3.GetOrbit(System.Int32)">
-            <inheritdoc cref="!:extension(SymmetricType).GetCells(Cell)"/>
+            <inheritdoc cref="M:Sudoku.Concepts.SymmetricTypeExtensions.&lt;G&gt;$BC1BCDF0F678E530C54E7C578A063DA3.GetCells(System.Int32)"/>
         </member>
         <member name="M:Sudoku.Concepts.SymmetricTypeExtensions.&lt;G&gt;$BC1BCDF0F678E530C54E7C578A063DA3.GetOrbit(System.Int32,System.Int32)">
-            <inheritdoc cref="!:extension(SymmetricType).GetCells(RowIndex, ColumnIndex)"/>
+            <inheritdoc cref="M:Sudoku.Concepts.SymmetricTypeExtensions.&lt;G&gt;$BC1BCDF0F678E530C54E7C578A063DA3.GetCells(System.Int32,System.Int32)"/>
         </member>
         <member name="T:Sudoku.Transformations.ConceptRandomExtensions">
             <summary>
@@ -8985,37 +8985,37 @@
             <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Transform(Sudoku.Transformations.TransformType)"/>
         </member>
         <member name="M:Sudoku.Transformations.GridTransformationExtensions.MirrorLeftRight``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorLeftRight"/>
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.MirrorLeftRight"/>
         </member>
         <member name="M:Sudoku.Transformations.GridTransformationExtensions.MirrorTopBottom``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorTopBottom"/>
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.MirrorTopBottom"/>
         </member>
         <member name="M:Sudoku.Transformations.GridTransformationExtensions.MirrorDiagonal``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorDiagonal"/>
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.MirrorDiagonal"/>
         </member>
         <member name="M:Sudoku.Transformations.GridTransformationExtensions.Transpose``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.Transpose"/>
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.Transpose"/>
         </member>
         <member name="M:Sudoku.Transformations.GridTransformationExtensions.MirrorAntidiagonal``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorAntidiagonal"/>
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.MirrorAntidiagonal"/>
         </member>
         <member name="M:Sudoku.Transformations.GridTransformationExtensions.RotateClockwise``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotateClockwise"/>
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.RotateClockwise"/>
         </member>
         <member name="M:Sudoku.Transformations.GridTransformationExtensions.RotateCounterclockwise``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotateCounterclockwise"/>
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.RotateCounterclockwise"/>
         </member>
         <member name="M:Sudoku.Transformations.GridTransformationExtensions.RotatePi``1(``0@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotatePi"/>
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.RotatePi"/>
         </member>
         <member name="M:Sudoku.Transformations.GridTransformationExtensions.SwapDigit``1(``0@,System.Int32,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapDigit(System.Int32,System.Int32)"/>
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.SwapDigit(System.Int32,System.Int32)"/>
         </member>
         <member name="M:Sudoku.Transformations.GridTransformationExtensions.SwapHouse``1(``0@,System.Int32,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapHouse(System.Int32,System.Int32)"/>
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.SwapHouse(System.Int32,System.Int32)"/>
         </member>
         <member name="M:Sudoku.Transformations.GridTransformationExtensions.SwapChute``1(``0@,System.Int32,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapChute(System.Int32,System.Int32)"/>
+            <inheritdoc cref="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.SwapChute(System.Int32,System.Int32)"/>
         </member>
         <member name="T:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$25EDD80A63D287142C5EEC5FEE4D06CD">
             <summary>
@@ -9030,14 +9030,14 @@
             The transform types can be applied.
             </param>
         </member>
-        <member name="T:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.&lt;M&gt;$9384A8651E054DEAF4C2F586D924DC91">
+        <member name="T:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.&lt;M&gt;$9384A8651E054DEAF4C2F586D924DC91">
             <summary>
             Provides extension members on <typeparamref name="TGrid"/>,
             where <typeparamref name="TGrid"/> satisfies <see langword="unmanaged"/>
             and <see cref="T:Sudoku.Concepts.IInlineArrayGrid`1"/> constraints.
             </summary>
         </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorLeftRight">
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.MirrorLeftRight">
             <summary>
             Mirror left-right the grid.
             </summary>
@@ -9047,7 +9047,7 @@
             in order to inline multiple transformation operations.
             </remarks>
         </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorTopBottom">
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.MirrorTopBottom">
             <summary>
             Mirror top-bottom the grid.
             </summary>
@@ -9057,7 +9057,7 @@
             in order to inline multiple transformation operations.
             </remarks>
         </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorDiagonal">
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.MirrorDiagonal">
             <summary>
             Mirror diagonal the grid.
             </summary>
@@ -9067,7 +9067,7 @@
             in order to inline multiple transformation operations.
             </remarks>
         </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.Transpose">
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.Transpose">
             <summary>
             Transpose the grid.
             </summary>
@@ -9077,7 +9077,7 @@
             in order to inline multiple transformation operations.
             </remarks>
         </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.MirrorAntidiagonal">
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.MirrorAntidiagonal">
             <summary>
             Mirror anti-diagonal the grid.
             </summary>
@@ -9087,7 +9087,7 @@
             in order to inline multiple transformation operations.
             </remarks>
         </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotateClockwise">
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.RotateClockwise">
             <summary>
             Rotate the grid clockwise.
             </summary>
@@ -9097,7 +9097,7 @@
             in order to inline multiple transformation operations.
             </remarks>
         </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotateCounterclockwise">
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.RotateCounterclockwise">
             <summary>
             Rotate the grid counterclockwise.
             </summary>
@@ -9107,7 +9107,7 @@
             in order to inline multiple transformation operations.
             </remarks>
         </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.RotatePi">
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.RotatePi">
             <summary>
             Rotate the grid <c><see cref="F:System.Math.PI"/></c> degrees.
             </summary>
@@ -9118,7 +9118,7 @@
             </remarks>
             <seealso cref="F:System.Math.PI"/>
         </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapDigit(System.Int32,System.Int32)">
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.SwapDigit(System.Int32,System.Int32)">
             <summary>
             Swap two digits.
             </summary>
@@ -9127,7 +9127,7 @@
             <returns>The reference to the current grid.</returns>
             <exception cref="T:System.ArgumentException">Throws when the puzzle is not solved.</exception>
         </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapHouse(System.Int32,System.Int32)">
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.SwapHouse(System.Int32,System.Int32)">
             <summary>
             Swap to houses.
             </summary>
@@ -9139,7 +9139,7 @@
             two houses are not in same house type, or are not swappable.
             </exception>
         </member>
-        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80.SwapChute(System.Int32,System.Int32)">
+        <member name="M:Sudoku.Transformations.GridTransformationExtensions.&lt;G&gt;$3BA0324313F452651CB52508787A1B80`1.SwapChute(System.Int32,System.Int32)">
             <summary>
             Swap chutes (i.e. mega-rows or mega-columns).
             </summary>
@@ -13260,12 +13260,12 @@
             <seealso cref="T:Sudoku.Linq.CellMapOrCandidateMapGrouping`3"/>
         </member>
         <member name="M:Sudoku.Linq.CellMapOrCandidateMapGroupingEnumerable.Select``1(System.ReadOnlySpan{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CellMap,System.Int32,``0}},System.Func{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CellMap,System.Int32,``0},System.Int32})">
-            <inheritdoc cref="M:Sudoku.Linq.CellMapOrCandidateMapGroupingEnumerable.&lt;G&gt;$B4DADBEAD9E0389143A41D63DAC9A9FE.Select(System.Func{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CellMap,System.Int32,`0},System.Int32})"/>
+            <inheritdoc cref="M:Sudoku.Linq.CellMapOrCandidateMapGroupingEnumerable.&lt;G&gt;$B4DADBEAD9E0389143A41D63DAC9A9FE`1.Select(System.Func{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CellMap,System.Int32,`0},System.Int32})"/>
         </member>
         <member name="M:Sudoku.Linq.CellMapOrCandidateMapGroupingEnumerable.Select``1(System.ReadOnlySpan{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CandidateMap,System.Int32,``0}},System.Func{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CandidateMap,System.Int32,``0},System.Int32})">
-            <inheritdoc cref="M:Sudoku.Linq.CellMapOrCandidateMapGroupingEnumerable.&lt;G&gt;$87E6DAE7D2469609571FB975FC583CA3.Select(System.Func{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CandidateMap,System.Int32,`0},System.Int32})"/>
+            <inheritdoc cref="M:Sudoku.Linq.CellMapOrCandidateMapGroupingEnumerable.&lt;G&gt;$87E6DAE7D2469609571FB975FC583CA3`1.Select(System.Func{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CandidateMap,System.Int32,`0},System.Int32})"/>
         </member>
-        <member name="T:Sudoku.Linq.CellMapOrCandidateMapGroupingEnumerable.&lt;G&gt;$B4DADBEAD9E0389143A41D63DAC9A9FE.&lt;M&gt;$C759CC71E3EF41A8CBFEAF201D11B6AA">
+        <member name="T:Sudoku.Linq.CellMapOrCandidateMapGroupingEnumerable.&lt;G&gt;$B4DADBEAD9E0389143A41D63DAC9A9FE`1.&lt;M&gt;$C759CC71E3EF41A8CBFEAF201D11B6AA">
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/>
             of <see cref="T:Sudoku.Linq.CellMapOrCandidateMapGrouping`3"/>
@@ -13275,7 +13275,7 @@
             <typeparam name="TKey">The type of the grouping.</typeparam>
             <param name="this">The list to be checked.</param>
         </member>
-        <member name="M:Sudoku.Linq.CellMapOrCandidateMapGroupingEnumerable.&lt;G&gt;$B4DADBEAD9E0389143A41D63DAC9A9FE.Select(System.Func{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CellMap,System.Int32,`0},System.Int32})">
+        <member name="M:Sudoku.Linq.CellMapOrCandidateMapGroupingEnumerable.&lt;G&gt;$B4DADBEAD9E0389143A41D63DAC9A9FE`1.Select(System.Func{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CellMap,System.Int32,`0},System.Int32})">
             <summary>
             Projects a list of <see cref="T:Sudoku.Linq.CellMapOrCandidateMapGrouping`3"/> of types <see cref="T:Sudoku.Concepts.CellMap"/>,
             <see cref="T:System.Int32"/> and <typeparamref name="TKey"/>, into a <see cref="T:System.Int32"/> value; collect converted results and merge
@@ -13284,7 +13284,7 @@
             <param name="selector">The transform method to apply to each element.</param>
             <returns>The result.</returns>
         </member>
-        <member name="T:Sudoku.Linq.CellMapOrCandidateMapGroupingEnumerable.&lt;G&gt;$87E6DAE7D2469609571FB975FC583CA3.&lt;M&gt;$364A6EC99F4931466F8B545EF9CB1974">
+        <member name="T:Sudoku.Linq.CellMapOrCandidateMapGroupingEnumerable.&lt;G&gt;$87E6DAE7D2469609571FB975FC583CA3`1.&lt;M&gt;$364A6EC99F4931466F8B545EF9CB1974">
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/>
             of <see cref="T:Sudoku.Linq.CellMapOrCandidateMapGrouping`3"/>
@@ -13294,7 +13294,7 @@
             <typeparam name="TKey">The type of the grouping.</typeparam>
             <param name="this">The list to be checked.</param>
         </member>
-        <member name="M:Sudoku.Linq.CellMapOrCandidateMapGroupingEnumerable.&lt;G&gt;$87E6DAE7D2469609571FB975FC583CA3.Select(System.Func{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CandidateMap,System.Int32,`0},System.Int32})">
+        <member name="M:Sudoku.Linq.CellMapOrCandidateMapGroupingEnumerable.&lt;G&gt;$87E6DAE7D2469609571FB975FC583CA3`1.Select(System.Func{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CandidateMap,System.Int32,`0},System.Int32})">
             <summary>
             Projects a list of <see cref="T:Sudoku.Linq.CellMapOrCandidateMapGrouping`3"/> of types <see cref="T:Sudoku.Concepts.CandidateMap"/>,
             <see cref="T:System.Int32"/> and <typeparamref name="TKey"/>, into a <see cref="T:System.Int32"/> value; collect converted results
@@ -15576,19 +15576,19 @@
             <seealso cref="T:Sudoku.Solving.ISolutionEnumerableSolver"/>
         </member>
         <member name="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.CountSolutionsAsync``1(``0,Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
-            <inheritdoc cref="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$DA9930F5B610C74A5D41270FE8F3E927.CountSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)"/>
+            <inheritdoc cref="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$DA9930F5B610C74A5D41270FE8F3E927`1.CountSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)"/>
         </member>
         <member name="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.EnumerateSolutionsAsync``1(``0,Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
-            <inheritdoc cref="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$DA9930F5B610C74A5D41270FE8F3E927.EnumerateSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)"/>
+            <inheritdoc cref="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$DA9930F5B610C74A5D41270FE8F3E927`1.EnumerateSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)"/>
         </member>
-        <member name="T:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$DA9930F5B610C74A5D41270FE8F3E927.&lt;M&gt;$1EE44159915D5CFD5C7C9645DAAD0C61">
+        <member name="T:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$DA9930F5B610C74A5D41270FE8F3E927`1.&lt;M&gt;$1EE44159915D5CFD5C7C9645DAAD0C61">
             <summary>
             Provides extension members on <typeparamref name="TSolver"/>,
             where <typeparamref name="TSolver"/> satisfies <see cref="T:Sudoku.Solving.ISolutionEnumerableSolver"/> constraint.
             </summary>
             <typeparam name="TSolver">The type of solver instance.</typeparam>
         </member>
-        <member name="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$DA9930F5B610C74A5D41270FE8F3E927.CountSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$DA9930F5B610C74A5D41270FE8F3E927`1.CountSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
             <summary>
             Count the number of solutions can be found of a grid.
             </summary>
@@ -15599,7 +15599,7 @@
             with an <see cref="T:System.Int32"/> value indicating the result can be produced after the operation executed.
             </returns>
         </member>
-        <member name="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$DA9930F5B610C74A5D41270FE8F3E927.EnumerateSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$DA9930F5B610C74A5D41270FE8F3E927`1.EnumerateSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
             <summary>
             Try to enumerate all possible solutions of the specified grid, by using the current solver, in asynchronous way.
             </summary>

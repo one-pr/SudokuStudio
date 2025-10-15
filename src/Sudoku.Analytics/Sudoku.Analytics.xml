@@ -2255,7 +2255,7 @@
             </summary>
         </member>
         <member name="M:Sudoku.Analytics.CellMapOrCandidateMapExtensions.&lt;G&gt;$FE64BDC4A3109A3666EA5F96DCF8377D.op_Modulus(Sudoku.Concepts.CandidateMap@,Sudoku.Concepts.CandidateMap@)">
-            <inheritdoc cref="!:extension(CellMap).op_Modulus(in CellMap, in CellMap)"/>
+            <inheritdoc cref="M:Sudoku.Analytics.CellMapOrCandidateMapExtensions.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.op_Modulus(Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@)"/>
         </member>
         <member name="T:Sudoku.Analytics.Collector">
             <summary>
@@ -5015,22 +5015,22 @@
             <seealso cref="T:Sudoku.Analytics.StepGatherer"/>
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.WithStepSearchers``1(``0,Sudoku.Analytics.StepSearcher[])">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithStepSearchers(Sudoku.Analytics.StepSearcher[])"/>
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.WithStepSearchers(Sudoku.Analytics.StepSearcher[])"/>
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.WithStepSearchers``1(``0,Sudoku.Analytics.StepSearcher[],Sudoku.Analytics.DifficultyLevel)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithStepSearchers(Sudoku.Analytics.StepSearcher[],Sudoku.Analytics.DifficultyLevel)"/>
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.WithStepSearchers(Sudoku.Analytics.StepSearcher[],Sudoku.Analytics.DifficultyLevel)"/>
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.WithOptions``1(``0,Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithOptions(Sudoku.Analytics.Configuration.StepGathererOptions)"/>
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.WithOptions(Sudoku.Analytics.Configuration.StepGathererOptions)"/>
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.ApplySetter``1(``0,System.Action{Sudoku.Analytics.StepSearcher})">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})"/>
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})"/>
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.ApplySetter``2(``0,System.Action{``1})">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.ApplySetter``1(System.Action{``0})"/>
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.ApplySetter``1(System.Action{``0})"/>
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.ApplySetters``1(``0,System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
-            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})"/>
+            <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})"/>
         </member>
         <member name="M:Sudoku.Analytics.StepGathererFactory.WithRandomizedChoosing(Sudoku.Analytics.Analyzer,System.Boolean)">
             <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$9A39AEA43E9CBA20DE81811823A51AAE.WithRandomizedChoosing(System.Boolean)"/>
@@ -5044,21 +5044,21 @@
         <member name="M:Sudoku.Analytics.StepGathererFactory.WithSameLevelConfiguration(Sudoku.Analytics.Collector,Sudoku.Analytics.Configuration.CollectorDifficultyLevelMode)">
             <inheritdoc cref="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$7F8D808ABBF8D7891EE3C21A4D81AB79.WithSameLevelConfiguration(Sudoku.Analytics.Configuration.CollectorDifficultyLevelMode)"/>
         </member>
-        <member name="T:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.&lt;M&gt;$71FB7163B0D174A1633B8DFAB2C5DA7B">
+        <member name="T:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.&lt;M&gt;$71FB7163B0D174A1633B8DFAB2C5DA7B">
             <summary>
             Provides extension members on <typeparamref name="TStepGatherer"/>,
             where <typeparamref name="TStepGatherer"/> satisfies <see cref="T:Sudoku.Analytics.StepGatherer"/> constraint.
             </summary>
             <typeparam name="TStepGatherer">The type of step gatherer (<see cref="T:Sudoku.Analytics.Analyzer"/> or <see cref="T:Sudoku.Analytics.Collector"/>).</typeparam>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithStepSearchers(Sudoku.Analytics.StepSearcher[])">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.WithStepSearchers(Sudoku.Analytics.StepSearcher[])">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.StepGatherer.StepSearchers"/> with the target value.
             </summary>
             <param name="stepSearchers">The value to be set or updated.</param>
             <returns>The instance same as the current instance.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithStepSearchers(Sudoku.Analytics.StepSearcher[],Sudoku.Analytics.DifficultyLevel)">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.WithStepSearchers(Sudoku.Analytics.StepSearcher[],Sudoku.Analytics.DifficultyLevel)">
             <summary>
             Try to set property <see cref="P:Sudoku.Analytics.StepGatherer.StepSearchers"/> with the specified value.
             </summary>
@@ -5068,21 +5068,21 @@
             <seealso cref="P:Sudoku.Analytics.StepGatherer.StepSearchers"/>
             <seealso cref="T:Sudoku.Analytics.StepSearcher"/>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.WithOptions(Sudoku.Analytics.Configuration.StepGathererOptions)">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.WithOptions(Sudoku.Analytics.Configuration.StepGathererOptions)">
             <summary>
             Sets the property <see cref="P:Sudoku.Analytics.StepGatherer.Options"/> with the target value.
             </summary>
             <param name="options">The value to be set or updated.</param>
             <returns>The instance same as the current instance.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.ApplySetter(System.Action{Sudoku.Analytics.StepSearcher})">
             <summary>
             Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
             </summary>
             <param name="setters">The value to be added.</param>
             <returns>The instance same as the current instance.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.ApplySetter``1(System.Action{``0})">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.ApplySetter``1(System.Action{``0})">
             <summary>
             Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters" />.
             </summary>
@@ -5108,7 +5108,7 @@
 			</target>
             </remarks>
         </member>
-        <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE.ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
+        <member name="M:Sudoku.Analytics.StepGathererFactory.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.ApplySetters(System.ReadOnlySpan{System.Action{Sudoku.Analytics.StepSearcher}})">
             <summary>
             Appends an element into the property <see cref="P:Sudoku.Analytics.StepGatherer.Setters"/>.
             </summary>
@@ -19492,14 +19492,14 @@
 			</target>
         </member>
         <member name="M:Sudoku.Bottlenecks.Extensions.FirstRefOrNullRef``1(System.ReadOnlySpan{``0},Sudoku.Bottlenecks.LargePredicate{``0})">
-            <inheritdoc cref="M:Sudoku.Bottlenecks.Extensions.&lt;G&gt;$DA201D94D32CA938C8DF455F899985D5.FirstRefOrNullRef(Sudoku.Bottlenecks.LargePredicate{`0})"/>
+            <inheritdoc cref="M:Sudoku.Bottlenecks.Extensions.&lt;G&gt;$DA201D94D32CA938C8DF455F899985D5`1.FirstRefOrNullRef(Sudoku.Bottlenecks.LargePredicate{`0})"/>
         </member>
-        <member name="T:Sudoku.Bottlenecks.Extensions.&lt;G&gt;$DA201D94D32CA938C8DF455F899985D5.&lt;M&gt;$8FCF3030322B3ED2DEA67F63E7FE1163">
+        <member name="T:Sudoku.Bottlenecks.Extensions.&lt;G&gt;$DA201D94D32CA938C8DF455F899985D5`1.&lt;M&gt;$8FCF3030322B3ED2DEA67F63E7FE1163">
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Bottlenecks.Extensions.&lt;G&gt;$DA201D94D32CA938C8DF455F899985D5.FirstRefOrNullRef(Sudoku.Bottlenecks.LargePredicate{`0})">
+        <member name="M:Sudoku.Bottlenecks.Extensions.&lt;G&gt;$DA201D94D32CA938C8DF455F899985D5`1.FirstRefOrNullRef(Sudoku.Bottlenecks.LargePredicate{`0})">
             <inheritdoc cref="M:System.Linq.Providers.IFirstLastMethod`2.FirstOrDefault(System.Func{`1,System.Boolean})"/>
         </member>
         <member name="T:Sudoku.Bottlenecks.LargePredicate`1">
@@ -22364,12 +22364,12 @@
             </para>
             <para>
             If you want to check whether the technique is a single,
-            please call <see cref="!:extension(Technique).IsDirect"/>
-            or <see cref="!:extension(Technique).IsSingle"/> instead.
+            please call <see cref="P:Sudoku.Categorization.TechniqueExtensions.&lt;G&gt;$ECC22D9E429C37D2A85F42507A06382E.IsDirect"/>
+            or <see cref="P:Sudoku.Categorization.TechniqueExtensions.&lt;G&gt;$ECC22D9E429C37D2A85F42507A06382E.IsSingle"/> instead.
             </para>
             </remarks>
-            <seealso cref="!:extension(Technique).IsDirect"/>
-            <seealso cref="!:extension(Technique).IsSingle"/>
+            <seealso cref="P:Sudoku.Categorization.TechniqueExtensions.&lt;G&gt;$ECC22D9E429C37D2A85F42507A06382E.IsDirect"/>
+            <seealso cref="P:Sudoku.Categorization.TechniqueExtensions.&lt;G&gt;$ECC22D9E429C37D2A85F42507A06382E.IsSingle"/>
         </member>
         <member name="P:Sudoku.Categorization.TechniqueExtensions.&lt;G&gt;$ECC22D9E429C37D2A85F42507A06382E.IsSingle">
             <summary>
@@ -23085,9 +23085,9 @@
             <remarks>
             This property returns a list of <see cref="T:Sudoku.Analytics.DifficultyLevel"/> flags, merged into one instance.
             If you want to get the internal fields of flags the return value contains, use <see langword="foreach"/> loop to iterate them,
-            or use method <see cref="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285.AllFlags"/>.
+            or use method <see cref="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285`1.AllFlags"/>.
             </remarks>
-            <seealso cref="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285.AllFlags"/>
+            <seealso cref="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285`1.AllFlags"/>
         </member>
         <member name="P:Sudoku.Categorization.TechniqueSet.TechniqueGroups">
             <summary>
