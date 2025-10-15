@@ -716,7 +716,6 @@ public sealed partial class AnonymousDeadlyPatternStepSearcher : StepSearcher
 		}
 
 		var candidateOffsets = new List<CandidateViewNode>();
-		var conjugatePairs = new List<ConjugateLinkViewNode>();
 		foreach (var cell in pattern & ~extraCells)
 		{
 			foreach (var digit in grid.GetCandidates(cell))
@@ -731,13 +730,11 @@ public sealed partial class AnonymousDeadlyPatternStepSearcher : StepSearcher
 			{
 				candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + digit));
 			}
-
-			conjugatePairs.Add(new(ColorIdentifier.Normal, map[0], map[1], digit));
 		}
 
 		var step = new AnonymousDeadlyPatternType4Step(
 			conclusions.AsMemory(),
-			[[.. candidateOffsets, .. conjugatePairs]],
+			[[.. candidateOffsets, new HouseViewNode(ColorIdentifier.Normal, house)]],
 			context.Options,
 			p,
 			house,
