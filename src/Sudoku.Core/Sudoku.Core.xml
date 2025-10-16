@@ -9239,29 +9239,6 @@
             </summary>
             <returns>The result fliped.</returns>
         </member>
-        <member name="T:Sudoku.Transformations.LibraryTransformationExtensions">
-            <summary>
-            Provides with extension methods on <see cref="T:Sudoku.IO.Library"/>.
-            </summary>
-            <seealso cref="T:Sudoku.IO.Library"/>
-        </member>
-        <member name="M:Sudoku.Transformations.LibraryTransformationExtensions.RandomReadOneAsync(Sudoku.IO.Library,Sudoku.Transformations.TransformType,System.Threading.CancellationToken)">
-            <inheritdoc cref="M:Sudoku.Transformations.LibraryTransformationExtensions.&lt;G&gt;$A803FD7D8659C722C45349B07CA6260C.RandomReadOneAsync(Sudoku.Transformations.TransformType,System.Threading.CancellationToken)"/>
-        </member>
-        <member name="T:Sudoku.Transformations.LibraryTransformationExtensions.&lt;G&gt;$A803FD7D8659C722C45349B07CA6260C.&lt;M&gt;$7648230B5EE6B31661CAF688538A7FC1">
-            <summary>
-            Provides extension members on <see cref="T:Sudoku.IO.Library"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Transformations.LibraryTransformationExtensions.&lt;G&gt;$A803FD7D8659C722C45349B07CA6260C.RandomReadOneAsync(Sudoku.Transformations.TransformType,System.Threading.CancellationToken)">
-            <summary>
-            Randomly read one puzzle in the specified file, and return it.
-            </summary>
-            <param name="transformTypes">Indicates the available transform type that the chosen grid can be transformed.</param>
-            <param name="cancellationToken">The cancellation token that can cancel the current asynchronous operation.</param>
-            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> of <see cref="T:Sudoku.Concepts.Grid"/> instance as the result.</returns>
-            <exception cref="T:System.InvalidOperationException">Throw when the library file is not initialized.</exception>
-        </member>
         <member name="T:Sudoku.Transformations.Transform">
             <summary>
             Represents a generic transform that includes the ranks of morphing types.
@@ -13087,6 +13064,29 @@
             <summary>
             Indicates the tags of the library.
             </summary>
+        </member>
+        <member name="T:Sudoku.IO.LibraryTransformationExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:Sudoku.IO.Library"/>.
+            </summary>
+            <seealso cref="T:Sudoku.IO.Library"/>
+        </member>
+        <member name="M:Sudoku.IO.LibraryTransformationExtensions.RandomReadOneAsync(Sudoku.IO.Library,Sudoku.Transformations.TransformType,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:Sudoku.IO.LibraryTransformationExtensions.&lt;G&gt;$A803FD7D8659C722C45349B07CA6260C.RandomReadOneAsync(Sudoku.Transformations.TransformType,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="T:Sudoku.IO.LibraryTransformationExtensions.&lt;G&gt;$A803FD7D8659C722C45349B07CA6260C.&lt;M&gt;$7648230B5EE6B31661CAF688538A7FC1">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.IO.Library"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.IO.LibraryTransformationExtensions.&lt;G&gt;$A803FD7D8659C722C45349B07CA6260C.RandomReadOneAsync(Sudoku.Transformations.TransformType,System.Threading.CancellationToken)">
+            <summary>
+            Randomly read one puzzle in the specified file, and return it.
+            </summary>
+            <param name="transformTypes">Indicates the available transform type that the chosen grid can be transformed.</param>
+            <param name="cancellationToken">The cancellation token that can cancel the current asynchronous operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> of <see cref="T:Sudoku.Concepts.Grid"/> instance as the result.</returns>
+            <exception cref="T:System.InvalidOperationException">Throw when the library file is not initialized.</exception>
         </member>
         <member name="T:Sudoku.Linq.CellMapOrCandidateMapGrouping`3">
             <summary>

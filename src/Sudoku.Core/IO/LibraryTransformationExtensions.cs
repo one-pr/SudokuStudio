@@ -1,4 +1,4 @@
-namespace Sudoku.Transformations;
+namespace Sudoku.IO;
 
 /// <summary>
 /// Provides with extension methods on <see cref="Library"/>.
