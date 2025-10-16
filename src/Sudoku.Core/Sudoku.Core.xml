@@ -135,45 +135,6 @@
             <see href="https://leetcode.com/problems/maximal-square/"><i>Maximal Square</i></see>.
             </remarks>
         </member>
-        <member name="T:Sudoku.Algorithms.Minimal">
-            <summary>
-            Represents extension methods on <see cref="T:Sudoku.Concepts.Grid"/> for minimal.
-            </summary>
-            <seealso cref="T:Sudoku.Concepts.Grid"/>
-        </member>
-        <member name="M:Sudoku.Algorithms.Minimal.get_IsMinimal(Sudoku.Concepts.Grid@)">
-            <inheritdoc cref="P:Sudoku.Algorithms.Minimal.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.IsMinimal"/>
-        </member>
-        <member name="M:Sudoku.Algorithms.Minimal.CheckMinimal(Sudoku.Concepts.Grid@,System.Int32@)">
-            <inheritdoc cref="M:Sudoku.Algorithms.Minimal.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.CheckMinimal(System.Int32@)"/>
-        </member>
-        <member name="T:Sudoku.Algorithms.Minimal.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$4FBDD4478CFAA5DAE39645DF9E3BC758">
-            <summary>
-            Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Algorithms.Minimal.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.IsMinimal">
-            <summary>
-            Determines whether the puzzle is a minimal puzzle, which means the puzzle will become multiple solution
-            if arbitrary one given digit will be removed from the grid.
-            </summary>
-            <returns>A <see cref="T:System.Boolean"/> result.</returns>
-        </member>
-        <member name="M:Sudoku.Algorithms.Minimal.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.CheckMinimal(System.Int32@)">
-            <summary>
-            Determines whether the puzzle is a minimal puzzle, which means the puzzle will become multiple solution
-            if arbitrary one given digit will be removed from the grid.
-            </summary>
-            <param name="firstCandidateMakePuzzleNotMinimal">
-            <para>
-            Indicates the first found candidate that can make the puzzle not minimal, which means
-            if we remove the digit in the cell, the puzzle will still keep unique.
-            </para>
-            <para>If the return value is <see langword="true"/>, this argument will be -1.</para>
-            </param>
-            <returns>A <see cref="T:System.Boolean"/> value indicating that.</returns>
-            <exception cref="T:System.InvalidOperationException">Throws when the puzzle is invalid (i.e. not unique).</exception>
-        </member>
         <member name="T:Sudoku.Concepts.CandidateMap">
             <summary>
             Encapsulates a binary series of candidate state table.

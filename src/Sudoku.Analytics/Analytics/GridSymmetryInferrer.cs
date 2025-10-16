@@ -1,4 +1,4 @@
-namespace Sudoku.Algorithms;
+namespace Sudoku.Analytics;
 
 /// <summary>
 /// Represents a way to infer grid symmetry of placements.

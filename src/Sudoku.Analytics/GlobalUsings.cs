@@ -21,7 +21,6 @@ global using System.Text.RegularExpressions;
 global using System.Threading;
 global using System.Threading.Channels;
 global using System.Threading.Tasks;
-global using Sudoku.Algorithms;
 global using Sudoku.Algorithms.Ittoryu;
 global using Sudoku.Analytics;
 global using Sudoku.Analytics.Caching;

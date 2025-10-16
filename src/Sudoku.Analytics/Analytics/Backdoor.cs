@@ -1,4 +1,4 @@
-namespace Sudoku.Algorithms;
+namespace Sudoku.Analytics;
 
 /// <summary>
 /// Represents a type that checks for concept "<see href="http://sudopedia.enjoysudoku.com/Backdoor.html">Backdoor</see>".

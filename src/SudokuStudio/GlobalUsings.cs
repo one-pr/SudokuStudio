@@ -49,7 +49,6 @@ global using QuestPDF.Fluent;
 global using QuestPDF.Infrastructure;
 global using SkiaSharp;
 global using Sudoku;
-global using Sudoku.Algorithms;
 global using Sudoku.Algorithms.Ittoryu;
 global using Sudoku.Analytics;
 global using Sudoku.Analytics.Configuration;
