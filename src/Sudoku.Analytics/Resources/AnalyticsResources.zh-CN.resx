@@ -3294,9 +3294,6 @@
     <value>瘦姨环</value>
     <comment>Technique Name</comment>
   </data>
-  <data name="Message_RankPatternIsTooComplex" xml:space="preserve">
-    <value />
-  </data>
   <data name="KeywordConditionConstraint" xml:space="preserve">
     <value>关键词：技巧“{0}”需要满足{1}</value>
   </data>
