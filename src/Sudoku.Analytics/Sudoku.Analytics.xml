@@ -36832,6 +36832,13 @@
             <param name="pattern">The pattern.</param>
             <returns>All conclusions.</returns>
         </member>
+        <member name="M:Sudoku.SetTheory.PatternReasoner.GetConclusionsWithoutCheckingLinks(Sudoku.SetTheory.Pattern@)">
+            <summary>
+            Try to find all conclusions, without checking <see cref="P:Sudoku.SetTheory.Pattern.Links"/>.
+            </summary>
+            <param name="pattern">The pattern.</param>
+            <returns>All conclusions.</returns>
+        </member>
         <member name="M:Sudoku.SetTheory.PatternReasoner.GetRank0Links(Sudoku.SetTheory.Pattern@)">
             <summary>
             Gets all rank-0 links.

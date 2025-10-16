@@ -56,7 +56,11 @@ public partial class PatternReasoner
 			return (min, max) is ( >= 0, >= 0) ? new(min, max) : new();
 		}
 
-		public static ReadOnlySpan<Conclusion> GetConclusions(in Pattern pattern, ReadOnlySpan<Permutation> permutations)
+		public static ReadOnlySpan<Conclusion> GetConclusions(
+			in Pattern pattern,
+			ReadOnlySpan<Permutation> permutations,
+			bool checkingLinks
+		)
 		{
 			ref readonly var grid = ref pattern.Grid;
 			ref readonly var fullMap = ref pattern.FullMap;
@@ -71,21 +75,38 @@ public partial class PatternReasoner
 				{
 					var cell = candidate / 9;
 					var digit = candidate % 9;
-					foreach (var c in PeersMap[cell] & candidatesMap[digit])
+					if (checkingLinks)
 					{
-						if (fullMap.Contains(c * 9 + digit))
+						// We should check whether a conclusion is on a link or not.
+						foreach (var c in PeersMap[cell] & candidatesMap[digit])
+						{
+							if (fullMap.Contains(c * 9 + digit))
+							{
+								tempConclusions.Add(new(Elimination, c, digit));
+							}
+						}
+						foreach (var d in (Mask)(grid.GetCandidates(cell) & ~(1 << digit)))
+						{
+							if (fullMap.Contains(cell * 9 + d))
+							{
+								tempConclusions.Add(new(Elimination, cell, d));
+							}
+						}
+						tempConclusions.Add(new(Assignment, cell, digit));
+					}
+					else
+					{
+						// If candidates exists, we can eliminate or set it without checking whether it is on a link or not.
+						foreach (var c in PeersMap[cell] & candidatesMap[digit])
 						{
 							tempConclusions.Add(new(Elimination, c, digit));
 						}
-					}
-					foreach (var d in (Mask)(grid.GetCandidates(cell) & ~(1 << digit)))
-					{
-						if (fullMap.Contains(cell * 9 + d))
+						foreach (var d in (Mask)(grid.GetCandidates(cell) & ~(1 << digit)))
 						{
 							tempConclusions.Add(new(Elimination, cell, d));
 						}
+						tempConclusions.Add(new(Assignment, cell, digit));
 					}
-					tempConclusions.Add(new(Assignment, cell, digit));
 				}
 
 				if (i++ == 0)
@@ -117,7 +138,7 @@ public partial class PatternReasoner
 
 		public static CandidateMap GetRank0Eliminations(in Pattern pattern, ReadOnlySpan<Permutation> permutations)
 		{
-			var conclusions = GetConclusions(pattern, permutations);
+			var conclusions = GetConclusions(pattern, permutations, true);
 			var result = CandidateMap.Empty;
 			foreach (var (type, candidate) in conclusions)
 			{

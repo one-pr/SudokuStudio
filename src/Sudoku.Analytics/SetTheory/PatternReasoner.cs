@@ -45,7 +45,15 @@ public static partial class PatternReasoner
 	/// <param name="pattern">The pattern.</param>
 	/// <returns>All conclusions.</returns>
 	public static ReadOnlySpan<Conclusion> GetConclusions(in Pattern pattern)
-		=> Cached.GetConclusions(pattern, GetPermutations(pattern));
+		=> Cached.GetConclusions(pattern, GetPermutations(pattern), true);
+
+	/// <summary>
+	/// Try to find all conclusions, without checking <see cref="Pattern.Links"/>.
+	/// </summary>
+	/// <param name="pattern">The pattern.</param>
+	/// <returns>All conclusions.</returns>
+	public static ReadOnlySpan<Conclusion> GetConclusionsWithoutCheckingLinks(in Pattern pattern)
+		=> Cached.GetConclusions(pattern, GetPermutations(pattern), false);
 
 	/// <summary>
 	/// Gets all rank-0 links.

@@ -106,18 +106,18 @@
             <seealso cref="T:Sudoku.CommandLine.CommandBase"/>
         </member>
         <member name="M:Sudoku.CommandLine.CommandBaseExtensions.Deconstruct``1(``0,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@)">
-            <inheritdoc cref="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@)"/>
+            <inheritdoc cref="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749`1.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@)"/>
         </member>
         <member name="M:Sudoku.CommandLine.CommandBaseExtensions.Deconstruct``1(``0,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@)">
-            <inheritdoc cref="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@)"/>
+            <inheritdoc cref="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749`1.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@)"/>
         </member>
-        <member name="T:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749.&lt;M&gt;$7201DC8AC8BD890CA6049EA76DA40E5F">
+        <member name="T:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749`1.&lt;M&gt;$7201DC8AC8BD890CA6049EA76DA40E5F">
             <summary>
             Provides extension members on <typeparamref name="TCommand"/>,
             where <typeparamref name="TCommand"/> satisfies <see cref="T:Sudoku.CommandLine.CommandBase"/> constraint.
             </summary>
         </member>
-        <member name="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@)">
+        <member name="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749`1.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
@@ -125,7 +125,7 @@
 				</summary>
 			</target>
         </member>
-        <member name="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@)">
+        <member name="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749`1.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use

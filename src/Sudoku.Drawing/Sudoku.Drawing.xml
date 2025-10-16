@@ -770,7 +770,7 @@
             <inheritdoc cref="M:Sudoku.Ocr.ImageHandler.&lt;G&gt;$C14DA01C3B3D21636597C0C038AB5E3F.ToImage``2"/>
         </member>
         <member name="M:Sudoku.Ocr.ImageHandler.CopyFromBitmap``2(Emgu.CV.Image{``0,``1},System.Drawing.Bitmap)">
-            <inheritdoc cref="M:Sudoku.Ocr.ImageHandler.&lt;G&gt;$8DA33323F53729D310C78F4DD2538901.CopyFromBitmap(System.Drawing.Bitmap)"/>
+            <inheritdoc cref="M:Sudoku.Ocr.ImageHandler.&lt;G&gt;$8DA33323F53729D310C78F4DD2538901`2.CopyFromBitmap(System.Drawing.Bitmap)"/>
         </member>
         <member name="M:Sudoku.Ocr.ImageHandler.ColorPaletteToLookupTable(System.Drawing.Imaging.ColorPalette,Emgu.CV.Matrix{System.Byte}@,Emgu.CV.Matrix{System.Byte}@,Emgu.CV.Matrix{System.Byte}@,Emgu.CV.Matrix{System.Byte}@)">
             <summary>
@@ -824,12 +824,12 @@
             <seealso cref="T:Emgu.CV.Image`2"/>
             <seealso cref="T:System.Drawing.Bitmap"/>
         </member>
-        <member name="T:Sudoku.Ocr.ImageHandler.&lt;G&gt;$8DA33323F53729D310C78F4DD2538901.&lt;M&gt;$3F78F430DCE9DF7B11CC63B252A54ADE">
+        <member name="T:Sudoku.Ocr.ImageHandler.&lt;G&gt;$8DA33323F53729D310C78F4DD2538901`2.&lt;M&gt;$3F78F430DCE9DF7B11CC63B252A54ADE">
             <summary>
             Provides extension members on <see cref="T:Emgu.CV.Image`2"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Ocr.ImageHandler.&lt;G&gt;$8DA33323F53729D310C78F4DD2538901.CopyFromBitmap(System.Drawing.Bitmap)">
+        <member name="M:Sudoku.Ocr.ImageHandler.&lt;G&gt;$8DA33323F53729D310C78F4DD2538901`2.CopyFromBitmap(System.Drawing.Bitmap)">
             <summary>
             Utility function for converting <see cref="T:System.Drawing.Bitmap"/> to <see cref="T:System.Drawing.Image"/>.
             </summary>
