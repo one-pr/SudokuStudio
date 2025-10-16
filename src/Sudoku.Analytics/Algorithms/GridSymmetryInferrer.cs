@@ -8,11 +8,8 @@ public sealed unsafe class GridSymmetryChecker
 	/// <summary>
 	/// The internal methods.
 	/// </summary>
-	private static readonly delegate*<in Grid, out SymmetricType, out ReadOnlySpan<Digit?>, out Mask, bool>[] Checkers = [
-		&Diagonal,
-		&AntiDiagonal,
-		&Central
-	];
+	private static readonly delegate*<in Grid, out SymmetricType, out ReadOnlySpan<Digit?>, out Mask, bool>[] Checkers =
+		[&Diagonal, &AntiDiagonal, &Central];
 
 
 	/// <summary>
@@ -29,9 +26,9 @@ public sealed unsafe class GridSymmetryChecker
 			goto FastFail;
 		}
 
-		foreach (var functionPointer in Checkers)
+		foreach (var checker in Checkers)
 		{
-			if (functionPointer(grid, out var symmetricType, out mappingDigits, out selfPairedDigitsMask))
+			if (checker(grid, out var symmetricType, out mappingDigits, out selfPairedDigitsMask))
 			{
 				return symmetricType;
 			}

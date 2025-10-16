@@ -1,4 +1,4 @@
-namespace Sudoku.Algorithms.UniquenessTests;
+namespace Sudoku.UniquenessTests;
 
 /// <summary>
 /// Represents a type that checks and infers for a pattern (specified as a <see cref="Grid"/>, but invalid - multiple solutions),

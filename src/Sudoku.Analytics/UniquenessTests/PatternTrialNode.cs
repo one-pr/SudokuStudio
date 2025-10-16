@@ -1,4 +1,4 @@
-namespace Sudoku.Algorithms.UniquenessTests;
+namespace Sudoku.UniquenessTests;
 
 /// <summary>
 /// Represents a pattern trial node.
