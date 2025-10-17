@@ -37,7 +37,7 @@ public static partial class PatternReasoner
 	/// </summary>
 	/// <param name="logic">The pattern.</param>
 	/// <returns>The permutations.</returns>
-	public static ReadOnlySpan<Permutation> GetPermutations(in Logic logic) => SetSolver.Solve(logic);
+	public static ReadOnlySpan<Permutation> GetPermutations(in Logic logic) => SetTheorySolver.Solve(logic);
 
 	/// <summary>
 	/// Try to find all conclusions.

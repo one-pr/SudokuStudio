@@ -36111,31 +36111,6 @@
         <member name="M:Sudoku.SetTheory.Permutation.op_LessThanOrEqual(Sudoku.SetTheory.Permutation,Sudoku.SetTheory.Permutation)">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.SetTheory.SetSolver">
-            <summary>
-            Represents an internal entry for dancing links solver.
-            </summary>
-        </member>
-        <member name="M:Sudoku.SetTheory.SetSolver.Solve(Sudoku.SetTheory.Logic@,System.Int32)">
-            <summary>
-            Solve for all selections of candidates that satisfy:
-            <list type="bullet">
-            <item>Each truth: exactly one selected inside that set</item>
-            <item>Each link: at most one selected inside that set</item>
-            </list>
-            </summary>
-            <param name="logic">The pattern to be used.</param>
-            <param name="maxSolutions">The limit maximum solutions can be found.</param>
-            <returns>
-            List of solutions; each solution is a <see cref="T:Sudoku.SetTheory.Permutation"/> of assigned candidates (0..728).
-            </returns>
-            <seealso cref="T:Sudoku.SetTheory.Permutation"/>
-        </member>
-        <member name="M:Sudoku.SetTheory.SetSolver.Solve(Sudoku.Concepts.CandidateMap@,System.ReadOnlySpan{Sudoku.Concepts.CandidateMap},System.ReadOnlySpan{Sudoku.Concepts.CandidateMap},System.Int32)">
-            <summary>
-            The backing method.
-            </summary>
-        </member>
         <member name="T:Sudoku.SetTheory.SetTheoryColumnHeader">
             <summary>
             Represents a column header.
@@ -36289,6 +36264,31 @@
             <summary>
             Indicates row ID.
             This field is optional: identify which input row this node belongs to.
+            </summary>
+        </member>
+        <member name="T:Sudoku.SetTheory.SetTheorySolver">
+            <summary>
+            Represents an internal entry for dancing links solver.
+            </summary>
+        </member>
+        <member name="M:Sudoku.SetTheory.SetTheorySolver.Solve(Sudoku.SetTheory.Logic@,System.Int32)">
+            <summary>
+            Solve for all selections of candidates that satisfy:
+            <list type="bullet">
+            <item>Each truth: exactly one selected inside that set</item>
+            <item>Each link: at most one selected inside that set</item>
+            </list>
+            </summary>
+            <param name="logic">The pattern to be used.</param>
+            <param name="maxSolutions">The limit maximum solutions can be found.</param>
+            <returns>
+            List of solutions; each solution is a <see cref="T:Sudoku.SetTheory.Permutation"/> of assigned candidates (0..728).
+            </returns>
+            <seealso cref="T:Sudoku.SetTheory.Permutation"/>
+        </member>
+        <member name="M:Sudoku.SetTheory.SetTheorySolver.Solve(Sudoku.Concepts.CandidateMap@,System.ReadOnlySpan{Sudoku.Concepts.CandidateMap},System.ReadOnlySpan{Sudoku.Concepts.CandidateMap},System.Int32)">
+            <summary>
+            The backing method.
             </summary>
         </member>
         <member name="T:Sudoku.UniquenessTests.DeadlyPatternInferrerLimitReachedException">

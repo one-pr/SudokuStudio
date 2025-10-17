@@ -3,7 +3,7 @@ namespace Sudoku.SetTheory;
 /// <summary>
 /// Represents an internal entry for dancing links solver.
 /// </summary>
-internal static class SetSolver
+internal static class SetTheorySolver
 {
 	/// <summary>
 	/// Solve for all selections of candidates that satisfy:
