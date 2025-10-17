@@ -35955,7 +35955,7 @@
         </member>
         <member name="M:Sudoku.SetTheory.Logic.RemoveTruth(Sudoku.Concepts.Supersymmetry.Space)">
             <summary>
-            Remove a truth from the pattern.
+            Remove a link from the pattern.
             </summary>
             <param name="truth">The truth to remove.</param>
         </member>

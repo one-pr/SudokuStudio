@@ -174,7 +174,7 @@ public struct Logic : IEquatable<Logic>, IEqualityOperators<Logic, Logic, bool>
 	}
 
 	/// <summary>
-	/// Remove a truth from the pattern.
+	/// Remove a link from the pattern.
 	/// </summary>
 	/// <param name="truth">The truth to remove.</param>
 	public void RemoveTruth(Space truth)
