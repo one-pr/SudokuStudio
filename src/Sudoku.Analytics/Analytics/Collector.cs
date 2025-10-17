@@ -97,8 +97,10 @@ public sealed class Collector : StepGatherer
 						// If a searcher contains the upper level, it will be skipped.
 						switch (DifficultyLevelMode)
 						{
-							case CollectorDifficultyLevelMode.OnlySame when l != defaultLevel && currentLevel <= l || l == defaultLevel:
-							case CollectorDifficultyLevelMode.OneLevelHarder when l != defaultLevel && currentLevel <= l + 1 || l == defaultLevel:
+							case CollectorDifficultyLevelMode.OnlySame
+								when l != defaultLevel && currentLevel <= l || l == defaultLevel:
+							case CollectorDifficultyLevelMode.OneLevelHarder
+								when l != defaultLevel && currentLevel <= l + 1 || l == defaultLevel:
 							case CollectorDifficultyLevelMode.All:
 							{
 								break;
@@ -114,18 +116,15 @@ public sealed class Collector : StepGatherer
 							return null;
 						}
 
-						// Searching.
 						accumulator.Clear();
-
 						searcher.Collect(ref context);
-
-						if (accumulator.Count is not (var count and not 0))
+						if (accumulator.Count == 0)
 						{
 							goto ReportProgress;
 						}
 
 						l = currentLevel;
-						bag.AddRange(count > MaxStepsCollected ? accumulator[..MaxStepsCollected] : accumulator);
+						bag.AddRange(accumulator.AsSpan()[..Math.Min(MaxStepsCollected - bag.Count, accumulator.Count)]);
 						break;
 					}
 				}
