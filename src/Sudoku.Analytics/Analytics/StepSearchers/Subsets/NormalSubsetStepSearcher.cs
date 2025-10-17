@@ -37,5 +37,6 @@ namespace Sudoku.Analytics.StepSearchers;
 public sealed partial class NormalSubsetStepSearcher : StepSearcher
 {
 	/// <inheritdoc/>
-	protected internal override Step? Collect(ref StepAnalysisContext context) => SubsetStepSearcherHelper.CollectCore(false, ref context);
+	protected internal override Step? Collect(ref StepAnalysisContext context)
+		=> SubsetStepSearcherHelper.CollectCore(false, ref context);
 }
