@@ -1081,8 +1081,8 @@
         <member name="M:Sudoku.Concepts.CellMapCreator.Create(System.Int32,System.Int32,System.Int32)">
             <inheritdoc cref="M:Sudoku.Concepts.CellMapCreator.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Create(System.Int32,System.Int32,System.Int32)"/>
         </member>
-        <member name="M:Sudoku.Concepts.CellMapCreator.Create(System.Runtime.Intrinsics.Vector128{System.Int64})">
-            <inheritdoc cref="M:Sudoku.Concepts.CellMapCreator.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Create(System.Runtime.Intrinsics.Vector128{System.Int64})"/>
+        <member name="M:Sudoku.Concepts.CellMapCreator.Create(System.Runtime.Intrinsics.Vector128{System.Int64}@)">
+            <inheritdoc cref="M:Sudoku.Concepts.CellMapCreator.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Create(System.Runtime.Intrinsics.Vector128{System.Int64}@)"/>
         </member>
         <member name="T:Sudoku.Concepts.CellMapCreator.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.&lt;M&gt;$4B60D02A5F703296D232D9A415F3C20B">
             <summary>
@@ -1106,7 +1106,7 @@
             <param name="low">Lower 27 bits.</param>
             <returns>The result instance created.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.CellMapCreator.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Create(System.Runtime.Intrinsics.Vector128{System.Int64})">
+        <member name="M:Sudoku.Concepts.CellMapCreator.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.Create(System.Runtime.Intrinsics.Vector128{System.Int64}@)">
             <summary>
             Initializes an instance with a <see cref="T:System.Runtime.Intrinsics.Vector128`1"/> of <see cref="T:System.Int64"/>.
             </summary>

@@ -38,7 +38,7 @@ public static class CellMapCreator
 		/// </summary>
 		/// <param name="vector">Two bits, represented as high 41 and low 40 bits.</param>
 		/// <returns>A <see cref="CellMap"/> instance.</returns>
-		public static CellMap Create(Vector128<long> vector)
+		public static CellMap Create(in Vector128<long> vector)
 		{
 			CellMap result;
 			result._vector = vector;
