@@ -707,7 +707,7 @@ public sealed unsafe partial class AntiGurthSymmetricalPlacementStepSearcher : S
 				selfPairedDigitsMask |= (Mask)(1 << digit);
 			}
 		}
-		return GridSymmetryChecker.CheckAxesOrCenterPointForSymmetry(
+		return SymmetricalPlacementStepSearcherHelper.CheckAxesOrCenterPointForSymmetry(
 			grid,
 			SymmetricType.Diagonal,
 			(Mask)(Grid.MaxCandidatesMask & ~selfPairedDigitsMask)

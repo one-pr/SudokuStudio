@@ -218,7 +218,7 @@ public sealed class Analyzer : StepGatherer
 					puzzle,
 					puzzle.SolutionGrid,
 					result,
-					GridSymmetryChecker.GetSymmetry(puzzle, out var mappingDigits, out var selfPairedDigitsMask),
+					SymmetricalPlacementStepSearcherHelper.GetSymmetry(puzzle, out var mappingDigits, out var selfPairedDigitsMask),
 					mappingDigits,
 					selfPairedDigitsMask,
 					progress,
@@ -284,7 +284,7 @@ public sealed class Analyzer : StepGatherer
 				context.GspPatternInferred = symmetricType;
 				context.MappingRelations = mappingDigits;
 
-				if (GridSymmetryChecker.GetStep(playground, Options) is { } step)
+				if (SymmetricalPlacementStepSearcherHelper.GetStep(playground, Options) is { } step)
 				{
 					if (verifyConclusionValidity(null, solution, step))
 					{

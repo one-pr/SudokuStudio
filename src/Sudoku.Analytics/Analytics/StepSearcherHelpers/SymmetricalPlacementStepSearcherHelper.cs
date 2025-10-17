@@ -3,13 +3,17 @@ namespace Sudoku.Analytics;
 /// <summary>
 /// Represents a way to infer grid symmetry of placements.
 /// </summary>
-public sealed unsafe class GridSymmetryChecker
+internal sealed unsafe class SymmetricalPlacementStepSearcherHelper : StepSearcherHelper
 {
 	/// <summary>
 	/// The internal methods.
 	/// </summary>
 	private static readonly delegate*<in Grid, out SymmetricType, out ReadOnlySpan<Digit?>, out Mask, bool>[] Checkers =
 		[&Diagonal, &AntiDiagonal, &Central];
+
+
+	/// <inheritdoc/>
+	public override ReadOnlyMemory<Type> SupportedStepSearcherTypes => (Type[])[];
 
 
 	/// <summary>
