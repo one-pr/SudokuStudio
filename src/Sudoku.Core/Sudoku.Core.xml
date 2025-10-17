@@ -5283,55 +5283,81 @@
             Represents a list of methods to filter the cells.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.GridPredicates.GivenCells``1(``0@,System.Int32)">
+        <member name="M:Sudoku.Concepts.GridPredicates.IsGivenCell``1(``0@,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.IsGivenCell(`0@,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.GridPredicates.IsModifiableCell``1(``0@,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.IsModifiableCell(`0@,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.GridPredicates.IsEmptyCell``1(``0@,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.IsEmptyCell(`0@,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.GridPredicates.IsBivalueCell``1(``0@,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.IsBivalueCell(`0@,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.GridPredicates.ExistsInCandidatesMap``1(``0@,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.ExistsInCandidatesMap(`0@,System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.GridPredicates.ExistsInDigitsMap``1(``0@,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.ExistsInDigitsMap(`0@,System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.GridPredicates.ExistsInValuesMap``1(``0@,System.Int32,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.ExistsInValuesMap(`0@,System.Int32,System.Int32)"/>
+        </member>
+        <member name="T:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.&lt;M&gt;$438CACA4EA3FD88FACF0180C99575547">
+            <summary>
+            Provides extension members on <typeparamref name="TGrid"/>,
+            where <typeparamref name="TGrid"/> satisfies <see langword="unmanaged"/> and <see cref="T:Sudoku.Concepts.IGrid`1"/> constraints.
+            </summary>
+            <typeparam name="TGrid">The type of the grid.</typeparam>
+        </member>
+        <member name="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.IsGivenCell(`0@,System.Int32)">
             <summary>
             Determines whether the specified cell in the specified grid is a given cell.
             </summary>
-            <typeparam name="TGrid">The type of the grid.</typeparam>
             <param name="g">The grid.</param>
             <param name="cell">The cell to be checked.</param>
             <returns>A <see cref="T:System.Boolean"/> result.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.GridPredicates.ModifiableCells``1(``0@,System.Int32)">
+        <member name="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.IsModifiableCell(`0@,System.Int32)">
             <summary>
             Determines whether the specified cell in the specified grid is a modifiable cell.
             </summary>
-            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.GivenCells``1(``0@,System.Int32)"/>
+            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.IsGivenCell(`0@,System.Int32)"/>
         </member>
-        <member name="M:Sudoku.Concepts.GridPredicates.EmptyCells``1(``0@,System.Int32)">
+        <member name="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.IsEmptyCell(`0@,System.Int32)">
             <summary>
             Determines whether the specified cell in the specified grid is an empty cell.
             </summary>
-            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.GivenCells``1(``0@,System.Int32)"/>
+            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.IsGivenCell(`0@,System.Int32)"/>
         </member>
-        <member name="M:Sudoku.Concepts.GridPredicates.BivalueCells``1(``0@,System.Int32)">
+        <member name="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.IsBivalueCell(`0@,System.Int32)">
             <summary>
             Determines whether the specified cell in the specified grid is a bi-value cell, which means the cell is an empty cell,
             and contains and only contains 2 candidates.
             </summary>
-            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.GivenCells``1(``0@,System.Int32)"/>
+            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.IsGivenCell(`0@,System.Int32)"/>
         </member>
-        <member name="M:Sudoku.Concepts.GridPredicates.CandidatesMap``1(``0@,System.Int32,System.Int32)">
+        <member name="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.ExistsInCandidatesMap(`0@,System.Int32,System.Int32)">
             <summary>
             Checks the existence of the specified digit in the specified cell.
             </summary>
-            <typeparam name="TGrid">The type of the grid.</typeparam>
             <param name="g">The grid.</param>
             <param name="cell">The cell to be checked.</param>
             <param name="digit">The digit to be checked.</param>
             <returns>A <see cref="T:System.Boolean"/> result.</returns>
         </member>
-        <member name="M:Sudoku.Concepts.GridPredicates.DigitsMap``1(``0@,System.Int32,System.Int32)">
+        <member name="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.ExistsInDigitsMap(`0@,System.Int32,System.Int32)">
             <summary>
             Checks the existence of the specified digit in the specified cell, or whether the cell is a value cell, being filled by the digit.
             </summary>
-            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.GivenCells``1(``0@,System.Int32)"/>
+            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.ExistsInCandidatesMap(`0@,System.Int32,System.Int32)"/>
         </member>
-        <member name="M:Sudoku.Concepts.GridPredicates.ValuesMap``1(``0@,System.Int32,System.Int32)">
+        <member name="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.ExistsInValuesMap(`0@,System.Int32,System.Int32)">
             <summary>
             Checks whether the cell is a value cell, being filled by the digit.
             </summary>
-            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.CandidatesMap``1(``0@,System.Int32,System.Int32)"/>
+            <inheritdoc cref="M:Sudoku.Concepts.GridPredicates.&lt;G&gt;$E85000132676E52A99CE6082267414DB`1.ExistsInCandidatesMap(`0@,System.Int32,System.Int32)"/>
         </member>
         <member name="T:Sudoku.Concepts.HouseDigitIdentifier">
             <summary>

@@ -152,25 +152,25 @@ public struct MarkerGrid : InlineArrayGridBase
 	}
 
 	/// <inheritdoc/>
-	public readonly unsafe CellMap GivenCells => GridBase.GetMap(this, &GridPredicates.GivenCells);
+	public readonly unsafe CellMap GivenCells => GridBase.GetMap(this, &MarkerGrid.IsGivenCell);
 
 	/// <inheritdoc/>
-	public readonly unsafe CellMap ModifiableCells => GridBase.GetMap(this, &GridPredicates.ModifiableCells);
+	public readonly unsafe CellMap ModifiableCells => GridBase.GetMap(this, &MarkerGrid.IsModifiableCell);
 
 	/// <inheritdoc/>
-	public readonly unsafe CellMap EmptyCells => GridBase.GetMap(this, &GridPredicates.EmptyCells);
+	public readonly unsafe CellMap EmptyCells => GridBase.GetMap(this, &MarkerGrid.IsEmptyCell);
 
 	/// <inheritdoc/>
-	public readonly unsafe CellMap BivalueCells => GridBase.GetMap(this, &GridPredicates.BivalueCells);
+	public readonly unsafe CellMap BivalueCells => GridBase.GetMap(this, &MarkerGrid.IsBivalueCell);
 
 	/// <inheritdoc/>
-	public readonly unsafe ReadOnlySpan<CellMap> CandidatesMap => GridBase.GetMaps(this, &GridPredicates.CandidatesMap);
+	public readonly unsafe ReadOnlySpan<CellMap> CandidatesMap => GridBase.GetMaps(this, &MarkerGrid.ExistsInCandidatesMap);
 
 	/// <inheritdoc/>
-	public readonly unsafe ReadOnlySpan<CellMap> DigitsMap => GridBase.GetMaps(this, &GridPredicates.DigitsMap);
+	public readonly unsafe ReadOnlySpan<CellMap> DigitsMap => GridBase.GetMaps(this, &MarkerGrid.ExistsInDigitsMap);
 
 	/// <inheritdoc/>
-	public readonly unsafe ReadOnlySpan<CellMap> ValuesMap => GridBase.GetMaps(this, &GridPredicates.ValuesMap);
+	public readonly unsafe ReadOnlySpan<CellMap> ValuesMap => GridBase.GetMaps(this, &MarkerGrid.ExistsInValuesMap);
 
 	/// <inheritdoc/>
 	public readonly ReadOnlySpan<Candidate> Candidates
