@@ -179,7 +179,7 @@ public struct Logic : IEquatable<Logic>, IEqualityOperators<Logic, Logic, bool>
 	/// <param name="truth">The truth to remove.</param>
 	public void RemoveTruth(Space truth)
 	{
-		if (!_truths.Remove(truth))
+		if (_truths.Remove(truth))
 		{
 			_map = RebuildMap(in _truths, ref _links, in _originalGrid, out _mapIncludingLinks);
 		}
