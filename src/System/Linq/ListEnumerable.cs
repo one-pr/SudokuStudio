@@ -11,7 +11,11 @@ public static class ListEnumerable
 	/// </summary>
 	extension<TSource>(List<TSource> @this)
 	{
-		/// <inheritdoc cref="ArrayEnumerable.Count{T}(T[], Func{T, bool})"/>
+		/// <summary>
+		/// Totals up the number of elements that satisfy the specified condition.
+		/// </summary>
+		/// <param name="predicate">The condition.</param>
+		/// <returns>The number of elements satisfying the specified condition.</returns>
 		public int Count(Func<TSource, bool> predicate)
 		{
 			var result = 0;
@@ -25,7 +29,7 @@ public static class ListEnumerable
 			return result;
 		}
 
-		/// <inheritdoc cref="ArrayEnumerable.Count{T}(T[], Func{T, bool})"/>
+		/// <inheritdoc cref="extension{TSource}(List{TSource}).Count(Func{TSource, bool})"/>
 		public unsafe int CountUnsafe(delegate*<TSource, bool> predicate)
 		{
 			var result = 0;

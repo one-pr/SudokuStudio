@@ -140,13 +140,13 @@ public static class SolutionFields
 			HousesCells = [
 				..
 				from houseIndex in SpanEnumerable.Range(0, 9)
-				select from cell in BlockTable.Index() where cell.Value == houseIndex select cell.Index,
+				select (from cell in BlockTable.Index() where cell.Value == houseIndex select cell.Index).ToArray(),
 				..
 				from houseIndex in SpanEnumerable.Range(9, 9)
-				select from cell in RowTable.Index() where cell.Value == houseIndex select cell.Index,
+				select (from cell in RowTable.Index() where cell.Value == houseIndex select cell.Index).ToArray(),
 				..
 				from houseIndex in SpanEnumerable.Range(18, 9)
-				select from cell in ColumnTable.Index() where cell.Value == houseIndex select cell.Index
+				select (from cell in ColumnTable.Index() where cell.Value == houseIndex select cell.Index).ToArray()
 			];
 		}
 

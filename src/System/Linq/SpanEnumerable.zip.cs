@@ -3,9 +3,9 @@ namespace System.Linq;
 public partial class ArrayEnumerable
 {
 	/// <summary>
-	/// Provides extension members on <typeparamref name="TFirst"/>[].
+	/// Provides extension members on <see cref="ReadOnlySpan{T}"/> of <typeparamref name="TFirst"/>.
 	/// </summary>
-	extension<TFirst>(TFirst[] first)
+	extension<TFirst>(ReadOnlySpan<TFirst> first)
 	{
 		/// <inheritdoc cref="Enumerable.Zip{TFirst, TSecond}(IEnumerable{TFirst}, IEnumerable{TSecond})"/>
 		/// <remarks>
@@ -13,7 +13,7 @@ public partial class ArrayEnumerable
 		///     file="../../global-doc-comments.xml"
 		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
 		/// </remarks>
-		public (TFirst Left, TSecond Right)[] Zip<TSecond>(TSecond[] second)
+		public ReadOnlySpan<(TFirst Left, TSecond Right)> Zip<TSecond>(ReadOnlySpan<TSecond> second)
 		{
 			ArgumentException.ThrowIf(first.Length == second.Length);
 

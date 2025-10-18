@@ -7,15 +7,15 @@ public partial class ArrayEnumerable
 	/// </summary>
 	/// <typeparam name="TSource">The type of each element.</typeparam>
 	/// <param name="source">The array to be filtered.</param>
-	extension<TSource>(TSource[] source)
+	extension<TSource>(ReadOnlySpan<TSource> source)
 	{
 		/// <summary>
 		/// Filters duplicate items from an array.
 		/// </summary>
 		/// <returns>A new array of elements that doesn't contain any duplicate items.</returns>
-		public TSource[] Distinct()
+		public ReadOnlySpan<TSource> Distinct()
 		{
-			if (source.Length == 0 || ReferenceEquals(source, Array.Empty<TSource>()))
+			if (source.Length == 0)
 			{
 				return [];
 			}
@@ -30,7 +30,7 @@ public partial class ArrayEnumerable
 					result[i++] = element;
 				}
 			}
-			return result[..i];
+			return result.AsReadOnlySpan()[..i];
 		}
 
 		/// <inheritdoc cref="Enumerable.DistinctBy{TSource, TKey}(IEnumerable{TSource}, Func{TSource, TKey})"/>
@@ -39,7 +39,7 @@ public partial class ArrayEnumerable
 		///     file="../../global-doc-comments.xml"
 		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
 		/// </remarks>
-		public TSource[] DistinctBy<TKey>(Func<TSource, TKey> keySelector)
+		public ReadOnlySpan<TSource> DistinctBy<TKey>(Func<TSource, TKey> keySelector)
 			where TKey : notnull, IEqualityOperators<TKey, TKey, bool>
 		{
 			var result = new TSource[source.Length];
@@ -69,7 +69,7 @@ public partial class ArrayEnumerable
 					}
 				}
 			}
-			return result[..i];
+			return result.AsReadOnlySpan()[..i];
 		}
 
 		/// <inheritdoc cref="Enumerable.DistinctBy{TSource, TKey}(IEnumerable{TSource}, Func{TSource, TKey}, IEqualityComparer{TKey})"/>
@@ -78,7 +78,7 @@ public partial class ArrayEnumerable
 		///     file="../../global-doc-comments.xml"
 		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
 		/// </remarks>
-		public TSource[] DistinctBy<TKey>(Func<TSource, TKey> keySelector, IEqualityComparer<TKey> equalityComparer)
+		public ReadOnlySpan<TSource> DistinctBy<TKey>(Func<TSource, TKey> keySelector, IEqualityComparer<TKey> equalityComparer)
 			where TKey : notnull
 		{
 			var result = new TSource[source.Length];
@@ -111,7 +111,7 @@ public partial class ArrayEnumerable
 					}
 				}
 			}
-			return result[..i];
+			return result.AsReadOnlySpan()[..i];
 		}
 	}
 }
