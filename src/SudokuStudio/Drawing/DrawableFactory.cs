@@ -172,7 +172,7 @@ internal static partial class DrawableFactory
 	/// <param name="pane">The pane.</param>
 	private static IEnumerable<UIElementCollection> IterateControls(SudokuPane pane)
 		=>
-		from targetControl in (from children in pane._children select children.MainGrid).Append(pane.MainGrid)
+		from targetControl in (from children in pane._children select children.MainGrid).AsEnumerable().Append(pane.MainGrid)
 		select targetControl.Children;
 
 	/// <summary>

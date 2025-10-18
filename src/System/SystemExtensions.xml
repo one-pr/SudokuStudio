@@ -2311,12 +2311,6 @@
             </summary>
             <seealso cref="T:System.Array"/>
         </member>
-        <member name="M:System.Linq.ArrayEnumerable.Append``1(``0[],``0)">
-            <inheritdoc cref="M:System.Linq.ArrayEnumerable.&lt;G&gt;$51ABFD8B8D8A5142371F514AE52D9AA9`1.Append(`0)"/>
-        </member>
-        <member name="M:System.Linq.ArrayEnumerable.Prepend``1(``0[],``0)">
-            <inheritdoc cref="M:System.Linq.ArrayEnumerable.&lt;G&gt;$51ABFD8B8D8A5142371F514AE52D9AA9`1.Prepend(`0)"/>
-        </member>
         <member name="M:System.Linq.ArrayEnumerable.Cast``1(System.Object[])">
             <inheritdoc cref="M:System.Linq.ArrayEnumerable.&lt;G&gt;$8B246D26940F9C51BF3AB90E7FD796D9.Cast``1"/>
         </member>
@@ -2368,17 +2362,13 @@
         <member name="M:System.Linq.ArrayEnumerable.Where``1(``0[],System.Func{``0,System.Boolean})">
             <inheritdoc cref="M:System.Linq.ArrayEnumerable.&lt;G&gt;$51ABFD8B8D8A5142371F514AE52D9AA9`1.Where(System.Func{`0,System.Boolean})"/>
         </member>
-        <member name="M:System.Linq.ArrayEnumerable.Distinct``1(System.ReadOnlySpan{``0})">
-            <inheritdoc cref="M:System.Linq.ArrayEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Distinct"/>
+        <member name="T:System.Linq.ArrayEnumerable.&lt;G&gt;$8B246D26940F9C51BF3AB90E7FD796D9.&lt;M&gt;$A6393A9B643182B6649ED54EDB0719E5">
+            <summary>
+            Provides extension members on <see cref="T:System.Object"/>[].
+            </summary>
         </member>
-        <member name="M:System.Linq.ArrayEnumerable.DistinctBy``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
-            <inheritdoc cref="M:System.Linq.ArrayEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.DistinctBy``1(System.Func{`0,``0})"/>
-        </member>
-        <member name="M:System.Linq.ArrayEnumerable.DistinctBy``2(System.ReadOnlySpan{``0},System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})">
-            <inheritdoc cref="M:System.Linq.ArrayEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.DistinctBy``1(System.Func{`0,``0},System.Collections.Generic.IEqualityComparer{``0})"/>
-        </member>
-        <member name="M:System.Linq.ArrayEnumerable.Zip``2(System.ReadOnlySpan{``0},System.ReadOnlySpan{``1})">
-            <inheritdoc cref="M:System.Linq.ArrayEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Zip``1(System.ReadOnlySpan{``0})"/>
+        <member name="M:System.Linq.ArrayEnumerable.&lt;G&gt;$8B246D26940F9C51BF3AB90E7FD796D9.Cast``1">
+            <inheritdoc cref="M:System.Linq.Enumerable.Cast``1(System.Collections.IEnumerable)"/>
         </member>
         <member name="T:System.Linq.ArrayEnumerable.&lt;G&gt;$51ABFD8B8D8A5142371F514AE52D9AA9`1.&lt;M&gt;$6EB964B81CE124BD3475F312AC48B617">
             <summary>
@@ -2396,17 +2386,8 @@
             <summary>
             Provides extension members on <typeparamref name="TSource"/>[].
             </summary>
-            <summary>
-            Provides extension members on <typeparamref name="TSource"/>[].
-            </summary>
             <typeparam name="TSource">The type of the elements of source.</typeparam>
             <param name="source">An array of <typeparamref name="TSource"/> instances to filter.</param>
-        </member>
-        <member name="M:System.Linq.ArrayEnumerable.&lt;G&gt;$51ABFD8B8D8A5142371F514AE52D9AA9`1.Append(`0)">
-            <inheritdoc cref="M:System.Linq.Enumerable.Append``1(System.Collections.Generic.IEnumerable{``0},``0)"/>
-        </member>
-        <member name="M:System.Linq.ArrayEnumerable.&lt;G&gt;$51ABFD8B8D8A5142371F514AE52D9AA9`1.Prepend(`0)">
-            <inheritdoc cref="M:System.Linq.Enumerable.Prepend``1(System.Collections.Generic.IEnumerable{``0},``0)"/>
         </member>
         <member name="M:System.Linq.ArrayEnumerable.&lt;G&gt;$51ABFD8B8D8A5142371F514AE52D9AA9`1.GroupBy``1(System.Func{`0,``0})">
             <inheritdoc cref="M:System.Linq.Enumerable.GroupBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})" />
@@ -2741,95 +2722,6 @@
         </member>
         <member name="M:System.Linq.ArrayEnumerable.&lt;G&gt;$51ABFD8B8D8A5142371F514AE52D9AA9`1.RightJoin``3(``0[],System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0,``2},System.Collections.Generic.IEqualityComparer{``1})">
             <inheritdoc cref="M:System.Linq.Providers.IRightJoinMethod`2.RightJoin``3(System.Collections.Generic.IEnumerable{``0},System.Func{`1,``1},System.Func{``0,``1},System.Func{`1,``0,``2},System.Collections.Generic.IEqualityComparer{``1})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="T:System.Linq.ArrayEnumerable.&lt;G&gt;$8B246D26940F9C51BF3AB90E7FD796D9.&lt;M&gt;$A6393A9B643182B6649ED54EDB0719E5">
-            <summary>
-            Provides extension members on <see cref="T:System.Object"/>[].
-            </summary>
-        </member>
-        <member name="M:System.Linq.ArrayEnumerable.&lt;G&gt;$8B246D26940F9C51BF3AB90E7FD796D9.Cast``1">
-            <inheritdoc cref="M:System.Linq.Enumerable.Cast``1(System.Collections.IEnumerable)"/>
-        </member>
-        <member name="T:System.Linq.ArrayEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.&lt;M&gt;$2B9DCBEEBA9F43BDE8E1D0F175D95198">
-            <summary>
-            Provides extension members on <typeparamref name="TSource"/>[].
-            </summary>
-            <typeparam name="TSource">The type of each element.</typeparam>
-            <param name="source">The array to be filtered.</param>
-        </member>
-        <member name="M:System.Linq.ArrayEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Distinct">
-            <summary>
-            Filters duplicate items from an array.
-            </summary>
-            <returns>A new array of elements that doesn't contain any duplicate items.</returns>
-        </member>
-        <member name="M:System.Linq.ArrayEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.DistinctBy``1(System.Func{`0,``0})">
-            <inheritdoc cref="M:System.Linq.Enumerable.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="M:System.Linq.ArrayEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.DistinctBy``1(System.Func{`0,``0},System.Collections.Generic.IEqualityComparer{``0})">
-            <inheritdoc cref="M:System.Linq.Enumerable.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="T:System.Linq.ArrayEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.&lt;M&gt;$F5EF6AB98DF4AF94CC382E5B0E6993B2">
-            <summary>
-            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TFirst"/>.
-            </summary>
-        </member>
-        <member name="M:System.Linq.ArrayEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Zip``1(System.ReadOnlySpan{``0})">
-            <inheritdoc cref="M:System.Linq.Enumerable.Zip``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1})" />
             <remarks>
             <target name="generic-method">
 				<para>
@@ -3800,86 +3692,6 @@
         <member name="M:System.Linq.IMyGrouping`3.System#Collections#Generic#IEnumerable{TElement}#GetEnumerator">
             <inheritdoc/>
         </member>
-        <member name="T:System.Linq.Iterators.ArrayAppendIterator`1">
-            <summary>
-            Represents an enumerator that will be created after <see cref="M:System.Linq.ArrayEnumerable.Append``1(``0[],``0)"/>.
-            </summary>
-            <typeparam name="T">The type of each element.</typeparam>
-            <param name="_array">The array.</param>
-            <param name="value"><inheritdoc cref="F:System.Linq.Iterators.ArrayAppendIterator`1._value" path="/summary"/></param>
-            <seealso cref="M:System.Linq.ArrayEnumerable.Append``1(``0[],``0)"/>
-        </member>
-        <member name="M:System.Linq.Iterators.ArrayAppendIterator`1.#ctor(`0[],`0)">
-            <summary>
-            Represents an enumerator that will be created after <see cref="M:System.Linq.ArrayEnumerable.Append``1(``0[],``0)"/>.
-            </summary>
-            <typeparam name="T">The type of each element.</typeparam>
-            <param name="_array">The array.</param>
-            <param name="value"><inheritdoc cref="F:System.Linq.Iterators.ArrayAppendIterator`1._value" path="/summary"/></param>
-            <seealso cref="M:System.Linq.ArrayEnumerable.Append``1(``0[],``0)"/>
-        </member>
-        <member name="F:System.Linq.Iterators.ArrayAppendIterator`1._value">
-            <summary>
-            The final element to be iterated.
-            </summary>
-        </member>
-        <member name="F:System.Linq.Iterators.ArrayAppendIterator`1._index">
-            <summary>
-            Indicates the index.
-            </summary>
-        </member>
-        <member name="P:System.Linq.Iterators.ArrayAppendIterator`1.Current">
-            <inheritdoc cref="P:System.Collections.Generic.IEnumerator`1.Current"/>
-        </member>
-        <member name="P:System.Linq.Iterators.ArrayAppendIterator`1.System#Collections#Generic#IEnumerator{T}#Current">
-            <inheritdoc/>
-        </member>
-        <member name="M:System.Linq.Iterators.ArrayAppendIterator`1.MoveNext">
-            <inheritdoc/>
-        </member>
-        <member name="M:System.Linq.Iterators.ArrayAppendIterator`1.GetEnumerator">
-            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
-        </member>
-        <member name="T:System.Linq.Iterators.ArrayPrependIterator`1">
-            <summary>
-            Represents an enumerator that will be created after <see cref="M:System.Linq.ArrayEnumerable.Prepend``1(``0[],``0)"/>.
-            </summary>
-            <typeparam name="T">The type of each element.</typeparam>
-            <param name="_array">The array.</param>
-            <param name="value"><inheritdoc cref="F:System.Linq.Iterators.ArrayPrependIterator`1._value" path="/summary"/></param>
-            <seealso cref="M:System.Linq.ArrayEnumerable.Prepend``1(``0[],``0)"/>
-        </member>
-        <member name="M:System.Linq.Iterators.ArrayPrependIterator`1.#ctor(`0[],`0)">
-            <summary>
-            Represents an enumerator that will be created after <see cref="M:System.Linq.ArrayEnumerable.Prepend``1(``0[],``0)"/>.
-            </summary>
-            <typeparam name="T">The type of each element.</typeparam>
-            <param name="_array">The array.</param>
-            <param name="value"><inheritdoc cref="F:System.Linq.Iterators.ArrayPrependIterator`1._value" path="/summary"/></param>
-            <seealso cref="M:System.Linq.ArrayEnumerable.Prepend``1(``0[],``0)"/>
-        </member>
-        <member name="F:System.Linq.Iterators.ArrayPrependIterator`1._value">
-            <summary>
-            The final element to be iterated.
-            </summary>
-        </member>
-        <member name="F:System.Linq.Iterators.ArrayPrependIterator`1._index">
-            <summary>
-            Indicates the index.
-            </summary>
-        </member>
-        <member name="P:System.Linq.Iterators.ArrayPrependIterator`1.Current">
-            <inheritdoc cref="P:System.Collections.Generic.IEnumerator`1.Current"/>
-        </member>
-        <member name="P:System.Linq.Iterators.ArrayPrependIterator`1.System#Collections#Generic#IEnumerator{T}#Current">
-            <inheritdoc/>
-        </member>
-        <member name="M:System.Linq.Iterators.ArrayPrependIterator`1.MoveNext">
-            <inheritdoc/>
-        </member>
-        <member name="M:System.Linq.Iterators.ArrayPrependIterator`1.GetEnumerator">
-            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
-        </member>
         <member name="T:System.Linq.Iterators.IIterator`2">
             <summary>
             Represents an iterator type.
@@ -3899,9 +3711,6 @@
         <member name="P:System.Linq.Iterators.IIterator`2.System#Collections#IEnumerator#Current">
             <inheritdoc/>
         </member>
-        <member name="M:System.Linq.Iterators.IIterator`2.GetEnumerator">
-            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
-        </member>
         <member name="M:System.Linq.Iterators.IIterator`2.System#IDisposable#Dispose">
             <inheritdoc/>
         </member>
@@ -3912,6 +3721,126 @@
             <inheritdoc/>
         </member>
         <member name="M:System.Linq.Iterators.IIterator`2.System#Collections#Generic#IEnumerable{T}#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.Linq.Iterators.SpanAppendIterator`1">
+            <summary>
+            Represents an enumerator that will be created after <see cref="M:System.Linq.SpanEnumerable.Append``1(System.ReadOnlySpan{``0},``0)"/>.
+            </summary>
+            <typeparam name="T">The type of each element.</typeparam>
+            <param name="span">The span.</param>
+            <param name="value"><inheritdoc cref="F:System.Linq.Iterators.SpanAppendIterator`1._value" path="/summary"/></param>
+            <seealso cref="M:System.Linq.SpanEnumerable.Append``1(System.ReadOnlySpan{``0},``0)"/>
+        </member>
+        <member name="M:System.Linq.Iterators.SpanAppendIterator`1.#ctor(System.ReadOnlySpan{`0},`0)">
+            <summary>
+            Represents an enumerator that will be created after <see cref="M:System.Linq.SpanEnumerable.Append``1(System.ReadOnlySpan{``0},``0)"/>.
+            </summary>
+            <typeparam name="T">The type of each element.</typeparam>
+            <param name="span">The span.</param>
+            <param name="value"><inheritdoc cref="F:System.Linq.Iterators.SpanAppendIterator`1._value" path="/summary"/></param>
+            <seealso cref="M:System.Linq.SpanEnumerable.Append``1(System.ReadOnlySpan{``0},``0)"/>
+        </member>
+        <member name="F:System.Linq.Iterators.SpanAppendIterator`1._value">
+            <summary>
+            The final element to be iterated.
+            </summary>
+        </member>
+        <member name="F:System.Linq.Iterators.SpanAppendIterator`1._span">
+            <summary>
+            The span.
+            </summary>
+        </member>
+        <member name="F:System.Linq.Iterators.SpanAppendIterator`1._index">
+            <summary>
+            Indicates the index.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Iterators.SpanAppendIterator`1.Current">
+            <inheritdoc cref="P:System.Collections.Generic.IEnumerator`1.Current"/>
+        </member>
+        <member name="P:System.Linq.Iterators.SpanAppendIterator`1.System#Collections#IEnumerator#Current">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.Linq.Iterators.SpanAppendIterator`1.System#Collections#Generic#IEnumerator{T}#Current">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Linq.Iterators.SpanAppendIterator`1.MoveNext">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Linq.Iterators.SpanAppendIterator`1.GetEnumerator">
+            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+        </member>
+        <member name="M:System.Linq.Iterators.SpanAppendIterator`1.System#IDisposable#Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Linq.Iterators.SpanAppendIterator`1.System#Collections#IEnumerator#Reset">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Linq.Iterators.SpanAppendIterator`1.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Linq.Iterators.SpanAppendIterator`1.System#Collections#Generic#IEnumerable{T}#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.Linq.Iterators.SpanPrependIterator`1">
+            <summary>
+            Represents an enumerator that will be created after <see cref="M:System.Linq.SpanEnumerable.Prepend``1(System.ReadOnlySpan{``0},``0)"/>.
+            </summary>
+            <typeparam name="T">The type of each element.</typeparam>
+            <param name="span">The span.</param>
+            <param name="value"><inheritdoc cref="F:System.Linq.Iterators.SpanPrependIterator`1._value" path="/summary"/></param>
+            <seealso cref="M:System.Linq.SpanEnumerable.Prepend``1(System.ReadOnlySpan{``0},``0)"/>
+        </member>
+        <member name="M:System.Linq.Iterators.SpanPrependIterator`1.#ctor(System.ReadOnlySpan{`0},`0)">
+            <summary>
+            Represents an enumerator that will be created after <see cref="M:System.Linq.SpanEnumerable.Prepend``1(System.ReadOnlySpan{``0},``0)"/>.
+            </summary>
+            <typeparam name="T">The type of each element.</typeparam>
+            <param name="span">The span.</param>
+            <param name="value"><inheritdoc cref="F:System.Linq.Iterators.SpanPrependIterator`1._value" path="/summary"/></param>
+            <seealso cref="M:System.Linq.SpanEnumerable.Prepend``1(System.ReadOnlySpan{``0},``0)"/>
+        </member>
+        <member name="F:System.Linq.Iterators.SpanPrependIterator`1._value">
+            <summary>
+            The final element to be iterated.
+            </summary>
+        </member>
+        <member name="F:System.Linq.Iterators.SpanPrependIterator`1._span">
+            <summary>
+            The span.
+            </summary>
+        </member>
+        <member name="F:System.Linq.Iterators.SpanPrependIterator`1._index">
+            <summary>
+            Indicates the index.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Iterators.SpanPrependIterator`1.Current">
+            <inheritdoc cref="P:System.Collections.Generic.IEnumerator`1.Current"/>
+        </member>
+        <member name="P:System.Linq.Iterators.SpanPrependIterator`1.System#Collections#IEnumerator#Current">
+            <inheritdoc/>
+        </member>
+        <member name="P:System.Linq.Iterators.SpanPrependIterator`1.System#Collections#Generic#IEnumerator{T}#Current">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Linq.Iterators.SpanPrependIterator`1.MoveNext">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Linq.Iterators.SpanPrependIterator`1.GetEnumerator">
+            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+        </member>
+        <member name="M:System.Linq.Iterators.SpanPrependIterator`1.System#IDisposable#Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Linq.Iterators.SpanPrependIterator`1.System#Collections#IEnumerator#Reset">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Linq.Iterators.SpanPrependIterator`1.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Linq.Iterators.SpanPrependIterator`1.System#Collections#Generic#IEnumerable{T}#GetEnumerator">
             <inheritdoc/>
         </member>
         <member name="T:System.Linq.LinkedListEnumerable">
@@ -5080,11 +5009,26 @@
         <member name="M:System.Linq.SpanEnumerable.AllUnsafe``1(System.ReadOnlySpan{``0},)">
             <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.AllUnsafe()"/>
         </member>
+        <member name="M:System.Linq.SpanEnumerable.Append``1(System.ReadOnlySpan{``0},``0)">
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Append(`0)"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Prepend``1(System.ReadOnlySpan{``0},``0)">
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Prepend(`0)"/>
+        </member>
         <member name="M:System.Linq.SpanEnumerable.Average``2(System.ReadOnlySpan{``0})">
             <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$26E446860FBBD207AF9A4FA2F5009A42`1.Average``1"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.Count``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})">
             <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Count(System.Func{`0,System.Boolean})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Distinct``1(System.ReadOnlySpan{``0})">
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Distinct"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.DistinctBy``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.DistinctBy``1(System.Func{`0,``0})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.DistinctBy``2(System.ReadOnlySpan{``0},System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})">
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.DistinctBy``1(System.Func{`0,``0},System.Collections.Generic.IEqualityComparer{``0})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.First``1(System.ReadOnlySpan{``0})">
             <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.First"/>
@@ -5262,6 +5206,9 @@
         <member name="M:System.Linq.SpanEnumerable.ToLookup``3(System.ReadOnlySpan{``0},System.Func{``0,``1},System.Func{``0,``2},System.Collections.Generic.IEqualityComparer{``1})">
             <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.ToLookup``2(System.Func{`0,``0},System.Func{`0,``1},System.Collections.Generic.IEqualityComparer{``0})"/>
         </member>
+        <member name="M:System.Linq.SpanEnumerable.Zip``2(System.ReadOnlySpan{``0},System.ReadOnlySpan{``1})">
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Zip``1(System.ReadOnlySpan{``0})"/>
+        </member>
         <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.&lt;M&gt;$2B9DCBEEBA9F43BDE8E1D0F175D95198">
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
@@ -5274,10 +5221,18 @@
             <typeparam name="TSource">The type of the elements of source.</typeparam>
             <param name="source">The collection to be used and checked.</param>
             <summary>
+            Provides extension members on <typeparamref name="TSource"/>[].
+            </summary>
+            <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
             </summary>
             <typeparam name="TSource">The type of the elements of source.</typeparam>
             <param name="source">The collection to be used and checked.</param>
+            <summary>
+            Provides extension members on <typeparamref name="TSource"/>[].
+            </summary>
+            <typeparam name="TSource">The type of each element.</typeparam>
+            <param name="source">The array to be filtered.</param>
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
             </summary>
@@ -5371,8 +5326,62 @@
         <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.AllUnsafe()">
             <inheritdoc cref="M:System.Linq.SpanEnumerable.All``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})"/>
         </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Append(`0)">
+            <inheritdoc cref="M:System.Linq.Enumerable.Append``1(System.Collections.Generic.IEnumerable{``0},``0)"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Prepend(`0)">
+            <inheritdoc cref="M:System.Linq.Enumerable.Prepend``1(System.Collections.Generic.IEnumerable{``0},``0)"/>
+        </member>
         <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Count(System.Func{`0,System.Boolean})">
             <inheritdoc cref="M:System.Linq.Providers.ICountMethod`2.Count(System.Func{`1,System.Boolean})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Distinct">
+            <summary>
+            Filters duplicate items from an array.
+            </summary>
+            <returns>A new array of elements that doesn't contain any duplicate items.</returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.DistinctBy``1(System.Func{`0,``0})">
+            <inheritdoc cref="M:System.Linq.Enumerable.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})" />
+            <remarks>
+            <target name="generic-method">
+				<para>
+					Starting with C# 14, the <b>extension member</b> feature is supported.
+					When an <see langword="extension" /> block declaration has generic parameters
+					that are used by its formal parameters,
+					the method members inside the <see langword="extension" /> block will prepend those generic parameters
+					so that they become part of the method's signature.
+				</para>
+				<para>
+					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
+					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
+					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
+					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
+					following the rules of generic methods in C#.
+				</para>
+			</target>
+            </remarks>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.DistinctBy``1(System.Func{`0,``0},System.Collections.Generic.IEqualityComparer{``0})">
+            <inheritdoc cref="M:System.Linq.Enumerable.DistinctBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})" />
+            <remarks>
+            <target name="generic-method">
+				<para>
+					Starting with C# 14, the <b>extension member</b> feature is supported.
+					When an <see langword="extension" /> block declaration has generic parameters
+					that are used by its formal parameters,
+					the method members inside the <see langword="extension" /> block will prepend those generic parameters
+					so that they become part of the method's signature.
+				</para>
+				<para>
+					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
+					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
+					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
+					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
+					following the rules of generic methods in C#.
+				</para>
+			</target>
+            </remarks>
         </member>
         <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.First">
             <summary>
@@ -6029,6 +6038,32 @@
         </member>
         <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Select``1(System.Func{`0,System.Int32,``0})">
             <inheritdoc cref="M:System.Linq.Providers.ISelectMethod`2.Select``1(System.Func{`1,System.Int32,``0})" />
+            <remarks>
+            <target name="generic-method">
+				<para>
+					Starting with C# 14, the <b>extension member</b> feature is supported.
+					When an <see langword="extension" /> block declaration has generic parameters
+					that are used by its formal parameters,
+					the method members inside the <see langword="extension" /> block will prepend those generic parameters
+					so that they become part of the method's signature.
+				</para>
+				<para>
+					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
+					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
+					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
+					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
+					following the rules of generic methods in C#.
+				</para>
+			</target>
+            </remarks>
+        </member>
+        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.&lt;M&gt;$F5EF6AB98DF4AF94CC382E5B0E6993B2">
+            <summary>
+            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TFirst"/>.
+            </summary>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Zip``1(System.ReadOnlySpan{``0})">
+            <inheritdoc cref="M:System.Linq.Enumerable.Zip``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1})" />
             <remarks>
             <target name="generic-method">
 				<para>

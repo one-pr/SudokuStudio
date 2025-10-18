@@ -1,6 +1,6 @@
 namespace System.Linq;
 
-public partial class ArrayEnumerable
+public partial class SpanEnumerable
 {
 	/// <summary>
 	/// Provides extension members on <see cref="ReadOnlySpan{T}"/> of <typeparamref name="TFirst"/>.
