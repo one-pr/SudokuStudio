@@ -1,12 +1,13 @@
 namespace System.Linq;
 
 /// <summary>
-/// Represents a grouping data structure for LINQ grouping methods.
+/// Represents equivalent <see cref="IGrouping{TKey, TElement}"/> implementation
+/// on customized sequence-based types (like array and span).
 /// </summary>
 /// <typeparam name="TSelf"><include file="../../global-doc-comments.xml" path="/g/self-type-constraint"/></typeparam>
 /// <typeparam name="TKey">Indicates the type of keys that group values.</typeparam>
 /// <typeparam name="TElement">The type of each element.</typeparam>
-internal interface IMyGrouping<TSelf, out TKey, TElement> :
+internal interface ISequenceGrouping<TSelf, out TKey, TElement> :
 	IEnumerable<TElement>,
 	IEqualityOperators<TSelf, TSelf, bool>,
 	IEquatable<TSelf>,
@@ -14,7 +15,7 @@ internal interface IMyGrouping<TSelf, out TKey, TElement> :
 	IReadOnlyCollection<TElement>,
 	ISelectMethod<TSelf, TElement>,
 	IWhereMethod<TSelf, TElement>
-	where TSelf : IMyGrouping<TSelf, TKey, TElement>
+	where TSelf : ISequenceGrouping<TSelf, TKey, TElement>
 	where TKey : notnull
 {
 	/// <summary>

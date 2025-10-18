@@ -8,7 +8,7 @@ namespace System.Linq;
 /// <typeparam name="TKey">The type of the key.</typeparam>
 /// <param name="elements"><inheritdoc cref="_elements" path="/summary"/></param>
 /// <param name="key"><inheritdoc cref="Key" path="/summary"/></param>
-public readonly struct SpanGrouping<TSource, TKey>(TSource[] elements, TKey key) : IMyGrouping<SpanGrouping<TSource, TKey>, TKey, TSource>
+public readonly struct SpanGrouping<TSource, TKey>(TSource[] elements, TKey key) : ISequenceGrouping<SpanGrouping<TSource, TKey>, TKey, TSource>
 	where TKey : notnull
 {
 	/// <summary>
@@ -34,7 +34,7 @@ public readonly struct SpanGrouping<TSource, TKey>(TSource[] elements, TKey key)
 	private ReadOnlySpan<TSource> SourceSpan => new(_elements);
 
 	/// <inheritdoc/>
-	ReadOnlySpan<TSource> IMyGrouping<SpanGrouping<TSource, TKey>, TKey, TSource>.Elements => SourceSpan;
+	ReadOnlySpan<TSource> ISequenceGrouping<SpanGrouping<TSource, TKey>, TKey, TSource>.Elements => SourceSpan;
 
 
 	/// <summary>

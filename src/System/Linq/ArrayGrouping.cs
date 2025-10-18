@@ -8,7 +8,7 @@ namespace System.Linq;
 /// <typeparam name="TKey">The type of the key.</typeparam>
 /// <param name="elements"><inheritdoc cref="_elements" path="/summary"/></param>
 /// <param name="key"><inheritdoc cref="Key" path="/summary"/></param>
-public sealed class ArrayGrouping<TSource, TKey>(TSource[] elements, TKey key) : IMyGrouping<ArrayGrouping<TSource, TKey>, TKey, TSource>
+public sealed class ArrayGrouping<TSource, TKey>(TSource[] elements, TKey key) : ISequenceGrouping<ArrayGrouping<TSource, TKey>, TKey, TSource>
 	where TKey : notnull
 {
 	/// <summary>
@@ -23,7 +23,7 @@ public sealed class ArrayGrouping<TSource, TKey>(TSource[] elements, TKey key) :
 	public TKey Key { get; } = key;
 
 	/// <inheritdoc/>
-	ReadOnlySpan<TSource> IMyGrouping<ArrayGrouping<TSource, TKey>, TKey, TSource>.Elements => _elements;
+	ReadOnlySpan<TSource> ISequenceGrouping<ArrayGrouping<TSource, TKey>, TKey, TSource>.Elements => _elements;
 
 
 	/// <summary>
