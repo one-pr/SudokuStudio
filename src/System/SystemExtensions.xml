@@ -6492,36 +6492,36 @@
             <seealso cref="T:System.Text.RegularExpressions.GroupCollection"/>
         </member>
         <member name="M:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.Select``1(System.Text.RegularExpressions.MatchCollection,System.Func{System.Text.RegularExpressions.Match,``0})">
-            <inheritdoc cref="M:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$DBDD6C074C010D4F09C962D516962115.Select``1(System.Func{System.Text.RegularExpressions.Match,``0})"/>
+            <inheritdoc cref="M:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$7EE7A6EFAD3ED5A7229D27FD88099584`1.Select(System.Func{System.Text.RegularExpressions.Match,`0})"/>
         </member>
         <member name="M:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.Select``1(System.Text.RegularExpressions.GroupCollection,System.Func{System.Text.RegularExpressions.Group,``0})">
-            <inheritdoc cref="M:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$31D61077F8A80A4F54C50FFF0DAA2298.Select``1(System.Func{System.Text.RegularExpressions.Group,``0})"/>
+            <inheritdoc cref="M:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$9E768039C1526F7E96978FC58252BC26`1.Select(System.Func{System.Text.RegularExpressions.Group,`0})"/>
         </member>
         <member name="M:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.Select``1(System.Text.RegularExpressions.CaptureCollection,System.Func{System.Text.RegularExpressions.Capture,``0})">
-            <inheritdoc cref="M:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$E5FB4B3514986E9CD0E66EE0CCFAC82C.Select``1(System.Func{System.Text.RegularExpressions.Capture,``0})"/>
+            <inheritdoc cref="M:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$9953E0A966780F239568B04C23C99994`1.Select(System.Func{System.Text.RegularExpressions.Capture,`0})"/>
         </member>
-        <member name="T:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$DBDD6C074C010D4F09C962D516962115.&lt;M&gt;$ECBB3C481A24FEAB09A88D4DAC766A3E">
+        <member name="T:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$7EE7A6EFAD3ED5A7229D27FD88099584`1.&lt;M&gt;$82DADBB24006D055360EF7DE7B2F4FEF">
             <summary>
             Provides extension members on <see cref="T:System.Text.RegularExpressions.MatchCollection"/>.
             </summary>
         </member>
-        <member name="M:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$DBDD6C074C010D4F09C962D516962115.Select``1(System.Func{System.Text.RegularExpressions.Match,``0})">
+        <member name="M:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$7EE7A6EFAD3ED5A7229D27FD88099584`1.Select(System.Func{System.Text.RegularExpressions.Match,`0})">
             <inheritdoc cref="M:System.Linq.SpanEnumerable.Select``2(System.ReadOnlySpan{``0},System.Func{``0,``1})"/>
         </member>
-        <member name="T:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$31D61077F8A80A4F54C50FFF0DAA2298.&lt;M&gt;$E0F977A2BAB6C5DB665875CA492688EA">
+        <member name="T:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$9E768039C1526F7E96978FC58252BC26`1.&lt;M&gt;$3983D81AAAFB4554D5883BBEB741DDD5">
             <summary>
             Provides extension members on <see cref="T:System.Text.RegularExpressions.GroupCollection"/>.
             </summary>
         </member>
-        <member name="M:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$31D61077F8A80A4F54C50FFF0DAA2298.Select``1(System.Func{System.Text.RegularExpressions.Group,``0})">
+        <member name="M:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$9E768039C1526F7E96978FC58252BC26`1.Select(System.Func{System.Text.RegularExpressions.Group,`0})">
             <inheritdoc cref="M:System.Linq.SpanEnumerable.Select``2(System.ReadOnlySpan{``0},System.Func{``0,``1})"/>
         </member>
-        <member name="T:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$E5FB4B3514986E9CD0E66EE0CCFAC82C.&lt;M&gt;$DB663C5AF4B3CBD7E3D79E1D7FCC538E">
+        <member name="T:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$9953E0A966780F239568B04C23C99994`1.&lt;M&gt;$BED9C13FCC44383503CD05AACEECFDFB">
             <summary>
             Provides extension members on <see cref="T:System.Text.RegularExpressions.CaptureCollection"/>.
             </summary>
         </member>
-        <member name="M:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$E5FB4B3514986E9CD0E66EE0CCFAC82C.Select``1(System.Func{System.Text.RegularExpressions.Capture,``0})">
+        <member name="M:System.Text.RegularExpressions.RegularExpressionCollectionEnumerable.&lt;G&gt;$9953E0A966780F239568B04C23C99994`1.Select(System.Func{System.Text.RegularExpressions.Capture,`0})">
             <inheritdoc cref="M:System.Linq.SpanEnumerable.Select``2(System.ReadOnlySpan{``0},System.Func{``0,``1})"/>
         </member>
         <member name="T:System.Text.RegularExpressions.RegexExtensions">

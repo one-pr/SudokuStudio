@@ -11,10 +11,10 @@ public static class RegularExpressionCollectionEnumerable
 	/// <summary>
 	/// Provides extension members on <see cref="MatchCollection"/>.
 	/// </summary>
-	extension(MatchCollection @this)
+	extension<TResult>(MatchCollection @this)
 	{
 		/// <inheritdoc cref="SpanEnumerable.Select{T, TResult}(ReadOnlySpan{T}, Func{T, TResult})"/>
-		public ReadOnlySpan<TResult> Select<TResult>(Func<Match, TResult> selector)
+		public ReadOnlySpan<TResult> Select(Func<Match, TResult> selector)
 		{
 			var result = new TResult[@this.Count];
 			var i = 0;
@@ -29,10 +29,10 @@ public static class RegularExpressionCollectionEnumerable
 	/// <summary>
 	/// Provides extension members on <see cref="GroupCollection"/>.
 	/// </summary>
-	extension(GroupCollection @this)
+	extension<TResult>(GroupCollection @this)
 	{
 		/// <inheritdoc cref="SpanEnumerable.Select{T, TResult}(ReadOnlySpan{T}, Func{T, TResult})"/>
-		public ReadOnlySpan<TResult> Select<TResult>(Func<Group, TResult> selector)
+		public ReadOnlySpan<TResult> Select(Func<Group, TResult> selector)
 		{
 			var result = new TResult[@this.Count];
 			var i = 0;
@@ -47,10 +47,10 @@ public static class RegularExpressionCollectionEnumerable
 	/// <summary>
 	/// Provides extension members on <see cref="CaptureCollection"/>.
 	/// </summary>
-	extension(CaptureCollection @this)
+	extension<TResult>(CaptureCollection @this)
 	{
 		/// <inheritdoc cref="SpanEnumerable.Select{T, TResult}(ReadOnlySpan{T}, Func{T, TResult})"/>
-		public ReadOnlySpan<TResult> Select<TResult>(Func<Capture, TResult> selector)
+		public ReadOnlySpan<TResult> Select(Func<Capture, TResult> selector)
 		{
 			var result = new TResult[@this.Count];
 			var i = 0;
