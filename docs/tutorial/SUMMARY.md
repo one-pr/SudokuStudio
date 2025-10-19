@@ -122,6 +122,9 @@
   * [牺牲的例子](construction/06-sacrifice/02-examples-of-sacrifice.md)
   * [牺牲绽放环](construction/06-sacrifice/03-sacrifice-blossom-loop.md)
   * [牺牲节点](construction/06-sacrifice/04-sacrifice-node.md)
+* [外部环](construction/07-external-loop/README.md)
+  * [外部环的基本推理](construction/07-external-loop/01-reasoning-of-external-loop.md)
+  * [外部环的例子](construction/07-external-loop/02-external-loop-example.md)
 
 ## 秩理论 <a href="#rank-theory" id="rank-theory"></a>
 
