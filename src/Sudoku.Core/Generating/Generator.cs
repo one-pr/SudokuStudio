@@ -67,7 +67,7 @@ public ref struct Generator : IGenerator<Grid>
 		// 2025/7/10: Add property 'MissingDigit'.
 		// 2025/9/18: Extract 'MissingDigit' initialization.
 
-		ArgumentException.ThrowIf(template.IsSolved);
+		ArgumentException.Assert(template.IsSolved);
 
 		_newFullSudoku = template.UnfixedGrid;
 		_useCustomizedSolution = true;
@@ -105,8 +105,8 @@ public ref struct Generator : IGenerator<Grid>
 	{
 		_stack.Fill(new());
 
-		ArgumentException.ThrowIf(symmetricType.IsFlag);
-		ArgumentException.ThrowIf(cluesCount is >= 17 and <= 80 or -1);
+		ArgumentException.Assert(symmetricType.IsFlag);
+		ArgumentException.Assert(cluesCount is >= 17 and <= 80 or -1);
 
 		// 2024/10/25: Add this if block to skip initialization for templates.
 		// 2024/10/28: Change if statement from 'if (_newFullSudoku.IsUndefined)' to 'if (!_useCustomizedSolution)'.

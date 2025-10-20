@@ -124,7 +124,7 @@ public static class Distance
 	/// <returns>The distance result.</returns>
 	public static double GetDistance(in CellMap cells)
 	{
-		ArgumentException.ThrowIf(cells.Count == 2);
+		ArgumentException.Assert(cells.Count == 2);
 
 		return GetDistance(cells[0], cells[1]);
 	}

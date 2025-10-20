@@ -396,7 +396,7 @@ public static class GridTransformationExtensions
 
 			ArgumentOutOfRangeException.ThrowIfOutOfRange(houseIndex1, 9, 27);
 			ArgumentOutOfRangeException.ThrowIfOutOfRange(houseIndex2, 9, 27);
-			ArgumentException.ThrowIf(houseIndex1.HouseType == houseIndex2.HouseType);
+			ArgumentException.Assert(houseIndex1.HouseType == houseIndex2.HouseType);
 
 			for (var i = 0; i < 9; i++)
 			{
@@ -416,7 +416,7 @@ public static class GridTransformationExtensions
 		{
 			ArgumentOutOfRangeException.ThrowIfOutOfRange(chuteIndex1, Chute.MinChuteIndex, Chute.MaxChuteIndex);
 			ArgumentOutOfRangeException.ThrowIfOutOfRange(chuteIndex2, Chute.MinChuteIndex, Chute.MaxChuteIndex);
-			ArgumentException.ThrowIf(
+			ArgumentException.Assert(
 				chuteIndex1 is >= Chute.MinChuteIndex and < (Chute.MaxChuteIndex >> 1)
 					== chuteIndex2 is >= Chute.MinChuteIndex and < (Chute.MaxChuteIndex >> 1)
 			);

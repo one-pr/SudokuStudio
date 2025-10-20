@@ -48,8 +48,8 @@ public static class RandomExtensions
 		/// </exception>
 		public T NormalizedChoose<T, TKey>(ReadOnlySpan<T> values, Func<T, TKey> normalizer) where TKey : INumber<TKey>
 		{
-			InvalidOperationException.ThrowIf(!values.IsEmpty);
-			InvalidOperationException.ThrowIf(values.All(value => normalizer(value) >= TKey.Zero));
+			InvalidOperationException.Assert(!values.IsEmpty);
+			InvalidOperationException.Assert(values.All(value => normalizer(value) >= TKey.Zero));
 
 			var totalScore = values.Sum(normalizer);
 			var cumulative = new List<TKey>();
@@ -83,7 +83,7 @@ public static class RandomExtensions
 		/// </exception>
 		public ReadOnlySpan<T> Choose<T>(ReadOnlySpan<T> values, int count)
 		{
-			InvalidOperationException.ThrowIf(values.Length >= count);
+			InvalidOperationException.Assert(values.Length >= count);
 			if (values.Length == count)
 			{
 				return values;

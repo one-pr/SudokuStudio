@@ -18,7 +18,7 @@ public static class CantorExpansion
 		var baseOrder = SpanEnumerable.Range(9);
 
 		var n = digits.Length;
-		ArgumentException.ThrowIf(baseOrder.Length == n);
+		ArgumentException.Assert(baseOrder.Length == n);
 		var fact = Factorials(n);
 		var remaining = new List<Digit>();
 		remaining.AddRange(baseOrder);
@@ -27,7 +27,7 @@ public static class CantorExpansion
 		for (var i = 0; i < n; i++)
 		{
 			var j = remaining.IndexOf(digits[i]);
-			InvalidOperationException.ThrowIf(j != -1);
+			InvalidOperationException.Assert(j != -1);
 
 			rank += j * fact[n - 1 - i];
 			remaining.RemoveAt(j);
@@ -48,7 +48,7 @@ public static class CantorExpansion
 	/// </exception>
 	public static int RankRelabeledLines(ReadOnlySpan<House> lines)
 	{
-		ArgumentException.ThrowIf(lines.Length == 9);
+		ArgumentException.Assert(lines.Length == 9);
 
 		var inversed = new int[9];
 		for (var originalLabel = 0; originalLabel < 9; originalLabel++)
@@ -186,7 +186,7 @@ public static class CantorExpansion
 	/// <returns>The rank.</returns>
 	private static int Rank3(House[] perm)
 	{
-		ArgumentException.ThrowIf(perm.Length == 3);
+		ArgumentException.Assert(perm.Length == 3);
 		var items = (ReadOnlySpan<int>)[0, 1, 2];
 		var rank = 0;
 		for (var i = 0; i < 2; i++)

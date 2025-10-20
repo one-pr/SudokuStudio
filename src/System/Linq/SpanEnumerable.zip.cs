@@ -15,7 +15,7 @@ public partial class SpanEnumerable
 		/// </remarks>
 		public ReadOnlySpan<(TFirst Left, TSecond Right)> Zip<TSecond>(ReadOnlySpan<TSecond> second)
 		{
-			ArgumentException.ThrowIf(first.Length == second.Length);
+			ArgumentException.Assert(first.Length == second.Length);
 
 			var result = new (TFirst, TSecond)[first.Length];
 			for (var i = 0; i < first.Length; i++)

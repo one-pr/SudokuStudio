@@ -116,7 +116,7 @@ public static class GraphicsExtensions
 			var (x, y, w, h) = rectangle;
 			var (l, _) = rectangle;
 
-			ArgumentException.ThrowIf(circleRadius < Max(w, h));
+			ArgumentException.Assert(circleRadius < Max(w, h));
 
 			PointF p1, p2, p3, p4, p5, p6, p7, p8;
 			p8 = p7 = p6 = p5 = p4 = p3 = p2 = p1 = l;
@@ -167,7 +167,7 @@ public static class GraphicsExtensions
 			var (x, y, w, h) = rectangle;
 			var (l, _) = rectangle;
 
-			ArgumentException.ThrowIf(circleRadius < Max(w, h));
+			ArgumentException.Assert(circleRadius < Max(w, h));
 
 			PointF p1, p2, p3, p4, p5, p6, p7, p8;
 			p8 = p7 = p6 = p5 = p4 = p3 = p2 = p1 = l;

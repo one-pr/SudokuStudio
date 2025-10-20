@@ -237,7 +237,7 @@ public partial class SequenceExtensions
 		/// <exception cref="ArgumentException">Throws when the argument is negative.</exception>
 		public static ReadOnlySpan<T[]> operator &(ReadOnlySpan<T> value, int count)
 		{
-			ArgumentException.ThrowIf(count >= 0);
+			ArgumentException.Assert(count >= 0);
 
 			if (count == 0)
 			{

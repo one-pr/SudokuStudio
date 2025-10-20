@@ -1925,8 +1925,8 @@
         <member name="M:System.ExceptionExtensions.ThrowIfOutOfRange``1(``0@,``0,``0,System.String)">
             <inheritdoc cref="M:System.ExceptionExtensions.&lt;G&gt;$0505E7D425B60FF10D3E22D3A0756F0B.ThrowIfOutOfRange``1(``0@,``0,``0,System.String)"/>
         </member>
-        <member name="M:System.ExceptionExtensions.ThrowIf``1(System.Boolean,System.String)">
-            <inheritdoc cref="M:System.ExceptionExtensions.&lt;G&gt;$38EB27788CADF2810E22EBC64749FDE0`1.ThrowIf(System.Boolean,System.String)"/>
+        <member name="M:System.ExceptionExtensions.Assert``1(System.Boolean,System.String)">
+            <inheritdoc cref="M:System.ExceptionExtensions.&lt;G&gt;$38EB27788CADF2810E22EBC64749FDE0`1.Assert(System.Boolean,System.String)"/>
         </member>
         <member name="T:System.ExceptionExtensions.&lt;G&gt;$0505E7D425B60FF10D3E22D3A0756F0B.&lt;M&gt;$73C31C2206236680252B6274EB200812">
             <summary>
@@ -1951,7 +1951,7 @@
             </summary>
             <typeparam name="TException">The type of exception.</typeparam>
         </member>
-        <member name="M:System.ExceptionExtensions.&lt;G&gt;$38EB27788CADF2810E22EBC64749FDE0`1.ThrowIf(System.Boolean,System.String)">
+        <member name="M:System.ExceptionExtensions.&lt;G&gt;$38EB27788CADF2810E22EBC64749FDE0`1.Assert(System.Boolean,System.String)">
             <summary>
             Throws an <see cref="T:System.ArgumentException"/> instance if the specified assertion is failed.
             </summary>

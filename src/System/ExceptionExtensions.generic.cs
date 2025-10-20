@@ -14,7 +14,7 @@ public partial class ExceptionExtensions
 		/// </summary>
 		/// <param name="expression">The expression.</param>
 		/// <param name="failedExpressionString">The string to the argument <paramref name="expression"/>.</param>
-		public static void ThrowIf(
+		public static void Assert(
 			[DoesNotReturnIf(false)] bool expression,
 			[CallerArgumentExpression(nameof(expression))] string failedExpressionString = null!
 		)

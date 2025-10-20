@@ -17,7 +17,7 @@ public static class FileSplitter
 	/// <exception cref="OperationCanceledException">Throws when <paramref name="cancellationToken"/> is requested.</exception>
 	public static async Task SplitFileByPartsAsync(string path, string outputDir, int parts, CancellationToken cancellationToken = default)
 	{
-		ArgumentOutOfRangeException.ThrowIf(parts >= 0);
+		ArgumentOutOfRangeException.Assert(parts >= 0);
 		if (!Directory.Exists(outputDir))
 		{
 			Directory.CreateDirectory(outputDir);
