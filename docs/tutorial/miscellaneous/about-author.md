@@ -6,9 +6,17 @@ description: About Author
 
 ## 作者 <a href="#author" id="author"></a>
 
-本教程项目作者为**杏山千纱（Kyōyama Kazusa）**。作者的网名取自游戏《蔚蓝档案》的角色杏山和纱。她真的很可爱。
+本教程项目作者为**杏山千纱（Kyōyama Kazusa）**。
+
+## 网名由来 <a href="#origin-of-nickname" id="origin-of-nickname"></a>
+
+作者的网名取自游戏《蔚蓝档案》的角色杏山和纱。她真的很可爱。
 
 <figure><img src="../.gitbook/assets/kyoyama-kazusa.png" alt=""><figcaption></figcaption></figure>
+
+作者的网名和杏山和纱的读音在日语里一样，都是 kazusa，只是取字不同。我更喜欢“和纱”的汉字写法，但最终我把名称定为“千纱”也并单单是为了和角色名区分开来，也有自己的考量。“千纱”的“千”代表的是千丝万缕的千，而“纱”则是纱雾的纱。也就是说，千纱可以理解为有着千丝万缕而又淡薄雪纱一般的关联。
+
+和纱的“和”也可以取别的汉字，例如“数”、“一”等；“纱”则可以取别的汉字，如“沙”等。不过最终还是没有采用。
 
 ## 联系方式 <a href="#contacts" id="contacts"></a>
 
@@ -26,15 +34,7 @@ description: About Author
 
 你可以在上面看到一些开源项目。
 
-***
-
-这是我的代码开源平台 Gitee 的链接：
-
-{% embed url="https://gitee.com/KyouyamaKazusa" %}
-
-这是中国的开源平台，平时很少用，但也会用于代码备份等工作。
-
-## 初衷 <a href="#original-intention" id="original-intention"></a>
+## 教程初衷 <a href="#original-intention" id="original-intention"></a>
 
 本项目最起源于我自己对数独技巧整理的笔记。因为笔记内容越来越多，再加上我这个人有点收集癖，所以干脆就全都写了。
 

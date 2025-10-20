@@ -31,6 +31,7 @@
   </Folder>
   <Folder Name="/Global Items/Scripts/">
     <File Path="docs/assets-renamer.cs" />
+    <File Path="tutorial-charachers-counter.cs" />
   </Folder>
   <Folder Name="/Global Items/Source Generators/" />
   <Project Path="src/ConsoleTest/MyPrivateWorks.csproj" />

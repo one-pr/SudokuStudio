@@ -1,4 +1,4 @@
-﻿---
+---
 description: Avoidable Rectangle
 ---
 
@@ -71,7 +71,7 @@ description: Avoidable Rectangle
 
 所以，我们有 `r2c4 <> 8` 的结论。我们把这个用法称为**隐性可规避矩形**（Hidden Avoidable Rectangle，简称 HAR）。
 
-## 为什么不讲类型 4、6？
+## 为什么不讲类型 4、6？ <a href="#why-there-is-no-type-4-and-6" id="why-there-is-no-type-4-and-6"></a>
 
 下面我们把话题回到前面漏掉的类型 4、6。为什么跳过了他们？
 
