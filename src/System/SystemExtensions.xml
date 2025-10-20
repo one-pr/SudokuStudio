@@ -2284,6 +2284,44 @@
             <param name="skipFirstLine">Indicates whether the first line should be skipped.</param>
             <returns>An enumerable sequence of lines.</returns>
         </member>
+        <member name="T:System.IO.FileSplitter">
+            <summary>
+            Represents a way to split files.
+            </summary>
+        </member>
+        <member name="M:System.IO.FileSplitter.SplitFileByPartsAsync(System.String,System.String,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Split file into multiple parts. Output file names will be <c>&lt;file-name&gt;_&lt;index&gt;.&lt;extension&gt;</c>.
+            </summary>
+            <param name="path">Indicates input file path.</param>
+            <param name="outputDir">Indicates output folder path.</param>
+            <param name="parts">Indicates the desired number of parts.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A task that can handle asynchronous operation.</returns>
+            <exception cref="T:System.ArgumentException">Throws when <paramref name="parts"/> is an negative number.</exception>
+            <exception cref="T:System.OperationCanceledException">Throws when <paramref name="cancellationToken"/> is requested.</exception>
+        </member>
+        <member name="T:System.IO.PathExtensions">
+            <summary>
+            Provides extension methods on <see cref="T:System.IO.Path"/>.
+            </summary>
+            <seealso cref="T:System.IO.Path"/>
+        </member>
+        <member name="M:System.IO.PathExtensions.GetFileNameAndExtension(System.String)">
+            <inheritdoc cref="M:System.IO.PathExtensions.&lt;G&gt;$009965FC9BE91ED9D11C3C63624A1761.GetFileNameAndExtension(System.String)"/>
+        </member>
+        <member name="T:System.IO.PathExtensions.&lt;G&gt;$009965FC9BE91ED9D11C3C63624A1761.&lt;M&gt;$697276397F139C308C2304BBE7C544B7">
+            <summary>
+            Provides extension members on <see cref="T:System.IO.Path"/>.
+            </summary>
+        </member>
+        <member name="M:System.IO.PathExtensions.&lt;G&gt;$009965FC9BE91ED9D11C3C63624A1761.GetFileNameAndExtension(System.String)">
+            <summary>
+            Returns file name (without extension), and its extension.
+            </summary>
+            <param name="path">The path.</param>
+            <returns>A pair of strings - file name and its extension.</returns>
+        </member>
         <member name="T:System.IO.StreamReaderExtensions">
             <summary>
             Provides with extension methods on <see cref="T:System.IO.StreamReader"/>.
