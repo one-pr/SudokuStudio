@@ -761,12 +761,14 @@ public sealed partial class AnonymousDeadlyPatternStepSearcher : StepSearcher
 	private static bool VerifyPattern(in Grid grid, in CellMap pattern, Mask digits, out CandidateMap c)
 	{
 		var emptyGrid = Grid.Empty;
+		var truths = SpaceSet.Empty;
 		foreach (var cell in pattern)
 		{
 			emptyGrid.SetCandidates(cell, (Mask)(grid.GetCandidates(cell) & ~digits));
+			truths += Space.RowColumn(cell / 9, cell % 9);
 		}
 
-		var result = UniquenessChecker.GetUniqueness(emptyGrid, pattern);
+		var result = UniquenessChecker.GetUniqueness(emptyGrid, truths);
 		c = result.PatternCandidates;
 		return result.IsDeadlyPattern;
 	}

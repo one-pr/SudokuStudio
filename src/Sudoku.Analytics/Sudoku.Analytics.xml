@@ -36425,47 +36425,6 @@
 				</remarks>
 			</target>
         </member>
-        <member name="T:Sudoku.UniquenessTests.PatternUniquenessInfo">
-            <summary>
-            Indicates the result value after <see cref="M:Sudoku.UniquenessTests.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/> called.
-            </summary>
-            <param name="grid"><inheritdoc cref="F:Sudoku.UniquenessTests.PatternUniquenessInfo.Grid" path="/summary"/></param>
-            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.UniquenessTests.PatternUniquenessInfo.IsDeadlyPattern" path="/summary"/></param>
-            <param name="failedCases"><inheritdoc cref="P:Sudoku.UniquenessTests.PatternUniquenessInfo.FailedCases" path="/summary"/></param>
-            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.UniquenessTests.PatternUniquenessInfo.PatternCandidates" path="/summary"/></param>
-            <seealso cref="M:Sudoku.UniquenessTests.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/>
-        </member>
-        <member name="M:Sudoku.UniquenessTests.PatternUniquenessInfo.#ctor(Sudoku.Concepts.Grid@,System.Boolean,System.ReadOnlySpan{Sudoku.Concepts.Grid},Sudoku.Concepts.CandidateMap@)">
-            <summary>
-            Indicates the result value after <see cref="M:Sudoku.UniquenessTests.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/> called.
-            </summary>
-            <param name="grid"><inheritdoc cref="F:Sudoku.UniquenessTests.PatternUniquenessInfo.Grid" path="/summary"/></param>
-            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.UniquenessTests.PatternUniquenessInfo.IsDeadlyPattern" path="/summary"/></param>
-            <param name="failedCases"><inheritdoc cref="P:Sudoku.UniquenessTests.PatternUniquenessInfo.FailedCases" path="/summary"/></param>
-            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.UniquenessTests.PatternUniquenessInfo.PatternCandidates" path="/summary"/></param>
-            <seealso cref="M:Sudoku.UniquenessTests.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)"/>
-        </member>
-        <member name="F:Sudoku.UniquenessTests.PatternUniquenessInfo.Grid">
-            <summary>
-            Indicates the grid used.
-            </summary>
-        </member>
-        <member name="P:Sudoku.UniquenessTests.PatternUniquenessInfo.IsDeadlyPattern">
-            <summary>
-            Indicates the pattern is a real deadly pattern.
-            </summary>
-        </member>
-        <member name="P:Sudoku.UniquenessTests.PatternUniquenessInfo.FailedCases">
-            <summary>
-            Indicates all possible failed cases. The value can be an empty sequence if the pattern is a real deadly pattern,
-            or not a deadly pattern but containing obvious invalid candidates (like containing given or modifiable cells).
-            </summary>
-        </member>
-        <member name="P:Sudoku.UniquenessTests.PatternUniquenessInfo.PatternCandidates">
-            <summary>
-            Indicates the candidates the pattern used.
-            </summary>
-        </member>
         <member name="T:Sudoku.UniquenessTests.UniquenessChecker">
             <summary>
             Represents a type that checks and infers for a pattern (specified as a <see cref="T:Sudoku.Concepts.Grid"/>, but invalid - multiple solutions),
@@ -36473,12 +36432,12 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
-        <member name="M:Sudoku.UniquenessTests.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)">
+        <member name="M:Sudoku.UniquenessTests.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@)">
             <summary>
             Try to analyze whether a grid is a deadly pattern, by only checking the specified cells.
             </summary>
             <param name="grid">Indicates the grid. It's required that only specified cells are assigned with candidates.</param>
-            <param name="cells">Indicates the cells to be checked.</param>
+            <param name="truths">Indicates the truths to be checked.</param>
             <returns>The result after the analysis operation is finished.</returns>
             <exception cref="T:Sudoku.UniquenessTests.DeadlyPatternInferrerLimitReachedException">
             Throws when the pattern contains more than 10000 solutions.
@@ -36537,6 +36496,57 @@
             otherwise, <see langword="null"/>.
             </para>
             </remarks>
+        </member>
+        <member name="T:Sudoku.UniquenessTests.UniquenessInfo">
+            <summary>
+            Indicates the result value after <see cref="M:Sudoku.UniquenessTests.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@)"/> called.
+            </summary>
+            <param name="grid"><inheritdoc cref="F:Sudoku.UniquenessTests.UniquenessInfo.Grid" path="/summary"/></param>
+            <param name="permutationsCount"><inheritdoc cref="P:Sudoku.UniquenessTests.UniquenessInfo.PermutationsCount" path="/summary"/></param>
+            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.UniquenessTests.UniquenessInfo.IsDeadlyPattern" path="/summary"/></param>
+            <param name="failedCases"><inheritdoc cref="P:Sudoku.UniquenessTests.UniquenessInfo.FailedCases" path="/summary"/></param>
+            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.UniquenessTests.UniquenessInfo.PatternCandidates" path="/summary"/></param>
+            <seealso cref="M:Sudoku.UniquenessTests.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@)"/>
+        </member>
+        <member name="M:Sudoku.UniquenessTests.UniquenessInfo.#ctor(Sudoku.Concepts.Grid@,System.Int32,System.Boolean,System.ReadOnlySpan{Sudoku.Concepts.Grid},Sudoku.Concepts.CandidateMap@)">
+            <summary>
+            Indicates the result value after <see cref="M:Sudoku.UniquenessTests.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@)"/> called.
+            </summary>
+            <param name="grid"><inheritdoc cref="F:Sudoku.UniquenessTests.UniquenessInfo.Grid" path="/summary"/></param>
+            <param name="permutationsCount"><inheritdoc cref="P:Sudoku.UniquenessTests.UniquenessInfo.PermutationsCount" path="/summary"/></param>
+            <param name="isDeadlyPattern"><inheritdoc cref="P:Sudoku.UniquenessTests.UniquenessInfo.IsDeadlyPattern" path="/summary"/></param>
+            <param name="failedCases"><inheritdoc cref="P:Sudoku.UniquenessTests.UniquenessInfo.FailedCases" path="/summary"/></param>
+            <param name="patternCandidates"><inheritdoc cref="P:Sudoku.UniquenessTests.UniquenessInfo.PatternCandidates" path="/summary"/></param>
+            <seealso cref="M:Sudoku.UniquenessTests.UniquenessChecker.GetUniqueness(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@)"/>
+        </member>
+        <member name="F:Sudoku.UniquenessTests.UniquenessInfo.Grid">
+            <summary>
+            Indicates the grid used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.UniquenessTests.UniquenessInfo.IsDeadlyPattern">
+            <summary>
+            Indicates the pattern is a real deadly pattern.
+            </summary>
+        </member>
+        <member name="P:Sudoku.UniquenessTests.UniquenessInfo.PermutationsCount">
+            <summary>
+            Indicates the number of permutations.
+            </summary>
+        </member>
+        <member name="P:Sudoku.UniquenessTests.UniquenessInfo.FailedCases">
+            <summary>
+            Indicates all possible failed cases. The value can be an empty sequence if the pattern is a real deadly pattern,
+            or not a deadly pattern but containing obvious invalid candidates (like containing given or modifiable cells).
+            </summary>
+        </member>
+        <member name="P:Sudoku.UniquenessTests.UniquenessInfo.PatternCandidates">
+            <summary>
+            Indicates the candidates the pattern used.
+            </summary>
+        </member>
+        <member name="M:Sudoku.UniquenessTests.UniquenessInfo.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
         </member>
         <member name="T:System.Runtime.CompilerServices.InterceptsLocationAttribute">
             <summary>

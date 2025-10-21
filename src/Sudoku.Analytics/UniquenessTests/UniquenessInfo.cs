@@ -1,15 +1,17 @@
 namespace Sudoku.UniquenessTests;
 
 /// <summary>
-/// Indicates the result value after <see cref="UniquenessChecker.GetUniqueness(in Grid, in CellMap)"/> called.
+/// Indicates the result value after <see cref="UniquenessChecker.GetUniqueness(in Grid, in SpaceSet)"/> called.
 /// </summary>
 /// <param name="grid"><inheritdoc cref="Grid" path="/summary"/></param>
+/// <param name="permutationsCount"><inheritdoc cref="PermutationsCount" path="/summary"/></param>
 /// <param name="isDeadlyPattern"><inheritdoc cref="IsDeadlyPattern" path="/summary"/></param>
 /// <param name="failedCases"><inheritdoc cref="FailedCases" path="/summary"/></param>
 /// <param name="patternCandidates"><inheritdoc cref="PatternCandidates" path="/summary"/></param>
-/// <seealso cref="UniquenessChecker.GetUniqueness(in Grid, in CellMap)"/>
-public readonly ref struct PatternUniquenessInfo(
+/// <seealso cref="UniquenessChecker.GetUniqueness(in Grid, in SpaceSet)"/>
+public readonly ref struct UniquenessInfo(
 	in Grid grid,
+	int permutationsCount,
 	bool isDeadlyPattern,
 	ReadOnlySpan<Grid> failedCases,
 	scoped in CandidateMap patternCandidates
@@ -27,6 +29,11 @@ public readonly ref struct PatternUniquenessInfo(
 	public bool IsDeadlyPattern { get; } = isDeadlyPattern;
 
 	/// <summary>
+	/// Indicates the number of permutations.
+	/// </summary>
+	public int PermutationsCount { get; } = permutationsCount;
+
+	/// <summary>
 	/// Indicates all possible failed cases. The value can be an empty sequence if the pattern is a real deadly pattern,
 	/// or not a deadly pattern but containing obvious invalid candidates (like containing given or modifiable cells).
 	/// </summary>
@@ -36,4 +43,9 @@ public readonly ref struct PatternUniquenessInfo(
 	/// Indicates the candidates the pattern used.
 	/// </summary>
 	public CandidateMap PatternCandidates { get; } = patternCandidates;
+
+
+	/// <inheritdoc cref="object.ToString"/>
+	public override string ToString()
+		=> $"{nameof(PermutationsCount)} = {PermutationsCount}, {nameof(IsDeadlyPattern)} = {IsDeadlyPattern}";
 }

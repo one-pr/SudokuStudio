@@ -11,14 +11,14 @@ public static class UniquenessChecker
 	/// Try to analyze whether a grid is a deadly pattern, by only checking the specified cells.
 	/// </summary>
 	/// <param name="grid">Indicates the grid. It's required that only specified cells are assigned with candidates.</param>
-	/// <param name="cells">Indicates the cells to be checked.</param>
+	/// <param name="truths">Indicates the truths to be checked.</param>
 	/// <returns>The result after the analysis operation is finished.</returns>
 	/// <exception cref="DeadlyPatternInferrerLimitReachedException">
 	/// Throws when the pattern contains more than 10000 solutions.
 	/// </exception>
-	public static PatternUniquenessInfo GetUniqueness(in Grid grid, in CellMap cells)
+	public static UniquenessInfo GetUniqueness(in Grid grid, in SpaceSet truths)
 	{
-		var patternCandidates = CandidateMap.Empty;
+		var patternMap = CandidateMap.Empty;
 		if (grid is not { IsValid: false, EmptyCellsCount: 81, PuzzleType: SudokuType.Standard })
 		{
 			// Invalid values to be checked.
@@ -26,66 +26,74 @@ public static class UniquenessChecker
 		}
 
 		// Verify whether at least one cell in pattern hold nothing.
-		foreach (var cell in cells)
+		foreach (var truth in truths)
 		{
-			var mask = grid.GetCandidates(cell);
-			if (mask == 0)
+			if (truth.GetAvailableRange(grid) is not (var candidates and not []))
 			{
 				goto FastFail;
 			}
-
-			foreach (var digit in mask)
-			{
-				patternCandidates += cell * 9 + digit;
-			}
+			patternMap |= candidates;
 		}
+		var patternCells = patternMap.Cells;
 
 		// Step 0: Determine whether at least one house the pattern spanned only hold one cell used.
 		// A valid deadly pattern must hold at least 2 cells for all spanned houses.
-		foreach (var house in cells.Houses)
+		foreach (var kvp in patternMap.DigitDistribution)
 		{
-			if ((HousesMap[house] & cells).Count == 1)
+			var digit = kvp.Key;
+			ref readonly var cells = ref kvp.ValueRef;
+			foreach (var house in cells.Houses)
 			{
-				goto FastFail;
+				if ((HousesMap[house] & cells).Count == 1)
+				{
+					goto FastFail;
+				}
 			}
 		}
 
 		// Step 1: Get all solutions for that pattern.
-		var solutions = getCombinations(grid, cells);
-		if (solutions.Length == 0)
+		var permutations = getPermutations(grid, truths);
+		if (permutations.Length == 0)
 		{
 			goto FastFail;
 		}
 
 		var failedCases = new List<Grid>();
-		foreach (ref readonly var solution in solutions)
+		foreach (ref readonly var permutation in permutations)
 		{
+			var permutationHouses = permutation.Houses;
+			ref readonly var caseToCheck = ref permutation.Grid;
+
 			// Step 2: Iterate on all the other solutions,
 			// and find whether each solution contains at least one possible corresponding solution
 			// whose digits used in *all* houses are completely same.
 			var tempSolutions = new List<Grid>();
-			foreach (ref readonly var tempGrid in solutions[..])
+			foreach (ref readonly var anotherPermutation in permutations[..])
 			{
-				if (tempGrid == solution)
+				var anotherPermutationHouses = anotherPermutation.Houses;
+				ref readonly var anotherCaseToCheck = ref anotherPermutation.Grid;
+
+				// Skip for invalid states to check.
+				if (anotherPermutation == permutation || anotherPermutationHouses != permutationHouses)
 				{
 					continue;
 				}
 
 				// Check for all possible houses.
-				var flag = true;
-				foreach (var house in cells.Houses)
+				var containsPermutationWithInequivalentFillings = true;
+				foreach (var house in anotherPermutationHouses)
 				{
-					var mask1 = solution[HousesMap[house] & cells, true];
-					var mask2 = tempGrid[HousesMap[house] & cells, true];
-					if (mask1 != mask2)
+					var m1 = caseToCheck[HousesMap[house] & patternCells, true];
+					var m2 = anotherCaseToCheck[HousesMap[house] & patternCells, true];
+					if (m1 != m2)
 					{
-						flag = false;
+						containsPermutationWithInequivalentFillings = false;
 						break;
 					}
 				}
-				if (flag)
+				if (containsPermutationWithInequivalentFillings)
 				{
-					tempSolutions.AddRef(tempGrid);
+					tempSolutions.AddRef(anotherCaseToCheck);
 				}
 			}
 
@@ -93,29 +101,27 @@ public static class UniquenessChecker
 			// If failed to check, we should collect the case into the result, as an item in failed cases set.
 			if (tempSolutions.Count == 0)
 			{
-				failedCases.AddRef(solution);
+				failedCases.AddRef(caseToCheck);
 			}
 		}
 
 		// If all possible solutions has exchangable patterns, the pattern will be a real deadly pattern;
 		// otherwise, not a deadly pattern.
-		return new(grid, failedCases.Count == 0, failedCases.AsSpan(), patternCandidates);
+		return new(grid, permutations.Length, failedCases.Count == 0, failedCases.AsSpan(), patternMap);
 
 	FastFail:
-		return new(grid, false, [], patternCandidates);
+		return new(grid, 0, false, [], patternMap);
 
 
-		static ReadOnlySpan<Grid> getCombinations(in Grid grid, in CellMap cellsUsed)
+		static ReadOnlySpan<(Grid Grid, HouseMask Houses)> getPermutations(in Grid grid, in SpaceSet truths)
 		{
-			var result = new List<Grid>();
-			var truths = SpaceSet.Empty;
+			var result = new List<(Grid, HouseMask)>();
 			var links = SpaceSet.Empty;
-			foreach (var cell in cellsUsed)
+			foreach (var truth in truths)
 			{
-				truths += Space.RowColumn(cell / 9, cell % 9);
-				foreach (var digit in grid.GetCandidates(cell))
+				foreach (var candidate in truth.GetAvailableRange(grid))
 				{
-					links.AddRange((cell * 9 + digit).Spaces);
+					links.AddRange(candidate.Spaces);
 				}
 			}
 
@@ -129,11 +135,17 @@ public static class UniquenessChecker
 			foreach (var permutation in permutations)
 			{
 				var emptyGrid = Grid.Empty;
+				var houses = 0;
 				foreach (var candidate in permutation)
 				{
-					emptyGrid[candidate / 9] = (Mask)(Grid.ModifiableMask | 1 << candidate % 9);
+					var cell = candidate / 9;
+					var digit = candidate % 9;
+					emptyGrid[cell] = (Mask)(Grid.ModifiableMask | 1 << digit);
+					houses |= 1 << (cell >> HouseType.Block);
+					houses |= 1 << (cell >> HouseType.Row);
+					houses |= 1 << (cell >> HouseType.Column);
 				}
-				result.AddRef(emptyGrid);
+				result.AddRef((emptyGrid, houses));
 			}
 			return result.AsSpan();
 		}
