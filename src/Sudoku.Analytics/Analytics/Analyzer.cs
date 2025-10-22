@@ -32,7 +32,7 @@ public sealed class Analyzer : StepGatherer
 
 	/// <inheritdoc/>
 	public override ReadOnlyMemory<StepSearcher> ResultStepSearchers { get; internal set; } =
-		from searcher in StepSearcherFactory.StepSearchers
+		from searcher in StepSearcher.StepSearchers
 		where searcher.RunningArea.HasFlag(StepSearcherRunningArea.Searching)
 		select searcher;
 

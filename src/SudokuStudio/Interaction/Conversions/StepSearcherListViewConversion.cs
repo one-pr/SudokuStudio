@@ -25,5 +25,5 @@ internal static class StepSearcherListViewConversion
 	public static Brush GetTechniqueBackground(Technique technique)
 		=> DifficultyLevelConversion.GetBackgroundColor(technique.DifficultyLevel);
 
-	private static StepSearcher GetMatchedStepSearcher(StepSearcherInfo info) => StepSearcherFactory.GetStepSearcher(info.TypeName);
+	private static StepSearcher GetMatchedStepSearcher(StepSearcherInfo info) => StepSearcher.GetStepSearcher(info.TypeName);
 }

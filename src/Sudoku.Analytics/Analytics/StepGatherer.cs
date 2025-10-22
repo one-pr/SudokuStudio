@@ -8,16 +8,17 @@ public abstract class StepGatherer
 	/// <summary>
 	/// <para>
 	/// Indicates the <see cref="StepSearcher"/> instances to run.
-	/// By default, the solver will use <see cref="StepSearcherFactory.StepSearchers"/> to solve a puzzle.
+	/// By default, the solver will use <see cref="StepSearcherFactory.extension(StepSearcher).StepSearchers"/> to solve a puzzle.
 	/// If you assign a new array of <see cref="StepSearcher"/>s into this property
-	/// the step searchers will use this property instead of <see cref="StepSearcherFactory.StepSearchers"/> to solve a puzzle.
+	/// the step searchers will use this property instead of
+	/// <see cref="StepSearcherFactory.extension(StepSearcher).StepSearchers"/> to solve a puzzle.
 	/// </para>
 	/// <para>
 	/// Please note that the property will keep the <see langword="null"/> value if you don't assign any values into it;
 	/// however, if you want to use the customized collection to solve a puzzle, assign a non-<see langword="null"/> array into it.
 	/// </para>
 	/// </summary>
-	/// <seealso cref="StepSearcherFactory.StepSearchers"/>
+	/// <seealso cref="StepSearcherFactory.extension(StepSearcher).StepSearchers"/>
 	public ReadOnlyMemory<StepSearcher> StepSearchers
 	{
 		get;

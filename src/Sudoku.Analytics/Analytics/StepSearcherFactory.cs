@@ -13,40 +13,46 @@ public static class StepSearcherFactory
 
 
 	/// <summary>
-	/// Indicates built-in step searchers defined.
+	/// Provides extension members on <see cref="StepSearcher"/>.
 	/// </summary>
-	public static ReadOnlyMemory<StepSearcher> StepSearchers
+	extension(StepSearcher)
 	{
-		get
+		/// <summary>
+		/// Indicates built-in step searchers defined.
+		/// </summary>
+		public static ReadOnlyMemory<StepSearcher> StepSearchers
 		{
-			var result = new SortedSet<StepSearcher>();
-			foreach (var type in ThisAssembly.GetDerivedTypes<StepSearcher>())
+			get
 			{
-				if (type.IsDefined<StepSearcherAttribute>() && type.HasParameterlessConstructor)
+				var result = new SortedSet<StepSearcher>();
+				foreach (var type in ThisAssembly.GetDerivedTypes<StepSearcher>())
 				{
-					result.Add(GetStepSearcher(type));
+					if (type.IsDefined<StepSearcherAttribute>() && type.HasParameterlessConstructor)
+					{
+						result.Add(GetStepSearcher(type));
+					}
 				}
+				return result.ToArray();
 			}
-			return result.ToArray();
 		}
+
+
+		/// <summary>
+		/// <inheritdoc cref="GetStepSearcher(Type)" path="/summary"/>
+		/// </summary>
+		/// <param name="typeName">The raw type name. Please note that the string text shouldn't contain its containing namespace.</param>
+		/// <returns><inheritdoc cref="GetStepSearcher(Type)" path="/returns"/></returns>
+		/// <exception cref="InvalidOperationException">
+		/// Throws when the corresponding <see cref="Type"/> reflection result is not found.
+		/// </exception>
+		public static StepSearcher GetStepSearcher(string typeName)
+			=> GetStepSearcher(ThisAssembly.GetDerivedTypes<StepSearcher>().FirstOrDefault(t => t.Name == typeName)!);
+
+		/// <summary>
+		/// The internal method to get all <see cref="StepSearcher"/> instances derived from <paramref name="type"/> defined in this assembly.
+		/// </summary>
+		/// <param name="type">The type of the step searcher.</param>
+		/// <returns>An array of <see cref="StepSearcher"/> instances found.</returns>
+		public static StepSearcher GetStepSearcher(Type type) => (StepSearcher)Activator.CreateInstance(type)!;
 	}
-
-
-	/// <summary>
-	/// <inheritdoc cref="GetStepSearcher(Type)" path="/summary"/>
-	/// </summary>
-	/// <param name="typeName">The raw type name. Please note that the string text shouldn't contain its containing namespace.</param>
-	/// <returns><inheritdoc cref="GetStepSearcher(Type)" path="/returns"/></returns>
-	/// <exception cref="InvalidOperationException">
-	/// Throws when the corresponding <see cref="Type"/> reflection result is not found.
-	/// </exception>
-	public static StepSearcher GetStepSearcher(string typeName)
-		=> GetStepSearcher(ThisAssembly.GetDerivedTypes<StepSearcher>().FirstOrDefault(t => t.Name == typeName)!);
-
-	/// <summary>
-	/// The internal method to get all <see cref="StepSearcher"/> instances derived from <paramref name="type"/> defined in this assembly.
-	/// </summary>
-	/// <param name="type">The type of the step searcher.</param>
-	/// <returns>An array of <see cref="StepSearcher"/> instances found.</returns>
-	public static StepSearcher GetStepSearcher(Type type) => (StepSearcher)Activator.CreateInstance(type)!;
 }

@@ -12927,16 +12927,17 @@
             <summary>
             <para>
             Indicates the <see cref="T:Sudoku.Analytics.StepSearcher"/> instances to run.
-            By default, the solver will use <see cref="P:Sudoku.Analytics.StepSearcherFactory.StepSearchers"/> to solve a puzzle.
+            By default, the solver will use <see cref="P:Sudoku.Analytics.StepSearcherFactory.&lt;G&gt;$1179028440D86A850611B5C5D5B77B7A.StepSearchers"/> to solve a puzzle.
             If you assign a new array of <see cref="T:Sudoku.Analytics.StepSearcher"/>s into this property
-            the step searchers will use this property instead of <see cref="P:Sudoku.Analytics.StepSearcherFactory.StepSearchers"/> to solve a puzzle.
+            the step searchers will use this property instead of
+            <see cref="P:Sudoku.Analytics.StepSearcherFactory.&lt;G&gt;$1179028440D86A850611B5C5D5B77B7A.StepSearchers"/> to solve a puzzle.
             </para>
             <para>
             Please note that the property will keep the <see langword="null"/> value if you don't assign any values into it;
             however, if you want to use the customized collection to solve a puzzle, assign a non-<see langword="null"/> array into it.
             </para>
             </summary>
-            <seealso cref="P:Sudoku.Analytics.StepSearcherFactory.StepSearchers"/>
+            <seealso cref="P:Sudoku.Analytics.StepSearcherFactory.&lt;G&gt;$1179028440D86A850611B5C5D5B77B7A.StepSearchers"/>
         </member>
         <member name="P:Sudoku.Analytics.StepGatherer.ResultStepSearchers">
             <summary>
@@ -13261,12 +13262,26 @@
             Indicates the current assembly.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.StepSearcherFactory.StepSearchers">
+        <member name="M:Sudoku.Analytics.StepSearcherFactory.get_StepSearchers">
+            <inheritdoc cref="P:Sudoku.Analytics.StepSearcherFactory.&lt;G&gt;$1179028440D86A850611B5C5D5B77B7A.StepSearchers"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherFactory.GetStepSearcher(System.String)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearcherFactory.&lt;G&gt;$1179028440D86A850611B5C5D5B77B7A.GetStepSearcher(System.String)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.StepSearcherFactory.GetStepSearcher(System.Type)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepSearcherFactory.&lt;G&gt;$1179028440D86A850611B5C5D5B77B7A.GetStepSearcher(System.Type)"/>
+        </member>
+        <member name="T:Sudoku.Analytics.StepSearcherFactory.&lt;G&gt;$1179028440D86A850611B5C5D5B77B7A.&lt;M&gt;$05477021247BB3A84A46DCFC1D336482">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Analytics.StepSearcher"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.StepSearcherFactory.&lt;G&gt;$1179028440D86A850611B5C5D5B77B7A.StepSearchers">
             <summary>
             Indicates built-in step searchers defined.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherFactory.GetStepSearcher(System.String)">
+        <member name="M:Sudoku.Analytics.StepSearcherFactory.&lt;G&gt;$1179028440D86A850611B5C5D5B77B7A.GetStepSearcher(System.String)">
             <summary>
             <inheritdoc cref="M:Sudoku.Analytics.StepSearcherFactory.GetStepSearcher(System.Type)" path="/summary"/>
             </summary>
@@ -13276,7 +13291,7 @@
             Throws when the corresponding <see cref="T:System.Type"/> reflection result is not found.
             </exception>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherFactory.GetStepSearcher(System.Type)">
+        <member name="M:Sudoku.Analytics.StepSearcherFactory.&lt;G&gt;$1179028440D86A850611B5C5D5B77B7A.GetStepSearcher(System.Type)">
             <summary>
             The internal method to get all <see cref="T:Sudoku.Analytics.StepSearcher"/> instances derived from <paramref name="type"/> defined in this assembly.
             </summary>

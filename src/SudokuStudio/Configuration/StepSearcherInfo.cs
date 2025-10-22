@@ -47,5 +47,5 @@ public sealed partial class StepSearcherInfo : DependencyObject
 	/// Creates a list of <see cref="StepSearcher"/> instances.
 	/// </summary>
 	/// <returns>A list of <see cref="StepSearcher"/> instances.</returns>
-	public StepSearcher CreateStepSearcher() => StepSearcherFactory.GetStepSearcher(TypeName);
+	public StepSearcher CreateStepSearcher() => StepSearcher.GetStepSearcher(TypeName);
 }
