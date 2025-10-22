@@ -16,7 +16,6 @@
 global.json
 settings.VisualStudio.json
 src/ConsoleTest/
-src/Sudoku.Logging/
 
 # Build results
 [Dd]ebug/

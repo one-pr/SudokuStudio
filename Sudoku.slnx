@@ -40,9 +40,6 @@
   <Project Path="src/Sudoku.Drawing/Sudoku.Drawing.csproj" Id="efe1d685-2e04-4c46-a4c2-e3c38fb24340">
     <BuildType Solution="Build|*" Project="Debug" />
   </Project>
-  <Project Path="src/Sudoku.Logging/Sudoku.Logging/Sudoku.Logging.csproj">
-    <BuildType Solution="Build|*" Project="Debug" />
-  </Project>
   <Project Path="src/SudokuStudio.SourceGeneration/SudokuStudio.SourceGeneration.csproj" />
   <Project Path="src/SudokuStudio/SudokuStudio.csproj">
     <Platform Solution="Debug|Any CPU" Project="x64" />
