@@ -79,10 +79,10 @@ internal sealed class SetTheoryDancingLinks
 	/// </summary>
 	/// <param name="maxSolutions">
 	/// Specify the desired number of solutions this algorithm can detect.
-	/// If limit is reached, an exception of type <see cref="DancingLinksToComplexException"/> will be thrown
+	/// If limit is reached, an exception of type <see cref="DancingLinksTooComplexException"/> will be thrown
 	/// if symbol <c>SET_THROW_IF_LIMIT_IS_REACHED</c> is configured, or return all found solutions if not.
 	/// </param>
-	/// <exception cref="DancingLinksToComplexException">
+	/// <exception cref="DancingLinksTooComplexException">
 	/// Throws when pattern is too complex to be calculated,
 	/// and symbol <c>SET_THROW_IF_LIMIT_IS_REACHED</c> is enabled.
 	/// </exception>
@@ -241,7 +241,7 @@ internal sealed class SetTheoryDancingLinks
 	/// Perform depth-first searching to find solutions.
 	/// </summary>
 	/// <param name="k">The current index.</param>
-	/// <exception cref="DancingLinksToComplexException">Throws when pattern is too complex.</exception>
+	/// <exception cref="DancingLinksTooComplexException">Throws when pattern is too complex.</exception>
 	private void Search(int k)
 	{
 		// If no primary columns remain, we have a valid partial cover -> record solution.
@@ -306,7 +306,7 @@ internal sealed class SetTheoryDancingLinks
 			if (_results.Count >= _limitMaxSolutions)
 			{
 #if SET_THROW_IF_LIMIT_IS_REACHED
-				throw new DancingLinksToComplexException();
+				throw new DancingLinksTooComplexException();
 #else
 				break;
 #endif

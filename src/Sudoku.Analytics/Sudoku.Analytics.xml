@@ -35715,7 +35715,7 @@
             Indicates whether a candidate is exact-covered.
             </summary>
         </member>
-        <member name="T:Sudoku.SetTheory.DancingLinksToComplexException">
+        <member name="T:Sudoku.SetTheory.DancingLinksTooComplexException">
             <summary>
             Indicates an exception type that will be thrown if the pattern is too complex to be calculated
             during dancing links algorithm.
@@ -36079,10 +36079,10 @@
             </summary>
             <param name="maxSolutions">
             Specify the desired number of solutions this algorithm can detect.
-            If limit is reached, an exception of type <see cref="T:Sudoku.SetTheory.DancingLinksToComplexException"/> will be thrown
+            If limit is reached, an exception of type <see cref="T:Sudoku.SetTheory.DancingLinksTooComplexException"/> will be thrown
             if symbol <c>SET_THROW_IF_LIMIT_IS_REACHED</c> is configured, or return all found solutions if not.
             </param>
-            <exception cref="T:Sudoku.SetTheory.DancingLinksToComplexException">
+            <exception cref="T:Sudoku.SetTheory.DancingLinksTooComplexException">
             Throws when pattern is too complex to be calculated,
             and symbol <c>SET_THROW_IF_LIMIT_IS_REACHED</c> is enabled.
             </exception>
@@ -36118,7 +36118,7 @@
             Perform depth-first searching to find solutions.
             </summary>
             <param name="k">The current index.</param>
-            <exception cref="T:Sudoku.SetTheory.DancingLinksToComplexException">Throws when pattern is too complex.</exception>
+            <exception cref="T:Sudoku.SetTheory.DancingLinksTooComplexException">Throws when pattern is too complex.</exception>
         </member>
         <member name="T:Sudoku.SetTheory.SetTheoryNode">
             <summary>
