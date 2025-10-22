@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <doc>
     <assembly>
         <name>Sudoku.CommandLine</name>
@@ -670,7 +670,7 @@
             Initializes a <see cref="T:Sudoku.CommandLine.Options.TechniqueCategoryOption"/> instance.
             </summary>
         </member>
-        <member name="M:Sudoku.CommandLine.Options.TechniqueCategoryOption.Sudoku#CommandLine#IMySymbol{Sudoku#Categorization#TechniqueGroup}#ParseArgument(System.CommandLine.Parsing.ArgumentResult)">
+        <member name="M:Sudoku.CommandLine.Options.TechniqueCategoryOption.Sudoku#CommandLine#IMySymbol{Sudoku#Analytics#Categorization#TechniqueGroup}#ParseArgument(System.CommandLine.Parsing.ArgumentResult)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.CommandLine.Options.TechniqueOption">
@@ -684,7 +684,7 @@
             </summary>
             <param name="isRequired">Specifies whether the option is required.</param>
         </member>
-        <member name="M:Sudoku.CommandLine.Options.TechniqueOption.Sudoku#CommandLine#IMySymbol{Sudoku#Categorization#Technique}#ParseArgument(System.CommandLine.Parsing.ArgumentResult)">
+        <member name="M:Sudoku.CommandLine.Options.TechniqueOption.Sudoku#CommandLine#IMySymbol{Sudoku#Analytics#Categorization#Technique}#ParseArgument(System.CommandLine.Parsing.ArgumentResult)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.CommandLine.Options.TimeoutOption">
