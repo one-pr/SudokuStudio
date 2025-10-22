@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <doc>
     <assembly>
         <name>Sudoku.CommandLine</name>
@@ -387,7 +387,7 @@
             <param name="solver">The solver.</param>
             <param name="solution">The solution.</param>
         </member>
-        <member name="M:Sudoku.CommandLine.CommonPreprocessors.GeneratePuzzles``1(``0,System.Func{``0,System.Threading.CancellationToken,Sudoku.Concepts.Grid},System.String,System.Int32,System.Int32,Sudoku.Categorization.Technique,System.Boolean,System.Boolean,System.String)">
+        <member name="M:Sudoku.CommandLine.CommonPreprocessors.GeneratePuzzles``1(``0,System.Func{``0,System.Threading.CancellationToken,Sudoku.Concepts.Grid},System.String,System.Int32,System.Int32,Sudoku.Analytics.Categorization.Technique,System.Boolean,System.Boolean,System.String)">
             <summary>
             Try to generate puzzles, and write them to the specified text writer (file or console).
             </summary>
@@ -404,12 +404,12 @@
             </param>
             <param name="filteredTechnique">
             The technique that the generated puzzle must use.
-            The value can be <see cref="F:Sudoku.Categorization.Technique.None"/> if you don't want to specify any techniques.
+            The value can be <see cref="F:Sudoku.Analytics.Categorization.Technique.None"/> if you don't want to specify any techniques.
             </param>
             <param name="alsoOutputInfo">
             <para>Indicates whether the output text also contains filter information.</para>
             <para>
-            For example, if <paramref name="filteredTechnique"/> is specified with a value not <see cref="F:Sudoku.Categorization.Technique.None"/>,
+            For example, if <paramref name="filteredTechnique"/> is specified with a value not <see cref="F:Sudoku.Analytics.Categorization.Technique.None"/>,
             the output information will display the technique used for the target grid generated.
             </para>
             </param>

@@ -13,7 +13,7 @@ global using System.Runtime.CompilerServices;
 global using System.Threading;
 global using System.Threading.Tasks;
 global using Sudoku.Analytics;
-global using Sudoku.Categorization;
+global using Sudoku.Analytics.Categorization;
 global using Sudoku.CommandLine;
 global using Sudoku.CommandLine.Arguments;
 global using Sudoku.CommandLine.Commands;

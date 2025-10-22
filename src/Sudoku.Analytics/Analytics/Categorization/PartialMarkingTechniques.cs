@@ -1,4 +1,4 @@
-namespace Sudoku.Categorization;
+namespace Sudoku.Analytics.Categorization;
 
 /// <summary>
 /// Provides with techniques that will be used in partial-marking rule.

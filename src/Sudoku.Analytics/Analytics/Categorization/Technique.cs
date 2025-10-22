@@ -1,6 +1,6 @@
 #undef COMPATIBLE_ORIGINAL_TECHNIQUE_RULES
 
-namespace Sudoku.Categorization;
+namespace Sudoku.Analytics.Categorization;
 
 /// <summary>
 /// Represents a technique as unique identifier on describing different techniques and their own patterns used.

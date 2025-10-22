@@ -1,10 +1,10 @@
-<Page
+﻿<Page
 	x:Class="SudokuStudio.Views.Pages.GeneratedPuzzleConstraintPage"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:categorization="using:Sudoku.Categorization"
+	xmlns:categorization="using:Sudoku.Analytics.Categorization"
 	xmlns:con="using:Sudoku.Filtering.Constraints"
 	xmlns:m="using:SudokuStudio.Markup"
 	xmlns:p="using:SudokuStudio.Views.Pages"
