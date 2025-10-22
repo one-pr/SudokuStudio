@@ -104,7 +104,7 @@ public partial class App : Application
 	/// Indicates the configured application theme.
 	/// </summary>
 	internal static ApplicationTheme CurrentTheme
-		=> Current.AsApp().Preference.UIPreferences.CurrentTheme switch
+		=> Application.CurrentApp.Preference.UIPreferences.CurrentTheme switch
 		{
 			Theme.Dark => ApplicationTheme.Dark,
 			Theme.Light => ApplicationTheme.Light,
@@ -125,7 +125,7 @@ public partial class App : Application
 	/// Indicates the current culture.
 	/// </summary>
 	internal static CultureInfo CurrentCulture
-		=> Current.AsApp().Preference.UIPreferences.Language is var cultureInfoId and not 0
+		=> Application.CurrentApp.Preference.UIPreferences.Language is var cultureInfoId and not 0
 			? new(cultureInfoId)
 			: CultureInfo.CurrentUICulture;
 
@@ -136,7 +136,7 @@ public partial class App : Application
 	/// <param name="pane">The sudoku pane to be set.</param>
 	internal void CoverSettingsToSudokuPaneViaApplicationTheme(SudokuPane pane)
 	{
-		var uiPref = Current.AsApp().Preference.UIPreferences;
+		var uiPref = Application.CurrentApp.Preference.UIPreferences;
 		Action action = CurrentTheme switch
 		{
 			ApplicationTheme.Light => setSudokuPaneColors_Light,
@@ -216,7 +216,7 @@ public partial class App : Application
 	/// <returns>The final <see cref="Sudoku.Analytics.Analyzer"/> instance.</returns>
 	internal Analyzer GetAnalyzerConfigured(SudokuPane sudokuPane, DifficultyLevel difficultyLevel = DifficultyLevel.Unknown)
 		=> Analyzer
-			.WithStepSearchers(Current.AsApp().GetStepSearchers(), difficultyLevel)
+			.WithStepSearchers(Application.CurrentApp.GetStepSearchers(), difficultyLevel)
 			.WithRuntimeIdentifierSetters(sudokuPane)
 			.WithOptions(CreateStepSearcherOptions());
 
@@ -234,7 +234,7 @@ public partial class App : Application
 	private void ActivateMainWindow()
 	{
 		var window = WindowManager.CreateWindow<MainWindow>();
-		var uiPref = Current.AsApp().Preference.UIPreferences;
+		var uiPref = Application.CurrentApp.Preference.UIPreferences;
 
 		WindowComposition.SetTheme(window, uiPref.CurrentTheme);
 		if (uiPref.BackgroundPicturePath is { } filePath && File.Exists(filePath))
@@ -327,7 +327,7 @@ public partial class App : Application
 	/// <returns>The <see cref="MainWindow"/> found.</returns>
 	/// <exception cref="InvalidOperationException">Throws when the main window isn't found.</exception>
 	internal static MainWindow GetMainWindow<TUIElement>(TUIElement @this) where TUIElement : UIElement
-		=> Current.AsApp().WindowManager.GetWindowForElement(@this) switch
+		=> Application.CurrentApp.WindowManager.GetWindowForElement(@this) switch
 		{
 			MainWindow mainWindow => mainWindow,
 			_ => throw new InvalidOperationException(SR.ExceptionMessage("MainWindowNotFound"))
@@ -340,8 +340,8 @@ public partial class App : Application
 	internal static StepGathererOptions CreateStepSearcherOptions()
 	{
 		const string assignmentText = " = ", eliminationText = " <> ";
-		var uiPref = Current.AsApp().Preference.UIPreferences;
-		var analysisPref = Current.AsApp().Preference.AnalysisPreferences;
+		var uiPref = Application.CurrentApp.Preference.UIPreferences;
+		var analysisPref = Application.CurrentApp.Preference.AnalysisPreferences;
 		return StepGathererOptions.Default with
 		{
 			Converter = Converter = uiPref.ConceptNotationBasedKind switch

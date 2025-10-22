@@ -29,8 +29,8 @@ public sealed class SolvingPathStepCollection : List<SolvingPathStepBindableSour
 			yield break;
 		}
 
-		var showHodoku = Application.Current.AsApp().Preference.AnalysisPreferences.DisplayDifficultyRatingForHodoku;
-		var showSudokuExplainer = Application.Current.AsApp().Preference.AnalysisPreferences.DisplayDifficultyRatingForSudokuExplainer;
+		var showHodoku = Application.CurrentApp.Preference.AnalysisPreferences.DisplayDifficultyRatingForHodoku;
+		var showSudokuExplainer = Application.CurrentApp.Preference.AnalysisPreferences.DisplayDifficultyRatingForSudokuExplainer;
 		var path = Step.Combine(grids, steps).ToArray();
 		for (var i = 0; i < path.Length; i++)
 		{

@@ -226,7 +226,7 @@ public sealed partial class MainWindow :
 	/// Saves for preferences.
 	/// </summary>
 	private void SavePreference()
-		=> ProgramPreferenceFileHandler.Write(CommonPaths.UserPreference, Application.Current.AsApp().Preference);
+		=> ProgramPreferenceFileHandler.Write(CommonPaths.UserPreference, Application.CurrentApp.Preference);
 
 	/// <summary>
 	/// Saves for puzzle generating history.
@@ -270,7 +270,7 @@ public sealed partial class MainWindow :
 	/// Update value for open-pane length into preference.
 	/// </summary>
 	private void UpdateOpenPaneLengthToPreference()
-		=> Application.Current.AsApp().Preference.UIPreferences.MainNavigationPageOpenPaneLength = (decimal)Round(NavigationPage.MainNavigationView.OpenPaneLength, 1);
+		=> Application.CurrentApp.Preference.UIPreferences.MainNavigationPageOpenPaneLength = (decimal)Round(NavigationPage.MainNavigationView.OpenPaneLength, 1);
 
 #if CUSTOMIZED_TITLE_BAR
 	/// <summary>
@@ -287,7 +287,7 @@ public sealed partial class MainWindow :
 		// Check to see if customization is supported. Currently only supported on Windows 11.
 		if (AppWindowTitleBar.IsCustomizationSupported())
 		{
-			var theme = Application.Current.AsApp().Preference.UIPreferences.CurrentTheme;
+			var theme = Application.CurrentApp.Preference.UIPreferences.CurrentTheme;
 			((IThemeSupportedWindow)this).ManuallySetTitleBarButtonsColor(theme);
 
 #if SEARCH_AUTO_SUGGESTION_BOX
@@ -452,7 +452,7 @@ public sealed partial class MainWindow :
 	/// </summary>
 	private void InitialSetBackdrop()
 	{
-		var backdrop = Application.Current.AsApp().Preference.UIPreferences.Backdrop;
+		var backdrop = Application.CurrentApp.Preference.UIPreferences.Backdrop;
 		WindowComposition.SetBackdrop(this, backdrop);
 	}
 #endif

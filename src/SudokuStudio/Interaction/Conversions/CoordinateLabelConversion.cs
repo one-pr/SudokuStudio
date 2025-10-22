@@ -9,7 +9,7 @@ internal static class CoordinateLabelConversion
 
 	public static string ToCoordinateLabelText(CoordinateType based, int index, bool isRow)
 	{
-		var uiPref = Application.Current.AsApp().Preference.UIPreferences;
+		var uiPref = Application.CurrentApp.Preference.UIPreferences;
 		switch (based)
 		{
 			case CoordinateType.Literal:

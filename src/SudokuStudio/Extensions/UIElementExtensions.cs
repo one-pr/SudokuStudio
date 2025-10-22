@@ -43,7 +43,7 @@ public static class UIElementExtensions
 			var pixelBuffer = await rtb.GetPixelsAsync();
 
 			// Gets the DPI value.
-			var hWnd = WindowNative.GetWindowHandle(Application.Current.AsApp().WindowManager.GetWindowForElement(@this));
+			var hWnd = WindowNative.GetWindowHandle(Application.CurrentApp.WindowManager.GetWindowForElement(@this));
 			var dpi = PInvoke.GetDpiForWindow(new(hWnd)) / 96F;
 
 			switch (fileOrStream)

@@ -103,7 +103,7 @@ public sealed partial class AttributeCheckingOperation : Page, IOperationProvide
 			return;
 		}
 
-		TechniqueSet techniqueSet = [.. Application.Current.AsApp().Preference.AnalysisPreferences.IttoryuSupportedTechniques];
+		TechniqueSet techniqueSet = [.. Application.CurrentApp.Preference.AnalysisPreferences.IttoryuSupportedTechniques];
 		var finder = new DisorderedIttoryuFinder(techniqueSet);
 		(InfoDialog_DisorderedIttoryuDigitSequence.Subtitle, InfoDialog_DisorderedIttoryuDigitSequence.IsOpen) =
 			finder.FindPath(puzzle) is { Digits.Length: not 0 } path

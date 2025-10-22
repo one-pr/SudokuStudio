@@ -35,7 +35,7 @@ public sealed partial class StepSearcherOrderingPreferenceGroup : PreferenceGrou
 			return;
 		}
 
-		if (Application.Current.AsApp().Analyzer is not { } analyzer)
+		if (Application.CurrentApp.Analyzer is not { } analyzer)
 		{
 			return;
 		}

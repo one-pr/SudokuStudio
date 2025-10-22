@@ -113,7 +113,7 @@ public sealed partial class PatternBasedPuzzleGeneratingPage : Page
 	/// </summary>
 	private void CopyGridText()
 	{
-		var placeholderText = Application.Current.AsApp().Preference.UIPreferences.EmptyCellCharacter;
+		var placeholderText = Application.CurrentApp.Preference.UIPreferences.EmptyCellCharacter;
 		var dataPackage = new DataPackage { RequestedOperation = DataPackageOperation.Copy };
 		dataPackage.SetText(SudokuPane.Puzzle.ToString($"{placeholderText}"));
 		Clipboard.SetContent(dataPackage);
@@ -154,7 +154,7 @@ public sealed partial class PatternBasedPuzzleGeneratingPage : Page
 	/// <seealso cref="StorageFile"/>
 	private async Task OnSavingOrCopyingSudokuPanePictureSimpleAsync<T>(T obj) where T : class
 	{
-		if (Application.Current.AsApp().Preference.UIPreferences.TransparentBackground)
+		if (Application.CurrentApp.Preference.UIPreferences.TransparentBackground)
 		{
 			var color = App.CurrentTheme switch { ApplicationTheme.Light => Colors.White, _ => Colors.Black };
 			SudokuPane.MainGrid.Background = new SolidColorBrush(color);
@@ -162,7 +162,7 @@ public sealed partial class PatternBasedPuzzleGeneratingPage : Page
 
 		await SudokuPane.RenderToAsync(obj);
 
-		if (Application.Current.AsApp().Preference.UIPreferences.TransparentBackground)
+		if (Application.CurrentApp.Preference.UIPreferences.TransparentBackground)
 		{
 			SudokuPane.MainGrid.Background = null;
 		}
@@ -217,7 +217,7 @@ public sealed partial class PatternBasedPuzzleGeneratingPage : Page
 			return;
 		}
 
-		var uiPref = Application.Current.AsApp().Preference.UIPreferences;
+		var uiPref = Application.CurrentApp.Preference.UIPreferences;
 		var copied = view.Clone();
 		var (a, r, g, b) = App.CurrentTheme switch { ApplicationTheme.Light => uiPref.ActiveCellColor, _ => uiPref.ActiveCellColor_Dark };
 		copied.View.Clear();
@@ -248,13 +248,13 @@ public sealed partial class PatternBasedPuzzleGeneratingPage : Page
 
 	private void SudokuPane_Loaded(object sender, RoutedEventArgs e)
 	{
-		var app = Application.Current.AsApp();
+		var app = Application.CurrentApp;
 		app.CoverSettingsToSudokuPaneViaApplicationTheme(SudokuPane);
 		app.MainSudokuPane = SudokuPane;
 	}
 
 	private void SudokuPane_ActualThemeChanged(FrameworkElement sender, object args)
-		=> Application.Current.AsApp().CoverSettingsToSudokuPaneViaApplicationTheme(SudokuPane);
+		=> Application.CurrentApp.CoverSettingsToSudokuPaneViaApplicationTheme(SudokuPane);
 
 	private void SudokuPane_Clicked(SudokuPane sender, GridClickedEventArgs e)
 	{
@@ -287,9 +287,9 @@ public sealed partial class PatternBasedPuzzleGeneratingPage : Page
 	private async void GeneratingButton_ClickAsync(object sender, RoutedEventArgs e)
 	{
 		var (pattern, missingDigit, fixedCandidates) = (SelectedCells, MissingDigit, FixedCandidates);
-		var ratingScale = Application.Current.AsApp().Preference.TechniqueInfoPreferences.RatingScale;
+		var ratingScale = Application.CurrentApp.Preference.TechniqueInfoPreferences.RatingScale;
 		var ratingScaleFormat = FactorMarshal.GetScaleFormatString(1 / ratingScale);
-		var analyzer = Application.Current.AsApp().GetAnalyzerConfigured(SudokuPane)
+		var analyzer = Application.CurrentApp.GetAnalyzerConfigured(SudokuPane)
 			.WithOptions(new() { IsDirectMode = true });
 		using var cts = new CancellationTokenSource();
 		try

@@ -7,7 +7,7 @@ internal static class BackdropConversion
 {
 	public static int GetSelectedIndex(ComboBox comboBox)
 	{
-		var backdropKind = Application.Current.AsApp().Preference.UIPreferences.Backdrop;
+		var backdropKind = Application.CurrentApp.Preference.UIPreferences.Backdrop;
 		var i = 0;
 		foreach (var element in comboBox.Items.Cast<ComboBoxItem>())
 		{

@@ -7,7 +7,7 @@ internal static class ConceptNotationConversion
 {
 	public static int GetSelectedIndex(Segmented segmented)
 	{
-		var notationKind = Application.Current.AsApp().Preference.UIPreferences.ConceptNotationBasedKind;
+		var notationKind = Application.CurrentApp.Preference.UIPreferences.ConceptNotationBasedKind;
 		var i = 0;
 		foreach (var element in segmented.Items.Cast<SegmentedItem>())
 		{
@@ -24,7 +24,7 @@ internal static class ConceptNotationConversion
 
 	public static int NotationSeparatorSelectorSelectedIndex(Segmented segmented)
 	{
-		var defaultSeparator = Application.Current.AsApp().Preference.UIPreferences.DefaultSeparatorInNotation;
+		var defaultSeparator = Application.CurrentApp.Preference.UIPreferences.DefaultSeparatorInNotation;
 		var i = 0;
 		foreach (var element in segmented.Items.Cast<SegmentedItem>())
 		{
@@ -41,7 +41,7 @@ internal static class ConceptNotationConversion
 
 	public static int FinalRowLetterInK9NotationSelectedIndex(Segmented segmented)
 	{
-		var @char = Application.Current.AsApp().Preference.UIPreferences.FinalRowLetterInK9Notation;
+		var @char = Application.CurrentApp.Preference.UIPreferences.FinalRowLetterInK9Notation;
 		var i = 0;
 		foreach (var element in segmented.Items.Cast<SegmentedItem>())
 		{

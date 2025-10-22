@@ -13,7 +13,7 @@ public sealed partial class BottleneckSettingPage : Page
 
 	private void Page_Loaded(object sender, RoutedEventArgs e)
 	{
-		var analysisPref = Application.Current.AsApp().Preference.AnalysisPreferences;
+		var analysisPref = Application.CurrentApp.Preference.AnalysisPreferences;
 		DirectModeChooser.SelectedIndex = f(DirectModeChooser, analysisPref.DirectModeBottleneckType);
 		PartialMarkingChooser.SelectedIndex = f(PartialMarkingChooser, analysisPref.PartialMarkingModeBottleneckType);
 		FullMarkingChooser.SelectedIndex = f(FullMarkingChooser, analysisPref.FullMarkingModeBottleneckType);
@@ -36,18 +36,18 @@ public sealed partial class BottleneckSettingPage : Page
 	private void DirectModeChooser_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
 		var tag = (BottleneckType)((SegmentedItem)DirectModeChooser.ItemsPanelRoot.Children[DirectModeChooser.SelectedIndex]).Tag;
-		Application.Current.AsApp().Preference.AnalysisPreferences.DirectModeBottleneckType = tag;
+		Application.CurrentApp.Preference.AnalysisPreferences.DirectModeBottleneckType = tag;
 	}
 
 	private void PartialMarkingChooser_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
 		var tag = (BottleneckType)((SegmentedItem)PartialMarkingChooser.ItemsPanelRoot.Children[DirectModeChooser.SelectedIndex]).Tag;
-		Application.Current.AsApp().Preference.AnalysisPreferences.PartialMarkingModeBottleneckType = tag;
+		Application.CurrentApp.Preference.AnalysisPreferences.PartialMarkingModeBottleneckType = tag;
 	}
 
 	private void FullMarkingChooser_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
 		var tag = (BottleneckType)((SegmentedItem)FullMarkingChooser.ItemsPanelRoot.Children[DirectModeChooser.SelectedIndex]).Tag;
-		Application.Current.AsApp().Preference.AnalysisPreferences.FullMarkingModeBottleneckType = tag;
+		Application.CurrentApp.Preference.AnalysisPreferences.FullMarkingModeBottleneckType = tag;
 	}
 }

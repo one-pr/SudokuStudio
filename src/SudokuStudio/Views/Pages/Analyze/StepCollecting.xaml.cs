@@ -47,7 +47,7 @@ public sealed partial class StepCollecting : Page, IAnalyzerTab
 	/// <returns>The collection that can be used as view source.</returns>
 	private void CollectSteps(Step[] collection)
 	{
-		var displayItems = Application.Current.AsApp().Preference.UIPreferences.StepDisplayItems;
+		var displayItems = Application.CurrentApp.Preference.UIPreferences.StepDisplayItems;
 		var converter = App.Converter;
 		_nodesSortedByTechnique = [
 			..
@@ -136,13 +136,13 @@ public sealed partial class StepCollecting : Page, IAnalyzerTab
 
 		var textFormat = SR.Get("AnalyzePage_AnalyzerProgress", App.CurrentCulture);
 		using var cts = new CancellationTokenSource();
-		var uiPref = Application.Current.AsApp().Preference.UIPreferences;
-		var analysisPref = Application.Current.AsApp().Preference.AnalysisPreferences;
-		var collector = Application.Current.AsApp()
+		var uiPref = Application.CurrentApp.Preference.UIPreferences;
+		var analysisPref = Application.CurrentApp.Preference.AnalysisPreferences;
+		var collector = Application.CurrentApp
 			.Collector
 			.WithMaxSteps(analysisPref.CollectorMaxStepsCollected)
 			.WithSameLevelConfiguration((CollectorDifficultyLevelMode)analysisPref.DifficultyLevelMode)
-			.WithStepSearchers(Application.Current.AsApp().GetStepSearchers())
+			.WithStepSearchers(Application.CurrentApp.GetStepSearchers())
 			.WithRuntimeIdentifierSetters(BasePage.SudokuPane)
 			.WithOptions(App.CreateStepSearcherOptions());
 		BasePage._ctsForAnalyzingRelatedOperations = cts;

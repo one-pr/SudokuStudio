@@ -15,13 +15,13 @@ public sealed partial class MiscellaneousBasicSettingPage : Page
 	{
 		if (sender is Segmented { SelectedItem: SegmentedItem { Tag: string and [var ch] } })
 		{
-			Application.Current.AsApp().Preference.UIPreferences.EmptyCellCharacter = ch;
+			Application.CurrentApp.Preference.UIPreferences.EmptyCellCharacter = ch;
 		}
 	}
 
 	private void Page_Loaded(object sender, RoutedEventArgs e)
-		=> GridSizeChanger.Value = (int)Application.Current.AsApp().Preference.UIPreferences.SudokuGridSize;
+		=> GridSizeChanger.Value = (int)Application.CurrentApp.Preference.UIPreferences.SudokuGridSize;
 
 	private void GridSizeChanger_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
-		=> Application.Current.AsApp().Preference.UIPreferences.SudokuGridSize = GridSizeChanger.Value;
+		=> Application.CurrentApp.Preference.UIPreferences.SudokuGridSize = GridSizeChanger.Value;
 }

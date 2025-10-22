@@ -18,7 +18,7 @@ public sealed partial class ChainSettingPage : Page
 	/// <returns>The index.</returns>
 	private int GetSegmentedItemIndex(LinkType linkType)
 	{
-		var analysisPref = Application.Current.AsApp().Preference.AnalysisPreferences;
+		var analysisPref = Application.CurrentApp.Preference.AnalysisPreferences;
 		var dictionary = analysisPref.OverriddenLinkOptions;
 		return (int)(dictionary.TryGetValue(linkType, out var option) ? option : LinkOption.House);
 	}
@@ -35,7 +35,7 @@ public sealed partial class ChainSettingPage : Page
 			return;
 		}
 
-		var analysisPref = Application.Current.AsApp().Preference.AnalysisPreferences;
+		var analysisPref = Application.CurrentApp.Preference.AnalysisPreferences;
 		var dictionary = analysisPref.OverriddenLinkOptions;
 		if (!dictionary.TryAdd(linkType, (LinkOption)index))
 		{

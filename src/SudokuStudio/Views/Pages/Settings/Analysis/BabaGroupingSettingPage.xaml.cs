@@ -14,20 +14,20 @@ public sealed partial class BabaGroupingSettingPage : Page
 	private void InitialLetterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
 		var letter = (BabaGroupInitialLetter)((ComboBoxItem)((ComboBox)sender).SelectedItem).Tag;
-		Application.Current.AsApp().Preference.AnalysisPreferences.InitialLetter = letter;
+		Application.CurrentApp.Preference.AnalysisPreferences.InitialLetter = letter;
 	}
 
 	private void LetterCasingComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
 		var flag = (bool)((SegmentedItem)((Segmented)sender).SelectedItem).Tag;
-		Application.Current.AsApp().Preference.AnalysisPreferences.LetterCasing = flag
+		Application.CurrentApp.Preference.AnalysisPreferences.LetterCasing = flag
 			? BabaGroupLetterCasing.Upper
 			: BabaGroupLetterCasing.Lower;
 	}
 
 	private void Page_Loaded(object sender, RoutedEventArgs e)
 	{
-		var analysisPref = Application.Current.AsApp().Preference.AnalysisPreferences;
+		var analysisPref = Application.CurrentApp.Preference.AnalysisPreferences;
 		InitialLetterComboBox.SelectedIndex = InitialLetterComboBox.Items
 			.Select(valueSelector)
 			.FirstOrDefault(p => p?.Control.Tag is BabaGroupInitialLetter letter && letter == analysisPref.InitialLetter)?

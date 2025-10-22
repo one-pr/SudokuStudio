@@ -29,11 +29,7 @@ public static class AppExtensions
 	/// </summary>
 	extension(Application @this)
 	{
-		/// <summary>
-		/// Converts the current instance into an <see cref="App"/> instance;
-		/// throw <see cref="InvalidCastException"/> if the current object is not an <see cref="App"/> instance.
-		/// </summary>
-		/// <returns>The result casted.</returns>
-		public App AsApp() => (App)@this;
+		/// <inheritdoc cref="Application.Current"/>
+		public static App CurrentApp => (App)Application.Current;
 	}
 }

@@ -186,7 +186,7 @@ public sealed partial class ViewUnitBindableSource : DependencyObject, ICloneabl
 
 			void handlePassedThroughDiffers()
 			{
-				var g = Application.Current.AsApp().MainSudokuPane?.MainGrid ?? throw new InvalidOperationException();
+				var g = Application.CurrentApp.MainSudokuPane?.MainGrid ?? throw new InvalidOperationException();
 				var leftChainNodes = (ReadOnlySpan<ILinkViewNode>)left.View.OfType<ChainLinkViewNode>();
 				var rightChainNodes = (ReadOnlySpan<ILinkViewNode>)right.View.OfType<ChainLinkViewNode>();
 				foreach (var link in (left.View & right.View).OfType<ChainLinkViewNode>())

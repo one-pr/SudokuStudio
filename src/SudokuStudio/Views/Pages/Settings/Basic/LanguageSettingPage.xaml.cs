@@ -20,11 +20,11 @@ public sealed partial class LanguageSettingPage : Page
 	/// </summary>
 	private void InitializeControls()
 	{
-		var uiPref = Application.Current.AsApp().Preference.UIPreferences;
+		var uiPref = Application.CurrentApp.Preference.UIPreferences;
 		LanguageComboBox.SelectedIndex = uiPref.Language switch { 0 => 0, 1033 => 1, 2052 => 2 };
 	}
 
 
 	private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		=> Application.Current.AsApp().Preference.UIPreferences.Language = (int)((SegmentedItem)LanguageComboBox.SelectedItem).Tag!;
+		=> Application.CurrentApp.Preference.UIPreferences.Language = (int)((SegmentedItem)LanguageComboBox.SelectedItem).Tag!;
 }

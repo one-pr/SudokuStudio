@@ -196,8 +196,8 @@
         <member name="M:SudokuStudio.AppExtensions.GetStepSearchers(SudokuStudio.App)">
             <inheritdoc cref="M:SudokuStudio.AppExtensions.&lt;G&gt;$8870D109CBB55E5F608E76711615B86A.GetStepSearchers"/>
         </member>
-        <member name="M:SudokuStudio.AppExtensions.AsApp(Microsoft.UI.Xaml.Application)">
-            <inheritdoc cref="M:SudokuStudio.AppExtensions.&lt;G&gt;$BA25A5DC2D5ECDFAB0CDAF49939E8048.AsApp"/>
+        <member name="M:SudokuStudio.AppExtensions.get_CurrentApp">
+            <inheritdoc cref="P:SudokuStudio.AppExtensions.&lt;G&gt;$BA25A5DC2D5ECDFAB0CDAF49939E8048.CurrentApp"/>
         </member>
         <member name="T:SudokuStudio.AppExtensions.&lt;G&gt;$8870D109CBB55E5F608E76711615B86A.&lt;M&gt;$6DC3A46C313EAC6D72FD6C06129CFC51">
             <summary>
@@ -215,12 +215,8 @@
             Provides extension members on <see cref="T:Microsoft.UI.Xaml.Application"/>.
             </summary>
         </member>
-        <member name="M:SudokuStudio.AppExtensions.&lt;G&gt;$BA25A5DC2D5ECDFAB0CDAF49939E8048.AsApp">
-            <summary>
-            Converts the current instance into an <see cref="T:SudokuStudio.App"/> instance;
-            throw <see cref="T:System.InvalidCastException"/> if the current object is not an <see cref="T:SudokuStudio.App"/> instance.
-            </summary>
-            <returns>The result casted.</returns>
+        <member name="P:SudokuStudio.AppExtensions.&lt;G&gt;$BA25A5DC2D5ECDFAB0CDAF49939E8048.CurrentApp">
+            <inheritdoc cref="P:Microsoft.UI.Xaml.Application.Current"/>
         </member>
         <member name="T:SudokuStudio.BindableSource.AnalyzeTabPageBindableSource">
             <summary>

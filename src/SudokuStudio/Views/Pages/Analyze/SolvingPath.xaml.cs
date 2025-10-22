@@ -32,7 +32,7 @@ public sealed partial class SolvingPath : Page, IAnalyzerTab
 				return;
 			}
 
-			var displayItems = Application.Current.AsApp().Preference.UIPreferences.StepDisplayItems;
+			var displayItems = Application.CurrentApp.Preference.UIPreferences.StepDisplayItems;
 			var collection = new ObservableCollection<SolvingPathStepBindableSource>();
 			pathListView.ItemsSource = collection;
 			foreach (var item in SolvingPathStepCollection.Create(analysisResult, displayItems))

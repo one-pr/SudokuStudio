@@ -18,14 +18,14 @@ public sealed partial class FontSettingPage : Page
 	{
 		get => App.CurrentTheme switch
 		{
-			ApplicationTheme.Light => Application.Current.AsApp().Preference.UIPreferences.GivenFontColor,
-			_ => Application.Current.AsApp().Preference.UIPreferences.GivenFontColor_Dark
+			ApplicationTheme.Light => Application.CurrentApp.Preference.UIPreferences.GivenFontColor,
+			_ => Application.CurrentApp.Preference.UIPreferences.GivenFontColor_Dark
 		};
 
 		set => _ = App.CurrentTheme switch
 		{
-			ApplicationTheme.Light => Application.Current.AsApp().Preference.UIPreferences.GivenFontColor = value,
-			_ => Application.Current.AsApp().Preference.UIPreferences.GivenFontColor_Dark = value
+			ApplicationTheme.Light => Application.CurrentApp.Preference.UIPreferences.GivenFontColor = value,
+			_ => Application.CurrentApp.Preference.UIPreferences.GivenFontColor_Dark = value
 		};
 	}
 
@@ -36,14 +36,14 @@ public sealed partial class FontSettingPage : Page
 	{
 		get => App.CurrentTheme switch
 		{
-			ApplicationTheme.Light => Application.Current.AsApp().Preference.UIPreferences.ModifiableFontColor,
-			_ => Application.Current.AsApp().Preference.UIPreferences.ModifiableFontColor_Dark
+			ApplicationTheme.Light => Application.CurrentApp.Preference.UIPreferences.ModifiableFontColor,
+			_ => Application.CurrentApp.Preference.UIPreferences.ModifiableFontColor_Dark
 		};
 
 		set => _ = App.CurrentTheme switch
 		{
-			ApplicationTheme.Light => Application.Current.AsApp().Preference.UIPreferences.ModifiableFontColor = value,
-			_ => Application.Current.AsApp().Preference.UIPreferences.ModifiableFontColor_Dark = value
+			ApplicationTheme.Light => Application.CurrentApp.Preference.UIPreferences.ModifiableFontColor = value,
+			_ => Application.CurrentApp.Preference.UIPreferences.ModifiableFontColor_Dark = value
 		};
 	}
 
@@ -54,14 +54,14 @@ public sealed partial class FontSettingPage : Page
 	{
 		get => App.CurrentTheme switch
 		{
-			ApplicationTheme.Light => Application.Current.AsApp().Preference.UIPreferences.PencilmarkFontColor,
-			_ => Application.Current.AsApp().Preference.UIPreferences.PencilmarkFontColor_Dark
+			ApplicationTheme.Light => Application.CurrentApp.Preference.UIPreferences.PencilmarkFontColor,
+			_ => Application.CurrentApp.Preference.UIPreferences.PencilmarkFontColor_Dark
 		};
 
 		set => _ = App.CurrentTheme switch
 		{
-			ApplicationTheme.Light => Application.Current.AsApp().Preference.UIPreferences.PencilmarkFontColor = value,
-			_ => Application.Current.AsApp().Preference.UIPreferences.PencilmarkFontColor_Dark = value
+			ApplicationTheme.Light => Application.CurrentApp.Preference.UIPreferences.PencilmarkFontColor = value,
+			_ => Application.CurrentApp.Preference.UIPreferences.PencilmarkFontColor_Dark = value
 		};
 	}
 
@@ -72,14 +72,14 @@ public sealed partial class FontSettingPage : Page
 	{
 		get => App.CurrentTheme switch
 		{
-			ApplicationTheme.Light => Application.Current.AsApp().Preference.UIPreferences.CoordinateLabelFontColor,
-			_ => Application.Current.AsApp().Preference.UIPreferences.CoordinateLabelFontColor_Dark
+			ApplicationTheme.Light => Application.CurrentApp.Preference.UIPreferences.CoordinateLabelFontColor,
+			_ => Application.CurrentApp.Preference.UIPreferences.CoordinateLabelFontColor_Dark
 		};
 
 		set => _ = App.CurrentTheme switch
 		{
-			ApplicationTheme.Light => Application.Current.AsApp().Preference.UIPreferences.CoordinateLabelFontColor = value,
-			_ => Application.Current.AsApp().Preference.UIPreferences.CoordinateLabelFontColor_Dark = value
+			ApplicationTheme.Light => Application.CurrentApp.Preference.UIPreferences.CoordinateLabelFontColor = value,
+			_ => Application.CurrentApp.Preference.UIPreferences.CoordinateLabelFontColor_Dark = value
 		};
 	}
 
@@ -90,60 +90,60 @@ public sealed partial class FontSettingPage : Page
 	{
 		get => App.CurrentTheme switch
 		{
-			ApplicationTheme.Light => Application.Current.AsApp().Preference.UIPreferences.BabaGroupingFontColor,
-			_ => Application.Current.AsApp().Preference.UIPreferences.BabaGroupingFontColor_Dark
+			ApplicationTheme.Light => Application.CurrentApp.Preference.UIPreferences.BabaGroupingFontColor,
+			_ => Application.CurrentApp.Preference.UIPreferences.BabaGroupingFontColor_Dark
 		};
 
 		set => _ = App.CurrentTheme switch
 		{
-			ApplicationTheme.Light => Application.Current.AsApp().Preference.UIPreferences.BabaGroupingFontColor = value,
-			_ => Application.Current.AsApp().Preference.UIPreferences.BabaGroupingFontColor_Dark = value
+			ApplicationTheme.Light => Application.CurrentApp.Preference.UIPreferences.BabaGroupingFontColor = value,
+			_ => Application.CurrentApp.Preference.UIPreferences.BabaGroupingFontColor_Dark = value
 		};
 	}
 
 
 	private void GivenFontPicker_SelectedFontChanged(object sender, string e)
-		=> Application.Current.AsApp().Preference.UIPreferences.GivenFontName = e;
+		=> Application.CurrentApp.Preference.UIPreferences.GivenFontName = e;
 
 	private void GivenFontPicker_SelectedFontScaleChanged(object sender, decimal e)
-		=> Application.Current.AsApp().Preference.UIPreferences.GivenFontScale = e;
+		=> Application.CurrentApp.Preference.UIPreferences.GivenFontScale = e;
 
 	private void GivenFontPicker_SelectedFontColorChanged(object sender, Color e)
-		=> Application.Current.AsApp().Preference.UIPreferences.GivenFontColor = e;
+		=> Application.CurrentApp.Preference.UIPreferences.GivenFontColor = e;
 
 	private void ModifiableFontPicker_SelectedFontChanged(object sender, string e)
-		=> Application.Current.AsApp().Preference.UIPreferences.ModifiableFontName = e;
+		=> Application.CurrentApp.Preference.UIPreferences.ModifiableFontName = e;
 
 	private void ModifiableFontPicker_SelectedFontScaleChanged(object sender, decimal e)
-		=> Application.Current.AsApp().Preference.UIPreferences.ModifiableFontScale = e;
+		=> Application.CurrentApp.Preference.UIPreferences.ModifiableFontScale = e;
 
 	private void ModifiableFontPicker_SelectedFontColorChanged(object sender, Color e)
-		=> Application.Current.AsApp().Preference.UIPreferences.ModifiableFontColor = e;
+		=> Application.CurrentApp.Preference.UIPreferences.ModifiableFontColor = e;
 
 	private void PencilmarkFontPicker_SelectedFontChanged(object sender, string e)
-		=> Application.Current.AsApp().Preference.UIPreferences.PencilmarkFontName = e;
+		=> Application.CurrentApp.Preference.UIPreferences.PencilmarkFontName = e;
 
 	private void PencilmarkFontPicker_SelectedFontScaleChanged(object sender, decimal e)
-		=> Application.Current.AsApp().Preference.UIPreferences.PencilmarkFontScale = e;
+		=> Application.CurrentApp.Preference.UIPreferences.PencilmarkFontScale = e;
 
 	private void PencilmarkFontPicker_SelectedFontColorChanged(object sender, Color e)
-		=> Application.Current.AsApp().Preference.UIPreferences.PencilmarkFontColor = e;
+		=> Application.CurrentApp.Preference.UIPreferences.PencilmarkFontColor = e;
 
 	private void CoordinateFontPicker_SelectedFontChanged(object sender, string e)
-		=> Application.Current.AsApp().Preference.UIPreferences.CoordinateLabelFontName = e;
+		=> Application.CurrentApp.Preference.UIPreferences.CoordinateLabelFontName = e;
 
 	private void CoordinateFontPicker_SelectedFontScaleChanged(object sender, decimal e)
-		=> Application.Current.AsApp().Preference.UIPreferences.CoordinateLabelFontScale = e;
+		=> Application.CurrentApp.Preference.UIPreferences.CoordinateLabelFontScale = e;
 
 	private void CoordinateFontPicker_SelectedFontColorChanged(object sender, Color e)
-		=> Application.Current.AsApp().Preference.UIPreferences.CoordinateLabelFontColor = e;
+		=> Application.CurrentApp.Preference.UIPreferences.CoordinateLabelFontColor = e;
 
 	private void BabaGroupingFontPicker_SelectedFontChanged(object sender, string e)
-		=> Application.Current.AsApp().Preference.UIPreferences.BabaGroupingFontName = e;
+		=> Application.CurrentApp.Preference.UIPreferences.BabaGroupingFontName = e;
 
 	private void BabaGroupingFontPicker_SelectedFontScaleChanged(object sender, decimal e)
-		=> Application.Current.AsApp().Preference.UIPreferences.BabaGroupingFontScale = e;
+		=> Application.CurrentApp.Preference.UIPreferences.BabaGroupingFontScale = e;
 
 	private void BabaGroupingFontPicker_SelectedFontColorChanged(object sender, Color e)
-		=> Application.Current.AsApp().Preference.UIPreferences.BabaGroupingFontColor = e;
+		=> Application.CurrentApp.Preference.UIPreferences.BabaGroupingFontColor = e;
 }

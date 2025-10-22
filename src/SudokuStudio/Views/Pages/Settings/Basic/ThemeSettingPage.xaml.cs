@@ -20,7 +20,7 @@ public sealed partial class ThemeSettingPage : Page
 	/// </summary>
 	private void InitializeControls()
 	{
-		var uiPref = Application.Current.AsApp().Preference.UIPreferences;
+		var uiPref = Application.CurrentApp.Preference.UIPreferences;
 		ThemeComboBox.SelectedIndex = (int)uiPref.CurrentTheme;
 		BackgroundPicturePathDisplayer.Text = uiPref.BackgroundPicturePath;
 	}
@@ -34,10 +34,10 @@ public sealed partial class ThemeSettingPage : Page
 	private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
 		var theme = (Theme)((SegmentedItem)ThemeComboBox.SelectedItem).Tag!;
-		Application.Current.AsApp().Preference.UIPreferences.CurrentTheme = theme;
+		Application.CurrentApp.Preference.UIPreferences.CurrentTheme = theme;
 
 		// Manually set theme.
-		foreach (var window in Application.Current.AsApp().WindowManager.ActiveWindows.OfType<MainWindow>())
+		foreach (var window in Application.CurrentApp.WindowManager.ActiveWindows.OfType<MainWindow>())
 		{
 			WindowComposition.SetTheme(window, theme);
 		}
@@ -47,7 +47,7 @@ public sealed partial class ThemeSettingPage : Page
 	{
 		if (sender is ComboBox { SelectedItem: ComboBoxItem { Tag: string s } } && BackdropKind.TryParse(s, out var value))
 		{
-			Application.Current.AsApp().Preference.UIPreferences.Backdrop = value;
+			Application.CurrentApp.Preference.UIPreferences.Backdrop = value;
 		}
 	}
 
@@ -70,23 +70,23 @@ public sealed partial class ThemeSettingPage : Page
 			return;
 		}
 
-		foreach (var window in Application.Current.AsApp().WindowManager.ActiveWindows.OfType<IBackgroundPictureSupportedWindow>())
+		foreach (var window in Application.CurrentApp.WindowManager.ActiveWindows.OfType<IBackgroundPictureSupportedWindow>())
 		{
 			WindowComposition.SetBackgroundPicture(window, filePath);
 		}
 
 		BackgroundPicturePathDisplayer.Text = filePath;
-		Application.Current.AsApp().Preference.UIPreferences.BackgroundPicturePath = filePath;
+		Application.CurrentApp.Preference.UIPreferences.BackgroundPicturePath = filePath;
 	}
 
 	private void ClearBackgroundPictureButton_Click(object sender, RoutedEventArgs e)
 	{
-		foreach (var window in Application.Current.AsApp().WindowManager.ActiveWindows.OfType<IBackgroundPictureSupportedWindow>())
+		foreach (var window in Application.CurrentApp.WindowManager.ActiveWindows.OfType<IBackgroundPictureSupportedWindow>())
 		{
 			WindowComposition.SetBackgroundPicture(window, null);
 		}
 
 		BackgroundPicturePathDisplayer.Text = string.Empty;
-		Application.Current.AsApp().Preference.UIPreferences.BackgroundPicturePath = null;
+		Application.CurrentApp.Preference.UIPreferences.BackgroundPicturePath = null;
 	}
 }

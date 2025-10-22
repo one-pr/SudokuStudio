@@ -156,7 +156,7 @@ public sealed partial class CommandBasedDrawingPage : Page
 			showCandidates = false;
 		}
 
-		var coordinateParser = Application.Current.AsApp().Preference.UIPreferences.ConceptNotationBasedKind.Parser;
+		var coordinateParser = Application.CurrentApp.Preference.UIPreferences.ConceptNotationBasedKind.Parser;
 		var parser = grid is { } g ? new DrawingCommandParser(in g) : new DrawingCommandParser();
 		parser = parser with { CoordinateParser = coordinateParser };
 		valid = parser.TryParse(text, out var result);
@@ -202,13 +202,13 @@ public sealed partial class CommandBasedDrawingPage : Page
 	/// <seealso cref="StorageFile"/>
 	private async Task OnSavingOrCopyingSudokuPanePictureAsync<T>(T obj) where T : class
 	{
-		if (Application.Current.AsApp().Preference.UIPreferences.TransparentBackground)
+		if (Application.CurrentApp.Preference.UIPreferences.TransparentBackground)
 		{
 			var color = App.CurrentTheme switch { ApplicationTheme.Light => Colors.White, _ => Colors.Black };
 			SudokuPane.MainGrid.Background = new SolidColorBrush(color);
 		}
 
-		var desiredSize = Application.Current.AsApp().Preference.UIPreferences.DesiredPictureSizeOnSaving;
+		var desiredSize = Application.CurrentApp.Preference.UIPreferences.DesiredPictureSizeOnSaving;
 		var (originalWidth, originalHeight) = (SudokuPaneOutsideViewBox.Width, SudokuPaneOutsideViewBox.Height);
 		(SudokuPaneOutsideViewBox.Width, SudokuPaneOutsideViewBox.Height) = (desiredSize, desiredSize);
 
@@ -216,7 +216,7 @@ public sealed partial class CommandBasedDrawingPage : Page
 
 		(SudokuPaneOutsideViewBox.Width, SudokuPaneOutsideViewBox.Height) = (originalWidth, originalHeight);
 
-		if (Application.Current.AsApp().Preference.UIPreferences.TransparentBackground)
+		if (Application.CurrentApp.Preference.UIPreferences.TransparentBackground)
 		{
 			SudokuPane.MainGrid.Background = null;
 		}
@@ -225,13 +225,13 @@ public sealed partial class CommandBasedDrawingPage : Page
 
 	private void SudokuPane_Loaded(object sender, RoutedEventArgs e)
 	{
-		var app = Application.Current.AsApp();
+		var app = Application.CurrentApp;
 		app.CoverSettingsToSudokuPaneViaApplicationTheme(SudokuPane);
 		app.MainSudokuPane = SudokuPane;
 	}
 
 	private void SudokuPane_ActualThemeChanged(FrameworkElement sender, object args)
-		=> Application.Current.AsApp().CoverSettingsToSudokuPaneViaApplicationTheme(SudokuPane);
+		=> Application.CurrentApp.CoverSettingsToSudokuPaneViaApplicationTheme(SudokuPane);
 
 	private void ApplyButton_Click(object sender, RoutedEventArgs e)
 	{

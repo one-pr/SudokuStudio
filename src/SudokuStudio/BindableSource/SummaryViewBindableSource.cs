@@ -99,7 +99,7 @@ internal sealed class SummaryViewBindableSource : INotifyPropertyChanged
 	/// <exception cref="InvalidOperationException">Throws when the puzzle hasn't been solved.</exception>
 	public static ObservableCollection<SummaryViewBindableSource> CreateListFrom(AnalysisResult analysisResult)
 	{
-		var pref = Application.Current.AsApp().Preference.TechniqueInfoPreferences;
+		var pref = Application.CurrentApp.Preference.TechniqueInfoPreferences;
 		return analysisResult switch
 		{
 			{ IsSolved: true, StepsSpan: var steps } => [.. g(steps, pref)],
@@ -110,7 +110,7 @@ internal sealed class SummaryViewBindableSource : INotifyPropertyChanged
 
 		static decimal r(Step step)
 		{
-			var pref = Application.Current.AsApp().Preference.TechniqueInfoPreferences;
+			var pref = Application.CurrentApp.Preference.TechniqueInfoPreferences;
 			return pref.GetRating(step.Code) switch { { } v => v, _ => step.Difficulty } / pref.RatingScale;
 		}
 

@@ -33,13 +33,13 @@ internal static class WindowComposition
 	public static void ManuallyUpdateBackground(IBackdropSupportedWindow window, BackdropKind backdrop)
 	{
 		if (window is IBackgroundPictureSupportedWindow { RootGridLayout: _ }
-			&& Application.Current.AsApp().Preference.UIPreferences.BackgroundPicturePath is not null)
+			&& Application.CurrentApp.Preference.UIPreferences.BackgroundPicturePath is not null)
 		{
 			// This will override the configuration of the setting.
 			return;
 		}
 
-		var isDark = Application.Current.AsApp().Preference.UIPreferences.CurrentTheme switch
+		var isDark = Application.CurrentApp.Preference.UIPreferences.CurrentTheme switch
 		{
 			Theme.Light => false,
 			Theme.Dark => true,
@@ -74,7 +74,7 @@ internal static class WindowComposition
 				Theme.Dark => ElementTheme.Dark,
 				_ => App.ShouldSystemUseDarkMode() ? ElementTheme.Dark : ElementTheme.Light
 			};
-			var backdrop = Application.Current.AsApp().Preference.UIPreferences.Backdrop;
+			var backdrop = Application.CurrentApp.Preference.UIPreferences.Backdrop;
 			ManuallyUpdateBackground(window, backdrop);
 		}
 	}
