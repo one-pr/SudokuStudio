@@ -26,22 +26,17 @@ public partial class SpanEnumerable
 	/// Provides extension members on <see cref="ReadOnlySpan{T}"/> of <typeparamref name="TSource"/>.
 	/// </summary>
 	/// <typeparam name="TSource">The type of the elements of source.</typeparam>
+	/// <typeparam name="TKey">The type of key to add up.</typeparam>
 	/// <param name="source">The collection to be used and checked.</param>
-	extension<TSource>(ReadOnlySpan<TSource> source)
+	extension<TSource, TKey>(ReadOnlySpan<TSource> source)
+		where TKey : IAdditiveIdentity<TKey, TKey>, IAdditionOperators<TKey, TKey, TKey>
 	{
 		/// <summary>
 		/// Totals up all elements, and return the result of the sum by the specified property calculated from each element.
 		/// </summary>
-		/// <typeparam name="TKey">The type of key to add up.</typeparam>
 		/// <param name="keySelector">A function to extract the key for each element.</param>
 		/// <returns>The value with the sum key in the sequence.</returns>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public TKey Sum<TKey>(Func<TSource, TKey> keySelector)
-			where TKey : IAdditiveIdentity<TKey, TKey>, IAdditionOperators<TKey, TKey, TKey>
+		public TKey Sum(Func<TSource, TKey> keySelector)
 		{
 			var result = TKey.AdditiveIdentity;
 			foreach (var element in source)
@@ -52,15 +47,9 @@ public partial class SpanEnumerable
 		}
 
 		/// <inheritdoc cref="Sum{TSource, TKey}(ReadOnlySpan{TSource}, Func{TSource, TKey})"/>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public unsafe TResult SumUnsafe<TResult>(delegate*<TSource, TResult> selector)
-			where TResult : IAdditionOperators<TResult, TResult, TResult>, IAdditiveIdentity<TResult, TResult>
+		public unsafe TKey SumUnsafe(delegate*<TSource, TKey> selector)
 		{
-			var result = TResult.AdditiveIdentity;
+			var result = TKey.AdditiveIdentity;
 			foreach (var element in source)
 			{
 				result += selector(element);

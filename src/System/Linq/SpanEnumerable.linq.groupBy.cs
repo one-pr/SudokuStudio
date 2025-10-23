@@ -6,17 +6,12 @@ public partial class SpanEnumerable
 	/// Provides extension members on <see cref="ReadOnlySpan{T}"/> of <typeparamref name="TSource"/>.
 	/// </summary>
 	/// <typeparam name="TSource">The type of the elements of source.</typeparam>
+	/// <typeparam name="TKey">The type of key.</typeparam>
 	/// <param name="source">The collection to be used and checked.</param>
-	extension<TSource>(ReadOnlySpan<TSource> source)
+	extension<TSource, TKey>(ReadOnlySpan<TSource> source) where TKey : notnull
 	{
 		/// <inheritdoc cref="IGroupByMethod{TSelf, TSource}.GroupBy{TKey}(Func{TSource, TKey})"/>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public ReadOnlySpan<SpanGrouping<TSource, TKey>> GroupBy<TKey>(Func<TSource, TKey> keySelector)
-			where TKey : notnull
+		public ReadOnlySpan<SpanGrouping<TSource, TKey>> GroupBy(Func<TSource, TKey> keySelector)
 		{
 			var tempDictionary = new Dictionary<TKey, List<TSource>>(source.Length >> 2);
 			foreach (var element in source)
@@ -43,11 +38,10 @@ public partial class SpanEnumerable
 		///     file="../../global-doc-comments.xml"
 		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
 		/// </remarks>
-		public ReadOnlySpan<SpanGrouping<TElement, TKey>> GroupBy<TKey, TElement>(
+		public ReadOnlySpan<SpanGrouping<TElement, TKey>> GroupBy<TElement>(
 			Func<TSource, TKey> keySelector,
 			Func<TSource, TElement> elementSelector
 		)
-			where TKey : notnull
 		{
 			var tempDictionary = new Dictionary<TKey, List<TSource>>(source.Length >> 2);
 			foreach (var element in source)

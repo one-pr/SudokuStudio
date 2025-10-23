@@ -6,20 +6,15 @@ public partial class SpanEnumerable
 	/// Provides extension members on <see cref="ReadOnlySpan{T}"/> of <typeparamref name="TBase"/>.
 	/// </summary>
 	/// <typeparam name="TBase">The type of the elements of source.</typeparam>
+	/// <typeparam name="TDerived">The derived type to be checked.</typeparam>
 	/// <param name="source">The collection to be used and checked.</param>
-	extension<TBase>(ReadOnlySpan<TBase> source)
+	extension<TBase, TDerived>(ReadOnlySpan<TBase> source) where TDerived : TBase?
 	{
 		/// <summary>
 		/// Determines whether all elements are of type <typeparamref name="TDerived"/>.
 		/// </summary>
-		/// <typeparam name="TDerived">The derived type to be checked.</typeparam>
 		/// <returns>A <see cref="bool"/> result indicating that.</returns>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public bool AllAre<TDerived>() where TDerived : TBase?
+		public bool AllAre()
 		{
 			foreach (ref readonly var element in source)
 			{

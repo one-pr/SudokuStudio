@@ -79,17 +79,12 @@ public partial class SpanEnumerable
 	/// Provides extension members on <see cref="ReadOnlySpan{T}"/> of <typeparamref name="TSource"/>.
 	/// </summary>
 	/// <typeparam name="TSource">The type of the elements of source.</typeparam>
+	/// <typeparam name="TKey">The type of key.</typeparam>
 	/// <param name="source">The collection to be used and checked.</param>
-	extension<TSource>(ReadOnlySpan<TSource> source)
+	extension<TSource, TKey>(ReadOnlySpan<TSource> source) where TKey : IMinMaxValue<TKey>, IComparisonOperators<TKey, TKey, bool>
 	{
 		/// <inheritdoc cref="Enumerable.MinBy{TSource, TKey}(IEnumerable{TSource}, Func{TSource, TKey})"/>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public TKey Min<TKey>(Func<TSource, TKey> keySelector)
-			where TKey : IMinMaxValue<TKey>, IComparisonOperators<TKey, TKey, bool>
+		public TKey Min(Func<TSource, TKey> keySelector)
 		{
 			var resultKey = TKey.MaxValue;
 			foreach (var element in source)
@@ -104,13 +99,7 @@ public partial class SpanEnumerable
 		}
 
 		/// <inheritdoc cref="IMinMaxMethod{TSelf, TSource}.MinBy{TKey}(Func{TSource, TKey})"/>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public TSource? MinBy<TKey>(Func<TSource, TKey> keySelector)
-			where TKey : IMinMaxValue<TKey>, IComparisonOperators<TKey, TKey, bool>
+		public TSource? MinBy(Func<TSource, TKey> keySelector)
 		{
 			var (resultKey, result) = (TKey.MaxValue, default(TSource));
 			foreach (var element in source)
@@ -124,13 +113,7 @@ public partial class SpanEnumerable
 		}
 
 		/// <inheritdoc cref="Enumerable.MaxBy{TSource, TKey}(IEnumerable{TSource}, Func{TSource, TKey})"/>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public TKey Max<TKey>(Func<TSource, TKey> keySelector)
-			where TKey : IMinMaxValue<TKey>, IComparisonOperators<TKey, TKey, bool>
+		public TKey Max(Func<TSource, TKey> keySelector)
 		{
 			var resultKey = TKey.MinValue;
 			foreach (var element in source)
@@ -145,13 +128,7 @@ public partial class SpanEnumerable
 		}
 
 		/// <inheritdoc cref="IMinMaxMethod{TSelf, TSource}.MaxBy{TKey}(Func{TSource, TKey})"/>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public TSource? MaxBy<TKey>(Func<TSource, TKey> keySelector)
-			where TKey : IMinMaxValue<TKey>, IComparisonOperators<TKey, TKey, bool>
+		public TSource? MaxBy(Func<TSource, TKey> keySelector)
 		{
 			var (resultKey, result) = (TKey.MinValue, default(TSource));
 			foreach (var element in source)
@@ -165,15 +142,9 @@ public partial class SpanEnumerable
 		}
 
 		/// <inheritdoc cref="Min{TSource, TKey}(ReadOnlySpan{TSource}, Func{TSource, TKey})"/>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public unsafe TResult? MinUnsafe<TResult>(delegate*<TSource, TResult> selector)
-			where TResult : IMinMaxValue<TResult>, IComparisonOperators<TResult, TResult, bool>
+		public unsafe TKey? MinUnsafe(delegate*<TSource, TKey> selector)
 		{
-			var result = TResult.MaxValue;
+			var result = TKey.MaxValue;
 			foreach (var element in source)
 			{
 				var elementCasted = selector(element);
@@ -186,15 +157,9 @@ public partial class SpanEnumerable
 		}
 
 		/// <inheritdoc cref="Max{TSource, TInterim}(ReadOnlySpan{TSource}, Func{TSource, TInterim})"/>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public unsafe TResult MaxUnsafe<TResult>(delegate*<TSource, TResult> selector)
-			where TResult : IMinMaxValue<TResult>, IComparisonOperators<TResult, TResult, bool>
+		public unsafe TKey MaxUnsafe(delegate*<TSource, TKey> selector)
 		{
-			var result = TResult.MinValue;
+			var result = TKey.MinValue;
 			foreach (var element in source)
 			{
 				var elementCasted = selector(element);

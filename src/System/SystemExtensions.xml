@@ -4828,7 +4828,7 @@
             <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Aggregate``1(``0,System.Func{``0,`0,``0})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.AllAre``2(System.ReadOnlySpan{``0})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.AllAre``1"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$820082AF12E4C05928AE7F9D60769318`2.AllAre"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.Any``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})">
             <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Any(System.Func{`0,System.Boolean})"/>
@@ -4849,7 +4849,7 @@
             <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Prepend(`0)"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.Average``2(System.ReadOnlySpan{``0})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$26E446860FBBD207AF9A4FA2F5009A42`1.Average``1"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$95C36E872E5FC9DB479EA9136F398474`2.Average"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.Count``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})">
             <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Count(System.Func{`0,System.Boolean})"/>
@@ -4888,52 +4888,52 @@
             <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Index"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.Cast``2(System.ReadOnlySpan{``0})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$FFE330DE2BA1167974EAAD8D08BAC8F2`1.Cast``1"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$8B6068962FE7ACF2E32516D0100F15E1`2.Cast"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.GroupBy``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.GroupBy``1(System.Func{`0,``0})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.GroupBy(System.Func{`0,`1})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.GroupBy``3(System.ReadOnlySpan{``0},System.Func{``0,``1},System.Func{``0,``2})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.GroupBy``2(System.Func{`0,``0},System.Func{`0,``1})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.GroupBy``1(System.Func{`0,`1},System.Func{`0,``0})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.Join``4(System.ReadOnlySpan{``0},System.ReadOnlySpan{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1,``3})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Join``3(System.ReadOnlySpan{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0,``2})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.Join(System.ReadOnlySpan{`1},System.Func{`0,`2},System.Func{`1,`2},System.Func{`0,`1,`3})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.Join``4(System.ReadOnlySpan{``0},System.ReadOnlySpan{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1,``3},System.Collections.Generic.IEqualityComparer{``2})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Join``3(System.ReadOnlySpan{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0,``2},System.Collections.Generic.IEqualityComparer{``1})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.Join(System.ReadOnlySpan{`1},System.Func{`0,`2},System.Func{`1,`2},System.Func{`0,`1,`3},System.Collections.Generic.IEqualityComparer{`2})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.GroupJoin``4(System.ReadOnlySpan{``0},System.ReadOnlySpan{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1[],``3})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.GroupJoin``3(System.ReadOnlySpan{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0[],``2})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.GroupJoin(System.ReadOnlySpan{`1},System.Func{`0,`2},System.Func{`1,`2},System.Func{`0,`1[],`3})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.GroupJoin``4(System.ReadOnlySpan{``0},System.ReadOnlySpan{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1[],``3},System.Collections.Generic.IEqualityComparer{``2})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.GroupJoin``3(System.ReadOnlySpan{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0[],``2},System.Collections.Generic.IEqualityComparer{``1})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.GroupJoin(System.ReadOnlySpan{`1},System.Func{`0,`2},System.Func{`1,`2},System.Func{`0,`1[],`3},System.Collections.Generic.IEqualityComparer{`2})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.LeftJoin``4(System.ReadOnlySpan{``0},System.ReadOnlySpan{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1,``3})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.LeftJoin``3(System.ReadOnlySpan{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0,``2})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.LeftJoin(System.ReadOnlySpan{`1},System.Func{`0,`2},System.Func{`1,`2},System.Func{`0,`1,`3})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.LeftJoin``4(System.ReadOnlySpan{``0},System.ReadOnlySpan{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1,``3},System.Collections.Generic.IEqualityComparer{``2})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.LeftJoin``3(System.ReadOnlySpan{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0,``2},System.Collections.Generic.IEqualityComparer{``1})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.LeftJoin(System.ReadOnlySpan{`1},System.Func{`0,`2},System.Func{`1,`2},System.Func{`0,`1,`3},System.Collections.Generic.IEqualityComparer{`2})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.OrderBy``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.OrderBy``1(System.Func{`0,``0})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.OrderBy(System.Func{`0,`1})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.OrderByDescending``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.OrderByDescending``1(System.Func{`0,``0})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.OrderByDescending(System.Func{`0,`1})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.RightJoin``4(System.ReadOnlySpan{``0},System.ReadOnlySpan{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1,``3})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.RightJoin``3(System.ReadOnlySpan{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0,``2})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.RightJoin(System.ReadOnlySpan{`1},System.Func{`0,`2},System.Func{`1,`2},System.Func{`0,`1,`3})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.RightJoin``4(System.ReadOnlySpan{``0},System.ReadOnlySpan{``1},System.Func{``0,``2},System.Func{``1,``2},System.Func{``0,``1,``3},System.Collections.Generic.IEqualityComparer{``2})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.RightJoin``3(System.ReadOnlySpan{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0,``2},System.Collections.Generic.IEqualityComparer{``1})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.RightJoin(System.ReadOnlySpan{`1},System.Func{`0,`2},System.Func{`1,`2},System.Func{`0,`1,`3},System.Collections.Generic.IEqualityComparer{`2})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.Select``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Select``1(System.Func{`0,``0})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.Select(System.Func{`0,`1})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.Select``2(System.ReadOnlySpan{``0},System.Func{``0,System.Int32,``1})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Select``1(System.Func{`0,System.Int32,``0})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.Select(System.Func{`0,System.Int32,`1})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.SelectMany``3(System.ReadOnlySpan{``0},System.Func{``0,System.ReadOnlySpan{``1}},System.Func{``0,``1,``2})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.SelectMany``2(System.Func{`0,System.ReadOnlySpan{``0}},System.Func{`0,``0,``1})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CF1AF8976D98C79A28BF4CC47EC9C3C2`3.SelectMany(System.Func{`0,System.ReadOnlySpan{`1}},System.Func{`0,`1,`2})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.Where``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})">
             <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Where(System.Func{`0,System.Boolean})"/>
@@ -4954,25 +4954,25 @@
             <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$9B32EBE4F7135650D6B2B0B731223DE0`1.MaxIf(System.Func{`0,System.Boolean},`0)"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.Min``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Min``1(System.Func{`0,``0})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$A0A93ED0BFFB79236E8549E26C68A70E`2.Min(System.Func{`0,`1})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.MinBy``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.MinBy``1(System.Func{`0,``0})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$A0A93ED0BFFB79236E8549E26C68A70E`2.MinBy(System.Func{`0,`1})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.Max``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Max``1(System.Func{`0,``0})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$A0A93ED0BFFB79236E8549E26C68A70E`2.Max(System.Func{`0,`1})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.MaxBy``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.MaxBy``1(System.Func{`0,``0})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$A0A93ED0BFFB79236E8549E26C68A70E`2.MaxBy(System.Func{`0,`1})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.MinUnsafe``2(System.ReadOnlySpan{``0},)">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.MinUnsafe``1()"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$A0A93ED0BFFB79236E8549E26C68A70E`2.MinUnsafe()"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.MaxUnsafe``2(System.ReadOnlySpan{``0},)">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.MaxUnsafe``1()"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$A0A93ED0BFFB79236E8549E26C68A70E`2.MaxUnsafe()"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.OfType``2(System.ReadOnlySpan{``0})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$FFE330DE2BA1167974EAAD8D08BAC8F2`1.OfType``1"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$8B6068962FE7ACF2E32516D0100F15E1`2.OfType"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.Shuffle``1(System.ReadOnlySpan{``0})">
             <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Shuffle"/>
@@ -5016,10 +5016,10 @@
             <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$F368733711600E661078C53D2C8B3C54`1.Sum"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.Sum``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Sum``1(System.Func{`0,``0})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$4DC322667FF6E0C10C307FF9530F2BD7`2.Sum(System.Func{`0,`1})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.SumUnsafe``2(System.ReadOnlySpan{``0},)">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.SumUnsafe``1()"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$4DC322667FF6E0C10C307FF9530F2BD7`2.SumUnsafe()"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.Take``1(System.ReadOnlySpan{``0},System.Int32)">
             <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Take(System.Int32)"/>
@@ -5028,19 +5028,19 @@
             <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Take(System.Range)"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.ToLookup``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.ToLookup``1(System.Func{`0,``0})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.ToLookup(System.Func{`0,`1})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.ToLookup``2(System.ReadOnlySpan{``0},System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.ToLookup``1(System.Func{`0,``0},System.Collections.Generic.IEqualityComparer{``0})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.ToLookup(System.Func{`0,`1},System.Collections.Generic.IEqualityComparer{`1})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.ToLookup``3(System.ReadOnlySpan{``0},System.Func{``0,``1},System.Func{``0,``2})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.ToLookup``2(System.Func{`0,``0},System.Func{`0,``1})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.ToLookup``1(System.Func{`0,`1},System.Func{`0,``0})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.ToLookup``3(System.ReadOnlySpan{``0},System.Func{``0,``1},System.Func{``0,``2},System.Collections.Generic.IEqualityComparer{``1})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.ToLookup``2(System.Func{`0,``0},System.Func{`0,``1},System.Collections.Generic.IEqualityComparer{``0})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.ToLookup``1(System.Func{`0,`1},System.Func{`0,``0},System.Collections.Generic.IEqualityComparer{`1})"/>
         </member>
         <member name="M:System.Linq.SpanEnumerable.Zip``2(System.ReadOnlySpan{``0},System.ReadOnlySpan{``1})">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Zip``1(System.ReadOnlySpan{``0})"/>
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.Zip(System.ReadOnlySpan{`1})"/>
         </member>
         <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.&lt;M&gt;$2B9DCBEEBA9F43BDE8E1D0F175D95198">
             <summary>
@@ -5091,34 +5091,6 @@
             </summary>
             <typeparam name="TSource">The type of the elements of source.</typeparam>
             <param name="source">The collection to be used and checked.</param>
-            <summary>
-            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
-            </summary>
-            <typeparam name="TSource">The type of the elements of source.</typeparam>
-            <param name="source">The collection to be used and checked.</param>
-            <summary>
-            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
-            </summary>
-            <typeparam name="TSource">The type of the elements of source.</typeparam>
-            <param name="source">The collection to be used and checked.</param>
-            <summary>
-            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
-            </summary>
-            <typeparam name="TSource">The type of the elements of source.</typeparam>
-            <param name="source">The collection to be used and checked.</param>
-            <summary>
-            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
-            </summary>
-            <typeparam name="TSource">The type of the elements of source.</typeparam>
-            <param name="source">The collection to be used and checked.</param>
-            <summary>
-            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
-            </summary>
-            <typeparam name="TSource">The type of the elements of source.</typeparam>
-            <param name="source">The collection to be used and checked.</param>
-            <summary>
-            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
-            </summary>
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
             </summary>
@@ -5247,28 +5219,92 @@
         <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Index">
             <inheritdoc cref="M:System.Linq.Enumerable.Index``1(System.Collections.Generic.IEnumerable{``0})"/>
         </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.GroupBy``1(System.Func{`0,``0})">
-            <inheritdoc cref="M:System.Linq.Providers.IGroupByMethod`2.GroupBy``1(System.Func{`1,``0})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Where(System.Func{`0,System.Boolean})">
+            <inheritdoc cref="M:System.Linq.Providers.IWhereMethod`2.Where(System.Func{`1,System.Boolean})"/>
         </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.GroupBy``2(System.Func{`0,``0},System.Func{`0,``1})">
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Where(System.Func{`0,System.Int32,System.Boolean})">
+            <inheritdoc cref="M:System.Linq.Providers.IWhereMethod`2.Where(System.Func{`1,System.Int32,System.Boolean})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Shuffle">
+            <inheritdoc cref="M:System.Linq.Providers.IShuffleMethod`2.Shuffle"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Shuffle(System.Random)">
+            <inheritdoc cref="M:System.Linq.Providers.IShuffleMethod`2.Shuffle(System.Random)"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Skip(System.Int32)">
+            <inheritdoc cref="M:System.Linq.Providers.ISkipMethod`2.Skip(System.Int32)"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Take(System.Int32)">
+            <inheritdoc cref="M:System.Linq.Providers.ITakeMethod`2.Take(System.Int32)"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Take(System.Range)">
+            <inheritdoc cref="M:System.Linq.Providers.ITakeMethod`2.Take(System.Range)"/>
+        </member>
+        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$820082AF12E4C05928AE7F9D60769318`2.&lt;M&gt;$EA79DD02B926A60430C8DD2D7B809C79">
+            <summary>
+            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TBase"/>.
+            </summary>
+            <typeparam name="TBase">The type of the elements of source.</typeparam>
+            <typeparam name="TDerived">The derived type to be checked.</typeparam>
+            <param name="source">The collection to be used and checked.</param>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$820082AF12E4C05928AE7F9D60769318`2.AllAre">
+            <summary>
+            Determines whether all elements are of type <typeparamref name="TDerived"/>.
+            </summary>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$95C36E872E5FC9DB479EA9136F398474`2.&lt;M&gt;$045C23228951258311D829FC0662BB84">
+            <summary>
+            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
+            </summary>
+            <typeparam name="TSource">The type of the elements of source.</typeparam>
+            <typeparam name="TResult">The type of result.</typeparam>
+            <param name="source">The collection to be used and checked.</param>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$95C36E872E5FC9DB479EA9136F398474`2.Average">
+            <inheritdoc cref="M:System.Linq.Providers.IAverageMethod`2.Average``2"/>
+        </member>
+        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$8B6068962FE7ACF2E32516D0100F15E1`2.&lt;M&gt;$C0B74855B6E314786EC35A9126F430B5">
+            <summary>
+            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
+            </summary>
+            <typeparam name="TSource">The type of the elements of source.</typeparam>
+            <typeparam name="TDerived">The desired derived type.</typeparam>
+            <param name="source">The collection to be used and checked.</param>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$8B6068962FE7ACF2E32516D0100F15E1`2.Cast">
+            <inheritdoc cref="M:System.Linq.Providers.ICastMethod`2.Cast``1"/>
+        </member>
+        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$8B6068962FE7ACF2E32516D0100F15E1`2.&lt;M&gt;$02985302DBA88C2D91A6247F7B1CB867">
+            <summary>
+            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
+            </summary>
+            <typeparam name="TSource">The type of the elements of source.</typeparam>
+            <typeparam name="TResult">The type of result.</typeparam>
+            <param name="source">The collection to be used and checked.</param>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$8B6068962FE7ACF2E32516D0100F15E1`2.OfType">
+            <inheritdoc cref="M:System.Linq.Providers.IOfTypeMethod`2.OfType``1"/>
+        </member>
+        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.&lt;M&gt;$8F2D1E0049B4CEC3C881F5A54146CA76">
+            <summary>
+            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
+            </summary>
+            <typeparam name="TSource">The type of the elements of source.</typeparam>
+            <typeparam name="TKey">The type of key.</typeparam>
+            <param name="source">The collection to be used and checked.</param>
+            <summary>
+            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
+            </summary>
+            <typeparam name="TSource">The type of source elements.</typeparam>
+            <typeparam name="TKey">The type of key.</typeparam>
+            <param name="source">The source.</param>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.GroupBy(System.Func{`0,`1})">
+            <inheritdoc cref="M:System.Linq.Providers.IGroupByMethod`2.GroupBy``1(System.Func{`1,``0})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.GroupBy``1(System.Func{`0,`1},System.Func{`0,``0})">
             <inheritdoc cref="M:System.Linq.Providers.IGroupByMethod`2.GroupBy``2(System.Func{`1,``0},System.Func{`1,``1})" />
             <remarks>
             <target name="generic-method">
@@ -5289,306 +5325,13 @@
 			</target>
             </remarks>
         </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.OrderBy``1(System.Func{`0,``0})">
-            <inheritdoc cref="M:System.Linq.Providers.IOrderByMethod`2.OrderBy``1(System.Func{`1,``0})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.ToLookup(System.Func{`0,`1})">
+            <inheritdoc cref="M:System.Linq.Enumerable.ToLookup``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})"/>
         </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.OrderByDescending``1(System.Func{`0,``0})">
-            <inheritdoc cref="M:System.Linq.Providers.IOrderByMethod`2.OrderByDescending``1(System.Func{`1,``0})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.ToLookup(System.Func{`0,`1},System.Collections.Generic.IEqualityComparer{`1})">
+            <inheritdoc cref="M:System.Linq.Enumerable.ToLookup``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})"/>
         </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.SelectMany``2(System.Func{`0,System.ReadOnlySpan{``0}},System.Func{`0,``0,``1})">
-            <inheritdoc cref="M:System.Linq.Providers.ISelectManyMethod`2.SelectMany``2(System.Func{`1,System.Collections.Generic.IEnumerable{``0}},System.Func{`1,``0,``1})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Where(System.Func{`0,System.Boolean})">
-            <inheritdoc cref="M:System.Linq.Providers.IWhereMethod`2.Where(System.Func{`1,System.Boolean})"/>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Where(System.Func{`0,System.Int32,System.Boolean})">
-            <inheritdoc cref="M:System.Linq.Providers.IWhereMethod`2.Where(System.Func{`1,System.Int32,System.Boolean})"/>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Min``1(System.Func{`0,``0})">
-            <inheritdoc cref="M:System.Linq.Enumerable.MinBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.MinBy``1(System.Func{`0,``0})">
-            <inheritdoc cref="M:System.Linq.Providers.IMinMaxMethod`2.MinBy``1(System.Func{`1,``0})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Max``1(System.Func{`0,``0})">
-            <inheritdoc cref="M:System.Linq.Enumerable.MaxBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.MaxBy``1(System.Func{`0,``0})">
-            <inheritdoc cref="M:System.Linq.Providers.IMinMaxMethod`2.MaxBy``1(System.Func{`1,``0})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.MinUnsafe``1()">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.Min``2(System.ReadOnlySpan{``0},System.Func{``0,``1})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.MaxUnsafe``1()">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.Max``2(System.ReadOnlySpan{``0},System.Func{``0,``1})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Shuffle">
-            <inheritdoc cref="M:System.Linq.Providers.IShuffleMethod`2.Shuffle"/>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Shuffle(System.Random)">
-            <inheritdoc cref="M:System.Linq.Providers.IShuffleMethod`2.Shuffle(System.Random)"/>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Skip(System.Int32)">
-            <inheritdoc cref="M:System.Linq.Providers.ISkipMethod`2.Skip(System.Int32)"/>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Sum``1(System.Func{`0,``0})">
-            <summary>
-            Totals up all elements, and return the result of the sum by the specified property calculated from each element.
-            </summary>
-            <typeparam name="TKey">The type of key to add up.</typeparam>
-            <param name="keySelector">A function to extract the key for each element.</param>
-            <returns>The value with the sum key in the sequence.</returns>
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.SumUnsafe``1()">
-            <inheritdoc cref="M:System.Linq.SpanEnumerable.Sum``2(System.ReadOnlySpan{``0},System.Func{``0,``1})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Take(System.Int32)">
-            <inheritdoc cref="M:System.Linq.Providers.ITakeMethod`2.Take(System.Int32)"/>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Take(System.Range)">
-            <inheritdoc cref="M:System.Linq.Providers.ITakeMethod`2.Take(System.Range)"/>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.ToLookup``1(System.Func{`0,``0})">
-            <inheritdoc cref="M:System.Linq.Enumerable.ToLookup``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.ToLookup``1(System.Func{`0,``0},System.Collections.Generic.IEqualityComparer{``0})">
-            <inheritdoc cref="M:System.Linq.Enumerable.ToLookup``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Collections.Generic.IEqualityComparer{``1})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.ToLookup``2(System.Func{`0,``0},System.Func{`0,``1})">
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.ToLookup``1(System.Func{`0,`1},System.Func{`0,``0})">
             <inheritdoc cref="M:System.Linq.Enumerable.ToLookup``3(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Func{``0,``2})" />
             <remarks>
             <target name="generic-method">
@@ -5609,7 +5352,7 @@
 			</target>
             </remarks>
         </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.ToLookup``2(System.Func{`0,``0},System.Func{`0,``1},System.Collections.Generic.IEqualityComparer{``0})">
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.ToLookup``1(System.Func{`0,`1},System.Func{`0,``0},System.Collections.Generic.IEqualityComparer{`1})">
             <inheritdoc cref="M:System.Linq.Enumerable.ToLookup``3(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Func{``0,``2},System.Collections.Generic.IEqualityComparer{``1})" />
             <remarks>
             <target name="generic-method">
@@ -5630,134 +5373,84 @@
 			</target>
             </remarks>
         </member>
-        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.&lt;M&gt;$0A1F3DA87E0A1AC60375539DFE72F604">
+        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.&lt;M&gt;$FC7C48A6A202DCB795C8995E21EA4FBF">
             <summary>
-            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TBase"/>.
+            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
             </summary>
-            <typeparam name="TBase">The type of the elements of source.</typeparam>
+            <typeparam name="TSource">The type of the elements of source.</typeparam>
+            <typeparam name="TKey">The type of key.</typeparam>
             <param name="source">The collection to be used and checked.</param>
         </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.AllAre``1">
-            <summary>
-            Determines whether all elements are of type <typeparamref name="TDerived" />.
-            </summary>
-            <typeparam name="TDerived">The derived type to be checked.</typeparam>
-            <returns>A <see cref="T:System.Boolean" /> result indicating that.</returns>
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.OrderBy(System.Func{`0,`1})">
+            <inheritdoc cref="M:System.Linq.Providers.IOrderByMethod`2.OrderBy``1(System.Func{`1,``0})"/>
         </member>
-        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.&lt;M&gt;$A560EF788370214EDB3C842C70D1E41F">
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.OrderByDescending(System.Func{`0,`1})">
+            <inheritdoc cref="M:System.Linq.Providers.IOrderByMethod`2.OrderByDescending``1(System.Func{`1,``0})"/>
+        </member>
+        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.&lt;M&gt;$25855729DE43F1F557D14879124641FB">
+            <summary>
+            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
+            </summary>
+            <typeparam name="TSource">The type of the elements of source.</typeparam>
+            <typeparam name="TResult">The type of result.</typeparam>
+            <param name="source">The collection to be used and checked.</param>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.Select(System.Func{`0,`1})">
+            <inheritdoc cref="M:System.Linq.Providers.ISelectMethod`2.Select``1(System.Func{`1,``0})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.Select(System.Func{`0,System.Int32,`1})">
+            <inheritdoc cref="M:System.Linq.Providers.ISelectMethod`2.Select``1(System.Func{`1,System.Int32,``0})"/>
+        </member>
+        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.&lt;M&gt;$CC27C30096C95C0BC13A0D53B290A18B">
+            <summary>
+            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TFirst"/>.
+            </summary>
+            <typeparam name="TFirst">The type of the first source elements.</typeparam>
+            <typeparam name="TSecond">The type of the second source elements.</typeparam>
+            <param name="first">The first sequence.</param>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$38406200860C59512D7718BA1AC2471B`2.Zip(System.ReadOnlySpan{`1})">
+            <inheritdoc cref="M:System.Linq.Enumerable.Zip``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1})"/>
+        </member>
+        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.&lt;M&gt;$200A7608D55A1827E94E39C9272D36E3">
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TOuter"/>.
             </summary>
+            <typeparam name="TOuter">The type of the elements of the first sequence.</typeparam>
+            <typeparam name="TInner">The type of the elements of the second sequence.</typeparam>
+            <typeparam name="TKey">The type of the keys returned by the key selector functions.</typeparam>
+            <typeparam name="TResult">The type of the result elements.</typeparam>
+            <param name="outer">The first sequence to join.</param>
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TOuter"/>.
             </summary>
+            <typeparam name="TOuter">The type of the elements of the first sequence.</typeparam>
+            <typeparam name="TInner">The type of the elements of the second sequence.</typeparam>
+            <typeparam name="TKey">The type of the keys returned by the key selector functions.</typeparam>
+            <typeparam name="TResult">The type of the result elements.</typeparam>
+            <param name="outer">The first sequence to join.</param>
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TOuter"/>.
             </summary>
+            <typeparam name="TOuter">The type of the elements of the first sequence.</typeparam>
+            <typeparam name="TInner">The type of the elements of the second sequence.</typeparam>
+            <typeparam name="TKey">The type of the keys returned by the key selector functions.</typeparam>
+            <typeparam name="TResult">The type of the result elements.</typeparam>
+            <param name="outer">The first sequence to join.</param>
         </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Join``3(System.ReadOnlySpan{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0,``2})">
-            <inheritdoc cref="M:System.Linq.Providers.IJoinMethod`2.Join``3(System.Collections.Generic.IEnumerable{``0},System.Func{`1,``1},System.Func{``0,``1},System.Func{`1,``0,``2})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.Join(System.ReadOnlySpan{`1},System.Func{`0,`2},System.Func{`1,`2},System.Func{`0,`1,`3})">
+            <inheritdoc cref="M:System.Linq.Providers.IJoinMethod`2.Join``3(System.Collections.Generic.IEnumerable{``0},System.Func{`1,``1},System.Func{``0,``1},System.Func{`1,``0,``2})"/>
         </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Join``3(System.ReadOnlySpan{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0,``2},System.Collections.Generic.IEqualityComparer{``1})">
-            <inheritdoc cref="M:System.Linq.Providers.IJoinMethod`2.Join``3(System.Collections.Generic.IEnumerable{``0},System.Func{`1,``1},System.Func{``0,``1},System.Func{`1,``0,``2},System.Collections.Generic.IEqualityComparer{``1})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.Join(System.ReadOnlySpan{`1},System.Func{`0,`2},System.Func{`1,`2},System.Func{`0,`1,`3},System.Collections.Generic.IEqualityComparer{`2})">
+            <inheritdoc cref="M:System.Linq.Providers.IJoinMethod`2.Join``3(System.Collections.Generic.IEnumerable{``0},System.Func{`1,``1},System.Func{``0,``1},System.Func{`1,``0,``2},System.Collections.Generic.IEqualityComparer{``1})"/>
         </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.GroupJoin``3(System.ReadOnlySpan{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0[],``2})">
-            <inheritdoc cref="M:System.Linq.Providers.IJoinMethod`2.GroupJoin``3(System.Collections.Generic.IEnumerable{``0},System.Func{`1,``1},System.Func{``0,``1},System.Func{`1,System.Collections.Generic.IEnumerable{``0},``2})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.GroupJoin(System.ReadOnlySpan{`1},System.Func{`0,`2},System.Func{`1,`2},System.Func{`0,`1[],`3})">
+            <inheritdoc cref="M:System.Linq.Providers.IJoinMethod`2.GroupJoin``3(System.Collections.Generic.IEnumerable{``0},System.Func{`1,``1},System.Func{``0,``1},System.Func{`1,System.Collections.Generic.IEnumerable{``0},``2})"/>
         </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.GroupJoin``3(System.ReadOnlySpan{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0[],``2},System.Collections.Generic.IEqualityComparer{``1})">
-            <inheritdoc cref="M:System.Linq.Providers.IJoinMethod`2.GroupJoin``3(System.Collections.Generic.IEnumerable{``0},System.Func{`1,``1},System.Func{``0,``1},System.Func{`1,System.Collections.Generic.IEnumerable{``0},``2},System.Collections.Generic.IEqualityComparer{``1})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.GroupJoin(System.ReadOnlySpan{`1},System.Func{`0,`2},System.Func{`1,`2},System.Func{`0,`1[],`3},System.Collections.Generic.IEqualityComparer{`2})">
+            <inheritdoc cref="M:System.Linq.Providers.IJoinMethod`2.GroupJoin``3(System.Collections.Generic.IEnumerable{``0},System.Func{`1,``1},System.Func{``0,``1},System.Func{`1,System.Collections.Generic.IEnumerable{``0},``2},System.Collections.Generic.IEqualityComparer{``1})"/>
         </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.LeftJoin``3(System.ReadOnlySpan{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0,``2})">
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.LeftJoin(System.ReadOnlySpan{`1},System.Func{`0,`2},System.Func{`1,`2},System.Func{`0,`1,`3})">
             <inheritdoc cref="M:System.Linq.Providers.ILeftJoinMethod`2.LeftJoin``3(System.Collections.Generic.IEnumerable{``0},System.Func{`1,``1},System.Func{``0,``1},System.Func{`1,``0,``2})" />
             <remarks>
             <target name="generic-method">
@@ -5778,225 +5471,26 @@
 			</target>
             </remarks>
         </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.LeftJoin``3(System.ReadOnlySpan{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0,``2},System.Collections.Generic.IEqualityComparer{``1})">
-            <inheritdoc cref="M:System.Linq.Providers.ILeftJoinMethod`2.LeftJoin``3(System.Collections.Generic.IEnumerable{``0},System.Func{`1,``1},System.Func{``0,``1},System.Func{`1,``0,``2},System.Collections.Generic.IEqualityComparer{``1})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.LeftJoin(System.ReadOnlySpan{`1},System.Func{`0,`2},System.Func{`1,`2},System.Func{`0,`1,`3},System.Collections.Generic.IEqualityComparer{`2})">
+            <inheritdoc cref="M:System.Linq.Providers.ILeftJoinMethod`2.LeftJoin``3(System.Collections.Generic.IEnumerable{``0},System.Func{`1,``1},System.Func{``0,``1},System.Func{`1,``0,``2},System.Collections.Generic.IEqualityComparer{``1})"/>
         </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.RightJoin``3(System.ReadOnlySpan{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0,``2})">
-            <inheritdoc cref="M:System.Linq.Providers.IRightJoinMethod`2.RightJoin``3(System.Collections.Generic.IEnumerable{``0},System.Func{`1,``1},System.Func{``0,``1},System.Func{`1,``0,``2})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.RightJoin(System.ReadOnlySpan{`1},System.Func{`0,`2},System.Func{`1,`2},System.Func{`0,`1,`3})">
+            <inheritdoc cref="M:System.Linq.Providers.IRightJoinMethod`2.RightJoin``3(System.Collections.Generic.IEnumerable{``0},System.Func{`1,``1},System.Func{``0,``1},System.Func{`1,``0,``2})"/>
         </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.RightJoin``3(System.ReadOnlySpan{``0},System.Func{`0,``1},System.Func{``0,``1},System.Func{`0,``0,``2},System.Collections.Generic.IEqualityComparer{``1})">
-            <inheritdoc cref="M:System.Linq.Providers.IRightJoinMethod`2.RightJoin``3(System.Collections.Generic.IEnumerable{``0},System.Func{`1,``1},System.Func{``0,``1},System.Func{`1,``0,``2},System.Collections.Generic.IEqualityComparer{``1})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$96DADA9693FBF79CFC7F6CEEC4EC4699`4.RightJoin(System.ReadOnlySpan{`1},System.Func{`0,`2},System.Func{`1,`2},System.Func{`0,`1,`3},System.Collections.Generic.IEqualityComparer{`2})">
+            <inheritdoc cref="M:System.Linq.Providers.IRightJoinMethod`2.RightJoin``3(System.Collections.Generic.IEnumerable{``0},System.Func{`1,``1},System.Func{``0,``1},System.Func{`1,``0,``2},System.Collections.Generic.IEqualityComparer{``1})"/>
         </member>
-        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.&lt;M&gt;$8F7D9FC1D0F1BFA6C70A5BC51506BF85">
+        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$CF1AF8976D98C79A28BF4CC47EC9C3C2`3.&lt;M&gt;$7917385B91FBAFED3D8CBBE384E86DFC">
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
             </summary>
             <typeparam name="TSource">The type of the elements of source.</typeparam>
+            <typeparam name="TCollection">The type of interim collection elements.</typeparam>
+            <typeparam name="TResult">The type of result.</typeparam>
             <param name="source">The collection to be used and checked.</param>
         </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Select``1(System.Func{`0,``0})">
-            <inheritdoc cref="M:System.Linq.Providers.ISelectMethod`2.Select``1(System.Func{`1,``0})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Select``1(System.Func{`0,System.Int32,``0})">
-            <inheritdoc cref="M:System.Linq.Providers.ISelectMethod`2.Select``1(System.Func{`1,System.Int32,``0})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.&lt;M&gt;$F5EF6AB98DF4AF94CC382E5B0E6993B2">
-            <summary>
-            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TFirst"/>.
-            </summary>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.Zip``1(System.ReadOnlySpan{``0})">
-            <inheritdoc cref="M:System.Linq.Enumerable.Zip``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1})" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$26E446860FBBD207AF9A4FA2F5009A42`1.&lt;M&gt;$29C6A1A890593500C952C2D0EA74287F">
-            <summary>
-            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
-            </summary>
-            <typeparam name="TSource">The type of the elements of source.</typeparam>
-            <param name="source">The collection to be used and checked.</param>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$26E446860FBBD207AF9A4FA2F5009A42`1.Average``1">
-            <inheritdoc cref="M:System.Linq.Providers.IAverageMethod`2.Average``2" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$FFE330DE2BA1167974EAAD8D08BAC8F2`1.&lt;M&gt;$D8B9F2A326AD5E21093CFD8D850E2FC4">
-            <summary>
-            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
-            </summary>
-            <typeparam name="TSource">The type of the elements of source.</typeparam>
-            <param name="source">The collection to be used and checked.</param>
-            <summary>
-            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
-            </summary>
-            <typeparam name="TSource">The type of the elements of source.</typeparam>
-            <param name="source">The collection to be used and checked.</param>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$FFE330DE2BA1167974EAAD8D08BAC8F2`1.Cast``1">
-            <inheritdoc cref="M:System.Linq.Providers.ICastMethod`2.Cast``1" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
-        </member>
-        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$FFE330DE2BA1167974EAAD8D08BAC8F2`1.OfType``1">
-            <inheritdoc cref="M:System.Linq.Providers.IOfTypeMethod`2.OfType``1" />
-            <remarks>
-            <target name="generic-method">
-				<para>
-					Starting with C# 14, the <b>extension member</b> feature is supported.
-					When an <see langword="extension" /> block declaration has generic parameters
-					that are used by its formal parameters,
-					the method members inside the <see langword="extension" /> block will prepend those generic parameters
-					so that they become part of the method's signature.
-				</para>
-				<para>
-					For example, if you have <c>extension&lt;T&gt;(T instance)</c> that contains a method
-					<c>DoSomething&lt;TAnother&gt;()</c>, then the actual generic parameters of <c>DoSomething</c> are
-					<c>DoSomething&lt;T, TAnother&gt;</c>. Even if <c>T</c> does not need to be specified,
-					when <c>TAnother</c> must be provided, both generic parameters still need to be declared,
-					following the rules of generic methods in C#.
-				</para>
-			</target>
-            </remarks>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$CF1AF8976D98C79A28BF4CC47EC9C3C2`3.SelectMany(System.Func{`0,System.ReadOnlySpan{`1}},System.Func{`0,`1,`2})">
+            <inheritdoc cref="M:System.Linq.Providers.ISelectManyMethod`2.SelectMany``2(System.Func{`1,System.Collections.Generic.IEnumerable{``0}},System.Func{`1,``0,``1})"/>
         </member>
         <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$9B32EBE4F7135650D6B2B0B731223DE0`1.&lt;M&gt;$61A865E0E47D95252423A847EC7BE94D">
             <summary>
@@ -6026,6 +5520,32 @@
             <param name="default">The default value if all elements in sequence are ignored.</param>
             <returns>The maximum value.</returns>
         </member>
+        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$A0A93ED0BFFB79236E8549E26C68A70E`2.&lt;M&gt;$FF6A3D722187D088CECEF15709A3D70B">
+            <summary>
+            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
+            </summary>
+            <typeparam name="TSource">The type of the elements of source.</typeparam>
+            <typeparam name="TKey">The type of key.</typeparam>
+            <param name="source">The collection to be used and checked.</param>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$A0A93ED0BFFB79236E8549E26C68A70E`2.Min(System.Func{`0,`1})">
+            <inheritdoc cref="M:System.Linq.Enumerable.MinBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$A0A93ED0BFFB79236E8549E26C68A70E`2.MinBy(System.Func{`0,`1})">
+            <inheritdoc cref="M:System.Linq.Providers.IMinMaxMethod`2.MinBy``1(System.Func{`1,``0})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$A0A93ED0BFFB79236E8549E26C68A70E`2.Max(System.Func{`0,`1})">
+            <inheritdoc cref="M:System.Linq.Enumerable.MaxBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$A0A93ED0BFFB79236E8549E26C68A70E`2.MaxBy(System.Func{`0,`1})">
+            <inheritdoc cref="M:System.Linq.Providers.IMinMaxMethod`2.MaxBy``1(System.Func{`1,``0})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$A0A93ED0BFFB79236E8549E26C68A70E`2.MinUnsafe()">
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.Min``2(System.ReadOnlySpan{``0},System.Func{``0,``1})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$A0A93ED0BFFB79236E8549E26C68A70E`2.MaxUnsafe()">
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.Max``2(System.ReadOnlySpan{``0},System.Func{``0,``1})"/>
+        </member>
         <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$F368733711600E661078C53D2C8B3C54`1.&lt;M&gt;$F5C6868450D09C1AF65FDD8CAB816AD1">
             <summary>
             Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
@@ -6035,6 +5555,24 @@
         </member>
         <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$F368733711600E661078C53D2C8B3C54`1.Sum">
             <inheritdoc cref="M:System.Linq.Providers.ISumMethod`2.Sum"/>
+        </member>
+        <member name="T:System.Linq.SpanEnumerable.&lt;G&gt;$4DC322667FF6E0C10C307FF9530F2BD7`2.&lt;M&gt;$8FCCCA786162685846624531D3B2B9E9">
+            <summary>
+            Provides extension members on <see cref="T:System.ReadOnlySpan`1"/> of <typeparamref name="TSource"/>.
+            </summary>
+            <typeparam name="TSource">The type of the elements of source.</typeparam>
+            <typeparam name="TKey">The type of key to add up.</typeparam>
+            <param name="source">The collection to be used and checked.</param>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$4DC322667FF6E0C10C307FF9530F2BD7`2.Sum(System.Func{`0,`1})">
+            <summary>
+            Totals up all elements, and return the result of the sum by the specified property calculated from each element.
+            </summary>
+            <param name="keySelector">A function to extract the key for each element.</param>
+            <returns>The value with the sum key in the sequence.</returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.&lt;G&gt;$4DC322667FF6E0C10C307FF9530F2BD7`2.SumUnsafe()">
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.Sum``2(System.ReadOnlySpan{``0},System.Func{``0,``1})"/>
         </member>
         <member name="T:System.Linq.SpanGrouping`2">
             <summary>

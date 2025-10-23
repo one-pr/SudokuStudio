@@ -22,7 +22,7 @@ public partial class SpanEnumerable
 	public static ReadOnlySpan<TInteger> Range<TInteger>(int count) where TInteger : IBinaryInteger<TInteger>
 	{
 		var one = TInteger.CreateChecked(1);
-		return Range(TInteger.Zero, count, previous => previous + one);
+		return Range(TInteger.AdditiveIdentity, count, previous => previous + one);
 	}
 
 	/// <summary>

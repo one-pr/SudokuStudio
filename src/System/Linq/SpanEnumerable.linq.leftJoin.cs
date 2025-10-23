@@ -5,7 +5,12 @@ public partial class SpanEnumerable
 	/// <summary>
 	/// Provides extension members on <see cref="ReadOnlySpan{T}"/> of <typeparamref name="TOuter"/>.
 	/// </summary>
-	extension<TOuter>(ReadOnlySpan<TOuter> outer)
+	/// <typeparam name="TOuter">The type of the elements of the first sequence.</typeparam>
+	/// <typeparam name="TInner">The type of the elements of the second sequence.</typeparam>
+	/// <typeparam name="TKey">The type of the keys returned by the key selector functions.</typeparam>
+	/// <typeparam name="TResult">The type of the result elements.</typeparam>
+	/// <param name="outer">The first sequence to join.</param>
+	extension<TOuter, TInner, TKey, TResult>(ReadOnlySpan<TOuter> outer) where TKey : notnull
 	{
 		/// <inheritdoc cref="ILeftJoinMethod{TSelf, TSource}.LeftJoin{TInner, TKey, TResult}(IEnumerable{TInner}, Func{TSource, TKey}, Func{TInner, TKey}, Func{TSource, TInner, TResult})"/>
 		/// <remarks>
@@ -13,27 +18,21 @@ public partial class SpanEnumerable
 		///     file="../../global-doc-comments.xml"
 		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
 		/// </remarks>
-		public ReadOnlySpan<TResult?> LeftJoin<TInner, TKey, TResult>(
+		public ReadOnlySpan<TResult?> LeftJoin(
 			ReadOnlySpan<TInner> inner,
 			Func<TOuter, TKey> outerKeySelector,
 			Func<TInner, TKey> innerKeySelector,
 			Func<TOuter, TInner?, TResult?> resultSelector
-		) where TKey : notnull => LeftJoin(outer, inner, outerKeySelector, innerKeySelector, resultSelector, null);
+		) => LeftJoin(outer, inner, outerKeySelector, innerKeySelector, resultSelector, null);
 
 		/// <inheritdoc cref="ILeftJoinMethod{TSelf, TSource}.LeftJoin{TInner, TKey, TResult}(IEnumerable{TInner}, Func{TSource, TKey}, Func{TInner, TKey}, Func{TSource, TInner, TResult}, IEqualityComparer{TKey}?)"/>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public ReadOnlySpan<TResult?> LeftJoin<TInner, TKey, TResult>(
+		public ReadOnlySpan<TResult?> LeftJoin(
 			ReadOnlySpan<TInner> inner,
 			Func<TOuter, TKey> outerKeySelector,
 			Func<TInner, TKey> innerKeySelector,
 			Func<TOuter, TInner?, TResult?> resultSelector,
 			IEqualityComparer<TKey>? comparer
 		)
-			where TKey : notnull
 		{
 			comparer ??= EqualityComparer<TKey>.Default;
 

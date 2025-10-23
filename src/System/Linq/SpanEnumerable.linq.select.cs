@@ -6,16 +6,12 @@ public partial class SpanEnumerable
 	/// Provides extension members on <see cref="ReadOnlySpan{T}"/> of <typeparamref name="TSource"/>.
 	/// </summary>
 	/// <typeparam name="TSource">The type of the elements of source.</typeparam>
+	/// <typeparam name="TResult">The type of result.</typeparam>
 	/// <param name="source">The collection to be used and checked.</param>
-	extension<TSource>(scoped ReadOnlySpan<TSource> source)
+	extension<TSource, TResult>(scoped ReadOnlySpan<TSource> source)
 	{
 		/// <inheritdoc cref="ISelectMethod{TSelf, TSource}.Select{TResult}(Func{TSource, TResult})"/>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public ReadOnlySpan<TResult> Select<TResult>(Func<TSource, TResult> selector)
+		public ReadOnlySpan<TResult> Select(Func<TSource, TResult> selector)
 		{
 			var result = new TResult[source.Length];
 			var i = 0;
@@ -27,12 +23,7 @@ public partial class SpanEnumerable
 		}
 
 		/// <inheritdoc cref="ISelectMethod{TSelf, TSource}.Select{TResult}(Func{TSource, int, TResult})"/>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public ReadOnlySpan<TResult> Select<TResult>(Func<TSource, int, TResult> selector)
+		public ReadOnlySpan<TResult> Select(Func<TSource, int, TResult> selector)
 		{
 			var result = new TResult[source.Length];
 			var i = 0;

@@ -5,15 +5,13 @@ public partial class SpanEnumerable
 	/// <summary>
 	/// Provides extension members on <see cref="ReadOnlySpan{T}"/> of <typeparamref name="TFirst"/>.
 	/// </summary>
-	extension<TFirst>(ReadOnlySpan<TFirst> first)
+	/// <typeparam name="TFirst">The type of the first source elements.</typeparam>
+	/// <typeparam name="TSecond">The type of the second source elements.</typeparam>
+	/// <param name="first">The first sequence.</param>
+	extension<TFirst, TSecond>(ReadOnlySpan<TFirst> first)
 	{
 		/// <inheritdoc cref="Enumerable.Zip{TFirst, TSecond}(IEnumerable{TFirst}, IEnumerable{TSecond})"/>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public ReadOnlySpan<(TFirst Left, TSecond Right)> Zip<TSecond>(ReadOnlySpan<TSecond> second)
+		public ReadOnlySpan<(TFirst Left, TSecond Right)> Zip(ReadOnlySpan<TSecond> second)
 		{
 			ArgumentException.Assert(first.Length == second.Length);
 

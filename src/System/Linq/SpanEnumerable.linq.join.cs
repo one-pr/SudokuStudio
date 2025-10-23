@@ -5,35 +5,29 @@ public partial class SpanEnumerable
 	/// <summary>
 	/// Provides extension members on <see cref="ReadOnlySpan{T}"/> of <typeparamref name="TOuter"/>.
 	/// </summary>
-	extension<TOuter>(ReadOnlySpan<TOuter> outer)
+	/// <typeparam name="TOuter">The type of the elements of the first sequence.</typeparam>
+	/// <typeparam name="TInner">The type of the elements of the second sequence.</typeparam>
+	/// <typeparam name="TKey">The type of the keys returned by the key selector functions.</typeparam>
+	/// <typeparam name="TResult">The type of the result elements.</typeparam>
+	/// <param name="outer">The first sequence to join.</param>
+	extension<TOuter, TInner, TKey, TResult>(ReadOnlySpan<TOuter> outer) where TKey : notnull
 	{
 		/// <inheritdoc cref="IJoinMethod{TSelf, TSource}.Join{TInner, TKey, TResult}(IEnumerable{TInner}, Func{TSource, TKey}, Func{TInner, TKey}, Func{TSource, TInner, TResult})"/>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public ReadOnlySpan<TResult> Join<TInner, TKey, TResult>(
+		public ReadOnlySpan<TResult> Join(
 			ReadOnlySpan<TInner> inner,
 			Func<TOuter, TKey> outerKeySelector,
 			Func<TInner, TKey> innerKeySelector,
 			Func<TOuter, TInner, TResult> resultSelector
-		) where TKey : notnull => Join(outer, inner, outerKeySelector, innerKeySelector, resultSelector, null);
+		) => Join(outer, inner, outerKeySelector, innerKeySelector, resultSelector, null);
 
 		/// <inheritdoc cref="IJoinMethod{TSelf, TSource}.Join{TInner, TKey, TResult}(IEnumerable{TInner}, Func{TSource, TKey}, Func{TInner, TKey}, Func{TSource, TInner, TResult}, IEqualityComparer{TKey}?)"/>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public ReadOnlySpan<TResult> Join<TInner, TKey, TResult>(
+		public ReadOnlySpan<TResult> Join(
 			ReadOnlySpan<TInner> inner,
 			Func<TOuter, TKey> outerKeySelector,
 			Func<TInner, TKey> innerKeySelector,
 			Func<TOuter, TInner, TResult> resultSelector,
 			IEqualityComparer<TKey>? comparer
 		)
-			where TKey : notnull
 		{
 			comparer ??= EqualityComparer<TKey>.Default;
 
@@ -65,32 +59,21 @@ public partial class SpanEnumerable
 		}
 
 		/// <inheritdoc cref="IJoinMethod{TSelf, TSource}.GroupJoin{TInner, TKey, TResult}(IEnumerable{TInner}, Func{TSource, TKey}, Func{TInner, TKey}, Func{TSource, IEnumerable{TInner}, TResult})"/>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public ReadOnlySpan<TResult> GroupJoin<TInner, TKey, TResult>(
+		public ReadOnlySpan<TResult> GroupJoin(
 			ReadOnlySpan<TInner> inner,
 			Func<TOuter, TKey> outerKeySelector,
 			Func<TInner, TKey> innerKeySelector,
 			Func<TOuter, TInner[], TResult> resultSelector
-		) where TKey : notnull => GroupJoin(outer, inner, outerKeySelector, innerKeySelector, resultSelector, null);
+		) => GroupJoin(outer, inner, outerKeySelector, innerKeySelector, resultSelector, null);
 
 		/// <inheritdoc cref="IJoinMethod{TSelf, TSource}.GroupJoin{TInner, TKey, TResult}(IEnumerable{TInner}, Func{TSource, TKey}, Func{TInner, TKey}, Func{TSource, IEnumerable{TInner}, TResult}, IEqualityComparer{TKey}?)"/>
-		/// <remarks>
-		/// <include
-		///     file="../../global-doc-comments.xml"
-		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
-		/// </remarks>
-		public ReadOnlySpan<TResult> GroupJoin<TInner, TKey, TResult>(
+		public ReadOnlySpan<TResult> GroupJoin(
 			ReadOnlySpan<TInner> inner,
 			Func<TOuter, TKey> outerKeySelector,
 			Func<TInner, TKey> innerKeySelector,
 			Func<TOuter, TInner[], TResult> resultSelector,
 			IEqualityComparer<TKey>? comparer
 		)
-			where TKey : notnull
 		{
 			comparer ??= EqualityComparer<TKey>.Default;
 
