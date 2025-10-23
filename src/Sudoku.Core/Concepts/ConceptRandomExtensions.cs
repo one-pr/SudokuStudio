@@ -1,4 +1,4 @@
-namespace Sudoku.Transformations;
+namespace Sudoku.Concepts;
 
 /// <summary>
 /// Provides with some methods that generates randomized elements or types defined in sudoku basic concepts.
