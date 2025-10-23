@@ -189,7 +189,10 @@ public sealed record K9Converter(
 			}
 
 			var sb = new StringBuilder(30);
-			foreach (var (houseType, h) in from kvp in dic orderby kvp.Key.ProgramOrder select kvp)
+			foreach (var (houseType, h) in
+				from kvp in dic
+				orderby kvp.Key switch { HouseType.Row => 0, HouseType.Column => 1, _ => 2 }
+				select kvp)
 			{
 				sb.Append(
 					string.Format(

@@ -5524,34 +5524,6 @@
             Indicates the house type is a column.
             </summary>
         </member>
-        <member name="T:Sudoku.Concepts.HouseTypeExtensions">
-            <summary>
-            Provides extension methods on <see cref="T:Sudoku.Concepts.HouseType"/>.
-            </summary>
-            <seealso cref="T:Sudoku.Concepts.HouseType"/>
-        </member>
-        <member name="M:Sudoku.Concepts.HouseTypeExtensions.get_Label(Sudoku.Concepts.HouseType)">
-            <inheritdoc cref="P:Sudoku.Concepts.HouseTypeExtensions.&lt;G&gt;$C65B7C5E37EA6586FB05084C1138DB9B.Label"/>
-        </member>
-        <member name="M:Sudoku.Concepts.HouseTypeExtensions.get_ProgramOrder(Sudoku.Concepts.HouseType)">
-            <inheritdoc cref="P:Sudoku.Concepts.HouseTypeExtensions.&lt;G&gt;$C65B7C5E37EA6586FB05084C1138DB9B.ProgramOrder"/>
-        </member>
-        <member name="T:Sudoku.Concepts.HouseTypeExtensions.&lt;G&gt;$C65B7C5E37EA6586FB05084C1138DB9B.&lt;M&gt;$D575D32A88D77D6792019844D6AE65A2">
-            <summary>
-            Provides extension members on <see cref="T:Sudoku.Concepts.HouseType"/>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Concepts.HouseTypeExtensions.&lt;G&gt;$C65B7C5E37EA6586FB05084C1138DB9B.Label">
-            <summary>
-            Try to get the label of the specified house type.
-            </summary>
-            <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is not defined.</exception>
-        </member>
-        <member name="P:Sudoku.Concepts.HouseTypeExtensions.&lt;G&gt;$C65B7C5E37EA6586FB05084C1138DB9B.ProgramOrder">
-            <summary>
-            Gets the ordering of the house type. The result value will be 0, 1 and 2.
-            </summary>
-        </member>
         <member name="T:Sudoku.Concepts.ICellMapOrCandidateMap`2">
             <summary>
             Extracts a base type that describes state table from elements of <typeparamref name="TSelf" /> type.
