@@ -1,9 +1,18 @@
 namespace Sudoku.Concepts;
 
 /// <summary>
-/// Provides a way to calculate empty area of a <see cref="Grid"/> or a <see cref="CellMap"/>.
+/// Represents a list of methods that can calculate maximal empty area of a list of cells.
 /// </summary>
-public static class EmptyArea
+/// <remarks>
+/// This algorithm is called "Maximal Rectangle", using Dynamic Programming.
+/// Please check <see href="https://leetcode.com/problems/maximal-rectangle">this link</see> to learn more details
+/// about this problem, displayed in LeetCode.
+/// See also "Maximal Square" for <see href="https://leetcode.com/problems/maximal-square">this link</see>.
+/// Maximal rectangle problem is a little bit harder than maximal square.
+/// </remarks>
+/// <seealso href="https://leetcode.com/problems/maximal-rectangle">"Maximal Rectangle" Problem</seealso>
+/// <seealso href="https://leetcode.com/problems/maximal-square">"Maximum Square" Problem</seealso>
+public static class MaximalEmptyArea
 {
 	/// <summary>
 	/// Provides extension members on <see langword="in"/> <see cref="Grid"/>.
@@ -11,27 +20,19 @@ public static class EmptyArea
 	extension(in Grid @this)
 	{
 		/// <summary>
-		/// Try to get the maximum empty area exists in the specified grid.
+		/// Find maximal rectangle that covers empty cells as many as possible in a grid,
+		/// and returns the size of the rectangle. Use <paramref name="topLeftCell"/> to get its top-left cell of the rectangle.
 		/// </summary>
-		/// <param name="topLeftCell">
-		/// <inheritdoc cref="GetMaxEmptySquareArea(in CellMap, out Cell)" path="/param[@name='topLeftCell']"/>
-		/// </param>
+		/// <param name="topLeftCell">Indicates the top-left cell of the rectangle.</param>
 		/// <returns>A <see cref="Cell"/> value indicating the result.</returns>
-		/// <remarks>
-		/// <inheritdoc cref="GetMaxEmptyArea(in CellMap, out Cell)" path="/remarks"/>
-		/// </remarks>
 		public Cell GetMaxEmptyArea(out Cell topLeftCell) => @this.EmptyCells.GetMaxEmptyArea(out topLeftCell);
 
 		/// <summary>
-		/// Try to get the maximum empty square area exists in the specified grid.
+		/// Find maximal square that covers empty cells as many as possible in a grid,
+		/// and returns the size of the rectangle. Use <paramref name="topLeftCell"/> to get its top-left cell of the square.
 		/// </summary>
-		/// <param name="topLeftCell">
-		/// <inheritdoc cref="GetMaxEmptySquareArea(in CellMap, out Cell)" path="/param[@name='topLeftCell']"/>
-		/// </param>
+		/// <param name="topLeftCell">Indicates the top-left cell of the square.</param>
 		/// <returns>A <see cref="Cell"/> value indicating the result.</returns>
-		/// <remarks>
-		/// <inheritdoc cref="GetMaxEmptySquareArea(in CellMap, out Cell)" path="/remarks"/>
-		/// </remarks>
 		public Cell GetMaxEmptySquareArea(out Cell topLeftCell) => @this.EmptyCells.GetMaxEmptySquareArea(out topLeftCell);
 	}
 
@@ -40,17 +41,7 @@ public static class EmptyArea
 	/// </summary>
 	extension(in CellMap @this)
 	{
-		/// <summary>
-		/// Try to get the maximum empty area exists in the specified cells.
-		/// </summary>
-		/// <param name="topLeftCell">
-		/// <inheritdoc cref="GetMaxEmptySquareArea(in CellMap, out Cell)" path="/param[@name='topLeftCell']"/>
-		/// </param>
-		/// <returns>A <see cref="Cell"/> value indicating the result.</returns>
-		/// <remarks>
-		/// This algorithm is from the puzzle called
-		/// <see href="https://leetcode.com/problems/maximal-rectangle/"><i>Maximal Rectangle</i></see>.
-		/// </remarks>
+		/// <inheritdoc cref="extension(in Grid).GetMaxEmptyArea(out Cell)"/>
 		public Cell GetMaxEmptyArea(out Cell topLeftCell)
 		{
 			var dp = (stackalloc Cell[9]);
@@ -97,15 +88,7 @@ public static class EmptyArea
 			}
 		}
 
-		/// <summary>
-		/// Try to get the maximum empty square area exists in the specified cells.
-		/// </summary>
-		/// <param name="topLeftCell">Indicates the cell at the top left index of the square.</param>
-		/// <returns>A <see cref="Cell"/> value indicating the result.</returns>
-		/// <remarks>
-		/// This algorithm is from the puzzle called
-		/// <see href="https://leetcode.com/problems/maximal-square/"><i>Maximal Square</i></see>.
-		/// </remarks>
+		/// <inheritdoc cref="extension(in Grid).GetMaxEmptySquareArea(out Cell)"/>
 		public Cell GetMaxEmptySquareArea(out Cell topLeftCell)
 		{
 			(topLeftCell, var maxSide) = (-1, 0);

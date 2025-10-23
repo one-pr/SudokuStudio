@@ -3789,137 +3789,6 @@
         <member name="M:Sudoku.Concepts.Coordinates.RxCyParser.GetFormat(System.Type)">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Concepts.Distance">
-            <summary>
-            Represents a way to calculate distances between two cells.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Concepts.Distance.DistanceTable">
-            <summary>
-            The table that displays the minimal and maximal index of cells that makes the distances least or greatest with the specified cell.
-            </summary>
-            <remarks>
-            <para>
-            The table is grouped with houses. If you want to fetch the smallest or largest distance value from a cell to a house, you can use
-            <c><see cref="F:Sudoku.Concepts.Distance.DistanceTable"/>[Cell][House]</c>, where <c>Cell</c> is between 0 and 81, and <c>House</c> is between 0 and 27.
-            If the cell is inside the house, the value will be <see langword="null"/>.
-            </para>
-            <para>
-            In further, if you want to get the distance from two cells using this table, just call method <see cref="M:Sudoku.Concepts.Distance.GetDistance(System.Int32,System.Int32)"/>.
-            </para>
-            </remarks>
-            <seealso cref="M:Sudoku.Concepts.Distance.GetDistance(System.Int32,System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Concepts.Distance.GetDistance(System.Int32,System.Int32)">
-            <summary>
-            Try to fetch the distance for the two cells.
-            </summary>
-            <param name="cell1">The first cell to be compared.</param>
-            <param name="cell2">The second cell to be compared.</param>
-            <returns>The distance result.</returns>
-        </member>
-        <member name="M:Sudoku.Concepts.Distance.GetDistance(Sudoku.Concepts.CellMap@)">
-            <summary>
-            Try to fetch the distance for two cells stored in a <see cref="T:Sudoku.Concepts.CellMap"/> instance.
-            </summary>
-            <param name="cells">The <see cref="T:Sudoku.Concepts.CellMap"/> instance storing two cells.</param>
-            <returns>The distance result.</returns>
-        </member>
-        <member name="M:Sudoku.Concepts.Distance.GetDistanceTo(System.Int32,System.Int32)">
-            <summary>
-            Try to get the minimal and maximal distance to the specified house from the specified cell.
-            </summary>
-            <param name="cell">The cell.</param>
-            <param name="house">The house.</param>
-            <returns>The minimal and maximal distance value.</returns>
-        </member>
-        <member name="M:Sudoku.Concepts.Distance.GetIntermediateCells(System.Int32,System.Int32)">
-            <summary>
-            Try to get the intermediate cells that are between <paramref name="cell1"/> and <paramref name="cell2"/> in logical position
-            for sudoku grid.
-            </summary>
-            <param name="cell1">The first cell.</param>
-            <param name="cell2">The second cell. The value should be greater than <paramref name="cell1"/>.</param>
-            <returns>The intermediate cells.</returns>
-            <exception cref="T:System.InvalidOperationException">
-            Throws when cells <paramref name="cell1"/> and <paramref name="cell2"/> are not in a same line (row or column).
-            </exception>
-        </member>
-        <member name="T:Sudoku.Concepts.EmptyArea">
-            <summary>
-            Provides a way to calculate empty area of a <see cref="T:Sudoku.Concepts.Grid"/> or a <see cref="T:Sudoku.Concepts.CellMap"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Concepts.EmptyArea.GetMaxEmptyArea(Sudoku.Concepts.Grid@,System.Int32@)">
-            <inheritdoc cref="M:Sudoku.Concepts.EmptyArea.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.GetMaxEmptyArea(System.Int32@)"/>
-        </member>
-        <member name="M:Sudoku.Concepts.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.Grid@,System.Int32@)">
-            <inheritdoc cref="M:Sudoku.Concepts.EmptyArea.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.GetMaxEmptySquareArea(System.Int32@)"/>
-        </member>
-        <member name="M:Sudoku.Concepts.EmptyArea.GetMaxEmptyArea(Sudoku.Concepts.CellMap@,System.Int32@)">
-            <inheritdoc cref="M:Sudoku.Concepts.EmptyArea.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.GetMaxEmptyArea(System.Int32@)"/>
-        </member>
-        <member name="M:Sudoku.Concepts.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.CellMap@,System.Int32@)">
-            <inheritdoc cref="M:Sudoku.Concepts.EmptyArea.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.GetMaxEmptySquareArea(System.Int32@)"/>
-        </member>
-        <member name="T:Sudoku.Concepts.EmptyArea.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$4FBDD4478CFAA5DAE39645DF9E3BC758">
-            <summary>
-            Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Concepts.EmptyArea.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.GetMaxEmptyArea(System.Int32@)">
-            <summary>
-            Try to get the maximum empty area exists in the specified grid.
-            </summary>
-            <param name="topLeftCell">
-            <inheritdoc cref="M:Sudoku.Concepts.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.CellMap@,System.Int32@)" path="/param[@name='topLeftCell']"/>
-            </param>
-            <returns>A <see cref="T:System.Int32"/> value indicating the result.</returns>
-            <remarks>
-            <inheritdoc cref="M:Sudoku.Concepts.EmptyArea.GetMaxEmptyArea(Sudoku.Concepts.CellMap@,System.Int32@)" path="/remarks"/>
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Concepts.EmptyArea.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.GetMaxEmptySquareArea(System.Int32@)">
-            <summary>
-            Try to get the maximum empty square area exists in the specified grid.
-            </summary>
-            <param name="topLeftCell">
-            <inheritdoc cref="M:Sudoku.Concepts.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.CellMap@,System.Int32@)" path="/param[@name='topLeftCell']"/>
-            </param>
-            <returns>A <see cref="T:System.Int32"/> value indicating the result.</returns>
-            <remarks>
-            <inheritdoc cref="M:Sudoku.Concepts.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.CellMap@,System.Int32@)" path="/remarks"/>
-            </remarks>
-        </member>
-        <member name="T:Sudoku.Concepts.EmptyArea.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.&lt;M&gt;$746FF986A3BF72A7EADAD9DBD5C99EC4">
-            <summary>
-            Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.CellMap"/>.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Concepts.EmptyArea.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.GetMaxEmptyArea(System.Int32@)">
-            <summary>
-            Try to get the maximum empty area exists in the specified cells.
-            </summary>
-            <param name="topLeftCell">
-            <inheritdoc cref="M:Sudoku.Concepts.EmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.CellMap@,System.Int32@)" path="/param[@name='topLeftCell']"/>
-            </param>
-            <returns>A <see cref="T:System.Int32"/> value indicating the result.</returns>
-            <remarks>
-            This algorithm is from the puzzle called
-            <see href="https://leetcode.com/problems/maximal-rectangle/"><i>Maximal Rectangle</i></see>.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Concepts.EmptyArea.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.GetMaxEmptySquareArea(System.Int32@)">
-            <summary>
-            Try to get the maximum empty square area exists in the specified cells.
-            </summary>
-            <param name="topLeftCell">Indicates the cell at the top left index of the square.</param>
-            <returns>A <see cref="T:System.Int32"/> value indicating the result.</returns>
-            <remarks>
-            This algorithm is from the puzzle called
-            <see href="https://leetcode.com/problems/maximal-square/"><i>Maximal Square</i></see>.
-            </remarks>
-        </member>
         <member name="T:Sudoku.Concepts.Graphs.AdjacentCellDirection">
             <summary>
             Represents a direction between two adjacent cells.
@@ -6936,6 +6805,66 @@
             <returns>The reference to the element.</returns>
             <exception cref="T:System.IndexOutOfRangeException">Throws when the index is out of range.</exception>
         </member>
+        <member name="T:Sudoku.Concepts.LogicalPosition">
+            <summary>
+            Represents logical position between cells.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.LogicalPosition.NearestFarthestCellsLookup">
+            <summary>
+            <para>
+            Represents a lookup table that can know which cell is the nearest cell to a certain cell
+            and which is the farthest cell, to the target house.
+            </para>
+            <para>
+            Use <c><see cref="F:Sudoku.Concepts.LogicalPosition.NearestFarthestCellsLookup"/>[Cell][House]</c> to get the result;
+            or use extension member <see cref="M:Sudoku.Concepts.LogicalPosition.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.GetNearestFarthestCellTo(System.Int32)"/>.
+            </para>
+            </summary>
+            <seealso cref="M:Sudoku.Concepts.LogicalPosition.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.GetNearestFarthestCellTo(System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.LogicalPosition.GetNearestFarthestCellTo(System.Int32,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Concepts.LogicalPosition.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.GetNearestFarthestCellTo(System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.LogicalPosition.GetDistance(System.Int32,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Concepts.LogicalPosition.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.GetDistance(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.LogicalPosition.GetIntermediateCells(System.Int32,System.Int32)">
+            <inheritdoc cref="M:Sudoku.Concepts.LogicalPosition.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.GetIntermediateCells(System.Int32,System.Int32)"/>
+        </member>
+        <member name="T:Sudoku.Concepts.LogicalPosition.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.&lt;M&gt;$43881FF919D45B2BB294FF7149EC66B3">
+            <summary>
+            Represents extension members on <see cref="T:System.Int32"/>.
+            </summary>
+            <param name="cell">The cell.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.LogicalPosition.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.GetNearestFarthestCellTo(System.Int32)">
+            <summary>
+            Returns the nearest and farthest cell of <paramref name="cell"/>, to <paramref name="house"/>.
+            </summary>
+            <param name="house">The house.</param>
+            <returns>The nearest and farthest cell.</returns>
+        </member>
+        <member name="M:Sudoku.Concepts.LogicalPosition.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.GetDistance(System.Int32,System.Int32)">
+            <summary>
+            Returns distance value between two <see cref="T:System.Int32"/>s.
+            </summary>
+            <param name="cell1">The first cell to be checked.</param>
+            <param name="cell2">The second cell to be checked.</param>
+            <returns>A <see cref="T:System.Double"/> value indicating the distance.</returns>
+        </member>
+        <member name="M:Sudoku.Concepts.LogicalPosition.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.GetIntermediateCells(System.Int32,System.Int32)">
+            <summary>
+            Try to get the intermediate cells that are between <paramref name="cell1"/> and <paramref name="cell2"/> in logical position
+            for sudoku grid.
+            </summary>
+            <param name="cell1">The first cell.</param>
+            <param name="cell2">The second cell. The value should be greater than <paramref name="cell1"/>.</param>
+            <returns>The intermediate cells.</returns>
+            <exception cref="T:System.InvalidOperationException">
+            Throws when cells <paramref name="cell1"/> and <paramref name="cell2"/> are not in a same line (row or column).
+            </exception>
+        </member>
         <member name="T:Sudoku.Concepts.MarkerGrid">
             <summary>
             Represents a sudoku grid that will be used for candidate marking.
@@ -7493,6 +7422,64 @@
             <returns>The cell state.</returns>
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
+        <member name="T:Sudoku.Concepts.MaximalEmptyArea">
+            <summary>
+            Represents a list of methods that can calculate maximal empty area of a list of cells.
+            </summary>
+            <remarks>
+            This algorithm is called "Maximal Rectangle", using Dynamic Programming.
+            Please check <see href="https://leetcode.com/problems/maximal-rectangle">this link</see> to learn more details
+            about this problem, displayed in LeetCode.
+            See also "Maximal Square" for <see href="https://leetcode.com/problems/maximal-square">this link</see>.
+            Maximal rectangle problem is a little bit harder than maximal square.
+            </remarks>
+            <seealso href="https://leetcode.com/problems/maximal-rectangle">"Maximal Rectangle" Problem</seealso>
+            <seealso href="https://leetcode.com/problems/maximal-square">"Maximum Square" Problem</seealso>
+        </member>
+        <member name="M:Sudoku.Concepts.MaximalEmptyArea.GetMaxEmptyArea(Sudoku.Concepts.Grid@,System.Int32@)">
+            <inheritdoc cref="M:Sudoku.Concepts.MaximalEmptyArea.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.GetMaxEmptyArea(System.Int32@)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.MaximalEmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.Grid@,System.Int32@)">
+            <inheritdoc cref="M:Sudoku.Concepts.MaximalEmptyArea.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.GetMaxEmptySquareArea(System.Int32@)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.MaximalEmptyArea.GetMaxEmptyArea(Sudoku.Concepts.CellMap@,System.Int32@)">
+            <inheritdoc cref="M:Sudoku.Concepts.MaximalEmptyArea.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.GetMaxEmptyArea(System.Int32@)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.MaximalEmptyArea.GetMaxEmptySquareArea(Sudoku.Concepts.CellMap@,System.Int32@)">
+            <inheritdoc cref="M:Sudoku.Concepts.MaximalEmptyArea.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.GetMaxEmptySquareArea(System.Int32@)"/>
+        </member>
+        <member name="T:Sudoku.Concepts.MaximalEmptyArea.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$4FBDD4478CFAA5DAE39645DF9E3BC758">
+            <summary>
+            Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Concepts.MaximalEmptyArea.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.GetMaxEmptyArea(System.Int32@)">
+            <summary>
+            Find maximal rectangle that covers empty cells as many as possible in a grid,
+            and returns the size of the rectangle. Use <paramref name="topLeftCell"/> to get its top-left cell of the rectangle.
+            </summary>
+            <param name="topLeftCell">Indicates the top-left cell of the rectangle.</param>
+            <returns>A <see cref="T:System.Int32"/> value indicating the result.</returns>
+        </member>
+        <member name="M:Sudoku.Concepts.MaximalEmptyArea.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.GetMaxEmptySquareArea(System.Int32@)">
+            <summary>
+            Find maximal square that covers empty cells as many as possible in a grid,
+            and returns the size of the rectangle. Use <paramref name="topLeftCell"/> to get its top-left cell of the square.
+            </summary>
+            <param name="topLeftCell">Indicates the top-left cell of the square.</param>
+            <returns>A <see cref="T:System.Int32"/> value indicating the result.</returns>
+        </member>
+        <member name="T:Sudoku.Concepts.MaximalEmptyArea.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.&lt;M&gt;$746FF986A3BF72A7EADAD9DBD5C99EC4">
+            <summary>
+            Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.CellMap"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Concepts.MaximalEmptyArea.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.GetMaxEmptyArea(System.Int32@)">
+            <inheritdoc cref="M:Sudoku.Concepts.MaximalEmptyArea.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.GetMaxEmptyArea(System.Int32@)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.MaximalEmptyArea.&lt;G&gt;$4B60D02A5F703296D232D9A415F3C20B.GetMaxEmptySquareArea(System.Int32@)">
+            <inheritdoc cref="M:Sudoku.Concepts.MaximalEmptyArea.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.GetMaxEmptySquareArea(System.Int32@)"/>
+        </member>
         <member name="T:Sudoku.Concepts.Miniline">
             <summary>
             Represents a miniline (mini-row or mini-column).
@@ -7611,6 +7598,31 @@
         <member name="P:Sudoku.Concepts.MinilineResult.OtherBlocks">
             <summary>
             Other blocks that the intersection map data does not cover. This property will be used by techniques such as Sue de Coq.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Concepts.NearestFarthestCell">
+            <summary>
+            Represents a pair of cells that defines the nearest and farthest cell to a certain cell.
+            </summary>
+            <param name="Nearest">Indicates the nearest cell.</param>
+            <param name="Farthest">Indicates the farthest cell.</param>
+        </member>
+        <member name="M:Sudoku.Concepts.NearestFarthestCell.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Represents a pair of cells that defines the nearest and farthest cell to a certain cell.
+            </summary>
+            <param name="Nearest">Indicates the nearest cell.</param>
+            <param name="Farthest">Indicates the farthest cell.</param>
+        </member>
+        <member name="P:Sudoku.Concepts.NearestFarthestCell.Nearest">
+            <summary>Indicates the nearest cell.</summary>
+        </member>
+        <member name="P:Sudoku.Concepts.NearestFarthestCell.Farthest">
+            <summary>Indicates the farthest cell.</summary>
+        </member>
+        <member name="F:Sudoku.Concepts.NearestFarthestCell.Untouched">
+            <summary>
+            Represents untouched case.
             </summary>
         </member>
         <member name="T:Sudoku.Concepts.Orbit">
