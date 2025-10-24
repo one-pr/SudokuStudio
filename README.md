@@ -15,6 +15,7 @@
 [![](https://img.shields.io/badge/Gitee%20repo-Here!-%230d1117?logo=gitee)](https://gitee.com/KyouyamaKazusa/Sudoku)
 
 [![bilibili](https://img.shields.io/badge/dynamic/json?color=%23fb7299&label=bilibili&logo=bilibili&query=%24.data.follower&suffix=%20followers&url=https%3A%2F%2Fapi.bilibili.com%2Fx%2Frelation%2Fstat%3Fvmid%3D23736703)](https://space.bilibili.com/23736703)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/kyoyama-kazusa/Sudoku)
 
 ## Introduction
 

@@ -15,6 +15,7 @@
 [![](https://img.shields.io/badge/Gitee-%E7%82%B9%E6%88%91%EF%BC%81-%230d1117?logo=gitee)](https://gitee.com/KyouyamaKazusa/Sudoku)
 
 [![哔哩哔哩](https://img.shields.io/badge/dynamic/json?color=%23fb7299&label=%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9&logo=bilibili&query=%24.data.follower&suffix=%20%E5%85%B3%E6%B3%A8&url=https%3A%2F%2Fapi.bilibili.com%2Fx%2Frelation%2Fstat%3Fvmid%3D23736703)](https://space.bilibili.com/23736703)
+[![询问 DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/kyoyama-kazusa/Sudoku)
 
 ## 简介
 
