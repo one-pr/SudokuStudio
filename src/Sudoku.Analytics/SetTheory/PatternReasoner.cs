@@ -15,6 +15,26 @@ public static partial class PatternReasoner
 		=> Cached.GetEliminationRank(logic, candidate, GetPermutations(logic));
 
 	/// <summary>
+	/// Gets the rank of the pattern. If the pattern is not minimal, it may contains multiple ranks,
+	/// corresponding to different subpatterns eliminates for different candidates.
+	/// </summary>
+	/// <param name="logic">The logic.</param>
+	/// <returns>A <see cref="Rank"/> instance representing the result.</returns>
+	public static Rank GetRank(in Logic logic)
+	{
+		var rankList = new SortedSet<int>();
+		foreach (var elimination in
+			from conclusion in GetConclusions(logic)
+			where conclusion.ConclusionType == Elimination
+			select conclusion)
+		{
+			var minimalPattern = GetMinimalPattern(logic, elimination.Candidate);
+			rankList.Add(minimalPattern.Links.Count - minimalPattern.Truths.Count);
+		}
+		return rankList.Count == 1 ? rankList.First() : (int[])[.. rankList];
+	}
+
+	/// <summary>
 	/// <para>
 	/// Gets the number of assigned candidates that can make a pattern satisfied with all truths and links.
 	/// </para>
@@ -68,4 +88,38 @@ public static partial class PatternReasoner
 	/// <param name="logic">The pattern.</param>
 	/// <returns>All rank-0 eliminations.</returns>
 	public static CandidateMap GetRank0Eliminations(in Logic logic) => Cached.GetRank0Eliminations(logic, GetPermutations(logic));
+
+	/// <summary>
+	/// Finds for minimal truths that covers the candidate as elimination.
+	/// </summary>
+	/// <param name="logic">The pattern.</param>
+	/// <param name="elimination">The elimination.</param>
+	/// <returns>The minimal truths.</returns>
+	public static SpaceSet GetMinimalTruths(in Logic logic, Candidate elimination)
+		=> Cached.GetMinimalTruths(logic, elimination, GetPermutations(logic));
+
+	/// <summary>
+	/// Finds for minimal <see cref="Logic"/> instance that can eliminate the specified elimination.
+	/// </summary>
+	/// <param name="logic">The pattern.</param>
+	/// <param name="elimination">The elimination.</param>
+	/// <returns>A minimal <see cref="Logic"/> instance that can remove the specified elimination.</returns>
+	public static Logic GetMinimalPattern(in Logic logic, Candidate elimination)
+	{
+		var permutations = GetPermutations(logic);
+		var truths = Cached.GetMinimalTruths(logic, elimination, permutations);
+		var subpattern = new Logic(truths, logic.Links, logic.Grid);
+		return Cached.TrimExcessLinks(subpattern, [new(Elimination, elimination)], GetPermutations(subpattern));
+	}
+
+	/// <summary>
+	/// Trims for all excess links, and return a new <see cref="Logic"/> instance.
+	/// </summary>
+	/// <param name="logic">The original pattern.</param>
+	/// <returns>A new <see cref="Logic"/> instance.</returns>
+	public static Logic TrimExcessLinks(in Logic logic)
+	{
+		var permutations = GetPermutations(logic);
+		return Cached.TrimExcessLinks(logic, Cached.GetConclusions(logic, permutations, true).AsSet(), permutations);
+	}
 }

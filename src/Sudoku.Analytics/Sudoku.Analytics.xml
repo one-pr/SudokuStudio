@@ -35895,6 +35895,14 @@
             <param name="candidate">The candidate.</param>
             <returns>The rank of elimination. -1 will be returned if candidate is not an eliminiation.</returns>
         </member>
+        <member name="M:Sudoku.SetTheory.PatternReasoner.GetRank(Sudoku.SetTheory.Logic@)">
+            <summary>
+            Gets the rank of the pattern. If the pattern is not minimal, it may contains multiple ranks,
+            corresponding to different subpatterns eliminates for different candidates.
+            </summary>
+            <param name="logic">The logic.</param>
+            <returns>A <see cref="T:Sudoku.SetTheory.Rank"/> instance representing the result.</returns>
+        </member>
         <member name="M:Sudoku.SetTheory.PatternReasoner.GetAssignmentsCount(Sudoku.SetTheory.Logic@)">
             <summary>
             <para>
@@ -35946,6 +35954,29 @@
             </summary>
             <param name="logic">The pattern.</param>
             <returns>All rank-0 eliminations.</returns>
+        </member>
+        <member name="M:Sudoku.SetTheory.PatternReasoner.GetMinimalTruths(Sudoku.SetTheory.Logic@,System.Int32)">
+            <summary>
+            Finds for minimal truths that covers the candidate as elimination.
+            </summary>
+            <param name="logic">The pattern.</param>
+            <param name="elimination">The elimination.</param>
+            <returns>The minimal truths.</returns>
+        </member>
+        <member name="M:Sudoku.SetTheory.PatternReasoner.GetMinimalPattern(Sudoku.SetTheory.Logic@,System.Int32)">
+            <summary>
+            Finds for minimal <see cref="T:Sudoku.SetTheory.Logic"/> instance that can eliminate the specified elimination.
+            </summary>
+            <param name="logic">The pattern.</param>
+            <param name="elimination">The elimination.</param>
+            <returns>A minimal <see cref="T:Sudoku.SetTheory.Logic"/> instance that can remove the specified elimination.</returns>
+        </member>
+        <member name="M:Sudoku.SetTheory.PatternReasoner.TrimExcessLinks(Sudoku.SetTheory.Logic@)">
+            <summary>
+            Trims for all excess links, and return a new <see cref="T:Sudoku.SetTheory.Logic"/> instance.
+            </summary>
+            <param name="logic">The original pattern.</param>
+            <returns>A new <see cref="T:Sudoku.SetTheory.Logic"/> instance.</returns>
         </member>
         <member name="T:Sudoku.SetTheory.Permutation">
             <summary>
@@ -36005,6 +36036,79 @@
         </member>
         <member name="M:Sudoku.SetTheory.Permutation.op_LessThanOrEqual(Sudoku.SetTheory.Permutation,Sudoku.SetTheory.Permutation)">
             <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.SetTheory.Rank">
+            <summary>
+            Represents rank result for a pattern.
+            </summary>
+        </member>
+        <member name="F:Sudoku.SetTheory.Rank._consistentRank">
+            <summary>
+            Represents rank value for consistent cases.
+            </summary>
+        </member>
+        <member name="F:Sudoku.SetTheory.Rank._inconsistentRank">
+            <summary>
+            Represents rank values for inconsistent cases.
+            </summary>
+        </member>
+        <member name="M:Sudoku.SetTheory.Rank.#ctor(System.Int32[])">
+            <summary>
+            Initializes a <see cref="T:Sudoku.SetTheory.Rank"/> for a sequence of rank values.
+            </summary>
+            <param name="values">A sequence of rank values.</param>
+        </member>
+        <member name="M:Sudoku.SetTheory.Rank.#ctor(System.Int32)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.SetTheory.Rank"/> for a rank value.
+            </summary>
+            <param name="value">A rank value.</param>
+        </member>
+        <member name="P:Sudoku.SetTheory.Rank.IsConsistent">
+            <summary>
+            Represents a flag, meaning whether the rank is consistent or not.
+            </summary>
+        </member>
+        <member name="P:Sudoku.SetTheory.Rank.InconsistentRanksOrdered">
+            <summary>
+            Represents ordered collection of inconsistent rank values.
+            </summary>
+        </member>
+        <member name="M:Sudoku.SetTheory.Rank.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.SetTheory.Rank.Equals(Sudoku.SetTheory.Rank)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.SetTheory.Rank.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.SetTheory.Rank.ToArray">
+            <summary>
+            Converts the current instance into an array.
+            </summary>
+            <returns>An array of values.</returns>
+        </member>
+        <member name="M:Sudoku.SetTheory.Rank.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:Sudoku.SetTheory.Rank.op_Equality(Sudoku.SetTheory.Rank,Sudoku.SetTheory.Rank)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.SetTheory.Rank.op_Inequality(Sudoku.SetTheory.Rank,Sudoku.SetTheory.Rank)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.SetTheory.Rank.op_Implicit(System.Int32)~Sudoku.SetTheory.Rank">
+            <summary>
+            Implicit cast from <see cref="T:System.Int32"/> to <see cref="T:Sudoku.SetTheory.Rank"/>.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Sudoku.SetTheory.Rank.op_Implicit(System.Int32[])~Sudoku.SetTheory.Rank">
+            <summary>
+            Implicit cast from <see cref="T:System.Int32"/>[] to <see cref="T:Sudoku.SetTheory.Rank"/>.
+            </summary>
+            <param name="values">The values.</param>
         </member>
         <member name="T:Sudoku.SetTheory.SetTheoryColumnHeader">
             <summary>
