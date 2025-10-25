@@ -45,17 +45,30 @@ public partial class PatternReasoner
 			}
 
 			// Create a minimal logic lookup table as cache.
-			var cachedMinimalLogics = new Dictionary<SpaceSet, Logic>();
+			var cachedMinimalLogics = new Dictionary<List<Space>, Logic>(
+				EqualityComparer<List<Space>>.Create(
+					static (left, right) => left!.AsSpan().SequenceEqual(right!.AsSpan()),
+					static obj =>
+					{
+						var result = new HashCode();
+						foreach (var member in obj)
+						{
+							result.Add(member);
+						}
+						return result.ToHashCode();
+					}
+				)
+			);
 			var rankList = new SortedSet<int>();
 			foreach (var elimination in from conclusion in conclusions where conclusion.ConclusionType == Elimination select conclusion)
 			{
 				// Find for lightup links.
-				var lightupLinks = SpaceSet.Empty;
+				var lightupLinks = new List<Space>(4);
 				foreach (var link in elimination.Candidate.Spaces)
 				{
 					if (logic.Links.Contains(link))
 					{
-						lightupLinks += link;
+						lightupLinks.Add(link);
 					}
 				}
 
