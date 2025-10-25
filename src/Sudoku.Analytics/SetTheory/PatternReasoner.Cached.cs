@@ -60,8 +60,10 @@ public partial class PatternReasoner
 				)
 			);
 			var rankList = new SortedSet<int>();
-			foreach (var elimination in from conclusion in conclusions where conclusion.ConclusionType == Elimination select conclusion)
+			var onlyEliminations = from conclusion in conclusions where conclusion.ConclusionType == Elimination select conclusion;
+			foreach (var elimination in onlyEliminations)
 			{
+				// Optimization: If the elimination hits minimal pattern cache, read cache instead of doing calculation.
 				// Find for lightup links.
 				var lightupLinks = new List<Space>(4);
 				foreach (var link in elimination.Candidate.Spaces)
@@ -83,6 +85,20 @@ public partial class PatternReasoner
 
 				// Otherwise, a conclusion with different origin should be checked.
 				var minimal = TrimExcessLinks(logic, [elimination], permutations);
+
+				// Optimization: If the current minimal pattern is equal to the whole pattern,
+				// we cannot find out any other eliminations corresponding to a smaller pattern.
+				if (minimal == logic)
+				{
+					// Record values for the other conclusions.
+					foreach (var conclusion in onlyEliminations)
+					{
+						resultViews.Add(conclusion, minimal);
+					}
+					rankList.Add(minimal.Links.Count - minimal.Truths.Count);
+					break;
+				}
+
 				resultViews.Add(elimination, minimal);
 				rankList.Add(minimal.Links.Count - minimal.Truths.Count);
 
