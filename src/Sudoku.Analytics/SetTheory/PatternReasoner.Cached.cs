@@ -32,6 +32,18 @@ public partial class PatternReasoner
 		{
 			var resultViews = new Dictionary<Conclusion, Logic>();
 
+			// Optimization: If all candidates in this pattern is exact-covered, we can directly calculate rank.
+			if (logic.IsExactCovered)
+			{
+				foreach (var conclusion in conclusions)
+				{
+					resultViews.Add(conclusion, logic);
+				}
+
+				sublogics = resultViews.ToFrozenDictionary();
+				return logic.Links.Count - logic.Truths.Count;
+			}
+
 			// Create a minimal logic lookup table as cache.
 			var cachedMinimalLogics = new Dictionary<List<Space>, Logic>(
 				EqualityComparer<List<Space>>.Create(
