@@ -4,7 +4,7 @@ namespace Sudoku.SetTheory;
 /// Represents a logic pattern, defining sets of truths and links.
 /// </summary>
 /// <remarks>
-/// This type uses 496 bytes.
+/// This type uses 400 bytes.
 /// </remarks>
 public struct Logic : IEquatable<Logic>, IEqualityOperators<Logic, Logic, bool>
 {
@@ -21,7 +21,7 @@ public struct Logic : IEquatable<Logic>, IEqualityOperators<Logic, Logic, bool>
 	/// <summary>
 	/// Indicates all candidates used in truths and links.
 	/// </summary>
-	private CandidateMap _map, _mapIncludingLinks;
+	private CandidateMap _map;
 
 
 	/// <summary>
@@ -34,7 +34,7 @@ public struct Logic : IEquatable<Logic>, IEqualityOperators<Logic, Logic, bool>
 	{
 		_truths = truths;
 		_links = links;
-		_map = RebuildMap(in truths, ref _links, in grid, out _mapIncludingLinks);
+		_map = RebuildMap(in truths, ref _links, in grid);
 		_originalGrid = grid;
 	}
 
@@ -67,12 +67,6 @@ public struct Logic : IEquatable<Logic>, IEqualityOperators<Logic, Logic, bool>
 	/// </summary>
 	[UnscopedRef]
 	public readonly ref readonly CandidateMap Map => ref _map;
-
-	/// <summary>
-	/// Indicates all candidates used in both truths and links.
-	/// </summary>
-	[UnscopedRef]
-	public readonly ref readonly CandidateMap FullMap => ref _mapIncludingLinks;
 
 	/// <summary>
 	/// Find for exact-covered candidates in the pattern.
@@ -122,19 +116,11 @@ public struct Logic : IEquatable<Logic>, IEqualityOperators<Logic, Logic, bool>
 
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
 	public readonly bool Equals(in Logic other)
-		=> Map == other.Map && FullMap == other.FullMap
-		&& Grid == other.Grid
-		&& Truths == other.Truths && Links == other.Links;
+		=> Map == other.Map && Grid == other.Grid && Truths == other.Truths && Links == other.Links;
 
 	/// <inheritdoc/>
 	public readonly override int GetHashCode()
-		=> HashCode.Combine(
-			Map.GetHashCode(),
-			FullMap.GetHashCode(),
-			Grid.GetHashCode(),
-			Truths.GetHashCode(),
-			Links.GetHashCode()
-		);
+		=> HashCode.Combine(Map.GetHashCode(), Grid.GetHashCode(), Truths.GetHashCode(), Links.GetHashCode());
 
 	/// <inheritdoc cref="object.ToString"/>
 	public readonly override string ToString() => $"T{_truths.Count} = {_truths}, L{_links.Count} = {_links}";
@@ -173,7 +159,7 @@ public struct Logic : IEquatable<Logic>, IEqualityOperators<Logic, Logic, bool>
 	{
 		if (_truths.Add(truth))
 		{
-			_map = RebuildMap(in _truths, ref _links, in _originalGrid, out _mapIncludingLinks);
+			_map = RebuildMap(in _truths, ref _links, in _originalGrid);
 		}
 	}
 
@@ -185,7 +171,7 @@ public struct Logic : IEquatable<Logic>, IEqualityOperators<Logic, Logic, bool>
 	{
 		if (_links.Add(link))
 		{
-			_map = RebuildMap(in _truths, ref _links, in _originalGrid, out _mapIncludingLinks);
+			_map = RebuildMap(in _truths, ref _links, in _originalGrid);
 		}
 	}
 
@@ -197,7 +183,7 @@ public struct Logic : IEquatable<Logic>, IEqualityOperators<Logic, Logic, bool>
 	{
 		if (_truths.Remove(truth))
 		{
-			_map = RebuildMap(in _truths, ref _links, in _originalGrid, out _mapIncludingLinks);
+			_map = RebuildMap(in _truths, ref _links, in _originalGrid);
 		}
 	}
 
@@ -209,7 +195,7 @@ public struct Logic : IEquatable<Logic>, IEqualityOperators<Logic, Logic, bool>
 	{
 		if (_links.Remove(link))
 		{
-			_map = RebuildMap(in _truths, ref _links, in _originalGrid, out _mapIncludingLinks);
+			_map = RebuildMap(in _truths, ref _links, in _originalGrid);
 		}
 	}
 
@@ -223,21 +209,18 @@ public struct Logic : IEquatable<Logic>, IEqualityOperators<Logic, Logic, bool>
 	/// <param name="truths">The truths.</param>
 	/// <param name="links">The links. Isolated links are ignored to be added.</param>
 	/// <param name="grid">The grid.</param>
-	/// <param name="mapIncludingLinks">The map including links.</param>
 	/// <returns>The candidates used only in truths.</returns>
 	private static CandidateMap RebuildMap(
 		ref readonly SpaceSet truths,
 		ref SpaceSet links,
-		ref readonly Grid grid,
-		out CandidateMap mapIncludingLinks
+		ref readonly Grid grid
 	)
 	{
-		(mapIncludingLinks, var result) = (CandidateMap.Empty, CandidateMap.Empty);
+		var result = CandidateMap.Empty;
 		foreach (var truth in truths)
 		{
 			var map = truth.GetAvailableRange(grid);
 			result |= map;
-			mapIncludingLinks |= map;
 		}
 
 		// Ignore links that is already collected in truths.
@@ -253,7 +236,6 @@ public struct Logic : IEquatable<Logic>, IEqualityOperators<Logic, Logic, bool>
 				links -= link;
 				continue;
 			}
-			mapIncludingLinks |= map;
 		}
 		return result;
 	}

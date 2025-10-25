@@ -35711,7 +35711,7 @@
             Represents a logic pattern, defining sets of truths and links.
             </summary>
             <remarks>
-            This type uses 496 bytes.
+            This type uses 400 bytes.
             </remarks>
         </member>
         <member name="F:Sudoku.SetTheory.Logic._originalGrid">
@@ -35730,11 +35730,6 @@
             </summary>
         </member>
         <member name="F:Sudoku.SetTheory.Logic._map">
-            <summary>
-            Indicates all candidates used in truths and links.
-            </summary>
-        </member>
-        <member name="F:Sudoku.SetTheory.Logic._mapIncludingLinks">
             <summary>
             Indicates all candidates used in truths and links.
             </summary>
@@ -35771,11 +35766,6 @@
         <member name="P:Sudoku.SetTheory.Logic.Map">
             <summary>
             Indicates all candidates used in truths.
-            </summary>
-        </member>
-        <member name="P:Sudoku.SetTheory.Logic.FullMap">
-            <summary>
-            Indicates all candidates used in both truths and links.
             </summary>
         </member>
         <member name="P:Sudoku.SetTheory.Logic.ExactCoveredCandidates">
@@ -35840,14 +35830,13 @@
         <member name="M:Sudoku.SetTheory.Logic.System#IEquatable{Sudoku#SetTheory#Logic}#Equals(Sudoku.SetTheory.Logic)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.SetTheory.Logic.RebuildMap(Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CandidateMap@)">
+        <member name="M:Sudoku.SetTheory.Logic.RebuildMap(Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Grid@)">
             <summary>
             Creates a <see cref="T:Sudoku.Concepts.CandidateMap"/> via the specified truths and links.
             </summary>
             <param name="truths">The truths.</param>
             <param name="links">The links. Isolated links are ignored to be added.</param>
             <param name="grid">The grid.</param>
-            <param name="mapIncludingLinks">The map including links.</param>
             <returns>The candidates used only in truths.</returns>
         </member>
         <member name="M:Sudoku.SetTheory.Logic.op_Equality(Sudoku.SetTheory.Logic@,Sudoku.SetTheory.Logic@)">
