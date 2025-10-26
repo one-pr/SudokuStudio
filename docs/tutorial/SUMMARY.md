@@ -172,6 +172,7 @@
 * [解鱼](rank-theory/12-jye-fish/README.md)
   * [虚拟区域](rank-theory/12-jye-fish/01-virtual-set.md)
   * [解鱼的基本推理](rank-theory/12-jye-fish/02-reasoning-of-jye-fish.md)
+  * [带有解鱼的环](rank-theory/12-jye-fish/03-loop-with-jye-fish.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
