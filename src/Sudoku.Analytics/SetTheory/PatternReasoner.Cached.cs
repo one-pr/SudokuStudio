@@ -3,7 +3,8 @@ namespace Sudoku.SetTheory;
 public partial class LogicReasoner
 {
 	/// <summary>
-	/// Represents equivalent implementation of the parent type, but an extra parameter <c>permutations</c> is required.
+	/// Represents equivalent implementation of the parent type, but an extra parameter <c>permutations</c> is required;
+	/// sometimes <c>conclusions</c> is required also.
 	/// </summary>
 	public static class Cached
 	{

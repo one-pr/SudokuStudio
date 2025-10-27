@@ -35858,7 +35858,8 @@
         </member>
         <member name="T:Sudoku.SetTheory.LogicReasoner.Cached">
             <summary>
-            Represents equivalent implementation of the parent type, but an extra parameter <c>permutations</c> is required.
+            Represents equivalent implementation of the parent type, but an extra parameter <c>permutations</c> is required;
+            sometimes <c>conclusions</c> is required also.
             </summary>
         </member>
         <member name="M:Sudoku.SetTheory.LogicReasoner.Cached.GetRank(Sudoku.SetTheory.Logic@,System.ReadOnlySpan{Sudoku.Concepts.Conclusion},System.ReadOnlySpan{Sudoku.SetTheory.Permutation},System.Collections.Frozen.FrozenDictionary{Sudoku.Concepts.Conclusion,Sudoku.SetTheory.Logic}@)">
