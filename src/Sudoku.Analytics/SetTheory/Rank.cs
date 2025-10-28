@@ -7,6 +7,12 @@ namespace Sudoku.SetTheory;
 public readonly struct Rank : IEquatable<Rank>, IEqualityOperators<Rank, Rank, bool>
 {
 	/// <summary>
+	/// Represents illegal logic rank.
+	/// </summary>
+	public static readonly Rank Illegal = -1;
+
+
+	/// <summary>
 	/// Represents rank value for consistent cases.
 	/// </summary>
 	private readonly int? _consistentRank;

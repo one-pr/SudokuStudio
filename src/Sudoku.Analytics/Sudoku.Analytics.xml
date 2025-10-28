@@ -36055,6 +36055,11 @@
             Represents rank result for a pattern.
             </summary>
         </member>
+        <member name="F:Sudoku.SetTheory.Rank.Illegal">
+            <summary>
+            Represents illegal logic rank.
+            </summary>
+        </member>
         <member name="F:Sudoku.SetTheory.Rank._consistentRank">
             <summary>
             Represents rank value for consistent cases.

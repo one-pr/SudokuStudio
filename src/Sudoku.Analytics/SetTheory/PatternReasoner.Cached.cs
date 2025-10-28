@@ -12,6 +12,11 @@ public partial class LogicReasoner
 		public static Rank GetRank(in Logic logic, ReadOnlySpan<Conclusion> conclusions, ReadOnlySpan<Permutation> permutations, out FrozenDictionary<Conclusion, Logic> sublogics)
 		{
 			var resultViews = new Dictionary<Conclusion, Logic>();
+			if (permutations.Length == 0)
+			{
+				sublogics = resultViews.ToFrozenDictionary();
+				return Rank.Illegal;
+			}
 
 			// Optimization: If all candidates in this pattern is exact-covered, we can directly calculate rank.
 			if (logic.IsExactCovered)
@@ -179,6 +184,11 @@ public partial class LogicReasoner
 		/// <inheritdoc cref="LogicReasoner.GetRank0Links(in Logic)"/>
 		public static SpaceSet GetRank0Links(in Logic logic, ReadOnlySpan<Permutation> permutations)
 		{
+			if (permutations.Length == 0)
+			{
+				return SpaceSet.Empty;
+			}
+
 			var result = logic.Links;
 			foreach (var permutation in permutations)
 			{
@@ -194,6 +204,11 @@ public partial class LogicReasoner
 		public static CandidateMap GetRank0Eliminations(in Logic logic, ReadOnlySpan<Conclusion> conclusions, ReadOnlySpan<Permutation> permutations)
 		{
 			var result = CandidateMap.Empty;
+			if (permutations.Length == 0)
+			{
+				return result;
+			}
+
 			foreach (var (type, candidate) in conclusions)
 			{
 				if (type != Elimination)
