@@ -204,10 +204,14 @@ public struct Logic : IEquatable<Logic>, IEqualityOperators<Logic, Logic, bool>
 
 
 	/// <summary>
-	/// Creates a <see cref="CandidateMap"/> via the specified truths and links.
+	/// <para>Creates a <see cref="CandidateMap"/> via the specified truths and links.</para>
+	/// <para>
+	/// This method also updates <paramref name="links"/> because it may use overlapped set defined in truths;
+	/// in addition, isolated links (a candidate only covers by links but not by any truths) are ignored to be added.
+	/// </para>
 	/// </summary>
 	/// <param name="truths">The truths.</param>
-	/// <param name="links">The links. Isolated links are ignored to be added.</param>
+	/// <param name="links">The links.</param>
 	/// <param name="grid">The grid.</param>
 	/// <returns>The candidates used only in truths.</returns>
 	private static CandidateMap RebuildMap(
