@@ -3,10 +3,12 @@ namespace Sudoku.SetTheory;
 public partial class LogicReasoner
 {
 	/// <summary>
-	/// Represents equivalent implementation of the parent type, but an extra parameter <c>permutations</c> is required;
-	/// sometimes <c>conclusions</c> is required also.
+	/// Represents equivalent implementation of the parent type <see cref="LogicReasoner"/>,
+	/// but an extra parameter <c>permutations</c> is required;
+	/// sometimes <c>conclusions</c> is also required.
 	/// </summary>
-	public static class Cached
+	/// <seealso cref="LogicReasoner"/>
+	public static class PermutationRequiredEntry
 	{
 		/// <inheritdoc cref="LogicReasoner.GetRank(in Logic, out FrozenDictionary{Conclusion, Logic})"/>
 		public static Rank GetRank(in Logic logic, ReadOnlySpan<Conclusion> conclusions, ReadOnlySpan<Permutation> permutations, out FrozenDictionary<Conclusion, Logic> sublogics)
