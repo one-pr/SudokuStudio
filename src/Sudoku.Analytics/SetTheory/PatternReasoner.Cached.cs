@@ -122,11 +122,12 @@ public partial class LogicReasoner
 		}
 
 		/// <inheritdoc cref="LogicReasoner.GetConclusions(in Logic)"/>
-		public static ReadOnlySpan<Conclusion> GetConclusions(in Logic logic, ReadOnlySpan<Permutation> permutations, bool checkingLinks)
+		public static ReadOnlySpan<Conclusion> GetConclusions(in Logic logic, ReadOnlySpan<Permutation> permutations, bool checkingLinks, bool checkingZone)
 		{
 			ref readonly var grid = ref logic.Grid;
 			ref readonly var links = ref logic.Links;
 			var candidatesMap = grid.CandidatesMap;
+			var emptyCells = grid.EmptyCells;
 
 			// Construct a link lookup. This lookup table records candidates covered in the grid.
 			// We'll use this variable in checking light-up links for each permutation, in order to find strict conclusions
@@ -144,8 +145,8 @@ public partial class LogicReasoner
 					var digit = candidate % 9;
 					if (checkingLinks)
 					{
-						// We should find for all light-up links, and find eliminations.
-						// If the elimination doesn't include in every links, the candidate may not be a valid conclusion.
+						// We should find for all light-up links, and find conclusions.
+						// If the conclusion doesn't include in every links, the candidate may not be a valid one.
 						foreach (var link in permutation.LightupLinks)
 						{
 							if (link.Contains(candidate))
@@ -157,16 +158,32 @@ public partial class LogicReasoner
 					}
 
 				CheckExistence:
-					// If candidates exists, we can eliminate or set it without checking whether it is on a link or not.
-					foreach (var c in Peer.PeersMap[cell] & candidatesMap[digit])
+					if (checkingZone)
 					{
-						tempConclusions.Add(new(Elimination, c, digit));
+						// If candidates exists, we can eliminate or set it without checking whether it is on a link or not.
+						foreach (var c in Peer.PeersMap[cell] & emptyCells)
+						{
+							tempConclusions.Add(new(Elimination, c, digit));
+						}
+						foreach (var d in (Mask)(Grid.MaxCandidatesMask & ~(1 << digit)))
+						{
+							tempConclusions.Add(new(Elimination, cell, d));
+						}
+						tempConclusions.Add(new(Assignment, cell, digit));
 					}
-					foreach (var d in (Mask)(grid.GetCandidates(cell) & ~(1 << digit)))
+					else
 					{
-						tempConclusions.Add(new(Elimination, cell, d));
+						// If candidates exists, we can eliminate or set it without checking whether it is on a link or not.
+						foreach (var c in Peer.PeersMap[cell] & candidatesMap[digit])
+						{
+							tempConclusions.Add(new(Elimination, c, digit));
+						}
+						foreach (var d in (Mask)(grid.GetCandidates(cell) & ~(1 << digit)))
+						{
+							tempConclusions.Add(new(Elimination, cell, d));
+						}
+						tempConclusions.Add(new(Assignment, cell, digit));
 					}
-					tempConclusions.Add(new(Assignment, cell, digit));
 				}
 
 				if (i++ == 0)
@@ -178,6 +195,24 @@ public partial class LogicReasoner
 					result &= tempConclusions;
 				}
 			}
+
+			if (checkingZone)
+			{
+				// Extra checking: Remove all conclusions that are from truths.
+				ref readonly var truths = ref logic.Truths;
+				ref readonly var emptyGrid = ref Grid.Empty;
+				foreach (var conclusion in result[..])
+				{
+					foreach (var truth in truths)
+					{
+						if (truth.GetAvailableRange(emptyGrid).Contains(conclusion.Candidate))
+						{
+							result -= conclusion;
+						}
+					}
+				}
+			}
+
 			return result.AsSpan();
 		}
 
@@ -272,7 +307,7 @@ public partial class LogicReasoner
 				foreach (var truthCombination in targetTruths & targetTruths.Length - 1)
 				{
 					var sublogic = new Logic([.. truthCombination], logic.Links, logic.Grid);
-					var sublogicConclusions = GetConclusions(sublogic, GetPermutations(sublogic), true);
+					var sublogicConclusions = GetConclusions(sublogic, GetPermutations(sublogic), true, false);
 					if (sublogicConclusions.Contains(new(Elimination, elimination)))
 					{
 						// If the pattern (with lower-sized truths) can delete such candidate,
@@ -311,7 +346,7 @@ public partial class LogicReasoner
 			foreach (var link in logic.Links)
 			{
 				var sublogic = new Logic(logic.Truths, logic.Links - link, logic.Grid);
-				if ((GetConclusions(sublogic, GetPermutations(sublogic), true).AsSet() & conclusions) == conclusions)
+				if ((GetConclusions(sublogic, GetPermutations(sublogic), true, false).AsSet() & conclusions) == conclusions)
 				{
 					// The link can be removed because we find a subpattern with removed link state
 					// can eliminate all conclusions specified.
