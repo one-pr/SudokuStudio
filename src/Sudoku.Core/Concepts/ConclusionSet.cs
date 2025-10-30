@@ -86,6 +86,16 @@ public sealed class ConclusionSet :
 	/// </summary>
 	public int Count => _bitArray.Cardinality;
 
+	/// <summary>
+	/// Indicates assignments of the conclusion set.
+	/// </summary>
+	public ConclusionSet Assignments => this & AllAssignments;
+
+	/// <summary>
+	/// Indicates eliminations of the conclusion set.
+	/// </summary>
+	public ConclusionSet Eliminations => this & AllEliminations;
+
 	/// <inheritdoc/>
 	bool ICollection<Conclusion>.IsReadOnly => false;
 
@@ -94,9 +104,52 @@ public sealed class ConclusionSet :
 
 
 	/// <summary>
-	/// An empty instance.
+	/// Represents an empty instance that has no conclusions.
 	/// </summary>
+	/// <remarks>
+	/// This instance can be used as a mutable object,
+	/// meaning you can call any members that may update backing data of the instance.
+	/// This type will always create a new instance.
+	/// </remarks>
 	public static ConclusionSet Empty => [];
+
+	/// <summary>
+	/// Represents an instance that includes all possible conclusions that can be produced in a sudoku grid.
+	/// </summary>
+	/// <remarks><b><i>This property should be used as a read-only and an immutable instance.</i></b></remarks>
+	public static ConclusionSet All => field ??= ~Empty;
+
+	/// <summary>
+	/// Represents an instance that holds all possible assignment cases.
+	/// </summary>
+	/// <remarks><b><i>This property should be used as a read-only and an immutable instance.</i></b></remarks>
+	public static ConclusionSet AllAssignments
+	{
+		get
+		{
+			return field ??= createCached();
+
+
+			static ConclusionSet createCached()
+			{
+				var result = Empty;
+				for (var cell = 0; cell < 81; cell++)
+				{
+					for (var digit = 0; digit < 9; digit++)
+					{
+						result += new Conclusion(Assignment, cell, digit);
+					}
+				}
+				return result;
+			}
+		}
+	}
+
+	/// <summary>
+	/// Represents an instance that holds all possible elimination cases.
+	/// </summary>
+	/// <remarks><b><i>This property should be used as a read-only and an immutable instance.</i></b></remarks>
+	public static ConclusionSet AllEliminations => field ??= All & ~AllAssignments;
 
 
 	/// <summary>
@@ -155,6 +208,16 @@ public sealed class ConclusionSet :
 			Add(conclusion);
 		}
 	}
+
+	/// <summary>
+	/// Only preserve assignments; eliminations will be removed from the current instance.
+	/// </summary>
+	public void PreserveAssignments() => _bitArray.And((this & AllAssignments)._bitArray);
+
+	/// <summary>
+	/// Only preserve eliminations; assignments will be removed from the current instance.
+	/// </summary>
+	public void PreserveEliminations() => _bitArray.And((this & AllEliminations)._bitArray);
 
 	/// <inheritdoc cref="ICollection{T}.CopyTo(T[], int)"/>
 	public void CopyTo(Span<Conclusion> span)
