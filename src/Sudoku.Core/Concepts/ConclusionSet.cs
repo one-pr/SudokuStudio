@@ -23,15 +23,35 @@ public sealed class ConclusionSet :
 	private const int BitsCount = HalfBitsCount << 1;
 
 	/// <summary>
-	/// The maximum number of candidates can exist in a grid.
+	/// The number of candidates exists in a grid in theory.
 	/// </summary>
-	private const int HalfBitsCount = 729;
+	private const int HalfBitsCount = 9 * 9 * 9;
 
 	/// <summary>
 	/// Indicates the total length of bit array.
 	/// </summary>
 	private const int Length = 45;
 
+
+	/// <summary>
+	/// Represents an instance that includes all possible conclusions that can be produced in a sudoku grid.
+	/// </summary>
+	/// <remarks>
+	/// <b><i>This field should be used as a read-only and an immutable instance; do not modify this instance.</i></b>
+	/// </remarks>
+	public static readonly ConclusionSet All;
+
+	/// <summary>
+	/// Represents an instance that holds all possible assignment cases.
+	/// </summary>
+	/// <remarks><inheritdoc cref="All" path="/remarks"/></remarks>
+	public static readonly ConclusionSet AllAssignments;
+
+	/// <summary>
+	/// Represents an instance that holds all possible elimination cases.
+	/// </summary>
+	/// <remarks><inheritdoc cref="All" path="/remarks"/></remarks>
+	public static readonly ConclusionSet AllEliminations;
 
 	/// <summary>
 	/// The prime numbers below 100.
@@ -43,6 +63,31 @@ public sealed class ConclusionSet :
 	/// The internal bit array.
 	/// </summary>
 	private readonly BitArray _bitArray = new(BitsCount);
+
+
+	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	static ConclusionSet()
+	{
+		All = [];
+		All._bitArray.SetAll(true);
+
+		AllAssignments = createCached();
+		AllEliminations = All & ~AllAssignments;
+
+
+		static ConclusionSet createCached()
+		{
+			var result = Empty;
+			for (var cell = 0; cell < 81; cell++)
+			{
+				for (var digit = 0; digit < 9; digit++)
+				{
+					result += new Conclusion(Assignment, cell, digit);
+				}
+			}
+			return result;
+		}
+	}
 
 
 	/// <summary>
@@ -113,44 +158,6 @@ public sealed class ConclusionSet :
 	/// </remarks>
 	public static ConclusionSet Empty => [];
 
-	/// <summary>
-	/// Represents an instance that includes all possible conclusions that can be produced in a sudoku grid.
-	/// </summary>
-	/// <remarks><b><i>This property should be used as a read-only and an immutable instance.</i></b></remarks>
-	public static ConclusionSet All => field ??= ~Empty;
-
-	/// <summary>
-	/// Represents an instance that holds all possible assignment cases.
-	/// </summary>
-	/// <remarks><b><i>This property should be used as a read-only and an immutable instance.</i></b></remarks>
-	public static ConclusionSet AllAssignments
-	{
-		get
-		{
-			return field ??= createCached();
-
-
-			static ConclusionSet createCached()
-			{
-				var result = Empty;
-				for (var cell = 0; cell < 81; cell++)
-				{
-					for (var digit = 0; digit < 9; digit++)
-					{
-						result += new Conclusion(Assignment, cell, digit);
-					}
-				}
-				return result;
-			}
-		}
-	}
-
-	/// <summary>
-	/// Represents an instance that holds all possible elimination cases.
-	/// </summary>
-	/// <remarks><b><i>This property should be used as a read-only and an immutable instance.</i></b></remarks>
-	public static ConclusionSet AllEliminations => field ??= All & ~AllAssignments;
-
 
 	/// <summary>
 	/// Try to get n-th element stored in the collection.
@@ -164,50 +171,64 @@ public sealed class ConclusionSet :
 			: new((Mask)_bitArray.GetInternalArrayField().SetBitAt(index));
 
 
-	/// <inheritdoc/>
-	public void Add(Conclusion item)
+	/// <summary>
+	/// Add a new conclusion into the current collection.
+	/// </summary>
+	/// <param name="item">A new collection.</param>
+	/// <returns>A <see cref="bool"/> result indicating whether the conclusion is successful to be added or not.</returns>
+	public bool Add(Conclusion item)
 	{
 		var (type, cell, digit) = item;
-		_bitArray[(int)type * HalfBitsCount + cell * 9 + digit] = true;
+		var rawIndex = (int)type * HalfBitsCount + cell * 9 + digit;
+		if (_bitArray[rawIndex])
+		{
+			return false;
+		}
+
+		_bitArray[rawIndex] = true;
+		return true;
 	}
 
 	/// <summary>
 	/// Add a list of conclusions into the collection.
 	/// </summary>
 	/// <param name="conclusions">The conclusions to be added.</param>
-	public void AddRange(params ReadOnlySpan<Conclusion> conclusions)
+	/// <returns>The number of conclusions succeeded to be added.</returns>
+	public int AddRange(params ReadOnlySpan<Conclusion> conclusions)
 	{
+		var result = 0;
 		foreach (var conclusion in conclusions)
 		{
-			Add(conclusion);
+			if (Add(conclusion))
+			{
+				result++;
+			}
 		}
+		return result;
 	}
 
 	/// <summary>
 	/// Remove a conclusion, represented as a global index (between 0 and 1458), from the collection.
 	/// </summary>
 	/// <param name="item">The item to be removed.</param>
-	public void Remove(Conclusion item)
+	/// <returns>
+	/// A <see cref="bool"/> result indicating whether the conclusion can be removed from the collection or not.
+	/// </returns>
+	public bool Remove(Conclusion item)
 	{
 		var (type, cell, digit) = item;
-		_bitArray[(int)type * HalfBitsCount + cell * 9 + digit] = false;
+		var rawIndex = (int)type * HalfBitsCount + cell * 9 + digit;
+		if (!_bitArray[rawIndex])
+		{
+			return false;
+		}
+
+		_bitArray[rawIndex] = false;
+		return true;
 	}
 
 	/// <inheritdoc/>
 	public void Clear() => _bitArray.SetAll(false);
-
-	/// <summary>
-	/// Removes all elements in the collection and add all elements from <paramref name="conclusions"/>.
-	/// </summary>
-	/// <param name="conclusions">The conclusions provider to replace with the current instance.</param>
-	public void Replace(ConclusionSet conclusions)
-	{
-		Clear();
-		foreach (var conclusion in conclusions)
-		{
-			Add(conclusion);
-		}
-	}
 
 	/// <summary>
 	/// Only preserve assignments; eliminations will be removed from the current instance.
@@ -355,6 +376,9 @@ public sealed class ConclusionSet :
 	public ConclusionSet Slice(int start, int count) => [.. ToArray().AsReadOnlySpan()[start..(start + count)]];
 
 	/// <inheritdoc/>
+	void ICollection<Conclusion>.Add(Conclusion item) => _ = Add(item);
+
+	/// <inheritdoc/>
 	void ICollection<Conclusion>.CopyTo(Conclusion[] array, int arrayIndex) => CopyTo(array.AsSpan()[arrayIndex..]);
 
 	/// <inheritdoc/>
@@ -385,7 +409,11 @@ public sealed class ConclusionSet :
 	void ISet<Conclusion>.SymmetricExceptWith(IEnumerable<Conclusion> other)
 	{
 		ConclusionSet p = [.. other];
-		Replace(this & ~p | p & ~this);
+		Clear();
+		foreach (var c in this & ~p | p & ~this)
+		{
+			Add(c);
+		}
 	}
 
 	/// <inheritdoc/>

@@ -1766,13 +1766,33 @@
         </member>
         <member name="F:Sudoku.Concepts.ConclusionSet.HalfBitsCount">
             <summary>
-            The maximum number of candidates can exist in a grid.
+            The number of candidates exists in a grid in theory.
             </summary>
         </member>
         <member name="F:Sudoku.Concepts.ConclusionSet.Length">
             <summary>
             Indicates the total length of bit array.
             </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.ConclusionSet.All">
+            <summary>
+            Represents an instance that includes all possible conclusions that can be produced in a sudoku grid.
+            </summary>
+            <remarks>
+            <b><i>This field should be used as a read-only and an immutable instance; do not modify this instance.</i></b>
+            </remarks>
+        </member>
+        <member name="F:Sudoku.Concepts.ConclusionSet.AllAssignments">
+            <summary>
+            Represents an instance that holds all possible assignment cases.
+            </summary>
+            <remarks><inheritdoc cref="F:Sudoku.Concepts.ConclusionSet.All" path="/remarks"/></remarks>
+        </member>
+        <member name="F:Sudoku.Concepts.ConclusionSet.AllEliminations">
+            <summary>
+            Represents an instance that holds all possible elimination cases.
+            </summary>
+            <remarks><inheritdoc cref="F:Sudoku.Concepts.ConclusionSet.All" path="/remarks"/></remarks>
         </member>
         <member name="F:Sudoku.Concepts.ConclusionSet.PrimeNumbers">
             <summary>
@@ -1783,6 +1803,19 @@
             <summary>
             The internal bit array.
             </summary>
+        </member>
+        <member name="M:Sudoku.Concepts.ConclusionSet.#cctor">
+            <static-constructor>
+		<summary>
+			<para>
+				Indicates the <see langword="static" /> constructor of the current type.
+			</para>
+			<para>
+				This constructor will initialize some <see langword="static readonly" /> data members
+				of this type that can't use a simple expression to describe the initial value.
+			</para>
+		</summary>
+	</static-constructor>
         </member>
         <member name="P:Sudoku.Concepts.ConclusionSet.ContainsAssignment">
             <summary>
@@ -1825,24 +1858,6 @@
             This type will always create a new instance.
             </remarks>
         </member>
-        <member name="P:Sudoku.Concepts.ConclusionSet.All">
-            <summary>
-            Represents an instance that includes all possible conclusions that can be produced in a sudoku grid.
-            </summary>
-            <remarks><b><i>This property should be used as a read-only and an immutable instance.</i></b></remarks>
-        </member>
-        <member name="P:Sudoku.Concepts.ConclusionSet.AllAssignments">
-            <summary>
-            Represents an instance that holds all possible assignment cases.
-            </summary>
-            <remarks><b><i>This property should be used as a read-only and an immutable instance.</i></b></remarks>
-        </member>
-        <member name="P:Sudoku.Concepts.ConclusionSet.AllEliminations">
-            <summary>
-            Represents an instance that holds all possible elimination cases.
-            </summary>
-            <remarks><b><i>This property should be used as a read-only and an immutable instance.</i></b></remarks>
-        </member>
         <member name="P:Sudoku.Concepts.ConclusionSet.Item(System.Int32)">
             <summary>
             Try to get n-th element stored in the collection.
@@ -1852,28 +1867,30 @@
             <exception cref="T:System.IndexOutOfRangeException">Throws when the index is out of range.</exception>
         </member>
         <member name="M:Sudoku.Concepts.ConclusionSet.Add(Sudoku.Concepts.Conclusion)">
-            <inheritdoc/>
+            <summary>
+            Add a new conclusion into the current collection.
+            </summary>
+            <param name="item">A new collection.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether the conclusion is successful to be added or not.</returns>
         </member>
         <member name="M:Sudoku.Concepts.ConclusionSet.AddRange(System.ReadOnlySpan{Sudoku.Concepts.Conclusion})">
             <summary>
             Add a list of conclusions into the collection.
             </summary>
             <param name="conclusions">The conclusions to be added.</param>
+            <returns>The number of conclusions succeeded to be added.</returns>
         </member>
         <member name="M:Sudoku.Concepts.ConclusionSet.Remove(Sudoku.Concepts.Conclusion)">
             <summary>
             Remove a conclusion, represented as a global index (between 0 and 1458), from the collection.
             </summary>
             <param name="item">The item to be removed.</param>
+            <returns>
+            A <see cref="T:System.Boolean"/> result indicating whether the conclusion can be removed from the collection or not.
+            </returns>
         </member>
         <member name="M:Sudoku.Concepts.ConclusionSet.Clear">
             <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Concepts.ConclusionSet.Replace(Sudoku.Concepts.ConclusionSet)">
-            <summary>
-            Removes all elements in the collection and add all elements from <paramref name="conclusions"/>.
-            </summary>
-            <param name="conclusions">The conclusions provider to replace with the current instance.</param>
         </member>
         <member name="M:Sudoku.Concepts.ConclusionSet.PreserveAssignments">
             <summary>
@@ -1943,6 +1960,9 @@
         </member>
         <member name="M:Sudoku.Concepts.ConclusionSet.Slice(System.Int32,System.Int32)">
             <inheritdoc cref="M:System.Linq.Providers.ISliceMethod`2.Slice(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.ConclusionSet.System#Collections#Generic#ICollection{Sudoku#Concepts#Conclusion}#Add(Sudoku.Concepts.Conclusion)">
+            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Concepts.ConclusionSet.System#Collections#Generic#ICollection{Sudoku#Concepts#Conclusion}#CopyTo(Sudoku.Concepts.Conclusion[],System.Int32)">
             <inheritdoc/>
