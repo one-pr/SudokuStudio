@@ -22,6 +22,12 @@ public readonly record struct AssignmentInfo(Digit Digit, in CellMap Cells) : IE
 	public bool IsGrouped => Cells.Count != 1;
 
 
+	/// <summary>
+	/// Returns a string value that is only used for debugger displaying.
+	/// </summary>
+	/// <returns>The string representation.</returns>
+	public string ToDebuggerDisplayString() => IsGrouped ? $"\e[38;2;255;255;0m{Cells}({Digit + 1})\e[0m" : $"{Cells}({Digit + 1})";
+
 	/// <include
 	///     file="../../global-doc-comments.xml"
 	///     path="/g/csharp9/feature[@name='records']/target[@name='method' and @cref='PrintMembers']"/>

@@ -35,5 +35,30 @@ public partial class SequenceExtensions
 		/// </summary>
 		/// <returns>A <see cref="ReadOnlyMemoryEnumerator{T}"/> instance.</returns>
 		public ReadOnlyMemoryEnumerator<T> GetEnumerator() => new(@this);
+
+		/// <summary>
+		/// Returns a new <see cref="ReadOnlyMemory{T}"/> instance whose internal elements are all come from the current collection,
+		/// with reversed order.
+		/// </summary>
+		/// <returns>A new collection whose elements are in reversed order.</returns>
+		[OverloadResolutionPriority(1)]
+		[Obsolete(DeprecatedMessages.ExtensionOperator_Reverse, false)]
+		public ReadOnlyMemory<T> Reverse() => ~@this;
+
+
+		/// <summary>
+		/// Creates a reversed collection of <paramref name="value"/>.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <returns>The reversed collection.</returns>
+		public static ReadOnlyMemory<T> operator ~(ReadOnlyMemory<T> value)
+		{
+			var result = new T[value.Length];
+			for (var (i, j) = (value.Length - 1, 0); i >= 0; i--, j++)
+			{
+				result[j] = value.Span[i];
+			}
+			return result;
+		}
 	}
 }

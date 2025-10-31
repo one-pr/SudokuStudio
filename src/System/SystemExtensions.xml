@@ -8382,6 +8382,12 @@
         <member name="M:System.SequenceExtensions.GetEnumerator``1(System.ReadOnlyMemory{``0})">
             <inheritdoc cref="M:System.SequenceExtensions.&lt;G&gt;$3387D7F181FA234A9158DADA9224047F`1.GetEnumerator"/>
         </member>
+        <member name="M:System.SequenceExtensions.Reverse``1(System.ReadOnlyMemory{``0})">
+            <inheritdoc cref="M:System.SequenceExtensions.&lt;G&gt;$3387D7F181FA234A9158DADA9224047F`1.Reverse"/>
+        </member>
+        <member name="M:System.SequenceExtensions.op_OnesComplement``1(System.ReadOnlyMemory{``0})">
+            <inheritdoc cref="M:System.SequenceExtensions.&lt;G&gt;$3387D7F181FA234A9158DADA9224047F`1.op_OnesComplement(System.ReadOnlyMemory{`0})"/>
+        </member>
         <member name="M:System.SequenceExtensions.FirstIndex``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})">
             <inheritdoc cref="M:System.SequenceExtensions.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.FirstIndex(System.Func{`0,System.Boolean})"/>
         </member>
@@ -8566,6 +8572,20 @@
             Creates a <see cref="T:System.Linq.Enumerators.ReadOnlyMemoryEnumerator`1"/> instance that can be consumed by a <see langword="foreach"/> loop.
             </summary>
             <returns>A <see cref="T:System.Linq.Enumerators.ReadOnlyMemoryEnumerator`1"/> instance.</returns>
+        </member>
+        <member name="M:System.SequenceExtensions.&lt;G&gt;$3387D7F181FA234A9158DADA9224047F`1.Reverse">
+            <summary>
+            Returns a new <see cref="T:System.ReadOnlyMemory`1"/> instance whose internal elements are all come from the current collection,
+            with reversed order.
+            </summary>
+            <returns>A new collection whose elements are in reversed order.</returns>
+        </member>
+        <member name="M:System.SequenceExtensions.&lt;G&gt;$3387D7F181FA234A9158DADA9224047F`1.op_OnesComplement(System.ReadOnlyMemory{`0})">
+            <summary>
+            Creates a reversed collection of <paramref name="value"/>.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>The reversed collection.</returns>
         </member>
         <member name="T:System.SequenceExtensions.&lt;G&gt;$CCC6C15EC93AA06816794B41FF241F94`1.&lt;M&gt;$8338E2F9255468906D7EF9630F746B14">
             <summary>

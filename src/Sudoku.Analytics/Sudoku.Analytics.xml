@@ -10330,6 +10330,12 @@
             Indicates whether the assignment instance is for grouped set rule.
             </summary>
         </member>
+        <member name="M:Sudoku.Analytics.Depencency.AssignmentInfo.ToDebuggerDisplayString">
+            <summary>
+            Returns a string value that is only used for debugger displaying.
+            </summary>
+            <returns>The string representation.</returns>
+        </member>
         <member name="M:Sudoku.Analytics.Depencency.AssignmentInfo.PrintMembers(System.Text.StringBuilder)">
             <target name="method" cref="M:Sudoku.Analytics.Depencency.AssignmentInfo.PrintMembers(System.Text.StringBuilder)">
 				<summary>
