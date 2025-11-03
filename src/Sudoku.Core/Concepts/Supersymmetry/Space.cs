@@ -255,8 +255,8 @@ public readonly struct Space(Mask mask) :
 	/// <summary>
 	/// Creates a <see cref="Space"/> for row-digit space.
 	/// </summary>
-	/// <param name="row">Indicates the row index.</param>
-	/// <param name="digit">Indicates the digit.</param>
+	/// <param name="row">Indicates the row index. Range [0, 9).</param>
+	/// <param name="digit">Indicates the digit. Range [0, 9).</param>
 	/// <returns>The <see cref="Space"/> instance created.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Throws when argument is greater than 9.</exception>
 	public static Space RowDigit(RowIndex row, Digit digit)
@@ -271,8 +271,8 @@ public readonly struct Space(Mask mask) :
 	/// <summary>
 	/// Creates a <see cref="Space"/> for column-digit space.
 	/// </summary>
-	/// <param name="column">Indicates the column index.</param>
-	/// <param name="digit">Indicates the digit.</param>
+	/// <param name="column">Indicates the column index. Range [0, 9).</param>
+	/// <param name="digit">Indicates the digit. Range [0, 9).</param>
 	/// <returns>The <see cref="Space"/> instance created.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Throws when argument is greater than 9.</exception>
 	public static Space ColumnDigit(ColumnIndex column, Digit digit)
@@ -287,8 +287,8 @@ public readonly struct Space(Mask mask) :
 	/// <summary>
 	/// Creates a <see cref="Space"/> for block-digit space.
 	/// </summary>
-	/// <param name="block">Indicates the block index.</param>
-	/// <param name="digit">Indicates the digit.</param>
+	/// <param name="block">Indicates the block index. Range [0, 9).</param>
+	/// <param name="digit">Indicates the digit. Range [0, 9).</param>
 	/// <returns>The <see cref="Space"/> instance created.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Throws when argument is greater than 9.</exception>
 	public static Space BlockDigit(BlockIndex block, Digit digit)
@@ -303,8 +303,8 @@ public readonly struct Space(Mask mask) :
 	/// <summary>
 	/// Creates a <see cref="Space"/> for row-column space.
 	/// </summary>
-	/// <param name="row">Indicates the row index.</param>
-	/// <param name="column">Indicates the column index.</param>
+	/// <param name="row">Indicates the row index. Range [0, 9).</param>
+	/// <param name="column">Indicates the column index. Range [0, 9).</param>
 	/// <returns>The <see cref="Space"/> instance created.</returns>
 	/// <exception cref="ArgumentOutOfRangeException">Throws when argument is greater than 9.</exception>
 	public static Space RowColumn(RowIndex row, ColumnIndex column)
