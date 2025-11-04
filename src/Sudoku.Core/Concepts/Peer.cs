@@ -21,6 +21,13 @@ public static class Peer
 	/// </summary>
 	private static readonly CellMap[] PeersMapBackingField;
 
+#if CACHE_CANDIDATE_MAPS
+	/// <summary>
+	/// Backing field of <see cref="CandidatePeersMap"/>.
+	/// </summary>
+	private static readonly CandidateMap[] CandidatePeersMapBackingField;
+#endif
+
 
 	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
 	static Peer()
@@ -49,6 +56,34 @@ public static class Peer
 			}
 			PeersMapBackingField[cell] = map;
 		}
+
+#if CACHE_CANDIDATE_MAPS
+		CandidatePeersMapBackingField = new CandidateMap[729];
+		for (var candidate = 0; candidate < 729; candidate++)
+		{
+			var map = CandidateMap.Empty;
+
+			var cell = candidate / 9;
+			var digit = candidate % 9;
+
+			// Check cell.
+			foreach (var peerCell in PeersMapBackingField[cell])
+			{
+				map.Add(peerCell * 9 + digit);
+			}
+
+			// Check digit.
+			for (var peerDigit = 0; peerDigit < 9; peerDigit++)
+			{
+				if (peerDigit != digit)
+				{
+					map.Add(cell * 9 + peerDigit);
+				}
+			}
+
+			CandidatePeersMapBackingField[candidate] = map;
+		}
+#endif
 	}
 
 
@@ -56,4 +91,12 @@ public static class Peer
 	/// Indicates a list of <see cref="CellMap"/> instances representing the peer cells of a cell at the specified index.
 	/// </summary>
 	public static ReadOnlySpan<CellMap> PeersMap => PeersMapBackingField;
+
+#if CACHE_CANDIDATE_MAPS
+	/// <summary>
+	/// Indicates a list of <see cref="CandidateMap"/> instances representing the peer candidates
+	/// of a candidate at the specified index.
+	/// </summary>
+	public static ReadOnlySpan<CandidateMap> CandidatePeersMap => CandidatePeersMapBackingField;
+#endif
 }
