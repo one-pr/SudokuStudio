@@ -188,14 +188,7 @@ public partial struct SpaceSet :
 	public bool Add(Space space)
 	{
 		var (type, primary, secondary) = space;
-		var id = primary * 9 + secondary;
-		if (_field[(int)type].Contains(id))
-		{
-			return false;
-		}
-
-		_field[(int)type] += id;
-		return true;
+		return _field[(int)type].Add(primary * 9 + secondary);
 	}
 
 	/// <summary>
@@ -206,14 +199,7 @@ public partial struct SpaceSet :
 	public bool Remove(Space space)
 	{
 		var (type, primary, secondary) = space;
-		var id = primary * 9 + secondary;
-		if (!_field[(int)type].Contains(id))
-		{
-			return false;
-		}
-
-		_field[(int)type] -= id;
-		return true;
+		return _field[(int)type].Remove(primary * 9 + secondary);
 	}
 
 	/// <summary>
@@ -401,13 +387,21 @@ public partial struct SpaceSet :
 	/// Adds a new space into the current collection.
 	/// </summary>
 	/// <param name="value">The space.</param>
-	public void operator +=(Space value) => Add(value);
+	public void operator +=(Space value)
+	{
+		var (type, primary, secondary) = value;
+		_field[(int)type] += primary * 9 + secondary;
+	}
 
 	/// <summary>
 	/// Removes a space from the current collection.
 	/// </summary>
 	/// <param name="value">The space.</param>
-	public void operator -=(Space value) => Remove(value);
+	public void operator -=(Space value)
+	{
+		var (type, primary, secondary) = value;
+		_field[(int)type] -= primary * 9 + secondary;
+	}
 
 	/// <summary>
 	/// Performs bitwise-and operation and assign the value to the current instance.
