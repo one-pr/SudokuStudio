@@ -239,7 +239,7 @@ public static class DependencyChecker
 						// Just skip for it.
 						break;
 					}
-					case DependencyNodeType.HiddenSingleBlock
+					case DependencyNodeType.Block
 						when cells.SharedBlock is var sharedBlock and not FallbackConstants.@int:
 					{
 						var truth = Space.BlockDigit(sharedBlock, digit);
@@ -247,27 +247,27 @@ public static class DependencyChecker
 						removed |= truth.GetAvailableRange(grid);
 						break;
 					}
-					case DependencyNodeType.HiddenSingleRow or DependencyNodeType.HiddenSingleColumn
+					case DependencyNodeType.Row or DependencyNodeType.Column
 						when cells.SharedHouses is var sharedLineMask and not 0:
 					{
-						var lineMask = type == DependencyNodeType.HiddenSingleRow ? AllRowsMask : AllColumnsMask;
+						var lineMask = type == DependencyNodeType.Row ? AllRowsMask : AllColumnsMask;
 						var sharedLine = BitOperations.TrailingZeroCount(sharedLineMask & lineMask);
 						var truth = sharedLine < 18 ? Space.RowDigit(sharedLine - 9, digit) : Space.ColumnDigit(sharedLine - 18, digit);
 						truths += truth;
 						removed |= truth.GetAvailableRange(grid);
 						break;
 					}
-					case DependencyNodeType.NakedSingle when cells is [var onlyCell]:
+					case DependencyNodeType.Cell when cells is [var onlyCell]:
 					{
 						var truth = Space.RowColumn(onlyCell / 9, onlyCell % 9);
 						truths += truth;
 						removed |= truth.GetAvailableRange(grid);
 						break;
 					}
-					case DependencyNodeType.HiddenSingleBlock:
-					case DependencyNodeType.HiddenSingleRow:
-					case DependencyNodeType.HiddenSingleColumn:
-					case DependencyNodeType.NakedSingle:
+					case DependencyNodeType.Block:
+					case DependencyNodeType.Row:
+					case DependencyNodeType.Column:
+					case DependencyNodeType.Cell:
 					{
 						return false;
 					}

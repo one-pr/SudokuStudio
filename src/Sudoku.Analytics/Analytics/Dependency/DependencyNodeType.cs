@@ -16,22 +16,22 @@ public enum DependencyNodeType
 	Supposing,
 
 	/// <summary>
-	/// Represents a new node becomes available because of hidden single in block.
+	/// Represents a new node becomes available because of hidden single in block, or pointing in locked candidates rule.
 	/// </summary>
-	HiddenSingleBlock,
+	Block,
 
 	/// <summary>
-	/// Represents a new node becomes available because of hidden single in row.
+	/// Represents a new node becomes available because of hidden single in row, or claiming in locked candidates rule.
 	/// </summary>
-	HiddenSingleRow,
+	Row,
 
 	/// <summary>
-	/// Represents a new node becomes available because of hidden single in column.
+	/// Represents a new node becomes available because of hidden single in column, or claiming in locked candidates rule.
 	/// </summary>
-	HiddenSingleColumn,
+	Column,
 
 	/// <summary>
 	/// Represents a new node becomes available because of naked single.
 	/// </summary>
-	NakedSingle
+	Cell
 }

@@ -296,10 +296,8 @@ public static class ContradictionDetector
 						(
 							new(digit, intersection),
 							a & map
-								? DependencyNodeType.HiddenSingleBlock
-								: baseSet < 18
-									? DependencyNodeType.HiddenSingleRow
-									: DependencyNodeType.HiddenSingleColumn
+								? DependencyNodeType.Block
+								: baseSet < 18 ? DependencyNodeType.Row : DependencyNodeType.Column
 						)
 					);
 				}
@@ -320,7 +318,7 @@ public static class ContradictionDetector
 			var mask = grid.GetCandidates(cell);
 			if (BitOperations.IsPow2((uint)mask))
 			{
-				result.Add((new(cell * 9 + BitOperations.Log2((uint)mask)), DependencyNodeType.NakedSingle));
+				result.Add((new(cell * 9 + BitOperations.Log2((uint)mask)), DependencyNodeType.Cell));
 			}
 		}
 	}
@@ -365,9 +363,9 @@ public static class ContradictionDetector
 							new(firstFoundCell * 9 + digit),
 							house switch
 							{
-								< 9 => DependencyNodeType.HiddenSingleBlock,
-								< 18 => DependencyNodeType.HiddenSingleRow,
-								_ => DependencyNodeType.HiddenSingleColumn
+								< 9 => DependencyNodeType.Block,
+								< 18 => DependencyNodeType.Row,
+								_ => DependencyNodeType.Column
 							}
 						)
 					);

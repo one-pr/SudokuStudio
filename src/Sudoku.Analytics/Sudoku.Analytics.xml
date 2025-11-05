@@ -10680,22 +10680,22 @@
             Represents the node is for supposing a candidate to be <see langword="true"/>.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Dependency.DependencyNodeType.HiddenSingleBlock">
+        <member name="F:Sudoku.Analytics.Dependency.DependencyNodeType.Block">
             <summary>
-            Represents a new node becomes available because of hidden single in block.
+            Represents a new node becomes available because of hidden single in block, or pointing in locked candidates rule.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Dependency.DependencyNodeType.HiddenSingleRow">
+        <member name="F:Sudoku.Analytics.Dependency.DependencyNodeType.Row">
             <summary>
-            Represents a new node becomes available because of hidden single in row.
+            Represents a new node becomes available because of hidden single in row, or claiming in locked candidates rule.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Dependency.DependencyNodeType.HiddenSingleColumn">
+        <member name="F:Sudoku.Analytics.Dependency.DependencyNodeType.Column">
             <summary>
-            Represents a new node becomes available because of hidden single in column.
+            Represents a new node becomes available because of hidden single in column, or claiming in locked candidates rule.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Dependency.DependencyNodeType.NakedSingle">
+        <member name="F:Sudoku.Analytics.Dependency.DependencyNodeType.Cell">
             <summary>
             Represents a new node becomes available because of naked single.
             </summary>
