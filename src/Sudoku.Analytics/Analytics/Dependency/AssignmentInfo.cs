@@ -1,4 +1,4 @@
-namespace Sudoku.Analytics.Depencency;
+namespace Sudoku.Analytics.Dependency;
 
 /// <summary>
 /// Represents an assignment for a group of cells and the specified digit.

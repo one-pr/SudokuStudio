@@ -10299,45 +10299,45 @@
             Indicates XYZ-Wing.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.Depencency.AssignmentInfo">
+        <member name="T:Sudoku.Analytics.Dependency.AssignmentInfo">
             <summary>
             Represents an assignment for a group of cells and the specified digit.
             </summary>
             <param name="Digit">Indicates the digit.</param>
             <param name="Cells">Indicates cells used.</param>
         </member>
-        <member name="M:Sudoku.Analytics.Depencency.AssignmentInfo.#ctor(System.Int32,Sudoku.Concepts.CellMap@)">
+        <member name="M:Sudoku.Analytics.Dependency.AssignmentInfo.#ctor(System.Int32,Sudoku.Concepts.CellMap@)">
             <summary>
             Represents an assignment for a group of cells and the specified digit.
             </summary>
             <param name="Digit">Indicates the digit.</param>
             <param name="Cells">Indicates cells used.</param>
         </member>
-        <member name="P:Sudoku.Analytics.Depencency.AssignmentInfo.Digit">
+        <member name="P:Sudoku.Analytics.Dependency.AssignmentInfo.Digit">
             <summary>Indicates the digit.</summary>
         </member>
-        <member name="P:Sudoku.Analytics.Depencency.AssignmentInfo.Cells">
+        <member name="P:Sudoku.Analytics.Dependency.AssignmentInfo.Cells">
             <summary>Indicates cells used.</summary>
         </member>
-        <member name="M:Sudoku.Analytics.Depencency.AssignmentInfo.#ctor(System.Int32)">
+        <member name="M:Sudoku.Analytics.Dependency.AssignmentInfo.#ctor(System.Int32)">
             <summary>
-            Initializes an <see cref="T:Sudoku.Analytics.Depencency.AssignmentInfo"/> instance via the specified candidate.
+            Initializes an <see cref="T:Sudoku.Analytics.Dependency.AssignmentInfo"/> instance via the specified candidate.
             </summary>
             <param name="candidate">The candidate.</param>
         </member>
-        <member name="P:Sudoku.Analytics.Depencency.AssignmentInfo.IsGrouped">
+        <member name="P:Sudoku.Analytics.Dependency.AssignmentInfo.IsGrouped">
             <summary>
             Indicates whether the assignment instance is for grouped set rule.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Depencency.AssignmentInfo.ToDebuggerDisplayString">
+        <member name="M:Sudoku.Analytics.Dependency.AssignmentInfo.ToDebuggerDisplayString">
             <summary>
             Returns a string value that is only used for debugger displaying.
             </summary>
             <returns>The string representation.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Depencency.AssignmentInfo.PrintMembers(System.Text.StringBuilder)">
-            <target name="method" cref="M:Sudoku.Analytics.Depencency.AssignmentInfo.PrintMembers(System.Text.StringBuilder)">
+        <member name="M:Sudoku.Analytics.Dependency.AssignmentInfo.PrintMembers(System.Text.StringBuilder)">
+            <target name="method" cref="M:Sudoku.Analytics.Dependency.AssignmentInfo.PrintMembers(System.Text.StringBuilder)">
 				<summary>
 					Provides an easy way to concatenate output members inside a <see langword="record" />
 					or a <see langword="record struct" /> type.
@@ -10375,13 +10375,136 @@
 				</remarks>
 			</target>
         </member>
-        <member name="T:Sudoku.Analytics.Depencency.DependencyChecker">
+        <member name="T:Sudoku.Analytics.Dependency.Contradictions.Cause">
+            <summary>
+            Represents a cause that describes which space (house or cell) becomes empty if the list of assignments are applied.
+            </summary>
+            <param name="Candidate">Indicates the start candidate.</param>
+            <param name="LastNode">Indicates the node that causes a conflict.</param>
+            <param name="EmptySpace">Indicates which space will become empty if assignments are applied.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.Contradictions.Cause.#ctor(System.Int32,Sudoku.Analytics.Dependency.DependencyNode,Sudoku.Concepts.Supersymmetry.Space)">
+            <summary>
+            Represents a cause that describes which space (house or cell) becomes empty if the list of assignments are applied.
+            </summary>
+            <param name="Candidate">Indicates the start candidate.</param>
+            <param name="LastNode">Indicates the node that causes a conflict.</param>
+            <param name="EmptySpace">Indicates which space will become empty if assignments are applied.</param>
+        </member>
+        <member name="P:Sudoku.Analytics.Dependency.Contradictions.Cause.Candidate">
+            <summary>Indicates the start candidate.</summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Dependency.Contradictions.Cause.LastNode">
+            <summary>Indicates the node that causes a conflict.</summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Dependency.Contradictions.Cause.EmptySpace">
+            <summary>Indicates which space will become empty if assignments are applied.</summary>
+        </member>
+        <member name="T:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector">
+            <summary>
+            Represents a type that can find for conflict that will be used in complex patterns.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.Check(Sudoku.Concepts.Grid@,System.Boolean)">
+            <summary>
+            The global method to check for complex contradiction.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="includesGroupedNodes">Indicates whether grouped nodes should also be checked.</param>
+            <returns>A list of found conflict.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.CanCauseEmptyConflict(Sudoku.Concepts.Grid@,System.Int32,System.Int32,System.Boolean,Sudoku.Analytics.Dependency.DependencyNode@,Sudoku.Concepts.Supersymmetry.Space@)">
+            <summary>
+            Checks for the grid, to determine whether the grid can cause a house that cannot fill a digit,
+            or a cell has no valid candidates, if the specified cell is filled with the specified digit.
+            </summary>
+            <param name="playground">The grid to be checked.</param>
+            <param name="cell">The start cell to check.</param>
+            <param name="digit">The digit to check.</param>
+            <param name="includesGroupedNodes">Indicates whether the searching method will includes grouped nodes.</param>
+            <param name="lastNode">Indicates the node branch that causes invalid states.</param>
+            <param name="cause">The space that is going to be empty.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid can lead a conflict or not.</returns>
+            <remarks>
+            <para>
+            We know that the assignments may form a complex graph, for example:
+            <code>
+                 A
+                / \
+               B   C
+              / \   \
+             D   E  (F)
+             |
+            (F)
+            </code>
+            Here, we can store connections like <c>C -> F</c> into the map,
+            in order not to traverse other links to F (like <c>B -> D -> F</c>).
+            </para>
+            <para>
+            However, here may cause a potential problem: we can only know the assignment relation, but ignoring grid states.
+            For example, if we have <c>A -> C</c>, this map will ignore all connections from <c>A</c> to <c>C</c>,
+            no matter how a grid is from.
+            </para>
+            <para>
+            The correct implementation in fact is to store branches that each candidate can reach, and their updated grids;
+            or store the whole branch. Only for the whole branch can be pruned.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.TryFindContradiction(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.Space@)">
+            <summary>
+            Try to find contradiction of the specified, searching for a space (house or cell) has no valid digit to be filled.
+            If found, the space will be recorded in argument <paramref name="result"/>.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="result">The result space causing an empty.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating whether there's any contradiction.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.GetUpdatedGrid(Sudoku.Concepts.Grid,Sudoku.Analytics.Dependency.AssignmentInfo@,System.ReadOnlySpan{System.Int32}@)">
+            <summary>
+            Create a new grid that applies the specified assignment.
+            </summary>
+            <param name="original">The original grid.</param>
+            <param name="assignment">The assignment.</param>
+            <param name="removedCandidates">Removed candidates.</param>
+            <returns>The grid updated.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.FindLockedCandidates(Sudoku.Concepts.Grid@,Sudoku.Analytics.Dependency.DependencyNode,System.Collections.Generic.HashSet{System.ValueTuple{Sudoku.Analytics.Dependency.AssignmentInfo,Sudoku.Analytics.Dependency.DependencyNodeType}})">
+            <summary>
+            Find for locked candidates, and collect them into <paramref name="result"/>.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="node">The node.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.FindNakedSingle(Sudoku.Concepts.Grid@,Sudoku.Analytics.Dependency.DependencyNode,System.Collections.Generic.HashSet{System.ValueTuple{Sudoku.Analytics.Dependency.AssignmentInfo,Sudoku.Analytics.Dependency.DependencyNodeType}})">
+            <summary>
+            Find for naked singles, and collect them into <paramref name="result"/>.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="node">The node.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.FindHiddenSingle(Sudoku.Concepts.Grid@,Sudoku.Analytics.Dependency.DependencyNode,System.Collections.Generic.HashSet{System.ValueTuple{Sudoku.Analytics.Dependency.AssignmentInfo,Sudoku.Analytics.Dependency.DependencyNodeType}})">
+            <summary>
+            Find for hidden singles, and collect them into <paramref name="result"/>.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="node">The node.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.EqualityComparerOf``1">
+            <summary>
+            Represents equality comparer for typed assignment pair.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Analytics.Dependency.DependencyChecker">
             <summary>
             Represents a checker that analyzes dependency of a grid,
             to know how to conclude assignment <c>b</c> from the specified assignment <c>a</c>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Depencency.DependencyChecker.TryGetDependencySpaces(Sudoku.Concepts.Grid@,Sudoku.Analytics.Depencency.AssignmentInfo@,Sudoku.Analytics.Depencency.AssignmentInfo@,Sudoku.Concepts.Supersymmetry.Space@,Sudoku.Concepts.Supersymmetry.Space@)">
+        <member name="M:Sudoku.Analytics.Dependency.DependencyChecker.TryGetDependencySpaces(Sudoku.Concepts.Grid@,Sudoku.Analytics.Dependency.AssignmentInfo@,Sudoku.Analytics.Dependency.AssignmentInfo@,Sudoku.Concepts.Supersymmetry.Space@,Sudoku.Concepts.Supersymmetry.Space@)">
             <summary>
             Try to analyze dependency spaces (truth and link) in the grid.
             </summary>
@@ -10391,6 +10514,128 @@
             <param name="truth">Indicates the truth inferred.</param>
             <param name="link">Indicates the link inferred.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyChecker.InferSpaces(Sudoku.Concepts.Grid@,Sudoku.Analytics.Dependency.DependencyNode,Sudoku.Concepts.Supersymmetry.Space,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Concepts.Supersymmetry.SpaceSet@)">
+            <summary>
+            Creates two lists of spaces indicating truths and links, representing corresponding logic to a complex pattern.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="lastNode">The last node.</param>
+            <param name="cause">The space which doesn't have any possible positions to be filled.</param>
+            <param name="truths">The truths.</param>
+            <param name="links">The links.</param>
+        </member>
+        <member name="T:Sudoku.Analytics.Dependency.DependencyNode">
+            <summary>
+            Represents a dependency node.
+            </summary>
+            <param name="type"><inheritdoc cref="P:Sudoku.Analytics.Dependency.DependencyNode.Type" path="/summary"/></param>
+            <param name="grid"><inheritdoc cref="P:Sudoku.Analytics.Dependency.DependencyNode.Grid" path="/summary"/></param>
+            <param name="assignment"><inheritdoc cref="P:Sudoku.Analytics.Dependency.DependencyNode.Assignment" path="/summary"/></param>
+            <param name="parent"><inheritdoc cref="P:Sudoku.Analytics.Dependency.DependencyNode.Parent" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.#ctor(Sudoku.Analytics.Dependency.DependencyNodeType,Sudoku.Concepts.Grid@,System.Nullable{Sudoku.Analytics.Dependency.AssignmentInfo},Sudoku.Analytics.Dependency.DependencyNode)">
+            <summary>
+            Represents a dependency node.
+            </summary>
+            <param name="type"><inheritdoc cref="P:Sudoku.Analytics.Dependency.DependencyNode.Type" path="/summary"/></param>
+            <param name="grid"><inheritdoc cref="P:Sudoku.Analytics.Dependency.DependencyNode.Grid" path="/summary"/></param>
+            <param name="assignment"><inheritdoc cref="P:Sudoku.Analytics.Dependency.DependencyNode.Assignment" path="/summary"/></param>
+            <param name="parent"><inheritdoc cref="P:Sudoku.Analytics.Dependency.DependencyNode.Parent" path="/summary"/></param>
+        </member>
+        <member name="F:Sudoku.Analytics.Dependency.DependencyNode._grid">
+            <summary>
+            The backing field of <see cref="P:Sudoku.Analytics.Dependency.DependencyNode.Grid"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Dependency.DependencyNode.Type">
+            <summary>
+            Indicates the type.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Dependency.DependencyNode.Grid">
+            <summary>
+            Indicates the grid to be used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Dependency.DependencyNode.Assignment">
+            <summary>
+            Indicates the current assignment. The value is <see langword="null"/> if the node is root.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Dependency.DependencyNode.Assignments">
+            <summary>
+            Indicates all assignments in this whole branch.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Dependency.DependencyNode.Parent">
+            <summary>
+            Indicates parent node.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.EnumerateAncestors">
+            <summary>
+            Iterate on nodes of this branch, starting with the last node.
+            </summary>
+            <returns>The branch of nodes.</returns>
+        </member>
+        <member name="T:Sudoku.Analytics.Dependency.DependencyNodeExtensions">
+            <summary>
+            Provides with extension methods on <see cref="T:Sudoku.Analytics.Dependency.DependencyNode"/>.
+            </summary>
+            <seealso cref="T:Sudoku.Analytics.Dependency.DependencyNode"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNodeExtensions.get_AssignmentsWithType(Sudoku.Analytics.Dependency.DependencyNode)">
+            <inheritdoc cref="P:Sudoku.Analytics.Dependency.DependencyNodeExtensions.&lt;G&gt;$17305A4379865DF29862686F47CB45D5.AssignmentsWithType"/>
+        </member>
+        <member name="T:Sudoku.Analytics.Dependency.DependencyNodeExtensions.&lt;G&gt;$17305A4379865DF29862686F47CB45D5.&lt;M&gt;$0A65351D60A2AA3C648247709E51885E">
+            <summary>
+            Provides extension members on <see cref="T:Sudoku.Analytics.Dependency.DependencyNode"/>.
+            </summary>
+            <param name="this">The current instance.</param>
+        </member>
+        <member name="P:Sudoku.Analytics.Dependency.DependencyNodeExtensions.&lt;G&gt;$17305A4379865DF29862686F47CB45D5.AssignmentsWithType">
+            <summary>
+            Indicates all assignments and their own types in this whole branch.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Analytics.Dependency.DependencyNodeType">
+            <summary>
+            Represents a dependency node type.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Dependency.DependencyNodeType.Root">
+            <summary>
+            Represents root node.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Dependency.DependencyNodeType.Supposing">
+            <summary>
+            Represents the node is for supposing a candidate to be <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Dependency.DependencyNodeType.HiddenSingleBlock">
+            <summary>
+            Represents a new node becomes available because of hidden single in block.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Dependency.DependencyNodeType.HiddenSingleRow">
+            <summary>
+            Represents a new node becomes available because of hidden single in row.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Dependency.DependencyNodeType.HiddenSingleColumn">
+            <summary>
+            Represents a new node becomes available because of hidden single in column.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Dependency.DependencyNodeType.NakedSingle">
+            <summary>
+            Represents a new node becomes available because of naked single.
+            </summary>
         </member>
         <member name="T:Sudoku.Analytics.DifficultyLevel">
             <summary>
