@@ -10506,6 +10506,14 @@
             <param name="node">The node.</param>
             <param name="result">The result.</param>
         </member>
+        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.GetHeaderBits(Sudoku.Concepts.Grid@,System.Int32)">
+            <summary>
+            An unsafe entry to method <c>GetHeaderBits</c> defined in type <see cref="T:Sudoku.Concepts.Grid"/>.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="cell">The cell.</param>
+            <returns>The mask of mask bits, unshifted.</returns>
+        </member>
         <member name="T:Sudoku.Analytics.Dependency.DependencyChecker">
             <summary>
             Represents a checker that analyzes dependency of a grid,

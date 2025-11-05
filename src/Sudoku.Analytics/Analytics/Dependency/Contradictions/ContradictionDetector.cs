@@ -378,7 +378,12 @@ public static class ContradictionDetector
 		}
 	}
 
-
+	/// <summary>
+	/// An unsafe entry to method <c>GetHeaderBits</c> defined in type <see cref="Grid"/>.
+	/// </summary>
+	/// <param name="grid">The grid.</param>
+	/// <param name="cell">The cell.</param>
+	/// <returns>The mask of mask bits, unshifted.</returns>
 	[UnsafeAccessor(UnsafeAccessorKind.Method, Name = "GetHeaderBits")]
 	private static extern Mask GetHeaderBits(ref readonly Grid grid, Cell cell);
 }
