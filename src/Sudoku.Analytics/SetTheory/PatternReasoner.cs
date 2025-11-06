@@ -169,4 +169,19 @@ public static partial class LogicReasoner
 			permutations
 		);
 	}
+
+	/// <summary>
+	/// Transforms truths into links if such truths can be links.
+	/// </summary>
+	/// <param name="logic">The original pattern.</param>
+	/// <returns>A new <see cref="Logic"/> instance.</returns>
+	public static Logic ConvertTruthsToLinks(in Logic logic)
+	{
+		var permutations = GetPermutations(logic);
+		return PermutationRequiredEntry.ConvertTruthsToLinks(
+			logic,
+			PermutationRequiredEntry.GetConclusions(logic, permutations, true, false),
+			permutations
+		);
+	}
 }

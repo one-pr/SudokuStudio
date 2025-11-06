@@ -36309,6 +36309,9 @@
         <member name="M:Sudoku.SetTheory.LogicReasoner.PermutationRequiredEntry.TrimExcessLinks(Sudoku.SetTheory.Logic@,Sudoku.Concepts.ConclusionSet,System.ReadOnlySpan{Sudoku.SetTheory.Permutation})">
             <inheritdoc cref="M:Sudoku.SetTheory.LogicReasoner.TrimExcessLinks(Sudoku.SetTheory.Logic@)"/>
         </member>
+        <member name="M:Sudoku.SetTheory.LogicReasoner.PermutationRequiredEntry.ConvertTruthsToLinks(Sudoku.SetTheory.Logic@,Sudoku.Concepts.ConclusionSet,System.ReadOnlySpan{Sudoku.SetTheory.Permutation})">
+            <inheritdoc cref="M:Sudoku.SetTheory.LogicReasoner.ConvertTruthsToLinks(Sudoku.SetTheory.Logic@)"/>
+        </member>
         <member name="M:Sudoku.SetTheory.LogicReasoner.GetRank(Sudoku.SetTheory.Logic@,System.Collections.Frozen.FrozenDictionary{Sudoku.Concepts.Conclusion,Sudoku.SetTheory.Logic}@)">
             <summary>
             <para>
@@ -36402,6 +36405,13 @@
         <member name="M:Sudoku.SetTheory.LogicReasoner.TrimExcessLinks(Sudoku.SetTheory.Logic@)">
             <summary>
             Trims for all excess links, and return a new <see cref="T:Sudoku.SetTheory.Logic"/> instance.
+            </summary>
+            <param name="logic">The original pattern.</param>
+            <returns>A new <see cref="T:Sudoku.SetTheory.Logic"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.SetTheory.LogicReasoner.ConvertTruthsToLinks(Sudoku.SetTheory.Logic@)">
+            <summary>
+            Transforms truths into links if such truths can be links.
             </summary>
             <param name="logic">The original pattern.</param>
             <returns>A new <see cref="T:Sudoku.SetTheory.Logic"/> instance.</returns>

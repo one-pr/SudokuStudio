@@ -339,8 +339,8 @@ public partial class LogicReasoner
 			// If we can find all possible conclusions of the pattern if removed,
 			// we can know that the link having been removed is redundant.
 			var result = logic;
-			var tempLogic = logic;
-			var map = conclusions.Candidates;
+			var tempLogic = logic; // Defensive copy.
+			var map = conclusions.Map;
 			ref readonly var grid = ref tempLogic.Grid;
 			bool isChanged;
 			do
@@ -351,13 +351,44 @@ public partial class LogicReasoner
 					if (link.GetAvailableRange(grid) is var linkMap
 						&& (tempLogic.Map & linkMap).Count == 1 && !(linkMap & map)
 						|| new Logic(tempLogic.Truths, tempLogic.Links - link, tempLogic.Grid) is var sublogic
-						&& (GetConclusions(sublogic, GetPermutations(sublogic), true, false) & conclusions) == conclusions)
+						&& GetConclusions(sublogic, GetPermutations(sublogic), true, false) == conclusions)
 					{
-						// There're two possible cases to cut the link:
+						// We can cut this link out of the pattern if either of conditions mentioned below are satisfied:
 						//   1) It only hold one candidate in the pattern (which is not enclosing pattern),
 						//      and the link cannot intersect with any conclusions.
 						//   2) The subpattern with this link having been removed can also make all conclusions.
 						result.RemoveLink(link);
+						tempLogic = result;
+						isChanged = true;
+					}
+				}
+			} while (isChanged);
+			return result;
+		}
+
+		/// <inheritdoc cref="LogicReasoner.ConvertTruthsToLinks(in Logic)"/>
+		public static Logic ConvertTruthsToLinks(in Logic logic, ConclusionSet conclusions, ReadOnlySpan<Permutation> permutations)
+		{
+			//if (!conclusions)
+			//{
+			//	// This logic doesn't produce any possible conclusions available.
+			//	return logic;
+			//}
+
+			// Iterate truths and convert them into links, and check whether the pattern can also eliminate such candidates or not.
+			var result = logic;
+			var tempLogic = logic; // Defensive copy.
+			bool isChanged;
+			do
+			{
+				isChanged = false;
+				foreach (var truth in tempLogic.Truths)
+				{
+					if (new Logic(tempLogic.Truths - truth, tempLogic.Links + truth, tempLogic.Grid) is var sublogic
+						&& GetConclusions(sublogic, GetPermutations(sublogic), true, false) == conclusions)
+					{
+						result.RemoveTruth(truth);
+						result.AddLink(truth);
 						tempLogic = result;
 						isChanged = true;
 					}

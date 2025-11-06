@@ -1558,9 +1558,19 @@
             Indicates the number of bit array elements.
             </summary>
         </member>
-        <member name="P:Sudoku.Concepts.ConclusionSet.Candidates">
+        <member name="P:Sudoku.Concepts.ConclusionSet.Map">
             <summary>
             Indicates a list of candidates included in this collection, regardless of type of them.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ConclusionSet.AssignmentsMap">
+            <summary>
+            Indicates a list of candidates that are assignments.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ConclusionSet.EliminationMap">
+            <summary>
+            Indicates a list of candidates that are eliminations.
             </summary>
         </member>
         <member name="P:Sudoku.Concepts.ConclusionSet.Assignments">
