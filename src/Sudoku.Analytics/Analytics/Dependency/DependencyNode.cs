@@ -7,7 +7,7 @@ namespace Sudoku.Analytics.Dependency;
 /// <param name="grid"><inheritdoc cref="Grid" path="/summary"/></param>
 /// <param name="assignment"><inheritdoc cref="Assignment" path="/summary"/></param>
 /// <param name="parent"><inheritdoc cref="Parent" path="/summary"/></param>
-public sealed class DependencyNode(DependencyNodeType type, in Grid grid, DependencyAssignment? assignment, DependencyNode? parent) :
+public sealed partial class DependencyNode(DependencyNodeType type, in Grid grid, DependencyAssignment? assignment, DependencyNode? parent) :
 	IEquatable<DependencyNode>,
 	IEqualityOperators<DependencyNode, DependencyNode, bool>
 {
@@ -16,6 +16,22 @@ public sealed class DependencyNode(DependencyNodeType type, in Grid grid, Depend
 	/// </summary>
 	private readonly Grid _grid = grid;
 
+
+	/// <summary>
+	/// Indicates the depth of the node.
+	/// </summary>
+	public int Depth
+	{
+		get
+		{
+			var result = 0;
+			foreach (var _ in EnumerateAncestors())
+			{
+				result++;
+			}
+			return result;
+		}
+	}
 
 	/// <summary>
 	/// Indicates the type.
@@ -40,12 +56,11 @@ public sealed class DependencyNode(DependencyNodeType type, in Grid grid, Depend
 		get
 		{
 			var result = new List<DependencyAssignment>();
-			for (var node = this; node is { Assignment: { } assignment }; node = node.Parent)
+			foreach (var node in EnumerateAncestors())
 			{
-				result.Add(assignment);
+				result.Add(node.Assignment!.Value);
 			}
-			result.Reverse();
-			return result.AsMemory();
+			return ~result.AsMemory();
 		}
 	}
 
@@ -184,63 +199,4 @@ public sealed class DependencyNode(DependencyNodeType type, in Grid grid, Depend
 
 	/// <inheritdoc/>
 	public static bool operator !=(DependencyNode? left, DependencyNode? right) => !(left == right);
-
-
-	/// <summary>
-	/// Represents an enumerator type that can iterate on each node which is an ancestor node of the current node.
-	/// </summary>
-	/// <param name="_node">The node to be checked.</param>
-	public ref struct AncestorNodesEnumerator(DependencyNode _node) : IEnumerable<DependencyNode>, IEnumerator<DependencyNode>
-	{
-		/// <summary>
-		/// Indicates the current node.
-		/// </summary>
-		public DependencyNode Current { get; private set; } = null!;
-
-		/// <inheritdoc/>
-		readonly object IEnumerator.Current => Current;
-
-
-		/// <inheritdoc/>
-		public bool MoveNext()
-		{
-			if (Current is null)
-			{
-				Current = _node;
-				return true;
-			}
-
-			Current = Current.Parent!;
-			return Current?.Assignment is not null;
-		}
-
-		/// <inheritdoc/>
-		readonly void IDisposable.Dispose() { }
-
-		/// <inheritdoc/>
-		[DoesNotReturn]
-		readonly void IEnumerator.Reset() => throw new NotSupportedException();
-
-		/// <inheritdoc/>
-		readonly IEnumerator IEnumerable.GetEnumerator()
-		{
-			var result = new List<DependencyNode>();
-			for (var node = _node; node?.Assignment is not null; node = node.Parent)
-			{
-				result.Add(node);
-			}
-			return result.GetEnumerator();
-		}
-
-		/// <inheritdoc/>
-		readonly IEnumerator<DependencyNode> IEnumerable<DependencyNode>.GetEnumerator()
-		{
-			var result = new List<DependencyNode>();
-			for (var node = _node; node?.Assignment is not null; node = node.Parent)
-			{
-				result.Add(node);
-			}
-			return result.GetEnumerator();
-		}
-	}
 }

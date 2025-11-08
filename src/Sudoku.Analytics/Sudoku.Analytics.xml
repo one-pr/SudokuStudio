@@ -10354,31 +10354,6 @@
             <param name="lastNode">Indicates the node branch that causes invalid states.</param>
             <param name="emptySpace">The space that is going to be empty.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating whether the grid can lead a conflict or not.</returns>
-            <remarks>
-            <para>
-            We know that the assignments may form a complex graph, for example:
-            <code>
-                 A
-                / \
-               B   C
-              / \   \
-             D   E  (F)
-             |
-            (F)
-            </code>
-            Here, we can store connections like <c>C -> F</c> into the map,
-            in order not to traverse other links to F (like <c>B -> D -> F</c>).
-            </para>
-            <para>
-            However, here may cause a potential problem: we can only know the assignment relation, but ignoring grid states.
-            For example, if we have <c>A -> C</c>, this map will ignore all connections from <c>A</c> to <c>C</c>,
-            no matter how a grid is from.
-            </para>
-            <para>
-            The correct implementation in fact is to store branches that each candidate can reach, and their updated grids;
-            or store the whole branch. Only for the whole branch can be pruned.
-            </para>
-            </remarks>
         </member>
         <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.TryFindContradiction(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.Space@)">
             <summary>
@@ -10550,6 +10525,46 @@
             <param name="assignment"><inheritdoc cref="P:Sudoku.Analytics.Dependency.DependencyNode.Assignment" path="/summary"/></param>
             <param name="parent"><inheritdoc cref="P:Sudoku.Analytics.Dependency.DependencyNode.Parent" path="/summary"/></param>
         </member>
+        <member name="T:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator">
+            <summary>
+            Represents an enumerator type that can iterate on each node which is an ancestor node of the current node.
+            </summary>
+            <param name="_node">The node to be checked.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.#ctor(Sudoku.Analytics.Dependency.DependencyNode)">
+            <summary>
+            Represents an enumerator type that can iterate on each node which is an ancestor node of the current node.
+            </summary>
+            <param name="_node">The node to be checked.</param>
+        </member>
+        <member name="P:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.Current">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.System#Collections#IEnumerator#Current">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.MoveNext">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.System#IDisposable#Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.System#Collections#IEnumerator#Reset">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.System#Collections#Generic#IEnumerable{Sudoku#Analytics#Dependency#DependencyNode}#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.GetEnumeratorDefaultImpl(Sudoku.Analytics.Dependency.DependencyNode)">
+            <summary>
+            The backing implementation of interface implementation methods.
+            </summary>
+            <param name="node">The current node.</param>
+            <returns>An enumerator instance.</returns>
+        </member>
         <member name="M:Sudoku.Analytics.Dependency.DependencyNode.#ctor(Sudoku.Analytics.Dependency.DependencyNodeType,Sudoku.Concepts.Grid@,System.Nullable{Sudoku.Analytics.Dependency.DependencyAssignment},Sudoku.Analytics.Dependency.DependencyNode)">
             <summary>
             Represents a dependency node.
@@ -10562,6 +10577,11 @@
         <member name="F:Sudoku.Analytics.Dependency.DependencyNode._grid">
             <summary>
             The backing field of <see cref="P:Sudoku.Analytics.Dependency.DependencyNode.Grid"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Dependency.DependencyNode.Depth">
+            <summary>
+            Indicates the depth of the node.
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.Dependency.DependencyNode.Type">
@@ -10632,41 +10652,6 @@
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Dependency.DependencyNode.op_Inequality(Sudoku.Analytics.Dependency.DependencyNode,Sudoku.Analytics.Dependency.DependencyNode)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator">
-            <summary>
-            Represents an enumerator type that can iterate on each node which is an ancestor node of the current node.
-            </summary>
-            <param name="_node">The node to be checked.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.#ctor(Sudoku.Analytics.Dependency.DependencyNode)">
-            <summary>
-            Represents an enumerator type that can iterate on each node which is an ancestor node of the current node.
-            </summary>
-            <param name="_node">The node to be checked.</param>
-        </member>
-        <member name="P:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.Current">
-            <summary>
-            Indicates the current node.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.System#Collections#IEnumerator#Current">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.MoveNext">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.System#IDisposable#Dispose">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.System#Collections#IEnumerator#Reset">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.System#Collections#IEnumerable#GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.System#Collections#Generic#IEnumerable{Sudoku#Analytics#Dependency#DependencyNode}#GetEnumerator">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Dependency.DependencyNodeComparison">

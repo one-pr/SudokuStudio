@@ -1,6 +1,4 @@
-#define REPORT_ERROR_IF_ALL_PRUNING_SYMBOLS_ARE_DISABLED
 #undef NAKED_SINGLE_FIRST
-#define BRANCH_PRUNING
 
 namespace Sudoku.Analytics.Dependency.Contradictions;
 
@@ -63,31 +61,6 @@ public static class ContradictionDetector
 	/// <param name="lastNode">Indicates the node branch that causes invalid states.</param>
 	/// <param name="emptySpace">The space that is going to be empty.</param>
 	/// <returns>A <see cref="bool"/> result indicating whether the grid can lead a conflict or not.</returns>
-	/// <remarks>
-	/// <para>
-	/// We know that the assignments may form a complex graph, for example:
-	/// <code>
-	///      A
-	///     / \
-	///    B   C
-	///   / \   \
-	///  D   E  (F)
-	///  |
-	/// (F)
-	/// </code>
-	/// Here, we can store connections like <c>C -> F</c> into the map,
-	/// in order not to traverse other links to F (like <c>B -> D -> F</c>).
-	/// </para>
-	/// <para>
-	/// However, here may cause a potential problem: we can only know the assignment relation, but ignoring grid states.
-	/// For example, if we have <c>A -> C</c>, this map will ignore all connections from <c>A</c> to <c>C</c>,
-	/// no matter how a grid is from.
-	/// </para>
-	/// <para>
-	/// The correct implementation in fact is to store branches that each candidate can reach, and their updated grids;
-	/// or store the whole branch. Only for the whole branch can be pruned.
-	/// </para>
-	/// </remarks>
 	private static bool LeadsToEmpty(
 		in Grid playground,
 		Cell cell,
@@ -100,16 +73,30 @@ public static class ContradictionDetector
 		// Create a queue and enqueue root node.
 		var queue = new Queue<DependencyNode>();
 
-#if BRANCH_PRUNING
 		// Defines a map of assignments that describes all reachable cases.
-		// For example, <c>r1c1(1)</c> can make <c>r1c2(2)</c>, and <c>r1c2(2)</c> can make <c>r3c9(2)</c>,
+		// For example, <c>r1c1(1)</c> will cause a new assignment <c>r1c2(2)</c>, and <c>r1c2(2)</c> will cause <c>r3c9(2)</c>,
+		// just like this graph:
+		// <code>
+		//         r1c1(2)
+		//        /       \
+		// r1c2(2)         r3c9(2)
+		// </code>
 		// then the reachable map will be:
 		// <code>
-		// [r1c1(1): [r1c2(2), r3c9(2)], r1c2(2): [r3c9(2)]]
+		// [
+		//     "r1c1(1)": [
+		//         "r1c2(2)",
+		//         "r3c9(2)"
+		//     ],
+		//     "r1c2(2)": [
+		//         "r3c9(2)"
+		//     ]
+		// ]
 		// </code>
+		// where <c>r1c1(1)</c> has two children <c>r1c2(2)</c> and <c>r3c9(2)</c>.
 		var reachableMap = new Dictionary<DependencyAssignment, HashSet<DependencyAssignment>>();
-#endif
 
+		// Define the root supposing node and enqueue it.
 		var firstAssignment = new DependencyAssignment(cell * 9 + digit);
 		queue.Enqueue(
 			new(
@@ -156,8 +143,10 @@ public static class ContradictionDetector
 				// Branch pruning: we should add the node into all parent nodes, in order to avoid searching them twice.
 				foreach (var ancestor in node.EnumerateAncestors())
 				{
+					// Check whether the current ancestor node can directly connect to the current assignment.
+					// If so, we can prune the branch due to <c>A -> B</c> rather than <c>A -> C -> B</c>.
 					var ancestorAssignment = ancestor.Assignment!.Value;
-					if (reachableMap.TryAdd(assignment, [ancestorAssignment]) || reachableMap[assignment].Add(ancestorAssignment))
+					if (reachableMap.TryAdd(ancestorAssignment, [assignment]) || reachableMap[ancestorAssignment].Add(assignment))
 					{
 						var nextNode = new DependencyNode(type, GetUpdatedGrid(tempGrid, in assignment, out _), assignment, ancestor);
 						queue.Enqueue(nextNode);
