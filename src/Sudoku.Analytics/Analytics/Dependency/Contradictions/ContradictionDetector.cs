@@ -1,20 +1,6 @@
-#pragma warning disable IDE0055
 #define REPORT_ERROR_IF_ALL_PRUNING_SYMBOLS_ARE_DISABLED
 #undef NAKED_SINGLE_FIRST
-#define NODE_PRUNING
-#undef BRANCH_PRUNING
-#if BRANCH_PRUNING && NODE_PRUNING
-	#warning Don't enable both branch and node pruning. Only one will be enabled. 'NODE_PRUNING' is disabled now.
-	#undef NODE_PRUNING
-#endif
-#if !NODE_PRUNING && !BRANCH_PRUNING
-	#if REPORT_ERROR_IF_ALL_PRUNING_SYMBOLS_ARE_DISABLED
-		#error It is strongly recommended to enable compilation symbols related with pruning; otherwise it will cause large memory analysis and has no optimizaiton.
-	#else
-		#warning It is strongly recommended to enable compilation symbols related with pruning; otherwise it will cause large memory analysis and has no optimizaiton.
-	#endif
-#endif
-#pragma warning restore IDE0055
+#define BRANCH_PRUNING
 
 namespace Sudoku.Analytics.Dependency.Contradictions;
 
@@ -114,9 +100,14 @@ public static class ContradictionDetector
 		// Create a queue and enqueue root node.
 		var queue = new Queue<DependencyNode>();
 
-#if NODE_PRUNING
-		// Defines a map of assignment relations that will deduplicate assignments by connections.
-		var assignmentMap = new Dictionary<DependencyAssignment, HashSet<DependencyAssignment>>();
+#if BRANCH_PRUNING
+		// Defines a map of assignments that describes all reachable cases.
+		// For example, <c>r1c1(1)</c> can make <c>r1c2(2)</c>, and <c>r1c2(2)</c> can make <c>r3c9(2)</c>,
+		// then the reachable map will be:
+		// <code>
+		// [r1c1(1): [r1c2(2), r3c9(2)], r1c2(2): [r3c9(2)]]
+		// </code>
+		var reachableMap = new Dictionary<DependencyAssignment, HashSet<DependencyAssignment>>();
 #endif
 
 		var firstAssignment = new DependencyAssignment(cell * 9 + digit);
@@ -162,14 +153,15 @@ public static class ContradictionDetector
 
 			foreach (var (assignment, type) in collector)
 			{
-				// Determine whether the next node is worth to be added.
-#if NODE_PRUNING
-				var parentAssignment = node.Assignment!.Value;
-				if (assignmentMap.TryAdd(assignment, [parentAssignment]) || assignmentMap[assignment].Add(parentAssignment))
-#endif
+				// Branch pruning: we should add the node into all parent nodes, in order to avoid searching them twice.
+				foreach (var ancestor in node.EnumerateAncestors())
 				{
-					var nextNode = new DependencyNode(type, GetUpdatedGrid(tempGrid, in assignment, out _), assignment, node);
-					queue.Enqueue(nextNode);
+					var ancestorAssignment = ancestor.Assignment!.Value;
+					if (reachableMap.TryAdd(assignment, [ancestorAssignment]) || reachableMap[assignment].Add(ancestorAssignment))
+					{
+						var nextNode = new DependencyNode(type, GetUpdatedGrid(tempGrid, in assignment, out _), assignment, ancestor);
+						queue.Enqueue(nextNode);
+					}
 				}
 			}
 		}

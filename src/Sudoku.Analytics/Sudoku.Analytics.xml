@@ -10634,6 +10634,41 @@
         <member name="M:Sudoku.Analytics.Dependency.DependencyNode.op_Inequality(Sudoku.Analytics.Dependency.DependencyNode,Sudoku.Analytics.Dependency.DependencyNode)">
             <inheritdoc/>
         </member>
+        <member name="T:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator">
+            <summary>
+            Represents an enumerator type that can iterate on each node which is an ancestor node of the current node.
+            </summary>
+            <param name="_node">The node to be checked.</param>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.#ctor(Sudoku.Analytics.Dependency.DependencyNode)">
+            <summary>
+            Represents an enumerator type that can iterate on each node which is an ancestor node of the current node.
+            </summary>
+            <param name="_node">The node to be checked.</param>
+        </member>
+        <member name="P:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.Current">
+            <summary>
+            Indicates the current node.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.System#Collections#IEnumerator#Current">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.MoveNext">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.System#IDisposable#Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.System#Collections#IEnumerator#Reset">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.AncestorNodesEnumerator.System#Collections#Generic#IEnumerable{Sudoku#Analytics#Dependency#DependencyNode}#GetEnumerator">
+            <inheritdoc/>
+        </member>
         <member name="T:Sudoku.Analytics.Dependency.DependencyNodeComparison">
             <summary>
             Provides a way to compare equality on two <see cref="T:Sudoku.Analytics.Dependency.DependencyNode"/> instances.

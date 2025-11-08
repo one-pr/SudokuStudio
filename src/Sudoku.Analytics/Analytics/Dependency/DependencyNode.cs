@@ -175,13 +175,7 @@ public sealed class DependencyNode(DependencyNodeType type, in Grid grid, Depend
 	/// Iterate on nodes of this branch, starting with the last node.
 	/// </summary>
 	/// <returns>The branch of nodes.</returns>
-	public IEnumerable<DependencyNode> EnumerateAncestors()
-	{
-		for (var node = this; node?.Assignment is not null; node = node.Parent)
-		{
-			yield return node;
-		}
-	}
+	public AncestorNodesEnumerator EnumerateAncestors() => new(this);
 
 
 	/// <inheritdoc/>
@@ -190,4 +184,63 @@ public sealed class DependencyNode(DependencyNodeType type, in Grid grid, Depend
 
 	/// <inheritdoc/>
 	public static bool operator !=(DependencyNode? left, DependencyNode? right) => !(left == right);
+
+
+	/// <summary>
+	/// Represents an enumerator type that can iterate on each node which is an ancestor node of the current node.
+	/// </summary>
+	/// <param name="_node">The node to be checked.</param>
+	public ref struct AncestorNodesEnumerator(DependencyNode _node) : IEnumerable<DependencyNode>, IEnumerator<DependencyNode>
+	{
+		/// <summary>
+		/// Indicates the current node.
+		/// </summary>
+		public DependencyNode Current { get; private set; } = null!;
+
+		/// <inheritdoc/>
+		readonly object IEnumerator.Current => Current;
+
+
+		/// <inheritdoc/>
+		public bool MoveNext()
+		{
+			if (Current is null)
+			{
+				Current = _node;
+				return true;
+			}
+
+			Current = Current.Parent!;
+			return Current?.Assignment is not null;
+		}
+
+		/// <inheritdoc/>
+		readonly void IDisposable.Dispose() { }
+
+		/// <inheritdoc/>
+		[DoesNotReturn]
+		readonly void IEnumerator.Reset() => throw new NotSupportedException();
+
+		/// <inheritdoc/>
+		readonly IEnumerator IEnumerable.GetEnumerator()
+		{
+			var result = new List<DependencyNode>();
+			for (var node = _node; node?.Assignment is not null; node = node.Parent)
+			{
+				result.Add(node);
+			}
+			return result.GetEnumerator();
+		}
+
+		/// <inheritdoc/>
+		readonly IEnumerator<DependencyNode> IEnumerable<DependencyNode>.GetEnumerator()
+		{
+			var result = new List<DependencyNode>();
+			for (var node = _node; node?.Assignment is not null; node = node.Parent)
+			{
+				result.Add(node);
+			}
+			return result.GetEnumerator();
+		}
+	}
 }
