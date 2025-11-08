@@ -138,20 +138,34 @@ public static class ContradictionDetector
 				FindLockedCandidates(tempGrid, node, collector);
 			}
 
+			// Iterate on collected assignments, and store them into a temporary collection,
+			// in order to perform MRV strategy of the number of candidates.
+			var mrvNodes = new List<(DependencyNode Node, int RemovedCandidatesCount)>(collector.Count);
 			foreach (var (assignment, type) in collector)
 			{
 				// Branch pruning: we should add the node into all parent nodes, in order to avoid searching them twice.
-				foreach (var ancestor in node.EnumerateAncestors())
+				// Check whether the current ancestor node can directly connect to the current assignment.
+				// If so, we can prune the branch due to <c>A -> B</c> rather than <c>A -> C -> B</c>.
+				var ancestorAssignment = node.Assignment!.Value;
+				if (reachableMap.TryAdd(ancestorAssignment, [assignment]) || reachableMap[ancestorAssignment].Add(assignment))
 				{
-					// Check whether the current ancestor node can directly connect to the current assignment.
-					// If so, we can prune the branch due to <c>A -> B</c> rather than <c>A -> C -> B</c>.
-					var ancestorAssignment = ancestor.Assignment!.Value;
-					if (reachableMap.TryAdd(ancestorAssignment, [assignment]) || reachableMap[ancestorAssignment].Add(assignment))
-					{
-						var nextNode = new DependencyNode(type, GetUpdatedGrid(tempGrid, in assignment, out _), assignment, ancestor);
-						queue.Enqueue(nextNode);
-					}
+					var nextNode = new DependencyNode(
+						type,
+						GetUpdatedGrid(tempGrid, in assignment, out var removedCandidates),
+						assignment,
+						node
+					);
+					mrvNodes.Add((nextNode, removedCandidates.Length));
 				}
+			}
+
+			// Sort the collection by the number of candidates.
+			mrvNodes.Sort(static (left, right) => right.RemovedCandidatesCount - left.RemovedCandidatesCount);
+
+			// Enqueue all nodes, ordered.
+			foreach (var mrvNode in mrvNodes)
+			{
+				queue.Enqueue(mrvNode.Node);
 			}
 		}
 
