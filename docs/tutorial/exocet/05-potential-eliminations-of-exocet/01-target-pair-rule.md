@@ -10,7 +10,7 @@ description: Target Pair Rule
 
 ## 一个例子 <a href="#an-example" id="an-example"></a>
 
-<figure><img src="../../.gitbook/assets/image.png" alt="" width="375"><figcaption><p>目标单元格数对</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0774.png" alt="" width="375"><figcaption><p>目标单元格数对</p></figcaption></figure>
 
 如图所示。本题的基准单元格是 `r2c13`，且仅包含 2 和 9 两种候选数。按照正常的传递逻辑，我们可以得到 `r1c7` 和 `r3c5` 是 2 或 9。
 

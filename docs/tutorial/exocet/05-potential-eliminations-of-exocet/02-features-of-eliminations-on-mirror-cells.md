@@ -8,7 +8,7 @@ description: Features of Eliminations on Mirror Cells
 
 **镜面单元格**（Mirror Cells 或简称 Mirror）指的是结构里，和目标单元格同在一个宫，并且和交叉单元格方向垂直正交导向的两个单元格。比如之前的例子里，我们利用目标单元格删掉了边上的候选数，紫色单元格给的是原来删数的单元格。
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt="" width="375"><figcaption><p>镜面单元格（紫色）</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0775.png" alt="" width="375"><figcaption><p>镜面单元格（紫色）</p></figcaption></figure>
 
 如图所示。而镜面单元格呢？镜面单元格是图中的 `r1c89` 和 `r3c46` 这四个，挨着目标单元格还同宫的这几个。这有点反直觉，因为感觉跟图上给的删数没有多少关系。这一点我们稍后说明。
 
@@ -34,7 +34,7 @@ description: Features of Eliminations on Mirror Cells
 
 ### 用法 1：基准格所在行列锁定填数 <a href="#the-first-usage" id="the-first-usage"></a>
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt="" width="375"><figcaption><p>基准单元格锁定填数</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0776.png" alt="" width="375"><figcaption><p>基准单元格锁定填数</p></figcaption></figure>
 
 如图所示。我们按照代数的思路继续假设上的推广。我们假设 `r5c89` 是 $$a$$ 和 $$b$$，而整行就四个空格，不如全都假设了：`r5c1` 是 $$c$$，而 `r5c4` 是 $$d$$。此时 $$a$$、$$b$$、$$c$$ 和 $$d$$ 是 1、2、3、8 里的四种完全互不相同的数字。而我们根据基础的飞鱼技巧可知，`r4c4` 和 `r6c1` 显然填的也是 $$a$$ 和 $$b$$。这里我们不妨也把字母写上。
 
@@ -44,7 +44,7 @@ description: Features of Eliminations on Mirror Cells
 
 ### 用法 2：镜面单元格直接删数
 
-<figure><img src="../../.gitbook/assets/image (4).png" alt="" width="375"><figcaption><p>镜面单元格区块</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0777.png" alt="" width="375"><figcaption><p>镜面单元格区块</p></figcaption></figure>
 
 如图所示。还是同一个题，不过我们换一个思路去找删数。
 
@@ -58,7 +58,7 @@ description: Features of Eliminations on Mirror Cells
 
 当然，我们还能把这个结构进一步延长，将区块改成隐性待定数组：
 
-<figure><img src="../../.gitbook/assets/image (5).png" alt="" width="375"><figcaption><p>待定隐性数组</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0778.png" alt="" width="375"><figcaption><p>待定隐性数组</p></figcaption></figure>
 
 如图所示。我们还能继续延长推理过程。因为 `r6` 只有三个单元格可以填入 7 和 9，而其中两个还是镜面单元格。所以 `r6c7` 必然只能是 7 或 9 的其一。毕竟 `r6c23` 的另外一个单元格必须是 1、2、3、8 里的数。所以一个是 1、2、3、8 的其一，一个是 7 和 9 的其一，那么余下的 `r6c7` 就必须是 7 和 9 的另外一个，以保证 7 和 9 填够到 `r6` 上，所以 `r6c7 <> 1238`。
 
@@ -66,7 +66,7 @@ description: Features of Eliminations on Mirror Cells
 
 我们来看一个练习题，请根据图中的结构找出全部的删数，并挨个解释其删数原因。
 
-<figure><img src="../../.gitbook/assets/image (6).png" alt="" width="375"><figcaption><p>练习题</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0779.png" alt="" width="375"><figcaption><p>练习题</p></figcaption></figure>
 
 如图所示。
 
