@@ -180,8 +180,6 @@
 * [目标单元格的拓展](exocet/02-extension-on-target-cells.md)
 * [单基准单元格](exocet/03-solo-base-cell.md)
 * [交叉单元格的拓展](exocet/04-extension-on-crossline-cells.md)
-* 测试
-  * [Page 1](exocet/test-page/page-1.md)
 * [飞鱼常见的潜在删数](exocet/05-potential-eliminations-of-exocet/README.md)
   * [目标格跨区数对](exocet/05-potential-eliminations-of-exocet/01-target-pair-rule.md)
   * [镜面格的删数特性](exocet/05-potential-eliminations-of-exocet/02-features-of-eliminations-on-mirror-cells.md)
