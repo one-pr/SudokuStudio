@@ -128,7 +128,7 @@ public partial class ContradictionDetector
 			}
 
 			// Find for the next conclusion.
-			var collector = new HashSet<(DependencyAssignment Assignment, DependencyNodeType)>(AssignmentComparer);
+			var collector = new HashSet<(DependencyAssignment Assignment, DependencyNodeType Type)>(AssignmentComparer);
 
 			// Collect for valid next steps.
 #if NAKED_SINGLE_FIRST
@@ -157,8 +157,11 @@ public partial class ContradictionDetector
 			// in order to perform MRV strategy of the number of candidates.
 			var mrvNodes = new SortedList<int, List<DependencyNode>>(collector.Count);
 #endif
-			foreach (var (assignment, type) in collector)
+			foreach (var pair in collector)
 			{
+				ref readonly var assignment = ref pair.Assignment;
+				var type = pair.Type;
+
 				// Branch pruning: we should add the node into all parent nodes, in order to avoid searching them twice.
 				// Check whether the current ancestor node can directly connect to the current assignment.
 				// If so, we can prune the branch due to <c>A -> B</c> rather than <c>A -> C -> B</c>.

@@ -10591,7 +10591,7 @@
             <param name="node">The current node.</param>
             <returns>An enumerator instance.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.#ctor(Sudoku.Analytics.Dependency.DependencyNodeType,Sudoku.Concepts.Grid@,System.Nullable{Sudoku.Analytics.Dependency.DependencyAssignment},System.ReadOnlyMemory{Sudoku.Analytics.Dependency.DependencyAssignment},Sudoku.Analytics.Dependency.DependencyNode)">
+        <member name="M:Sudoku.Analytics.Dependency.DependencyNode.#ctor(Sudoku.Analytics.Dependency.DependencyNodeType,Sudoku.Concepts.Grid@,System.Nullable{Sudoku.Analytics.Dependency.DependencyAssignment}@,System.ReadOnlyMemory{Sudoku.Analytics.Dependency.DependencyAssignment},Sudoku.Analytics.Dependency.DependencyNode)">
             <summary>
             Represents a dependency node.
             </summary>

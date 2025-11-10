@@ -11,7 +11,7 @@ namespace Sudoku.Analytics.Dependency;
 public sealed partial class DependencyNode(
 	DependencyNodeType type,
 	in Grid grid,
-	DependencyAssignment? assignment,
+	in DependencyAssignment? assignment,
 	ReadOnlyMemory<DependencyAssignment> siblingAssignments,
 	DependencyNode? parent
 ) :
