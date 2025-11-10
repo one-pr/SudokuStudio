@@ -1,4 +1,5 @@
 #undef NAKED_SINGLE_FIRST
+#undef MINIMUM_REMAINING_VALUES
 
 namespace Sudoku.Analytics.Dependency.Contradictions;
 
@@ -151,9 +152,11 @@ public partial class ContradictionDetector
 			// Define a sibling of assignments (they are of a same depth).
 			var collectedSiblings = from a in collector.ToArray() select a.Assignment;
 
+#if MINIMUM_REMAINING_VALUES
 			// Iterate on collected assignments, and store them into a temporary collection,
 			// in order to perform MRV strategy of the number of candidates.
 			var mrvNodes = new SortedList<int, List<DependencyNode>>(collector.Count);
+#endif
 			foreach (var (assignment, type) in collector)
 			{
 				// Branch pruning: we should add the node into all parent nodes, in order to avoid searching them twice.
@@ -180,17 +183,23 @@ public partial class ContradictionDetector
 				var nextNode = new DependencyNode(type, tempGridUpdated, assignment, collectedSiblings, node);
 
 				// Add it into sorted list.
+#if MINIMUM_REMAINING_VALUES
 				if (!mrvNodes.TryAdd(removedCandidates.Length, [nextNode]))
 				{
 					mrvNodes[removedCandidates.Length].Add(nextNode);
 				}
+#else
+				queue.Enqueue(nextNode);
+#endif
 			}
 
+#if MINIMUM_REMAINING_VALUES
 			// Enqueue all nodes.
 			foreach (var nodes in mrvNodes.Values)
 			{
 				nodes.ForEach(queue.Enqueue);
 			}
+#endif
 		}
 
 		lastNode = null;
