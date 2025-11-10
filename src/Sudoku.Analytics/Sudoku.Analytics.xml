@@ -10339,17 +10339,9 @@
             Indicates empty instance of <see cref="T:Sudoku.Analytics.Dependency.DependencyAssignment"/> sequence.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.Check(Sudoku.Concepts.Grid@,System.Boolean)">
+        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.DoFastTryAndError(Sudoku.Concepts.Grid@,System.Int32,System.Int32,System.Boolean)">
             <summary>
-            The global method to check for complex contradiction.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="includesGroupedNodes">Indicates whether grouped nodes should also be checked.</param>
-            <returns>A list of found conflict.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.FastCheck(Sudoku.Concepts.Grid@,System.Int32,System.Int32,System.Boolean)">
-            <summary>
-            Do a fast check, to determine whether the digit can be a valid elimination.
+            Do a fast check, to determine whether the candidate can be a valid elimination or not.
             </summary>
             <param name="grid">The grid to be checked.</param>
             <param name="cell">The start cell to check.</param>
@@ -10387,9 +10379,9 @@
             <param name="assignment">The assignment.</param>
             <param name="removedCandidates">Removed candidates.</param>
         </member>
-        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.FindLockedCandidates(Sudoku.Concepts.Grid@,System.Collections.Generic.HashSet{System.ValueTuple{Sudoku.Analytics.Dependency.DependencyAssignment,Sudoku.Analytics.Dependency.DependencyNodeType}})">
+        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.FindHiddenSingle(Sudoku.Concepts.Grid@,System.Collections.Generic.HashSet{System.ValueTuple{Sudoku.Analytics.Dependency.DependencyAssignment,Sudoku.Analytics.Dependency.DependencyNodeType}})">
             <summary>
-            Find for locked candidates, and collect them into <paramref name="result"/>.
+            Find for hidden singles, and collect them into <paramref name="result"/>.
             </summary>
             <param name="grid">The grid.</param>
             <param name="result">The result.</param>
@@ -10401,9 +10393,9 @@
             <param name="grid">The grid.</param>
             <param name="result">The result.</param>
         </member>
-        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.FindHiddenSingle(Sudoku.Concepts.Grid@,System.Collections.Generic.HashSet{System.ValueTuple{Sudoku.Analytics.Dependency.DependencyAssignment,Sudoku.Analytics.Dependency.DependencyNodeType}})">
+        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.FindLockedCandidates(Sudoku.Concepts.Grid@,System.Collections.Generic.HashSet{System.ValueTuple{Sudoku.Analytics.Dependency.DependencyAssignment,Sudoku.Analytics.Dependency.DependencyNodeType}})">
             <summary>
-            Find for hidden singles, and collect them into <paramref name="result"/>.
+            Find for locked candidates, and collect them into <paramref name="result"/>.
             </summary>
             <param name="grid">The grid.</param>
             <param name="result">The result.</param>
@@ -10415,6 +10407,14 @@
             <param name="grid">The grid.</param>
             <param name="cell">The cell.</param>
             <returns>The mask of mask bits, unshifted.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Dependency.Contradictions.ContradictionDetector.Check(Sudoku.Concepts.Grid@,System.Boolean)">
+            <summary>
+            The global method to check for complex contradiction.
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="includesGroupedNodes">Indicates whether grouped nodes should also be checked.</param>
+            <returns>A list of found conflict.</returns>
         </member>
         <member name="T:Sudoku.Analytics.Dependency.DependencyAssignment">
             <summary>
