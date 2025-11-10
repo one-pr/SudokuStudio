@@ -11,7 +11,7 @@ namespace Sudoku.Analytics.Dependency;
 public sealed partial class DependencyNode(
 	DependencyNodeType type,
 	in Grid grid,
-	DependencyAssignment? assignment,
+	DependencyAssignment assignment,
 	ReadOnlyMemory<DependencyAssignment> siblingAssignments,
 	DependencyNode? parent
 ) :
@@ -51,9 +51,9 @@ public sealed partial class DependencyNode(
 	public ref readonly Grid Grid => ref _grid;
 
 	/// <summary>
-	/// Indicates the current assignment. The value is <see langword="null"/> if the node is root.
+	/// Indicates the current assignment.
 	/// </summary>
-	public DependencyAssignment? Assignment { get; } = assignment;
+	public DependencyAssignment Assignment { get; } = assignment;
 
 	/// <summary>
 	/// Indicates sibling assignments.
@@ -67,12 +67,12 @@ public sealed partial class DependencyNode(
 	{
 		get
 		{
-			var result = new List<DependencyAssignment>();
+			var result = new Stack<DependencyAssignment>();
 			foreach (var node in EnumerateAncestors(true))
 			{
-				result.Add(node.Assignment!.Value);
+				result.Push(node.Assignment);
 			}
-			return ~result.AsMemory();
+			return result.ToArray();
 		}
 	}
 
@@ -142,12 +142,7 @@ public sealed partial class DependencyNode(
 		static bool e(DependencyNode left, [NotNullWhen(true)] DependencyNode? right)
 			=> right is not null
 			&& left.Type == right.Type && left._grid == right._grid
-			&& (left.Assignment, right.Assignment) switch
-			{
-				(null, null) => true,
-				({ } l, { } r) => l == r,
-				_ => false
-			}
+			&& left.Assignment == right.Assignment
 			&& left.Parent is not null && right.Parent is not null;
 	}
 
@@ -187,7 +182,7 @@ public sealed partial class DependencyNode(
 			=> HashCode.Combine(
 				instance.Type,
 				instance.Grid.GetHashCode(),
-				instance.Assignment?.GetHashCode() ?? 23,
+				instance.Assignment,
 				instance.Parent is null ? 19 : 131731
 			);
 	}

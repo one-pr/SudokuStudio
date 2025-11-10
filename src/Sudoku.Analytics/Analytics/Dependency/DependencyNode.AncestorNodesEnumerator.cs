@@ -37,7 +37,7 @@ public partial class DependencyNode
 			}
 
 			Current = Current.Parent!;
-			return Current?.Assignment is not null;
+			return Current is { Type: not DependencyNodeType.Root };
 		}
 
 		/// <inheritdoc/>

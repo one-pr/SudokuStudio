@@ -112,7 +112,7 @@ public partial class ContradictionDetector
 				firstAssignmentGrid,
 				firstAssignment,
 				EmptyAssignment,
-				new(DependencyNodeType.Root, grid, null, EmptyAssignment, null)
+				new(DependencyNodeType.Root, grid, default, EmptyAssignment, null)
 			)
 		);
 

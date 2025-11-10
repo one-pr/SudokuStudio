@@ -20,7 +20,7 @@ public static class DependencyNodeExtensions
 			get
 			{
 				var result = new List<(DependencyAssignment, DependencyNodeType)>();
-				for (var node = @this; node is { Assignment: { } assignment, Type: var type }; node = node.Parent)
+				for (var node = @this; node is { Assignment: var assignment, Type: var type and not DependencyNodeType.Root }; node = node.Parent)
 				{
 					result.Add((assignment, type));
 				}

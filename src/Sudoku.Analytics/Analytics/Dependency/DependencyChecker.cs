@@ -226,7 +226,7 @@ public static class DependencyChecker
 				var type = ancestor.Type;
 
 				// Gets the cells of the node, and corresponding digit used.
-				var assignment = ancestor.Assignment!.Value;
+				var assignment = ancestor.Assignment;
 				var cells = assignment.Cells;
 				var digit = assignment.Digit;
 
