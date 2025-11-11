@@ -8211,6 +8211,11 @@
             </summary>
             <param name="mask"><inheritdoc cref="F:Sudoku.Concepts.Supersymmetry.Space._mask" path="/summary"/></param>
         </member>
+        <member name="F:Sudoku.Concepts.Supersymmetry.Space.InvalidSpace">
+            <summary>
+            Represents invalid space.
+            </summary>
+        </member>
         <member name="F:Sudoku.Concepts.Supersymmetry.Space._mask">
             <summary>
             Indicates the backing mask.

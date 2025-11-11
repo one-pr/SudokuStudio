@@ -226,51 +226,11 @@ public static class DependencyChecker
 				var type = ancestor.Type;
 
 				// Gets the cells of the node, and corresponding digit used.
-				var assignment = ancestor.Assignment;
-				var cells = assignment.Cells;
-				var digit = assignment.Digit;
-
-				// Construct space as truth.
-				switch (type)
+				var truth = ancestor.Truth;
+				if (truth != Space.InvalidSpace)
 				{
-					default:
-					case DependencyNodeType.Root or DependencyNodeType.Supposing:
-					{
-						// Just skip for it.
-						break;
-					}
-					case DependencyNodeType.Block
-						when cells.SharedBlock is var sharedBlock and not FallbackConstants.@int:
-					{
-						var truth = Space.BlockDigit(sharedBlock, digit);
-						truths += truth;
-						removed |= truth.GetAvailableRange(grid);
-						break;
-					}
-					case DependencyNodeType.Row or DependencyNodeType.Column
-						when cells.SharedHouses is var sharedLineMask and not 0:
-					{
-						var lineMask = type == DependencyNodeType.Row ? AllRowsMask : AllColumnsMask;
-						var sharedLine = BitOperations.TrailingZeroCount(sharedLineMask & lineMask);
-						var truth = sharedLine < 18 ? Space.RowDigit(sharedLine - 9, digit) : Space.ColumnDigit(sharedLine - 18, digit);
-						truths += truth;
-						removed |= truth.GetAvailableRange(grid);
-						break;
-					}
-					case DependencyNodeType.Cell when cells is [var onlyCell]:
-					{
-						var truth = Space.RowColumn(onlyCell / 9, onlyCell % 9);
-						truths += truth;
-						removed |= truth.GetAvailableRange(grid);
-						break;
-					}
-					case DependencyNodeType.Block:
-					case DependencyNodeType.Row:
-					case DependencyNodeType.Column:
-					case DependencyNodeType.Cell:
-					{
-						return false;
-					}
+					truths += truth;
+					removed |= truth.GetAvailableRange(grid);
 				}
 			}
 

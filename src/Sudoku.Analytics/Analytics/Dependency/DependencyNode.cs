@@ -51,6 +51,49 @@ public sealed partial class DependencyNode(
 	public ref readonly Grid Grid => ref _grid;
 
 	/// <summary>
+	/// Indicates the truth of the current node. If invalid, <see cref="Space.InvalidSpace"/> will be returned.
+	/// </summary>
+	/// <seealso cref="Space.InvalidSpace"/>
+	public Space Truth
+	{
+		get
+		{
+			var (digit, cells) = Assignment;
+			return Type switch
+			{
+				DependencyNodeType.Block when cells.SharedBlock is var sharedBlock and not FallbackConstants.@int
+					=> Space.BlockDigit(sharedBlock, digit),
+				DependencyNodeType.Row or DependencyNodeType.Column
+					when cells.SharedHouses is var sharedLineMask and not 0
+						&& (Type == DependencyNodeType.Row ? AllRowsMask : AllColumnsMask) is var lineMask
+						&& BitOperations.TrailingZeroCount(sharedLineMask & lineMask) is var sharedLine
+					=> sharedLine < 18 ? Space.RowDigit(sharedLine - 9, digit) : Space.ColumnDigit(sharedLine - 18, digit),
+				DependencyNodeType.Cell when cells is [var onlyCell]
+					=> Space.RowColumn(onlyCell / 9, onlyCell % 9),
+				DependencyNodeType.Root or DependencyNodeType.Supposing
+					or DependencyNodeType.Block or DependencyNodeType.Row or DependencyNodeType.Column or DependencyNodeType.Cell
+					=> Space.InvalidSpace
+			};
+		}
+	}
+
+	/// <summary>
+	/// Indicates the truths.
+	/// </summary>
+	public SpaceSet Truths
+	{
+		get
+		{
+			var result = SpaceSet.Empty;
+			foreach (var ancestor in EnumerateAncestors(true))
+			{
+				result += ancestor.Truth;
+			}
+			return result;
+		}
+	}
+
+	/// <summary>
 	/// Indicates the current assignment.
 	/// </summary>
 	public DependencyAssignment Assignment { get; } = assignment;

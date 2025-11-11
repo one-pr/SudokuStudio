@@ -14,6 +14,12 @@ public readonly struct Space(Mask mask) :
 	ISpanParsable<Space>
 {
 	/// <summary>
+	/// Represents invalid space.
+	/// </summary>
+	public static readonly Space InvalidSpace = new(-1);
+
+
+	/// <summary>
 	/// Indicates the backing mask.
 	/// </summary>
 	private readonly Mask _mask = mask;
@@ -170,7 +176,7 @@ public readonly struct Space(Mask mask) :
 	public override int GetHashCode() => _mask;
 
 	/// <inheritdoc/>
-	public override string ToString() => $"{Secondary + 1}{Letter}{Primary + 1}";
+	public override string ToString() => _mask == -1 ? "<invalid>" : $"{Secondary + 1}{Letter}{Primary + 1}";
 
 	/// <summary>
 	/// Try to find all possible candidates in the current set.

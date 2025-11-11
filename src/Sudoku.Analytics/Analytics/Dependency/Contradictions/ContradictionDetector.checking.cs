@@ -187,7 +187,6 @@ public partial class ContradictionDetector
 					continue;
 				}
 
-				// Add this node into list.
 				var tempGridUpdated = tempGrid;
 				Update(ref tempGridUpdated, assignment, out var removedCandidates);
 				var nextNode = new DependencyNode(type, tempGridUpdated, assignment, collectedSiblings, node);

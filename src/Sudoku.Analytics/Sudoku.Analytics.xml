@@ -10620,6 +10620,17 @@
             Indicates the grid to be used.
             </summary>
         </member>
+        <member name="P:Sudoku.Analytics.Dependency.DependencyNode.Truth">
+            <summary>
+            Indicates the truth of the current node. If invalid, <see cref="F:Sudoku.Concepts.Supersymmetry.Space.InvalidSpace"/> will be returned.
+            </summary>
+            <seealso cref="F:Sudoku.Concepts.Supersymmetry.Space.InvalidSpace"/>
+        </member>
+        <member name="P:Sudoku.Analytics.Dependency.DependencyNode.Truths">
+            <summary>
+            Indicates the truths.
+            </summary>
+        </member>
         <member name="P:Sudoku.Analytics.Dependency.DependencyNode.Assignment">
             <summary>
             Indicates the current assignment.
