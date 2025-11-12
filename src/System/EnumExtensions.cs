@@ -51,7 +51,7 @@ public static class EnumExtensions
 				{
 					set.Add(flag);
 				}
-				return set.AsReadOnlySpan();
+				return set.AsSpan();
 			}
 		}
 

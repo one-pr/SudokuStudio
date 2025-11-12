@@ -648,16 +648,25 @@
             </summary>
             <seealso cref="T:System.Collections.Generic.HashSet`1"/>
         </member>
+        <member name="M:System.Collections.Generic.HashSetExtensions.AddRef``1(System.Collections.Generic.HashSet{``0},``0@)">
+            <inheritdoc cref="M:System.Collections.Generic.HashSetExtensions.&lt;G&gt;$48D993973B7F81786721B9597BB507D2`1.AddRef(`0@)"/>
+        </member>
         <member name="M:System.Collections.Generic.HashSetExtensions.ToArray``1(System.Collections.Generic.HashSet{``0})">
             <inheritdoc cref="M:System.Collections.Generic.HashSetExtensions.&lt;G&gt;$48D993973B7F81786721B9597BB507D2`1.ToArray"/>
         </member>
-        <member name="M:System.Collections.Generic.HashSetExtensions.AsReadOnlySpan``1(System.Collections.Generic.HashSet{``0})">
-            <inheritdoc cref="M:System.Collections.Generic.HashSetExtensions.&lt;G&gt;$48D993973B7F81786721B9597BB507D2`1.AsReadOnlySpan"/>
+        <member name="M:System.Collections.Generic.HashSetExtensions.AsSpan``1(System.Collections.Generic.HashSet{``0})">
+            <inheritdoc cref="M:System.Collections.Generic.HashSetExtensions.&lt;G&gt;$48D993973B7F81786721B9597BB507D2`1.AsSpan"/>
         </member>
         <member name="T:System.Collections.Generic.HashSetExtensions.&lt;G&gt;$48D993973B7F81786721B9597BB507D2`1.&lt;M&gt;$70FF1F337E57D845B8B652933A8C4721">
             <summary>
             Provides extension members on <see cref="T:System.Collections.Generic.HashSet`1"/>.
             </summary>
+        </member>
+        <member name="M:System.Collections.Generic.HashSetExtensions.&lt;G&gt;$48D993973B7F81786721B9597BB507D2`1.AddRef(`0@)">
+            <summary>
+            Add a new instance into the collection.
+            </summary>
+            <param name="value">The value.</param>
         </member>
         <member name="M:System.Collections.Generic.HashSetExtensions.&lt;G&gt;$48D993973B7F81786721B9597BB507D2`1.ToArray">
             <summary>
@@ -665,7 +674,7 @@
             </summary>
             <returns>An array converted.</returns>
         </member>
-        <member name="M:System.Collections.Generic.HashSetExtensions.&lt;G&gt;$48D993973B7F81786721B9597BB507D2`1.AsReadOnlySpan">
+        <member name="M:System.Collections.Generic.HashSetExtensions.&lt;G&gt;$48D993973B7F81786721B9597BB507D2`1.AsSpan">
             <summary>
             Try to convert a <see cref="T:System.Collections.Generic.HashSet`1"/> into a <see cref="T:System.ReadOnlySpan`1"/>,
             without any conversions among internal values.
@@ -678,6 +687,26 @@
             </summary>
             <typeparam name="T">The type of each element in <see cref="T:System.Collections.Generic.HashSet`1"/>.</typeparam>
             <seealso cref="T:System.Collections.Generic.HashSet`1"/>
+        </member>
+        <member name="M:System.Collections.Generic.Entry`1.AddIfNotPresent(System.Collections.Generic.HashSet{`0},`0,System.Int32@)">
+            <summary>
+            Adds the specified element to the set if it's not already contained.
+            </summary>
+            <param name="this">The current instance.</param>
+            <param name="value">The element to add to the set.</param>
+            <param name="location">The index into <c>_entries</c> of the element.</param>
+            <returns>
+            <see langword="true" /> if the element is added to the <see cref="T:System.Collections.Generic.HashSet`1" /> object;
+            <see langword="false" /> if the element is already present.
+            </returns>
+            <remarks>
+            <target name="others">
+					<para>
+						This method is implemented via <see cref="T:System.Runtime.CompilerServices.UnsafeAccessorAttribute" />,
+						which is just like inserting .NET implementation into the current project directly.
+					</para>
+				</target>
+            </remarks>
         </member>
         <member name="T:System.Collections.Generic.Entry`1.EnumeratorEntry">
             <summary>

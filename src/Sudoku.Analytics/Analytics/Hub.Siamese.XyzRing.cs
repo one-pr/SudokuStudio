@@ -18,7 +18,7 @@ public partial class Hub
 			public static ReadOnlySpan<XyzRingStep> GetSiamese(HashSet<XyzRingStep> accumulator, in Grid grid)
 			{
 				var result = new List<XyzRingStep>();
-				var stepsSpan = accumulator.AsReadOnlySpan();
+				var stepsSpan = accumulator.AsSpan();
 				for (var index1 = 0; index1 < accumulator.Count - 1; index1++)
 				{
 					var xyz1 = stepsSpan[index1];

@@ -313,7 +313,7 @@ public partial class Hub
 					;
 				}
 
-				return result.AsReadOnlySpan();
+				return result.AsSpan();
 			}
 
 			/// <summary>

@@ -12,6 +12,12 @@ public static class HashSetExtensions
 	extension<T>(HashSet<T> @this)
 	{
 		/// <summary>
+		/// Add a new instance into the collection.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		public void AddRef(in T value) => Entry<T>.AddIfNotPresent(@this, value, out _);
+
+		/// <summary>
 		/// Try to convert a <see cref="HashSet{T}"/> into an array, without any conversions among internal values.
 		/// </summary>
 		/// <returns>An array converted.</returns>
@@ -33,7 +39,7 @@ public static class HashSetExtensions
 		/// without any conversions among internal values.
 		/// </summary>
 		/// <returns>A <see cref="ReadOnlySpan{T}"/> converted.</returns>
-		public ReadOnlySpan<T> AsReadOnlySpan() => @this.ToArray();
+		public ReadOnlySpan<T> AsSpan() => @this.ToArray();
 	}
 }
 
@@ -44,6 +50,25 @@ public static class HashSetExtensions
 /// <seealso cref="HashSet{T}"/>
 file static class Entry<T>
 {
+	/// <summary>
+	/// Adds the specified element to the set if it's not already contained.
+	/// </summary>
+	/// <param name="this">The current instance.</param>
+	/// <param name="value">The element to add to the set.</param>
+	/// <param name="location">The index into <c>_entries</c> of the element.</param>
+	/// <returns>
+	/// <see langword="true"/> if the element is added to the <see cref="HashSet{T}"/> object;
+	/// <see langword="false"/> if the element is already present.
+	/// </returns>
+	/// <remarks>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="//g/dotnet/version[@value='8']/feature[@name='unsafe-accessor']/target[@name='others']"/>
+	/// </remarks>
+	[UnsafeAccessor(UnsafeAccessorKind.Method, Name = nameof(AddIfNotPresent))]
+	public static extern bool AddIfNotPresent(HashSet<T> @this, T value, out int location);
+
+
 	/// <summary>
 	/// Represents an entry to call internal fields on <see cref="HashSet{T}.Enumerator"/>.
 	/// </summary>
