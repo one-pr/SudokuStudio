@@ -36,7 +36,7 @@ public partial class ContradictionDetector
 
 				if (count == 1)
 				{
-					result.Add(
+					result.AddRef(
 						(
 							new(firstFoundCell * 9 + digit),
 							house switch
@@ -66,7 +66,7 @@ public partial class ContradictionDetector
 			var mask = grid.GetCandidates(cell);
 			if (BitOperations.IsPow2((uint)mask))
 			{
-				result.Add((new(cell * 9 + BitOperations.Log2((uint)mask)), DependencyNodeType.Cell));
+				result.AddRef((new(cell * 9 + BitOperations.Log2((uint)mask)), DependencyNodeType.Cell));
 			}
 		}
 	}
@@ -98,7 +98,7 @@ public partial class ContradictionDetector
 				if (intersection.Count >= 2)
 				{
 					// a & map => Cells in lines are not empty => pointing eliminations.
-					result.Add(
+					result.AddRef(
 						(
 							new(digit, intersection),
 							a & map
