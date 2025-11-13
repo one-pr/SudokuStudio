@@ -221,7 +221,7 @@ public sealed unsafe partial class BitwiseSolver : ISolutionEnumerableSolver
 		mask = ~mask;
 		_g->UnsolvedCells[subBand] &= (uint)mask;
 		var rowBit = digit * 9 + CellToRow[cell];
-		_g->UnsolvedRows[rowBit / 27] &= (uint)~(1 << (Mod27[rowBit]));
+		_g->UnsolvedRows[rowBit / 27] &= (uint)~(1 << Mod27[rowBit]);
 		_g->Bands[subBand] &= (uint)mask;
 		_g->Bands[subBand + 3] &= (uint)mask;
 		_g->Bands[subBand + 6] &= (uint)mask;
