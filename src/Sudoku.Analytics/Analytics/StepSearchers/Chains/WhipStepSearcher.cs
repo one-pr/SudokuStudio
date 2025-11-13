@@ -327,7 +327,7 @@ public sealed partial class WhipStepSearcher : StepSearcher
 						break;
 					}
 					case { Count: 2 or 3 }
-					when hiddenSingleCells.IsInIntersection && groupedWhip && concludedLockedCandidates.Add(hiddenSingleCells):
+					when hiddenSingleCells.IsInIntersection && groupedWhip && concludedLockedCandidates.AddRef(hiddenSingleCells):
 					{
 						result.Add(new GroupedWhipAssignment(digit, hiddenSingleCells, houseType));
 						break;

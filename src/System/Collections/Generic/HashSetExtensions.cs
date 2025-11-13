@@ -15,7 +15,7 @@ public static class HashSetExtensions
 		/// Add a new instance into the collection.
 		/// </summary>
 		/// <param name="value">The value.</param>
-		public void AddRef(in T value) => Entry<T>.AddIfNotPresent(@this, value, out _);
+		public bool AddRef(in T value) => Entry<T>.AddIfNotPresent(@this, value, out _);
 
 		/// <summary>
 		/// Try to convert a <see cref="HashSet{T}"/> into an array, without any conversions among internal values.

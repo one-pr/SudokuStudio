@@ -207,11 +207,11 @@ public sealed partial class ViewUnitBindableSource : DependencyObject, ICloneabl
 				{
 					if (leftLink.Start.Count >= 2)
 					{
-						leftInfo.Add(leftLink.Start);
+						leftInfo.AddRef(leftLink.Start);
 					}
 					if (leftLink.End.Count >= 2)
 					{
-						leftInfo.Add(leftLink.End);
+						leftInfo.AddRef(leftLink.End);
 					}
 				}
 				foreach (var rightLink in right.View.OfType<ChainLinkViewNode>())

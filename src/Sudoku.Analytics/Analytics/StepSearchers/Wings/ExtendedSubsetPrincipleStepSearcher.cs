@@ -114,7 +114,7 @@ public sealed partial class ExtendedSubsetPrincipleStepSearcher : StepSearcher
 									}
 								}
 
-								if (results.Add(pattern))
+								if (results.AddRef(pattern))
 								{
 									var step = new ExtendedSubsetPrincipleStep(
 										(from cell in elimMap select new Conclusion(Elimination, cell, zDigit)).ToArray(),

@@ -114,7 +114,7 @@ public readonly ref struct Cluster(in Grid grid, Digit digit, scoped in CellMap 
 						if (!!currentConflictCells
 							&& !conflictPair.Any(p => (p.InfluencedRange & currentConflictCells) == currentConflictCells))
 						{
-							conflictPair.Add(((cell1, cell2), currentConflictCells));
+							conflictPair.AddRef(((cell1, cell2), currentConflictCells));
 							conflictCells |= currentConflictCells;
 						}
 					}

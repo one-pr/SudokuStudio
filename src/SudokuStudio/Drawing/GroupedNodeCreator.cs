@@ -23,7 +23,7 @@ internal sealed class GroupedNodeCreator(SudokuPane pane, SudokuPanePositionConv
 		{
 			// If the start node or end node is a grouped node, we should append a rectangle to highlight it.
 			var node = n.Map;
-			if (node.Count != 1 && drawnGroupedNodes.Add(node))
+			if (node.Count != 1 && drawnGroupedNodes.AddRef(node))
 			{
 				result.Add(
 					new()

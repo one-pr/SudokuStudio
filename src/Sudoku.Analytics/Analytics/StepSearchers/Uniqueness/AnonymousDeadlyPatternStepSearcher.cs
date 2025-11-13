@@ -884,7 +884,7 @@ public sealed partial class AnonymousDeadlyPatternStepSearcher : StepSearcher
 							continue;
 						}
 
-						result.Add(lastPatternCells | extraCells);
+						result.AddRef(lastPatternCells | extraCells);
 					}
 				}
 			}
