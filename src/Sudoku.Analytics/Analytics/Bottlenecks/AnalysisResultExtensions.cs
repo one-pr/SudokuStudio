@@ -70,8 +70,7 @@ public static class AnalysisResultExtensions
 				foreach (var (g, s) in Step.Combine(@this.GridsSpan, @this.StepsSpan))
 				{
 					if ((
-						from step in collector.Collect(g)
-						select (SingleStep)step into step
+						from SingleStep step in collector.Collect(g)
 						select step.Cell * 9 + step.Digit
 					).AsCandidateMap().Count == 1)
 					{
@@ -89,8 +88,7 @@ public static class AnalysisResultExtensions
 				{
 					var currentStepPencilmarkVisibility = s.PencilmarkType;
 					if ((
-						from step in collector.Collect(g)
-						select ((SingleStep)step) into step
+						from SingleStep step in collector.Collect(g)
 						where step.PencilmarkType <= currentStepPencilmarkVisibility
 						select step.Cell * 9 + step.Digit
 					).AsCandidateMap().Count == 1)

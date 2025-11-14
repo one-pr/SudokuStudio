@@ -29665,6 +29665,23 @@
         <member name="M:Sudoku.Generating.Qualified.TechniqueGenerator.TryGenerateUnique(Sudoku.Concepts.Grid@,System.Threading.CancellationToken)">
             <inheritdoc/>
         </member>
+        <member name="T:Sudoku.Linq.StepCollectionExtensions">
+            <summary>
+            Provides extension methods on <see cref="T:Sudoku.Analytics.Step"/> sequence.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Linq.StepCollectionExtensions.Cast``1(System.ReadOnlySpan{Sudoku.Analytics.Step})">
+            <inheritdoc cref="M:Sudoku.Linq.StepCollectionExtensions.&lt;G&gt;$C9F7718775DC0F5D20F2C789CDDD4949.Cast``1"/>
+        </member>
+        <member name="T:Sudoku.Linq.StepCollectionExtensions.&lt;G&gt;$C9F7718775DC0F5D20F2C789CDDD4949.&lt;M&gt;$33AF71F3E0F381CCBE56955B96D0E22A">
+            <summary>
+            Provides with extension members on <see cref="T:System.ReadOnlySpan`1"/> of <see cref="T:Sudoku.Analytics.Step"/>.
+            </summary>
+            <param name="this">The instance.</param>
+        </member>
+        <member name="M:Sudoku.Linq.StepCollectionExtensions.&lt;G&gt;$C9F7718775DC0F5D20F2C789CDDD4949.Cast``1">
+            <inheritdoc cref="M:System.Linq.Providers.ICastMethod`2.Cast``1"/>
+        </member>
         <member name="T:Sudoku.ModuleInitializer">
             <target name="type">
 				<summary>
