@@ -18,7 +18,7 @@ namespace Sudoku.UniquenessTests;
 /// ]]></code>
 /// </para>
 /// <para>
-/// Instances of this type can be used as arguments from method <see cref="UniquenessChecker.CanLeadToDeadlyPatternContradiction"/>,
+/// Instances of this type can be used as arguments from method <see cref="DeadlyPatternChecker.CanLeadToDeadlyPatternContradiction"/>,
 /// representing the digits can be checked and used for the specified cells.
 /// For example, if we want to restrict cell <c>r2c3</c> only checks for digits 1 and 9,
 /// we can construct a <see cref="KeyValuePair{TKey, TValue}"/> of cell <c>r2c3</c> (index 11) and digit 1 and 9
@@ -27,15 +27,15 @@ namespace Sudoku.UniquenessTests;
 /// var kvp = KeyValuePair.Create(11, (Mask)(1 << 0 | 1 << 8)); // r2c3(19)
 /// var kvp2 = new KeyValuePair<Cell, Mask>(11, (Mask)(1 << 0 | 1 << 8)); // also okay
 /// ]]></code>
-/// In this way, method <see cref="UniquenessChecker"/>.TryAssign will limit digits to be checked to only digits 1 and 9,
+/// In this way, method <see cref="DeadlyPatternChecker"/>.TryAssign will limit digits to be checked to only digits 1 and 9,
 /// to optimize checking experience by reducing complexity.
 /// </para>
 /// </remarks>
-/// <seealso cref="UniquenessChecker.CanLeadToDeadlyPatternContradiction"/>
+/// <seealso cref="DeadlyPatternChecker.CanLeadToDeadlyPatternContradiction"/>
 /// <seealso cref="KeyValuePair{TKey, TValue}"/>
 /// <seealso cref="KeyValuePair.Create{TKey, TValue}(TKey, TValue)"/>
-[CollectionBuilder(typeof(PatternAssigningMap), nameof(Create))]
-public sealed partial class PatternAssigningMap : IEnumerable<KeyValuePair<Cell, Mask>>, IFormattable
+[CollectionBuilder(typeof(DeadlyPatternAssigningMap), nameof(Create))]
+public sealed partial class DeadlyPatternAssigningMap : IEnumerable<KeyValuePair<Cell, Mask>>, IFormattable
 {
 	/// <summary>
 	/// Indicates the backing mask table.
@@ -44,9 +44,9 @@ public sealed partial class PatternAssigningMap : IEnumerable<KeyValuePair<Cell,
 
 
 	/// <summary>
-	/// Initializes a <see cref="PatternAssigningMap"/> instance.
+	/// Initializes a <see cref="DeadlyPatternAssigningMap"/> instance.
 	/// </summary>
-	private PatternAssigningMap()
+	private DeadlyPatternAssigningMap()
 	{
 	}
 
@@ -135,14 +135,14 @@ public sealed partial class PatternAssigningMap : IEnumerable<KeyValuePair<Cell,
 
 
 	/// <summary>
-	/// Creates a <see cref="PatternAssigningMap"/> instance.
+	/// Creates a <see cref="DeadlyPatternAssigningMap"/> instance.
 	/// </summary>
 	/// <param name="values">The values.</param>
 	/// <returns>The instance.</returns>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public static PatternAssigningMap Create(params ReadOnlySpan<KeyValuePair<Cell, Mask>> values)
+	public static DeadlyPatternAssigningMap Create(params ReadOnlySpan<KeyValuePair<Cell, Mask>> values)
 	{
-		var result = new PatternAssigningMap();
+		var result = new DeadlyPatternAssigningMap();
 		foreach (var (cell, digit) in values)
 		{
 			result._maskTable.Add(cell, digit);

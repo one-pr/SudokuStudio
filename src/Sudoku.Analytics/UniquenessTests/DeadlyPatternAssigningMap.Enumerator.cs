@@ -1,6 +1,6 @@
 namespace Sudoku.UniquenessTests;
 
-public partial class PatternAssigningMap
+public partial class DeadlyPatternAssigningMap
 {
 	/// <summary>
 	/// Represents the backing enumerator instance.

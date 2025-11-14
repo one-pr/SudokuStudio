@@ -1,15 +1,15 @@
 namespace Sudoku.UniquenessTests;
 
 /// <summary>
-/// Indicates the result value after <see cref="UniquenessChecker.GetUniqueness(in Grid, in SpaceSet)"/> called.
+/// Indicates the result value after <see cref="DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern(in Grid, in SpaceSet)"/> called.
 /// </summary>
 /// <param name="grid"><inheritdoc cref="Grid" path="/summary"/></param>
 /// <param name="permutationsCount"><inheritdoc cref="PermutationsCount" path="/summary"/></param>
 /// <param name="isDeadlyPattern"><inheritdoc cref="IsDeadlyPattern" path="/summary"/></param>
 /// <param name="failedCases"><inheritdoc cref="FailedCases" path="/summary"/></param>
 /// <param name="patternCandidates"><inheritdoc cref="PatternCandidates" path="/summary"/></param>
-/// <seealso cref="UniquenessChecker.GetUniqueness(in Grid, in SpaceSet)"/>
-public readonly ref struct UniquenessInfo(
+/// <seealso cref="DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern(in Grid, in SpaceSet)"/>
+public readonly ref struct DeadlyPatternResult(
 	in Grid grid,
 	int permutationsCount,
 	bool isDeadlyPattern,

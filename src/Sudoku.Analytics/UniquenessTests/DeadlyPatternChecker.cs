@@ -5,10 +5,10 @@ namespace Sudoku.UniquenessTests;
 /// determining whether the pattern is a deadly pattern.
 /// </summary>
 /// <seealso cref="Grid"/>
-public static class UniquenessChecker
+public static class DeadlyPatternChecker
 {
 	/// <summary>
-	/// Try to analyze whether a grid is a deadly pattern, by only checking the specified cells.
+	/// Determine whether a grid will form a deadly pattern if the specified truths are constrained.
 	/// </summary>
 	/// <param name="grid">Indicates the grid. It's required that only specified cells are assigned with candidates.</param>
 	/// <param name="truths">Indicates the truths to be checked.</param>
@@ -16,7 +16,7 @@ public static class UniquenessChecker
 	/// <exception cref="DeadlyPatternInferrerLimitReachedException">
 	/// Throws when the pattern contains more than 10000 solutions.
 	/// </exception>
-	public static UniquenessInfo GetUniqueness(in Grid grid, in SpaceSet truths)
+	public static DeadlyPatternResult CheckWhetherFormsDeadlyPattern(in Grid grid, in SpaceSet truths)
 	{
 		var patternMap = CandidateMap.Empty;
 		if (grid is not { IsValid: false, EmptyCellsCount: 81, PuzzleType: SudokuType.Standard })
@@ -202,7 +202,7 @@ public static class UniquenessChecker
 	/// </remarks>
 	public static bool CanLeadToDeadlyPatternContradiction(
 		Candidate assigned,
-		PatternAssigningMap? assigningMap,
+		DeadlyPatternAssigningMap? assigningMap,
 		in Grid grid,
 		in CellMap cells,
 		out CandidateMap assignedCandidates
