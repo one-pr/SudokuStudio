@@ -1,21 +1,11 @@
 namespace Sudoku.DeadlyPatternTheory;
 
 /// <summary>
-/// Indicates the result value after <see cref="DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern(in Grid, in SpaceSet)"/> called.
+/// Indicates the result value after <see cref="DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern"/> called.
 /// </summary>
 /// <param name="grid"><inheritdoc cref="Grid" path="/summary"/></param>
-/// <param name="permutationsCount"><inheritdoc cref="PermutationsCount" path="/summary"/></param>
-/// <param name="isDeadlyPattern"><inheritdoc cref="IsDeadlyPattern" path="/summary"/></param>
-/// <param name="failedCases"><inheritdoc cref="FailedCases" path="/summary"/></param>
-/// <param name="patternCandidates"><inheritdoc cref="PatternCandidates" path="/summary"/></param>
-/// <seealso cref="DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern(in Grid, in SpaceSet)"/>
-public readonly ref struct DeadlyPatternResult(
-	in Grid grid,
-	int permutationsCount,
-	bool isDeadlyPattern,
-	ReadOnlySpan<Grid> failedCases,
-	scoped in CandidateMap patternCandidates
-)
+/// <seealso cref="DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern"/>
+public readonly ref struct DeadlyPatternResult(ref readonly Grid grid)
 {
 	/// <summary>
 	/// Indicates the grid used.
@@ -26,23 +16,28 @@ public readonly ref struct DeadlyPatternResult(
 	/// <summary>
 	/// Indicates the pattern is a real deadly pattern.
 	/// </summary>
-	public bool IsDeadlyPattern { get; } = isDeadlyPattern;
+	public bool IsDeadlyPattern { get; init; }
 
 	/// <summary>
 	/// Indicates the number of permutations.
 	/// </summary>
-	public int PermutationsCount { get; } = permutationsCount;
+	public int PermutationsCount { get; init; }
+
+	/// <summary>
+	/// Indicates the failed reason.
+	/// </summary>
+	public DeadlyPatternResultFailedReason FailedReason { get; init; }
 
 	/// <summary>
 	/// Indicates all possible failed cases. The value can be an empty sequence if the pattern is a real deadly pattern,
 	/// or not a deadly pattern but containing obvious invalid candidates (like containing given or modifiable cells).
 	/// </summary>
-	public ReadOnlySpan<Grid> FailedCases { get; } = failedCases;
+	public ReadOnlySpan<Grid> FailedCases { get; init; }
 
 	/// <summary>
 	/// Indicates the candidates the pattern used.
 	/// </summary>
-	public CandidateMap PatternCandidates { get; } = patternCandidates;
+	public CandidateMap PatternCandidates { get; init; }
 
 
 	/// <inheritdoc cref="object.ToString"/>

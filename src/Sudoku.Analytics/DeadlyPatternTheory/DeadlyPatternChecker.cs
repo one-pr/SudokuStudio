@@ -12,12 +12,19 @@ public static class DeadlyPatternChecker
 	/// </summary>
 	/// <param name="grid">Indicates the grid. It's required that only specified cells are assigned with candidates.</param>
 	/// <param name="truths">Indicates the truths to be checked.</param>
+	/// <param name="options">Indicates the extra options.</param>
 	/// <returns>The result after the analysis operation is finished.</returns>
 	/// <exception cref="DeadlyPatternInferrerLimitReachedException">
 	/// Throws when the pattern contains more than 10000 solutions.
 	/// </exception>
-	public static DeadlyPatternResult CheckWhetherFormsDeadlyPattern(in Grid grid, in SpaceSet truths)
+	public static DeadlyPatternResult CheckWhetherFormsDeadlyPattern(
+		in Grid grid,
+		in SpaceSet truths,
+		DeadlyPatternOptions options = default
+	)
 	{
+		var defaultResult = new DeadlyPatternResult(in grid) { PermutationsCount = 0, IsDeadlyPattern = false, FailedCases = [] };
+
 		var patternMap = CandidateMap.Empty;
 		if (grid is not { IsValid: false, EmptyCellsCount: 81, PuzzleType: SudokuType.Standard })
 		{
@@ -52,7 +59,16 @@ public static class DeadlyPatternChecker
 		}
 
 		// Step 1: Get all solutions for that pattern.
-		var permutations = getPermutations(grid, truths);
+		var permutations = getPermutations(grid, truths, out var isFailed);
+		if (isFailed)
+		{
+			return defaultResult with
+			{
+				PatternCandidates = patternMap,
+				FailedReason = DeadlyPatternResultFailedReason.MaxSolutionsReached
+			};
+		}
+
 		if (permutations.Length == 0)
 		{
 			goto FastFail;
@@ -107,13 +123,24 @@ public static class DeadlyPatternChecker
 
 		// If all possible solutions has exchangable patterns, the pattern will be a real deadly pattern;
 		// otherwise, not a deadly pattern.
-		return new(grid, permutations.Length, failedCases.Count == 0, failedCases.AsSpan(), patternMap);
+		return defaultResult with
+		{
+			PermutationsCount = permutations.Length,
+			IsDeadlyPattern = failedCases.Count == 0,
+			FailedCases = failedCases.AsSpan(),
+			PatternCandidates = patternMap,
+			FailedReason = DeadlyPatternResultFailedReason.None
+		};
 
 	FastFail:
-		return new(grid, 0, false, [], patternMap);
+		return defaultResult with
+		{
+			PatternCandidates = patternMap,
+			FailedReason = DeadlyPatternResultFailedReason.NotDeadlyPattern
+		};
 
 
-		static ReadOnlySpan<(Grid Grid, HouseMask Houses)> getPermutations(in Grid grid, in SpaceSet truths)
+		ReadOnlySpan<(Grid Grid, HouseMask Houses)> getPermutations(in Grid grid, in SpaceSet truths, out bool isFailed)
 		{
 			var result = new List<(Grid, HouseMask)>();
 			var links = SpaceSet.Empty;
@@ -127,9 +154,15 @@ public static class DeadlyPatternChecker
 
 			var pattern = new Logic(truths, links, grid);
 			var permutations = LogicReasoner.GetPermutations(in pattern);
-			if (permutations.Length > 10000)
+			if (options.LimitSolutionsCount != 0 && permutations.Length > options.LimitSolutionsCount)
 			{
-				throw new DeadlyPatternInferrerLimitReachedException();
+				if (options.ThrowExceptionIfMaximumSolutionsCountReached)
+				{
+					throw new DeadlyPatternInferrerLimitReachedException();
+				}
+
+				isFailed = true;
+				return result.AsSpan();
 			}
 
 			foreach (var permutation in permutations)
@@ -147,6 +180,8 @@ public static class DeadlyPatternChecker
 				}
 				result.AddRef((emptyGrid, houses));
 			}
+
+			isFailed = false;
 			return result.AsSpan();
 		}
 	}
