@@ -164,11 +164,7 @@ public static class UniquenessChecker
 	/// </param>
 	/// <param name="grid">The grid.</param>
 	/// <param name="cells">The cells in the grid to be checked.</param>
-	/// <param name="result">
-	/// The last node assigned if return value is <see langword="true"/>; otherwise, <see langword="null"/>.
-	/// If non-<see langword="null"/>, you can iterate with property <see cref="PatternTrialNode.Parent"/>
-	/// to find all candidates assigned.
-	/// </param>
+	/// <param name="assignedCandidates">All assigned candidates that will cause the pattern invalid.</param>
 	/// <returns>
 	/// A <see cref="bool"/> result indicating whether the candidate <paramref name="assigned"/>
 	/// will make the pattern to be a deadly pattern.
@@ -199,8 +195,9 @@ public static class UniquenessChecker
 	/// <para>
 	/// This method will perform breadth-first searching to find any contradictions if we assign with <c>r2c4 = 2</c>
 	/// and <c>r7c2 = 7</c>, and return a <see langword="bool"/> value indicating whether the first assigned value
-	/// can form such contradiction or not. If can, argument <paramref name="result"/> will include the full path of trial of cells;
-	/// otherwise, <see langword="null"/>.
+	/// can form such contradiction or not.
+	/// If can, argument <paramref name="assignedCandidates"/> will include the full path of trial of cells;
+	/// otherwise, <see cref="CandidateMap.Empty"/>.
 	/// </para>
 	/// </remarks>
 	public static bool CanLeadToDeadlyPatternContradiction(
@@ -208,7 +205,7 @@ public static class UniquenessChecker
 		PatternAssigningMap? assigningMap,
 		in Grid grid,
 		in CellMap cells,
-		[NotNullWhen(true)] out PatternTrialNode? result
+		out CandidateMap assignedCandidates
 	)
 	{
 		// Check whether the first assigned cell is empty. If not, we cannot start.
@@ -234,8 +231,8 @@ public static class UniquenessChecker
 			goto ReturnFalse;
 		}
 
-		var root = new PatternTrialNode(assigned, null);
-		var queue = new Queue<PatternTrialNode>();
+		var root = new Node(assigned, null);
+		var queue = new Queue<Node>();
 		queue.Enqueue(root);
 
 		// Do a BFS to find a path.
@@ -286,7 +283,7 @@ public static class UniquenessChecker
 				}
 
 				// Valid.
-				result = currentNode;
+				assignedCandidates = currentNode.AssignedCandidates;
 				return true;
 			}
 
@@ -302,19 +299,19 @@ public static class UniquenessChecker
 				if (isNakedSingle(appliedGrid, cell, out var digit))
 				{
 					// Assign the value.
-					var nextNode = new PatternTrialNode(cell * 9 + digit, currentNode);
+					var nextNode = new Node(cell * 9 + digit, currentNode);
 					queue.Enqueue(nextNode);
 				}
 				else if (isHiddenSingle(appliedGrid, cell, out var targetCell, out digit) && cells.Contains(targetCell))
 				{
-					var nextNode = new PatternTrialNode(targetCell * 9 + digit, currentNode);
+					var nextNode = new Node(targetCell * 9 + digit, currentNode);
 					queue.Enqueue(nextNode);
 				}
 			}
 		}
 
 	ReturnFalse:
-		result = null;
+		assignedCandidates = CandidateMap.Empty;
 		return false;
 
 
@@ -368,7 +365,7 @@ public static class UniquenessChecker
 			}
 
 			// Then enumerate assignments to find a new assignments, where all digits are same as the current one.
-			var queue = new Queue<PatternTrialNode>();
+			var queue = new Queue<Node>();
 			var firstCell = cells[0];
 
 			var a = houseDigitsDictionary[firstCell >> HouseType.Block];
@@ -443,5 +440,74 @@ public static class UniquenessChecker
 
 			return false;
 		}
+	}
+}
+
+/// <summary>
+/// Represents a node that describes assigned cases.
+/// </summary>
+/// <param name="Assigned">Indicates the assigned candidate.</param>
+/// <param name="Parent">Indicates the parent node.</param>
+file sealed record Node(Candidate Assigned, Node? Parent) : IEqualityOperators<Node, Node, bool>
+{
+	/// <summary>
+	/// Indicates all assigned candidates.
+	/// </summary>
+	public CandidateMap AssignedCandidates
+	{
+		get
+		{
+			var result = CandidateMap.Empty;
+			for (var node = this; node is not null; node = node.Parent)
+			{
+				result += node.Assigned;
+			}
+			return result;
+		}
+	}
+
+
+	/// <inheritdoc/>
+	public bool Equals([NotNullWhen(true)] Node? other)
+		=> other is not null && AssignedCandidates == other.AssignedCandidates;
+
+	/// <inheritdoc/>
+	public override int GetHashCode() => AssignedCandidates.GetHashCode();
+
+	/// <summary>
+	/// Apply all assignments to the target grid.
+	/// </summary>
+	/// <param name="grid">The grid.</param>
+	public void ApplyTo(ref Grid grid)
+	{
+		foreach (var assigned in AssignedCandidates)
+		{
+			grid.SetDigit(assigned / 9, assigned % 9);
+		}
+	}
+
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp9/feature[@name='records']/target[@name='method' and @cref='PrintMembers']"/>
+	private bool PrintMembers(StringBuilder builder)
+	{
+		var cell = Assigned / 9;
+		var digit = Assigned % 9;
+
+		builder.Append($"{nameof(Assigned)} = ");
+		builder.Append($"r{cell / 9 + 1}c{cell % 9 + 1}({digit + 1})");
+		builder.Append($", {nameof(Parent)} = ");
+		if (Parent is not null)
+		{
+			var parentAssigned = Parent.Assigned;
+			var parentCell = parentAssigned / 9;
+			var parentDigit = parentAssigned % 9;
+			builder.Append($"r{parentCell / 9 + 1}c{parentCell % 9 + 1}({parentDigit + 1})");
+		}
+		else
+		{
+			builder.Append("<null>");
+		}
+		return true;
 	}
 }

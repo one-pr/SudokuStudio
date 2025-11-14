@@ -31,7 +31,7 @@ namespace Sudoku.UniquenessTests;
 /// to optimize checking experience by reducing complexity.
 /// </para>
 /// </remarks>
-/// <seealso cref="UniquenessChecker.CanLeadToDeadlyPatternContradiction(Candidate, PatternAssigningMap?, in Grid, in CellMap, out PatternTrialNode?)"/>
+/// <seealso cref="UniquenessChecker.CanLeadToDeadlyPatternContradiction"/>
 /// <seealso cref="KeyValuePair{TKey, TValue}"/>
 /// <seealso cref="KeyValuePair.Create{TKey, TValue}(TKey, TValue)"/>
 [CollectionBuilder(typeof(PatternAssigningMap), nameof(Create))]
