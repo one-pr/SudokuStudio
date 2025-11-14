@@ -198,7 +198,7 @@ internal readonly record struct SudokuPanePositionConverter(GridLayout Grid) : I
 			var candidate = candidateNode.Candidate;
 			points.Add(GetPosition(candidate));
 		}
-		return points.AsReadOnlySpan();
+		return points.AsSpan();
 	}
 
 	/// <include
