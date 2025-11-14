@@ -8291,7 +8291,7 @@
             <typeparam name="T">The unified type for all elements.</typeparam>
             <returns>A <see cref="T:System.ReadOnlySpan`1"/> instance.</returns>
         </member>
-        <member name="T:System.Runtime.CompilerServices.TupleExtensions.&lt;G&gt;$E85C647F95A925158767E727F66EDA21`1.&lt;M&gt;$92D7A552F17BD2261013431D9099BA2F">
+        <member name="T:System.Runtime.CompilerServices.TupleExtensions.&lt;G&gt;$E85C647F95A925158767E727F66EDA21`1.&lt;M&gt;$5745C87FC5C7E8C593FE39A7A7F57B58">
             <summary>
             Provides extension members on <typeparamref name="TTuple"/>,
             where <typeparamref name="TTuple"/> satisfies <see cref="T:System.Runtime.CompilerServices.ITuple"/> constraint.

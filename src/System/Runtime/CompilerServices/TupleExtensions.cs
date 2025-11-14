@@ -32,7 +32,7 @@ public static class TupleExtensions
 	/// Provides extension members on <typeparamref name="TTuple"/>,
 	/// where <typeparamref name="TTuple"/> satisfies <see cref="ITuple"/> constraint.
 	/// </summary>
-	extension<TTuple>(TTuple @this) where TTuple : ITuple, allows ref struct
+	extension<TTuple>(TTuple @this) where TTuple : ITuple?, allows ref struct
 	{
 		/// <summary>
 		/// Converts the <see cref="ITuple"/> instance into an array of objects.
@@ -40,7 +40,12 @@ public static class TupleExtensions
 		/// <returns>The array of elements.</returns>
 		public object?[] ToArray()
 		{
-			var result = new object?[@this.Length];
+			if (@this is not { Length: var length and not 0 })
+			{
+				return [];
+			}
+
+			var result = new object?[length];
 			var i = 0;
 			foreach (var element in @this)
 			{
