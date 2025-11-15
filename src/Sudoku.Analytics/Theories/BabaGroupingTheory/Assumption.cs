@@ -3,11 +3,25 @@ namespace Sudoku.Theories.BabaGroupingTheory;
 /// <summary>
 /// Represents an assumption.
 /// </summary>
-/// <param name="mask"><inheritdoc cref="_mask" path="/summary"/></param>
+/// <param name="mask">The mask.</param>
 public readonly struct Assumption(int mask) : IEquatable<Assumption>, IEqualityOperators<Assumption, Assumption, bool>
 {
 	/// <summary>
-	/// Indicates the mask.
+	/// <para>
+	/// Indicates the mask. The mask uses 25 of 32 bits:
+	/// <code>
+	/// .--------.---------------------------.-----------------------------------------------------------------------.
+	/// |  31-25 | 24| 23| 22| 21| 20| 19| 18| 17| 16| 15| 14| 13| 12| 11| 10| 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+	/// :--------+---------------------------+-----------------------------------------------------------------------:
+	/// | Unused |         Cell zone         |                           Assumed value zone                          |
+	/// '--------'---------------------------'-----------------------------------------------------------------------'
+	/// </code>
+	/// where assumed value zone stores 18-bit data representing the letter or digit chosen.
+	/// </para>
+	/// <para>
+	/// In the lower 9 bits of assumed value zone, they represents the accurate digits stored;
+	/// while higher 9 bits represents the fuzzy digits (named variables like <i>x</i>, <i>y</i> and <i>z</i>).
+	/// </para>
 	/// </summary>
 	private readonly int _mask = mask;
 

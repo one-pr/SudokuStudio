@@ -3,11 +3,18 @@ namespace Sudoku.Theories.BabaGroupingTheory;
 /// <summary>
 /// Represents an assumed value.
 /// </summary>
-/// <param name="mask"><inheritdoc cref="_mask" path="/summary"/></param>
+/// <param name="mask">The mask.</param>
 public readonly struct AssumedValue(byte mask) : IEquatable<AssumedValue>, IEqualityOperators<AssumedValue, AssumedValue, bool>
 {
 	/// <summary>
-	/// Indicates the mask.
+	/// Indicates the mask. The mask uses 5 of 8 bits:
+	/// <code>
+	/// .---------------------------------.
+	/// | 7 | 6 | 5 | 4  | 3 | 2 | 1 | 0  |
+	/// :-----------+----+----------------:
+	/// |   Unused  |Type|      Cell      |
+	/// '---------------------------------'
+	/// </code>
 	/// </summary>
 	private readonly byte _mask = mask;
 
