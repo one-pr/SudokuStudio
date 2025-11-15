@@ -21,8 +21,8 @@ public sealed partial class BabaGroupingSettingPage : Page
 	{
 		var flag = (bool)((SegmentedItem)((Segmented)sender).SelectedItem).Tag;
 		Application.CurrentApp.Preference.AnalysisPreferences.LetterCasing = flag
-			? BabaGroupLetterCasing.Upper
-			: BabaGroupLetterCasing.Lower;
+			? BabaGroupLetterCase.Upper
+			: BabaGroupLetterCase.Lower;
 	}
 
 	private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -35,8 +35,8 @@ public sealed partial class BabaGroupingSettingPage : Page
 			?? -1;
 		LetterCasingComboBox.SelectedIndex = analysisPref.LetterCasing switch
 		{
-			BabaGroupLetterCasing.Upper => 0,
-			BabaGroupLetterCasing.Lower => 1,
+			BabaGroupLetterCase.Upper => 0,
+			BabaGroupLetterCase.Lower => 1,
 			_ => -1
 		};
 

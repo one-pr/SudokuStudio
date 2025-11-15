@@ -8,14 +8,14 @@ public partial class CharSetExtensions
 	extension(string @this)
 	{
 		/// <summary>
-		/// Indicates the upper-casing of the current string.
+		/// Indicates the upper-cased string to the current string.
 		/// </summary>
-		public string UpperCasing => @this.ToUpper();
+		public string UpperCased => @this.ToUpper();
 
 		/// <summary>
-		/// Indicates the lower-casing of the current string.
+		/// Indicates the lower-cased string to the current string.
 		/// </summary>
-		public string LowerCasing => @this.ToLower();
+		public string LowerCased => @this.ToLower();
 
 		/// <summary>
 		/// Indicates the representation of type <see cref="ReadOnlySpan{T}"/> of <see cref="char"/>.

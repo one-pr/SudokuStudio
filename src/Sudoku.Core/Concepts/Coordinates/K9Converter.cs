@@ -4,7 +4,7 @@ namespace Sudoku.Concepts.Coordinates;
 /// Represents a coordinate converter using K9 notation.
 /// </summary>
 /// <param name="MakeLettersUpperCase">
-/// <para>Indicates whether we make the letters be upper-casing.</para>
+/// <para>Indicates whether we make the letters be upper-cased.</para>
 /// <para>The value is <see langword="false"/> by default.</para>
 /// </param>
 /// <param name="MakeDigitBeforeCell">

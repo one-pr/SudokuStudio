@@ -50,24 +50,24 @@ public readonly struct Assumption(int mask) : IEquatable<Assumption>, IEqualityO
 	/// <inheritdoc cref="object.GetHashCode"/>
 	public override int GetHashCode() => _mask;
 
-	/// <inheritdoc cref="ToString(IFormatProvider?, BabaGroupInitialLetter, BabaGroupLetterCasing)"/>
-	public override string ToString() => ToString(null, BabaGroupInitialLetter.EnglishLetter_X, BabaGroupLetterCasing.Lower);
+	/// <inheritdoc cref="ToString(IFormatProvider?, BabaGroupInitialLetter, BabaGroupLetterCase)"/>
+	public override string ToString() => ToString(null, BabaGroupInitialLetter.EnglishLetter_X, BabaGroupLetterCase.Lower);
 
-	/// <inheritdoc cref="ToString(IFormatProvider?, BabaGroupInitialLetter, BabaGroupLetterCasing)"/>
-	public string ToString(BabaGroupInitialLetter initialLetter, BabaGroupLetterCasing casing)
-		=> ToString(null, initialLetter, casing);
+	/// <inheritdoc cref="ToString(IFormatProvider?, BabaGroupInitialLetter, BabaGroupLetterCase)"/>
+	public string ToString(BabaGroupInitialLetter initialLetter, BabaGroupLetterCase @case)
+		=> ToString(null, initialLetter, @case);
 
 	/// <summary>
 	/// Returns a string that represents the current instance.
 	/// </summary>
 	/// <param name="formatProvider">The format provider.</param>
 	/// <param name="initialLetter">The initial letter.</param>
-	/// <param name="casing">The letter casing.</param>
+	/// <param name="case">The letter case.</param>
 	/// <returns>A string that represents the current instance.</returns>
-	public string ToString(IFormatProvider? formatProvider, BabaGroupInitialLetter initialLetter, BabaGroupLetterCasing casing)
+	public string ToString(IFormatProvider? formatProvider, BabaGroupInitialLetter initialLetter, BabaGroupLetterCase @case)
 	{
 		var converter = CoordinateConverter.GetInstance(formatProvider);
-		var assumedValuesString = string.Join('|', from value in AssumedValues select value.ToString(initialLetter, casing));
+		var assumedValuesString = string.Join('|', from value in AssumedValues select value.ToString(initialLetter, @case));
 		return $"{converter.CellConverter(Cell.AsCellMap())} = {assumedValuesString}";
 	}
 

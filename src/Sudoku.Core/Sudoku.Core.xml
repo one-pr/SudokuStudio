@@ -2396,7 +2396,7 @@
             Represents for Excel coordinate-based converter.
             </summary>
             <param name="MakeLettersUpperCase">
-            <para>Indicates whether we make the letters be upper-casing.</para>
+            <para>Indicates whether we make the letters be upper-cased.</para>
             <para>The value is <see langword="false"/> by default.</para>
             </param>
             <param name="DefaultSeparator"><inheritdoc/></param>
@@ -2411,7 +2411,7 @@
             Represents for Excel coordinate-based converter.
             </summary>
             <param name="MakeLettersUpperCase">
-            <para>Indicates whether we make the letters be upper-casing.</para>
+            <para>Indicates whether we make the letters be upper-cased.</para>
             <para>The value is <see langword="false"/> by default.</para>
             </param>
             <param name="DefaultSeparator"><inheritdoc/></param>
@@ -2423,7 +2423,7 @@
         </member>
         <member name="P:Sudoku.Concepts.Coordinates.ExcelCoordinateConverter.MakeLettersUpperCase">
             <summary>
-            <para>Indicates whether we make the letters be upper-casing.</para>
+            <para>Indicates whether we make the letters be upper-cased.</para>
             <para>The value is <see langword="false"/> by default.</para>
             </summary>
         </member>
@@ -3198,7 +3198,7 @@
             Represents a coordinate converter using K9 notation.
             </summary>
             <param name="MakeLettersUpperCase">
-            <para>Indicates whether we make the letters be upper-casing.</para>
+            <para>Indicates whether we make the letters be upper-cased.</para>
             <para>The value is <see langword="false"/> by default.</para>
             </param>
             <param name="MakeDigitBeforeCell">
@@ -3233,7 +3233,7 @@
             Represents a coordinate converter using K9 notation.
             </summary>
             <param name="MakeLettersUpperCase">
-            <para>Indicates whether we make the letters be upper-casing.</para>
+            <para>Indicates whether we make the letters be upper-cased.</para>
             <para>The value is <see langword="false"/> by default.</para>
             </param>
             <param name="MakeDigitBeforeCell">
@@ -3265,7 +3265,7 @@
         </member>
         <member name="P:Sudoku.Concepts.Coordinates.K9Converter.MakeLettersUpperCase">
             <summary>
-            <para>Indicates whether we make the letters be upper-casing.</para>
+            <para>Indicates whether we make the letters be upper-cased.</para>
             <para>The value is <see langword="false"/> by default.</para>
             </summary>
         </member>
@@ -3492,7 +3492,7 @@
             Represents a coordinate converter using RxCy notation.
             </summary>
             <param name="MakeLettersUpperCase">
-            <para>Indicates whether we make the letters <c>'r'</c>, <c>'c'</c> and <c>'b'</c> to be upper-casing.</para>
+            <para>Indicates whether we make the letters <c>'r'</c>, <c>'c'</c> and <c>'b'</c> to be upper-cased.</para>
             <para>The value is <see langword="false"/> by default.</para>
             </param>
             <param name="MakeDigitBeforeCell">
@@ -3523,7 +3523,7 @@
             Represents a coordinate converter using RxCy notation.
             </summary>
             <param name="MakeLettersUpperCase">
-            <para>Indicates whether we make the letters <c>'r'</c>, <c>'c'</c> and <c>'b'</c> to be upper-casing.</para>
+            <para>Indicates whether we make the letters <c>'r'</c>, <c>'c'</c> and <c>'b'</c> to be upper-cased.</para>
             <para>The value is <see langword="false"/> by default.</para>
             </param>
             <param name="MakeDigitBeforeCell">
@@ -3551,7 +3551,7 @@
         </member>
         <member name="P:Sudoku.Concepts.Coordinates.RxCyConverter.MakeLettersUpperCase">
             <summary>
-            <para>Indicates whether we make the letters <c>'r'</c>, <c>'c'</c> and <c>'b'</c> to be upper-casing.</para>
+            <para>Indicates whether we make the letters <c>'r'</c>, <c>'c'</c> and <c>'b'</c> to be upper-cased.</para>
             <para>The value is <see langword="false"/> by default.</para>
             </summary>
         </member>
@@ -9912,7 +9912,7 @@
         </member>
         <member name="P:Sudoku.Drawing.Parsing.DrawingCommandParser.IgnoreCase">
             <summary>
-            Indicates whether the comparison will ignore casing. By default it's <see langword="true"/>.
+            Indicates whether the comparison will ignore cases. By default it's <see langword="true"/>.
             </summary>
         </member>
         <member name="P:Sudoku.Drawing.Parsing.DrawingCommandParser.CoordinateParser">

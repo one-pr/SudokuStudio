@@ -60,10 +60,10 @@ public sealed record StepGathererOptions
 	public BabaGroupInitialLetter BabaGroupInitialLetter { get; init; } = BabaGroupInitialLetter.EnglishLetter_X;
 
 	/// <summary>
-	/// Indicates letter casing of characters in <see cref="BabaGroupViewNode"/> should be displayed.
+	/// Indicates letter case of characters in <see cref="BabaGroupViewNode"/> should be displayed.
 	/// </summary>
 	/// <seealso cref="BabaGroupViewNode"/>
-	public BabaGroupLetterCasing BabaGroupLetterCasing { get; init; } = BabaGroupLetterCasing.Lower;
+	public BabaGroupLetterCase BabaGroupLetterCase { get; init; } = BabaGroupLetterCase.Lower;
 
 	/// <summary>
 	/// Indicates the default link option.
@@ -99,7 +99,7 @@ public sealed record StepGathererOptions
 	/// <item><see cref="UseIttoryuMode"/>: <see langword="false"/></item>
 	/// <item><see cref="PrimarySingle"/>: <see cref="SingleTechniqueFlag.None"/></item>
 	/// <item><see cref="BabaGroupInitialLetter"/>: <see cref="BabaGroupInitialLetter.EnglishLetter_X"/></item>
-	/// <item><see cref="BabaGroupLetterCasing"/>: <see cref="BabaGroupLetterCasing.Lower"/></item>
+	/// <item><see cref="BabaGroupLetterCase"/>: <see cref="BabaGroupLetterCase.Lower"/></item>
 	/// <item><see cref="DefaultLinkOption"/>: <see cref="LinkOption.House"/></item>
 	/// <item>
 	/// <see cref="OverriddenLinkOptions"/>:

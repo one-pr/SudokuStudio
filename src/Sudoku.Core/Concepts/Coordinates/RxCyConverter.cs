@@ -4,7 +4,7 @@ namespace Sudoku.Concepts.Coordinates;
 /// Represents a coordinate converter using RxCy notation.
 /// </summary>
 /// <param name="MakeLettersUpperCase">
-/// <para>Indicates whether we make the letters <c>'r'</c>, <c>'c'</c> and <c>'b'</c> to be upper-casing.</para>
+/// <para>Indicates whether we make the letters <c>'r'</c>, <c>'c'</c> and <c>'b'</c> to be upper-cased.</para>
 /// <para>The value is <see langword="false"/> by default.</para>
 /// </param>
 /// <param name="MakeDigitBeforeCell">

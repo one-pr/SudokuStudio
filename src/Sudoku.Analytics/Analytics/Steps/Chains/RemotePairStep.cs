@@ -64,7 +64,7 @@ public sealed class RemotePairStep(
 
 	private string SecondUnknownCharacterString => UnknownCharacters[1].ToString();
 
-	private ReadOnlySpan<char> UnknownCharacters => Options.BabaGroupInitialLetter.GetSequence(Options.BabaGroupLetterCasing);
+	private ReadOnlySpan<char> UnknownCharacters => Options.BabaGroupInitialLetter.GetSequence(Options.BabaGroupLetterCase);
 
 
 	/// <inheritdoc/>

@@ -9,9 +9,9 @@ namespace SudokuStudio.Markup;
 public sealed class GridExtension : MarkupExtension
 {
 	/// <summary>
-	/// Indicates whether the conversion ignores casing.
+	/// Indicates whether the conversion ignores cases.
 	/// </summary>
-	public bool IgnoreCasing { get; set; } = false;
+	public bool IgnoreCase { get; set; } = false;
 
 	/// <summary>
 	/// Indicates the grid text that can be parsed as a valid <see cref="Grid"/> using <see cref="Grid.Parse(string)"/>.
@@ -28,12 +28,12 @@ public sealed class GridExtension : MarkupExtension
 	/// <inheritdoc/>
 	protected override object ProvideValue()
 	{
-		if (Text.Equals(nameof(Grid.Empty), IgnoreCasing ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal))
+		if (Text.Equals(nameof(Grid.Empty), IgnoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal))
 		{
 			return Grid.Empty;
 		}
 
-		if (Text.Equals(nameof(Grid.Undefined), IgnoreCasing ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal))
+		if (Text.Equals(nameof(Grid.Undefined), IgnoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal))
 		{
 			return Grid.Undefined;
 		}

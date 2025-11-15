@@ -1,7 +1,7 @@
 namespace System.Text.Json;
 
 /// <summary>
-/// Defines the pascal casing JSON naming policy.
+/// Defines the pascal case JSON naming policy.
 /// </summary>
 /// <remarks>
 /// This type cannot be initialized; instead, you can use the property <see cref="PascalCase"/> to get the instance.
@@ -10,9 +10,9 @@ namespace System.Text.Json;
 public sealed class PascalCaseJsonNamingPolicy : JsonNamingPolicy
 {
 	/// <summary>
-	/// Gets the naming policy for pascal-casing.
+	/// Gets the naming policy for pascal case.
 	/// </summary>
-	/// <returns>The naming policy for pascal-casing.</returns>
+	/// <returns>The naming policy for pascal case.</returns>
 	public static JsonNamingPolicy PascalCase => new PascalCaseJsonNamingPolicy();
 
 

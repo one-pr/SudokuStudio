@@ -119,7 +119,7 @@ public sealed partial class AlmostLockedCandidatesStepSearcher : StepSearcher
 		bool checkValueCells
 	)
 	{
-		var characters = context.Options.BabaGroupInitialLetter.GetSequence(context.Options.BabaGroupLetterCasing);
+		var characters = context.Options.BabaGroupInitialLetter.GetSequence(context.Options.BabaGroupLetterCase);
 
 		ref readonly var grid = ref context.Grid;
 

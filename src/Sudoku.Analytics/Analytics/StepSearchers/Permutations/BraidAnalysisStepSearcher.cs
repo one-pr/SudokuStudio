@@ -192,7 +192,7 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 								continue;
 							}
 
-							var unknownCharacterSequence = context.Options.BabaGroupInitialLetter.GetSequence(context.Options.BabaGroupLetterCasing);
+							var unknownCharacterSequence = context.Options.BabaGroupInitialLetter.GetSequence(context.Options.BabaGroupLetterCase);
 							var step = new BraidAnalysisStep(
 								conclusions.AsMemory(),
 								[

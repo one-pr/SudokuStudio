@@ -1209,7 +1209,7 @@
             <inheritdoc cref="P:Sudoku.Analytics.Configuration.StepGathererOptions.BabaGroupInitialLetter"/>
         </member>
         <member name="P:SudokuStudio.Configuration.AnalysisPreferenceGroup.LetterCasing">
-            <inheritdoc cref="P:Sudoku.Analytics.Configuration.StepGathererOptions.BabaGroupLetterCasing"/>
+            <inheritdoc cref="P:Sudoku.Analytics.Configuration.StepGathererOptions.BabaGroupLetterCase"/>
         </member>
         <member name="P:SudokuStudio.Configuration.AnalysisPreferenceGroup.DirectModeBottleneckType">
             <summary>
@@ -1932,17 +1932,17 @@
         </member>
         <member name="P:SudokuStudio.Configuration.UIPreferenceGroup.MakeLettersUpperCaseInRxCyNotation">
             <summary>
-            Indicates whether UI makes letters upper-casing on displaying coordinates if worth.
+            Indicates whether UI makes letters upper case on displaying coordinates if worth.
             </summary>
         </member>
         <member name="P:SudokuStudio.Configuration.UIPreferenceGroup.MakeLettersUpperCaseInK9Notation">
             <summary>
-            Indicates whether UI makes letters upper-casing on displaying coordinates in K9 notation if worth.
+            Indicates whether UI makes letters upper case on displaying coordinates in K9 notation if worth.
             </summary>
         </member>
         <member name="P:SudokuStudio.Configuration.UIPreferenceGroup.MakeLettersUpperCaseInExcelNotation">
             <summary>
-            Indicates whether UI makes letters upper-casing on displaying coordinates in Excel notation if worth.
+            Indicates whether UI makes letters upper case on displaying coordinates in Excel notation if worth.
             </summary>
         </member>
         <member name="P:SudokuStudio.Configuration.UIPreferenceGroup.MakeDigitBeforeCellInRxCyNotation">
@@ -5495,9 +5495,9 @@
             or throwing exceptions when the code is invalid.
             </summary>
         </member>
-        <member name="P:SudokuStudio.Markup.GridExtension.IgnoreCasing">
+        <member name="P:SudokuStudio.Markup.GridExtension.IgnoreCase">
             <summary>
-            Indicates whether the conversion ignores casing.
+            Indicates whether the conversion ignores cases.
             </summary>
         </member>
         <member name="P:SudokuStudio.Markup.GridExtension.Text">
@@ -8819,7 +8819,7 @@
         </member>
         <member name="P:SudokuStudio.Resources.SudokuStudioResources.SettingsPage_BabaGroupingLetterCasing">
             <summary>
-              Looks up a localized string similar to Letter casing.
+              Looks up a localized string similar to Letter case.
             </summary>
         </member>
         <member name="P:SudokuStudio.Resources.SudokuStudioResources.SettingsPage_Backdrop">
@@ -9551,17 +9551,17 @@
         </member>
         <member name="P:SudokuStudio.Resources.SudokuStudioResources.SettingsPage_MakeLettersUpperCaseInExcelNotation">
             <summary>
-              Looks up a localized string similar to Excel Notation - Make upper-casing for coordinate letters.
+              Looks up a localized string similar to Excel Notation - Make upper case for coordinate letters.
             </summary>
         </member>
         <member name="P:SudokuStudio.Resources.SudokuStudioResources.SettingsPage_MakeLettersUpperCaseInK9Notation">
             <summary>
-              Looks up a localized string similar to K9 Notation - Make upper-casing for coordinate letters.
+              Looks up a localized string similar to K9 Notation - Make upper case for coordinate letters.
             </summary>
         </member>
         <member name="P:SudokuStudio.Resources.SudokuStudioResources.SettingsPage_MakeLettersUpperCaseInRxCyNotation">
             <summary>
-              Looks up a localized string similar to RxCy Notation - Make upper-casing for coordinate letters.
+              Looks up a localized string similar to RxCy Notation - Make upper case for coordinate letters.
             </summary>
         </member>
         <member name="P:SudokuStudio.Resources.SudokuStudioResources.SettingsPage_MaxSizeOfComplexFish">

@@ -392,7 +392,7 @@ public partial class App : Application
 			UseIttoryuMode = analysisPref.AnalyzerUseIttoryuMode,
 			IsDirectMode = uiPref.IsDirectMode,
 			BabaGroupInitialLetter = analysisPref.InitialLetter,
-			BabaGroupLetterCasing = analysisPref.LetterCasing,
+			BabaGroupLetterCase = analysisPref.LetterCasing,
 			OverriddenLinkOptions = analysisPref.OverriddenLinkOptions
 		};
 	}

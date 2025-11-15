@@ -194,9 +194,9 @@ public sealed partial class AnalysisPreferenceGroup : PreferenceGroup
 	[DependencyProperty(DefaultValue = BabaGroupInitialLetter.EnglishLetter_X)]
 	public partial BabaGroupInitialLetter InitialLetter { get; set; }
 
-	/// <inheritdoc cref="StepGathererOptions.BabaGroupLetterCasing"/>
-	[DependencyProperty(DefaultValue = BabaGroupLetterCasing.Lower)]
-	public partial BabaGroupLetterCasing LetterCasing { get; set; }
+	/// <inheritdoc cref="StepGathererOptions.BabaGroupLetterCase"/>
+	[DependencyProperty(DefaultValue = BabaGroupLetterCase.Lower)]
+	public partial BabaGroupLetterCase LetterCasing { get; set; }
 
 	/// <summary>
 	/// Indicates the bottleneck type defined in direct mode.

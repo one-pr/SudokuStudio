@@ -5653,7 +5653,7 @@ namespace SudokuStudio.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Letter casing.
+        ///   Looks up a localized string similar to Letter case.
         /// </summary>
         internal static string SettingsPage_BabaGroupingLetterCasing {
             get {
@@ -6969,7 +6969,7 @@ namespace SudokuStudio.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Excel Notation - Make upper-casing for coordinate letters.
+        ///   Looks up a localized string similar to Excel Notation - Make upper case for coordinate letters.
         /// </summary>
         internal static string SettingsPage_MakeLettersUpperCaseInExcelNotation {
             get {
@@ -6978,7 +6978,7 @@ namespace SudokuStudio.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to K9 Notation - Make upper-casing for coordinate letters.
+        ///   Looks up a localized string similar to K9 Notation - Make upper case for coordinate letters.
         /// </summary>
         internal static string SettingsPage_MakeLettersUpperCaseInK9Notation {
             get {
@@ -6987,7 +6987,7 @@ namespace SudokuStudio.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RxCy Notation - Make upper-casing for coordinate letters.
+        ///   Looks up a localized string similar to RxCy Notation - Make upper case for coordinate letters.
         /// </summary>
         internal static string SettingsPage_MakeLettersUpperCaseInRxCyNotation {
             get {

@@ -43,16 +43,16 @@ public readonly struct AssumedValue(byte mask) : IEquatable<AssumedValue>, IEqua
 	public override int GetHashCode() => _mask;
 
 	/// <inheritdoc cref="object.ToString"/>
-	public override string ToString() => ToString(BabaGroupInitialLetter.EnglishLetter_X, BabaGroupLetterCasing.Lower);
+	public override string ToString() => ToString(BabaGroupInitialLetter.EnglishLetter_X, BabaGroupLetterCase.Lower);
 
 	/// <summary>
 	/// Returns a string that represents the current instance.
 	/// </summary>
 	/// <param name="initialLetter">The initial letter.</param>
-	/// <param name="casing">The letter casing.</param>
+	/// <param name="case">The letter case.</param>
 	/// <returns>A string that represents the current instance.</returns>
-	public string ToString(BabaGroupInitialLetter initialLetter, BabaGroupLetterCasing casing)
-		=> initialLetter.GetSequence(casing)[Index].ToString();
+	public string ToString(BabaGroupInitialLetter initialLetter, BabaGroupLetterCase @case)
+		=> initialLetter.GetSequence(@case)[Index].ToString();
 
 
 	/// <inheritdoc/>

@@ -16,7 +16,7 @@ public sealed partial class RemotePairStepSearcher : StepSearcher
 	/// <inheritdoc/>
 	protected internal override Step? Collect(ref StepAnalysisContext context)
 	{
-		var characters = context.Options.BabaGroupInitialLetter.GetSequence(context.Options.BabaGroupLetterCasing);
+		var characters = context.Options.BabaGroupInitialLetter.GetSequence(context.Options.BabaGroupLetterCase);
 
 		// Try to collect digits that contain at least one unfilled state.
 		var mask = (Mask)0;

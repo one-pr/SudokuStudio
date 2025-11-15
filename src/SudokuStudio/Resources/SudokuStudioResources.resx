@@ -1596,13 +1596,13 @@ In additional, some sudoku panels in some pages may not be related to this optio
     <value>RxCy Notation - Make digits output left-side cell coordinates</value>
   </data>
   <data name="SettingsPage_MakeLettersUpperCaseInExcelNotation" xml:space="preserve">
-    <value>Excel Notation - Make upper-casing for coordinate letters</value>
+    <value>Excel Notation - Make upper case for coordinate letters</value>
   </data>
   <data name="SettingsPage_MakeLettersUpperCaseInK9Notation" xml:space="preserve">
-    <value>K9 Notation - Make upper-casing for coordinate letters</value>
+    <value>K9 Notation - Make upper case for coordinate letters</value>
   </data>
   <data name="SettingsPage_MakeLettersUpperCaseInRxCyNotation" xml:space="preserve">
-    <value>RxCy Notation - Make upper-casing for coordinate letters</value>
+    <value>RxCy Notation - Make upper case for coordinate letters</value>
   </data>
   <data name="SettingsPage_MaxSizeOfComplexFish" xml:space="preserve">
     <value>Maximum size of Hobiwan Fish to be searched for</value>
@@ -2697,7 +2697,7 @@ Correct rate: {3:P} ({4}/{5})</value>
     <value>Lower case (a)</value>
   </data>
   <data name="SettingsPage_BabaGroupingLetterCasing" xml:space="preserve">
-    <value>Letter casing</value>
+    <value>Letter case</value>
   </data>
   <data name="MainWindow_BabaGroupingSettingPageTitle" xml:space="preserve">
     <value>Baba Grouping</value>

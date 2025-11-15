@@ -17,11 +17,11 @@
             Provides with extension members on <see cref="T:System.Char"/> and <see cref="T:System.String"/>.
             </summary>
         </member>
-        <member name="M:System.CharSetExtensions.get_UpperCasing(System.Char)">
-            <inheritdoc cref="P:System.CharSetExtensions.&lt;G&gt;$617F055EF883302AD66AFAF0ACA83DC6.UpperCasing"/>
+        <member name="M:System.CharSetExtensions.get_UpperCased(System.Char)">
+            <inheritdoc cref="P:System.CharSetExtensions.&lt;G&gt;$617F055EF883302AD66AFAF0ACA83DC6.UpperCased"/>
         </member>
-        <member name="M:System.CharSetExtensions.get_LowerCasing(System.Char)">
-            <inheritdoc cref="P:System.CharSetExtensions.&lt;G&gt;$617F055EF883302AD66AFAF0ACA83DC6.LowerCasing"/>
+        <member name="M:System.CharSetExtensions.get_LowerCased(System.Char)">
+            <inheritdoc cref="P:System.CharSetExtensions.&lt;G&gt;$617F055EF883302AD66AFAF0ACA83DC6.LowerCased"/>
         </member>
         <member name="M:System.CharSetExtensions.Pack(System.ReadOnlySpan{System.Char})">
             <inheritdoc cref="M:System.CharSetExtensions.&lt;G&gt;$7E0B8C73485617FC5155886DD83A182C.Pack"/>
@@ -29,11 +29,11 @@
         <member name="M:System.CharSetExtensions.op_UnaryPlus(System.ReadOnlySpan{System.Char})">
             <inheritdoc cref="M:System.CharSetExtensions.&lt;G&gt;$7E0B8C73485617FC5155886DD83A182C.op_UnaryPlus(System.ReadOnlySpan{System.Char})"/>
         </member>
-        <member name="M:System.CharSetExtensions.get_UpperCasing(System.String)">
-            <inheritdoc cref="P:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.UpperCasing"/>
+        <member name="M:System.CharSetExtensions.get_UpperCased(System.String)">
+            <inheritdoc cref="P:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.UpperCased"/>
         </member>
-        <member name="M:System.CharSetExtensions.get_LowerCasing(System.String)">
-            <inheritdoc cref="P:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.LowerCasing"/>
+        <member name="M:System.CharSetExtensions.get_LowerCased(System.String)">
+            <inheritdoc cref="P:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.LowerCased"/>
         </member>
         <member name="M:System.CharSetExtensions.get_Span(System.String)">
             <inheritdoc cref="P:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.Span"/>
@@ -76,14 +76,14 @@
             Provides extension members on <see cref="T:System.Char"/>.
             </summary>
         </member>
-        <member name="P:System.CharSetExtensions.&lt;G&gt;$617F055EF883302AD66AFAF0ACA83DC6.UpperCasing">
+        <member name="P:System.CharSetExtensions.&lt;G&gt;$617F055EF883302AD66AFAF0ACA83DC6.UpperCased">
             <summary>
-            Indicates the upper-casing of the current character.
+            Indicates the upper-cased string to the current string.
             </summary>
         </member>
-        <member name="P:System.CharSetExtensions.&lt;G&gt;$617F055EF883302AD66AFAF0ACA83DC6.LowerCasing">
+        <member name="P:System.CharSetExtensions.&lt;G&gt;$617F055EF883302AD66AFAF0ACA83DC6.LowerCased">
             <summary>
-            Indicates the lower-casing of the current character.
+            Indicates the lower-cased string to the current string.
             </summary>
         </member>
         <member name="T:System.CharSetExtensions.&lt;G&gt;$7E0B8C73485617FC5155886DD83A182C.&lt;M&gt;$2B8079B5340FD88FDC7BDFF469EC47A1">
@@ -106,14 +106,14 @@
             Provides extension members on <see cref="T:System.String"/>.
             </summary>
         </member>
-        <member name="P:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.UpperCasing">
+        <member name="P:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.UpperCased">
             <summary>
-            Indicates the upper-casing of the current string.
+            Indicates the upper-cased string to the current string.
             </summary>
         </member>
-        <member name="P:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.LowerCasing">
+        <member name="P:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.LowerCased">
             <summary>
-            Indicates the lower-casing of the current string.
+            Indicates the lower-cased string to the current string.
             </summary>
         </member>
         <member name="P:System.CharSetExtensions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.Span">
@@ -6308,7 +6308,7 @@
         </member>
         <member name="T:System.Text.Json.PascalCaseJsonNamingPolicy">
             <summary>
-            Defines the pascal casing JSON naming policy.
+            Defines the pascal case JSON naming policy.
             </summary>
             <remarks>
             This type cannot be initialized; instead, you can use the property <see cref="P:System.Text.Json.PascalCaseJsonNamingPolicy.PascalCase"/> to get the instance.
@@ -6317,9 +6317,9 @@
         </member>
         <member name="P:System.Text.Json.PascalCaseJsonNamingPolicy.PascalCase">
             <summary>
-            Gets the naming policy for pascal-casing.
+            Gets the naming policy for pascal case.
             </summary>
-            <returns>The naming policy for pascal-casing.</returns>
+            <returns>The naming policy for pascal case.</returns>
         </member>
         <member name="M:System.Text.Json.PascalCaseJsonNamingPolicy.ConvertName(System.String)">
             <inheritdoc/>

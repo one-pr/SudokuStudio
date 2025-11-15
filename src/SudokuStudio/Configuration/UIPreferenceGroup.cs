@@ -356,19 +356,19 @@ public sealed partial class UIPreferenceGroup : PreferenceGroup
 	public partial bool AutoCachePuzzleAndView { get; set; }
 
 	/// <summary>
-	/// Indicates whether UI makes letters upper-casing on displaying coordinates if worth.
+	/// Indicates whether UI makes letters upper case on displaying coordinates if worth.
 	/// </summary>
 	[DependencyProperty]
 	public partial bool MakeLettersUpperCaseInRxCyNotation { get; set; }
 
 	/// <summary>
-	/// Indicates whether UI makes letters upper-casing on displaying coordinates in K9 notation if worth.
+	/// Indicates whether UI makes letters upper case on displaying coordinates in K9 notation if worth.
 	/// </summary>
 	[DependencyProperty]
 	public partial bool MakeLettersUpperCaseInK9Notation { get; set; }
 
 	/// <summary>
-	/// Indicates whether UI makes letters upper-casing on displaying coordinates in Excel notation if worth.
+	/// Indicates whether UI makes letters upper case on displaying coordinates in Excel notation if worth.
 	/// </summary>
 	[DependencyProperty]
 	public partial bool MakeLettersUpperCaseInExcelNotation { get; set; }

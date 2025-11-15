@@ -65,7 +65,7 @@ public readonly ref struct DrawingCommandParser([AllowNull] ref readonly Grid gr
 
 
 	/// <summary>
-	/// Indicates whether the comparison will ignore casing. By default it's <see langword="true"/>.
+	/// Indicates whether the comparison will ignore cases. By default it's <see langword="true"/>.
 	/// </summary>
 	public bool IgnoreCase { get; init; } = true;
 

@@ -76,7 +76,7 @@ public sealed partial class FireworkStepSearcher : StepSearcher
 		Cell pivot
 	)
 	{
-		var characters = context.Options.BabaGroupInitialLetter.GetSequence(context.Options.BabaGroupLetterCasing).ToArray();
+		var characters = context.Options.BabaGroupInitialLetter.GetSequence(context.Options.BabaGroupLetterCase).ToArray();
 
 		var nonPivotCells = pattern.Map - pivot;
 		var cell1 = nonPivotCells[0];

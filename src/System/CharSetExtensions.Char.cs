@@ -8,14 +8,14 @@ public partial class CharSetExtensions
 	extension(char @this)
 	{
 		/// <summary>
-		/// Indicates the upper-casing of the current character.
+		/// Indicates the upper-cased string to the current string.
 		/// </summary>
-		public char UpperCasing => char.ToUpper(@this);
+		public char UpperCased => char.ToUpper(@this);
 
 		/// <summary>
-		/// Indicates the lower-casing of the current character.
+		/// Indicates the lower-cased string to the current string.
 		/// </summary>
-		public char LowerCasing => char.ToLower(@this);
+		public char LowerCased => char.ToLower(@this);
 
 
 #if false
