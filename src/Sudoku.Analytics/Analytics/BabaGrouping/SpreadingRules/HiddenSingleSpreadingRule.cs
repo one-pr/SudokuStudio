@@ -9,10 +9,10 @@ public sealed class HiddenSingleSpreadingRule : SpreadingRule
 	public override void Spread(Candidate candidate, ref CellMap cells, ref readonly Grid grid)
 	{
 		var playground = grid;
-		playground.SetDigit(candidate / 9, candidate % 9);
-
 		var digit = candidate % 9;
 		var cell = candidate / 9;
+		playground.SetDigit(cell, digit);
+
 		var lastCells = grid.CandidatesMap[digit];
 		foreach (var house in lastCells.Houses)
 		{
