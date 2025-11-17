@@ -8,10 +8,10 @@ public static class BabaGrouping
 	/// <summary>
 	/// Spreads the specified assumption into multiple different cells.
 	/// </summary>
-	/// <param name="symbol">The assumption.</param>
+	/// <param name="symbol">The original symbol.</param>
 	/// <param name="grid">The grid.</param>
 	/// <param name="spreadingRules">The spreading rules.</param>
-	/// <returns>All found assumptions found.</returns>
+	/// <returns>All found symbols found.</returns>
 	/// <exception cref="ArgumentException">Throws when an assumption is not fuzzy type.</exception>
 	public static ReadOnlySpan<CellSymbol> Spread(CellSymbol symbol, in Grid grid, ReadOnlySpan<SpreadingRule> spreadingRules)
 	{
