@@ -1,4 +1,4 @@
-namespace Sudoku.Theories.BabaGroupingTheory;
+namespace Sudoku.Analytics.BabaGrouping;
 
 /// <summary>
 /// Defines a type that represents a value from a <see cref="CellSymbol"/>,

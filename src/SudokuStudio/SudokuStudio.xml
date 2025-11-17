@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <doc>
     <assembly>
         <name>SudokuStudio</name>
@@ -5396,9 +5396,9 @@
         </member>
         <member name="T:SudokuStudio.Markup.BabaGroupInitialLetterExtension">
             <summary>
-            Represents a markup extension to provide a <see cref="T:Sudoku.Theories.BabaGroupingTheory.BabaGroupInitialLetter"/> value.
+            Represents a markup extension to provide a <see cref="T:Sudoku.Analytics.BabaGrouping.BabaGroupInitialLetter"/> value.
             </summary>
-            <seealso cref="T:Sudoku.Theories.BabaGroupingTheory.BabaGroupInitialLetter"/>
+            <seealso cref="T:Sudoku.Analytics.BabaGrouping.BabaGroupInitialLetter"/>
         </member>
         <member name="P:SudokuStudio.Markup.BabaGroupInitialLetterExtension.Value">
             <summary>

@@ -1,4 +1,4 @@
-namespace Sudoku.Theories.BabaGroupingTheory;
+namespace Sudoku.Analytics.BabaGrouping;
 
 /// <summary>
 /// Provides a way to define spreading rule.

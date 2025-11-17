@@ -1,4 +1,4 @@
-namespace Sudoku.Theories.BabaGroupingTheory;
+namespace Sudoku.Analytics.BabaGrouping;
 
 /// <summary>
 /// Provides with a letter case of baba group letter.

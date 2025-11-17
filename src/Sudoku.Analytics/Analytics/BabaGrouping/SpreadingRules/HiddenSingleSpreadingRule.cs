@@ -1,4 +1,4 @@
-namespace Sudoku.Theories.BabaGroupingTheory.SpreadingRules;
+namespace Sudoku.Analytics.BabaGrouping.SpreadingRules;
 
 /// <summary>
 /// Defines hidden single spreading rule.
