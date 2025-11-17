@@ -35687,165 +35687,20 @@
             Represents brute force.
             </summary>
         </member>
-        <member name="T:Sudoku.Theories.BabaGroupingTheory.AssumedValue">
+        <member name="T:Sudoku.Theories.BabaGroupingTheory.BabaGrouping">
             <summary>
-            Represents an assumed value. Instances of this type can be produced by <see cref="T:Sudoku.Theories.BabaGroupingTheory.Assumption"/> instances.
-            </summary>
-            <param name="mask">The mask.</param>
-            <seealso cref="T:Sudoku.Theories.BabaGroupingTheory.Assumption"/>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.AssumedValue.#ctor(System.Byte)">
-            <summary>
-            Represents an assumed value. Instances of this type can be produced by <see cref="T:Sudoku.Theories.BabaGroupingTheory.Assumption"/> instances.
-            </summary>
-            <param name="mask">The mask.</param>
-            <seealso cref="T:Sudoku.Theories.BabaGroupingTheory.Assumption"/>
-        </member>
-        <member name="F:Sudoku.Theories.BabaGroupingTheory.AssumedValue._mask">
-            <summary>
-            Indicates the mask. The mask uses 5 of 8 bits:
-            <code>
-            .---------------------------------.
-            | 7 | 6 | 5 | 4  | 3 | 2 | 1 | 0  |
-            :-----------+----+----------------:
-            |   Unused  |Type|      Cell      |
-            '---------------------------------'
-            </code>
+            Provides a way to suppose values.
             </summary>
         </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.AssumedValue.#ctor(Sudoku.Theories.BabaGroupingTheory.AssumedValueType,System.Int32)">
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.BabaGrouping.Spread(Sudoku.Theories.BabaGroupingTheory.CellSymbol,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Theories.BabaGroupingTheory.SpreadingRule})">
             <summary>
-            Initializes an <see cref="T:Sudoku.Theories.BabaGroupingTheory.AssumedValue"/> instance via the specified type and value.
+            Spreads the specified assumption into multiple different cells.
             </summary>
-            <param name="type">The type.</param>
-            <param name="value">The value.</param>
-        </member>
-        <member name="P:Sudoku.Theories.BabaGroupingTheory.AssumedValue.Type">
-            <summary>
-            Indicates the assumed type.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Theories.BabaGroupingTheory.AssumedValue.Index">
-            <summary>
-            Indicates the index.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.AssumedValue.Equals(System.Object)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.AssumedValue.Equals(Sudoku.Theories.BabaGroupingTheory.AssumedValue)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.AssumedValue.GetHashCode">
-            <inheritdoc cref="M:System.Object.GetHashCode"/>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.AssumedValue.ToString">
-            <inheritdoc cref="M:System.Object.ToString"/>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.AssumedValue.ToString(Sudoku.Theories.BabaGroupingTheory.BabaGroupInitialLetter,Sudoku.Theories.BabaGroupingTheory.BabaGroupLetterCase)">
-            <summary>
-            Returns a string that represents the current instance.
-            </summary>
-            <param name="initialLetter">The initial letter.</param>
-            <param name="case">The letter case.</param>
-            <returns>A string that represents the current instance.</returns>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.AssumedValue.op_Equality(Sudoku.Theories.BabaGroupingTheory.AssumedValue,Sudoku.Theories.BabaGroupingTheory.AssumedValue)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.AssumedValue.op_Inequality(Sudoku.Theories.BabaGroupingTheory.AssumedValue,Sudoku.Theories.BabaGroupingTheory.AssumedValue)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Theories.BabaGroupingTheory.AssumedValueType">
-            <summary>
-            Represents a type of assumed value.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Theories.BabaGroupingTheory.AssumedValueType.Accurate">
-            <summary>
-            Indicates the type is accurate.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Theories.BabaGroupingTheory.AssumedValueType.Fuzzy">
-            <summary>
-            Indicates the type is fuzzy.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Theories.BabaGroupingTheory.Assumption">
-            <summary>
-            Represents an assumption.
-            </summary>
-            <param name="mask">The mask.</param>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.Assumption.#ctor(System.Int32)">
-            <summary>
-            Represents an assumption.
-            </summary>
-            <param name="mask">The mask.</param>
-        </member>
-        <member name="F:Sudoku.Theories.BabaGroupingTheory.Assumption._mask">
-            <summary>
-            <para>
-            Indicates the mask. The mask uses 25 of 32 bits:
-            <code>
-            .--------.---------------------------.-----------------------------------------------------------------------.
-            |  31-25 | 24| 23| 22| 21| 20| 19| 18| 17| 16| 15| 14| 13| 12| 11| 10| 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-            :--------+---------------------------+-----------------------------------------------------------------------:
-            | Unused |         Cell zone         |                           Assumed value zone                          |
-            '--------'---------------------------'-----------------------------------------------------------------------'
-            </code>
-            where assumed value zone stores 18-bit data representing the letter or digit chosen.
-            </para>
-            <para>
-            In the lower 9 bits of assumed value zone, they represents the accurate digits stored;
-            while higher 9 bits represents the fuzzy digits (named variables like <i>x</i>, <i>y</i> and <i>z</i>).
-            </para>
-            </summary>
-        </member>
-        <member name="P:Sudoku.Theories.BabaGroupingTheory.Assumption.AssumedValueType">
-            <summary>
-            Indicates the type of assumed value.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Theories.BabaGroupingTheory.Assumption.Cell">
-            <summary>
-            Indicates the cell used.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Theories.BabaGroupingTheory.Assumption.AssumedValues">
-            <summary>
-            Indicates assumed values.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.Assumption.Equals(System.Object)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.Assumption.Equals(Sudoku.Theories.BabaGroupingTheory.Assumption)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.Assumption.GetHashCode">
-            <inheritdoc cref="M:System.Object.GetHashCode"/>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.Assumption.ToString">
-            <inheritdoc cref="M:Sudoku.Theories.BabaGroupingTheory.Assumption.ToString(System.IFormatProvider,Sudoku.Theories.BabaGroupingTheory.BabaGroupInitialLetter,Sudoku.Theories.BabaGroupingTheory.BabaGroupLetterCase)"/>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.Assumption.ToString(Sudoku.Theories.BabaGroupingTheory.BabaGroupInitialLetter,Sudoku.Theories.BabaGroupingTheory.BabaGroupLetterCase)">
-            <inheritdoc cref="M:Sudoku.Theories.BabaGroupingTheory.Assumption.ToString(System.IFormatProvider,Sudoku.Theories.BabaGroupingTheory.BabaGroupInitialLetter,Sudoku.Theories.BabaGroupingTheory.BabaGroupLetterCase)"/>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.Assumption.ToString(System.IFormatProvider,Sudoku.Theories.BabaGroupingTheory.BabaGroupInitialLetter,Sudoku.Theories.BabaGroupingTheory.BabaGroupLetterCase)">
-            <summary>
-            Returns a string that represents the current instance.
-            </summary>
-            <param name="formatProvider">The format provider.</param>
-            <param name="initialLetter">The initial letter.</param>
-            <param name="case">The letter case.</param>
-            <returns>A string that represents the current instance.</returns>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.Assumption.op_Equality(Sudoku.Theories.BabaGroupingTheory.Assumption,Sudoku.Theories.BabaGroupingTheory.Assumption)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Theories.BabaGroupingTheory.Assumption.op_Inequality(Sudoku.Theories.BabaGroupingTheory.Assumption,Sudoku.Theories.BabaGroupingTheory.Assumption)">
-            <inheritdoc/>
+            <param name="symbol">The assumption.</param>
+            <param name="grid">The grid.</param>
+            <param name="spreadingRules">The spreading rules.</param>
+            <returns>All found assumptions found.</returns>
+            <exception cref="T:System.ArgumentException">Throws when an assumption is not fuzzy type.</exception>
         </member>
         <member name="T:Sudoku.Theories.BabaGroupingTheory.BabaGroupInitialLetter">
             <summary>
@@ -35964,6 +35819,203 @@
             <summary>
             Indicates the lower case.
             </summary>
+        </member>
+        <member name="T:Sudoku.Theories.BabaGroupingTheory.CellSymbol">
+            <summary>
+            Defines a symbol that represents a cell supposed, representing a meaning of a fuzzy assignment like <c>r3c2 = <i>x</i></c>.
+            </summary>
+            <param name="mask">The mask.</param>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbol.#ctor(System.Int32)">
+            <summary>
+            Defines a symbol that represents a cell supposed, representing a meaning of a fuzzy assignment like <c>r3c2 = <i>x</i></c>.
+            </summary>
+            <param name="mask">The mask.</param>
+        </member>
+        <member name="F:Sudoku.Theories.BabaGroupingTheory.CellSymbol._mask">
+            <summary>
+            <para>
+            Indicates the mask. The mask uses 25 of 32 bits:
+            <code>
+            .--------.---------------------------.-----------------------------------------------------------------------.
+            |  31-25 | 24| 23| 22| 21| 20| 19| 18| 17| 16| 15| 14| 13| 12| 11| 10| 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+            :--------+---------------------------+-----------------------------------------------------------------------:
+            | Unused |         Cell zone         |                           Assumed value zone                          |
+            '--------'---------------------------'-----------------------------------------------------------------------'
+            </code>
+            where assumed value zone stores 18-bit data representing the letter or digit chosen.
+            </para>
+            <para>
+            In the lower 9 bits of assumed value zone, they represents the accurate digits stored;
+            while higher 9 bits represents the fuzzy digits
+            (named variables like <c><i>x</i></c>, <c><i>y</i></c> and <c><i>z</i></c>).
+            </para>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbol.#ctor(System.Int32,System.ReadOnlySpan{Sudoku.Theories.BabaGroupingTheory.CellSymbolValue})">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Theories.BabaGroupingTheory.CellSymbol"/> instance via the cell and values.
+            </summary>
+            <param name="cell">The cell.</param>
+            <param name="values">The values.</param>
+        </member>
+        <member name="P:Sudoku.Theories.BabaGroupingTheory.CellSymbol.Cell">
+            <summary>
+            Indicates the cell used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Theories.BabaGroupingTheory.CellSymbol.FirstValue">
+            <summary>
+            Indicates the first value.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Theories.BabaGroupingTheory.CellSymbol.Values">
+            <summary>
+            Indicates values.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbol.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbol.Equals(Sudoku.Theories.BabaGroupingTheory.CellSymbol)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbol.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbol.ToString">
+            <inheritdoc cref="M:Sudoku.Theories.BabaGroupingTheory.CellSymbol.ToString(System.IFormatProvider,Sudoku.Theories.BabaGroupingTheory.BabaGroupInitialLetter,Sudoku.Theories.BabaGroupingTheory.BabaGroupLetterCase)"/>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbol.ToString(Sudoku.Theories.BabaGroupingTheory.BabaGroupInitialLetter,Sudoku.Theories.BabaGroupingTheory.BabaGroupLetterCase)">
+            <inheritdoc cref="M:Sudoku.Theories.BabaGroupingTheory.CellSymbol.ToString(System.IFormatProvider,Sudoku.Theories.BabaGroupingTheory.BabaGroupInitialLetter,Sudoku.Theories.BabaGroupingTheory.BabaGroupLetterCase)"/>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbol.ToString(System.IFormatProvider,Sudoku.Theories.BabaGroupingTheory.BabaGroupInitialLetter,Sudoku.Theories.BabaGroupingTheory.BabaGroupLetterCase)">
+            <summary>
+            Returns a string that represents the current instance.
+            </summary>
+            <param name="formatProvider">The format provider.</param>
+            <param name="initialLetter">The initial letter.</param>
+            <param name="case">The letter case.</param>
+            <returns>A string that represents the current instance.</returns>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbol.op_Equality(Sudoku.Theories.BabaGroupingTheory.CellSymbol,Sudoku.Theories.BabaGroupingTheory.CellSymbol)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbol.op_Inequality(Sudoku.Theories.BabaGroupingTheory.CellSymbol,Sudoku.Theories.BabaGroupingTheory.CellSymbol)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Theories.BabaGroupingTheory.CellSymbolType">
+            <summary>
+            Represents a type of an instance of type <see cref="T:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue"/>.
+            </summary>
+            <seealso cref="T:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue"/>
+        </member>
+        <member name="F:Sudoku.Theories.BabaGroupingTheory.CellSymbolType.Fuzzy">
+            <summary>
+            Indicates the type is fuzzy.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Theories.BabaGroupingTheory.CellSymbolType.Accurate">
+            <summary>
+            Indicates the type is accurate.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue">
+            <summary>
+            Defines a type that represents a value from a <see cref="T:Sudoku.Theories.BabaGroupingTheory.CellSymbol"/>,
+            like variable <c><i>x</i></c> defined in an assignment <c>r3c2 = <i>x</i></c>.
+            </summary>
+            <param name="mask">The mask.</param>
+            <seealso cref="T:Sudoku.Theories.BabaGroupingTheory.CellSymbol"/>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue.#ctor(System.Byte)">
+            <summary>
+            Defines a type that represents a value from a <see cref="T:Sudoku.Theories.BabaGroupingTheory.CellSymbol"/>,
+            like variable <c><i>x</i></c> defined in an assignment <c>r3c2 = <i>x</i></c>.
+            </summary>
+            <param name="mask">The mask.</param>
+            <seealso cref="T:Sudoku.Theories.BabaGroupingTheory.CellSymbol"/>
+        </member>
+        <member name="F:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue.Invalid">
+            <summary>
+            Represents an invalid instance.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue._mask">
+            <summary>
+            Indicates the mask. The mask uses 5 of 8 bits:
+            <code>
+            .---------------------------.
+            |  7-5 |  4 | 3 | 2 | 1 | 0 |
+            :------+----+---------------:
+            |Unused|Type|     Index     |
+            '---------------------------'
+            </code>
+            </summary>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue.#ctor(Sudoku.Theories.BabaGroupingTheory.CellSymbolType,System.Int32)">
+            <summary>
+            Initializes an <see cref="T:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue"/> instance via the specified type and value.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue.Type">
+            <summary>
+            Indicates the assumed type.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue.Index">
+            <summary>
+            Indicates the index.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue.Equals(Sudoku.Theories.BabaGroupingTheory.CellSymbolValue)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue.ToString(Sudoku.Theories.BabaGroupingTheory.BabaGroupInitialLetter,Sudoku.Theories.BabaGroupingTheory.BabaGroupLetterCase)">
+            <summary>
+            Returns a string that represents the current instance.
+            </summary>
+            <param name="initialLetter">The initial letter.</param>
+            <param name="case">The letter case.</param>
+            <returns>A string that represents the current instance.</returns>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue.op_Equality(Sudoku.Theories.BabaGroupingTheory.CellSymbolValue,Sudoku.Theories.BabaGroupingTheory.CellSymbolValue)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.CellSymbolValue.op_Inequality(Sudoku.Theories.BabaGroupingTheory.CellSymbolValue,Sudoku.Theories.BabaGroupingTheory.CellSymbolValue)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Theories.BabaGroupingTheory.SpreadingRule">
+            <summary>
+            Provides a way to define spreading rule.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.SpreadingRule.Spread(System.Int32,Sudoku.Concepts.CellMap@,Sudoku.Concepts.Grid@)">
+            <summary>
+            Spreads the candidate.
+            </summary>
+            <param name="candidate">The candidate.</param>
+            <param name="cells">The cells.</param>
+            <param name="grid">The grid.</param>
+        </member>
+        <member name="T:Sudoku.Theories.BabaGroupingTheory.SpreadingRules.HiddenSingleSpreadingRule">
+            <summary>
+            Defines hidden single spreading rule.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Theories.BabaGroupingTheory.SpreadingRules.HiddenSingleSpreadingRule.Spread(System.Int32,Sudoku.Concepts.CellMap@,Sudoku.Concepts.Grid@)">
+            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternAssigningMap">
             <summary>

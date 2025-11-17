@@ -6,5 +6,5 @@ namespace SudokuStudio.Interaction.Conversions;
 internal static class SymbolIconConversion
 {
 	public static IconElement GetSymbolViaCandidateVisibility(bool displayCandidates)
-		=> new SymbolIcon(displayCandidates ? Symbol.ZoomIn : Symbol.ZoomOut);
+		=> new SymbolIcon(displayCandidates ? Microsoft.UI.Xaml.Controls.Symbol.ZoomIn : Microsoft.UI.Xaml.Controls.Symbol.ZoomOut);
 }

@@ -504,17 +504,17 @@ public sealed partial class AnalyzePage : Page
 		_tabsRoutingData = [
 			new(
 				SR.Get("AnalyzePage_TechniquesTable", App.CurrentCulture),
-				new SymbolIconSource { Symbol = Symbol.Flag },
+				new SymbolIconSource { Symbol = Microsoft.UI.Xaml.Controls.Symbol.Flag },
 				new Summary { Margin = DefaultMarginForAnalyzerPages, BasePage = this }
 			),
 			new(
 				SR.Get("AnalyzePage_StepDetail", App.CurrentCulture),
-				new SymbolIconSource { Symbol = Symbol.ShowResults },
+				new SymbolIconSource { Symbol = Microsoft.UI.Xaml.Controls.Symbol.ShowResults },
 				new SolvingPath { Margin = DefaultMarginForAnalyzerPages, BasePage = this }
 			),
 			new(
 				SR.Get("AnalyzePage_AllStepsInCurrentGrid", App.CurrentCulture),
-				new SymbolIconSource { Symbol = Symbol.Shuffle },
+				new SymbolIconSource { Symbol = Microsoft.UI.Xaml.Controls.Symbol.Shuffle },
 				new StepCollecting { Margin = DefaultMarginForAnalyzerPages, BasePage = this }
 			)
 		];
