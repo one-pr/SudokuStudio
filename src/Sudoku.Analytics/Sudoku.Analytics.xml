@@ -1058,6 +1058,14 @@
             <param name="cells">The cells.</param>
             <param name="grid">The grid.</param>
         </member>
+        <member name="T:Sudoku.Analytics.BabaGrouping.SpreadingRules.FishSpreadingRule">
+            <summary>
+            Defines fish spreading rule.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.BabaGrouping.SpreadingRules.FishSpreadingRule.Spread(System.Int32,Sudoku.Concepts.CellMap@,Sudoku.Concepts.Grid@)">
+            <inheritdoc/>
+        </member>
         <member name="T:Sudoku.Analytics.BabaGrouping.SpreadingRules.HiddenSingleSpreadingRule">
             <summary>
             Defines hidden single spreading rule.
