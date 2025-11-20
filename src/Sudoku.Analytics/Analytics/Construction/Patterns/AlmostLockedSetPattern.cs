@@ -178,7 +178,7 @@ public sealed class AlmostLockedSetPattern(Mask digitsMask, in CellMap cells, in
 				eliminationMap[digit] = Peer.PeersMap[cell] & __CandidatesMap[digit];
 			}
 
-			result.Add(new(grid.GetCandidates(cell), in cell.AsCellMap(), Peer.PeersMap[cell] & __EmptyCells, eliminationMap));
+			result.Add(new(grid.GetCandidates(cell), cell.AsCellMap(), Peer.PeersMap[cell] & __EmptyCells, eliminationMap));
 		}
 
 		// Get all non-bi-value-cell ALSes.
