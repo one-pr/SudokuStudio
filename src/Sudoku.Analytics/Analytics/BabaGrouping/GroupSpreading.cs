@@ -28,7 +28,7 @@ public static class GroupSpreading
 		var result = new List<CellSymbol>();
 		foreach (var cell in resultCells)
 		{
-			result.Add(new(cell, [value]));
+			result.Add(new(cell, value));
 		}
 		return result.AsSpan();
 
