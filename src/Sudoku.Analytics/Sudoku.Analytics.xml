@@ -1038,6 +1038,13 @@
         <member name="M:Sudoku.Analytics.BabaGrouping.CellSymbolGroup.GetHashCode">
             <inheritdoc/>
         </member>
+        <member name="M:Sudoku.Analytics.BabaGrouping.CellSymbolGroup.AddRange(Sudoku.Analytics.BabaGrouping.CellSymbolGroup)">
+            <summary>
+            Add a list of values into the current collection.
+            </summary>
+            <param name="values">The values.</param>
+            <returns>The number of elements added.</returns>
+        </member>
         <member name="M:Sudoku.Analytics.BabaGrouping.CellSymbolGroup.CompareTo(Sudoku.Analytics.BabaGrouping.CellSymbolGroup)">
             <inheritdoc/>
         </member>

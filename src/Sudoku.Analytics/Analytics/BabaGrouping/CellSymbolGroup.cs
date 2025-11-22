@@ -67,6 +67,24 @@ public sealed class CellSymbolGroup(params IEnumerable<CellSymbol> symbols) :
 	/// <inheritdoc/>
 	public override int GetHashCode() => EqualityComparer.GetHashCode(this);
 
+	/// <summary>
+	/// Add a list of values into the current collection.
+	/// </summary>
+	/// <param name="values">The values.</param>
+	/// <returns>The number of elements added.</returns>
+	public int AddRange(params CellSymbolGroup values)
+	{
+		var result = 0;
+		foreach (var value in values)
+		{
+			if (Add(value))
+			{
+				result++;
+			}
+		}
+		return result;
+	}
+
 	/// <inheritdoc/>
 	public int CompareTo(CellSymbolGroup? other)
 	{
