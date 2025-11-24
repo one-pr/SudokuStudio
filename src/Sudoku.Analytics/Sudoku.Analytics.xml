@@ -1712,6 +1712,14 @@
         <member name="M:Sudoku.Analytics.BabaGrouping.SpreadingRules.HiddenSingleSpreadingRule.Spread(System.Int32,Sudoku.Concepts.CellMap@,Sudoku.Concepts.Grid@)">
             <inheritdoc/>
         </member>
+        <member name="T:Sudoku.Analytics.BabaGrouping.SpreadingRules.LockedCandidatesSpreadingRule">
+            <summary>
+            Defines locked candidates spreading rule.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.BabaGrouping.SpreadingRules.LockedCandidatesSpreadingRule.Spread(System.Int32,Sudoku.Concepts.CellMap@,Sudoku.Concepts.Grid@)">
+            <inheritdoc/>
+        </member>
         <member name="T:Sudoku.Analytics.Bottlenecks.AnalysisResultExtensions">
             <summary>
             Provides with extension methods on <see cref="T:Sudoku.Analytics.AnalysisResult"/>.
