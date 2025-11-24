@@ -114,6 +114,12 @@ public readonly struct CellSymbol(int mask) :
 		return $"{converter.CellConverter(Cell.AsCellMap())} = {assumedValuesString}";
 	}
 
+	/// <summary>
+	/// Converts the current instance into <see cref="ComplexCellSymbol"/> instance.
+	/// </summary>
+	/// <returns>The current instance.</returns>
+	public ComplexCellSymbol AsComplex() => [this];
+
 	/// <inheritdoc/>
 	string IFormattable.ToString(string? format, IFormatProvider? formatProvider)
 		=> ToString(formatProvider, BabaGroupInitialLetter.CurrentCultureInstance, BabaGroupLetterCase.Lower);

@@ -3,10 +3,10 @@ namespace Sudoku.Analytics.BabaGrouping.SpreadingRules;
 /// <summary>
 /// Defines fish spreading rule.
 /// </summary>
-public sealed class FishSpreadingRule : SpreadingRule
+public sealed class FishSpreadingRule : ISimpleSpreadingRule
 {
 	/// <inheritdoc/>
-	public override void Spread(Candidate candidate, ref CellMap cells, ref readonly Grid grid)
+	public void Spread(Candidate candidate, ref CellMap cells, ref readonly Grid grid)
 	{
 		var nestedSpreadingRule = new HiddenSingleSpreadingRule();
 		var playground = grid;

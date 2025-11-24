@@ -3,10 +3,10 @@ namespace Sudoku.Analytics.BabaGrouping.SpreadingRules;
 /// <summary>
 /// Defines hidden single spreading rule.
 /// </summary>
-public sealed class HiddenSingleSpreadingRule : SpreadingRule
+public sealed class HiddenSingleSpreadingRule : ISimpleSpreadingRule
 {
 	/// <inheritdoc/>
-	public override void Spread(Candidate candidate, ref CellMap cells, ref readonly Grid grid)
+	public void Spread(Candidate candidate, ref CellMap cells, ref readonly Grid grid)
 	{
 		var playground = grid;
 		var digit = candidate % 9;

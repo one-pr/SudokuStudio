@@ -1,9 +1,9 @@
 namespace Sudoku.Analytics.BabaGrouping;
 
 /// <summary>
-/// Provides a way to define spreading rule.
+/// Represents simple spreading rule.
 /// </summary>
-public abstract class SpreadingRule
+public interface ISimpleSpreadingRule
 {
 	/// <summary>
 	/// Spreads the candidate.
@@ -11,5 +11,5 @@ public abstract class SpreadingRule
 	/// <param name="candidate">The candidate.</param>
 	/// <param name="cells">The cells.</param>
 	/// <param name="grid">The grid.</param>
-	public abstract void Spread(Candidate candidate, ref CellMap cells, ref readonly Grid grid);
+	void Spread(Candidate candidate, ref CellMap cells, ref readonly Grid grid);
 }

@@ -2,17 +2,20 @@ namespace Sudoku.Analytics.BabaGrouping;
 
 /// <summary>
 /// Provides a group of <see cref="CellSymbol"/> instances.
+/// This type provides a way to construct complex fuzzy assignments like
+/// <c>{r3c2,r3c3} = <i>x</i></c> (i.e. a locked candidates),
+/// <c>{r1c1,r1c2} = <i>xy</i></c> (i.e. a hidden pair) and so on.
 /// </summary>
 /// <param name="symbols">The symbols.</param>
 /// <seealso cref="CellSymbol"/>
-public sealed class CellSymbols(params IEnumerable<CellSymbol> symbols) :
+public sealed class ComplexCellSymbol(params IEnumerable<CellSymbol> symbols) :
 	SortedSet<CellSymbol>(symbols),
-	IComparable<CellSymbols>,
-	IComparisonOperators<CellSymbols, CellSymbols, bool>,
-	IEquatable<CellSymbols>,
-	IEqualityOperators<CellSymbols, CellSymbols, bool>,
+	IComparable<ComplexCellSymbol>,
+	IComparisonOperators<ComplexCellSymbol, ComplexCellSymbol, bool>,
+	IEquatable<ComplexCellSymbol>,
+	IEqualityOperators<ComplexCellSymbol, ComplexCellSymbol, bool>,
 	IFormattable,
-	IParsable<CellSymbols>
+	IParsable<ComplexCellSymbol>
 {
 	/// <summary>
 	/// Indicates cells used.
@@ -50,7 +53,7 @@ public sealed class CellSymbols(params IEnumerable<CellSymbol> symbols) :
 	/// <summary>
 	/// Represents an empty instance.
 	/// </summary>
-	public static CellSymbols Empty => [];
+	public static ComplexCellSymbol Empty => [];
 
 	/// <summary>
 	/// Indicates the set comparer instance.
@@ -59,10 +62,10 @@ public sealed class CellSymbols(params IEnumerable<CellSymbol> symbols) :
 
 
 	/// <inheritdoc/>
-	public override bool Equals([NotNullWhen(true)] object? obj) => Equals(obj as CellSymbols);
+	public override bool Equals([NotNullWhen(true)] object? obj) => Equals(obj as ComplexCellSymbol);
 
 	/// <inheritdoc/>
-	public bool Equals([NotNullWhen(true)] CellSymbols? other) => EqualityComparer.Equals(this, other);
+	public bool Equals([NotNullWhen(true)] ComplexCellSymbol? other) => EqualityComparer.Equals(this, other);
 
 	/// <inheritdoc/>
 	public override int GetHashCode() => EqualityComparer.GetHashCode(this);
@@ -72,7 +75,7 @@ public sealed class CellSymbols(params IEnumerable<CellSymbol> symbols) :
 	/// </summary>
 	/// <param name="values">The values.</param>
 	/// <returns>The number of elements added.</returns>
-	public int AddRange(params CellSymbols values)
+	public int AddRange(params ComplexCellSymbol values)
 	{
 		var result = 0;
 		foreach (var value in values)
@@ -86,7 +89,7 @@ public sealed class CellSymbols(params IEnumerable<CellSymbol> symbols) :
 	}
 
 	/// <inheritdoc/>
-	public int CompareTo(CellSymbols? other)
+	public int CompareTo(ComplexCellSymbol? other)
 	{
 		if (other is null)
 		{
@@ -124,7 +127,7 @@ public sealed class CellSymbols(params IEnumerable<CellSymbol> symbols) :
 		var converter = CoordinateConverter.GetInstance(formatProvider);
 
 		// Group them up by digit.
-		var digitDictionary = new SortedDictionary<CellSymbolValues, CellSymbols>();
+		var digitDictionary = new SortedDictionary<CellSymbolValues, ComplexCellSymbol>();
 		foreach (var element in this)
 		{
 			var values = element.Values;
@@ -141,28 +144,65 @@ public sealed class CellSymbols(params IEnumerable<CellSymbol> symbols) :
 		);
 	}
 
+	/// <summary>
+	/// Converts the current instance into a span.
+	/// </summary>
+	/// <returns>A <see cref="ReadOnlySpan{T}"/> of <see cref="CellSymbol"/> instances.</returns>
+	public ReadOnlySpan<CellSymbol> AsSpan() => this.ToArray();
+
+	/// <summary>
+	/// Creates a list of <see cref="ComplexCellSymbol"/> instances that describes a list of suppositions,
+	/// with each cell grouped.
+	/// </summary>
+	/// <returns>A <see cref="ReadOnlySpan{T}"/> of <see cref="ComplexCellSymbol"/> instances.</returns>
+	public ReadOnlySpan<ComplexCellSymbol> GroupByCell()
+	{
+		var dictionary = new Dictionary<Cell, List<CellSymbol>>();
+		foreach (var symbol in this)
+		{
+			if (!dictionary.TryAdd(symbol.Cell, [symbol]))
+			{
+				dictionary[symbol.Cell].Add(symbol);
+			}
+		}
+
+		var result = new List<ComplexCellSymbol>();
+		foreach (var symbols in dictionary.Values)
+		{
+			result.Add([.. symbols]);
+		}
+		return result.AsSpan();
+	}
+
 	/// <inheritdoc/>
 	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(null);
 
 
 	/// <inheritdoc cref="CellSymbol.TryParse(string?, IFormatProvider?, BabaGroupInitialLetter, BabaGroupLetterCase, out CellSymbol)"/>
-	public static bool TryParse([NotNullWhen(true)] string? s, [NotNullWhen(true)] out CellSymbols? result)
+	public static bool TryParse([NotNullWhen(true)] string? s, [NotNullWhen(true)] out ComplexCellSymbol? result)
 		=> TryParse(s, null, out result);
 
 	/// <inheritdoc cref="CellSymbol.TryParse(string?, IFormatProvider?, BabaGroupInitialLetter, BabaGroupLetterCase, out CellSymbol)"/>
-	public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [NotNullWhen(true)] out CellSymbols? result)
-		=> TryParse(s, provider, BabaGroupLetterCase.Lower, out result);
+	public static bool TryParse(
+		[NotNullWhen(true)] string? s,
+		IFormatProvider? provider,
+		[NotNullWhen(true)] out ComplexCellSymbol? result
+	) => TryParse(s, provider, BabaGroupLetterCase.Lower, out result);
 
 	/// <inheritdoc cref="CellSymbol.TryParse(string?, IFormatProvider?, BabaGroupInitialLetter, BabaGroupLetterCase, out CellSymbol)"/>
-	public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, BabaGroupLetterCase @case, [NotNullWhen(true)] out CellSymbols? result)
-		=> TryParse(s, provider, BabaGroupInitialLetter.CurrentCultureInstance, @case, out result);
+	public static bool TryParse(
+		[NotNullWhen(true)] string? s,
+		IFormatProvider? provider,
+		BabaGroupLetterCase @case,
+		[NotNullWhen(true)] out ComplexCellSymbol? result
+	) => TryParse(s, provider, BabaGroupInitialLetter.CurrentCultureInstance, @case, out result);
 
 	/// <inheritdoc cref="CellSymbol.TryParse(string?, IFormatProvider?, BabaGroupInitialLetter, BabaGroupLetterCase, out CellSymbol)"/>
 	public static bool TryParse(
 		[NotNullWhen(true)] string? s,
 		BabaGroupInitialLetter initialLetter,
 		BabaGroupLetterCase @case,
-		[NotNullWhen(true)] out CellSymbols? result
+		[NotNullWhen(true)] out ComplexCellSymbol? result
 	) => TryParse(s, null, initialLetter, @case, out result);
 
 	/// <inheritdoc cref="CellSymbol.TryParse(string?, IFormatProvider?, BabaGroupInitialLetter, BabaGroupLetterCase, out CellSymbol)"/>
@@ -171,7 +211,7 @@ public sealed class CellSymbols(params IEnumerable<CellSymbol> symbols) :
 		IFormatProvider? provider,
 		BabaGroupInitialLetter initialLetter,
 		BabaGroupLetterCase @case,
-		[NotNullWhen(true)] out CellSymbols? result
+		[NotNullWhen(true)] out ComplexCellSymbol? result
 	)
 	{
 		try
@@ -193,21 +233,21 @@ public sealed class CellSymbols(params IEnumerable<CellSymbol> symbols) :
 	}
 
 	/// <inheritdoc cref="CellSymbol.Parse(string, IFormatProvider?, BabaGroupInitialLetter, BabaGroupLetterCase)"/>
-	public static CellSymbols Parse(string s) => Parse(s, null);
+	public static ComplexCellSymbol Parse(string s) => Parse(s, null);
 
 	/// <inheritdoc cref="CellSymbol.Parse(string, IFormatProvider?, BabaGroupInitialLetter, BabaGroupLetterCase)"/>
-	public static CellSymbols Parse(string s, IFormatProvider? provider) => Parse(s, provider, BabaGroupLetterCase.Lower);
+	public static ComplexCellSymbol Parse(string s, IFormatProvider? provider) => Parse(s, provider, BabaGroupLetterCase.Lower);
 
 	/// <inheritdoc cref="CellSymbol.Parse(string, IFormatProvider?, BabaGroupInitialLetter, BabaGroupLetterCase)"/>
-	public static CellSymbols Parse(string s, IFormatProvider? provider, BabaGroupLetterCase @case)
+	public static ComplexCellSymbol Parse(string s, IFormatProvider? provider, BabaGroupLetterCase @case)
 		=> Parse(s, provider, BabaGroupInitialLetter.CurrentCultureInstance, @case);
 
 	/// <inheritdoc cref="CellSymbol.Parse(string, IFormatProvider?, BabaGroupInitialLetter, BabaGroupLetterCase)"/>
-	public static CellSymbols Parse(string s, BabaGroupInitialLetter initialLetter, BabaGroupLetterCase @case)
+	public static ComplexCellSymbol Parse(string s, BabaGroupInitialLetter initialLetter, BabaGroupLetterCase @case)
 		=> Parse(s, null, initialLetter, @case);
 
 	/// <inheritdoc cref="CellSymbol.Parse(string, IFormatProvider?, BabaGroupInitialLetter, BabaGroupLetterCase)"/>
-	public static CellSymbols Parse(string s, IFormatProvider? provider, BabaGroupInitialLetter initialLetter, BabaGroupLetterCase @case)
+	public static ComplexCellSymbol Parse(string s, IFormatProvider? provider, BabaGroupInitialLetter initialLetter, BabaGroupLetterCase @case)
 	{
 		// The equation sequences should be split with ',' token, but coordinates may use commas.
 		// We should locate each equation by '=' token, and find for the next ',' after an equality operator token '='.
@@ -260,21 +300,21 @@ public sealed class CellSymbols(params IEnumerable<CellSymbol> symbols) :
 
 
 	/// <inheritdoc/>
-	public static bool operator ==(CellSymbols? left, CellSymbols? right)
+	public static bool operator ==(ComplexCellSymbol? left, ComplexCellSymbol? right)
 		=> (left, right) switch { (null, null) => true, (not null, not null) => left.Equals(right), _ => false };
 
 	/// <inheritdoc/>
-	public static bool operator !=(CellSymbols? left, CellSymbols? right) => !(left == right);
+	public static bool operator !=(ComplexCellSymbol? left, ComplexCellSymbol? right) => !(left == right);
 
 	/// <inheritdoc/>
-	public static bool operator >(CellSymbols left, CellSymbols right) => left.CompareTo(right) > 0;
+	public static bool operator >(ComplexCellSymbol left, ComplexCellSymbol right) => left.CompareTo(right) > 0;
 
 	/// <inheritdoc/>
-	public static bool operator <(CellSymbols left, CellSymbols right) => left.CompareTo(right) < 0;
+	public static bool operator <(ComplexCellSymbol left, ComplexCellSymbol right) => left.CompareTo(right) < 0;
 
 	/// <inheritdoc/>
-	public static bool operator >=(CellSymbols left, CellSymbols right) => left.CompareTo(right) >= 0;
+	public static bool operator >=(ComplexCellSymbol left, ComplexCellSymbol right) => left.CompareTo(right) >= 0;
 
 	/// <inheritdoc/>
-	public static bool operator <=(CellSymbols left, CellSymbols right) => left.CompareTo(right) <= 0;
+	public static bool operator <=(ComplexCellSymbol left, ComplexCellSymbol right) => left.CompareTo(right) <= 0;
 }

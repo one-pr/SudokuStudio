@@ -5,6 +5,7 @@ namespace Sudoku.Analytics.BabaGrouping;
 /// </summary>
 /// <param name="values">The values.</param>
 /// <seealso cref="CellSymbolValue"/>
+/// <completionlist cref="CellSymbolValue"/>
 public sealed class CellSymbolValues(params IEnumerable<CellSymbolValue> values) :
 	SortedSet<CellSymbolValue>(values),
 	IComparable<CellSymbolValues>,

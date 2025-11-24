@@ -20,6 +20,24 @@ public readonly struct CellSymbolValue(byte mask) :
 	/// </summary>
 	public static readonly CellSymbolValue Invalid = new(byte.MaxValue);
 
+	/// <summary>
+	/// Indicates all possible accurate values.
+	/// </summary>
+	public static readonly CellSymbolValue[] AccurateValues = [
+		new(CellSymbolType.Accurate, 0), new(CellSymbolType.Accurate, 1), new(CellSymbolType.Accurate, 2),
+		new(CellSymbolType.Accurate, 3), new(CellSymbolType.Accurate, 4), new(CellSymbolType.Accurate, 5),
+		new(CellSymbolType.Accurate, 6), new(CellSymbolType.Accurate, 7), new(CellSymbolType.Accurate, 8)
+	];
+
+	/// <summary>
+	/// Indicates all possible fuzzy values.
+	/// </summary>
+	public static readonly CellSymbolValue[] FuzzyValues = [
+		new(CellSymbolType.Fuzzy, 0), new(CellSymbolType.Fuzzy, 1), new(CellSymbolType.Fuzzy, 2),
+		new(CellSymbolType.Fuzzy, 3), new(CellSymbolType.Fuzzy, 4), new(CellSymbolType.Fuzzy, 5),
+		new(CellSymbolType.Fuzzy, 6), new(CellSymbolType.Fuzzy, 7), new(CellSymbolType.Fuzzy, 8)
+	];
+
 
 	/// <summary>
 	/// Indicates the mask. The mask uses 5 of 8 bits:
