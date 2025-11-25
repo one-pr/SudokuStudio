@@ -1633,28 +1633,23 @@
         <member name="M:Sudoku.Analytics.BabaGrouping.Conclusions.SyncBabaGroupingConclusion.ToString(System.IFormatProvider)">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Analytics.BabaGrouping.GroupSpreading">
+        <member name="T:Sudoku.Analytics.BabaGrouping.GroupSpreader">
             <summary>
-            Provides a way to spread a cell symbol.
+            Provides a way to spread a <see cref="T:Sudoku.Analytics.BabaGrouping.ComplexCellSymbol"/>.
+            </summary>
+            <seealso cref="T:Sudoku.Analytics.BabaGrouping.ComplexCellSymbol"/>
+        </member>
+        <member name="P:Sudoku.Analytics.BabaGrouping.GroupSpreader.Rules">
+            <summary>
+            Indicates the rules.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.BabaGrouping.GroupSpreading.Spread(Sudoku.Analytics.BabaGrouping.CellSymbol,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Analytics.BabaGrouping.ISpreadingRule})">
-            <summary>
-            Spreads the specified assumption into multiple different cells.
-            </summary>
-            <param name="symbol">The original symbol.</param>
-            <param name="grid">The grid.</param>
-            <param name="spreadingRules">The spreading rules.</param>
-            <returns>All found symbols found.</returns>
-            <exception cref="T:System.ArgumentException">Throws when an assumption is not fuzzy type.</exception>
-        </member>
-        <member name="M:Sudoku.Analytics.BabaGrouping.GroupSpreading.Suppose(System.Int32,Sudoku.Concepts.Grid@,System.ReadOnlySpan{Sudoku.Analytics.BabaGrouping.ISpreadingRule},System.Boolean,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Analytics.BabaGrouping.GroupSpreader.Suppose(System.Int32,Sudoku.Concepts.Grid@,System.Boolean,System.Threading.CancellationToken)">
             <summary>
             Try to suppose a house with different digits set, and find any conclusions on spread.
             </summary>
             <param name="house">The house to suppose.</param>
             <param name="grid">The grid.</param>
-            <param name="spreadingRules">The spreading rules used.</param>
             <param name="onlyFindOne">Indicates whether the method only find one conclusion and return.</param>
             <param name="cancellationToken">The cancellation token.</param>
             <returns>The conclusions found.</returns>
@@ -1683,42 +1678,71 @@
             Indicates the parent node.
             </summary>
         </member>
-        <member name="T:Sudoku.Analytics.BabaGrouping.ISpreadingRule">
+        <member name="T:Sudoku.Analytics.BabaGrouping.GroupSpreadingContext">
             <summary>
-            Represents simple spreading rule.
+            Provides a context to be used in group spreading.
+            </summary>
+            <param name="grid"><inheritdoc cref="F:Sudoku.Analytics.BabaGrouping.GroupSpreadingContext.Grid" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Analytics.BabaGrouping.GroupSpreadingContext.#ctor(Sudoku.Concepts.Grid@)">
+            <summary>
+            Provides a context to be used in group spreading.
+            </summary>
+            <param name="grid"><inheritdoc cref="F:Sudoku.Analytics.BabaGrouping.GroupSpreadingContext.Grid" path="/summary"/></param>
+        </member>
+        <member name="F:Sudoku.Analytics.BabaGrouping.GroupSpreadingContext.Grid">
+            <summary>
+            Indicates the grid to be used.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.BabaGrouping.ISpreadingRule.Spread(System.Int32,Sudoku.Concepts.CellMap@,Sudoku.Concepts.Grid@)">
+        <member name="P:Sudoku.Analytics.BabaGrouping.GroupSpreadingContext.OnlyFindOne">
             <summary>
-            Spreads the candidate.
-            </summary>
-            <param name="candidate">The candidate.</param>
-            <param name="cells">The cells.</param>
-            <param name="grid">The grid.</param>
-        </member>
-        <member name="T:Sudoku.Analytics.BabaGrouping.SpreadingRules.FishSpreadingRule">
-            <summary>
-            Defines fish spreading rule.
+            Indicates whether the spreading method only find for one conclusion.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.BabaGrouping.SpreadingRules.FishSpreadingRule.Spread(System.Int32,Sudoku.Concepts.CellMap@,Sudoku.Concepts.Grid@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.BabaGrouping.SpreadingRules.HiddenSingleSpreadingRule">
+        <member name="P:Sudoku.Analytics.BabaGrouping.GroupSpreadingContext.CancellationToken">
             <summary>
-            Defines hidden single spreading rule.
+            Indicates the cancellation token.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.BabaGrouping.SpreadingRules.HiddenSingleSpreadingRule.Spread(System.Int32,Sudoku.Concepts.CellMap@,Sudoku.Concepts.Grid@)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.BabaGrouping.SpreadingRules.LockedCandidatesSpreadingRule">
+        <member name="P:Sudoku.Analytics.BabaGrouping.GroupSpreadingContext.MappedSymbols">
             <summary>
-            Defines locked candidates spreading rule.
+            Indicates all mapped symbols.
+            </summary>
+            <remarks>
+            <para>
+            This property is a dictionary that stores cached symbols applied into the grid, preventing them recording twice.
+            </para>
+            <para>
+            This can also be checked in the phase of conclusions. There are the cases can be concluded:
+            <list type="number">
+            <item>A symbol must be equal to a value cell in a house</item>
+            <item>Some symbols should form a subset or a distributed disjointed subset</item>
+            <item>A cell should be filled with one number defined in a symbol</item>
+            </list>
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Sudoku.Analytics.BabaGrouping.GroupSpreadingContext.SymbolValuesLookup">
+            <summary>
+            Indicates the dictionary that stores symbol values and corresponding digits.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.BabaGrouping.SpreadingRules.LockedCandidatesSpreadingRule.Spread(System.Int32,Sudoku.Concepts.CellMap@,Sudoku.Concepts.Grid@)">
-            <inheritdoc/>
+        <member name="P:Sudoku.Analytics.BabaGrouping.GroupSpreadingContext.FoundSymbols">
+            <summary>
+            Indicates the found symbols.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Analytics.BabaGrouping.SpreadingRule">
+            <summary>
+            Represents a spreading rule.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.BabaGrouping.SpreadingRule.Spread(Sudoku.Analytics.BabaGrouping.GroupSpreadingContext@)">
+            <summary>
+            Spreads the symbol, to find for next symbols that can be concluded.
+            </summary>
+            <param name="context">The context.</param>
         </member>
         <member name="T:Sudoku.Analytics.Bottlenecks.AnalysisResultExtensions">
             <summary>
