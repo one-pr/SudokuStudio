@@ -22,6 +22,7 @@ public sealed class GroupSpreader
 	/// <returns>The conclusions found.</returns>
 	public ReadOnlySpan<BabaGroupingConclusion> Suppose(House house, in Grid grid, bool onlyFindOne, CancellationToken cancellationToken = default)
 	{
+		throw new NotImplementedException("This type will be implemented later. I have no time to implement now because the algorithm to baba grouping is too complex to understand and implement.");
 		var emptyCells = grid.EmptyCells & HousesMap[house];
 		if (!emptyCells)
 		{
