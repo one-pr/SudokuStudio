@@ -252,7 +252,7 @@ public sealed class SatSolver : ISolver
 				{
 #if ENABLE_VARIABLE_COMPRESSION
 					var atLeast = new List<int>();
-					foreach (ref readonly var cell in HousesMap[br * 3 + bc])
+					foreach (var cell in HousesMap[br * 3 + bc])
 					{
 						if ((grid.GetCandidates(cell) >> d & 1) != 0)
 						{
@@ -314,7 +314,7 @@ public sealed class SatSolver : ISolver
 
 #if !ENABLE_VARIABLE_COMPRESSION
 	/// <summary>
-	/// Maps 3D coordinates (row, col, digit) to a unique SAT variable index.
+	/// Maps 3D coordinates (row, column, digit) to a unique SAT variable index.
 	/// Indices start from 1 up to 729.
 	/// </summary>
 	private int MapVariable(int r, int c, int d) => r * 81 + c * 9 + d + 1;
