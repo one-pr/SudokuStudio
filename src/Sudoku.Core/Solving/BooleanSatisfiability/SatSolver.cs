@@ -7,15 +7,7 @@ namespace Sudoku.Solving.BooleanSatisfiability;
 /// <see href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">SAT problem</see> is a way
 /// to reduce complex puzzles to boolean expressions to be solved.
 /// </summary>
-/// <remarks>
-/// It is strongly <b>not</b> recommend to use this solver to find multiple solutions
-/// because it uses tree iteration with simple backtracking to find multiple solutions,
-/// which will expand the tree to be more and more complex.
-/// Therefore, this solver doesn't know whether a puzzle has a unique solution or not.
-/// In practice, method <see cref="Solve(in Grid, out Grid)"/> can only return <see langword="false"/> or <see langword="null"/>.
-/// </remarks>
-/// <seealso cref="Solve(in Grid, out Grid)"/>
-public sealed class SatSolver : ISolver
+public sealed class SatSolver : ISolver, ISolutionEnumerableSolver
 {
 	/// <summary>
 	/// Defines an expression.
@@ -25,6 +17,10 @@ public sealed class SatSolver : ISolver
 
 	/// <inheritdoc/>
 	string ISolver.UriLink => "https://en.wikipedia.org/wiki/Boolean_satisfiability_problem";
+
+
+	/// <inheritdoc/>
+	public event EventHandler<SolverSolutionFoundEventArgs>? SolutionFound;
 
 
 	/// <inheritdoc/>
@@ -38,39 +34,38 @@ public sealed class SatSolver : ISolver
 #endif
 		);
 
-		var solver = new BacktrackingSolver(_expression);
-		var isSolved = solver.Solve();
-		if (!isSolved)
+		switch (new DpllSolver(_expression, null, mappedVariables).Solve())
 		{
-			result = Grid.Undefined;
-			return null;
-		}
-
-		var assignmentStates = solver.AssignmentStates;
-
-		// Read off which literal is true in each cell.
-		result = Grid.Empty;
-		for (var row = 0; row < 9; row++)
-		{
-			for (var column = 0; column < 9; column++)
+			case [var assignmentStates]:
 			{
-				for (var digit = 0; digit < 9; digit++)
-				{
-#if ENABLE_VARIABLE_COMPRESSION
-					if (mappedVariables.TryGetValue((row * 9 + column) * 9 + digit, out var variable)
-						&& assignmentStates[variable] is true)
-#else
-					if (assignmentStates[MapVariable(row, column, digit)] is true)
-#endif
-					{
-						result.SetDigit(row * 9 + column, digit);
-					}
-				}
+				// Read off which literal is true in each cell.
+				result = DpllSolver.BuildSolution(assignmentStates, mappedVariables);
+				return true;
+			}
+			case [var firstAssignmentStates, ..]:
+			{
+				result = DpllSolver.BuildSolution(firstAssignmentStates, mappedVariables);
+				return false;
+			}
+			default:
+			{
+				result = Grid.Undefined;
+				return null;
 			}
 		}
+	}
 
-		result.Fix();
-		return false;
+	/// <inheritdoc/>
+	void ISolutionEnumerableSolver.EnumerateSolutionsCore(Grid grid, CancellationToken cancellationToken)
+	{
+		EncodeSudoku(
+			grid
+#if ENABLE_VARIABLE_COMPRESSION
+			,
+			out var mappedVariables
+#endif
+		);
+		new DpllSolver(_expression, SolutionFound, mappedVariables).Solve(cancellationToken);
 	}
 
 #if ENABLE_VARIABLE_COMPRESSION
@@ -326,7 +321,13 @@ public sealed class SatSolver : ISolver
 /// For more information about DPLL algorithm, please visit <see href="https://en.wikipedia.org/wiki/DPLL_algorithm">this link</see>.
 /// </summary>
 /// <param name="_expression">Indicates the backing expression.</param>
-file sealed class BacktrackingSolver(CnfExpression _expression)
+/// <param name="_solutionFoundEventHandler">Indicates event handler for solution found.</param>
+/// <param name="_mappedVariables">Indicates the mapped variables.</param>
+file sealed class DpllSolver(
+	CnfExpression _expression,
+	EventHandler<SolverSolutionFoundEventArgs>? _solutionFoundEventHandler,
+	Dictionary<Candidate, int>? _mappedVariables
+)
 {
 	/// <summary>
 	/// After solving, retrieve the assignment array
@@ -354,13 +355,19 @@ file sealed class BacktrackingSolver(CnfExpression _expression)
 	/// </list>
 	/// This array starts at index 1. Please use 1-based indexing to operate variables.
 	/// </remarks>
-	public bool?[] AssignmentStates { get; private set; } = new bool?[_expression.VariablesCount + 1];
+	private bool?[] _assignmentStates = new bool?[_expression.VariablesCount + 1];
 
 
 	/// <summary>
 	/// Try to find a satisfying assignment.
 	/// </summary>
-	public bool Solve() => Backtracking();
+	/// <param name="cancellationToken">The cancellation token.</param>
+	public List<bool?[]> Solve(CancellationToken cancellationToken = default)
+	{
+		var solutions = new List<bool?[]>();
+		Backtracking(solutions, cancellationToken);
+		return solutions;
+	}
 
 	/// <summary>
 	/// Performs DPLL recursive method. DPLL recursive routine:
@@ -371,7 +378,9 @@ file sealed class BacktrackingSolver(CnfExpression _expression)
 	/// <item>Otherwise, pick an unassigned variable and branch on true/false.</item>
 	/// </list>
 	/// </summary>
-	private bool Backtracking()
+	/// <param name="solutions">The solutions.</param>
+	/// <param name="cancellationToken">The cancellation token.</param>
+	private bool Backtracking(List<bool?[]> solutions, CancellationToken cancellationToken)
 	{
 		if (!UnitPropagation())
 		{
@@ -383,7 +392,7 @@ file sealed class BacktrackingSolver(CnfExpression _expression)
 		var variable = -1;
 		for (var i = 1; i <= _expression.VariablesCount; i++)
 		{
-			if (AssignmentStates[i] is null)
+			if (_assignmentStates[i] is null)
 			{
 				variable = i;
 				break;
@@ -392,29 +401,43 @@ file sealed class BacktrackingSolver(CnfExpression _expression)
 		if (variable == -1)
 		{
 			// All variables assigned without conflict => SAT.
-			return true;
+			solutions.Add(_assignmentStates[..]);
+			_solutionFoundEventHandler?.Invoke(this, new(BuildSolution(_assignmentStates, _mappedVariables!)));
+			return _solutionFoundEventHandler is null;
+		}
+
+		if (!cancellationToken)
+		{
+			// Canceled.
+			return false;
 		}
 
 		// Save state for backtracking.
-		var snapshot = (bool?[])AssignmentStates.Clone();
+		var snapshot = _assignmentStates[..];
 
 		// Try assigning 'variable' = true.
-		AssignmentStates[variable] = true;
-		if (Backtracking())
+		_assignmentStates[variable] = true;
+		if (Backtracking(solutions, cancellationToken))
 		{
 			return true;
 		}
 
+		if (!cancellationToken)
+		{
+			// Canceled.
+			return false;
+		}
+
 		// Backtrack and try 'variable' = false.
-		AssignmentStates = snapshot;
-		AssignmentStates[variable] = false;
-		if (Backtracking())
+		_assignmentStates = snapshot;
+		_assignmentStates[variable] = false;
+		if (Backtracking(solutions, cancellationToken))
 		{
 			return true;
 		}
 
 		// Both assignments led to conflict => unsatisfiable under current partial assignment.
-		AssignmentStates = snapshot;
+		_assignmentStates = snapshot;
 		return false;
 	}
 
@@ -439,12 +462,12 @@ file sealed class BacktrackingSolver(CnfExpression _expression)
 				{
 					var variable = Math.Abs(literal);
 					var sign = literal > 0;
-					if (AssignmentStates[variable] == sign)
+					if (_assignmentStates[variable] == sign)
 					{
 						clauseSatisfied = true; // Clause is already satisfied.
 						break;
 					}
-					if (AssignmentStates[variable] is null)
+					if (_assignmentStates[variable] is null)
 					{
 						unassignedCount++;
 						unassignedLiteral = literal;
@@ -467,11 +490,44 @@ file sealed class BacktrackingSolver(CnfExpression _expression)
 				{
 					var variable = Math.Abs(unassignedLiteral);
 					var sign = unassignedLiteral > 0;
-					AssignmentStates[variable] = sign;
+					_assignmentStates[variable] = sign;
 					isChanged = true;
 				}
 			}
 		} while (isChanged);
 		return true;
+	}
+
+
+	/// <summary>
+	/// Build solution via the specified states and mapped variables.
+	/// </summary>
+	/// <param name="assignmentStates">The assignment states.</param>
+	/// <param name="mappedVariables">Mapped variables.</param>
+	/// <returns>The grid.</returns>
+	internal static Grid BuildSolution(bool?[] assignmentStates, Dictionary<Candidate, int> mappedVariables)
+	{
+		var result = Grid.Empty;
+		for (var row = 0; row < 9; row++)
+		{
+			for (var column = 0; column < 9; column++)
+			{
+				for (var digit = 0; digit < 9; digit++)
+				{
+#if ENABLE_VARIABLE_COMPRESSION
+					if (mappedVariables.TryGetValue((row * 9 + column) * 9 + digit, out var variable)
+						&& assignmentStates[variable] is true)
+#else
+							if (assignmentStates[MapVariable(row, column, digit)] is true)
+#endif
+					{
+						result.SetDigit(row * 9 + column, digit);
+					}
+				}
+			}
+		}
+
+		result.Fix();
+		return result;
 	}
 }
