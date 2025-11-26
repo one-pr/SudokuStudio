@@ -23,7 +23,6 @@ global using System.Threading.Channels;
 global using System.Threading.Tasks;
 global using Sudoku.Analytics;
 global using Sudoku.Analytics.BabaGrouping;
-global using Sudoku.Analytics.BabaGrouping.Conclusions;
 global using Sudoku.Analytics.Bottlenecks;
 global using Sudoku.Analytics.Caching;
 global using Sudoku.Analytics.Categorization;
