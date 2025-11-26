@@ -38,7 +38,7 @@ public sealed class SatSolver : ISolver
 			return null;
 		}
 
-		var assignmentStates = solver.GetAssignmentStates();
+		var assignmentStates = solver.AssignmentStates;
 
 		// Read off which literal is true in each cell.
 		result = Grid.Empty;
@@ -200,7 +200,11 @@ public sealed class SatSolver : ISolver
 file sealed class BacktrackingSolver(CnfExpression _expression)
 {
 	/// <summary>
-	/// Represents the assignment values. The result value only represents for 3 values:
+	/// After solving, retrieve the assignment array
+	/// (index: <c>variable</c> is either <see langword="true"/> or <see langword="false"/>).
+	/// </summary>
+	/// <remarks>
+	/// This property represents the assignment values. The result value only represents for 3 values:
 	/// <list type="table">
 	/// <listheader>
 	/// <term>Value</term>
@@ -220,8 +224,8 @@ file sealed class BacktrackingSolver(CnfExpression _expression)
 	/// </item>
 	/// </list>
 	/// This array starts at index 1. Please use 1-based indexing to operate variables.
-	/// </summary>
-	private bool?[] _assignment = new bool?[_expression.VariablesCount + 1];
+	/// </remarks>
+	public bool?[] AssignmentStates { get; private set; } = new bool?[_expression.VariablesCount + 1];
 
 
 	/// <summary>
@@ -242,34 +246,46 @@ file sealed class BacktrackingSolver(CnfExpression _expression)
 	{
 		if (!UnitPropagation())
 		{
-			return false; // Conflict detected.
+			// Conflict detected.
+			return false;
 		}
 
-		if (GetUnassignedVariable() is not (var variable and not -1))
+		// Find a variable index that has not been assigned yet(0), or -1 if all variables are assigned.
+		var variable = -1;
+		for (var i = 1; i <= _expression.VariablesCount; i++)
 		{
-			return true; // All variables assigned without conflict => SAT.
+			if (AssignmentStates[i] is null)
+			{
+				variable = i;
+				break;
+			}
+		}
+		if (variable == -1)
+		{
+			// All variables assigned without conflict => SAT.
+			return true;
 		}
 
 		// Save state for backtracking.
-		var snapshot = (bool?[])_assignment.Clone();
+		var snapshot = (bool?[])AssignmentStates.Clone();
 
 		// Try assigning 'variable' = true.
-		_assignment[variable] = true;
+		AssignmentStates[variable] = true;
 		if (Backtracking())
 		{
 			return true;
 		}
 
 		// Backtrack and try 'variable' = false.
-		_assignment = snapshot;
-		_assignment[variable] = false;
+		AssignmentStates = snapshot;
+		AssignmentStates[variable] = false;
 		if (Backtracking())
 		{
 			return true;
 		}
 
 		// Both assignments led to conflict => unsatisfiable under current partial assignment.
-		_assignment = snapshot;
+		AssignmentStates = snapshot;
 		return false;
 	}
 
@@ -294,12 +310,12 @@ file sealed class BacktrackingSolver(CnfExpression _expression)
 				{
 					var variable = Math.Abs(literal);
 					var sign = literal > 0;
-					if (_assignment[variable] == sign)
+					if (AssignmentStates[variable] == sign)
 					{
 						clauseSatisfied = true; // Clause is already satisfied.
 						break;
 					}
-					if (_assignment[variable] is null)
+					if (AssignmentStates[variable] is null)
 					{
 						unassignedCount++;
 						unassignedLiteral = literal;
@@ -322,33 +338,11 @@ file sealed class BacktrackingSolver(CnfExpression _expression)
 				{
 					var variable = Math.Abs(unassignedLiteral);
 					var sign = unassignedLiteral > 0;
-					_assignment[variable] = sign;
+					AssignmentStates[variable] = sign;
 					isChanged = true;
 				}
 			}
 		} while (isChanged);
 		return true;
 	}
-
-	/// <summary>
-	/// Find a variable index that has not been assigned yet (0).
-	/// Returns -1 if all variables are assigned.
-	/// </summary>
-	private int GetUnassignedVariable()
-	{
-		for (var i = 1; i <= _expression.VariablesCount; i++)
-		{
-			if (_assignment[i] is null)
-			{
-				return i;
-			}
-		}
-		return -1;
-	}
-
-	/// <summary>
-	/// After solving, retrieve the assignment array
-	/// (index: <c>variable</c> is either <see langword="true"/> or <see langword="false"/>).
-	/// </summary>
-	public bool?[] GetAssignmentStates() => _assignment;
 }
