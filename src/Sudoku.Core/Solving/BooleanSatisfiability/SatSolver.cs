@@ -376,7 +376,7 @@ file sealed class DpllSolver(
 
 #if ENABLE_NOGOOD_LEARNING
 		_decisionSnapshots.Add(snapshotBeforeDecision);
-		_decisionStack.Add((variable, true)); // assume true on first try
+		_decisionStack.Add((variable, true)); // Assume true on first try.
 #endif
 
 		// Try assigning 'variable' = true.
@@ -395,7 +395,7 @@ file sealed class DpllSolver(
 		// Backtrack and try 'variable' = false.
 #if ENABLE_NOGOOD_LEARNING
 		_assignmentStates = snapshotBeforeDecision;
-		_decisionStack[^1] = (variable, false); // switch the recorded decision value to false
+		_decisionStack[^1] = (variable, false); // Switch the recorded decision value to false.
 		_assignmentStates[variable] = false;
 #else
 		_assignmentStates[variable] = false;
