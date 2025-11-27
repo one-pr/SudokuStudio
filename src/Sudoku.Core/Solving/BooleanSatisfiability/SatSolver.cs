@@ -1,4 +1,5 @@
 #define ENABLE_VARIABLE_COMPRESSION
+#define ENABLE_NOGOOD_LEARNING
 
 namespace Sudoku.Solving.BooleanSatisfiability;
 
@@ -357,6 +358,20 @@ file sealed class DpllSolver(
 	/// </remarks>
 	private bool?[] _assignmentStates = new bool?[_expression.VariablesCount + 1];
 
+#if ENABLE_NOGOOD_LEARNING
+	/// <summary>
+	/// Decision stack + snapshots for naive learning/backjump.
+	/// Each decision level records which variable was chosen as decision and its intended value.
+	/// </summary>
+	private List<(int Variable, bool Value)>? _decisionStack;
+
+	/// <summary>
+	/// For each decision level we keep a snapshot of _assignment taken <b>before</b> the decision,
+	/// so we can restore (backjump) quickly to that point.
+	/// </summary>
+	private List<bool?[]>? _decisionSnapshots;
+#endif
+
 
 	/// <summary>
 	/// Try to find a satisfying assignment.
@@ -364,28 +379,88 @@ file sealed class DpllSolver(
 	/// <param name="cancellationToken">The cancellation token.</param>
 	public List<bool?[]> Solve(CancellationToken cancellationToken = default)
 	{
+#if ENABLE_NOGOOD_LEARNING
+		_decisionStack = [];
+		_decisionSnapshots = [];
+#endif
 		var solutions = new List<bool?[]>();
 		Backtracking(solutions, cancellationToken);
 		return solutions;
 	}
 
+
+#if ENABLE_NOGOOD_LEARNING
 	/// <summary>
 	/// Performs DPLL recursive method. DPLL recursive routine:
 	/// <list type="number">
 	/// <item>Perform unit propagation to simplify.</item>
-	/// <item>If conflict, backtrack (return false).</item>
-	/// <item>If all vars assigned, formula is satisfied.</item>
+	/// <item>
+	/// If conflict, check decision level. If there is at least one decision level learn a clause
+	/// that forbids the current decision literal(s) at that level (negation),
+	/// add it to the expression and backjump by restoring the snapshot of the previous level.
+	/// </item>
+	/// <item>If all variables assigned, expression is satisfied.</item>
 	/// <item>Otherwise, pick an unassigned variable and branch on true/false.</item>
 	/// </list>
 	/// </summary>
 	/// <param name="solutions">The solutions.</param>
 	/// <param name="cancellationToken">The cancellation token.</param>
+#else
+	/// <summary>
+	/// Performs DPLL recursive method. DPLL recursive routine:
+	/// <list type="number">
+	/// <item>Perform unit propagation to simplify.</item>
+	/// <item>If conflict, backtrack (return false).</item>
+	/// <item>If all variables assigned, expression is satisfied.</item>
+	/// <item>Otherwise, pick an unassigned variable and branch on true/false.</item>
+	/// </list>
+	/// </summary>
+	/// <param name="solutions">The solutions.</param>
+	/// <param name="cancellationToken">The cancellation token.</param>
+#endif
 	private bool Backtracking(List<bool?[]> solutions, CancellationToken cancellationToken)
 	{
+#if ENABLE_NOGOOD_LEARNING
+		Debug.Assert(_decisionStack is not null);
+		Debug.Assert(_decisionSnapshots is not null);
+#endif
+
 		if (!UnitPropagation())
 		{
+#if ENABLE_NOGOOD_LEARNING
+			// Conflict detected during propagation.
+			// If there's no decision to backjump to => UNSAT.
+			if (_decisionStack.Count == 0)
+			{
+				return false;
+			}
+
+			// Naive nogood: learn a clause that is the negation of the decision literal(s)
+			// at the current (deepest) decision level. In this simple solver each decision level
+			// corresponds to exactly one decision variable, so we negate that one.
+			var (decVar, decVal) = _decisionStack[^1];
+
+			// If decVal == true, then decision literal was +decVar, so learned is -decVar.
+			// If decVal == false, decision literal was -decVar, so learned is +decVar.
+			var learnedLiteral = decVal ? -decVar : decVar;
+
+			// Add the learned unit clause to the expression to prevent repeating this decision.
+			_expression.AddClause(learnedLiteral);
+
+			// Backjump one decision level: restore assignment to snapshot BEFORE that decision.
+			var restoreSnapshot = _decisionSnapshots[^1];
+			_assignmentStates = restoreSnapshot[..];
+
+			// Pop that decision level records.
+			_decisionStack.RemoveAt(^1);
+			_decisionSnapshots.RemoveAt(^1);
+
+			// Return false so upper recursion can continue (it will either try alternate branch or learn more).
+			return false;
+#else
 			// Conflict detected.
 			return false;
+#endif
 		}
 
 		// Find a variable index that has not been assigned yet(0), or -1 if all variables are assigned.
@@ -413,7 +488,12 @@ file sealed class DpllSolver(
 		}
 
 		// Save state for backtracking.
-		var snapshot = _assignmentStates[..];
+		var snapshotBeforeDecision = _assignmentStates[..];
+
+#if ENABLE_NOGOOD_LEARNING
+		_decisionSnapshots.Add(snapshotBeforeDecision);
+		_decisionStack.Add((variable, true)); // assume true on first try
+#endif
 
 		// Try assigning 'variable' = true.
 		_assignmentStates[variable] = true;
@@ -429,15 +509,32 @@ file sealed class DpllSolver(
 		}
 
 		// Backtrack and try 'variable' = false.
-		_assignmentStates = snapshot;
+#if ENABLE_NOGOOD_LEARNING
+		_assignmentStates = snapshotBeforeDecision;
+		_decisionStack[^1] = (variable, false); // switch the recorded decision value to false
 		_assignmentStates[variable] = false;
+#else
+		_assignmentStates[variable] = false;
+#endif
 		if (Backtracking(solutions, cancellationToken))
 		{
 			return true;
 		}
 
+		if (!cancellationToken)
+		{
+			// Canceled.
+			return false;
+		}
+
 		// Both assignments led to conflict => unsatisfiable under current partial assignment.
-		_assignmentStates = snapshot;
+#if ENABLE_NOGOOD_LEARNING
+		_assignmentStates = _decisionSnapshots[^1][..];
+		_decisionStack.RemoveAt(^1);
+		_decisionSnapshots.RemoveAt(^1);
+#else
+		_assignmentStates = snapshotBeforeDecision;
+#endif
 		return false;
 	}
 
