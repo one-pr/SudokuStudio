@@ -395,9 +395,15 @@ file sealed class DpllSolver(
 	/// <list type="number">
 	/// <item>Perform unit propagation to simplify.</item>
 	/// <item>
-	/// If conflict, check decision level. If there is at least one decision level learn a clause
-	/// that forbids the current decision literal(s) at that level (negation),
+	/// If conflict, check decision level:
+	/// <list type="number">
+	/// <item>
+	/// If there's at least one decision level learn a clause
+	/// forbidding the current decision literal at that level (negation),
 	/// add it to the expression and backjump by restoring the snapshot of the previous level.
+	/// </item>
+	/// <item>Otherwise, failed. Backtrack (return <see langword="false"/>).</item>
+	/// </list>
 	/// </item>
 	/// <item>If all variables assigned, expression is satisfied.</item>
 	/// <item>Otherwise, pick an unassigned variable and branch on true/false.</item>
@@ -410,7 +416,7 @@ file sealed class DpllSolver(
 	/// Performs DPLL recursive method. DPLL recursive routine:
 	/// <list type="number">
 	/// <item>Perform unit propagation to simplify.</item>
-	/// <item>If conflict, backtrack (return false).</item>
+	/// <item>If conflict, backtrack (return <see langword="false"/>).</item>
 	/// <item>If all variables assigned, expression is satisfied.</item>
 	/// <item>Otherwise, pick an unassigned variable and branch on true/false.</item>
 	/// </list>
