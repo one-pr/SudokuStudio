@@ -1,10 +1,10 @@
 namespace Sudoku.Solving;
 
 /// <summary>
-/// Provides extra data for event <see cref="ISolutionEnumerableSolver.SolutionFound"/>.
+/// Provides extra data for event <see cref="ISolutionEnumerableSolver{TSelf}.SolutionFound"/>.
 /// </summary>
 /// <param name="solution"><inheritdoc cref="Solution" path="/summary"/></param>
-/// <seealso cref="ISolutionEnumerableSolver.SolutionFound"/>
+/// <seealso cref="ISolutionEnumerableSolver{TSelf}.SolutionFound"/>
 public sealed class SolverSolutionFoundEventArgs(in Grid solution) : EventArgs
 {
 	/// <summary>

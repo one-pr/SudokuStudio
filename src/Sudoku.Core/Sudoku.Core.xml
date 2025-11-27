@@ -14052,7 +14052,7 @@
             <returns>The solution. If failed to solve, <see cref="F:Sudoku.Concepts.Grid.Undefined"/>.</returns>
             <seealso cref="F:Sudoku.Concepts.Grid.Undefined"/>
         </member>
-        <member name="M:Sudoku.Solving.Bitwise.BitwiseSolver.Sudoku#Solving#ISolutionEnumerableSolver#EnumerateSolutionsCore(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Solving.Bitwise.BitwiseSolver.Sudoku#Solving#ISolutionEnumerableSolver{Sudoku#Solving#Bitwise#BitwiseSolver}#EnumerateSolutionsCore(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Solving.Bitwise.BitwiseSolver.ClearStack">
@@ -14270,7 +14270,7 @@
         <member name="M:Sudoku.Solving.BooleanSatisfiability.SatSolver.Solve(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Solving.BooleanSatisfiability.SatSolver.Sudoku#Solving#ISolutionEnumerableSolver#EnumerateSolutionsCore(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.SatSolver.Sudoku#Solving#ISolutionEnumerableSolver{Sudoku#Solving#BooleanSatisfiability#SatSolver}#EnumerateSolutionsCore(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Solving.BooleanSatisfiability.SatSolver.EncodeSudoku(Sudoku.Concepts.Grid@,System.Collections.Generic.Dictionary{System.Int32,System.Int32}@)">
@@ -14294,16 +14294,30 @@
             </summary>
             <param name="_expression">Indicates the backing expression.</param>
             <param name="_solutionFoundEventHandler">Indicates event handler for solution found.</param>
-            <param name="_mappedVariables">Indicates the mapped variables.</param>
+            <param name="_mappedVariables">
+            Indicates the mapped variables.
+            The value can be <see langword="null"/> if <paramref name="_solutionFoundEventHandler"/> is <see langword="null"/>.
+            </param>
+            <param name="_parentSolver">
+            The parent solver.
+            The value can be <see langword="null"/> if <paramref name="_solutionFoundEventHandler"/> is <see langword="null"/>.
+            </param>
         </member>
-        <member name="M:Sudoku.Solving.BooleanSatisfiability.DpllSolver.#ctor(Sudoku.Solving.BooleanSatisfiability.CnfExpression,System.EventHandler{Sudoku.Solving.SolverSolutionFoundEventArgs},System.Collections.Generic.Dictionary{System.Int32,System.Int32})">
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.DpllSolver.#ctor(Sudoku.Solving.BooleanSatisfiability.CnfExpression,System.EventHandler{Sudoku.Solving.BooleanSatisfiability.SatSolver,Sudoku.Solving.SolverSolutionFoundEventArgs},System.Collections.Generic.Dictionary{System.Int32,System.Int32},Sudoku.Solving.BooleanSatisfiability.SatSolver)">
             <summary>
             Implements a simple SAT solver using the DPLL algorithm with unit propagation.
             For more information about DPLL algorithm, please visit <see href="https://en.wikipedia.org/wiki/DPLL_algorithm">this link</see>.
             </summary>
             <param name="_expression">Indicates the backing expression.</param>
             <param name="_solutionFoundEventHandler">Indicates event handler for solution found.</param>
-            <param name="_mappedVariables">Indicates the mapped variables.</param>
+            <param name="_mappedVariables">
+            Indicates the mapped variables.
+            The value can be <see langword="null"/> if <paramref name="_solutionFoundEventHandler"/> is <see langword="null"/>.
+            </param>
+            <param name="_parentSolver">
+            The parent solver.
+            The value can be <see langword="null"/> if <paramref name="_solutionFoundEventHandler"/> is <see langword="null"/>.
+            </param>
         </member>
         <member name="F:Sudoku.Solving.BooleanSatisfiability.DpllSolver._assignmentStates">
             <summary>
@@ -14658,7 +14672,7 @@
         <member name="M:Sudoku.Solving.Dlx.DancingLinksSolver.Solve(System.Int32[],Sudoku.Concepts.Grid@)">
             <inheritdoc cref="M:Sudoku.Solving.Dlx.DancingLinksSolver.Solve(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)"/>
         </member>
-        <member name="M:Sudoku.Solving.Dlx.DancingLinksSolver.Sudoku#Solving#ISolutionEnumerableSolver#EnumerateSolutionsCore(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Solving.Dlx.DancingLinksSolver.Sudoku#Solving#ISolutionEnumerableSolver{Sudoku#Solving#Dlx#DancingLinksSolver}#EnumerateSolutionsCore(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Solving.Dlx.DancingLinksSolver.Search(,)">
@@ -14776,18 +14790,28 @@
             </summary>
             <seealso cref="F:Sudoku.Concepts.Grid.Undefined"/>
         </member>
-        <member name="T:Sudoku.Solving.ISolutionEnumerableSolver">
+        <member name="T:Sudoku.Solving.ISolutionEnumerableSolver`1">
             <summary>
             Represents a solver that can find all possible solutions with detection on every operation of new solution found.
             </summary>
+            <typeparam name="TSelf"><self-type-constraint>
+		<para>Indicates the type implementing this interface.</para>
+		<para>
+			This type doesn't use any extra syntax to constraint such usage, but C# will check for it.
+			The type will include a <see langword="where" /> constraint that implements the interface itself
+			to declare such "self constraint" usage:
+			<code><![CDATA[interface ISelfType<TSelf> where TSelf : ISelfType<TSelf>]]></code>
+			In addition, the type should be named <c>TSelf</c> in order to tell type parameters with the others.
+		</para>
+	</self-type-constraint></typeparam>
         </member>
-        <member name="E:Sudoku.Solving.ISolutionEnumerableSolver.SolutionFound">
+        <member name="E:Sudoku.Solving.ISolutionEnumerableSolver`1.SolutionFound">
             <summary>
             Provide a way to detect event to be triggered when a solution is found;
             no matter whether the puzzle has a unique solution or not (multiple solutions).
             </summary>
         </member>
-        <member name="M:Sudoku.Solving.ISolutionEnumerableSolver.EnumerateSolutionsCore(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Solving.ISolutionEnumerableSolver`1.EnumerateSolutionsCore(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
             <summary>
             Try to perform enumeration on solutions.
             </summary>
@@ -14852,24 +14876,25 @@
         </member>
         <member name="T:Sudoku.Solving.SolutionEnumerableSolverExtensions">
             <summary>
-            Provides with extension methods on <see cref="T:Sudoku.Solving.ISolutionEnumerableSolver"/>.
+            Provides with extension methods on <see cref="T:Sudoku.Solving.ISolutionEnumerableSolver`1"/>.
             </summary>
-            <seealso cref="T:Sudoku.Solving.ISolutionEnumerableSolver"/>
+            <seealso cref="T:Sudoku.Solving.ISolutionEnumerableSolver`1"/>
         </member>
         <member name="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.CountSolutionsAsync``1(``0,Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
-            <inheritdoc cref="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$DA9930F5B610C74A5D41270FE8F3E927`1.CountSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)"/>
+            <inheritdoc cref="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$FD728A8A478DEA5EE394BEDE7ED8F586`1.CountSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)"/>
         </member>
         <member name="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.EnumerateSolutionsAsync``1(``0,Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
-            <inheritdoc cref="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$DA9930F5B610C74A5D41270FE8F3E927`1.EnumerateSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)"/>
+            <inheritdoc cref="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$FD728A8A478DEA5EE394BEDE7ED8F586`1.EnumerateSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)"/>
         </member>
-        <member name="T:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$DA9930F5B610C74A5D41270FE8F3E927`1.&lt;M&gt;$1EE44159915D5CFD5C7C9645DAAD0C61">
+        <member name="T:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$FD728A8A478DEA5EE394BEDE7ED8F586`1.&lt;M&gt;$30F305523E6FF819A8A1D2605B8894A8">
             <summary>
             Provides extension members on <typeparamref name="TSolver"/>,
-            where <typeparamref name="TSolver"/> satisfies <see cref="T:Sudoku.Solving.ISolutionEnumerableSolver"/> constraint.
+            where <typeparamref name="TSolver"/> satisfies <see cref="T:Sudoku.Solving.ISolutionEnumerableSolver`1"/> constraint.
             </summary>
             <typeparam name="TSolver">The type of solver instance.</typeparam>
+            <param name="this">The solver instance.</param>
         </member>
-        <member name="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$DA9930F5B610C74A5D41270FE8F3E927`1.CountSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$FD728A8A478DEA5EE394BEDE7ED8F586`1.CountSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
             <summary>
             Count the number of solutions can be found of a grid.
             </summary>
@@ -14880,7 +14905,7 @@
             with an <see cref="T:System.Int32"/> value indicating the result can be produced after the operation executed.
             </returns>
         </member>
-        <member name="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$DA9930F5B610C74A5D41270FE8F3E927`1.EnumerateSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Solving.SolutionEnumerableSolverExtensions.&lt;G&gt;$FD728A8A478DEA5EE394BEDE7ED8F586`1.EnumerateSolutionsAsync(Sudoku.Concepts.Grid,System.Threading.CancellationToken)">
             <summary>
             Try to enumerate all possible solutions of the specified grid, by using the current solver, in asynchronous way.
             </summary>
@@ -14890,17 +14915,17 @@
         </member>
         <member name="T:Sudoku.Solving.SolverSolutionFoundEventArgs">
             <summary>
-            Provides extra data for event <see cref="E:Sudoku.Solving.ISolutionEnumerableSolver.SolutionFound"/>.
+            Provides extra data for event <see cref="E:Sudoku.Solving.ISolutionEnumerableSolver`1.SolutionFound"/>.
             </summary>
             <param name="solution"><inheritdoc cref="P:Sudoku.Solving.SolverSolutionFoundEventArgs.Solution" path="/summary"/></param>
-            <seealso cref="E:Sudoku.Solving.ISolutionEnumerableSolver.SolutionFound"/>
+            <seealso cref="E:Sudoku.Solving.ISolutionEnumerableSolver`1.SolutionFound"/>
         </member>
         <member name="M:Sudoku.Solving.SolverSolutionFoundEventArgs.#ctor(Sudoku.Concepts.Grid@)">
             <summary>
-            Provides extra data for event <see cref="E:Sudoku.Solving.ISolutionEnumerableSolver.SolutionFound"/>.
+            Provides extra data for event <see cref="E:Sudoku.Solving.ISolutionEnumerableSolver`1.SolutionFound"/>.
             </summary>
             <param name="solution"><inheritdoc cref="P:Sudoku.Solving.SolverSolutionFoundEventArgs.Solution" path="/summary"/></param>
-            <seealso cref="E:Sudoku.Solving.ISolutionEnumerableSolver.SolutionFound"/>
+            <seealso cref="E:Sudoku.Solving.ISolutionEnumerableSolver`1.SolutionFound"/>
         </member>
         <member name="P:Sudoku.Solving.SolverSolutionFoundEventArgs.Solution">
             <summary>

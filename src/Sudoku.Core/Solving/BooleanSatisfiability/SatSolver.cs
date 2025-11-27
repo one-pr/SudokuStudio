@@ -7,7 +7,7 @@ namespace Sudoku.Solving.BooleanSatisfiability;
 /// <see href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">SAT problem</see> is a way
 /// to reduce complex puzzles to boolean expressions to be solved.
 /// </summary>
-public sealed class SatSolver : ISolver, ISolutionEnumerableSolver
+public sealed class SatSolver : ISolver, ISolutionEnumerableSolver<SatSolver>
 {
 	/// <summary>
 	/// Defines an expression.
@@ -20,7 +20,7 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver
 
 
 	/// <inheritdoc/>
-	public event EventHandler<SolverSolutionFoundEventArgs>? SolutionFound;
+	public event EventHandler<SatSolver, SolverSolutionFoundEventArgs>? SolutionFound;
 
 
 	/// <inheritdoc/>
@@ -28,32 +28,20 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver
 	{
 		EncodeSudoku(grid, out var mappedVariables);
 
-		switch (new DpllSolver(_expression, null, mappedVariables).Solve())
+		(result, var @return) = new DpllSolver(_expression, null, mappedVariables, this).Solve() switch
 		{
-			case [var assignmentStates]:
-			{
-				// Read off which literal is true in each cell.
-				result = DpllSolver.BuildSolution(assignmentStates, mappedVariables);
-				return true;
-			}
-			case [var firstAssignmentStates, ..]:
-			{
-				result = DpllSolver.BuildSolution(firstAssignmentStates, mappedVariables);
-				return false;
-			}
-			default:
-			{
-				result = Grid.Undefined;
-				return null;
-			}
-		}
+			[var assignmentStates] => (DpllSolver.BuildSolution(assignmentStates, mappedVariables), true),
+			[var firstAssignmentStates, ..] => (DpllSolver.BuildSolution(firstAssignmentStates, mappedVariables), false),
+			_ => (Grid.Undefined, (bool?)null)
+		};
+		return @return;
 	}
 
 	/// <inheritdoc/>
-	void ISolutionEnumerableSolver.EnumerateSolutionsCore(Grid grid, CancellationToken cancellationToken)
+	void ISolutionEnumerableSolver<SatSolver>.EnumerateSolutionsCore(Grid grid, CancellationToken cancellationToken)
 	{
 		EncodeSudoku(grid, out var mappedVariables);
-		new DpllSolver(_expression, SolutionFound, mappedVariables).Solve(cancellationToken);
+		new DpllSolver(_expression, SolutionFound, mappedVariables, this).Solve(cancellationToken);
 	}
 
 	/// <summary>
@@ -202,11 +190,19 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver
 /// </summary>
 /// <param name="_expression">Indicates the backing expression.</param>
 /// <param name="_solutionFoundEventHandler">Indicates event handler for solution found.</param>
-/// <param name="_mappedVariables">Indicates the mapped variables.</param>
+/// <param name="_mappedVariables">
+/// Indicates the mapped variables.
+/// The value can be <see langword="null"/> if <paramref name="_solutionFoundEventHandler"/> is <see langword="null"/>.
+/// </param>
+/// <param name="_parentSolver">
+/// The parent solver.
+/// The value can be <see langword="null"/> if <paramref name="_solutionFoundEventHandler"/> is <see langword="null"/>.
+/// </param>
 file sealed class DpllSolver(
 	CnfExpression _expression,
-	EventHandler<SolverSolutionFoundEventArgs>? _solutionFoundEventHandler,
-	Dictionary<Candidate, int>? _mappedVariables
+	EventHandler<SatSolver, SolverSolutionFoundEventArgs>? _solutionFoundEventHandler,
+	Dictionary<Candidate, int>? _mappedVariables,
+	SatSolver? _parentSolver
 )
 {
 	/// <summary>
@@ -360,8 +356,11 @@ file sealed class DpllSolver(
 		if (variable == -1)
 		{
 			// All variables assigned without conflict => SAT.
+			Debug.Assert(_parentSolver is not null);
+			Debug.Assert(_mappedVariables is not null);
+
 			solutions.Add(_assignmentStates[..]);
-			_solutionFoundEventHandler?.Invoke(this, new(BuildSolution(_assignmentStates, _mappedVariables!)));
+			_solutionFoundEventHandler?.Invoke(_parentSolver, new(BuildSolution(_assignmentStates, _mappedVariables)));
 			return _solutionFoundEventHandler is null;
 		}
 

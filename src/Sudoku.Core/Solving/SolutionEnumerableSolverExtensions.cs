@@ -1,17 +1,18 @@
 namespace Sudoku.Solving;
 
 /// <summary>
-/// Provides with extension methods on <see cref="ISolutionEnumerableSolver"/>.
+/// Provides with extension methods on <see cref="ISolutionEnumerableSolver{TSelf}"/>.
 /// </summary>
-/// <seealso cref="ISolutionEnumerableSolver"/>
+/// <seealso cref="ISolutionEnumerableSolver{TSelf}"/>
 public static class SolutionEnumerableSolverExtensions
 {
 	/// <summary>
 	/// Provides extension members on <typeparamref name="TSolver"/>,
-	/// where <typeparamref name="TSolver"/> satisfies <see cref="ISolutionEnumerableSolver"/> constraint.
+	/// where <typeparamref name="TSolver"/> satisfies <see cref="ISolutionEnumerableSolver{TSelf}"/> constraint.
 	/// </summary>
 	/// <typeparam name="TSolver">The type of solver instance.</typeparam>
-	extension<TSolver>(TSolver @this) where TSolver : ISolutionEnumerableSolver
+	/// <param name="this">The solver instance.</param>
+	extension<TSolver>(TSolver @this) where TSolver : ISolutionEnumerableSolver<TSolver>
 	{
 		/// <summary>
 		/// Count the number of solutions can be found of a grid.
@@ -87,7 +88,7 @@ public static class SolutionEnumerableSolverExtensions
 			}
 
 
-			async void this_SolutionFound(object? _, SolverSolutionFoundEventArgs e)
+			async void this_SolutionFound(TSolver? _, SolverSolutionFoundEventArgs e)
 				=> await channel.Writer.WriteAsync(e.Solution, cancellationToken);
 		}
 	}
