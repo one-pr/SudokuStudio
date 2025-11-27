@@ -14333,6 +14333,18 @@
             This array starts at index 1. Please use 1-based indexing to operate variables.
             </remarks>
         </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.DpllSolver._decisionStack">
+            <summary>
+            Decision stack + snapshots for naive learning/backjump.
+            Each decision level records which variable was chosen as decision and its intended value.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.DpllSolver._decisionSnapshots">
+            <summary>
+            For each decision level we keep a snapshot of _assignment taken <b>before</b> the decision,
+            so we can restore (backjump) quickly to that point.
+            </summary>
+        </member>
         <member name="M:Sudoku.Solving.BooleanSatisfiability.DpllSolver.Solve(System.Threading.CancellationToken)">
             <summary>
             Try to find a satisfying assignment.
@@ -14344,8 +14356,12 @@
             Performs DPLL recursive method. DPLL recursive routine:
             <list type="number">
             <item>Perform unit propagation to simplify.</item>
-            <item>If conflict, backtrack (return false).</item>
-            <item>If all vars assigned, formula is satisfied.</item>
+            <item>
+            If conflict, check decision level. If there is at least one decision level learn a clause
+            that forbids the current decision literal(s) at that level (negation),
+            add it to the expression and backjump by restoring the snapshot of the previous level.
+            </item>
+            <item>If all variables assigned, expression is satisfied.</item>
             <item>Otherwise, pick an unassigned variable and branch on true/false.</item>
             </list>
             </summary>

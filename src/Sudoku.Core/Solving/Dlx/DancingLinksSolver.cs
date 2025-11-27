@@ -38,6 +38,8 @@ public sealed class DancingLinksSolver : ISolutionEnumerableSolver
 	/// <inheritdoc/>
 	public unsafe bool? Solve(in Grid grid, out Grid result)
 	{
+		_solutionCount = 0;
+
 		try
 		{
 			_root = DancingLink.Entry.Create(grid);
@@ -198,7 +200,7 @@ public sealed class DancingLinksSolver : ISolutionEnumerableSolver
 	/// <returns>A grid converted.</returns>
 	private static Grid ToGrid(Stack<DancingLinkNode> answer)
 		=> Grid.Create(
-			from k in answer.GetInternalArray()
+			from k in answer.GetInternalArray().AsReadOnlySpan()[..81]
 			orderby k.Candidate
 			select k.Candidate into id
 			select id % 9
