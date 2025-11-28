@@ -19,7 +19,7 @@ public enum BottleneckType
 	/// <summary>
 	/// Indicates the bottleneck is for a step or a list of steps that hold the hardest difficulty level.
 	/// </summary>
-	/// <remarks><b>This field can only be used by checking a puzzle containing partial-marking and full-marking steps.</b></remarks>
+	/// <remarks><b>This field can only be used by checking a puzzle containing Snyder's technique and full-marking steps.</b></remarks>
 	HardestLevel,
 
 	/// <summary>
@@ -30,7 +30,7 @@ public enum BottleneckType
 	/// In this case, the first step makes the second step to be easy, so it will be considered as a bottleneck under this rule.
 	/// </para>
 	/// </summary>
-	/// <remarks><b>This field can only be used by checking a puzzle containing partial-marking and full-marking steps.</b></remarks>
+	/// <remarks><b>This field can only be used by checking a puzzle containing Snyder's technique and full-marking steps.</b></remarks>
 	SequentialInversion,
 
 	/// <summary>
@@ -44,7 +44,7 @@ public enum BottleneckType
 	/// Therefore, the step will be considered as a bottleneck under this rule.
 	/// </para>
 	/// </summary>
-	/// <remarks><b>This field can only be used by checking a puzzle only containing direct or partial-marking steps.</b></remarks>
+	/// <remarks><b>This field can only be used by checking a puzzle only containing direct or Snyder's technique steps.</b></remarks>
 	SingleStepOnly,
 
 	/// <summary>
@@ -61,6 +61,6 @@ public enum BottleneckType
 	/// but it will be ignored to be checked in this flag.
 	/// </para>
 	/// </summary>
-	/// <remarks><b>This field can only be used by checking a puzzle only containing direct and partial-marking steps.</b></remarks>
+	/// <remarks><b>This field can only be used by checking a puzzle only containing direct and Snyder's technique steps.</b></remarks>
 	SingleStepSameLevelOnly
 }

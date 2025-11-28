@@ -163,7 +163,7 @@ public enum Technique
 		Rating = 15,
 		DifficultyLevel = DifficultyLevel.Moderate,
 		ContainingGroup = TechniqueGroup.ComplexSingle,
-		PencilmarkVisibility = PencilmarkVisibility.Direct | PencilmarkVisibility.PartialMarking,
+		PencilmarkVisibility = PencilmarkVisibility.Direct | PencilmarkVisibility.Snyder,
 		Features = TechniqueFeatures.DirectTechniques)]
 	ComplexFullHouse,
 
@@ -174,7 +174,7 @@ public enum Technique
 		Rating = 17,
 		DifficultyLevel = DifficultyLevel.Moderate,
 		ContainingGroup = TechniqueGroup.ComplexSingle,
-		PencilmarkVisibility = PencilmarkVisibility.Direct | PencilmarkVisibility.PartialMarking,
+		PencilmarkVisibility = PencilmarkVisibility.Direct | PencilmarkVisibility.Snyder,
 		Features = TechniqueFeatures.DirectTechniques)]
 	ComplexCrosshatchingBlock,
 
@@ -185,7 +185,7 @@ public enum Technique
 		Rating = 20,
 		DifficultyLevel = DifficultyLevel.Moderate,
 		ContainingGroup = TechniqueGroup.ComplexSingle,
-		PencilmarkVisibility = PencilmarkVisibility.Direct | PencilmarkVisibility.PartialMarking,
+		PencilmarkVisibility = PencilmarkVisibility.Direct | PencilmarkVisibility.Snyder,
 		Features = TechniqueFeatures.DirectTechniques)]
 	ComplexCrosshatchingRow,
 
@@ -196,7 +196,7 @@ public enum Technique
 		Rating = 20,
 		DifficultyLevel = DifficultyLevel.Moderate,
 		ContainingGroup = TechniqueGroup.ComplexSingle,
-		PencilmarkVisibility = PencilmarkVisibility.Direct | PencilmarkVisibility.PartialMarking,
+		PencilmarkVisibility = PencilmarkVisibility.Direct | PencilmarkVisibility.Snyder,
 		Features = TechniqueFeatures.DirectTechniques)]
 	ComplexCrosshatchingColumn,
 
@@ -207,7 +207,7 @@ public enum Technique
 		Rating = 28,
 		DifficultyLevel = DifficultyLevel.Moderate,
 		ContainingGroup = TechniqueGroup.ComplexSingle,
-		PencilmarkVisibility = PencilmarkVisibility.Direct | PencilmarkVisibility.PartialMarking,
+		PencilmarkVisibility = PencilmarkVisibility.Direct | PencilmarkVisibility.Snyder,
 		Features = TechniqueFeatures.DirectTechniques)]
 	ComplexNakedSingle,
 	#endregion

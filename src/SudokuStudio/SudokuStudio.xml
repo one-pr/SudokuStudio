@@ -1218,7 +1218,7 @@
         </member>
         <member name="P:SudokuStudio.Configuration.AnalysisPreferenceGroup.PartialMarkingModeBottleneckType">
             <summary>
-            Indicates the bottleneck type defined in partial-marking moded.
+            Indicates the bottleneck type defined in Snyder's mode.
             </summary>
         </member>
         <member name="P:SudokuStudio.Configuration.AnalysisPreferenceGroup.FullMarkingModeBottleneckType">

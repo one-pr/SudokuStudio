@@ -13502,9 +13502,9 @@
             Indicates the technique can be applied to direct mode.
             </summary>
         </member>
-        <member name="F:Sudoku.PencilmarkVisibility.PartialMarking">
+        <member name="F:Sudoku.PencilmarkVisibility.Snyder">
             <summary>
-            Indicates the technique can be applied to partial-marking mode.
+            Indicates the technique can be applied to Snyder's technique mode.
             </summary>
         </member>
         <member name="F:Sudoku.PencilmarkVisibility.FullMarking">

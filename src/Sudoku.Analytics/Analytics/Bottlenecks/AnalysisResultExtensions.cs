@@ -41,20 +41,20 @@ public static class AnalysisResultExtensions
 				static (interim, next) => interim | next switch
 				{
 					FullPencilmarkingStep => PencilmarkVisibility.FullMarking,
-					PartialPencilmarkingStep => PencilmarkVisibility.PartialMarking,
+					SnyderStep => PencilmarkVisibility.Snyder,
 					DirectStep => PencilmarkVisibility.Direct,
 					_ => PencilmarkVisibility.None
 				}
 			);
 			var filterMode = pencilmarkMode.HasFlag(PencilmarkVisibility.FullMarking)
 				? PencilmarkVisibility.FullMarking
-				: pencilmarkMode.HasFlag(PencilmarkVisibility.PartialMarking)
-					? PencilmarkVisibility.PartialMarking
+				: pencilmarkMode.HasFlag(PencilmarkVisibility.Snyder)
+					? PencilmarkVisibility.Snyder
 					: PencilmarkVisibility.Direct;
 			return (filters.FirstRefOrNullRef((in f) => f.Visibility == filterMode).Type, filterMode) switch
 			{
-				(BottleneckType.SingleStepOnly, PencilmarkVisibility.Direct or PencilmarkVisibility.PartialMarking) => singleStepOnly(),
-				(BottleneckType.SingleStepSameLevelOnly, PencilmarkVisibility.PartialMarking) => singleStepSameLevelOnly(),
+				(BottleneckType.SingleStepOnly, PencilmarkVisibility.Direct or PencilmarkVisibility.Snyder) => singleStepOnly(),
+				(BottleneckType.SingleStepSameLevelOnly, PencilmarkVisibility.Snyder) => singleStepSameLevelOnly(),
 				(BottleneckType.EliminationGroup, PencilmarkVisibility.FullMarking) => eliminationGroup(steps),
 				(BottleneckType.SequentialInversion, not PencilmarkVisibility.Direct) => sequentialInversion(steps),
 				(BottleneckType.HardestRating, _) => hardestRating(steps, steps.MaxBy(static s => s.Difficulty)!),
@@ -65,7 +65,7 @@ public static class AnalysisResultExtensions
 
 			ReadOnlySpan<Step> singleStepOnly()
 			{
-				var collector = GridPartialMarkingExtensions.Collector;
+				var collector = GridSnyderExtensions.Collector;
 				var result = new List<Step>();
 				foreach (var (g, s) in Step.Combine(@this.GridsSpan, @this.StepsSpan))
 				{
@@ -82,7 +82,7 @@ public static class AnalysisResultExtensions
 
 			ReadOnlySpan<Step> singleStepSameLevelOnly()
 			{
-				var collector = GridPartialMarkingExtensions.Collector;
+				var collector = GridSnyderExtensions.Collector;
 				var result = new List<Step>();
 				foreach (var (g, s) in Step.Combine(@this.GridsSpan, @this.StepsSpan))
 				{

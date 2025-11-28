@@ -20,7 +20,7 @@ public abstract class ComplexSingleStep(
 	SingleSubtype subtype,
 	Technique basedOn,
 	Technique[][] indirectTechniques
-) : PartialPencilmarkingStep(conclusions, views, options, cell, digit, subtype)
+) : SnyderStep(conclusions, views, options, cell, digit, subtype)
 {
 	/// <summary>
 	/// Indicates the single technique that is based on.

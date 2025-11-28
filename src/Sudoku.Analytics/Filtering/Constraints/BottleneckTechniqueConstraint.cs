@@ -11,7 +11,7 @@ public sealed class BottleneckTechniqueConstraint : Constraint
 	/// </summary>
 	public BottleneckFilter[] Filters { get; set; } = [
 		new(PencilmarkVisibility.Direct, BottleneckType.SingleStepOnly),
-		new(PencilmarkVisibility.PartialMarking, BottleneckType.HardestRating),
+		new(PencilmarkVisibility.Snyder, BottleneckType.HardestRating),
 		new(PencilmarkVisibility.FullMarking, BottleneckType.EliminationGroup)
 	];
 

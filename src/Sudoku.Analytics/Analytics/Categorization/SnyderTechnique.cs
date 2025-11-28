@@ -1,11 +1,17 @@
 namespace Sudoku.Analytics.Categorization;
 
 /// <summary>
-/// Provides with techniques that will be used in partial-marking rule.
+/// <para>Represents a Snyder's technique.</para>
+/// <para>
+/// Snyder's Technique refers to a category of techniques
+/// that do not require the puzzle to have every cell fully marked with all possible candidates.
+/// Instead, when a direct assignment isn't available, the player temporarily marks candidates in only some cells.
+/// These candidates can then be used immediately in subsequent steps, avoiding the need to exhaustively mark the entire grid.
+/// </para>
 /// </summary>
 /// <remarks><include file="../../global-doc-comments.xml" path="/g/flags-attribute"/></remarks>
 [Flags]
-public enum PartialMarkingTechniques
+public enum SnyderTechnique
 {
 	/// <summary>
 	/// The placeholder of the current enumeration type.

@@ -221,7 +221,7 @@ public sealed partial class TechniqueInfoModifierPage : Page
 			//
 			var directRatingControl = default(IntegerBox);
 			var hasDirectRating = supportedModes.HasFlag(PencilmarkVisibility.Direct)
-				| supportedModes.HasFlag(PencilmarkVisibility.PartialMarking);
+				| supportedModes.HasFlag(PencilmarkVisibility.Snyder);
 			if (hasDirectRating)
 			{
 				directRatingControl = new()

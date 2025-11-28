@@ -969,7 +969,7 @@
             <summary>
             Indicates the bottleneck is for a step or a list of steps that hold the hardest difficulty level.
             </summary>
-            <remarks><b>This field can only be used by checking a puzzle containing partial-marking and full-marking steps.</b></remarks>
+            <remarks><b>This field can only be used by checking a puzzle containing Snyder's technique and full-marking steps.</b></remarks>
         </member>
         <member name="F:Sudoku.Analytics.Bottlenecks.BottleneckType.SequentialInversion">
             <summary>
@@ -980,7 +980,7 @@
             In this case, the first step makes the second step to be easy, so it will be considered as a bottleneck under this rule.
             </para>
             </summary>
-            <remarks><b>This field can only be used by checking a puzzle containing partial-marking and full-marking steps.</b></remarks>
+            <remarks><b>This field can only be used by checking a puzzle containing Snyder's technique and full-marking steps.</b></remarks>
         </member>
         <member name="F:Sudoku.Analytics.Bottlenecks.BottleneckType.SingleStepOnly">
             <summary>
@@ -994,7 +994,7 @@
             Therefore, the step will be considered as a bottleneck under this rule.
             </para>
             </summary>
-            <remarks><b>This field can only be used by checking a puzzle only containing direct or partial-marking steps.</b></remarks>
+            <remarks><b>This field can only be used by checking a puzzle only containing direct or Snyder's technique steps.</b></remarks>
         </member>
         <member name="F:Sudoku.Analytics.Bottlenecks.BottleneckType.SingleStepSameLevelOnly">
             <summary>
@@ -1011,7 +1011,7 @@
             but it will be ignored to be checked in this flag.
             </para>
             </summary>
-            <remarks><b>This field can only be used by checking a puzzle only containing direct and partial-marking steps.</b></remarks>
+            <remarks><b>This field can only be used by checking a puzzle only containing direct and Snyder's technique steps.</b></remarks>
         </member>
         <member name="T:Sudoku.Analytics.Caching.ChainingComparers">
             <summary>
@@ -1285,99 +1285,6 @@
         </member>
         <member name="P:Sudoku.Analytics.Categorization.MissingTechniqueGroupException.Message">
             <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Analytics.Categorization.PartialMarkingTechniques">
-            <summary>
-            Provides with techniques that will be used in partial-marking rule.
-            </summary>
-            <remarks><flags-attribute>
-		<para>
-			<i>
-				This type is marked <see cref="T:System.FlagsAttribute" />, which means you can use
-				<see langword="operator" /> | to combine multiple fields.
-			</i>
-		</para>
-	</flags-attribute></remarks>
-        </member>
-        <member name="F:Sudoku.Analytics.Categorization.PartialMarkingTechniques.None">
-            <summary>
-            The placeholder of the current enumeration type.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Categorization.PartialMarkingTechniques.Pointing">
-            <summary>
-            Represents Pointing rule.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Categorization.PartialMarkingTechniques.Claiming">
-            <summary>
-            Represents Claiming rule.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Categorization.PartialMarkingTechniques.NakedPair">
-            <summary>
-            Represents Naked Pair rule.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Categorization.PartialMarkingTechniques.NakedTriple">
-            <summary>
-            Represents Naked Triple rule.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Categorization.PartialMarkingTechniques.NakedQuadruple">
-            <summary>
-            Represents Naked Quadruple rule.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Categorization.PartialMarkingTechniques.NakedPairPlus">
-            <summary>
-            Represents Naked Pair (+) rule.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Categorization.PartialMarkingTechniques.NakedTriplePlus">
-            <summary>
-            Represents Naked Triple (+) rule.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Categorization.PartialMarkingTechniques.NakedQuadruplePlus">
-            <summary>
-            Represents Naked Quadruple (+) rule.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Categorization.PartialMarkingTechniques.HiddenPair">
-            <summary>
-            Represents Hidden Pair rule.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Categorization.PartialMarkingTechniques.HiddenTriple">
-            <summary>
-            Represents Hidden Triple rule.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Categorization.PartialMarkingTechniques.HiddenQuadruple">
-            <summary>
-            Represents Hidden Quadruple rule.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Categorization.PartialMarkingTechniques.LockedPair">
-            <summary>
-            Represents Locked Pair rule.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Categorization.PartialMarkingTechniques.LockedTriple">
-            <summary>
-            Represents Locked Triple rule.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Categorization.PartialMarkingTechniques.LockedHiddenPair">
-            <summary>
-            Represents Locked Hidden Pair rule.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Analytics.Categorization.PartialMarkingTechniques.LockedHiddenTriple">
-            <summary>
-            Represents Locked Hidden Triple rule.
-            </summary>
         </member>
         <member name="T:Sudoku.Analytics.Categorization.SingleSubtype">
             <summary>
@@ -2014,6 +1921,105 @@
             <param name="formatProvider">The culture information.</param>
             <returns>The name of the current technique.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the target technique is out of range.</exception>
+        </member>
+        <member name="T:Sudoku.Analytics.Categorization.SnyderTechnique">
+            <summary>
+            <para>Represents a Snyder's technique.</para>
+            <para>
+            Snyder's Technique refers to a category of techniques
+            that do not require the puzzle to have every cell fully marked with all possible candidates.
+            Instead, when a direct assignment isn't available, the player temporarily marks candidates in only some cells.
+            These candidates can then be used immediately in subsequent steps, avoiding the need to exhaustively mark the entire grid.
+            </para>
+            </summary>
+            <remarks><flags-attribute>
+		<para>
+			<i>
+				This type is marked <see cref="T:System.FlagsAttribute" />, which means you can use
+				<see langword="operator" /> | to combine multiple fields.
+			</i>
+		</para>
+	</flags-attribute></remarks>
+        </member>
+        <member name="F:Sudoku.Analytics.Categorization.SnyderTechnique.None">
+            <summary>
+            The placeholder of the current enumeration type.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Categorization.SnyderTechnique.Pointing">
+            <summary>
+            Represents Pointing rule.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Categorization.SnyderTechnique.Claiming">
+            <summary>
+            Represents Claiming rule.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Categorization.SnyderTechnique.NakedPair">
+            <summary>
+            Represents Naked Pair rule.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Categorization.SnyderTechnique.NakedTriple">
+            <summary>
+            Represents Naked Triple rule.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Categorization.SnyderTechnique.NakedQuadruple">
+            <summary>
+            Represents Naked Quadruple rule.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Categorization.SnyderTechnique.NakedPairPlus">
+            <summary>
+            Represents Naked Pair (+) rule.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Categorization.SnyderTechnique.NakedTriplePlus">
+            <summary>
+            Represents Naked Triple (+) rule.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Categorization.SnyderTechnique.NakedQuadruplePlus">
+            <summary>
+            Represents Naked Quadruple (+) rule.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Categorization.SnyderTechnique.HiddenPair">
+            <summary>
+            Represents Hidden Pair rule.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Categorization.SnyderTechnique.HiddenTriple">
+            <summary>
+            Represents Hidden Triple rule.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Categorization.SnyderTechnique.HiddenQuadruple">
+            <summary>
+            Represents Hidden Quadruple rule.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Categorization.SnyderTechnique.LockedPair">
+            <summary>
+            Represents Locked Pair rule.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Categorization.SnyderTechnique.LockedTriple">
+            <summary>
+            Represents Locked Triple rule.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Categorization.SnyderTechnique.LockedHiddenPair">
+            <summary>
+            Represents Locked Hidden Pair rule.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Analytics.Categorization.SnyderTechnique.LockedHiddenTriple">
+            <summary>
+            Represents Locked Hidden Triple rule.
+            </summary>
         </member>
         <member name="T:Sudoku.Analytics.Categorization.Technique">
             <summary>
@@ -11047,29 +11053,29 @@
             </para>
             </remarks>
         </member>
-        <member name="T:Sudoku.Analytics.GridPartialMarkingExtensions">
+        <member name="T:Sudoku.Analytics.GridSnyderExtensions">
             <summary>
-            Provides with extension methods on <see cref="T:Sudoku.Concepts.Grid"/>, calculating with partial-marking rules checking.
+            Provides with extension methods on <see cref="T:Sudoku.Concepts.Grid"/>, calculating with Snyder's rules checking.
             </summary>
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
-        <member name="F:Sudoku.Analytics.GridPartialMarkingExtensions.Collector">
+        <member name="F:Sudoku.Analytics.GridSnyderExtensions.Collector">
             <summary>
             Indicates the backing collector.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.GridPartialMarkingExtensions.IsMissingCandidates(Sudoku.Concepts.Grid@,Sudoku.Analytics.Categorization.PartialMarkingTechniques)">
-            <inheritdoc cref="M:Sudoku.Analytics.GridPartialMarkingExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.IsMissingCandidates(Sudoku.Analytics.Categorization.PartialMarkingTechniques)"/>
+        <member name="M:Sudoku.Analytics.GridSnyderExtensions.IsMissingCandidates(Sudoku.Concepts.Grid@,Sudoku.Analytics.Categorization.SnyderTechnique)">
+            <inheritdoc cref="M:Sudoku.Analytics.GridSnyderExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.IsMissingCandidates(Sudoku.Analytics.Categorization.SnyderTechnique)"/>
         </member>
-        <member name="T:Sudoku.Analytics.GridPartialMarkingExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$4FBDD4478CFAA5DAE39645DF9E3BC758">
+        <member name="T:Sudoku.Analytics.GridSnyderExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$4FBDD4478CFAA5DAE39645DF9E3BC758">
             <summary>
             Provides extension members on <see langword="in"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.GridPartialMarkingExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.IsMissingCandidates(Sudoku.Analytics.Categorization.PartialMarkingTechniques)">
+        <member name="M:Sudoku.Analytics.GridSnyderExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.IsMissingCandidates(Sudoku.Analytics.Categorization.SnyderTechnique)">
             <summary>
             Determine whether the grid lacks some candidates that are included in a grid,
-            through basic elimination rule (Naked Single checking) and specified partial-marking techniques.
+            through basic elimination rule (Naked Single checking) and specified Snyder's techniques.
             </summary>
             <param name="techniques">A list of techniques to be checked.</param>
             <returns>A <see cref="T:System.Boolean"/> value indicating that.</returns>
@@ -22122,33 +22128,6 @@
         <member name="P:Sudoku.Analytics.Steps.MultifishStep.Interpolations">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Analytics.Steps.PartialPencilmarkingStep">
-            <summary>
-            Represents a solving step that can be found without any candidates, except few of candidates marked.
-            Logically, the technique can be treated as a single step with locked candidates or subset patterns.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-            <param name="cell"><inheritdoc cref="P:Sudoku.Analytics.Steps.SingleStep.Cell" path="/summary"/></param>
-            <param name="digit"><inheritdoc cref="P:Sudoku.Analytics.Steps.SingleStep.Digit" path="/summary"/></param>
-            <param name="subtype"><inheritdoc cref="P:Sudoku.Analytics.Steps.SingleStep.Subtype" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Analytics.Steps.PartialPencilmarkingStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.Int32,System.Int32,Sudoku.Analytics.Categorization.SingleSubtype)">
-            <summary>
-            Represents a solving step that can be found without any candidates, except few of candidates marked.
-            Logically, the technique can be treated as a single step with locked candidates or subset patterns.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-            <param name="cell"><inheritdoc cref="P:Sudoku.Analytics.Steps.SingleStep.Cell" path="/summary"/></param>
-            <param name="digit"><inheritdoc cref="P:Sudoku.Analytics.Steps.SingleStep.Digit" path="/summary"/></param>
-            <param name="subtype"><inheritdoc cref="P:Sudoku.Analytics.Steps.SingleStep.Subtype" path="/summary"/></param>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.PartialPencilmarkingStep.PencilmarkType">
-            <inheritdoc/>
-        </member>
         <member name="T:Sudoku.Analytics.Steps.AlignedExclusionStep">
             <summary>
             Provides with a step that is an <b>Aligned Exclusion</b> technique.
@@ -22877,6 +22856,31 @@
             <summary>
             Indicates the digit used.
             </summary>
+        </member>
+        <member name="T:Sudoku.Analytics.Steps.SnyderStep">
+            <summary>
+            Represents a solving step that belongs to Snyder's technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="cell"><inheritdoc cref="P:Sudoku.Analytics.Steps.SingleStep.Cell" path="/summary"/></param>
+            <param name="digit"><inheritdoc cref="P:Sudoku.Analytics.Steps.SingleStep.Digit" path="/summary"/></param>
+            <param name="subtype"><inheritdoc cref="P:Sudoku.Analytics.Steps.SingleStep.Subtype" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Analytics.Steps.SnyderStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions,System.Int32,System.Int32,Sudoku.Analytics.Categorization.SingleSubtype)">
+            <summary>
+            Represents a solving step that belongs to Snyder's technique.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+            <param name="cell"><inheritdoc cref="P:Sudoku.Analytics.Steps.SingleStep.Cell" path="/summary"/></param>
+            <param name="digit"><inheritdoc cref="P:Sudoku.Analytics.Steps.SingleStep.Digit" path="/summary"/></param>
+            <param name="subtype"><inheritdoc cref="P:Sudoku.Analytics.Steps.SingleStep.Subtype" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.SnyderStep.PencilmarkType">
+            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Steps.HiddenSubsetStep">
             <summary>

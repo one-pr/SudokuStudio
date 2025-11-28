@@ -9,7 +9,7 @@ public static class PencilmarkVisibilities
 	/// <summary>
 	/// Indicates all visibilities.
 	/// </summary>
-	public const PencilmarkVisibility All = PencilmarkVisibility.Direct | PencilmarkVisibility.PartialMarking | PencilmarkVisibility.FullMarking;
+	public const PencilmarkVisibility All = PencilmarkVisibility.Direct | PencilmarkVisibility.Snyder | PencilmarkVisibility.FullMarking;
 
 	/// <summary>
 	/// Indicates only for marks.

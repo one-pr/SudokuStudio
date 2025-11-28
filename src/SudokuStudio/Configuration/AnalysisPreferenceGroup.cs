@@ -205,7 +205,7 @@ public sealed partial class AnalysisPreferenceGroup : PreferenceGroup
 	public partial BottleneckType DirectModeBottleneckType { get; set; }
 
 	/// <summary>
-	/// Indicates the bottleneck type defined in partial-marking moded.
+	/// Indicates the bottleneck type defined in Snyder's mode.
 	/// </summary>
 	[DependencyProperty(DefaultValue = BottleneckType.HardestRating)]
 	public partial BottleneckType PartialMarkingModeBottleneckType { get; set; }

@@ -54,7 +54,7 @@ This repository is created for the following users:
   * Step-by-step analysis
   * Bottleneck analysis
   * Diff analysis & technique usage analysis
-  * Specialized supports on direct & partial-marking techniques
+  * Specialized supports on direct & Snyder's techniques
   * Partial implementation on some extremely hard techniques
   * Rank analysis (rank, eliminations, permutations, etc.)
 * Drawing

@@ -19,9 +19,9 @@ public enum PencilmarkVisibility
 	Direct = 1 << 0,
 
 	/// <summary>
-	/// Indicates the technique can be applied to partial-marking mode.
+	/// Indicates the technique can be applied to Snyder's technique mode.
 	/// </summary>
-	PartialMarking = 1 << 1,
+	Snyder = 1 << 1,
 
 	/// <summary>
 	/// Indicates the technique can be applied to full-marking mode.

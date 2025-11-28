@@ -1,10 +1,10 @@
 namespace Sudoku.Analytics;
 
 /// <summary>
-/// Provides with extension methods on <see cref="Grid"/>, calculating with partial-marking rules checking.
+/// Provides with extension methods on <see cref="Grid"/>, calculating with Snyder's rules checking.
 /// </summary>
 /// <seealso cref="Grid"/>
-public static class GridPartialMarkingExtensions
+public static class GridSnyderExtensions
 {
 	/// <summary>
 	/// Indicates the backing collector.
@@ -35,22 +35,22 @@ public static class GridPartialMarkingExtensions
 	{
 		/// <summary>
 		/// Determine whether the grid lacks some candidates that are included in a grid,
-		/// through basic elimination rule (Naked Single checking) and specified partial-marking techniques.
+		/// through basic elimination rule (Naked Single checking) and specified Snyder's techniques.
 		/// </summary>
 		/// <param name="techniques">A list of techniques to be checked.</param>
 		/// <returns>A <see cref="bool"/> value indicating that.</returns>
 		/// <exception cref="ArgumentOutOfRangeException">
 		/// Throws when the argument <paramref name="techniques"/> is greater than the maximum value of enumeration field defined.
 		/// </exception>
-		public bool IsMissingCandidates(PartialMarkingTechniques techniques)
+		public bool IsMissingCandidates(SnyderTechnique techniques)
 		{
 			switch (techniques)
 			{
-				case PartialMarkingTechniques.None:
+				case SnyderTechnique.None:
 				{
 					return @this.IsMissingCandidates;
 				}
-				case < PartialMarkingTechniques.None or > PartialMarkingTechniques.LockedHiddenTriple:
+				case < SnyderTechnique.None or > SnyderTechnique.LockedHiddenTriple:
 				{
 					throw new ArgumentOutOfRangeException(nameof(techniques));
 				}
@@ -59,7 +59,7 @@ public static class GridPartialMarkingExtensions
 					var gridResetCandidates = @this.ResetCandidatesGrid;
 					foreach (var step in Collector.Collect(gridResetCandidates))
 					{
-						if (techniques.HasFlag(PartialMarkingTechniques.Parse(step.Code.ToString())))
+						if (techniques.HasFlag(SnyderTechnique.Parse(step.Code.ToString())))
 						{
 							gridResetCandidates >>= step;
 						}
