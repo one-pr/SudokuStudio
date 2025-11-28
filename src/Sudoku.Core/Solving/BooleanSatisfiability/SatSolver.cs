@@ -320,8 +320,8 @@ file sealed class DpllSolver(
 			// In this simple solver each decision level corresponds to exactly one decision variable, so we negate that one.
 			var (decisionVariable, decisionValue) = _decisionStack[^1];
 
-			// If <c>decisionValue == true</c>, then decision literal was +decVar, so learned is -decVar;
-			// If <c>decisionValue == false</c>, decision literal was -decVar, so learned is +decVar.
+			// If <c>decisionValue == true</c>, then decision literal was <c>+decVar</c>, so learned is <c>-decVar</c>;
+			// If <c>decisionValue == false</c>, decision literal was <c>-decVar</c>, so learned is <c>+decVar</c>.
 			var learnedLiteral = decisionValue ? -decisionVariable : decisionVariable;
 
 			// Add the learned unit clause to the expression to prevent repeating this decision.
@@ -343,7 +343,7 @@ file sealed class DpllSolver(
 #endif
 		}
 
-		// Find a variable index that has not been assigned yet(0), or -1 if all variables are assigned.
+		// Find a variable index that has not been assigned yet (0), or -1 if all variables are assigned.
 		var variable = -1;
 		for (var i = 1; i <= _expression.VariablesCount; i++)
 		{
