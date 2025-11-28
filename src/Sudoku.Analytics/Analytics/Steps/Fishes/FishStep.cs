@@ -22,7 +22,7 @@ public abstract class FishStep(
 	in CellMap fins,
 	bool? isSashimi,
 	bool isSiamese = false
-) : FullPencilmarkingStep(conclusions, views, options), ISizeTrait
+) : AdvancedStep(conclusions, views, options), ISizeTrait
 {
 	/// <summary>
 	/// Indicates whether the pattern is a Siamese Fish.

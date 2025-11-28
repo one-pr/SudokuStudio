@@ -139,11 +139,11 @@ public static class TechniqueExtensions
 			=> Technique.FieldInfoOf(@this)?.GetCustomAttribute<TechniqueMetadataAttribute>()?.Features ?? 0;
 
 		/// <summary>
-		/// Indicates supported pencilmark-visibility modes that the current <see cref="Technique"/> can be used in application.
+		/// Indicates supported technique types that the current <see cref="Technique"/> can be used in application.
 		/// </summary>
-		public PencilmarkVisibility SupportedPencilmarkVisibilityModes
+		public TechniqueType SupportedTechniqueTypes
 			=> Technique.FieldInfoOf(@this)!.GetCustomAttribute<TechniqueMetadataAttribute>()?.PencilmarkVisibility
-			?? PencilmarkVisibilities.All;
+			?? TechniqueTypes.All;
 
 		/// <summary>
 		/// Indicates suitable <see cref="Type"/> which refers to a <see cref="Step"/> type,

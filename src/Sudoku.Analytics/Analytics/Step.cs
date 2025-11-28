@@ -98,9 +98,9 @@ public abstract class Step(ReadOnlyMemory<Conclusion> conclusions, View[]? views
 			: throw new InvalidOperationException(SR.ExceptionMessage("TechniqueLevelCannotBeDetermined"));
 
 	/// <summary>
-	/// Represents a type that describes which mode this step can be created in a puzzle grid.
+	/// Represents a type of technique; the value indicates how we can find conclusions via candidates marking (or marked).
 	/// </summary>
-	public abstract PencilmarkVisibility PencilmarkType { get; }
+	public abstract TechniqueType PencilmarkType { get; }
 
 	/// <summary>
 	/// Indicates all interpolations used by description information to the current step, stored in resource dictionary.

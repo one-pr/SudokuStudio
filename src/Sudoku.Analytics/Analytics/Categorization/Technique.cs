@@ -54,7 +54,7 @@ public enum Technique
 		Rating = 19,
 		DifficultyLevel = DifficultyLevel.Easy,
 		ContainingGroup = TechniqueGroup.Single,
-		PencilmarkVisibility = PencilmarkVisibility.FullMarking,
+		PencilmarkVisibility = TechniqueType.Advanced,
 		Links = ["http://sudopedia.enjoysudoku.com/Hidden_Single.html"])]
 	HiddenSingleBlock,
 
@@ -67,7 +67,7 @@ public enum Technique
 		Rating = 23,
 		DifficultyLevel = DifficultyLevel.Easy,
 		ContainingGroup = TechniqueGroup.Single,
-		PencilmarkVisibility = PencilmarkVisibility.FullMarking,
+		PencilmarkVisibility = TechniqueType.Advanced,
 		Links = ["http://sudopedia.enjoysudoku.com/Hidden_Single.html"])]
 	HiddenSingleRow,
 
@@ -80,7 +80,7 @@ public enum Technique
 		Rating = 23,
 		DifficultyLevel = DifficultyLevel.Easy,
 		ContainingGroup = TechniqueGroup.Single,
-		PencilmarkVisibility = PencilmarkVisibility.FullMarking,
+		PencilmarkVisibility = TechniqueType.Advanced,
 		Links = ["http://sudopedia.enjoysudoku.com/Hidden_Single.html"])]
 	HiddenSingleColumn,
 
@@ -92,7 +92,7 @@ public enum Technique
 		Abbreviation = "CHB",
 		DifficultyLevel = DifficultyLevel.Easy,
 		ContainingGroup = TechniqueGroup.Single,
-		PencilmarkVisibility = PencilmarkVisibility.Direct,
+		PencilmarkVisibility = TechniqueType.Direct,
 		Links = ["http://sudopedia.enjoysudoku.com/Hidden_Single.html"],
 		Features = TechniqueFeatures.DirectTechniques)]
 	CrosshatchingBlock,
@@ -105,7 +105,7 @@ public enum Technique
 		Abbreviation = "CHR",
 		DifficultyLevel = DifficultyLevel.Easy,
 		ContainingGroup = TechniqueGroup.Single,
-		PencilmarkVisibility = PencilmarkVisibility.Direct,
+		PencilmarkVisibility = TechniqueType.Direct,
 		Links = ["http://sudopedia.enjoysudoku.com/Hidden_Single.html"],
 		Features = TechniqueFeatures.DirectTechniques)]
 	CrosshatchingRow,
@@ -118,7 +118,7 @@ public enum Technique
 		Abbreviation = "CHC",
 		DifficultyLevel = DifficultyLevel.Easy,
 		ContainingGroup = TechniqueGroup.Single,
-		PencilmarkVisibility = PencilmarkVisibility.Direct,
+		PencilmarkVisibility = TechniqueType.Direct,
 		Links = ["http://sudopedia.enjoysudoku.com/Hidden_Single.html"],
 		Features = TechniqueFeatures.DirectTechniques)]
 	CrosshatchingColumn,
@@ -163,7 +163,7 @@ public enum Technique
 		Rating = 15,
 		DifficultyLevel = DifficultyLevel.Moderate,
 		ContainingGroup = TechniqueGroup.ComplexSingle,
-		PencilmarkVisibility = PencilmarkVisibility.Direct | PencilmarkVisibility.Snyder,
+		PencilmarkVisibility = TechniqueType.Direct | TechniqueType.Snyder,
 		Features = TechniqueFeatures.DirectTechniques)]
 	ComplexFullHouse,
 
@@ -174,7 +174,7 @@ public enum Technique
 		Rating = 17,
 		DifficultyLevel = DifficultyLevel.Moderate,
 		ContainingGroup = TechniqueGroup.ComplexSingle,
-		PencilmarkVisibility = PencilmarkVisibility.Direct | PencilmarkVisibility.Snyder,
+		PencilmarkVisibility = TechniqueType.Direct | TechniqueType.Snyder,
 		Features = TechniqueFeatures.DirectTechniques)]
 	ComplexCrosshatchingBlock,
 
@@ -185,7 +185,7 @@ public enum Technique
 		Rating = 20,
 		DifficultyLevel = DifficultyLevel.Moderate,
 		ContainingGroup = TechniqueGroup.ComplexSingle,
-		PencilmarkVisibility = PencilmarkVisibility.Direct | PencilmarkVisibility.Snyder,
+		PencilmarkVisibility = TechniqueType.Direct | TechniqueType.Snyder,
 		Features = TechniqueFeatures.DirectTechniques)]
 	ComplexCrosshatchingRow,
 
@@ -196,7 +196,7 @@ public enum Technique
 		Rating = 20,
 		DifficultyLevel = DifficultyLevel.Moderate,
 		ContainingGroup = TechniqueGroup.ComplexSingle,
-		PencilmarkVisibility = PencilmarkVisibility.Direct | PencilmarkVisibility.Snyder,
+		PencilmarkVisibility = TechniqueType.Direct | TechniqueType.Snyder,
 		Features = TechniqueFeatures.DirectTechniques)]
 	ComplexCrosshatchingColumn,
 
@@ -207,7 +207,7 @@ public enum Technique
 		Rating = 28,
 		DifficultyLevel = DifficultyLevel.Moderate,
 		ContainingGroup = TechniqueGroup.ComplexSingle,
-		PencilmarkVisibility = PencilmarkVisibility.Direct | PencilmarkVisibility.Snyder,
+		PencilmarkVisibility = TechniqueType.Direct | TechniqueType.Snyder,
 		Features = TechniqueFeatures.DirectTechniques)]
 	ComplexNakedSingle,
 	#endregion
@@ -257,7 +257,7 @@ public enum Technique
 		Rating = 20,
 		DifficultyLevel = DifficultyLevel.Moderate,
 		ContainingGroup = TechniqueGroup.LockedCandidates,
-		PencilmarkVisibility = PencilmarkVisibility.Direct,
+		PencilmarkVisibility = TechniqueType.Direct,
 		Abbreviation = "LoL",
 		Features = TechniqueFeatures.DirectTechniques,
 		Links = ["http://sudopedia.enjoysudoku.com/Law_of_Leftovers.html"])]

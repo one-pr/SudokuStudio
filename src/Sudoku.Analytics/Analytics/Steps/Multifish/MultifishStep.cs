@@ -14,7 +14,7 @@ public sealed class MultifishStep(
 	StepGathererOptions options,
 	in SpaceSet truths,
 	in SpaceSet links
-) : FullPencilmarkingStep(conclusions, views, options)
+) : AdvancedStep(conclusions, views, options)
 {
 	/// <inheritdoc/>
 	public override int BaseDifficulty => 96;

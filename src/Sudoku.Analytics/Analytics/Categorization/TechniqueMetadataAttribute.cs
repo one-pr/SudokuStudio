@@ -51,11 +51,11 @@ public class TechniqueMetadataAttribute : ProgramMetadataAttribute<int, Difficul
 
 	/// <summary>
 	/// Indicates the mode that the current technique can be used by solving a puzzle.
-	/// By default the value is both <see cref="PencilmarkVisibility.Direct"/> and <see cref="PencilmarkVisibility.FullMarking"/>.
+	/// By default the value is both <see cref="TechniqueType.Direct"/> and <see cref="TechniqueType.Advanced"/>.
 	/// </summary>
-	/// <seealso cref="PencilmarkVisibility.Direct"/>
-	/// <seealso cref="PencilmarkVisibility.FullMarking"/>
-	public PencilmarkVisibility PencilmarkVisibility { get; init; } = PencilmarkVisibility.Direct | PencilmarkVisibility.FullMarking;
+	/// <seealso cref="TechniqueType.Direct"/>
+	/// <seealso cref="TechniqueType.Advanced"/>
+	public TechniqueType PencilmarkVisibility { get; init; } = TechniqueType.Direct | TechniqueType.Advanced;
 
 	/// <summary>
 	/// Indicates the customized related technique that the current technique is applied.

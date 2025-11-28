@@ -10,5 +10,5 @@ public abstract class DirectStep(ReadOnlyMemory<Conclusion> conclusions, View[]?
 	Step(conclusions, views, options)
 {
 	/// <inheritdoc/>
-	public override PencilmarkVisibility PencilmarkType => PencilmarkVisibility.Direct;
+	public override TechniqueType PencilmarkType => TechniqueType.Direct;
 }

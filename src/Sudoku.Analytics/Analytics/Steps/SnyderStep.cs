@@ -19,5 +19,5 @@ public abstract class SnyderStep(
 ) : SingleStep(conclusions, views, options, cell, digit, subtype)
 {
 	/// <inheritdoc/>
-	public sealed override PencilmarkVisibility PencilmarkType => PencilmarkVisibility.Snyder;
+	public sealed override TechniqueType PencilmarkType => TechniqueType.Snyder;
 }

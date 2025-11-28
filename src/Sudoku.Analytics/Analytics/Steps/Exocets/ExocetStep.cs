@@ -20,7 +20,7 @@ public abstract class ExocetStep(
 	in CellMap targetCells,
 	in CellMap endoTargetCells,
 	in CellMap crosslineCells
-) : FullPencilmarkingStep(conclusions, views, options)
+) : AdvancedStep(conclusions, views, options)
 {
 	/// <summary>
 	/// <para>Indicates the delta value of the pattern.</para>

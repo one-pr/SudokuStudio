@@ -931,22 +931,22 @@
             <summary>
             Represents a bottleneck filter consumed by method <see cref="M:Sudoku.Analytics.Bottlenecks.AnalysisResultExtensions.GetBottlenecks(Sudoku.Analytics.AnalysisResult,System.ReadOnlySpan{Sudoku.Analytics.Bottlenecks.BottleneckFilter})"/>.
             </summary>
-            <param name="Visibility">Indicates a visibility type of pencilmark.</param>
-            <param name="Type">Indicates the bottleneck type.</param>
+            <param name="TechniqueType">Indicates the technique type.</param>
+            <param name="BottleneckType">Indicates the bottleneck type.</param>
             <seealso cref="M:Sudoku.Analytics.Bottlenecks.AnalysisResultExtensions.GetBottlenecks(Sudoku.Analytics.AnalysisResult,System.ReadOnlySpan{Sudoku.Analytics.Bottlenecks.BottleneckFilter})"/>
         </member>
-        <member name="M:Sudoku.Analytics.Bottlenecks.BottleneckFilter.#ctor(Sudoku.PencilmarkVisibility,Sudoku.Analytics.Bottlenecks.BottleneckType)">
+        <member name="M:Sudoku.Analytics.Bottlenecks.BottleneckFilter.#ctor(Sudoku.TechniqueType,Sudoku.Analytics.Bottlenecks.BottleneckType)">
             <summary>
             Represents a bottleneck filter consumed by method <see cref="M:Sudoku.Analytics.Bottlenecks.AnalysisResultExtensions.GetBottlenecks(Sudoku.Analytics.AnalysisResult,System.ReadOnlySpan{Sudoku.Analytics.Bottlenecks.BottleneckFilter})"/>.
             </summary>
-            <param name="Visibility">Indicates a visibility type of pencilmark.</param>
-            <param name="Type">Indicates the bottleneck type.</param>
+            <param name="TechniqueType">Indicates the technique type.</param>
+            <param name="BottleneckType">Indicates the bottleneck type.</param>
             <seealso cref="M:Sudoku.Analytics.Bottlenecks.AnalysisResultExtensions.GetBottlenecks(Sudoku.Analytics.AnalysisResult,System.ReadOnlySpan{Sudoku.Analytics.Bottlenecks.BottleneckFilter})"/>
         </member>
-        <member name="P:Sudoku.Analytics.Bottlenecks.BottleneckFilter.Visibility">
-            <summary>Indicates a visibility type of pencilmark.</summary>
+        <member name="P:Sudoku.Analytics.Bottlenecks.BottleneckFilter.TechniqueType">
+            <summary>Indicates the technique type.</summary>
         </member>
-        <member name="P:Sudoku.Analytics.Bottlenecks.BottleneckFilter.Type">
+        <member name="P:Sudoku.Analytics.Bottlenecks.BottleneckFilter.BottleneckType">
             <summary>Indicates the bottleneck type.</summary>
         </member>
         <member name="T:Sudoku.Analytics.Bottlenecks.BottleneckType">
@@ -3983,8 +3983,8 @@
         <member name="M:Sudoku.Analytics.Categorization.TechniqueExtensions.get_Features(Sudoku.Analytics.Categorization.Technique)">
             <inheritdoc cref="P:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.Features"/>
         </member>
-        <member name="M:Sudoku.Analytics.Categorization.TechniqueExtensions.get_SupportedPencilmarkVisibilityModes(Sudoku.Analytics.Categorization.Technique)">
-            <inheritdoc cref="P:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.SupportedPencilmarkVisibilityModes"/>
+        <member name="M:Sudoku.Analytics.Categorization.TechniqueExtensions.get_SupportedTechniqueTypes(Sudoku.Analytics.Categorization.Technique)">
+            <inheritdoc cref="P:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.SupportedTechniqueTypes"/>
         </member>
         <member name="M:Sudoku.Analytics.Categorization.TechniqueExtensions.get_SuitableStepType(Sudoku.Analytics.Categorization.Technique)">
             <inheritdoc cref="P:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.SuitableStepType"/>
@@ -4091,9 +4091,9 @@
             Indicates all features configured for the current <see cref="T:Sudoku.Analytics.Categorization.Technique"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.SupportedPencilmarkVisibilityModes">
+        <member name="P:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.SupportedTechniqueTypes">
             <summary>
-            Indicates supported pencilmark-visibility modes that the current <see cref="T:Sudoku.Analytics.Categorization.Technique"/> can be used in application.
+            Indicates supported technique types that the current <see cref="T:Sudoku.Analytics.Categorization.Technique"/> can be used in application.
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.SuitableStepType">
@@ -4574,10 +4574,10 @@
         <member name="P:Sudoku.Analytics.Categorization.TechniqueMetadataAttribute.PencilmarkVisibility">
             <summary>
             Indicates the mode that the current technique can be used by solving a puzzle.
-            By default the value is both <see cref="F:Sudoku.PencilmarkVisibility.Direct"/> and <see cref="F:Sudoku.PencilmarkVisibility.FullMarking"/>.
+            By default the value is both <see cref="F:Sudoku.TechniqueType.Direct"/> and <see cref="F:Sudoku.TechniqueType.Advanced"/>.
             </summary>
-            <seealso cref="F:Sudoku.PencilmarkVisibility.Direct"/>
-            <seealso cref="F:Sudoku.PencilmarkVisibility.FullMarking"/>
+            <seealso cref="F:Sudoku.TechniqueType.Direct"/>
+            <seealso cref="F:Sudoku.TechniqueType.Advanced"/>
         </member>
         <member name="P:Sudoku.Analytics.Categorization.TechniqueMetadataAttribute.RelatedTechnique">
             <summary>
@@ -12765,7 +12765,7 @@
         </member>
         <member name="P:Sudoku.Analytics.Step.PencilmarkType">
             <summary>
-            Represents a type that describes which mode this step can be created in a puzzle grid.
+            Represents a type of technique; the value indicates how we can find conclusions via candidates marking (or marked).
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.Step.Interpolations">
@@ -18622,6 +18622,25 @@
             <param name="newValue">The new value to be added.</param>
             <returns>A <see cref="T:System.Collections.Generic.LinkedList`1"/> instance.</returns>
         </member>
+        <member name="T:Sudoku.Analytics.Steps.AdvancedStep">
+            <summary>
+            Represents a solving step that cannot be found by using given and modifiable digits only.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Analytics.Steps.AdvancedStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions)">
+            <summary>
+            Represents a solving step that cannot be found by using given and modifiable digits only.
+            </summary>
+            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
+            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
+            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Analytics.Steps.AdvancedStep.PencilmarkType">
+            <inheritdoc/>
+        </member>
         <member name="T:Sudoku.Analytics.Steps.AlmostLockedSetsStep">
             <summary>
             Provides with a step that is an <b>Almost Locked Sets</b> technique.
@@ -20741,25 +20760,6 @@
             <summary>
             Indicates the internal name.
             </summary>
-        </member>
-        <member name="T:Sudoku.Analytics.Steps.FullPencilmarkingStep">
-            <summary>
-            Represents a solving step that cannot be found by using given and modifiable digits only.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Analytics.Steps.FullPencilmarkingStep.#ctor(System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},Sudoku.Drawing.View[],Sudoku.Analytics.Configuration.StepGathererOptions)">
-            <summary>
-            Represents a solving step that cannot be found by using given and modifiable digits only.
-            </summary>
-            <param name="conclusions"><inheritdoc cref="P:Sudoku.Analytics.Step.Conclusions" path="/summary"/></param>
-            <param name="views"><inheritdoc cref="P:Sudoku.Analytics.Step.Views" path="/summary"/></param>
-            <param name="options"><inheritdoc cref="P:Sudoku.Analytics.Step.Options" path="/summary"/></param>
-        </member>
-        <member name="P:Sudoku.Analytics.Steps.FullPencilmarkingStep.PencilmarkType">
-            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Steps.AlmostLockedCandidatesStep">
             <summary>

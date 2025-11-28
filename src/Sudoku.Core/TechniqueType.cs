@@ -1,12 +1,12 @@
 namespace Sudoku;
 
 /// <summary>
-/// Represents a mode that describes the puzzle can be solved with what kind of pencilmark-displaying rule applied.
+/// Represents a type of technique.
 /// </summary>
 /// <remarks><include file="../../global-doc-comments.xml" path="/g/flags-attribute"/></remarks>
-/// <completionlist cref="PencilmarkVisibilities"/>
+/// <completionlist cref="TechniqueTypes"/>
 [Flags]
-public enum PencilmarkVisibility
+public enum TechniqueType
 {
 	/// <summary>
 	/// Indicates placeholder.
@@ -24,7 +24,7 @@ public enum PencilmarkVisibility
 	Snyder = 1 << 1,
 
 	/// <summary>
-	/// Indicates the technique can be applied to full-marking mode.
+	/// Indicates the technique can be applied to advanced mode.
 	/// </summary>
-	FullMarking = 1 << 2
+	Advanced = 1 << 2
 }

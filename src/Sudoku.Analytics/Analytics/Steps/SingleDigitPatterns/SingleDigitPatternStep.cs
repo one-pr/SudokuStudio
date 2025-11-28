@@ -12,7 +12,7 @@ public abstract class SingleDigitPatternStep(
 	View[]? views,
 	StepGathererOptions options,
 	Digit digit
-) : FullPencilmarkingStep(conclusions, views, options)
+) : AdvancedStep(conclusions, views, options)
 {
 	/// <inheritdoc/>
 	public sealed override Mask DigitsUsed => (Mask)(1 << Digit);

@@ -194,9 +194,9 @@ public sealed partial class TechniqueInfoModifierPage : Page
 			//
 			// Rating
 			//
-			var supportedModes = technique.SupportedPencilmarkVisibilityModes;
+			var supportedModes = technique.SupportedTechniqueTypes;
 			var ratingControl = default(IntegerBox);
-			var hasIndirectRating = supportedModes.HasFlag(PencilmarkVisibility.FullMarking);
+			var hasIndirectRating = supportedModes.HasFlag(TechniqueType.Advanced);
 			if (hasIndirectRating)
 			{
 				ratingControl = new IntegerBox
@@ -220,8 +220,8 @@ public sealed partial class TechniqueInfoModifierPage : Page
 			// Direct rating
 			//
 			var directRatingControl = default(IntegerBox);
-			var hasDirectRating = supportedModes.HasFlag(PencilmarkVisibility.Direct)
-				| supportedModes.HasFlag(PencilmarkVisibility.Snyder);
+			var hasDirectRating = supportedModes.HasFlag(TechniqueType.Direct)
+				| supportedModes.HasFlag(TechniqueType.Snyder);
 			if (hasDirectRating)
 			{
 				directRatingControl = new()

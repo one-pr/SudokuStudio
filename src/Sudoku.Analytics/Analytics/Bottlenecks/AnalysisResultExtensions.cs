@@ -37,28 +37,28 @@ public static class AnalysisResultExtensions
 			}
 
 			var pencilmarkMode = steps.Aggregate(
-				PencilmarkVisibility.None,
+				TechniqueType.None,
 				static (interim, next) => interim | next switch
 				{
-					FullPencilmarkingStep => PencilmarkVisibility.FullMarking,
-					SnyderStep => PencilmarkVisibility.Snyder,
-					DirectStep => PencilmarkVisibility.Direct,
-					_ => PencilmarkVisibility.None
+					AdvancedStep => TechniqueType.Advanced,
+					SnyderStep => TechniqueType.Snyder,
+					DirectStep => TechniqueType.Direct,
+					_ => TechniqueType.None
 				}
 			);
-			var filterMode = pencilmarkMode.HasFlag(PencilmarkVisibility.FullMarking)
-				? PencilmarkVisibility.FullMarking
-				: pencilmarkMode.HasFlag(PencilmarkVisibility.Snyder)
-					? PencilmarkVisibility.Snyder
-					: PencilmarkVisibility.Direct;
-			return (filters.FirstRefOrNullRef((in f) => f.Visibility == filterMode).Type, filterMode) switch
+			var filterMode = pencilmarkMode.HasFlag(TechniqueType.Advanced)
+				? TechniqueType.Advanced
+				: pencilmarkMode.HasFlag(TechniqueType.Snyder)
+					? TechniqueType.Snyder
+					: TechniqueType.Direct;
+			return (filters.FirstRefOrNullRef((in f) => f.TechniqueType == filterMode).BottleneckType, filterMode) switch
 			{
-				(BottleneckType.SingleStepOnly, PencilmarkVisibility.Direct or PencilmarkVisibility.Snyder) => singleStepOnly(),
-				(BottleneckType.SingleStepSameLevelOnly, PencilmarkVisibility.Snyder) => singleStepSameLevelOnly(),
-				(BottleneckType.EliminationGroup, PencilmarkVisibility.FullMarking) => eliminationGroup(steps),
-				(BottleneckType.SequentialInversion, not PencilmarkVisibility.Direct) => sequentialInversion(steps),
+				(BottleneckType.SingleStepOnly, TechniqueType.Direct or TechniqueType.Snyder) => singleStepOnly(),
+				(BottleneckType.SingleStepSameLevelOnly, TechniqueType.Snyder) => singleStepSameLevelOnly(),
+				(BottleneckType.EliminationGroup, TechniqueType.Advanced) => eliminationGroup(steps),
+				(BottleneckType.SequentialInversion, not TechniqueType.Direct) => sequentialInversion(steps),
 				(BottleneckType.HardestRating, _) => hardestRating(steps, steps.MaxBy(static s => s.Difficulty)!),
-				(BottleneckType.HardestLevel, not PencilmarkVisibility.Direct) => hardestLevel(steps, steps.MaxBy(static s => (int)s.DifficultyLevel)!),
+				(BottleneckType.HardestLevel, not TechniqueType.Direct) => hardestLevel(steps, steps.MaxBy(static s => (int)s.DifficultyLevel)!),
 				_ => throw new ArgumentOutOfRangeException(nameof(filters))
 			};
 

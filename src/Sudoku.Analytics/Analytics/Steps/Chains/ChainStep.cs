@@ -7,7 +7,7 @@ namespace Sudoku.Analytics.Steps;
 /// <param name="views"><inheritdoc cref="Step.Views" path="/summary"/></param>
 /// <param name="options"><inheritdoc cref="Step.Options" path="/summary"/></param>
 public abstract class ChainStep(ReadOnlyMemory<Conclusion> conclusions, View[]? views, StepGathererOptions options) :
-	FullPencilmarkingStep(conclusions, views, options)
+	AdvancedStep(conclusions, views, options)
 {
 	/// <summary>
 	/// Indicates whether the chain pattern consists of multiple sub-chains.

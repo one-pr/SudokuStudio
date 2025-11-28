@@ -100,9 +100,9 @@ public sealed partial class GeneratingOperation : Page, IOperationProviderPage
 			{
 				var analysisPref = Application.CurrentApp.Preference.AnalysisPreferences;
 				return [
-					new(PencilmarkVisibility.Direct, analysisPref.DirectModeBottleneckType),
-					new(PencilmarkVisibility.Snyder, analysisPref.PartialMarkingModeBottleneckType),
-					new(PencilmarkVisibility.FullMarking, analysisPref.FullMarkingModeBottleneckType)
+					new(TechniqueType.Direct, analysisPref.DirectModeBottleneckType),
+					new(TechniqueType.Snyder, analysisPref.PartialMarkingModeBottleneckType),
+					new(TechniqueType.Advanced, analysisPref.FullMarkingModeBottleneckType)
 				];
 			},
 			reportAction: progress => DispatcherQueue.TryEnqueue(

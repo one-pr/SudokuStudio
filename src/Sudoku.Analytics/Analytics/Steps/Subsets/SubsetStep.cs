@@ -17,7 +17,7 @@ public abstract class SubsetStep(
 	in CellMap cells,
 	Mask digitsMask
 ) :
-	FullPencilmarkingStep(conclusions, views, options),
+	AdvancedStep(conclusions, views, options),
 	ISizeTrait
 {
 	/// <inheritdoc/>

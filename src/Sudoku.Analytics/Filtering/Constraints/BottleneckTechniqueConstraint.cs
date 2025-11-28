@@ -10,9 +10,9 @@ public sealed class BottleneckTechniqueConstraint : Constraint
 	/// Indicates the filters to be used.
 	/// </summary>
 	public BottleneckFilter[] Filters { get; set; } = [
-		new(PencilmarkVisibility.Direct, BottleneckType.SingleStepOnly),
-		new(PencilmarkVisibility.Snyder, BottleneckType.HardestRating),
-		new(PencilmarkVisibility.FullMarking, BottleneckType.EliminationGroup)
+		new(TechniqueType.Direct, BottleneckType.SingleStepOnly),
+		new(TechniqueType.Snyder, BottleneckType.HardestRating),
+		new(TechniqueType.Advanced, BottleneckType.EliminationGroup)
 	];
 
 	/// <summary>
