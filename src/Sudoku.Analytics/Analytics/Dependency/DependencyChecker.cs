@@ -37,9 +37,7 @@ public static class DependencyChecker
 		// |             |   => r1c789 = 2 (house truth) |   => r789c2 = 1 (house truth) |   => r1c7 = 2 (cell truth)  |
 		// '-------------'-------------------------------'-------------------------------'-----------------------------'
 
-		var emptyCells = grid.EmptyCells;
-		var (previousDigit, previousCells) = previous;
-		var (currentDigit, currentCells) = current;
+		var (emptyCells, (previousDigit, previousCells), (currentDigit, currentCells)) = (grid.EmptyCells, previous, current);
 
 		// Check shared houses for current assignment, trying to check which house covers previous assignment.
 		// If does, a hidden single can be inferred.
