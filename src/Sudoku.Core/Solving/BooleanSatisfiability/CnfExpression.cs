@@ -20,17 +20,18 @@ public sealed record CnfExpression(int VariablesCount) : IEnumerable<ReadOnlyMem
 
 
 	/// <summary>
-	/// Add a new clause (disjunction of literals) to the expression.
-	/// </summary>
-	/// <param name="literals">The literals.</param>
-	public void AddClause(ReadOnlyMemory<int> literals) => Clauses.Add(literals);
-
-	/// <summary>
 	/// Get clause at the specified index.
 	/// </summary>
 	/// <param name="index">The desired index.</param>
 	/// <returns>The clause.</returns>
-	public ReadOnlyMemory<int> GetClause(int index) => Clauses[index];
+	public ReadOnlyMemory<int> this[int index] => Clauses[index];
+
+
+	/// <summary>
+	/// Add a new clause (disjunction of literals) to the expression.
+	/// </summary>
+	/// <param name="literals">The literals.</param>
+	public void AddClause(ReadOnlyMemory<int> literals) => Clauses.Add(literals);
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
 	public AnonymousSpanEnumerator<ReadOnlyMemory<int>> GetEnumerator() => new(Clauses.AsSpan());

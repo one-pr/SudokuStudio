@@ -14255,18 +14255,18 @@
             Indicates the list of clauses.
             </summary>
         </member>
-        <member name="M:Sudoku.Solving.BooleanSatisfiability.CnfExpression.AddClause(System.ReadOnlyMemory{System.Int32})">
-            <summary>
-            Add a new clause (disjunction of literals) to the expression.
-            </summary>
-            <param name="literals">The literals.</param>
-        </member>
-        <member name="M:Sudoku.Solving.BooleanSatisfiability.CnfExpression.GetClause(System.Int32)">
+        <member name="P:Sudoku.Solving.BooleanSatisfiability.CnfExpression.Item(System.Int32)">
             <summary>
             Get clause at the specified index.
             </summary>
             <param name="index">The desired index.</param>
             <returns>The clause.</returns>
+        </member>
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.CnfExpression.AddClause(System.ReadOnlyMemory{System.Int32})">
+            <summary>
+            Add a new clause (disjunction of literals) to the expression.
+            </summary>
+            <param name="literals">The literals.</param>
         </member>
         <member name="M:Sudoku.Solving.BooleanSatisfiability.CnfExpression.GetEnumerator">
             <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
