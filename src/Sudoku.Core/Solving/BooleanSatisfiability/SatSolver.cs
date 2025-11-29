@@ -1,4 +1,5 @@
 #define ENABLE_NOGOOD_LEARNING
+#define ENABLE_CONFLICT_DRIVEN_CLAUSE_LEARNING
 
 namespace Sudoku.Solving.BooleanSatisfiability;
 
@@ -28,10 +29,10 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver<SatSolver>
 	{
 		EncodeSudoku(grid, out var mappedVariables);
 
-		(result, var @return) = new DpllSolver(_expression, null, mappedVariables, this).Solve() switch
+		(result, var @return) = new Dpll(_expression, null, mappedVariables, this).Solve() switch
 		{
-			[var assignmentStates] => (DpllSolver.BuildSolution(assignmentStates, mappedVariables), true),
-			[var firstAssignmentStates, ..] => (DpllSolver.BuildSolution(firstAssignmentStates, mappedVariables), false),
+			[var assignmentStates] => (Dpll.BuildSolution(assignmentStates, mappedVariables), true),
+			[var firstAssignmentStates, ..] => (Dpll.BuildSolution(firstAssignmentStates, mappedVariables), false),
 			_ => (Grid.Undefined, (bool?)null)
 		};
 		return @return;
@@ -41,7 +42,7 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver<SatSolver>
 	void ISolutionEnumerableSolver<SatSolver>.EnumerateSolutionsCore(Grid grid, CancellationToken cancellationToken)
 	{
 		EncodeSudoku(grid, out var mappedVariables);
-		new DpllSolver(_expression, SolutionFound, mappedVariables, this).Solve(cancellationToken);
+		new Dpll(_expression, SolutionFound, mappedVariables, this).Solve(cancellationToken);
 	}
 
 	/// <summary>
@@ -185,25 +186,11 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver<SatSolver>
 }
 
 /// <summary>
-/// Implements a simple SAT solver using the DPLL algorithm with unit propagation.
+/// Implements a simple SAT solver using the DPLL algorithm (<i>Davis–Putnam–Logemann–Loveland algorithm</i>)
+/// with unit propagation.
 /// For more information about DPLL algorithm, please visit <see href="https://en.wikipedia.org/wiki/DPLL_algorithm">this link</see>.
 /// </summary>
-/// <param name="_expression">Indicates the backing expression.</param>
-/// <param name="_solutionFoundEventHandler">Indicates event handler for solution found.</param>
-/// <param name="_mappedVariables">
-/// Indicates the mapped variables.
-/// The value can be <see langword="null"/> if <paramref name="_solutionFoundEventHandler"/> is <see langword="null"/>.
-/// </param>
-/// <param name="_parentSolver">
-/// The parent solver.
-/// The value can be <see langword="null"/> if <paramref name="_solutionFoundEventHandler"/> is <see langword="null"/>.
-/// </param>
-file sealed class DpllSolver(
-	CnfExpression _expression,
-	EventHandler<SatSolver, SolverSolutionFoundEventArgs>? _solutionFoundEventHandler,
-	Dictionary<Candidate, int>? _mappedVariables,
-	SatSolver? _parentSolver
-)
+file sealed class Dpll
 {
 	/// <summary>
 	/// After solving, retrieve the assignment array
@@ -231,7 +218,59 @@ file sealed class DpllSolver(
 	/// </list>
 	/// This array starts at index 1. Please use 1-based indexing to operate variables.
 	/// </remarks>
-	private bool?[] _assignmentStates = new bool?[_expression.VariablesCount + 1];
+#if ENABLE_CONFLICT_DRIVEN_CLAUSE_LEARNING
+	private readonly bool?[] _assignmentStates;
+#else
+	private bool?[] _assignmentStates;
+#endif
+
+	/// <summary>
+	/// Indicates event handler for solution found.
+	/// </summary>
+	private readonly EventHandler<SatSolver, SolverSolutionFoundEventArgs>? _solutionFoundEventHandler;
+
+	/// <summary>
+	/// Indicates the backing expression.
+	/// </summary>
+	private readonly CnfExpression _expression;
+
+	/// <summary>
+	/// Indicates the mapped variables.
+	/// </summary>
+	private readonly Dictionary<Candidate, int>? _mappedVariables;
+
+	/// <summary>
+	/// The parent solver.
+	/// </summary>
+	private readonly SatSolver? _parentSolver;
+
+#if ENABLE_CONFLICT_DRIVEN_CLAUSE_LEARNING
+	/// <summary>
+	/// Decision level per variable (0..).
+	/// </summary>
+	private readonly int[] _variableLevel;
+
+	/// <summary>
+	/// Signed literals in assignment order
+	/// (<c>+v</c> means v = <see langword="true"/>, <c>-v</c> means v = <see langword="false"/>).
+	/// </summary>
+	private readonly List<int> _trail;
+
+	/// <summary>
+	/// Clause that implied this variable (<see langword="null"/> for decision variables).
+	/// </summary>
+	private readonly ReadOnlyMemory<int>?[] _antecedent;
+
+	/// <summary>
+	/// Stack: variable chosen at each decision level (for bookkeeping).
+	/// </summary>
+	private readonly List<int> _decisionLevels;
+
+	/// <summary>
+	/// Indicates the current decision level.
+	/// </summary>
+	private int _decisionLevel;
+#endif
 
 #if ENABLE_NOGOOD_LEARNING
 	/// <summary>
@@ -249,11 +288,60 @@ file sealed class DpllSolver(
 
 
 	/// <summary>
+	/// Initializes a <see cref="Dpll"/> instance via the specified instances.
+	/// </summary>
+	/// <param name="expression"><inheritdoc cref="_expression" path="/summary"/></param>
+	/// <param name="solutionFoundEventHandler"><inheritdoc cref="_solutionFoundEventHandler" path="/summary"/></param>
+	/// <param name="mappedVariables">
+	/// <para><inheritdoc cref="_mappedVariables" path="/summary"/></para>
+	/// <para>
+	/// The value can be <see langword="null"/> if <paramref name="solutionFoundEventHandler"/> is <see langword="null"/>.
+	/// </para>
+	/// </param>
+	/// <param name="parentSolver">
+	/// <para><inheritdoc cref="_parentSolver" path="/summary"/></para>
+	/// <para>
+	/// The value can be <see langword="null"/> if <paramref name="solutionFoundEventHandler"/> is <see langword="null"/>.
+	/// </para>
+	/// </param>
+	public Dpll(
+		CnfExpression expression,
+		EventHandler<SatSolver, SolverSolutionFoundEventArgs>? solutionFoundEventHandler,
+		Dictionary<Candidate, int>? mappedVariables,
+		SatSolver? parentSolver
+	)
+	{
+		_expression = expression;
+		_assignmentStates = new bool?[_expression.VariablesCount + 1];
+		_solutionFoundEventHandler = solutionFoundEventHandler;
+		_mappedVariables = mappedVariables;
+		_parentSolver = parentSolver;
+
+#if ENABLE_CONFLICT_DRIVEN_CLAUSE_LEARNING
+		_trail = [];
+		_decisionLevels = [];
+		_variableLevel = new int[_expression.VariablesCount + 1];
+		_antecedent = new ReadOnlyMemory<int>?[_expression.VariablesCount + 1];
+#endif
+	}
+
+
+	/// <summary>
 	/// Try to find a satisfying assignment.
 	/// </summary>
 	/// <param name="cancellationToken">The cancellation token.</param>
 	public List<bool?[]> Solve(CancellationToken cancellationToken = default)
 	{
+#if ENABLE_CONFLICT_DRIVEN_CLAUSE_LEARNING
+		// Init CDCL data.
+		_assignmentStates.AsSpan().Clear();
+		_variableLevel.AsSpan().Clear();
+		_antecedent.AsSpan().Clear();
+		_trail.Clear();
+		_decisionLevels.Clear();
+		_decisionLevel = 0;
+#endif
+
 #if ENABLE_NOGOOD_LEARNING
 		_decisionStack = [];
 		_decisionSnapshots = [];
@@ -264,7 +352,7 @@ file sealed class DpllSolver(
 	}
 
 
-#if ENABLE_NOGOOD_LEARNING
+#if ENABLE_NOGOOD_LEARNING || ENABLE_CONFLICT_DRIVEN_CLAUSE_LEARNING
 	/// <summary>
 	/// Performs DPLL recursive method. DPLL recursive routine:
 	/// <list type="number">
@@ -306,6 +394,95 @@ file sealed class DpllSolver(
 		Debug.Assert(_decisionSnapshots is not null);
 #endif
 
+#if ENABLE_CONFLICT_DRIVEN_CLAUSE_LEARNING
+		// It seems that two variables are not null anyway.
+		//Debug.Assert(_varLevel is not null && _antecedent is not null);
+#endif
+
+#if ENABLE_CONFLICT_DRIVEN_CLAUSE_LEARNING
+		// 1) propagate and handle conflicts (CDCL loop).
+		// If propagation finds a conflict, do conflict analysis + learning + backjump and continue.
+		while (true)
+		{
+			if (UnitPropagation() is not { } conflictClause)
+			{
+				// No conflict, continue to branching.
+				break;
+			}
+
+			// Conflict detected.
+			if (_decisionLevel == 0)
+			{
+				// Unsatisfiable at root.
+				return false;
+			}
+
+			// Perform First-UIP conflict analysis -> <c>learnedClause</c>.
+			if (ConflictAnalyze(conflictClause.ToArray()) is not { Length: not 0 } learned)
+			{
+				// Something degenerate (tautology or empty) -> treat as UNSAT.
+				return false;
+			}
+
+			// Add learned clause to the expression.
+			_expression.AddClause(learned.AsMemory());
+
+			// Compute backjump level.
+			var backjumpLevel = 0;
+			var litAtCurrLevel = 0;
+			foreach (var literal in learned)
+			{
+				var v = Math.Abs(literal);
+				var level = _variableLevel[v];
+				if (level == _decisionLevel)
+				{
+					// The UIP literal (there will be exactly one).
+					litAtCurrLevel = literal;
+				}
+				else
+				{
+					backjumpLevel = Math.Max(backjumpLevel, level);
+				}
+			}
+
+			// Backjump: undo assignments whose level > <c>backjumpLevel</c>.
+			BacktrackToLevel(backjumpLevel);
+
+			// After backjump, the learned clause is unit (the UIP literal) and must be propagated:
+			// Find the literal in learned that is unassigned now (the UIP).
+			// Assign it implied by learned clause.
+			// Note: antecedent set to learned clause; level = backjumpLevel.
+			var unitLiteral = 0;
+			var unassignedCount = 0;
+			foreach (var literal in learned)
+			{
+				var v = Math.Abs(literal);
+				if (_assignmentStates[v] is null)
+				{
+					unitLiteral = literal;
+					unassignedCount++;
+				}
+			}
+
+			// Defensive: normally unassignedCount == 1.
+			if (unassignedCount == 1)
+			{
+				var v = Math.Abs(unitLiteral);
+				var value = unitLiteral > 0;
+				_assignmentStates[v] = value;
+				_variableLevel[v] = backjumpLevel;
+				_antecedent[v] = learned.AsMemory();
+				_trail.Add(unitLiteral);
+			}
+			//else
+			//{
+			//	// Fallback: just continue; next iteration will re-run propagation.
+			//	continue;
+			//}
+
+			// Continue propagation loop (<c>UnitPropagation</c> will be called again).
+		}
+#else
 		if (!UnitPropagation())
 		{
 #if ENABLE_NOGOOD_LEARNING
@@ -348,7 +525,9 @@ file sealed class DpllSolver(
 			return false;
 #endif
 		}
+#endif
 
+		// 2) Check if all vars assigned -> solution.
 		// Find a variable index that has not been assigned yet (0), or -1 if all variables are assigned.
 		var variable = -1;
 		for (var i = 1; i <= _expression.VariablesCount; i++)
@@ -376,14 +555,22 @@ file sealed class DpllSolver(
 			return false;
 		}
 
+		// 3) Decision: pick unassigned variable -> increase decision level and try true / false.
 		// Save state for backtracking.
 		var snapshotBeforeDecision = _assignmentStates[..];
 
-#if ENABLE_NOGOOD_LEARNING
+#if ENABLE_CONFLICT_DRIVEN_CLAUSE_LEARNING
+		_decisionLevel++;
+		_decisionLevels.Add(variable);
+		_variableLevel[variable] = _decisionLevel;
+		_antecedent[variable] = null; // Decision var has no antecedent.
+		_trail.Add(variable); // +variable means true.
+#elif ENABLE_NOGOOD_LEARNING
 		_decisionSnapshots.Add(snapshotBeforeDecision);
 		_decisionStack.Add((variable, true)); // Assume true on first try.
 #endif
 
+		// 4) Recurse.
 		// Try assigning 'variable' = true.
 		_assignmentStates[variable] = true;
 		if (Backtracking(solutions, cancellationToken))
@@ -397,12 +584,26 @@ file sealed class DpllSolver(
 			return false;
 		}
 
+		// Try opposite branch.
+#if ENABLE_CONFLICT_DRIVEN_CLAUSE_LEARNING
+		// Undo assignments that happened after decision (pop assignments until variable is unassigned),
+		// but keep current decision as switching.
+		// We'll restore by popping trail to the point just before the decision variable's assignment.
+
+		// Undo any implications at current decision level except decision itself.
+		// Switch recorded decision variable to false.
+		BacktrackToLevel(_decisionLevel - 1);
+		_assignmentStates[variable] = false;
+		_variableLevel[variable] = _decisionLevel;
+		_antecedent[variable] = null;
+		_trail.Add(-variable); // assign false on trail
+#elif ENABLE_NOGOOD_LEARNING
 		// Backtrack and try 'variable' = false.
-#if ENABLE_NOGOOD_LEARNING
 		_assignmentStates = snapshotBeforeDecision;
 		_decisionStack[^1] = (variable, false); // Switch the recorded decision value to false.
 		_assignmentStates[variable] = false;
 #else
+		// Backtrack and try 'variable' = false.
 		_assignmentStates[variable] = false;
 #endif
 		if (Backtracking(solutions, cancellationToken))
@@ -416,8 +617,13 @@ file sealed class DpllSolver(
 			return false;
 		}
 
+#if ENABLE_CONFLICT_DRIVEN_CLAUSE_LEARNING
+		// Both branches failed -> backtrack decision.
+		BacktrackToLevel(_decisionLevel - 1);
+		_decisionLevels.RemoveAt(^1);
+		_decisionLevel--;
+#elif ENABLE_NOGOOD_LEARNING
 		// Both assignments led to conflict => unsatisfiable under current partial assignment.
-#if ENABLE_NOGOOD_LEARNING
 		_assignmentStates = _decisionSnapshots[^1][..];
 		_decisionStack.RemoveAt(^1);
 		_decisionSnapshots.RemoveAt(^1);
@@ -427,6 +633,217 @@ file sealed class DpllSolver(
 		return false;
 	}
 
+#if ENABLE_CONFLICT_DRIVEN_CLAUSE_LEARNING
+	/// <summary>
+	/// Unit propagation (CDCL-aware).
+	/// </summary>
+	/// <returns>
+	/// Returns <see langword="null"/> if no conflict;
+	/// otherwise returns the conflicting clause (the clause causing conflict).
+	/// </returns>
+	private ReadOnlyMemory<int>? UnitPropagation()
+	{
+		bool changed;
+		do
+		{
+			changed = false;
+			foreach (var clause in _expression.Clauses)
+			{
+				var span = clause.Span;
+				var unassignedCount = 0;
+				var lastUnassignedLiteral = 0;
+				var clauseSatisfied = false;
+				for (var i = 0; i < span.Length; i++)
+				{
+					var literal = span[i];
+					var v = Math.Abs(literal);
+					var sign = literal > 0;
+					if (_assignmentStates[v] == sign)
+					{
+						clauseSatisfied = true;
+						break;
+					}
+					if (_assignmentStates[v] is null)
+					{
+						unassignedCount++;
+						lastUnassignedLiteral = literal;
+					}
+				}
+				if (clauseSatisfied)
+				{
+					continue;
+				}
+
+				if (unassignedCount == 0)
+				{
+					// Conflict: all literals false under current assignment.
+					return clause;
+				}
+
+				if (unassignedCount == 1)
+				{
+					// Unit clause: assign the <c>lastUnassignedLiteral</c>.
+					var v = Math.Abs(lastUnassignedLiteral);
+					var value = lastUnassignedLiteral > 0;
+					_assignmentStates[v] = value;
+					_variableLevel[v] = _decisionLevel;
+					_antecedent[v] = clause;
+					_trail.Add(lastUnassignedLiteral);
+					changed = true;
+				}
+			}
+		} while (changed);
+		return null;
+	}
+
+	/// <summary>
+	/// Conflict analysis -> First-UIP.
+	/// </summary>
+	/// <param name="conflictClause">Conflicting clause (array of literals).</param>
+	/// <returns>Learned clause (<see cref="int"/>[]), or <see langword="null"/> / <c>[]</c> for degenerate.</returns>
+	private int[]? ConflictAnalyze(int[] conflictClause)
+	{
+		// Start from conflict clause.
+		var clause = conflictClause.ToList(); // Mutable worklist.
+		while (true)
+		{
+			// Count literals at current decision level.
+			if (countAtCurrentLevel() <= 1)
+			{
+				// Reached First-UIP condition.
+				break;
+			}
+
+			// Find the latest assigned literal in the trail that appears in clause and is at current level.
+			var pivotLiteral = 0;
+			for (var i = _trail.Count - 1; i >= 0; i--)
+			{
+				var literal = _trail[i];
+				var v = Math.Abs(literal);
+				if (_variableLevel[v] == _decisionLevel && clause.Contains(literal))
+				{
+					pivotLiteral = literal;
+					break;
+				}
+			}
+			if (pivotLiteral == 0)
+			{
+				// Cannot find pivot (should not happen) -> abort.
+				break;
+			}
+
+			var pivotVariable = Math.Abs(pivotLiteral);
+			if (_antecedent[pivotVariable] is not { } ante)
+			{
+				// Pivot is a decision variable; resolving with null antecedent is equivalent to removing the pivot literal.
+				clause.RemoveAll(x => Math.Abs(x) == pivotVariable);
+				continue;
+			}
+
+			// Resolve clause with antecedent on <c>pivotVariable</c>.
+			clause = [.. ResolveOnVariable(clause, ante.ToArray(), pivotVariable)];
+
+			// If resolution produced tautology or empty -> abort (rare).
+			if (clause.Count == 0)
+			{
+				return null;
+			}
+		}
+
+		// Clause now is the learned clause (First-UIP) simplify: remove duplicates and normalize.
+		var result = new HashSet<int>(clause);
+
+		// Remove pairs producing tautology.
+		foreach (var literal in clause)
+		{
+			if (result.Contains(-literal))
+			{
+				// Tautology -> ignore learned clause.
+				return null;
+			}
+		}
+		return [.. result];
+
+
+		int countAtCurrentLevel()
+		{
+			var count = 0;
+			foreach (var literal in clause)
+			{
+				if (_variableLevel[Math.Abs(literal)] == _decisionLevel)
+				{
+					count++;
+				}
+			}
+			return count;
+		}
+	}
+
+	/// <summary>
+	/// Resolve two clauses on variable <paramref name="variableToResolve"/>.
+	/// </summary>
+	/// <param name="c1">Clause.</param>
+	/// <param name="c2">Antecedent.</param>
+	/// <param name="variableToResolve">The variable to be resolved.</param>
+	/// <returns>The result.</returns>
+	private static int[] ResolveOnVariable(List<int> c1, int[] c2, int variableToResolve)
+	{
+		var result = new HashSet<int>();
+		foreach (var literal in c1)
+		{
+			if (Math.Abs(literal) != variableToResolve)
+			{
+				result.Add(literal);
+			}
+		}
+		foreach (var literal in c2)
+		{
+			if (Math.Abs(literal) != variableToResolve)
+			{
+				result.Add(literal);
+			}
+		}
+
+		// Check tautology.
+		foreach (var literal in result)
+		{
+			if (result.Contains(-literal))
+			{
+				return [];
+			}
+		}
+		return [.. result];
+	}
+
+	/// <summary>
+	/// Backtrack (undo assignments) down to level <paramref name="level"/> (inclusive).
+	/// That is, after <c>BacktrackToLevel(L)</c> all variables with level &gt; <c>L</c> become unassigned.
+	/// </summary>
+	/// <param name="level">The level.</param>
+	private void BacktrackToLevel(int level)
+	{
+		for (var i = _trail.Count - 1; i >= 0; i--)
+		{
+			var literal = _trail[i];
+			var v = Math.Abs(literal);
+			if (_variableLevel[v] > level)
+			{
+				// Undo.
+				_assignmentStates[v] = null;
+				_variableLevel[v] = 0;
+				_antecedent[v] = null;
+				_trail.RemoveAt(i);
+			}
+		}
+
+		// Also shrink decision level bookkeeping if necessary.
+		while (_decisionLevel > level)
+		{
+			_decisionLevels.RemoveAt(^1);
+			_decisionLevel--;
+		}
+	}
+#else
 	/// <summary>
 	/// Unit propagation:
 	/// Repeatedly scan for clauses where only one literal is unassigned and all others <see langword="false"/>,
@@ -483,6 +900,7 @@ file sealed class DpllSolver(
 		} while (isChanged);
 		return true;
 	}
+#endif
 
 
 	/// <summary>

@@ -9,23 +9,35 @@ namespace Sudoku.Solving.BooleanSatisfiability;
 public sealed record CnfExpression(int VariablesCount) : IEnumerable<ReadOnlyMemory<int>>
 {
 	/// <summary>
+	/// Indicates the number of clauses.
+	/// </summary>
+	public int ClauseCount => Clauses.Count;
+
+	/// <summary>
 	/// Indicates the list of clauses.
 	/// </summary>
-	private readonly List<ReadOnlyMemory<int>> _clauses = [];
+	internal List<ReadOnlyMemory<int>> Clauses { get; } = [];
 
 
 	/// <summary>
 	/// Add a new clause (disjunction of literals) to the expression.
 	/// </summary>
 	/// <param name="literals">The literals.</param>
-	public void AddClause(ReadOnlyMemory<int> literals) => _clauses.Add(literals);
+	public void AddClause(ReadOnlyMemory<int> literals) => Clauses.Add(literals);
+
+	/// <summary>
+	/// Get clause at the specified index.
+	/// </summary>
+	/// <param name="index">The desired index.</param>
+	/// <returns>The clause.</returns>
+	public ReadOnlyMemory<int> GetClause(int index) => Clauses[index];
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
-	public AnonymousSpanEnumerator<ReadOnlyMemory<int>> GetEnumerator() => new(_clauses.AsSpan());
+	public AnonymousSpanEnumerator<ReadOnlyMemory<int>> GetEnumerator() => new(Clauses.AsSpan());
 
 	/// <inheritdoc/>
-	IEnumerator IEnumerable.GetEnumerator() => _clauses.GetEnumerator();
+	IEnumerator IEnumerable.GetEnumerator() => Clauses.GetEnumerator();
 
 	/// <inheritdoc/>
-	IEnumerator<ReadOnlyMemory<int>> IEnumerable<ReadOnlyMemory<int>>.GetEnumerator() => _clauses.GetEnumerator();
+	IEnumerator<ReadOnlyMemory<int>> IEnumerable<ReadOnlyMemory<int>>.GetEnumerator() => Clauses.GetEnumerator();
 }

@@ -14245,7 +14245,12 @@
         <member name="P:Sudoku.Solving.BooleanSatisfiability.CnfExpression.VariablesCount">
             <summary>Indicates total number of variables.</summary>
         </member>
-        <member name="F:Sudoku.Solving.BooleanSatisfiability.CnfExpression._clauses">
+        <member name="P:Sudoku.Solving.BooleanSatisfiability.CnfExpression.ClauseCount">
+            <summary>
+            Indicates the number of clauses.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Solving.BooleanSatisfiability.CnfExpression.Clauses">
             <summary>
             Indicates the list of clauses.
             </summary>
@@ -14255,6 +14260,13 @@
             Add a new clause (disjunction of literals) to the expression.
             </summary>
             <param name="literals">The literals.</param>
+        </member>
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.CnfExpression.GetClause(System.Int32)">
+            <summary>
+            Get clause at the specified index.
+            </summary>
+            <param name="index">The desired index.</param>
+            <returns>The clause.</returns>
         </member>
         <member name="M:Sudoku.Solving.BooleanSatisfiability.CnfExpression.GetEnumerator">
             <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
@@ -14303,39 +14315,14 @@
             Indicates mapped variables that maps indices to each variable, in order to construct solution to the grid.
             </param>
         </member>
-        <member name="T:Sudoku.Solving.BooleanSatisfiability.DpllSolver">
+        <member name="T:Sudoku.Solving.BooleanSatisfiability.Dpll">
             <summary>
-            Implements a simple SAT solver using the DPLL algorithm with unit propagation.
+            Implements a simple SAT solver using the DPLL algorithm (<i>Davis–Putnam–Logemann–Loveland algorithm</i>)
+            with unit propagation.
             For more information about DPLL algorithm, please visit <see href="https://en.wikipedia.org/wiki/DPLL_algorithm">this link</see>.
             </summary>
-            <param name="_expression">Indicates the backing expression.</param>
-            <param name="_solutionFoundEventHandler">Indicates event handler for solution found.</param>
-            <param name="_mappedVariables">
-            Indicates the mapped variables.
-            The value can be <see langword="null"/> if <paramref name="_solutionFoundEventHandler"/> is <see langword="null"/>.
-            </param>
-            <param name="_parentSolver">
-            The parent solver.
-            The value can be <see langword="null"/> if <paramref name="_solutionFoundEventHandler"/> is <see langword="null"/>.
-            </param>
         </member>
-        <member name="M:Sudoku.Solving.BooleanSatisfiability.DpllSolver.#ctor(Sudoku.Solving.BooleanSatisfiability.CnfExpression,System.EventHandler{Sudoku.Solving.BooleanSatisfiability.SatSolver,Sudoku.Solving.SolverSolutionFoundEventArgs},System.Collections.Generic.Dictionary{System.Int32,System.Int32},Sudoku.Solving.BooleanSatisfiability.SatSolver)">
-            <summary>
-            Implements a simple SAT solver using the DPLL algorithm with unit propagation.
-            For more information about DPLL algorithm, please visit <see href="https://en.wikipedia.org/wiki/DPLL_algorithm">this link</see>.
-            </summary>
-            <param name="_expression">Indicates the backing expression.</param>
-            <param name="_solutionFoundEventHandler">Indicates event handler for solution found.</param>
-            <param name="_mappedVariables">
-            Indicates the mapped variables.
-            The value can be <see langword="null"/> if <paramref name="_solutionFoundEventHandler"/> is <see langword="null"/>.
-            </param>
-            <param name="_parentSolver">
-            The parent solver.
-            The value can be <see langword="null"/> if <paramref name="_solutionFoundEventHandler"/> is <see langword="null"/>.
-            </param>
-        </member>
-        <member name="F:Sudoku.Solving.BooleanSatisfiability.DpllSolver._assignmentStates">
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._assignmentStates">
             <summary>
             After solving, retrieve the assignment array
             (index: <c>variable</c> is either <see langword="true"/> or <see langword="false"/>).
@@ -14363,25 +14350,90 @@
             This array starts at index 1. Please use 1-based indexing to operate variables.
             </remarks>
         </member>
-        <member name="F:Sudoku.Solving.BooleanSatisfiability.DpllSolver._decisionStack">
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._solutionFoundEventHandler">
+            <summary>
+            Indicates event handler for solution found.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._expression">
+            <summary>
+            Indicates the backing expression.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._mappedVariables">
+            <summary>
+            Indicates the mapped variables.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._parentSolver">
+            <summary>
+            The parent solver.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._variableLevel">
+            <summary>
+            Decision level per variable (0..).
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._trail">
+            <summary>
+            Signed literals in assignment order
+            (<c>+v</c> means v = <see langword="true"/>, <c>-v</c> means v = <see langword="false"/>).
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._antecedent">
+            <summary>
+            Clause that implied this variable (<see langword="null"/> for decision variables).
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._decisionLevels">
+            <summary>
+            Stack: variable chosen at each decision level (for bookkeeping).
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._decisionLevel">
+            <summary>
+            Indicates the current decision level.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._decisionStack">
             <summary>
             Decision stack + snapshots for naive learning/backjump.
             Each decision level records which variable was chosen as decision and its intended value.
             </summary>
         </member>
-        <member name="F:Sudoku.Solving.BooleanSatisfiability.DpllSolver._decisionSnapshots">
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._decisionSnapshots">
             <summary>
             For each decision level we keep a snapshot of _assignment taken <b>before</b> the decision,
             so we can restore (backjump) quickly to that point.
             </summary>
         </member>
-        <member name="M:Sudoku.Solving.BooleanSatisfiability.DpllSolver.Solve(System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.Dpll.#ctor(Sudoku.Solving.BooleanSatisfiability.CnfExpression,System.EventHandler{Sudoku.Solving.BooleanSatisfiability.SatSolver,Sudoku.Solving.SolverSolutionFoundEventArgs},System.Collections.Generic.Dictionary{System.Int32,System.Int32},Sudoku.Solving.BooleanSatisfiability.SatSolver)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Solving.BooleanSatisfiability.Dpll"/> instance via the specified instances.
+            </summary>
+            <param name="expression"><inheritdoc cref="F:Sudoku.Solving.BooleanSatisfiability.Dpll._expression" path="/summary"/></param>
+            <param name="solutionFoundEventHandler"><inheritdoc cref="F:Sudoku.Solving.BooleanSatisfiability.Dpll._solutionFoundEventHandler" path="/summary"/></param>
+            <param name="mappedVariables">
+            <para><inheritdoc cref="F:Sudoku.Solving.BooleanSatisfiability.Dpll._mappedVariables" path="/summary"/></para>
+            <para>
+            The value can be <see langword="null"/> if <paramref name="solutionFoundEventHandler"/> is <see langword="null"/>.
+            </para>
+            </param>
+            <param name="parentSolver">
+            <para><inheritdoc cref="F:Sudoku.Solving.BooleanSatisfiability.Dpll._parentSolver" path="/summary"/></para>
+            <para>
+            The value can be <see langword="null"/> if <paramref name="solutionFoundEventHandler"/> is <see langword="null"/>.
+            </para>
+            </param>
+        </member>
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.Dpll.Solve(System.Threading.CancellationToken)">
             <summary>
             Try to find a satisfying assignment.
             </summary>
             <param name="cancellationToken">The cancellation token.</param>
         </member>
-        <member name="M:Sudoku.Solving.BooleanSatisfiability.DpllSolver.Backtracking(System.Collections.Generic.List{System.Nullable{System.Boolean}[]},System.Threading.CancellationToken)">
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.Dpll.Backtracking(System.Collections.Generic.List{System.Nullable{System.Boolean}[]},System.Threading.CancellationToken)">
             <summary>
             Performs DPLL recursive method. DPLL recursive routine:
             <list type="number">
@@ -14404,15 +14456,39 @@
             <param name="solutions">The solutions.</param>
             <param name="cancellationToken">The cancellation token.</param>
         </member>
-        <member name="M:Sudoku.Solving.BooleanSatisfiability.DpllSolver.UnitPropagation">
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.Dpll.UnitPropagation">
             <summary>
-            Unit propagation:
-            Repeatedly scan for clauses where only one literal is unassigned and all others <see langword="false"/>,
-            then assign that literal to <see langword="true"/> (to satisfy the clause).
-            Returns <see langword="false"/> if a clause becomes unsatisfiable (all literals <see langword="false"/>).
+            Unit propagation (CDCL-aware).
             </summary>
+            <returns>
+            Returns <see langword="null"/> if no conflict;
+            otherwise returns the conflicting clause (the clause causing conflict).
+            </returns>
         </member>
-        <member name="M:Sudoku.Solving.BooleanSatisfiability.DpllSolver.BuildSolution(System.Nullable{System.Boolean}[],System.Collections.Generic.Dictionary{System.Int32,System.Int32})">
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.Dpll.ConflictAnalyze(System.Int32[])">
+            <summary>
+            Conflict analysis -> First-UIP.
+            </summary>
+            <param name="conflictClause">Conflicting clause (array of literals).</param>
+            <returns>Learned clause (<see cref="T:System.Int32"/>[]), or <see langword="null"/> / <c>[]</c> for degenerate.</returns>
+        </member>
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.Dpll.ResolveOnVariable(System.Collections.Generic.List{System.Int32},System.Int32[],System.Int32)">
+            <summary>
+            Resolve two clauses on variable <paramref name="variableToResolve"/>.
+            </summary>
+            <param name="c1">Clause.</param>
+            <param name="c2">Antecedent.</param>
+            <param name="variableToResolve">The variable to be resolved.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.Dpll.BacktrackToLevel(System.Int32)">
+            <summary>
+            Backtrack (undo assignments) down to level <paramref name="level"/> (inclusive).
+            That is, after <c>BacktrackToLevel(L)</c> all variables with level &gt; <c>L</c> become unassigned.
+            </summary>
+            <param name="level">The level.</param>
+        </member>
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.Dpll.BuildSolution(System.Nullable{System.Boolean}[],System.Collections.Generic.Dictionary{System.Int32,System.Int32})">
             <summary>
             Build solution via the specified states and mapped variables.
             </summary>
