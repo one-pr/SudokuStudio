@@ -2,10 +2,31 @@ namespace Sudoku.Solving.BooleanSatisfiability;
 
 /// <summary>
 /// Represents a solver that solves a puzzle using SAT algorithm.
-/// <see href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">SAT problem</see> is a way
-/// to reduce complex puzzles to boolean expressions to be solved.
+/// SAT problem is a problem that can be solved via CNFs (corresponding to type <see cref="CnfExpression"/>).
+/// In order to solve a sudoku puzzle, we should construct some boolean formulae,
+/// and find variables in order to make such formulae satisfied.
 /// </summary>
-/// <seealso href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">Wikipedia - SAT problem</seealso>
+/// <remarks>
+/// The implementation is complex. There're some pages that are really helpful:
+/// <list type="bullet">
+/// <item>
+/// <see href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">Wikipedia - SAT Problem</see>
+/// </item>
+/// <item>
+/// <see href="https://en.wikipedia.org/wiki/Conjunctive_normal_form">Wikipedia - CNF (Conjunctive Normal Form)</see>
+/// </item>
+/// <item>
+/// <see href="https://en.wikipedia.org/wiki/DPLL_algorithm">Wikipedia - DPLL Algorithm</see>
+/// </item>
+/// <item>
+/// <see href="https://www.princeton.edu/~chaff/publication/iccad2001_final.pdf">First-UIP Cut (Paper)</see>
+/// </item>
+/// <item>
+/// <see href="https://en.wikipedia.org/wiki/Conflict-driven_clause_learning">Wikipedia - CDCL (Conflict-Driven Clause Learning)</see>
+/// </item>
+/// </list>
+/// </remarks>
+/// <seealso cref="CnfExpression"/>
 public sealed class SatSolver : ISolver, ISolutionEnumerableSolver<SatSolver>
 {
 	/// <summary>
@@ -186,10 +207,6 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver<SatSolver>
 /// <summary>
 /// Implements DPLL algorithm (<i>Davis–Putnam–Logemann–Loveland algorithm</i>).
 /// </summary>
-/// <remarks>
-/// For more information about DPLL algorithm, please visit <see href="https://en.wikipedia.org/wiki/DPLL_algorithm">this link</see>.
-/// </remarks>
-/// <seealso href="https://en.wikipedia.org/wiki/DPLL_algorithm">Wikipedia - DPLL Algorithm</seealso>
 file sealed class Dpll
 {
 	/// <summary>
