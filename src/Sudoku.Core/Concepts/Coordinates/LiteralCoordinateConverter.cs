@@ -39,7 +39,7 @@ public sealed record LiteralCoordinateConverter(
 			var snippets = new List<string>();
 			foreach (var candidate in candidates)
 			{
-				var cellString = CellConverter(in (candidate / 9).AsCellMap());
+				var cellString = CellConverter((candidate / 9).AsCellMap());
 				var digitString = DigitConverter((Mask)(1 << candidate % 9));
 				snippets.Add(string.Format(SR.Get("CandidateLabel", TargetCurrentCulture), [cellString, digitString]));
 			}
@@ -104,8 +104,8 @@ public sealed record LiteralCoordinateConverter(
 			return conclusions switch
 			{
 				[] => string.Empty,
-				[(Assignment, var c, var d)] => $"{CellConverter(in c.AsCellMap())}{AssignmentToken}{DigitConverter((Mask)(1 << d))}",
-				[(Elimination, var c, var d)] => $"{CellConverter(in c.AsCellMap())}{EliminationToken}{DigitConverter((Mask)(1 << d))}",
+				[(Assignment, var c, var d)] => $"{CellConverter(c.AsCellMap())}{AssignmentToken}{DigitConverter((Mask)(1 << d))}",
+				[(Elimination, var c, var d)] => $"{CellConverter(c.AsCellMap())}{EliminationToken}{DigitConverter((Mask)(1 << d))}",
 				_ => toString(conclusions)
 			};
 
@@ -207,8 +207,8 @@ public sealed record LiteralCoordinateConverter(
 			var snippets = new List<string>();
 			foreach (var conjugatePair in conjugatePairs)
 			{
-				var fromCellString = CellConverter(in conjugatePair.From.AsCellMap());
-				var toCellString = CellConverter(in conjugatePair.To.AsCellMap());
+				var fromCellString = CellConverter(conjugatePair.From.AsCellMap());
+				var toCellString = CellConverter(conjugatePair.To.AsCellMap());
 				var digitString = DigitConverter((Mask)(1 << conjugatePair.Digit));
 				snippets.Add(string.Format(SR.Get("ConjugatePairWith", TargetCurrentCulture), [fromCellString, toCellString, digitString]));
 			}

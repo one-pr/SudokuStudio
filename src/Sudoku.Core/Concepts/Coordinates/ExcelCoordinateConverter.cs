@@ -96,7 +96,7 @@ public sealed record ExcelCoordinateConverter(
 			{
 				[] => string.Empty,
 				[var (t, c, d)] when (t == Assignment ? AssignmentToken : EliminationToken) is var token
-					=> $"{CellConverter(in c.AsCellMap())}{token}{DigitConverter((Mask)(1 << d))}",
+					=> $"{CellConverter(c.AsCellMap())}{token}{DigitConverter((Mask)(1 << d))}",
 				_ => toString(conclusions)
 			};
 
@@ -166,8 +166,8 @@ public sealed record ExcelCoordinateConverter(
 			var sb = new StringBuilder(20);
 			foreach (var conjugatePair in conjugatePairs)
 			{
-				var fromCellString = CellConverter(in conjugatePair.From.AsCellMap());
-				var toCellString = CellConverter(in conjugatePair.To.AsCellMap());
+				var fromCellString = CellConverter(conjugatePair.From.AsCellMap());
+				var toCellString = CellConverter(conjugatePair.To.AsCellMap());
 				sb.Append($"{fromCellString} == {toCellString}.{DigitConverter((Mask)(1 << conjugatePair.Digit))}");
 				sb.Append(DefaultSeparator);
 			}
