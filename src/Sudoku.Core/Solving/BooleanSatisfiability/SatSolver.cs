@@ -1,3 +1,5 @@
+#define VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
+
 namespace Sudoku.Solving.BooleanSatisfiability;
 
 /// <summary>
@@ -14,7 +16,7 @@ namespace Sudoku.Solving.BooleanSatisfiability;
 /// </summary>
 /// <remarks>
 /// There're some pages that are really helpful:
-/// <list type="bullet">
+/// <list type="number">
 /// <item>
 /// <see href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">Wikipedia - SAT Problem</see>
 /// </item>
@@ -28,7 +30,14 @@ namespace Sudoku.Solving.BooleanSatisfiability;
 /// <see href="https://www.princeton.edu/~chaff/publication/iccad2001_final.pdf">First-UIP Cut (Paper)</see>
 /// </item>
 /// <item>
-/// <see href="https://en.wikipedia.org/wiki/Conflict-driven_clause_learning">Wikipedia - CDCL (Conflict-Driven Clause Learning)</see>
+/// <see href="https://en.wikipedia.org/wiki/Conflict-driven_clause_learning">
+/// Wikipedia - CDCL (Conflict-Driven Clause Learning)
+/// </see>
+/// </item>
+/// <item>
+/// <see href="https://en.wikipedia.org/wiki/Boolean_satisfiability_algorithm_heuristics#Variable_State_Independent_Decaying_Sum">
+/// Wikipedia - VSIDS (Variable State Independent Decaying Sum)
+/// </see>
 /// </item>
 /// </list>
 /// </remarks>
@@ -215,6 +224,20 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver<SatSolver>
 /// </summary>
 file sealed class Dpll
 {
+#if VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
+	/// <summary>
+	/// Decay factor (typical .95).
+	/// On each conflict we multiply <see cref="_variableIncrement"/> by <c>1 / <see cref="VariableDecay"/></c>.
+	/// </summary>
+	private const double VariableDecay = .95;
+
+	/// <summary>
+	/// Threshold to trigger activity rescale to avoid overflow.
+	/// </summary>
+	private const double ActivityRescaleThreshold = 1e100;
+#endif
+
+
 	/// <summary>
 	/// After solving, retrieve the assignment array
 	/// (index: <c>variable</c> is either <see langword="true"/> or <see langword="false"/>).
@@ -309,6 +332,18 @@ file sealed class Dpll
 	/// </summary>
 	private List<int> _watchLiteralB = [];
 
+#if VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
+	/// <summary>
+	/// VSIDS activity score per variable (1-based).
+	/// </summary>
+	private readonly double[] _activity;
+
+	/// <summary>
+	/// Current <c>var increment</c> used when bumping variables.
+	/// </summary>
+	private double _variableIncrement = 1.0;
+#endif
+
 
 	/// <summary>
 	/// Initializes a <see cref="Dpll"/> instance via the specified instances.
@@ -364,6 +399,20 @@ file sealed class Dpll
 
 		// <c>_propagationIndex</c> will start processing from 0 when <c>UnitPropagation</c> runs.
 		_propagationIndex = 0;
+
+#if VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
+		// VSIDS initialization.
+		_activity = new double[_expression.VariablesCount + 1];
+
+		// Simple static heuristic: count literal occurrences as initial activity.
+		for (var clauseIndex = 0; clauseIndex < _expression.ClauseCount; clauseIndex++)
+		{
+			foreach (var literal in _expression.Clauses[clauseIndex].Span)
+			{
+				_activity[Math.Abs(literal)] += 1.0;
+			}
+		}
+#endif
 	}
 
 
@@ -430,12 +479,23 @@ file sealed class Dpll
 				return false;
 			}
 
+#if VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
+			// VSIDS: bump variables appeared in conflicting clause (heuristic signal).
+			BumpActivityForClause(conflictClause);
+#endif
+
 			// Perform First-UIP conflict analysis -> <c>learnedClause</c>.
 			if (ConflictAnalyze(conflictClause.ToArray()) is not { Length: not 0 } learned)
 			{
 				// Something degenerate (tautology or empty) -> treat as UNSAT.
 				return false;
 			}
+
+#if VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
+			// VSIDS: bump variables in the learned clause, then decay var increment.
+			BumpActivityForClause(learned);
+			DecayActivities();
+#endif
 
 			// Add learned clause to the expression.
 			_expression.AddClause(learned.AsMemory());
@@ -472,7 +532,7 @@ file sealed class Dpll
 				}
 			}
 
-			// Defensive: normally unassignedCount == 1.
+			// Defensive: normally <c>unassignedCount == 1</c>.
 			if (unassignedCount == 1)
 			{
 				var v = Math.Abs(unitLiteral);
@@ -491,8 +551,11 @@ file sealed class Dpll
 			// Continue propagation loop (<c>UnitPropagation</c> will be called again).
 		}
 
-		// 2) Check if all vars assigned -> solution.
+		// 2) Check if all variables assigned -> solution.
 		// Find a variable index that has not been assigned yet (0), or -1 if all variables are assigned.
+#if VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
+		var variable = PickBranchingVariable();
+#else
 		var variable = -1;
 		for (var i = 1; i <= _expression.VariablesCount; i++)
 		{
@@ -502,6 +565,7 @@ file sealed class Dpll
 				break;
 			}
 		}
+#endif
 		if (variable == -1)
 		{
 			// All variables assigned without conflict => SAT.
@@ -905,6 +969,99 @@ file sealed class Dpll
 			}
 		}
 	}
+
+#if VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
+	/// <summary>
+	/// Bump activity for variables appearing in clause (clause: array/enumerable of signed literals).
+	/// </summary>
+	private void BumpActivityForClause(ReadOnlyMemory<int> clause)
+	{
+		foreach (var literal in clause)
+		{
+			var v = Math.Abs(literal);
+			_activity[v] += _variableIncrement;
+
+			// if any activity gets too large, rescale everything.
+			if (_activity[v] > ActivityRescaleThreshold)
+			{
+				RescaleActivities();
+
+				// After rescale, no need to continue rescaling checks here.
+			}
+		}
+	}
+
+	/// <summary>
+	/// Update <see cref="_variableIncrement"/> on conflict (decay / increase the increment).
+	/// </summary>
+	private void DecayActivities()
+		// MiniSAT style: increase variable increment so future bumps have larger effect,
+		// which is effectively a decay of past activity influence.
+		=> _variableIncrement *= 1.0 / VariableDecay;
+
+	/// <summary>
+	/// Rescale activities to avoid overflow: divide all activities and <see cref="_variableIncrement"/> by a large factor.
+	/// </summary>
+	private void RescaleActivities()
+	{
+		// Find max to scale down relative magnitudes.
+		var max = 0.0;
+		for (var i = 1; i < _activity.Length; i++)
+		{
+			if (_activity[i] > max)
+			{
+				max = _activity[i];
+			}
+		}
+		if (max <= 0.0)
+		{
+			return;
+		}
+
+		var scale = 1.0 / max;
+		for (var i = 1; i < _activity.Length; i++)
+		{
+			_activity[i] *= scale;
+		}
+		_variableIncrement *= scale;
+	}
+
+	/// <summary>
+	/// Pick branching variable using VSIDS: highest activity among unassigned variables.
+	/// </summary>
+	private int PickBranchingVariable()
+	{
+		var best = -1;
+		var bestScore = double.NegativeInfinity;
+		for (var i = 1; i <= _expression.VariablesCount; i++)
+		{
+			if (_assignmentStates[i] is null)
+			{
+				var score = _activity[i];
+
+				// Tie-breaker: smaller index preferred naturally by >.
+				if (score > bestScore)
+				{
+					bestScore = score;
+					best = i;
+				}
+			}
+		}
+
+		// Fallback to first unassigned if something odd happened.
+		if (best == -1)
+		{
+			for (var i = 1; i <= _expression.VariablesCount; i++)
+			{
+				if (_assignmentStates[i] is null)
+				{
+					return i;
+				}
+			}
+		}
+		return best;
+	}
+#endif
 
 
 	/// <summary>

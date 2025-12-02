@@ -14300,7 +14300,7 @@
             </summary>
             <remarks>
             There're some pages that are really helpful:
-            <list type="bullet">
+            <list type="number">
             <item>
             <see href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">Wikipedia - SAT Problem</see>
             </item>
@@ -14314,7 +14314,14 @@
             <see href="https://www.princeton.edu/~chaff/publication/iccad2001_final.pdf">First-UIP Cut (Paper)</see>
             </item>
             <item>
-            <see href="https://en.wikipedia.org/wiki/Conflict-driven_clause_learning">Wikipedia - CDCL (Conflict-Driven Clause Learning)</see>
+            <see href="https://en.wikipedia.org/wiki/Conflict-driven_clause_learning">
+            Wikipedia - CDCL (Conflict-Driven Clause Learning)
+            </see>
+            </item>
+            <item>
+            <see href="https://en.wikipedia.org/wiki/Boolean_satisfiability_algorithm_heuristics#Variable_State_Independent_Decaying_Sum">
+            Wikipedia - VSIDS (Variable State Independent Decaying Sum)
+            </see>
             </item>
             </list>
             </remarks>
@@ -14354,6 +14361,17 @@
         <member name="T:Sudoku.Solving.BooleanSatisfiability.Dpll">
             <summary>
             Implements DPLL algorithm (<i>Davis–Putnam–Logemann–Loveland algorithm</i>).
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll.VariableDecay">
+            <summary>
+            Decay factor (typical .95).
+            On each conflict we multiply <see cref="F:Sudoku.Solving.BooleanSatisfiability.Dpll._variableIncrement"/> by <c>1 / <see cref="F:Sudoku.Solving.BooleanSatisfiability.Dpll.VariableDecay"/></c>.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll.ActivityRescaleThreshold">
+            <summary>
+            Threshold to trigger activity rescale to avoid overflow.
             </summary>
         </member>
         <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._assignmentStates">
@@ -14448,6 +14466,16 @@
         <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._watchLiteralB">
             <summary>
             Watched literal B per clause (signed literal); 0 if absent (unary)
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._activity">
+            <summary>
+            VSIDS activity score per variable (1-based).
+            </summary>
+        </member>
+        <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._variableIncrement">
+            <summary>
+            Current <c>var increment</c> used when bumping variables.
             </summary>
         </member>
         <member name="M:Sudoku.Solving.BooleanSatisfiability.Dpll.#ctor(Sudoku.Solving.BooleanSatisfiability.CnfExpression,System.EventHandler{Sudoku.Solving.BooleanSatisfiability.SatSolver,Sudoku.Solving.SolverSolutionFoundEventArgs},System.Collections.Generic.Dictionary{System.Int32,System.Int32},Sudoku.Solving.BooleanSatisfiability.SatSolver)">
@@ -14554,6 +14582,26 @@
             Register watches for a clause <paramref name="clauseIndex"/>. Called during initial build and when learning clauses.
             </summary>
             <param name="clauseIndex">The index of clause.</param>
+        </member>
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.Dpll.BumpActivityForClause(System.ReadOnlyMemory{System.Int32})">
+            <summary>
+            Bump activity for variables appearing in clause (clause: array/enumerable of signed literals).
+            </summary>
+        </member>
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.Dpll.DecayActivities">
+            <summary>
+            Update <see cref="F:Sudoku.Solving.BooleanSatisfiability.Dpll._variableIncrement"/> on conflict (decay / increase the increment).
+            </summary>
+        </member>
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.Dpll.RescaleActivities">
+            <summary>
+            Rescale activities to avoid overflow: divide all activities and <see cref="F:Sudoku.Solving.BooleanSatisfiability.Dpll._variableIncrement"/> by a large factor.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Solving.BooleanSatisfiability.Dpll.PickBranchingVariable">
+            <summary>
+            Pick branching variable using VSIDS: highest activity among unassigned variables.
+            </summary>
         </member>
         <member name="M:Sudoku.Solving.BooleanSatisfiability.Dpll.BuildSolution(System.Nullable{System.Boolean}[],System.Collections.Generic.Dictionary{System.Int32,System.Int32})">
             <summary>
