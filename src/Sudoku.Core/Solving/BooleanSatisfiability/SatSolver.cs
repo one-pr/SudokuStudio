@@ -1,5 +1,3 @@
-#define VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
-
 namespace Sudoku.Solving.BooleanSatisfiability;
 
 /// <summary>
@@ -224,7 +222,6 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver<SatSolver>
 /// </summary>
 file sealed class Dpll
 {
-#if VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
 	/// <summary>
 	/// Decay factor (typical .95).
 	/// On each conflict we multiply <see cref="_variableIncrement"/> by <c>1 / <see cref="VariableDecay"/></c>.
@@ -235,7 +232,6 @@ file sealed class Dpll
 	/// Threshold to trigger activity rescale to avoid overflow.
 	/// </summary>
 	private const double ActivityRescaleThreshold = 1e100;
-#endif
 
 
 	/// <summary>
@@ -332,7 +328,6 @@ file sealed class Dpll
 	/// </summary>
 	private List<int> _watchLiteralB = [];
 
-#if VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
 	/// <summary>
 	/// VSIDS activity score per variable (1-based).
 	/// </summary>
@@ -342,7 +337,6 @@ file sealed class Dpll
 	/// Current variable increment used when bumping variables.
 	/// </summary>
 	private double _variableIncrement = 1.0;
-#endif
 
 
 	/// <summary>
@@ -402,7 +396,6 @@ file sealed class Dpll
 		// First-UIP: <c>_propagationIndex</c> will start processing from 0 when <c>UnitPropagation</c> runs.
 		_propagationIndex = 0;
 
-#if VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
 		// VSIDS initialization.
 		_activity = new double[_expression.VariablesCount + 1];
 
@@ -414,7 +407,6 @@ file sealed class Dpll
 				_activity[Math.Abs(literal)] += 1.0;
 			}
 		}
-#endif
 	}
 
 
@@ -478,10 +470,8 @@ file sealed class Dpll
 				return false;
 			}
 
-#if VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
 			// VSIDS: bump variables appeared in conflicting clause (heuristic signal).
 			BumpActivityForClause(conflictClause);
-#endif
 
 			// Perform First-UIP conflict analysis -> <c>learnedClause</c>.
 			if (ConflictAnalyze(conflictClause.ToArray()) is not { Length: not 0 } learned)
@@ -490,11 +480,9 @@ file sealed class Dpll
 				return false;
 			}
 
-#if VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
 			// VSIDS: bump variables in the learned clause, then decay var increment.
 			BumpActivityForClause(learned);
 			DecayActivities();
-#endif
 
 			// Add learned clause to the expression.
 			_expression.AddClause(learned.AsMemory());
@@ -552,19 +540,7 @@ file sealed class Dpll
 
 		// 2) Check if all variables assigned -> solution.
 		// Find a variable index that has not been assigned yet (0), or -1 if all variables are assigned.
-#if VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
 		var variable = PickBranchingVariable();
-#else
-		var variable = -1;
-		for (var i = 1; i <= _expression.VariablesCount; i++)
-		{
-			if (_assignmentStates[i] is null)
-			{
-				variable = i;
-				break;
-			}
-		}
-#endif
 		if (variable == -1)
 		{
 			// All variables assigned without conflict => SAT.
@@ -969,7 +945,6 @@ file sealed class Dpll
 		}
 	}
 
-#if VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
 	/// <summary>
 	/// Bump activity for variables appearing in clause (clause: array/enumerable of signed literals).
 	/// </summary>
@@ -1060,7 +1035,6 @@ file sealed class Dpll
 		}
 		return best;
 	}
-#endif
 
 
 	/// <summary>
