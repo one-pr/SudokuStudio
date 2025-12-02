@@ -14287,13 +14287,19 @@
         </member>
         <member name="T:Sudoku.Solving.BooleanSatisfiability.SatSolver">
             <summary>
+            <para>
             Represents a solver that solves a puzzle using SAT algorithm.
-            SAT problem is a problem that can be solved via CNFs (corresponding to type <see cref="T:Sudoku.Solving.BooleanSatisfiability.CnfExpression"/>).
-            In order to solve a sudoku puzzle, we should construct some boolean formulae,
-            and find variables in order to make such formulae satisfied.
+            SAT problem is a type of problems that can be solved via CNFs (corresponding to type <see cref="T:Sudoku.Solving.BooleanSatisfiability.CnfExpression"/>),
+            i.e. boolean expressions (or say, formulae).
+            </para>
+            <para>
+            If we can reduce a problem into SAT ones, we can use SAT solving system to solve the problem.
+            For example, to solve a sudoku puzzle, we should construct some boolean formulae (CNFs),
+            and then find variables in order to make such formulae satisfied.
+            </para>
             </summary>
             <remarks>
-            The implementation is complex. There're some pages that are really helpful:
+            There're some pages that are really helpful:
             <list type="bullet">
             <item>
             <see href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">Wikipedia - SAT Problem</see>
