@@ -14475,7 +14475,7 @@
         </member>
         <member name="F:Sudoku.Solving.BooleanSatisfiability.Dpll._variableIncrement">
             <summary>
-            Current <c>var increment</c> used when bumping variables.
+            Current variable increment used when bumping variables.
             </summary>
         </member>
         <member name="M:Sudoku.Solving.BooleanSatisfiability.Dpll.#ctor(Sudoku.Solving.BooleanSatisfiability.CnfExpression,System.EventHandler{Sudoku.Solving.BooleanSatisfiability.SatSolver,Sudoku.Solving.SolverSolutionFoundEventArgs},System.Collections.Generic.Dictionary{System.Int32,System.Int32},Sudoku.Solving.BooleanSatisfiability.SatSolver)">

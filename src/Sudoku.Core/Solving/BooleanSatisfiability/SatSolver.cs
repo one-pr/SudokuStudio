@@ -94,7 +94,7 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver<SatSolver>
 	[MemberNotNull(nameof(_expression))]
 	private void Encode(in Grid grid, out Dictionary<Candidate, int> mappedVariables)
 	{
-		// 0. Collect mapping indices in order to compress variables.
+		// 1) Collect mapping indices in order to compress variables.
 		mappedVariables = [];
 		var virtualId = 1;
 		for (var cell = 0; cell < 81; cell++)
@@ -107,14 +107,14 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver<SatSolver>
 
 		_expression = new(virtualId - 1);
 
-		// 1. Cell constraints (exactly one digit per cell).
+		// 2a) Cell constraints (exactly one digit per cell).
 		for (var r = 0; r < 9; r++)
 		{
 			for (var c = 0; c < 9; c++)
 			{
 				var candidates = grid.GetCandidates(r * 9 + c);
 
-				// At least one digit in cell: (r, c) must be one of 1..9.
+				// At least one digit in cell: <c>(r, c)</c> must be one of 1..9.
 				var atLeast = new List<int>();
 				foreach (var d in candidates)
 				{
@@ -122,7 +122,7 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver<SatSolver>
 				}
 				_expression.AddClause(atLeast.AsMemory());
 
-				// At most one digit: for every pair (d1, d2), they cannot both be true.
+				// At most one digit: for every pair <c>(d1, d2)</c>, they cannot both be true.
 				foreach (var pair in candidates.AllSets & 2)
 				{
 					_expression.AddClause(
@@ -135,7 +135,7 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver<SatSolver>
 			}
 		}
 
-		// 2. Row constraints (each digit once per row).
+		// 2b) Row constraints (each digit once per row).
 		for (var r = 0; r < 9; r++)
 		{
 			for (var d = 0; d < 9; d++)
@@ -157,7 +157,7 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver<SatSolver>
 			}
 		}
 
-		// 3. Column constraints (each digit once per column).
+		// 2c) Column constraints (each digit once per column).
 		for (var c = 0; c < 9; c++)
 		{
 			for (var d = 0; d < 9; d++)
@@ -179,7 +179,7 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver<SatSolver>
 			}
 		}
 
-		// 4. Block constraints (each block).
+		// 2d) Block constraints (each block).
 		for (var br = 0; br < 3; br++)
 		{
 			for (var bc = 0; bc < 3; bc++)
@@ -204,7 +204,7 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver<SatSolver>
 			}
 		}
 
-		// 5. Initial clues as unit clauses.
+		// 3) Initial clues as unit clauses.
 		for (var r = 0; r < 9; r++)
 		{
 			for (var c = 0; c < 9; c++)
@@ -339,7 +339,7 @@ file sealed class Dpll
 	private readonly double[] _activity;
 
 	/// <summary>
-	/// Current <c>var increment</c> used when bumping variables.
+	/// Current variable increment used when bumping variables.
 	/// </summary>
 	private double _variableIncrement = 1.0;
 #endif
@@ -369,18 +369,20 @@ file sealed class Dpll
 		SatSolver? parentSolver
 	)
 	{
+		// Initialize base fields.
 		_expression = expression;
 		_assignmentStates = new bool?[_expression.VariablesCount + 1];
 		_solutionFoundEventHandler = solutionFoundEventHandler;
 		_mappedVariables = mappedVariables;
 		_parentSolver = parentSolver;
 
+		// First-UIP initialization.
 		_trail = [];
 		_decisionLevels = [];
 		_variableLevel = new int[_expression.VariablesCount + 1];
 		_antecedent = new ReadOnlyMemory<int>?[_expression.VariablesCount + 1];
 
-		// Build initial watches and enqueue units.
+		// Two-watched literals: Build initial watches and enqueue units.
 		EnsureWatchesInit();
 		for (var i = 0; i < _expression.ClauseCount; i++)
 		{
@@ -397,7 +399,7 @@ file sealed class Dpll
 			}
 		}
 
-		// <c>_propagationIndex</c> will start processing from 0 when <c>UnitPropagation</c> runs.
+		// First-UIP: <c>_propagationIndex</c> will start processing from 0 when <c>UnitPropagation</c> runs.
 		_propagationIndex = 0;
 
 #if VARIABLE_STATE_INDEPENDENT_DECAYING_SUM
@@ -709,7 +711,7 @@ file sealed class Dpll
 					// Add to watches for <c>foundAlternative</c>.
 					_watches[LiteralToIndex(foundAlternative)].Add(clauseIndex);
 
-					// Don't increment i because we replaced current entry with last; need to re-examine it.
+					// Don't increment <c>i</c> because we replaced current entry with last; need to re-examine it.
 					continue;
 				}
 
@@ -718,7 +720,7 @@ file sealed class Dpll
 				var otherVar = Math.Abs(otherWatched);
 				if (otherWatched != 0 && _assignmentStates[otherVar] is null)
 				{
-					// Unit clause -> assign otherWatched to satisfy clause.
+					// Unit clause -> assign <c>otherWatched</c> to satisfy clause.
 					var value = otherWatched > 0;
 					_assignmentStates[otherVar] = value;
 					_variableLevel[otherVar] = _decisionLevel;
@@ -915,7 +917,7 @@ file sealed class Dpll
 	private void EnsureWatchesInit()
 	{
 		var n = _expression.VariablesCount;
-		var size = 2 * n + 1;
+		var size = (n << 1) + 1;
 		if (_watches is null || _watches.Length != size)
 		{
 			_watches = new List<int>[size];
@@ -994,7 +996,7 @@ file sealed class Dpll
 	private void DecayActivities()
 		// MiniSAT style: increase variable increment so future bumps have larger effect,
 		// which is effectively a decay of past activity influence.
-		=> _variableIncrement *= 1.0 / VariableDecay;
+		=> _variableIncrement *= 1D / VariableDecay;
 
 	/// <summary>
 	/// Rescale activities to avoid overflow: divide all activities and <see cref="_variableIncrement"/> by a large factor.
@@ -1002,7 +1004,7 @@ file sealed class Dpll
 	private void RescaleActivities()
 	{
 		// Find max to scale down relative magnitudes.
-		var max = 0.0;
+		var max = .0;
 		for (var i = 1; i < _activity.Length; i++)
 		{
 			if (_activity[i] > max)
@@ -1010,12 +1012,12 @@ file sealed class Dpll
 				max = _activity[i];
 			}
 		}
-		if (max <= 0.0)
+		if (max <= .0)
 		{
 			return;
 		}
 
-		var scale = 1.0 / max;
+		var scale = 1D / max;
 		for (var i = 1; i < _activity.Length; i++)
 		{
 			_activity[i] *= scale;
