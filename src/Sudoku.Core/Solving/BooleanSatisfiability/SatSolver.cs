@@ -209,7 +209,7 @@ public sealed class SatSolver : ISolver, ISolutionEnumerableSolver<SatSolver>
 			{
 				if (grid.GetDigit(r * 9 + c) is var d and not -1)
 				{
-					// Force (r, c) = d by adding single literal clause.
+					// Force <c>(r, c) = d</c> by adding single literal clause.
 					_expression.AddClause(Array.Single(mappedVariables[(r * 9 + c) * 9 + d]));
 				}
 			}
