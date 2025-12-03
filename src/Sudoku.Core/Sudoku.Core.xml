@@ -3064,6 +3064,11 @@
         <member name="M:Sudoku.Concepts.Coordinates.Formatting.SukakuGridFormatInfo.ParseCore(System.String)">
             <inheritdoc/>
         </member>
+        <member name="T:Sudoku.Concepts.Coordinates.Formatting.SusserGridFormatInfo">
+            <summary>
+            Provides a way to format or parse strings into <see cref="T:Sudoku.Concepts.Grid"/> instances.
+            </summary>
+        </member>
         <member name="T:Sudoku.Concepts.Coordinates.Formatting.SusserGridFormatInfo`1">
             <summary>
             Represents a <see cref="T:Sudoku.Concepts.Coordinates.Formatting.GridFormatInfo`1"/> type that supports Susser formatting.
@@ -3165,6 +3170,11 @@
         </member>
         <member name="M:Sudoku.Concepts.Coordinates.Formatting.SusserGridFormatInfo`1.ParseCore(System.String)">
             <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Concepts.Coordinates.Formatting.SusserMarkerGridFormatInfo">
+            <summary>
+            Provides a way to format or parse strings into <see cref="T:Sudoku.Concepts.MarkerGrid"/> instances.
+            </summary>
         </member>
         <member name="T:Sudoku.Concepts.Coordinates.ICoordinateProvider`1">
             <summary>

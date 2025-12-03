@@ -18,10 +18,10 @@ internal static class SudokuFormatFlagsExtensions
 		public GridFormatInfo<Grid> Converter
 			=> @this switch
 			{
-				SudokuFormatFlags.InitialFormat => new SusserGridFormatInfo<Grid>(),
-				SudokuFormatFlags.CurrentFormat => new SusserGridFormatInfo<Grid> { WithCandidates = true, WithModifiables = true },
+				SudokuFormatFlags.InitialFormat => new SusserGridFormatInfo(),
+				SudokuFormatFlags.CurrentFormat => new SusserGridFormatInfo { WithCandidates = true, WithModifiables = true },
 				SudokuFormatFlags.CurrentFormatIgnoringValueKind
-					=> new SusserGridFormatInfo<Grid> { WithModifiables = true, WithCandidates = true, TreatValueAsGiven = true },
+					=> new SusserGridFormatInfo { WithModifiables = true, WithCandidates = true, TreatValueAsGiven = true },
 				SudokuFormatFlags.MultipleGridFormat => new MultipleLineGridFormatInfo { RemoveGridLines = true },
 				SudokuFormatFlags.PencilMarkFormat => new PencilmarkGridFormatInfo { SubtleGridLines = true },
 				SudokuFormatFlags.SukakuFormat => new SukakuGridFormatInfo(),

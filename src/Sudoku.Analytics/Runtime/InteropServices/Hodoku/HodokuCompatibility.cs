@@ -27,7 +27,7 @@ public static class HodokuCompatibility
 	{
 		if (step is null)
 		{
-			return grid.ToString(new SusserGridFormatInfo<Grid> { IsCompatibleMode = true, WithModifiables = true, WithCandidates = true });
+			return grid.ToString(new SusserGridFormatInfo { IsCompatibleMode = true, WithModifiables = true, WithCandidates = true });
 		}
 
 		var conclusionConverter = new HodokuTripletCandidateMapFormatInfo();

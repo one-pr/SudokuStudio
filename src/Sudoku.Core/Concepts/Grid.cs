@@ -674,7 +674,7 @@ public struct Grid : InlineArrayGridBase
 		=> formatProvider switch
 		{
 			GridFormatInfo<Grid> f => f.FormatCore(this),
-			CultureInfo c => (GridFormatInfo<Grid>.GetInstance(c) ?? new SusserGridFormatInfo<Grid>()).FormatCore(this),
+			CultureInfo c => (GridFormatInfo<Grid>.GetInstance(c) ?? new SusserGridFormatInfo()).FormatCore(this),
 			_ => throw new FormatException()
 		};
 
@@ -1097,8 +1097,8 @@ public struct Grid : InlineArrayGridBase
 			new MultipleLineGridFormatInfo(),
 			new MultipleLineGridFormatInfo { RemoveGridLines = true },
 			new PencilmarkGridFormatInfo(),
-			new SusserGridFormatInfo<Grid>(),
-			new SusserGridFormatInfo<Grid> { ShortenSusser = true },
+			new SusserGridFormatInfo(),
+			new SusserGridFormatInfo { ShortenSusser = true },
 			new CsvGridFormatInfo(),
 			new OpenSudokuGridFormatInfo(),
 			new SukakuGridFormatInfo(),
@@ -1212,7 +1212,7 @@ public struct Grid : InlineArrayGridBase
 			CultureInfo { Name: var n } => n switch
 			{
 				SR.EnglishLanguage => new PencilmarkGridFormatInfo().ParseCore(s),
-				SR.ChineseLanguage => new SusserGridFormatInfo<Grid>().ParseCore(s),
+				SR.ChineseLanguage => new SusserGridFormatInfo().ParseCore(s),
 				_ => Parse(s)
 			},
 			_ => Parse(s)

@@ -75,7 +75,7 @@ public sealed partial class MultipleLineGridFormatInfo : GridFormatInfo<Grid>
 		{
 			return GridSimpleMultilinePattern.Match(str) is not { Success: true, Value: var match }
 				? Grid.Undefined
-				: new SusserGridFormatInfo<Grid>().ParseCore(new(from @char in match where @char is not ('\r' or '\n') select @char));
+				: new SusserGridFormatInfo().ParseCore(new(from @char in match where @char is not ('\r' or '\n') select @char));
 		}
 		else
 		{

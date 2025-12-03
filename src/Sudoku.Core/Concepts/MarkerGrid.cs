@@ -375,7 +375,7 @@ public struct MarkerGrid : InlineArrayGridBase
 	public readonly string ToString(string? format, IFormatProvider? formatProvider)
 		=> (format, formatProvider) switch
 		{
-			(null or "#", _) => new SusserGridFormatInfo<MarkerGrid>().FormatCore(this),
+			(null or "#", _) => new SusserMarkerGridFormatInfo().FormatCore(this),
 			(_, SusserGridFormatInfo<MarkerGrid> instance) => instance.FormatCore(this),
 			(_, not null) when formatProvider.GetFormat(typeof(GridFormatInfo<MarkerGrid>)) is GridFormatInfo<MarkerGrid> g
 				=> g.FormatCore(this),
