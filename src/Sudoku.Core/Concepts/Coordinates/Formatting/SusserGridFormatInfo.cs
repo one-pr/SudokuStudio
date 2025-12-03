@@ -356,8 +356,7 @@ public sealed partial class SusserGridFormatInfo<TGrid> : GridFormatInfo<TGrid> 
 				}
 				default:
 				{
-					// Other invalid characters. Throws an exception.
-					//throw Throwing.ParsingError<Grid>(nameof(ParsingValue));
+					// Other invalid characters.
 					return TGrid.Undefined;
 				}
 			}
