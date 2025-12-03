@@ -189,7 +189,7 @@ public sealed partial class SusserGridFormatInfo<TGrid> : GridFormatInfo<TGrid> 
 		static string shorten(string @base, char placeholder)
 		{
 			// lang = regex
-			var placeholderPattern = placeholder == Dot ? """\.+""" : """0+""";
+			var placeholderPattern = placeholder == Dot ? @"\.+" : @"0+";
 			var resultSpan = (stackalloc char[81]);
 			var spanIndex = 0;
 			for (var i = 0; i < 9; i++)
