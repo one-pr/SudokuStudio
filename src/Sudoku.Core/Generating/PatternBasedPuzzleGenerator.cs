@@ -90,7 +90,7 @@ public readonly ref struct PatternBasedPuzzleGenerator(ref readonly CellMap seed
 				continue;
 			}
 
-			if (!cancellationToken)
+			if (cancellationToken.IsCancellationRequested)
 			{
 				return true;
 			}

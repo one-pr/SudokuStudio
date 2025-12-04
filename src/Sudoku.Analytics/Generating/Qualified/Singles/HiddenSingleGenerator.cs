@@ -46,7 +46,7 @@ public sealed class HiddenSingleGenerator : SingleGenerator
 			return true;
 
 		NextLoop:
-			if (!cancellationToken)
+			if (cancellationToken.IsCancellationRequested)
 			{
 				result = Grid.Undefined;
 				return false;
@@ -499,7 +499,7 @@ public sealed class HiddenSingleGenerator : SingleGenerator
 				}
 				default:
 				{
-					if (!cancellationToken)
+					if (cancellationToken.IsCancellationRequested)
 					{
 						(result, phasedGrid, step) = (Grid.Undefined, Grid.Undefined, null);
 						return false;

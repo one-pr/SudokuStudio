@@ -240,9 +240,9 @@ public sealed class Analyzer : StepGatherer
 					progress,
 					cancellationToken
 				);
-				return cancellationToken
-					? tempResult
-					: result with { IsSolved = false, FailedReason = FailedReason.UserCancelled };
+				return cancellationToken.IsCancellationRequested
+					? result with { IsSolved = false, FailedReason = FailedReason.UserCancelled }
+					: tempResult;
 			}
 			return result with { IsSolved = false, FailedReason = FailedReason.PuzzleHasNoSolution };
 		}
@@ -319,7 +319,7 @@ public sealed class Analyzer : StepGatherer
 			}
 
 		FindNextStep:
-			if (!cancellationToken)
+			if (cancellationToken.IsCancellationRequested)
 			{
 				return null!;
 			}

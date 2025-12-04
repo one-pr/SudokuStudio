@@ -64,7 +64,7 @@ public sealed class Collector : StepGatherer
 		}
 
 
-		ReadOnlySpan<Step> s(IProgress<StepGathererProgressPresenter>? progress, scoped in Grid puzzle, CancellationToken ct)
+		ReadOnlySpan<Step> s(IProgress<StepGathererProgressPresenter>? progress, scoped in Grid puzzle, CancellationToken cancellationToken)
 		{
 			const int defaultLevel = int.MaxValue;
 
@@ -111,7 +111,7 @@ public sealed class Collector : StepGatherer
 							}
 						}
 
-						if (!ct)
+						if (cancellationToken.IsCancellationRequested)
 						{
 							return null;
 						}

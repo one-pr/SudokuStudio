@@ -29,7 +29,7 @@ public static class SolutionEnumerableSolverExtensions
 			await foreach (var _ in @this.EnumerateSolutionsAsync(grid, cancellationToken))
 			{
 				result++;
-				if (!cancellationToken)
+				if (cancellationToken.IsCancellationRequested)
 				{
 					return 0;
 				}

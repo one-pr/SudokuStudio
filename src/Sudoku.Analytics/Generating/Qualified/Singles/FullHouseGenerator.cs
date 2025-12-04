@@ -52,7 +52,7 @@ public sealed class FullHouseGenerator : SingleGenerator
 				return true;
 			}
 
-			if (!cancellationToken)
+			if (cancellationToken.IsCancellationRequested)
 			{
 				result = Grid.Undefined;
 				return false;
@@ -161,7 +161,7 @@ public sealed class FullHouseGenerator : SingleGenerator
 				}
 				default:
 				{
-					if (!cancellationToken)
+					if (cancellationToken.IsCancellationRequested)
 					{
 						(result, phasedGrid, step) = (Grid.Undefined, Grid.Undefined, null);
 						return false;

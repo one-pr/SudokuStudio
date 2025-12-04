@@ -538,7 +538,7 @@ file sealed class Dpll
 			return _solutionFoundEventHandler is null;
 		}
 
-		if (!cancellationToken)
+		if (cancellationToken.IsCancellationRequested)
 		{
 			// Canceled.
 			return false;
@@ -559,7 +559,7 @@ file sealed class Dpll
 			return true;
 		}
 
-		if (!cancellationToken)
+		if (cancellationToken.IsCancellationRequested)
 		{
 			// Canceled.
 			return false;
@@ -582,7 +582,7 @@ file sealed class Dpll
 			return true;
 		}
 
-		if (!cancellationToken)
+		if (cancellationToken.IsCancellationRequested)
 		{
 			// Canceled.
 			return false;

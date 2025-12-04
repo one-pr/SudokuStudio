@@ -48,7 +48,7 @@ public sealed partial class BrokenLoopStepSearcher
 				ref traversedSpaces,
 				tempLoop
 			);
-			if (!context.CancellationToken)
+			if (context.CancellationToken.IsCancellationRequested)
 			{
 				// Canceled.
 				return null;
@@ -114,7 +114,7 @@ public sealed partial class BrokenLoopStepSearcher
 			CandidateMap loop
 		)
 		{
-			if (!context.CancellationToken)
+			if (context.CancellationToken.IsCancellationRequested)
 			{
 				// User canceled.
 				return;

@@ -262,7 +262,7 @@ public partial struct ParallelAsyncCollectorAwaitable
 						}
 						case { Level: var currentLevel }:
 						{
-							if (!_cancellationToken)
+							if (_cancellationToken.IsCancellationRequested)
 							{
 								return;
 							}

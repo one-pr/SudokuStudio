@@ -8886,47 +8886,6 @@
         <member name="M:System.Span.Create``1(``0*,System.Int32)">
             <inheritdoc cref="M:System.Span.Create``1(``0@,System.Int32)"/>
         </member>
-        <member name="T:System.Threading.CancellationTokenExtensions">
-            <summary>
-            Provides with extension members on <see cref="T:System.Threading.CancellationToken"/> instances.
-            </summary>
-            <seealso cref="T:System.Threading.CancellationToken"/>
-        </member>
-        <member name="M:System.Threading.CancellationTokenExtensions.op_LogicalNot(System.Threading.CancellationToken)">
-            <inheritdoc cref="M:System.Threading.CancellationTokenExtensions.&lt;G&gt;$49853BDED5F7090FEA8BBA2FA1B20683.op_LogicalNot(System.Threading.CancellationToken)"/>
-        </member>
-        <member name="M:System.Threading.CancellationTokenExtensions.op_True(System.Threading.CancellationToken)">
-            <inheritdoc cref="M:System.Threading.CancellationTokenExtensions.&lt;G&gt;$49853BDED5F7090FEA8BBA2FA1B20683.op_True(System.Threading.CancellationToken)"/>
-        </member>
-        <member name="M:System.Threading.CancellationTokenExtensions.op_False(System.Threading.CancellationToken)">
-            <inheritdoc cref="M:System.Threading.CancellationTokenExtensions.&lt;G&gt;$49853BDED5F7090FEA8BBA2FA1B20683.op_False(System.Threading.CancellationToken)"/>
-        </member>
-        <member name="T:System.Threading.CancellationTokenExtensions.&lt;G&gt;$49853BDED5F7090FEA8BBA2FA1B20683.&lt;M&gt;$49853BDED5F7090FEA8BBA2FA1B20683">
-            <summary>
-            Provides extension members on <see cref="T:System.Threading.CancellationToken"/>.
-            </summary>
-        </member>
-        <member name="M:System.Threading.CancellationTokenExtensions.&lt;G&gt;$49853BDED5F7090FEA8BBA2FA1B20683.op_LogicalNot(System.Threading.CancellationToken)">
-            <summary>
-            Indicates whether the cancellation token is cancellation-requested.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:System.Threading.CancellationTokenExtensions.&lt;G&gt;$49853BDED5F7090FEA8BBA2FA1B20683.op_True(System.Threading.CancellationToken)">
-            <summary>
-            Indicates whether the cancellation token isn't cancellation-requested.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:System.Threading.CancellationTokenExtensions.&lt;G&gt;$49853BDED5F7090FEA8BBA2FA1B20683.op_False(System.Threading.CancellationToken)">
-            <summary>
-            Indicates whether the cancellation token is cancellation-requested.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
         <member name="T:System.Threading.Tasks.TimeSpanAwaitable">
             <summary>
             Provides with extension methods on <see cref="T:System.TimeSpan"/>.
