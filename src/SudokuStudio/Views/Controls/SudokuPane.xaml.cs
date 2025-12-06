@@ -804,7 +804,8 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 	/// <param name="isSet">Indicates whether the operation is to set a digit into the target cell.</param>
 	public void SetOrDeleteDigit(Cell cell, Digit digit, bool isSet)
 	{
-		var puzzle = Puzzle >> (Conclusion)(isSet ? new(Assignment, cell, digit) : new(Elimination, cell, digit));
+		var puzzle = Puzzle;
+		puzzle.Apply(isSet ? new(Assignment, cell, digit) : new(Elimination, cell, digit));
 		SetPuzzleInternal(puzzle, PuzzleUpdatingMethod.UserUpdating);
 		GridUpdated?.Invoke(this, new(isSet ? GridUpdatedBehavior.Assignment : GridUpdatedBehavior.Elimination, cell * 9 + digit));
 	}

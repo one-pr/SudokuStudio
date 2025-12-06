@@ -72,9 +72,14 @@ public sealed class WhipNode(WhipAssignment assignment, ReadOnlyMemory<WhipAssig
 	}
 
 
-	/// <inheritdoc/>
-	[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
-	public static WhipNode Create(WhipNode current, WhipNode? parent) => current >> parent;
+	/// <summary>
+	/// Creates a <see cref="WhipNode"/> instance with parent node.
+	/// </summary>
+	/// <param name="current">The current node.</param>
+	/// <param name="parent">The parent node.</param>
+	/// <returns>The new node created.</returns>
+	public static WhipNode Create(WhipNode current, WhipNode? parent)
+		=> new(current.Assignment, current.AvailableAssignments, parent);
 
 
 	/// <inheritdoc/>
@@ -83,13 +88,4 @@ public sealed class WhipNode(WhipAssignment assignment, ReadOnlyMemory<WhipAssig
 
 	/// <inheritdoc/>
 	public static bool operator !=(WhipNode? left, WhipNode? right) => !(left == right);
-
-	/// <summary>
-	/// Creates a <see cref="WhipNode"/> instance with parent node.
-	/// </summary>
-	/// <param name="current">The current node.</param>
-	/// <param name="parent">The parent node.</param>
-	/// <returns>The new node created.</returns>
-	public static WhipNode operator >>(WhipNode current, WhipNode? parent)
-		=> new(current.Assignment, current.AvailableAssignments, parent);
 }

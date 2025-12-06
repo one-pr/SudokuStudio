@@ -102,7 +102,7 @@ public sealed partial class ComplexSingleStepSearcher : StepSearcher
 			playground = baseGrid;
 			foreach (var indirectStep in indirectStepGroup)
 			{
-				playground >>= indirectStep;
+				playground.Apply(indirectStep);
 			}
 		}
 

@@ -281,13 +281,9 @@ public readonly struct GridIdentifier :
 	{
 		get
 		{
-			var g = OriginalGrid >> Transform;
-			preserveGrid(ref g, GivenCells);
-			return g;
-
-
-			[UnsafeAccessor(UnsafeAccessorKind.Method, Name = "Preserve")]
-			static extern Grid preserveGrid(ref Grid grid, in CellMap pattern);
+			var g = OriginalGrid;
+			g.Apply(Transform);
+			return g % GivenCells;
 		}
 	}
 

@@ -82,7 +82,7 @@ public sealed partial class ShuffleOperation : Page, IOperationProviderPage
 			return;
 		}
 
-		modified >>= path;
+		modified.MakeIttoryu(path);
 		BasePage.SudokuPane.Puzzle = modified;
 		BasePage.SudokuPane.ViewUnit = null;
 	}

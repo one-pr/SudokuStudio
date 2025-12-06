@@ -848,8 +848,18 @@ public struct Grid : InlineArrayGridBase
 	}
 
 	/// <inheritdoc/>
-	[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
-	public void Apply(Conclusion conclusion) => this >>= conclusion;
+	public void Apply(Conclusion conclusion)
+	{
+		var (type, cell, digit) = conclusion;
+		if (type == Assignment)
+		{
+			SetDigit(cell, digit);
+		}
+		else if (type == Elimination)
+		{
+			SetExistence(cell, digit, false);
+		}
+	}
 
 	/// <inheritdoc/>
 	public void SetState(Cell cell, CellState state)
@@ -1336,25 +1346,6 @@ public struct Grid : InlineArrayGridBase
 		}
 	}
 
-	/// <inheritdoc/>
-	public void operator >>=(Conclusion conclusion)
-	{
-		var (type, cell, digit) = conclusion;
-		switch (type)
-		{
-			case Assignment:
-			{
-				SetDigit(cell, digit);
-				break;
-			}
-			case Elimination:
-			{
-				SetExistence(cell, digit, false);
-				break;
-			}
-		}
-	}
-
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
 	public static bool operator ==(in Grid left, in Grid right) => left.Equals(right);
@@ -1379,14 +1370,6 @@ public struct Grid : InlineArrayGridBase
 	{
 		var tempGrid = grid;
 		tempGrid %= template;
-		return tempGrid;
-	}
-
-	/// <inheritdoc/>
-	public static Grid operator >>(in Grid grid, Conclusion conclusion)
-	{
-		var tempGrid = grid;
-		tempGrid >>= conclusion;
 		return tempGrid;
 	}
 

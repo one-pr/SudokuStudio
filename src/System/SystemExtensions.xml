@@ -1773,11 +1773,6 @@
             Describes extension "<c><see langword="operator"/> ==</c>" on instances to compare equality.
             </summary>
         </member>
-        <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_Apply">
-            <summary>
-            Describes extension "<c><see langword="operator"/> >>=</c>" on collections to apply instances to them.
-            </summary>
-        </member>
         <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_Repeat">
             <summary>
             Describes extension "<c><see langword="operator"/> *</c>" on collections to repeat specified times of them.

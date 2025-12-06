@@ -5095,9 +5095,6 @@
         <member name="M:Sudoku.Concepts.Grid.op_ModulusAssignment(Sudoku.Concepts.CellMap@)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Grid.op_RightShiftAssignment(Sudoku.Concepts.Conclusion)">
-            <inheritdoc/>
-        </member>
         <member name="M:Sudoku.Concepts.Grid.op_Equality(Sudoku.Concepts.Grid@,Sudoku.Concepts.Grid@)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
         </member>
@@ -5117,9 +5114,6 @@
             <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_LessThanOrEqual(`0,`1)"/>
         </member>
         <member name="M:Sudoku.Concepts.Grid.op_Modulus(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Concepts.Grid.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Concepts.Conclusion)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Concepts.Grid.System#Numerics#IEqualityOperators{Sudoku#Concepts#Grid,Sudoku#Concepts#Grid,System#Boolean}#op_Equality(Sudoku.Concepts.Grid,Sudoku.Concepts.Grid)">
@@ -6425,7 +6419,10 @@
             </param>
         </member>
         <member name="M:Sudoku.Concepts.IGrid`1.Apply(Sudoku.Concepts.Conclusion)">
-            <inheritdoc cref="M:Sudoku.Concepts.IGrid`1.op_RightShiftAssignment(Sudoku.Concepts.Conclusion)"/>
+            <summary>
+            Applies the conclusion to the current grid.
+            </summary>
+            <param name="conclusion">The conclusion.</param>
         </member>
         <member name="M:Sudoku.Concepts.IGrid`1.GetExistence(System.Int32,System.Int32)">
             <summary>
@@ -6657,12 +6654,6 @@
             </summary>
             <param name="template">The cells specified to be preserved.</param>
         </member>
-        <member name="M:Sudoku.Concepts.IGrid`1.op_RightShiftAssignment(Sudoku.Concepts.Conclusion)">
-            <summary>
-            Applies the conclusion to the current grid.
-            </summary>
-            <param name="conclusion">The conclusion.</param>
-        </member>
         <member name="M:Sudoku.Concepts.IGrid`1.op_Equality(`0@,`0@)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
         </member>
@@ -6683,9 +6674,6 @@
         </member>
         <member name="M:Sudoku.Concepts.IGrid`1.op_Modulus(`0@,Sudoku.Concepts.CellMap@)">
             <inheritdoc cref="M:Sudoku.Concepts.IGrid`1.op_ModulusAssignment(Sudoku.Concepts.CellMap@)"/>
-        </member>
-        <member name="M:Sudoku.Concepts.IGrid`1.op_RightShift(`0@,Sudoku.Concepts.Conclusion)">
-            <inheritdoc cref="M:Sudoku.Concepts.IGrid`1.op_RightShiftAssignment(Sudoku.Concepts.Conclusion)"/>
         </member>
         <member name="M:Sudoku.Concepts.IGrid`1.System#Numerics#IEqualityOperators{TSelf,TSelf,System#Boolean}#op_Equality(`0,`0)">
             <inheritdoc/>
@@ -7197,9 +7185,6 @@
         <member name="M:Sudoku.Concepts.MarkerGrid.op_ModulusAssignment(Sudoku.Concepts.CellMap@)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.MarkerGrid.op_RightShiftAssignment(Sudoku.Concepts.Conclusion)">
-            <inheritdoc/>
-        </member>
         <member name="M:Sudoku.Concepts.MarkerGrid.op_GreaterThan(Sudoku.Concepts.MarkerGrid@,Sudoku.Concepts.MarkerGrid@)">
             <inheritdoc cref="M:System.Numerics.IComparisonOperators`3.op_GreaterThan(`0,`1)"/>
         </member>
@@ -7219,9 +7204,6 @@
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
         </member>
         <member name="M:Sudoku.Concepts.MarkerGrid.op_Modulus(Sudoku.Concepts.MarkerGrid@,Sudoku.Concepts.CellMap@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Concepts.MarkerGrid.op_RightShift(Sudoku.Concepts.MarkerGrid@,Sudoku.Concepts.Conclusion)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Concepts.MarkerGrid.System#Numerics#IEqualityOperators{Sudoku#Concepts#MarkerGrid,Sudoku#Concepts#MarkerGrid,System#Boolean}#op_Equality(Sudoku.Concepts.MarkerGrid,Sudoku.Concepts.MarkerGrid)">
@@ -15765,33 +15747,16 @@
         <member name="M:Sudoku.Transformations.GridTransformExtensions.Apply(Sudoku.Concepts.Grid@,Sudoku.Transformations.Transform@)">
             <inheritdoc cref="M:Sudoku.Transformations.GridTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Transformations.Transform@)"/>
         </member>
-        <member name="M:Sudoku.Transformations.GridTransformExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Transformations.Transform@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Transformations.Transform@)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformExtensions.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Transformations.Transform@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Transformations.Transform@)"/>
-        </member>
         <member name="T:Sudoku.Transformations.GridTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$25EDD80A63D287142C5EEC5FEE4D06CD">
             <summary>
             Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
         <member name="M:Sudoku.Transformations.GridTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Transformations.Transform@)">
-            <inheritdoc cref="M:Sudoku.Transformations.GridTransformExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Transformations.Transform@)"/>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Transformations.Transform@)">
             <summary>
             Applies transform with the specified <see cref="T:Sudoku.Transformations.Transform"/>.
             </summary>
             <param name="transform">The transform.</param>
-        </member>
-        <member name="M:Sudoku.Transformations.GridTransformExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Transformations.Transform@)">
-            <summary>
-            Applies the grid with specified transform.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="transform">The transform.</param>
-            <returns>The target grid.</returns>
         </member>
         <member name="T:Sudoku.Transformations.IElementSwappingTransformable`2">
             <summary>

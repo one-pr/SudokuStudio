@@ -41,11 +41,6 @@ public static class DeprecatedMessages
 	public const string ExtensionOperator_Equality = "Use extension operator 'operator ==' instead: 'left == right'";
 
 	/// <summary>
-	/// Describes extension "<c><see langword="operator"/> >>=</c>" on collections to apply instances to them.
-	/// </summary>
-	public const string ExtensionOperator_Apply = "Use extension operator 'operator >>=' instead: 'instance >>= value'";
-
-	/// <summary>
 	/// Describes extension "<c><see langword="operator"/> *</c>" on collections to repeat specified times of them.
 	/// </summary>
 	public const string ExtensionOperator_Repeat = "Use extension operator 'operator *' instead: 'string * times'";

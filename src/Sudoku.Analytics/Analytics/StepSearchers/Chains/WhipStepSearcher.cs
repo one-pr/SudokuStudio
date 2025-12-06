@@ -145,7 +145,7 @@ public sealed partial class WhipStepSearcher : StepSearcher
 								continue;
 							}
 
-							var nextNode = new WhipNode(assignment) >> currentNode;
+							var nextNode = WhipNode.Create(new(assignment), currentNode);
 							nextNode = new WhipNode(assignment, GetNextAssignments(grid, nextNode, groupedWhip), nextNode.Parent);
 							pendingNodes.Enqueue(nextNode);
 						}
@@ -174,14 +174,14 @@ public sealed partial class WhipStepSearcher : StepSearcher
 			{
 				case NormalWhipAssignment { Candidate: var candidate }:
 				{
-					grid >>= new Conclusion(Assignment, candidate);
+					grid.Apply(new(Assignment, candidate));
 					break;
 				}
 				case GroupedWhipAssignment { Digit: var digit, Cells: var cells }:
 				{
 					foreach (var cell in grid.CandidatesMap[digit] & cells.PeerIntersection)
 					{
-						grid >>= new Conclusion(Elimination, cell, digit);
+						grid.Apply(new(Elimination, cell, digit));
 					}
 					break;
 				}

@@ -214,13 +214,21 @@ public sealed class Node(in CandidateMap map, bool isOn, NodeSet? parents = null
 	object ICloneable.Clone() => Clone();
 
 
-	/// <inheritdoc/>
-	[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
-	public static Node Create(Node node, Node? parent) => node >> parent;
+	/// <summary>
+	/// Creates a <see cref="Node"/> instance with parent node.
+	/// </summary>
+	/// <param name="node">The current node.</param>
+	/// <param name="parent">The parent node.</param>
+	/// <returns>The new node created.</returns>
+	public static Node Create(Node node, Node? parent) => new(in node._map, node.IsOn, parent);
 
-	/// <inheritdoc cref="op_RightShift(Node, NodeSet?)"/>
-	[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
-	public static Node Create(Node node, NodeSet? parents) => node >> parents;
+	/// <summary>
+	/// Creates a <see cref="Node"/> instance with a list of parent nodes.
+	/// </summary>
+	/// <param name="node">The current node.</param>
+	/// <param name="parents">The parent nodes.</param>
+	/// <returns>The new node created.</returns>
+	public static Node Create(Node node, NodeSet? parents) => new(in node._map, node.IsOn, parents);
 
 
 	/// <inheritdoc/>
@@ -248,20 +256,4 @@ public sealed class Node(in CandidateMap map, bool isOn, NodeSet? parents = null
 	/// <param name="value">The current node.</param>
 	/// <returns>The node negated.</returns>
 	public static Node operator ~(Node value) => new(value._map, !value.IsOn) { Parents = value.Parents };
-
-	/// <summary>
-	/// Creates a <see cref="Node"/> instance with parent node.
-	/// </summary>
-	/// <param name="current">The current node.</param>
-	/// <param name="parent">The parent node.</param>
-	/// <returns>The new node created.</returns>
-	public static Node operator >>(Node current, Node? parent) => new(in current._map, current.IsOn, parent);
-
-	/// <summary>
-	/// Creates a <see cref="Node"/> instance with a list of parent nodes.
-	/// </summary>
-	/// <param name="current">The current node.</param>
-	/// <param name="parents">The parent nodes.</param>
-	/// <returns>The new node created.</returns>
-	public static Node operator >>(Node current, NodeSet? parents) => new(in current._map, current.IsOn, parents);
 }

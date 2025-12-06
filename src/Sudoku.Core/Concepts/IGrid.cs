@@ -328,7 +328,10 @@ public interface IGrid<TSelf> :
 	/// </param>
 	void SetExistence(Cell cell, Digit digit, bool isOn);
 
-	/// <inheritdoc cref="op_RightShiftAssignment(Conclusion)"/>
+	/// <summary>
+	/// Applies the conclusion to the current grid.
+	/// </summary>
+	/// <param name="conclusion">The conclusion.</param>
 	void Apply(Conclusion conclusion);
 
 	/// <summary>
@@ -617,12 +620,6 @@ public interface IGrid<TSelf> :
 	/// <param name="template">The cells specified to be preserved.</param>
 	void operator %=(in CellMap template);
 
-	/// <summary>
-	/// Applies the conclusion to the current grid.
-	/// </summary>
-	/// <param name="conclusion">The conclusion.</param>
-	void operator >>=(Conclusion conclusion);
-
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
 	static abstract bool operator ==(in TSelf left, in TSelf right);
@@ -644,9 +641,6 @@ public interface IGrid<TSelf> :
 
 	/// <inheritdoc cref="op_ModulusAssignment(in CellMap)"/>
 	static abstract TSelf operator %(in TSelf grid, in CellMap template);
-
-	/// <inheritdoc cref="op_RightShiftAssignment(Conclusion)"/>
-	static abstract TSelf operator >>(in TSelf grid, Conclusion conclusion);
 
 	/// <inheritdoc/>
 	static bool IEqualityOperators<TSelf, TSelf, bool>.operator ==(TSelf left, TSelf right) => left == right;

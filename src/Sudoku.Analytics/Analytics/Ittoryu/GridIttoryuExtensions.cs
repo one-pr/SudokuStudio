@@ -11,11 +11,6 @@ public static class GridIttoryuExtensions
 	/// </summary>
 	extension(ref Grid @this)
 	{
-		/// <inheritdoc cref="op_RightShiftAssignment(ref Grid, DisorderedIttoryuDigitPath)"/>
-		[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
-		public void MakeIttoryu(DisorderedIttoryuDigitPath path) => @this >>= path;
-
-
 		/// <summary>
 		/// Try to reproduce ittoryu ordering for the specified grid whose path can be found by <see cref="DisorderedIttoryuFinder"/>.
 		/// </summary>
@@ -24,7 +19,7 @@ public static class GridIttoryuExtensions
 		/// </param>
 		/// <exception cref="ArgumentException">Throws when the ittoryu path contains a digit series of length 0 or 1.</exception>
 		/// <seealso cref="DisorderedIttoryuFinder"/>
-		public void operator >>=(DisorderedIttoryuDigitPath path)
+		public void MakeIttoryu(DisorderedIttoryuDigitPath path)
 		{
 			if (path.Digits is not { Length: >= 2 })
 			{
@@ -59,15 +54,6 @@ public static class GridIttoryuExtensions
 			}
 
 			@this = result.ResetGrid;
-		}
-
-
-		/// <inheritdoc cref="op_RightShiftAssignment(ref Grid, DisorderedIttoryuDigitPath)"/>
-		public static Grid operator >>(in Grid grid, DisorderedIttoryuDigitPath path)
-		{
-			var tempGrid = grid;
-			tempGrid >>= path;
-			return tempGrid;
 		}
 	}
 

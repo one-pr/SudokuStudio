@@ -79,16 +79,11 @@ internal interface IParentLinkedNode<TSelf> :
 	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
 
 
-	/// <inheritdoc cref="op_RightShift(TSelf, TSelf?)"/>
-	[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
-	static virtual TSelf Create(TSelf current, TSelf? parent) => current >> parent;
-
-
 	/// <summary>
 	/// Creates a <see cref="WhipNode"/> instance with parent node.
 	/// </summary>
 	/// <param name="current">The current node.</param>
 	/// <param name="parent">The parent node.</param>
 	/// <returns>The new node created.</returns>
-	static abstract TSelf operator >>(TSelf current, TSelf? parent);
+	static abstract TSelf Create(TSelf current, TSelf? parent);
 }

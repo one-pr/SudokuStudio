@@ -11,16 +11,11 @@ public static class GridTransformExtensions
 	/// </summary>
 	extension(ref Grid @this)
 	{
-		/// <inheritdoc cref="op_RightShiftAssignment(ref Grid, in Transform)"/>
-		[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
-		public void Apply(in Transform transform) => @this >>= transform;
-
-
 		/// <summary>
 		/// Applies transform with the specified <see cref="Transform"/>.
 		/// </summary>
 		/// <param name="transform">The transform.</param>
-		public void operator >>=(in Transform transform)
+		public void Apply(in Transform transform)
 		{
 			var @base = @this.ToString("0");
 			var rows = transform.RowIndicesRelabeled;
@@ -48,20 +43,6 @@ public static class GridTransformExtensions
 
 			var result = Grid.Parse(resultCharacters);
 			@this = transform.ShouldTranspose ? result.Transpose() : result;
-		}
-
-
-		/// <summary>
-		/// Applies the grid with specified transform.
-		/// </summary>
-		/// <param name="grid">The grid.</param>
-		/// <param name="transform">The transform.</param>
-		/// <returns>The target grid.</returns>
-		public static Grid operator >>(in Grid grid, in Transform transform)
-		{
-			var tempGrid = grid;
-			tempGrid >>= transform;
-			return tempGrid;
 		}
 	}
 }
