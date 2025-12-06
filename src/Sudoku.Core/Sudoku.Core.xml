@@ -1189,6 +1189,11 @@
             Indicates a list of <see cref="T:Sudoku.Concepts.Chute"/> instances representing chutes.
             </summary>
         </member>
+        <member name="P:Sudoku.Concepts.Chute.ChuteHouses">
+            <summary>
+            Indicates chute houses.
+            </summary>
+        </member>
         <member name="M:Sudoku.Concepts.Chute.ToString(System.IFormatProvider)">
             <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
         </member>

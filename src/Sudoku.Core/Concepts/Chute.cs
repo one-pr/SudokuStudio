@@ -36,15 +36,13 @@ public readonly record struct Chute(int Index, bool IsRow, HouseMask HousesMask)
 	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
 	static Chute()
 	{
-		var chuteHouses = (ReadOnlySpan<(House, House, House)>)[(9, 10, 11), (12, 13, 14), (15, 16, 17), (18, 19, 20), (21, 22, 23), (24, 25, 26)];
-
 		//
 		// ChuteMaps
 		//
 		ChuteMapsBackingField = new CellMap[6];
 		for (var chute = 0; chute < 3; chute++)
 		{
-			var ((r1, r2, r3), (c1, c2, c3)) = (chuteHouses[chute], chuteHouses[chute + 3]);
+			var ((r1, r2, r3), (c1, c2, c3)) = (ChuteHouses[chute], ChuteHouses[chute + 3]);
 			(ChuteMapsBackingField[chute], ChuteMapsBackingField[chute + 3]) = (HousesMap[r1] | HousesMap[r2] | HousesMap[r3], HousesMap[c1] | HousesMap[c2] | HousesMap[c3]);
 		}
 
@@ -54,7 +52,7 @@ public readonly record struct Chute(int Index, bool IsRow, HouseMask HousesMask)
 		ChutesBackingField = new Chute[6];
 		for (var chute = 0; chute < 3; chute++)
 		{
-			var ((r1, r2, r3), (c1, c2, c3)) = (chuteHouses[chute], chuteHouses[chute + 3]);
+			var ((r1, r2, r3), (c1, c2, c3)) = (ChuteHouses[chute], ChuteHouses[chute + 3]);
 			(ChutesBackingField[chute], ChutesBackingField[chute + 3]) = (
 				new(chute, true, 1 << r1 | 1 << r2 | 1 << r3),
 				new(chute + 3, false, 1 << c1 | 1 << c2 | 1 << c3)
@@ -78,6 +76,12 @@ public readonly record struct Chute(int Index, bool IsRow, HouseMask HousesMask)
 	/// Indicates a list of <see cref="Chute"/> instances representing chutes.
 	/// </summary>
 	public static ReadOnlySpan<Chute> Chutes => ChutesBackingField;
+
+	/// <summary>
+	/// Indicates chute houses.
+	/// </summary>
+	private static ReadOnlySpan<(House, House, House)> ChuteHouses
+		=> ((House, House, House)[])[(9, 10, 11), (12, 13, 14), (15, 16, 17), (18, 19, 20), (21, 22, 23), (24, 25, 26)];
 
 
 	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
