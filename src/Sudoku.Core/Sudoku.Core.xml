@@ -14283,12 +14283,12 @@
         </member>
         <member name="F:Sudoku.Solving.BooleanSatisfiability.CnfFormula.Top">
             <summary>
-            Represents character <c>"&#8868;"</c>.
+            Represents character <c>"&#8868;"</c>, indicating "always true".
             </summary>
         </member>
         <member name="F:Sudoku.Solving.BooleanSatisfiability.CnfFormula.Bottom">
             <summary>
-            Represents character <c>"&#8869;"</c>.
+            Represents character <c>"&#8869;"</c>, indicating "contradiction".
             </summary>
         </member>
         <member name="P:Sudoku.Solving.BooleanSatisfiability.CnfFormula.ClauseCount">

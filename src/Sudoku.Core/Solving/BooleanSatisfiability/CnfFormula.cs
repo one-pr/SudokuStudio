@@ -32,12 +32,12 @@ public sealed record CnfFormula(int VariablesCount) : IEnumerable<ReadOnlyMemory
 	public const char And = '\u2227';
 
 	/// <summary>
-	/// Represents character <c>"&#8868;"</c>.
+	/// Represents character <c>"&#8868;"</c>, indicating "always true".
 	/// </summary>
 	public const char Top = '\u22A4';
 
 	/// <summary>
-	/// Represents character <c>"&#8869;"</c>.
+	/// Represents character <c>"&#8869;"</c>, indicating "contradiction".
 	/// </summary>
 	public const char Bottom = '\u22A5';
 
