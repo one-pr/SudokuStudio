@@ -230,7 +230,7 @@ file sealed class Dpll
 	/// <summary>
 	/// Threshold to trigger activity rescale to avoid overflow.
 	/// </summary>
-	private const double ActivityRescaleThreshold = 1e100;
+	private const double ActivityRescaleThreshold = 1E100;
 
 
 	/// <summary>
