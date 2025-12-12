@@ -35,7 +35,7 @@ public static class ColorExtensions
 		public ColorIdentifier GetIdentifier()
 		{
 			var (a, r, g, b) = @this;
-			return new(a, r, g, b);
+			return (a, r, g, b);
 		}
 	}
 }

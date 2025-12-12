@@ -142,14 +142,14 @@ public readonly ref struct DrawingCommandParser([AllowNull] ref readonly Grid gr
 		{
 			['#', .. { Length: 6 or 8 } hex] => (from s in hex / 2 select (byte)Convert.ToInt32(s, 16)) switch
 			{
-				[var r, var g, var b] => new(255, r, g, b),
-				[var a, var r, var g, var b] => new(a, r, g, b),
+				[var r, var g, var b] => (255, r, g, b),
+				[var a, var r, var g, var b] => (a, r, g, b),
 				_ => throw new FormatException($"Invalid identifier string: '{str}'.")
 			},
-			['!', .. var aliased] when getFoundIndex(aliased) is { } foundKind => new(foundKind),
-			['&', var ch and (>= 'a' and <= 'f' or >= 'A' and <= 'F')] => new(10 + char.ToLower(ch) - 'a'),
+			['!', .. var aliased] when getFoundIndex(aliased) is { } foundKind => foundKind,
+			['&', var ch and (>= 'a' and <= 'f' or >= 'A' and <= 'F')] => 10 + char.ToLower(ch) - 'a',
 			['&', .. var paletteIdString] when int.TryParse(paletteIdString, out var paletteId) && paletteId is >= 1 and <= 15
-				=> new(paletteId),
+				=> paletteId,
 			_
 				=> throw new FormatException($"Invalid identifier string: '{str}'.")
 		};

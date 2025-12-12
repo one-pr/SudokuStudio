@@ -377,7 +377,7 @@ internal partial class DrawableFactory
 		{
 			var cell = cellRankSet.Space.Cell;
 			var (a, r, g, b) = cellRankSet.IsTruth ? sudokuPane.CellTruthColor : sudokuPane.LineOrCellLinkColor;
-			var cellNode = new CellViewNode(new(a, r, g, b), cell);
+			var cellNode = new CellViewNode((a, r, g, b), cell);
 			sudokuPane.ViewUnit?.View.Add(cellNode);
 			ForCellNode(context, cellNode);
 		}

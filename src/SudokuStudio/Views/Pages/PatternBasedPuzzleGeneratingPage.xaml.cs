@@ -221,7 +221,7 @@ public sealed partial class PatternBasedPuzzleGeneratingPage : Page
 		var copied = view.Clone();
 		var (a, r, g, b) = App.CurrentTheme switch { ApplicationTheme.Light => uiPref.ActiveCellColor, _ => uiPref.ActiveCellColor_Dark };
 		copied.View.Clear();
-		copied.View.AddRange(from cell in newValue select new CellViewNode(new(a, r, g, b), cell));
+		copied.View.AddRange(from cell in newValue select new CellViewNode((a, r, g, b), cell));
 
 		pane.ViewUnit = copied;
 

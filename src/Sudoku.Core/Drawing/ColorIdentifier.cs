@@ -23,7 +23,7 @@ public readonly struct ColorIdentifier(long mask) :
 	/// Initializes a <see cref="ColorIdentifier"/> instance via the specified an integer ID.
 	/// </summary>
 	/// <param name="id">The ID value.</param>
-	public ColorIdentifier(int id) : this((long)ColorIdentifierType.Id << TypeShift | (long)id)
+	private ColorIdentifier(int id) : this((long)ColorIdentifierType.Id << TypeShift | (long)id)
 	{
 	}
 
@@ -34,7 +34,7 @@ public readonly struct ColorIdentifier(long mask) :
 	/// <param name="r">The red value.</param>
 	/// <param name="g">The green value.</param>
 	/// <param name="b">The blue value.</param>
-	public ColorIdentifier(byte a, byte r, byte g, byte b) :
+	private ColorIdentifier(byte a, byte r, byte g, byte b) :
 		this((long)ColorIdentifierType.Argb << TypeShift | (long)(a << 24 | r << 16 | g << 8 | b))
 	{
 	}
@@ -43,7 +43,7 @@ public readonly struct ColorIdentifier(long mask) :
 	/// Initializes a <see cref="ColorIdentifier"/> instance via well-known item.
 	/// </summary>
 	/// <param name="item">The well-known item.</param>
-	public ColorIdentifier(ColorIdentifierAlias item) : this((long)ColorIdentifierType.Alias << TypeShift | (long)item)
+	private ColorIdentifier(ColorIdentifierAlias item) : this((long)ColorIdentifierType.Alias << TypeShift | (long)item)
 	{
 	}
 
