@@ -1,4 +1,4 @@
-namespace Sudoku.Drawing;
+namespace Sudoku.Descriptors;
 
 /// <summary>
 /// Indicates type of color identifier.

@@ -1,4 +1,4 @@
-namespace Sudoku.Drawing;
+namespace Sudoku.Descriptors;
 
 /// <summary>
 /// Indicates an alias of color identifier.

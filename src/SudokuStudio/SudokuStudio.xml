@@ -3330,7 +3330,7 @@
             <param name="context">Indicates the drawing context.</param>
             <param name="nodes">Indicates the nodes to be drawn.</param>
         </member>
-        <member name="M:SudokuStudio.Drawing.DrawableFactory.ForCandidateNodeCore(Sudoku.Drawing.ColorIdentifier,Windows.UI.Color,System.Int32,Sudoku.Drawing.Nodes.CandidateViewNode,SudokuStudio.Views.Controls.SudokuPaneCell,SudokuStudio.Drawing.AnimatedResultCollection,System.Boolean,System.Boolean,System.Boolean)">
+        <member name="M:SudokuStudio.Drawing.DrawableFactory.ForCandidateNodeCore(Sudoku.Descriptors.ColorIdentifier,Windows.UI.Color,System.Int32,Sudoku.Drawing.Nodes.CandidateViewNode,SudokuStudio.Views.Controls.SudokuPaneCell,SudokuStudio.Drawing.AnimatedResultCollection,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
             The core method called by <see cref="M:SudokuStudio.Drawing.DrawableFactory.ForCandidateNode(SudokuStudio.Drawing.DrawingContext,Sudoku.Drawing.Nodes.CandidateViewNode,System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},System.Nullable{Sudoku.Concepts.Conclusion}@)"/>.
             </summary>
@@ -4079,9 +4079,9 @@
         </member>
         <member name="T:SudokuStudio.Interaction.Conversions.IdentifierConversion">
             <summary>
-            Provides with conversion methods used by XAML designer, about <see cref="T:Sudoku.Drawing.ColorIdentifier"/> instances.
+            Provides with conversion methods used by XAML designer, about <see cref="T:Sudoku.Descriptors.ColorIdentifier"/> instances.
             </summary>
-            <seealso cref="T:Sudoku.Drawing.ColorIdentifier"/>
+            <seealso cref="T:Sudoku.Descriptors.ColorIdentifier"/>
         </member>
         <member name="T:SudokuStudio.Interaction.Conversions.PencilmarkTextConversion">
             <summary>
@@ -17798,9 +17798,9 @@
         </member>
         <member name="M:Windows.UI.ColorExtensions.&lt;G&gt;$BB16C40F20C63E9DB9FEB07C52A6A7C6.GetIdentifier">
             <summary>
-            Gets an equivalent <see cref="T:Sudoku.Drawing.ColorIdentifier"/> instance via the current color.
+            Gets an equivalent <see cref="T:Sudoku.Descriptors.ColorIdentifier"/> instance via the current color.
             </summary>
-            <returns>An <see cref="T:Sudoku.Drawing.ColorIdentifier"/> instance.</returns>
+            <returns>An <see cref="T:Sudoku.Descriptors.ColorIdentifier"/> instance.</returns>
         </member>
         <member name="T:Windows.Storage.Pickers.FileOpenPickerExtensions">
             <summary>

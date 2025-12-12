@@ -49,6 +49,7 @@ global using Sudoku.Concepts.Graphs;
 global using Sudoku.Concepts.Marshalling;
 global using Sudoku.Concepts.Supersymmetry;
 global using Sudoku.Concepts.Symmetry;
+global using Sudoku.Descriptors;
 global using Sudoku.Diff.Results;
 global using Sudoku.Drawing;
 global using Sudoku.Drawing.Nodes;

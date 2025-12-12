@@ -9160,6 +9160,304 @@
             Indicates the puzzle has multiple solutions.
             </summary>
         </member>
+        <member name="T:Sudoku.Descriptors.ColorIdentifier">
+            <summary>
+            Represents a color identifier that defines a color that will be used in drawing.
+            </summary>
+            <param name="mask">The 64-bit signed integer as a mask.</param>
+            <remarks>
+            The type uses 5 of 8 bytes to store values.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Descriptors.ColorIdentifier.#ctor(System.Int64)">
+            <summary>
+            Represents a color identifier that defines a color that will be used in drawing.
+            </summary>
+            <param name="mask">The 64-bit signed integer as a mask.</param>
+            <remarks>
+            The type uses 5 of 8 bytes to store values.
+            </remarks>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifier.TypeShift">
+            <summary>
+            Indicates the shift bits amount.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Descriptors.ColorIdentifier.#ctor(System.Int32)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Descriptors.ColorIdentifier"/> instance via the specified an integer ID.
+            </summary>
+            <param name="id">The ID value.</param>
+        </member>
+        <member name="M:Sudoku.Descriptors.ColorIdentifier.#ctor(System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Descriptors.ColorIdentifier"/> instance via ARGB values.
+            </summary>
+            <param name="a">The alpha value.</param>
+            <param name="r">The red value.</param>
+            <param name="g">The green value.</param>
+            <param name="b">The blue value.</param>
+        </member>
+        <member name="M:Sudoku.Descriptors.ColorIdentifier.#ctor(Sudoku.Descriptors.ColorIdentifierAlias)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Descriptors.ColorIdentifier"/> instance via well-known item.
+            </summary>
+            <param name="item">The well-known item.</param>
+        </member>
+        <member name="P:Sudoku.Descriptors.ColorIdentifier.Alpha">
+            <summary>
+            Indicates alpha value.
+            The value becomes unsafe when <see cref="P:Sudoku.Descriptors.ColorIdentifier.Type"/> is not <see cref="F:Sudoku.Descriptors.ColorIdentifierType.Argb"/> but no exceptions thrown.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Descriptors.ColorIdentifier.Red">
+            <summary>
+            Indicates red value.
+            The value becomes unsafe when <see cref="P:Sudoku.Descriptors.ColorIdentifier.Type"/> is not <see cref="F:Sudoku.Descriptors.ColorIdentifierType.Argb"/> but no exceptions thrown.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Descriptors.ColorIdentifier.Green">
+            <summary>
+            Indicates green value.
+            The value becomes unsafe when <see cref="P:Sudoku.Descriptors.ColorIdentifier.Type"/> is not <see cref="F:Sudoku.Descriptors.ColorIdentifierType.Argb"/> but no exceptions thrown.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Descriptors.ColorIdentifier.Blue">
+            <summary>
+            Indicates blue value.
+            The value becomes unsafe when <see cref="P:Sudoku.Descriptors.ColorIdentifier.Type"/> is not <see cref="F:Sudoku.Descriptors.ColorIdentifierType.Argb"/> but no exceptions thrown.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Descriptors.ColorIdentifier.ArgbMask">
+            <summary>
+            Indicates an integer that represents ARGB values.
+            The value becomes unsafe when <see cref="P:Sudoku.Descriptors.ColorIdentifier.Type"/> is not <see cref="F:Sudoku.Descriptors.ColorIdentifierType.Argb"/> but no exceptions thrown.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Descriptors.ColorIdentifier.Id">
+            <summary>
+            Indicates an integer that describes the palette ID that a user has chosen.
+            The value becomes unsafe when <see cref="P:Sudoku.Descriptors.ColorIdentifier.Type"/> is not <see cref="F:Sudoku.Descriptors.ColorIdentifierType.Id"/> but no exceptions thrown.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Descriptors.ColorIdentifier.ValueMask">
+            <summary>
+            Indicates the mask that only represents color data.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Descriptors.ColorIdentifier.Type">
+            <summary>
+            Indicates the type of the color identifier.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Descriptors.ColorIdentifier.AliasedItem">
+            <summary>
+            Indicates an aliased value that directly points to an item that you want to color it to.
+            The value becomes unsafe when <see cref="P:Sudoku.Descriptors.ColorIdentifier.Type"/> is not <see cref="F:Sudoku.Descriptors.ColorIdentifierType.Alias"/> but no exceptions thrown.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Descriptors.ColorIdentifier.Mask">
+            <summary>
+            Indicates the whole 64-bit mask.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Descriptors.ColorIdentifier.System#Runtime#CompilerServices#ITuple#Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Descriptors.ColorIdentifier.System#Runtime#CompilerServices#ITuple#Item(System.Int32)">
+            <summary>
+            Returns a 2-element array.
+            The first element represents the type and the second element represents the data of color identifier.
+            The second value can be:
+            <list type="bullet">
+            <item>A quadruple of ARGB values (if <see cref="P:Sudoku.Descriptors.ColorIdentifier.Type"/> is <see cref="F:Sudoku.Descriptors.ColorIdentifierType.Argb"/>)</item>
+            <item>An integer value (if <see cref="P:Sudoku.Descriptors.ColorIdentifier.Type"/> is <see cref="F:Sudoku.Descriptors.ColorIdentifierType.Id"/>)</item>
+            <item>
+            An enumeration field of type <see cref="T:Sudoku.Descriptors.ColorIdentifierAlias"/>
+            (if <see cref="P:Sudoku.Descriptors.ColorIdentifier.Type"/> is <see cref="F:Sudoku.Descriptors.ColorIdentifierType.Alias"/>)
+            </item>
+            </list>
+            </summary>
+            <param name="index">The desired index (0 or 1).</param>
+            <returns>The value of element at the specified index of that 2-element array.</returns>
+            <exception cref="T:System.IndexOutOfRangeException">Throws when <paramref name="index"/> is neither 0 nor 1.</exception>
+            <remarks>
+            This member allows you using patterns to check values like <c>identifier is (ColorIdentifierType.Argb, (255, 0, _, _))</c>.
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Descriptors.ColorIdentifier.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.ColorIdentifier.Equals(Sudoku.Descriptors.ColorIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.ColorIdentifier.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:Sudoku.Descriptors.ColorIdentifier.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:Sudoku.Descriptors.ColorIdentifier.op_Equality(Sudoku.Descriptors.ColorIdentifier,Sudoku.Descriptors.ColorIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.ColorIdentifier.op_Inequality(Sudoku.Descriptors.ColorIdentifier,Sudoku.Descriptors.ColorIdentifier)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.ColorIdentifier.op_Implicit(System.Int32)~Sudoku.Descriptors.ColorIdentifier">
+            <summary>
+            Implicit cast from <see cref="T:System.Int32"/> to <see cref="T:Sudoku.Descriptors.ColorIdentifier"/>.
+            </summary>
+            <param name="id">The ID.</param>
+        </member>
+        <member name="M:Sudoku.Descriptors.ColorIdentifier.op_Implicit(System.ValueTuple{System.Byte,System.Byte,System.Byte,System.Byte})~Sudoku.Descriptors.ColorIdentifier">
+            <summary>
+            Implicit cast from (<see cref="T:System.Byte"/>, <see cref="T:System.Byte"/>, <see cref="T:System.Byte"/>, <see cref="T:System.Byte"/>)
+            to <see cref="T:Sudoku.Descriptors.ColorIdentifier"/>.
+            </summary>
+            <param name="tuple">The tuple or ARGB values.</param>
+        </member>
+        <member name="M:Sudoku.Descriptors.ColorIdentifier.op_Implicit(Sudoku.Descriptors.ColorIdentifierAlias)~Sudoku.Descriptors.ColorIdentifier">
+            <summary>
+            Implicit cast from <see cref="T:Sudoku.Descriptors.ColorIdentifierAlias"/> to <see cref="T:Sudoku.Descriptors.ColorIdentifier"/>.
+            </summary>
+            <param name="item">The aliased item.</param>
+        </member>
+        <member name="T:Sudoku.Descriptors.Converter">
+            <summary>
+            Represents a JSON converter that can serialize and deserialize with instances of this type.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Descriptors.Converter.IgnoreCase">
+            <summary>
+            Indicates whether we ignore case parsing on enumeration fields.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Descriptors.Converter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.Converter.Write(System.Text.Json.Utf8JsonWriter,Sudoku.Descriptors.ColorIdentifier,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Descriptors.ColorIdentifierAlias">
+            <summary>
+            Indicates an alias of color identifier.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.Normal">
+            <summary>
+            Indicates the normal color.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.Auxiliary1">
+            <summary>
+            Indicates the first auxiliary color.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.Auxiliary2">
+            <summary>
+            Indicates the second auxiliary color.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.Auxiliary3">
+            <summary>
+            Indicates the third auxiliary color.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.Assignment">
+            <summary>
+            Indicates the assignment color.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.OverlappedAssignment">
+            <summary>
+            Indicates the overlapped assignment color.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.Elimination">
+            <summary>
+            Indicates the elimination color.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.Cannibalism">
+            <summary>
+            Indicates the cannibalism color.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.Exofin">
+            <summary>
+            Indicates the exo-fin color.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.Endofin">
+            <summary>
+            Indicates the endo-fin color.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.Link">
+            <summary>
+            Indicates the link color.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.AlmostLockedSet1">
+            <summary>
+            Indicates the first ALS recorded.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.AlmostLockedSet2">
+            <summary>
+            Indicates the second ALS recorded.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.AlmostLockedSet3">
+            <summary>
+            Indicates the third ALS recorded.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.AlmostLockedSet4">
+            <summary>
+            Indicates the fourth ALS recorded.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.AlmostLockedSet5">
+            <summary>
+            Indicates the fifth ALS recorded.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.Rectangle1">
+            <summary>
+            Indicates the first AUR or AAR recorded.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.Rectangle2">
+            <summary>
+            Indicates the second AUR or AAR recorded.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierAlias.Rectangle3">
+            <summary>
+            Indicates the third AUR or AAR recorded.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Descriptors.ColorIdentifierType">
+            <summary>
+            Indicates type of color identifier.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierType.Argb">
+            <summary>
+            Indicates the type is ARGB.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierType.Alias">
+            <summary>
+            Indicates the type is aliased item.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ColorIdentifierType.Id">
+            <summary>
+            Indicates the type is ID.
+            </summary>
+        </member>
         <member name="T:Sudoku.Diff.DiffAnalysis">
             <summary>
             Provides a way to analyze difference between two grids.
@@ -9738,304 +10036,6 @@
         <member name="M:Sudoku.Diff.Results.UpdatedDiffResult.ToString">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Drawing.ColorIdentifier">
-            <summary>
-            Represents a color identifier that defines a color that will be used in drawing.
-            </summary>
-            <param name="mask">The 64-bit signed integer as a mask.</param>
-            <remarks>
-            The type uses 5 of 8 bytes to store values.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Drawing.ColorIdentifier.#ctor(System.Int64)">
-            <summary>
-            Represents a color identifier that defines a color that will be used in drawing.
-            </summary>
-            <param name="mask">The 64-bit signed integer as a mask.</param>
-            <remarks>
-            The type uses 5 of 8 bytes to store values.
-            </remarks>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifier.TypeShift">
-            <summary>
-            Indicates the shift bits amount.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Drawing.ColorIdentifier.#ctor(System.Int32)">
-            <summary>
-            Initializes a <see cref="T:Sudoku.Drawing.ColorIdentifier"/> instance via the specified an integer ID.
-            </summary>
-            <param name="id">The ID value.</param>
-        </member>
-        <member name="M:Sudoku.Drawing.ColorIdentifier.#ctor(System.Byte,System.Byte,System.Byte,System.Byte)">
-            <summary>
-            Initializes a <see cref="T:Sudoku.Drawing.ColorIdentifier"/> instance via ARGB values.
-            </summary>
-            <param name="a">The alpha value.</param>
-            <param name="r">The red value.</param>
-            <param name="g">The green value.</param>
-            <param name="b">The blue value.</param>
-        </member>
-        <member name="M:Sudoku.Drawing.ColorIdentifier.#ctor(Sudoku.Drawing.ColorIdentifierAlias)">
-            <summary>
-            Initializes a <see cref="T:Sudoku.Drawing.ColorIdentifier"/> instance via well-known item.
-            </summary>
-            <param name="item">The well-known item.</param>
-        </member>
-        <member name="P:Sudoku.Drawing.ColorIdentifier.Alpha">
-            <summary>
-            Indicates alpha value.
-            The value becomes unsafe when <see cref="P:Sudoku.Drawing.ColorIdentifier.Type"/> is not <see cref="F:Sudoku.Drawing.ColorIdentifierType.Argb"/> but no exceptions thrown.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Drawing.ColorIdentifier.Red">
-            <summary>
-            Indicates red value.
-            The value becomes unsafe when <see cref="P:Sudoku.Drawing.ColorIdentifier.Type"/> is not <see cref="F:Sudoku.Drawing.ColorIdentifierType.Argb"/> but no exceptions thrown.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Drawing.ColorIdentifier.Green">
-            <summary>
-            Indicates green value.
-            The value becomes unsafe when <see cref="P:Sudoku.Drawing.ColorIdentifier.Type"/> is not <see cref="F:Sudoku.Drawing.ColorIdentifierType.Argb"/> but no exceptions thrown.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Drawing.ColorIdentifier.Blue">
-            <summary>
-            Indicates blue value.
-            The value becomes unsafe when <see cref="P:Sudoku.Drawing.ColorIdentifier.Type"/> is not <see cref="F:Sudoku.Drawing.ColorIdentifierType.Argb"/> but no exceptions thrown.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Drawing.ColorIdentifier.ArgbMask">
-            <summary>
-            Indicates an integer that represents ARGB values.
-            The value becomes unsafe when <see cref="P:Sudoku.Drawing.ColorIdentifier.Type"/> is not <see cref="F:Sudoku.Drawing.ColorIdentifierType.Argb"/> but no exceptions thrown.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Drawing.ColorIdentifier.Id">
-            <summary>
-            Indicates an integer that describes the palette ID that a user has chosen.
-            The value becomes unsafe when <see cref="P:Sudoku.Drawing.ColorIdentifier.Type"/> is not <see cref="F:Sudoku.Drawing.ColorIdentifierType.Id"/> but no exceptions thrown.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Drawing.ColorIdentifier.ValueMask">
-            <summary>
-            Indicates the mask that only represents color data.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Drawing.ColorIdentifier.Type">
-            <summary>
-            Indicates the type of the color identifier.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Drawing.ColorIdentifier.AliasedItem">
-            <summary>
-            Indicates an aliased value that directly points to an item that you want to color it to.
-            The value becomes unsafe when <see cref="P:Sudoku.Drawing.ColorIdentifier.Type"/> is not <see cref="F:Sudoku.Drawing.ColorIdentifierType.Alias"/> but no exceptions thrown.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Drawing.ColorIdentifier.Mask">
-            <summary>
-            Indicates the whole 64-bit mask.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Drawing.ColorIdentifier.System#Runtime#CompilerServices#ITuple#Length">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Drawing.ColorIdentifier.System#Runtime#CompilerServices#ITuple#Item(System.Int32)">
-            <summary>
-            Returns a 2-element array.
-            The first element represents the type and the second element represents the data of color identifier.
-            The second value can be:
-            <list type="bullet">
-            <item>A quadruple of ARGB values (if <see cref="P:Sudoku.Drawing.ColorIdentifier.Type"/> is <see cref="F:Sudoku.Drawing.ColorIdentifierType.Argb"/>)</item>
-            <item>An integer value (if <see cref="P:Sudoku.Drawing.ColorIdentifier.Type"/> is <see cref="F:Sudoku.Drawing.ColorIdentifierType.Id"/>)</item>
-            <item>
-            An enumeration field of type <see cref="T:Sudoku.Drawing.ColorIdentifierAlias"/>
-            (if <see cref="P:Sudoku.Drawing.ColorIdentifier.Type"/> is <see cref="F:Sudoku.Drawing.ColorIdentifierType.Alias"/>)
-            </item>
-            </list>
-            </summary>
-            <param name="index">The desired index (0 or 1).</param>
-            <returns>The value of element at the specified index of that 2-element array.</returns>
-            <exception cref="T:System.IndexOutOfRangeException">Throws when <paramref name="index"/> is neither 0 nor 1.</exception>
-            <remarks>
-            This member allows you using patterns to check values like <c>identifier is (ColorIdentifierType.Argb, (255, 0, _, _))</c>.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Drawing.ColorIdentifier.Equals(System.Object)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Drawing.ColorIdentifier.Equals(Sudoku.Drawing.ColorIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Drawing.ColorIdentifier.GetHashCode">
-            <inheritdoc cref="M:System.Object.GetHashCode"/>
-        </member>
-        <member name="M:Sudoku.Drawing.ColorIdentifier.ToString">
-            <inheritdoc cref="M:System.Object.ToString"/>
-        </member>
-        <member name="M:Sudoku.Drawing.ColorIdentifier.op_Equality(Sudoku.Drawing.ColorIdentifier,Sudoku.Drawing.ColorIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Drawing.ColorIdentifier.op_Inequality(Sudoku.Drawing.ColorIdentifier,Sudoku.Drawing.ColorIdentifier)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Drawing.ColorIdentifier.op_Implicit(System.Int32)~Sudoku.Drawing.ColorIdentifier">
-            <summary>
-            Implicit cast from <see cref="T:System.Int32"/> to <see cref="T:Sudoku.Drawing.ColorIdentifier"/>.
-            </summary>
-            <param name="id">The ID.</param>
-        </member>
-        <member name="M:Sudoku.Drawing.ColorIdentifier.op_Implicit(System.ValueTuple{System.Byte,System.Byte,System.Byte,System.Byte})~Sudoku.Drawing.ColorIdentifier">
-            <summary>
-            Implicit cast from (<see cref="T:System.Byte"/>, <see cref="T:System.Byte"/>, <see cref="T:System.Byte"/>, <see cref="T:System.Byte"/>)
-            to <see cref="T:Sudoku.Drawing.ColorIdentifier"/>.
-            </summary>
-            <param name="tuple">The tuple or ARGB values.</param>
-        </member>
-        <member name="M:Sudoku.Drawing.ColorIdentifier.op_Implicit(Sudoku.Drawing.ColorIdentifierAlias)~Sudoku.Drawing.ColorIdentifier">
-            <summary>
-            Implicit cast from <see cref="T:Sudoku.Drawing.ColorIdentifierAlias"/> to <see cref="T:Sudoku.Drawing.ColorIdentifier"/>.
-            </summary>
-            <param name="item">The aliased item.</param>
-        </member>
-        <member name="T:Sudoku.Drawing.Converter">
-            <summary>
-            Represents a JSON converter that can serialize and deserialize with instances of this type.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Drawing.Converter.IgnoreCase">
-            <summary>
-            Indicates whether we ignore case parsing on enumeration fields.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Drawing.Converter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Drawing.Converter.Write(System.Text.Json.Utf8JsonWriter,Sudoku.Drawing.ColorIdentifier,System.Text.Json.JsonSerializerOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Drawing.ColorIdentifierAlias">
-            <summary>
-            Indicates an alias of color identifier.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.Normal">
-            <summary>
-            Indicates the normal color.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.Auxiliary1">
-            <summary>
-            Indicates the first auxiliary color.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.Auxiliary2">
-            <summary>
-            Indicates the second auxiliary color.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.Auxiliary3">
-            <summary>
-            Indicates the third auxiliary color.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.Assignment">
-            <summary>
-            Indicates the assignment color.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.OverlappedAssignment">
-            <summary>
-            Indicates the overlapped assignment color.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.Elimination">
-            <summary>
-            Indicates the elimination color.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.Cannibalism">
-            <summary>
-            Indicates the cannibalism color.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.Exofin">
-            <summary>
-            Indicates the exo-fin color.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.Endofin">
-            <summary>
-            Indicates the endo-fin color.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.Link">
-            <summary>
-            Indicates the link color.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.AlmostLockedSet1">
-            <summary>
-            Indicates the first ALS recorded.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.AlmostLockedSet2">
-            <summary>
-            Indicates the second ALS recorded.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.AlmostLockedSet3">
-            <summary>
-            Indicates the third ALS recorded.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.AlmostLockedSet4">
-            <summary>
-            Indicates the fourth ALS recorded.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.AlmostLockedSet5">
-            <summary>
-            Indicates the fifth ALS recorded.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.Rectangle1">
-            <summary>
-            Indicates the first AUR or AAR recorded.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.Rectangle2">
-            <summary>
-            Indicates the second AUR or AAR recorded.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierAlias.Rectangle3">
-            <summary>
-            Indicates the third AUR or AAR recorded.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Drawing.ColorIdentifierType">
-            <summary>
-            Indicates type of color identifier.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierType.Argb">
-            <summary>
-            Indicates the type is ARGB.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierType.Alias">
-            <summary>
-            Indicates the type is aliased item.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Drawing.ColorIdentifierType.Id">
-            <summary>
-            Indicates the type is ID.
-            </summary>
-        </member>
         <member name="T:Sudoku.Drawing.DashArray">
             <summary>
             Defines a dash array of <see cref="T:System.Double"/> values. The values can be used in UI as dash array of a double collection.
@@ -10214,14 +10214,14 @@
             Parses a string and returns the equivalent color identifier.
             </summary>
             <param name="str">The string to be parsed.</param>
-            <returns>A <see cref="T:Sudoku.Drawing.ColorIdentifier"/> value returned.</returns>
+            <returns>A <see cref="T:Sudoku.Descriptors.ColorIdentifier"/> value returned.</returns>
         </member>
         <member name="T:Sudoku.Drawing.Parsing.ArgumentParser">
             <summary>
             Represents a parser type that parses arguments for one kind of drawing item.
             </summary>
         </member>
-        <member name="M:Sudoku.Drawing.Parsing.ArgumentParser.TryParse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser,System.ReadOnlySpan{Sudoku.Drawing.ViewNode}@)">
+        <member name="M:Sudoku.Drawing.Parsing.ArgumentParser.TryParse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser,System.ReadOnlySpan{Sudoku.Drawing.ViewNode}@)">
             <summary>
             Try to parse the arguments and return a list of <see cref="T:Sudoku.Drawing.ViewNode"/> instances indicating the result,
             assigned to <paramref name="result"/>.
@@ -10235,7 +10235,7 @@
             A <see cref="T:System.Boolean"/> result indicating whether the operation is successfully handled, and arguments are valid.
             </returns>
         </member>
-        <member name="M:Sudoku.Drawing.Parsing.ArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
+        <member name="M:Sudoku.Drawing.Parsing.ArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
             <summary>
             Parses the arguments and returns a list of <see cref="T:Sudoku.Drawing.ViewNode"/> instances indicating the result.
             </summary>
@@ -10251,7 +10251,7 @@
             Represents a baba group argument parser.
             </summary>
         </member>
-        <member name="M:Sudoku.Drawing.Parsing.BabaGroupArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
+        <member name="M:Sudoku.Drawing.Parsing.BabaGroupArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Drawing.Parsing.CandidateArgumentParser">
@@ -10259,7 +10259,7 @@
             Represents a candidate argument parser.
             </summary>
         </member>
-        <member name="M:Sudoku.Drawing.Parsing.CandidateArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
+        <member name="M:Sudoku.Drawing.Parsing.CandidateArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Drawing.Parsing.CellArgumentParser">
@@ -10267,7 +10267,7 @@
             Represents a cell argument parser.
             </summary>
         </member>
-        <member name="M:Sudoku.Drawing.Parsing.CellArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
+        <member name="M:Sudoku.Drawing.Parsing.CellArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Drawing.Parsing.ChuteArgumentParser">
@@ -10275,7 +10275,7 @@
             Represents a chute argument parser.
             </summary>
         </member>
-        <member name="M:Sudoku.Drawing.Parsing.ChuteArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
+        <member name="M:Sudoku.Drawing.Parsing.ChuteArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Drawing.Parsing.DigitArgumentParser">
@@ -10283,7 +10283,7 @@
             Represents a digit argument parser.
             </summary>
         </member>
-        <member name="M:Sudoku.Drawing.Parsing.DigitArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
+        <member name="M:Sudoku.Drawing.Parsing.DigitArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Drawing.Parsing.HouseArgumentParser">
@@ -10291,7 +10291,7 @@
             Represents a house argument parser.
             </summary>
         </member>
-        <member name="M:Sudoku.Drawing.Parsing.HouseArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
+        <member name="M:Sudoku.Drawing.Parsing.HouseArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
             <inheritdoc/>
         </member>
         <member name="P:Sudoku.Drawing.Parsing.HouseArgumentParser.HouseWithDigitPattern">
@@ -10314,7 +10314,7 @@
             Represents an icon argument parser.
             </summary>
         </member>
-        <member name="M:Sudoku.Drawing.Parsing.IconArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
+        <member name="M:Sudoku.Drawing.Parsing.IconArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Drawing.Parsing.LinkArgumentParser">
@@ -10322,7 +10322,7 @@
             Represents link argument parser.
             </summary>
         </member>
-        <member name="M:Sudoku.Drawing.Parsing.LinkArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
+        <member name="M:Sudoku.Drawing.Parsing.LinkArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Drawing.Parsing.LinkSetArgumentParser">
@@ -10343,7 +10343,7 @@
             Indicates whether the parser is truth-based.
             </summary>
         </member>
-        <member name="M:Sudoku.Drawing.Parsing.RankSetArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
+        <member name="M:Sudoku.Drawing.Parsing.RankSetArgumentParser.Parse(System.ReadOnlySpan{System.String},Sudoku.Concepts.Grid@,Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Coordinates.CoordinateParser)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Drawing.Parsing.TruthSetArgumentParser">
@@ -10459,7 +10459,7 @@
             <param name="unknownValueChar"><inheritdoc cref="P:Sudoku.Drawing.Nodes.BabaGroupViewNode.UnknownValueChar" path="/summary"/></param>
             <param name="digitsMask"><inheritdoc cref="P:Sudoku.Drawing.Nodes.BabaGroupViewNode.DigitsMask" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.BabaGroupViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32,System.Char,System.Int16)">
+        <member name="M:Sudoku.Drawing.Nodes.BabaGroupViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32,System.Char,System.Int16)">
             <summary>
             Defines a view node that highlights for a baba group.
             </summary>
@@ -10472,7 +10472,7 @@
             <summary>
             Initializes a <see cref="T:Sudoku.Drawing.Nodes.BabaGroupViewNode"/> instance via the specified values.
             </summary>
-            <inheritdoc cref="M:Sudoku.Drawing.Nodes.BabaGroupViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32,System.Char,System.Int16)"/>
+            <inheritdoc cref="M:Sudoku.Drawing.Nodes.BabaGroupViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32,System.Char,System.Int16)"/>
         </member>
         <member name="P:Sudoku.Drawing.Nodes.BabaGroupViewNode.Cell">
             <summary>
@@ -10489,7 +10489,7 @@
             Indicates a mask that hold digits used.
             </summary>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.BabaGroupViewNode.Deconstruct(Sudoku.Drawing.ColorIdentifier@,System.Int32@,System.Char@)">
+        <member name="M:Sudoku.Drawing.Nodes.BabaGroupViewNode.Deconstruct(Sudoku.Descriptors.ColorIdentifier@,System.Int32@,System.Char@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
@@ -10497,7 +10497,7 @@
 				</summary>
 			</target>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.BabaGroupViewNode.Deconstruct(Sudoku.Drawing.ColorIdentifier@,System.Int32@,System.Int16@,System.Char@)">
+        <member name="M:Sudoku.Drawing.Nodes.BabaGroupViewNode.Deconstruct(Sudoku.Descriptors.ColorIdentifier@,System.Int32@,System.Int16@,System.Char@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
@@ -10523,7 +10523,7 @@
             </summary>
             <param name="identifier"><inheritdoc/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.BasicViewNode.#ctor(Sudoku.Drawing.ColorIdentifier)">
+        <member name="M:Sudoku.Drawing.Nodes.BasicViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier)">
             <summary>
             Defines a basic view node type that provides with basic displaying elements from a grid.
             </summary>
@@ -10536,7 +10536,7 @@
             <param name="identifier"><inheritdoc/></param>
             <param name="candidate"><inheritdoc cref="P:Sudoku.Drawing.Nodes.CandidateViewNode.Candidate" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.CandidateViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)">
+        <member name="M:Sudoku.Drawing.Nodes.CandidateViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)">
             <summary>
             Defines a view node that highlights for a candidate.
             </summary>
@@ -10573,7 +10573,7 @@
             <param name="start"><inheritdoc cref="P:Sudoku.Drawing.Nodes.CellLinkViewNode.Start" path="/summary"/></param>
             <param name="end"><inheritdoc cref="P:Sudoku.Drawing.Nodes.CellLinkViewNode.End" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.CellLinkViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32,System.Int32)">
+        <member name="M:Sudoku.Drawing.Nodes.CellLinkViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32,System.Int32)">
             <summary>
             Defines a view node that highlights for a cell link.
             </summary>
@@ -10600,7 +10600,7 @@
         <member name="P:Sudoku.Drawing.Nodes.CellLinkViewNode.Sudoku#Drawing#Nodes#ILinkViewNode#Shape">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.CellLinkViewNode.Deconstruct(Sudoku.Drawing.ColorIdentifier@,System.Int32@,System.Int32@)">
+        <member name="M:Sudoku.Drawing.Nodes.CellLinkViewNode.Deconstruct(Sudoku.Descriptors.ColorIdentifier@,System.Int32@,System.Int32@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
@@ -10627,7 +10627,7 @@
             <param name="identifier"><inheritdoc/></param>
             <param name="cell"><inheritdoc cref="P:Sudoku.Drawing.Nodes.CellViewNode.Cell" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.CellViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)">
+        <member name="M:Sudoku.Drawing.Nodes.CellViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)">
             <summary>
             Defines a view node that highlights for a cell.
             </summary>
@@ -10639,7 +10639,7 @@
             Indicates the cell highlighted.
             </summary>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.CellViewNode.Deconstruct(Sudoku.Drawing.ColorIdentifier@,System.Int32@)">
+        <member name="M:Sudoku.Drawing.Nodes.CellViewNode.Deconstruct(Sudoku.Descriptors.ColorIdentifier@,System.Int32@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
@@ -10668,7 +10668,7 @@
             <param name="end"><inheritdoc cref="P:Sudoku.Drawing.Nodes.ChainLinkViewNode.End" path="/summary"/></param>
             <param name="isStrongLink"><inheritdoc cref="P:Sudoku.Drawing.Nodes.ChainLinkViewNode.IsStrongLink" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.ChainLinkViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.CandidateMap,Sudoku.Concepts.CandidateMap,System.Boolean)">
+        <member name="M:Sudoku.Drawing.Nodes.ChainLinkViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.CandidateMap,Sudoku.Concepts.CandidateMap,System.Boolean)">
             <summary>
             Defines a view node that highlights for a chain link.
             </summary>
@@ -10701,7 +10701,7 @@
         <member name="P:Sudoku.Drawing.Nodes.ChainLinkViewNode.Sudoku#Drawing#Nodes#ILinkViewNode#Shape">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.ChainLinkViewNode.Deconstruct(Sudoku.Drawing.ColorIdentifier@,Sudoku.Concepts.CandidateMap@,Sudoku.Concepts.CandidateMap@,System.Boolean@)">
+        <member name="M:Sudoku.Drawing.Nodes.ChainLinkViewNode.Deconstruct(Sudoku.Descriptors.ColorIdentifier@,Sudoku.Concepts.CandidateMap@,Sudoku.Concepts.CandidateMap@,System.Boolean@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
@@ -10729,7 +10729,7 @@
             <param name="identifier"><inheritdoc/></param>
             <param name="chuteIndex"><inheritdoc cref="P:Sudoku.Drawing.Nodes.ChuteViewNode.ChuteIndex" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.ChuteViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)">
+        <member name="M:Sudoku.Drawing.Nodes.ChuteViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)">
             <summary>
             Defines a view node that highlights for a chute (i.e. 3 houses that is in a three blocks in a line).
             </summary>
@@ -10758,7 +10758,7 @@
             </para>
             </summary>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.ChuteViewNode.Deconstruct(Sudoku.Drawing.ColorIdentifier@,System.Int32@)">
+        <member name="M:Sudoku.Drawing.Nodes.ChuteViewNode.Deconstruct(Sudoku.Descriptors.ColorIdentifier@,System.Int32@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
@@ -10782,15 +10782,15 @@
             <summary>
             Defines a circle view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
-            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
+            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.CircleViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)">
+        <member name="M:Sudoku.Drawing.Nodes.CircleViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)">
             <summary>
             Defines a circle view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
-            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
+            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
         </member>
         <member name="M:Sudoku.Drawing.Nodes.CircleViewNode.Clone">
             <inheritdoc/>
@@ -10804,7 +10804,7 @@
             <param name="end"><inheritdoc cref="P:Sudoku.Drawing.Nodes.ConjugateLinkViewNode.End" path="/summary"/></param>
             <param name="digit"><inheritdoc cref="P:Sudoku.Drawing.Nodes.ConjugateLinkViewNode.Digit" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.ConjugateLinkViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32,System.Int32,System.Int32)">
+        <member name="M:Sudoku.Drawing.Nodes.ConjugateLinkViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32,System.Int32,System.Int32)">
             <summary>
             Defines a view node that highlights for a conjugate pair.
             </summary>
@@ -10842,7 +10842,7 @@
         <member name="P:Sudoku.Drawing.Nodes.ConjugateLinkViewNode.Sudoku#Drawing#Nodes#ILinkViewNode#Shape">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.ConjugateLinkViewNode.Deconstruct(Sudoku.Drawing.ColorIdentifier@,System.Int32@,System.Int32@,System.Int32@)">
+        <member name="M:Sudoku.Drawing.Nodes.ConjugateLinkViewNode.Deconstruct(Sudoku.Descriptors.ColorIdentifier@,System.Int32@,System.Int32@,System.Int32@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
@@ -10866,15 +10866,15 @@
             <summary>
             Defines a cross view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
-            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
+            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.CrossViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)">
+        <member name="M:Sudoku.Drawing.Nodes.CrossViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)">
             <summary>
             Defines a cross view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
-            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
+            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
         </member>
         <member name="M:Sudoku.Drawing.Nodes.CrossViewNode.Clone">
             <inheritdoc/>
@@ -10883,15 +10883,15 @@
             <summary>
             Defines a diamond view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
-            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
+            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.DiamondViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)">
+        <member name="M:Sudoku.Drawing.Nodes.DiamondViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)">
             <summary>
             Defines a diamond view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
-            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
+            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
         </member>
         <member name="M:Sudoku.Drawing.Nodes.DiamondViewNode.Clone">
             <inheritdoc/>
@@ -10900,15 +10900,15 @@
             <summary>
             Defines a heart view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
-            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
+            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.HeartViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)">
+        <member name="M:Sudoku.Drawing.Nodes.HeartViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)">
             <summary>
             Defines a heart view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
-            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
+            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
         </member>
         <member name="M:Sudoku.Drawing.Nodes.HeartViewNode.Clone">
             <inheritdoc/>
@@ -10920,7 +10920,7 @@
             <param name="identifier"><inheritdoc/></param>
             <param name="house"><inheritdoc cref="P:Sudoku.Drawing.Nodes.HouseViewNode.House" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.HouseViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)">
+        <member name="M:Sudoku.Drawing.Nodes.HouseViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)">
             <summary>
             Defines a view node that highlights for a house.
             </summary>
@@ -10932,7 +10932,7 @@
             Indicates the house highlighted.
             </summary>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.HouseViewNode.Deconstruct(Sudoku.Drawing.ColorIdentifier@,System.Int32@)">
+        <member name="M:Sudoku.Drawing.Nodes.HouseViewNode.Deconstruct(Sudoku.Descriptors.ColorIdentifier@,System.Int32@)">
             <target name="method">
 				<summary>
 					Deconstruct the current instance into multiple values, which means you can use
@@ -10956,14 +10956,14 @@
             <summary>
             Defines an icon view node that applies to a cell, indicating the icon of the cell. The icons can be used on some sudoku variants.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.ViewNode.#ctor(Sudoku.Drawing.ColorIdentifier)"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.ViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier)"/></param>
             <param name="cell"><inheritdoc cref="P:Sudoku.Drawing.Nodes.IconViewNode.Cell" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)">
+        <member name="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)">
             <summary>
             Defines an icon view node that applies to a cell, indicating the icon of the cell. The icons can be used on some sudoku variants.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.ViewNode.#ctor(Sudoku.Drawing.ColorIdentifier)"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.ViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier)"/></param>
             <param name="cell"><inheritdoc cref="P:Sudoku.Drawing.Nodes.IconViewNode.Cell" path="/summary"/></param>
         </member>
         <member name="P:Sudoku.Drawing.Nodes.IconViewNode.Cell">
@@ -11017,15 +11017,15 @@
             <summary>
             Represents link view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='identifier']"/></param>
-            <param name="space"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='space']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='identifier']"/></param>
+            <param name="space"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='space']"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.LinkSpaceViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)">
+        <member name="M:Sudoku.Drawing.Nodes.LinkSpaceViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)">
             <summary>
             Represents link view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='identifier']"/></param>
-            <param name="space"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='space']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='identifier']"/></param>
+            <param name="space"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='space']"/></param>
         </member>
         <member name="P:Sudoku.Drawing.Nodes.LinkSpaceViewNode.IsTruth">
             <inheritdoc/>
@@ -11043,7 +11043,7 @@
             <param name="identifier"><inheritdoc cref="P:Sudoku.Drawing.ViewNode.Identifier" path="/summary"/></param>
             <param name="space"><inheritdoc cref="P:Sudoku.Drawing.Nodes.RankSetViewNode.Space" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)">
+        <member name="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)">
             <summary>
             Represents a rank set (truth or link) view node.
             </summary>
@@ -11079,15 +11079,15 @@
             <summary>
             Defines a square view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
-            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
+            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.SquareViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)">
+        <member name="M:Sudoku.Drawing.Nodes.SquareViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)">
             <summary>
             Defines a square view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
-            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
+            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
         </member>
         <member name="M:Sudoku.Drawing.Nodes.SquareViewNode.Clone">
             <inheritdoc/>
@@ -11096,15 +11096,15 @@
             <summary>
             Defines a star view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
-            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
+            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.StarViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)">
+        <member name="M:Sudoku.Drawing.Nodes.StarViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)">
             <summary>
             Defines a star view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
-            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
+            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
         </member>
         <member name="M:Sudoku.Drawing.Nodes.StarViewNode.Clone">
             <inheritdoc/>
@@ -11113,15 +11113,15 @@
             <summary>
             Defines a triangle view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
-            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
+            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.TriangleViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)">
+        <member name="M:Sudoku.Drawing.Nodes.TriangleViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)">
             <summary>
             Defines a triangle view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
-            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='identifier']"/></param>
+            <param name="cell"><inheritdoc cref="M:Sudoku.Drawing.Nodes.IconViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,System.Int32)" path="/param[@name='cell']"/></param>
         </member>
         <member name="M:Sudoku.Drawing.Nodes.TriangleViewNode.Clone">
             <inheritdoc/>
@@ -11130,15 +11130,15 @@
             <summary>
             Represents truth view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='identifier']"/></param>
-            <param name="space"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='space']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='identifier']"/></param>
+            <param name="space"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='space']"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.Nodes.TruthSpaceViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)">
+        <member name="M:Sudoku.Drawing.Nodes.TruthSpaceViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)">
             <summary>
             Represents truth view node.
             </summary>
-            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='identifier']"/></param>
-            <param name="space"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Drawing.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='space']"/></param>
+            <param name="identifier"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='identifier']"/></param>
+            <param name="space"><inheritdoc cref="M:Sudoku.Drawing.Nodes.RankSetViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier,Sudoku.Concepts.Supersymmetry.Space)" path="/param[@name='space']"/></param>
         </member>
         <member name="P:Sudoku.Drawing.Nodes.TruthSpaceViewNode.IsTruth">
             <inheritdoc/>
@@ -11376,7 +11376,7 @@
             </summary>
             <param name="identifier"><inheritdoc cref="P:Sudoku.Drawing.ViewNode.Identifier" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Drawing.ViewNode.#ctor(Sudoku.Drawing.ColorIdentifier)">
+        <member name="M:Sudoku.Drawing.ViewNode.#ctor(Sudoku.Descriptors.ColorIdentifier)">
             <summary>
             Represents an item that can be drawn by GDI+ graphics module or UI shape controls.
             </summary>
