@@ -190,8 +190,8 @@
 * [双飞鱼](exocet/07-double-exocet.md)
 * [高级飞鱼](exocet/08-senior-exocet.md)
 * [退化飞鱼](exocet/09-sashimi-exocet.md)
-* [复杂飞鱼](exocet/10-complex-exocet/README.md)
-  * [宫内飞鱼](exocet/10-complex-exocet/01-franken-exocet.md)
+* [宫内飞鱼](exocet/10-franken-exocet.md)
+* [交叉飞鱼](exocet/11-mutant-exocet.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
