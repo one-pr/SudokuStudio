@@ -6,7 +6,7 @@ description: Franken Exocet
 
 ## 宫内初级飞鱼（Franken Junior Exocet） <a href="#franken-junior-exocet" id="franken-junior-exocet"></a>
 
-<figure><img src="../../.gitbook/assets/images_0814.png" alt="" width="375"><figcaption><p>宫内初级飞鱼</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/images_0814.png" alt="" width="375"><figcaption><p>宫内初级飞鱼</p></figcaption></figure>
 
 如图所示。按照我们之前学到的飞鱼的推理过程，我们需要将结构按之前的思路去思考。但比较奇怪的是，如果我们只利用 `r59` 两行作为交叉单元格的话，那么这个题就无法正常进行下去了，因为 1、2、3 都可以最多填两次。
 
@@ -30,7 +30,7 @@ description: Franken Exocet
 
 ### 宫内高级飞鱼的基本推理 <a href="#reasoning-of-franken-senior-exocet" id="reasoning-of-franken-senior-exocet"></a>
 
-<figure><img src="../../.gitbook/assets/images_0815.png" alt="" width="375"><figcaption><p>宫内高级飞鱼</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/images_0815.png" alt="" width="375"><figcaption><p>宫内高级飞鱼</p></figcaption></figure>
 
 如图所示。这个题有些类似之前介绍过的一个比较特殊的例子。基准单元格能删 1，但不要以为只有 X 致命定理才能删。这个题因为形状发生了变异所以本身也无法使用 X 致命定理。它是怎么删的呢？
 
@@ -71,7 +71,7 @@ description: Franken Exocet
 
 下面给各位一道练习题。这个题只给了模糊的基准单元格和目标单元格，请找出这个结构里的飞鱼结构并得到合理的推演结论。
 
-<figure><img src="../../.gitbook/assets/images_0816.png" alt="" width="375"><figcaption><p>练习题</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/images_0816.png" alt="" width="375"><figcaption><p>练习题</p></figcaption></figure>
 
 注意，目标单元格需要自己找，它可能是初级飞鱼也可能是高级飞鱼，所以目标单元格可能也在蓝色标注的范围里，也可能不在。
 

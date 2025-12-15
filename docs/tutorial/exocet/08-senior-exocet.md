@@ -57,3 +57,11 @@ description: Senior Exocet
 <figure><img src="../.gitbook/assets/images_0818.png" alt="" width="375"><figcaption><p>这个例子咱再换一个内目标单元格</p></figcaption></figure>
 
 如图所示。这次我们把目标单元格换到 `r8c3` 上。这样 6 就只能摆在 `r6c34` 了，这样和 `r7c7` 组合起来，依然满足最多两次；别的数均不受影响，所以后面的推算逻辑完全一样，结论是 `r8c3 <> 78`。
+
+## 利用共轭对造成删数 <a href="#an-example-using-conjugate-pairs" id="an-example-using-conjugate-pairs"></a>
+
+<figure><img src="../.gitbook/assets/images_0821.png" alt="" width="375"><figcaption><p>高级飞鱼 + 共轭对</p></figcaption></figure>
+
+如图所示。这个例子一共有四个目标单元格。显然这不太科学，因为我们只能有俩目标单元格才能有删数。不过没关系。这个题的四个目标单元格里，我们将其分为两组：`r89c2` 和 `r59c4` 这两组。`r89c2` 里有 9 的共轭对，而 `r59c4` 也有一个 9 的共轭对。
+
+显然，`r89c2` 里必须要填一个 9，所以另外一个才能是实际填入基准单元格设定的那个数字；而 `r59c4` 也是如此，所以这个题的结论可以删除了 3、4、5 和 9 以外的别的候选数，所以这个题的结论就是 `r5c4 <> 18`、`r9c2 <> 2` 和 `r9c4 <> 12`。
