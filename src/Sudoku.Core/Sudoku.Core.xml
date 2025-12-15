@@ -9160,6 +9160,223 @@
             Indicates the puzzle has multiple solutions.
             </summary>
         </member>
+        <member name="T:Sudoku.Descriptors.CellChunk">
+            <summary>
+            Represents a cell chunk.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.CellChunk._element">
+            <summary>
+            Indicates the backing single element.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.CellChunk._map">
+            <summary>
+            Indicates the backing cell map.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.CellChunk._array">
+            <summary>
+            Indicates the backing array.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.CellChunk._list">
+            <summary>
+            Indicates the backing list.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.CellChunk._hashSet">
+            <summary>
+            Indicates the backing hash set.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Descriptors.CellChunk.Create(Sudoku.Concepts.CellMap@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.CellChunk.Create(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.CellChunk.Create(System.Int32[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.CellChunk.Create(System.Collections.Generic.List{System.Int32})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.CellChunk.Create(System.Collections.Generic.HashSet{System.Int32})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Descriptors.SingleConverter">
+            <summary>
+            Represents a single element converter.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Descriptors.SingleConverter.Format(System.Object,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.SingleConverter.Read(System.Text.Json.Utf8JsonReader@,System.IFormatProvider,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.SingleConverter.Write(System.Text.Json.Utf8JsonWriter,System.Object,System.IFormatProvider,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Descriptors.CellMapConverter">
+            <summary>
+            Represents a cell map converter.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Descriptors.CellMapConverter.Format(System.Object,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.CellMapConverter.Read(System.Text.Json.Utf8JsonReader@,System.IFormatProvider,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.CellMapConverter.Write(System.Text.Json.Utf8JsonWriter,System.Object,System.IFormatProvider,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Descriptors.CollectionConverter`1">
+            <summary>
+            Represents collection converter.
+            </summary>
+            <typeparam name="T">The type of collection.</typeparam>
+        </member>
+        <member name="F:Sudoku.Descriptors.CollectionConverter`1._backingConverter">
+            <summary>
+            Indicates the backing converter.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Descriptors.CollectionConverter`1.Format(System.Object,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.CollectionConverter`1.Read(System.Text.Json.Utf8JsonReader@,System.IFormatProvider,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.CollectionConverter`1.Write(System.Text.Json.Utf8JsonWriter,System.Object,System.IFormatProvider,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Descriptors.ChunkConverter`1">
+            <summary>
+            Provides a JSON converter of <see cref="T:Sudoku.Descriptors.Chunk"/>.
+            </summary>
+            <typeparam name="TChunk">The type of chunk.</typeparam>
+            <seealso cref="T:Sudoku.Descriptors.Chunk"/>
+        </member>
+        <member name="M:Sudoku.Descriptors.ChunkConverter`1.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.ChunkConverter`1.Write(System.Text.Json.Utf8JsonWriter,`0,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Descriptors.ChunkElement">
+            <summary>
+            Indicates the element type of a chunk (a single item, multiple items, etc.).
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ChunkElement.None">
+            <summary>
+            The placeholder of this type.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ChunkElement.Single">
+            <summary>
+            Indicates the element is a single value.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ChunkElement.BitStateMap">
+            <summary>
+            Indicates the element is a bit state map.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ChunkElement.Array">
+            <summary>
+            Indicates the element is an array.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ChunkElement.List">
+            <summary>
+            Indicates the element is a list.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ChunkElement.HashSet">
+            <summary>
+            Indicates the element is a hash set.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Descriptors.ChunkElementAttribute">
+            <summary>
+            Provides metadata for a chunk element type of a field.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Descriptors.ChunkElementAttribute.#ctor(Sudoku.Descriptors.ChunkElement)">
+            <summary>
+            Provides metadata for a chunk element type of a field.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Descriptors.ChunkElementAttribute.Element">
+            <summary>
+            Indicates the chunk element type.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Descriptors.ChunkElementAttribute.ConverterType">
+            <summary>
+            Indicates the converter type. The target type must be derived from <see cref="T:Sudoku.Descriptors.ChunkElementConverter"/>.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+            Throws when the target type cannot be assignable to <see cref="T:Sudoku.Descriptors.ChunkElementConverter"/>.
+            </exception>
+            <seealso cref="T:Sudoku.Descriptors.ChunkElementConverter"/>
+        </member>
+        <member name="T:Sudoku.Descriptors.ChunkElementConverter">
+            <summary>
+            Represents a converter object that supports serialization / deserialization operation
+            (consumed by type <see cref="T:System.Text.Json.JsonSerializer"/>),
+            and formatting into string value (consumed by <see cref="M:System.Object.ToString"/>).
+            </summary>
+            <seealso cref="T:System.Text.Json.JsonSerializer"/>
+            <seealso cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:Sudoku.Descriptors.ChunkElementConverter.Format(System.Object,System.IFormatProvider)">
+            <summary>
+            Format the current object, converting it into a string.
+            </summary>
+            <param name="value">The value to format.</param>
+            <param name="formatProvider">The format provider object that can be used for formatting elements.</param>
+            <returns>The equivalent string representation.</returns>
+        </member>
+        <member name="M:Sudoku.Descriptors.ChunkElementConverter.Read(System.Text.Json.Utf8JsonReader@,System.IFormatProvider,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Performs JSON reading operation (deserialization) that will be called by <see cref="M:System.Text.Json.Serialization.JsonConverter`1.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)"/> method.
+            </summary>
+            <param name="reader"><inheritdoc cref="M:System.Text.Json.Serialization.JsonConverter`1.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)" path="/param[@name='reader']"/></param>
+            <param name="formatProvider">The format provider (parser, culture information, etc.).</param>
+            <param name="typeToConvert"><inheritdoc cref="M:System.Text.Json.Serialization.JsonConverter`1.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)" path="/param[@name='typeToConvert']"/></param>
+            <param name="options"><inheritdoc cref="M:System.Text.Json.Serialization.JsonConverter`1.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)" path="/param[@name='options']"/></param>
+            <returns>The value converted.</returns>
+        </member>
+        <member name="M:Sudoku.Descriptors.ChunkElementConverter.Write(System.Text.Json.Utf8JsonWriter,System.Object,System.IFormatProvider,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Performs JSON writting operation (serialization) that will be called by <see cref="M:System.Text.Json.Serialization.JsonConverter`1.Write(System.Text.Json.Utf8JsonWriter,`0,System.Text.Json.JsonSerializerOptions)"/> method.
+            </summary>
+            <param name="writer"><inheritdoc cref="M:System.Text.Json.Serialization.JsonConverter`1.Write(System.Text.Json.Utf8JsonWriter,`0,System.Text.Json.JsonSerializerOptions)" path="/param[@name='writer']"/></param>
+            <param name="formatProvider">The format provider (converter, culture information, etc.).</param>
+            <param name="value"><inheritdoc cref="M:System.Text.Json.Serialization.JsonConverter`1.Write(System.Text.Json.Utf8JsonWriter,`0,System.Text.Json.JsonSerializerOptions)" path="/param[@name='value']"/></param>
+            <param name="options"><inheritdoc cref="M:System.Text.Json.Serialization.JsonConverter`1.Write(System.Text.Json.Utf8JsonWriter,`0,System.Text.Json.JsonSerializerOptions)" path="/param[@name='options']"/></param>
+            <seealso cref="M:System.Text.Json.Serialization.JsonConverter`1.Write(System.Text.Json.Utf8JsonWriter,`0,System.Text.Json.JsonSerializerOptions)"/>
+        </member>
+        <member name="T:Sudoku.Descriptors.ChunkType">
+            <summary>
+            Indicates type of chunk of items (cell, candidate, house, etc.).
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ChunkType.None">
+            <summary>
+            Indicates placeholder field of this type.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.ChunkType.Cell">
+            <summary>
+            Indicates the chunk type is for a cell.
+            </summary>
+        </member>
         <member name="T:Sudoku.Descriptors.ColorDescriptor">
             <summary>
             Represents a descriptor that describes for a color that will be used in drawing.
@@ -9501,6 +9718,140 @@
             <summary>
             Indicates the type is ID.
             </summary>
+        </member>
+        <member name="T:Sudoku.Descriptors.Chunk">
+            <summary>
+            Represents a single item or a list of items to draw.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.Chunk.TypeJsonPropertyName">
+            <summary>
+            Indicates JSON property name for <see cref="P:Sudoku.Descriptors.Chunk.Type"/>.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.Chunk.ElementJsonPropertyName">
+            <summary>
+            Indicates JSON property name for <see cref="P:Sudoku.Descriptors.Chunk.Element"/>.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Descriptors.Chunk.ValueJsonPropertyName">
+            <summary>
+            Indicates JSON property name for value.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Descriptors.Chunk.Type">
+            <summary>
+            Indicates the type of chunk (cell, candidate, house, etc.).
+            </summary>
+        </member>
+        <member name="P:Sudoku.Descriptors.Chunk.Element">
+            <summary>
+            Indicates the type of elements (a single item, multiple items, etc.).
+            </summary>
+        </member>
+        <member name="M:Sudoku.Descriptors.Chunk.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.Chunk.ToString(System.IFormatProvider)">
+            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Descriptors.Chunk.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Descriptors.Chunk.DeserializeCore(System.Text.Json.Utf8JsonReader@,System.IFormatProvider,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            The core operation for reading JSON. The result instance deserialized will be assigned to the current instance.
+            </summary>
+            <param name="reader">The reader instance.</param>
+            <param name="formatProvider">The format provider.</param>
+            <param name="typeToConvert">The type to convert.</param>
+            <param name="options">Options.</param>
+        </member>
+        <member name="M:Sudoku.Descriptors.Chunk.SerializeCore(System.Text.Json.Utf8JsonWriter,System.IFormatProvider,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            The core operation for writting JSON.
+            </summary>
+            <param name="writer">The writer instance.</param>
+            <param name="formatProvider">The format provider.</param>
+            <param name="options">Options.</param>
+        </member>
+        <member name="M:Sudoku.Descriptors.Chunk.GetTargetField(Sudoku.Descriptors.ChunkElementAttribute@)">
+            <summary>
+            Returns target field in reflection information with attribute.
+            </summary>
+            <param name="attribute">The attribute.</param>
+            <returns>The field reflection information.</returns>
+        </member>
+        <member name="M:Sudoku.Descriptors.Chunk.System#IFormattable#ToString(System.String,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Descriptors.IChunkCreator`2">
+            <summary>
+            Defines a type that is a chunk.
+            </summary>
+            <typeparam name="TSelf"><self-type-constraint>
+		<para>Indicates the type implementing this interface.</para>
+		<para>
+			This type doesn't use any extra syntax to constraint such usage, but C# will check for it.
+			The type will include a <see langword="where" /> constraint that implements the interface itself
+			to declare such "self constraint" usage:
+			<code><![CDATA[interface ISelfType<TSelf> where TSelf : ISelfType<TSelf>]]></code>
+			In addition, the type should be named <c>TSelf</c> in order to tell type parameters with the others.
+		</para>
+	</self-type-constraint></typeparam>
+            <typeparam name="TElement">The type of each element.</typeparam>
+        </member>
+        <member name="M:Sudoku.Descriptors.IChunkCreator`2.Create(`1)">
+            <summary>
+            Create an instance via a single element.
+            </summary>
+            <param name="element">The element.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:Sudoku.Descriptors.IChunkCreator`2.Create(`1[])">
+            <summary>
+            Create an instance via an array.
+            </summary>
+            <param name="array">The array.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:Sudoku.Descriptors.IChunkCreator`2.Create(System.Collections.Generic.List{`1})">
+            <summary>
+            Create an instance via a list.
+            </summary>
+            <param name="list">The list.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:Sudoku.Descriptors.IChunkCreator`2.Create(System.Collections.Generic.HashSet{`1})">
+            <summary>
+            Create an instance via a hash set.
+            </summary>
+            <param name="hashSet">The hash set.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="T:Sudoku.Descriptors.IChunkCreator`3">
+            <summary>
+            Defines a type that is a chunk, which supports bit state map creation.
+            </summary>
+            <typeparam name="TSelf"><self-type-constraint>
+		<para>Indicates the type implementing this interface.</para>
+		<para>
+			This type doesn't use any extra syntax to constraint such usage, but C# will check for it.
+			The type will include a <see langword="where" /> constraint that implements the interface itself
+			to declare such "self constraint" usage:
+			<code><![CDATA[interface ISelfType<TSelf> where TSelf : ISelfType<TSelf>]]></code>
+			In addition, the type should be named <c>TSelf</c> in order to tell type parameters with the others.
+		</para>
+	</self-type-constraint></typeparam>
+            <typeparam name="TMap">The type of map.</typeparam>
+            <typeparam name="TElement">The type of each element.</typeparam>
+        </member>
+        <member name="M:Sudoku.Descriptors.IChunkCreator`3.Create(`1@)">
+            <summary>
+            Create an instance via a map.
+            </summary>
+            <param name="map">The map.</param>
+            <returns>The instance.</returns>
         </member>
         <member name="T:Sudoku.Diff.DiffAnalysis">
             <summary>
