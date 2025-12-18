@@ -8,7 +8,7 @@ description: Region-X Theorem
 
 ## X 区域是什么？ <a href="#what-is-an-x-region" id="what-is-an-x-region"></a>
 
-<figure><img src="../.gitbook/assets/images_0789.png" alt="" width="375"><figcaption><p>X 区域</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0789.png" alt="" width="375"><figcaption><p>X 区域</p></figcaption></figure>
 
 如图所示。这是一个飞鱼结构，显然目标单元格里可以删除 `r7c9 <> 3` 的结论。不过我们这里不是打算说这个的。
 
@@ -46,7 +46,7 @@ description: Region-X Theorem
 {% step %}
 ### 构造初始条件 <a href="#step-1" id="step-1"></a>
 
-<figure><img src="../.gitbook/assets/images_0790.png" alt="" width="292"><figcaption><p>第一步的示意图</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0790.png" alt="" width="292"><figcaption><p>第一步的示意图</p></figcaption></figure>
 
 第一步是构造初始条件。其中，黄色底色的 16 个单元格为 X 区域，其中包含 $$a$$ 和 $$b$$ 的明数并按规则安排到对角分布的宫上去；然后是基准单元格。这里我们照着原题的位置将基准单元格安排在 `r12c7` 上。假定它是四个候选数 $$a$$、$$b$$、$$c$$ 和 $$d$$，一共 4 种数字。当然基准单元格也可以只有 3 种数，也可以有 5 种数，这里只是取了和前面例子里相同的状态作为示意。
 
@@ -56,7 +56,7 @@ description: Region-X Theorem
 {% step %}
 ### 假设基准单元格形成数对 <a href="#step-2" id="step-2"></a>
 
-<figure><img src="../.gitbook/assets/images_0791.png" alt="" width="299"><figcaption><p>第二步的示意图</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0791.png" alt="" width="299"><figcaption><p>第二步的示意图</p></figcaption></figure>
 
 如图所示。为了证明有矛盾，那么我们强行让 `r12c7` 形成关于 $$a$$ 和 $$b$$ 的数对。这样，按行分布的交叉单元格会使得目标单元格 `r4c8` 和 `r7c9` 只能填 $$a$$ 和 $$b$$。
 {% endstep %}
@@ -64,7 +64,7 @@ description: Region-X Theorem
 {% step %}
 ### 得到 r47 里的弱链关系 <a href="#step-3" id="step-3"></a>
 
-<figure><img src="../.gitbook/assets/images_0792.png" alt="" width="297"><figcaption><p>第三、四、五步的示意图</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0792.png" alt="" width="297"><figcaption><p>第三、四、五步的示意图</p></figcaption></figure>
 
 顺着交叉单元格的方向，因为 `r4c8` 只能是 $$a$$ 或 $$b$$，所以显然交叉单元格 `r4c12` 和 `r4c45` 就不能让 $$a$$ 和 $$b$$ 同真（灰色是跟 $$a$$ 和 $$b$$ 无关的格子，所以排开之后就只有这四个位置了）。同理，`r7` 上也有类似的弱链关系，我们也给它串起来。图中的单实线表示的是弱链关系。
 {% endstep %}
@@ -92,7 +92,7 @@ description: Region-X Theorem
 {% step %}
 ### 证明 r3c12 或 r3c45 是数对 <a href="#step-6" id="step-6"></a>
 
-<figure><img src="../.gitbook/assets/images_0793.png" alt="" width="296"><figcaption><p>第六步的示意图</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0793.png" alt="" width="296"><figcaption><p>第六步的示意图</p></figcaption></figure>
 
 如图所示。其中，双实线是强链关系，单实线是弱链关系。一下子多了这么多强链和弱链关系，是不是有点懵？
 
@@ -108,7 +108,7 @@ description: Region-X Theorem
 
 我们利用刚才得到的数对随便拿一个举例。比如 `r3c12(ab)` 数对。`r3c45(ab)` 数对造成结论是同理的，所以就不用重复证明一遍完全一样的处理规则。
 
-<figure><img src="../.gitbook/assets/images_0794.png" alt="" width="299"><figcaption><p>第七步的示意图</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0794.png" alt="" width="299"><figcaption><p>第七步的示意图</p></figcaption></figure>
 
 如图所示。借用第六步的图我们有外环线路（橘色数字）在 `r3c45` 和 `r7c45` 上的结论——$$b$$ 在这里面只能一真一假。因为 `r3c12` 是 $$a$$ 和 $$b$$ 的数对，所以 `r3c45` 显然都不能是 $$b$$，所以 `r7c45` 就必须是 $$b$$。但是，X 区域在 `b5` 里已经有 $$b$$ 的明数，而结合 `r7c45` 里的 $$b$$ 为真的结论，显然图中绿色的 `r12c45` 里就不可能有 $$b$$ 出现。同理，$$a$$ 也是如此。所以，`r12c45` 不可能有 $$a$$ 和 $$b$$。这里的不能是强约束，既不能有 $$a$$ 也不能有 $$b$$。
 
@@ -124,7 +124,7 @@ description: Region-X Theorem
 
 ### 例子 1：同宫定理 <a href="#example-1" id="example-1"></a>
 
-<figure><img src="../.gitbook/assets/images_0795.png" alt="" width="375"><figcaption><p>例子 1</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0795.png" alt="" width="375"><figcaption><p>例子 1</p></figcaption></figure>
 
 如图所示。先忽略 `r4c2` 的删数。这里可以删除 `r5c46 <> 1`，因为 X 区域里，1 和 3 这一对为对角宫分布，1 和 6 也是如此。所以，1 不能和 3 也不能和 6 在基准单元格里形成数对。
 
@@ -134,13 +134,13 @@ description: Region-X Theorem
 
 ### 例子 2：也是同宫定理 <a href="#example-2" id="example-2"></a>
 
-<figure><img src="../.gitbook/assets/images_0796.png" alt="" width="375"><figcaption><p>例子 2</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0796.png" alt="" width="375"><figcaption><p>例子 2</p></figcaption></figure>
 
 如图所示。推理过程完全一样，就不重复说明了。
 
 ### 例子 3：略别扭的例子 <a href="#example-3" id="example-3"></a>
 
-<figure><img src="../.gitbook/assets/images_0797.png" alt="" width="375"><figcaption><p>例子 3</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0797.png" alt="" width="375"><figcaption><p>例子 3</p></figcaption></figure>
 
 如图所示。这个例子可以删除 `r1c2(56)`。但是如果按照同宫定理的话，似乎这个定理在这个题里失效了。实际上也不是失效了，是因为数字 7 并未同时出现两次在对角分布的宫里。有一个 7 的明数在这个题里是放在了 `b7` 这个毫无关系的宫里去了。
 
@@ -150,6 +150,6 @@ description: Region-X Theorem
 
 ### 例子 4：基准格有 4 种数字 <a href="#example-4" id="example-4"></a>
 
-<figure><img src="../.gitbook/assets/images_0798.png" alt="" width="375"><figcaption><p>例子 4</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0798.png" alt="" width="375"><figcaption><p>例子 4</p></figcaption></figure>
 
 如图所示。这个例子就自己看了。这个题和例 3 差不多，也是基准单元格有一个数会出现在无关的宫里面。

@@ -1,4 +1,4 @@
-﻿---
+---
 description: Condition of Forming Unique Loop
 ---
 
@@ -6,7 +6,7 @@ description: Condition of Forming Unique Loop
 
 前面的内容我们简单说明了唯一环的四种基础类型。为了更好帮助你阅读后面规格推广的其他情况，我们这里给各位介绍一下唯一环的一些需要解答的、比较难思考的问题。
 
-## 一些简单的思考 <a href="#consideration-on-condition" id="consideration-on-condition"></a>
+## 简单的思考 <a href="#consideration-on-condition" id="consideration-on-condition"></a>
 
 前文我们给各位展示了四个类型。但是前三个例子都是在并排的三个宫里，而只有类型 4 的 6 个格子相隔会比较远一些。
 
@@ -20,7 +20,7 @@ description: Condition of Forming Unique Loop
 
 下面我们针对于这三点说明一下。
 
-## 基础条件：闭环和行列宫数量均等 <a href="#basic-condition" id="basic-condition"></a>
+### 基础条件：闭环和行列宫数量均等 <a href="#basic-condition" id="basic-condition"></a>
 
 先是一个基础条件。
 
@@ -68,7 +68,7 @@ description: Condition of Forming Unique Loop
 
 这就是我想说的第一点。
 
-## 特殊条件：无解规避 <a href="#special-condition" id="special-condition"></a>
+### 特殊条件：无解规避 <a href="#special-condition" id="special-condition"></a>
 
 在这个补充过程之中，我们难免会遇到一种构造。它只会在 8 个单元格或以上的时候存在，所以这个问题比较难以想到。
 

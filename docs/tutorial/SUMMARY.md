@@ -187,12 +187,12 @@
   * [镜面格同步](exocet/05-potential-eliminations-of-exocet/03-mirror-sync.md)
   * [锁定成员](exocet/05-potential-eliminations-of-exocet/04-locked-member.md)
   * [交叉格三阶解鱼](exocet/05-potential-eliminations-of-exocet/05-jye-fish-in-crossline-cells.md)
-* [X 区域致命定理](exocet/06-region-x-theorem.md)
-* [双飞鱼](exocet/07-double-exocet.md)
-* [高级飞鱼](exocet/08-senior-exocet.md)
-* [退化飞鱼](exocet/09-sashimi-exocet.md)
-* [宫内飞鱼](exocet/10-franken-exocet.md)
-* [交叉飞鱼](exocet/11-mutant-exocet.md)
+  * [X 区域致命定理](exocet/05-potential-eliminations-of-exocet/06-region-x-theorem.md)
+* [双飞鱼](exocet/06-double-exocet.md)
+* [高级飞鱼](exocet/07-senior-exocet.md)
+* [退化飞鱼](exocet/08-sashimi-exocet.md)
+* [宫内飞鱼](exocet/09-franken-exocet.md)
+* [交叉飞鱼](exocet/10-mutant-exocet.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 

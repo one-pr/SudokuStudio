@@ -16,9 +16,9 @@ description: Size-Extended Unique Loop
 
 我们来看一个更特殊的例子。
 
-<figure><img src="../../.gitbook/assets/images_0829.png" alt="" width="375"><figcaption><p>一个真的例子</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0829.png" alt="" width="375"><figcaption><p>8 格唯一环，另外一个例子</p></figcaption></figure>
 
-如图所示。这个例子就是真正意义上，在前文提及过的特殊构型的、以 8 个格子形式存在的例子。这个例子和上面那一个例子的推理过程完全一样，所以证明过程就不赘述了。
+如图所示。这个例子就是在前文提及过的以 8 个格子形式存在的、特殊构型的例子。这个例子和上面那一个例子的推理过程完全一样，所以证明过程就不赘述了。
 
 ## 10 个单元格的唯一环 <a href="#size-10" id="size-10"></a>
 

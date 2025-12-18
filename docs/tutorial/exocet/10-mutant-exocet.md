@@ -6,7 +6,9 @@ description: Mutant Exocet
 
 今天我们来看**交叉飞鱼**（Mutant Exocet）的内容。
 
-## 交叉飞鱼的基本推理 <a href="#reasoning-of-mutant-exocet" id="reasoning-of-mutant-exocet"></a>
+## 交叉初级飞鱼（Mutant Junior Exocet） <a href="#mutant-junior-exocet" id="mutant-junior-exocet"></a>
+
+### 基本推理 <a href="#reasoning" id="reasoning"></a>
 
 <figure><img src="../.gitbook/assets/images_0819.png" alt="" width="375"><figcaption><p>交叉初级飞鱼</p></figcaption></figure>
 
@@ -18,7 +20,7 @@ description: Mutant Exocet
 
 有了这一点之后这个题就很好解决了：因为基准单元格里是 2、4、9。我们选取其中两个数填入其中，于是这两个数就会根据排除在 `c15` 延伸出来的余下 2 个位置里填写最少一次。所以，`r7c1` 和 `r9c5` 就必须是这两个选取的数字。因此，`r9c5 <> 156` 是这个题的结论。
 
-## 复数鱼结论 <a href="#conclusion-for-multifish" id="conclusion-for-multifish"></a>
+### 复数鱼结论 <a href="#conclusion-for-multifish" id="conclusion-for-multifish"></a>
 
 先别急。这个例子还有其他的删数。
 
@@ -36,7 +38,7 @@ description: Mutant Exocet
 
 虽然看起来删数很多需要我们仔细推理，但是每一步的逻辑都不难被发现，因此这个结构的删数结论可以快速被我们得到，甚至不需要费多大的力。
 
-## 交叉高级飞鱼 <a href="#mutant-senior-exocet" id="mutant-senior-exocet"></a>
+## 交叉高级飞鱼（Mutant Senior Exocet） <a href="#mutant-senior-exocet" id="mutant-senior-exocet"></a>
 
 下面我们来看高级飞鱼的版本。
 
@@ -92,7 +94,7 @@ description: Mutant Exocet
 
 如图所示。这个例子也是一样的。就自己看了。
 
-### 例子 3：木忐忑 <a href="#example-3" id="example-3"></a>
+### 例子 3：木忐忑 + 借格 <a href="#example-3" id="example-3"></a>
 
 <figure><img src="../.gitbook/assets/images_0825.png" alt="" width="375"><figcaption><p>例子 3</p></figcaption></figure>
 
@@ -133,6 +135,6 @@ description: Mutant Exocet
 
 <figure><img src="../.gitbook/assets/images_0828.png" alt="" width="375"><figcaption><p>例子 5（不太暴力的全部删数）</p></figcaption></figure>
 
-不过，`r6c3 <> 1`、`r9c17 <> 8` 相对来说也都挺麻烦的，需要讨论填入后反得交叉单元格填充次数的矛盾，这个确实有些复杂。不过老外似乎专门给这个讨论思路取了个名字，叫**兼容性测试**（Compatibility Test）。不过老外的这个说法不止是这种矛盾，它还涵盖了之前介绍的 X 致命造成删数矛盾的情况，属于是只要不兼容的填数全都删。这个讨论就显得过于复杂了，这里就只作简要介绍。
+不过，`r6c3 <> 1`、`r9c17 <> 8` 相对来说也都挺麻烦的，需要讨论填入后反得交叉单元格填充次数的矛盾，这个确实有些复杂。不过老外似乎专门给这个讨论思路取了个名字，叫**兼容性测试**（Compatibility Test）。不过老外的这个说法不止是这种矛盾，它还涵盖了之前介绍的 X 致命造成删数矛盾的情况，属于是只要不兼容的填数全都删。这个名称叫什么无所谓，甚至兼容性测试都测试哪些位置，范围也无所谓。我们想讨论的目的是让你将能删的数找全；如果只能通过暴力破解去找矛盾的话，显然这不符合我们教学，对结构分析有效且优雅的初衷，所以我们就不过多讨论了。
 
 至此我们就把交叉飞鱼的内容介绍完了。下一节将带着大家看看飞鱼和多米诺环交织的特殊用法。
