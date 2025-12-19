@@ -4,6 +4,83 @@
         <name>SystemExtensions</name>
     </assembly>
     <members>
+        <member name="T:System.ActivatorExtensions">
+            <summary>
+            Provides extension methods on <see cref="T:System.Activator"/>.
+            </summary>
+            <seealso cref="T:System.Activator"/>
+        </member>
+        <member name="M:System.ActivatorExtensions.Create(System.Type,System.Type[],System.Object[])">
+            <inheritdoc cref="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create(System.Type,System.Type[],System.Object[])"/>
+        </member>
+        <member name="M:System.ActivatorExtensions.Create``1(System.Type[],System.Object[])">
+            <inheritdoc cref="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``1(System.Type[],System.Object[])"/>
+        </member>
+        <member name="M:System.ActivatorExtensions.Create``2(``1)">
+            <inheritdoc cref="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``2(``1)"/>
+        </member>
+        <member name="M:System.ActivatorExtensions.Create``3(``1,``2)">
+            <inheritdoc cref="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``3(``1,``2)"/>
+        </member>
+        <member name="M:System.ActivatorExtensions.Create``4(``1,``2,``3)">
+            <inheritdoc cref="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``4(``1,``2,``3)"/>
+        </member>
+        <member name="M:System.ActivatorExtensions.Create``5(``1,``2,``3,``4)">
+            <inheritdoc cref="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``5(``1,``2,``3,``4)"/>
+        </member>
+        <member name="T:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.&lt;M&gt;$638764BB5347C32D4F8D7942E1F94B2A">
+            <summary>
+            Provides extension members on <see cref="T:System.Activator"/>.
+            </summary>
+        </member>
+        <member name="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create(System.Type,System.Type[],System.Object[])">
+            <summary>
+            Creates an instance of specified type, with parameter types specified.
+            </summary>
+            <param name="type">The type of instance to create.</param>
+            <param name="parameterTypes">Types of parameters.</param>
+            <param name="arguments">The parameter values.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``1(System.Type[],System.Object[])">
+            <summary>
+            Creates an instance of specified type, with parameter types specified.
+            </summary>
+            <typeparam name="T">The type of instance to create.</typeparam>
+            <param name="parameterTypes">Types of parameters.</param>
+            <param name="arguments">The parameter values.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``2(``1)">
+            <summary>
+            Creates an instance of specified type, with parameter types specified.
+            </summary>
+            <typeparam name="T">The type of instance to create.</typeparam>
+            <typeparam name="TArg">The type of argument.</typeparam>
+            <param name="arg">The parameter value.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``3(``1,``2)">
+            <inheritdoc cref="M:System.ActivatorExtensions.Create``5(``1,``2,``3,``4)"/>
+        </member>
+        <member name="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``4(``1,``2,``3)">
+            <inheritdoc cref="M:System.ActivatorExtensions.Create``5(``1,``2,``3,``4)"/>
+        </member>
+        <member name="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``5(``1,``2,``3,``4)">
+            <summary>
+            Creates an instance of specified type, with parameter types specified.
+            </summary>
+            <typeparam name="T">The type of instance to create.</typeparam>
+            <typeparam name="TArg1">The type of argument #1.</typeparam>
+            <typeparam name="TArg2">The type of argument #2.</typeparam>
+            <typeparam name="TArg3">The type of argument #3.</typeparam>
+            <typeparam name="TArg4">The type of argument #4.</typeparam>
+            <param name="arg1">The parameter value #1.</param>
+            <param name="arg2">The parameter value #2.</param>
+            <param name="arg3">The parameter value #3.</param>
+            <param name="arg4">The parameter value #4.</param>
+            <returns>The instance.</returns>
+        </member>
         <member name="T:System.ArrayInitializer`1">
             <summary>
             Represents a method that initializes for an element of type <typeparamref name="T"/>?,
@@ -1962,7 +2039,7 @@
         </member>
         <member name="M:System.ExceptionExtensions.&lt;G&gt;$38EB27788CADF2810E22EBC64749FDE0`1.Assert(System.Boolean,System.String)">
             <summary>
-            Throws an <see cref="T:System.ArgumentException"/> instance if the specified assertion is failed.
+            Throws an instance of type <typeparamref name="TException"/> if the specified assertion is failed.
             </summary>
             <param name="expression">The expression.</param>
             <param name="failedExpressionString">The string to the argument <paramref name="expression"/>.</param>

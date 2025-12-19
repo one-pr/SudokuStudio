@@ -13,7 +13,7 @@ public static class ExceptionExtensions
 	extension<TException>(TException) where TException : SystemException
 	{
 		/// <summary>
-		/// Throws an <see cref="ArgumentException"/> instance if the specified assertion is failed.
+		/// Throws an instance of type <typeparamref name="TException"/> if the specified assertion is failed.
 		/// </summary>
 		/// <param name="expression">The expression.</param>
 		/// <param name="failedExpressionString">The string to the argument <paramref name="expression"/>.</param>
@@ -26,11 +26,7 @@ public static class ExceptionExtensions
 			if (!expression)
 			{
 				var expr = $"The specified expression is failed to be checked: '{failedExpressionString}'.";
-#if false
-				throw (TException)typeof(TException).GetConstructor([typeof(string)])!.Invoke([expr]);
-#else
-				throw new InvalidOperationException(expr);
-#endif
+				throw Activator.Create<TException, string>(expr)!;
 			}
 		}
 	}
