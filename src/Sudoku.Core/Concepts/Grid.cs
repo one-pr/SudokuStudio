@@ -318,7 +318,7 @@ public partial struct Grid : InlineArrayGridBase
 	}
 
 	/// <inheritdoc/>
-	public readonly Grid ResetGrid => this % GivenCells;
+	public readonly Grid ResetGrid => Preserve(GivenCells);
 
 	/// <summary>
 	/// Gets the grid where all empty cells are filled with all possible candidates.
@@ -942,9 +942,26 @@ public partial struct Grid : InlineArrayGridBase
 		}
 	}
 
-	/// <inheritdoc cref="op_ModulusAssignment(in CellMap)"/>
-	[Obsolete("Use 'operator %=' instead: 'grid %= template'", false)]
-	public Grid Preserve(in CellMap template) => this %= template;
+	/// <summary>
+	/// Preserves the grid, removing cells not specified in <paramref name="template"/>.
+	/// </summary>
+	/// <param name="template">The cells specified to be preserved.</param>
+	public readonly Grid Preserve(in CellMap template)
+	{
+		var temp = this;
+		if (PuzzleType != GridType.Standard)
+		{
+			goto Return;
+		}
+
+		foreach (var cell in ~template)
+		{
+			temp.SetDigit(cell, -1);
+		}
+
+	Return:
+		return temp;
+	}
 
 	/// <summary>
 	/// Gets the header 4 bits. The value can be <see cref="GridType.Sukaku"/> if and only if the puzzle is Sukaku,
@@ -1332,21 +1349,6 @@ public partial struct Grid : InlineArrayGridBase
 	}
 
 
-	/// <inheritdoc/>
-	public void operator %=(in CellMap template)
-	{
-		if (PuzzleType != GridType.Standard)
-		{
-			return;
-		}
-
-		foreach (var cell in ~template)
-		{
-			SetDigit(cell, -1);
-		}
-	}
-
-
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
 	public static bool operator ==(in Grid left, in Grid right) => left.Equals(right);
 
@@ -1364,14 +1366,6 @@ public partial struct Grid : InlineArrayGridBase
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
 	public static bool operator <=(in Grid left, in Grid right) => left.CompareTo(right) <= 0;
-
-	/// <inheritdoc/>
-	public static Grid operator %(in Grid grid, in CellMap template)
-	{
-		var tempGrid = grid;
-		tempGrid %= template;
-		return tempGrid;
-	}
 
 
 	/// <inheritdoc/>

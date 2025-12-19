@@ -92,7 +92,7 @@ public struct MarkerGrid : InlineArrayGridBase
 	}
 
 	/// <inheritdoc/>
-	public readonly MarkerGrid ResetGrid => this % GivenCells;
+	public readonly MarkerGrid ResetGrid => Preserve(GivenCells);
 
 	/// <inheritdoc/>
 	public readonly MarkerGrid UnfixedGrid
@@ -431,8 +431,22 @@ public struct MarkerGrid : InlineArrayGridBase
 		return result;
 	}
 
+	/// <summary>
+	/// Preserves the grid, removing cells not specified in <paramref name="template"/>.
+	/// </summary>
+	/// <param name="template">The cells specified to be preserved.</param>
+	public readonly MarkerGrid Preserve(in CellMap template)
+	{
+		var temp = this;
+		foreach (var cell in ~template)
+		{
+			temp.SetDigit(cell, -1);
+		}
+		return temp;
+	}
+
 	/// <inheritdoc/>
-	public void Reset() => this %= GivenCells;
+	public void Reset() => this = Preserve(GivenCells);
 
 	/// <inheritdoc/>
 	public void Fix()
@@ -697,16 +711,6 @@ public struct MarkerGrid : InlineArrayGridBase
 		=> (provider as SusserGridFormatInfo<MarkerGrid> ?? new()).ParseCore(s);
 
 
-	/// <inheritdoc/>
-	public void operator %=(in CellMap template)
-	{
-		foreach (var cell in ~template)
-		{
-			SetDigit(cell, -1);
-		}
-	}
-
-
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
 	public static bool operator >(in MarkerGrid left, in MarkerGrid right) => left.CompareTo(right) > 0;
 
@@ -724,14 +728,6 @@ public struct MarkerGrid : InlineArrayGridBase
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
 	public static bool operator !=(in MarkerGrid left, in MarkerGrid right) => !(left == right);
-
-	/// <inheritdoc/>
-	public static MarkerGrid operator %(in MarkerGrid grid, in CellMap template)
-	{
-		var tempGrid = grid;
-		tempGrid %= template;
-		return tempGrid;
-	}
 
 	/// <inheritdoc/>
 	static bool IEqualityOperators<MarkerGrid, MarkerGrid, bool>.operator ==(MarkerGrid left, MarkerGrid right) => left == right;
