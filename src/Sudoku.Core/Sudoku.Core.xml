@@ -5174,37 +5174,6 @@
         <member name="M:Sudoku.Concepts.Converter.Write(System.Text.Json.Utf8JsonWriter,Sudoku.Concepts.Grid,System.Text.Json.JsonSerializerOptions)">
             <inheritdoc/>
         </member>
-        <member name="T:Sudoku.Concepts.GridConversions">
-            <summary>
-            Provides with conversion rules on <see cref="T:Sudoku.Concepts.Grid"/> from <see cref="T:System.String"/> values.
-            </summary>
-            <seealso cref="T:Sudoku.Concepts.Grid"/>
-        </member>
-        <member name="M:Sudoku.Concepts.GridConversions.get_grid(System.String)">
-            <inheritdoc cref="P:Sudoku.Concepts.GridConversions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.grid"/>
-        </member>
-        <member name="M:Sudoku.Concepts.GridConversions.get_pencilmark(System.String)">
-            <inheritdoc cref="P:Sudoku.Concepts.GridConversions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.pencilmark"/>
-        </member>
-        <member name="T:Sudoku.Concepts.GridConversions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.&lt;M&gt;$A56E4B15CBFDA0052F9BF9FD000FA868">
-            <summary>
-            Provides extension members on <see cref="T:Sudoku.Concepts.Grid"/>.
-            </summary>
-            <param name="this">The current instance.</param>
-        </member>
-        <member name="P:Sudoku.Concepts.GridConversions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.grid">
-            <summary>
-            Converts the string and parses it into <see cref="T:Sudoku.Concepts.Grid"/> instance, or throws exceptions if invalid.
-            </summary>
-            <exception cref="T:System.FormatException">Throws when input string is invalid.</exception>
-        </member>
-        <member name="P:Sudoku.Concepts.GridConversions.&lt;G&gt;$34505F560D9EACF86A87F3ED1F85E448.pencilmark">
-            <summary>
-            Converts the string and parses it into <see cref="T:Sudoku.Concepts.Grid"/> instance as pencilmark grid,
-            or throws exceptions if invalid.
-            </summary>
-            <exception cref="T:System.FormatException">Throws when input string is invalid.</exception>
-        </member>
         <member name="T:Sudoku.Concepts.GridCreatingOption">
             <summary>
             Indicates the grid creating option.
