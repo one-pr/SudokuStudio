@@ -574,12 +574,12 @@ public interface IGrid<TSelf> :
 	/// <returns>The map.</returns>
 	/// <seealso cref="EmptyCells"/>
 	/// <seealso cref="BivalueCells"/>
-	private protected static unsafe CellMap GetMap(in TSelf @this, delegate*<in TSelf, Cell, bool> predicate)
+	private protected static unsafe CellMap GetMap(in TSelf @this, delegate*<ref readonly TSelf, Cell, bool> predicate)
 	{
 		var result = CellMap.Empty;
 		for (var cell = 0; cell < 81; cell++)
 		{
-			if (predicate(@this, cell))
+			if (predicate(in @this, cell))
 			{
 				result += cell;
 			}
@@ -596,7 +596,7 @@ public interface IGrid<TSelf> :
 	/// <seealso cref="CandidatesMap"/>
 	/// <seealso cref="DigitsMap"/>
 	/// <seealso cref="ValuesMap"/>
-	private protected static unsafe CellMap[] GetMaps(in TSelf @this, delegate*<in TSelf, Cell, Digit, bool> predicate)
+	private protected static unsafe CellMap[] GetMaps(in TSelf @this, delegate*<ref readonly TSelf, Cell, Digit, bool> predicate)
 	{
 		var result = new CellMap[9];
 		for (var digit = 0; digit < 9; digit++)
@@ -604,7 +604,7 @@ public interface IGrid<TSelf> :
 			ref var map = ref result[digit];
 			for (var cell = 0; cell < 81; cell++)
 			{
-				if (predicate(@this, cell, digit))
+				if (predicate(in @this, cell, digit))
 				{
 					map += cell;
 				}
