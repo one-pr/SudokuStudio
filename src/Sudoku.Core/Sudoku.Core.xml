@@ -3876,7 +3876,7 @@
         </member>
         <member name="M:Sudoku.Concepts.Coordinates.Simplifying.CoordinateSimplifier.EnumerateBicliques(Sudoku.Concepts.CellMap@)">
             <summary>
-            Enumerate all bicliques (row-set × column-set rectangles) that are fully contained in the given set of cells.
+            Enumerate all bicliques (row-set * column-set rectangles) that are fully contained in the given set of cells.
             </summary>
             <param name="cells">Input cell set represented as <see cref="T:Sudoku.Concepts.CellMap"/>.</param>
             <returns>

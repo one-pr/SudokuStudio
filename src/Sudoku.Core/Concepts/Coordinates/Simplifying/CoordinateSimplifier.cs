@@ -11,13 +11,24 @@ public static class CoordinateSimplifier
 	/// <param name="cells">The cells to be simplified.</param>
 	/// <returns>A list of parts grouped by rows and its matched columns.</returns>
 	public static ReadOnlySpan<CoordinateSplit> Simplify(in CellMap cells)
-	{
-		var (_, parts) = SolveMinPartition(cells);
-		return parts.AsSpan();
-	}
+		=> cells switch
+		{
+			// The collection is empty.
+			[] => [],
+
+			// The collection has only one element.
+			[var onlyCell] => (CoordinateSplit[])[new([onlyCell / 9], [onlyCell % 9])],
+
+			// The collection can be formed a valid biclique.
+			{ RowMask: var r, ColumnMask: var c } when PopCount((uint)r) * PopCount((uint)c) == cells.Count
+				=> (CoordinateSplit[])[new([.. r.AllSets], [.. c.AllSets])],
+
+			// Otherwise.
+			_ when SolveMinPartition(cells) is var (_, parts) => parts.AsSpan()
+		};
 
 	/// <summary>
-	/// Enumerate all bicliques (row-set × column-set rectangles) that are fully contained in the given set of cells.
+	/// Enumerate all bicliques (row-set * column-set rectangles) that are fully contained in the given set of cells.
 	/// </summary>
 	/// <param name="cells">Input cell set represented as <see cref="CellMap"/>.</param>
 	/// <returns>
@@ -42,7 +53,7 @@ public static class CoordinateSimplifier
 		var rowMasks = (stackalloc Mask[9]);
 		rowMasks.Clear();
 
-		// Build rowMasks: for each cell set the corresponding bit in that row.
+		// Build 'rowMasks': for each cell set the corresponding bit in that row.
 		foreach (var cell in cells)
 		{
 			// 'cell / 9' -> row index, 'cell % 9' -> column index
@@ -99,7 +110,7 @@ public static class CoordinateSimplifier
 					}
 				}
 
-				// Build the Covered CellMap as the Cartesian product of rowsList and columnsList.
+				// Build the Covered CellMap as the Cartesian product of <c>rowsList</c> and <c>columnsList</c>.
 				var coveredCells = CellMap.Empty;
 				foreach (var row in rowsList)
 				{
