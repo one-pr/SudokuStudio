@@ -193,6 +193,7 @@
 * [退化飞鱼](exocet/08-sashimi-exocet.md)
 * [宫内飞鱼](exocet/09-franken-exocet.md)
 * [交叉飞鱼](exocet/10-mutant-exocet.md)
+* [飞鱼和多米诺环](exocet/11-exocet-with-domino-loop.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
