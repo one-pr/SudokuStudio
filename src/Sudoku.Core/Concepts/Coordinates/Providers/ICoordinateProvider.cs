@@ -1,4 +1,4 @@
-namespace Sudoku.Concepts.Coordinates;
+namespace Sudoku.Concepts.Coordinates.Providers;
 
 /// <summary>
 /// Represents a type that supports formatting or parsing rules around coordinates.

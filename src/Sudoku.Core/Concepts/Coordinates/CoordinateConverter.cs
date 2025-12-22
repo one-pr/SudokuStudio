@@ -43,46 +43,39 @@ public abstract record CoordinateConverter(
 	string EliminationToken = " <> ",
 	NotationBracket NotationBracket = NotationBracket.None,
 	CultureInfo? CurrentCulture = null
-) : ICoordinateProvider<CoordinateConverter>
+) :
+	ICoordinateProvider<CoordinateConverter>,
+	ICellConverter,
+	ICandidateConverter,
+	IHouseConverter,
+	IConclusionConverter,
+	IDigitConverter,
+	IIntersectionConverter,
+	IChuteConverter,
+	IConjugatePairConverter
 {
-	/// <summary>
-	/// The converter method that creates a <see cref="string"/> via the specified list of cells.
-	/// </summary>
+	/// <inheritdoc/>
 	public abstract CellMapFormatter CellConverter { get; }
 
-	/// <summary>
-	/// The converter method that creates a <see cref="string"/> via the specified list of candidates.
-	/// </summary>
+	/// <inheritdoc/>
 	public abstract CandidateMapFormatter CandidateConverter { get; }
 
-	/// <summary>
-	/// The converter method that creates a <see cref="string"/> via the specified list of houses.
-	/// </summary>
+	/// <inheritdoc/>
 	public abstract Func<HouseMask, string> HouseConverter { get; }
 
-	/// <summary>
-	/// The converter method that creates a <see cref="string"/> via the specified list of conclusions.
-	/// </summary>
+	/// <inheritdoc/>
 	public abstract Func<ReadOnlySpan<Conclusion>, string> ConclusionConverter { get; }
 
-	/// <summary>
-	/// The converter method that creates a <see cref="string"/> via the specified list of digits.
-	/// </summary>
+	/// <inheritdoc/>
 	public abstract Func<Mask, string> DigitConverter { get; }
 
-	/// <summary>
-	/// The converter method that creates a <see cref="string"/> via the specified information for an intersection.
-	/// </summary>
+	/// <inheritdoc/>
 	public abstract Func<ReadOnlySpan<Miniline>, string> IntersectionConverter { get; }
 
-	/// <summary>
-	/// The converter method that creates a <see cref="string"/> via the specified list of chute.
-	/// </summary>
+	/// <inheritdoc/>
 	public abstract Func<ReadOnlySpan<Chute>, string> ChuteConverter { get; }
 
-	/// <summary>
-	/// The converter method that creates a <see cref="string"/> via the specified conjugate.
-	/// </summary>
+	/// <inheritdoc/>
 	public abstract Func<ReadOnlySpan<Conjugate>, string> ConjugateConverter { get; }
 
 	/// <summary>

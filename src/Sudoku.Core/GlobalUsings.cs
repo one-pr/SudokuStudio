@@ -30,6 +30,7 @@ global using System.Threading.Tasks;
 global using Sudoku.Concepts;
 global using Sudoku.Concepts.Coordinates;
 global using Sudoku.Concepts.Coordinates.Formatting;
+global using Sudoku.Concepts.Coordinates.Providers;
 global using Sudoku.Concepts.Coordinates.Simplifying;
 global using Sudoku.Concepts.Marshalling;
 global using Sudoku.Concepts.Supersymmetry;
