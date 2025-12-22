@@ -194,6 +194,8 @@
 * [宫内飞鱼](exocet/09-franken-exocet.md)
 * [交叉飞鱼](exocet/10-mutant-exocet.md)
 * [飞鱼和多米诺环](exocet/11-exocet-with-domino-loop.md)
+* [衰弱飞鱼](exocet/12-weak-exocet/README.md)
+  * [初见衰弱飞鱼](exocet/12-weak-exocet/01-the-first-view-of-weak-exocet.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
