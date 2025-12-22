@@ -64,7 +64,7 @@ public static class EnumExtensions
 		/// <summary>
 		/// Indicates the values.
 		/// </summary>
-		public static ReadOnlySpan<T> Values => Enum.GetValues<T>();
+		public static ReadOnlySpan<T> AllValues => Enum.GetValues<T>();
 
 		/// <summary>
 		/// Represents default value of the current type.
@@ -74,19 +74,20 @@ public static class EnumExtensions
 		/// <summary>
 		/// Indicates the minimal value of the current type.
 		/// </summary>
-		public static T MinValue => (from value in get_Values<T>() orderby Convert.ToUInt64(value) select value)[0];
+		/// <remarks><b><i>Bare reference: </i></b></remarks>
+		public static T MinValue => (from value in get_AllValues<T>() orderby Convert.ToUInt64(value) select value)[0];
 
 		/// <summary>
 		/// Indicates the maximal value of the current type.
 		/// </summary>
-		public static T MaxValue => (from value in get_Values<T>() orderby Convert.ToUInt64(value) descending select value)[0];
+		public static T MaxValue => (from value in get_AllValues<T>() orderby Convert.ToUInt64(value) descending select value)[0];
 
 		/// <summary>
 		/// Represents a value that holds all flags of the current type.
 		/// </summary>
 		/// <exception cref="InvalidOperationException">Throws when the type is not marked <see cref="FlagsAttribute"/>.</exception>
 		public static T All
-			=> typeof(T).IsDefined<FlagsAttribute>() ? MergeFlags(get_Values<T>()) : throw new InvalidOperationException();
+			=> typeof(T).IsDefined<FlagsAttribute>() ? MergeFlags(get_AllValues<T>()) : throw new InvalidOperationException();
 
 
 		/// <summary>

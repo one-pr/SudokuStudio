@@ -39,10 +39,10 @@ public partial class GeneratorHub
 			[var p] => p switch
 			{
 				SymmetryConstraint.InvalidSymmetricType => [],
-				SymmetryConstraint.AllSymmetricTypes => SymmetricType.Values,
+				SymmetryConstraint.AllSymmetricTypes => SymmetricType.AllValues,
 				var symmetricTypes and not 0 => symmetricTypes.AllFlags,
 				_ => [SymmetricType.None]
 			},
-			_ => SymmetricType.Values
+			_ => SymmetricType.AllValues
 		};
 }

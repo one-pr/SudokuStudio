@@ -1870,8 +1870,8 @@
         <member name="M:System.EnumExtensions.get_Length``1">
             <inheritdoc cref="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285`1.Length"/>
         </member>
-        <member name="M:System.EnumExtensions.get_Values``1">
-            <inheritdoc cref="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285`1.Values"/>
+        <member name="M:System.EnumExtensions.get_AllValues``1">
+            <inheritdoc cref="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285`1.AllValues"/>
         </member>
         <member name="M:System.EnumExtensions.get_None``1">
             <inheritdoc cref="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285`1.None"/>
@@ -1937,7 +1937,7 @@
             Indicates the length of the elements stored in type <typeparamref name="T"/>.
             </summary>
         </member>
-        <member name="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285`1.Values">
+        <member name="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285`1.AllValues">
             <summary>
             Indicates the values.
             </summary>
@@ -1951,6 +1951,7 @@
             <summary>
             Indicates the minimal value of the current type.
             </summary>
+            <remarks><b><i>Bare reference: </i></b></remarks>
         </member>
         <member name="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285`1.MaxValue">
             <summary>

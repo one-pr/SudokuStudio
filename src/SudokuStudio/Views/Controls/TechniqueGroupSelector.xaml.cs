@@ -22,7 +22,7 @@ public sealed partial class TechniqueGroupSelector : UserControl
 	/// </summary>
 	internal TechniqueGroupBindableSource_IWillChangeThisTypeNameLater[] ItemsSource
 		=>
-		from @field in TechniqueGroup.Values.ToArray()
+		from @field in TechniqueGroup.AllValues.ToArray()
 		let displayName = @field == 0 ? SR.Get("TechniqueGroupSelector_NoTechniqueSelected", App.CurrentCulture) : @field.GetName(App.CurrentCulture)
 		select new TechniqueGroupBindableSource_IWillChangeThisTypeNameLater { DisplayName = displayName, TechniqueGroup = @field };
 

@@ -62,7 +62,7 @@ public abstract class PrimaryGenerator : TechniqueGenerator, IJustOneCellGenerat
 	protected static SingleSubtype RandomlySelectSubtype(House house, Func<SingleSubtype, bool> match)
 	{
 		var prefixMustBe = house switch { < 9 => "BlockHiddenSingle", < 18 => "RowHiddenSingle", _ => "ColumnHiddenSingle" };
-		var range = SingleSubtype.Values;
+		var range = SingleSubtype.AllValues;
 		SingleSubtype subtype;
 		do
 		{

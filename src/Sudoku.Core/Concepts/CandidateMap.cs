@@ -812,7 +812,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	public static CandidateMap Parse(string str)
 	{
 		foreach (var parser in
-			from element in CoordinateType.Values
+			from element in CoordinateType.AllValues
 			let parser = element.Parser
 			where parser is not null
 			select parser)

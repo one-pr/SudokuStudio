@@ -78,7 +78,7 @@ public sealed partial class TechniqueSet() :
 	static TechniqueSet()
 	{
 		var dic = new Dictionary<TechniqueGroup, TechniqueSet>();
-		foreach (var technique in Technique.Values)
+		foreach (var technique in Technique.AllValues)
 		{
 			if (technique != Technique.None && technique.TryGetGroup() is { } group && !dic.TryAdd(group, [technique]))
 			{
@@ -88,7 +88,7 @@ public sealed partial class TechniqueSet() :
 		TechniqueRelationGroups = dic.ToFrozenDictionary();
 
 		var configurableDic = new Dictionary<TechniqueGroup, TechniqueSet>();
-		foreach (var technique in Technique.Values)
+		foreach (var technique in Technique.AllValues)
 		{
 			if (technique.SupportsCustomizingDifficulty
 				&& technique.TryGetGroup() is { } group && !configurableDic.TryAdd(group, [technique]))
