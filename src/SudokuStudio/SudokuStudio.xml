@@ -4927,7 +4927,7 @@
         </member>
         <member name="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.&lt;G&gt;$831724A3875A25A142781824A23012D1.Converter">
             <summary>
-            Try to get target <see cref="T:Sudoku.Concepts.Coordinates.Formatting.GridFormatInfo`1"/> instance of type <see cref="T:Sudoku.Concepts.Grid"/>.
+            Try to get target <see cref="T:Sudoku.Concepts.ValueConversions.IGridConverter"/> instance of type <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is not defined.</exception>
         </member>
@@ -14598,11 +14598,11 @@
             </summary>
             <returns>A task that handles the operation.</returns>
         </member>
-        <member name="M:SudokuStudio.Views.Pages.AnalyzePage.SaveFileInternalAsync(Sudoku.Concepts.Coordinates.Formatting.GridFormatInfo{Sudoku.Concepts.Grid}[])">
+        <member name="M:SudokuStudio.Views.Pages.AnalyzePage.SaveFileInternalAsync(Sudoku.Concepts.ValueConversions.IGridConverter[])">
             <summary>
             Save a file via grid formatters.
             </summary>
-            <param name="gridFormatters">The grid formatters. The default value is <see langword="null"/>.</param>
+            <param name="gridConverters">The grid converters. The default value is <see langword="null"/>.</param>
             <returns>A task that handles the operation.</returns>
         </member>
         <member name="M:SudokuStudio.Views.Pages.AnalyzePage.LoadPuzzleCoreAsync(Windows.Storage.StorageFile)">

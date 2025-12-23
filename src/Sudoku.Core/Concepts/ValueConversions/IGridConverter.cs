@@ -23,6 +23,9 @@ public interface IGridConverter
 	/// the priority value can be greater than the others in order to prevent malformed string parsing error produced
 	/// in some other parsing modules.
 	/// </para>
+	/// <para>
+	/// The value can be -1 if such instances are not elements defined in built-in converters collection.
+	/// </para>
 	/// </remarks>
 	int ParsingPriority { get; }
 

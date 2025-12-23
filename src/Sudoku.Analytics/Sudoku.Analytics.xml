@@ -18394,13 +18394,13 @@
             meaning a user cannot disable the current step searcher.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.SupportAnalyzingMultipleSolutionsPuzzle">
+        <member name="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.SupportsAnalyzingPuzzleHavingMultipleSolutions">
             <summary>
             Indicates whether the step searcher can be invoked by puzzles containing multiple solutions.
             By default the value is <see langword="true"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.SupportSukaku">
+        <member name="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.SupportsSukaku">
             <summary>
             Indicates whether this step searcher also supports to check for Sukaku puzzles.
             </summary>
@@ -18466,7 +18466,7 @@
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.StepSearchers.StepSearcherMetadataInfo.SupportAnalyzingMultipleSolutionsPuzzle">
-            <inheritdoc cref="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.SupportAnalyzingMultipleSolutionsPuzzle"/>
+            <inheritdoc cref="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.SupportsAnalyzingPuzzleHavingMultipleSolutions"/>
         </member>
         <member name="P:Sudoku.Analytics.StepSearchers.StepSearcherMetadataInfo.IsOnlyRunForDirectViews">
             <summary>

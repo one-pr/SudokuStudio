@@ -282,9 +282,9 @@ public sealed partial class AnalyzePage : Page
 	/// <summary>
 	/// Save a file via grid formatters.
 	/// </summary>
-	/// <param name="gridFormatters">The grid formatters. The default value is <see langword="null"/>.</param>
+	/// <param name="gridConverters">The grid converters. The default value is <see langword="null"/>.</param>
 	/// <returns>A task that handles the operation.</returns>
-	internal async Task<bool> SaveFileInternalAsync(GridFormatInfo<Grid>[]? gridFormatters = null)
+	internal async Task<bool> SaveFileInternalAsync(IGridConverter[]? gridConverters = null)
 	{
 		if (!EnsureUnsnapped(true))
 		{
@@ -313,7 +313,7 @@ public sealed partial class AnalyzePage : Page
 		{
 			case FileExtensions.PlainText:
 			{
-				if (gridFormatters is null)
+				if (gridConverters is null)
 				{
 					SudokuPlainTextFileHandler.Write(filePath, grid);
 				}
@@ -323,7 +323,7 @@ public sealed partial class AnalyzePage : Page
 						filePath,
 						string.Join(
 							"\r\n\r\n",
-							from formatter in gridFormatters select grid.ToString(formatter)
+							from converter in gridConverters select grid.ToString(converter)
 						)
 					);
 				}
@@ -333,7 +333,7 @@ public sealed partial class AnalyzePage : Page
 			{
 				SudokuFileHandler.Write(
 					filePath,
-					gridFormatters is null
+					gridConverters is null
 						? [
 							new()
 							{
@@ -351,11 +351,11 @@ public sealed partial class AnalyzePage : Page
 							}
 						]
 						:
-						from formatter in gridFormatters
+						from converter in gridConverters
 						select new GridInfo
 						{
 							BaseGrid = grid,
-							GridString = grid.ToString(formatter),
+							GridString = grid.ToString(converter),
 							RenderableData = viewUnit switch
 							{
 								{ Conclusions: var conclusions, View: var view } => new()
@@ -504,17 +504,17 @@ public sealed partial class AnalyzePage : Page
 		_tabsRoutingData = [
 			new(
 				SR.Get("AnalyzePage_TechniquesTable", App.CurrentCulture),
-				new SymbolIconSource { Symbol = Microsoft.UI.Xaml.Controls.Symbol.Flag },
+				new SymbolIconSource { Symbol = Symbol.Flag },
 				new Summary { Margin = DefaultMarginForAnalyzerPages, BasePage = this }
 			),
 			new(
 				SR.Get("AnalyzePage_StepDetail", App.CurrentCulture),
-				new SymbolIconSource { Symbol = Microsoft.UI.Xaml.Controls.Symbol.ShowResults },
+				new SymbolIconSource { Symbol = Symbol.ShowResults },
 				new SolvingPath { Margin = DefaultMarginForAnalyzerPages, BasePage = this }
 			),
 			new(
 				SR.Get("AnalyzePage_AllStepsInCurrentGrid", App.CurrentCulture),
-				new SymbolIconSource { Symbol = Microsoft.UI.Xaml.Controls.Symbol.Shuffle },
+				new SymbolIconSource { Symbol = Symbol.Shuffle },
 				new StepCollecting { Margin = DefaultMarginForAnalyzerPages, BasePage = this }
 			)
 		];

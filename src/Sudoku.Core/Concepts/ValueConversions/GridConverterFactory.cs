@@ -28,6 +28,7 @@ public static class GridConverterFactory
 		from type in typeof(GridConverterFactory).Assembly.GetTypes()
 		where type.IsAssignableTo(typeof(IGridConverter)) && type.IsClass && !type.IsAbstract && type.HasParameterlessConstructor
 		select (IGridConverter)Activator.CreateInstance(type)! into instance
+		where instance.ParsingPriority != -1
 		orderby instance.ParsingPriority descending
 		select instance into instance
 		select instance;

@@ -12,21 +12,25 @@ internal static class SudokuFormatFlagsExtensions
 	extension(SudokuFormatFlags @this)
 	{
 		/// <summary>
-		/// Try to get target <see cref="GridFormatInfo{TGrid}"/> instance of type <see cref="Grid"/>.
+		/// Try to get target <see cref="IGridConverter"/> instance of type <see cref="Grid"/>.
 		/// </summary>
 		/// <exception cref="ArgumentOutOfRangeException">Throws when the argument is not defined.</exception>
-		public GridFormatInfo<Grid> Converter
+		public IGridConverter Converter
 			=> @this switch
 			{
-				SudokuFormatFlags.InitialFormat => new SusserGridFormatInfo(),
-				SudokuFormatFlags.CurrentFormat => new SusserGridFormatInfo { WithCandidates = true, WithModifiables = true },
-				SudokuFormatFlags.CurrentFormatIgnoringValueKind
-					=> new SusserGridFormatInfo { WithModifiables = true, WithCandidates = true, TreatValueAsGiven = true },
-				SudokuFormatFlags.MultipleGridFormat => new MultipleLineGridFormatInfo { RemoveGridLines = true },
-				SudokuFormatFlags.PencilMarkFormat => new PencilmarkGridFormatInfo { SubtleGridLines = true },
-				SudokuFormatFlags.SukakuFormat => new SukakuGridFormatInfo(),
-				SudokuFormatFlags.ExcelFormat => new CsvGridFormatInfo(),
-				SudokuFormatFlags.OpenSudokuFormat => new OpenSudokuGridFormatInfo(),
+				SudokuFormatFlags.InitialFormat => new SusserGridDefaultConverter(),
+				SudokuFormatFlags.CurrentFormat => new SusserGridDefaultConverter { WithCandidates = true, WithModifiables = true },
+				SudokuFormatFlags.CurrentFormatIgnoringValueKind => new SusserGridDefaultConverter
+				{
+					WithModifiables = true,
+					WithCandidates = true,
+					TreatValueAsGiven = true
+				},
+				SudokuFormatFlags.MultipleGridFormat => new MultilineGridBlockLineRemovedConverter(),
+				SudokuFormatFlags.PencilMarkFormat => new PencilmarkGridConverter { SubtleGridLines = true },
+				SudokuFormatFlags.SukakuFormat => new SukakuGridSingleLineConverter(),
+				SudokuFormatFlags.ExcelFormat => new TabSeparatedGridConverter(),
+				SudokuFormatFlags.OpenSudokuFormat => new OpenSudokuGridConverter(),
 				_ => throw new ArgumentOutOfRangeException(nameof(@this))
 			};
 	}

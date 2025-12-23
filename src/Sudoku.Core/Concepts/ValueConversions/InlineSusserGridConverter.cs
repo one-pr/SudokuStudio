@@ -1,19 +1,27 @@
-namespace Sudoku.Concepts.Coordinates.Formatting;
+namespace Sudoku.Concepts.ValueConversions;
 
 /// <summary>
-/// Represents a <see cref="GridFormatInfo{TGrid}"/> type that supports inline Susser grid formatting.
+/// Represents inline Susser formatted grid converter.
 /// </summary>
-public sealed partial class InlineSusserGridFormatInfo : GridFormatInfo<Grid>
+public sealed partial class InlineSusserGridConverter : IGridConverter
 {
 	/// <summary>
 	/// Indicates the plus token that describes for modifiable values.
 	/// </summary>
 	private const string PlusToken = "+";
 
+
 	/// <summary>
-	/// Indicates the empty string.
+	/// <para>
+	/// Indicates whether the parser will negate the rule, treating all digits as candidates existing in the grid
+	/// instead of removed ones.
+	/// </para>
+	/// <para>The default value is <see langword="false"/>.</para>
 	/// </summary>
-	private const string EmptyString = "";
+	public bool NegateEliminationsTripletRule { get; init; }
+
+	/// <inheritdoc/>
+	public int ParsingPriority => -1;
 
 
 	[GeneratedRegex("""(\+?[\d\.]|\[[1-9]{1,9}\])""", RegexOptions.Compiled, 5000)]
@@ -21,14 +29,7 @@ public sealed partial class InlineSusserGridFormatInfo : GridFormatInfo<Grid>
 
 
 	/// <inheritdoc/>
-	[return: NotNullIfNotNull(nameof(formatType))]
-	public override IFormatProvider? GetFormat(Type? formatType) => formatType == typeof(GridFormatInfo<Grid>) ? this : null;
-
-	/// <inheritdoc/>
-	public override InlineSusserGridFormatInfo Clone() => new() { NegateEliminationsTripletRule = NegateEliminationsTripletRule };
-
-	/// <inheritdoc/>
-	protected internal override string FormatCore(in Grid grid)
+	public bool TryFormat(ref readonly Grid grid, IFormatProvider? provider, [NotNullWhen(true)] out string? result)
 	{
 		var sb = new StringBuilder();
 		for (var cell = 0; cell < 81; cell++)
@@ -57,29 +58,30 @@ public sealed partial class InlineSusserGridFormatInfo : GridFormatInfo<Grid>
 				}
 			}
 		}
-		return sb.ToString();
+		result = sb.ToString();
+		return true;
 	}
 
 	/// <inheritdoc/>
-	protected internal override Grid ParseCore(string str)
+	public bool TryParse(ReadOnlySpan<char> text, IFormatProvider? provider, out Grid result)
 	{
-		var match = GridSusserPattern.Matches(str);
+		var match = GridSusserPattern.Matches(text.ToString());
 		if (match is not { Count: 81 } captures)
 		{
-			return Grid.Undefined;
+			goto ReturnFalse;
 		}
 
-		var result = Grid.Empty;
+		result = Grid.Empty;
 		for (var cell = 0; cell < 81; cell++)
 		{
 			switch (captures[cell].Value)
 			{
 				case [.. var token, var digitChar and >= '1' and <= '9']:
 				{
-					var state = token switch { PlusToken => CellState.Modifiable, EmptyString => CellState.Given, _ => default };
+					var state = token switch { PlusToken => CellState.Modifiable, "" => CellState.Given, _ => default };
 					if (state is not (CellState.Given or CellState.Modifiable))
 					{
-						return Grid.Undefined;
+						goto ReturnFalse;
 					}
 
 					var digit = digitChar - '1';
@@ -113,10 +115,14 @@ public sealed partial class InlineSusserGridFormatInfo : GridFormatInfo<Grid>
 				}
 				default:
 				{
-					return Grid.Undefined;
+					goto ReturnFalse;
 				}
 			}
 		}
-		return result;
+		return true;
+
+	ReturnFalse:
+		result = Grid.Undefined;
+		return false;
 	}
 }
