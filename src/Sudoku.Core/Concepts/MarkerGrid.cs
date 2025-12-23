@@ -373,14 +373,12 @@ public struct MarkerGrid : InlineArrayGridBase
 
 	/// <inheritdoc/>
 	public readonly string ToString(string? format, IFormatProvider? formatProvider)
-		=> (format, formatProvider) switch
-		{
-			(null or "#", _) => new SusserMarkerGridFormatInfo().FormatCore(this),
-			(_, SusserGridFormatInfo<MarkerGrid> instance) => instance.FormatCore(this),
-			(_, not null) when formatProvider.GetFormat(typeof(GridFormatInfo<MarkerGrid>)) is GridFormatInfo<MarkerGrid> g
-				=> g.FormatCore(this),
-			_ => throw new FormatException()
-		};
+	{
+		var instance = GridConverterFactory.GetInstance(format) as SusserGridConverter ?? new SusserGridDefaultConverter();
+		return instance.TryFormat(in this, formatProvider, out var result)
+			? result
+			: throw new FormatException();
+	}
 
 	/// <inheritdoc/>
 	public readonly string ToString(IFormatProvider? formatProvider) => ToString(null, formatProvider);
@@ -623,34 +621,19 @@ public struct MarkerGrid : InlineArrayGridBase
 
 
 	/// <inheritdoc/>
-	public static bool TryParse(ReadOnlySpan<char> s, out MarkerGrid result) => TryParse(s.ToString(), null, out result);
-
-	/// <inheritdoc/>
-	public static bool TryParse(ReadOnlySpan<char> s, IFormatProvider? provider, out MarkerGrid result)
-		=> TryParse(s.ToString(), provider, out result);
-
-	/// <inheritdoc/>
-	public static bool TryParse(string? s, out MarkerGrid result) => TryParse(s, null, out result);
+	public static bool TryParse(string? s, out MarkerGrid result) => TryParse(s.AsSpan(), out result);
 
 	/// <inheritdoc/>
 	public static bool TryParse(string? s, IFormatProvider? provider, out MarkerGrid result)
-	{
-		try
-		{
-			if (s is null)
-			{
-				throw new FormatException();
-			}
+		=> TryParse(s.AsSpan(), provider, out result);
 
-			result = Parse(s, provider);
-			return true;
-		}
-		catch (FormatException)
-		{
-			result = default;
-			return false;
-		}
-	}
+	/// <inheritdoc/>
+	public static bool TryParse(ReadOnlySpan<char> s, out MarkerGrid result)
+		=> new SusserGridDefaultConverter().TryParse(s, null, out result);
+
+	/// <inheritdoc/>
+	public static bool TryParse(ReadOnlySpan<char> s, IFormatProvider? provider, out MarkerGrid result)
+		=> new SusserGridDefaultConverter().TryParse(s, provider, out result);
 
 	/// <inheritdoc/>
 	public static MarkerGrid Create(params ReadOnlySpan<Mask> values)
@@ -698,17 +681,20 @@ public struct MarkerGrid : InlineArrayGridBase
 		=> new(in gridValues[0], creatingOption);
 
 	/// <inheritdoc/>
-	public static MarkerGrid Parse(ReadOnlySpan<char> s) => Parse(s, null);
+	public static MarkerGrid Parse(string? s) => Parse(s.AsSpan(), null);
 
 	/// <inheritdoc/>
-	public static MarkerGrid Parse(ReadOnlySpan<char> s, IFormatProvider? provider) => Parse(s.ToString(), provider);
+	public static MarkerGrid Parse(string? s, IFormatProvider? provider) => Parse(s.AsSpan(), provider);
 
 	/// <inheritdoc/>
-	public static MarkerGrid Parse(string? s) => Parse(s ?? string.Empty, null);
+	public static MarkerGrid Parse(ReadOnlySpan<char> s)
+		=> new SusserGridDefaultConverter().TryParse<MarkerGrid>(s, null, out var result) ? result : throw new FormatException();
 
 	/// <inheritdoc/>
-	public static MarkerGrid Parse(string s, IFormatProvider? provider)
-		=> (provider as SusserGridFormatInfo<MarkerGrid> ?? new()).ParseCore(s);
+	public static MarkerGrid Parse(ReadOnlySpan<char> s, IFormatProvider? provider)
+		=> new SusserGridDefaultConverter().TryParse<MarkerGrid>(s, provider, out var result)
+			? result
+			: throw new FormatException();
 
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>

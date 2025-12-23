@@ -7,4 +7,7 @@ public sealed class MultilineGridDefaultConverter : MultilineGridConverter
 {
 	/// <inheritdoc/>
 	public override bool RemoveBlockLines => false;
+
+	/// <inheritdoc/>
+	public override int ParsingPriority => 9;
 }

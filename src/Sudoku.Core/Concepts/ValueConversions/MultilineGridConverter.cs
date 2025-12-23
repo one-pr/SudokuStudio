@@ -30,7 +30,7 @@ public abstract partial class MultilineGridConverter : IGridConverter
 	public char Placeholder { get; init; } = '.';
 
 	/// <inheritdoc/>
-	public int ParsingPriority => 8;
+	public abstract int ParsingPriority { get; }
 
 
 	[GeneratedRegex("""(\+?\d|\.)""", RegexOptions.Compiled, 5000)]
