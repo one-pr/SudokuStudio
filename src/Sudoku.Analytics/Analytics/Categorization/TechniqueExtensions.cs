@@ -171,13 +171,13 @@ public static class TechniqueExtensions
 		}
 
 		/// <summary>
-		/// Try to get the name of the current <see cref="Technique"/>.
+		/// Try to get the name of the current <see cref="Technique"/> with specified culture.
 		/// </summary>
-		/// <param name="formatProvider">The culture information.</param>
+		/// <param name="culture">The culture information.</param>
 		/// <returns>The name of the current technique.</returns>
 		/// <exception cref="ResourceNotFoundException">Throws when the target name is not found in resource dictionary.</exception>
-		public string GetName(IFormatProvider? formatProvider)
-			=> SR.TryGet(@this.ToString(), out var resource, formatProvider as CultureInfo ?? CultureInfo.CurrentUICulture)
+		public string GetName(CultureInfo? culture)
+			=> SR.TryGet(@this.ToString(), out var resource, culture ?? CultureInfo.CurrentUICulture)
 				? resource
 				: SR.Get(@this.ToString(), SR.DefaultCulture);
 

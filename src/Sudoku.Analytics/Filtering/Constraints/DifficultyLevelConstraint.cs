@@ -57,10 +57,8 @@ public sealed class DifficultyLevelConstraint : Constraint, IComparisonOperatorC
 	public override int GetHashCode() => HashCode.Combine(DifficultyLevel, Operator);
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
-	{
-		var culture = formatProvider as CultureInfo;
-		return string.Format(
+	public override string ToString(CultureInfo culture)
+		=> string.Format(
 			SR.Get("DifficultyLevelConstraint", culture),
 			[
 				Operator.OperatorString,
@@ -71,7 +69,6 @@ public sealed class DifficultyLevelConstraint : Constraint, IComparisonOperatorC
 				)
 			]
 		);
-	}
 
 	/// <inheritdoc/>
 	public override DifficultyLevelConstraint Clone()

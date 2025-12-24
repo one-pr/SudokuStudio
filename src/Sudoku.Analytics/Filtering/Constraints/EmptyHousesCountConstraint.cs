@@ -35,10 +35,8 @@ public sealed class EmptyHousesCountConstraint : Constraint, ILimitCountConstrai
 	public override int GetHashCode() => HashCode.Combine(HouseType, Count);
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
-	{
-		var culture = formatProvider as CultureInfo;
-		return string.Format(
+	public override string ToString(CultureInfo culture)
+		=> string.Format(
 			SR.Get("EmptyHousesCountConstraint", culture),
 			[
 				Count.ToString(),
@@ -46,7 +44,6 @@ public sealed class EmptyHousesCountConstraint : Constraint, ILimitCountConstrai
 				Count == 1 ? string.Empty : SR.Get("NounPluralSuffix", culture)
 			]
 		);
-	}
 
 	/// <inheritdoc/>
 	public override EmptyHousesCountConstraint Clone() => new() { HouseType = HouseType, Count = Count };

@@ -30,10 +30,8 @@ public sealed class SymmetryConstraint : Constraint
 	public override int GetHashCode() => (int)SymmetricTypes;
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
-	{
-		var culture = formatProvider as CultureInfo;
-		return string.Format(
+	public override string ToString(CultureInfo culture)
+		=> string.Format(
 			SR.Get("SymmetryConstraint", culture),
 			SymmetricTypes switch
 			{
@@ -44,7 +42,6 @@ public sealed class SymmetryConstraint : Constraint
 				)
 			}
 		);
-	}
 
 	/// <inheritdoc/>
 	public override SymmetryConstraint Clone() => new() { IsNegated = IsNegated, SymmetricTypes = SymmetricTypes };

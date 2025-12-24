@@ -36,10 +36,10 @@ public sealed class AnyConstraint(params ConstraintCollection constraints) : Qua
 	}
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
+	public override string ToString(CultureInfo culture)
 		=> string.Format(
-			SR.Get("AnyConstraint", formatProvider as CultureInfo),
-			string.Join(Environment.NewLine, from constraint in Constraints select constraint.ToString(formatProvider))
+			SR.Get("AnyConstraint", culture),
+			string.Join(Environment.NewLine, from constraint in Constraints select constraint.ToString(culture))
 		);
 
 	/// <inheritdoc/>

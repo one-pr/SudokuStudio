@@ -20,8 +20,5 @@ public sealed class NothingChangedDiffResult() : DiffResult
 	public override int GetHashCode() => HashCode.Combine(typeof(NothingChangedDiffResult));
 
 	/// <inheritdoc/>
-	public override string ToString() => "Nothing changed";
-
-	/// <inheritdoc/>
 	public override NothingChangedDiffResult Clone() => new();
 }

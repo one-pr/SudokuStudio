@@ -23,7 +23,6 @@ public sealed partial class TechniqueSet() :
 	IEquatable<TechniqueSet>,
 	IEqualityOperators<TechniqueSet, TechniqueSet, bool>,
 	IFiniteSet<TechniqueSet, Technique>,
-	IFormattable,
 	IInfiniteSet<TechniqueSet, Technique>,
 	ILogicalOperators<TechniqueSet>,
 	IReadOnlySet<Technique>,
@@ -283,21 +282,16 @@ public sealed partial class TechniqueSet() :
 	}
 
 	/// <inheritdoc cref="object.ToString"/>
-	public override string ToString() => ToString(null);
+	public override string ToString() => ToString(CultureInfo.CurrentUICulture);
 
 	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider)
-	{
-		var culture = formatProvider as CultureInfo ?? CultureInfo.CurrentUICulture;
-		var currentCountryOrRegionName = culture.Parent.Name;
-		var isCurrentCountryOrRegionUseEnglish = currentCountryOrRegionName.Equals(SR.EnglishLanguage, StringComparison.OrdinalIgnoreCase);
-		return string.Join(
+	public string ToString(CultureInfo culture)
+		=> string.Join(
 			SR.Get("Comma", culture),
 			from technique in this
 			let name = technique.GetName(culture)
-			select isCurrentCountryOrRegionUseEnglish ? $"{name}" : $"{name} ({technique.EnglishName})"
+			select culture.IsEnglish ? $"{name}" : $"{name} ({technique.EnglishName})"
 		);
-	}
 
 	/// <inheritdoc/>
 	public Technique[] ToArray() => [.. this];
@@ -448,9 +442,6 @@ public sealed partial class TechniqueSet() :
 
 	/// <inheritdoc/>
 	bool IAnyAllMethod<TechniqueSet, Technique>.Any(Func<Technique, bool> predicate) => Exists(predicate);
-
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
 
 	/// <inheritdoc/>
 	TechniqueSet IFiniteSet<TechniqueSet, Technique>.Negate() => ~this;

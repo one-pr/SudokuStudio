@@ -12,12 +12,12 @@ public partial record AnalysisResult
 		/// </summary>
 		/// <param name="instance">The instance.</param>
 		/// <param name="options">The options.</param>
-		/// <param name="formatProvider">The format provider.</param>
+		/// <param name="culture">The culture.</param>
 		/// <returns>The string.</returns>
-		public static string GetColorizedText(AnalysisResult instance, FormattingOptions options, IFormatProvider? formatProvider)
+		public static string GetColorizedText(AnalysisResult instance, FormattingOptions options, CultureInfo culture)
 			=> instance.ToString(
 				options,
-				formatProvider,
+				CoordinateConverter.GetInstance(culture),
 				static (str, step) =>
 				{
 					var @default = (-1, -1, -1);

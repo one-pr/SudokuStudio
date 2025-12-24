@@ -56,6 +56,6 @@ public sealed class BivalueUniversalGraveMultipleStep(
 
 
 	/// <inheritdoce/>
-	public override string GetName(IFormatProvider? formatProvider)
-		=> $"{base.GetName(GetCulture(formatProvider))[..^4]} + {TrueCandidates.Count}";
+	public override string GetName(CultureInfo? culture)
+		=> $"{base.GetName(culture)[..^4]} + {TrueCandidates.Count}";
 }

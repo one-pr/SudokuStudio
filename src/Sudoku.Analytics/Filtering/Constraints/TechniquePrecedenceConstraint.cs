@@ -32,10 +32,8 @@ public sealed class TechniquePrecedenceConstraint : Constraint
 	public override int GetHashCode() => HashCode.Combine(TargetTechnique, ComparedTechnique, Operator);
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
-	{
-		var culture = formatProvider as CultureInfo;
-		return string.Format(
+	public override string ToString(CultureInfo culture)
+		=> string.Format(
 			SR.Get("TechniquePrecedenceConstraint", culture),
 			[
 				TargetTechnique.GetName(culture),
@@ -47,7 +45,6 @@ public sealed class TechniquePrecedenceConstraint : Constraint
 				ComparedTechnique.GetName(culture)
 			]
 		);
-	}
 
 	/// <inheritdoc/>
 	public override TechniquePrecedenceConstraint Clone()

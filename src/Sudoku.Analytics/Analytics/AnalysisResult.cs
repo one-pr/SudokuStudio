@@ -8,7 +8,6 @@ public sealed partial record AnalysisResult(in Grid Puzzle) :
 	IAnyAllMethod<AnalysisResult, Step>,
 	ICastMethod<AnalysisResult, Step>,
 	IEnumerable<Step>,
-	IFormattable,
 	IOfTypeMethod<AnalysisResult, Step>,
 	IReadOnlyDictionary<Grid, Step>,
 	ISelectMethod<AnalysisResult, Step>,
@@ -601,38 +600,38 @@ public sealed partial record AnalysisResult(in Grid Puzzle) :
 	/// <inheritdoc/>
 	public override string ToString() => ToString(DefaultOptions);
 
-	/// <inheritdoc cref="ToString(FormattingOptions, IFormatProvider?)"/>
-	public string ToString(FormattingOptions options) => ToString(options, default(IFormatProvider));
+	/// <inheritdoc cref="ToString(FormattingOptions, CoordinateConverter)"/>
+	public string ToString(FormattingOptions options) => ToString(options, CoordinateConverter.InvariantCultureInstance);
 
-	/// <inheritdoc cref="ToString(FormattingOptions, IFormatProvider?, Func{string, Step, string}?)"/>
-	public string ToString(Func<string, Step, string>? stepStringReplacer) => ToString(DefaultOptions, null, stepStringReplacer);
+	/// <inheritdoc cref="ToString(FormattingOptions, CoordinateConverter, Func{string, Step, string}?)"/>
+	public string ToString(Func<string, Step, string>? stepStringReplacer)
+		=> ToString(DefaultOptions, CoordinateConverter.InvariantCultureInstance, stepStringReplacer);
 
-	/// <inheritdoc cref="ToString(FormattingOptions, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider) => ToString(DefaultOptions, formatProvider);
+	/// <inheritdoc cref="ToString(FormattingOptions, CoordinateConverter)"/>
+	public string ToString(CoordinateConverter converter) => ToString(DefaultOptions, converter);
 
-	/// <inheritdoc cref="ToString(FormattingOptions, IFormatProvider?, Func{string, Step, string}?)"/>
-	public string ToString(IFormatProvider? formatProvider, Func<string, Step, string> stepStringReplacer)
-		=> ToString(DefaultOptions, formatProvider, stepStringReplacer);
+	/// <inheritdoc cref="ToString(FormattingOptions, CoordinateConverter, Func{string, Step, string}?)"/>
+	public string ToString(CoordinateConverter converter, Func<string, Step, string> stepStringReplacer)
+		=> ToString(DefaultOptions, converter, stepStringReplacer);
 
-	/// <inheritdoc cref="ToString(FormattingOptions, IFormatProvider?, Func{string, Step, string}?)"/>
+	/// <inheritdoc cref="ToString(FormattingOptions, CoordinateConverter, Func{string, Step, string}?)"/>
 	public string ToString(FormattingOptions options, Func<string, Step, string> stepStringReplacer)
-		=> ToString(options, null, stepStringReplacer);
+		=> ToString(options, CoordinateConverter.InvariantCultureInstance, stepStringReplacer);
 
 	/// <summary>
 	/// Returns a string that represents the current object, with the specified formatting options.
 	/// </summary>
 	/// <param name="options">The formatting options.</param>
-	/// <param name="formatProvider">The format provider instance.</param>
+	/// <param name="converter">The converter.</param>
 	/// <returns>A string that represents the current object.</returns>
-	public string ToString(FormattingOptions options, IFormatProvider? formatProvider)
-		=> ToString(options, formatProvider, null);
+	public string ToString(FormattingOptions options, CoordinateConverter converter) => ToString(options, converter, null);
 
 	/// <summary>
 	/// Returns a string that represents the current object, with the specified formatting options,
 	/// with a string replacer method that can enhance the output string.
 	/// </summary>
 	/// <param name="options">The formatting options.</param>
-	/// <param name="formatProvider">The format provider instance.</param>
+	/// <param name="converter">The converter.</param>
 	/// <param name="stepStringReplacer">The string replacer method that can substitute each step string.</param>
 	/// <returns>A string that represents the current object.</returns>
 	/// <remarks>
@@ -675,7 +674,7 @@ public sealed partial record AnalysisResult(in Grid Puzzle) :
 	/// <seealso href="https://learn.microsoft.com/en-us/windows/uwp/devices-sensors/epson-esc-pos-with-formatting">
 	/// Epson formatting
 	/// </seealso>
-	public string ToString(FormattingOptions options, IFormatProvider? formatProvider, Func<string, Step, string>? stepStringReplacer)
+	public string ToString(FormattingOptions options, CoordinateConverter converter, Func<string, Step, string>? stepStringReplacer)
 	{
 		// Initialize and deconstruct variables.
 		if (this is not
@@ -694,7 +693,6 @@ public sealed partial record AnalysisResult(in Grid Puzzle) :
 			throw new UnreachableException();
 		}
 		var r = stepStringReplacer ?? (static (self, _) => self);
-		var converter = CoordinateConverter.GetInstance(formatProvider);
 		var culture = converter.CurrentCulture ?? CultureInfo.CurrentUICulture;
 
 		// Print header.
@@ -776,13 +774,13 @@ public sealed partial record AnalysisResult(in Grid Puzzle) :
 					? difficultyLevelComparisonResult
 					: left.Code.CompareTo(right.Code) is var codeComparisonResult and not 0
 						? codeComparisonResult
-						: Step.CompareName(left, right, formatProvider)
+						: Step.CompareName(left, right, culture)
 			);
 
 			foreach (ref readonly var solvingStepsGroup in
 				from step in stepsSortedByName
 				select step into step
-				group step by step.GetName(formatProvider))
+				group step by step.GetName(culture))
 			{
 				if (f(FormattingOptions.ShowStepDetail))
 				{
@@ -901,9 +899,6 @@ public sealed partial record AnalysisResult(in Grid Puzzle) :
 		value = null;
 		return false;
 	}
-
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
 
 	/// <inheritdoc/>
 	IEnumerator IEnumerable.GetEnumerator() => StepsSpan.ToArray().GetEnumerator();

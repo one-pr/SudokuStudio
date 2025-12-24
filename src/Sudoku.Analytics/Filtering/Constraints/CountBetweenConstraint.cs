@@ -32,10 +32,8 @@ public sealed class CountBetweenConstraint : Constraint, IBetweenRuleConstraint
 	public override int GetHashCode() => HashCode.Combine(Range, CellState, BetweenRule);
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
-	{
-		var culture = formatProvider as CultureInfo;
-		return string.Format(
+	public override string ToString(CultureInfo culture)
+		=> string.Format(
 			SR.Get("CountBetweenConstraint", culture),
 			SR.Get(CellState switch { CellState.Given => "GivenCell", _ => "EmptyCell" }, culture),
 			Range.Start.Value,
@@ -48,7 +46,6 @@ public sealed class CountBetweenConstraint : Constraint, IBetweenRuleConstraint
 				BetweenRule.BothClosed => SR.Get("BothClosed", culture)
 			}
 		);
-	}
 
 	/// <inheritdoc/>
 	public override CountBetweenConstraint Clone()

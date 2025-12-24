@@ -34,14 +34,11 @@ public sealed class TechniqueGroupCountConstraint : Constraint, IComparisonOpera
 	public override int GetHashCode() => HashCode.Combine(LimitCount, Operator, TechniqueGroup);
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
-	{
-		var culture = formatProvider as CultureInfo;
-		return string.Format(
+	public override string ToString(CultureInfo culture)
+		=> string.Format(
 			SR.Get("TechniqueGroupCountConstraint", culture),
 			[TechniqueGroup.GetName(culture), Operator.OperatorString, LimitCount]
 		);
-	}
 
 	/// <inheritdoc/>
 	public override TechniqueGroupCountConstraint Clone()

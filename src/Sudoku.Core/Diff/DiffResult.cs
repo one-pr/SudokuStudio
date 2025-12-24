@@ -15,11 +15,7 @@ namespace Sudoku.Diff;
 [JsonDerivedType(typeof(ChangedGivenDiffResult), (int)DiffType.ChangedGiven)]
 [JsonDerivedType(typeof(ChangedModifiableDiffResult), (int)DiffType.ChangedModifiable)]
 [JsonDerivedType(typeof(ChangedCandidateDiffResult), (int)DiffType.ChangedCandidate)]
-public abstract class DiffResult :
-	ICloneable,
-	IEquatable<DiffResult>,
-	IEqualityOperators<DiffResult, DiffResult, bool>,
-	IFormattable
+public abstract class DiffResult : ICloneable, IEquatable<DiffResult>, IEqualityOperators<DiffResult, DiffResult, bool>
 {
 	/// <summary>
 	/// Indicates the notation prefix.
@@ -50,26 +46,6 @@ public abstract class DiffResult :
 
 	/// <inheritdoc/>
 	public abstract override int GetHashCode();
-
-	/// <inheritdoc/>
-	public abstract override string ToString();
-
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	/// <exception cref="FormatException">Throws when the format argument is invalid.</exception>
-	public string ToString(string? format)
-		=> format switch
-		{
-			null => ToString(),
-			"N" or "n" => Notation,
-			"T" or "t" => Type.ToString(),
-			_ => throw new FormatException()
-		};
-
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public virtual string ToString(IFormatProvider? formatProvider) => ToString();
-
-	/// <inheritdoc/>
-	public string ToString(string? format, IFormatProvider? formatProvider) => ToString(format);
 
 	/// <inheritdoc cref="ICloneable.Clone"/>
 	public abstract DiffResult Clone();

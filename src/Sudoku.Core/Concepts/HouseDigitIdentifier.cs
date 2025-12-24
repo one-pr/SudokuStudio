@@ -14,10 +14,8 @@ public readonly struct HouseDigitIdentifier(House house, Digit digit) :
 	IDecrementOperators<HouseDigitIdentifier>,
 	IEquatable<HouseDigitIdentifier>,
 	IEqualityOperators<HouseDigitIdentifier, HouseDigitIdentifier, bool>,
-	IFormattable,
 	IIncrementOperators<HouseDigitIdentifier>,
 	IMinMaxValue<HouseDigitIdentifier>,
-	IParsable<HouseDigitIdentifier>,
 	ISubtractionOperators<HouseDigitIdentifier, byte, HouseDigitIdentifier>
 {
 	/// <summary>
@@ -107,29 +105,27 @@ public readonly struct HouseDigitIdentifier(House house, Digit digit) :
 	public override int GetHashCode() => _mask;
 
 	/// <inheritdoc cref="object.ToString"/>
-	public override string ToString() => ToString(null);
+	public override string ToString() => ToString(CoordinateConverter.InvariantCultureInstance);
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider)
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <returns>The string.</returns>
+	public string ToString(CoordinateConverter converter)
 	{
-		var instance = CoordinateConverter.GetInstance(formatProvider);
-		var houseString = instance.HouseConverter(1 << House);
-		var digitString = instance.DigitConverter((Mask)(1 << Digit));
+		var houseString = converter.HouseConverter(1 << House);
+		var digitString = converter.DigitConverter((Mask)(1 << Digit));
 		return $"{houseString}({digitString})";
 	}
 
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider)
-		=> formatProvider is ICustomFormatter customFormatter
-			? customFormatter.Format(format, this, formatProvider)
-			: ToString(formatProvider);
 
-
-	/// <inheritdoc cref="TryParse(string?, IFormatProvider?, out HouseDigitIdentifier)"/>
-	public static bool TryParse([NotNullWhen(true)] string? s, out HouseDigitIdentifier result) => TryParse(s, null, out result);
+	/// <inheritdoc cref="TryParse(string?, CoordinateParser, out HouseDigitIdentifier)"/>
+	public static bool TryParse([NotNullWhen(true)] string? s, out HouseDigitIdentifier result)
+		=> TryParse(s, CoordinateParser.InvariantCultureInstance, out result);
 
 	/// <inheritdoc/>
-	public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, out HouseDigitIdentifier result)
+	public static bool TryParse([NotNullWhen(true)] string? s, CoordinateParser converter, out HouseDigitIdentifier result)
 	{
 		try
 		{
@@ -138,7 +134,7 @@ public readonly struct HouseDigitIdentifier(House house, Digit digit) :
 				goto ReturnFalse;
 			}
 
-			result = Parse(s, provider);
+			result = Parse(s, converter);
 			return true;
 		}
 		catch (FormatException)
@@ -150,19 +146,18 @@ public readonly struct HouseDigitIdentifier(House house, Digit digit) :
 		return false;
 	}
 
-	/// <inheritdoc cref="Parse(string, IFormatProvider?)"/>
-	public static HouseDigitIdentifier Parse(string s) => Parse(s, null);
+	/// <inheritdoc cref="Parse(string, CoordinateParser)"/>
+	public static HouseDigitIdentifier Parse(string s) => Parse(s, CoordinateParser.InvariantCultureInstance);
 
 	/// <inheritdoc/>
-	public static HouseDigitIdentifier Parse(string s, IFormatProvider? provider)
+	public static HouseDigitIdentifier Parse(string s, CoordinateParser converter)
 	{
 		var indexOfLeftBrace = s.IndexOf('(');
 		var indexOfRightBrace = s.IndexOf(')');
 		var houseString = s[..indexOfLeftBrace];
 		var digitString = s[(indexOfLeftBrace + 1)..indexOfRightBrace];
-		var instance = CoordinateParser.GetInstance(provider);
-		var house = instance.HouseParser(houseString);
-		var digit = instance.DigitParser(digitString);
+		var house = converter.HouseParser(houseString);
+		var digit = converter.DigitParser(digitString);
 		return new(house, digit);
 	}
 

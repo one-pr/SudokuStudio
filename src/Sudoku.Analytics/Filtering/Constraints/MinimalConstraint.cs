@@ -19,14 +19,11 @@ public sealed class MinimalConstraint : Constraint
 	public override int GetHashCode() => ShouldBeMinimal ? 1 : 0;
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
-	{
-		var culture = formatProvider as CultureInfo;
-		return string.Format(
+	public override string ToString(CultureInfo culture)
+		=> string.Format(
 			SR.Get("MinimalConstraint", culture),
 			ShouldBeMinimal ? string.Empty : SR.Get("NoString", culture)
 		);
-	}
 
 	/// <inheritdoc/>
 	public override MinimalConstraint Clone() => new() { IsNegated = IsNegated, ShouldBeMinimal = ShouldBeMinimal };

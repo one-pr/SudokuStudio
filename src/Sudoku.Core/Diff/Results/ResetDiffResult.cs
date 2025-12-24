@@ -20,8 +20,5 @@ public sealed class ResetDiffResult() : DiffResult
 	public override int GetHashCode() => HashCode.Combine(typeof(ResetDiffResult));
 
 	/// <inheritdoc/>
-	public override string ToString() => "Reset grid";
-
-	/// <inheritdoc/>
 	public override ResetDiffResult Clone() => new();
 }

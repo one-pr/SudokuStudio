@@ -30,7 +30,7 @@ namespace Sudoku.Filtering;
 [JsonDerivedType(typeof(TechniqueGroupCountConstraint), nameof(TechniqueGroupCountConstraint))]
 [JsonDerivedType(typeof(TechniquePrecedenceConstraint), nameof(TechniquePrecedenceConstraint))]
 [JsonDerivedType(typeof(TechniqueSetConstraint), nameof(TechniqueSetConstraint))]
-public abstract class Constraint : IEquatable<Constraint>, IEqualityOperators<Constraint, Constraint, bool>, IFormattable
+public abstract class Constraint : IEquatable<Constraint>, IEqualityOperators<Constraint, Constraint, bool>
 {
 	/// <summary>
 	/// Indicates whether the constraint should be negated.
@@ -64,10 +64,14 @@ public abstract class Constraint : IEquatable<Constraint>, IEqualityOperators<Co
 	public abstract override int GetHashCode();
 
 	/// <inheritdoc/>
-	public sealed override string ToString() => ToString(null);
+	public sealed override string ToString() => ToString(CultureInfo.CurrentUICulture);
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public abstract string ToString(IFormatProvider? formatProvider);
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation via the specified culture.
+	/// </summary>
+	/// <param name="culture">The culture.</param>
+	/// <returns>The string.</returns>
+	public abstract string ToString(CultureInfo culture);
 
 	/// <summary>
 	/// Creates a new instance that contains same data with the current instance.
@@ -83,9 +87,6 @@ public abstract class Constraint : IEquatable<Constraint>, IEqualityOperators<Co
 
 	/// <inheritdoc cref="Check(ConstraintCheckingContext)"/>
 	protected abstract bool CheckCore(ConstraintCheckingContext context);
-
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
 
 
 	/// <inheritdoc/>

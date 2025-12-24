@@ -45,10 +45,8 @@ public sealed class IttoryuConstraint : Constraint, IComparisonOperatorConstrain
 	public override int GetHashCode() => HashCode.Combine(IsStrictIttoryu, Rounds, LimitedSingle, Operator);
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
-	{
-		var culture = formatProvider as CultureInfo;
-		return string.Format(
+	public override string ToString(CultureInfo culture)
+		=> string.Format(
 			SR.Get("IttoryuConstraint", culture),
 			[
 				Operator.OperatorString,
@@ -56,7 +54,6 @@ public sealed class IttoryuConstraint : Constraint, IComparisonOperatorConstrain
 				IsStrictIttoryu ? SR.Get("IttoryuConstraintInterpolation", culture) : string.Empty
 			]
 		);
-	}
 
 	/// <inheritdoc/>
 	public override IttoryuConstraint Clone()

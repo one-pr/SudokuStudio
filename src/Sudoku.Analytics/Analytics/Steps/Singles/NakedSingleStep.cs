@@ -53,15 +53,14 @@ public sealed class NakedSingleStep(
 
 
 	/// <inheritdoc/>
-	public override string GetName(IFormatProvider? formatProvider)
+	public override string GetName(CultureInfo? culture)
 	{
-		var baseName = base.GetName(formatProvider);
+		var baseName = base.GetName(culture);
 		if (!Options.IsDirectMode)
 		{
 			return baseName;
 		}
 
-		var culture = Options.CurrentCulture;
 		var lastDigitsCountString = string.Format(
 			SR.Get("DirectSingleLastSuffix", culture),
 			SR.Get($"{LastingHouseType}Name", culture),
@@ -76,7 +75,7 @@ public sealed class NakedSingleStep(
 	}
 
 	/// <inheritdoc/>
-	protected internal override int NameCompareTo(Step other, IFormatProvider? formatProvider)
+	protected internal override int NameCompareTo(Step other, CultureInfo? culture)
 	{
 		if (Code.CompareTo(other.Code) is var codeComparisonResult and not 0)
 		{
@@ -90,14 +89,13 @@ public sealed class NakedSingleStep(
 			return lastingHouseTypeComparisonResult;
 		}
 
-		var culture = GetCulture(formatProvider);
 		if (!SR.IsChinese(culture))
 		{
-			return base.NameCompareTo(other, formatProvider);
+			return base.NameCompareTo(other, culture);
 		}
 
-		var leftName = GetName(formatProvider);
-		var rightName = other.GetName(formatProvider);
+		var leftName = GetName(culture);
+		var rightName = other.GetName(culture);
 		var leftDigit = TechniqueNaming.GetChineseDigit(TechniqueNaming.ChineseDigitsPattern.Match(leftName).Value[0]);
 		var rightDigit = TechniqueNaming.GetChineseDigit(TechniqueNaming.ChineseDigitsPattern.Match(rightName).Value[0]);
 		return leftDigit.CompareTo(rightDigit);

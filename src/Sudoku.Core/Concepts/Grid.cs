@@ -1078,12 +1078,20 @@ public partial struct Grid : InlineArrayGridBase
 
 
 	/// <inheritdoc/>
-	public static bool TryParse(string? s, out Grid result) => TryParse(s.AsSpan(), out result);
+	public static bool TryParse(string? s, out Grid result) => TryParse(s.AsSpan(), default(IFormatProvider), out result);
 
 	/// <inheritdoc cref="TryParse(ReadOnlySpan{char}, CultureInfo, out Grid)"/>
 	public static bool TryParse(string? s, CultureInfo culture, out Grid result) => TryParse(s.AsSpan(), culture, out result);
 
-	/// <inheritdoc/>
+	/// <inheritdoc cref="TryParse(ReadOnlySpan{char}, IGridConverter, IFormatProvider?, out Grid)"/>
+	public static bool TryParse(string? s, IGridConverter converter, out Grid result)
+		=> TryParse(s.AsSpan(), converter, null, out result);
+
+	/// <inheritdoc cref="TryParse(ReadOnlySpan{char}, IGridConverter, IFormatProvider?, out Grid)"/>
+	public static bool TryParse(string? s, IGridConverter converter, IFormatProvider? formatProvider, out Grid result)
+		=> TryParse(s.AsSpan(), converter, formatProvider, out result);
+
+	/// <inheritdoc cref="IParsable{TSelf}.TryParse(string?, IFormatProvider?, out TSelf)"/>
 	public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, out Grid result)
 		=> TryParse(s.AsSpan(), provider, out result);
 
@@ -1106,7 +1114,24 @@ public partial struct Grid : InlineArrayGridBase
 			_ => GridConverterFactory.TryParse(s, culture, out result)
 		};
 
-	/// <inheritdoc/>
+	/// <inheritdoc cref="TryParse(string?, IGridConverter, IFormatProvider?, out Grid)"/>
+	public static bool TryParse(ReadOnlySpan<char> s, IGridConverter converter, out Grid result)
+		=> converter.TryParse(s, null, out result);
+
+	/// <summary>
+	/// Try to parse the current string into <see cref="Grid"/> instance;
+	/// specify a converter that controls the parsing rule, with format provider effecting that rule
+	/// (like culture, numeric literal handling, etc.).
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <param name="converter">The converter.</param>
+	/// <param name="formatProvider">The format provider.</param>
+	/// <param name="result">The result.</param>
+	/// <returns>A <see cref="bool"/> result indicating that.</returns>
+	public static bool TryParse(ReadOnlySpan<char> s, IGridConverter converter, IFormatProvider? formatProvider, out Grid result)
+		=> converter.TryParse(s, formatProvider, out result);
+
+	/// <inheritdoc cref="ISpanParsable{TSelf}.TryParse(ReadOnlySpan{char}, IFormatProvider?, out TSelf)"/>
 	public static bool TryParse(ReadOnlySpan<char> s, IFormatProvider? provider, out Grid result)
 		=> GridConverterFactory.TryParse(s, provider, out result);
 

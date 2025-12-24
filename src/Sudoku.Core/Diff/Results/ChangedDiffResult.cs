@@ -12,11 +12,4 @@ public abstract class ChangedDiffResult(CandidateMap candidates) : UpdatedDiffRe
 
 	/// <inheritdoc/>
 	public sealed override int GetHashCode() => HashCode.Combine(EqualityContract, Candidates);
-
-	/// <inheritdoc/>
-	public sealed override string ToString(IFormatProvider? formatProvider)
-	{
-		var converter = CoordinateConverter.GetInstance(formatProvider);
-		return $"{CellTypeString} digits changed: {converter.CandidateConverter(Candidates)}";
-	}
 }

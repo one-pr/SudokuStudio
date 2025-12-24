@@ -32,17 +32,14 @@ public sealed class EliminationCountConstraint : Constraint, IComparisonOperator
 	public override int GetHashCode() => HashCode.Combine(LimitCount, Technique, Operator);
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
-	{
-		var culture = formatProvider as CultureInfo;
-		return string.Format(
+	public override string ToString(CultureInfo culture)
+		=> string.Format(
 			SR.Get("EliminationCountConstraint", culture),
 			Operator.OperatorString,
 			LimitCount,
 			LimitCount == 1 ? string.Empty : SR.Get("NounPluralSuffix", culture),
 			Technique.GetName(culture)
 		);
-	}
 
 	/// <inheritdoc/>
 	public override EliminationCountConstraint Clone()

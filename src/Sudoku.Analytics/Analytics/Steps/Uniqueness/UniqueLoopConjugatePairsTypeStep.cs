@@ -89,9 +89,8 @@ public sealed class UniqueLoopConjugatePairsTypeStep(
 
 
 	/// <inheritdoc/>
-	public override string GetName(IFormatProvider? formatProvider)
+	public override string GetName(CultureInfo? culture)
 	{
-		var culture = GetCulture(formatProvider);
 		var uniqueLoopName = SR.Get("UniqueNameName", culture);
 		return $"{uniqueLoopName} + {ExtraDigitsCellsCount}/{ConjugatePairs.Length}SL";
 	}

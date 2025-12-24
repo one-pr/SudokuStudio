@@ -23,12 +23,4 @@ public abstract class AddDiffResult(CandidateMap candidates, bool areCorrect) : 
 
 	/// <inheritdoc/>
 	public sealed override int GetHashCode() => HashCode.Combine(EqualityContract, Candidates, AreCorrect);
-
-	/// <inheritdoc/>
-	public sealed override string ToString(IFormatProvider? formatProvider)
-	{
-		var converter = CoordinateConverter.GetInstance(formatProvider);
-		var areCorrectedString = AreCorrect ? string.Empty : ", incorrect";
-		return $"{CellTypeString} digits added: {converter.CandidateConverter(Candidates)}{areCorrectedString}";
-	}
 }

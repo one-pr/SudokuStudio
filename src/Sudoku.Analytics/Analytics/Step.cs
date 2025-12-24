@@ -11,8 +11,7 @@ public abstract class Step(ReadOnlyMemory<Conclusion> conclusions, View[]? views
 	IComparable<Step>,
 	IComparisonOperators<Step, Step, bool>,
 	IDrawable,
-	IEquatable<Step>,
-	IFormattable
+	IEquatable<Step>
 {
 	/// <summary>
 	/// Indicates whether the step is an assignment. The possible result values are:
@@ -135,14 +134,14 @@ public abstract class Step(ReadOnlyMemory<Conclusion> conclusions, View[]? views
 	/// By default, this property is <see langword="false"/>, meaning technique resource key must match its containing type.
 	/// </para>
 	/// <para>
-	/// If there's no corresponding resource found, <see cref="ToString(IFormatProvider?)"/>
+	/// If there's no corresponding resource found, <see cref="ToString(CultureInfo?)"/>
 	/// and other methods in a same method group will fail to output information,
-	/// and return default value same as <see cref="ToSimpleString(IFormatProvider?)"/>.
+	/// and return default value same as <see cref="ToSimpleString(CultureInfo?)"/>.
 	/// </para>
 	/// </summary>
 	/// <seealso cref="FormatTypeIdentifier"/>
-	/// <seealso cref="ToString(IFormatProvider?)"/>
-	/// <seealso cref="ToSimpleString(IFormatProvider?)"/>
+	/// <seealso cref="ToString(CultureInfo?)"/>
+	/// <seealso cref="ToSimpleString(CultureInfo?)"/>
 	protected virtual bool TechniqueResourceKeyInheritsFromBase => false;
 
 	/// <summary>
@@ -201,38 +200,40 @@ public abstract class Step(ReadOnlyMemory<Conclusion> conclusions, View[]? views
 	/// <summary>
 	/// Try to fetch the name of this technique step, with the specified culture.
 	/// </summary>
-	/// <param name="formatProvider">The culture information provider instance.</param>
+	/// <param name="culture">The culture.</param>
 	/// <returns>The string representation.</returns>
-	public virtual string GetName(IFormatProvider? formatProvider) => Code.GetName(GetCulture(formatProvider));
+	public virtual string GetName(CultureInfo? culture) => Code.GetName(culture);
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider)
+	/// <summary>
+	/// Gets string representation of the current instance, using the specified culture to translate target sentences.
+	/// </summary>
+	/// <param name="culture">The culture.</param>
+	/// <returns>The string result.</returns>
+	public string ToString(CultureInfo? culture)
 		=> GetResourceFormat(null) is null
-			? ToSimpleString(formatProvider)
-			: GetCulture(formatProvider) is var culture && SR.Get("_Token_Colon", culture) is var colonToken
-				? Interpolations[culture] switch
+			? ToSimpleString(culture)
+			: SR.Get("_Token_Colon", culture) is var colonToken
+				? Interpolations[culture ?? CultureInfo.CurrentUICulture] switch
 				{
 					{ Values: { } formatArgs }
-						=> $"{GetName(formatProvider)}{colonToken}{FormatDescription(culture, formatArgs)} => {ConclusionText}",
+						=> $"{GetName(culture)}{colonToken}{FormatDescription(culture, formatArgs)} => {ConclusionText}",
 					_
-						=> $"{GetName(formatProvider)}{colonToken}{FormatTypeIdentifier} => {ConclusionText}"
+						=> $"{GetName(culture)}{colonToken}{FormatTypeIdentifier} => {ConclusionText}"
 				}
 				: throw new UnreachableException();
 
 	/// <summary>
 	/// Gets the string representation for the current step, describing only its technique name and conclusions.
 	/// </summary>
-	/// <param name="formatProvider">The culture information.</param>
+	/// <param name="culture">The culture information.</param>
 	/// <returns>The string value.</returns>
-	public string ToSimpleString(IFormatProvider? formatProvider) => $"{GetName(formatProvider)} => {ConclusionText}";
+	public string ToSimpleString(CultureInfo? culture) => $"{GetName(culture)} => {ConclusionText}";
 
 	/// <summary>
 	/// Compares the real name of the step to the specified one. This method is to distinct names on displaying in UI.
 	/// </summary>
 	/// <param name="other">The other instance to be compared.</param>
-	/// <param name="formatProvider">
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)" path="/param[@name='formatProvider']"/>
-	/// </param>
+	/// <param name="culture">The culture.</param>
 	/// <returns>An <see cref="int"/> value indicating which one is logically larger.</returns>
 	/// <remarks>
 	/// <para>
@@ -246,27 +247,12 @@ public abstract class Step(ReadOnlyMemory<Conclusion> conclusions, View[]? views
 	/// </para>
 	/// <para>By default, this method only checks for the Unicode order of two strings (default string comparison rule).</para>
 	/// </remarks>
-	protected internal virtual int NameCompareTo(Step other, IFormatProvider? formatProvider)
+	protected internal virtual int NameCompareTo(Step other, CultureInfo? culture)
 	{
-		var left = GetName(formatProvider);
-		var right = other.GetName(formatProvider);
+		var left = GetName(culture);
+		var right = other.GetName(culture);
 		return left.CompareTo(right);
 	}
-
-	/// <summary>
-	/// Try to get the current culture used. The return value won't be <see langword="null"/>.
-	/// </summary>
-	/// <param name="formatProvider">
-	/// The format provider instance.
-	/// The value can be <see langword="null"/> if you want to check for default culture used in <see cref="Options"/>.
-	/// </param>
-	/// <returns>The corresponding culture information.</returns>
-	/// <seealso cref="Options"/>
-	private protected CultureInfo GetCulture(IFormatProvider? formatProvider)
-		=> formatProvider as CultureInfo ?? Options.CurrentCulture;
-
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
 
 	/// <summary>
 	/// Try to format description of the current instance.

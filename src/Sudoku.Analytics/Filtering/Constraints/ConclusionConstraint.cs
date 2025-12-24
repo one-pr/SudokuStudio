@@ -25,17 +25,14 @@ public sealed class ConclusionConstraint : Constraint
 	public override int GetHashCode() => HashCode.Combine(ShouldAppear, Conclusion);
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
-	{
-		var culture = formatProvider as CultureInfo;
-		return string.Format(
+	public override string ToString(CultureInfo culture)
+		=> string.Format(
 			SR.Get("ConclusionConstraint", culture),
 			[
 				Conclusion.ToString(culture),
 				ShouldAppear ? string.Empty : SR.Get("NoString", culture)
 			]
 		);
-	}
 
 	/// <inheritdoc/>
 	public override ConclusionConstraint Clone()
