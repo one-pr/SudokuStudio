@@ -10,9 +10,7 @@ namespace Sudoku.Analytics.Construction.Patterns;
 /// <param name="house2"><inheritdoc cref="House2" path="/summary"/></param>
 /// <param name="digitsMask"><inheritdoc cref="DigitsMask" path="/summary"/></param>
 /// <param name="zDigit"><inheritdoc cref="ZDigit" path="/summary"/></param>
-public sealed class XyzWingPattern(Cell pivot, Cell leafCell1, Cell leafCell2, House house1, House house2, Mask digitsMask, Digit zDigit) :
-	Pattern,
-	IFormattable
+public sealed class XyzWingPattern(Cell pivot, Cell leafCell1, Cell leafCell2, House house1, House house2, Mask digitsMask, Digit zDigit) : Pattern
 {
 	/// <inheritdoc/>
 	public override bool IsChainingCompatible => true;
@@ -78,19 +76,22 @@ public sealed class XyzWingPattern(Cell pivot, Cell leafCell1, Cell leafCell2, H
 	public override int GetHashCode() => HashCode.Combine(Pivot, LeafCell1, LeafCell2, House1, House2, DigitsMask);
 
 	/// <inheritdoc/>
-	public override string ToString() => ToString(null);
+	public override string ToString() => ToString(CoordinateConverter.InvariantCultureInstance);
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider)
+	/// <inheritdoc cref="ToString(CoordinateConverter)"/>
+	public string ToString(CultureInfo culture) => ToString(CoordinateConverter.GetInstance(culture));
+
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation via the specified converter.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <returns>The string.</returns>
+	public string ToString(CoordinateConverter converter)
 	{
-		var converter = CoordinateConverter.GetInstance(formatProvider);
 		var zDigitStr = converter.DigitConverter((Mask)(1 << ZDigit));
 		return $@"{converter.CellConverter(Pivot.AsCellMap() + LeafCell1 + LeafCell2)}({DigitsMask}, {zDigitStr})";
 	}
 
 	/// <inheritdoc/>
 	public override XyzWingPattern Clone() => new(Pivot, LeafCell1, LeafCell2, House1, House2, DigitsMask, ZDigit);
-
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
 }

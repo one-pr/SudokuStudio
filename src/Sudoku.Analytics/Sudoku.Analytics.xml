@@ -8166,20 +8166,48 @@
         <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.ToString(System.Globalization.CultureInfo)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation via the specified culture.
+            </summary>
+            <param name="culture">The culture.</param>
+            <returns>The string.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation via the specified converter.
+            </summary>
+            <param name="converter">The converter.</param>
+            <returns>The string.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.Clone">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.System#IFormattable#ToString(System.String,System.IFormatProvider)">
-            <inheritdoc/>
-        </member>
         <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.TryParse(System.String,Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern@)">
-            <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
+            <summary>
+            Try to parse the string into target instance.
+            </summary>
+            <param name="s">The string.</param>
+            <param name="result">The result.</param>
+            <returns>A <see cref="T:System.Boolean"/> result.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.TryParse(System.String,System.IFormatProvider,Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern@)">
-            <inheritdoc/>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.TryParse(System.String,System.Globalization.CultureInfo,Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern@)">
+            <summary>
+            Try to parse the string into target instance, using the specified culture.
+            </summary>
+            <param name="s">The string.</param>
+            <param name="culture">The culture.</param>
+            <param name="result">The result.</param>
+            <returns>A <see cref="T:System.Boolean"/> result.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.TryParse(System.String,Sudoku.Concepts.Coordinates.CoordinateParser,Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern@)">
+            <summary>
+            Try to parse the string into target instance, using the specified converter.
+            </summary>
+            <param name="s">The string.</param>
+            <param name="converter">The converter.</param>
+            <param name="result">The result.</param>
+            <returns>A <see cref="T:System.Boolean"/> result.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.Collect(Sudoku.Concepts.Grid@)">
             <summary>
@@ -8191,8 +8219,21 @@
         <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.Parse(System.String)">
             <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.Parse(System.String,System.IFormatProvider)">
-            <inheritdoc/>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.Parse(System.String,System.Globalization.CultureInfo)">
+            <summary>
+            Parses the current string into a valid instance, via the specified culture.
+            </summary>
+            <param name="s">The string.</param>
+            <param name="culture">The culture.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.Parse(System.String,Sudoku.Concepts.Coordinates.CoordinateParser)">
+            <summary>
+            Parses the current string into a valid instance, via the specified converter.
+            </summary>
+            <param name="s">The string.</param>
+            <param name="converter">The converter.</param>
+            <returns>The instance.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.op_GreaterThan(Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern,Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern)">
             <inheritdoc/>
@@ -9626,13 +9667,17 @@
         <member name="M:Sudoku.Analytics.Construction.Patterns.XyzWingPattern.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Patterns.XyzWingPattern.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.XyzWingPattern.ToString(System.Globalization.CultureInfo)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Patterns.XyzWingPattern.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.XyzWingPattern.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation via the specified converter.
+            </summary>
+            <param name="converter">The converter.</param>
+            <returns>The string.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Patterns.XyzWingPattern.Clone">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Patterns.XyzWingPattern.System#IFormattable#ToString(System.String,System.IFormatProvider)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Construction.PatternType">
