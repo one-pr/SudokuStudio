@@ -50,11 +50,11 @@ public abstract record CoordinateParser :
 
 
 	/// <inheritdoc/>
-	public static CoordinateParser GetInstance(IFormatProvider? formatProvider)
-		=> formatProvider switch
+	public static CoordinateParser GetInstance(CultureInfo? culture)
+		=> culture switch
 		{
-			{ IsChineseCulture: true } => new K9Parser(),
-			CoordinateParser c => c,
+			{ IsChinese: true } => new K9Parser(),
+			{ IsEnglish: true } => new RxCyParser(),
 			_ => InvariantCultureInstance
 		};
 }

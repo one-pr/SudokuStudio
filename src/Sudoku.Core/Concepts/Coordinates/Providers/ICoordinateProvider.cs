@@ -15,7 +15,7 @@ public interface ICoordinateProvider<out TSelf> : IFormatProvider where TSelf : 
 	/// <summary>
 	/// Try to get a <typeparamref name="TSelf"/> instance from the specified culture.
 	/// </summary>
-	/// <param name="formatProvider">The format provider instance.</param>
+	/// <param name="culture">The culture.</param>
 	/// <returns>A <typeparamref name="TSelf"/> instance from the specified culture.</returns>
-	static abstract TSelf GetInstance(IFormatProvider? formatProvider);
+	static abstract TSelf GetInstance(CultureInfo? culture);
 }

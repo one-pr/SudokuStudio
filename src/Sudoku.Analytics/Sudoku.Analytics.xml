@@ -9885,9 +9885,9 @@
             <inheritdoc cref="M:System.Object.GetHashCode"/>
         </member>
         <member name="M:Sudoku.Analytics.Dependency.DependencyAssignment.ToCandidateFormatString(System.Boolean)">
-            <inheritdoc cref="M:Sudoku.Analytics.Dependency.DependencyAssignment.ToCandidateFormatString(System.Boolean,System.IFormatProvider)"/>
+            <inheritdoc cref="M:Sudoku.Analytics.Dependency.DependencyAssignment.ToCandidateFormatString(System.Boolean,System.Globalization.CultureInfo)"/>
         </member>
-        <member name="M:Sudoku.Analytics.Dependency.DependencyAssignment.ToCandidateFormatString(System.Boolean,System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Dependency.DependencyAssignment.ToCandidateFormatString(System.Boolean,System.Globalization.CultureInfo)">
             <summary>
             Returns a string instance that displays like a candidate format.
             </summary>
@@ -9895,7 +9895,7 @@
             Indicates whether the output text will include control characters like <c>\e</c>,
             in order to display colors in console output stream.
             </param>
-            <param name="formatProvider">The coordinate format converter.</param>
+            <param name="culture">The culture.</param>
             <returns>The string representation.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Dependency.DependencyAssignment.ToString">

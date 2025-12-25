@@ -2481,7 +2481,7 @@
         <member name="M:Sudoku.Concepts.Coordinates.CoordinateConverter.GetFormat(System.Type)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Coordinates.CoordinateConverter.GetInstance(System.IFormatProvider)">
+        <member name="M:Sudoku.Concepts.Coordinates.CoordinateConverter.GetInstance(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Concepts.Coordinates.CoordinateParser">
@@ -2520,7 +2520,7 @@
         <member name="M:Sudoku.Concepts.Coordinates.CoordinateParser.GetFormat(System.Type)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Concepts.Coordinates.CoordinateParser.GetInstance(System.IFormatProvider)">
+        <member name="M:Sudoku.Concepts.Coordinates.CoordinateParser.GetInstance(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Concepts.Coordinates.CoordinateType">
@@ -3068,11 +3068,11 @@
             Indicates the <typeparamref name="TSelf"/> instance for the invariant culture, meaning it ignores culture your device uses.
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.Coordinates.Providers.ICoordinateProvider`1.GetInstance(System.IFormatProvider)">
+        <member name="M:Sudoku.Concepts.Coordinates.Providers.ICoordinateProvider`1.GetInstance(System.Globalization.CultureInfo)">
             <summary>
             Try to get a <typeparamref name="TSelf"/> instance from the specified culture.
             </summary>
-            <param name="formatProvider">The format provider instance.</param>
+            <param name="culture">The culture.</param>
             <returns>A <typeparamref name="TSelf"/> instance from the specified culture.</returns>
         </member>
         <member name="T:Sudoku.Concepts.Coordinates.Providers.IDigitConverter">

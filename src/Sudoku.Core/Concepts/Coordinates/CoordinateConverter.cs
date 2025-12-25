@@ -94,12 +94,11 @@ public abstract record CoordinateConverter(
 
 
 	/// <inheritdoc/>
-	public static CoordinateConverter GetInstance(IFormatProvider? formatProvider)
-		=> formatProvider switch
+	public static CoordinateConverter GetInstance(CultureInfo? culture)
+		=> culture switch
 		{
-			{ IsChineseCulture: true } => new K9Converter(true, CurrentCulture: (CultureInfo)formatProvider),
-			CultureInfo c => new RxCyConverter(true, true, CurrentCulture: c),
-			CoordinateConverter c => c,
+			{ IsChinese: true } => new K9Converter(true, CurrentCulture: culture),
+			{ IsEnglish: true } => new RxCyConverter(true, true, CurrentCulture: culture),
 			_ => InvariantCultureInstance
 		};
 }

@@ -49,5 +49,5 @@ public sealed class FinnedChainStep(
 	/// </summary>
 	public MultipleChainBasedComponent BasedComponent { get; } = basedComponent;
 
-	private string FinsStr => Fins.ToString(CoordinateConverter.GetInstance(Options.Converter));
+	private string FinsStr => Fins.ToString(Options.Converter);
 }
