@@ -3,7 +3,7 @@ namespace Sudoku.Concepts.Coordinates.Providers;
 /// <summary>
 /// Represents an intersection parser.
 /// </summary>
-public interface IIntersectionParser : IParser
+public interface IIntersectionParsable
 {
 	/// <summary>
 	/// The parser method that can creates a list of pairs of <see cref="MinilineBase"/> and <see cref="MinilineResult"/>

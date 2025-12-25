@@ -3,7 +3,7 @@ namespace Sudoku.Concepts.Coordinates.Providers;
 /// <summary>
 /// Represents a digit parser.
 /// </summary>
-public interface IDigitParser : IParser
+public interface IDigitParsable
 {
 	/// <summary>
 	/// The parser method that can creates a <see cref="Mask"/> via the specified text to be parsed.

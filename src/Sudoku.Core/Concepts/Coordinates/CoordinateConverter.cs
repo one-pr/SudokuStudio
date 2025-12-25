@@ -45,14 +45,14 @@ public abstract record CoordinateConverter(
 	CultureInfo? CurrentCulture = null
 ) :
 	ICoordinateProvider<CoordinateConverter>,
-	ICellConverter,
-	ICandidateConverter,
-	IHouseConverter,
-	IConclusionConverter,
-	IDigitConverter,
-	IIntersectionConverter,
-	IChuteConverter,
-	IConjugatePairConverter
+	ICellConvertible,
+	ICandidateConvertible,
+	IHouseConvertible,
+	IConclusionConvertible,
+	IDigitConvertible,
+	IIntersectionConvertible,
+	IChuteConvertible,
+	IConjugatePairConvertible
 {
 	/// <inheritdoc/>
 	public abstract CellMapFormatter CellConverter { get; }

@@ -3,7 +3,7 @@ namespace Sudoku.Concepts.Coordinates.Providers;
 /// <summary>
 /// Represents a conclusion converter.
 /// </summary>
-public interface IConclusionConverter : IConverter
+public interface IConclusionConvertible
 {
 	/// <summary>
 	/// The converter method that creates a <see cref="string"/> via the specified list of conclusions.

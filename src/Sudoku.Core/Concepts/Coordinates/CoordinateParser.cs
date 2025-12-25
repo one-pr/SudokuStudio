@@ -6,14 +6,14 @@ namespace Sudoku.Concepts.Coordinates;
 /// </summary>
 public abstract record CoordinateParser :
 	ICoordinateProvider<CoordinateParser>,
-	ICellParser,
-	ICandidateParser,
-	IHouseParser,
-	IConclusionParser,
-	IDigitParser,
-	IIntersectionParser,
-	IChuteParser,
-	IConjuagtePairParser
+	ICellParsable,
+	ICandidateParsable,
+	IHouseParsable,
+	IConclusionParsable,
+	IDigitParsable,
+	IIntersectionParsable,
+	IChuteParsable,
+	IConjuagtePairParsable
 {
 	/// <inheritdoc/>
 	public abstract Func<string, CellMap> CellParser { get; }

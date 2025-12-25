@@ -3,7 +3,7 @@ namespace Sudoku.Concepts.Coordinates.Providers;
 /// <summary>
 /// Represents a conclusion parser.
 /// </summary>
-public interface IConclusionParser : IParser
+public interface IConclusionParsable
 {
 	/// <summary>
 	/// The parser method that can creates a <see cref="Conclusion"/> list via the specified text to be parsed.

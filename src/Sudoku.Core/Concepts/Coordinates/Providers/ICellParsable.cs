@@ -3,7 +3,7 @@ namespace Sudoku.Concepts.Coordinates.Providers;
 /// <summary>
 /// Represents a cell parser.
 /// </summary>
-public interface ICellParser : IParser
+public interface ICellParsable
 {
 	/// <summary>
 	/// The parser method that can creates a <see cref="CellMap"/> via the specified text to be parsed.
