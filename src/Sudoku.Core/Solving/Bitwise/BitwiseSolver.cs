@@ -61,7 +61,6 @@ public sealed unsafe partial class BitwiseSolver : ISolutionEnumerableSolver<Bit
 	public bool? Solve(in Grid grid, out Grid result)
 	{
 		ClearStack();
-
 		var puzzleStr = grid.ToString();
 		var solutionStr = stackalloc char[BufferLength];
 		long solutions;
@@ -84,15 +83,14 @@ public sealed unsafe partial class BitwiseSolver : ISolutionEnumerableSolver<Bit
 	/// Solves the puzzle represented as a string value.
 	/// </summary>
 	/// <param name="puzzle">The puzzle represented as a string.</param>
-	/// <param name="solution">The solution.</param>
+	/// <param name="solution">The solution. The value can be <see langword="null"/> if it is expected to be discarded.</param>
 	/// <param name="limit">The limit of solutions to be checked.</param>
 	/// <returns>A <see cref="long"/> value indicating the number of solutions.</returns>
-	public long SolveString(char* puzzle, char* solution, int limit)
+	public long SolveString([NotNull, DisallowNull] char* puzzle, [MaybeNull, AllowNull] char* solution, int limit)
 	{
 		ArgumentNullException.ThrowIfNull(puzzle);
 
 		ClearStack();
-
 		var solutionStr = stackalloc char[BufferLength];
 		var solutionsCount = InternalSolve(puzzle, solutionStr, limit);
 		if (solution != null)
@@ -103,10 +101,9 @@ public sealed unsafe partial class BitwiseSolver : ISolutionEnumerableSolver<Bit
 	}
 
 	/// <inheritdoc cref="SolveString(char*, char*, int)"/>
-	public long SolveString(string puzzle, char* solution, int limit)
+	public long SolveString(string puzzle, [MaybeNull, AllowNull] char* solution, int limit)
 	{
 		ClearStack();
-
 		fixed (char* p = puzzle)
 		{
 			var solutionStr = stackalloc char[BufferLength];
@@ -119,31 +116,15 @@ public sealed unsafe partial class BitwiseSolver : ISolutionEnumerableSolver<Bit
 		}
 	}
 
-	/// <inheritdoc cref="SolveString(char*, char*, int)"/>
-	public long SolveString(string puzzle, out string solution, int limit)
-	{
-		ClearStack();
-
-		fixed (char* p = puzzle)
-		{
-			var solutionStr = stackalloc char[BufferLength];
-			var result = InternalSolve(p, solutionStr, limit);
-			solution = new(solutionStr);
-			return result;
-		}
-	}
-
 	/// <summary>
-	/// Same as <see cref="CheckValidity(string, out string?)"/>, but doesn't contain
-	/// any <see langword="out"/> parameters.
+	/// Check the validity of the puzzle.
 	/// </summary>
 	/// <param name="grid">The grid.</param>
 	/// <returns>The <see cref="bool"/> result. <see langword="true"/> for unique solution.</returns>
 	/// <exception cref="ArgumentNullException">
 	/// Throws when the argument <paramref name="grid"/> is <see langword="null"/>.
 	/// </exception>
-	/// <seealso cref="CheckValidity(string, out string?)"/>
-	public bool CheckValidity(char* grid)
+	public bool CheckValidity([NotNull, DisallowNull] char* grid)
 	{
 		ArgumentNullException.ThrowIfNull(grid);
 		ClearStack();
@@ -151,32 +132,11 @@ public sealed unsafe partial class BitwiseSolver : ISolutionEnumerableSolver<Bit
 	}
 
 	/// <inheritdoc cref="CheckValidity(char*)"/>
-	public bool CheckValidity(ref readonly char grid) => CheckValidity((char*)Unsafe.AsPointer(ref Unsafe.AsRef(in grid)));
-
-	/// <inheritdoc cref="CheckValidity(char*)"/>
-	public bool CheckValidity(string grid) => CheckValidity(in grid.Span[0]);
-
-	/// <summary>
-	/// Check the validity of the puzzle.
-	/// </summary>
-	/// <param name="grid">The grid.</param>
-	/// <param name="solutionIfUnique">The solution if the puzzle is unique.</param>
-	/// <returns>The <see cref="bool"/> result. <see langword="true"/> for unique solution.</returns>
-	public bool CheckValidity(string grid, [NotNullWhen(true)] out string? solutionIfUnique)
+	public bool CheckValidity(string grid)
 	{
-		ClearStack();
-
-		fixed (char* puzzle = grid)
+		fixed (char* pGrid = grid)
 		{
-			var result = stackalloc char[BufferLength];
-			if (InternalSolve(puzzle, result, 2) == 1)
-			{
-				solutionIfUnique = Span.Create(result, BufferLength).ToString();
-				return true;
-			}
-
-			solutionIfUnique = null;
-			return false;
+			return CheckValidity(pGrid);
 		}
 	}
 

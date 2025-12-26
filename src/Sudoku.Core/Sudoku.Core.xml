@@ -14780,41 +14780,25 @@
             Solves the puzzle represented as a string value.
             </summary>
             <param name="puzzle">The puzzle represented as a string.</param>
-            <param name="solution">The solution.</param>
+            <param name="solution">The solution. The value can be <see langword="null"/> if it is expected to be discarded.</param>
             <param name="limit">The limit of solutions to be checked.</param>
             <returns>A <see cref="T:System.Int64"/> value indicating the number of solutions.</returns>
         </member>
         <member name="M:Sudoku.Solving.Bitwise.BitwiseSolver.SolveString(System.String,System.Char*,System.Int32)">
             <inheritdoc cref="M:Sudoku.Solving.Bitwise.BitwiseSolver.SolveString(System.Char*,System.Char*,System.Int32)"/>
         </member>
-        <member name="M:Sudoku.Solving.Bitwise.BitwiseSolver.SolveString(System.String,System.String@,System.Int32)">
-            <inheritdoc cref="M:Sudoku.Solving.Bitwise.BitwiseSolver.SolveString(System.Char*,System.Char*,System.Int32)"/>
-        </member>
         <member name="M:Sudoku.Solving.Bitwise.BitwiseSolver.CheckValidity(System.Char*)">
             <summary>
-            Same as <see cref="M:Sudoku.Solving.Bitwise.BitwiseSolver.CheckValidity(System.String,System.String@)"/>, but doesn't contain
-            any <see langword="out"/> parameters.
+            Check the validity of the puzzle.
             </summary>
             <param name="grid">The grid.</param>
             <returns>The <see cref="T:System.Boolean"/> result. <see langword="true"/> for unique solution.</returns>
             <exception cref="T:System.ArgumentNullException">
             Throws when the argument <paramref name="grid"/> is <see langword="null"/>.
             </exception>
-            <seealso cref="M:Sudoku.Solving.Bitwise.BitwiseSolver.CheckValidity(System.String,System.String@)"/>
-        </member>
-        <member name="M:Sudoku.Solving.Bitwise.BitwiseSolver.CheckValidity(System.Char@)">
-            <inheritdoc cref="M:Sudoku.Solving.Bitwise.BitwiseSolver.CheckValidity(System.Char*)"/>
         </member>
         <member name="M:Sudoku.Solving.Bitwise.BitwiseSolver.CheckValidity(System.String)">
             <inheritdoc cref="M:Sudoku.Solving.Bitwise.BitwiseSolver.CheckValidity(System.Char*)"/>
-        </member>
-        <member name="M:Sudoku.Solving.Bitwise.BitwiseSolver.CheckValidity(System.String,System.String@)">
-            <summary>
-            Check the validity of the puzzle.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="solutionIfUnique">The solution if the puzzle is unique.</param>
-            <returns>The <see cref="T:System.Boolean"/> result. <see langword="true"/> for unique solution.</returns>
         </member>
         <member name="M:Sudoku.Solving.Bitwise.BitwiseSolver.Solve(Sudoku.Concepts.Grid@)">
             <summary>
