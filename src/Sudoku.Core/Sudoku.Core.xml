@@ -15968,6 +15968,11 @@
             Indicates the enumerable query solver.
             </summary>
         </member>
+        <member name="F:Sudoku.Solving.SolverType.BooleanSatisfiability">
+            <summary>
+            Indicates SAT (boolean satisfiability) solver.
+            </summary>
+        </member>
         <member name="T:Sudoku.Solving.SolverTypeExtensions">
             <summary>
             Provides with extension methods on <see cref="T:Sudoku.Solving.SolverType"/>.

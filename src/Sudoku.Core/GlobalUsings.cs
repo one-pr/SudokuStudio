@@ -50,6 +50,7 @@ global using Sudoku.Solving.Bitwise;
 global using Sudoku.Solving.DictionaryQuery;
 global using Sudoku.Solving.Dlx;
 global using Sudoku.Solving.EnumerableQuery;
+global using Sudoku.Solving.Sat;
 global using Sudoku.Transformations;
 global using static System.Numerics.BitOperations;
 global using static Sudoku.Concepts.ConclusionType;
