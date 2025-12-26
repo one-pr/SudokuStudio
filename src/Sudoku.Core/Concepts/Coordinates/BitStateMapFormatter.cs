@@ -10,4 +10,4 @@ namespace Sudoku.Concepts.Coordinates;
 /// <returns>The string result.</returns>
 public delegate string BitStateMapFormatter<T, TElement>(in T map)
 	where T : unmanaged, IBitStateMap<T, TElement>
-	where TElement : unmanaged, IBinaryInteger<TElement>;
+	where TElement : notnull;

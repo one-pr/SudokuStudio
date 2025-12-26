@@ -14,4 +14,4 @@ namespace Sudoku.Concepts;
 /// <returns>A <see cref="bool"/> result indicating that.</returns>
 public delegate bool BitStateMapPredicate<TSelf, TElement>(TElement offset, in Grid grid)
 	where TSelf : unmanaged, IBitStateMap<TSelf, TElement>
-	where TElement : unmanaged, IBinaryInteger<TElement>;
+	where TElement : notnull;

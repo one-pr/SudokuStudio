@@ -18,7 +18,7 @@ public readonly struct CellMapOrCandidateMapGrouping<TMap, TElement, TKey>(TKey 
 	ISelectMethod<TMap, TElement>,
 	IWhereMethod<TMap, TElement>
 	where TMap : unmanaged, IBitStateMap<TMap, TElement>
-	where TElement : unmanaged, IBinaryInteger<TElement>
+	where TElement : notnull
 	where TKey : notnull
 {
 	/// <summary>

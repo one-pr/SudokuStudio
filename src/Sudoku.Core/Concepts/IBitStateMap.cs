@@ -28,7 +28,7 @@ public interface IBitStateMap<TSelf, TElement> :
 	ISubtractionOperators<TSelf, TElement, TSelf>,
 	IWhereMethod<TSelf, TElement>
 	where TSelf : unmanaged, IBitStateMap<TSelf, TElement>
-	where TElement : unmanaged, IBinaryInteger<TElement>
+	where TElement : notnull
 {
 	/// <summary>
 	/// Indicates the size of combinatorial calculation.
