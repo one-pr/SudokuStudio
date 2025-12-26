@@ -526,7 +526,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc cref="CellMap.GroupBy{TKey}(Func{Cell, TKey})"/>
-	public readonly ReadOnlySpan<CellMapOrCandidateMapGrouping<CandidateMap, Candidate, TKey>> GroupBy<TKey>(Func<Candidate, TKey> keySelector)
+	public readonly ReadOnlySpan<BitStateMapGrouping<CandidateMap, Candidate, TKey>> GroupBy<TKey>(Func<Candidate, TKey> keySelector)
 		where TKey : notnull
 	{
 		var dictionary = new Dictionary<TKey, CandidateMap>();
@@ -539,7 +539,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 			}
 		}
 
-		var result = new CellMapOrCandidateMapGrouping<CandidateMap, Candidate, TKey>[dictionary.Count];
+		var result = new BitStateMapGrouping<CandidateMap, Candidate, TKey>[dictionary.Count];
 		var i = 0;
 		foreach (var kvp in dictionary)
 		{

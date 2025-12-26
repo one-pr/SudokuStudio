@@ -629,10 +629,10 @@ public partial struct CellMap : CellMapBase
 	/// <inheritdoc cref="Enumerable.GroupBy{TSource, TKey}(IEnumerable{TSource}, Func{TSource, TKey})" path="/param[@name='keySelector']"/>
 	/// </param>
 	/// <returns>
-	/// A list of <see cref="CellMapOrCandidateMapGrouping{TMap, TElement, TKey}"/> instances where each value object contains a sequence of objects and a key.
+	/// A list of <see cref="BitStateMapGrouping{TMap, TElement, TKey}"/> instances where each value object contains a sequence of objects and a key.
 	/// </returns>
-	/// <seealso cref="CellMapOrCandidateMapGrouping{TMap, TElement, TKey}"/>
-	public readonly ReadOnlySpan<CellMapOrCandidateMapGrouping<CellMap, Cell, TKey>> GroupBy<TKey>(Func<Cell, TKey> keySelector)
+	/// <seealso cref="BitStateMapGrouping{TMap, TElement, TKey}"/>
+	public readonly ReadOnlySpan<BitStateMapGrouping<CellMap, Cell, TKey>> GroupBy<TKey>(Func<Cell, TKey> keySelector)
 		where TKey : notnull
 	{
 		var dictionary = new Dictionary<TKey, CellMap>();
@@ -645,7 +645,7 @@ public partial struct CellMap : CellMapBase
 			}
 		}
 
-		var result = new CellMapOrCandidateMapGrouping<CellMap, Cell, TKey>[dictionary.Count];
+		var result = new BitStateMapGrouping<CellMap, Cell, TKey>[dictionary.Count];
 		var i = 0;
 		foreach (var kvp in dictionary)
 		{

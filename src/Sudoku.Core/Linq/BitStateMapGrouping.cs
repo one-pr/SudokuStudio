@@ -10,10 +10,10 @@ namespace Sudoku.Linq;
 /// <param name="values"><inheritdoc cref="Values" path="/summary"/></param>
 /// <seealso cref="CellMap"/>
 /// <seealso cref="CandidateMap"/>
-public readonly struct CellMapOrCandidateMapGrouping<TMap, TElement, TKey>(TKey key, in TMap values) :
+public readonly struct BitStateMapGrouping<TMap, TElement, TKey>(TKey key, in TMap values) :
 	IEnumerable<TElement>,
-	IEquatable<CellMapOrCandidateMapGrouping<TMap, TElement, TKey>>,
-	IEqualityOperators<CellMapOrCandidateMapGrouping<TMap, TElement, TKey>, CellMapOrCandidateMapGrouping<TMap, TElement, TKey>, bool>,
+	IEquatable<BitStateMapGrouping<TMap, TElement, TKey>>,
+	IEqualityOperators<BitStateMapGrouping<TMap, TElement, TKey>, BitStateMapGrouping<TMap, TElement, TKey>, bool>,
 	IGrouping<TKey, TElement>,
 	ISelectMethod<TMap, TElement>,
 	IWhereMethod<TMap, TElement>
@@ -47,10 +47,10 @@ public readonly struct CellMapOrCandidateMapGrouping<TMap, TElement, TKey>(TKey 
 
 	/// <inheritdoc/>
 	public override bool Equals([NotNullWhen(true)] object? obj)
-		=> obj is CellMapOrCandidateMapGrouping<TMap, TElement, TKey> comparer && Equals(comparer);
+		=> obj is BitStateMapGrouping<TMap, TElement, TKey> comparer && Equals(comparer);
 
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
-	public bool Equals(in CellMapOrCandidateMapGrouping<TMap, TElement, TKey> other) => Values == other.Values;
+	public bool Equals(in BitStateMapGrouping<TMap, TElement, TKey> other) => Values == other.Values;
 
 	/// <inheritdoc/>
 	public override int GetHashCode() => Values.GetHashCode();
@@ -110,11 +110,11 @@ public readonly struct CellMapOrCandidateMapGrouping<TMap, TElement, TKey>(TKey 
 
 	/// <summary>
 	/// Makes a <see cref="CellMap"/> instance that is concatenated by a list of groups
-	/// of type <see cref="CellMapOrCandidateMapGrouping{TMap, TElement, TKey}"/>, adding their keys.
+	/// of type <see cref="BitStateMapGrouping{TMap, TElement, TKey}"/>, adding their keys.
 	/// </summary>
 	/// <param name="groups">The groups.</param>
 	/// <returns>A <see cref="CellMap"/> instance.</returns>
-	public static CellMap CreateMapByKeys(ReadOnlySpan<CellMapOrCandidateMapGrouping<TMap, TElement, Cell>> groups)
+	public static CellMap CreateMapByKeys(ReadOnlySpan<BitStateMapGrouping<TMap, TElement, Cell>> groups)
 	{
 		var result = CellMap.Empty;
 		foreach (ref readonly var group in groups)
@@ -125,7 +125,7 @@ public readonly struct CellMapOrCandidateMapGrouping<TMap, TElement, TKey>(TKey 
 	}
 
 	/// <inheritdoc/>
-	bool IEquatable<CellMapOrCandidateMapGrouping<TMap, TElement, TKey>>.Equals(CellMapOrCandidateMapGrouping<TMap, TElement, TKey> other)
+	bool IEquatable<BitStateMapGrouping<TMap, TElement, TKey>>.Equals(BitStateMapGrouping<TMap, TElement, TKey> other)
 		=> Equals(other);
 
 	/// <inheritdoc/>
@@ -143,18 +143,18 @@ public readonly struct CellMapOrCandidateMapGrouping<TMap, TElement, TKey>(TKey 
 
 
 	/// <inheritdoc/>
-	public static bool operator ==(in CellMapOrCandidateMapGrouping<TMap, TElement, TKey> left, in CellMapOrCandidateMapGrouping<TMap, TElement, TKey> right)
+	public static bool operator ==(in BitStateMapGrouping<TMap, TElement, TKey> left, in BitStateMapGrouping<TMap, TElement, TKey> right)
 		=> left.Equals(right);
 
 	/// <inheritdoc/>
-	public static bool operator !=(in CellMapOrCandidateMapGrouping<TMap, TElement, TKey> left, in CellMapOrCandidateMapGrouping<TMap, TElement, TKey> right)
+	public static bool operator !=(in BitStateMapGrouping<TMap, TElement, TKey> left, in BitStateMapGrouping<TMap, TElement, TKey> right)
 		=> !(left == right);
 
 	/// <inheritdoc/>
-	static bool IEqualityOperators<CellMapOrCandidateMapGrouping<TMap, TElement, TKey>, CellMapOrCandidateMapGrouping<TMap, TElement, TKey>, bool>.operator ==(CellMapOrCandidateMapGrouping<TMap, TElement, TKey> left, CellMapOrCandidateMapGrouping<TMap, TElement, TKey> right)
+	static bool IEqualityOperators<BitStateMapGrouping<TMap, TElement, TKey>, BitStateMapGrouping<TMap, TElement, TKey>, bool>.operator ==(BitStateMapGrouping<TMap, TElement, TKey> left, BitStateMapGrouping<TMap, TElement, TKey> right)
 		=> left == right;
 
 	/// <inheritdoc/>
-	static bool IEqualityOperators<CellMapOrCandidateMapGrouping<TMap, TElement, TKey>, CellMapOrCandidateMapGrouping<TMap, TElement, TKey>, bool>.operator !=(CellMapOrCandidateMapGrouping<TMap, TElement, TKey> left, CellMapOrCandidateMapGrouping<TMap, TElement, TKey> right)
+	static bool IEqualityOperators<BitStateMapGrouping<TMap, TElement, TKey>, BitStateMapGrouping<TMap, TElement, TKey>, bool>.operator !=(BitStateMapGrouping<TMap, TElement, TKey> left, BitStateMapGrouping<TMap, TElement, TKey> right)
 		=> left != right;
 }
