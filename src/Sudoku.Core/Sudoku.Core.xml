@@ -13477,10 +13477,10 @@
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Linq.BitStateMapGrouping`3.op_Equality(Sudoku.Linq.BitStateMapGrouping{`0,`1,`2}@,Sudoku.Linq.BitStateMapGrouping{`0,`1,`2}@)">
-            <inheritdoc/>
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Equality(`0,`1)"/>
         </member>
         <member name="M:Sudoku.Linq.BitStateMapGrouping`3.op_Inequality(Sudoku.Linq.BitStateMapGrouping{`0,`1,`2}@,Sudoku.Linq.BitStateMapGrouping{`0,`1,`2}@)">
-            <inheritdoc/>
+            <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
         </member>
         <member name="M:Sudoku.Linq.BitStateMapGrouping`3.System#Numerics#IEqualityOperators{Sudoku#Linq#BitStateMapGrouping{TMap,TElement,TKey},Sudoku#Linq#BitStateMapGrouping{TMap,TElement,TKey},System#Boolean}#op_Equality(Sudoku.Linq.BitStateMapGrouping{`0,`1,`2},Sudoku.Linq.BitStateMapGrouping{`0,`1,`2})">
             <inheritdoc/>

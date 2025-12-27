@@ -142,11 +142,11 @@ public readonly struct BitStateMapGrouping<TMap, TElement, TKey>(TKey key, in TM
 		=> Select(selector).ToArray();
 
 
-	/// <inheritdoc/>
+	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
 	public static bool operator ==(in BitStateMapGrouping<TMap, TElement, TKey> left, in BitStateMapGrouping<TMap, TElement, TKey> right)
 		=> left.Equals(right);
 
-	/// <inheritdoc/>
+	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
 	public static bool operator !=(in BitStateMapGrouping<TMap, TElement, TKey> left, in BitStateMapGrouping<TMap, TElement, TKey> right)
 		=> !(left == right);
 
