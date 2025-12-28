@@ -196,7 +196,7 @@
 * [飞鱼和多米诺环](exocet/11-exocet-with-domino-loop/README.md)
   * [多米诺环的直观](exocet/11-exocet-with-domino-loop/01-direct-view-of-domino-loop.md)
   * [模式四数组（PLQ）](exocet/11-exocet-with-domino-loop/02-pattern-locked-quadruple.md)
-  * [共轭四元节点（CQN）](exocet/11-exocet-with-domino-loop/gongesi-yuan-jie-dian-cqn.md)
+  * [共轭四元节点（CQN）](exocet/11-exocet-with-domino-loop/03-conjugate-quadruple-node.md)
   * [单真对（STP）](exocet/11-exocet-with-domino-loop/04-single-truth-pair.md)
 * [衰弱飞鱼](exocet/12-weak-exocet/README.md)
   * [初见衰弱飞鱼](exocet/12-weak-exocet/01-the-first-view-of-weak-exocet.md)
