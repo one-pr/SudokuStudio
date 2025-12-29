@@ -80,6 +80,7 @@ public sealed record K9Converter(
 
 			string r(in CellMap cells)
 			{
+				var finalChar = MakeLettersUpperCase ? char.ToUpper(FinalRowLetter) : char.ToLower(FinalRowLetter);
 				var sb = new StringBuilder(18);
 				var output = CoordinateSimplifier.Simplify(cells);
 				var needAddingBrackets = AlwaysOutputBracket
@@ -90,16 +91,10 @@ public sealed record K9Converter(
 				}
 				foreach (var (rows, columns) in output)
 				{
-					sb.AppendRange(
-						d => (
-							d == 8
-								? MakeLettersUpperCase ? char.ToUpper(FinalRowLetter) : char.ToLower(FinalRowLetter)
-								: (char)((MakeLettersUpperCase ? 'A' : 'a') + d)
-						).ToString(),
-						elements: rows
-					);
-					sb.AppendRange(d => DigitConverter((Mask)(1 << d)), elements: columns);
-					sb.Append(DefaultSeparator);
+					sb
+						.AppendRange(rows, d => (d == 8 ? finalChar : (char)((MakeLettersUpperCase ? 'A' : 'a') + d)).ToString())
+						.AppendRange(columns, d => DigitConverter((Mask)(1 << d)))
+						.Append(DefaultSeparator);
 				}
 				sb.RemoveFromEnd(DefaultSeparator.Length);
 				if (needAddingBrackets)

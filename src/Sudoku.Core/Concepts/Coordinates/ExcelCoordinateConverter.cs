@@ -52,9 +52,10 @@ public sealed record ExcelCoordinateConverter(
 				}
 				foreach (var (rows, columns) in output)
 				{
-					sb.AppendRange(d => ((char)((MakeLettersUpperCase ? 'A' : 'a') + d)).ToString(), elements: columns);
-					sb.AppendRange(d => DigitConverter((Mask)(1 << d)), elements: rows);
-					sb.Append(DefaultSeparator);
+					sb
+						.AppendRange(columns, d => ((char)((MakeLettersUpperCase ? 'A' : 'a') + d)).ToString())
+						.AppendRange(rows, d => DigitConverter((Mask)(1 << d)))
+						.Append(DefaultSeparator);
 				}
 				sb.RemoveFromEnd(DefaultSeparator.Length);
 				if (needAddingBrackets)

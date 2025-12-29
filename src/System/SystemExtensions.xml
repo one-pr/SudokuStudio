@@ -6512,8 +6512,8 @@
         <member name="M:System.Text.StringBuilderExtensions.RemoveFromEnd(System.Text.StringBuilder,System.Int32)">
             <inheritdoc cref="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.RemoveFromEnd(System.Int32)"/>
         </member>
-        <member name="M:System.Text.StringBuilderExtensions.AppendRange``1(System.Text.StringBuilder,System.Func{``0,System.String},System.Func{System.Text.StringBuilder,System.String,System.Text.StringBuilder},System.ReadOnlySpan{``0})">
-            <inheritdoc cref="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.AppendRange``1(System.Func{``0,System.String},System.Func{System.Text.StringBuilder,System.String,System.Text.StringBuilder},System.ReadOnlySpan{``0})"/>
+        <member name="M:System.Text.StringBuilderExtensions.AppendRange``1(System.Text.StringBuilder,System.ReadOnlySpan{``0},System.Func{``0,System.String})">
+            <inheritdoc cref="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.AppendRange``1(System.ReadOnlySpan{``0},System.Func{``0,System.String})"/>
         </member>
         <member name="T:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.&lt;M&gt;$329BE863B51A4C004BBE456502033646">
             <summary>
@@ -6527,33 +6527,14 @@
             <param name="count">The desired number of characters to remove.</param>
             <returns>The reference of the current instance.</returns>
         </member>
-        <member name="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.AppendRange``1(System.Func{``0,System.String},System.Func{System.Text.StringBuilder,System.String,System.Text.StringBuilder},System.ReadOnlySpan{``0})">
+        <member name="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.AppendRange``1(System.ReadOnlySpan{``0},System.Func{``0,System.String})">
             <summary>
-            Appends a list of elements of type <typeparamref name="T" /> into the <see cref="T:System.Text.StringBuilder" /> instance,
-            using the specified converter to convert each element into <see cref="T:System.String" /> value.
+            Appends a list of elements of type <typeparamref name="T"/> into the <see cref="T:System.Text.StringBuilder"/> instance,
+            using the specified converter to convert each element into <see cref="T:System.String"/> value.
             </summary>
             <typeparam name="T">The type of each element.</typeparam>
+            <param name="elements">The elements to be appended.</param>
             <param name="stringConverter">The converter method.</param>
-            <param name="appender">
-            The append method for the builder instance, telling the handler which appending operation will be handled.
-            By default, the method is equivalent to lambda:
-            <code>
-            <see langword="static" /> (<see cref="T:System.Text.StringBuilder" /> sb, <typeparamref name="T" /> v) =&gt; sb.Append(v)
-            </code>
-            </param>
-            <param name="elements">
-            <para>The elements to be appended.</para>
-            <target name="parameter">
-				<para>
-					If a <see langword="ref struct" />-typed parameter is marked as <see langword="params" />,
-					it will be implicit-<see langword="scoped" />, which means you must use this variables inside the method.
-					Value-storages are not permitted.
-				</para>
-				<para>
-					Use <see cref="T:System.Diagnostics.CodeAnalysis.UnscopedRefAttribute" /> if you want to store variable values.
-				</para>
-			</target>
-            </param>
             <returns>The reference of the current instance.</returns>
         </member>
         <member name="T:System.Text.TableGridBuilder">
