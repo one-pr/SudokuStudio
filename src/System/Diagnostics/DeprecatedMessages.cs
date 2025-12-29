@@ -11,7 +11,7 @@ public static class DeprecatedMessages
 	public const string ExtensionOperator_Reverse = "Use extension operator 'operator ~' instead: '~collection'";
 
 	/// <summary>
-	/// Describes extension "<c><see langword="operator"/> /</c>" on collections to chunk them.
+	/// Describes extension "<c><see langword="operator"/> /</c>" on collections to get chunks of the specified collection.
 	/// </summary>
 	public const string ExtensionOperator_Chunk = "Use extension operator 'operator /' instead: 'collection / size'";
 
