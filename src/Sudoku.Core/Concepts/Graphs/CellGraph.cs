@@ -276,12 +276,7 @@ public readonly partial struct CellGraph :
 	{
 		if (_cells)
 		{
-			var paths = new HashSet<HamiltonianCycle>(
-				EqualityComparer<HamiltonianCycle>.Create(
-					static (left, right) => left.Equals(right, HamiltonianCycleComparison.IgnoreDirection),
-					static obj => obj.GetHashCode(HamiltonianCycleComparison.IgnoreDirection)
-				)
-			);
+			var paths = new HashSet<HamiltonianCycle>(HamiltonianCycle.CreateEqualityComparer(HamiltonianCycleComparison.IgnoreDirection));
 			dfs(_cells[1..], _cells[0], [_cells[0]], paths);
 			return paths.ToArray();
 		}

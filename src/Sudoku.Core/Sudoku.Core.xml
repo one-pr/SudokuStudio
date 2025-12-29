@@ -4200,6 +4200,13 @@
             </summary>
             <returns>An enumerator object that can iterate on each adjacent cell pairs, including the last and the first cell.</returns>
         </member>
+        <member name="M:Sudoku.Concepts.Graphs.HamiltonianCycle.CreateEqualityComparer(Sudoku.Concepts.Graphs.HamiltonianCycleComparison)">
+            <summary>
+            Creates an <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> of <see cref="T:Sudoku.Concepts.Graphs.HamiltonianCycle"/> instance via the specified comparison rule.
+            </summary>
+            <param name="comparison">The comparison rule.</param>
+            <returns>The instance.</returns>
+        </member>
         <member name="M:Sudoku.Concepts.Graphs.HamiltonianCycle.System#Collections#IEnumerable#GetEnumerator">
             <inheritdoc/>
         </member>

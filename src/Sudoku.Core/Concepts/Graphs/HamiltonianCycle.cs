@@ -225,6 +225,17 @@ public readonly struct HamiltonianCycle(Cell[] cells) :
 		return new(span);
 	}
 
+	/// <summary>
+	/// Creates an <see cref="IEqualityComparer{T}"/> of <see cref="HamiltonianCycle"/> instance via the specified comparison rule.
+	/// </summary>
+	/// <param name="comparison">The comparison rule.</param>
+	/// <returns>The instance.</returns>
+	internal static IEqualityComparer<HamiltonianCycle> CreateEqualityComparer(HamiltonianCycleComparison comparison)
+		=> EqualityComparer<HamiltonianCycle>.Create(
+			static (left, right) => left.Equals(right, HamiltonianCycleComparison.IgnoreDirection),
+			static obj => obj.GetHashCode(HamiltonianCycleComparison.IgnoreDirection)
+		);
+
 	/// <inheritdoc/>
 	IEnumerator IEnumerable.GetEnumerator() => _cells.GetEnumerator();
 
