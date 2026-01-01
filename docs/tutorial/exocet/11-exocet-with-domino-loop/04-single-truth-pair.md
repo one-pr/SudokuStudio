@@ -86,3 +86,25 @@ description: Single Truth Pair
 如图所示。这个情况这 8 个数仍然可删。不过过程就不讨论了，完全是一样的。
 
 总之，我们讨论了唯一一种可以成立的四元组 1、2、6、7 放入 `r28c46` 的情况，发现这 8 个多出来的数也可以删除。
+
+## 强链关系构造 <a href="#construct-strong-inferences" id="construct-strong-inferences"></a>
+
+另外，单真对的逻辑还可以用于构造强链关系。因为我们已经知晓图中四个特殊位置必须是一个跨区四数组，所以它明显不能放置任意相同的数字。
+
+<figure><img src="../../.gitbook/assets/image.png" alt="" width="375"><figcaption><p>可以构造的一个例子</p></figcaption></figure>
+
+如图所示。这是一个示例。这个例子构造了 `3r7c8=4r9c8` 的强链关系。
+
+这是怎么来的呢？我们不妨试试看。假设它俩同假，我们可以得到 `r79c8` 形成的显性数对，于是，删除 `c8` 和 `r8` 的其余 5 和 9，于是跟着多米诺环绕一圈，我们将会有如下的填数情况出现：
+
+<figure><img src="../../.gitbook/assets/image (2).png" alt="" width="375"><figcaption><p>绕一圈之后的情况</p></figcaption></figure>
+
+于是你就会发现，单真对的四处单元格 `r28c46` 无法填四种完全不同的数字了——实际上只能填 1 和 2，直接形成了唯一矩形的矛盾情况。
+
+所以，原始假设的两处节点不能同假。
+
+于是，我们可以构造出一条双强链：
+
+<figure><img src="../../.gitbook/assets/image (3).png" alt="" width="375"><figcaption><p>构造链</p></figcaption></figure>
+
+如图所示。这样我们就可以构造出一条不连续环进行删数。
