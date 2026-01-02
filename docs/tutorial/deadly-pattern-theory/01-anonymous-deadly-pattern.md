@@ -74,7 +74,7 @@ description: Anonymous Deadly Pattern
 
 ### 例子 2 <a href="#example-2" id="example-2"></a>
 
-<figure><img src="../.gitbook/assets/image_0862.png" alt="" width="375"><figcaption><p>例子 2</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/images_0862.png" alt="" width="375"><figcaption><p>例子 2</p></figcaption></figure>
 
 如图所示。这是一个类型 2 的例子。可以看到，这个结构和之前的那个例子也差不多，就是换了下位置，把拐角改成了中间。
 
