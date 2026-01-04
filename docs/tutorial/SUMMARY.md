@@ -202,6 +202,10 @@
   * [初见衰弱飞鱼](exocet/12-weak-exocet/01-the-first-view-of-weak-exocet.md)
   * [全衰飞鱼](exocet/12-weak-exocet/03-lame-weak-exocet.md)
 
+## 致命结构理论 <a href="#deadly-pattern-theory" id="deadly-pattern-theory"></a>
+
+* [匿名致命结构](deadly-pattern-theory/01-anonymous-deadly-pattern.md)
+
 ## 附录 <a href="#appendix" id="appendix"></a>
 
 * [术语索引](appendix/01-terms.md)
