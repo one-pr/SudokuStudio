@@ -50,7 +50,6 @@ public abstract record CoordinateConverter(
 	IHouseConvertible,
 	IConclusionConvertible,
 	IDigitConvertible,
-	IIntersectionConvertible,
 	ISegmentConvertible,
 	IChuteConvertible,
 	IConjugatePairConvertible
@@ -69,9 +68,6 @@ public abstract record CoordinateConverter(
 
 	/// <inheritdoc/>
 	public abstract Func<Mask, string> DigitConverter { get; }
-
-	/// <inheritdoc/>
-	public abstract Func<ReadOnlySpan<Miniline>, string> IntersectionConverter { get; }
 
 	/// <inheritdoc/>
 	public abstract Func<SegmentCollection, string> SegmentConverter { get; }

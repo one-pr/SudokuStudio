@@ -11,7 +11,6 @@ public abstract record CoordinateParser :
 	IHouseParsable,
 	IConclusionParsable,
 	IDigitParsable,
-	IIntersectionParsable,
 	ISegmentParsable,
 	IChuteParsable,
 	IConjuagtePairParsable
@@ -30,9 +29,6 @@ public abstract record CoordinateParser :
 
 	/// <inheritdoc/>
 	public abstract Func<string, Mask> DigitParser { get; }
-
-	/// <inheritdoc/>
-	public abstract Func<string, ReadOnlySpan<Miniline>> IntersectionParser { get; }
 
 	/// <inheritdoc/>
 	public abstract Func<string, SegmentCollection> SegmentParser { get; }

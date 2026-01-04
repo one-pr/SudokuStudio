@@ -158,29 +158,6 @@ public sealed record LiteralCoordinateConverter(
 		};
 
 	/// <inheritdoc/>
-	public override Func<ReadOnlySpan<Miniline>, string> IntersectionConverter
-		=> intersections =>
-		{
-			return string.Join(
-				DefaultSeparator,
-				from intersection in intersections
-				let baseSet = intersection.Base.Line
-				let coverSet = intersection.Base.Block
-				select string.Format(SR.Get("LockedCandidatesLabel", TargetCurrentCulture), [labelKey(baseSet), labelKey(coverSet)])
-			);
-
-
-			string labelKey(byte house)
-				=> ((House)house).HouseType switch
-				{
-					HouseType.Block => string.Format(SR.Get("BlockLabel", TargetCurrentCulture), house % 9 + 1),
-					HouseType.Row => string.Format(SR.Get("RowLabel", TargetCurrentCulture), house % 9 + 1),
-					HouseType.Column => string.Format(SR.Get("ColumnLabel", TargetCurrentCulture), house % 9 + 1),
-					_ => throw new ArgumentOutOfRangeException(nameof(house))
-				};
-		};
-
-	/// <inheritdoc/>
 	public override Func<SegmentCollection, string> SegmentConverter
 		=> segments =>
 		{

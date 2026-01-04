@@ -229,43 +229,6 @@ public sealed partial record RxCyParser : CoordinateParser
 		};
 
 	/// <inheritdoc/>
-	public override Func<string, ReadOnlySpan<Miniline>> IntersectionParser
-		=> static str =>
-		{
-			if (string.IsNullOrWhiteSpace(str))
-			{
-				return [];
-			}
-
-			if (UnitIntersectionGroupPattern.Matches(str) is not { Count: not 0 } matches)
-			{
-				return [];
-			}
-
-			var result = new List<Miniline>();
-			foreach (var match in from match in matches select match)
-			{
-				var s = match.Value;
-				var indexOfBlockLabel = s.IndexOfAny(['B', 'b']);
-				var lineLabel = s[0];
-				var lines = s[1..indexOfBlockLabel];
-				var blocks = s[(indexOfBlockLabel + 1)..];
-				foreach (var line in lines)
-				{
-					foreach (var block in blocks)
-					{
-						var @base = new MinilineBase(
-							(byte)(lineLabel is 'R' or 'r' ? line + 9 - '1' : line + 18 - '1'),
-							(byte)(block - '1')
-						);
-						result.Add(new(@base, Miniline.Map[@base]));
-					}
-				}
-			}
-			return result.AsSpan();
-		};
-
-	/// <inheritdoc/>
 	public override Func<string, SegmentCollection> SegmentParser
 		=> static str =>
 		{

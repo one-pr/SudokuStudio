@@ -154,9 +154,6 @@ public sealed record ExcelCoordinateConverter(
 		=> new LiteralCoordinateConverter(DigitsSeparator: DigitsSeparator).DigitConverter;
 
 	/// <inheritdoc/>
-	public override Func<ReadOnlySpan<Miniline>, string> IntersectionConverter => _fallbackConverter.IntersectionConverter;
-
-	/// <inheritdoc/>
 	public override Func<SegmentCollection, string> SegmentConverter => _fallbackConverter.SegmentConverter;
 
 	/// <inheritdoc/>

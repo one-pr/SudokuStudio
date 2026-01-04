@@ -2465,9 +2465,6 @@
         <member name="P:Sudoku.Concepts.Coordinates.CoordinateConverter.DigitConverter">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Concepts.Coordinates.CoordinateConverter.IntersectionConverter">
-            <inheritdoc/>
-        </member>
         <member name="P:Sudoku.Concepts.Coordinates.CoordinateConverter.SegmentConverter">
             <inheritdoc/>
         </member>
@@ -2507,9 +2504,6 @@
             <inheritdoc/>
         </member>
         <member name="P:Sudoku.Concepts.Coordinates.CoordinateParser.DigitParser">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.CoordinateParser.IntersectionParser">
             <inheritdoc/>
         </member>
         <member name="P:Sudoku.Concepts.Coordinates.CoordinateParser.SegmentParser">
@@ -2641,9 +2635,6 @@
         <member name="P:Sudoku.Concepts.Coordinates.ExcelCoordinateConverter.DigitConverter">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Concepts.Coordinates.ExcelCoordinateConverter.IntersectionConverter">
-            <inheritdoc/>
-        </member>
         <member name="P:Sudoku.Concepts.Coordinates.ExcelCoordinateConverter.SegmentConverter">
             <inheritdoc/>
         </member>
@@ -2772,9 +2763,6 @@
         <member name="P:Sudoku.Concepts.Coordinates.K9Converter.DigitConverter">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Concepts.Coordinates.K9Converter.IntersectionConverter">
-            <inheritdoc/>
-        </member>
         <member name="P:Sudoku.Concepts.Coordinates.K9Converter.SegmentConverter">
             <inheritdoc/>
         </member>
@@ -2809,9 +2797,6 @@
             <inheritdoc/>
         </member>
         <member name="P:Sudoku.Concepts.Coordinates.K9Parser.ConjugateParser">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.K9Parser.IntersectionParser">
             <inheritdoc/>
         </member>
         <member name="P:Sudoku.Concepts.Coordinates.K9Parser.SegmentParser">
@@ -2933,9 +2918,6 @@
             <inheritdoc/>
         </member>
         <member name="P:Sudoku.Concepts.Coordinates.LiteralCoordinateConverter.DigitConverter">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.LiteralCoordinateConverter.IntersectionConverter">
             <inheritdoc/>
         </member>
         <member name="P:Sudoku.Concepts.Coordinates.LiteralCoordinateConverter.SegmentConverter">
@@ -3121,29 +3103,6 @@
             </summary>
             <seealso cref="T:System.Int32"/>
         </member>
-        <member name="T:Sudoku.Concepts.Coordinates.Providers.IIntersectionConvertible">
-            <summary>
-            Represents an intersection converter.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Providers.IIntersectionConvertible.IntersectionConverter">
-            <summary>
-            The converter method that creates a <see cref="T:System.String"/> via the specified information for an intersection.
-            </summary>
-        </member>
-        <member name="T:Sudoku.Concepts.Coordinates.Providers.IIntersectionParsable">
-            <summary>
-            Represents an intersection parser.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Providers.IIntersectionParsable.IntersectionParser">
-            <summary>
-            The parser method that can creates a list of pairs of <see cref="T:Sudoku.Concepts.MinilineBase"/> and <see cref="T:Sudoku.Concepts.MinilineResult"/>
-            via the specified text to be parsed.
-            </summary>
-            <seealso cref="T:Sudoku.Concepts.MinilineBase"/>
-            <seealso cref="T:Sudoku.Concepts.MinilineResult"/>
-        </member>
         <member name="T:Sudoku.Concepts.Coordinates.Providers.ISegmentConvertible">
             <summary>
             Represents a segment converter.
@@ -3272,9 +3231,6 @@
         <member name="P:Sudoku.Concepts.Coordinates.RxCyConverter.DigitConverter">
             <inheritdoc/>
         </member>
-        <member name="P:Sudoku.Concepts.Coordinates.RxCyConverter.IntersectionConverter">
-            <inheritdoc/>
-        </member>
         <member name="P:Sudoku.Concepts.Coordinates.RxCyConverter.SegmentConverter">
             <inheritdoc/>
         </member>
@@ -3321,9 +3277,6 @@
             <inheritdoc/>
         </member>
         <member name="P:Sudoku.Concepts.Coordinates.RxCyParser.ConjugateParser">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.RxCyParser.IntersectionParser">
             <inheritdoc/>
         </member>
         <member name="P:Sudoku.Concepts.Coordinates.RxCyParser.SegmentParser">
