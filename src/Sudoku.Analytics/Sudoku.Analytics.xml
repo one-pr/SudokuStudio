@@ -27876,6 +27876,9 @@
             The backing implementation instance.
             </summary>
         </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.BivalueBilocationPlotChainConverter.Sudoku#Concepts#ValueConversions#IChainConverter#Impl">
+            <inheritdoc/>
+        </member>
         <member name="M:Sudoku.Concepts.ValueConversions.BivalueBilocationPlotChainConverter.TryFormat(Sudoku.Analytics.Construction.Components.Chain,System.IFormatProvider,System.String@)">
             <inheritdoc/>
         </member>
@@ -27965,6 +27968,9 @@
             if specified, <see cref="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.NodeFormatType"/> will be ignored.
             </summary>
             <seealso cref="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.NodeFormatType"/>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.Sudoku#Concepts#ValueConversions#IChainConverter#Impl">
+            <inheritdoc/>
         </member>
         <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.StandardFormatPattern">
             <remarks>
@@ -28134,6 +28140,9 @@
             The backing implementation instance.
             </summary>
         </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.EurekaChainConverter.Sudoku#Concepts#ValueConversions#IChainConverter#Impl">
+            <inheritdoc/>
+        </member>
         <member name="M:Sudoku.Concepts.ValueConversions.EurekaChainConverter.TryFormat(Sudoku.Analytics.Construction.Components.Chain,System.IFormatProvider,System.String@)">
             <inheritdoc/>
         </member>
@@ -28144,6 +28153,11 @@
         <member name="T:Sudoku.Concepts.ValueConversions.IChainConverter">
             <summary>
             Provides a chain converter.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.IChainConverter.Impl">
+            <summary>
+            Indicates the backing implementation converter.
             </summary>
         </member>
         <member name="M:Sudoku.Concepts.ValueConversions.IChainConverter.TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,Sudoku.Analytics.Construction.Components.Chain@)">
@@ -28188,6 +28202,9 @@
             The backing implementation instance.
             </summary>
         </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.OnOffPlotChainConverter.Sudoku#Concepts#ValueConversions#IChainConverter#Impl">
+            <inheritdoc/>
+        </member>
         <member name="M:Sudoku.Concepts.ValueConversions.OnOffPlotChainConverter.TryFormat(Sudoku.Analytics.Construction.Components.Chain,System.IFormatProvider,System.String@)">
             <inheritdoc/>
         </member>
@@ -28204,6 +28221,9 @@
             <summary>
             The backing implementation instance.
             </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.StandardChainConverter.Sudoku#Concepts#ValueConversions#IChainConverter#Impl">
+            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Concepts.ValueConversions.StandardChainConverter.TryFormat(Sudoku.Analytics.Construction.Components.Chain,System.IFormatProvider,System.String@)">
             <inheritdoc/>

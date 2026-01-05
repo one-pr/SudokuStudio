@@ -83,6 +83,9 @@ public partial class CustomizedChainConverter : IChainConverter
 	/// <seealso cref="NodeFormatType"/>
 	public CoordinateConverter? CustomizedCandidateConverter { get; init; }
 
+	/// <inheritdoc/>
+	IChainConverter IChainConverter.Impl => this;
+
 
 	[GeneratedRegex("""r[1-9]+c[1-9]+\([1-9]+\)\s*==?\s*r[1-9]+c[1-9]+\([1-9]+\)(?:\s*--?\s*r[1-9]+c[1-9]+\([1-9]+\)\s*==?\s*r[1-9]+c[1-9]+\([1-9]+\))+""", RegexOptions.Compiled | RegexOptions.IgnoreCase)]
 	private static partial Regex StandardFormatPattern { get; }

@@ -5,6 +5,12 @@ namespace Sudoku.Concepts.ValueConversions;
 /// </summary>
 public interface IChainConverter : IValueConverter<Chain>
 {
+	/// <summary>
+	/// Indicates the backing implementation converter.
+	/// </summary>
+	protected IChainConverter Impl { get; }
+
+
 	/// <inheritdoc cref="IValueConverter{T}.TryParse(ReadOnlySpan{char}, IFormatProvider?, out T)"/>
 	new bool TryParse(ReadOnlySpan<char> text, IFormatProvider? provider, [NotNullWhen(true)] out Chain? result);
 

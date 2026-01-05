@@ -20,6 +20,10 @@ public sealed class BivalueBilocationPlotChainConverter : IChainConverter
 
 
 	/// <inheritdoc/>
+	IChainConverter IChainConverter.Impl => _impl;
+
+
+	/// <inheritdoc/>
 	public bool TryFormat(Chain value, IFormatProvider? provider, [NotNullWhen(true)] out string? result)
 		=> _impl.TryFormat(value, provider, out result);
 
