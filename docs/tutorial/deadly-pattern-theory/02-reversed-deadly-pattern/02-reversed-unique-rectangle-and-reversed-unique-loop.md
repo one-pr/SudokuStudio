@@ -118,11 +118,11 @@ description: Reversed Unique Rectangle & Reversed Unique Loop
 
 ### 例子 2：唯一矩形 + 唯一环 <a href="#example-7" id="example-7"></a>
 
-<figure><img src="../../.gitbook/assets/image_0882.png" alt="" width="375"><figcaption><p>例子 2</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/images_0882.png" alt="" width="375"><figcaption><p>例子 2</p></figcaption></figure>
 
 如图所示。把盘面的全部明数 8 和 9 提出来之后会变为一个分离的唯一矩形和一个唯一环。删除 `r7c3(9)`。
 
-## 填入数可视为空格
+## 填入数可视为空格 <a href="#modifiable-cells-can-be-treated-as-empty-ones" id="modifiable-cells-can-be-treated-as-empty-ones"></a>
 
 不知道你还能不能回忆起可规避矩形的知识点。可规避矩形能删数的本质原因在于，即使有填入数（自己填的数），它也可以被视为是空格参与唯一矩形的使用和推演，其本质原因在于，填入数自身不是题目初始所给的数字信息，所以只要题目没有解完，这个填入数都可以被当成是一个唯一余数的空白单元格状态。而空白单元格又可以在唯一矩形里等价看成是“填了一个数，另外一个数就可以换过来，使结构形成可交换状态”。
 
