@@ -205,6 +205,9 @@
 ## 致命结构理论 <a href="#deadly-pattern-theory" id="deadly-pattern-theory"></a>
 
 * [匿名致命结构](deadly-pattern-theory/01-anonymous-deadly-pattern.md)
+* [反转致命结构](deadly-pattern-theory/02-reversed-deadly-pattern/README.md)
+  * [反转拓展矩形（RXR）](deadly-pattern-theory/02-reversed-deadly-pattern/01-reversed-extended-rectangle.md)
+  * [反转唯一矩形和反转唯一环](deadly-pattern-theory/02-reversed-deadly-pattern/02-reversed-unique-rectangle-and-reversed-unique-loop.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
