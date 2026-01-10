@@ -9,7 +9,7 @@ internal sealed class CellArgumentParser : ArgumentParser
 	public override ReadOnlySpan<ViewNode> Parse(
 		ReadOnlySpan<string> arguments,
 		[AllowNull] ref readonly Grid grid,
-		ColorIdentifier colorIdentifier,
+		ColorDescriptor colorIdentifier,
 		CoordinateParser coordinateParser
 	) => from cell in new CellMap(arguments, coordinateParser) select new CellViewNode(colorIdentifier, cell);
 }

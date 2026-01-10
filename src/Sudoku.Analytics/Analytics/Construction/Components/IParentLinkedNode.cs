@@ -7,7 +7,6 @@ namespace Sudoku.Analytics.Construction.Components;
 internal interface IParentLinkedNode<TSelf> :
 	IComponent,
 	IEquatable<TSelf>,
-	IFormattable,
 	IEqualityOperators<TSelf, TSelf, bool>
 	where TSelf : IParentLinkedNode<TSelf>
 {
@@ -72,16 +71,26 @@ internal interface IParentLinkedNode<TSelf> :
 		return false;
 	}
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	string ToString(IFormatProvider? formatProvider);
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation.
+	/// </summary>
+	/// <param name="culture">The culture.</param>
+	/// <returns>The string representation.</returns>
+	string ToString(CultureInfo culture);
 
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
+	/// <inheritdoc cref="ToString(ICandidateMapConverter, IFormatProvider?)"/>
+	string ToString(CoordinateConverter converter);
 
+	/// <inheritdoc cref="ToString(ICandidateMapConverter, IFormatProvider?)"/>
+	string ToString(ICandidateMapConverter converter);
 
-	/// <inheritdoc cref="op_RightShift(TSelf, TSelf?)"/>
-	[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
-	static virtual TSelf Create(TSelf current, TSelf? parent) => current >> parent;
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation via the specified converter.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <param name="formatProvider">The format provider.</param>
+	/// <returns>The string representation.</returns>
+	string ToString(ICandidateMapConverter converter, IFormatProvider? formatProvider);
 
 
 	/// <summary>
@@ -90,5 +99,5 @@ internal interface IParentLinkedNode<TSelf> :
 	/// <param name="current">The current node.</param>
 	/// <param name="parent">The parent node.</param>
 	/// <returns>The new node created.</returns>
-	static abstract TSelf operator >>(TSelf current, TSelf? parent);
+	static abstract TSelf Create(TSelf current, TSelf? parent);
 }

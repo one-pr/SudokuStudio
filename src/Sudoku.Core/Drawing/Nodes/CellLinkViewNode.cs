@@ -7,7 +7,7 @@ namespace Sudoku.Drawing.Nodes;
 /// <param name="start"><inheritdoc cref="Start" path="/summary"/></param>
 /// <param name="end"><inheritdoc cref="End" path="/summary"/></param>
 [method: JsonConstructor]
-public sealed class CellLinkViewNode(ColorIdentifier identifier, Cell start, Cell end) : BasicViewNode(identifier), ILinkViewNode
+public sealed class CellLinkViewNode(ColorDescriptor identifier, Cell start, Cell end) : BasicViewNode(identifier), ILinkViewNode
 {
 	/// <summary>
 	/// Indicates the start point.
@@ -30,7 +30,7 @@ public sealed class CellLinkViewNode(ColorIdentifier identifier, Cell start, Cel
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	public void Deconstruct(out ColorIdentifier identifier, out Cell start, out Cell end)
+	public void Deconstruct(out ColorDescriptor identifier, out Cell start, out Cell end)
 		=> (identifier, start, end) = (Identifier, Start, End);
 
 	/// <inheritdoc/>

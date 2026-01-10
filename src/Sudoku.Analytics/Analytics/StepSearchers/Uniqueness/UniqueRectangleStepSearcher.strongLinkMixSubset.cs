@@ -54,7 +54,7 @@ public partial class UniqueRectangleStepSearcher
 		var cells = urCells.AsCellMap();
 		foreach (var cell in cells - cornerCell)
 		{
-			if (HousesMap[cornerCell >> HouseType.Block].Contains(cell))
+			if (HousesMap[cornerCell.GetHouse(HouseType.Block)].Contains(cell))
 			{
 				sameBlockCell = cell;
 			}
@@ -89,7 +89,7 @@ public partial class UniqueRectangleStepSearcher
 
 			// Check for cells in line of cell 'same-block', which doesn't include cell 'cornerCell'.
 			// Then we should check for empty cells that doesn't overlap with UR pattern, to determine existence of subsets.
-			var sameBlockHouses = 1 << (sameBlockCell >> HouseType.Row) | 1 << (sameBlockCell >> HouseType.Column);
+			var sameBlockHouses = 1 << sameBlockCell.GetHouse(HouseType.Row) | 1 << sameBlockCell.GetHouse(HouseType.Column);
 			foreach (var house in sameBlockHouses)
 			{
 				if (HousesMap[house].Contains(cornerCell))
@@ -102,7 +102,7 @@ public partial class UniqueRectangleStepSearcher
 			// Then iterate empty cells lying in the target house, to determine whether a subset can be formed.
 			var subsetHouse = BitOperations.Log2((uint)sameBlockHouses);
 			var outsideCellsRange = HousesMap[subsetHouse] // Subset house that:
-				& ~HousesMap[sameBlockCell >> HouseType.Block] // won't overlap the block with same-block cell
+				& ~HousesMap[sameBlockCell.GetHouse(HouseType.Block)] // won't overlap the block with same-block cell
 				& ~cells // and won't overlap with UR pattern
 				& mapOfDigit1And2; // and must contain either digit 1 or digit 2
 			foreach (ref readonly var outsideCells in outsideCellsRange | outsideCellsRange.Count)
@@ -148,8 +148,8 @@ public partial class UniqueRectangleStepSearcher
 							candidateOffsets.Add(
 								new(
 									(cell == targetCell || cell == lastCell) && digit == conjugatePairDigit
-										? ColorIdentifier.Auxiliary1
-										: ColorIdentifier.Normal,
+										? ColorDescriptorAlias.Auxiliary1
+										: ColorDescriptorAlias.Normal,
 									cell * 9 + digit
 								)
 							);
@@ -160,7 +160,7 @@ public partial class UniqueRectangleStepSearcher
 				{
 					foreach (var extraDigitInOutsideCell in (Mask)(grid.GetCandidates(outsideCell) & extraDigitsMaskInOutsideCell))
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Auxiliary2, outsideCell * 9 + extraDigitInOutsideCell));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary2, outsideCell * 9 + extraDigitInOutsideCell));
 					}
 				}
 				if (!IsIncompleteValid(arMode, AllowIncompleteUniqueRectangles, candidateOffsets, out _))
@@ -176,13 +176,13 @@ public partial class UniqueRectangleStepSearcher
 								.. candidateOffsets,
 								..
 								from outsideCell in outsideCells
-								select new CellViewNode(ColorIdentifier.Auxiliary2, outsideCell),
+								select new CellViewNode(ColorDescriptorAlias.Auxiliary2, outsideCell),
 								..
 								from extraDigitInOutsideCell in extraDigitsMaskInOutsideCell
 								let extraCandidate = sameBlockCell * 9 + extraDigitInOutsideCell
-								select new CandidateViewNode(ColorIdentifier.Auxiliary2, extraCandidate),
-								new ConjugateLinkViewNode(ColorIdentifier.Auxiliary1, pairMap[0], pairMap[1], conjugatePairDigit),
-								new HouseViewNode(ColorIdentifier.Auxiliary2, subsetHouse)
+								select new CandidateViewNode(ColorDescriptorAlias.Auxiliary2, extraCandidate),
+								new ConjugateLinkViewNode(ColorDescriptorAlias.Auxiliary1, pairMap[0], pairMap[1], conjugatePairDigit),
+								new HouseViewNode(ColorDescriptorAlias.Auxiliary2, subsetHouse)
 							]
 						],
 						context.Options,
@@ -251,7 +251,7 @@ public partial class UniqueRectangleStepSearcher
 	{
 		// Determine target cell, same-block cell and the last cell.
 		var cells = urCells.AsCellMap();
-		var sameBlockCell = (cells - cornerCell & HousesMap[cornerCell >> HouseType.Block])[0];
+		var sameBlockCell = (cells - cornerCell & HousesMap[cornerCell.GetHouse(HouseType.Block)])[0];
 		Unsafe.SkipInit(out int targetCell);
 		foreach (var cell in cells - cornerCell - sameBlockCell)
 		{
@@ -261,7 +261,7 @@ public partial class UniqueRectangleStepSearcher
 				break;
 			}
 		}
-		if (HousesMap[cornerCell >> HouseType.Block].Contains(targetCell))
+		if (HousesMap[cornerCell.GetHouse(HouseType.Block)].Contains(targetCell))
 		{
 			// :( Cells 'cornerCell' and 'targetCell' shouldn't in a same block.
 			return;
@@ -284,8 +284,8 @@ public partial class UniqueRectangleStepSearcher
 				continue;
 			}
 
-			var cornerCellBlock = cornerCell >> HouseType.Block;
-			var targetCellBlock = targetCell >> HouseType.Block;
+			var cornerCellBlock = cornerCell.GetHouse(HouseType.Block);
+			var targetCellBlock = targetCell.GetHouse(HouseType.Block);
 			var line = (sameBlockCell.AsCellMap() + lastCell).SharedLine;
 			var outsideCellsRange = HousesMap[line] & mapOfDigit1And2 & ~cells;
 			foreach (ref readonly var outsideCells in outsideCellsRange | outsideCellsRange.Count)
@@ -298,7 +298,7 @@ public partial class UniqueRectangleStepSearcher
 				// Group them up, grouped them by block they are in.
 				var cellsGroupedByBlock =
 					from cell in outsideCells.ToArrayUnsafe().AsReadOnlySpan()
-					group cell by cell >> HouseType.Block into cellsGroup
+					group cell by cell.GetHouse(HouseType.Block) into cellsGroup
 					let block = cellsGroup.Key
 					select (Block: block, Cells: cellsGroup.AsSpan().AsCellMap());
 				var ocCorner = from p in cellsGroupedByBlock where p.Block == cornerCellBlock select p.Cells;
@@ -343,8 +343,8 @@ public partial class UniqueRectangleStepSearcher
 							candidateOffsets.Add(
 								new(
 									(cell == targetCell || cell == cornerCell) && digit == conjugatePairDigit
-										? ColorIdentifier.Auxiliary1
-										: ColorIdentifier.Normal,
+										? ColorDescriptorAlias.Auxiliary1
+										: ColorDescriptorAlias.Normal,
 									cell * 9 + digit
 								)
 							);
@@ -355,7 +355,7 @@ public partial class UniqueRectangleStepSearcher
 				{
 					foreach (var extraDigitInOutsideCell in (Mask)(grid.GetCandidates(outsideCell) & extraDigitsMask))
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Auxiliary2, outsideCell * 9 + extraDigitInOutsideCell));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary2, outsideCell * 9 + extraDigitInOutsideCell));
 					}
 				}
 				if (!IsIncompleteValid(arMode, AllowIncompleteUniqueRectangles, candidateOffsets, out _))
@@ -369,13 +369,13 @@ public partial class UniqueRectangleStepSearcher
 						[
 							[
 								.. candidateOffsets,
-								.. from outsideCell in outsideCells select new CellViewNode(ColorIdentifier.Auxiliary2, outsideCell),
+								.. from outsideCell in outsideCells select new CellViewNode(ColorDescriptorAlias.Auxiliary2, outsideCell),
 								..
 								from extraDigitInOutsideCell in (Mask)(grid.GetCandidates(sameBlockCell) & extraDigitsMask)
 								let extraCandidate = sameBlockCell * 9 + extraDigitInOutsideCell
-								select new CandidateViewNode(ColorIdentifier.Auxiliary2, extraCandidate),
-								new ConjugateLinkViewNode(ColorIdentifier.Auxiliary1, pairMap[0], pairMap[1], conjugatePairDigit),
-								new HouseViewNode(ColorIdentifier.Auxiliary2, outsideCells.SharedLine)
+								select new CandidateViewNode(ColorDescriptorAlias.Auxiliary2, extraCandidate),
+								new ConjugateLinkViewNode(ColorDescriptorAlias.Auxiliary1, pairMap[0], pairMap[1], conjugatePairDigit),
+								new HouseViewNode(ColorDescriptorAlias.Auxiliary2, outsideCells.SharedLine)
 							]
 						],
 						context.Options,
@@ -450,7 +450,7 @@ public partial class UniqueRectangleStepSearcher
 			var cells = urCells.AsCellMap();
 			foreach (var cell in cells - cornerCell)
 			{
-				if (HousesMap[cornerCell >> HouseType.Block].Contains(cell))
+				if (HousesMap[cornerCell.GetHouse(HouseType.Block)].Contains(cell))
 				{
 					sameBlockCell = cell;
 					break;
@@ -479,7 +479,7 @@ public partial class UniqueRectangleStepSearcher
 
 				// Check for cells in line of cell 'same-block', which doesn't include cell 'cornerCell'.
 				// Then we should check for empty cells that doesn't overlap with UR pattern, to determine existence of subsets.
-				var sameBlockHouses = 1 << (sameBlockCell >> HouseType.Row) | 1 << (sameBlockCell >> HouseType.Column);
+				var sameBlockHouses = 1 << sameBlockCell.GetHouse(HouseType.Row) | 1 << sameBlockCell.GetHouse(HouseType.Column);
 				foreach (var house in sameBlockHouses)
 				{
 					if (HousesMap[house].Contains(cornerCell))
@@ -493,7 +493,7 @@ public partial class UniqueRectangleStepSearcher
 				var conjugatePairHouse = BitOperations.TrailingZeroCount(pairMap2.SharedHouses);
 				var subsetHouse = BitOperations.Log2((uint)sameBlockHouses);
 				var outsideCellsRange = HousesMap[subsetHouse] // Subset house that:
-					& ~HousesMap[sameBlockCell >> HouseType.Block] // won't overlap the block with same-block cell
+					& ~HousesMap[sameBlockCell.GetHouse(HouseType.Block)] // won't overlap the block with same-block cell
 					& ~cells // and won't overlap with UR pattern
 					& mapOfDigit1And2; // and must contain either digit 1 or digit 2
 				foreach (ref readonly var outsideCells in outsideCellsRange | outsideCellsRange.Count)
@@ -539,8 +539,8 @@ public partial class UniqueRectangleStepSearcher
 								candidateOffsets.Add(
 									new(
 										(cell == targetCell || cell == lastCell || cell == cornerCell) && digit == conjugatePairDigit
-											? ColorIdentifier.Auxiliary1
-											: ColorIdentifier.Normal,
+											? ColorDescriptorAlias.Auxiliary1
+											: ColorDescriptorAlias.Normal,
 										cell * 9 + digit
 									)
 								);
@@ -551,7 +551,7 @@ public partial class UniqueRectangleStepSearcher
 					{
 						foreach (var extraDigitInOutsideCell in (Mask)(grid.GetCandidates(outsideCell) & extraDigitsMaskInOutsideCell))
 						{
-							candidateOffsets.Add(new(ColorIdentifier.Auxiliary2, outsideCell * 9 + extraDigitInOutsideCell));
+							candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary2, outsideCell * 9 + extraDigitInOutsideCell));
 						}
 					}
 					if (!IsIncompleteValid(arMode, AllowIncompleteUniqueRectangles, candidateOffsets, out _))
@@ -567,14 +567,14 @@ public partial class UniqueRectangleStepSearcher
 									.. candidateOffsets,
 									..
 									from outsideCell in outsideCells
-									select new CellViewNode(ColorIdentifier.Auxiliary2, outsideCell),
+									select new CellViewNode(ColorDescriptorAlias.Auxiliary2, outsideCell),
 									..
 									from extraDigitInOutsideCell in extraDigitsMaskInOutsideCell
 									let extraCandidate = sameBlockCell * 9 + extraDigitInOutsideCell
-									select new CandidateViewNode(ColorIdentifier.Auxiliary2, extraCandidate),
-									new ConjugateLinkViewNode(ColorIdentifier.Auxiliary1, pairMap1[0], pairMap1[1], conjugatePairDigit),
-									new ConjugateLinkViewNode(ColorIdentifier.Auxiliary1, pairMap2[0], pairMap2[1], conjugatePairDigit),
-									new HouseViewNode(ColorIdentifier.Auxiliary2, subsetHouse)
+									select new CandidateViewNode(ColorDescriptorAlias.Auxiliary2, extraCandidate),
+									new ConjugateLinkViewNode(ColorDescriptorAlias.Auxiliary1, pairMap1[0], pairMap1[1], conjugatePairDigit),
+									new ConjugateLinkViewNode(ColorDescriptorAlias.Auxiliary1, pairMap2[0], pairMap2[1], conjugatePairDigit),
+									new HouseViewNode(ColorDescriptorAlias.Auxiliary2, subsetHouse)
 								]
 							],
 							context.Options,

@@ -24,17 +24,14 @@ public sealed class PrimarySingleConstraint : Constraint
 	public override int GetHashCode() => HashCode.Combine(AllowsHiddenSingleInLines, Primary);
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
-	{
-		var culture = formatProvider as CultureInfo;
-		return string.Format(
+	public override string ToString(CultureInfo culture)
+		=> string.Format(
 			SR.Get("PrimarySingleConstraint", culture),
 			[
 				Primary.GetName(culture),
 				AllowsHiddenSingleInLines ? string.Empty : SR.Get("NoString", culture)
 			]
 		);
-	}
 
 	/// <inheritdoc/>
 	public override PrimarySingleConstraint Clone()

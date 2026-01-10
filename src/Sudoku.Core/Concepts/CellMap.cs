@@ -294,35 +294,6 @@ public partial struct CellMap : CellMapBase
 	public readonly HouseMask Houses => (HouseMask)BlockMask | RowMask << 9 | ColumnMask << 18;
 
 	/// <summary>
-	/// Try to get the symmetric type of the pattern.
-	/// </summary>
-	public readonly SymmetricType Symmetry
-	{
-		get
-		{
-			foreach (var symmetry in ~SymmetricType.Values[1..])
-			{
-				var isThisSymmetry = true;
-				foreach (var cell in this)
-				{
-					var symmetricCells = symmetry.GetOrbit(cell);
-					if ((this & symmetricCells) != symmetricCells)
-					{
-						isThisSymmetry = false;
-						break;
-					}
-				}
-				if (!isThisSymmetry)
-				{
-					continue;
-				}
-				return symmetry;
-			}
-			return SymmetricType.None;
-		}
-	}
-
-	/// <summary>
 	/// Gets the expanded peers of the current map.
 	/// </summary>
 	/// <remarks>
@@ -470,46 +441,6 @@ public partial struct CellMap : CellMapBase
 	/// <returns>A <see cref="bool"/> value indicating that.</returns>
 	public readonly bool Contains(Cell item) => (_vector[item < Shifting ? 0 : 1] >>> item % Shifting & 1) != 0;
 
-	/// <inheritdoc cref="ISpanFormattable.TryFormat(Span{char}, out int, ReadOnlySpan{char}, IFormatProvider?)"/>
-	public readonly bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
-	{
-		var targetString = ToString(provider);
-		if (destination.Length < targetString.Length)
-		{
-			goto ReturnFalse;
-		}
-
-		if (targetString.TryCopyTo(destination))
-		{
-			charsWritten = targetString.Length;
-			return true;
-		}
-
-	ReturnFalse:
-		charsWritten = 0;
-		return false;
-	}
-
-	/// <inheritdoc cref="IUtf8SpanFormattable.TryFormat(Span{byte}, out int, ReadOnlySpan{char}, IFormatProvider?)"/>
-	public readonly bool TryFormat(Span<byte> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
-	{
-		var targetString = ToString(provider);
-		if (destination.Length < targetString.Length)
-		{
-			goto ReturnFalse;
-		}
-
-		if ((from character in targetString select (byte)character).TryCopyTo(destination))
-		{
-			charsWritten = targetString.Length;
-			return true;
-		}
-
-	ReturnFalse:
-		charsWritten = 0;
-		return false;
-	}
-
 	/// <inheritdoc/>
 	public readonly override bool Equals([NotNullWhen(true)] object? obj) => obj is CellMap comparer && Equals(comparer);
 
@@ -559,7 +490,7 @@ public partial struct CellMap : CellMapBase
 		return Count > other.Count ? 1 : Count < other.Count ? -1 : -Math.Sign($"{b(this)}".CompareTo($"{b(other)}"));
 
 
-		static string b(in CellMap f) => f.ToString(new BitmapCellMapFormatInfo());
+		static string b(in CellMap f) => f.ToString(new BitmapCellMapConverter());
 	}
 
 	/// <inheritdoc/>
@@ -576,15 +507,21 @@ public partial struct CellMap : CellMapBase
 	}
 
 	/// <inheritdoc cref="object.ToString"/>
-	public readonly override string ToString() => ToString(null);
+	public readonly override string ToString() => ToString(CoordinateConverter.InvariantCulture);
 
 	/// <inheritdoc/>
-	public readonly string ToString(IFormatProvider? formatProvider)
-		=> formatProvider switch
-		{
-			CellMapFormatInfo i => i.FormatCore(this),
-			_ => CoordinateConverter.GetInstance(formatProvider).CellConverter(this)
-		};
+	public readonly string ToString(CultureInfo culture) => ToString(CoordinateConverter.GetInstance(culture));
+
+	/// <inheritdoc/>
+	public readonly string ToString(CoordinateConverter converter) => converter.CellConverter(this);
+
+	/// <inheritdoc cref="CellMapBase.ToString(IValueConverter{CellMap})"/>
+	public readonly string ToString(ICellMapConverter converter)
+		=> converter.TryFormat(in this, null, out var result) ? result : throw new FormatException();
+
+	/// <inheritdoc cref="CellMapBase.ToString(IValueConverter{CellMap}, IFormatProvider?)"/>
+	public readonly string ToString(ICellMapConverter converter, IFormatProvider? formatProvider)
+		=> converter.TryFormat(in this, formatProvider, out var result) ? result : throw new FormatException();
 
 	/// <inheritdoc/>
 	public readonly Cell[] ToArray() => Offsets[..];
@@ -692,10 +629,10 @@ public partial struct CellMap : CellMapBase
 	/// <inheritdoc cref="Enumerable.GroupBy{TSource, TKey}(IEnumerable{TSource}, Func{TSource, TKey})" path="/param[@name='keySelector']"/>
 	/// </param>
 	/// <returns>
-	/// A list of <see cref="CellMapOrCandidateMapGrouping{TMap, TElement, TKey}"/> instances where each value object contains a sequence of objects and a key.
+	/// A list of <see cref="BitStateMapGrouping{TMap, TElement, TKey}"/> instances where each value object contains a sequence of objects and a key.
 	/// </returns>
-	/// <seealso cref="CellMapOrCandidateMapGrouping{TMap, TElement, TKey}"/>
-	public readonly ReadOnlySpan<CellMapOrCandidateMapGrouping<CellMap, Cell, TKey>> GroupBy<TKey>(Func<Cell, TKey> keySelector)
+	/// <seealso cref="BitStateMapGrouping{TMap, TElement, TKey}"/>
+	public readonly ReadOnlySpan<BitStateMapGrouping<CellMap, Cell, TKey>> GroupBy<TKey>(Func<Cell, TKey> keySelector)
 		where TKey : notnull
 	{
 		var dictionary = new Dictionary<TKey, CellMap>();
@@ -708,7 +645,7 @@ public partial struct CellMap : CellMapBase
 			}
 		}
 
-		var result = new CellMapOrCandidateMapGrouping<CellMap, Cell, TKey>[dictionary.Count];
+		var result = new BitStateMapGrouping<CellMap, Cell, TKey>[dictionary.Count];
 		var i = 0;
 		foreach (var kvp in dictionary)
 		{
@@ -832,7 +769,12 @@ public partial struct CellMap : CellMapBase
 	readonly bool IAnyAllMethod<CellMap, Cell>.All(Func<Cell, bool> predicate) => TrueForAll(predicate);
 
 	/// <inheritdoc/>
-	readonly string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
+	readonly string CellMapBase.ToString(IValueConverter<CellMap> converter)
+		=> converter.TryFormat(in this, null, out var result) ? result : throw new FormatException();
+
+	/// <inheritdoc/>
+	readonly string CellMapBase.ToString(IValueConverter<CellMap> converter, IFormatProvider? formatProvider)
+		=> converter.TryFormat(in this, formatProvider, out var result) ? result : throw new FormatException();
 
 	/// <inheritdoc/>
 	readonly Cell IFirstLastMethod<CellMap, Cell>.First() => this[0];
@@ -852,51 +794,20 @@ public partial struct CellMap : CellMapBase
 		=> Select(selector).ToArray();
 
 
-	/// <inheritdoc cref="IParsable{TSelf}.TryParse(string, IFormatProvider?, out TSelf)"/>
+	/// <inheritdoc/>
 	public static bool TryParse(string str, out CellMap result)
-	{
-		try
-		{
-			result = Parse(str);
-			return true;
-		}
-		catch (FormatException)
-		{
-			result = default;
-			return false;
-		}
-	}
+		=> TryParse(str, CoordinateParser.InvariantCulture, out result);
 
 	/// <inheritdoc/>
-	public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, out CellMap result)
+	public static bool TryParse(string str, CultureInfo culture, out CellMap result)
+		=> TryParse(str, CoordinateParser.GetInstance(culture), out result);
+
+	/// <inheritdoc/>
+	public static bool TryParse(string str, CoordinateParser converter, out CellMap result)
 	{
 		try
 		{
-			if (s is null)
-			{
-				result = [];
-				return false;
-			}
-
-			result = Parse(s, provider);
-			return true;
-		}
-		catch (FormatException)
-		{
-			result = [];
-			return false;
-		}
-	}
-
-	/// <inheritdoc cref="TryParse(ReadOnlySpan{char}, IFormatProvider?, out CellMap)"/>
-	public static bool TryParse(ReadOnlySpan<char> s, out CellMap result) => TryParse(s, null, out result);
-
-	/// <inheritdoc cref="ISpanParsable{TSelf}.TryParse(ReadOnlySpan{char}, IFormatProvider?, out TSelf)"/>
-	public static bool TryParse(ReadOnlySpan<char> s, IFormatProvider? provider, out CellMap result)
-	{
-		try
-		{
-			result = Parse(s, provider);
+			result = converter.CellParser(str);
 			return true;
 		}
 		catch (FormatException)
@@ -905,6 +816,34 @@ public partial struct CellMap : CellMapBase
 			return false;
 		}
 	}
+
+	/// <inheritdoc/>
+	public static bool TryParse(string str, IValueConverter<CellMap> converter, out CellMap result)
+		=> converter.TryParse(str, null, out result);
+
+	/// <inheritdoc/>
+	public static bool TryParse(string str, IValueConverter<CellMap> converter, IFormatProvider? formatProvider, out CellMap result)
+		=> converter.TryParse(str, formatProvider, out result);
+
+	/// <inheritdoc/>
+	public static bool TryParse(ReadOnlySpan<char> str, out CellMap result)
+		=> TryParse(str, CoordinateParser.InvariantCulture, out result);
+
+	/// <inheritdoc/>
+	public static bool TryParse(ReadOnlySpan<char> str, CultureInfo culture, out CellMap result)
+		=> TryParse(str, CoordinateParser.GetInstance(culture), out result);
+
+	/// <inheritdoc/>
+	public static bool TryParse(ReadOnlySpan<char> str, CoordinateParser converter, out CellMap result)
+		=> TryParse(str.ToString(), converter, out result);
+
+	/// <inheritdoc/>
+	public static bool TryParse(ReadOnlySpan<char> str, IValueConverter<CellMap> converter, out CellMap result)
+		=> converter.TryParse(str, null, out result);
+
+	/// <inheritdoc/>
+	public static bool TryParse(ReadOnlySpan<char> str, IValueConverter<CellMap> converter, IFormatProvider? formatProvider, out CellMap result)
+		=> converter.TryParse(str, formatProvider, out result);
 
 	/// <summary>
 	/// Creates a <see cref="CellMap"/> instance via the specified cells.
@@ -928,11 +867,16 @@ public partial struct CellMap : CellMapBase
 		return result;
 	}
 
-	/// <inheritdoc cref="IParsable{TSelf}.Parse(string, IFormatProvider?)"/>
+	/// <summary>
+	/// Parses the current string into target instance.
+	/// </summary>
+	/// <param name="str">The string.</param>
+	/// <returns>The instance.</returns>
+	/// <exception cref="FormatException">Throws when any invalid characters encountered.</exception>
 	public static CellMap Parse(string str)
 	{
 		foreach (var parser in
-			from element in CoordinateType.Values
+			from element in CoordinateType.AllValues
 			let parser = element.Parser
 			where parser is not null
 			select parser)
@@ -946,18 +890,36 @@ public partial struct CellMap : CellMapBase
 	}
 
 	/// <inheritdoc/>
-	public static CellMap Parse(string s, IFormatProvider? provider)
-		=> provider switch
-		{
-			CellMapFormatInfo i => i.ParseCore(s),
-			_ => CoordinateParser.GetInstance(provider).CellParser(s)
-		};
+	public static CellMap Parse(string str, CultureInfo culture) => CoordinateParser.GetInstance(culture).CellParser(str);
 
-	/// <inheritdoc cref="Parse(ReadOnlySpan{char}, IFormatProvider?)"/>
-	public static CellMap Parse(ReadOnlySpan<char> s) => Parse(s, null);
+	/// <inheritdoc/>
+	public static CellMap Parse(string str, CoordinateParser converter) => converter.CellParser(str);
 
-	/// <inheritdoc cref="IParsable{TSelf}.Parse(string, IFormatProvider?)"/>
-	public static CellMap Parse(ReadOnlySpan<char> s, IFormatProvider? provider) => Parse(s.ToString(), provider);
+	/// <inheritdoc/>
+	public static CellMap Parse(string str, IValueConverter<CellMap> converter)
+		=> converter.TryParse(str, null, out var result) ? result : throw new FormatException();
+
+	/// <inheritdoc/>
+	public static CellMap Parse(string str, IValueConverter<CellMap> converter, IFormatProvider? formatProvider)
+		=> converter.TryParse(str, formatProvider, out var result) ? result : throw new FormatException();
+
+	/// <inheritdoc/>
+	public static CellMap Parse(ReadOnlySpan<char> str) => Parse(str.ToString());
+
+	/// <inheritdoc/>
+	public static CellMap Parse(ReadOnlySpan<char> str, CultureInfo culture) => Parse(str.ToString(), culture);
+
+	/// <inheritdoc/>
+	public static CellMap Parse(ReadOnlySpan<char> str, CoordinateParser converter)
+		=> converter.CellParser(str.ToString());
+
+	/// <inheritdoc/>
+	public static CellMap Parse(ReadOnlySpan<char> str, IValueConverter<CellMap> converter)
+		=> converter.TryParse(str, null, out var result) ? result : throw new FormatException();
+
+	/// <inheritdoc/>
+	public static CellMap Parse(ReadOnlySpan<char> str, IValueConverter<CellMap> converter, IFormatProvider? formatProvider)
+		=> converter.TryParse(str, formatProvider, out var result) ? result : throw new FormatException();
 
 	/// <summary>
 	/// Creates a <see cref="Vector128{T}"/> of <see cref="long"/> instance.

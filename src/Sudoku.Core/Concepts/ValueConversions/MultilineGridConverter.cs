@@ -1,0 +1,158 @@
+namespace Sudoku.Concepts.ValueConversions;
+
+/// <summary>
+/// Represents multiline grid converter. Different with <see cref="PencilmarkGridConverter"/>,
+/// this type doesn't print any candidates.
+/// </summary>
+/// <seealso cref="PencilmarkGridConverter"/>
+public abstract partial class MultilineGridConverter : IGridConverter
+{
+	/// <summary>
+	/// Indicates whether the formatter will treat all values as givens, regardless of its value state.
+	/// </summary>
+	public bool TreatValueAsGiven { get; init; }
+
+	/// <summary>
+	/// Indicates whether the parsing operation will use simple way, removing all block lines for multi-line formatting.
+	/// </summary>
+	public abstract bool RemoveBlockLines { get; }
+
+	/// <summary>
+	/// Indicates whether the formatter will subtle grid lines to make a good look. By default it's <see langword="true"/>.
+	/// </summary>
+	public bool SubtleGridLines { get; init; } = true;
+
+	/// <summary>
+	/// Indicates the placeholder of the grid text formatter.
+	/// </summary>
+	/// <value>The new placeholder text character to be set. The value must be <c>'.'</c> or <c>'0'</c>.</value>
+	/// <returns>The placeholder text.</returns>
+	public char Placeholder { get; init; } = '.';
+
+	/// <inheritdoc/>
+	public abstract int ParsingPriority { get; }
+
+
+	[GeneratedRegex("""(\+?\d|\.)""", RegexOptions.Compiled, 5000)]
+	private static partial Regex GridSusserDigitPattern { get; }
+
+	[GeneratedRegex("""([\d\.\+]{9}(\r|\n|\r\n)){8}[\d\.\+]{9}""", RegexOptions.Compiled, 5000)]
+	private static partial Regex GridSimpleMultilinePattern { get; }
+
+
+	/// <inheritdoc/>
+	public bool TryFormat(ref readonly Grid value, IFormatProvider? provider, [NotNullWhen(true)] out string? result)
+	{
+		var t = value.ToString(TreatValueAsGiven ? $"{Placeholder}!" : Placeholder.ToString());
+		result = new StringBuilder()
+			.AppendLine(SubtleGridLines ? ".-------.-------.-------." : "+-------+-------+-------+")
+			.Append("| ").Append(t[0]).Append(' ').Append(t[1]).Append(' ').Append(t[2])
+			.Append(" | ").Append(t[3]).Append(' ').Append(t[4]).Append(' ').Append(t[5])
+			.Append(" | ").Append(t[6]).Append(' ').Append(t[7]).Append(' ').Append(t[8])
+			.AppendLine(" |")
+			.Append("| ").Append(t[9]).Append(' ').Append(t[10]).Append(' ').Append(t[11])
+			.Append(" | ").Append(t[12]).Append(' ').Append(t[13]).Append(' ').Append(t[14])
+			.Append(" | ").Append(t[15]).Append(' ').Append(t[16]).Append(' ').Append(t[17])
+			.AppendLine(" |")
+			.Append("| ").Append(t[18]).Append(' ').Append(t[19]).Append(' ').Append(t[20])
+			.Append(" | ").Append(t[21]).Append(' ').Append(t[22]).Append(' ').Append(t[23])
+			.Append(" | ").Append(t[24]).Append(' ').Append(t[25]).Append(' ').Append(t[26])
+			.AppendLine(" |")
+			.AppendLine(SubtleGridLines ? ":-------+-------+-------:" : "+-------+-------+-------+")
+			.Append("| ").Append(t[27]).Append(' ').Append(t[28]).Append(' ').Append(t[29])
+			.Append(" | ").Append(t[30]).Append(' ').Append(t[31]).Append(' ').Append(t[32])
+			.Append(" | ").Append(t[33]).Append(' ').Append(t[34]).Append(' ').Append(t[35])
+			.AppendLine(" |")
+			.Append("| ").Append(t[36]).Append(' ').Append(t[37]).Append(' ').Append(t[38])
+			.Append(" | ").Append(t[39]).Append(' ').Append(t[40]).Append(' ').Append(t[41])
+			.Append(" | ").Append(t[42]).Append(' ').Append(t[43]).Append(' ').Append(t[44])
+			.AppendLine(" |")
+			.Append("| ").Append(t[45]).Append(' ').Append(t[46]).Append(' ').Append(t[47])
+			.Append(" | ").Append(t[48]).Append(' ').Append(t[49]).Append(' ').Append(t[50])
+			.Append(" | ").Append(t[51]).Append(' ').Append(t[52]).Append(' ').Append(t[53])
+			.AppendLine(" |")
+			.AppendLine(SubtleGridLines ? ":-------+-------+-------:" : "+-------+-------+-------+")
+			.Append("| ").Append(t[54]).Append(' ').Append(t[55]).Append(' ').Append(t[56])
+			.Append(" | ").Append(t[57]).Append(' ').Append(t[58]).Append(' ').Append(t[59])
+			.Append(" | ").Append(t[60]).Append(' ').Append(t[61]).Append(' ').Append(t[62])
+			.AppendLine(" |")
+			.Append("| ").Append(t[63]).Append(' ').Append(t[64]).Append(' ').Append(t[65])
+			.Append(" | ").Append(t[66]).Append(' ').Append(t[67]).Append(' ').Append(t[68])
+			.Append(" | ").Append(t[69]).Append(' ').Append(t[70]).Append(' ').Append(t[71])
+			.AppendLine(" |")
+			.Append("| ").Append(t[72]).Append(' ').Append(t[73]).Append(' ').Append(t[74])
+			.Append(" | ").Append(t[75]).Append(' ').Append(t[76]).Append(' ').Append(t[77])
+			.Append(" | ").Append(t[78]).Append(' ').Append(t[79]).Append(' ').Append(t[80])
+			.AppendLine(" |")
+			.Append(SubtleGridLines ? "'-------'-------'-------'" : "+-------+-------+-------+")
+			.ToString();
+		return true;
+	}
+
+	/// <inheritdoc/>
+	public bool TryParse(ReadOnlySpan<char> text, IFormatProvider? provider, out Grid result)
+	{
+		if (RemoveBlockLines)
+		{
+			if (GridSimpleMultilinePattern.Match(text.ToString()) is not { Success: true, Value: var match })
+			{
+				goto ReturnFalse;
+			}
+
+			var chars = from @char in match where @char is not ('\r' or '\n') select @char;
+			if (!new SusserGridDefaultConverter().TryParse(chars, null, out result))
+			{
+				goto ReturnFalse;
+			}
+			return true;
+		}
+
+		var matches = from match in GridSusserDigitPattern.Matches(text.ToString()) select match.Value;
+		if (matches.Length is not (var length and (81 or 85)))
+		{
+			// Subtle grid outline will bring 2 '.'s on first line of the grid.
+			goto ReturnFalse;
+		}
+
+		result = Grid.Empty;
+		for (var i = 0; i < 81; i++)
+		{
+			switch (matches[length - 81 + i])
+			{
+				case [var match and not ('.' or '0')]:
+				{
+					result.SetDigit(i, match - '1');
+					result.SetState(i, CellState.Given);
+					break;
+				}
+				case { Length: 1 }:
+				{
+					continue;
+				}
+				case [_, var match]:
+				{
+					if (match is '.' or '0')
+					{
+						// '+0' or '+.'? Invalid combination.
+						goto ReturnFalse;
+					}
+
+					result.SetDigit(i, match - '1');
+					result.SetState(i, CellState.Modifiable);
+					break;
+				}
+				default:
+				{
+					// The sub-match contains more than 2 characters or empty string,
+					// which is invalid.
+					goto ReturnFalse;
+				}
+			}
+		}
+		return true;
+
+	ReturnFalse:
+		result = Grid.Undefined;
+		return false;
+	}
+}

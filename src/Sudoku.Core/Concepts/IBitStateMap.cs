@@ -25,13 +25,10 @@ public interface IBitStateMap<TSelf, TElement> :
 	IReadOnlyList<TElement>,
 	IReadOnlySet<TElement>,
 	ISelectMethod<TSelf, TElement>,
-	ISpanFormattable,
-	ISpanParsable<TSelf>,
 	ISubtractionOperators<TSelf, TElement, TSelf>,
-	IUtf8SpanFormattable,
 	IWhereMethod<TSelf, TElement>
 	where TSelf : unmanaged, IBitStateMap<TSelf, TElement>
-	where TElement : unmanaged, IBinaryInteger<TElement>
+	where TElement : notnull
 {
 	/// <summary>
 	/// Indicates the size of combinatorial calculation.
@@ -205,10 +202,39 @@ public interface IBitStateMap<TSelf, TElement> :
 	bool Equals(in TSelf other);
 
 	/// <inheritdoc cref="object.ToString"/>
-	string ToString() => ToString(null);
+	string ToString() => ToString(CoordinateConverter.InvariantCulture);
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	string ToString(IFormatProvider? formatProvider);
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation
+	/// via the specified culture as default coordinate conversion style.
+	/// </summary>
+	/// <param name="culture">The culture.</param>
+	/// <returns>The target string.</returns>
+	string ToString(CultureInfo culture);
+
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation
+	/// via the specified coordinate converter as default coordinate conversion style.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <returns>The target string.</returns>
+	string ToString(CoordinateConverter converter);
+
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation via the specified converter.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <returns>The target string.</returns>
+	string ToString(IValueConverter<TSelf> converter);
+
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation via the specified converter
+	/// and format provider that effects conversion operation (like culture, numeric literals, etc.).
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <param name="formatProvider">The format provider.</param>
+	/// <returns>The target string.</returns>
+	string ToString(IValueConverter<TSelf> converter, IFormatProvider? formatProvider);
 
 	/// <summary>
 	/// Returns an array of <typeparamref name="TElement"/> offsets having stored in the current collection.
@@ -418,6 +444,113 @@ public interface IBitStateMap<TSelf, TElement> :
 		}
 		return result;
 	}
+
+
+	/// <summary>
+	/// Try to parse a string and convert the value into <typeparamref name="TSelf"/> instance;
+	/// if failed to parse, <see langword="false"/> will be returned.
+	/// </summary>
+	/// <param name="str">The string value to parse.</param>
+	/// <param name="result">The result instance parsed.</param>
+	/// <returns>A <see cref="bool"/> result indicating that.</returns>
+	static abstract bool TryParse(string str, out TSelf result);
+
+	/// <summary>
+	/// Try to parse a string and convert the value into <typeparamref name="TSelf"/> instance;
+	/// if failed to parse, <see langword="false"/> will be returned.
+	/// </summary>
+	/// <param name="str">The string value to parse.</param>
+	/// <param name="culture">The culture that is used for choosing culture-specific coordinate converter.</param>
+	/// <param name="result">The result instance parsed.</param>
+	/// <returns>A <see cref="bool"/> result indicating that.</returns>
+	static abstract bool TryParse(string str, CultureInfo culture, out TSelf result);
+
+	/// <inheritdoc cref="TryParse(string, IValueConverter{TSelf}, IFormatProvider?, out TSelf)"/>
+	static abstract bool TryParse(string str, CoordinateParser converter, out TSelf result);
+
+	/// <inheritdoc cref="TryParse(string, IValueConverter{TSelf}, IFormatProvider?, out TSelf)"/>
+	static abstract bool TryParse(string str, IValueConverter<TSelf> converter, out TSelf result);
+
+	/// <summary>
+	/// Try to parse a string and convert the value into <typeparamref name="TSelf"/> instance;
+	/// if failed to parse, <see langword="false"/> will be returned.
+	/// </summary>
+	/// <param name="str">The string value to parse.</param>
+	/// <param name="converter">The coordinate converter instance.</param>
+	/// <param name="formatProvider">
+	/// The format provider instance that effects parsing operation (like culture, numeric literal handling, etc.).
+	/// </param>
+	/// <param name="result">The result instance parsed.</param>
+	/// <returns>A <see cref="bool"/> result indicating that.</returns>
+	static abstract bool TryParse(string str, IValueConverter<TSelf> converter, IFormatProvider? formatProvider, out TSelf result);
+
+	/// <inheritdoc cref="TryParse(string, out TSelf)"/>
+	static abstract bool TryParse(ReadOnlySpan<char> str, out TSelf result);
+
+	/// <inheritdoc cref="TryParse(string, CultureInfo, out TSelf)"/>
+	static abstract bool TryParse(ReadOnlySpan<char> str, CultureInfo culture, out TSelf result);
+
+	/// <inheritdoc cref="TryParse(string, IValueConverter{TSelf}, IFormatProvider?, out TSelf)"/>
+	static abstract bool TryParse(ReadOnlySpan<char> str, CoordinateParser converter, out TSelf result);
+
+	/// <inheritdoc cref="TryParse(string, IValueConverter{TSelf}, IFormatProvider?, out TSelf)"/>
+	static abstract bool TryParse(ReadOnlySpan<char> str, IValueConverter<TSelf> converter, out TSelf result);
+
+	/// <inheritdoc cref="TryParse(string, IValueConverter{TSelf}, IFormatProvider?, out TSelf)"/>
+	static abstract bool TryParse(ReadOnlySpan<char> str, IValueConverter<TSelf> converter, IFormatProvider? formatProvider, out TSelf result);
+
+	/// <summary>
+	/// Parse a string and convert the value into <typeparamref name="TSelf"/> instance;
+	/// if failed to parse, an exception will be thrown.
+	/// </summary>
+	/// <param name="str">The string value to parse.</param>
+	/// <returns>The result instance parsed.</returns>
+	/// <exception cref="FormatException">Throws when invalid characters encountered.</exception>
+	static abstract TSelf Parse(string str);
+
+	/// <summary>
+	/// Parse a string and convert the value into <typeparamref name="TSelf"/> instance;
+	/// if failed to parse, an exception will be thrown.
+	/// </summary>
+	/// <param name="str">The string value to parse.</param>
+	/// <param name="culture">The culture that is used for choosing culture-specific coordinate converter.</param>
+	/// <returns>The result instance parsed.</returns>
+	/// <exception cref="FormatException">Throws when invalid characters encountered.</exception>
+	static abstract TSelf Parse(string str, CultureInfo culture);
+
+	/// <inheritdoc cref="Parse(string, IValueConverter{TSelf}, IFormatProvider?)"/>
+	static abstract TSelf Parse(string str, CoordinateParser converter);
+
+	/// <inheritdoc cref="Parse(string, IValueConverter{TSelf}, IFormatProvider?)"/>
+	static abstract TSelf Parse(string str, IValueConverter<TSelf> converter);
+
+	/// <summary>
+	/// Parse a string and convert the value into <typeparamref name="TSelf"/> instance;
+	/// if failed to parse, an exception will be thrown.
+	/// </summary>
+	/// <param name="str">The string value to parse.</param>
+	/// <param name="converter">The coordinate converter instance.</param>
+	/// <param name="formatProvider">
+	/// The format provider instance that effects parsing operation (like culture, numeric literal handling, etc.).
+	/// </param>
+	/// <returns>The result instance parsed.</returns>
+	/// <exception cref="FormatException">Throws when invalid characters encountered.</exception>
+	static abstract TSelf Parse(string str, IValueConverter<TSelf> converter, IFormatProvider? formatProvider);
+
+	/// <inheritdoc cref="Parse(string)"/>
+	static abstract TSelf Parse(ReadOnlySpan<char> str);
+
+	/// <inheritdoc cref="Parse(string, CultureInfo)"/>
+	static abstract TSelf Parse(ReadOnlySpan<char> str, CultureInfo culture);
+
+	/// <inheritdoc cref="Parse(string, IValueConverter{TSelf}, IFormatProvider?)"/>
+	static abstract TSelf Parse(ReadOnlySpan<char> str, CoordinateParser converter);
+
+	/// <inheritdoc cref="Parse(string, IValueConverter{TSelf}, IFormatProvider?)"/>
+	static abstract TSelf Parse(ReadOnlySpan<char> str, IValueConverter<TSelf> converter);
+
+	/// <inheritdoc cref="Parse(string, IValueConverter{TSelf}, IFormatProvider?)"/>
+	static abstract TSelf Parse(ReadOnlySpan<char> str, IValueConverter<TSelf> converter, IFormatProvider? formatProvider);
 
 
 	/// <summary>

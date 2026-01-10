@@ -3,9 +3,9 @@ namespace Sudoku.Drawing.Nodes;
 /// <summary>
 /// Represents truth view node.
 /// </summary>
-/// <param name="identifier"><inheritdoc cref="RankSetViewNode(ColorIdentifier, Space)" path="/param[@name='identifier']"/></param>
-/// <param name="space"><inheritdoc cref="RankSetViewNode(ColorIdentifier, Space)" path="/param[@name='space']"/></param>
-public sealed class TruthSpaceViewNode(ColorIdentifier identifier, Space space) : RankSetViewNode(identifier, space)
+/// <param name="identifier"><inheritdoc cref="RankSetViewNode(ColorDescriptor, Space)" path="/param[@name='identifier']"/></param>
+/// <param name="space"><inheritdoc cref="RankSetViewNode(ColorDescriptor, Space)" path="/param[@name='space']"/></param>
+public sealed class TruthSpaceViewNode(ColorDescriptor identifier, Space space) : RankSetViewNode(identifier, space)
 {
 	/// <inheritdoc/>
 	public override bool IsTruth => true;

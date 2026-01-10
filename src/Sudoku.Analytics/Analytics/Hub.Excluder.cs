@@ -73,11 +73,11 @@ public partial class Hub
 			{
 				chosenCells = cc;
 				return (IconViewNode[])[
-					.. from c in chosenCells select new CircleViewNode(ColorIdentifier.Normal, c),
+					.. from c in chosenCells select new CircleViewNode(ColorDescriptorAlias.Normal, c),
 					..
 					from c in covered
-					let p = excluded.Contains(c) ? ColorIdentifier.Auxiliary2 : ColorIdentifier.Auxiliary1
-					select (IconViewNode)(p == ColorIdentifier.Auxiliary2 ? new TriangleViewNode(p, c) : new CrossViewNode(p, c))
+					let p = excluded.Contains(c) ? ColorDescriptorAlias.Auxiliary2 : ColorDescriptorAlias.Auxiliary1
+					select (IconViewNode)(p == ColorDescriptorAlias.Auxiliary2 ? new TriangleViewNode(p, c) : new CrossViewNode(p, c))
 				];
 			}
 
@@ -96,9 +96,9 @@ public partial class Hub
 		public static ReadOnlySpan<IconViewNode> GetNakedSingleExcluders(in Grid grid, Cell cell, Digit digit, out ReadOnlySpan<House> excluderHouses)
 		{
 			var (block, row, column) = (
-				HousesMap[cell >> HouseType.Block] & ~grid.EmptyCells,
-				HousesMap[cell >> HouseType.Row] & ~grid.EmptyCells,
-				HousesMap[cell >> HouseType.Column] & ~grid.EmptyCells
+				HousesMap[cell.GetHouse(HouseType.Block)] & ~grid.EmptyCells,
+				HousesMap[cell.GetHouse(HouseType.Row)] & ~grid.EmptyCells,
+				HousesMap[cell.GetHouse(HouseType.Column)] & ~grid.EmptyCells
 			);
 			var (result, i) = (new IconViewNode[8], 0);
 			excluderHouses = new House[8];
@@ -111,7 +111,7 @@ public partial class Hub
 			})
 			{
 				var tempDigit = grid.GetDigit(tempCell);
-				result[i] = new CircleViewNode(ColorIdentifier.Normal, tempCell);
+				result[i] = new CircleViewNode(ColorDescriptorAlias.Normal, tempCell);
 				Unsafe.AsRef(in excluderHouses[i]) = (cell.AsCellMap() + tempCell).FirstSharedHouse;
 				i++;
 				lastDigitsMask &= (Mask)~(1 << tempDigit);
@@ -122,7 +122,7 @@ public partial class Hub
 				{
 					if (grid.GetDigit(otherCell) == otherDigit)
 					{
-						result[i] = new CircleViewNode(ColorIdentifier.Normal, otherCell);
+						result[i] = new CircleViewNode(ColorDescriptorAlias.Normal, otherCell);
 						Unsafe.AsRef(in excluderHouses[i]) = (cell.AsCellMap() + otherCell).FirstSharedHouse;
 						i++;
 						break;
@@ -153,12 +153,12 @@ public partial class Hub
 			var result = new List<IconViewNode>();
 			foreach (var c in combination)
 			{
-				result.Add(new CircleViewNode(ColorIdentifier.Normal, c));
+				result.Add(new CircleViewNode(ColorDescriptorAlias.Normal, c));
 			}
 			foreach (var c in emptyCellsShouldBeCovered)
 			{
-				var p = emptyCellsNotNeedToBeCovered.Contains(c) ? ColorIdentifier.Auxiliary2 : ColorIdentifier.Auxiliary1;
-				result.Add(p == ColorIdentifier.Auxiliary2 ? new TriangleViewNode(p, c) : new CrossViewNode(p, c));
+				var p = emptyCellsNotNeedToBeCovered.Contains(c) ? ColorDescriptorAlias.Auxiliary2 : ColorDescriptorAlias.Auxiliary1;
+				result.Add(p == ColorDescriptorAlias.Auxiliary2 ? new TriangleViewNode(p, c) : new CrossViewNode(p, c));
 			}
 			return result.AsSpan();
 		}
@@ -182,12 +182,12 @@ public partial class Hub
 			var result = new List<IconViewNode>();
 			foreach (var c in combination)
 			{
-				result.Add(new CircleViewNode(ColorIdentifier.Normal, c));
+				result.Add(new CircleViewNode(ColorDescriptorAlias.Normal, c));
 			}
 			foreach (var c in emptyCellsShouldBeCovered)
 			{
-				var p = emptyCellsNotNeedToBeCovered.Contains(c) ? ColorIdentifier.Auxiliary2 : ColorIdentifier.Auxiliary1;
-				result.Add(p == ColorIdentifier.Auxiliary2 ? new TriangleViewNode(p, c) : new CrossViewNode(p, c));
+				var p = emptyCellsNotNeedToBeCovered.Contains(c) ? ColorDescriptorAlias.Auxiliary2 : ColorDescriptorAlias.Auxiliary1;
+				result.Add(p == ColorDescriptorAlias.Auxiliary2 ? new TriangleViewNode(p, c) : new CrossViewNode(p, c));
 			}
 			return result.AsSpan();
 		}

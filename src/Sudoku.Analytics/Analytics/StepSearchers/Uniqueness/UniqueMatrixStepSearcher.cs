@@ -13,8 +13,8 @@ namespace Sudoku.Analytics.StepSearchers;
 [StepSearcher(
 	"StepSearcherName_UniqueMatrixStepSearcher",
 	Technique.UniqueMatrixType1, Technique.UniqueMatrixType2, Technique.UniqueMatrixType3, Technique.UniqueMatrixType4,
-	SupportedSudokuTypes = GridType.Standard,
-	SupportAnalyzingMultipleSolutionsPuzzle = false)]
+	SupportsSukaku = false,
+	SupportsAnalyzingPuzzleHavingMultipleSolutions = false)]
 public sealed partial class UniqueMatrixStepSearcher : StepSearcher
 {
 	/// <summary>
@@ -138,7 +138,7 @@ public sealed partial class UniqueMatrixStepSearcher : StepSearcher
 			{
 				foreach (var cell in pattern - elimCell & CandidatesMap[digit])
 				{
-					candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + digit));
+					candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + digit));
 				}
 			}
 
@@ -185,12 +185,12 @@ public sealed partial class UniqueMatrixStepSearcher : StepSearcher
 			{
 				foreach (var cell in CandidatesMap[digit] & pattern)
 				{
-					candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + digit));
+					candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + digit));
 				}
 			}
 			foreach (var cell in CandidatesMap[extraDigit] & pattern)
 			{
-				candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + extraDigit));
+				candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, cell * 9 + extraDigit));
 			}
 
 			var step = new UniqueMatrixType2Step(conclusions.AsMemory(), [[.. candidateOffsets]], context.Options, pattern, digitsMask, extraDigit);
@@ -258,7 +258,7 @@ public sealed partial class UniqueMatrixStepSearcher : StepSearcher
 							{
 								candidateOffsets.Add(
 									new(
-										(tempMask >> digit & 1) != 0 ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal,
+										(tempMask >> digit & 1) != 0 ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal,
 										cell * 9 + digit
 									)
 								);
@@ -268,13 +268,13 @@ public sealed partial class UniqueMatrixStepSearcher : StepSearcher
 						{
 							foreach (var digit in grid.GetCandidates(cell))
 							{
-								candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + digit));
+								candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, cell * 9 + digit));
 							}
 						}
 
 						var step = new UniqueMatrixType3Step(
 							conclusions.AsMemory(),
-							[[.. candidateOffsets, new HouseViewNode(ColorIdentifier.Normal, house)]],
+							[[.. candidateOffsets, new HouseViewNode(ColorDescriptorAlias.Normal, house)]],
 							context.Options,
 							pattern,
 							digitsMask,
@@ -356,21 +356,21 @@ public sealed partial class UniqueMatrixStepSearcher : StepSearcher
 			{
 				foreach (var digit in grid.GetCandidates(cell))
 				{
-					candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + digit));
+					candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + digit));
 				}
 			}
 			foreach (var cell in conjugateMap & CandidatesMap[d1])
 			{
-				candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + d1));
+				candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, cell * 9 + d1));
 			}
 			foreach (var cell in conjugateMap & CandidatesMap[d2])
 			{
-				candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + d2));
+				candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, cell * 9 + d2));
 			}
 
 			var step = new UniqueMatrixType4Step(
 				conclusions.AsMemory(),
-				[[.. candidateOffsets, new HouseViewNode(ColorIdentifier.Normal, house)]],
+				[[.. candidateOffsets, new HouseViewNode(ColorDescriptorAlias.Normal, house)]],
 				context.Options,
 				pattern,
 				digitsMask,

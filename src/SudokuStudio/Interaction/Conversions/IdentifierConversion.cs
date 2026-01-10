@@ -1,39 +1,39 @@
 namespace SudokuStudio.Interaction.Conversions;
 
 /// <summary>
-/// Provides with conversion methods used by XAML designer, about <see cref="ColorIdentifier"/> instances.
+/// Provides with conversion methods used by XAML designer, about <see cref="ColorDescriptor"/> instances.
 /// </summary>
-/// <seealso cref="ColorIdentifier"/>
+/// <seealso cref="ColorDescriptor"/>
 internal static class IdentifierConversion
 {
-	public static Color GetColor(ColorIdentifier id)
+	public static Color GetColor(ColorDescriptor id)
 	{
 		var uiPref = Application.CurrentApp.Preference.UIPreferences;
 		return id switch
 		{
-			ColorColorIdentifier(var a, var r, var g, var b) => Color.FromArgb(a, r, g, b),
-			PaletteIdColorIdentifier { Value: var idValue } when getValueById(idValue, out var color) => color,
-			WellKnownColorIdentifier { Kind: var namedKind } => namedKind switch
+			(_, (byte a, byte r, byte g, byte b)) => Color.FromArgb(a, r, g, b),
+			(_, int idValue) when getValueById(idValue, out var color) => color,
+			(_, ColorDescriptorAlias namedKind) => namedKind switch
 			{
-				ColorIdentifierKind.Normal => uiPref.NormalColor,
-				ColorIdentifierKind.Assignment => uiPref.AssignmentColor,
-				ColorIdentifierKind.OverlappedAssignment => uiPref.OverlappedAssignmentColor,
-				ColorIdentifierKind.Elimination => uiPref.EliminationColor,
-				ColorIdentifierKind.Cannibalism => uiPref.CannibalismColor,
-				ColorIdentifierKind.Exofin => uiPref.ExofinColor,
-				ColorIdentifierKind.Endofin => uiPref.EndofinColor,
-				ColorIdentifierKind.Link => uiPref.ChainColor,
-				ColorIdentifierKind.Auxiliary1 => uiPref.AuxiliaryColors[0],
-				ColorIdentifierKind.Auxiliary2 => uiPref.AuxiliaryColors[1],
-				ColorIdentifierKind.Auxiliary3 => uiPref.AuxiliaryColors[2],
-				ColorIdentifierKind.AlmostLockedSet1 => uiPref.AlmostLockedSetsColors[0],
-				ColorIdentifierKind.AlmostLockedSet2 => uiPref.AlmostLockedSetsColors[1],
-				ColorIdentifierKind.AlmostLockedSet3 => uiPref.AlmostLockedSetsColors[2],
-				ColorIdentifierKind.AlmostLockedSet4 => uiPref.AlmostLockedSetsColors[3],
-				ColorIdentifierKind.AlmostLockedSet5 => uiPref.AlmostLockedSetsColors[4],
-				ColorIdentifierKind.Rectangle1 => uiPref.RectangleColors[0],
-				ColorIdentifierKind.Rectangle2 => uiPref.RectangleColors[1],
-				ColorIdentifierKind.Rectangle3 => uiPref.RectangleColors[2],
+				ColorDescriptorAlias.Normal => uiPref.NormalColor,
+				ColorDescriptorAlias.Assignment => uiPref.AssignmentColor,
+				ColorDescriptorAlias.OverlappedAssignment => uiPref.OverlappedAssignmentColor,
+				ColorDescriptorAlias.Elimination => uiPref.EliminationColor,
+				ColorDescriptorAlias.Cannibalism => uiPref.CannibalismColor,
+				ColorDescriptorAlias.Exofin => uiPref.ExofinColor,
+				ColorDescriptorAlias.Endofin => uiPref.EndofinColor,
+				ColorDescriptorAlias.Link => uiPref.ChainColor,
+				ColorDescriptorAlias.Auxiliary1 => uiPref.AuxiliaryColors[0],
+				ColorDescriptorAlias.Auxiliary2 => uiPref.AuxiliaryColors[1],
+				ColorDescriptorAlias.Auxiliary3 => uiPref.AuxiliaryColors[2],
+				ColorDescriptorAlias.AlmostLockedSet1 => uiPref.AlmostLockedSetsColors[0],
+				ColorDescriptorAlias.AlmostLockedSet2 => uiPref.AlmostLockedSetsColors[1],
+				ColorDescriptorAlias.AlmostLockedSet3 => uiPref.AlmostLockedSetsColors[2],
+				ColorDescriptorAlias.AlmostLockedSet4 => uiPref.AlmostLockedSetsColors[3],
+				ColorDescriptorAlias.AlmostLockedSet5 => uiPref.AlmostLockedSetsColors[4],
+				ColorDescriptorAlias.Rectangle1 => uiPref.RectangleColors[0],
+				ColorDescriptorAlias.Rectangle2 => uiPref.RectangleColors[1],
+				ColorDescriptorAlias.Rectangle3 => uiPref.RectangleColors[2],
 				_ => throw new InvalidOperationException(SR.ExceptionMessage("SuchColorCannotBeFound"))
 			},
 			_ => throw new InvalidOperationException(SR.ExceptionMessage("SuchInstanceIsInvalid"))

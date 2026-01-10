@@ -76,7 +76,7 @@ public sealed class DisorderedIttoryuFinder(params TechniqueSet _supportedTechni
 			// Apply all digits for the currently-found nodes.
 			foreach (var node in foundNodes)
 			{
-				grid >>= node;
+				grid.Apply(node);
 			}
 
 		StartCheckingWithoutApplying:
@@ -140,7 +140,7 @@ public sealed class DisorderedIttoryuFinder(params TechniqueSet _supportedTechni
 				digitsStack.Pop();
 			}
 
-			if (!cancellationToken)
+			if (cancellationToken.IsCancellationRequested)
 			{
 				isCanceled = true;
 				return;

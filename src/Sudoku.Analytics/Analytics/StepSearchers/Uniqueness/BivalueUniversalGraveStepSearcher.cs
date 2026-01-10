@@ -1,6 +1,6 @@
 namespace Sudoku.Analytics.StepSearchers;
 
-using TargetCandidatesGroup = CellMapOrCandidateMapGrouping<CandidateMap, Candidate, Cell>;
+using TargetCandidatesGroup = BitStateMapGrouping<CandidateMap, Candidate, Cell>;
 
 /// <summary>
 /// Provides with a <b>Bi-value Universal Grave</b> step searcher.
@@ -36,8 +36,8 @@ using TargetCandidatesGroup = CellMapOrCandidateMapGrouping<CandidateMap, Candid
 	Technique.BivalueUniversalGraveXzRule, Technique.BivalueUniversalGravePlusN,
 	Technique.BivalueUniversalGraveFalseCandidateType,
 
-	SupportedSudokuTypes = GridType.Standard,
-	SupportAnalyzingMultipleSolutionsPuzzle = false)]
+	SupportsSukaku = false,
+	SupportsAnalyzingPuzzleHavingMultipleSolutions = false)]
 public sealed partial class BivalueUniversalGraveStepSearcher : StepSearcher
 {
 	/// <summary>
@@ -78,7 +78,7 @@ public sealed partial class BivalueUniversalGraveStepSearcher : StepSearcher
 				// BUG + 1 found.
 				var step = new BivalueUniversalGraveType1Step(
 					Array.Single(new Conclusion(Assignment, trueCandidate)),
-					[[new CandidateViewNode(ColorIdentifier.Normal, trueCandidate)]],
+					[[new CandidateViewNode(ColorDescriptorAlias.Normal, trueCandidate)]],
 					context.Options
 				);
 				if (context.OnlyFindOne)
@@ -179,7 +179,7 @@ public sealed partial class BivalueUniversalGraveStepSearcher : StepSearcher
 
 				var step = new BivalueUniversalGraveFalseCandidateTypeStep(
 					Array.Single(new Conclusion(Elimination, cell, digit)),
-					[[.. from multiValueCell in multivalueCells select new CellViewNode(ColorIdentifier.Normal, multiValueCell)]],
+					[[.. from multiValueCell in multivalueCells select new CellViewNode(ColorDescriptorAlias.Normal, multiValueCell)]],
 					context.Options,
 					cell * 9 + digit
 				);
@@ -211,7 +211,7 @@ public sealed partial class BivalueUniversalGraveStepSearcher : StepSearcher
 					housesCount.Clear();
 					foreach (var houseType in HouseTypes)
 					{
-						housesCount[(int)houseType] = (candidatesMap[digit] & HousesMap[cell >> houseType]).Count;
+						housesCount[(int)houseType] = (candidatesMap[digit] & HousesMap[cell.GetHouse(houseType)]).Count;
 					}
 
 					if (housesCount is not [2, 2, 2])
@@ -251,7 +251,7 @@ public sealed partial class BivalueUniversalGraveStepSearcher : StepSearcher
 		// BUG type 2.
 		var step = new BivalueUniversalGraveType2Step(
 			(from cell in elimMap select new Conclusion(Elimination, cell, digit)).ToArray(),
-			[[.. from candidate in trueCandidates select new CandidateViewNode(ColorIdentifier.Normal, candidate)]],
+			[[.. from candidate in trueCandidates select new CandidateViewNode(ColorDescriptorAlias.Normal, candidate)]],
 			context.Options,
 			digit,
 			cellsMap
@@ -328,19 +328,19 @@ public sealed partial class BivalueUniversalGraveStepSearcher : StepSearcher
 				var candidateOffsets = new List<CandidateViewNode>();
 				foreach (var cand in trueCandidates)
 				{
-					candidateOffsets.Add(new(ColorIdentifier.Normal, cand));
+					candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cand));
 				}
 				foreach (var cell in cells)
 				{
 					foreach (var digit in grid.GetCandidates(cell))
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + digit));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, cell * 9 + digit));
 					}
 				}
 
 				var step = new BivalueUniversalGraveType3Step(
 					conclusions.AsMemory(),
-					[[.. candidateOffsets, new HouseViewNode(ColorIdentifier.Normal, house)]],
+					[[.. candidateOffsets, new HouseViewNode(ColorDescriptorAlias.Normal, house)]],
 					context.Options,
 					trueCandidates,
 					digitsMask,
@@ -446,10 +446,10 @@ public sealed partial class BivalueUniversalGraveStepSearcher : StepSearcher
 					conclusions.AsMemory(),
 					[
 						[
-							.. from candidate in trueCandidates select new CandidateViewNode(ColorIdentifier.Normal, candidate),
-							new CandidateViewNode(ColorIdentifier.Auxiliary1, cell1 * 9 + conjugatePairDigit),
-							new CandidateViewNode(ColorIdentifier.Auxiliary1, cell2 * 9 + conjugatePairDigit),
-							new ConjugateLinkViewNode(ColorIdentifier.Normal, cell1, cell2, conjugatePairDigit)
+							.. from candidate in trueCandidates select new CandidateViewNode(ColorDescriptorAlias.Normal, candidate),
+							new CandidateViewNode(ColorDescriptorAlias.Auxiliary1, cell1 * 9 + conjugatePairDigit),
+							new CandidateViewNode(ColorDescriptorAlias.Auxiliary1, cell2 * 9 + conjugatePairDigit),
+							new ConjugateLinkViewNode(ColorDescriptorAlias.Normal, cell1, cell2, conjugatePairDigit)
 						]
 					],
 					context.Options,
@@ -503,7 +503,7 @@ public sealed partial class BivalueUniversalGraveStepSearcher : StepSearcher
 		// BUG + n.
 		var step = new BivalueUniversalGraveMultipleStep(
 			conclusions.AsMemory(),
-			[[.. from candidate in trueCandidates select new CandidateViewNode(ColorIdentifier.Normal, candidate)]],
+			[[.. from candidate in trueCandidates select new CandidateViewNode(ColorDescriptorAlias.Normal, candidate)]],
 			context.Options,
 			trueCandidates
 		);
@@ -557,8 +557,8 @@ public sealed partial class BivalueUniversalGraveStepSearcher : StepSearcher
 				conclusions.AsMemory(),
 				[
 					[
-						new CellViewNode(ColorIdentifier.Normal, cell),
-						.. from candidate in trueCandidates select new CandidateViewNode(ColorIdentifier.Normal, candidate)
+						new CellViewNode(ColorDescriptorAlias.Normal, cell),
+						.. from candidate in trueCandidates select new CandidateViewNode(ColorDescriptorAlias.Normal, candidate)
 					]
 				],
 				context.Options,

@@ -35,7 +35,7 @@ public sealed class BivalueUniversalGraveForcingChains(in CandidateMap trueCandi
 		base.PrepareFinnedChainViewNodes(finnedChain, supportedRules, grid, fins, out views);
 		foreach (var candidate in Candidates)
 		{
-			var node = new CandidateViewNode(ColorIdentifier.Auxiliary1, candidate);
+			var node = new CandidateViewNode(ColorDescriptorAlias.Auxiliary1, candidate);
 			foreach (var view in views)
 			{
 				view.Add(node);
@@ -45,5 +45,5 @@ public sealed class BivalueUniversalGraveForcingChains(in CandidateMap trueCandi
 
 	/// <inheritdoc/>
 	protected override ReadOnlySpan<ViewNode> GetInitialViewNodes(in Grid grid)
-		=> from candidate in TrueCandidates select (ViewNode)new CandidateViewNode(ColorIdentifier.Auxiliary1, candidate);
+		=> from candidate in TrueCandidates select (ViewNode)new CandidateViewNode(ColorDescriptorAlias.Auxiliary1, candidate);
 }

@@ -16,12 +16,8 @@ public sealed class OrConstraint(Constraint constraint1, Constraint constraint2)
 	public override int GetHashCode() => HashCode.Combine(Constraint1, Constraint2);
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
-		=> string.Format(
-			SR.Get("OrConstraint", formatProvider as CultureInfo),
-			Constraint1.ToString(formatProvider),
-			Constraint2.ToString(formatProvider)
-		);
+	public override string ToString(CultureInfo culture)
+		=> string.Format(SR.Get("OrConstraint", culture), Constraint1.ToString(culture), Constraint2.ToString(culture));
 
 	/// <inheritdoc/>
 	public override AndConstraint Clone() => new(Constraint1.Clone(), Constraint2.Clone());

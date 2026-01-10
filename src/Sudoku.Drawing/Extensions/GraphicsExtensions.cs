@@ -14,15 +14,14 @@ public static class GraphicsExtensions
 		/// <summary>
 		/// Draw the string representation of an instance onto the current <see cref="Graphics"/> instance.
 		/// </summary>
-		/// <typeparam name="TFormattable">The type of the value to draw.</typeparam>
+		/// <typeparam name="T">The type of the value to draw.</typeparam>
 		/// <param name="value">The value to drawing onto.</param>
 		/// <param name="font">The font.</param>
 		/// <param name="brush">The brush.</param>
 		/// <param name="point">The point.</param>
 		/// <param name="stringFormat">The string format instance.</param>
-		public void DrawValue<TFormattable>(TFormattable value, Font font, Brush brush, PointF point, StringFormat stringFormat)
-			where TFormattable : IFormattable, allows ref struct
-			=> @this.DrawString(value.ToString(null, null), font, brush, point, stringFormat);
+		public void DrawValue<T>(T value, Font font, Brush brush, PointF point, StringFormat stringFormat) where T : notnull
+			=> @this.DrawString(value.ToString(), font, brush, point, stringFormat);
 
 		/// <summary>
 		/// Fills a hollow arrow.

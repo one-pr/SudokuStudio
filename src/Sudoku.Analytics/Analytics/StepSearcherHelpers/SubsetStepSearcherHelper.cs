@@ -104,7 +104,7 @@ internal sealed class SubsetStepSearcherHelper : StepSearcherHelper
 				{
 					foreach (var cell in cells & candidatesMapForGrid[digit])
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + digit));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + digit));
 					}
 
 					cellOffsets.AddRange(Excluder.GetSubsetExcluders(grid, digit, house, cells));
@@ -141,7 +141,7 @@ internal sealed class SubsetStepSearcherHelper : StepSearcherHelper
 
 					var step = new HiddenSubsetStep(
 						conclusions.AsMemory(),
-						[[.. candidateOffsets, new HouseViewNode(ColorIdentifier.Normal, house), .. cellOffsets]],
+						[[.. candidateOffsets, new HouseViewNode(ColorDescriptorAlias.Normal, house), .. cellOffsets]],
 						context.Options,
 						house,
 						cells,
@@ -217,7 +217,7 @@ internal sealed class SubsetStepSearcherHelper : StepSearcherHelper
 				{
 					foreach (var digit in grid.GetCandidates(cell))
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + digit));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + digit));
 					}
 				}
 
@@ -233,7 +233,7 @@ internal sealed class SubsetStepSearcherHelper : StepSearcherHelper
 
 				var step = new NakedSubsetStep(
 					conclusions.AsMemory(),
-					[[.. candidateOffsets, new HouseViewNode(ColorIdentifier.Normal, house)]],
+					[[.. candidateOffsets, new HouseViewNode(ColorDescriptorAlias.Normal, house)]],
 					context.Options,
 					house,
 					cells,

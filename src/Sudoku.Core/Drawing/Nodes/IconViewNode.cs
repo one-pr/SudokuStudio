@@ -3,9 +3,9 @@ namespace Sudoku.Drawing.Nodes;
 /// <summary>
 /// Defines an icon view node that applies to a cell, indicating the icon of the cell. The icons can be used on some sudoku variants.
 /// </summary>
-/// <param name="identifier"><inheritdoc cref="ViewNode(ColorIdentifier)"/></param>
+/// <param name="identifier"><inheritdoc cref="ViewNode(ColorDescriptor)"/></param>
 /// <param name="cell"><inheritdoc cref="Cell" path="/summary"/></param>
-public abstract class IconViewNode(ColorIdentifier identifier, Cell cell) : ViewNode(identifier)
+public abstract class IconViewNode(ColorDescriptor identifier, Cell cell) : ViewNode(identifier)
 {
 	/// <summary>
 	/// The cell.

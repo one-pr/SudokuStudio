@@ -236,11 +236,10 @@ file static class Extensions
 		/// </summary>
 		/// <param name="step">The step to be calculated.</param>
 		/// <param name="scale">The scale value to be used.</param>
-		/// <param name="formatProvider">The culture to be used.</param>
+		/// <param name="culture">The culture to be used.</param>
 		/// <returns>The string representation of final rating text.</returns>
-		public string ToString(Step step, decimal scale, IFormatProvider? formatProvider)
+		public string ToString(Step step, decimal scale, CultureInfo? culture)
 		{
-			var culture = formatProvider as CultureInfo;
 			var colonCharacter = SR.Get("_Token_Colon", culture);
 			return @this.Formula(from propertyInfo in @this.Parameters select propertyInfo.GetValue(step)!) switch
 			{

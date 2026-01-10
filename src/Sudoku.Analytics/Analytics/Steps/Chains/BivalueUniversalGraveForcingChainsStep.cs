@@ -83,7 +83,7 @@ public sealed class BivalueUniversalGraveForcingChainsStep(
 			)
 		];
 
-	private string ChainsStr => Casted.ToString(new ChainFormatInfo(Options.Converter));
+	private string ChainsStr => Casted.ToString(new CustomizedChainConverter { CustomizedCandidateConverter = Options.Converter });
 
 	private BivalueUniversalGraveForcingChains Casted => (BivalueUniversalGraveForcingChains)Pattern;
 

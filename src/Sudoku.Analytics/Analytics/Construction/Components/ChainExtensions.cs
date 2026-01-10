@@ -144,7 +144,7 @@ internal static class ChainExtensions
 					from link in @this.Links
 					let node1 = link.FirstNode
 					let node2 = link.SecondNode
-					select new ChainLinkViewNode(ColorIdentifier.Normal, node1.Map, node2.Map, link.IsStrong)
+					select new ChainLinkViewNode(ColorDescriptorAlias.Normal, node1.Map, node2.Map, link.IsStrong)
 				]
 			];
 
@@ -163,7 +163,7 @@ internal static class ChainExtensions
 			var result = new List<CandidateViewNode>();
 			for (var i = 0; i < chain.Length; i++)
 			{
-				var id = (i & 1) == 0 ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal;
+				var id = (i & 1) == 0 ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal;
 				foreach (var candidate in chain[i].Map)
 				{
 					result.Add(new(id, candidate));

@@ -114,7 +114,7 @@ internal abstract class ForcingChainsStepSearcherHelper : ChainingStepSearcherHe
 				{
 					foreach (var node in supposedOff)
 					{
-						var nextNode = node >> currentNode;
+						var nextNode = Node.Create(node, currentNode);
 						if (nodesSupposedOn.Contains(~nextNode))
 						{
 							// Contradiction is found.
@@ -135,7 +135,7 @@ internal abstract class ForcingChainsStepSearcherHelper : ChainingStepSearcherHe
 				{
 					foreach (var node in supposedOn)
 					{
-						var nextNode = node >> currentNode;
+						var nextNode = Node.Create(node, currentNode);
 						if (nodesSupposedOff.Contains(~nextNode))
 						{
 							// Contradiction is found.

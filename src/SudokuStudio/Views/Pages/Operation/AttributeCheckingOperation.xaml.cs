@@ -25,7 +25,7 @@ public sealed partial class AttributeCheckingOperation : Page, IOperationProvide
 			return;
 		}
 
-		if (puzzle.PuzzleType == GridType.Sukaku)
+		if (puzzle.IsSukaku)
 		{
 			ErrorDialog_SukakuIsNotSupportedForThisFunction.Target = BackdoorButton;
 			ErrorDialog_SukakuIsNotSupportedForThisFunction.IsOpen = true;
@@ -45,7 +45,7 @@ public sealed partial class AttributeCheckingOperation : Page, IOperationProvide
 			from backdoor in backdoors
 			let type = backdoor.ConclusionType
 			let candidate = backdoor.Candidate
-			select new CandidateViewNode(type == Assignment ? ColorIdentifierKind.Assignment : ColorIdentifierKind.Elimination, candidate)
+			select new CandidateViewNode(type == Assignment ? ColorDescriptorAlias.Assignment : ColorDescriptorAlias.Elimination, candidate)
 		]);
 	}
 
@@ -59,7 +59,7 @@ public sealed partial class AttributeCheckingOperation : Page, IOperationProvide
 			return;
 		}
 
-		if (puzzle.PuzzleType == GridType.Sukaku)
+		if (puzzle.IsSukaku)
 		{
 			ErrorDialog_SukakuIsNotSupportedForThisFunction.Target = TrueCandidateButton;
 			ErrorDialog_SukakuIsNotSupportedForThisFunction.IsOpen = true;
@@ -82,7 +82,7 @@ public sealed partial class AttributeCheckingOperation : Page, IOperationProvide
 		BasePage.VisualUnit = new TrueCandidateVisualUnit([
 			..
 			from candidate in trueCandidates
-			select new CandidateViewNode(ColorIdentifierKind.Assignment, candidate)
+			select new CandidateViewNode(ColorDescriptorAlias.Assignment, candidate)
 		]);
 	}
 
@@ -96,7 +96,7 @@ public sealed partial class AttributeCheckingOperation : Page, IOperationProvide
 			return;
 		}
 
-		if (puzzle.PuzzleType == GridType.Sukaku)
+		if (puzzle.IsSukaku)
 		{
 			ErrorDialog_SukakuIsNotSupportedForThisFunction.Target = DisorderedIttoryuButton;
 			ErrorDialog_SukakuIsNotSupportedForThisFunction.IsOpen = true;

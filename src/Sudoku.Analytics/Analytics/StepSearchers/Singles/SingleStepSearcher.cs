@@ -209,7 +209,7 @@ public sealed partial class SingleStepSearcher : StepSearcher
 				var emptyCellsCountFromAllPeerHouses = 0;
 				foreach (var houseType in HouseTypes)
 				{
-					var peerHouse = resultCell >> houseType;
+					var peerHouse = resultCell.GetHouse(houseType);
 					foreach (var cell in HousesCells[peerHouse])
 					{
 						if (grid.GetState(cell) == CellState.Empty)
@@ -221,7 +221,7 @@ public sealed partial class SingleStepSearcher : StepSearcher
 
 				var step = new FullHouseStep(
 					Array.Single(new Conclusion(Assignment, resultCell, digit)),
-					[[new HouseViewNode(ColorIdentifier.Normal, house)]],
+					[[new HouseViewNode(ColorDescriptorAlias.Normal, house)]],
 					context.Options,
 					house,
 					resultCell,
@@ -273,7 +273,7 @@ public sealed partial class SingleStepSearcher : StepSearcher
 				}
 
 				if (TechniqueNaming.Single.GetNakedSingleSubtype(grid, cell) is var subtype && subtype.IsUnnecessary
-					&& grid.PuzzleType != GridType.Sukaku)
+					&& grid.IsStandard)
 				{
 					continue;
 				}
@@ -365,7 +365,7 @@ public sealed partial class SingleStepSearcher : StepSearcher
 			var digit = BitOperations.TrailingZeroCount(grid.GetCandidates(resultCell));
 			var step = new FullHouseStep(
 				Array.Single(new Conclusion(Assignment, resultCell, digit)),
-				[[new HouseViewNode(ColorIdentifier.Normal, house)]],
+				[[new HouseViewNode(ColorDescriptorAlias.Normal, house)]],
 				context.Options,
 				house,
 				resultCell,
@@ -555,7 +555,7 @@ public sealed partial class SingleStepSearcher : StepSearcher
 				if (grid.GetDigit(cell) == digit)
 				{
 					digitCount++;
-					cellOffsets.Add(new CircleViewNode(ColorIdentifier.Normal, cell));
+					cellOffsets.Add(new CircleViewNode(ColorDescriptorAlias.Normal, cell));
 				}
 			}
 
@@ -585,13 +585,13 @@ public sealed partial class SingleStepSearcher : StepSearcher
 				var cellOffsets2 = Excluder.GetHiddenSingleExcluders(grid, digit, house, resultCell, out var chosenCells, out var excluderInfo);
 				return TechniqueNaming.Single.GetHiddenSingleSubtype(grid, resultCell, house, chosenCells) switch
 				{
-					var subtype when subtype.IsUnnecessary && grid.PuzzleType != GridType.Sukaku => null,
+					var subtype when subtype.IsUnnecessary && grid.IsStandard => null,
 					var subtype => new HiddenSingleStep(
 						Array.Single(new Conclusion(Assignment, resultCell, digit)),
 						[
 							[
 								.. excluderInfo.ExcludedCells.Count == 0 ? cellOffsets2 : [],
-								new HouseViewNode(ColorIdentifier.Normal, house)
+								new HouseViewNode(ColorDescriptorAlias.Normal, house)
 							]
 						],
 						context.Options,

@@ -162,7 +162,7 @@ public sealed partial class BivalueOddagonStepSearcher : StepSearcher
 			var h = (stackalloc House[3]);
 			foreach (var houseType in HouseTypes)
 			{
-				var nextHouse = previousCell >> houseType;
+				var nextHouse = previousCell.GetHouse(houseType);
 				if (nextHouse == previousHouse)
 				{
 					continue;
@@ -266,7 +266,7 @@ public sealed partial class BivalueOddagonStepSearcher : StepSearcher
 		{
 			foreach (var digit in grid.GetCandidates(cell))
 			{
-				candidateOffsets.Add(new(digit == extraDigit ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, cell * 9 + digit));
+				candidateOffsets.Add(new(digit == extraDigit ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, cell * 9 + digit));
 			}
 		}
 
@@ -274,7 +274,7 @@ public sealed partial class BivalueOddagonStepSearcher : StepSearcher
 		var links = new List<CellLinkViewNode>();
 		foreach (var (first, second) in hamiltonianLoop.EnumerateAdjacentCells())
 		{
-			links.Add(new(ColorIdentifier.Normal, first, second));
+			links.Add(new(ColorDescriptorAlias.Normal, first, second));
 		}
 
 		var step = new BivalueOddagonType2Step(
@@ -378,7 +378,7 @@ public sealed partial class BivalueOddagonStepSearcher : StepSearcher
 						{
 							candidateOffsets.Add(
 								new(
-									(otherDigitsMask >> digit & 1) != 0 ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal,
+									(otherDigitsMask >> digit & 1) != 0 ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal,
 									cell * 9 + digit
 								)
 							);
@@ -388,7 +388,7 @@ public sealed partial class BivalueOddagonStepSearcher : StepSearcher
 					{
 						foreach (var digit in grid.GetCandidates(cell))
 						{
-							candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + digit));
+							candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, cell * 9 + digit));
 						}
 					}
 
@@ -396,11 +396,11 @@ public sealed partial class BivalueOddagonStepSearcher : StepSearcher
 					var links = new List<CellLinkViewNode>();
 					foreach (var (first, second) in hamiltonianLoop.EnumerateAdjacentCells())
 					{
-						links.Add(new(ColorIdentifier.Normal, first, second));
+						links.Add(new(ColorDescriptorAlias.Normal, first, second));
 					}
 					var step = new BivalueOddagonType3Step(
 						conclusions.AsMemory(),
-						[[.. candidateOffsets, new HouseViewNode(ColorIdentifier.Normal, house), .. links]],
+						[[.. candidateOffsets, new HouseViewNode(ColorDescriptorAlias.Normal, house), .. links]],
 						context.Options,
 						loop,
 						d1,
@@ -527,14 +527,14 @@ public sealed partial class BivalueOddagonStepSearcher : StepSearcher
 		{
 			foreach (var digit in grid.GetCandidates(cell))
 			{
-				candidateOffsets.Add(new(digit == extraDigit ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, cell * 9 + digit));
+				candidateOffsets.Add(new(digit == extraDigit ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, cell * 9 + digit));
 			}
 		}
 
 		var links = new List<CellLinkViewNode>();
 		foreach (var (first, second) in hamiltonianLoop.EnumerateAdjacentCells())
 		{
-			links.Add(new(ColorIdentifier.Normal, first, second));
+			links.Add(new(ColorDescriptorAlias.Normal, first, second));
 		}
 
 		var step = new BivalueOddagonType4Step(
@@ -543,7 +543,7 @@ public sealed partial class BivalueOddagonStepSearcher : StepSearcher
 				[
 					.. candidateOffsets,
 					.. links,
-					new ConjugateLinkViewNode(ColorIdentifier.Normal, extraCellsMap[0], extraCellsMap[1], extraDigit)
+					new ConjugateLinkViewNode(ColorDescriptorAlias.Normal, extraCellsMap[0], extraCellsMap[1], extraDigit)
 				]
 			],
 			context.Options,

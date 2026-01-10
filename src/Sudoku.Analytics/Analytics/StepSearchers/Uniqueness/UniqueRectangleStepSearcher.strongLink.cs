@@ -89,7 +89,7 @@ public partial class UniqueRectangleStepSearcher
 									{
 										candidateOffsets.Add(
 											new(
-												d == digit ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal,
+												d == digit ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal,
 												urCell * 9 + d
 											)
 										);
@@ -99,7 +99,7 @@ public partial class UniqueRectangleStepSearcher
 								{
 									foreach (var d in grid.GetCandidates(urCell))
 									{
-										candidateOffsets.Add(new(ColorIdentifier.Normal, urCell * 9 + d));
+										candidateOffsets.Add(new(ColorDescriptorAlias.Normal, urCell * 9 + d));
 									}
 								}
 							}
@@ -112,8 +112,8 @@ public partial class UniqueRectangleStepSearcher
 										candidateOffsets.Add(
 											new(
 												urCell == elimCell
-													? ColorIdentifier.Normal
-													: d1 == digit ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal,
+													? ColorDescriptorAlias.Normal
+													: d1 == digit ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal,
 												urCell * 9 + d1
 											)
 										);
@@ -126,8 +126,8 @@ public partial class UniqueRectangleStepSearcher
 										candidateOffsets.Add(
 											new(
 												urCell == elimCell
-													? ColorIdentifier.Normal
-													: d2 == digit ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal,
+													? ColorDescriptorAlias.Normal
+													: d2 == digit ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal,
 												urCell * 9 + d2
 											)
 										);
@@ -148,7 +148,7 @@ public partial class UniqueRectangleStepSearcher
 									[
 										.. arMode ? GetHighlightCells(urCells) : [],
 										.. candidateOffsets,
-										new ConjugateLinkViewNode(ColorIdentifier.Normal, cell, otherCell, digit)
+										new ConjugateLinkViewNode(ColorDescriptorAlias.Normal, cell, otherCell, digit)
 									]
 								],
 								context.Options,
@@ -261,7 +261,7 @@ public partial class UniqueRectangleStepSearcher
 									{
 										candidateOffsets.Add(
 											new(
-												d == digit ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal,
+												d == digit ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal,
 												urCell * 9 + d
 											)
 										);
@@ -271,7 +271,7 @@ public partial class UniqueRectangleStepSearcher
 								{
 									foreach (var d in grid.GetCandidates(urCell))
 									{
-										candidateOffsets.Add(new(ColorIdentifier.Normal, urCell * 9 + d));
+										candidateOffsets.Add(new(ColorDescriptorAlias.Normal, urCell * 9 + d));
 									}
 								}
 							}
@@ -282,8 +282,8 @@ public partial class UniqueRectangleStepSearcher
 									candidateOffsets.Add(
 										new(
 											urCell == elimCell
-												? ColorIdentifier.Normal
-												: d1 == digit ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal,
+												? ColorDescriptorAlias.Normal
+												: d1 == digit ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal,
 											urCell * 9 + d1
 										)
 									);
@@ -293,8 +293,8 @@ public partial class UniqueRectangleStepSearcher
 									candidateOffsets.Add(
 										new(
 											urCell == elimCell
-												? ColorIdentifier.Normal
-												: d2 == digit ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal,
+												? ColorDescriptorAlias.Normal
+												: d2 == digit ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal,
 											urCell * 9 + d2
 										)
 									);
@@ -314,7 +314,7 @@ public partial class UniqueRectangleStepSearcher
 									[
 										.. arMode ? GetHighlightCells(urCells) : [],
 										.. candidateOffsets,
-										new ConjugateLinkViewNode(ColorIdentifier.Normal, cell, otherCell, digit)
+										new ConjugateLinkViewNode(ColorDescriptorAlias.Normal, cell, otherCell, digit)
 									]
 								],
 								context.Options,
@@ -397,26 +397,26 @@ public partial class UniqueRectangleStepSearcher
 			{
 				if ((digit == d1 || digit == d2) && digit != a)
 				{
-					candidateOffsets.Add(new(digit == b ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, abxCell * 9 + digit));
+					candidateOffsets.Add(new(digit == b ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, abxCell * 9 + digit));
 				}
 			}
 			foreach (var digit in grid.GetCandidates(abyCell))
 			{
 				if ((digit == d1 || digit == d2) && digit != b)
 				{
-					candidateOffsets.Add(new(digit == a ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, abyCell * 9 + digit));
+					candidateOffsets.Add(new(digit == a ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, abyCell * 9 + digit));
 				}
 			}
 			foreach (var digit in grid.GetCandidates(abzCell))
 			{
 				if (digit == a || digit == b)
 				{
-					candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, abzCell * 9 + digit));
+					candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, abzCell * 9 + digit));
 				}
 			}
 			foreach (var digit in comparer)
 			{
-				candidateOffsets.Add(new(ColorIdentifier.Normal, cornerCell * 9 + digit));
+				candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cornerCell * 9 + digit));
 			}
 			if (!AllowIncompleteUniqueRectangles && candidateOffsets.Count != 6)
 			{
@@ -430,8 +430,8 @@ public partial class UniqueRectangleStepSearcher
 						[
 							.. arMode ? GetHighlightCells(urCells) : [],
 							.. candidateOffsets,
-							new ConjugateLinkViewNode(ColorIdentifier.Normal, abxCell, abzCell, b),
-							new ConjugateLinkViewNode(ColorIdentifier.Normal, abyCell, abzCell, a)
+							new ConjugateLinkViewNode(ColorDescriptorAlias.Normal, abxCell, abzCell, b),
+							new ConjugateLinkViewNode(ColorDescriptorAlias.Normal, abyCell, abzCell, a)
 						]
 					],
 					context.Options,
@@ -513,27 +513,27 @@ public partial class UniqueRectangleStepSearcher
 				var candidateOffsets = new List<CandidateViewNode>(7);
 				foreach (var d in comparer)
 				{
-					candidateOffsets.Add(new(d == a ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, cornerCell * 9 + d));
+					candidateOffsets.Add(new(d == a ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, cornerCell * 9 + d));
 				}
 				foreach (var d in digits)
 				{
 					if (CandidatesMap[d].Contains(abzCell))
 					{
-						candidateOffsets.Add(new(d == b ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, abzCell * 9 + d));
+						candidateOffsets.Add(new(d == b ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, abzCell * 9 + d));
 					}
 				}
 				foreach (var d in grid.GetCandidates(begin))
 				{
 					if (d == d1 || d == d2)
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, begin * 9 + d));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, begin * 9 + d));
 					}
 				}
 				foreach (var d in grid.GetCandidates(end))
 				{
 					if ((d == d1 || d == d2) && d != a)
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Normal, end * 9 + d));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Normal, end * 9 + d));
 					}
 				}
 				if (!AllowIncompleteUniqueRectangles && candidateOffsets.Count != 7)
@@ -549,8 +549,8 @@ public partial class UniqueRectangleStepSearcher
 							[
 								.. arMode ? GetHighlightCells(urCells) : [],
 								.. candidateOffsets,
-								new ConjugateLinkViewNode(ColorIdentifier.Normal, cornerCell, begin, a),
-								new ConjugateLinkViewNode(ColorIdentifier.Auxiliary1, begin, abzCell, b)
+								new ConjugateLinkViewNode(ColorDescriptorAlias.Normal, cornerCell, begin, a),
+								new ConjugateLinkViewNode(ColorDescriptorAlias.Auxiliary1, begin, abzCell, b)
 							]
 						],
 						context.Options,
@@ -627,27 +627,27 @@ public partial class UniqueRectangleStepSearcher
 				var candidateOffsets = new List<CandidateViewNode>(7);
 				foreach (var d in comparer)
 				{
-					candidateOffsets.Add(new(d == a ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, cornerCell * 9 + d));
+					candidateOffsets.Add(new(d == a ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, cornerCell * 9 + d));
 				}
 				foreach (var d in grid.GetCandidates(begin))
 				{
 					if ((d == d1 || d == d2) && d != a)
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, begin * 9 + d));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, begin * 9 + d));
 					}
 				}
 				foreach (var d in grid.GetCandidates(end))
 				{
 					if (d == d1 || d == d2)
 					{
-						candidateOffsets.Add(new(d == a ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, end * 9 + d));
+						candidateOffsets.Add(new(d == a ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, end * 9 + d));
 					}
 				}
 				foreach (var d in grid.GetCandidates(abzCell))
 				{
 					if (d == d1 || d == d2)
 					{
-						candidateOffsets.Add(new(d == b ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, abzCell * 9 + d));
+						candidateOffsets.Add(new(d == b ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, abzCell * 9 + d));
 					}
 				}
 				if (!AllowIncompleteUniqueRectangles && candidateOffsets.Count != 7)
@@ -663,8 +663,8 @@ public partial class UniqueRectangleStepSearcher
 							[
 								.. arMode ? GetHighlightCells(urCells) : [],
 								.. candidateOffsets,
-								new ConjugateLinkViewNode(ColorIdentifier.Normal, cornerCell, end, a),
-								new ConjugateLinkViewNode(ColorIdentifier.Auxiliary1, begin, abzCell, b)
+								new ConjugateLinkViewNode(ColorDescriptorAlias.Normal, cornerCell, end, a),
+								new ConjugateLinkViewNode(ColorDescriptorAlias.Auxiliary1, begin, abzCell, b)
 							]
 						],
 						context.Options,
@@ -741,27 +741,27 @@ public partial class UniqueRectangleStepSearcher
 				var candidateOffsets = new List<CandidateViewNode>(7);
 				foreach (var d in comparer)
 				{
-					candidateOffsets.Add(new(d == a ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, cornerCell * 9 + d));
+					candidateOffsets.Add(new(d == a ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, cornerCell * 9 + d));
 				}
 				foreach (var d in grid.GetCandidates(begin))
 				{
 					if (d == d1 || d == d2)
 					{
-						candidateOffsets.Add(new(d == a ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, begin * 9 + d));
+						candidateOffsets.Add(new(d == a ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, begin * 9 + d));
 					}
 				}
 				foreach (var d in grid.GetCandidates(end))
 				{
 					if (d == d1 || d == d2)
 					{
-						candidateOffsets.Add(new(d == a ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, end * 9 + d));
+						candidateOffsets.Add(new(d == a ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, end * 9 + d));
 					}
 				}
 				foreach (var d in grid.GetCandidates(abzCell))
 				{
 					if ((d == d1 || d == d2) && d != b)
 					{
-						candidateOffsets.Add(new(d == a ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, abzCell * 9 + d));
+						candidateOffsets.Add(new(d == a ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, abzCell * 9 + d));
 					}
 				}
 				if (!AllowIncompleteUniqueRectangles && candidateOffsets.Count != 7)
@@ -777,8 +777,8 @@ public partial class UniqueRectangleStepSearcher
 							[
 								.. arMode ? GetHighlightCells(urCells) : [],
 								.. candidateOffsets,
-								new ConjugateLinkViewNode(ColorIdentifier.Normal, cornerCell, end, a),
-								new ConjugateLinkViewNode(ColorIdentifier.Auxiliary1, begin, abzCell, a)
+								new ConjugateLinkViewNode(ColorDescriptorAlias.Normal, cornerCell, end, a),
+								new ConjugateLinkViewNode(ColorDescriptorAlias.Auxiliary1, begin, abzCell, a)
 							]
 						],
 						context.Options,
@@ -866,28 +866,28 @@ public partial class UniqueRectangleStepSearcher
 				{
 					if ((d == d1 || d == d2) && d != b)
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, head * 9 + d));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, head * 9 + d));
 					}
 				}
 				foreach (var d in grid.GetCandidates(extra))
 				{
 					if ((d == d1 || d == d2) && d != b)
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, extra * 9 + d));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, extra * 9 + d));
 					}
 				}
 				foreach (var d in grid.GetCandidates(begin))
 				{
 					if (d == d1 || d == d2)
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, begin * 9 + d));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, begin * 9 + d));
 					}
 				}
 				foreach (var d in grid.GetCandidates(end))
 				{
 					if (d == d1 || d == d2)
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, end * 9 + d));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, end * 9 + d));
 					}
 				}
 				if (!AllowIncompleteUniqueRectangles && (candidateOffsets.Count, conclusions.Count) != (6, 2))
@@ -903,9 +903,9 @@ public partial class UniqueRectangleStepSearcher
 							[
 								.. arMode ? GetHighlightCells(urCells) : [],
 								.. candidateOffsets,
-								new ConjugateLinkViewNode(ColorIdentifier.Normal, head, begin, a),
-								new ConjugateLinkViewNode(ColorIdentifier.Auxiliary1, begin, end, b),
-								new ConjugateLinkViewNode(ColorIdentifier.Normal, end, extra, a)
+								new ConjugateLinkViewNode(ColorDescriptorAlias.Normal, head, begin, a),
+								new ConjugateLinkViewNode(ColorDescriptorAlias.Auxiliary1, begin, end, b),
+								new ConjugateLinkViewNode(ColorDescriptorAlias.Normal, end, extra, a)
 							]
 						],
 						context.Options,
@@ -1007,7 +1007,7 @@ public partial class UniqueRectangleStepSearcher
 						{
 							candidateOffsets.Add(
 								new(
-									i == 0 ? d == a ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal : ColorIdentifier.Auxiliary1,
+									i == 0 ? d == a ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal : ColorDescriptorAlias.Auxiliary1,
 									abx * 9 + d
 								)
 							);
@@ -1017,21 +1017,21 @@ public partial class UniqueRectangleStepSearcher
 					{
 						if (d == d1 || d == d2)
 						{
-							candidateOffsets.Add(new(d == b ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, abz * 9 + d));
+							candidateOffsets.Add(new(d == b ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, abz * 9 + d));
 						}
 					}
 					foreach (var d in grid.GetCandidates(aby))
 					{
 						if ((d == d1 || d == d2) && d != b)
 						{
-							candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, aby * 9 + d));
+							candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, aby * 9 + d));
 						}
 					}
 					foreach (var d in grid.GetCandidates(abw))
 					{
 						if (d == d1 || d == d2)
 						{
-							candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, abw * 9 + d));
+							candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, abw * 9 + d));
 						}
 					}
 					if (!AllowIncompleteUniqueRectangles && candidateOffsets.Count != 7)
@@ -1047,9 +1047,9 @@ public partial class UniqueRectangleStepSearcher
 								[
 									.. arMode ? GetHighlightCells(urCells) : [],
 									.. candidateOffsets,
-									new ConjugateLinkViewNode(ColorIdentifier.Normal, abx, aby, a),
-									new ConjugateLinkViewNode(ColorIdentifier.Normal, aby, abw, a),
-									new ConjugateLinkViewNode(ColorIdentifier.Auxiliary1, linkMap[0], linkMap[1], b)
+									new ConjugateLinkViewNode(ColorDescriptorAlias.Normal, abx, aby, a),
+									new ConjugateLinkViewNode(ColorDescriptorAlias.Normal, aby, abw, a),
+									new ConjugateLinkViewNode(ColorDescriptorAlias.Auxiliary1, linkMap[0], linkMap[1], b)
 								]
 							],
 							context.Options,

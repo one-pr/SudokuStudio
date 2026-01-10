@@ -34,14 +34,11 @@ public sealed class LastingConstraint : Constraint, ILimitCountConstraint<int>, 
 	public override int GetHashCode() => HashCode.Combine(LimitCount, TechniqueFlag, Operator);
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
-	{
-		var culture = formatProvider as CultureInfo;
-		return string.Format(
+	public override string ToString(CultureInfo culture)
+		=> string.Format(
 			SR.Get("LastingConstraint", culture),
 			[TechniqueFlag.GetName(culture), Operator.OperatorString, LimitCount.ToString()]
 		);
-	}
 
 	/// <inheritdoc/>
 	public override LastingConstraint Clone()

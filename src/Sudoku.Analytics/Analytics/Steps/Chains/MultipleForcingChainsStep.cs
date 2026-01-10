@@ -89,7 +89,7 @@ public sealed class MultipleForcingChainsStep(
 			)
 		];
 
-	private string ChainsStr => Casted.ToString(new ChainFormatInfo(Options.Converter));
+	private string ChainsStr => Casted.ToString(new CustomizedChainConverter { CustomizedCandidateConverter = Options.Converter });
 
 	private MultipleForcingChains Casted => (MultipleForcingChains)Pattern;
 

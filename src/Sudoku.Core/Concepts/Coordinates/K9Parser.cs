@@ -21,7 +21,7 @@ public sealed partial record K9Parser : CoordinateParser
 			}
 
 			var result = CellMap.Empty;
-			foreach (var match in matches.Cast<Match>())
+			foreach (var match in from match in matches select match)
 			{
 				var s = match.Value;
 				var indexOfTheFirstDigit = (-s).FindIndex(char.IsDigit);
@@ -29,7 +29,7 @@ public sealed partial record K9Parser : CoordinateParser
 				var columns = s[(indexOfTheFirstDigit + 1)..];
 				foreach (var row in rows)
 				{
-					var finalRow = row is 'I' or 'i' or 'J' or 'j' or 'K' or 'k' ? 'I' : char.ToUpper(row);
+					var finalRow = row is >= 'I' and <= 'K' or >= 'i' and <= 'k' ? 'I' : char.ToUpper(row);
 					foreach (var column in columns)
 					{
 						result += (finalRow - 'A') * 9 + column - '1';
@@ -54,7 +54,7 @@ public sealed partial record K9Parser : CoordinateParser
 			}
 
 			var result = CandidateMap.Empty;
-			foreach (var match in matches.Cast<Match>())
+			foreach (var match in from match in matches select match)
 			{
 				if (match.Captures is not [{ Value: var rows }, { Value: var columns }, { Value: var digits }])
 				{
@@ -94,7 +94,7 @@ public sealed partial record K9Parser : CoordinateParser
 			}
 
 			var result = new ConclusionSet();
-			foreach (var match in matches.Cast<Match>())
+			foreach (var match in from match in matches select match)
 			{
 				if (match.Captures is not [{ Value: var cells }, _, { Value: var equalityOperator }, { Value: var digits }])
 				{
@@ -134,7 +134,7 @@ public sealed partial record K9Parser : CoordinateParser
 			}
 
 			var result = new List<Conjugate>();
-			foreach (var match in matches.Cast<Match>())
+			foreach (var match in from match in matches select match)
 			{
 				if (match.Captures is [{ Value: var cell1 }, { Value: var cell2 }, { Value: [var digitChar] }])
 				{
@@ -145,7 +145,7 @@ public sealed partial record K9Parser : CoordinateParser
 		};
 
 	/// <inheritdoc/>
-	public override Func<string, ReadOnlySpan<Miniline>> IntersectionParser => throw new NotSupportedException();
+	public override Func<string, SegmentCollection> SegmentParser => throw new NotSupportedException();
 
 
 	[GeneratedRegex("""[a-k]+[1-9]+""", RegexOptions.Compiled | RegexOptions.IgnoreCase)]
@@ -159,9 +159,4 @@ public sealed partial record K9Parser : CoordinateParser
 
 	[GeneratedRegex("""([a-k][1-9])\s*={2}\s*([a-k][1-9])\.([1-9])""", RegexOptions.Compiled | RegexOptions.IgnoreCase)]
 	private static partial Regex UnitConjugateGroupPattern { get; }
-
-
-	/// <inheritdoc/>
-	[return: NotNullIfNotNull(nameof(formatType))]
-	public override object? GetFormat(Type? formatType) => formatType == typeof(CoordinateParser) ? this : null;
 }

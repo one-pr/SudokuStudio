@@ -30,7 +30,7 @@ public readonly ref struct ScatteredGenerator() : IGenerator<Grid>
 
 
 	/// <inheritdoc/>
-	public Grid Generate(IProgress<GeneratorProgress>? progress = null, CancellationToken cancellationToken = default)
+	public unsafe Grid Generate(IProgress<GeneratorProgress>? progress = null, CancellationToken cancellationToken = default)
 	{
 		var puzzleString = (stackalloc char[82]);
 		var solutionString = (stackalloc char[82]);
@@ -48,33 +48,36 @@ public readonly ref struct ScatteredGenerator() : IGenerator<Grid>
 			holeCells.Clear();
 			CreatePattern(holeCells);
 
-			for (var trial = 0; trial < 1000; trial++)
+			fixed (char* pSolutionString = solutionString)
 			{
-				for (var cell = 0; cell < 81; cell++)
+				for (var trial = 0; trial < 1000; trial++)
 				{
-					var p = holeCells[cell];
-					var temp = solutionString[p];
-					solutionString[p] = '0';
-
-					if (!_solver.CheckValidity(in solutionString[0]))
+					for (var cell = 0; cell < 81; cell++)
 					{
-						// Reset the value.
-						solutionString[p] = temp;
+						var p = holeCells[cell];
+						var temp = pSolutionString[p];
+						pSolutionString[p] = '0';
+
+						if (!_solver.CheckValidity(pSolutionString))
+						{
+							// Reset the value.
+							pSolutionString[p] = temp;
+						}
 					}
+
+					if (_solver.CheckValidity(pSolutionString) && Grid.Parse(new string(pSolutionString)) is var grid)
+					{
+						return grid;
+					}
+
+					// Report if failed to generate.
+					progress?.Report(new(++progressTimes));
+
+					cancellationToken.ThrowIfCancellationRequested();
+
+					// Re-create pattern.
+					RecreatePattern(holeCells);
 				}
-
-				if (_solver.CheckValidity(in solutionString[0]) && Grid.Parse(new string(solutionString)) is var grid)
-				{
-					return grid;
-				}
-
-				// Report if failed to generate.
-				progress?.Report(new(++progressTimes));
-
-				cancellationToken.ThrowIfCancellationRequested();
-
-				// Re-create pattern.
-				RecreatePattern(holeCells);
 			}
 		}
 	}

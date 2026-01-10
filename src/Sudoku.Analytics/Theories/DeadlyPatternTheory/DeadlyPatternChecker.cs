@@ -26,7 +26,7 @@ public static class DeadlyPatternChecker
 		var defaultResult = new DeadlyPatternResult(in grid) { PermutationsCount = 0, IsDeadlyPattern = false, FailedCases = [] };
 
 		var patternMap = CandidateMap.Empty;
-		if (grid is not { IsValid: false, EmptyCellsCount: 81, PuzzleType: GridType.Standard })
+		if (grid is not { IsValid: false, EmptyCellsCount: 81, IsStandard: true })
 		{
 			// Invalid values to be checked.
 			goto FastFail;
@@ -174,9 +174,9 @@ public static class DeadlyPatternChecker
 					var cell = candidate / 9;
 					var digit = candidate % 9;
 					emptyGrid[cell] = (Mask)(Grid.ModifiableMask | 1 << digit);
-					houses |= 1 << (cell >> HouseType.Block);
-					houses |= 1 << (cell >> HouseType.Row);
-					houses |= 1 << (cell >> HouseType.Column);
+					houses |= 1 << cell.GetHouse(HouseType.Block);
+					houses |= 1 << cell.GetHouse(HouseType.Row);
+					houses |= 1 << cell.GetHouse(HouseType.Column);
 				}
 				result.AddRef((emptyGrid, houses));
 			}
@@ -370,7 +370,7 @@ public static class DeadlyPatternChecker
 				{
 					var counter = 0;
 					targetCell = -1;
-					foreach (var eachCell in HousesMap[cell >> houseType])
+					foreach (var eachCell in HousesMap[cell.GetHouse(houseType)])
 					{
 						if (grid.Exists(eachCell, eachDigit) is true && (targetCell = eachCell) is var _ && ++counter >= 2)
 						{
@@ -403,9 +403,9 @@ public static class DeadlyPatternChecker
 			var queue = new Queue<Node>();
 			var firstCell = cells[0];
 
-			var a = houseDigitsDictionary[firstCell >> HouseType.Block];
-			var b = houseDigitsDictionary[firstCell >> HouseType.Row];
-			var c = houseDigitsDictionary[firstCell >> HouseType.Column];
+			var a = houseDigitsDictionary[firstCell.GetHouse(HouseType.Block)];
+			var b = houseDigitsDictionary[firstCell.GetHouse(HouseType.Row)];
+			var c = houseDigitsDictionary[firstCell.GetHouse(HouseType.Column)];
 			foreach (var digit in (Mask)(a | (Mask)(b | c)))
 			{
 				queue.Enqueue(new(firstCell * 9 + digit, null));
@@ -455,13 +455,13 @@ public static class DeadlyPatternChecker
 				// Otherwise, we should continue to iterate other cells.
 				foreach (var cell in unassignedCells)
 				{
-					var d = houseDigitsDictionary[cell >> HouseType.Block];
-					var e = houseDigitsDictionary[cell >> HouseType.Row];
-					var f = houseDigitsDictionary[cell >> HouseType.Column];
+					var d = houseDigitsDictionary[cell.GetHouse(HouseType.Block)];
+					var e = houseDigitsDictionary[cell.GetHouse(HouseType.Row)];
+					var f = houseDigitsDictionary[cell.GetHouse(HouseType.Column)];
 					var g = (Mask)0;
 					foreach (var houseType in HouseTypes)
 					{
-						foreach (var tempCell in cells & HousesMap[cell >> houseType] & ~unassignedCells)
+						foreach (var tempCell in cells & HousesMap[cell.GetHouse(houseType)] & ~unassignedCells)
 						{
 							g |= (Mask)(1 << appliedGrid.GetDigit(tempCell));
 						}

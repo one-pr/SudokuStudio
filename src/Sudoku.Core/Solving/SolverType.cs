@@ -38,5 +38,10 @@ public enum SolverType
 	/// <summary>
 	/// Indicates the enumerable query solver.
 	/// </summary>
-	EnumerableQuery
+	EnumerableQuery,
+
+	/// <summary>
+	/// Indicates SAT (boolean satisfiability) solver.
+	/// </summary>
+	BooleanSatisfiability
 }

@@ -18,9 +18,9 @@ public sealed partial class SueDeCoq3DimensionStepSearcher : StepSearcher
 		var cbList = new List<CellMap>(3);
 		foreach (var pivot in EmptyCells)
 		{
-			var r = pivot >> HouseType.Row;
-			var c = pivot >> HouseType.Column;
-			var b = pivot >> HouseType.Block;
+			var r = pivot.GetHouse(HouseType.Row);
+			var c = pivot.GetHouse(HouseType.Column);
+			var b = pivot.GetHouse(HouseType.Block);
 			var rbMap = HousesMap[r] & HousesMap[b];
 			var cbMap = HousesMap[c] & HousesMap[b];
 			var rbEmptyMap = rbMap & EmptyCells;
@@ -167,21 +167,21 @@ public sealed partial class SueDeCoq3DimensionStepSearcher : StepSearcher
 												{
 													foreach (var cell in (selectedRowCells | rbCurrentMap) & CandidatesMap[digit])
 													{
-														candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + digit));
+														candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + digit));
 													}
 												}
 												foreach (var digit in columnMask)
 												{
 													foreach (var cell in (selectedColumnCells | cbCurrentMap) & CandidatesMap[digit])
 													{
-														candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + digit));
+														candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, cell * 9 + digit));
 													}
 												}
 												foreach (var digit in blockMask)
 												{
 													foreach (var cell in (selectedBlockCells | rbCurrentMap | cbCurrentMap) & CandidatesMap[digit])
 													{
-														candidateOffsets.Add(new(ColorIdentifier.Auxiliary2, cell * 9 + digit));
+														candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary2, cell * 9 + digit));
 													}
 												}
 
@@ -190,9 +190,9 @@ public sealed partial class SueDeCoq3DimensionStepSearcher : StepSearcher
 													[
 														[
 															.. candidateOffsets,
-															new HouseViewNode(ColorIdentifier.Normal, r),
-															new HouseViewNode(ColorIdentifier.Auxiliary2, c),
-															new HouseViewNode(ColorIdentifier.Auxiliary3, b)
+															new HouseViewNode(ColorDescriptorAlias.Normal, r),
+															new HouseViewNode(ColorDescriptorAlias.Auxiliary2, c),
+															new HouseViewNode(ColorDescriptorAlias.Auxiliary3, b)
 														]
 													],
 													context.Options,

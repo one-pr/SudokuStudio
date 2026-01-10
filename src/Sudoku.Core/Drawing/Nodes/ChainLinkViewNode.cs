@@ -8,7 +8,7 @@ namespace Sudoku.Drawing.Nodes;
 /// <param name="end"><inheritdoc cref="End" path="/summary"/></param>
 /// <param name="isStrongLink"><inheritdoc cref="IsStrongLink" path="/summary"/></param>
 [method: JsonConstructor]
-public sealed class ChainLinkViewNode(ColorIdentifier identifier, CandidateMap start, CandidateMap end, bool isStrongLink) :
+public sealed class ChainLinkViewNode(ColorDescriptor identifier, CandidateMap start, CandidateMap end, bool isStrongLink) :
 	BasicViewNode(identifier),
 	ILinkViewNode
 {
@@ -38,7 +38,7 @@ public sealed class ChainLinkViewNode(ColorIdentifier identifier, CandidateMap s
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	public void Deconstruct(out ColorIdentifier identifier, out CandidateMap start, out CandidateMap end, out bool isStrongLink)
+	public void Deconstruct(out ColorDescriptor identifier, out CandidateMap start, out CandidateMap end, out bool isStrongLink)
 		=> (identifier, start, end, isStrongLink) = (Identifier, Start, End, IsStrongLink);
 
 	/// <inheritdoc/>

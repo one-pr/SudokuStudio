@@ -118,8 +118,8 @@ public sealed class AlmostLockedSetsChainingRule : ChainingRule
 		out ReadOnlySpan<ViewNode> producedViewNodes
 	)
 	{
-		var alsIndex = processedViewNodesMap.MaxKeyInAlmostLockedSet is var key and not WellKnownColorIdentifierKind.Normal
-			? (key - WellKnownColorIdentifierKind.AlmostLockedSet1 + 1) % 5
+		var alsIndex = processedViewNodesMap.MaxKeyInAlmostLockedSet is var key and not ColorDescriptorAlias.Normal
+			? (key - ColorDescriptorAlias.AlmostLockedSet1 + 1) % 5
 			: 0;
 		var result = new List<ViewNode>();
 		foreach (var link in pattern.Links)
@@ -130,7 +130,7 @@ public sealed class AlmostLockedSetsChainingRule : ChainingRule
 			}
 
 			var linkMap = map1 | map2;
-			var id = alsIndex + WellKnownColorIdentifierKind.AlmostLockedSet1;
+			var id = alsIndex + ColorDescriptorAlias.AlmostLockedSet1;
 			foreach (var cell in cells)
 			{
 				var existsCell = processedViewNodesMap.ContainsCell(cell, out var identifierKind);

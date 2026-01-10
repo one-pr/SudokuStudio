@@ -23,6 +23,12 @@ public sealed record ExcelCoordinateConverter(
 	CultureInfo? CurrentCulture = null
 ) : CoordinateConverter(DefaultSeparator, DigitsSeparator, AssignmentToken, EliminationToken, NotationBracket, CurrentCulture)
 {
+	/// <summary>
+	/// The fallback converter.
+	/// </summary>
+	private readonly K9Converter _fallbackConverter = new(MakeLettersUpperCase, DefaultSeparator: DefaultSeparator, DigitsSeparator: DigitsSeparator);
+
+
 	/// <inheritdoc/>
 	public override CellMapFormatter CellConverter
 		=> (in cells) =>
@@ -52,9 +58,10 @@ public sealed record ExcelCoordinateConverter(
 				}
 				foreach (var (rows, columns) in output)
 				{
-					sb.AppendRange(d => ((char)((MakeLettersUpperCase ? 'A' : 'a') + d)).ToString(), elements: columns);
-					sb.AppendRange(d => DigitConverter((Mask)(1 << d)), elements: rows);
-					sb.Append(DefaultSeparator);
+					sb
+						.AppendRange(columns, d => ((char)((MakeLettersUpperCase ? 'A' : 'a') + d)).ToString())
+						.AppendRange(rows, d => DigitConverter((Mask)(1 << d)))
+						.Append(DefaultSeparator);
 				}
 				sb.RemoveFromEnd(DefaultSeparator.Length);
 				if (needAddingBrackets)
@@ -147,12 +154,10 @@ public sealed record ExcelCoordinateConverter(
 		=> new LiteralCoordinateConverter(DigitsSeparator: DigitsSeparator).DigitConverter;
 
 	/// <inheritdoc/>
-	public override Func<ReadOnlySpan<Miniline>, string> IntersectionConverter
-		=> new K9Converter(MakeLettersUpperCase, DefaultSeparator: DefaultSeparator, DigitsSeparator: DigitsSeparator).IntersectionConverter;
+	public override Func<SegmentCollection, string> SegmentConverter => _fallbackConverter.SegmentConverter;
 
 	/// <inheritdoc/>
-	public override Func<ReadOnlySpan<Chute>, string> ChuteConverter
-		=> new K9Converter(MakeLettersUpperCase, DefaultSeparator: DefaultSeparator, DigitsSeparator: DigitsSeparator).ChuteConverter;
+	public override Func<ReadOnlySpan<Chute>, string> ChuteConverter => _fallbackConverter.ChuteConverter;
 
 	/// <inheritdoc/>
 	public override Func<ReadOnlySpan<Conjugate>, string> ConjugateConverter
@@ -173,9 +178,4 @@ public sealed record ExcelCoordinateConverter(
 			}
 			return sb.RemoveFromEnd(DefaultSeparator.Length).ToString();
 		};
-
-
-	/// <inheritdoc/>
-	[return: NotNullIfNotNull(nameof(formatType))]
-	public override object? GetFormat(Type? formatType) => formatType == typeof(CoordinateConverter) ? this : null;
 }

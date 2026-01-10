@@ -108,14 +108,14 @@ public sealed partial class DominoLoopStepSearcher : StepSearcher
 				}
 
 				// Check elimination map.
-				linkHouse[0] = cells[0] >> HouseType.Row;
-				linkHouse[1] = cells[2] >> HouseType.Block;
-				linkHouse[2] = cells[4] >> HouseType.Column;
-				linkHouse[3] = cells[6] >> HouseType.Block;
-				linkHouse[4] = cells[8] >> HouseType.Row;
-				linkHouse[5] = cells[10] >> HouseType.Block;
-				linkHouse[6] = cells[12] >> HouseType.Column;
-				linkHouse[7] = cells[14] >> HouseType.Block;
+				linkHouse[0] = cells[0].GetHouse(HouseType.Row);
+				linkHouse[1] = cells[2].GetHouse(HouseType.Block);
+				linkHouse[2] = cells[4].GetHouse(HouseType.Column);
+				linkHouse[3] = cells[6].GetHouse(HouseType.Block);
+				linkHouse[4] = cells[8].GetHouse(HouseType.Row);
+				linkHouse[5] = cells[10].GetHouse(HouseType.Block);
+				linkHouse[6] = cells[12].GetHouse(HouseType.Column);
+				linkHouse[7] = cells[14].GetHouse(HouseType.Block);
 				var conclusions = new List<Conclusion>();
 				var map = [.. cells] & EmptyCells;
 				for (k = 0; k < 8; k++)
@@ -163,10 +163,10 @@ public sealed partial class DominoLoopStepSearcher : StepSearcher
 								new(
 									(k & 3) switch
 									{
-										0 => ColorIdentifier.Auxiliary1,
-										1 => ColorIdentifier.Auxiliary2,
-										2 => ColorIdentifier.Auxiliary3,
-										_ => ColorIdentifier.Normal
+										0 => ColorDescriptorAlias.Auxiliary1,
+										1 => ColorDescriptorAlias.Auxiliary2,
+										2 => ColorDescriptorAlias.Auxiliary3,
+										_ => ColorDescriptorAlias.Normal
 									},
 									cell * 9 + digit
 								)

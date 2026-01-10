@@ -71,7 +71,7 @@ public sealed record StepGathererOptions
 	public LinkOption DefaultLinkOption { get; init; } = LinkOption.House;
 
 	/// <inheritdoc cref="CoordinateConverter"/>
-	public CoordinateConverter Converter { get; init; } = CoordinateConverter.InvariantCultureInstance;
+	public CoordinateConverter Converter { get; init; } = CoordinateConverter.InvariantCulture;
 
 	/// <summary>
 	/// Indicates the current culture used.

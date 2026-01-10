@@ -61,20 +61,41 @@ public sealed class WhipNode(WhipAssignment assignment, ReadOnlyMemory<WhipAssig
 	public override int GetHashCode() => Assignment.GetHashCode();
 
 	/// <inheritdoc/>
-	public override string ToString() => ToString(null);
+	public override string ToString() => ToString(CoordinateConverter.InvariantCulture);
 
 	/// <inheritdoc/>
-	public string ToString(IFormatProvider? formatProvider)
+	public string ToString(CultureInfo culture) => ToString(CoordinateConverter.GetInstance(culture));
+
+	/// <inheritdoc/>
+	public string ToString(CoordinateConverter converter)
 	{
-		var converter = CoordinateConverter.GetInstance(formatProvider);
 		var parentString = Parent is { Assignment: var assignment } ? converter.CandidateConverter(assignment.Map) : "<null>";
 		return $$"""{{nameof(WhipNode)}} { {{nameof(Assignment)}} = {{Assignment}}, {{nameof(Parent)}} = {{parentString}} }""";
 	}
 
+	/// <inheritdoc/>
+	public string ToString(ICandidateMapConverter converter) => ToString(converter, null);
 
 	/// <inheritdoc/>
-	[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
-	public static WhipNode Create(WhipNode current, WhipNode? parent) => current >> parent;
+	public string ToString(ICandidateMapConverter converter, IFormatProvider? formatProvider)
+	{
+		var parentString = Parent is { Assignment.Map: var map }
+			? converter.TryFormat(in map, formatProvider, out var r)
+				? r
+				: throw new FormatException()
+			: "<null>";
+		return $$"""{{nameof(WhipNode)}} { {{nameof(Assignment)}} = {{Assignment}}, {{nameof(Parent)}} = {{parentString}} }""";
+	}
+
+
+	/// <summary>
+	/// Creates a <see cref="WhipNode"/> instance with parent node.
+	/// </summary>
+	/// <param name="current">The current node.</param>
+	/// <param name="parent">The parent node.</param>
+	/// <returns>The new node created.</returns>
+	public static WhipNode Create(WhipNode current, WhipNode? parent)
+		=> new(current.Assignment, current.AvailableAssignments, parent);
 
 
 	/// <inheritdoc/>
@@ -83,13 +104,4 @@ public sealed class WhipNode(WhipAssignment assignment, ReadOnlyMemory<WhipAssig
 
 	/// <inheritdoc/>
 	public static bool operator !=(WhipNode? left, WhipNode? right) => !(left == right);
-
-	/// <summary>
-	/// Creates a <see cref="WhipNode"/> instance with parent node.
-	/// </summary>
-	/// <param name="current">The current node.</param>
-	/// <param name="parent">The parent node.</param>
-	/// <returns>The new node created.</returns>
-	public static WhipNode operator >>(WhipNode current, WhipNode? parent)
-		=> new(current.Assignment, current.AvailableAssignments, parent);
 }

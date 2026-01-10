@@ -94,7 +94,7 @@ public sealed class UniqueLoopPattern(in CellMap loop, Cell[] path, Mask digitsM
 		{
 			foreach (var houseType in HouseTypes)
 			{
-				var house = cell >> houseType;
+				var house = cell.GetHouse(houseType);
 				if (isOdd)
 				{
 					if ((visitedOdd >> house & 1) != 0)

@@ -18,7 +18,7 @@ public abstract record WhipAssignment(in CandidateMap Map, Technique Reason) :
 	///     path="/g/csharp9/feature[@name='records']/target[@name='method' and @cref='PrintMembers']"/>
 	protected virtual bool PrintMembers(StringBuilder builder)
 	{
-		var converter = CoordinateConverter.InvariantCultureInstance;
+		var converter = CoordinateConverter.InvariantCulture;
 		if (Reason == Technique.None)
 		{
 			builder.Append(converter.CandidateConverter(Map));

@@ -23,5 +23,5 @@ public interface ILinkViewNode
 	/// <summary>
 	/// Indicates the color identifier.
 	/// </summary>
-	ColorIdentifier Identifier { get; }
+	ColorDescriptor Identifier { get; }
 }

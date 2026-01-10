@@ -20,10 +20,10 @@ internal partial class DrawableFactory
 		var isOverlapped = overlapped.Exists(conclusion => conclusion.Candidate == candidate);
 		var id = (type, isOverlapped) switch
 		{
-			(Assignment, true) => ColorIdentifierKind.OverlappedAssignment,
-			(Assignment, _) => ColorIdentifierKind.Assignment,
-			(Elimination, true) => ColorIdentifierKind.Cannibalism,
-			_ => ColorIdentifierKind.Elimination
+			(Assignment, true) => ColorDescriptorAlias.OverlappedAssignment,
+			(Assignment, _) => ColorDescriptorAlias.Assignment,
+			(Elimination, true) => ColorDescriptorAlias.Cannibalism,
+			_ => ColorDescriptorAlias.Elimination
 		};
 		ForCandidateNodeCore(
 			id,
@@ -377,7 +377,7 @@ internal partial class DrawableFactory
 		{
 			var cell = cellRankSet.Space.Cell;
 			var (a, r, g, b) = cellRankSet.IsTruth ? sudokuPane.CellTruthColor : sudokuPane.LineOrCellLinkColor;
-			var cellNode = new CellViewNode(new ColorColorIdentifier(a, r, g, b), cell);
+			var cellNode = new CellViewNode((a, r, g, b), cell);
 			sudokuPane.ViewUnit?.View.Add(cellNode);
 			ForCellNode(context, cellNode);
 		}
@@ -446,7 +446,7 @@ internal partial class DrawableFactory
 	/// <param name="isForElimination">Indicates whether the operation draws for an elimination.</param>
 	/// <param name="isOverlapped">Indicates whether the operation draws for an overlapped conclusion.</param>
 	private static void ForCandidateNodeCore(
-		ColorIdentifier id,
+		ColorDescriptor id,
 		Color color,
 		Candidate candidate,
 		CandidateViewNode? candidateNode,

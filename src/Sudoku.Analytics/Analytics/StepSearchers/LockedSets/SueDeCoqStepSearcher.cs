@@ -29,7 +29,7 @@ public sealed partial class SueDeCoqStepSearcher : StepSearcher
 		var list = new List<CellMap>(4);
 		foreach (var cannibalMode in (false, true))
 		{
-			foreach (var ((baseSet, coverSet), (a, b, c, _)) in Miniline.Map)
+			foreach (var ((baseSet, coverSet), (a, b, c, _)) in Segments.Map)
 			{
 				var emptyCellsInInterMap = c & EmptyCells;
 				if (emptyCellsInInterMap.Count < 2)
@@ -170,7 +170,7 @@ public sealed partial class SueDeCoqStepSearcher : StepSearcher
 										{
 											candidateOffsets.Add(
 												new(
-													!cannibalMode && digit == digitIsolated ? ColorIdentifier.Auxiliary2 : ColorIdentifier.Normal,
+													!cannibalMode && digit == digitIsolated ? ColorDescriptorAlias.Auxiliary2 : ColorDescriptorAlias.Normal,
 													cell * 9 + digit
 												)
 											);
@@ -182,7 +182,7 @@ public sealed partial class SueDeCoqStepSearcher : StepSearcher
 										{
 											candidateOffsets.Add(
 												new(
-													!cannibalMode && digit == digitIsolated ? ColorIdentifier.Auxiliary2 : ColorIdentifier.Auxiliary1,
+													!cannibalMode && digit == digitIsolated ? ColorDescriptorAlias.Auxiliary2 : ColorDescriptorAlias.Auxiliary1,
 													cell * 9 + digit
 												)
 											);
@@ -195,8 +195,8 @@ public sealed partial class SueDeCoqStepSearcher : StepSearcher
 											candidateOffsets.Add(
 												new(
 													digitIsolated == digit
-														? ColorIdentifier.Auxiliary2
-														: (blockMask >> digit & 1) != 0 ? ColorIdentifier.Normal : ColorIdentifier.Auxiliary1,
+														? ColorDescriptorAlias.Auxiliary2
+														: (blockMask >> digit & 1) != 0 ? ColorDescriptorAlias.Normal : ColorDescriptorAlias.Auxiliary1,
 													cell * 9 + digit
 												)
 											);
@@ -208,8 +208,8 @@ public sealed partial class SueDeCoqStepSearcher : StepSearcher
 										[
 											[
 												.. candidateOffsets,
-												new HouseViewNode(ColorIdentifier.Normal, coverSet),
-												new HouseViewNode(ColorIdentifier.Auxiliary2, baseSet)
+												new HouseViewNode(ColorDescriptorAlias.Normal, coverSet),
+												new HouseViewNode(ColorDescriptorAlias.Auxiliary2, baseSet)
 											]
 										],
 										context.Options,

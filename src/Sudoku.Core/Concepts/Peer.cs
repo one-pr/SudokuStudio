@@ -42,7 +42,7 @@ public static class Peer
 				{
 					foreach (var houseType in HouseTypes)
 					{
-						if (HousesMap[cell >> houseType].Contains(peerCell))
+						if (HousesMap[cell.GetHouse(houseType)].Contains(peerCell))
 						{
 							map += peerCell;
 							break;
@@ -69,7 +69,7 @@ public static class Peer
 			// Check cell.
 			foreach (var peerCell in PeersMapBackingField[cell])
 			{
-				map.Add(peerCell * 9 + digit);
+				map += peerCell * 9 + digit;
 			}
 
 			// Check digit.
@@ -77,7 +77,7 @@ public static class Peer
 			{
 				if (peerDigit != digit)
 				{
-					map.Add(cell * 9 + peerDigit);
+					map += cell * 9 + peerDigit;
 				}
 			}
 

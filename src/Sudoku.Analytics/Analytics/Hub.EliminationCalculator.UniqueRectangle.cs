@@ -168,7 +168,7 @@ public partial class Hub
 			{
 				// Check whether the extra node is inside the block of one pair of UR cells.
 				// If in line, no eliminations can be found because there's not an intersection can be created.
-				var pairs = from cell in cells group cell by cell >> HouseType.Block;
+				var pairs = from cell in cells group cell by cell.GetHouse(HouseType.Block);
 
 				// Iterate two states.
 				var result = new HashSet<Conclusion>();

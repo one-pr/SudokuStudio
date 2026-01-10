@@ -24,7 +24,7 @@ public sealed unsafe partial class AntiGurthSymmetricalPlacementStepSearcher : S
 	protected internal override Step? Collect(ref StepAnalysisContext context)
 	{
 		ref readonly var grid = ref context.Grid;
-		if (grid.PuzzleType == GridType.Sukaku)
+		if (grid.IsSukaku)
 		{
 			// Skip if the puzzle is a Sukaku.
 			return null;

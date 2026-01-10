@@ -17,7 +17,7 @@ namespace Sudoku.Concepts.Coordinates;
 /// </param>
 /// <param name="EliminationToken">
 /// <para>Indicates the token that describes an elimination conclusion, connected with cell and digit.</para>
-/// <para>The value is <c>"<![CDATA[ <> ]]>"</c> by default.</para>
+/// <para>The value is <c>" &lt;&gt; "</c> by default.</para>
 /// </param>
 /// <param name="NotationBracket">
 /// <para>Indicates the bracket surrounding the multiple coordinate parts (especially for cell groups and candidate groups).</para>
@@ -43,46 +43,39 @@ public abstract record CoordinateConverter(
 	string EliminationToken = " <> ",
 	NotationBracket NotationBracket = NotationBracket.None,
 	CultureInfo? CurrentCulture = null
-) : ICoordinateProvider<CoordinateConverter>
+) :
+	ICoordinateProvider<CoordinateConverter>,
+	ICellConvertible,
+	ICandidateConvertible,
+	IHouseConvertible,
+	IConclusionConvertible,
+	IDigitConvertible,
+	ISegmentConvertible,
+	IChuteConvertible,
+	IConjugatePairConvertible
 {
-	/// <summary>
-	/// The converter method that creates a <see cref="string"/> via the specified list of cells.
-	/// </summary>
+	/// <inheritdoc/>
 	public abstract CellMapFormatter CellConverter { get; }
 
-	/// <summary>
-	/// The converter method that creates a <see cref="string"/> via the specified list of candidates.
-	/// </summary>
+	/// <inheritdoc/>
 	public abstract CandidateMapFormatter CandidateConverter { get; }
 
-	/// <summary>
-	/// The converter method that creates a <see cref="string"/> via the specified list of houses.
-	/// </summary>
+	/// <inheritdoc/>
 	public abstract Func<HouseMask, string> HouseConverter { get; }
 
-	/// <summary>
-	/// The converter method that creates a <see cref="string"/> via the specified list of conclusions.
-	/// </summary>
+	/// <inheritdoc/>
 	public abstract Func<ReadOnlySpan<Conclusion>, string> ConclusionConverter { get; }
 
-	/// <summary>
-	/// The converter method that creates a <see cref="string"/> via the specified list of digits.
-	/// </summary>
+	/// <inheritdoc/>
 	public abstract Func<Mask, string> DigitConverter { get; }
 
-	/// <summary>
-	/// The converter method that creates a <see cref="string"/> via the specified information for an intersection.
-	/// </summary>
-	public abstract Func<ReadOnlySpan<Miniline>, string> IntersectionConverter { get; }
+	/// <inheritdoc/>
+	public abstract Func<SegmentCollection, string> SegmentConverter { get; }
 
-	/// <summary>
-	/// The converter method that creates a <see cref="string"/> via the specified list of chute.
-	/// </summary>
+	/// <inheritdoc/>
 	public abstract Func<ReadOnlySpan<Chute>, string> ChuteConverter { get; }
 
-	/// <summary>
-	/// The converter method that creates a <see cref="string"/> via the specified conjugate.
-	/// </summary>
+	/// <inheritdoc/>
 	public abstract Func<ReadOnlySpan<Conjugate>, string> ConjugateConverter { get; }
 
 	/// <summary>
@@ -92,24 +85,15 @@ public abstract record CoordinateConverter(
 
 
 	/// <inheritdoc/>
-	public static CoordinateConverter InvariantCultureInstance => new RxCyConverter();
+	public static CoordinateConverter InvariantCulture => new RxCyConverter();
 
 
 	/// <inheritdoc/>
-	[return: NotNullIfNotNull(nameof(formatType))]
-	public abstract object? GetFormat(Type? formatType);
-
-
-	/// <inheritdoc/>
-	public static CoordinateConverter GetInstance(IFormatProvider? formatProvider)
-		=> formatProvider switch
+	public static CoordinateConverter GetInstance(CultureInfo? culture)
+		=> culture switch
 		{
-			CultureInfo c => c switch
-			{
-				{ Name: var name } when name.CultureNameEqual(SR.ChineseLanguage) => new K9Converter(true, CurrentCulture: c),
-				_ => new RxCyConverter(true, true, CurrentCulture: c)
-			},
-			CoordinateConverter c => c,
-			_ => InvariantCultureInstance
+			{ IsChinese: true } => new K9Converter(true, CurrentCulture: culture),
+			{ IsEnglish: true } => new RxCyConverter(true, true, CurrentCulture: culture),
+			_ => InvariantCulture
 		};
 }

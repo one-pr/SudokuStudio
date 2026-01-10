@@ -6,10 +6,7 @@ namespace Sudoku.Concepts;
 /// <param name="Index">Index of the chute. The value is between 0 and 6.</param>
 /// <param name="IsRow">Indicates whether the chute is in a mega-row.</param>
 /// <param name="HousesMask">Indicates the houses used.</param>
-public readonly record struct Chute(int Index, bool IsRow, HouseMask HousesMask) :
-	IEqualityOperators<Chute, Chute, bool>,
-	IFormattable,
-	IParsable<Chute>
+public readonly record struct Chute(int Index, bool IsRow, HouseMask HousesMask) : IEqualityOperators<Chute, Chute, bool>
 {
 	/// <summary>
 	/// Indicates the minimum chute index.
@@ -84,43 +81,86 @@ public readonly record struct Chute(int Index, bool IsRow, HouseMask HousesMask)
 		=> ((House, House, House)[])[(9, 10, 11), (12, 13, 14), (15, 16, 17), (18, 19, 20), (21, 22, 23), (24, 25, 26)];
 
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider)
-		=> CoordinateConverter.GetInstance(formatProvider).ChuteConverter([this]);
+	/// <inheritdoc cref="ToString(CoordinateConverter)"/>
+	public string ToString(CultureInfo culture) => ToString(CoordinateConverter.GetInstance(culture));
 
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation via the specified converter.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <returns>The string.</returns>
+	public string ToString(CoordinateConverter converter) => converter.ChuteConverter([this]);
 
 
-	/// <inheritdoc cref="IParsable{TSelf}.TryParse(string?, IFormatProvider?, out TSelf)"/>
-	public static bool TryParse(string str, out Chute result) => TryParse(str, null, out result);
+	/// <summary>
+	/// Try to parse the current string into target instance.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <param name="result">The instance parsed.</param>
+	/// <returns>A <see cref="bool"/> result.</returns>
+	public static bool TryParse([NotNullWhen(true)] string? s, out Chute result)
+		=> TryParse(s, CoordinateParser.InvariantCulture, out result);
 
-	/// <inheritdoc/>
-	public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, out Chute result)
+	/// <summary>
+	/// Try to parse the current string into target instance, using the specified culture.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <param name="culture">The culture.</param>
+	/// <param name="result">The instance parsed.</param>
+	/// <returns>A <see cref="bool"/> result.</returns>
+	public static bool TryParse([NotNullWhen(true)] string? s, CultureInfo culture, out Chute result)
+		=> TryParse(s, CoordinateParser.GetInstance(culture), out result);
+
+	/// <summary>
+	/// Try to parse the current string into target instance, using the specified converter.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <param name="converter">The converter.</param>
+	/// <param name="result">The instance parsed.</param>
+	/// <returns>A <see cref="bool"/> result.</returns>
+	public static bool TryParse([NotNullWhen(true)] string? s, CoordinateParser converter, out Chute result)
 	{
 		try
 		{
 			if (s is null)
 			{
-				throw new FormatException();
+				goto ReturnFalse;
 			}
-
-			result = Parse(s, provider);
+			result = Parse(s, converter);
 			return true;
 		}
 		catch (FormatException)
 		{
-			result = default;
-			return false;
 		}
+
+	ReturnFalse:
+		result = default;
+		return false;
 	}
 
-	/// <inheritdoc cref="IParsable{TSelf}.Parse(string, IFormatProvider?)"/>
-	public static Chute Parse(string s) => Parse(s, null);
+	/// <summary>
+	/// Parse the string into the target instance.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <returns>The instance.</returns>
+	/// <exception cref="FormatException">Throws when invalid characters encountered.</exception>
+	public static Chute Parse(string s) => Parse(s, CoordinateParser.InvariantCulture);
 
-	/// <inheritdoc/>
-	public static Chute Parse(string s, IFormatProvider? provider)
-		=> CoordinateParser.GetInstance(provider).ChuteParser(s) is [var result]
-			? result
-			: throw new FormatException(SR.ExceptionMessage("MultipleChuteValuesFound"));
+	/// <summary>
+	/// Parse the string into the target instance, using the specified culture.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <param name="culture">The culture.</param>
+	/// <returns>The instance.</returns>
+	/// <exception cref="FormatException">Throws when invalid characters encountered.</exception>
+	public static Chute Parse(string s, CultureInfo culture) => Parse(s, CoordinateParser.GetInstance(culture));
+
+	/// <summary>
+	/// Parse the string into the target instance, using the specified converter.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <param name="converter">The converter.</param>
+	/// <returns>The instance.</returns>
+	/// <exception cref="FormatException">Throws when invalid characters encountered.</exception>
+	public static Chute Parse(string s, CoordinateParser converter) => converter.ChuteParser(s)[0];
 }

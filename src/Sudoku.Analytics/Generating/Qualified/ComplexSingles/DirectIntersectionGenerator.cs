@@ -43,12 +43,14 @@ public sealed class DirectIntersectionGenerator : ComplexSingleGenerator
 				}
 				case var basedOn and (Technique.CrosshatchingBlock or Technique.CrosshatchingRow or Technique.CrosshatchingColumn):
 				{
-					var targetHouse = step.Cell >> basedOn switch
-					{
-						Technique.CrosshatchingBlock => HouseType.Block,
-						Technique.CrosshatchingRow => HouseType.Row,
-						_ => HouseType.Column
-					};
+					var targetHouse = step.Cell.GetHouse(
+						basedOn switch
+						{
+							Technique.CrosshatchingBlock => HouseType.Block,
+							Technique.CrosshatchingRow => HouseType.Row,
+							_ => HouseType.Column
+						}
+					);
 					foreach (var cell in HousesMap[targetHouse])
 					{
 						if (g.GetState(cell) != CellState.Empty)

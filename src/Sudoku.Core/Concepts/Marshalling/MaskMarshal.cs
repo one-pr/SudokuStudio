@@ -10,8 +10,7 @@ public static class MaskMarshal
 	/// </summary>
 	/// <param name="mask">The cell mask.</param>
 	/// <returns>The sudoku type configured.</returns>
-	public static GridType MaskToSudokuType(Mask mask)
-		=> mask >> IGrid<Grid>.HeaderShift is var resultMask and not 0 ? (GridType)resultMask : GridType.Standard;
+	public static byte GetSudokuTypeMask(Mask mask) => (byte)(mask >> IGrid<Grid>.HeaderShift);
 
 	/// <summary>
 	/// Gets the cell state for a mask value. The mask is an inner representation to describe a cell's state.

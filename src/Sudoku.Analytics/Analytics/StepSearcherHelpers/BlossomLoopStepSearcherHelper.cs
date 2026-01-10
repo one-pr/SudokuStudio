@@ -63,13 +63,13 @@ internal sealed class BlossomLoopStepSearcherHelper : ForcingChainsStepSearcherH
 
 			var entryHouseOrCellViewNode = (ViewNode)(
 				blossomLoop.Entries is var entryCandidates && blossomLoop.EntryIsCellType
-					? new CellViewNode(ColorIdentifier.Normal, entryCandidates[0] / 9)
-					: new HouseViewNode(ColorIdentifier.Normal, BitOperations.TrailingZeroCount(entryCandidates.Cells.SharedHouses))
+					? new CellViewNode(ColorDescriptorAlias.Normal, entryCandidates[0] / 9)
+					: new HouseViewNode(ColorDescriptorAlias.Normal, BitOperations.TrailingZeroCount(entryCandidates.Cells.SharedHouses))
 			);
 			var exitHouseOrCellViewNode = (ViewNode)(
 				blossomLoop.Exits is var exitCandidates && blossomLoop.ExitIsCellType
-					? new CellViewNode(ColorIdentifier.Auxiliary1, exitCandidates[0] / 9)
-					: new HouseViewNode(ColorIdentifier.Auxiliary1, BitOperations.TrailingZeroCount(exitCandidates.Cells.SharedHouses))
+					? new CellViewNode(ColorDescriptorAlias.Auxiliary1, exitCandidates[0] / 9)
+					: new HouseViewNode(ColorDescriptorAlias.Auxiliary1, BitOperations.TrailingZeroCount(exitCandidates.Cells.SharedHouses))
 			);
 
 			globalView.Add(entryHouseOrCellViewNode);
@@ -207,9 +207,9 @@ internal sealed class BlossomLoopStepSearcherHelper : ForcingChainsStepSearcherH
 			// Iterate on houses' distribution.
 			foreach (var ((startCurrentHouse, _), houseDistribution) in housesDistribution)
 			{
-				if (startCell >> HouseType.Block == startCurrentHouse
-					|| startCell >> HouseType.Row == startCurrentHouse
-					|| startCell >> HouseType.Column == startCurrentHouse)
+				if (startCell.GetHouse(HouseType.Block) == startCurrentHouse
+					|| startCell.GetHouse(HouseType.Row) == startCurrentHouse
+					|| startCell.GetHouse(HouseType.Column) == startCurrentHouse)
 				{
 					continue;
 				}
@@ -255,9 +255,9 @@ internal sealed class BlossomLoopStepSearcherHelper : ForcingChainsStepSearcherH
 			// Iterate on cells' distribution.
 			foreach (var (currentStartCell, cellDistribution) in cellsDistribution)
 			{
-				if (currentStartCell >> HouseType.Block == startHouse
-					|| currentStartCell >> HouseType.Row == startHouse
-					|| currentStartCell >> HouseType.Column == startHouse)
+				if (currentStartCell.GetHouse(HouseType.Block) == startHouse
+					|| currentStartCell.GetHouse(HouseType.Row) == startHouse
+					|| currentStartCell.GetHouse(HouseType.Column) == startHouse)
 				{
 					continue;
 				}
@@ -363,7 +363,7 @@ internal sealed class BlossomLoopStepSearcherHelper : ForcingChainsStepSearcherH
 
 						foreach (var houseType in HouseTypes)
 						{
-							var house = endCell >> houseType;
+							var house = endCell.GetHouse(houseType);
 							var entry = new HouseDigitIdentifier(house, endDigit);
 							if (!housesDistribution.TryAdd(entry, [endNode]))
 							{
@@ -394,7 +394,7 @@ internal sealed class BlossomLoopStepSearcherHelper : ForcingChainsStepSearcherH
 
 						foreach (var houseType in HouseTypes)
 						{
-							var house = endCell >> houseType;
+							var house = endCell.GetHouse(houseType);
 							var entry = new HouseDigitIdentifier(house, endDigit);
 							if (!housesDistribution.TryAdd(entry, [endNode]))
 							{

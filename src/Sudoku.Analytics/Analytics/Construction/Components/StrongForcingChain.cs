@@ -196,7 +196,4 @@ public sealed class StrongForcingChain(Node lastNode, bool isDynamicChaining = f
 			}
 		}
 	}
-
-	/// <inheritdoc/>
-	public override string ToString() => ((IFormattable)this).ToString(null, null);
 }

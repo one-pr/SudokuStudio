@@ -75,8 +75,8 @@ public sealed partial class GuardianStepSearcher : StepSearcher
 						(from c in elimMap select new Conclusion(Elimination, c, digit)).ToArray(),
 						[
 							[
-								.. from c in loop select new CandidateViewNode(ColorIdentifier.Normal, c * 9 + digit),
-								.. from c in guardians select new CandidateViewNode(ColorIdentifier.Auxiliary1, c * 9 + digit)
+								.. from c in loop select new CandidateViewNode(ColorDescriptorAlias.Normal, c * 9 + digit),
+								.. from c in guardians select new CandidateViewNode(ColorDescriptorAlias.Auxiliary1, c * 9 + digit)
 							]
 						],
 						context.Options,
@@ -131,7 +131,7 @@ public sealed partial class GuardianStepSearcher : StepSearcher
 		{
 			foreach (var houseType in HouseTypes)
 			{
-				var house = lastCell >> houseType;
+				var house = lastCell.GetHouse(houseType);
 				if ((lastHouse >> house & 1) != 0)
 				{
 					continue;
@@ -153,9 +153,9 @@ public sealed partial class GuardianStepSearcher : StepSearcher
 					var housesUsed = 0;
 					foreach (var tempHouseType in HouseTypes)
 					{
-						if (tempCell >> tempHouseType == lastCell >> tempHouseType)
+						if (tempCell.GetHouse(tempHouseType) == lastCell.GetHouse(tempHouseType))
 						{
-							housesUsed |= 1 << (lastCell >> tempHouseType);
+							housesUsed |= 1 << lastCell.GetHouse(tempHouseType);
 						}
 					}
 

@@ -10,6 +10,20 @@
             </summary>
             <param name="Puzzle">Indicates the original puzzle to be solved.</param>
         </member>
+        <member name="T:Sudoku.Analytics.AnalysisResult.ConsoleOutput">
+            <summary>
+            Provides an easy way to output <see cref="T:Sudoku.Analytics.AnalysisResult"/> with console colorization.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.AnalysisResult.ConsoleOutput.GetColorizedText(Sudoku.Analytics.AnalysisResult,Sudoku.Analytics.AnalysisResult.FormattingOptions,System.Globalization.CultureInfo)">
+            <summary>
+            Gets the output text.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="options">The options.</param>
+            <param name="culture">The culture.</param>
+            <returns>The string.</returns>
+        </member>
         <member name="M:Sudoku.Analytics.AnalysisResult.#ctor(Sudoku.Concepts.Grid@)">
             <summary>
             Provides the result after <see cref="T:Sudoku.Analytics.Analyzer"/> solving a puzzle.
@@ -422,36 +436,36 @@
         <member name="M:Sudoku.Analytics.AnalysisResult.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResultFormattingOptions)">
-            <inheritdoc cref="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResultFormattingOptions,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResult.FormattingOptions)">
+            <inheritdoc cref="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResult.FormattingOptions,Sudoku.Concepts.Coordinates.CoordinateConverter)"/>
         </member>
         <member name="M:Sudoku.Analytics.AnalysisResult.ToString(System.Func{System.String,Sudoku.Analytics.Step,System.String})">
-            <inheritdoc cref="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResultFormattingOptions,System.IFormatProvider,System.Func{System.String,Sudoku.Analytics.Step,System.String})"/>
+            <inheritdoc cref="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResult.FormattingOptions,Sudoku.Concepts.Coordinates.CoordinateConverter,System.Func{System.String,Sudoku.Analytics.Step,System.String})"/>
         </member>
-        <member name="M:Sudoku.Analytics.AnalysisResult.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResultFormattingOptions,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <inheritdoc cref="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResult.FormattingOptions,Sudoku.Concepts.Coordinates.CoordinateConverter)"/>
         </member>
-        <member name="M:Sudoku.Analytics.AnalysisResult.ToString(System.IFormatProvider,System.Func{System.String,Sudoku.Analytics.Step,System.String})">
-            <inheritdoc cref="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResultFormattingOptions,System.IFormatProvider,System.Func{System.String,Sudoku.Analytics.Step,System.String})"/>
+        <member name="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter,System.Func{System.String,Sudoku.Analytics.Step,System.String})">
+            <inheritdoc cref="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResult.FormattingOptions,Sudoku.Concepts.Coordinates.CoordinateConverter,System.Func{System.String,Sudoku.Analytics.Step,System.String})"/>
         </member>
-        <member name="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResultFormattingOptions,System.Func{System.String,Sudoku.Analytics.Step,System.String})">
-            <inheritdoc cref="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResultFormattingOptions,System.IFormatProvider,System.Func{System.String,Sudoku.Analytics.Step,System.String})"/>
+        <member name="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResult.FormattingOptions,System.Func{System.String,Sudoku.Analytics.Step,System.String})">
+            <inheritdoc cref="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResult.FormattingOptions,Sudoku.Concepts.Coordinates.CoordinateConverter,System.Func{System.String,Sudoku.Analytics.Step,System.String})"/>
         </member>
-        <member name="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResultFormattingOptions,System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResult.FormattingOptions,Sudoku.Concepts.Coordinates.CoordinateConverter)">
             <summary>
             Returns a string that represents the current object, with the specified formatting options.
             </summary>
             <param name="options">The formatting options.</param>
-            <param name="formatProvider">The format provider instance.</param>
+            <param name="converter">The converter.</param>
             <returns>A string that represents the current object.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResultFormattingOptions,System.IFormatProvider,System.Func{System.String,Sudoku.Analytics.Step,System.String})">
+        <member name="M:Sudoku.Analytics.AnalysisResult.ToString(Sudoku.Analytics.AnalysisResult.FormattingOptions,Sudoku.Concepts.Coordinates.CoordinateConverter,System.Func{System.String,Sudoku.Analytics.Step,System.String})">
             <summary>
             Returns a string that represents the current object, with the specified formatting options,
             with a string replacer method that can enhance the output string.
             </summary>
             <param name="options">The formatting options.</param>
-            <param name="formatProvider">The format provider instance.</param>
+            <param name="converter">The converter.</param>
             <param name="stepStringReplacer">The string replacer method that can substitute each step string.</param>
             <returns>A string that represents the current object.</returns>
             <remarks>
@@ -516,9 +530,6 @@
         <member name="M:Sudoku.Analytics.AnalysisResult.System#Collections#Generic#IReadOnlyDictionary{Sudoku#Concepts#Grid,Sudoku#Analytics#Step}#TryGetValue(Sudoku.Concepts.Grid,Sudoku.Analytics.Step@)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.AnalysisResult.System#IFormattable#ToString(System.String,System.IFormatProvider)">
-            <inheritdoc/>
-        </member>
         <member name="M:Sudoku.Analytics.AnalysisResult.System#Collections#IEnumerable#GetEnumerator">
             <inheritdoc/>
         </member>
@@ -550,7 +561,7 @@
             <returns>The result.</returns>
             <seealso cref="P:Sudoku.Analytics.AnalysisResult.StepsSpan"/>
         </member>
-        <member name="T:Sudoku.Analytics.AnalysisResultFormattingOptions">
+        <member name="T:Sudoku.Analytics.AnalysisResult.FormattingOptions">
             <summary>
             Indicates the formatting options of <see cref="T:Sudoku.Analytics.AnalysisResult" /> instance.
             </summary>
@@ -564,74 +575,60 @@
 	</flags-attribute></remarks>
             <seealso cref="T:Sudoku.Analytics.AnalysisResult" />
         </member>
-        <member name="F:Sudoku.Analytics.AnalysisResultFormattingOptions.None">
+        <member name="F:Sudoku.Analytics.AnalysisResult.FormattingOptions.None">
             <summary>
             Indicates the none of the formatting option.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.AnalysisResultFormattingOptions.ShowSeparators">
+        <member name="F:Sudoku.Analytics.AnalysisResult.FormattingOptions.ShowSeparators">
             <summary>
             Indicates the analysis result will append separators.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.AnalysisResultFormattingOptions.ShowStepLabel">
+        <member name="F:Sudoku.Analytics.AnalysisResult.FormattingOptions.ShowStepLabel">
             <summary>
             Indicates the analysis result will append the step label.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.AnalysisResultFormattingOptions.ShowSimple">
+        <member name="F:Sudoku.Analytics.AnalysisResult.FormattingOptions.ShowSimple">
             <summary>
             Indicates the analysis result will use simple mode to show steps.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.AnalysisResultFormattingOptions.ShowBottleneck">
+        <member name="F:Sudoku.Analytics.AnalysisResult.FormattingOptions.ShowBottleneck">
             <summary>
             Indicates the analysis result will show the bottleneck.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.AnalysisResultFormattingOptions.ShowDifficulty">
+        <member name="F:Sudoku.Analytics.AnalysisResult.FormattingOptions.ShowDifficulty">
             <summary>
             Indicates the analysis result will show the difficulty.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.AnalysisResultFormattingOptions.ShowStepsAfterBottleneck">
+        <member name="F:Sudoku.Analytics.AnalysisResult.FormattingOptions.ShowStepsAfterBottleneck">
             <summary>
             Indicates the analysis result will show all steps after the bottleneck.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.AnalysisResultFormattingOptions.ShowStepDetail">
+        <member name="F:Sudoku.Analytics.AnalysisResult.FormattingOptions.ShowStepDetail">
             <summary>
             Indicates the analysis result will show the step detail.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.AnalysisResultFormattingOptions.ShowSteps">
+        <member name="F:Sudoku.Analytics.AnalysisResult.FormattingOptions.ShowSteps">
             <summary>
             Indicates the analysis result will show the steps.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.AnalysisResultFormattingOptions.ShowGridAndSolutionCode">
+        <member name="F:Sudoku.Analytics.AnalysisResult.FormattingOptions.ShowGridAndSolutionCode">
             <summary>
             Indicates the analysis result will show grid code for the puzzle itself and its solution.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.AnalysisResultFormattingOptions.ShowElapsedTime">
+        <member name="F:Sudoku.Analytics.AnalysisResult.FormattingOptions.ShowElapsedTime">
             <summary>
             Indicates the analysis result will show elapsed time on solving the puzzle.
             </summary>
-        </member>
-        <member name="T:Sudoku.Analytics.AnalysisResultOutput">
-            <summary>
-            Provides an easy way to output <see cref="T:Sudoku.Analytics.AnalysisResult"/> with console colorization.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Analytics.AnalysisResultOutput.GetColorizedText(Sudoku.Analytics.AnalysisResult,Sudoku.Analytics.AnalysisResultFormattingOptions,System.IFormatProvider)">
-            <summary>
-            Gets the output text.
-            </summary>
-            <param name="instance">The instance.</param>
-            <param name="options">The options.</param>
-            <param name="formatProvider">The format provider.</param>
-            <returns>The string.</returns>
         </member>
         <member name="T:Sudoku.Analytics.Analyzer">
             <summary>
@@ -822,8 +819,8 @@
         <member name="M:Sudoku.Analytics.BabaGrouping.BabaGroupInitialLetterExtensions.EscapeDigit(Sudoku.Analytics.BabaGrouping.BabaGroupInitialLetter,System.Int32)">
             <inheritdoc cref="M:Sudoku.Analytics.BabaGrouping.BabaGroupInitialLetterExtensions.&lt;G&gt;$10ADD58514F12629229964E9D31112A4.EscapeDigit(System.Int32)"/>
         </member>
-        <member name="M:Sudoku.Analytics.BabaGrouping.BabaGroupInitialLetterExtensions.GetInstance(System.IFormatProvider)">
-            <inheritdoc cref="M:Sudoku.Analytics.BabaGrouping.BabaGroupInitialLetterExtensions.&lt;G&gt;$10ADD58514F12629229964E9D31112A4.GetInstance(System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.BabaGrouping.BabaGroupInitialLetterExtensions.GetInstance(System.Globalization.CultureInfo)">
+            <inheritdoc cref="M:Sudoku.Analytics.BabaGrouping.BabaGroupInitialLetterExtensions.&lt;G&gt;$10ADD58514F12629229964E9D31112A4.GetInstance(System.Globalization.CultureInfo)"/>
         </member>
         <member name="T:Sudoku.Analytics.BabaGrouping.BabaGroupInitialLetterExtensions.&lt;G&gt;$10ADD58514F12629229964E9D31112A4.&lt;M&gt;$EC6EBE4736A64A74CF78657D0E9872C7">
             <summary>
@@ -850,11 +847,11 @@
             <param name="digit">The digit to be escaped.</param>
             <returns>The escaped character. If a digit doesn't need to escape, return character representation of itself.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.BabaGrouping.BabaGroupInitialLetterExtensions.&lt;G&gt;$10ADD58514F12629229964E9D31112A4.GetInstance(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.BabaGrouping.BabaGroupInitialLetterExtensions.&lt;G&gt;$10ADD58514F12629229964E9D31112A4.GetInstance(System.Globalization.CultureInfo)">
             <summary>
             Gets <see cref="T:Sudoku.Analytics.BabaGrouping.BabaGroupInitialLetter"/> instance via the specified culture.
             </summary>
-            <param name="provider">The provider.</param>
+            <param name="culture">The culture.</param>
             <returns>The instance.</returns>
         </member>
         <member name="T:Sudoku.Analytics.BabaGrouping.BabaGroupLetterCase">
@@ -3257,11 +3254,11 @@
         <member name="M:Sudoku.Analytics.Categorization.TechniqueExtensions.GetDefaultRating(Sudoku.Analytics.Categorization.Technique,System.Int32@)">
             <inheritdoc cref="M:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.GetDefaultRating(System.Int32@)"/>
         </member>
-        <member name="M:Sudoku.Analytics.Categorization.TechniqueExtensions.GetName(Sudoku.Analytics.Categorization.Technique,System.IFormatProvider)">
-            <inheritdoc cref="M:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.GetName(System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.Categorization.TechniqueExtensions.GetName(Sudoku.Analytics.Categorization.Technique,System.Globalization.CultureInfo)">
+            <inheritdoc cref="M:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.GetName(System.Globalization.CultureInfo)"/>
         </member>
-        <member name="M:Sudoku.Analytics.Categorization.TechniqueExtensions.GetAliasedNames(Sudoku.Analytics.Categorization.Technique,System.IFormatProvider)">
-            <inheritdoc cref="M:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.GetAliasedNames(System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.Categorization.TechniqueExtensions.GetAliasedNames(Sudoku.Analytics.Categorization.Technique,System.Globalization.CultureInfo)">
+            <inheritdoc cref="M:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.GetAliasedNames(System.Globalization.CultureInfo)"/>
         </member>
         <member name="M:Sudoku.Analytics.Categorization.TechniqueExtensions.TryGetGroup(Sudoku.Analytics.Categorization.Technique)">
             <inheritdoc cref="M:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.TryGetGroup"/>
@@ -3379,19 +3376,19 @@
             </param>
             <returns>The difficulty value.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.GetName(System.Globalization.CultureInfo)">
             <summary>
-            Try to get the name of the current <see cref="T:Sudoku.Analytics.Categorization.Technique"/>.
+            Try to get the name of the current <see cref="T:Sudoku.Analytics.Categorization.Technique"/> with specified culture.
             </summary>
-            <param name="formatProvider">The culture information.</param>
+            <param name="culture">The culture information.</param>
             <returns>The name of the current technique.</returns>
             <exception cref="T:System.Resources.ResourceNotFoundException">Throws when the target name is not found in resource dictionary.</exception>
         </member>
-        <member name="M:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.GetAliasedNames(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Categorization.TechniqueExtensions.&lt;G&gt;$8B16CD3DACB0C2F15391BAE0FD84C66A.GetAliasedNames(System.Globalization.CultureInfo)">
             <summary>
             Try to get all aliases of the current <see cref="T:Sudoku.Analytics.Categorization.Technique"/>.
             </summary>
-            <param name="formatProvider">The culture information.</param>
+            <param name="culture">The culture.</param>
             <returns>
             All possible aliases of the current technique.
             If the technique does not contain any aliases, the return value will be <see langword="null"/>.
@@ -3734,8 +3731,8 @@
         <member name="M:Sudoku.Analytics.Categorization.TechniqueGroupExtensions.GetShortenedName(Sudoku.Analytics.Categorization.TechniqueGroup,System.Globalization.CultureInfo)">
             <inheritdoc cref="M:Sudoku.Analytics.Categorization.TechniqueGroupExtensions.&lt;G&gt;$0F219A3C60BA19501F2AC51861F0EE54.GetShortenedName(System.Globalization.CultureInfo)"/>
         </member>
-        <member name="M:Sudoku.Analytics.Categorization.TechniqueGroupExtensions.GetName(Sudoku.Analytics.Categorization.TechniqueGroup,System.IFormatProvider)">
-            <inheritdoc cref="M:Sudoku.Analytics.Categorization.TechniqueGroupExtensions.&lt;G&gt;$0F219A3C60BA19501F2AC51861F0EE54.GetName(System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.Categorization.TechniqueGroupExtensions.GetName(Sudoku.Analytics.Categorization.TechniqueGroup,System.Globalization.CultureInfo)">
+            <inheritdoc cref="M:Sudoku.Analytics.Categorization.TechniqueGroupExtensions.&lt;G&gt;$0F219A3C60BA19501F2AC51861F0EE54.GetName(System.Globalization.CultureInfo)"/>
         </member>
         <member name="M:Sudoku.Analytics.Categorization.TechniqueGroupExtensions.GetTechniques(Sudoku.Analytics.Categorization.TechniqueGroup,System.Func{Sudoku.Analytics.Categorization.Technique,System.Boolean})">
             <inheritdoc cref="M:Sudoku.Analytics.Categorization.TechniqueGroupExtensions.&lt;G&gt;$0F219A3C60BA19501F2AC51861F0EE54.GetTechniques(System.Func{Sudoku.Analytics.Categorization.Technique,System.Boolean})"/>
@@ -3774,11 +3771,11 @@
             <param name="cultureInfo">The culture information instance.</param>
             <returns>The shortened name.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Categorization.TechniqueGroupExtensions.&lt;G&gt;$0F219A3C60BA19501F2AC51861F0EE54.GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Categorization.TechniqueGroupExtensions.&lt;G&gt;$0F219A3C60BA19501F2AC51861F0EE54.GetName(System.Globalization.CultureInfo)">
             <summary>
             Try to get name of the current <see cref="T:Sudoku.Analytics.Categorization.TechniqueGroup"/> instance, with the specified culture information.
             </summary>
-            <param name="formatProvider">The culture information instance.</param>
+            <param name="culture">The culture.</param>
             <returns>The name.</returns>
             <exception cref="T:System.Resources.ResourceNotFoundException">Throws when the specified group does not contain a name.</exception>
         </member>
@@ -4074,8 +4071,12 @@
         <member name="M:Sudoku.Analytics.Categorization.TechniqueSet.ToString">
             <inheritdoc cref="M:System.Object.ToString"/>
         </member>
-        <member name="M:Sudoku.Analytics.Categorization.TechniqueSet.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.Categorization.TechniqueSet.ToString(System.Globalization.CultureInfo)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation via the specified culture.
+            </summary>
+            <param name="culture">The culture.</param>
+            <returns>The <see cref="T:System.String"/> result.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Categorization.TechniqueSet.ToArray">
             <inheritdoc/>
@@ -4150,9 +4151,6 @@
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Categorization.TechniqueSet.System#Linq#Providers#IAnyAllMethod{Sudoku#Analytics#Categorization#TechniqueSet,Sudoku#Analytics#Categorization#Technique}#Any(System.Func{Sudoku.Analytics.Categorization.Technique,System.Boolean})">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Categorization.TechniqueSet.System#IFormattable#ToString(System.String,System.IFormatProvider)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Categorization.TechniqueSet.System#Collections#Generic#IFiniteSet{Sudoku#Analytics#Categorization#TechniqueSet,Sudoku#Analytics#Categorization#Technique}#Negate">
@@ -4930,9 +4928,6 @@
         <member name="M:Sudoku.Analytics.Construction.Components.AlternatingInferenceChain.CompareTo(Sudoku.Analytics.Construction.Components.AlternatingInferenceChain,Sudoku.Analytics.Construction.Components.NodeComparison)">
             <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.AlternatingInferenceChain.CompareTo(Sudoku.Analytics.Construction.Components.AlternatingInferenceChain)"/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.AlternatingInferenceChain.ToString">
-            <inheritdoc/>
-        </member>
         <member name="M:Sudoku.Analytics.Construction.Components.AlternatingInferenceChain.GetConclusions(Sudoku.Concepts.Grid@)">
             <inheritdoc/>
         </member>
@@ -5006,7 +5001,19 @@
             Indicates the backing branches.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.BinaryForcingChains.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Construction.Components.BinaryForcingChains.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.BinaryForcingChains.ToString(System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.BinaryForcingChains.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.BinaryForcingChains.ToString(Sudoku.Concepts.ValueConversions.IChainConverter)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.BinaryForcingChains.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,System.IFormatProvider)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.BinaryForcingChains.Sudoku#Analytics#Construction#Components#IForcingChains#GetViewsCore(Sudoku.Concepts.Grid@,Sudoku.Analytics.StepSearcherHelpers.Chaining.ChainingRuleCollection,Sudoku.Concepts.Conclusion[])">
@@ -5154,11 +5161,35 @@
         <member name="M:Sudoku.Analytics.Construction.Components.BlossomLoop.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.BlossomLoop.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.BlossomLoop.System#IFormattable#ToString(System.String,System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Construction.Components.BlossomLoop.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.BlossomLoop.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.BlossomLoop.ToString(Sudoku.Concepts.ValueConversions.IChainConverter)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.BlossomLoop.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.BlossomLoop.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.BlossomLoop.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,System.IFormatProvider,Sudoku.Concepts.ValueConversions.ICandidateMapConverter)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.BlossomLoop.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,System.IFormatProvider,Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.BlossomLoop.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,System.IFormatProvider,Sudoku.Concepts.ValueConversions.ICandidateMapConverter)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.BlossomLoop.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,Sudoku.Concepts.ValueConversions.ICandidateMapConverter)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.BlossomLoop.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,System.IFormatProvider,Sudoku.Concepts.ValueConversions.ICandidateMapConverter)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.BlossomLoop.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,System.IFormatProvider,Sudoku.Concepts.ValueConversions.ICandidateMapConverter)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation via the specified converter.
+            </summary>
+            <param name="converter">The converter.</param>
+            <param name="formatProvider">The format provider.</param>
+            <param name="branchKeyConverter">The branch key (candidate) converter.</param>
+            <returns>The string.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.BlossomLoop.op_Equality(Sudoku.Analytics.Construction.Components.BlossomLoop,Sudoku.Analytics.Construction.Components.BlossomLoop)">
             <inheritdoc/>
@@ -5399,8 +5430,17 @@
         <member name="M:Sudoku.Analytics.Construction.Components.Chain.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.Chain.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.Construction.Components.Chain.ToString(System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.Chain.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.Chain.ToString(Sudoku.Concepts.ValueConversions.IChainConverter)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.Chain.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,System.IFormatProvider)">
+            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.Chain.Slice(System.Int32,System.Int32)">
             <summary>
@@ -5413,25 +5453,10 @@
         <member name="M:Sudoku.Analytics.Construction.Components.Chain.GetEnumerator">
             <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.Chain.System#IFormattable#ToString(System.String,System.IFormatProvider)">
-            <inheritdoc/>
-        </member>
         <member name="M:Sudoku.Analytics.Construction.Components.Chain.System#Collections#IEnumerable#GetEnumerator">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.Chain.System#Collections#Generic#IEnumerable{Sudoku#Analytics#Construction#Components#Node}#GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.Chain.TryParse(System.String,Sudoku.Analytics.Construction.Components.Chain@)">
-            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.Chain.TryParse(System.String,System.IFormatProvider,Sudoku.Analytics.Construction.Components.Chain@)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.Chain.TryParse(System.String,System.IFormatProvider,Sudoku.Analytics.Construction.Components.Chain@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.Chain.Parse(System.String)">
-            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.Chain.Parse(System.String,System.IFormatProvider)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.Chain.Parse(System.String,System.IFormatProvider)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.Chain.op_Equality(Sudoku.Analytics.Construction.Components.Chain,Sudoku.Analytics.Construction.Components.Chain)">
@@ -5663,9 +5688,6 @@
             <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.ContinuousNiceLoop.CompareTo(Sudoku.Analytics.Construction.Components.ContinuousNiceLoop)"/>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.ContinuousNiceLoop.CompareTo(Sudoku.Analytics.Construction.Components.Chain)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.ContinuousNiceLoop.ToString">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.ContinuousNiceLoop.GetConclusions(Sudoku.Concepts.Grid@)">
@@ -6101,8 +6123,29 @@
             </summary>
             <seealso cref="P:Sudoku.Analytics.Construction.Components.IChainOrForcingChains.IsGrouped"/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.IChainOrForcingChains.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.Construction.Components.IChainOrForcingChains.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.IChainOrForcingChains.ToString(System.Globalization.CultureInfo)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation via the specified culture.
+            </summary>
+            <param name="culture">The culture.</param>
+            <returns>The string.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.IChainOrForcingChains.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.IChainOrForcingChains.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.IChainOrForcingChains.ToString(Sudoku.Concepts.ValueConversions.IChainConverter)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.IChainOrForcingChains.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.IChainOrForcingChains.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,System.IFormatProvider)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation via the specified converter.
+            </summary>
+            <param name="converter">The converter.</param>
+            <param name="formatProvider">The format provider.</param>
+            <returns>The string.</returns>
         </member>
         <member name="T:Sudoku.Analytics.Construction.Components.IComplexSeniorExocet">
             <summary>
@@ -6232,9 +6275,6 @@
             <param name="newConclusions">The conclusions used.</param>
             <returns>A list of nodes.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.IForcingChains.System#IFormattable#ToString(System.String,System.IFormatProvider)">
-            <inheritdoc/>
-        </member>
         <member name="T:Sudoku.Analytics.Construction.Components.IMultipleForcingChains`2">
             <summary>
             Represents a multiple forcing chains.
@@ -6337,16 +6377,28 @@
             <param name="childNode">The node to be checked.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.IParentLinkedNode`1.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.Construction.Components.IParentLinkedNode`1.ToString(System.Globalization.CultureInfo)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation.
+            </summary>
+            <param name="culture">The culture.</param>
+            <returns>The string representation.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.IParentLinkedNode`1.System#IFormattable#ToString(System.String,System.IFormatProvider)">
-            <inheritdoc/>
+        <member name="M:Sudoku.Analytics.Construction.Components.IParentLinkedNode`1.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.IParentLinkedNode`1.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.IParentLinkedNode`1.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.IParentLinkedNode`1.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.IParentLinkedNode`1.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter,System.IFormatProvider)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation via the specified converter.
+            </summary>
+            <param name="converter">The converter.</param>
+            <param name="formatProvider">The format provider.</param>
+            <returns>The string representation.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.IParentLinkedNode`1.Create(`0,`0)">
-            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.IParentLinkedNode`1.op_RightShift(`0,`0)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.IParentLinkedNode`1.op_RightShift(`0,`0)">
             <summary>
             Creates a <see cref="T:Sudoku.Analytics.Construction.Components.WhipNode"/> instance with parent node.
             </summary>
@@ -6874,8 +6926,32 @@
         <member name="M:Sudoku.Analytics.Construction.Components.MultipleForcingChains.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.MultipleForcingChains.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Construction.Components.MultipleForcingChains.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.MultipleForcingChains.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.MultipleForcingChains.ToString(Sudoku.Concepts.ValueConversions.IChainConverter)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.MultipleForcingChains.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,System.IFormatProvider)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.MultipleForcingChains.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,Sudoku.Concepts.ValueConversions.ICandidateMapConverter)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.MultipleForcingChains.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,System.IFormatProvider,Sudoku.Concepts.ValueConversions.ICandidateMapConverter)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.MultipleForcingChains.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,System.IFormatProvider,Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.MultipleForcingChains.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,System.IFormatProvider,Sudoku.Concepts.ValueConversions.ICandidateMapConverter)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.MultipleForcingChains.ToString(Sudoku.Concepts.ValueConversions.IChainConverter,System.IFormatProvider,Sudoku.Concepts.ValueConversions.ICandidateMapConverter)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation via the specified converter.
+            </summary>
+            <param name="converter">The converter.</param>
+            <param name="formatProvider">The format provider.</param>
+            <param name="branchKeyConverter">The branch key (candidate) converter.</param>
+            <returns>The string.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.MultipleForcingChains.GetThoroughConclusions(Sudoku.Concepts.Grid@)">
             <summary>
@@ -7132,18 +7208,13 @@
         <member name="M:Sudoku.Analytics.Construction.Components.Node.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.Node.ToString(System.IFormatProvider)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.Node.ToString(System.String,System.IFormatProvider)">
-            <inheritdoc/>
-            <remarks>
+        <member name="M:Sudoku.Analytics.Construction.Components.Node.ToString(System.String)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation.
+            </summary>
+            <param name="format">
             Format description:
             <list type="table">
-            <listheader>
-            <term>Format character</term>
-            <description>Description</description>
-            </listheader>
             <item>
             <term><c>m</c></term>
             <description>The map text. For example, <c>r1c23(4)</c></description>
@@ -7157,7 +7228,20 @@
             </item>
             </list>
             For example, format value <c>"m: S"</c> will be replaced with value <c>"r1c23(4): True"</c>.
-            </remarks>
+            </param>
+            <returns>The string.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.Node.ToString(System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.Node.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.Node.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.Node.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter,System.IFormatProvider)">
+            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.Node.Clone">
             <inheritdoc cref="M:System.ICloneable.Clone"/>
@@ -7166,10 +7250,20 @@
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.Node.Create(Sudoku.Analytics.Construction.Components.Node,Sudoku.Analytics.Construction.Components.Node)">
-            <inheritdoc/>
+            <summary>
+            Creates a <see cref="T:Sudoku.Analytics.Construction.Components.Node"/> instance with parent node.
+            </summary>
+            <param name="node">The current node.</param>
+            <param name="parent">The parent node.</param>
+            <returns>The new node created.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.Node.Create(Sudoku.Analytics.Construction.Components.Node,Sudoku.Analytics.Construction.Components.NodeSet)">
-            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.Node.op_RightShift(Sudoku.Analytics.Construction.Components.Node,Sudoku.Analytics.Construction.Components.NodeSet)"/>
+            <summary>
+            Creates a <see cref="T:Sudoku.Analytics.Construction.Components.Node"/> instance with a list of parent nodes.
+            </summary>
+            <param name="node">The current node.</param>
+            <param name="parents">The parent nodes.</param>
+            <returns>The new node created.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.Node.op_Equality(Sudoku.Analytics.Construction.Components.Node,Sudoku.Analytics.Construction.Components.Node)">
             <inheritdoc/>
@@ -7195,22 +7289,6 @@
             </summary>
             <param name="value">The current node.</param>
             <returns>The node negated.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.Node.op_RightShift(Sudoku.Analytics.Construction.Components.Node,Sudoku.Analytics.Construction.Components.Node)">
-            <summary>
-            Creates a <see cref="T:Sudoku.Analytics.Construction.Components.Node"/> instance with parent node.
-            </summary>
-            <param name="current">The current node.</param>
-            <param name="parent">The parent node.</param>
-            <returns>The new node created.</returns>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.Node.op_RightShift(Sudoku.Analytics.Construction.Components.Node,Sudoku.Analytics.Construction.Components.NodeSet)">
-            <summary>
-            Creates a <see cref="T:Sudoku.Analytics.Construction.Components.Node"/> instance with a list of parent nodes.
-            </summary>
-            <param name="current">The current node.</param>
-            <param name="parents">The parent nodes.</param>
-            <returns>The new node created.</returns>
         </member>
         <member name="T:Sudoku.Analytics.Construction.Components.NodeComparison">
             <summary>
@@ -7270,14 +7348,20 @@
         <member name="M:Sudoku.Analytics.Construction.Components.NodeSet.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.NodeSet.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.Construction.Components.NodeSet.ToString(System.Globalization.CultureInfo)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.NodeSet.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.NodeSet.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.NodeSet.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.NodeSet.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.Node.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.NodeSet.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter,System.IFormatProvider)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Components.Node.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter,System.IFormatProvider)"/>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.NodeSet.GetEnumerator">
             <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.NodeSet.System#IFormattable#ToString(System.String,System.IFormatProvider)">
-            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.NodeSet.System#Collections#IEnumerable#GetEnumerator">
             <inheritdoc/>
@@ -7478,9 +7562,6 @@
         <member name="M:Sudoku.Analytics.Construction.Components.StrongForcingChain.GetHashCode(Sudoku.Analytics.Construction.Components.NodeComparison,Sudoku.Analytics.Construction.Components.ChainComparison)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.StrongForcingChain.ToString">
-            <inheritdoc/>
-        </member>
         <member name="T:Sudoku.Analytics.Construction.Components.UnnamedChain">
             <summary>
             Represents a forcing chain branch.
@@ -7582,9 +7663,6 @@
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.WeakForcingChain.GetHashCode(Sudoku.Analytics.Construction.Components.NodeComparison,Sudoku.Analytics.Construction.Components.ChainComparison)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.WeakForcingChain.ToString">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Construction.Components.WhipAssignment">
@@ -7704,25 +7782,31 @@
         <member name="M:Sudoku.Analytics.Construction.Components.WhipNode.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.WhipNode.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Construction.Components.WhipNode.ToString(System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.WhipNode.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.WhipNode.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.WhipNode.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter,System.IFormatProvider)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Components.WhipNode.Create(Sudoku.Analytics.Construction.Components.WhipNode,Sudoku.Analytics.Construction.Components.WhipNode)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.WhipNode.op_Equality(Sudoku.Analytics.Construction.Components.WhipNode,Sudoku.Analytics.Construction.Components.WhipNode)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.WhipNode.op_Inequality(Sudoku.Analytics.Construction.Components.WhipNode,Sudoku.Analytics.Construction.Components.WhipNode)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Components.WhipNode.op_RightShift(Sudoku.Analytics.Construction.Components.WhipNode,Sudoku.Analytics.Construction.Components.WhipNode)">
             <summary>
             Creates a <see cref="T:Sudoku.Analytics.Construction.Components.WhipNode"/> instance with parent node.
             </summary>
             <param name="current">The current node.</param>
             <param name="parent">The parent node.</param>
             <returns>The new node created.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.WhipNode.op_Equality(Sudoku.Analytics.Construction.Components.WhipNode,Sudoku.Analytics.Construction.Components.WhipNode)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Components.WhipNode.op_Inequality(Sudoku.Analytics.Construction.Components.WhipNode,Sudoku.Analytics.Construction.Components.WhipNode)">
+            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Construction.ComponentType">
             <summary>
@@ -8082,20 +8166,48 @@
         <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.ToString(System.Globalization.CultureInfo)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation via the specified culture.
+            </summary>
+            <param name="culture">The culture.</param>
+            <returns>The string.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation via the specified converter.
+            </summary>
+            <param name="converter">The converter.</param>
+            <returns>The string.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.Clone">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.System#IFormattable#ToString(System.String,System.IFormatProvider)">
-            <inheritdoc/>
-        </member>
         <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.TryParse(System.String,Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern@)">
-            <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
+            <summary>
+            Try to parse the string into target instance.
+            </summary>
+            <param name="s">The string.</param>
+            <param name="result">The result.</param>
+            <returns>A <see cref="T:System.Boolean"/> result.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.TryParse(System.String,System.IFormatProvider,Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern@)">
-            <inheritdoc/>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.TryParse(System.String,System.Globalization.CultureInfo,Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern@)">
+            <summary>
+            Try to parse the string into target instance, using the specified culture.
+            </summary>
+            <param name="s">The string.</param>
+            <param name="culture">The culture.</param>
+            <param name="result">The result.</param>
+            <returns>A <see cref="T:System.Boolean"/> result.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.TryParse(System.String,Sudoku.Concepts.Coordinates.CoordinateParser,Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern@)">
+            <summary>
+            Try to parse the string into target instance, using the specified converter.
+            </summary>
+            <param name="s">The string.</param>
+            <param name="converter">The converter.</param>
+            <param name="result">The result.</param>
+            <returns>A <see cref="T:System.Boolean"/> result.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.Collect(Sudoku.Concepts.Grid@)">
             <summary>
@@ -8105,10 +8217,27 @@
             <returns>All possible found <see cref="T:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern"/> instances.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.Parse(System.String)">
-            <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
+            <summary>
+            Parses the current string into a valid instance.
+            </summary>
+            <param name="s">The string.</param>
+            <returns>The instance.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.Parse(System.String,System.IFormatProvider)">
-            <inheritdoc/>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.Parse(System.String,System.Globalization.CultureInfo)">
+            <summary>
+            Parses the current string into a valid instance, via the specified culture.
+            </summary>
+            <param name="s">The string.</param>
+            <param name="culture">The culture.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.Parse(System.String,Sudoku.Concepts.Coordinates.CoordinateParser)">
+            <summary>
+            Parses the current string into a valid instance, via the specified converter.
+            </summary>
+            <param name="s">The string.</param>
+            <param name="converter">The converter.</param>
+            <returns>The instance.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern.op_GreaterThan(Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern,Sudoku.Analytics.Construction.Patterns.AlmostLockedSetPattern)">
             <inheritdoc/>
@@ -8778,8 +8907,19 @@
         <member name="M:Sudoku.Analytics.Construction.Patterns.FishPattern.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Patterns.FishPattern.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.FishPattern.ToString(System.Globalization.CultureInfo)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> represenation.
+            </summary>
+            <param name="culture">The culture.</param>
+            <returns>The string.</returns>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.FishPattern.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> represenation via the specified converter.
+            </summary>
+            <param name="converter">The converter.</param>
+            <returns>The string.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Patterns.FishPattern.GetFinKind(Sudoku.Concepts.Grid@)">
             <summary>
@@ -8789,9 +8929,6 @@
             <returns>The fin kind.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Patterns.FishPattern.Clone">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Patterns.FishPattern.System#IFormattable#ToString(System.String,System.IFormatProvider)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Construction.Patterns.GuardianPattern">
@@ -9534,13 +9671,17 @@
         <member name="M:Sudoku.Analytics.Construction.Patterns.XyzWingPattern.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Construction.Patterns.XyzWingPattern.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.XyzWingPattern.ToString(System.Globalization.CultureInfo)">
+            <inheritdoc cref="M:Sudoku.Analytics.Construction.Patterns.XyzWingPattern.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Construction.Patterns.XyzWingPattern.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation via the specified converter.
+            </summary>
+            <param name="converter">The converter.</param>
+            <returns>The string.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Construction.Patterns.XyzWingPattern.Clone">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Analytics.Construction.Patterns.XyzWingPattern.System#IFormattable#ToString(System.String,System.IFormatProvider)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Construction.PatternType">
@@ -9748,9 +9889,9 @@
             <inheritdoc cref="M:System.Object.GetHashCode"/>
         </member>
         <member name="M:Sudoku.Analytics.Dependency.DependencyAssignment.ToCandidateFormatString(System.Boolean)">
-            <inheritdoc cref="M:Sudoku.Analytics.Dependency.DependencyAssignment.ToCandidateFormatString(System.Boolean,System.IFormatProvider)"/>
+            <inheritdoc cref="M:Sudoku.Analytics.Dependency.DependencyAssignment.ToCandidateFormatString(System.Boolean,System.Globalization.CultureInfo)"/>
         </member>
-        <member name="M:Sudoku.Analytics.Dependency.DependencyAssignment.ToCandidateFormatString(System.Boolean,System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Dependency.DependencyAssignment.ToCandidateFormatString(System.Boolean,System.Globalization.CultureInfo)">
             <summary>
             Returns a string instance that displays like a candidate format.
             </summary>
@@ -9758,7 +9899,7 @@
             Indicates whether the output text will include control characters like <c>\e</c>,
             in order to display colors in console output stream.
             </param>
-            <param name="formatProvider">The coordinate format converter.</param>
+            <param name="culture">The culture.</param>
             <returns>The string representation.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Dependency.DependencyAssignment.ToString">
@@ -9842,19 +9983,19 @@
             </summary>
             <seealso cref="T:Sudoku.Analytics.DifficultyLevel"/>
         </member>
-        <member name="M:Sudoku.Analytics.DifficultyLevelExtensions.GetName(Sudoku.Analytics.DifficultyLevel,System.IFormatProvider)">
-            <inheritdoc cref="M:Sudoku.Analytics.DifficultyLevelExtensions.&lt;G&gt;$880F3C6B5A60B12A184AC3F205D41314.GetName(System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.DifficultyLevelExtensions.GetName(Sudoku.Analytics.DifficultyLevel,System.Globalization.CultureInfo)">
+            <inheritdoc cref="M:Sudoku.Analytics.DifficultyLevelExtensions.&lt;G&gt;$880F3C6B5A60B12A184AC3F205D41314.GetName(System.Globalization.CultureInfo)"/>
         </member>
         <member name="T:Sudoku.Analytics.DifficultyLevelExtensions.&lt;G&gt;$880F3C6B5A60B12A184AC3F205D41314.&lt;M&gt;$676251BA9E4C8CE71D12F0E4DF97E139">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.DifficultyLevel"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.DifficultyLevelExtensions.&lt;G&gt;$880F3C6B5A60B12A184AC3F205D41314.GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.DifficultyLevelExtensions.&lt;G&gt;$880F3C6B5A60B12A184AC3F205D41314.GetName(System.Globalization.CultureInfo)">
             <summary>
             Gets the name of the current value, with specified culture.
             </summary>
-            <param name="formatProvider">The culture.</param>
+            <param name="culture">The culture.</param>
             <returns>The string value.</returns>
         </member>
         <member name="T:Sudoku.Analytics.DifficultyLevels">
@@ -10078,11 +10219,11 @@
             Provides with a formula that calculates for the result.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Factor.GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Factor.GetName(System.Globalization.CultureInfo)">
             <summary>
             Try to fetch the name stored in resource dictionary.
             </summary>
-            <param name="formatProvider">The culture information.</param>
+            <param name="culture">The culture information.</param>
             <returns>The name of the factor.</returns>
         </member>
         <member name="M:Sudoku.Analytics.Factor.Create(System.String,System.String[],System.Type,System.Func{System.ReadOnlySpan{System.Object},System.Int32})">
@@ -10261,12 +10402,6 @@
         <member name="M:Sudoku.Analytics.GridAnalysisExtensions.Apply(Sudoku.Concepts.Grid@,Sudoku.Analytics.Step)">
             <inheritdoc cref="M:Sudoku.Analytics.GridAnalysisExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Analytics.Step)"/>
         </member>
-        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Analytics.Step)">
-            <inheritdoc cref="M:Sudoku.Analytics.GridAnalysisExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Analytics.Step)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Analytics.Step)">
-            <inheritdoc cref="M:Sudoku.Analytics.GridAnalysisExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Analytics.Step)"/>
-        </member>
         <member name="M:Sudoku.Analytics.GridAnalysisExtensions.get_IsMinimal(Sudoku.Concepts.Grid@)">
             <inheritdoc cref="P:Sudoku.Analytics.GridAnalysisExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.IsMinimal"/>
         </member>
@@ -10291,21 +10426,10 @@
             </summary>
         </member>
         <member name="M:Sudoku.Analytics.GridAnalysisExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Analytics.Step)">
-            <inheritdoc cref="M:Sudoku.Analytics.GridAnalysisExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Analytics.Step)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Analytics.Step)">
             <summary>
             Applies for all conclusions into the current <see cref="T:Sudoku.Concepts.Grid"/> instance.
             </summary>
             <param name="step">A conclusion-provider <see cref="T:Sudoku.Analytics.Step"/> instance.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.GridAnalysisExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Analytics.Step)">
-            <summary>
-            Applies the grid with specified step.
-            </summary>
-            <param name="grid">The grid.</param>
-            <param name="step">The step.</param>
-            <returns>The target grid.</returns>
         </member>
         <member name="T:Sudoku.Analytics.GridAnalysisExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$4FBDD4478CFAA5DAE39645DF9E3BC758">
             <summary>
@@ -11074,12 +11198,6 @@
         <member name="M:Sudoku.Analytics.Ittoryu.GridIttoryuExtensions.MakeIttoryu(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ittoryu.DisorderedIttoryuDigitPath)">
             <inheritdoc cref="M:Sudoku.Analytics.Ittoryu.GridIttoryuExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.MakeIttoryu(Sudoku.Analytics.Ittoryu.DisorderedIttoryuDigitPath)"/>
         </member>
-        <member name="M:Sudoku.Analytics.Ittoryu.GridIttoryuExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ittoryu.DisorderedIttoryuDigitPath)">
-            <inheritdoc cref="M:Sudoku.Analytics.Ittoryu.GridIttoryuExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Analytics.Ittoryu.DisorderedIttoryuDigitPath)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Ittoryu.GridIttoryuExtensions.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ittoryu.DisorderedIttoryuDigitPath)">
-            <inheritdoc cref="M:Sudoku.Analytics.Ittoryu.GridIttoryuExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ittoryu.DisorderedIttoryuDigitPath)"/>
-        </member>
         <member name="M:Sudoku.Analytics.Ittoryu.GridIttoryuExtensions.IsIttoryu(Sudoku.Concepts.Grid@,System.Nullable{Sudoku.Analytics.Ittoryu.DisorderedIttoryuDigitPath}@)">
             <inheritdoc cref="M:Sudoku.Analytics.Ittoryu.GridIttoryuExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.IsIttoryu(System.Nullable{Sudoku.Analytics.Ittoryu.DisorderedIttoryuDigitPath}@)"/>
         </member>
@@ -11092,9 +11210,6 @@
             </summary>
         </member>
         <member name="M:Sudoku.Analytics.Ittoryu.GridIttoryuExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.MakeIttoryu(Sudoku.Analytics.Ittoryu.DisorderedIttoryuDigitPath)">
-            <inheritdoc cref="M:Sudoku.Analytics.Ittoryu.GridIttoryuExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ittoryu.DisorderedIttoryuDigitPath)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Ittoryu.GridIttoryuExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Analytics.Ittoryu.DisorderedIttoryuDigitPath)">
             <summary>
             Try to reproduce ittoryu ordering for the specified grid whose path can be found by <see cref="T:Sudoku.Analytics.Ittoryu.DisorderedIttoryuFinder"/>.
             </summary>
@@ -11103,9 +11218,6 @@
             </param>
             <exception cref="T:System.ArgumentException">Throws when the ittoryu path contains a digit series of length 0 or 1.</exception>
             <seealso cref="T:Sudoku.Analytics.Ittoryu.DisorderedIttoryuFinder"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Ittoryu.GridIttoryuExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ittoryu.DisorderedIttoryuDigitPath)">
-            <inheritdoc cref="M:Sudoku.Analytics.Ittoryu.GridIttoryuExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ittoryu.DisorderedIttoryuDigitPath)"/>
         </member>
         <member name="T:Sudoku.Analytics.Ittoryu.GridIttoryuExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$4FBDD4478CFAA5DAE39645DF9E3BC758">
             <summary>
@@ -11184,11 +11296,12 @@
 				</summary>
 			</target>
         </member>
-        <member name="M:Sudoku.Analytics.Ittoryu.IttoryuPathNode.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Ittoryu.IttoryuPathNode.System#IFormattable#ToString(System.String,System.IFormatProvider)">
-            <inheritdoc/>
+        <member name="M:Sudoku.Analytics.Ittoryu.IttoryuPathNode.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation via the specified converter.
+            </summary>
+            <param name="converter">The converter.</param>
+            <returns>The string.</returns>
         </member>
         <member name="T:Sudoku.Analytics.Ittoryu.IttoryuPathNodeExtensions">
             <summary>
@@ -11200,28 +11313,16 @@
         <member name="M:Sudoku.Analytics.Ittoryu.IttoryuPathNodeExtensions.Apply(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ittoryu.IttoryuPathNode)">
             <inheritdoc cref="M:Sudoku.Analytics.Ittoryu.IttoryuPathNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Analytics.Ittoryu.IttoryuPathNode)"/>
         </member>
-        <member name="M:Sudoku.Analytics.Ittoryu.IttoryuPathNodeExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ittoryu.IttoryuPathNode)">
-            <inheritdoc cref="M:Sudoku.Analytics.Ittoryu.IttoryuPathNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Analytics.Ittoryu.IttoryuPathNode)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Ittoryu.IttoryuPathNodeExtensions.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ittoryu.IttoryuPathNode)">
-            <inheritdoc cref="M:Sudoku.Analytics.Ittoryu.IttoryuPathNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ittoryu.IttoryuPathNode)"/>
-        </member>
         <member name="T:Sudoku.Analytics.Ittoryu.IttoryuPathNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$25EDD80A63D287142C5EEC5FEE4D06CD">
             <summary>
             Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
         <member name="M:Sudoku.Analytics.Ittoryu.IttoryuPathNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Analytics.Ittoryu.IttoryuPathNode)">
-            <inheritdoc cref="M:Sudoku.Analytics.Ittoryu.IttoryuPathNodeExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ittoryu.IttoryuPathNode)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Ittoryu.IttoryuPathNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Analytics.Ittoryu.IttoryuPathNode)">
             <summary>
             Applies the node to the current grid.
             </summary>
             <param name="node">The node.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.Ittoryu.IttoryuPathNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ittoryu.IttoryuPathNode)">
-            <inheritdoc cref="M:Sudoku.Analytics.Ittoryu.IttoryuPathNodeExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Analytics.Ittoryu.IttoryuPathNode)"/>
         </member>
         <member name="T:Sudoku.Analytics.Ittoryu.TechniqueIttoryuSets">
             <summary>
@@ -12607,19 +12708,19 @@
             </summary>
             <seealso cref="T:Sudoku.Analytics.SnyderMarkings.SingleTechniqueFlag"/>
         </member>
-        <member name="M:Sudoku.Analytics.SnyderMarkings.SingleTechniqueFlagExtensions.GetName(Sudoku.Analytics.SnyderMarkings.SingleTechniqueFlag,System.IFormatProvider)">
-            <inheritdoc cref="M:Sudoku.Analytics.SnyderMarkings.SingleTechniqueFlagExtensions.&lt;G&gt;$F061D5BAA39B1A703F9BC6FF7064E203.GetName(System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.SnyderMarkings.SingleTechniqueFlagExtensions.GetName(Sudoku.Analytics.SnyderMarkings.SingleTechniqueFlag,System.Globalization.CultureInfo)">
+            <inheritdoc cref="M:Sudoku.Analytics.SnyderMarkings.SingleTechniqueFlagExtensions.&lt;G&gt;$F061D5BAA39B1A703F9BC6FF7064E203.GetName(System.Globalization.CultureInfo)"/>
         </member>
         <member name="T:Sudoku.Analytics.SnyderMarkings.SingleTechniqueFlagExtensions.&lt;G&gt;$F061D5BAA39B1A703F9BC6FF7064E203.&lt;M&gt;$CBCB0E70406A06FB9621A41E9DD9E41B">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.SnyderMarkings.SingleTechniqueFlag"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.SnyderMarkings.SingleTechniqueFlagExtensions.&lt;G&gt;$F061D5BAA39B1A703F9BC6FF7064E203.GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.SnyderMarkings.SingleTechniqueFlagExtensions.&lt;G&gt;$F061D5BAA39B1A703F9BC6FF7064E203.GetName(System.Globalization.CultureInfo)">
             <summary>
             Try to get the name of the current <see cref="T:Sudoku.Analytics.SnyderMarkings.SingleTechniqueFlag"/>.
             </summary>
-            <param name="formatProvider">The culture information.</param>
+            <param name="culture">The culture information.</param>
             <returns>The name of the current technique.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the target technique is out of range.</exception>
         </member>
@@ -12766,17 +12867,18 @@
         </member>
         <member name="P:Sudoku.Analytics.Step.EnglishName">
             <summary>
-            Indicates the English name of the technique.
+            Indicates the English name of technique represented by the current step.
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.Step.BaseDifficulty">
             <summary>
-            Indicates the difficulty of this technique step.
+            Indicates the difficulty of the current step.
             </summary>
             <remarks>
             Generally this property holds the default and basic difficulty of the step.
-            If the step's difficulty rating requires multiple factors, this property will provide with a basic difficulty value
-            as elementary and default rating value; other factors will be given in the other property <see cref="P:Sudoku.Analytics.Step.Factors"/>.
+            If difficulty rating of a step can be decided by multiple factors,
+            such factors will be given in the other property <see cref="P:Sudoku.Analytics.Step.Factors"/>;
+            this property value only holds basic rating of the current step.
             </remarks>
             <seealso cref="P:Sudoku.Analytics.Step.Factors"/>
         </member>
@@ -12852,14 +12954,14 @@
             By default, this property is <see langword="false"/>, meaning technique resource key must match its containing type.
             </para>
             <para>
-            If there's no corresponding resource found, <see cref="M:Sudoku.Analytics.Step.ToString(System.IFormatProvider)"/>
+            If there's no corresponding resource found, <see cref="M:Sudoku.Analytics.Step.ToString(System.Globalization.CultureInfo)"/>
             and other methods in a same method group will fail to output information,
-            and return default value same as <see cref="M:Sudoku.Analytics.Step.ToSimpleString(System.IFormatProvider)"/>.
+            and return default value same as <see cref="M:Sudoku.Analytics.Step.ToSimpleString(System.Globalization.CultureInfo)"/>.
             </para>
             </summary>
             <seealso cref="P:Sudoku.Analytics.Step.FormatTypeIdentifier"/>
-            <seealso cref="M:Sudoku.Analytics.Step.ToString(System.IFormatProvider)"/>
-            <seealso cref="M:Sudoku.Analytics.Step.ToSimpleString(System.IFormatProvider)"/>
+            <seealso cref="M:Sudoku.Analytics.Step.ToString(System.Globalization.CultureInfo)"/>
+            <seealso cref="M:Sudoku.Analytics.Step.ToSimpleString(System.Globalization.CultureInfo)"/>
         </member>
         <member name="P:Sudoku.Analytics.Step.FormatTypeIdentifier">
             <summary>
@@ -12912,31 +13014,33 @@
         <member name="M:Sudoku.Analytics.Step.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Step.GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Step.GetName(System.Globalization.CultureInfo)">
             <summary>
             Try to fetch the name of this technique step, with the specified culture.
             </summary>
-            <param name="formatProvider">The culture information provider instance.</param>
+            <param name="culture">The culture.</param>
             <returns>The string representation.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Step.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.Step.ToString(System.Globalization.CultureInfo)">
+            <summary>
+            Gets string representation of the current instance, using the specified culture to translate target sentences.
+            </summary>
+            <param name="culture">The culture.</param>
+            <returns>The string result.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Step.ToSimpleString(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Step.ToSimpleString(System.Globalization.CultureInfo)">
             <summary>
             Gets the string representation for the current step, describing only its technique name and conclusions.
             </summary>
-            <param name="formatProvider">The culture information.</param>
+            <param name="culture">The culture information.</param>
             <returns>The string value.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Step.NameCompareTo(Sudoku.Analytics.Step,System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Step.NameCompareTo(Sudoku.Analytics.Step,System.Globalization.CultureInfo)">
             <summary>
             Compares the real name of the step to the specified one. This method is to distinct names on displaying in UI.
             </summary>
             <param name="other">The other instance to be compared.</param>
-            <param name="formatProvider">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)" path="/param[@name='formatProvider']"/>
-            </param>
+            <param name="culture">The culture.</param>
             <returns>An <see cref="T:System.Int32"/> value indicating which one is logically larger.</returns>
             <remarks>
             <para>
@@ -12950,20 +13054,6 @@
             </para>
             <para>By default, this method only checks for the Unicode order of two strings (default string comparison rule).</para>
             </remarks>
-        </member>
-        <member name="M:Sudoku.Analytics.Step.GetCulture(System.IFormatProvider)">
-            <summary>
-            Try to get the current culture used. The return value won't be <see langword="null"/>.
-            </summary>
-            <param name="formatProvider">
-            The format provider instance.
-            The value can be <see langword="null"/> if you want to check for default culture used in <see cref="P:Sudoku.Analytics.Step.Options"/>.
-            </param>
-            <returns>The corresponding culture information.</returns>
-            <seealso cref="P:Sudoku.Analytics.Step.Options"/>
-        </member>
-        <member name="M:Sudoku.Analytics.Step.System#IFormattable#ToString(System.String,System.IFormatProvider)">
-            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Step.FormatDescription(System.Globalization.CultureInfo,System.ReadOnlySpan{System.String})">
             <summary>
@@ -13104,8 +13194,8 @@
             </summary>
             <seealso cref="T:Sudoku.Analytics.Step"/>
         </member>
-        <member name="M:Sudoku.Analytics.StepExtensions.CompareName(Sudoku.Analytics.Step,Sudoku.Analytics.Step,System.IFormatProvider)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepExtensions.&lt;G&gt;$3C34AEC51858DD3952F4D8CA62DC8488.CompareName(Sudoku.Analytics.Step,Sudoku.Analytics.Step,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.StepExtensions.CompareName(Sudoku.Analytics.Step,Sudoku.Analytics.Step,System.Globalization.CultureInfo)">
+            <inheritdoc cref="M:Sudoku.Analytics.StepExtensions.&lt;G&gt;$3C34AEC51858DD3952F4D8CA62DC8488.CompareName(Sudoku.Analytics.Step,Sudoku.Analytics.Step,System.Globalization.CultureInfo)"/>
         </member>
         <member name="M:Sudoku.Analytics.StepExtensions.Combine(System.ReadOnlySpan{Sudoku.Concepts.Grid},System.ReadOnlySpan{Sudoku.Analytics.Step})">
             <inheritdoc cref="M:Sudoku.Analytics.StepExtensions.&lt;G&gt;$3C34AEC51858DD3952F4D8CA62DC8488.Combine(System.ReadOnlySpan{Sudoku.Concepts.Grid},System.ReadOnlySpan{Sudoku.Analytics.Step})"/>
@@ -13115,13 +13205,13 @@
             Provides extension members on <see cref="T:Sudoku.Analytics.Step"/>.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepExtensions.&lt;G&gt;$3C34AEC51858DD3952F4D8CA62DC8488.CompareName(Sudoku.Analytics.Step,Sudoku.Analytics.Step,System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.StepExtensions.&lt;G&gt;$3C34AEC51858DD3952F4D8CA62DC8488.CompareName(Sudoku.Analytics.Step,Sudoku.Analytics.Step,System.Globalization.CultureInfo)">
             <summary>
             Compare names of two <see cref="T:Sudoku.Analytics.Step"/> instances.
             </summary>
             <param name="left">The left instance to be compared.</param>
             <param name="right">The right instance to be compared.</param>
-            <param name="formatProvider">The culture information.</param>
+            <param name="culture">The culture information.</param>
             <returns>An <see cref="T:System.Int32"/> value indicating which is bigger.</returns>
         </member>
         <member name="M:Sudoku.Analytics.StepExtensions.&lt;G&gt;$3C34AEC51858DD3952F4D8CA62DC8488.Combine(System.ReadOnlySpan{Sudoku.Concepts.Grid},System.ReadOnlySpan{Sudoku.Analytics.Step})">
@@ -13416,8 +13506,12 @@
         <member name="M:Sudoku.Analytics.StepSearcher.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcher.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.StepSearcher.ToString(System.Globalization.CultureInfo)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation via the specified culture.
+            </summary>
+            <param name="culture">The culture.</param>
+            <returns>The result.</returns>
         </member>
         <member name="M:Sudoku.Analytics.StepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
             <summary>
@@ -13447,9 +13541,6 @@
             <exception cref="T:System.NotSupportedException">Throws when a big or small function is not supported on purpose.</exception>
             <seealso cref="T:Sudoku.Analytics.Step"/>
             <seealso cref="T:Sudoku.Analytics.StepAnalysisContext"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearcher.System#IFormattable#ToString(System.String,System.IFormatProvider)">
-            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.StepSearcher.op_Equality(Sudoku.Analytics.StepSearcher,Sudoku.Analytics.StepSearcher)">
             <inheritdoc/>
@@ -13720,7 +13811,7 @@
             Indicates the maximal key in rectangle set.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ProcessedViewNodeMap.ContainsCell(System.Int32,Sudoku.Drawing.WellKnownColorIdentifierKind@)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ProcessedViewNodeMap.ContainsCell(System.Int32,Sudoku.Descriptors.ColorDescriptorAlias@)">
             <summary>
             Determines whether the specified cell is stored in the table; if so, return the corresponding key.
             </summary>
@@ -13728,7 +13819,7 @@
             <param name="identifierKind">The cooresponding identifier kind.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ProcessedViewNodeMap.ContainsCandidate(System.Int32,Sudoku.Drawing.WellKnownColorIdentifierKind@)">
+        <member name="M:Sudoku.Analytics.StepSearcherHelpers.Chaining.ProcessedViewNodeMap.ContainsCandidate(System.Int32,Sudoku.Descriptors.ColorDescriptorAlias@)">
             <summary>
             Determines whether the specified candidate is stored in the table; if so, return the corresponding key.
             </summary>
@@ -14085,28 +14176,16 @@
         <member name="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.Apply(Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Components.Node)">
             <inheritdoc cref="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Analytics.Construction.Components.Node)"/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Components.Node)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Analytics.Construction.Components.Node)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Components.Node)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Components.Node)"/>
-        </member>
         <member name="T:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$25EDD80A63D287142C5EEC5FEE4D06CD">
             <summary>
             Provides extension members on <see langword="ref"/> <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
         </member>
         <member name="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.Apply(Sudoku.Analytics.Construction.Components.Node)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Components.Node)"/>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShiftAssignment(Sudoku.Analytics.Construction.Components.Node)">
             <summary>
             Treat the specified node as a real conclusion, and apply to a grid.
             </summary>
             <param name="node">The node.</param>
-        </member>
-        <member name="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.op_RightShift(Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Components.Node)">
-            <inheritdoc cref="M:Sudoku.Analytics.StepSearcherHelpers.GridNodeExtensions.op_RightShiftAssignment(Sudoku.Concepts.Grid@,Sudoku.Analytics.Construction.Components.Node)"/>
         </member>
         <member name="T:Sudoku.Analytics.StepSearcherHelpers.ForcingChainsStepSearcherHelper">
             <summary>
@@ -17212,9 +17291,9 @@
         <member name="M:Sudoku.Analytics.StepSearchers.BraidAnalysisStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.BraidAnalysisStepSearcher.CheckWhetherEveryMinilineHasAtLeastTwoEmptyCells(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap**,System.ReadOnlySpan{Sudoku.Concepts.CellMap},System.Int32[])">
+        <member name="M:Sudoku.Analytics.StepSearchers.BraidAnalysisStepSearcher.CheckWhetherEverySegmentHasAtLeastTwoEmptyCells(Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap**,System.ReadOnlySpan{Sudoku.Concepts.CellMap},System.Int32[])">
             <summary>
-            Check whether every miniline has enough cells to be iterated.
+            Check whether every segment has enough cells to be iterated.
             </summary>
             <param name="grid">The grid.</param>
             <param name="cellsGroup">The cell groups.</param>
@@ -17872,7 +17951,7 @@
         <member name="M:Sudoku.Analytics.StepSearchers.ExocetStepSearcher.Collect(Sudoku.Analytics.StepAnalysisContext@)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.ExocetStepSearcher.CollectJuniorExocets(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CellMap,System.Int32,System.Int32}},Sudoku.Concepts.CellMap@,System.Int16,System.Int32,System.Boolean,System.Int32,System.Int32)">
+        <member name="M:Sudoku.Analytics.StepSearchers.ExocetStepSearcher.CollectJuniorExocets(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Linq.BitStateMapGrouping{Sudoku.Concepts.CellMap,System.Int32,System.Int32}},Sudoku.Concepts.CellMap@,System.Int16,System.Int32,System.Boolean,System.Int32,System.Int32)">
             <summary>
             The core method to check for Junior Exocet sub-types.
             </summary>
@@ -17896,7 +17975,7 @@
             <param name="chuteIndex">The chute index to be used. Valid values are between 0 and 6.</param>
             <returns>A valid <see cref="T:Sudoku.Analytics.Steps.ExocetStep"/> instance calculated and found.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.ExocetStepSearcher.CollectSeniorExocets(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,System.Int32,System.ReadOnlySpan{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CellMap,System.Int32,System.Int32}},Sudoku.Concepts.CellMap@,System.Int16,System.Int32,System.Boolean,System.Int32,System.Int32)">
+        <member name="M:Sudoku.Analytics.StepSearchers.ExocetStepSearcher.CollectSeniorExocets(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,System.Int32,System.ReadOnlySpan{Sudoku.Linq.BitStateMapGrouping{Sudoku.Concepts.CellMap,System.Int32,System.Int32}},Sudoku.Concepts.CellMap@,System.Int16,System.Int32,System.Boolean,System.Int32,System.Int32)">
             <summary>
             The core method to check for Senior Exocet sub-types.
             </summary>
@@ -17918,7 +17997,7 @@
             <param name="chuteIndex">The chute index to be used. Valid values are between 0 and 6.</param>
             <returns>A valid <see cref="T:Sudoku.Analytics.Steps.ExocetStep"/> instance calculated and found.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.ExocetStepSearcher.CollectComplexJuniorExocets(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CellMap,System.Int32,System.Int32}},Sudoku.Concepts.CellMap@,System.Int16,System.Int32,System.Boolean,System.Int32,System.Int32,Sudoku.Concepts.CellMap@)">
+        <member name="M:Sudoku.Analytics.StepSearchers.ExocetStepSearcher.CollectComplexJuniorExocets(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Linq.BitStateMapGrouping{Sudoku.Concepts.CellMap,System.Int32,System.Int32}},Sudoku.Concepts.CellMap@,System.Int16,System.Int32,System.Boolean,System.Int32,System.Int32,Sudoku.Concepts.CellMap@)">
             <summary>
             The core method to check for Complex Junior Exocet sub-types.
             </summary>
@@ -17965,7 +18044,7 @@
             <param name="housesCells">The houses cells to be used for the base houses.</param>
             <returns>A valid <see cref="T:Sudoku.Analytics.Steps.ExocetStep"/> instance calculated and found.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.ExocetStepSearcher.CollectWeakExocets(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CellMap,System.Int32,System.Int32}},Sudoku.Concepts.CellMap@,System.Int16,System.Int32,System.Boolean,System.Int32,System.Int32)">
+        <member name="M:Sudoku.Analytics.StepSearchers.ExocetStepSearcher.CollectWeakExocets(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Linq.BitStateMapGrouping{Sudoku.Concepts.CellMap,System.Int32,System.Int32}},Sudoku.Concepts.CellMap@,System.Int16,System.Int32,System.Boolean,System.Int32,System.Int32)">
             <summary>
             The core method to check for Weak Exocet sub-types.
             </summary>
@@ -17989,7 +18068,7 @@
             <param name="chuteIndex">The chute index to be used. Valid values are between 0 and 6.</param>
             <returns>A valid <see cref="T:Sudoku.Analytics.Steps.ExocetStep"/> instance calculated and found.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.ExocetStepSearcher.CollectDoubleExocets(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Linq.CellMapOrCandidateMapGrouping{Sudoku.Concepts.CellMap,System.Int32,System.Int32}},Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.Int16,System.Int32,System.Boolean,System.Int32,System.Int32)">
+        <member name="M:Sudoku.Analytics.StepSearchers.ExocetStepSearcher.CollectDoubleExocets(Sudoku.Analytics.StepAnalysisContext@,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Linq.BitStateMapGrouping{Sudoku.Concepts.CellMap,System.Int32,System.Int32}},Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.Int16,System.Int32,System.Boolean,System.Int32,System.Int32)">
             <summary>
             The core method to check for Double Exocet sub-types.
             </summary>
@@ -18036,7 +18115,7 @@
             </summary>
             <param name="chuteIndex">The chute index (in range 0..6).</param>
             <param name="targetCell">The target cell.</param>
-            <param name="miniline">The miniline cells the target cell and mirror cells lie in.</param>
+            <param name="segment">The segment cells the target cell and mirror cells lie in.</param>
             <returns>The mirror cells that may contain non-empty cells.</returns>
         </member>
         <member name="M:Sudoku.Analytics.StepSearchers.ExocetStepSearcher.GetComplexHouses(System.Boolean,Sudoku.Concepts.CellMap@)">
@@ -18301,9 +18380,9 @@
             </summary>
             <param name="houses">The mask value holding a list of houses to be matched.</param>
             <returns>
-            A list of <see cref="T:Sudoku.Concepts.CellMap"/> grouped, representing as a <see cref="T:Sudoku.Linq.CellMapOrCandidateMapGrouping`3"/>.
+            A list of <see cref="T:Sudoku.Concepts.CellMap"/> grouped, representing as a <see cref="T:Sudoku.Linq.BitStateMapGrouping`3"/>.
             </returns>
-            <seealso cref="T:Sudoku.Linq.CellMapOrCandidateMapGrouping`3"/>
+            <seealso cref="T:Sudoku.Linq.BitStateMapGrouping`3"/>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.Extensions.&lt;G&gt;$E25ADDC593CEDFD1EA006EC186C1D196.&lt;M&gt;$4FBDD4478CFAA5DAE39645DF9E3BC758">
             <summary>
@@ -18458,10 +18537,15 @@
             meaning a user cannot disable the current step searcher.
             </summary>
         </member>
-        <member name="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.SupportAnalyzingMultipleSolutionsPuzzle">
+        <member name="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.SupportsAnalyzingPuzzleHavingMultipleSolutions">
             <summary>
             Indicates whether the step searcher can be invoked by puzzles containing multiple solutions.
             By default the value is <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.SupportsSukaku">
+            <summary>
+            Indicates whether this step searcher also supports to check for Sukaku puzzles.
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.NameKey">
@@ -18477,11 +18561,6 @@
         <member name="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.DifficultyLevels">
             <summary>
             Indicates what difficulty levels the current step searcher can produce.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.SupportedSudokuTypes">
-            <summary>
-            Indicates the supported sudoku types.
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.SupportedTechniques">
@@ -18530,7 +18609,7 @@
             </summary>
         </member>
         <member name="P:Sudoku.Analytics.StepSearchers.StepSearcherMetadataInfo.SupportAnalyzingMultipleSolutionsPuzzle">
-            <inheritdoc cref="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.SupportAnalyzingMultipleSolutionsPuzzle"/>
+            <inheritdoc cref="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.SupportsAnalyzingPuzzleHavingMultipleSolutions"/>
         </member>
         <member name="P:Sudoku.Analytics.StepSearchers.StepSearcherMetadataInfo.IsOnlyRunForDirectViews">
             <summary>
@@ -18555,11 +18634,11 @@
         <member name="P:Sudoku.Analytics.StepSearchers.StepSearcherMetadataInfo.SupportedTechniques">
             <inheritdoc cref="P:Sudoku.Analytics.StepSearchers.StepSearcherAttribute.SupportedTechniques"/>
         </member>
-        <member name="M:Sudoku.Analytics.StepSearchers.StepSearcherMetadataInfo.GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.StepSearchers.StepSearcherMetadataInfo.GetName(System.Globalization.CultureInfo)">
             <summary>
             Gets the name of the step searcher, using the specified culture.
             </summary>
-            <param name="formatProvider">The culture information.</param>
+            <param name="culture">The culture information.</param>
             <returns>The name.</returns>
         </member>
         <member name="T:Sudoku.Analytics.StepSearchers.StepSearcherRunningArea">
@@ -20762,8 +20841,8 @@
             The internal notation.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Steps.FishStep.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:Sudoku.Analytics.Step.ToString(System.IFormatProvider)"/>
+        <member name="M:Sudoku.Analytics.Steps.FishStep.ToString(System.Globalization.CultureInfo)">
+            <inheritdoc cref="M:Sudoku.Analytics.Step.ToString(System.Globalization.CultureInfo)"/>
         </member>
         <member name="T:Sudoku.Analytics.Steps.NormalFishStep">
             <summary>
@@ -22740,10 +22819,10 @@
             Indicates the excluder information. The value can be <see langword="null"/> if the target step is a Last Digit.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Steps.HiddenSingleStep.GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Steps.HiddenSingleStep.GetName(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Steps.HiddenSingleStep.NameCompareTo(Sudoku.Analytics.Step,System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Steps.HiddenSingleStep.NameCompareTo(Sudoku.Analytics.Step,System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Steps.LastDigitStep">
@@ -22822,10 +22901,10 @@
             Indicates excluder houses.
             </summary>
         </member>
-        <member name="M:Sudoku.Analytics.Steps.NakedSingleStep.GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Steps.NakedSingleStep.GetName(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Steps.NakedSingleStep.NameCompareTo(Sudoku.Analytics.Step,System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Steps.NakedSingleStep.NameCompareTo(Sudoku.Analytics.Step,System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Steps.NormalComplexSingleStep">
@@ -23561,7 +23640,7 @@
         <member name="P:Sudoku.Analytics.Steps.BivalueUniversalGraveMultipleStep.Sudoku#Analytics#Traits#ICandidateListTrait#CandidateSize">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Steps.BivalueUniversalGraveMultipleStep.GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Steps.BivalueUniversalGraveMultipleStep.GetName(System.Globalization.CultureInfo)">
             <inheritdoce/>
         </member>
         <member name="T:Sudoku.Analytics.Steps.BivalueUniversalGraveStep">
@@ -25125,7 +25204,7 @@
         <member name="P:Sudoku.Analytics.Steps.UniqueLoopConjugatePairsTypeStep.Factors">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Analytics.Steps.UniqueLoopConjugatePairsTypeStep.GetName(System.IFormatProvider)">
+        <member name="M:Sudoku.Analytics.Steps.UniqueLoopConjugatePairsTypeStep.GetName(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Steps.UniqueLoopStep">
@@ -27750,327 +27829,6 @@
             <para>A <see cref="T:System.Boolean"/> value indicating that.</para>
             </returns>
         </member>
-        <member name="T:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo">
-            <summary>
-            Represents a type that can format a <see cref="T:Sudoku.Analytics.Construction.Components.Chain"/> instance.
-            </summary>
-            <seealso cref="T:Sudoku.Analytics.Construction.Components.Chain"/>
-        </member>
-        <member name="M:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.#ctor">
-            <summary>
-            Initializes a <see cref="T:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo"/> instance.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.#ctor(Sudoku.Concepts.Coordinates.CoordinateConverter)">
-            <summary>
-            Copies converter options into the current instance.
-            </summary>
-            <param name="baseConverter">The base converter.</param>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.MakeDigitBeforeCell">
-            <inheritdoc cref="P:Sudoku.Concepts.Coordinates.RxCyConverter.MakeDigitBeforeCell"/>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.MakeLettersUpperCase">
-            <inheritdoc cref="P:Sudoku.Concepts.Coordinates.RxCyConverter.MakeLettersUpperCase"/>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.FoldLinksInCell">
-            <summary>
-            Indicates whether strong and weak links inside a cell will be folded. By default it's <see langword="false"/>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.InlineDigitsInLink">
-            <summary>
-            Indicates whether digits are inlined in links. By default it's <see langword="false"/>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.AlwaysOutputBracket">
-            <inheritdoc cref="P:Sudoku.Concepts.Coordinates.RxCyConverter.AlwaysOutputBracket"/>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.FinalRowLetter">
-            <inheritdoc cref="P:Sudoku.Concepts.Coordinates.K9Converter.FinalRowLetter"/>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.DefaultSeparator">
-            <summary>
-            Indicates the default separator. By default it's a comma <c>", "</c>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.InlinedDigitsSeparator">
-            <summary>
-            Indicates inlined digits separator. By default it's pipe operator <c>"|"</c>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.StrongLinkConnector">
-            <summary>
-            Indicates the connector text for strong links. By default it's a double equal sign <c>" == "</c>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.WeakLinkConnector">
-            <summary>
-            Indicates the connector text for weak links. By default it's a double minus sign <c>" -- "</c>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.OnOffStateFixes">
-            <summary>
-            Represents a pair of fixes that describes on or off state of a chain node respectively.
-            By default it's <see langword="null"/>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.NotationBracket">
-            <inheritdoc cref="P:Sudoku.Concepts.Coordinates.CoordinateConverter.NotationBracket"/>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.DigitBracketInCandidateGroups">
-            <inheritdoc cref="P:Sudoku.Concepts.Coordinates.RxCyConverter.DigitBracketInCandidateGroups"/>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.DigitGroupSameCellBracket">
-            <summary>
-            Indicates the bracket of same-cell digit groups, e.g. the kind of bracket of <c>(2=3)r1c1</c>.
-            By default it's <see cref="F:Sudoku.Concepts.Coordinates.Formatting.NotationBracket.Round"/>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.OnOffNotationFix">
-            <summary>
-            Indicates the prefix or suffix style to describe on/off state of each chain node.
-            By default it's <see cref="F:Sudoku.Concepts.Coordinates.Formatting.OnOffNotationFix.None"/>.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.NodeFormatType">
-            <summary>
-            Indicates a type that formats each node (a group of candidates) in the chain pattern.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.Standard">
-            <summary>
-            Indicates the standard format. This format supports for both parsing and formatting.
-            </summary>
-            <remarks>
-            Example output:<br/><c><![CDATA[r4c4(6) == r4c1(6) -- r4c1(8) == r4c9(8) -- r9c9(8) == r9c4(8)]]></c>
-            </remarks>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.Eureka">
-            <summary>
-            <para>Indicates Eureka chain format. This format supports for both parsing and formatting.</para>
-            <para>
-            Visit <see href="http://sudopedia.enjoysudoku.com/Eureka.html">this link</see> to learn more information
-            about Eureka Notation.
-            </para>
-            </summary>
-            <remarks>
-            Example output:<br/><c><![CDATA[6r4c4=(6-8)r4c1=8r4c9-8r9c9=8r9c4]]></c>
-            </remarks>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.BivalueBilocationPlot">
-            <summary>
-            <para>Indicates B/B plot (Bilocation/Bivalue Plot) notation format. This format only supports for formatting.</para>
-            <para>
-            Visit <see href="http://forum.enjoysudoku.com/the-notation-used-in-nice-loops-and-sins-t3628.html">this link</see>
-            to learn more information about this notation.
-            </para>
-            </summary>
-            <remarks>
-            Example output:<br/><c><![CDATA[[r4c4]=6=[r4c1]-6|8-[r4c1]=8=[r4c9]-8-[r9c9]=8=[r9c4]]]></c>
-            </remarks>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.OnOffPlot">
-            <summary>
-            <para>Indicates On/Off plot notation format. This format only supports for formatting.</para>
-            <para>
-            I may miss the main page of introduction about this notation,
-            but you can visit <see href="https://www.sudokuwiki.org/Alternating_Inference_Chains">this link</see> to see such usages.
-            </para>
-            </summary>
-            <remarks>
-            Example output:<br/><c><![CDATA[+6[D4]-6[D1]+8[D1]-8[D9]+8[I9]-8[I4]]]></c>
-            </remarks>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.StandardFormatPattern">
-            <remarks>
-            Pattern:<br/>
-            <code>r[1-9]+c[1-9]+\\([1-9]+\\)\\s*==?\\s*r[1-9]+c[1-9]+\\([1-9]+\\)(\\s*--?\\s*r[1-9]+c[1-9]+\\([1-9]+\\)\\s*==?\\s*r[1-9]+c[1-9]+\\([1-9]+\\))+</code><br/>
-            Options:<br/>
-            <code>RegexOptions.IgnoreCase | RegexOptions.Compiled</code><br/>
-            Explanation:<br/>
-            <code>
-            ○ Match a character in the set [Rr].<br/>
-            ○ Match a character in the set [1-9] atomically at least once.<br/>
-            ○ Match a character in the set [Cc].<br/>
-            ○ Match a character in the set [1-9] atomically at least once.<br/>
-            ○ Match '('.<br/>
-            ○ Match a character in the set [1-9] atomically at least once.<br/>
-            ○ Match ')'.<br/>
-            ○ Match a whitespace character atomically any number of times.<br/>
-            ○ Match '=' atomically at least 1 and at most 2 times.<br/>
-            ○ Match a whitespace character atomically any number of times.<br/>
-            ○ Match a character in the set [Rr].<br/>
-            ○ Match a character in the set [1-9] atomically at least once.<br/>
-            ○ Match a character in the set [Cc].<br/>
-            ○ Match a character in the set [1-9] atomically at least once.<br/>
-            ○ Match '('.<br/>
-            ○ Match a character in the set [1-9] atomically at least once.<br/>
-            ○ Match ')'.<br/>
-            ○ Loop atomically at least once.<br/>
-                ○ 1st capture group.<br/>
-                    ○ Match a whitespace character atomically any number of times.<br/>
-                    ○ Match '-' atomically at least 1 and at most 2 times.<br/>
-                    ○ Match a whitespace character atomically any number of times.<br/>
-                    ○ Match a character in the set [Rr].<br/>
-                    ○ Match a character in the set [1-9] atomically at least once.<br/>
-                    ○ Match a character in the set [Cc].<br/>
-                    ○ Match a character in the set [1-9] atomically at least once.<br/>
-                    ○ Match '('.<br/>
-                    ○ Match a character in the set [1-9] atomically at least once.<br/>
-                    ○ Match ')'.<br/>
-                    ○ Match a whitespace character atomically any number of times.<br/>
-                    ○ Match '=' atomically at least 1 and at most 2 times.<br/>
-                    ○ Match a whitespace character atomically any number of times.<br/>
-                    ○ Match a character in the set [Rr].<br/>
-                    ○ Match a character in the set [1-9] atomically at least once.<br/>
-                    ○ Match a character in the set [Cc].<br/>
-                    ○ Match a character in the set [1-9] atomically at least once.<br/>
-                    ○ Match '('.<br/>
-                    ○ Match a character in the set [1-9] atomically at least once.<br/>
-                    ○ Match ')'.<br/>
-            </code>
-            </remarks>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.EurekaFormatPattern">
-            <remarks>
-            Pattern:<br/>
-            <code>(\\([1-9]+\\)|\\([1-9]+\\s*[-=]\\s*[1-9]+\\)|[1-9])r[1-9]+c[1-9]+(\\s*[-=]\\s*(\\([1-9]+\\)|\\([1-9]+\\s*[-=]\\s*[1-9]+\\)|[1-9])r[1-9]+c[1-9]+)+</code><br/>
-            Options:<br/>
-            <code>RegexOptions.IgnoreCase | RegexOptions.Compiled</code><br/>
-            Explanation:<br/>
-            <code>
-            ○ 1st capture group.<br/>
-                ○ Match with 2 alternative expressions.<br/>
-                    ○ Match a sequence of expressions.<br/>
-                        ○ Match '('.<br/>
-                        ○ Match with 2 alternative expressions.<br/>
-                            ○ Match a sequence of expressions.<br/>
-                                ○ Match a character in the set [1-9] atomically at least once.<br/>
-                                ○ Match ')'.<br/>
-                            ○ Match a sequence of expressions.<br/>
-                                ○ Match a character in the set [1-9] atomically at least once.<br/>
-                                ○ Match a whitespace character atomically any number of times.<br/>
-                                ○ Match a character in the set [\-=].<br/>
-                                ○ Match a whitespace character atomically any number of times.<br/>
-                                ○ Match a character in the set [1-9] atomically at least once.<br/>
-                                ○ Match ')'.<br/>
-                    ○ Match a character in the set [1-9].<br/>
-            ○ Match a character in the set [Rr].<br/>
-            ○ Match a character in the set [1-9] atomically at least once.<br/>
-            ○ Match a character in the set [Cc].<br/>
-            ○ Match a character in the set [1-9] atomically at least once.<br/>
-            ○ Loop atomically at least once.<br/>
-                ○ 2nd capture group.<br/>
-                    ○ Match a whitespace character atomically any number of times.<br/>
-                    ○ Match a character in the set [\-=].<br/>
-                    ○ Match a whitespace character atomically any number of times.<br/>
-                    ○ 3rd capture group.<br/>
-                        ○ Match with 2 alternative expressions.<br/>
-                            ○ Match a sequence of expressions.<br/>
-                                ○ Match '('.<br/>
-                                ○ Match with 2 alternative expressions.<br/>
-                                    ○ Match a sequence of expressions.<br/>
-                                        ○ Match a character in the set [1-9] atomically at least once.<br/>
-                                        ○ Match ')'.<br/>
-                                    ○ Match a sequence of expressions.<br/>
-                                        ○ Match a character in the set [1-9] atomically at least once.<br/>
-                                        ○ Match a whitespace character atomically any number of times.<br/>
-                                        ○ Match a character in the set [\-=].<br/>
-                                        ○ Match a whitespace character atomically any number of times.<br/>
-                                        ○ Match a character in the set [1-9] atomically at least once.<br/>
-                                        ○ Match ')'.<br/>
-                            ○ Match a character in the set [1-9].<br/>
-                    ○ Match a character in the set [Rr].<br/>
-                    ○ Match a character in the set [1-9] atomically at least once.<br/>
-                    ○ Match a character in the set [Cc].<br/>
-                    ○ Match a character in the set [1-9] greedily at least once.<br/>
-            </code>
-            </remarks>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.StrongOrWeakLinkPattern">
-            <remarks>
-            Pattern:<br/>
-            <code>==?|--?</code><br/>
-            Options:<br/>
-            <code>RegexOptions.Compiled</code><br/>
-            Explanation:<br/>
-            <code>
-            ○ Match with 2 alternative expressions, atomically.<br/>
-                ○ Match '=' atomically at least 1 and at most 2 times.<br/>
-                ○ Match '-' atomically at least 1 and at most 2 times.<br/>
-            </code>
-            </remarks>
-        </member>
-        <member name="P:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.CandidatePattern">
-            <remarks>
-            Pattern:<br/>
-            <code>(\\([1-9]+([=-][1-9]+)?\\)|[1-9]+)r[1-9]+c[1-9]+|r[1-9]+c[1-9]+\\([1-9]+\\)</code><br/>
-            Options:<br/>
-            <code>RegexOptions.IgnoreCase | RegexOptions.Compiled</code><br/>
-            Explanation:<br/>
-            <code>
-            ○ Match with 2 alternative expressions, atomically.<br/>
-                ○ Match a sequence of expressions.<br/>
-                    ○ 1st capture group.<br/>
-                        ○ Match with 2 alternative expressions.<br/>
-                            ○ Match a sequence of expressions.<br/>
-                                ○ Match '('.<br/>
-                                ○ Match a character in the set [1-9] greedily at least once.<br/>
-                                ○ Optional (greedy).<br/>
-                                    ○ 2nd capture group.<br/>
-                                        ○ Match a character in the set [\-=].<br/>
-                                        ○ Match a character in the set [1-9] atomically at least once.<br/>
-                                ○ Match ')'.<br/>
-                            ○ Match a character in the set [1-9] atomically at least once.<br/>
-                    ○ Match a character in the set [Rr].<br/>
-                    ○ Match a character in the set [1-9] atomically at least once.<br/>
-                    ○ Match a character in the set [Cc].<br/>
-                    ○ Match a character in the set [1-9] atomically at least once.<br/>
-                ○ Match a sequence of expressions.<br/>
-                    ○ Match a character in the set [Rr].<br/>
-                    ○ Match a character in the set [1-9] atomically at least once.<br/>
-                    ○ Match a character in the set [Cc].<br/>
-                    ○ Match a character in the set [1-9] atomically at least once.<br/>
-                    ○ Match '('.<br/>
-                    ○ Match a character in the set [1-9] atomically at least once.<br/>
-                    ○ Match ')'.<br/>
-            </code>
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.GetFormat(System.Type)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.Clone">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.FormatCore(Sudoku.Analytics.Construction.Components.Chain@)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.ParseCore(System.String)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.ParseCore(System.String,Sudoku.Concepts.Coordinates.CoordinateParser)">
-            <inheritdoc cref="M:Sudoku.Concepts.Coordinates.Formatting.FormatInfo`1.ParseCore(System.String)"/>
-            <remarks>
-            Now only supports for standard format and Eureka format. Plot views are not supported.
-            </remarks>
-        </member>
-        <member name="M:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.FormatCoreUnsafeAccessor(Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo,Sudoku.Analytics.Construction.Components.Chain@)">
-            <inheritdoc cref="M:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.FormatCore(Sudoku.Analytics.Construction.Components.Chain@)"/>
-        </member>
-        <member name="M:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.ParseCoreUnsafeAccessor(Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo,System.String)">
-            <inheritdoc cref="M:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.ParseCore(System.String)"/>
-        </member>
-        <member name="M:Sudoku.Concepts.Coordinates.Formatting.ChainFormatInfo.ParseAsStandardOrEureka(System.String,Sudoku.Concepts.Coordinates.CoordinateParser)">
-            <summary>
-            Parse the string as standard or Eureka format.
-            </summary>
-            <param name="str">The string to parse.</param>
-            <param name="coordinateParser">The coordinate parser.</param>
-            <returns>A <see cref="T:Sudoku.Analytics.Construction.Components.Chain"/> instance.</returns>
-            <exception cref="T:System.FormatException">Throws when invalid data encountered.</exception>
-        </member>
         <member name="T:Sudoku.Concepts.Inference">
             <summary>
             Defines an inference.
@@ -28107,6 +27865,372 @@
             <param name="assignments">The assignments.</param>
             <param name="isTruth">Indicates whether the current space is as a truth.</param>
             <returns>A <see cref="T:System.Boolean"/> result.</returns>
+        </member>
+        <member name="T:Sudoku.Concepts.ValueConversions.BivalueBilocationPlotChainConverter">
+            <summary>
+            Represents a B/B Plot-formatted chain converter.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.ValueConversions.BivalueBilocationPlotChainConverter._impl">
+            <summary>
+            The backing implementation instance.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.BivalueBilocationPlotChainConverter.Sudoku#Concepts#ValueConversions#IChainConverter#Impl">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.ValueConversions.BivalueBilocationPlotChainConverter.TryFormat(Sudoku.Analytics.Construction.Components.Chain,System.IFormatProvider,System.String@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.ValueConversions.BivalueBilocationPlotChainConverter.Sudoku#Concepts#ValueConversions#IChainConverter#TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,Sudoku.Analytics.Construction.Components.Chain@)">
+            <inheritdoc/>
+            <exception cref="T:System.NotSupportedException">Not supported. Always thrown.</exception>
+        </member>
+        <member name="T:Sudoku.Concepts.ValueConversions.CustomizedChainConverter">
+            <summary>
+            Provides a customized chain converter; you can specify customized properties (even candidate converter) into this type.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.MakeDigitBeforeCell">
+            <inheritdoc cref="P:Sudoku.Concepts.Coordinates.RxCyConverter.MakeDigitBeforeCell"/>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.MakeLettersUpperCase">
+            <inheritdoc cref="P:Sudoku.Concepts.Coordinates.RxCyConverter.MakeLettersUpperCase"/>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.FoldLinksInCell">
+            <summary>
+            Indicates whether strong and weak links inside a cell will be folded. By default it's <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.InlineDigitsInLink">
+            <summary>
+            Indicates whether digits are inlined in links. By default it's <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.AlwaysOutputBracket">
+            <inheritdoc cref="P:Sudoku.Concepts.Coordinates.RxCyConverter.AlwaysOutputBracket"/>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.FinalRowLetter">
+            <inheritdoc cref="P:Sudoku.Concepts.Coordinates.K9Converter.FinalRowLetter"/>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.DefaultSeparator">
+            <summary>
+            Indicates the default separator. By default it's a comma <c>", "</c>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.InlinedDigitsSeparator">
+            <summary>
+            Indicates inlined digits separator. By default it's pipe operator <c>"|"</c>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.StrongLinkConnector">
+            <summary>
+            Indicates the connector text for strong links. By default it's a double equal sign <c>" == "</c>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.WeakLinkConnector">
+            <summary>
+            Indicates the connector text for weak links. By default it's a double minus sign <c>" -- "</c>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.OnOffStateFixes">
+            <summary>
+            Represents a pair of fixes that describes on or off state of a chain node respectively.
+            By default it's <see langword="null"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.NotationBracket">
+            <inheritdoc cref="P:Sudoku.Concepts.Coordinates.CoordinateConverter.NotationBracket"/>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.DigitBracketInCandidateGroups">
+            <inheritdoc cref="P:Sudoku.Concepts.Coordinates.RxCyConverter.DigitBracketInCandidateGroups"/>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.DigitGroupSameCellBracket">
+            <summary>
+            Indicates the bracket of same-cell digit groups, e.g. the kind of bracket of <c>(2=3)r1c1</c>.
+            By default it's <see cref="F:Sudoku.Concepts.ValueConversions.NotationBracket.Round"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.OnOffNotationFix">
+            <summary>
+            Indicates the prefix or suffix style to describe on/off state of each chain node.
+            By default it's <see cref="F:Sudoku.Concepts.ValueConversions.OnOffNotationFix.None"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.NodeFormatType">
+            <summary>
+            Indicates a type that formats each node (a group of candidates) in the chain pattern.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.CustomizedCandidateConverter">
+            <summary>
+            Represents customized candidate converter. The value can be <see langword="null"/> if unspecified;
+            if specified, <see cref="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.NodeFormatType"/> will be ignored.
+            </summary>
+            <seealso cref="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.NodeFormatType"/>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.Sudoku#Concepts#ValueConversions#IChainConverter#Impl">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.StandardFormatPattern">
+            <remarks>
+            Pattern:<br/>
+            <code>r[1-9]+c[1-9]+\\([1-9]+\\)\\s*==?\\s*r[1-9]+c[1-9]+\\([1-9]+\\)(?:\\s*--?\\s*r[1-9]+c[1-9]+\\([1-9]+\\)\\s*==?\\s*r[1-9]+c[1-9]+\\([1-9]+\\))+</code><br/>
+            Options:<br/>
+            <code>RegexOptions.IgnoreCase | RegexOptions.Compiled</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match a character in the set [Rr].<br/>
+            ○ Match a character in the set [1-9] atomically at least once.<br/>
+            ○ Match a character in the set [Cc].<br/>
+            ○ Match a character in the set [1-9] atomically at least once.<br/>
+            ○ Match '('.<br/>
+            ○ Match a character in the set [1-9] atomically at least once.<br/>
+            ○ Match ')'.<br/>
+            ○ Match a whitespace character atomically any number of times.<br/>
+            ○ Match '=' atomically at least 1 and at most 2 times.<br/>
+            ○ Match a whitespace character atomically any number of times.<br/>
+            ○ Match a character in the set [Rr].<br/>
+            ○ Match a character in the set [1-9] atomically at least once.<br/>
+            ○ Match a character in the set [Cc].<br/>
+            ○ Match a character in the set [1-9] atomically at least once.<br/>
+            ○ Match '('.<br/>
+            ○ Match a character in the set [1-9] atomically at least once.<br/>
+            ○ Match ')'.<br/>
+            ○ Loop atomically at least once.<br/>
+                ○ Match a whitespace character atomically any number of times.<br/>
+                ○ Match '-' atomically at least 1 and at most 2 times.<br/>
+                ○ Match a whitespace character atomically any number of times.<br/>
+                ○ Match a character in the set [Rr].<br/>
+                ○ Match a character in the set [1-9] atomically at least once.<br/>
+                ○ Match a character in the set [Cc].<br/>
+                ○ Match a character in the set [1-9] atomically at least once.<br/>
+                ○ Match '('.<br/>
+                ○ Match a character in the set [1-9] atomically at least once.<br/>
+                ○ Match ')'.<br/>
+                ○ Match a whitespace character atomically any number of times.<br/>
+                ○ Match '=' atomically at least 1 and at most 2 times.<br/>
+                ○ Match a whitespace character atomically any number of times.<br/>
+                ○ Match a character in the set [Rr].<br/>
+                ○ Match a character in the set [1-9] atomically at least once.<br/>
+                ○ Match a character in the set [Cc].<br/>
+                ○ Match a character in the set [1-9] atomically at least once.<br/>
+                ○ Match '('.<br/>
+                ○ Match a character in the set [1-9] atomically at least once.<br/>
+                ○ Match ')'.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.EurekaFormatPattern">
+            <remarks>
+            Pattern:<br/>
+            <code>(?:\\([1-9]+\\)|\\([1-9]+\\s*[-=]\\s*[1-9]+\\)|[1-9])r[1-9]+c[1-9]+(?:\\s*[-=]\\s*(?:\\([1-9]+\\)|\\([1-9]+\\s*[-=]\\s*[1-9]+\\)|[1-9])r[1-9]+c[1-9]+)+</code><br/>
+            Options:<br/>
+            <code>RegexOptions.IgnoreCase | RegexOptions.Compiled</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match with 2 alternative expressions.<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match '('.<br/>
+                    ○ Match with 2 alternative expressions.<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [1-9] atomically at least once.<br/>
+                            ○ Match ')'.<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match a character in the set [1-9] atomically at least once.<br/>
+                            ○ Match a whitespace character atomically any number of times.<br/>
+                            ○ Match a character in the set [\-=].<br/>
+                            ○ Match a whitespace character atomically any number of times.<br/>
+                            ○ Match a character in the set [1-9] atomically at least once.<br/>
+                            ○ Match ')'.<br/>
+                ○ Match a character in the set [1-9].<br/>
+            ○ Match a character in the set [Rr].<br/>
+            ○ Match a character in the set [1-9] atomically at least once.<br/>
+            ○ Match a character in the set [Cc].<br/>
+            ○ Match a character in the set [1-9] atomically at least once.<br/>
+            ○ Loop atomically at least once.<br/>
+                ○ Match a whitespace character atomically any number of times.<br/>
+                ○ Match a character in the set [\-=].<br/>
+                ○ Match a whitespace character atomically any number of times.<br/>
+                ○ Match with 2 alternative expressions.<br/>
+                    ○ Match a sequence of expressions.<br/>
+                        ○ Match '('.<br/>
+                        ○ Match with 2 alternative expressions.<br/>
+                            ○ Match a sequence of expressions.<br/>
+                                ○ Match a character in the set [1-9] atomically at least once.<br/>
+                                ○ Match ')'.<br/>
+                            ○ Match a sequence of expressions.<br/>
+                                ○ Match a character in the set [1-9] atomically at least once.<br/>
+                                ○ Match a whitespace character atomically any number of times.<br/>
+                                ○ Match a character in the set [\-=].<br/>
+                                ○ Match a whitespace character atomically any number of times.<br/>
+                                ○ Match a character in the set [1-9] atomically at least once.<br/>
+                                ○ Match ')'.<br/>
+                    ○ Match a character in the set [1-9].<br/>
+                ○ Match a character in the set [Rr].<br/>
+                ○ Match a character in the set [1-9] atomically at least once.<br/>
+                ○ Match a character in the set [Cc].<br/>
+                ○ Match a character in the set [1-9] greedily at least once.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.StrongOrWeakLinkPattern">
+            <remarks>
+            Pattern:<br/>
+            <code>==?|--?</code><br/>
+            Options:<br/>
+            <code>RegexOptions.Compiled</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match with 2 alternative expressions, atomically.<br/>
+                ○ Match '=' atomically at least 1 and at most 2 times.<br/>
+                ○ Match '-' atomically at least 1 and at most 2 times.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.CandidatePattern">
+            <remarks>
+            Pattern:<br/>
+            <code>(?:\\([1-9]+([=-][1-9]+)?\\)|[1-9]+)r[1-9]+c[1-9]+|r[1-9]+c[1-9]+\\([1-9]+\\)</code><br/>
+            Options:<br/>
+            <code>RegexOptions.IgnoreCase | RegexOptions.Compiled</code><br/>
+            Explanation:<br/>
+            <code>
+            ○ Match with 2 alternative expressions, atomically.<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match with 2 alternative expressions.<br/>
+                        ○ Match a sequence of expressions.<br/>
+                            ○ Match '('.<br/>
+                            ○ Match a character in the set [1-9] greedily at least once.<br/>
+                            ○ Optional (greedy).<br/>
+                                ○ 1st capture group.<br/>
+                                    ○ Match a character in the set [\-=].<br/>
+                                    ○ Match a character in the set [1-9] atomically at least once.<br/>
+                            ○ Match ')'.<br/>
+                        ○ Match a character in the set [1-9] atomically at least once.<br/>
+                    ○ Match a character in the set [Rr].<br/>
+                    ○ Match a character in the set [1-9] atomically at least once.<br/>
+                    ○ Match a character in the set [Cc].<br/>
+                    ○ Match a character in the set [1-9] atomically at least once.<br/>
+                ○ Match a sequence of expressions.<br/>
+                    ○ Match a character in the set [Rr].<br/>
+                    ○ Match a character in the set [1-9] atomically at least once.<br/>
+                    ○ Match a character in the set [Cc].<br/>
+                    ○ Match a character in the set [1-9] atomically at least once.<br/>
+                    ○ Match '('.<br/>
+                    ○ Match a character in the set [1-9] atomically at least once.<br/>
+                    ○ Match ')'.<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.TryFormat(Sudoku.Analytics.Construction.Components.Chain,System.IFormatProvider,System.String@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.ValueConversions.CustomizedChainConverter.Sudoku#Concepts#ValueConversions#IChainConverter#TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,Sudoku.Analytics.Construction.Components.Chain@)">
+            <inheritdoc/>
+            <exception cref="T:System.NotSupportedException">Not supported. Always thrown.</exception>
+        </member>
+        <member name="T:Sudoku.Concepts.ValueConversions.EurekaChainConverter">
+            <summary>
+            Represents an Eureka-formatted chain converter.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.ValueConversions.EurekaChainConverter._impl">
+            <summary>
+            The backing implementation instance.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.EurekaChainConverter.Sudoku#Concepts#ValueConversions#IChainConverter#Impl">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.ValueConversions.EurekaChainConverter.TryFormat(Sudoku.Analytics.Construction.Components.Chain,System.IFormatProvider,System.String@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.ValueConversions.EurekaChainConverter.Sudoku#Concepts#ValueConversions#IChainConverter#TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,Sudoku.Analytics.Construction.Components.Chain@)">
+            <inheritdoc/>
+            <exception cref="T:System.NotSupportedException">Not supported. Always thrown.</exception>
+        </member>
+        <member name="T:Sudoku.Concepts.ValueConversions.IChainConverter">
+            <summary>
+            Provides a chain converter.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.IChainConverter.Impl">
+            <summary>
+            Indicates the backing implementation converter.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Concepts.ValueConversions.IChainConverter.TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,Sudoku.Analytics.Construction.Components.Chain@)">
+            <inheritdoc cref="M:Sudoku.Concepts.ValueConversions.IValueConverter`1.TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,`0@)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.ValueConversions.IChainConverter.TryFormat(Sudoku.Analytics.Construction.Components.Chain,System.IFormatProvider,System.String@)">
+            <inheritdoc cref="M:Sudoku.Concepts.ValueConversions.IValueConverter`1.TryFormat(`0@,System.IFormatProvider,System.String@)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.ValueConversions.IChainConverter.Sudoku#Concepts#ValueConversions#IValueConverter{Sudoku#Analytics#Construction#Components#Chain}#TryFormat(Sudoku.Analytics.Construction.Components.Chain@,System.IFormatProvider,System.String@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.ValueConversions.IChainConverter.Sudoku#Concepts#ValueConversions#IValueConverter{Sudoku#Analytics#Construction#Components#Chain}#TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,Sudoku.Analytics.Construction.Components.Chain@)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Concepts.ValueConversions.OnOffNotationFix">
+            <summary>
+            Represents a kind of fix that describes on/off state of a chain node.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.ValueConversions.OnOffNotationFix.None">
+            <summary>
+            Indicates no fix here to describe on/off state.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.ValueConversions.OnOffNotationFix.Prefix">
+            <summary>
+            Indicates the fix type is prefix.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.ValueConversions.OnOffNotationFix.Suffix">
+            <summary>
+            Indicates the fix type is suffix.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Concepts.ValueConversions.OnOffPlotChainConverter">
+            <summary>
+            Represents an on/off Plot-formatted chain converter.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.ValueConversions.OnOffPlotChainConverter._impl">
+            <summary>
+            The backing implementation instance.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.OnOffPlotChainConverter.Sudoku#Concepts#ValueConversions#IChainConverter#Impl">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.ValueConversions.OnOffPlotChainConverter.TryFormat(Sudoku.Analytics.Construction.Components.Chain,System.IFormatProvider,System.String@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.ValueConversions.OnOffPlotChainConverter.Sudoku#Concepts#ValueConversions#IChainConverter#TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,Sudoku.Analytics.Construction.Components.Chain@)">
+            <inheritdoc/>
+            <exception cref="T:System.NotSupportedException">Not supported. Always thrown.</exception>
+        </member>
+        <member name="T:Sudoku.Concepts.ValueConversions.StandardChainConverter">
+            <summary>
+            Represents a standard-formatted chain converter.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.ValueConversions.StandardChainConverter._impl">
+            <summary>
+            The backing implementation instance.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Concepts.ValueConversions.StandardChainConverter.Sudoku#Concepts#ValueConversions#IChainConverter#Impl">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.ValueConversions.StandardChainConverter.TryFormat(Sudoku.Analytics.Construction.Components.Chain,System.IFormatProvider,System.String@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Concepts.ValueConversions.StandardChainConverter.Sudoku#Concepts#ValueConversions#IChainConverter#TryParse(System.ReadOnlySpan{System.Char},System.IFormatProvider,Sudoku.Analytics.Construction.Components.Chain@)">
+            <inheritdoc/>
+            <exception cref="T:System.NotSupportedException">Not supported. Always thrown.</exception>
         </member>
         <member name="T:Sudoku.Diff.DiffTechniqueAnalysis">
             <summary>
@@ -28267,8 +28391,12 @@
         <member name="M:Sudoku.Filtering.Constraint.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraint.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Filtering.Constraint.ToString(System.Globalization.CultureInfo)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation via the specified culture.
+            </summary>
+            <param name="culture">The culture.</param>
+            <returns>The string.</returns>
         </member>
         <member name="M:Sudoku.Filtering.Constraint.Clone">
             <summary>
@@ -28284,9 +28412,6 @@
         </member>
         <member name="M:Sudoku.Filtering.Constraint.CheckCore(Sudoku.Filtering.ConstraintCheckingContext)">
             <inheritdoc cref="M:Sudoku.Filtering.Constraint.Check(Sudoku.Filtering.ConstraintCheckingContext)"/>
-        </member>
-        <member name="M:Sudoku.Filtering.Constraint.System#IFormattable#ToString(System.String,System.IFormatProvider)">
-            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraint.op_Equality(Sudoku.Filtering.Constraint,Sudoku.Filtering.Constraint)">
             <inheritdoc/>
@@ -28466,7 +28591,7 @@
         <member name="M:Sudoku.Filtering.Constraints.AllConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.AllConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.AllConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.AllConstraint.Clone">
@@ -28495,7 +28620,7 @@
         <member name="M:Sudoku.Filtering.Constraints.AndConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.AndConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.AndConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.AndConstraint.Clone">
@@ -28522,7 +28647,7 @@
         <member name="M:Sudoku.Filtering.Constraints.AnyConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.AnyConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.AnyConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.AnyConstraint.Clone">
@@ -28576,7 +28701,7 @@
         <member name="M:Sudoku.Filtering.Constraints.BottleneckTechniqueConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.BottleneckTechniqueConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.BottleneckTechniqueConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.BottleneckTechniqueConstraint.Clone">
@@ -28606,7 +28731,7 @@
         <member name="M:Sudoku.Filtering.Constraints.ConclusionConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.ConclusionConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.ConclusionConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.ConclusionConstraint.Clone">
@@ -28642,7 +28767,7 @@
         <member name="M:Sudoku.Filtering.Constraints.CountBetweenConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.CountBetweenConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.CountBetweenConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.CountBetweenConstraint.Clone">
@@ -28688,7 +28813,7 @@
         <member name="M:Sudoku.Filtering.Constraints.DifficultyLevelConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.DifficultyLevelConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.DifficultyLevelConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.DifficultyLevelConstraint.Clone">
@@ -28725,7 +28850,7 @@
         <member name="M:Sudoku.Filtering.Constraints.EliminationCountConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.EliminationCountConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.EliminationCountConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.EliminationCountConstraint.Clone">
@@ -28764,7 +28889,7 @@
         <member name="M:Sudoku.Filtering.Constraints.EmptyHousesCountConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.EmptyHousesCountConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.EmptyHousesCountConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.EmptyHousesCountConstraint.Clone">
@@ -28853,7 +28978,7 @@
         <member name="M:Sudoku.Filtering.Constraints.IttoryuConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.IttoryuConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.IttoryuConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.IttoryuConstraint.Clone">
@@ -28890,7 +29015,7 @@
         <member name="M:Sudoku.Filtering.Constraints.LastingConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.LastingConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.LastingConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.LastingConstraint.Clone">
@@ -28920,7 +29045,7 @@
         <member name="M:Sudoku.Filtering.Constraints.MinimalConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.MinimalConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.MinimalConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.MinimalConstraint.Clone">
@@ -28945,7 +29070,7 @@
         <member name="M:Sudoku.Filtering.Constraints.MissingDigitConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.MissingDigitConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.MissingDigitConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.MissingDigitConstraint.Clone">
@@ -28972,7 +29097,7 @@
         <member name="M:Sudoku.Filtering.Constraints.NotConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.NotConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.NotConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.NotConstraint.Clone">
@@ -29001,7 +29126,7 @@
         <member name="M:Sudoku.Filtering.Constraints.OrConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.OrConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.OrConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.OrConstraint.Clone">
@@ -29051,7 +29176,7 @@
         <member name="M:Sudoku.Filtering.Constraints.PearlOrDiamondConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.PearlOrDiamondConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.PearlOrDiamondConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.PearlOrDiamondConstraint.CheckCore(Sudoku.Filtering.ConstraintCheckingContext)">
@@ -29078,7 +29203,7 @@
         <member name="M:Sudoku.Filtering.Constraints.PrimarySingleConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.PrimarySingleConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.PrimarySingleConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.PrimarySingleConstraint.Clone">
@@ -29130,7 +29255,7 @@
         <member name="M:Sudoku.Filtering.Constraints.SymmetryConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.SymmetryConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.SymmetryConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.SymmetryConstraint.Clone">
@@ -29157,7 +29282,7 @@
         <member name="M:Sudoku.Filtering.Constraints.TechniqueConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.TechniqueConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.TechniqueConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.TechniqueConstraint.Clone">
@@ -29195,7 +29320,7 @@
         <member name="M:Sudoku.Filtering.Constraints.TechniqueCountConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.TechniqueCountConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.TechniqueCountConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.TechniqueCountConstraint.Clone">
@@ -29232,7 +29357,7 @@
         <member name="M:Sudoku.Filtering.Constraints.TechniqueGroupCountConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.TechniqueGroupCountConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.TechniqueGroupCountConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.TechniqueGroupCountConstraint.Clone">
@@ -29267,7 +29392,7 @@
         <member name="M:Sudoku.Filtering.Constraints.TechniquePrecedenceConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.TechniquePrecedenceConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.TechniquePrecedenceConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.TechniquePrecedenceConstraint.Clone">
@@ -29292,7 +29417,7 @@
         <member name="M:Sudoku.Filtering.Constraints.TechniqueSetConstraint.GetHashCode">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Filtering.Constraints.TechniqueSetConstraint.ToString(System.IFormatProvider)">
+        <member name="M:Sudoku.Filtering.Constraints.TechniqueSetConstraint.ToString(System.Globalization.CultureInfo)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Filtering.Constraints.TechniqueSetConstraint.Clone">
@@ -35945,15 +36070,15 @@
         <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternAssigningMap.ToString">
             <inheritdoc/>
         </member>
+        <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternAssigningMap.ToString(System.Globalization.CultureInfo)">
+            <inheritdoc cref="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternAssigningMap.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)"/>
+        </member>
         <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternAssigningMap.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
             <summary>
-            Converts the current instance into string representation, using the specified coordinate converter instance.
+            Converts the current instance into <see cref="T:System.String"/> representation, using the specified coordinate converter instance.
             </summary>
             <param name="converter">The converter.</param>
-            <returns>The string representation.</returns>
-        </member>
-        <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternAssigningMap.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+            <returns>The string.</returns>
         </member>
         <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternAssigningMap.AsCandidateMap">
             <summary>
@@ -35969,9 +36094,6 @@
             Converts the current instance into a <see cref="T:System.Collections.Frozen.FrozenDictionary`2"/> of cell and mask pairs.
             </summary>
             <returns>The instance of type <see cref="T:System.Collections.Frozen.FrozenDictionary`2"/>.</returns>
-        </member>
-        <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternAssigningMap.System#IFormattable#ToString(System.String,System.IFormatProvider)">
-            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternAssigningMap.System#Collections#IEnumerable#GetEnumerator">
             <inheritdoc/>
@@ -36490,41 +36612,6 @@
             Provides a list of members to get pattern detailed information that should be inferred.
             </summary>
         </member>
-        <member name="T:Sudoku.Theories.SetTheory.LogicReasoner.PermutationRequiredEntry">
-            <summary>
-            Represents equivalent implementation of the parent type <see cref="T:Sudoku.Theories.SetTheory.LogicReasoner"/>,
-            but an extra parameter <c>permutations</c> is required;
-            sometimes <c>conclusions</c> is also required.
-            </summary>
-            <seealso cref="T:Sudoku.Theories.SetTheory.LogicReasoner"/>
-        </member>
-        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermutationRequiredEntry.GetRank(Sudoku.Theories.SetTheory.Logic@,Sudoku.Concepts.ConclusionSet,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation},System.Collections.Frozen.FrozenDictionary{Sudoku.Concepts.Conclusion,Sudoku.Theories.SetTheory.Logic}@)">
-            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetRank(Sudoku.Theories.SetTheory.Logic@,System.Collections.Frozen.FrozenDictionary{Sudoku.Concepts.Conclusion,Sudoku.Theories.SetTheory.Logic}@)"/>
-        </member>
-        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermutationRequiredEntry.GetAssignedCount(Sudoku.Theories.SetTheory.Logic@,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation})">
-            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetAssignedCount(Sudoku.Theories.SetTheory.Logic@)"/>
-        </member>
-        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermutationRequiredEntry.GetConclusions(Sudoku.Theories.SetTheory.Logic@,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation},System.Boolean,System.Boolean)">
-            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetConclusions(Sudoku.Theories.SetTheory.Logic@)"/>
-        </member>
-        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermutationRequiredEntry.GetRank0Links(Sudoku.Theories.SetTheory.Logic@,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation})">
-            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetRank0Links(Sudoku.Theories.SetTheory.Logic@)"/>
-        </member>
-        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermutationRequiredEntry.GetRank0Eliminations(Sudoku.Theories.SetTheory.Logic@,Sudoku.Concepts.ConclusionSet,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation})">
-            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetRank0Eliminations(Sudoku.Theories.SetTheory.Logic@)"/>
-        </member>
-        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermutationRequiredEntry.GetMinimalTruths(Sudoku.Theories.SetTheory.Logic@,System.Int32,Sudoku.Concepts.ConclusionSet,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation})">
-            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetMinimalTruths(Sudoku.Theories.SetTheory.Logic@,System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermutationRequiredEntry.GetMinimalPattern(Sudoku.Theories.SetTheory.Logic@,System.Int32,Sudoku.Concepts.ConclusionSet,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation})">
-            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetMinimalPattern(Sudoku.Theories.SetTheory.Logic@,System.Int32)"/>
-        </member>
-        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermutationRequiredEntry.TrimExcessLinks(Sudoku.Theories.SetTheory.Logic@,Sudoku.Concepts.ConclusionSet,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation})">
-            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.TrimExcessLinks(Sudoku.Theories.SetTheory.Logic@)"/>
-        </member>
-        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermutationRequiredEntry.ConvertTruthsToLinks(Sudoku.Theories.SetTheory.Logic@,Sudoku.Concepts.ConclusionSet,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation})">
-            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.ConvertTruthsToLinks(Sudoku.Theories.SetTheory.Logic@)"/>
-        </member>
         <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.GetRank(Sudoku.Theories.SetTheory.Logic@,System.Collections.Frozen.FrozenDictionary{Sudoku.Concepts.Conclusion,Sudoku.Theories.SetTheory.Logic}@)">
             <summary>
             <para>
@@ -36645,6 +36732,41 @@
         <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.ListOfSpaceEqualityComparer.GetHashCode(System.Collections.Generic.List{Sudoku.Concepts.Supersymmetry.Space})">
             <inheritdoc/>
         </member>
+        <member name="T:Sudoku.Theories.SetTheory.LogicReasoner.PermRequired">
+            <summary>
+            Represents equivalent implementation of the parent type <see cref="T:Sudoku.Theories.SetTheory.LogicReasoner"/>,
+            but an extra parameter <c>permutations</c> is required;
+            sometimes <c>conclusions</c> is also required.
+            </summary>
+            <seealso cref="T:Sudoku.Theories.SetTheory.LogicReasoner"/>
+        </member>
+        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermRequired.GetRank(Sudoku.Theories.SetTheory.Logic@,Sudoku.Concepts.ConclusionSet,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation},System.Collections.Frozen.FrozenDictionary{Sudoku.Concepts.Conclusion,Sudoku.Theories.SetTheory.Logic}@)">
+            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetRank(Sudoku.Theories.SetTheory.Logic@,System.Collections.Frozen.FrozenDictionary{Sudoku.Concepts.Conclusion,Sudoku.Theories.SetTheory.Logic}@)"/>
+        </member>
+        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermRequired.GetAssignedCount(Sudoku.Theories.SetTheory.Logic@,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation})">
+            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetAssignedCount(Sudoku.Theories.SetTheory.Logic@)"/>
+        </member>
+        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermRequired.GetConclusions(Sudoku.Theories.SetTheory.Logic@,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation},System.Boolean,System.Boolean)">
+            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetConclusions(Sudoku.Theories.SetTheory.Logic@)"/>
+        </member>
+        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermRequired.GetRank0Links(Sudoku.Theories.SetTheory.Logic@,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation})">
+            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetRank0Links(Sudoku.Theories.SetTheory.Logic@)"/>
+        </member>
+        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermRequired.GetRank0Eliminations(Sudoku.Theories.SetTheory.Logic@,Sudoku.Concepts.ConclusionSet,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation})">
+            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetRank0Eliminations(Sudoku.Theories.SetTheory.Logic@)"/>
+        </member>
+        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermRequired.GetMinimalTruths(Sudoku.Theories.SetTheory.Logic@,System.Int32,Sudoku.Concepts.ConclusionSet,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation})">
+            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetMinimalTruths(Sudoku.Theories.SetTheory.Logic@,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermRequired.GetMinimalPattern(Sudoku.Theories.SetTheory.Logic@,System.Int32,Sudoku.Concepts.ConclusionSet,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation})">
+            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetMinimalPattern(Sudoku.Theories.SetTheory.Logic@,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermRequired.TrimExcessLinks(Sudoku.Theories.SetTheory.Logic@,Sudoku.Concepts.ConclusionSet,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation})">
+            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.TrimExcessLinks(Sudoku.Theories.SetTheory.Logic@)"/>
+        </member>
+        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermRequired.ConvertTruthsToLinks(Sudoku.Theories.SetTheory.Logic@,Sudoku.Concepts.ConclusionSet,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation})">
+            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.ConvertTruthsToLinks(Sudoku.Theories.SetTheory.Logic@)"/>
+        </member>
         <member name="T:Sudoku.Theories.SetTheory.Permutation">
             <summary>
             Represents a permutation of assigned candidates, indicating such candidates can satisfy specified truths and links.
@@ -36693,11 +36815,22 @@
         <member name="M:Sudoku.Theories.SetTheory.Permutation.ToString">
             <inheritdoc cref="M:System.Object.ToString"/>
         </member>
-        <member name="M:Sudoku.Theories.SetTheory.Permutation.ToString(System.IFormatProvider)">
-            <inheritdoc cref="M:System.IFormattable.ToString(System.String,System.IFormatProvider)"/>
+        <member name="M:Sudoku.Theories.SetTheory.Permutation.ToString(System.Globalization.CultureInfo)">
+            <inheritdoc cref="M:Sudoku.Theories.SetTheory.Permutation.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter,System.IFormatProvider)"/>
         </member>
-        <member name="M:Sudoku.Theories.SetTheory.Permutation.ToString(System.String,System.IFormatProvider)">
-            <inheritdoc/>
+        <member name="M:Sudoku.Theories.SetTheory.Permutation.ToString(Sudoku.Concepts.Coordinates.CoordinateConverter)">
+            <inheritdoc cref="M:Sudoku.Theories.SetTheory.Permutation.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Theories.SetTheory.Permutation.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter)">
+            <inheritdoc cref="M:Sudoku.Theories.SetTheory.Permutation.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Theories.SetTheory.Permutation.ToString(Sudoku.Concepts.ValueConversions.ICandidateMapConverter,System.IFormatProvider)">
+            <summary>
+            Converts the current instance into <see cref="T:System.String"/> representation via the specified converter.
+            </summary>
+            <param name="converter">The converter.</param>
+            <param name="formatProvider">The format provider.</param>
+            <returns>The string.</returns>
         </member>
         <member name="M:Sudoku.Theories.SetTheory.Permutation.GetEnumerator">
             <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
@@ -37233,9 +37366,6 @@
         </member>
         <member name="M:System.Text.RegularExpressions.Generated.Utilities.StackPush(System.Int32[]@,System.Int32@,System.Int32,System.Int32)">
             <summary>Pushes 2 values onto the backtracking stack.</summary>
-        </member>
-        <member name="M:System.Text.RegularExpressions.Generated.Utilities.StackPush(System.Int32[]@,System.Int32@,System.Int32,System.Int32,System.Int32)">
-            <summary>Pushes 3 values onto the backtracking stack.</summary>
         </member>
         <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_ascii_1FE030000000000000000">
             <summary>Supports searching for characters in or not in "(123456789".</summary>

@@ -22,7 +22,7 @@ public partial class Hub
 				return [];
 			}
 
-			ArgumentException.Assert(grid.PuzzleType == GridType.Standard);
+			ArgumentException.Assert(grid.IsStandard);
 
 			// VARIABLE_DECLARATION_BEGIN
 			_ = grid is { EmptyCells: var __EmptyCells, BivalueCells: var __BivalueCells, CandidatesMap: var __CandidatesMap };

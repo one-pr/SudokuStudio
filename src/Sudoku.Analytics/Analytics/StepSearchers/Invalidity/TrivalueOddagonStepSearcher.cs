@@ -148,13 +148,13 @@ public sealed partial class TrivalueOddagonStepSearcher : StepSearcher
 			{
 				foreach (var otherDigit in grid.GetCandidates(otherCell))
 				{
-					candidateOffsets.Add(new(ColorIdentifier.Normal, otherCell * 9 + otherDigit));
+					candidateOffsets.Add(new(ColorDescriptorAlias.Normal, otherCell * 9 + otherDigit));
 				}
 			}
 
 			var step = new TrivalueOddagonType1Step(
 				(from digit in elimDigitsMask select new Conclusion(Elimination, extraCell, digit)).ToArray(),
-				[[.. candidateOffsets, .. from house in blocks select new HouseViewNode(ColorIdentifier.Normal, house)]],
+				[[.. candidateOffsets, .. from house in blocks select new HouseViewNode(ColorDescriptorAlias.Normal, house)]],
 				context.Options,
 				blocks,
 				pattern,
@@ -230,8 +230,8 @@ public sealed partial class TrivalueOddagonStepSearcher : StepSearcher
 						candidateOffsets.Add(
 							new(
 								otherDigitsCells.Contains(patternCell) && (d1 == digit || d2 == digit)
-									? ColorIdentifier.Auxiliary1
-									: ColorIdentifier.Normal,
+									? ColorDescriptorAlias.Auxiliary1
+									: ColorDescriptorAlias.Normal,
 								patternCell * 9 + digit
 							)
 						);
@@ -243,8 +243,8 @@ public sealed partial class TrivalueOddagonStepSearcher : StepSearcher
 					[
 						[
 							.. candidateOffsets,
-							new CellViewNode(ColorIdentifier.Normal, extraCell),
-							.. from block in blocks select new HouseViewNode(ColorIdentifier.Normal, block)
+							new CellViewNode(ColorDescriptorAlias.Normal, extraCell),
+							.. from block in blocks select new HouseViewNode(ColorDescriptorAlias.Normal, block)
 						]
 					],
 					context.Options,

@@ -52,7 +52,7 @@ public sealed partial class AlmostLockedCandidatesStepSearcher : StepSearcher
 
 			for (var size = 2; size <= (CheckAlmostLockedQuadruple && checkValueCells ? 4 : 3); size++)
 			{
-				foreach (var ((baseSet, coverSet), (a, b, c, _)) in Miniline.Map)
+				foreach (var ((baseSet, coverSet), (a, b, c, _)) in Segments.Map)
 				{
 					if (c && EmptyCells)
 					{
@@ -208,21 +208,21 @@ public sealed partial class AlmostLockedCandidatesStepSearcher : StepSearcher
 			{
 				foreach (var cell in alsCells & CandidatesMap[digit])
 				{
-					candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + digit));
+					candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + digit));
 				}
 			}
 			foreach (var cell in c)
 			{
 				foreach (var digit in (Mask)(mask & grid.GetCandidates(cell)))
 				{
-					candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + digit));
+					candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, cell * 9 + digit));
 				}
 			}
 			foreach (var cell in ahsCells)
 			{
 				foreach (var digit in (Mask)(mask & grid.GetCandidates(cell)))
 				{
-					candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + digit));
+					candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + digit));
 				}
 			}
 
@@ -241,21 +241,21 @@ public sealed partial class AlmostLockedCandidatesStepSearcher : StepSearcher
 				babaGroupingNodes.Add(new(cell, characters[size - 1], grid.GetCandidates(cell)));
 			}
 
-			var valueCellNodes = from cell in valueCells select new CellViewNode(ColorIdentifier.Normal, cell);
+			var valueCellNodes = from cell in valueCells select new CellViewNode(ColorDescriptorAlias.Normal, cell);
 			var step = new AlmostLockedCandidatesStep(
 				conclusions.AsMemory(),
 				[
 					[
 						.. valueCellNodes,
 						.. candidateOffsets,
-						new HouseViewNode(ColorIdentifier.Normal, baseSet),
-						new HouseViewNode(ColorIdentifier.Auxiliary2, coverSet)
+						new HouseViewNode(ColorDescriptorAlias.Normal, baseSet),
+						new HouseViewNode(ColorDescriptorAlias.Auxiliary2, coverSet)
 					],
 					[
 						.. valueCellNodes,
 						.. babaGroupingNodes,
-						new HouseViewNode(ColorIdentifier.Normal, baseSet),
-						new HouseViewNode(ColorIdentifier.Auxiliary2, coverSet)
+						new HouseViewNode(ColorDescriptorAlias.Normal, baseSet),
+						new HouseViewNode(ColorDescriptorAlias.Auxiliary2, coverSet)
 					]
 				],
 				context.Options,

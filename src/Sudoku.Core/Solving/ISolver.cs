@@ -32,6 +32,10 @@ public interface ISolver
 	/// A <see cref="bool"/>? value indicating whether the grid can be solved, i.e. has a unique solution.
 	/// Please note that the method will return three possible values:
 	/// <list type="table">
+	/// <listheader>
+	/// <term>Value</term>
+	/// <description>Meaning</description>
+	/// </listheader>
 	/// <item>
 	/// <term><see langword="true"/></term>
 	/// <description>The puzzle has a unique solution.</description>

@@ -72,15 +72,14 @@ public class HiddenSingleStep(
 
 
 	/// <inheritdoc/>
-	public override string GetName(IFormatProvider? formatProvider)
+	public override string GetName(CultureInfo? culture)
 	{
-		var baseName = base.GetName(formatProvider);
+		var baseName = base.GetName(culture);
 		if (!Options.IsDirectMode || Code is Technique.LastDigit or Technique.CrosshatchingBlock)
 		{
 			return baseName;
 		}
 
-		var culture = Options.CurrentCulture;
 		var lastDigitsCountString = string.Format(
 			SR.Get("DirectSingleLastSuffix", culture),
 			null, // Placeholder for the house type - hidden singles won't check on this case.
@@ -95,21 +94,20 @@ public class HiddenSingleStep(
 	}
 
 	/// <inheritdoc/>
-	protected internal override int NameCompareTo(Step other, IFormatProvider? formatProvider)
+	protected internal override int NameCompareTo(Step other, CultureInfo? culture)
 	{
 		if (Code.CompareTo(other.Code) is var codeComparisonResult and not 0)
 		{
 			return codeComparisonResult;
 		}
 
-		var culture = GetCulture(formatProvider);
 		if (!SR.IsChinese(culture))
 		{
-			return base.NameCompareTo(other, formatProvider);
+			return base.NameCompareTo(other, culture);
 		}
 
-		var leftName = GetName(formatProvider);
-		var rightName = other.GetName(formatProvider);
+		var leftName = GetName(culture);
+		var rightName = other.GetName(culture);
 		var leftMatch = TechniqueNaming.ChineseDigitsPattern.Match(leftName);
 		var rightMatch = TechniqueNaming.ChineseDigitsPattern.Match(rightName);
 		return (leftMatch, rightMatch) switch

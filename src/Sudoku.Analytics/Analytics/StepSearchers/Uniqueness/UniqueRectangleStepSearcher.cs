@@ -93,8 +93,7 @@ namespace Sudoku.Analytics.StepSearchers;
 	Technique.AvoidableRectangleExternalType4, Technique.AvoidableRectangleExternalXyWing, Technique.AvoidableRectangleExternalWWing,
 	Technique.AvoidableRectangleExternalAlmostLockedSetsXz,
 
-	SupportedSudokuTypes = GridType.Standard | GridType.Sukaku,
-	SupportAnalyzingMultipleSolutionsPuzzle = false)]
+	SupportsAnalyzingPuzzleHavingMultipleSolutions = false)]
 public sealed partial class UniqueRectangleStepSearcher : StepSearcher
 {
 	/// <summary>
@@ -151,7 +150,7 @@ public sealed partial class UniqueRectangleStepSearcher : StepSearcher
 		// which cannot guarantee whether the deadly pattern at current state will be formed or not.
 		// By using the same rule, we can also check for other possible deadly patterns such as unique loops
 		// and Borescoper's deadly patterns.
-		var isSukaku = grid.PuzzleType == GridType.Sukaku;
+		var isSukaku = grid.IsSukaku;
 		var tempList = isSukaku ? new List<UniqueRectangleStep>(list.Count) : [.. list];
 		if (isSukaku)
 		{
@@ -461,8 +460,7 @@ public sealed partial class UniqueRectangleStepSearcher : StepSearcher
 		return !arMode && isIncomplete || arMode;
 
 
-		static bool nodeChecker(CandidateViewNode d)
-			=> d.Identifier is WellKnownColorIdentifier { Kind: WellKnownColorIdentifierKind.Normal };
+		static bool nodeChecker(CandidateViewNode d) => d.Identifier is (_, ColorDescriptorAlias.Normal);
 	}
 
 	/// <summary>
@@ -481,7 +479,7 @@ public sealed partial class UniqueRectangleStepSearcher : StepSearcher
 	/// <param name="urCells">The all UR cells used.</param>
 	/// <returns>The list of highlight cells.</returns>
 	private static CellViewNode[] GetHighlightCells(Cell[] urCells)
-		=> from urCell in urCells select new CellViewNode(ColorIdentifier.Normal, urCell);
+		=> from urCell in urCells select new CellViewNode(ColorDescriptorAlias.Normal, urCell);
 
 
 	//

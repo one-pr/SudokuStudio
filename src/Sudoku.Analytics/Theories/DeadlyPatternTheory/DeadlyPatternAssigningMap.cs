@@ -35,7 +35,7 @@ namespace Sudoku.Theories.DeadlyPatternTheory;
 /// <seealso cref="KeyValuePair{TKey, TValue}"/>
 /// <seealso cref="KeyValuePair.Create{TKey, TValue}(TKey, TValue)"/>
 [CollectionBuilder(typeof(DeadlyPatternAssigningMap), nameof(Create))]
-public sealed partial class DeadlyPatternAssigningMap : IEnumerable<KeyValuePair<Cell, Mask>>, IFormattable
+public sealed partial class DeadlyPatternAssigningMap : IEnumerable<KeyValuePair<Cell, Mask>>
 {
 	/// <summary>
 	/// Indicates the backing mask table.
@@ -74,29 +74,27 @@ public sealed partial class DeadlyPatternAssigningMap : IEnumerable<KeyValuePair
 
 
 	/// <inheritdoc/>
-	public override string ToString() => ToString(null);
+	public override string ToString() => ToString(CoordinateConverter.InvariantCulture);
+
+	/// <inheritdoc cref="ToString(CoordinateConverter?)"/>
+	public string ToString(CultureInfo culture) => ToString(CoordinateConverter.GetInstance(culture));
 
 	/// <summary>
-	/// Converts the current instance into string representation, using the specified coordinate converter instance.
+	/// Converts the current instance into <see cref="string"/> representation, using the specified coordinate converter instance.
 	/// </summary>
 	/// <param name="converter">The converter.</param>
-	/// <returns>The string representation.</returns>
-	public string ToString(CoordinateConverter? converter)
+	/// <returns>The string.</returns>
+	public string ToString(CoordinateConverter converter)
 	{
-		converter ??= new RxCyConverter();
-
 		var parts = new List<string>();
 		foreach (var (cell, digits) in from kvp in _maskTable orderby kvp.Key select kvp)
 		{
-			var cellString = converter.CellConverter([cell]);
+			var cellString = Cell.ToCellString(cell, converter);
 			var digitsString = converter.DigitConverter(digits);
 			parts.Add($"{cellString}: {digitsString}");
 		}
 		return $"[{string.Join(", ", parts)}]";
 	}
-
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider) => ToString(CoordinateConverter.GetInstance(formatProvider));
 
 	/// <summary>
 	/// Converts the current instance into a <see cref="CandidateMap"/> instance.
@@ -123,9 +121,6 @@ public sealed partial class DeadlyPatternAssigningMap : IEnumerable<KeyValuePair
 	/// </summary>
 	/// <returns>The instance of type <see cref="FrozenDictionary{TKey, TValue}"/>.</returns>
 	public FrozenDictionary<Cell, Mask> ToFrozenDictionary() => _maskTable.ToFrozenDictionary();
-
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
 
 	/// <inheritdoc/>
 	IEnumerator IEnumerable.GetEnumerator() => _maskTable.GetEnumerator();

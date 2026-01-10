@@ -42,16 +42,15 @@ public static class TechniqueGroupExtensions
 		/// <param name="cultureInfo">The culture information instance.</param>
 		/// <returns>The shortened name.</returns>
 		public string GetShortenedName(CultureInfo? cultureInfo)
-			=> @this.Abbreviation is { } abbr ? abbr : @this.GetName(cultureInfo ?? CultureInfo.CurrentUICulture);
+			=> @this.Abbreviation is { } abbr ? abbr : @this.GetName(cultureInfo);
 
 		/// <summary>
 		/// Try to get name of the current <see cref="TechniqueGroup"/> instance, with the specified culture information.
 		/// </summary>
-		/// <param name="formatProvider">The culture information instance.</param>
+		/// <param name="culture">The culture.</param>
 		/// <returns>The name.</returns>
 		/// <exception cref="ResourceNotFoundException">Throws when the specified group does not contain a name.</exception>
-		public string GetName(IFormatProvider? formatProvider)
-			=> SR.Get($"{nameof(TechniqueGroup)}_{@this}", formatProvider as CultureInfo ?? CultureInfo.CurrentUICulture);
+		public string GetName(CultureInfo? culture) => SR.Get($"{nameof(TechniqueGroup)}_{@this}", culture);
 
 		/// <summary>
 		/// Try to get all possible <see cref="Technique"/> fields belonging to the current group.

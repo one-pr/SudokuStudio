@@ -4,6 +4,83 @@
         <name>SystemExtensions</name>
     </assembly>
     <members>
+        <member name="T:System.ActivatorExtensions">
+            <summary>
+            Provides extension methods on <see cref="T:System.Activator"/>.
+            </summary>
+            <seealso cref="T:System.Activator"/>
+        </member>
+        <member name="M:System.ActivatorExtensions.Create(System.Type,System.Type[],System.Object[])">
+            <inheritdoc cref="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create(System.Type,System.Type[],System.Object[])"/>
+        </member>
+        <member name="M:System.ActivatorExtensions.Create``1(System.Type[],System.Object[])">
+            <inheritdoc cref="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``1(System.Type[],System.Object[])"/>
+        </member>
+        <member name="M:System.ActivatorExtensions.Create``2(``1)">
+            <inheritdoc cref="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``2(``1)"/>
+        </member>
+        <member name="M:System.ActivatorExtensions.Create``3(``1,``2)">
+            <inheritdoc cref="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``3(``1,``2)"/>
+        </member>
+        <member name="M:System.ActivatorExtensions.Create``4(``1,``2,``3)">
+            <inheritdoc cref="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``4(``1,``2,``3)"/>
+        </member>
+        <member name="M:System.ActivatorExtensions.Create``5(``1,``2,``3,``4)">
+            <inheritdoc cref="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``5(``1,``2,``3,``4)"/>
+        </member>
+        <member name="T:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.&lt;M&gt;$638764BB5347C32D4F8D7942E1F94B2A">
+            <summary>
+            Provides extension members on <see cref="T:System.Activator"/>.
+            </summary>
+        </member>
+        <member name="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create(System.Type,System.Type[],System.Object[])">
+            <summary>
+            Creates an instance of specified type, with parameter types specified.
+            </summary>
+            <param name="type">The type of instance to create.</param>
+            <param name="parameterTypes">Types of parameters.</param>
+            <param name="arguments">The parameter values.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``1(System.Type[],System.Object[])">
+            <summary>
+            Creates an instance of specified type, with parameter types specified.
+            </summary>
+            <typeparam name="T">The type of instance to create.</typeparam>
+            <param name="parameterTypes">Types of parameters.</param>
+            <param name="arguments">The parameter values.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``2(``1)">
+            <summary>
+            Creates an instance of specified type, with parameter types specified.
+            </summary>
+            <typeparam name="T">The type of instance to create.</typeparam>
+            <typeparam name="TArg">The type of argument.</typeparam>
+            <param name="arg">The parameter value.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``3(``1,``2)">
+            <inheritdoc cref="M:System.ActivatorExtensions.Create``5(``1,``2,``3,``4)"/>
+        </member>
+        <member name="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``4(``1,``2,``3)">
+            <inheritdoc cref="M:System.ActivatorExtensions.Create``5(``1,``2,``3,``4)"/>
+        </member>
+        <member name="M:System.ActivatorExtensions.&lt;G&gt;$119B4280B5D795848DADCC49E81553B2.Create``5(``1,``2,``3,``4)">
+            <summary>
+            Creates an instance of specified type, with parameter types specified.
+            </summary>
+            <typeparam name="T">The type of instance to create.</typeparam>
+            <typeparam name="TArg1">The type of argument #1.</typeparam>
+            <typeparam name="TArg2">The type of argument #2.</typeparam>
+            <typeparam name="TArg3">The type of argument #3.</typeparam>
+            <typeparam name="TArg4">The type of argument #4.</typeparam>
+            <param name="arg1">The parameter value #1.</param>
+            <param name="arg2">The parameter value #2.</param>
+            <param name="arg3">The parameter value #3.</param>
+            <param name="arg4">The parameter value #4.</param>
+            <returns>The instance.</returns>
+        </member>
         <member name="T:System.ArrayInitializer`1">
             <summary>
             Represents a method that initializes for an element of type <typeparamref name="T"/>?,
@@ -1745,7 +1822,7 @@
         </member>
         <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_Chunk">
             <summary>
-            Describes extension "<c><see langword="operator"/> /</c>" on collections to chunk them.
+            Describes extension "<c><see langword="operator"/> /</c>" on collections to get chunks of the specified collection.
             </summary>
         </member>
         <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_Subset">
@@ -1773,19 +1850,9 @@
             Describes extension "<c><see langword="operator"/> ==</c>" on instances to compare equality.
             </summary>
         </member>
-        <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_Apply">
-            <summary>
-            Describes extension "<c><see langword="operator"/> >>=</c>" on collections to apply instances to them.
-            </summary>
-        </member>
         <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_Repeat">
             <summary>
             Describes extension "<c><see langword="operator"/> *</c>" on collections to repeat specified times of them.
-            </summary>
-        </member>
-        <member name="F:System.Diagnostics.DeprecatedMessages.ExtensionOperator_StateChange">
-            <summary>
-            Describes extension "<c><see langword="operator"/> &gt;&gt;</c>" on instance that changes the state.
             </summary>
         </member>
         <member name="T:System.EnumExtensions">
@@ -1803,8 +1870,8 @@
         <member name="M:System.EnumExtensions.get_Length``1">
             <inheritdoc cref="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285`1.Length"/>
         </member>
-        <member name="M:System.EnumExtensions.get_Values``1">
-            <inheritdoc cref="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285`1.Values"/>
+        <member name="M:System.EnumExtensions.get_AllValues``1">
+            <inheritdoc cref="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285`1.AllValues"/>
         </member>
         <member name="M:System.EnumExtensions.get_None``1">
             <inheritdoc cref="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285`1.None"/>
@@ -1870,7 +1937,7 @@
             Indicates the length of the elements stored in type <typeparamref name="T"/>.
             </summary>
         </member>
-        <member name="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285`1.Values">
+        <member name="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285`1.AllValues">
             <summary>
             Indicates the values.
             </summary>
@@ -1884,6 +1951,7 @@
             <summary>
             Indicates the minimal value of the current type.
             </summary>
+            <remarks><b><i>Bare reference: </i></b></remarks>
         </member>
         <member name="P:System.EnumExtensions.&lt;G&gt;$F7BAB7F8979284A7204DC29891C39285`1.MaxValue">
             <summary>
@@ -1972,7 +2040,7 @@
         </member>
         <member name="M:System.ExceptionExtensions.&lt;G&gt;$38EB27788CADF2810E22EBC64749FDE0`1.Assert(System.Boolean,System.String)">
             <summary>
-            Throws an <see cref="T:System.ArgumentException"/> instance if the specified assertion is failed.
+            Throws an instance of type <typeparamref name="TException"/> if the specified assertion is failed.
             </summary>
             <param name="expression">The expression.</param>
             <param name="failedExpressionString">The string to the argument <paramref name="expression"/>.</param>
@@ -2108,6 +2176,34 @@
             Represents null pointer of type <typeparamref name="T"/>.
             </summary>
         </member>
+        <member name="T:System.Globalization.CultureInfoExtensions">
+            <summary>
+            Provides extension methods on <see cref="T:System.Globalization.CultureInfo"/>.
+            </summary>
+            <seealso cref="T:System.Globalization.CultureInfo"/>
+        </member>
+        <member name="M:System.Globalization.CultureInfoExtensions.get_IsChinese(System.Globalization.CultureInfo)">
+            <inheritdoc cref="P:System.Globalization.CultureInfoExtensions.&lt;G&gt;$DA053DDB068CB793EB1433FE8405FEC9.IsChinese"/>
+        </member>
+        <member name="M:System.Globalization.CultureInfoExtensions.get_IsEnglish(System.Globalization.CultureInfo)">
+            <inheritdoc cref="P:System.Globalization.CultureInfoExtensions.&lt;G&gt;$DA053DDB068CB793EB1433FE8405FEC9.IsEnglish"/>
+        </member>
+        <member name="T:System.Globalization.CultureInfoExtensions.&lt;G&gt;$DA053DDB068CB793EB1433FE8405FEC9.&lt;M&gt;$99E998FDEDE75977CB22CDFCE81A47BA">
+            <summary>
+            Provides extension members on <see cref="T:System.Globalization.CultureInfo"/>.
+            </summary>
+            <param name="this">The instance.</param>
+        </member>
+        <member name="P:System.Globalization.CultureInfoExtensions.&lt;G&gt;$DA053DDB068CB793EB1433FE8405FEC9.IsChinese">
+            <summary>
+            Indicates whether the culture is Chinese.
+            </summary>
+        </member>
+        <member name="P:System.Globalization.CultureInfoExtensions.&lt;G&gt;$DA053DDB068CB793EB1433FE8405FEC9.IsEnglish">
+            <summary>
+            Indicates whether the culture is English.
+            </summary>
+        </member>
         <member name="T:System.ILogicalOperators`1">
             <summary>
             Defines a mechanism for computing the logical relation between two instances of type <typeparamref name="TSelf" />.
@@ -2125,17 +2221,37 @@
         </member>
         <member name="M:System.ILogicalOperators`1.op_True(`0)">
             <summary>
-            Determine whether the specified object is determined <see langword="true"/>.
+            Determines whether the specified instance should be considered <see langword="true"/> in a boolean context.
             </summary>
-            <param name="value">The value to be determined.</param>
-            <returns>A <see cref="T:System.Boolean"/> result.</returns>
+            <param name="value">The instance to evaluate.</param>
+            <returns>
+            <see langword="true"/> if the instance should be considered <see langword="true"/>; otherwise, <see langword="false"/>.
+            </returns>
+            <remarks>
+            This operator is invoked by the C# compiler when a boolean evaluation is required
+            (for example in <see langword="if"/> statements or conditional expressions).
+            When used together with overloaded <c><see langword="operator"/> &amp;</c> and <c><see langword="operator"/> |</c>,
+            the compiler also consults <c><see langword="operator true"/></c> and <c><see langword="operator false"/></c>
+            to implement the conditional behavior of <c><see langword="operator"/> &amp;&amp;</c> and <c><see langword="operator"/> ||</c>.
+            If the type can be <see langword="null"/>, document how <see langword="null"/> is handled
+            (for example: treated as <see langword="false"/>, causes a <see cref="T:System.ArgumentNullException"/>, etc.).
+            </remarks>
         </member>
         <member name="M:System.ILogicalOperators`1.op_False(`0)">
             <summary>
-            Determine whether the specified object is determined <see langword="false"/>.
+            Determines whether the specified instance should be considered <see langword="false"/> in a boolean context.
             </summary>
-            <param name="value">The value to be determined.</param>
-            <returns>A <see cref="T:System.Boolean"/> result.</returns>
+            <param name="value">The instance to evaluate.</param>
+            <returns>
+            <see langword="true"/> if the instance should be considered <see langword="false"/>; otherwise, <see langword="false"/>.
+            </returns>
+            <remarks>
+            Should be defined in pair with <c><see langword="operator true"/></c>.
+            The C# compiler uses both operators to decide control flow for conditional expressions and
+            to cooperate with user-defined <c><see langword="operator"/> &amp;</c> / <c><see langword="operator"/> |</c>
+            overloads when implementing <c><see langword="operator"/> &amp;&amp;</c> / <c><see langword="operator"/> ||</c>.
+            Describe any consistency requirements with <c><see langword="operator true"/></c> and how <see langword="null"/> is handled.
+            </remarks>
         </member>
         <member name="M:System.ILogicalOperators`1.op_LogicalNot(`0)">
             <summary>
@@ -6396,8 +6512,8 @@
         <member name="M:System.Text.StringBuilderExtensions.RemoveFromEnd(System.Text.StringBuilder,System.Int32)">
             <inheritdoc cref="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.RemoveFromEnd(System.Int32)"/>
         </member>
-        <member name="M:System.Text.StringBuilderExtensions.AppendRange``1(System.Text.StringBuilder,System.Func{``0,System.String},System.Func{System.Text.StringBuilder,System.String,System.Text.StringBuilder},System.ReadOnlySpan{``0})">
-            <inheritdoc cref="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.AppendRange``1(System.Func{``0,System.String},System.Func{System.Text.StringBuilder,System.String,System.Text.StringBuilder},System.ReadOnlySpan{``0})"/>
+        <member name="M:System.Text.StringBuilderExtensions.AppendRange``1(System.Text.StringBuilder,System.ReadOnlySpan{``0},System.Func{``0,System.String})">
+            <inheritdoc cref="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.AppendRange``1(System.ReadOnlySpan{``0},System.Func{``0,System.String})"/>
         </member>
         <member name="T:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.&lt;M&gt;$329BE863B51A4C004BBE456502033646">
             <summary>
@@ -6411,33 +6527,14 @@
             <param name="count">The desired number of characters to remove.</param>
             <returns>The reference of the current instance.</returns>
         </member>
-        <member name="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.AppendRange``1(System.Func{``0,System.String},System.Func{System.Text.StringBuilder,System.String,System.Text.StringBuilder},System.ReadOnlySpan{``0})">
+        <member name="M:System.Text.StringBuilderExtensions.&lt;G&gt;$CD29E70E0DCA5BBFCFAC7C2BEF3C5C99.AppendRange``1(System.ReadOnlySpan{``0},System.Func{``0,System.String})">
             <summary>
-            Appends a list of elements of type <typeparamref name="T" /> into the <see cref="T:System.Text.StringBuilder" /> instance,
-            using the specified converter to convert each element into <see cref="T:System.String" /> value.
+            Appends a list of elements of type <typeparamref name="T"/> into the <see cref="T:System.Text.StringBuilder"/> instance,
+            using the specified converter to convert each element into <see cref="T:System.String"/> value.
             </summary>
             <typeparam name="T">The type of each element.</typeparam>
+            <param name="elements">The elements to be appended.</param>
             <param name="stringConverter">The converter method.</param>
-            <param name="appender">
-            The append method for the builder instance, telling the handler which appending operation will be handled.
-            By default, the method is equivalent to lambda:
-            <code>
-            <see langword="static" /> (<see cref="T:System.Text.StringBuilder" /> sb, <typeparamref name="T" /> v) =&gt; sb.Append(v)
-            </code>
-            </param>
-            <param name="elements">
-            <para>The elements to be appended.</para>
-            <target name="parameter">
-				<para>
-					If a <see langword="ref struct" />-typed parameter is marked as <see langword="params" />,
-					it will be implicit-<see langword="scoped" />, which means you must use this variables inside the method.
-					Value-storages are not permitted.
-				</para>
-				<para>
-					Use <see cref="T:System.Diagnostics.CodeAnalysis.UnscopedRefAttribute" /> if you want to store variable values.
-				</para>
-			</target>
-            </param>
             <returns>The reference of the current instance.</returns>
         </member>
         <member name="T:System.Text.TableGridBuilder">
@@ -6738,19 +6835,193 @@
         </member>
         <member name="T:System.Numerics.BitCombinationEnumerator`1">
             <summary>
-            Indicates the enumerator of the current instance.
+            Enumerates the next k-combination represented as a bitmask using Gosper's hack.
             </summary>
             <typeparam name="TInteger">The type of the target integer value.</typeparam>
             <param name="_bitCount">The number of bits.</param>
             <param name="_oneCount">The number of <see langword="true"/> bits.</param>
+            <remarks>
+            <para>
+            Given a bitmask <c>x</c> that has exactly <c>k</c> bits set (ones), this routine computes
+            the bitmask that represents the next combination (in the usual bitmask ordering
+            where less-significant positions change first) while preserving the number of set bits.
+            The transformation is done using a few constant-time bit operations:
+            </para>
+            <para><b>Algorithm (high level)</b>:</para>
+            <list type="number">
+            <item><c>smallest = x &amp; -x</c> — isolate the least-significant set bit of <c>x</c>.</item>
+            <item>
+            <c>ripple = x + smallest</c> — add that isolated bit back to <c>x</c>.<br/>
+            This produces a carry that clears a trailing block of ones and sets the next higher zero bit (if any),
+            effectively "pushing" the low block of ones upward.
+            </item>
+            <item>
+            <c>ones = x ^ ripple</c> — this captures the bits that changed:
+            the cleared trailing ones together with the new carry bit.<br/>
+            Shifting and scaling those bits produces a right-aligned block of ones
+            that should appear at the least-significant positions after the ripple.
+            </item>
+            <item>
+            <c>ones = (ones >> 2) / smallest</c> — right-shift twice, then divide by the power-of-two <c>smallest</c><br/>
+            This expression moves that block of ones down to the lowest bits,
+            producing a mask with the correct number of trailing ones that remain after the higher bit was promoted.
+            </item>
+            <item>
+            <c>x = ripple | ones</c> — composes the promoted higher bit(s)
+            with the right-aligned trailing ones to form the next k-combination.
+            </item>
+            </list>
+            <para><b>Why this is correct (intuition)</b>:</para>
+            <para>
+            Let <c>r</c> be the number of consecutive ones that were cleared by the addition
+            (i.e., the length of the trailing one-block involved in the carry).
+            The addition sets a single higher bit (the carry destination) and clears those <c>r</c> lower ones.
+            The XOR with the original <c>x</c> yields a word containing
+            exactly those <c>r</c> cleared ones plus the single new carry bit (so popcount = <c>r</c> + 1).
+            Shifting the XOR result right by two removes the carry bit and one zero that separates
+            where the carry landed from the cleared block;
+            dividing by <c>smallest</c> (a power of two) shifts the remaining ones down so they
+            become a right-aligned block of <c>r</c> ones.
+            OR-ing with <c>ripple</c> (which holds the newly promoted higher bit) yields the next bitmask
+            that has the same number of ones, but with the leftmost moved-up one and the remaining ones placed as far right as possible.
+            </para>
+            <para>
+            <b>Complexity</b>: O(1) — only a handful of machine-word bit-operations (AND, ADD, XOR, shifts, divide by power of two).
+            </para>
+            <para>
+            <b>Auto play</b> (the first 3 steps, with values <paramref name="_bitCount"/> = 8, <paramref name="_oneCount"/> = 5):
+            <code><![CDATA[
+            .------.----------------------------.------------------------------------.----------.   .-----------.-----------.
+            | Step | Variable                   | Expression                         | Value    |   | _bitCount | _oneCount |
+            :------+----------------------------+------------------------------------+----------|   |-----------+-----------:
+            |    1 | current (before)           | current                            | 00011111 |   | 8         | 5         |
+            |      | _mask                      | (1 << (_bitCount - _oneCount)) - 1 | 00000111 |   '-----------'-----------'
+            |      | current & -current         | current & -current                 | 00000001 |
+            |      | current & -current & _mask | current & -current & _mask         | 00000001 |
+            |      | smallest                   | current & -current                 | 00000001 |
+            |      | ripple                     | current + smallest                 | 00100000 |
+            |      | ones (before shift)        | current ^ ripple                   | 00111111 |
+            |      | ones after                 | (ones >> 2) / smallest             | 00001111 |
+            |      | current (after)            | ripple | ones                      | 00101111 |
+            :------+----------------------------+------------------------------------+----------:
+            |    2 | current (before)           | current                            | 00101111 |
+            |      | _mask                      | (1 << (_bitCount - _oneCount)) - 1 | 00000111 |
+            |      | current & -current         | current & -current                 | 00000001 |
+            |      | current & -current & _mask | current & -current & _mask         | 00000001 |
+            |      | smallest                   | current & -current                 | 00000001 |
+            |      | ripple                     | current + smallest                 | 00110000 |
+            |      | ones (before shift)        | current ^ ripple                   | 00011111 |
+            |      | ones after                 | (ones >> 2) / smallest             | 00000111 |
+            |      | current (after)            | ripple | ones                      | 00110111 |
+            :------+----------------------------+------------------------------------+----------+
+            |    3 | current (before)           | current                            | 00110111 |
+            |      | _mask                      | (1 << (_bitCount - _oneCount)) - 1 | 00000111 |
+            |      | current & -current         | current & -current                 | 00000001 |
+            |      | current & -current & _mask | current & -current & _mask         | 00000001 |
+            |      | smallest                   | current & -current                 | 00000001 |
+            |      | ripple                     | current + smallest                 | 00111000 |
+            |      | ones (before shift)        | current ^ ripple                   | 00001111 |
+            |      | ones after                 | (ones >> 2) / smallest             | 00000011 |
+            |      | current (after)            | ripple | ones                      | 00111011 |
+            '------'----------------------------'------------------------------------'----------'
+            ]]></code>
+            </para>
+            </remarks>
         </member>
         <member name="M:System.Numerics.BitCombinationEnumerator`1.#ctor(System.Int32,System.Int32)">
             <summary>
-            Indicates the enumerator of the current instance.
+            Enumerates the next k-combination represented as a bitmask using Gosper's hack.
             </summary>
             <typeparam name="TInteger">The type of the target integer value.</typeparam>
             <param name="_bitCount">The number of bits.</param>
             <param name="_oneCount">The number of <see langword="true"/> bits.</param>
+            <remarks>
+            <para>
+            Given a bitmask <c>x</c> that has exactly <c>k</c> bits set (ones), this routine computes
+            the bitmask that represents the next combination (in the usual bitmask ordering
+            where less-significant positions change first) while preserving the number of set bits.
+            The transformation is done using a few constant-time bit operations:
+            </para>
+            <para><b>Algorithm (high level)</b>:</para>
+            <list type="number">
+            <item><c>smallest = x &amp; -x</c> — isolate the least-significant set bit of <c>x</c>.</item>
+            <item>
+            <c>ripple = x + smallest</c> — add that isolated bit back to <c>x</c>.<br/>
+            This produces a carry that clears a trailing block of ones and sets the next higher zero bit (if any),
+            effectively "pushing" the low block of ones upward.
+            </item>
+            <item>
+            <c>ones = x ^ ripple</c> — this captures the bits that changed:
+            the cleared trailing ones together with the new carry bit.<br/>
+            Shifting and scaling those bits produces a right-aligned block of ones
+            that should appear at the least-significant positions after the ripple.
+            </item>
+            <item>
+            <c>ones = (ones >> 2) / smallest</c> — right-shift twice, then divide by the power-of-two <c>smallest</c><br/>
+            This expression moves that block of ones down to the lowest bits,
+            producing a mask with the correct number of trailing ones that remain after the higher bit was promoted.
+            </item>
+            <item>
+            <c>x = ripple | ones</c> — composes the promoted higher bit(s)
+            with the right-aligned trailing ones to form the next k-combination.
+            </item>
+            </list>
+            <para><b>Why this is correct (intuition)</b>:</para>
+            <para>
+            Let <c>r</c> be the number of consecutive ones that were cleared by the addition
+            (i.e., the length of the trailing one-block involved in the carry).
+            The addition sets a single higher bit (the carry destination) and clears those <c>r</c> lower ones.
+            The XOR with the original <c>x</c> yields a word containing
+            exactly those <c>r</c> cleared ones plus the single new carry bit (so popcount = <c>r</c> + 1).
+            Shifting the XOR result right by two removes the carry bit and one zero that separates
+            where the carry landed from the cleared block;
+            dividing by <c>smallest</c> (a power of two) shifts the remaining ones down so they
+            become a right-aligned block of <c>r</c> ones.
+            OR-ing with <c>ripple</c> (which holds the newly promoted higher bit) yields the next bitmask
+            that has the same number of ones, but with the leftmost moved-up one and the remaining ones placed as far right as possible.
+            </para>
+            <para>
+            <b>Complexity</b>: O(1) — only a handful of machine-word bit-operations (AND, ADD, XOR, shifts, divide by power of two).
+            </para>
+            <para>
+            <b>Auto play</b> (the first 3 steps, with values <paramref name="_bitCount"/> = 8, <paramref name="_oneCount"/> = 5):
+            <code><![CDATA[
+            .------.----------------------------.------------------------------------.----------.   .-----------.-----------.
+            | Step | Variable                   | Expression                         | Value    |   | _bitCount | _oneCount |
+            :------+----------------------------+------------------------------------+----------|   |-----------+-----------:
+            |    1 | current (before)           | current                            | 00011111 |   | 8         | 5         |
+            |      | _mask                      | (1 << (_bitCount - _oneCount)) - 1 | 00000111 |   '-----------'-----------'
+            |      | current & -current         | current & -current                 | 00000001 |
+            |      | current & -current & _mask | current & -current & _mask         | 00000001 |
+            |      | smallest                   | current & -current                 | 00000001 |
+            |      | ripple                     | current + smallest                 | 00100000 |
+            |      | ones (before shift)        | current ^ ripple                   | 00111111 |
+            |      | ones after                 | (ones >> 2) / smallest             | 00001111 |
+            |      | current (after)            | ripple | ones                      | 00101111 |
+            :------+----------------------------+------------------------------------+----------:
+            |    2 | current (before)           | current                            | 00101111 |
+            |      | _mask                      | (1 << (_bitCount - _oneCount)) - 1 | 00000111 |
+            |      | current & -current         | current & -current                 | 00000001 |
+            |      | current & -current & _mask | current & -current & _mask         | 00000001 |
+            |      | smallest                   | current & -current                 | 00000001 |
+            |      | ripple                     | current + smallest                 | 00110000 |
+            |      | ones (before shift)        | current ^ ripple                   | 00011111 |
+            |      | ones after                 | (ones >> 2) / smallest             | 00000111 |
+            |      | current (after)            | ripple | ones                      | 00110111 |
+            :------+----------------------------+------------------------------------+----------+
+            |    3 | current (before)           | current                            | 00110111 |
+            |      | _mask                      | (1 << (_bitCount - _oneCount)) - 1 | 00000111 |
+            |      | current & -current         | current & -current                 | 00000001 |
+            |      | current & -current & _mask | current & -current & _mask         | 00000001 |
+            |      | smallest                   | current & -current                 | 00000001 |
+            |      | ripple                     | current + smallest                 | 00111000 |
+            |      | ones (before shift)        | current ^ ripple                   | 00001111 |
+            |      | ones after                 | (ones >> 2) / smallest             | 00000011 |
+            |      | current (after)            | ripple | ones                      | 00111011 |
+            '------'----------------------------'------------------------------------'----------'
+            ]]></code>
+            </para>
+            </remarks>
         </member>
         <member name="F:System.Numerics.BitCombinationEnumerator`1._mask">
             <summary>
@@ -7581,6 +7852,18 @@
             Provides a way to use pipeline syntax.
             </summary>
         </member>
+        <member name="M:System.Pipelines.Pipeline.op_GreaterThan``1(``0@,System.String)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_GreaterThan(`0@,System.String)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.op_GreaterThan``1(``0@,System.IO.FileInfo)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_GreaterThan(`0@,System.IO.FileInfo)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.op_LessThan``1(``0@,System.String)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_LessThan(`0@,System.String)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.op_LessThan``1(``0@,System.IO.FileInfo)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_LessThan(`0@,System.IO.FileInfo)"/>
+        </member>
         <member name="M:System.Pipelines.Pipeline.op_BitwiseOr``2(``0,System.Func{``0,``1})">
             <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$A71816571835CF3F039CA55AD01F5336`2.op_BitwiseOr(`0,System.Func{`0,`1})"/>
         </member>
@@ -7598,6 +7881,59 @@
         </member>
         <member name="M:System.Pipelines.Pipeline.op_BitwiseOr``4(System.ValueTuple{``0,``1,``2},)">
             <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$B5167FACA1A0EC653B80EE217AE63569`4.op_BitwiseOr(System.ValueTuple{`0,`1,`2},)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.op_LessThan``1(System.Action{``0},System.String)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$F068BB865AB87FE408C521B9BFB44D65`1.op_LessThan(System.Action{`0},System.String)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.op_LessThan``1(System.Action{``0},System.IO.FileInfo)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$F068BB865AB87FE408C521B9BFB44D65`1.op_LessThan(System.Action{`0},System.IO.FileInfo)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.op_GreaterThan``1(System.Action{``0},System.String)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$F068BB865AB87FE408C521B9BFB44D65`1.op_GreaterThan(System.Action{`0},System.String)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.op_GreaterThan``1(System.Action{``0},System.IO.FileInfo)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$F068BB865AB87FE408C521B9BFB44D65`1.op_GreaterThan(System.Action{`0},System.IO.FileInfo)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.op_LessThan``1(System.Func{``0},System.String)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$442D1F344658BA1A06DA180AAEC04957`1.op_LessThan(System.Func{`0},System.String)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.op_LessThan``1(System.Func{``0},System.IO.FileInfo)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$442D1F344658BA1A06DA180AAEC04957`1.op_LessThan(System.Func{`0},System.IO.FileInfo)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.op_GreaterThan``1(System.Func{``0},System.String)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$442D1F344658BA1A06DA180AAEC04957`1.op_GreaterThan(System.Func{`0},System.String)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.op_GreaterThan``1(System.Func{``0},System.IO.FileInfo)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$442D1F344658BA1A06DA180AAEC04957`1.op_GreaterThan(System.Func{`0},System.IO.FileInfo)"/>
+        </member>
+        <member name="T:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.&lt;M&gt;$C212137196B4CD5D4F4B6509E3CC6F1C">
+            <summary>
+            Provides extension members on <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type of instance.</typeparam>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_GreaterThan(`0@,System.String)">
+            <summary>
+            Redirects the standard output (STDOUT) of a command to a specified file.
+            If the file already exists, its contents are overwritten.
+            </summary>
+            <param name="input">The desired input data.</param>
+            <param name="filePath">The file path.</param>
+            <returns>The file stream.</returns>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_GreaterThan(`0@,System.IO.FileInfo)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_GreaterThan(`0@,System.String)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_LessThan(`0@,System.String)">
+            <summary>
+            Redirects the standard input (STDIN) of a command to come from a specified file instead of the keyboard.
+            </summary>
+            <param name="input">The desired input data.</param>
+            <param name="filePath">The file path.</param>
+            <returns>The file stream.</returns>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_LessThan(`0@,System.IO.FileInfo)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_LessThan(`0@,System.String)"/>
         </member>
         <member name="T:System.Pipelines.Pipeline.&lt;G&gt;$A71816571835CF3F039CA55AD01F5336`2.&lt;M&gt;$E57A6FEB39B3B4140D27E470F9F2E7F7">
             <summary>
@@ -7655,6 +7991,36 @@
         </member>
         <member name="M:System.Pipelines.Pipeline.&lt;G&gt;$B5167FACA1A0EC653B80EE217AE63569`4.op_BitwiseOr(System.ValueTuple{`0,`1,`2},)">
             <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$B5167FACA1A0EC653B80EE217AE63569`4.op_BitwiseOr(System.ValueTuple{`0,`1,`2},System.Func{`0,`1,`2,`3})"/>
+        </member>
+        <member name="T:System.Pipelines.Pipeline.&lt;G&gt;$F068BB865AB87FE408C521B9BFB44D65`1.&lt;M&gt;$CE12476F51AD52113CF94EF5D450A68E">
+            <summary>
+            Provides extension members on <see cref="T:System.Action`1"/>.
+            </summary>
+            <typeparam name="T">The type of argument.</typeparam>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.&lt;G&gt;$F068BB865AB87FE408C521B9BFB44D65`1.op_LessThan(System.Action{`0},System.String)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_LessThan(`0@,System.String)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.&lt;G&gt;$F068BB865AB87FE408C521B9BFB44D65`1.op_LessThan(System.Action{`0},System.IO.FileInfo)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_LessThan(`0@,System.String)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.&lt;G&gt;$F068BB865AB87FE408C521B9BFB44D65`1.op_GreaterThan(System.Action{`0},System.String)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_GreaterThan(`0@,System.String)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.&lt;G&gt;$F068BB865AB87FE408C521B9BFB44D65`1.op_GreaterThan(System.Action{`0},System.IO.FileInfo)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_GreaterThan(`0@,System.String)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.&lt;G&gt;$442D1F344658BA1A06DA180AAEC04957`1.op_LessThan(System.Func{`0},System.String)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_LessThan(`0@,System.String)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.&lt;G&gt;$442D1F344658BA1A06DA180AAEC04957`1.op_LessThan(System.Func{`0},System.IO.FileInfo)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_LessThan(`0@,System.String)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.&lt;G&gt;$442D1F344658BA1A06DA180AAEC04957`1.op_GreaterThan(System.Func{`0},System.String)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_GreaterThan(`0@,System.String)"/>
+        </member>
+        <member name="M:System.Pipelines.Pipeline.&lt;G&gt;$442D1F344658BA1A06DA180AAEC04957`1.op_GreaterThan(System.Func{`0},System.IO.FileInfo)">
+            <inheritdoc cref="M:System.Pipelines.Pipeline.&lt;G&gt;$479BA271704D2986F6C700780589C150`1.op_GreaterThan(`0@,System.String)"/>
         </member>
         <member name="T:System.RandomExtensions">
             <summary>
@@ -8885,47 +9251,6 @@
         </member>
         <member name="M:System.Span.Create``1(``0*,System.Int32)">
             <inheritdoc cref="M:System.Span.Create``1(``0@,System.Int32)"/>
-        </member>
-        <member name="T:System.Threading.CancellationTokenExtensions">
-            <summary>
-            Provides with extension members on <see cref="T:System.Threading.CancellationToken"/> instances.
-            </summary>
-            <seealso cref="T:System.Threading.CancellationToken"/>
-        </member>
-        <member name="M:System.Threading.CancellationTokenExtensions.op_LogicalNot(System.Threading.CancellationToken)">
-            <inheritdoc cref="M:System.Threading.CancellationTokenExtensions.&lt;G&gt;$49853BDED5F7090FEA8BBA2FA1B20683.op_LogicalNot(System.Threading.CancellationToken)"/>
-        </member>
-        <member name="M:System.Threading.CancellationTokenExtensions.op_True(System.Threading.CancellationToken)">
-            <inheritdoc cref="M:System.Threading.CancellationTokenExtensions.&lt;G&gt;$49853BDED5F7090FEA8BBA2FA1B20683.op_True(System.Threading.CancellationToken)"/>
-        </member>
-        <member name="M:System.Threading.CancellationTokenExtensions.op_False(System.Threading.CancellationToken)">
-            <inheritdoc cref="M:System.Threading.CancellationTokenExtensions.&lt;G&gt;$49853BDED5F7090FEA8BBA2FA1B20683.op_False(System.Threading.CancellationToken)"/>
-        </member>
-        <member name="T:System.Threading.CancellationTokenExtensions.&lt;G&gt;$49853BDED5F7090FEA8BBA2FA1B20683.&lt;M&gt;$49853BDED5F7090FEA8BBA2FA1B20683">
-            <summary>
-            Provides extension members on <see cref="T:System.Threading.CancellationToken"/>.
-            </summary>
-        </member>
-        <member name="M:System.Threading.CancellationTokenExtensions.&lt;G&gt;$49853BDED5F7090FEA8BBA2FA1B20683.op_LogicalNot(System.Threading.CancellationToken)">
-            <summary>
-            Indicates whether the cancellation token is cancellation-requested.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:System.Threading.CancellationTokenExtensions.&lt;G&gt;$49853BDED5F7090FEA8BBA2FA1B20683.op_True(System.Threading.CancellationToken)">
-            <summary>
-            Indicates whether the cancellation token isn't cancellation-requested.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
-        </member>
-        <member name="M:System.Threading.CancellationTokenExtensions.&lt;G&gt;$49853BDED5F7090FEA8BBA2FA1B20683.op_False(System.Threading.CancellationToken)">
-            <summary>
-            Indicates whether the cancellation token is cancellation-requested.
-            </summary>
-            <param name="value">The value.</param>
-            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
         </member>
         <member name="T:System.Threading.Tasks.TimeSpanAwaitable">
             <summary>

@@ -69,7 +69,7 @@ public ref partial struct EmptyHouseBasedGenerator() : IGenerator<Grid>
 				break;
 			}
 
-			if (!cancellationToken)
+			if (cancellationToken.IsCancellationRequested)
 			{
 				return Grid.Undefined;
 			}
@@ -115,7 +115,7 @@ public ref partial struct EmptyHouseBasedGenerator() : IGenerator<Grid>
 				return false;
 			}
 
-			if (!cancellationToken)
+			if (cancellationToken.IsCancellationRequested)
 			{
 				return false;
 			}
@@ -223,7 +223,7 @@ public ref partial struct EmptyHouseBasedGenerator() : IGenerator<Grid>
 				var targetRemainingClues = _rng.Next(17, 30);
 				while (remainingClues > targetRemainingClues && used != ~CellMap.Empty)
 				{
-					if (!cancellationToken)
+					if (cancellationToken.IsCancellationRequested)
 					{
 						return false;
 					}

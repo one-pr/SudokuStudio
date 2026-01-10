@@ -240,9 +240,9 @@ public sealed class Analyzer : StepGatherer
 					progress,
 					cancellationToken
 				);
-				return cancellationToken
-					? tempResult
-					: result with { IsSolved = false, FailedReason = FailedReason.UserCancelled };
+				return cancellationToken.IsCancellationRequested
+					? result with { IsSolved = false, FailedReason = FailedReason.UserCancelled }
+					: tempResult;
 			}
 			return result with { IsSolved = false, FailedReason = FailedReason.PuzzleHasNoSolution };
 		}
@@ -319,7 +319,7 @@ public sealed class Analyzer : StepGatherer
 			}
 
 		FindNextStep:
-			if (!cancellationToken)
+			if (cancellationToken.IsCancellationRequested)
 			{
 				return null!;
 			}
@@ -331,7 +331,7 @@ public sealed class Analyzer : StepGatherer
 			{
 				switch (playground, solution, searcher, this)
 				{
-					case ({ PuzzleType: GridType.Sukaku }, _, { Metadata.SupportsSukaku: false }, _):
+					case ({ IsSukaku: true }, _, { Metadata.SupportsSukaku: false }, _):
 					case (_, _, { RunningArea: StepSearcherRunningArea.None }, _):
 					case (_, _, { Metadata.IsOnlyRunForDirectViews: true }, { Options.IsDirectMode: false }):
 					case (_, _, { Metadata.IsOnlyRunForIndirectViews: true }, { Options.IsDirectMode: true }):
@@ -632,7 +632,7 @@ public sealed class Analyzer : StepGatherer
 				if (atLeastOneConclusionIsWorth)
 				{
 					steppingGrids.AddRef(playground);
-					playground >>= step;
+					playground.Apply(step);
 					steps.Add(step);
 
 					// Trigger the event.

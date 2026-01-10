@@ -5,7 +5,7 @@ namespace Sudoku.Concepts.Graphs;
 /// This graph will be useful to measure border lines.
 /// </summary>
 /// <seealso cref="Cell"/>
-public readonly ref struct AdjacentCellGraph : IEquatable<AdjacentCellGraph>, IFormattable
+public readonly ref struct AdjacentCellGraph : IEquatable<AdjacentCellGraph>
 {
 	/// <summary>
 	/// Indicates the backing field of cells.
@@ -99,13 +99,22 @@ public readonly ref struct AdjacentCellGraph : IEquatable<AdjacentCellGraph>, IF
 	public override int GetHashCode() => Cells.GetHashCode();
 
 	/// <inheritdoc cref="object.ToString"/>
-	public override string ToString() => ToString(null);
+	public override string ToString() => ToString(new RxCyConverter());
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider) => Cells.ToString(formatProvider);
+	/// <summary>
+	/// Converts the current instance into string representation via the specified coordinate converter.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <returns>The string result.</returns>
+	public string ToString(CoordinateConverter converter) => converter.CellConverter(Cells);
 
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
+	/// <summary>
+	/// Converts the current instance into string representation via the specified cell map converter.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <returns>The string result.</returns>
+	public string ToString(ICellMapConverter converter)
+		=> converter.TryFormat(in Cells, null, out var result) ? result : throw new FormatException();
 
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>

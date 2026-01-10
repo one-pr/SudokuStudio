@@ -108,8 +108,8 @@ public sealed class AvoidableRectangleChainingRule : ChainingRule
 		out ReadOnlySpan<ViewNode> producedViewNodes
 	)
 	{
-		var urIndex = processedViewNodesMap.MaxKeyInRectangle is var key and not WellKnownColorIdentifierKind.Normal
-			? (key - WellKnownColorIdentifierKind.Rectangle1 + 1) % 3
+		var urIndex = processedViewNodesMap.MaxKeyInRectangle is var key and not ColorDescriptorAlias.Normal
+			? (key - ColorDescriptorAlias.Rectangle1 + 1) % 3
 			: 0;
 		var result = new List<ViewNode>();
 		foreach (var link in pattern.Links)
@@ -119,15 +119,12 @@ public sealed class AvoidableRectangleChainingRule : ChainingRule
 				continue;
 			}
 
-			var id = urIndex + WellKnownColorIdentifierKind.Rectangle1;
+			var id = urIndex + ColorDescriptorAlias.Rectangle1;
 			foreach (var cell in urCells)
 			{
 				if (view.FindCell(cell) is { Identifier: var originalIdentifier } cellViewNode)
 				{
-					if (originalIdentifier is WellKnownColorIdentifier
-						{
-							Kind: >= WellKnownColorIdentifierKind.Rectangle1 and <= WellKnownColorIdentifierKind.Rectangle3
-						})
+					if (originalIdentifier is (_, >= ColorDescriptorAlias.Rectangle1 and <= ColorDescriptorAlias.Rectangle3))
 					{
 						// Skip for drawing the current cell if the cell has already been drawn
 						// with the same-categorized color (also an AUR color).

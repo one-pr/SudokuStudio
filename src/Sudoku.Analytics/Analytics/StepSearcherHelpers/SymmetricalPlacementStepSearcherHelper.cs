@@ -25,7 +25,7 @@ internal sealed class SymmetricalPlacementStepSearcherHelper : StepSearcherHelpe
 	/// <returns>Symmetric types.</returns>
 	public static unsafe SymmetricType GetSymmetry(in Grid grid, out ReadOnlySpan<Digit?> mappingDigits, out Mask selfPairedDigitsMask)
 	{
-		if (grid.PuzzleType != GridType.Standard || grid.Uniqueness != Uniqueness.Unique)
+		if (!grid.IsStandard || grid.Uniqueness != Uniqueness.Unique)
 		{
 			goto FastFail;
 		}
@@ -535,7 +535,7 @@ internal sealed class SymmetricalPlacementStepSearcherHelper : StepSearcherHelpe
 			{
 				if (selfPairedDigits.Contains(digit))
 				{
-					candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + digit));
+					candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + digit));
 					continue;
 				}
 
@@ -615,7 +615,7 @@ internal sealed class SymmetricalPlacementStepSearcherHelper : StepSearcherHelpe
 			{
 				if (selfPairedDigits.Contains(digit))
 				{
-					candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + digit));
+					candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + digit));
 					continue;
 				}
 

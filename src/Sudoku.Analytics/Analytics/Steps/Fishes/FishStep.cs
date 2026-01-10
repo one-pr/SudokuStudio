@@ -111,6 +111,6 @@ public abstract class FishStep(
 	private protected string InternalNotation => Pattern.ToString(Options.Converter);
 
 
-	/// <inheritdoc cref="Step.ToString(IFormatProvider?)"/>
-	public new string ToString(IFormatProvider? formatProvider) => Pattern.ToString(formatProvider);
+	/// <inheritdoc cref="Step.ToString(CultureInfo?)"/>
+	public new string ToString(CultureInfo? culture) => Pattern.ToString(culture ?? CultureInfo.CurrentUICulture);
 }

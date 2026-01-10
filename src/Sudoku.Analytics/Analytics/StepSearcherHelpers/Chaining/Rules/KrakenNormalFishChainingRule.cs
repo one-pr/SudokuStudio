@@ -179,7 +179,7 @@ public sealed class KrakenNormalFishChainingRule : ChainingRule
 						view.Remove(candidateViewNode);
 					}
 
-					var node = new CandidateViewNode(ColorIdentifier.Auxiliary2, candidate);
+					var node = new CandidateViewNode(ColorDescriptorAlias.Auxiliary2, candidate);
 					view.Add(node);
 					result.Add(node);
 				}

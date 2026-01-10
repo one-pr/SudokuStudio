@@ -23,7 +23,7 @@ public sealed partial class ExtendedSubsetPrincipleStepSearcher : StepSearcher
 		ref readonly var grid = ref context.Grid;
 		var list = new List<CellMap>(7);
 		var results = new HashSet<CellMap>();
-		foreach (var kvp in Miniline.Map)
+		foreach (var kvp in Segments.Map)
 		{
 			ref readonly var key = ref kvp.KeyRef;
 			ref readonly var value = ref kvp.ValueRef;
@@ -107,7 +107,7 @@ public sealed partial class ExtendedSubsetPrincipleStepSearcher : StepSearcher
 									{
 										candidateOffsets.Add(
 											new(
-												digit == zDigit ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal,
+												digit == zDigit ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal,
 												cell * 9 + digit
 											)
 										);

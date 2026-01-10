@@ -41,14 +41,14 @@ public sealed class RectangleForcingChains(Cell[] cells, Mask urDigitsMask, para
 		base.PrepareFinnedChainViewNodes(finnedChain, supportedRules, grid, fins, out views);
 		foreach (var cell in Cells)
 		{
-			var node = new CellViewNode(ColorIdentifier.Rectangle1, cell);
+			var node = new CellViewNode(ColorDescriptorAlias.Rectangle1, cell);
 			foreach (var view in views)
 			{
 				view.Add(node);
 			}
 			foreach (var digit in UrDigitsMask & grid.GetCandidates(cell))
 			{
-				var candidateNode = new CandidateViewNode(ColorIdentifier.Rectangle1, cell * 9 + digit);
+				var candidateNode = new CandidateViewNode(ColorDescriptorAlias.Rectangle1, cell * 9 + digit);
 				foreach (var view in views)
 				{
 					view.Add(candidateNode);
@@ -63,10 +63,10 @@ public sealed class RectangleForcingChains(Cell[] cells, Mask urDigitsMask, para
 		var result = new List<ViewNode>();
 		foreach (var cell in Cells)
 		{
-			result.Add(new CellViewNode(ColorIdentifier.Rectangle1, cell));
+			result.Add(new CellViewNode(ColorDescriptorAlias.Rectangle1, cell));
 			foreach (var digit in UrDigitsMask & grid.GetCandidates(cell))
 			{
-				result.Add(new CandidateViewNode(ColorIdentifier.Rectangle1, cell * 9 + digit));
+				result.Add(new CandidateViewNode(ColorDescriptorAlias.Rectangle1, cell * 9 + digit));
 			}
 		}
 		return result.AsSpan();

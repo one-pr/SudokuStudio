@@ -274,7 +274,7 @@ public sealed partial class ComplexFishStepSearcher : StepSearcher
 							// that is the elimination lies in.
 							foreach (var houseType in HouseTypes)
 							{
-								var houseIndex = cell >> houseType;
+								var houseIndex = cell.GetHouse(houseType);
 
 								// Check whether the house is both used in base sets and cover sets.
 								if ((usedInBaseSets >> houseIndex & 1) != 0 || (usedInCoverSets >> houseIndex & 1) != 0)
@@ -427,11 +427,11 @@ public sealed partial class ComplexFishStepSearcher : StepSearcher
 								var houseOffsets = new List<HouseViewNode>();
 								foreach (var baseSet in baseSets)
 								{
-									houseOffsets.Add(new(ColorIdentifier.Normal, baseSet));
+									houseOffsets.Add(new(ColorDescriptorAlias.Normal, baseSet));
 								}
 								foreach (var coverSet in actualCoverSets)
 								{
-									houseOffsets.Add(new(ColorIdentifier.Auxiliary2, coverSet));
+									houseOffsets.Add(new(ColorDescriptorAlias.Auxiliary2, coverSet));
 									coverSetsMask |= 1 << coverSet;
 								}
 
@@ -443,13 +443,13 @@ public sealed partial class ComplexFishStepSearcher : StepSearcher
 											[
 												..
 												from body in actualBaseMap & ~exofins & ~endofins
-												select new CandidateViewNode(ColorIdentifier.Normal, body * 9 + digit),
+												select new CandidateViewNode(ColorDescriptorAlias.Normal, body * 9 + digit),
 												..
 												from exofin in exofins
-												select new CandidateViewNode(ColorIdentifier.Exofin, exofin * 9 + digit),
+												select new CandidateViewNode(ColorDescriptorAlias.Exofin, exofin * 9 + digit),
 												..
 												from endofin in endofins
-												select new CandidateViewNode(ColorIdentifier.Endofin, endofin * 9 + digit),
+												select new CandidateViewNode(ColorDescriptorAlias.Endofin, endofin * 9 + digit),
 												.. houseOffsets
 											]
 										],

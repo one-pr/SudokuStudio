@@ -110,7 +110,8 @@ public class NormalChainStep(
 			)
 		];
 
-	private protected string ChainString => Casted.ToString(new ChainFormatInfo(Options.Converter));
+	private protected string ChainString
+		=> Casted.ToString(new CustomizedChainConverter { CustomizedCandidateConverter = Options.Converter });
 
 	private protected NamedChain Casted => (NamedChain)Pattern;
 

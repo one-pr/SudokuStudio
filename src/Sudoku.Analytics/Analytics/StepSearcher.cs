@@ -11,8 +11,7 @@ public abstract class StepSearcher(int priority, int level, StepSearcherRunningA
 	IComparable<StepSearcher>,
 	IComparisonOperators<StepSearcher, StepSearcher, bool>,
 	IEquatable<StepSearcher>,
-	IEqualityOperators<StepSearcher, StepSearcher, bool>,
-	IFormattable
+	IEqualityOperators<StepSearcher, StepSearcher, bool>
 {
 	/// <summary>
 	/// <para>
@@ -75,8 +74,12 @@ public abstract class StepSearcher(int priority, int level, StepSearcherRunningA
 	/// <inheritdoc/>
 	public sealed override string ToString() => ToString(null);
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider) => Metadata.GetName(formatProvider as CultureInfo);
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation via the specified culture.
+	/// </summary>
+	/// <param name="culture">The culture.</param>
+	/// <returns>The result.</returns>
+	public string ToString(CultureInfo? culture) => Metadata.GetName(culture);
 
 	/// <summary>
 	/// Try to collect all available <see cref="Step"/>s using the current technique rule.
@@ -106,9 +109,6 @@ public abstract class StepSearcher(int priority, int level, StepSearcherRunningA
 	/// <seealso cref="Step"/>
 	/// <seealso cref="StepAnalysisContext"/>
 	protected internal abstract Step? Collect(ref StepAnalysisContext context);
-
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
 
 
 	/// <inheritdoc/>

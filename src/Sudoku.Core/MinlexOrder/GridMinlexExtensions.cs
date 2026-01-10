@@ -28,7 +28,7 @@ public static class GridMinlexExtensions
 		/// in lexicographical order.
 		/// </summary>
 		public bool IsMinLex
-			=> @this.PuzzleType != GridType.Sukaku && @this.Uniqueness == Uniqueness.Unique && @this.ToString("0") is var s
+			=> !@this.IsSukaku && @this.Uniqueness == Uniqueness.Unique && @this.ToString("0") is var s
 				? new MinlexFinder().Find(s) == s
 				: throw new InvalidOperationException(SR.ExceptionMessage("MinLexShouldBeUniqueAndNotSukaku"));
 

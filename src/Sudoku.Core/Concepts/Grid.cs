@@ -15,7 +15,7 @@ using InlineArrayGridBase = IInlineArrayGrid<Grid>;
 [DebuggerDisplay($$"""{{{nameof(ToString)}}("#")}""")]
 [InlineArray(81)]
 [JsonConverter(typeof(Converter))]
-public struct Grid : InlineArrayGridBase
+public partial struct Grid : InlineArrayGridBase
 {
 	/// <inheritdoc cref="InlineArrayGridBase.DefaultMask"/>
 	public const Mask DefaultMask = EmptyMask | MaxCandidatesMask;
@@ -65,14 +65,13 @@ public struct Grid : InlineArrayGridBase
 	/// </listheader>
 	/// <item>
 	/// <term>0b0000</term>
-	/// <description>Represents standard sudoku type (flag: <see cref="GridType.Standard"/>)</description>
+	/// <description>Represents standard sudoku type</description>
 	/// </item>
 	/// <item>
 	/// <term>0b0010</term>
-	/// <description>Represents Sukaku (flag: <see cref="GridType.Sukaku"/>)</description>
+	/// <description>Represents Sukaku</description>
 	/// </item>
 	/// </list>
-	/// Other values won't be supported for now, even if the flags are defined in type <see cref="GridType"/>.
 	/// </para>
 	/// </remarks>
 	private Mask _values;
@@ -161,6 +160,16 @@ public struct Grid : InlineArrayGridBase
 	public readonly bool IsMissingCandidates => ResetGrid == ResetCandidatesGrid.ResetGrid && this != ResetCandidatesGrid;
 
 	/// <summary>
+	/// Indicates whether the grid is Sukaku (a sudoku variant that is a full-pencilmarked grid, without any candidates).
+	/// </summary>
+	public readonly bool IsSukaku => GetHeaderBits(0) == GridBase.SukakuHeader;
+
+	/// <summary>
+	/// Indicates whether the grid is standard sudoku.
+	/// </summary>
+	public readonly bool IsStandard => GetHeaderBits(0) != GridBase.SukakuHeader;
+
+	/// <summary>
 	/// Indicates whether the grid is at invalid state that a certain cell has no candidates.
 	/// </summary>
 	public readonly bool HasCellHavingNoCandidates
@@ -177,21 +186,6 @@ public struct Grid : InlineArrayGridBase
 			return false;
 		}
 	}
-
-	/// <inheritdoc/>
-	public readonly SymmetricType Symmetry => GivenCells.Symmetry;
-
-	/// <summary>
-	/// Indicates the type of the puzzle.
-	/// </summary>
-	/// <remarks>
-	/// By design, this property can only be either <see cref="GridType.Standard"/> or <see cref="GridType.Sukaku"/>;
-	/// other values like <see cref="GridType.JustOneCell"/> won't be created here.
-	/// </remarks>
-	/// <seealso cref="GridType.Standard"/>
-	/// <seealso cref="GridType.Sukaku"/>
-	public readonly GridType PuzzleType
-		=> GetHeaderBits(0) switch { GridBase.SukakuHeader => GridType.Sukaku, _ => GridType.Standard };
 
 	/// <inheritdoc/>
 	public readonly Cell GivenCellsCount => GivenCells.Count;
@@ -318,7 +312,7 @@ public struct Grid : InlineArrayGridBase
 	}
 
 	/// <inheritdoc/>
-	public readonly Grid ResetGrid => this % GivenCells;
+	public readonly Grid ResetGrid => Preserve(GivenCells);
 
 	/// <summary>
 	/// Gets the grid where all empty cells are filled with all possible candidates.
@@ -584,12 +578,12 @@ public struct Grid : InlineArrayGridBase
 	/// <inheritdoc cref="IComparable{T}.CompareTo(T)"/>
 	/// <exception cref="InvalidOperationException">Throws when the puzzle type is Sukaku.</exception>
 	public readonly int CompareTo(in Grid other)
-		=> PuzzleType != GridType.Sukaku && other.PuzzleType != GridType.Sukaku
+		=> !IsSukaku && !other.IsSukaku
 			? ToString("#").CompareTo(other.ToString("#"))
 			: throw new InvalidOperationException(SR.ExceptionMessage("ComparableGridMustBeStandard"));
 
 	/// <inheritdoc cref="object.ToString"/>
-	public readonly override string ToString() => PuzzleType == GridType.Sukaku ? ToString("~") : ToString(null, null);
+	public readonly override string ToString() => IsSukaku ? ToString("~") : ToString(GridConverterFactory.InvariantCultureInstance);
 
 	/// <remarks>
 	/// <para>You can use format identifiers to create the format text. All valid format identifiers:
@@ -669,31 +663,50 @@ public struct Grid : InlineArrayGridBase
 	/// <inheritdoc cref="ToString(string?, IFormatProvider?)"/>
 	public readonly string ToString(string? format) => ToString(format, null);
 
+	/// <summary>
+	/// Retrieves <see cref="IGridConverter"/> instance via the specified culture, and format the current instance.
+	/// </summary>
+	/// <param name="culture">The culture.</param>
+	/// <returns>The string.</returns>
+	public readonly string ToString(CultureInfo culture)
+	{
+		var instance = GridConverterFactory.GetInstance(culture);
+		return instance.TryFormat(in this, culture, out var result) ? result : throw new FormatException();
+	}
+
 	/// <inheritdoc cref="ToString(string?, IFormatProvider?)"/>
 	public readonly string ToString(IFormatProvider? formatProvider)
-		=> formatProvider switch
-		{
-			GridFormatInfo<Grid> f => f.FormatCore(this),
-			CultureInfo c => (GridFormatInfo<Grid>.GetInstance(c) ?? new SusserGridFormatInfo()).FormatCore(this),
-			_ => throw new FormatException()
-		};
+		=> GridConverterFactory.TryFormat(in this, formatProvider, out var result) ? result : throw new FormatException();
 
-	/// <inheritdoc/>
-	/// <remarks>
-	/// For more information about <paramref name="format"/>, please see documentation comments of method
+	/// <inheritdoc cref="ToString(IGridConverter, IFormatProvider?)"/>
+	public readonly string ToString(IGridConverter converter)
+		=> converter.TryFormat(in this, null, out var result) ? result : throw new FormatException();
+
+	/// <summary>
+	/// Performs formatting operation via the specified grid converter and format provider.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <param name="formatProvider">The format provider.</param>
+	/// <returns>The string representation.</returns>
+	/// <exception cref="FormatException">Throws when the current grid is malformed.</exception>
+	public readonly string ToString(IGridConverter converter, IFormatProvider? formatProvider)
+		=> converter.TryFormat(in this, formatProvider, out var result) ? result : throw new FormatException();
+
+	/// <summary>
+	/// Performs formatting operation via the specified grid converter and format provider.
+	/// </summary>
+	/// <param name="format">
+	/// The format. For more information about <paramref name="format"/>, please see documentation comments of method
 	/// <see cref="ToString(string?)"/>.
-	/// </remarks>
+	/// </param>
+	/// <param name="formatProvider">The format provider.</param>
+	/// <returns>The string representation.</returns>
 	/// <seealso cref="ToString(string?)"/>
 	public readonly string ToString(string? format, IFormatProvider? formatProvider)
-		=> (this, formatProvider) switch
-		{
-			({ IsEmpty: true }, _) => $"<{nameof(Empty)}>",
-			({ IsUndefined: true }, _) => $"<{nameof(Undefined)}>",
-			(_, GridFormatInfo<Grid> f) => f.FormatCore(this),
-			(_, CultureInfo c) => ToString(c),
-			(_, not null) when formatProvider.GetFormat(typeof(GridFormatInfo<Grid>)) is GridFormatInfo<Grid> g => g.FormatCore(this),
-			_ => GridFormatInfo<Grid>.GetInstance(format)!.FormatCore(this)
-		};
+	{
+		var converter = GridConverterFactory.GetInstance(format) ?? GridConverterFactory.InvariantCultureInstance;
+		return converter.TryFormat(in this, formatProvider, out var result) ? result : throw new FormatException();
+	}
 
 	/// <inheritdoc/>
 	public readonly Digit[] ToDigitsArray()
@@ -778,7 +791,7 @@ public struct Grid : InlineArrayGridBase
 	/// <inheritdoc/>
 	public void Reset()
 	{
-		if (PuzzleType != GridType.Standard)
+		if (!IsStandard)
 		{
 			// Don't handle if the puzzle type is not a valid standard sudoku puzzle.
 			return;
@@ -799,7 +812,7 @@ public struct Grid : InlineArrayGridBase
 	/// </summary>
 	public void ResetCandidates()
 	{
-		if (PuzzleType != GridType.Standard)
+		if (!IsStandard)
 		{
 			// Don't handle if the puzzle type is not a valid standard sudoku puzzle.
 			return;
@@ -814,7 +827,7 @@ public struct Grid : InlineArrayGridBase
 	/// <inheritdoc/>
 	public void Fix()
 	{
-		if (PuzzleType != GridType.Standard)
+		if (!IsStandard)
 		{
 			// Don't handle if the puzzle type is not a valid standard sudoku puzzle.
 			return;
@@ -832,7 +845,7 @@ public struct Grid : InlineArrayGridBase
 	/// <inheritdoc/>
 	public void Unfix()
 	{
-		if (PuzzleType != GridType.Standard)
+		if (!IsStandard)
 		{
 			// Don't handle if the puzzle type is not a valid standard sudoku puzzle.
 			return;
@@ -848,8 +861,18 @@ public struct Grid : InlineArrayGridBase
 	}
 
 	/// <inheritdoc/>
-	[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
-	public void Apply(Conclusion conclusion) => this >>= conclusion;
+	public void Apply(Conclusion conclusion)
+	{
+		var (type, cell, digit) = conclusion;
+		if (type == Assignment)
+		{
+			SetDigit(cell, digit);
+		}
+		else if (type == Elimination)
+		{
+			SetExistence(cell, digit, false);
+		}
+	}
 
 	/// <inheritdoc/>
 	public void SetState(Cell cell, CellState state)
@@ -932,24 +955,67 @@ public struct Grid : InlineArrayGridBase
 		}
 	}
 
-	/// <inheritdoc cref="op_ModulusAssignment(in CellMap)"/>
-	[Obsolete("Use 'operator %=' instead: 'grid %= template'", false)]
-	public Grid Preserve(in CellMap template) => this %= template;
+	/// <summary>
+	/// Preserves the grid, removing cells not specified in <paramref name="template"/>.
+	/// </summary>
+	/// <param name="template">The cells specified to be preserved.</param>
+	public readonly Grid Preserve(in CellMap template)
+	{
+		var temp = this;
+		if (!IsStandard)
+		{
+			goto Return;
+		}
+
+		foreach (var cell in ~template)
+		{
+			temp.SetDigit(cell, -1);
+		}
+
+	Return:
+		return temp;
+	}
 
 	/// <summary>
-	/// Gets the header 4 bits. The value can be <see cref="GridType.Sukaku"/> if and only if the puzzle is Sukaku,
-	/// and the argument <paramref name="cell"/> is 0.
+	/// Gets the header 4 bits. The value can be 2 if and only if the puzzle is Sukaku,
+	/// with argument <paramref name="cell"/> equal to 0.
 	/// </summary>
 	/// <param name="cell">The cell.</param>
 	/// <returns>The header 4 bits, represented as a <see cref="Mask"/>, left-shifted.</returns>
+	/// <remarks>
+	/// For more information about this type, please visit <c>remarks</c> part in <see cref="GetHeaderBitsUnshifted(Cell)"/>.
+	/// </remarks>
+	/// <seealso cref="GetHeaderBitsUnshifted(Cell)"/>
 	internal readonly Mask GetHeaderBits(Cell cell) => (Mask)(this[cell] & ~((1 << GridBase.HeaderShift) - 1));
 
 	/// <summary>
-	/// Gets the header 4 bits. The value can be <see cref="GridType.Sukaku"/> if and only if the puzzle is Sukaku,
-	/// and the argument <paramref name="cell"/> is 0.
+	/// Gets the header 4 bits of the specified cell.
 	/// </summary>
-	/// <param name="cell">The cell.</param>
-	/// <returns>The header 4 bits, represented as a <see cref="Mask"/>.</returns>
+	/// <param name="cell">
+	/// The cell. Generally the value should be 0 because today only higher bits at cell <c>r1c1</c> is in use.
+	/// </param>
+	/// <returns>The header, in 4 bits, but using original mask type <see cref="Mask"/> to represent that.</returns>
+	/// <remarks>
+	/// <include file="../../global-doc-comments.xml" path="/g/developer-notes"/>
+	/// <para>
+	/// Due to design complexity of this type, I hard-coded the value 2 into the first cell of the inline array,
+	/// the backing field of this type, with higher 4 bits (12..16) equal to <c>0b0010</c>.
+	/// If the value is <c>0b0010</c> at cell 0 in higher bits, we can know this grid is a Sukaku.
+	/// </para>
+	/// <para>
+	/// I don't like this design, but it is Sukaku-unaware if we loss such data.
+	/// We cannot directly check whether a grid has no given cells or not to know the grid is a standard sudoku puzzle or not;
+	/// it effects string-parsing modules, causing wrong returns.
+	/// </para>
+	/// <para>
+	/// In the early of this repository built,
+	/// I tried compilation symbol <c>TRANSFORM_LESS_GIVEN_STANDARD_SUDOKU_PUZZLES_TO_SUKAKU</c>
+	/// to enable (include) or disable (exclude) some code snippets, but it didn't work in some edge cases.
+	/// Although such code are disabled by default, I still want to adjust such procedure to make such API graceful.
+	/// Please visit raw code in <see cref="Parse(string?)"/> if you are full of curiosity.
+	/// </para>
+	/// </remarks>
+	/// <seealso cref="Parse(string?)"/>
 	internal readonly Mask GetHeaderBitsUnshifted(Cell cell) => (Mask)(this[cell] >> GridBase.HeaderShift);
 
 	/// <summary>
@@ -1016,58 +1082,62 @@ public struct Grid : InlineArrayGridBase
 
 
 	/// <inheritdoc/>
-	public static bool TryParse(string? s, out Grid result)
-	{
-		try
-		{
-			result = Parse(s);
-			return !result.IsUndefined;
-		}
-		catch (FormatException)
-		{
-			result = Undefined;
-			return false;
-		}
-	}
+	public static bool TryParse(string? s, out Grid result) => TryParse(s.AsSpan(), default(IFormatProvider), out result);
 
-	/// <inheritdoc/>
+	/// <inheritdoc cref="TryParse(ReadOnlySpan{char}, CultureInfo, out Grid)"/>
+	public static bool TryParse(string? s, CultureInfo culture, out Grid result) => TryParse(s.AsSpan(), culture, out result);
+
+	/// <inheritdoc cref="TryParse(ReadOnlySpan{char}, IGridConverter, IFormatProvider?, out Grid)"/>
+	public static bool TryParse(string? s, IGridConverter converter, out Grid result)
+		=> TryParse(s.AsSpan(), converter, null, out result);
+
+	/// <inheritdoc cref="TryParse(ReadOnlySpan{char}, IGridConverter, IFormatProvider?, out Grid)"/>
+	public static bool TryParse(string? s, IGridConverter converter, IFormatProvider? formatProvider, out Grid result)
+		=> TryParse(s.AsSpan(), converter, formatProvider, out result);
+
+	/// <inheritdoc cref="TryParse(ReadOnlySpan{char}, IGridConverter, IFormatProvider?, out Grid)"/>
 	public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, out Grid result)
-	{
-		try
-		{
-			if (s is null)
-			{
-				result = Undefined;
-				return false;
-			}
-
-			result = Parse(s, provider);
-			return !result.IsUndefined;
-		}
-		catch (FormatException)
-		{
-			result = Undefined;
-			return false;
-		}
-	}
+		=> TryParse(s.AsSpan(), provider, out result);
 
 	/// <inheritdoc cref="TryParse(ReadOnlySpan{char}, IFormatProvider?, out Grid)"/>
-	public static bool TryParse(ReadOnlySpan<char> s, out Grid result) => TryParse(s, null, out result);
+	public static bool TryParse(ReadOnlySpan<char> s, out Grid result) => GridConverterFactory.TryParse(s, null, out result);
 
-	/// <inheritdoc/>
+	/// <summary>
+	/// Retrieves a grid converter instance of type <see cref="IGridConverter"/> via the specified culture,
+	/// and try to convert the specified string into grid instance.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <param name="culture">The culture.</param>
+	/// <param name="result">The result parsed.</param>
+	/// <returns>A <see cref="bool"/> result.</returns>
+	public static bool TryParse(ReadOnlySpan<char> s, CultureInfo culture, out Grid result)
+		=> culture switch
+		{
+			{ IsEnglish: true } => new PencilmarkGridConverter().TryParse(s, culture, out result),
+			{ IsChinese: true } => new SusserGridDefaultConverter().TryParse(s, culture, out result),
+			_ => GridConverterFactory.TryParse(s, culture, out result)
+		};
+
+	/// <inheritdoc cref="TryParse(string?, IGridConverter, IFormatProvider?, out Grid)"/>
+	public static bool TryParse(ReadOnlySpan<char> s, IGridConverter converter, out Grid result)
+		=> converter.TryParse(s, null, out result);
+
+	/// <summary>
+	/// Try to parse the current string into <see cref="Grid"/> instance;
+	/// specify a converter that controls the parsing rule, with format provider effecting that rule
+	/// (like culture, numeric literal handling, etc.).
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <param name="converter">The converter.</param>
+	/// <param name="formatProvider">The format provider.</param>
+	/// <param name="result">The result.</param>
+	/// <returns>A <see cref="bool"/> result indicating that.</returns>
+	public static bool TryParse(ReadOnlySpan<char> s, IGridConverter converter, IFormatProvider? formatProvider, out Grid result)
+		=> converter.TryParse(s, formatProvider, out result);
+
+	/// <inheritdoc cref="TryParse(ReadOnlySpan{char}, IGridConverter, IFormatProvider?, out Grid)"/>
 	public static bool TryParse(ReadOnlySpan<char> s, IFormatProvider? provider, out Grid result)
-	{
-		try
-		{
-			result = Parse(s, provider);
-			return !result.IsUndefined;
-		}
-		catch (FormatException)
-		{
-			result = Undefined;
-			return false;
-		}
-	}
+		=> GridConverterFactory.TryParse(s, provider, out result);
 
 	/// <summary>
 	/// Creates a <see cref="Grid"/> instance using grid values.
@@ -1086,143 +1156,55 @@ public struct Grid : InlineArrayGridBase
 		=> new(in gridValues[0], creatingOption);
 
 	/// <inheritdoc/>
-	public static Grid Parse(string? s)
-	{
-		if (s is null)
-		{
-			throw new FormatException();
-		}
+	public static Grid Parse(string? s) => Parse(s.AsSpan());
 
-		var parsers = (GridFormatInfo<Grid>[])[
-			new MultipleLineGridFormatInfo(),
-			new MultipleLineGridFormatInfo { RemoveGridLines = true },
-			new PencilmarkGridFormatInfo(),
-			new SusserGridFormatInfo(),
-			new SusserGridFormatInfo { ShortenSusser = true },
-			new CsvGridFormatInfo(),
-			new OpenSudokuGridFormatInfo(),
-			new SukakuGridFormatInfo(),
-			new SukakuGridFormatInfo { Multiline = true }
-		];
-
-		// The core branches on parsing grids. Here we may leave a bug that we cannot determine if a puzzle is a Sukaku.
-		var grid = Undefined;
-		switch (s.Length, s.Contains("-+-"), s.Contains('\t'))
-		{
-			case (729, _, _) when parseAsSukaku(s, out var g): return g;
-			case (_, false, true) when parseAsExcel(s, out var g): return g;
-			case (_, true, _) when parseMultipleLines(s, out var g): grid = g; break;
-			case var _ when parseAll(s, out var g): grid = g; break;
-		}
-		if (grid.IsUndefined)
-		{
-			return Undefined;
-		}
-
-#if TRANSFORM_LESS_GIVEN_STANDARD_SUDOKU_PUZZLES_TO_SUKAKU
-		// Here need an extra check. Sukaku puzzles can be output as a normal pencil-mark grid format.
-		// We should check whether the puzzle is a Sukaku in fact or not.
-		// This is a bug fix for pencilmark grid parser, which cannot determine whether a puzzle is a Sukaku.
-		// I define that a Sukaku must contain 0 given cells, meaning all values should be candidates or modifiable values.
-		// If so, we should treat it as a Sukaku instead of a standard sudoku puzzle.
-		if (grid.GivenCellsCount < 17)
-		{
-			reduceGivenCells(ref grid);
-			grid.AddSukakuHeader();
-		}
-#endif
-
-		return grid;
-
-
-#if TRANSFORM_LESS_GIVEN_STANDARD_SUDOKU_PUZZLES_TO_SUKAKU
-		static void reduceGivenCells(ref Grid grid)
-		{
-			foreach (ref var mask in grid)
-			{
-				if (MaskOperations.MaskToCellState(mask) != CellState.Empty)
-				{
-					mask = (Mask)((int)CellState.Empty << 9 | mask & MaxCandidatesMask);
-				}
-			}
-		}
-#endif
-
-		static bool parseAsSukaku(string str, out Grid result)
-		{
-			if (new SukakuGridFormatInfo().ParseCore(str) is { IsUndefined: false } g)
-			{
-				g.AddSukakuHeader();
-				result = g;
-				return true;
-			}
-
-			result = Undefined;
-			return false;
-		}
-
-		static bool parseAsExcel(string str, out Grid result)
-		{
-			if (new CsvGridFormatInfo().ParseCore(str) is { IsUndefined: false } g)
-			{
-				result = g;
-				return true;
-			}
-
-			result = Undefined;
-			return false;
-		}
-
-		bool parseMultipleLines(string str, out Grid result)
-		{
-			foreach (var parser in parsers[..3])
-			{
-				if (parser.ParseCore(str) is { IsUndefined: false } g)
-				{
-					result = g;
-					return true;
-				}
-			}
-
-			result = Undefined;
-			return false;
-		}
-
-		bool parseAll(string str, out Grid result)
-		{
-			foreach (var currentParser in parsers)
-			{
-				if (currentParser.ParseCore(str) is { IsUndefined: false } g)
-				{
-					result = g;
-					return true;
-				}
-			}
-
-			result = Undefined;
-			return false;
-		}
-	}
+	/// <inheritdoc cref="Parse(ReadOnlySpan{char}, CultureInfo?)"/>
+	public static Grid Parse(string? s, CultureInfo? culture) => Parse(s.AsSpan(), culture);
 
 	/// <inheritdoc/>
-	public static Grid Parse(string s, IFormatProvider? provider)
-		=> provider switch
-		{
-			GridFormatInfo<Grid> g => g.ParseCore(s),
-			CultureInfo { Name: var n } => n switch
-			{
-				SR.EnglishLanguage => new PencilmarkGridFormatInfo().ParseCore(s),
-				SR.ChineseLanguage => new SusserGridFormatInfo().ParseCore(s),
-				_ => Parse(s)
-			},
-			_ => Parse(s)
-		};
+	public static Grid Parse(string? s, IFormatProvider? provider) => Parse(s.AsSpan(), provider);
 
-	/// <inheritdoc cref="ISpanParsable{TSelf}.Parse(ReadOnlySpan{char}, IFormatProvider?)"/>
-	public static Grid Parse(ReadOnlySpan<char> s) => Parse(s, null);
+	/// <inheritdoc cref="Parse(string?, IGridConverter, IFormatProvider?)"/>
+	public static Grid Parse(string? s, IGridConverter converter)
+		=> converter.TryParse(s, null, out var result) ? result : throw new FormatException();
+
+	/// <inheritdoc cref="Parse(ReadOnlySpan{char}, IGridConverter, IFormatProvider?)"/>
+	public static Grid Parse(string? s, IGridConverter converter, IFormatProvider? provider)
+		=> converter.TryParse(s, provider, out var result) ? result : throw new FormatException();
+
+	/// <inheritdoc cref="Parse(ReadOnlySpan{char}, IGridConverter, IFormatProvider?)"/>
+	public static Grid Parse(ReadOnlySpan<char> s)
+		=> GridConverterFactory.TryParse(s, null, out var result) ? result : throw new FormatException();
+
+	/// <summary>
+	/// Retrieves the target <see cref="IGridConverter"/> instance via the specified culture,
+	/// and then parse the string into target <see cref="Grid"/> result.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <param name="culture">The culture.</param>
+	/// <returns>The target grid parsed.</returns>
+	/// <exception cref="FormatException">Throws when the text is malformed.</exception>
+	public static Grid Parse(ReadOnlySpan<char> s, CultureInfo? culture)
+		=> GridConverterFactory.GetInstance(culture).TryParse(s, culture, out var result) ? result : throw new FormatException();
 
 	/// <inheritdoc/>
-	public static Grid Parse(ReadOnlySpan<char> s, IFormatProvider? provider) => Parse(s.ToString(), provider);
+	public static Grid Parse(ReadOnlySpan<char> s, IFormatProvider? provider)
+		=> GridConverterFactory.TryParse(s, provider, out var result) ? result : throw new FormatException();
+
+	/// <inheritdoc cref="Parse(ReadOnlySpan{char}, IGridConverter, IFormatProvider?)"/>
+	public static Grid Parse(ReadOnlySpan<char> s, IGridConverter converter)
+		=> converter.TryParse(s, null, out var result) ? result : throw new FormatException();
+
+	/// <summary>
+	/// Performs parsing operation via the specified converter and format provider.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <param name="converter">The converter.</param>
+	/// <param name="provider">The format provider.</param>
+	/// <returns>The grid.</returns>
+	/// <exception cref="FormatException">Throws when the string is malformed.</exception>
+	public static Grid Parse(ReadOnlySpan<char> s, IGridConverter converter, IFormatProvider? provider)
+		=> converter.TryParse(s, provider, out var result) ? result : throw new FormatException();
 
 	/// <inheritdoc/>
 	static void GridBase.OnValueChanged(ref Grid @this, Cell cell, Digit setValue) => OnValueChanged(ref @this, cell, setValue);
@@ -1277,7 +1259,7 @@ public struct Grid : InlineArrayGridBase
 			}
 			default:
 			{
-				throw new InvalidOperationException($"The argument '{nameof(values)}' must contain {81} elements.");
+				throw new InvalidOperationException($"The argument '{nameof(values)}' must contain 81 elements.");
 			}
 		}
 	}
@@ -1322,40 +1304,6 @@ public struct Grid : InlineArrayGridBase
 	}
 
 
-	/// <inheritdoc/>
-	public void operator %=(in CellMap template)
-	{
-		if (PuzzleType != GridType.Standard)
-		{
-			return;
-		}
-
-		foreach (var cell in ~template)
-		{
-			SetDigit(cell, -1);
-		}
-	}
-
-	/// <inheritdoc/>
-	public void operator >>=(Conclusion conclusion)
-	{
-		var (type, cell, digit) = conclusion;
-		switch (type)
-		{
-			case Assignment:
-			{
-				SetDigit(cell, digit);
-				break;
-			}
-			case Elimination:
-			{
-				SetExistence(cell, digit, false);
-				break;
-			}
-		}
-	}
-
-
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
 	public static bool operator ==(in Grid left, in Grid right) => left.Equals(right);
 
@@ -1373,22 +1321,6 @@ public struct Grid : InlineArrayGridBase
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
 	public static bool operator <=(in Grid left, in Grid right) => left.CompareTo(right) <= 0;
-
-	/// <inheritdoc/>
-	public static Grid operator %(in Grid grid, in CellMap template)
-	{
-		var tempGrid = grid;
-		tempGrid %= template;
-		return tempGrid;
-	}
-
-	/// <inheritdoc/>
-	public static Grid operator >>(in Grid grid, Conclusion conclusion)
-	{
-		var tempGrid = grid;
-		tempGrid >>= conclusion;
-		return tempGrid;
-	}
 
 
 	/// <inheritdoc/>

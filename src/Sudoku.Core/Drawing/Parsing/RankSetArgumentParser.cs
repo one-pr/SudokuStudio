@@ -15,7 +15,7 @@ internal abstract class RankSetArgumentParser : ArgumentParser
 	public override ReadOnlySpan<ViewNode> Parse(
 		ReadOnlySpan<string> arguments,
 		[AllowNull] ref readonly Grid grid,
-		ColorIdentifier colorIdentifier,
+		ColorDescriptor colorIdentifier,
 		CoordinateParser coordinateParser
 	)
 	{

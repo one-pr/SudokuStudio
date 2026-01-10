@@ -39,8 +39,8 @@ public partial class UniqueLoopStepSearcher
 		var candidateOffsets = new List<CandidateViewNode>();
 		foreach (var cell in loop - extraCell)
 		{
-			candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + d1));
-			candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + d2));
+			candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + d1));
+			candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + d2));
 		}
 
 		var step = new UniqueLoopType1Step(
@@ -96,7 +96,7 @@ public partial class UniqueLoopStepSearcher
 		{
 			foreach (var digit in grid.GetCandidates(cell))
 			{
-				candidateOffsets.Add(new(digit == extraDigit ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, cell * 9 + digit));
+				candidateOffsets.Add(new(digit == extraDigit ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, cell * 9 + digit));
 			}
 		}
 
@@ -214,7 +214,7 @@ public partial class UniqueLoopStepSearcher
 							{
 								candidateOffsets.Add(
 									new(
-										(otherDigitsMask >> digit & 1) != 0 ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal,
+										(otherDigitsMask >> digit & 1) != 0 ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal,
 										cell * 9 + digit
 									)
 								);
@@ -224,13 +224,13 @@ public partial class UniqueLoopStepSearcher
 						{
 							foreach (var digit in grid.GetCandidates(cell))
 							{
-								candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + digit));
+								candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, cell * 9 + digit));
 							}
 						}
 
 						var step = new UniqueLoopType3Step(
 							conclusions.AsMemory(),
-							[[.. candidateOffsets, new HouseViewNode(ColorIdentifier.Normal, houseIndex), .. GetLoopLinks(path)]],
+							[[.. candidateOffsets, new HouseViewNode(ColorDescriptorAlias.Normal, houseIndex), .. GetLoopLinks(path)]],
 							context.Options,
 							d1,
 							d2,
@@ -294,7 +294,7 @@ public partial class UniqueLoopStepSearcher
 					{
 						candidateOffsets.Add(
 							new(
-								(otherDigitsMask >> digit & 1) != 0 ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal,
+								(otherDigitsMask >> digit & 1) != 0 ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal,
 								cell * 9 + digit
 							)
 						);
@@ -304,7 +304,7 @@ public partial class UniqueLoopStepSearcher
 				{
 					foreach (var digit in grid.GetCandidates(cell))
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + digit));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, cell * 9 + digit));
 					}
 				}
 
@@ -381,12 +381,12 @@ public partial class UniqueLoopStepSearcher
 				{
 					foreach (var d in grid.GetCandidates(cell))
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + d));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + d));
 					}
 				}
 				foreach (var cell in extraCellsMap)
 				{
-					candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + digit));
+					candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, cell * 9 + digit));
 				}
 
 				var step = new UniqueLoopType4Step(
@@ -394,7 +394,7 @@ public partial class UniqueLoopStepSearcher
 					[
 						[
 							.. candidateOffsets,
-							new ConjugateLinkViewNode(ColorIdentifier.Normal, first, second, digit),
+							new ConjugateLinkViewNode(ColorDescriptorAlias.Normal, first, second, digit),
 							.. GetLoopLinks(path)
 						]
 					],
@@ -540,8 +540,8 @@ public partial class UniqueLoopStepSearcher
 							candidateOffsets.Add(
 								new(
 									conjugatePairsUsed.Exists(cp => cp.Map.Contains(c) && cp.Digit == d)
-										? ColorIdentifier.Auxiliary1
-										: ColorIdentifier.Normal,
+										? ColorDescriptorAlias.Auxiliary1
+										: ColorDescriptorAlias.Normal,
 									c * 9 + d
 								)
 							);
@@ -555,7 +555,7 @@ public partial class UniqueLoopStepSearcher
 								.. candidateOffsets,
 								..
 								from cp in conjugatePairsUsed
-								let id = cp.Digit == digit ? ColorIdentifier.Normal : ColorIdentifier.Auxiliary1
+								let id = cp.Digit == digit ? ColorDescriptorAlias.Normal : ColorDescriptorAlias.Auxiliary1
 								select new ConjugateLinkViewNode(id, cp.Map[0], cp.Map[1], cp.Digit),
 								.. GetLoopLinks(path)
 							]

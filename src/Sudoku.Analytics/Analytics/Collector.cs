@@ -64,7 +64,7 @@ public sealed class Collector : StepGatherer
 		}
 
 
-		ReadOnlySpan<Step> s(IProgress<StepGathererProgressPresenter>? progress, scoped in Grid puzzle, CancellationToken ct)
+		ReadOnlySpan<Step> s(IProgress<StepGathererProgressPresenter>? progress, scoped in Grid puzzle, CancellationToken cancellationToken)
 		{
 			const int defaultLevel = int.MaxValue;
 
@@ -88,7 +88,7 @@ public sealed class Collector : StepGatherer
 				switch (searcher)
 				{
 					case { RunningArea: var runningArea } when !runningArea.HasFlag(StepSearcherRunningArea.Collecting):
-					case { Metadata.SupportsSukaku: false } when puzzle.PuzzleType == GridType.Sukaku:
+					case { Metadata.SupportsSukaku: false } when puzzle.IsSukaku:
 					{
 						goto ReportProgress;
 					}
@@ -111,7 +111,7 @@ public sealed class Collector : StepGatherer
 							}
 						}
 
-						if (!ct)
+						if (cancellationToken.IsCancellationRequested)
 						{
 							return null;
 						}

@@ -9,9 +9,7 @@ public readonly struct Space(Mask mask) :
 	IComparable<Space>,
 	IComparisonOperators<Space, Space, bool>,
 	IEquatable<Space>,
-	IEqualityOperators<Space, Space, bool>,
-	IParsable<Space>,
-	ISpanParsable<Space>
+	IEqualityOperators<Space, Space, bool>
 {
 	/// <summary>
 	/// Represents invalid space.
@@ -212,10 +210,15 @@ public readonly struct Space(Mask mask) :
 	}
 
 
-	/// <inheritdoc cref="IParsable{TSelf}.TryParse(string?, IFormatProvider?, out TSelf)"/>
-	public static bool TryParse(string? s, out Space result) => TryParse((ReadOnlySpan<char>)s, out result);
+	/// <summary>
+	/// Try to parse the specified string into target instance.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <param name="result">The result.</param>
+	/// <returns>A <see cref="bool"/> result.</returns>
+	public static bool TryParse([NotNullWhen(true)] string? s, out Space result) => TryParse(s.AsSpan(), out result);
 
-	/// <inheritdoc cref="ISpanParsable{TSelf}.TryParse(ReadOnlySpan{char}, IFormatProvider?, out TSelf)"/>
+	/// <inheritdoc cref="TryParse(string?, out Space)"/>
 	public static bool TryParse(ReadOnlySpan<char> s, out Space result)
 	{
 		try
@@ -224,7 +227,6 @@ public readonly struct Space(Mask mask) :
 			{
 				goto ReturnFalse;
 			}
-
 			result = Parse(s);
 			return true;
 		}
@@ -237,10 +239,14 @@ public readonly struct Space(Mask mask) :
 		return false;
 	}
 
-	/// <inheritdoc cref="IParsable{TSelf}.Parse(string, IFormatProvider?)"/>
-	public static Space Parse(string s) => Parse((ReadOnlySpan<char>)s);
+	/// <summary>
+	/// Parses the specified string into target instance.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <returns>The result instance.</returns>
+	public static Space Parse(string s) => Parse(s.Span);
 
-	/// <inheritdoc cref="ISpanParsable{TSelf}.Parse(ReadOnlySpan{char}, IFormatProvider?)"/>
+	/// <inheritdoc cref="Parse(string)"/>
 	public static Space Parse(ReadOnlySpan<char> s)
 		=> s switch
 		{
@@ -321,19 +327,6 @@ public readonly struct Space(Mask mask) :
 		ArgumentOutOfRangeException.ThrowIfLessThan(column, 0);
 		return new((Mask)(column | row << 4 | (int)SpaceType.RowColumn << 8));
 	}
-
-	/// <inheritdoc/>
-	static bool IParsable<Space>.TryParse(string? s, IFormatProvider? provider, out Space result) => TryParse(s, out result);
-
-	/// <inheritdoc/>
-	static bool ISpanParsable<Space>.TryParse(ReadOnlySpan<char> s, IFormatProvider? provider, out Space result)
-		=> TryParse(s, out result);
-
-	/// <inheritdoc/>
-	static Space IParsable<Space>.Parse(string s, IFormatProvider? provider) => Parse(s);
-
-	/// <inheritdoc/>
-	static Space ISpanParsable<Space>.Parse(ReadOnlySpan<char> s, IFormatProvider? provider) => Parse(s);
 
 
 	/// <inheritdoc/>

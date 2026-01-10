@@ -30,8 +30,8 @@ namespace Sudoku.Analytics.StepSearchers;
 	Technique.AnonymousDeadlyPatternType3, Technique.AnonymousDeadlyPatternType4,
 	Technique.RotatingDeadlyPatternType1, Technique.RotatingDeadlyPatternType2,
 	Technique.RotatingDeadlyPatternType3, Technique.RotatingDeadlyPatternType4,
-	SupportedSudokuTypes = GridType.Standard,
-	SupportAnalyzingMultipleSolutionsPuzzle = false)]
+	SupportsSukaku = false,
+	SupportsAnalyzingPuzzleHavingMultipleSolutions = false)]
 public sealed partial class AnonymousDeadlyPatternStepSearcher : StepSearcher
 {
 	/// <summary>
@@ -504,7 +504,7 @@ public sealed partial class AnonymousDeadlyPatternStepSearcher : StepSearcher
 			{
 				foreach (var digit in grid.GetCandidates(cell))
 				{
-					candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + digit));
+					candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + digit));
 				}
 			}
 
@@ -532,7 +532,7 @@ public sealed partial class AnonymousDeadlyPatternStepSearcher : StepSearcher
 				{
 					candidateOffsets.Add(
 						new(
-							digit == targetDigit ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal,
+							digit == targetDigit ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal,
 							cell * 9 + digit
 						)
 					);
@@ -621,8 +621,8 @@ public sealed partial class AnonymousDeadlyPatternStepSearcher : StepSearcher
 						candidateOffsets.Add(
 							new(
 								HousesMap[house].Contains(cell) && (subsetDigitsMask >> digit & 1) != 0
-									? ColorIdentifier.Auxiliary1
-									: ColorIdentifier.Normal,
+									? ColorDescriptorAlias.Auxiliary1
+									: ColorDescriptorAlias.Normal,
 								cell * 9 + digit
 							)
 						);
@@ -632,13 +632,13 @@ public sealed partial class AnonymousDeadlyPatternStepSearcher : StepSearcher
 				{
 					foreach (var digit in grid.GetCandidates(cell))
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + digit));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, cell * 9 + digit));
 					}
 				}
 
 				var step = new AnonymousDeadlyPatternType3Step(
 					eliminations.AsMemory(),
-					[[.. candidateOffsets, new HouseViewNode(ColorIdentifier.Normal, house)]],
+					[[.. candidateOffsets, new HouseViewNode(ColorDescriptorAlias.Normal, house)]],
 					context.Options,
 					p,
 					pattern,
@@ -720,7 +720,7 @@ public sealed partial class AnonymousDeadlyPatternStepSearcher : StepSearcher
 		{
 			foreach (var digit in grid.GetCandidates(cell))
 			{
-				candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + digit));
+				candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + digit));
 			}
 		}
 		foreach (var digit in conjugatePairDigitsMask)
@@ -728,13 +728,13 @@ public sealed partial class AnonymousDeadlyPatternStepSearcher : StepSearcher
 			var map = extraCells & CandidatesMap[digit];
 			foreach (var cell in map)
 			{
-				candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + digit));
+				candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, cell * 9 + digit));
 			}
 		}
 
 		var step = new AnonymousDeadlyPatternType4Step(
 			conclusions.AsMemory(),
-			[[.. candidateOffsets, new HouseViewNode(ColorIdentifier.Normal, house)]],
+			[[.. candidateOffsets, new HouseViewNode(ColorDescriptorAlias.Normal, house)]],
 			context.Options,
 			p,
 			house,
@@ -847,8 +847,8 @@ public sealed partial class AnonymousDeadlyPatternStepSearcher : StepSearcher
 			{
 				// Determine which side has more cells (row or column).
 				var lastPatternCells = patternCells - missingCell;
-				var row = missingCell >> HouseType.Row;
-				var column = missingCell >> HouseType.Column;
+				var row = missingCell.GetHouse(HouseType.Row);
+				var column = missingCell.GetHouse(HouseType.Column);
 				var rowCells = patternCells & HousesMap[row];
 				var columnCells = patternCells & HousesMap[column];
 				var isRow = rowCells.Count > columnCells.Count;

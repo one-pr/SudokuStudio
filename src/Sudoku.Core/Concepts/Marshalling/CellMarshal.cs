@@ -35,9 +35,9 @@ public static class CellMarshal
 			get
 			{
 				var result = 0;
-				result |= 1 << (@this >> HouseType.Block);
-				result |= 1 << (@this >> HouseType.Row);
-				result |= 1 << (@this >> HouseType.Column);
+				result |= 1 << @this.GetHouse(HouseType.Block);
+				result |= 1 << @this.GetHouse(HouseType.Row);
+				result |= 1 << @this.GetHouse(HouseType.Column);
 				return result;
 			}
 		}
@@ -62,41 +62,63 @@ public static class CellMarshal
 			Unsafe.Add(ref reference, 2) = ColumnTable[@this];
 		}
 
-		/// <inheritdoc cref="op_RightShift(Cell, HouseType)"/>
-		[Obsolete(DeprecatedMessages.ExtensionOperator_StateChange, false)]
-		public House ToHouse(HouseType houseType) => @this >> houseType;
+		/// <summary>
+		/// Returns an integer that represents the house at the specified house type.
+		/// </summary>
+		/// <param name="houseType">The house type.</param>
+		/// <returns>
+		/// The house. The return value must be in range 0..27:
+		/// <list type="table">
+		/// <listheader>
+		/// <term>Value range</term>
+		/// <description>Meaning</description>
+		/// </listheader>
+		/// <item>
+		/// <term>0..9</term>
+		/// <description>Block 1-9</description>
+		/// </item>
+		/// <item>
+		/// <term>9..18</term>
+		/// <description>Row 1-9</description>
+		/// </item>
+		/// <item>
+		/// <term>18..27</term>
+		/// <description>Column 1-9</description>
+		/// </item>
+		/// </list>
+		/// </returns>
+		/// <exception cref="ArgumentOutOfRangeException">
+		/// Throws when the argument <paramref name="houseType"/> is not defined.
+		/// </exception>
+		public House GetHouse(HouseType houseType)
+			=> houseType switch
+			{
+				HouseType.Block => BlockTable[@this],
+				HouseType.Row => RowTable[@this],
+				HouseType.Column => ColumnTable[@this],
+				_ => throw new ArgumentOutOfRangeException(nameof(houseType))
+			};
 
+
+		/// <inheritdoc cref="ToCellString(int, ICellMapConverter, IFormatProvider?)"/>
+		public static string ToCellString(Cell cell, CultureInfo culture)
+			=> Cell.ToCellString(cell, CoordinateConverter.GetInstance(culture));
+
+		/// <inheritdoc cref="ToCellString(int, ICellMapConverter, IFormatProvider?)"/>
+		public static string ToCellString(Cell cell, CoordinateConverter converter) => converter.CellConverter(cell.AsCellMap());
+
+		/// <inheritdoc cref="ToCellString(int, ICellMapConverter, IFormatProvider?)"/>
+		public static string ToCellString(Cell cell, ICellMapConverter converter) => Cell.ToCellString(cell, converter, null);
 
 		/// <summary>
 		/// Converts a cell instance into a string instance that represents for a cell.
 		/// </summary>
 		/// <param name="cell">The cell.</param>
-		/// <param name="formatProvider">The formatter.</param>
+		/// <param name="converter">The converter.</param>
+		/// <param name="formatProvider">The format provider.</param>
 		/// <returns>The string representation.</returns>
-		public static string ToCellString(Cell cell, IFormatProvider? formatProvider)
-		{
-			var converter = CoordinateConverter.GetInstance(formatProvider);
-			return converter.CellConverter(cell.AsCellMap());
-		}
-
-
-		/// <summary>
-		/// Get the house index (0..27 for block 1-9, row 1-9 and column 1-9) for the specified cell and the house type.
-		/// </summary>
-		/// <param name="cell">The cell.</param>
-		/// <param name="houseType">The house type.</param>
-		/// <returns>The house index. The return value must be between 0 and 26.</returns>
-		/// <exception cref="ArgumentOutOfRangeException">
-		/// Throws when the argument <paramref name="houseType"/> is not defined.
-		/// </exception>
-		public static House operator >>(Cell cell, HouseType houseType)
-			=> houseType switch
-			{
-				HouseType.Block => BlockTable[cell],
-				HouseType.Row => RowTable[cell],
-				HouseType.Column => ColumnTable[cell],
-				_ => throw new ArgumentOutOfRangeException(nameof(houseType))
-			};
+		public static string ToCellString(Cell cell, ICellMapConverter converter, IFormatProvider? formatProvider)
+			=> converter.TryFormat(in cell.AsCellMap(), formatProvider, out var result) ? result : throw new FormatException();
 	}
 
 	/// <summary>

@@ -104,7 +104,7 @@ public sealed class XyzWingChainingRule : ChainingRule
 
 			foreach (var cell in cells)
 			{
-				var node = new CellViewNode(ColorIdentifier.Normal, cell);
+				var node = new CellViewNode(ColorDescriptorAlias.Normal, cell);
 				view.Add(node);
 				result.Add(node);
 			}

@@ -60,7 +60,7 @@ public sealed partial class BowmanBingoStepSearcher : StepSearcher
 							Array.Single(new Conclusion(Elimination, startCandidate)),
 							[
 								[
-									.. from p in _tempConclusions select new CandidateViewNode(ColorIdentifier.Normal, p.Candidate),
+									.. from p in _tempConclusions select new CandidateViewNode(ColorDescriptorAlias.Normal, p.Candidate),
 									.. GetLinks()
 								]
 							],
@@ -135,7 +135,7 @@ public sealed partial class BowmanBingoStepSearcher : StepSearcher
 			var i = 0;
 			foreach (var (_, candidate) in _tempConclusions)
 			{
-				candidateOffsets[i++] = new(ColorIdentifier.Normal, candidate);
+				candidateOffsets[i++] = new(ColorDescriptorAlias.Normal, candidate);
 			}
 
 			var step = new BowmanBingoStep(
@@ -171,7 +171,7 @@ public sealed partial class BowmanBingoStepSearcher : StepSearcher
 		{
 			var c1 = _tempConclusions[i].Candidate;
 			var c2 = _tempConclusions[i + 1].Candidate;
-			result.Add(new(ColorIdentifier.Normal, c1.AsCandidateMap(), c2.AsCandidateMap(), false));
+			result.Add(new(ColorDescriptorAlias.Normal, c1.AsCandidateMap(), c2.AsCandidateMap(), false));
 		}
 		return result;
 	}

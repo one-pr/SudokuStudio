@@ -21,9 +21,9 @@ public static class CandidateSpaces
 				var digit = @this % 9;
 				return (Space[])[
 					Space.RowColumn(cell / 9, cell % 9),
-					Space.BlockDigit(cell >> HouseType.Block, digit),
-					Space.RowDigit((cell >> HouseType.Row) - 9, digit),
-					Space.ColumnDigit((cell >> HouseType.Column) - 18, digit)
+					Space.BlockDigit(cell.GetHouse(HouseType.Block), digit),
+					Space.RowDigit(cell.GetHouse(HouseType.Row) - 9, digit),
+					Space.ColumnDigit(cell.GetHouse(HouseType.Column) - 18, digit)
 				];
 			}
 		}

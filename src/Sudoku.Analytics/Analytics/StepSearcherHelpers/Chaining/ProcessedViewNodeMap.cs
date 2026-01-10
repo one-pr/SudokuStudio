@@ -3,20 +3,19 @@ namespace Sudoku.Analytics.StepSearcherHelpers.Chaining;
 /// <summary>
 /// Represents a processed view nodes map.
 /// </summary>
-public sealed class ProcessedViewNodeMap : SortedDictionary<WellKnownColorIdentifierKind, (CellMap Cells, CandidateMap Candidates)>
+public sealed class ProcessedViewNodeMap : SortedDictionary<ColorDescriptorAlias, (CellMap Cells, CandidateMap Candidates)>
 {
 	/// <summary>
 	/// Indicates the maximal key in ALS set.
 	/// </summary>
-	public WellKnownColorIdentifierKind MaxKeyInAlmostLockedSet
+	public ColorDescriptorAlias MaxKeyInAlmostLockedSet
 	{
 		get
 		{
-			var result = WellKnownColorIdentifierKind.Normal;
+			var result = ColorDescriptorAlias.Normal;
 			foreach (var key in Keys)
 			{
-				if (key is >= WellKnownColorIdentifierKind.AlmostLockedSet1 and <= WellKnownColorIdentifierKind.AlmostLockedSet5
-					&& key >= result)
+				if (key is >= ColorDescriptorAlias.AlmostLockedSet1 and <= ColorDescriptorAlias.AlmostLockedSet5 && key >= result)
 				{
 					result = key;
 				}
@@ -28,15 +27,14 @@ public sealed class ProcessedViewNodeMap : SortedDictionary<WellKnownColorIdenti
 	/// <summary>
 	/// Indicates the maximal key in rectangle set.
 	/// </summary>
-	public WellKnownColorIdentifierKind MaxKeyInRectangle
+	public ColorDescriptorAlias MaxKeyInRectangle
 	{
 		get
 		{
-			var result = WellKnownColorIdentifierKind.Normal;
+			var result = ColorDescriptorAlias.Normal;
 			foreach (var key in Keys)
 			{
-				if (key is >= WellKnownColorIdentifierKind.Rectangle1 and <= WellKnownColorIdentifierKind.Rectangle3
-					&& key >= result)
+				if (key is >= ColorDescriptorAlias.Rectangle1 and <= ColorDescriptorAlias.Rectangle3 && key >= result)
 				{
 					result = key;
 				}
@@ -52,7 +50,7 @@ public sealed class ProcessedViewNodeMap : SortedDictionary<WellKnownColorIdenti
 	/// <param name="cell">The cell.</param>
 	/// <param name="identifierKind">The cooresponding identifier kind.</param>
 	/// <returns>A <see cref="bool"/> result indicating that.</returns>
-	public bool ContainsCell(Cell cell, out WellKnownColorIdentifierKind identifierKind)
+	public bool ContainsCell(Cell cell, out ColorDescriptorAlias identifierKind)
 	{
 		foreach (var kvp in this)
 		{
@@ -74,7 +72,7 @@ public sealed class ProcessedViewNodeMap : SortedDictionary<WellKnownColorIdenti
 	/// <param name="candidate">The candidate.</param>
 	/// <param name="identifierKind">The cooresponding identifier kind.</param>
 	/// <returns>A <see cref="bool"/> result indicating that.</returns>
-	public bool ContainsCandidate(Candidate candidate, out WellKnownColorIdentifierKind identifierKind)
+	public bool ContainsCandidate(Candidate candidate, out ColorDescriptorAlias identifierKind)
 	{
 		foreach (var kvp in this)
 		{

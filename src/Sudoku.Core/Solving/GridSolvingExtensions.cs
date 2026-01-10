@@ -32,7 +32,7 @@ public static class GridSolvingExtensions
 		/// <summary>
 		/// Checks the uniqueness of the current sudoku puzzle.
 		/// </summary>
-		public Uniqueness Uniqueness
+		public unsafe Uniqueness Uniqueness
 		{
 			get
 			{
@@ -51,7 +51,7 @@ public static class GridSolvingExtensions
 
 				lock (PuzzleSolvingSyncRoot)
 				{
-					return Solver.SolveString(@this.ResetGrid.ToString(), out _, 2) switch
+					return Solver.SolveString(@this.ResetGrid.ToString(), null, 2) switch
 					{
 						0 => Uniqueness.Bad,
 						1 => Uniqueness.Unique,

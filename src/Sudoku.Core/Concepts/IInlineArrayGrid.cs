@@ -52,7 +52,6 @@ public interface IInlineArrayGrid<TSelf> : IGrid<TSelf> where TSelf : unmanaged,
 	/// <para>Part (3) is for reserved cases. Such bits may not be used.</para>
 	/// </remarks>
 	/// <seealso cref="CellState"/>
-	/// <seealso cref="GridType"/>
 	[UnscopedRef]
 	protected ref readonly Mask FirstMaskRef { get; }
 

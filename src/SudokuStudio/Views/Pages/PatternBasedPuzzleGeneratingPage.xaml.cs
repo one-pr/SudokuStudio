@@ -104,7 +104,7 @@ public sealed partial class PatternBasedPuzzleGeneratingPage : Page
 	private void CopyPatternText()
 	{
 		var dataPackage = new DataPackage { RequestedOperation = DataPackageOperation.Copy };
-		dataPackage.SetText(SelectedCells.ToString(new BitmapCellMapFormatInfo()));
+		dataPackage.SetText(SelectedCells.ToString(new BitmapCellMapConverter()));
 		Clipboard.SetContent(dataPackage);
 	}
 
@@ -180,7 +180,7 @@ public sealed partial class PatternBasedPuzzleGeneratingPage : Page
 		{
 			try
 			{
-				SelectedCells = CellMap.Parse(targetText, new BitmapCellMapFormatInfo());
+				SelectedCells = CellMap.Parse(targetText, new BitmapCellMapConverter());
 			}
 			catch (Exception ex) when (ex is InvalidOperationException or FormatException)
 			{
@@ -211,7 +211,7 @@ public sealed partial class PatternBasedPuzzleGeneratingPage : Page
 				PatternCounter: var counterTextBlock,
 				SudokuPane: var pane
 			} page,
-		{ NewValue: CellMap newValue }
+			{ NewValue: CellMap newValue }
 		))
 		{
 			return;
@@ -221,7 +221,7 @@ public sealed partial class PatternBasedPuzzleGeneratingPage : Page
 		var copied = view.Clone();
 		var (a, r, g, b) = App.CurrentTheme switch { ApplicationTheme.Light => uiPref.ActiveCellColor, _ => uiPref.ActiveCellColor_Dark };
 		copied.View.Clear();
-		copied.View.AddRange(from cell in newValue select new CellViewNode(new ColorColorIdentifier(a, r, g, b), cell));
+		copied.View.AddRange(from cell in newValue select new CellViewNode((a, r, g, b), cell));
 
 		pane.ViewUnit = copied;
 

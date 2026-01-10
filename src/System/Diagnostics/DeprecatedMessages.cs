@@ -11,7 +11,7 @@ public static class DeprecatedMessages
 	public const string ExtensionOperator_Reverse = "Use extension operator 'operator ~' instead: '~collection'";
 
 	/// <summary>
-	/// Describes extension "<c><see langword="operator"/> /</c>" on collections to chunk them.
+	/// Describes extension "<c><see langword="operator"/> /</c>" on collections to get chunks of the specified collection.
 	/// </summary>
 	public const string ExtensionOperator_Chunk = "Use extension operator 'operator /' instead: 'collection / size'";
 
@@ -41,17 +41,7 @@ public static class DeprecatedMessages
 	public const string ExtensionOperator_Equality = "Use extension operator 'operator ==' instead: 'left == right'";
 
 	/// <summary>
-	/// Describes extension "<c><see langword="operator"/> >>=</c>" on collections to apply instances to them.
-	/// </summary>
-	public const string ExtensionOperator_Apply = "Use extension operator 'operator >>=' instead: 'instance >>= value'";
-
-	/// <summary>
 	/// Describes extension "<c><see langword="operator"/> *</c>" on collections to repeat specified times of them.
 	/// </summary>
 	public const string ExtensionOperator_Repeat = "Use extension operator 'operator *' instead: 'string * times'";
-
-	/// <summary>
-	/// Describes extension "<c><see langword="operator"/> &gt;&gt;</c>" on instance that changes the state.
-	/// </summary>
-	public const string ExtensionOperator_StateChange = "Use extension operator 'operator >>' instead. 'instance >> state'";
 }

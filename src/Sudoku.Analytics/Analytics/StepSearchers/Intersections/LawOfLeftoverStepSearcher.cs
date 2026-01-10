@@ -19,7 +19,7 @@ public sealed partial class LawOfLeftoverStepSearcher : StepSearcher
 	protected internal override Step? Collect(ref StepAnalysisContext context)
 	{
 		ref readonly var grid = ref context.Grid;
-		foreach (var ((line, block), (a, b, c, _)) in Miniline.Map)
+		foreach (var ((line, block), (a, b, c, _)) in Segments.Map)
 		{
 			// Try to check for value cells from two different sets.
 			var (lineSetDigitsMask, blockSetDigitsMask) = ((Mask)0, (Mask)0);
@@ -85,9 +85,9 @@ public sealed partial class LawOfLeftoverStepSearcher : StepSearcher
 				conclusions.AsMemory(),
 				[
 					[
-						.. from cell in a select new CircleViewNode(ColorIdentifier.Normal, cell),
-						.. from cell in b select new TriangleViewNode(ColorIdentifier.Auxiliary2, cell),
-						.. from cell in c select new DiamondViewNode(ColorIdentifier.Auxiliary3, cell)
+						.. from cell in a select new CircleViewNode(ColorDescriptorAlias.Normal, cell),
+						.. from cell in b select new TriangleViewNode(ColorDescriptorAlias.Auxiliary2, cell),
+						.. from cell in c select new DiamondViewNode(ColorDescriptorAlias.Auxiliary3, cell)
 					]
 				],
 				context.Options,

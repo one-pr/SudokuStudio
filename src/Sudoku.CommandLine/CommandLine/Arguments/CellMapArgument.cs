@@ -33,7 +33,7 @@ internal sealed class CellMapArgument : Argument<CellMap>, IArgument<CellMap>
 			return resultGrid.GivenCells;
 		}
 
-		if (!CellMap.TryParse(token, new BitmapCellMapFormatInfo(), out var resultMap))
+		if (!CellMap.TryParse(token, new BitmapCellMapConverter(), out var resultMap))
 		{
 			result.ErrorMessage = "The specified string cannot be parsed as value cell list. The string must contains 81 characters 0 or 1.";
 			return default;

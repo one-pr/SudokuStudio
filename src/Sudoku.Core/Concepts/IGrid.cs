@@ -12,13 +12,9 @@ public interface IGrid<TSelf> :
 	IEnumerable<Digit>,
 	IEquatable<TSelf>,
 	IEqualityOperators<TSelf, TSelf, bool>,
-	IFormattable,
 	IMinMaxValue<TSelf>,
-	IParsable<TSelf>,
 	IReadOnlyCollection<Digit>,
 	ISelectMethod<TSelf, Candidate>,
-	ISpanFormattable,
-	ISpanParsable<TSelf>,
 	IToArrayMethod<TSelf, Digit>,
 	IWhereMethod<TSelf, Candidate>
 	where TSelf : unmanaged, IGrid<TSelf>
@@ -31,7 +27,7 @@ public interface IGrid<TSelf> :
 	/// <summary>
 	/// Indicates ths header bits describing the sudoku type is a Sukaku.
 	/// </summary>
-	protected internal const Mask SukakuHeader = (int)GridType.Sukaku << HeaderShift;
+	protected internal const Mask SukakuHeader = 2 << HeaderShift;
 
 
 	/// <summary>
@@ -56,11 +52,6 @@ public interface IGrid<TSelf> :
 	/// otherwise, <see langword="false"/>.
 	/// </summary>
 	bool IsSolved { get; }
-
-	/// <summary>
-	/// Try to get the symmetry of the puzzle.
-	/// </summary>
-	SymmetricType Symmetry => GivenCells.Symmetry;
 
 	/// <summary>
 	/// Indicates the total number of given cells.
@@ -328,7 +319,10 @@ public interface IGrid<TSelf> :
 	/// </param>
 	void SetExistence(Cell cell, Digit digit, bool isOn);
 
-	/// <inheritdoc cref="op_RightShiftAssignment(Conclusion)"/>
+	/// <summary>
+	/// Applies the conclusion to the current grid.
+	/// </summary>
+	/// <param name="conclusion">The conclusion.</param>
 	void Apply(Conclusion conclusion);
 
 	/// <summary>
@@ -416,11 +410,12 @@ public interface IGrid<TSelf> :
 	/// <inheritdoc cref="object.ToString"/>
 	string ToString();
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	string ToString(IFormatProvider? formatProvider) => ToString(null, formatProvider);
-
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	string ToString(string? format) => ToString(format, null);
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation via the specified format string.
+	/// </summary>
+	/// <param name="format">The format string.</param>
+	/// <returns>The result string.</returns>
+	string ToString(string? format);
 
 	/// <summary>
 	/// Get the cell state at the specified cell.
@@ -493,41 +488,16 @@ public interface IGrid<TSelf> :
 	IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
 
-	/// <inheritdoc cref="IParsable{TSelf}.TryParse(string?, IFormatProvider?, out TSelf)"/>
-	static new virtual bool TryParse(string? s, IFormatProvider? formatProvider, out TSelf result)
-	{
-		try
-		{
-			result = TSelf.Parse(s, formatProvider);
-			return true;
-		}
-		catch (FormatException)
-		{
-			result = TSelf.Undefined;
-			return false;
-		}
-	}
+	/// <summary>
+	/// Try to parse the current string into target instance.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <param name="result">The result.</param>
+	/// <returns>The instance.</returns>
+	static abstract bool TryParse(string? s, out TSelf result);
 
-	/// <inheritdoc cref="ISpanParsable{TSelf}.TryParse(ReadOnlySpan{char}, IFormatProvider?, out TSelf)"/>
-	static new virtual bool TryParse(ReadOnlySpan<char> s, IFormatProvider? formatProvider, out TSelf result)
-	{
-		try
-		{
-			result = TSelf.Parse(s, formatProvider);
-			return true;
-		}
-		catch (FormatException)
-		{
-			result = TSelf.Undefined;
-			return false;
-		}
-	}
-
-	/// <inheritdoc cref="IParsable{TSelf}.TryParse(string?, IFormatProvider?, out TSelf)"/>
-	static virtual bool TryParse(string? s, out TSelf result) => TSelf.TryParse(s, null, out result);
-
-	/// <inheritdoc cref="ISpanParsable{TSelf}.TryParse(ReadOnlySpan{char}, IFormatProvider?, out TSelf)"/>
-	static virtual bool TryParse(ReadOnlySpan<char> s, out TSelf result) => TSelf.TryParse(s, null, out result);
+	/// <inheritdoc cref="TryParse(string?, out TSelf)"/>
+	static abstract bool TryParse(ReadOnlySpan<char> s, out TSelf result);
 
 	/// <summary>
 	/// Creates a <typeparamref name="TSelf"/> instance via the specified list of <see cref="Mask"/> values.
@@ -536,11 +506,16 @@ public interface IGrid<TSelf> :
 	/// <returns>A <typeparamref name="TSelf"/> instance created.</returns>
 	static abstract TSelf Create(ReadOnlySpan<Mask> values);
 
-	/// <inheritdoc cref="IParsable{TSelf}.Parse(string?, IFormatProvider?)"/>
-	static virtual TSelf Parse(string? s) => TSelf.Parse(s, null);
+	/// <summary>
+	/// Parses the current string into target instance.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <returns>The instance.</returns>
+	/// <exception cref="FormatException">Throws when any invalid characters encountered.</exception>
+	static abstract TSelf Parse(string? s);
 
-	/// <inheritdoc cref="ISpanParsable{TSelf}.Parse(ReadOnlySpan{char}, IFormatProvider?)"/>
-	static virtual TSelf Parse(ReadOnlySpan<char> s) => TSelf.Parse(s, null);
+	/// <inheritdoc cref="Parse(string?)"/>
+	static abstract TSelf Parse(ReadOnlySpan<char> s);
 
 	/// <summary>
 	/// Event handler on value changed.
@@ -571,12 +546,12 @@ public interface IGrid<TSelf> :
 	/// <returns>The map.</returns>
 	/// <seealso cref="EmptyCells"/>
 	/// <seealso cref="BivalueCells"/>
-	private protected static unsafe CellMap GetMap(in TSelf @this, delegate*<in TSelf, Cell, bool> predicate)
+	private protected static unsafe CellMap GetMap(in TSelf @this, delegate*<ref readonly TSelf, Cell, bool> predicate)
 	{
 		var result = CellMap.Empty;
 		for (var cell = 0; cell < 81; cell++)
 		{
-			if (predicate(@this, cell))
+			if (predicate(in @this, cell))
 			{
 				result += cell;
 			}
@@ -593,7 +568,7 @@ public interface IGrid<TSelf> :
 	/// <seealso cref="CandidatesMap"/>
 	/// <seealso cref="DigitsMap"/>
 	/// <seealso cref="ValuesMap"/>
-	private protected static unsafe CellMap[] GetMaps(in TSelf @this, delegate*<in TSelf, Cell, Digit, bool> predicate)
+	private protected static unsafe CellMap[] GetMaps(in TSelf @this, delegate*<ref readonly TSelf, Cell, Digit, bool> predicate)
 	{
 		var result = new CellMap[9];
 		for (var digit = 0; digit < 9; digit++)
@@ -601,7 +576,7 @@ public interface IGrid<TSelf> :
 			ref var map = ref result[digit];
 			for (var cell = 0; cell < 81; cell++)
 			{
-				if (predicate(@this, cell, digit))
+				if (predicate(in @this, cell, digit))
 				{
 					map += cell;
 				}
@@ -609,19 +584,6 @@ public interface IGrid<TSelf> :
 		}
 		return result;
 	}
-
-
-	/// <summary>
-	/// Preserves the grid, removing cells not specified in <paramref name="template"/>.
-	/// </summary>
-	/// <param name="template">The cells specified to be preserved.</param>
-	void operator %=(in CellMap template);
-
-	/// <summary>
-	/// Applies the conclusion to the current grid.
-	/// </summary>
-	/// <param name="conclusion">The conclusion.</param>
-	void operator >>=(Conclusion conclusion);
 
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>
@@ -641,12 +603,6 @@ public interface IGrid<TSelf> :
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_LessThanOrEqual(TSelf, TOther)"/>
 	static abstract bool operator <=(in TSelf left, in TSelf right);
-
-	/// <inheritdoc cref="op_ModulusAssignment(in CellMap)"/>
-	static abstract TSelf operator %(in TSelf grid, in CellMap template);
-
-	/// <inheritdoc cref="op_RightShiftAssignment(Conclusion)"/>
-	static abstract TSelf operator >>(in TSelf grid, Conclusion conclusion);
 
 	/// <inheritdoc/>
 	static bool IEqualityOperators<TSelf, TSelf, bool>.operator ==(TSelf left, TSelf right) => left == right;

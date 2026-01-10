@@ -22,11 +22,8 @@ public sealed class TechniqueConstraint : Constraint
 	public override int GetHashCode() => Techniques.GetHashCode();
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
-	{
-		var culture = formatProvider as CultureInfo;
-		return string.Format(SR.Get("TechniqueConstraint", culture), Techniques.ToString(culture));
-	}
+	public override string ToString(CultureInfo culture)
+		=> string.Format(SR.Get("TechniqueConstraint", culture), Techniques.ToString(culture));
 
 	/// <inheritdoc/>
 	public override TechniqueConstraint Clone() => new() { IsNegated = IsNegated, Techniques = Techniques[..] };

@@ -3330,7 +3330,7 @@
             <param name="context">Indicates the drawing context.</param>
             <param name="nodes">Indicates the nodes to be drawn.</param>
         </member>
-        <member name="M:SudokuStudio.Drawing.DrawableFactory.ForCandidateNodeCore(Sudoku.Drawing.ColorIdentifier,Windows.UI.Color,System.Int32,Sudoku.Drawing.Nodes.CandidateViewNode,SudokuStudio.Views.Controls.SudokuPaneCell,SudokuStudio.Drawing.AnimatedResultCollection,System.Boolean,System.Boolean,System.Boolean)">
+        <member name="M:SudokuStudio.Drawing.DrawableFactory.ForCandidateNodeCore(Sudoku.Descriptors.ColorDescriptor,Windows.UI.Color,System.Int32,Sudoku.Drawing.Nodes.CandidateViewNode,SudokuStudio.Views.Controls.SudokuPaneCell,SudokuStudio.Drawing.AnimatedResultCollection,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
             The core method called by <see cref="M:SudokuStudio.Drawing.DrawableFactory.ForCandidateNode(SudokuStudio.Drawing.DrawingContext,Sudoku.Drawing.Nodes.CandidateViewNode,System.ReadOnlyMemory{Sudoku.Concepts.Conclusion},System.Nullable{Sudoku.Concepts.Conclusion}@)"/>.
             </summary>
@@ -4009,22 +4009,22 @@
 				</summary>
 			</target>
         </member>
-        <member name="M:SudokuStudio.Interaction.Conversions.Extensions.ToString(Sudoku.Analytics.Factor,Sudoku.Analytics.Step,System.Decimal,System.IFormatProvider)">
-            <inheritdoc cref="M:SudokuStudio.Interaction.Conversions.Extensions.&lt;G&gt;$EB1323430AE283AAF1610D439170F7ED.ToString(Sudoku.Analytics.Step,System.Decimal,System.IFormatProvider)"/>
+        <member name="M:SudokuStudio.Interaction.Conversions.Extensions.ToString(Sudoku.Analytics.Factor,Sudoku.Analytics.Step,System.Decimal,System.Globalization.CultureInfo)">
+            <inheritdoc cref="M:SudokuStudio.Interaction.Conversions.Extensions.&lt;G&gt;$EB1323430AE283AAF1610D439170F7ED.ToString(Sudoku.Analytics.Step,System.Decimal,System.Globalization.CultureInfo)"/>
         </member>
         <member name="T:SudokuStudio.Interaction.Conversions.Extensions.&lt;G&gt;$EB1323430AE283AAF1610D439170F7ED.&lt;M&gt;$D1807C59820321B01F40B9FDA124C1E6">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Factor"/>.
             </summary>
         </member>
-        <member name="M:SudokuStudio.Interaction.Conversions.Extensions.&lt;G&gt;$EB1323430AE283AAF1610D439170F7ED.ToString(Sudoku.Analytics.Step,System.Decimal,System.IFormatProvider)">
+        <member name="M:SudokuStudio.Interaction.Conversions.Extensions.&lt;G&gt;$EB1323430AE283AAF1610D439170F7ED.ToString(Sudoku.Analytics.Step,System.Decimal,System.Globalization.CultureInfo)">
             <summary>
             Calculates the rating from the specified <see cref="T:Sudoku.Analytics.Step"/> instance, and return the string representation
             of the rating text.
             </summary>
             <param name="step">The step to be calculated.</param>
             <param name="scale">The scale value to be used.</param>
-            <param name="formatProvider">The culture to be used.</param>
+            <param name="culture">The culture to be used.</param>
             <returns>The string representation of final rating text.</returns>
         </member>
         <member name="T:SudokuStudio.Interaction.Conversions.BackdropConversion">
@@ -4079,9 +4079,9 @@
         </member>
         <member name="T:SudokuStudio.Interaction.Conversions.IdentifierConversion">
             <summary>
-            Provides with conversion methods used by XAML designer, about <see cref="T:Sudoku.Drawing.ColorIdentifier"/> instances.
+            Provides with conversion methods used by XAML designer, about <see cref="T:Sudoku.Descriptors.ColorDescriptor"/> instances.
             </summary>
-            <seealso cref="T:Sudoku.Drawing.ColorIdentifier"/>
+            <seealso cref="T:Sudoku.Descriptors.ColorDescriptor"/>
         </member>
         <member name="T:SudokuStudio.Interaction.Conversions.PencilmarkTextConversion">
             <summary>
@@ -4927,7 +4927,7 @@
         </member>
         <member name="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.&lt;G&gt;$831724A3875A25A142781824A23012D1.Converter">
             <summary>
-            Try to get target <see cref="T:Sudoku.Concepts.Coordinates.Formatting.GridFormatInfo`1"/> instance of type <see cref="T:Sudoku.Concepts.Grid"/>.
+            Try to get target <see cref="T:Sudoku.Concepts.ValueConversions.IGridConverter"/> instance of type <see cref="T:Sudoku.Concepts.Grid"/>.
             </summary>
             <exception cref="T:System.ArgumentOutOfRangeException">Throws when the argument is not defined.</exception>
         </member>
@@ -14598,11 +14598,11 @@
             </summary>
             <returns>A task that handles the operation.</returns>
         </member>
-        <member name="M:SudokuStudio.Views.Pages.AnalyzePage.SaveFileInternalAsync(Sudoku.Concepts.Coordinates.Formatting.GridFormatInfo{Sudoku.Concepts.Grid}[])">
+        <member name="M:SudokuStudio.Views.Pages.AnalyzePage.SaveFileInternalAsync(Sudoku.Concepts.ValueConversions.IGridConverter[])">
             <summary>
             Save a file via grid formatters.
             </summary>
-            <param name="gridFormatters">The grid formatters. The default value is <see langword="null"/>.</param>
+            <param name="gridConverters">The grid converters. The default value is <see langword="null"/>.</param>
             <returns>A task that handles the operation.</returns>
         </member>
         <member name="M:SudokuStudio.Views.Pages.AnalyzePage.LoadPuzzleCoreAsync(Windows.Storage.StorageFile)">
@@ -17798,9 +17798,9 @@
         </member>
         <member name="M:Windows.UI.ColorExtensions.&lt;G&gt;$BB16C40F20C63E9DB9FEB07C52A6A7C6.GetIdentifier">
             <summary>
-            Gets an equivalent <see cref="T:Sudoku.Drawing.ColorIdentifier"/> instance via the current color.
+            Gets an equivalent <see cref="T:Sudoku.Descriptors.ColorDescriptor"/> instance via the current color.
             </summary>
-            <returns>An <see cref="T:Sudoku.Drawing.ColorIdentifier"/> instance.</returns>
+            <returns>An <see cref="T:Sudoku.Descriptors.ColorDescriptor"/> instance.</returns>
         </member>
         <member name="T:Windows.Storage.Pickers.FileOpenPickerExtensions">
             <summary>

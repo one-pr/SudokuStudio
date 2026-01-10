@@ -270,7 +270,7 @@ public sealed partial class AlignedExclusionStepSearcher : StepSearcher
 							{
 								foreach (var digit in digits)
 								{
-									candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + digit));
+									candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + digit));
 								}
 							}
 						}
@@ -282,7 +282,7 @@ public sealed partial class AlignedExclusionStepSearcher : StepSearcher
 						{
 							if (!conclusionCandidates.Contains(cell * 9 + digit))
 							{
-								candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + digit));
+								candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, cell * 9 + digit));
 							}
 						}
 					}

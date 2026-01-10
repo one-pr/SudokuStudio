@@ -102,7 +102,7 @@ public sealed partial class ComplexSingleStepSearcher : StepSearcher
 			playground = baseGrid;
 			foreach (var indirectStep in indirectStepGroup)
 			{
-				playground >>= indirectStep;
+				playground.Apply(indirectStep);
 			}
 		}
 
@@ -222,7 +222,7 @@ public sealed partial class ComplexSingleStepSearcher : StepSearcher
 											.. interimStep.Views![0],
 											..
 											from conclusion in tempConclusions
-											select new CandidateViewNode(ColorIdentifier.Elimination, conclusion.Candidate)
+											select new CandidateViewNode(ColorDescriptorAlias.Elimination, conclusion.Candidate)
 										]
 									);
 								}
@@ -232,7 +232,7 @@ public sealed partial class ComplexSingleStepSearcher : StepSearcher
 									.. directStep.Views![0],
 									..
 									from conclusion in tempConclusions
-									select new CandidateViewNode(ColorIdentifier.Elimination, conclusion.Candidate)
+									select new CandidateViewNode(ColorDescriptorAlias.Elimination, conclusion.Candidate)
 								]
 							);
 

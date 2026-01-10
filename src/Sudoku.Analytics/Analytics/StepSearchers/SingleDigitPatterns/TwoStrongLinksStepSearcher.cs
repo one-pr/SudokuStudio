@@ -124,13 +124,13 @@ public sealed partial class TwoStrongLinksStepSearcher : StepSearcher
 						(from cell in elimMap select new Conclusion(Elimination, cell, digit)).ToArray(),
 						[
 							[
-								new CandidateViewNode(ColorIdentifier.Normal, cellsList1[c1Index] * 9 + digit),
-								new CandidateViewNode(ColorIdentifier.Normal, cellsList2[c2Index] * 9 + digit),
-								new CandidateViewNode(ColorIdentifier.Normal, head * 9 + digit),
-								new CandidateViewNode(ColorIdentifier.Normal, tail * 9 + digit),
-								new HouseViewNode(ColorIdentifier.Normal, h1),
-								new HouseViewNode(ColorIdentifier.Normal, h2),
-								new HouseViewNode(ColorIdentifier.Auxiliary1, sameHouse)
+								new CandidateViewNode(ColorDescriptorAlias.Normal, cellsList1[c1Index] * 9 + digit),
+								new CandidateViewNode(ColorDescriptorAlias.Normal, cellsList2[c2Index] * 9 + digit),
+								new CandidateViewNode(ColorDescriptorAlias.Normal, head * 9 + digit),
+								new CandidateViewNode(ColorDescriptorAlias.Normal, tail * 9 + digit),
+								new HouseViewNode(ColorDescriptorAlias.Normal, h1),
+								new HouseViewNode(ColorDescriptorAlias.Normal, h2),
+								new HouseViewNode(ColorDescriptorAlias.Auxiliary1, sameHouse)
 							]
 						],
 						context.Options,

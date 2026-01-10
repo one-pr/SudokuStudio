@@ -19,11 +19,8 @@ public sealed class MissingDigitConstraint : Constraint
 	public override int GetHashCode() => Digit;
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
-	{
-		var culture = formatProvider as CultureInfo;
-		return string.Format(SR.Get("MissingDigitConstraint", culture), (Digit + 1).ToString());
-	}
+	public override string ToString(CultureInfo culture)
+		=> string.Format(SR.Get("MissingDigitConstraint", culture), (Digit + 1).ToString());
 
 	/// <inheritdoc/>
 	public override MissingDigitConstraint Clone() => new() { Digit = Digit };

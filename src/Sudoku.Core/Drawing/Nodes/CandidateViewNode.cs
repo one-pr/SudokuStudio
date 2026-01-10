@@ -6,7 +6,7 @@ namespace Sudoku.Drawing.Nodes;
 /// <param name="identifier"><inheritdoc/></param>
 /// <param name="candidate"><inheritdoc cref="Candidate" path="/summary"/></param>
 [method: JsonConstructor]
-public sealed class CandidateViewNode(ColorIdentifier identifier, Candidate candidate) : BasicViewNode(identifier)
+public sealed class CandidateViewNode(ColorDescriptor identifier, Candidate candidate) : BasicViewNode(identifier)
 {
 	/// <summary>
 	/// Indicates the candidate highlighted.
@@ -29,7 +29,7 @@ public sealed class CandidateViewNode(ColorIdentifier identifier, Candidate cand
 	/// <inheritdoc/>
 	public override string ToString()
 	{
-		var candidateString = Candidate.ToCandidateString(Candidate, CoordinateConverter.InvariantCultureInstance);
+		var candidateString = Candidate.ToCandidateString(Candidate, CoordinateConverter.InvariantCulture);
 		return $"{nameof(CandidateViewNode)} {{ Candidate = {candidateString}, {nameof(Identifier)} = {Identifier} }}";
 	}
 

@@ -171,26 +171,24 @@ public static class TechniqueExtensions
 		}
 
 		/// <summary>
-		/// Try to get the name of the current <see cref="Technique"/>.
+		/// Try to get the name of the current <see cref="Technique"/> with specified culture.
 		/// </summary>
-		/// <param name="formatProvider">The culture information.</param>
+		/// <param name="culture">The culture information.</param>
 		/// <returns>The name of the current technique.</returns>
 		/// <exception cref="ResourceNotFoundException">Throws when the target name is not found in resource dictionary.</exception>
-		public string GetName(IFormatProvider? formatProvider)
-			=> SR.TryGet(@this.ToString(), out var resource, formatProvider as CultureInfo ?? CultureInfo.CurrentUICulture)
-				? resource
-				: SR.Get(@this.ToString(), SR.DefaultCulture);
+		public string GetName(CultureInfo? culture)
+			=> SR.TryGet(@this.ToString(), out var resource, culture) ? resource : SR.Get(@this.ToString(), SR.DefaultCulture);
 
 		/// <summary>
 		/// Try to get all aliases of the current <see cref="Technique"/>.
 		/// </summary>
-		/// <param name="formatProvider">The culture information.</param>
+		/// <param name="culture">The culture.</param>
 		/// <returns>
 		/// All possible aliases of the current technique.
 		/// If the technique does not contain any aliases, the return value will be <see langword="null"/>.
 		/// </returns>
-		public string[]? GetAliasedNames(IFormatProvider? formatProvider)
-			=> SR.TryGet($"TechniqueAlias_{@this}", out var resource, formatProvider as CultureInfo ?? CultureInfo.CurrentUICulture)
+		public string[]? GetAliasedNames(CultureInfo? culture)
+			=> SR.TryGet($"TechniqueAlias_{@this}", out var resource, culture)
 				? resource.Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
 				: null;
 

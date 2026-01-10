@@ -6,7 +6,7 @@ namespace Sudoku.Drawing.Nodes;
 /// <param name="identifier"><inheritdoc/></param>
 /// <param name="cell"><inheritdoc cref="Cell" path="/summary"/></param>
 [method: JsonConstructor]
-public sealed class CellViewNode(ColorIdentifier identifier, Cell cell) : BasicViewNode(identifier)
+public sealed class CellViewNode(ColorDescriptor identifier, Cell cell) : BasicViewNode(identifier)
 {
 	/// <summary>
 	/// Indicates the cell highlighted.
@@ -15,7 +15,7 @@ public sealed class CellViewNode(ColorIdentifier identifier, Cell cell) : BasicV
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	public void Deconstruct(out ColorIdentifier identifier, out Cell cell) => (identifier, cell) = (Identifier, Cell);
+	public void Deconstruct(out ColorDescriptor identifier, out Cell cell) => (identifier, cell) = (Identifier, Cell);
 
 	/// <inheritdoc/>
 	public override bool Equals([NotNullWhen(true)] ViewNode? other)
@@ -27,7 +27,7 @@ public sealed class CellViewNode(ColorIdentifier identifier, Cell cell) : BasicV
 	/// <inheritdoc/>
 	public override string ToString()
 	{
-		var cellString = Cell.ToCellString(Cell, CoordinateConverter.InvariantCultureInstance);
+		var cellString = Cell.ToCellString(Cell, CoordinateConverter.InvariantCulture);
 		return $"{nameof(CellViewNode)} {{ {nameof(Cell)} = {cellString}, {nameof(Identifier)} = {Identifier} }}";
 	}
 

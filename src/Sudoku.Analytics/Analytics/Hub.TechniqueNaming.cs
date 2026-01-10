@@ -23,7 +23,7 @@ public partial class Hub
 		/// <param name="culture">The culture.</param>
 		/// <param name="digit">The digit value.</param>
 		/// <returns>The character that represents the specified digit.</returns>
-		public static char GetDigitCharacter(CultureInfo culture, Digit digit)
+		public static char GetDigitCharacter(CultureInfo? culture, Digit digit)
 			=> SR.IsChinese(culture) ? ChineseDigitCharacters[digit] : (char)(digit + '1');
 
 		/// <summary>

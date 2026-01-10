@@ -101,13 +101,13 @@ public sealed partial class RemotePairStepSearcher : StepSearcher
 					var babaGroupingOffsets = new List<BabaGroupViewNode>();
 					foreach (var cell in component.Map)
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + d1));
-						candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + d2));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + d1));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + d2));
 					}
 					foreach (var ((c1, c2), _) in conflictedPair)
 					{
-						cellOffsets.Add(new(ColorIdentifier.Auxiliary1, c1));
-						cellOffsets.Add(new(ColorIdentifier.Auxiliary1, c2));
+						cellOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, c1));
+						cellOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, c2));
 					}
 					foreach (var cell in parity1)
 					{

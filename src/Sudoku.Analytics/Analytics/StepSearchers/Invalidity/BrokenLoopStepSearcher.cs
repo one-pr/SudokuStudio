@@ -48,7 +48,7 @@ public sealed partial class BrokenLoopStepSearcher
 				ref traversedSpaces,
 				tempLoop
 			);
-			if (!context.CancellationToken)
+			if (context.CancellationToken.IsCancellationRequested)
 			{
 				// Canceled.
 				return null;
@@ -114,7 +114,7 @@ public sealed partial class BrokenLoopStepSearcher
 			CandidateMap loop
 		)
 		{
-			if (!context.CancellationToken)
+			if (context.CancellationToken.IsCancellationRequested)
 			{
 				// User canceled.
 				return;
@@ -190,7 +190,7 @@ public sealed partial class BrokenLoopStepSearcher
 					}
 
 					// Get for the next house.
-					var nextHouse = currentCell >> (HouseType)(mode - 1);
+					var nextHouse = currentCell.GetHouse((HouseType)(mode - 1));
 					var nextPossibleCells = (CandidatesMap[currentDigit] & HousesMap[nextHouse]) - currentCell;
 					switch (nextPossibleCells.Count)
 					{
@@ -267,9 +267,9 @@ public sealed partial class BrokenLoopStepSearcher
 				var nextSpace = nextMode switch
 				{
 					NextSpaceType.Cell => Space.RowColumn(nextCell / 9, nextCell % 9),
-					NextSpaceType.Block => Space.BlockDigit(nextCell >> HouseType.Block, nextCandidate % 9),
-					NextSpaceType.Row => Space.RowDigit((nextCell >> HouseType.Row) - 9, nextCandidate % 9),
-					_ => Space.RowDigit((nextCell >> HouseType.Column) - 18, nextCandidate % 9)
+					NextSpaceType.Block => Space.BlockDigit(nextCell.GetHouse(HouseType.Block), nextCandidate % 9),
+					NextSpaceType.Row => Space.RowDigit(nextCell.GetHouse(HouseType.Row) - 9, nextCandidate % 9),
+					_ => Space.RowDigit(nextCell.GetHouse(HouseType.Column) - 18, nextCandidate % 9)
 				};
 
 				// Check whether the candidate is traversed.
@@ -466,7 +466,7 @@ public sealed partial class BrokenLoopStepSearcher
 						{
 							candidateOffsets.RemoveAt(i);
 						}
-						candidateOffsets.Add(new(ColorIdentifier.Auxiliary2, cell * 9 + digit));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary2, cell * 9 + digit));
 					}
 				}
 
@@ -546,8 +546,8 @@ public sealed partial class BrokenLoopStepSearcher
 				}
 
 				var linkOffsets = GetLinkViewNodes(loop, guardians, out var candidateOffsets);
-				candidateOffsets.Add(new(ColorIdentifier.Auxiliary2, guardianCells[0] * 9 + conjugatePairDigit));
-				candidateOffsets.Add(new(ColorIdentifier.Auxiliary2, guardianCells[1] * 9 + conjugatePairDigit));
+				candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary2, guardianCells[0] * 9 + conjugatePairDigit));
+				candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary2, guardianCells[1] * 9 + conjugatePairDigit));
 
 				var step = new BrokenLoopType4Step(
 					conclusions.AsMemory(),
@@ -555,7 +555,7 @@ public sealed partial class BrokenLoopStepSearcher
 						[
 							.. candidateOffsets,
 							.. linkOffsets,
-							new ConjugateLinkViewNode(ColorIdentifier.Normal, guardianCells[0], guardianCells[1], conjugatePairDigit)
+							new ConjugateLinkViewNode(ColorDescriptorAlias.Normal, guardianCells[0], guardianCells[1], conjugatePairDigit)
 						]
 					],
 					context.Options,
@@ -591,17 +591,17 @@ public sealed partial class BrokenLoopStepSearcher
 		var linkOffsets = new List<ChainLinkViewNode>();
 		foreach (var candidate in loop)
 		{
-			candidateOffsets.Add(new(ColorIdentifier.Normal, candidate));
+			candidateOffsets.Add(new(ColorDescriptorAlias.Normal, candidate));
 		}
 		foreach (var guardian in guardians)
 		{
-			candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, guardian));
+			candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, guardian));
 		}
 		for (var i = 0; i < loop.Count; i++)
 		{
 			var first = loop[i];
 			var second = loop[(i + 1) % loop.Count];
-			linkOffsets.Add(new(ColorIdentifier.Normal, first.AsCandidateMap(), second.AsCandidateMap(), true));
+			linkOffsets.Add(new(ColorDescriptorAlias.Normal, first.AsCandidateMap(), second.AsCandidateMap(), true));
 		}
 		return linkOffsets.AsSpan();
 	}

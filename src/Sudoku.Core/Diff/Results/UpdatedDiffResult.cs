@@ -32,8 +32,4 @@ public abstract class UpdatedDiffResult(CandidateMap candidates) : DiffResult
 	/// Indicates the target cell type string.
 	/// </summary>
 	protected virtual string CellTypeString => CellType.ToString();
-
-
-	/// <inheritdoc/>
-	public sealed override string ToString() => ToString(default(IFormatProvider));
 }

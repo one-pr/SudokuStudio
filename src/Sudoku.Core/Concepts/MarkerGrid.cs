@@ -92,7 +92,7 @@ public struct MarkerGrid : InlineArrayGridBase
 	}
 
 	/// <inheritdoc/>
-	public readonly MarkerGrid ResetGrid => this % GivenCells;
+	public readonly MarkerGrid ResetGrid => Preserve(GivenCells);
 
 	/// <inheritdoc/>
 	public readonly MarkerGrid UnfixedGrid
@@ -331,26 +331,6 @@ public struct MarkerGrid : InlineArrayGridBase
 	}
 
 	/// <inheritdoc/>
-	public readonly bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
-	{
-		var targetString = ToString(format.IsEmpty ? null : format.ToString(), provider);
-		if (destination.Length < targetString.Length)
-		{
-			goto ReturnFalse;
-		}
-
-		if (targetString.TryCopyTo(destination))
-		{
-			charsWritten = targetString.Length;
-			return true;
-		}
-
-	ReturnFalse:
-		charsWritten = 0;
-		return false;
-	}
-
-	/// <inheritdoc/>
 	public readonly bool GetExistence(Cell cell, Digit digit) => (this[cell] >> digit & 1) != 0;
 
 	/// <inheritdoc cref="IEquatable{T}.Equals(T)"/>
@@ -371,19 +351,14 @@ public struct MarkerGrid : InlineArrayGridBase
 	/// <inheritdoc/>
 	public readonly string ToString(string? format) => ToString(format, null);
 
-	/// <inheritdoc/>
+	/// <inheritdoc cref="Grid.ToString(string?, IFormatProvider?)"/>
 	public readonly string ToString(string? format, IFormatProvider? formatProvider)
-		=> (format, formatProvider) switch
-		{
-			(null or "#", _) => new SusserMarkerGridFormatInfo().FormatCore(this),
-			(_, SusserGridFormatInfo<MarkerGrid> instance) => instance.FormatCore(this),
-			(_, not null) when formatProvider.GetFormat(typeof(GridFormatInfo<MarkerGrid>)) is GridFormatInfo<MarkerGrid> g
-				=> g.FormatCore(this),
-			_ => throw new FormatException()
-		};
-
-	/// <inheritdoc/>
-	public readonly string ToString(IFormatProvider? formatProvider) => ToString(null, formatProvider);
+	{
+		var instance = GridConverterFactory.GetInstance(format) as SusserGridConverter ?? new SusserGridDefaultConverter();
+		return instance.TryFormat(in this, formatProvider, out var result)
+			? result
+			: throw new FormatException();
+	}
 
 	/// <inheritdoc/>
 	public readonly CellState GetState(Cell cell) => MaskToCellState(this[cell]);
@@ -431,8 +406,22 @@ public struct MarkerGrid : InlineArrayGridBase
 		return result;
 	}
 
+	/// <summary>
+	/// Preserves the grid, removing cells not specified in <paramref name="template"/>.
+	/// </summary>
+	/// <param name="template">The cells specified to be preserved.</param>
+	public readonly MarkerGrid Preserve(in CellMap template)
+	{
+		var temp = this;
+		foreach (var cell in ~template)
+		{
+			temp.SetDigit(cell, -1);
+		}
+		return temp;
+	}
+
 	/// <inheritdoc/>
-	public void Reset() => this %= GivenCells;
+	public void Reset() => this = Preserve(GivenCells);
 
 	/// <inheritdoc/>
 	public void Fix()
@@ -459,8 +448,18 @@ public struct MarkerGrid : InlineArrayGridBase
 	}
 
 	/// <inheritdoc/>
-	[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
-	public void Apply(Conclusion conclusion) => this >>= conclusion;
+	public void Apply(Conclusion conclusion)
+	{
+		var (type, cell, digit) = conclusion;
+		if (type == Assignment)
+		{
+			SetDigit(cell, digit);
+		}
+		else if (type == Elimination)
+		{
+			SetExistence(cell, digit, false);
+		}
+	}
 
 	/// <inheritdoc/>
 	public void SetState(Cell cell, CellState state)
@@ -599,34 +598,11 @@ public struct MarkerGrid : InlineArrayGridBase
 
 
 	/// <inheritdoc/>
-	public static bool TryParse(ReadOnlySpan<char> s, out MarkerGrid result) => TryParse(s.ToString(), null, out result);
+	public static bool TryParse([NotNullWhen(true)] string? s, out MarkerGrid result) => TryParse(s.AsSpan(), out result);
 
 	/// <inheritdoc/>
-	public static bool TryParse(ReadOnlySpan<char> s, IFormatProvider? provider, out MarkerGrid result)
-		=> TryParse(s.ToString(), provider, out result);
-
-	/// <inheritdoc/>
-	public static bool TryParse(string? s, out MarkerGrid result) => TryParse(s, null, out result);
-
-	/// <inheritdoc/>
-	public static bool TryParse(string? s, IFormatProvider? provider, out MarkerGrid result)
-	{
-		try
-		{
-			if (s is null)
-			{
-				throw new FormatException();
-			}
-
-			result = Parse(s, provider);
-			return true;
-		}
-		catch (FormatException)
-		{
-			result = default;
-			return false;
-		}
-	}
+	public static bool TryParse(ReadOnlySpan<char> s, out MarkerGrid result)
+		=> new SusserGridDefaultConverter().TryParse(s, null, out result);
 
 	/// <inheritdoc/>
 	public static MarkerGrid Create(params ReadOnlySpan<Mask> values)
@@ -674,46 +650,11 @@ public struct MarkerGrid : InlineArrayGridBase
 		=> new(in gridValues[0], creatingOption);
 
 	/// <inheritdoc/>
-	public static MarkerGrid Parse(ReadOnlySpan<char> s) => Parse(s, null);
+	public static MarkerGrid Parse(string? s) => Parse(s.AsSpan());
 
 	/// <inheritdoc/>
-	public static MarkerGrid Parse(ReadOnlySpan<char> s, IFormatProvider? provider) => Parse(s.ToString(), provider);
-
-	/// <inheritdoc/>
-	public static MarkerGrid Parse(string? s) => Parse(s ?? string.Empty, null);
-
-	/// <inheritdoc/>
-	public static MarkerGrid Parse(string s, IFormatProvider? provider)
-		=> (provider as SusserGridFormatInfo<MarkerGrid> ?? new()).ParseCore(s);
-
-
-	/// <inheritdoc/>
-	public void operator %=(in CellMap template)
-	{
-		foreach (var cell in ~template)
-		{
-			SetDigit(cell, -1);
-		}
-	}
-
-	/// <inheritdoc/>
-	public void operator >>=(Conclusion conclusion)
-	{
-		var (type, cell, digit) = conclusion;
-		switch (type)
-		{
-			case Assignment:
-			{
-				SetDigit(cell, digit);
-				break;
-			}
-			case Elimination:
-			{
-				SetExistence(cell, digit, false);
-				break;
-			}
-		}
-	}
+	public static MarkerGrid Parse(ReadOnlySpan<char> s)
+		=> new SusserGridDefaultConverter().TryParse<MarkerGrid>(s, null, out var result) ? result : throw new FormatException();
 
 
 	/// <inheritdoc cref="IComparisonOperators{TSelf, TOther, TResult}.op_GreaterThan(TSelf, TOther)"/>
@@ -733,22 +674,6 @@ public struct MarkerGrid : InlineArrayGridBase
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Inequality(TSelf, TOther)"/>
 	public static bool operator !=(in MarkerGrid left, in MarkerGrid right) => !(left == right);
-
-	/// <inheritdoc/>
-	public static MarkerGrid operator %(in MarkerGrid grid, in CellMap template)
-	{
-		var tempGrid = grid;
-		tempGrid %= template;
-		return tempGrid;
-	}
-
-	/// <inheritdoc/>
-	public static MarkerGrid operator >>(in MarkerGrid grid, Conclusion conclusion)
-	{
-		var tempGrid = grid;
-		tempGrid >>= conclusion;
-		return tempGrid;
-	}
 
 	/// <inheritdoc/>
 	static bool IEqualityOperators<MarkerGrid, MarkerGrid, bool>.operator ==(MarkerGrid left, MarkerGrid right) => left == right;

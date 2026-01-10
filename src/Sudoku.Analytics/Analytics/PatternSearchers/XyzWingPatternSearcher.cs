@@ -30,8 +30,8 @@ public sealed class XyzWingPatternSearcher : PatternSearcherBase<XyzWingPattern>
 			// Fetch for two cells from two different houses.
 			foreach (var housePair in HouseTypes & 2)
 			{
-				var house1 = pivot >> housePair[0];
-				var house2 = pivot >> housePair[1];
+				var house1 = pivot.GetHouse(housePair[0]);
+				var house2 = pivot.GetHouse(housePair[1]);
 				var bivalueCellsFromHouse1 = bivalueCells & HousesMap[house1];
 				var bivalueCellsFromHouse2 = bivalueCells & HousesMap[house2];
 				if (!bivalueCellsFromHouse1 || !bivalueCellsFromHouse2)

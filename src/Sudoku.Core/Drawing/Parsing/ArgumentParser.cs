@@ -20,7 +20,7 @@ internal abstract class ArgumentParser
 	public bool TryParse(
 		ReadOnlySpan<string> arguments,
 		[AllowNull] ref readonly Grid grid,
-		ColorIdentifier colorIdentifier,
+		ColorDescriptor colorIdentifier,
 		CoordinateParser coordinateParser,
 		out ReadOnlySpan<ViewNode> result
 	)
@@ -49,7 +49,7 @@ internal abstract class ArgumentParser
 	public abstract ReadOnlySpan<ViewNode> Parse(
 		ReadOnlySpan<string> arguments,
 		[AllowNull] ref readonly Grid grid,
-		ColorIdentifier colorIdentifier,
+		ColorDescriptor colorIdentifier,
 		CoordinateParser coordinateParser
 	);
 }

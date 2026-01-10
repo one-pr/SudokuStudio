@@ -52,7 +52,7 @@ internal sealed class PrintTechniquesCommand : CommandBase
 		}
 
 		foreach (var technique in
-			from techniqueField in Technique.Values
+			from techniqueField in Technique.AllValues
 			where techniqueField != Technique.None
 			let @group = techniqueField.TryGetGroup() ?? TechniqueGroup.None
 			where category != TechniqueGroup.None && @group == category || category == TechniqueGroup.None

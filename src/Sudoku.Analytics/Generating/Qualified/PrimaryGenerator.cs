@@ -62,7 +62,7 @@ public abstract class PrimaryGenerator : TechniqueGenerator, IJustOneCellGenerat
 	protected static SingleSubtype RandomlySelectSubtype(House house, Func<SingleSubtype, bool> match)
 	{
 		var prefixMustBe = house switch { < 9 => "BlockHiddenSingle", < 18 => "RowHiddenSingle", _ => "ColumnHiddenSingle" };
-		var range = SingleSubtype.Values;
+		var range = SingleSubtype.AllValues;
 		SingleSubtype subtype;
 		do
 		{
@@ -78,7 +78,7 @@ public abstract class PrimaryGenerator : TechniqueGenerator, IJustOneCellGenerat
 	/// <returns>The block position.</returns>
 	protected static Digit BlockPositionOf(Cell cell)
 	{
-		var (block, i) = (cell >> HouseType.Block, 0);
+		var (block, i) = (cell.GetHouse(HouseType.Block), 0);
 		foreach (var c in HousesCells[block])
 		{
 			if (c == cell)

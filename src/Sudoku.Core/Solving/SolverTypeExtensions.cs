@@ -27,6 +27,7 @@ public static class SolverTypeExtensions
 				SolverType.DancingLinks => new DancingLinksSolver(),
 				SolverType.DictionaryQuery => new DictionaryQuerySolver(),
 				SolverType.EnumerableQuery => new EnumerableQuerySolver(),
+				SolverType.BooleanSatisfiability => new SatisfiabilitySolver(),
 				_ => throw new ArgumentOutOfRangeException(nameof(solverType))
 			};
 	}

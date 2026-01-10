@@ -80,6 +80,7 @@ public sealed record K9Converter(
 
 			string r(in CellMap cells)
 			{
+				var finalChar = MakeLettersUpperCase ? char.ToUpper(FinalRowLetter) : char.ToLower(FinalRowLetter);
 				var sb = new StringBuilder(18);
 				var output = CoordinateSimplifier.Simplify(cells);
 				var needAddingBrackets = AlwaysOutputBracket
@@ -90,16 +91,10 @@ public sealed record K9Converter(
 				}
 				foreach (var (rows, columns) in output)
 				{
-					sb.AppendRange(
-						d => (
-							d == 8
-								? MakeLettersUpperCase ? char.ToUpper(FinalRowLetter) : char.ToLower(FinalRowLetter)
-								: (char)((MakeLettersUpperCase ? 'A' : 'a') + d)
-						).ToString(),
-						elements: rows
-					);
-					sb.AppendRange(d => DigitConverter((Mask)(1 << d)), elements: columns);
-					sb.Append(DefaultSeparator);
+					sb
+						.AppendRange(rows, d => (d == 8 ? finalChar : (char)((MakeLettersUpperCase ? 'A' : 'a') + d)).ToString())
+						.AppendRange(columns, d => DigitConverter((Mask)(1 << d)))
+						.Append(DefaultSeparator);
 				}
 				sb.RemoveFromEnd(DefaultSeparator.Length);
 				if (needAddingBrackets)
@@ -272,91 +267,10 @@ public sealed record K9Converter(
 		=> new LiteralCoordinateConverter(DigitsSeparator: DigitsSeparator).DigitConverter;
 
 	/// <inheritdoc/>
-	public override Func<ReadOnlySpan<Miniline>, string> IntersectionConverter
-		=> intersections => DefaultSeparator switch
-		{
-			null or [] => +(
-				from intersection in intersections
-				let baseSet = intersection.Base.Line
-				let coverSet = intersection.Base.Block
-				select string.Format(
-					SR.Get("LockedCandidatesLabel", TargetCurrentCulture),
-					[
-						((House)baseSet).HouseType switch
-						{
-							HouseType.Block => string.Format(SR.Get("BlockLabel", TargetCurrentCulture), (baseSet % 9 + 1).ToString()),
-							HouseType.Row => string.Format(SR.Get("RowLabel", TargetCurrentCulture), (baseSet % 9 + 1).ToString()),
-							HouseType.Column => string.Format(SR.Get("ColumnLabel", TargetCurrentCulture), (baseSet % 9 + 1).ToString())
-						},
-						((House)coverSet).HouseType switch
-						{
-							HouseType.Block => string.Format(SR.Get("BlockLabel", TargetCurrentCulture), (coverSet % 9 + 1).ToString()),
-							HouseType.Row => string.Format(SR.Get("RowLabel", TargetCurrentCulture), (coverSet % 9 + 1).ToString()),
-							HouseType.Column => string.Format(SR.Get("ColumnLabel", TargetCurrentCulture), (coverSet % 9 + 1).ToString())
-						}
-					]
-				)
-			),
-			_ => string.Join(
-				DefaultSeparator,
-				from intersection in intersections
-				let baseSet = intersection.Base.Line
-				let coverSet = intersection.Base.Block
-				select string.Format(
-					SR.Get("LockedCandidatesLabel", TargetCurrentCulture),
-					[
-						((House)baseSet).HouseType switch
-						{
-							HouseType.Block => string.Format(SR.Get("BlockLabel", TargetCurrentCulture), (baseSet % 9 + 1).ToString()),
-							HouseType.Row => string.Format(SR.Get("RowLabel", TargetCurrentCulture), (baseSet % 9 + 1).ToString()),
-							HouseType.Column => string.Format(SR.Get("ColumnLabel", TargetCurrentCulture), (baseSet % 9 + 1).ToString())
-						},
-						((House)coverSet).HouseType switch
-						{
-							HouseType.Block => string.Format(SR.Get("BlockLabel", TargetCurrentCulture), (coverSet % 9 + 1).ToString()),
-							HouseType.Row => string.Format(SR.Get("RowLabel", TargetCurrentCulture), (coverSet % 9 + 1).ToString()),
-							HouseType.Column => string.Format(SR.Get("ColumnLabel", TargetCurrentCulture), (coverSet % 9 + 1).ToString())
-						}
-					]
-				)
-			)
-		};
+	public override Func<SegmentCollection, string> SegmentConverter => throw new NotSupportedException();
 
 	/// <inheritdoc/>
-	public override Func<ReadOnlySpan<Chute>, string> ChuteConverter
-		=> chutes =>
-		{
-			var megalines = new Dictionary<bool, byte>(2);
-			foreach (var (index, isRow, _) in chutes)
-			{
-				if (!megalines.TryAdd(isRow, (byte)(1 << index % 3)))
-				{
-					megalines[isRow] |= (byte)(1 << index % 3);
-				}
-			}
-
-			var sb = new StringBuilder(12);
-			if (megalines.TryGetValue(true, out var megaRows))
-			{
-				sb.Append(MakeLettersUpperCase ? "Mega Row" : "mega row");
-				foreach (var megaRow in megaRows)
-				{
-					sb.Append(megaRow + 1);
-				}
-
-				sb.Append(DefaultSeparator);
-			}
-			if (megalines.TryGetValue(false, out var megaColumns))
-			{
-				sb.Append(MakeLettersUpperCase ? "Mega Column" : "mega column");
-				foreach (var megaColumn in megaColumns)
-				{
-					sb.Append(megaColumn + 1);
-				}
-			}
-
-			return sb.ToString();
-		};
+	public override Func<ReadOnlySpan<Chute>, string> ChuteConverter => throw new NotSupportedException();
 
 	/// <inheritdoc/>
 	public override Func<ReadOnlySpan<Conjugate>, string> ConjugateConverter
@@ -377,9 +291,4 @@ public sealed record K9Converter(
 			}
 			return sb.RemoveFromEnd(DefaultSeparator.Length).ToString();
 		};
-
-
-	/// <inheritdoc/>
-	[return: NotNullIfNotNull(nameof(formatType))]
-	public override object? GetFormat(Type? formatType) => formatType == typeof(CoordinateConverter) ? this : null;
 }

@@ -298,46 +298,6 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	public readonly bool Contains(Candidate item) => (_bits[item >> 6] >> (item & 63) & 1) != 0;
 
 	/// <inheritdoc/>
-	public readonly bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
-	{
-		var targetString = ToString(provider);
-		if (destination.Length < targetString.Length)
-		{
-			goto ReturnFalse;
-		}
-
-		if (targetString.TryCopyTo(destination))
-		{
-			charsWritten = targetString.Length;
-			return true;
-		}
-
-	ReturnFalse:
-		charsWritten = 0;
-		return false;
-	}
-
-	/// <inheritdoc/>
-	public readonly bool TryFormat(Span<byte> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
-	{
-		var targetString = ToString(provider);
-		if (destination.Length < targetString.Length)
-		{
-			goto ReturnFalse;
-		}
-
-		if ((from character in targetString select (byte)character).TryCopyTo(destination))
-		{
-			charsWritten = targetString.Length;
-			return true;
-		}
-
-	ReturnFalse:
-		charsWritten = 0;
-		return false;
-	}
-
-	/// <inheritdoc/>
 	public readonly override bool Equals([NotNullWhen(true)] object? obj) => obj is CandidateMap comparer && Equals(comparer);
 
 	/// <summary>
@@ -380,7 +340,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 		return Count > other.Count ? 1 : Count < other.Count ? -1 : -Math.Sign($"{b(this)}".CompareTo($"{b(other)}"));
 
 
-		static string b(in CandidateMap f) => f.ToString(new BitmapCandidateMapFormatInfo());
+		static string b(in CandidateMap f) => f.ToString(new BitmapCandidateMapConverter());
 	}
 
 	/// <inheritdoc/>
@@ -408,15 +368,21 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc cref="object.ToString"/>
-	public readonly override string ToString() => ToString(null);
+	public readonly override string ToString() => ToString(CoordinateConverter.InvariantCulture);
 
 	/// <inheritdoc/>
-	public readonly string ToString(IFormatProvider? formatProvider)
-		=> formatProvider switch
-		{
-			CandidateMapFormatInfo i => i.FormatCore(this),
-			_ => CoordinateConverter.GetInstance(formatProvider).CandidateConverter(this)
-		};
+	public readonly string ToString(CultureInfo culture) => ToString(CoordinateConverter.GetInstance(culture));
+
+	/// <inheritdoc/>
+	public readonly string ToString(CoordinateConverter converter) => converter.CandidateConverter(this);
+
+	/// <inheritdoc cref="CandidateMapBase.ToString(IValueConverter{CandidateMap})"/>
+	public readonly string ToString(ICandidateMapConverter converter)
+		=> converter.TryFormat(in this, null, out var result) ? result : throw new FormatException();
+
+	/// <inheritdoc cref="CandidateMapBase.ToString(IValueConverter{CandidateMap}, IFormatProvider?)"/>
+	public readonly string ToString(ICandidateMapConverter converter, IFormatProvider? formatProvider)
+		=> converter.TryFormat(in this, formatProvider, out var result) ? result : throw new FormatException();
 
 	/// <inheritdoc/>
 	public readonly Candidate[] ToArray() => Offsets[..];
@@ -560,7 +526,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc cref="CellMap.GroupBy{TKey}(Func{Cell, TKey})"/>
-	public readonly ReadOnlySpan<CellMapOrCandidateMapGrouping<CandidateMap, Candidate, TKey>> GroupBy<TKey>(Func<Candidate, TKey> keySelector)
+	public readonly ReadOnlySpan<BitStateMapGrouping<CandidateMap, Candidate, TKey>> GroupBy<TKey>(Func<Candidate, TKey> keySelector)
 		where TKey : notnull
 	{
 		var dictionary = new Dictionary<TKey, CandidateMap>();
@@ -573,7 +539,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 			}
 		}
 
-		var result = new CellMapOrCandidateMapGrouping<CandidateMap, Candidate, TKey>[dictionary.Count];
+		var result = new BitStateMapGrouping<CandidateMap, Candidate, TKey>[dictionary.Count];
 		var i = 0;
 		foreach (var kvp in dictionary)
 		{
@@ -711,8 +677,12 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	readonly bool IAnyAllMethod<CandidateMap, Candidate>.All(Func<Candidate, bool> predicate) => TrueForAll(predicate);
 
 	/// <inheritdoc/>
-	readonly string IFormattable.ToString(string? format, IFormatProvider? formatProvider)
-		=> ToString(formatProvider as CultureInfo);
+	readonly string CandidateMapBase.ToString(IValueConverter<CandidateMap> converter)
+		=> converter.TryFormat(in this, null, out var result) ? result : throw new FormatException();
+
+	/// <inheritdoc/>
+	readonly string CandidateMapBase.ToString(IValueConverter<CandidateMap> converter, IFormatProvider? formatProvider)
+		=> converter.TryFormat(in this, formatProvider, out var result) ? result : throw new FormatException();
 
 	/// <inheritdoc/>
 	readonly Candidate IFirstLastMethod<CandidateMap, Candidate>.First() => this[0];
@@ -733,59 +703,56 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 		=> Select(selector).ToArray();
 
 
-	/// <inheritdoc cref="IParsable{TSelf}.TryParse(string?, IFormatProvider?, out TSelf)"/>
+	/// <inheritdoc/>
 	public static bool TryParse(string str, out CandidateMap result)
+		=> TryParse(str, CoordinateParser.InvariantCulture, out result);
+
+	/// <inheritdoc/>
+	public static bool TryParse(string str, CultureInfo culture, out CandidateMap result)
+		=> TryParse(str, CoordinateParser.GetInstance(culture), out result);
+
+	/// <inheritdoc/>
+	public static bool TryParse(string str, CoordinateParser converter, out CandidateMap result)
 	{
 		try
 		{
-			result = Parse(str);
+			result = converter.CandidateParser(str);
 			return true;
 		}
 		catch (FormatException)
 		{
-			result = default;
+			result = Empty;
 			return false;
 		}
 	}
 
 	/// <inheritdoc/>
-	public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, out CandidateMap result)
-	{
-		try
-		{
-			if (s is null)
-			{
-				result = [];
-				return false;
-			}
-
-			result = Parse(s, provider);
-			return true;
-		}
-		catch (FormatException)
-		{
-			result = [];
-			return false;
-		}
-	}
-
-	/// <inheritdoc cref="TryParse(ReadOnlySpan{char}, IFormatProvider?, out CandidateMap)"/>
-	public static bool TryParse(ReadOnlySpan<char> s, out CandidateMap result) => TryParse(s, null, out result);
+	public static bool TryParse(string str, IValueConverter<CandidateMap> converter, out CandidateMap result)
+		=> converter.TryParse(str, null, out result);
 
 	/// <inheritdoc/>
-	public static bool TryParse(ReadOnlySpan<char> s, IFormatProvider? provider, out CandidateMap result)
-	{
-		try
-		{
-			result = Parse(s, provider);
-			return true;
-		}
-		catch (FormatException)
-		{
-			result = [];
-			return false;
-		}
-	}
+	public static bool TryParse(string str, IValueConverter<CandidateMap> converter, IFormatProvider? formatProvider, out CandidateMap result)
+		=> converter.TryParse(str, formatProvider, out result);
+
+	/// <inheritdoc/>
+	public static bool TryParse(ReadOnlySpan<char> str, out CandidateMap result)
+		=> TryParse(str, CoordinateParser.InvariantCulture, out result);
+
+	/// <inheritdoc/>
+	public static bool TryParse(ReadOnlySpan<char> str, CultureInfo culture, out CandidateMap result)
+		=> TryParse(str, CoordinateParser.GetInstance(culture), out result);
+
+	/// <inheritdoc/>
+	public static bool TryParse(ReadOnlySpan<char> str, CoordinateParser converter, out CandidateMap result)
+		=> TryParse(str.ToString(), converter, out result);
+
+	/// <inheritdoc/>
+	public static bool TryParse(ReadOnlySpan<char> str, IValueConverter<CandidateMap> converter, out CandidateMap result)
+		=> converter.TryParse(str, null, out result);
+
+	/// <inheritdoc/>
+	public static bool TryParse(ReadOnlySpan<char> str, IValueConverter<CandidateMap> converter, IFormatProvider? formatProvider, out CandidateMap result)
+		=> converter.TryParse(str, formatProvider, out result);
 
 	/// <summary>
 	/// Creates a <see cref="CandidateMap"/> instance via the specified candidates.
@@ -808,11 +775,16 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 		return result;
 	}
 
-	/// <inheritdoc/>
+	/// <summary>
+	/// Parses the current string into target instance.
+	/// </summary>
+	/// <param name="str">The string.</param>
+	/// <returns>The instance.</returns>
+	/// <exception cref="FormatException">Throws when any invalid characters encountered.</exception>
 	public static CandidateMap Parse(string str)
 	{
 		foreach (var parser in
-			from element in CoordinateType.Values
+			from element in CoordinateType.AllValues
 			let parser = element.Parser
 			where parser is not null
 			select parser)
@@ -827,18 +799,36 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <inheritdoc/>
-	public static CandidateMap Parse(string s, IFormatProvider? provider)
-		=> provider switch
-		{
-			CandidateMapFormatInfo c => c.ParseCore(s),
-			_ => CoordinateParser.GetInstance(provider).CandidateParser(s)
-		};
-
-	/// <inheritdoc cref="Parse(ReadOnlySpan{char}, IFormatProvider?)"/>
-	public static CandidateMap Parse(ReadOnlySpan<char> s) => Parse(s, null);
+	public static CandidateMap Parse(string str, CultureInfo culture) => CoordinateParser.GetInstance(culture).CandidateParser(str);
 
 	/// <inheritdoc/>
-	public static CandidateMap Parse(ReadOnlySpan<char> s, IFormatProvider? provider) => Parse(s.ToString(), provider);
+	public static CandidateMap Parse(string str, CoordinateParser converter) => converter.CandidateParser(str);
+
+	/// <inheritdoc/>
+	public static CandidateMap Parse(string str, IValueConverter<CandidateMap> converter)
+		=> converter.TryParse(str, null, out var result) ? result : throw new FormatException();
+
+	/// <inheritdoc/>
+	public static CandidateMap Parse(string str, IValueConverter<CandidateMap> converter, IFormatProvider? formatProvider)
+		=> converter.TryParse(str, formatProvider, out var result) ? result : throw new FormatException();
+
+	/// <inheritdoc/>
+	public static CandidateMap Parse(ReadOnlySpan<char> str) => Parse(str.ToString());
+
+	/// <inheritdoc/>
+	public static CandidateMap Parse(ReadOnlySpan<char> str, CultureInfo culture) => Parse(str.ToString(), culture);
+
+	/// <inheritdoc/>
+	public static CandidateMap Parse(ReadOnlySpan<char> str, CoordinateParser converter)
+		=> converter.CandidateParser(str.ToString());
+
+	/// <inheritdoc/>
+	public static CandidateMap Parse(ReadOnlySpan<char> str, IValueConverter<CandidateMap> converter)
+		=> converter.TryParse(str, null, out var result) ? result : throw new FormatException();
+
+	/// <inheritdoc/>
+	public static CandidateMap Parse(ReadOnlySpan<char> str, IValueConverter<CandidateMap> converter, IFormatProvider? formatProvider)
+		=> converter.TryParse(str, formatProvider, out var result) ? result : throw new FormatException();
 
 	/// <summary>
 	/// Creates a <see cref="CandidateMap"/> via a triplet of <see cref="Vector256{T}"/> of <see cref="long"/> values.

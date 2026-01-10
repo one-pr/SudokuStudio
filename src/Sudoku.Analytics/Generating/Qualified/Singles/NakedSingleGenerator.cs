@@ -33,7 +33,7 @@ public sealed class NakedSingleGenerator : SingleGenerator
 			return true;
 
 		NextLoop:
-			if (!cancellationToken)
+			if (cancellationToken.IsCancellationRequested)
 			{
 				result = Grid.Undefined;
 				return false;
@@ -138,7 +138,7 @@ public sealed class NakedSingleGenerator : SingleGenerator
 				}
 				default:
 				{
-					if (!cancellationToken)
+					if (cancellationToken.IsCancellationRequested)
 					{
 						(result, phasedGrid, step) = (Grid.Undefined, Grid.Undefined, null);
 						return false;

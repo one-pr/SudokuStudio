@@ -82,7 +82,7 @@ public sealed partial class ShuffleOperation : Page, IOperationProviderPage
 			return;
 		}
 
-		modified >>= path;
+		modified.MakeIttoryu(path);
 		BasePage.SudokuPane.Puzzle = modified;
 		BasePage.SudokuPane.ViewUnit = null;
 	}
@@ -90,7 +90,7 @@ public sealed partial class ShuffleOperation : Page, IOperationProviderPage
 	private void ToMinLexButton_Click(object sender, RoutedEventArgs e)
 	{
 		var modified = BasePage.SudokuPane.Puzzle;
-		if (modified.PuzzleType == GridType.Sukaku)
+		if (modified.IsSukaku)
 		{
 			InfoDialog_NotSupportedForSukaku.IsOpen = true;
 			return;

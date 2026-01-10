@@ -14,11 +14,8 @@ public sealed class NotConstraint(Constraint constraint) : UnaryLogicalConstrain
 	public override int GetHashCode() => HashCode.Combine(Constraint);
 
 	/// <inheritdoc/>
-	public override string ToString(IFormatProvider? formatProvider)
-	{
-		var culture = formatProvider as CultureInfo;
-		return string.Format(SR.Get("NotConstraint", culture), Constraint.ToString(formatProvider));
-	}
+	public override string ToString(CultureInfo culture)
+		=> string.Format(SR.Get("NotConstraint", culture), Constraint.ToString(culture));
 
 	/// <inheritdoc/>
 	public override NotConstraint Clone() => new(Constraint.Clone());

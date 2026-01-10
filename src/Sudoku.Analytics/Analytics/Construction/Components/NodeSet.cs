@@ -4,7 +4,7 @@ namespace Sudoku.Analytics.Construction.Components;
 /// Provides with a list of nodes.
 /// </summary>
 [CollectionBuilder(typeof(NodeSet), nameof(Create))]
-public sealed class NodeSet : IComponent, IFormattable, IReadOnlyList<Node>, IReadOnlyCollection<Node>
+public sealed class NodeSet : IComponent, IReadOnlyList<Node>, IReadOnlyCollection<Node>
 {
 	/// <summary>
 	/// Indicates the internal list of nodes.
@@ -42,17 +42,26 @@ public sealed class NodeSet : IComponent, IFormattable, IReadOnlyList<Node>, IRe
 
 
 	/// <inheritdoc/>
-	public override string ToString() => ToString(null);
+	public override string ToString() => ToString(CoordinateConverter.InvariantCulture);
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider)
-		=> $"[{string.Join(", ", from element in _nodes select element.ToString(formatProvider))}]";
+	/// <inheritdoc cref="ToString(CoordinateConverter)"/>
+	public string ToString(CultureInfo culture)
+		=> $"[{string.Join(", ", from element in _nodes select element.ToString(culture))}]";
+
+	/// <inheritdoc cref="ToString(CoordinateConverter)"/>
+	public string ToString(CoordinateConverter converter)
+		=> $"[{string.Join(", ", from element in _nodes select element.ToString(converter))}]";
+
+	/// <inheritdoc cref="Node.ToString(ICandidateMapConverter)"/>
+	public string ToString(ICandidateMapConverter converter)
+		=> $"[{string.Join(", ", from element in _nodes select element.ToString(converter))}]";
+
+	/// <inheritdoc cref="Node.ToString(ICandidateMapConverter, IFormatProvider?)"/>
+	public string ToString(ICandidateMapConverter converter, IFormatProvider? formatProvider)
+		=> $"[{string.Join(", ", from element in _nodes select element.ToString(converter, formatProvider))}]";
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
 	public AnonymousSpanEnumerator<Node> GetEnumerator() => new(_nodes.AsSpan());
-
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
 
 	/// <inheritdoc/>
 	IEnumerator IEnumerable.GetEnumerator() => _nodes.GetEnumerator();

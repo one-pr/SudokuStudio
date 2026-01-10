@@ -16,15 +16,15 @@ public static class StepExtensions
 		/// </summary>
 		/// <param name="left">The left instance to be compared.</param>
 		/// <param name="right">The right instance to be compared.</param>
-		/// <param name="formatProvider">The culture information.</param>
+		/// <param name="culture">The culture information.</param>
 		/// <returns>An <see cref="int"/> value indicating which is bigger.</returns>
-		public static int CompareName(Step? left, Step? right, IFormatProvider? formatProvider)
+		public static int CompareName(Step? left, Step? right, CultureInfo culture)
 			=> (left, right) switch
 			{
 				(null, null) => 0,
 				(not null, null) => 1,
 				(null, not null) => -1,
-				_ => left.NameCompareTo(right, formatProvider)
+				_ => left.NameCompareTo(right, culture)
 			};
 
 		/// <summary>

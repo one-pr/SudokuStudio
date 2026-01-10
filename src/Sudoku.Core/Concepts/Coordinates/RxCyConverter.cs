@@ -75,11 +75,12 @@ public sealed record RxCyConverter(
 				}
 				foreach (var (rows, columns) in output)
 				{
-					sb.Append(MakeLettersUpperCase ? 'R' : 'r');
-					sb.AppendRange(d => DigitConverter((Mask)(1 << d)), elements: rows);
-					sb.Append(MakeLettersUpperCase ? 'C' : 'c');
-					sb.AppendRange(d => DigitConverter((Mask)(1 << d)), elements: columns);
-					sb.Append(DefaultSeparator);
+					sb
+						.Append(MakeLettersUpperCase ? 'R' : 'r')
+						.AppendRange(rows, d => DigitConverter((Mask)(1 << d)))
+						.Append(MakeLettersUpperCase ? 'C' : 'c')
+						.AppendRange(columns, d => DigitConverter((Mask)(1 << d)))
+						.Append(DefaultSeparator);
 				}
 				sb.RemoveFromEnd(DefaultSeparator.Length);
 				if (needAddingBrackets)
@@ -179,8 +180,9 @@ public sealed record RxCyConverter(
 				orderby kvp.Key switch { HouseType.Row => 0, HouseType.Column => 1, _ => 2 }
 				select kvp)
 			{
-				resultBuilder.Append(houseType switch { HouseType.Row => 'r', HouseType.Column => 'c', _ => 'b' });
-				resultBuilder.AppendRange(static integer => integer.ToString(), elements: from house in h select house % 9 + 1);
+				resultBuilder
+					.Append(houseType switch { HouseType.Row => 'r', HouseType.Column => 'c', _ => 'b' })
+					.AppendRange(from house in h select house % 9 + 1, static h => h.ToString());
 			}
 			return resultBuilder.ToString();
 
@@ -254,22 +256,17 @@ public sealed record RxCyConverter(
 		=> new LiteralCoordinateConverter(DefaultSeparator: DefaultSeparator).DigitConverter;
 
 	/// <inheritdoc/>
-	public override Func<ReadOnlySpan<Miniline>, string> IntersectionConverter
-		=> intersections => DefaultSeparator switch
+	public override Func<SegmentCollection, string> SegmentConverter
+		=> segments =>
 		{
-			null or [] => +(
-				from intersection in intersections
-				let baseSet = intersection.Base.Line
-				let coverSet = intersection.Base.Block
-				select $"{GetLabel((byte)(baseSet / 9))}{baseSet % 9 + 1}{GetLabel((byte)(coverSet / 9))}{coverSet % 9 + 1}"
-			),
-			_ => string.Join(
-				DefaultSeparator,
-				from intersection in intersections
-				let baseSet = intersection.Base.Line
-				let coverSet = intersection.Base.Block
-				select $"{GetLabel((byte)(baseSet / 9))}{baseSet % 9 + 1}{GetLabel((byte)(coverSet / 9))}{coverSet % 9 + 1}"
-			)
+			var sb = new StringBuilder();
+			foreach (var segment in segments)
+			{
+				var line = segment.Line;
+				var block = segment.Block;
+				sb.Append($"{HouseConverter(1 << line)}{HouseConverter(1 << block)} ");
+			}
+			return sb.RemoveFromEnd(1).ToString();
 		};
 
 	/// <inheritdoc/>
@@ -402,10 +399,6 @@ public sealed record RxCyConverter(
 			}
 		};
 
-
-	/// <inheritdoc/>
-	[return: NotNullIfNotNull(nameof(formatType))]
-	public override object? GetFormat(Type? formatType) => formatType == typeof(CoordinateConverter) ? this : null;
 
 	/// <summary>
 	/// Get the label of each house.

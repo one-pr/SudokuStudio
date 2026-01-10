@@ -8,7 +8,7 @@ namespace Sudoku.Drawing.Nodes;
 /// <param name="end"><inheritdoc cref="End" path="/summary"/></param>
 /// <param name="digit"><inheritdoc cref="Digit" path="/summary"/></param>
 [method: JsonConstructor]
-public sealed class ConjugateLinkViewNode(ColorIdentifier identifier, Cell start, Cell end, Digit digit) :
+public sealed class ConjugateLinkViewNode(ColorDescriptor identifier, Cell start, Cell end, Digit digit) :
 	ViewNode(identifier),
 	ILinkViewNode
 {
@@ -43,7 +43,7 @@ public sealed class ConjugateLinkViewNode(ColorIdentifier identifier, Cell start
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	public void Deconstruct(out ColorIdentifier identifier, out Cell start, out Cell end, out Digit digit)
+	public void Deconstruct(out ColorDescriptor identifier, out Cell start, out Cell end, out Digit digit)
 		=> (identifier, start, end, digit) = (Identifier, Start, End, Digit);
 
 	/// <inheritdoc/>

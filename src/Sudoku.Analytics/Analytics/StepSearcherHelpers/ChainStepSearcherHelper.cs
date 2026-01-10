@@ -268,7 +268,7 @@ internal sealed class ChainStepSearcherHelper : ChainingStepSearcherHelper
 				{
 					foreach (var nodeSupposedOff in nodesSupposedOff)
 					{
-						var nextNode = nodeSupposedOff >> currentNode;
+						var nextNode = Node.Create(nodeSupposedOff, currentNode);
 
 						////////////////////////////////////////////
 						// Continuous Nice Loop 3) Weak -> Strong //
@@ -341,7 +341,7 @@ internal sealed class ChainStepSearcherHelper : ChainingStepSearcherHelper
 				{
 					foreach (var nodeSupposedOn in nodesSupposedOn)
 					{
-						var nextNode = nodeSupposedOn >> currentNode;
+						var nextNode = Node.Create(nodeSupposedOn, currentNode);
 
 						/////////////////////////////////////////////////
 						// Discontinuous Nice Loop 2) Strong -> Strong //

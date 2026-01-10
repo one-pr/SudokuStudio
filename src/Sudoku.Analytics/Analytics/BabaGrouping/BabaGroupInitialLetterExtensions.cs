@@ -74,11 +74,9 @@ public static class BabaGroupInitialLetterExtensions
 		/// <summary>
 		/// Gets <see cref="BabaGroupInitialLetter"/> instance via the specified culture.
 		/// </summary>
-		/// <param name="provider">The provider.</param>
+		/// <param name="culture">The culture.</param>
 		/// <returns>The instance.</returns>
-		public static BabaGroupInitialLetter GetInstance(IFormatProvider? provider)
-			=> SR.IsEnglish(provider as CultureInfo ?? CultureInfo.CurrentUICulture)
-				? BabaGroupInitialLetter.EnglishLetter_X
-				: BabaGroupInitialLetter.EnglishLetter_A;
+		public static BabaGroupInitialLetter GetInstance(CultureInfo? culture)
+			=> culture is null or { IsEnglish: true } ? BabaGroupInitialLetter.EnglishLetter_X : BabaGroupInitialLetter.EnglishLetter_A;
 	}
 }

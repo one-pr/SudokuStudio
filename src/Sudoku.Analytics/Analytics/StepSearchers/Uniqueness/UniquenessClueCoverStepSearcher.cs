@@ -12,8 +12,8 @@ namespace Sudoku.Analytics.StepSearchers;
 [StepSearcher(
 	"StepSearcherName_UniquenessClueCoverStepSearcher",
 	Technique.UniquenessClueCover,
-	SupportedSudokuTypes = GridType.Standard,
-	SupportAnalyzingMultipleSolutionsPuzzle = false)]
+	SupportsSukaku = false,
+	SupportsAnalyzingPuzzleHavingMultipleSolutions = false)]
 public sealed partial class UniquenessClueCoverStepSearcher : StepSearcher
 {
 	/// <inheritdoc/>
@@ -58,11 +58,11 @@ public sealed partial class UniquenessClueCoverStepSearcher : StepSearcher
 			var digitsMask = (Mask)(1 << c1Digit | 1 << c2Digit);
 			var elimHouseType = isRow ? HouseType.Column : HouseType.Row;
 			var excludedHouseType = isRow ? HouseType.Row : HouseType.Column;
-			var excludedLines = HousesMap[c1 >> excludedHouseType] | HousesMap[c2 >> excludedHouseType];
+			var excludedLines = HousesMap[c1.GetHouse(excludedHouseType)] | HousesMap[c2.GetHouse(excludedHouseType)];
 			var conclusions = new List<Conclusion>(2);
-			foreach (var elimCell in chute & ~excludedLines & (HousesMap[c1 >> elimHouseType] | HousesMap[c2 >> elimHouseType]))
+			foreach (var elimCell in chute & ~excludedLines & (HousesMap[c1.GetHouse(elimHouseType)] | HousesMap[c2.GetHouse(elimHouseType)]))
 			{
-				var correspondingValueCell = (HousesMap[elimCell >> elimHouseType] & chute & valueCells)[0];
+				var correspondingValueCell = (HousesMap[elimCell.GetHouse(elimHouseType)] & chute & valueCells)[0];
 				var elimDigit = BitOperations.TrailingZeroCount((Mask)(digitsMask & ~(1 << grid.GetDigit(correspondingValueCell))));
 				if (CandidatesMap[elimDigit].Contains(elimCell))
 				{
@@ -79,9 +79,9 @@ public sealed partial class UniquenessClueCoverStepSearcher : StepSearcher
 				conclusions.AsMemory(),
 				[
 					[
-						new ChuteViewNode(ColorIdentifier.Normal, chuteIndex),
-						new CellViewNode(ColorIdentifier.Normal, c1),
-						new CellViewNode(ColorIdentifier.Normal, c2)
+						new ChuteViewNode(ColorDescriptorAlias.Normal, chuteIndex),
+						new CellViewNode(ColorDescriptorAlias.Normal, c1),
+						new CellViewNode(ColorDescriptorAlias.Normal, c2)
 					]
 				],
 				context.Options,

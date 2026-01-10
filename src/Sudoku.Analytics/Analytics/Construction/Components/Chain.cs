@@ -13,8 +13,6 @@ public abstract partial class Chain :
 	IEnumerable<Node>,
 	IEquatable<Chain>,
 	IEqualityOperators<Chain, Chain, bool>,
-	IFormattable,
-	IParsable<Chain>,
 	IReadOnlyList<Node>,
 	IReadOnlyCollection<Node>
 {
@@ -82,7 +80,7 @@ public abstract partial class Chain :
 			var nodes = (List<Node>)[lastNode];
 			for (var node = (Node)lastNode.Parents!; isLoop ? node != lastNode : node is not null; node = (Node)node.Parents!)
 			{
-				nodes.Add(node >> null);
+				nodes.Add(Node.Create(node, null));
 			}
 			_nodes = [.. nodes];
 
@@ -387,18 +385,19 @@ public abstract partial class Chain :
 	public abstract int CompareTo(Chain? other);
 
 	/// <inheritdoc/>
-	public abstract override string ToString();
+	public sealed override string ToString() => ToString(CoordinateConverter.InvariantCulture);
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider)
+	/// <inheritdoc/>
+	public string ToString(CultureInfo culture) => ToString(CoordinateConverter.GetInstance(culture));
+
+	/// <inheritdoc/>
+	public string ToString(CoordinateConverter converter)
 	{
 		return IsDynamic
 			? $"{getDynamicSpaces(StrongLinks)}; {getDynamicSpaces(WeakLinks)}"
-			: formatProvider switch
-			{
-				ChainFormatInfo f => ChainFormatInfo.FormatCoreUnsafeAccessor(f, this),
-				_ => ToString(ChainFormatInfo.Standard)
-			};
+			: new CustomizedChainConverter { CustomizedCandidateConverter = converter }.TryFormat(this, null, out var result)
+				? result
+				: throw new FormatException();
 
 
 		static SpaceSet getDynamicSpaces(ReadOnlySpan<Link> links)
@@ -441,6 +440,13 @@ public abstract partial class Chain :
 		}
 	}
 
+	/// <inheritdoc/>
+	public string ToString(IChainConverter converter) => ToString(converter, null);
+
+	/// <inheritdoc/>
+	public string ToString(IChainConverter converter, IFormatProvider? formatProvider)
+		=> converter.TryFormat(this, null, out var result) ? result : throw new FormatException();
+
 	/// <summary>
 	/// Slices the collection with the specified start node and its length.
 	/// </summary>
@@ -453,49 +459,10 @@ public abstract partial class Chain :
 	public Enumerator GetEnumerator() => new(this);
 
 	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
-
-	/// <inheritdoc/>
 	IEnumerator IEnumerable.GetEnumerator() => _nodes.GetEnumerator();
 
 	/// <inheritdoc/>
 	IEnumerator<Node> IEnumerable<Node>.GetEnumerator() => _nodes.AsEnumerable().GetEnumerator();
-
-
-	/// <inheritdoc cref="TryParse(string?, IFormatProvider?, out Chain)"/>
-	public static bool TryParse([NotNullWhen(true)] string? s, [NotNullWhen(true)] out Chain? result)
-		=> TryParse(s, null, out result);
-
-	/// <inheritdoc/>
-	public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out Chain result)
-	{
-		try
-		{
-			if (s is null)
-			{
-				result = null;
-				return false;
-			}
-
-			result = Parse(s, provider);
-			return true;
-		}
-		catch (FormatException)
-		{
-			result = null;
-			return false;
-		}
-	}
-
-	/// <inheritdoc cref="Parse(string, IFormatProvider?)"/>
-	public static Chain Parse(string s) => Parse(s, null);
-
-	/// <inheritdoc/>
-	public static Chain Parse(string s, IFormatProvider? provider)
-	{
-		var parser = (ChainFormatInfo)((provider as ChainFormatInfo) ?? ChainFormatInfo.Standard);
-		return ChainFormatInfo.ParseCoreUnsafeAccessor(parser, s);
-	}
 
 
 	/// <inheritdoc/>

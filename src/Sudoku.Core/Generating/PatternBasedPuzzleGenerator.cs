@@ -90,7 +90,7 @@ public readonly ref struct PatternBasedPuzzleGenerator(ref readonly CellMap seed
 				continue;
 			}
 
-			if (!cancellationToken)
+			if (cancellationToken.IsCancellationRequested)
 			{
 				return true;
 			}
@@ -130,16 +130,16 @@ public readonly ref struct PatternBasedPuzzleGenerator(ref readonly CellMap seed
 						continue;
 					}
 
-					if (i >> HouseType.Block == j >> HouseType.Block
-						|| i >> HouseType.Row == j >> HouseType.Row
-						|| i >> HouseType.Column == j >> HouseType.Column)
+					if (i.GetHouse(HouseType.Block) == j.GetHouse(HouseType.Block)
+						|| i.GetHouse(HouseType.Row) == j.GetHouse(HouseType.Row)
+						|| i.GetHouse(HouseType.Column) == j.GetHouse(HouseType.Column))
 					{
 						rating += isOrdered.Contains(j) ? 10000 : 100;
 					}
 
 					if (!isOrdered.Contains(j)
 						&& (i.Band == j.Band || i.Tower == j.Tower)
-						&& i >> HouseType.Block == j >> HouseType.Block)
+						&& i.GetHouse(HouseType.Block) == j.GetHouse(HouseType.Block))
 					{
 						rating++;
 					}

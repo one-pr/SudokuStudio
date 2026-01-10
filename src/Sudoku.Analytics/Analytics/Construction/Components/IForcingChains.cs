@@ -3,7 +3,7 @@ namespace Sudoku.Analytics.Construction.Components;
 /// <summary>
 /// Represents a forcing chains component.
 /// </summary>
-public interface IForcingChains : IChainOrForcingChains, IFormattable
+public interface IForcingChains : IChainOrForcingChains
 {
 	/// <summary>
 	/// Indicates the complexity of the whole pattern.
@@ -75,7 +75,4 @@ public interface IForcingChains : IChainOrForcingChains, IFormattable
 	/// <param name="newConclusions">The conclusions used.</param>
 	/// <returns>A list of nodes.</returns>
 	protected ReadOnlySpan<ViewNode[]> GetViewsCore(in Grid grid, ChainingRuleCollection rules, Conclusion[] newConclusions);
-
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
 }

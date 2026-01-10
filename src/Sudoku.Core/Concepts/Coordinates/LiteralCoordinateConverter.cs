@@ -158,23 +158,20 @@ public sealed record LiteralCoordinateConverter(
 		};
 
 	/// <inheritdoc/>
-	public override Func<ReadOnlySpan<Miniline>, string> IntersectionConverter
-		=> intersections =>
+	public override Func<SegmentCollection, string> SegmentConverter
+		=> segments =>
 		{
 			return string.Join(
 				DefaultSeparator,
-				from intersection in intersections
-				let baseSet = intersection.Base.Line
-				let coverSet = intersection.Base.Block
-				select string.Format(
-					SR.Get("LockedCandidatesLabel", TargetCurrentCulture),
-					[labelKey(baseSet), labelKey(coverSet)]
-				)
+				from segment in segments
+				let baseSet = segment.Line
+				let coverSet = segment.Block
+				select string.Format(SR.Get("LockedCandidatesLabel", TargetCurrentCulture), [labelKey(baseSet), labelKey(coverSet)])
 			);
 
 
-			string labelKey(byte house)
-				=> ((House)house).HouseType switch
+			string labelKey(House house)
+				=> house.HouseType switch
 				{
 					HouseType.Block => string.Format(SR.Get("BlockLabel", TargetCurrentCulture), house % 9 + 1),
 					HouseType.Row => string.Format(SR.Get("RowLabel", TargetCurrentCulture), house % 9 + 1),
@@ -214,9 +211,4 @@ public sealed record LiteralCoordinateConverter(
 			}
 			return string.Join(DefaultSeparator, snippets);
 		};
-
-
-	/// <inheritdoc/>
-	[return: NotNullIfNotNull(nameof(formatType))]
-	public override object? GetFormat(Type? formatType) => formatType == typeof(CoordinateConverter) ? this : null;
 }

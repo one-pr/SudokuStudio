@@ -295,20 +295,51 @@ public class MultipleForcingChains(params Conclusion[] conclusions) :
 	}
 
 	/// <inheritdoc/>
-	public sealed override string ToString() => ToString(null);
+	public sealed override string ToString() => ToString(CoordinateConverter.InvariantCulture);
 
 	/// <inheritdoc/>
-	public string ToString(IFormatProvider? formatProvider)
-	{
-		var converter = CoordinateConverter.GetInstance(formatProvider);
-		return string.Join(
+	public string ToString(CultureInfo culture) => ToString(CoordinateConverter.GetInstance(culture));
+
+	/// <inheritdoc/>
+	public string ToString(CoordinateConverter converter)
+		=> ToString(new CustomizedChainConverter { CustomizedCandidateConverter = converter });
+
+	/// <inheritdoc/>
+	public string ToString(IChainConverter converter) => ToString(converter, default(IFormatProvider));
+
+	/// <inheritdoc/>
+	public string ToString(IChainConverter converter, IFormatProvider? formatProvider)
+		=> ToString(converter, formatProvider, CoordinateConverter.InvariantCulture);
+
+	/// <inheritdoc cref="ToString(IChainConverter, IFormatProvider?, ICandidateMapConverter)"/>
+	public string ToString(IChainConverter converter, ICandidateMapConverter branchKeyConverter)
+		=> ToString(converter, null, branchKeyConverter);
+
+	/// <inheritdoc cref="ToString(IChainConverter, IFormatProvider?, ICandidateMapConverter)"/>
+	public string ToString(IChainConverter converter, IFormatProvider? formatProvider, CoordinateConverter branchKeyConverter)
+		=> string.Join(
 			", ",
 			from kvp in this
 			let candidate = kvp.Key
 			let pattern = kvp.Value
-			select $"{Candidate.ToCandidateString(candidate, converter)}: {pattern.ToString(converter)}"
+			select $"{Candidate.ToCandidateString(candidate, branchKeyConverter)}: {pattern.ToString(converter, formatProvider)}"
 		);
-	}
+
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation via the specified converter.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <param name="formatProvider">The format provider.</param>
+	/// <param name="branchKeyConverter">The branch key (candidate) converter.</param>
+	/// <returns>The string.</returns>
+	public string ToString(IChainConverter converter, IFormatProvider? formatProvider, ICandidateMapConverter branchKeyConverter)
+		=> string.Join(
+			", ",
+			from kvp in this
+			let candidate = kvp.Key
+			let pattern = kvp.Value
+			select $"{Candidate.ToCandidateString(candidate, branchKeyConverter)}: {pattern.ToString(converter, formatProvider)}"
+		);
 
 	/// <summary>
 	/// Try to get all possible conclusions of the multiple forcing chains.
@@ -369,7 +400,7 @@ public class MultipleForcingChains(params Conclusion[] conclusions) :
 	{
 		views = [
 			[
-				.. from candidate in fins select new CandidateViewNode(ColorIdentifier.Auxiliary1, candidate),
+				.. from candidate in fins select new CandidateViewNode(ColorDescriptorAlias.Auxiliary1, candidate),
 				.. finnedChain.MonoparentChainGetViews(grid, supportedRules)[0]
 			]
 		];
@@ -380,7 +411,7 @@ public class MultipleForcingChains(params Conclusion[] conclusions) :
 			if (node is CandidateViewNode { Candidate: var candidate } && fins.Contains(candidate))
 			{
 				views[0].Remove(node);
-				views[0].Add(new CandidateViewNode(ColorIdentifier.Auxiliary2, candidate));
+				views[0].Add(new CandidateViewNode(ColorDescriptorAlias.Auxiliary2, candidate));
 			}
 		}
 	}
@@ -393,8 +424,8 @@ public class MultipleForcingChains(params Conclusion[] conclusions) :
 	protected virtual ReadOnlySpan<ViewNode> GetInitialViewNodes(in Grid grid)
 		=> (ViewNode[])[
 			IsCellMultiple
-				? new CellViewNode(ColorIdentifier.Normal, this.First().Key / 9)
-				: new HouseViewNode(ColorIdentifier.Normal, BitOperations.TrailingZeroCount(Candidates.Cells.SharedHouses))
+				? new CellViewNode(ColorDescriptorAlias.Normal, this.First().Key / 9)
+				: new HouseViewNode(ColorDescriptorAlias.Normal, BitOperations.TrailingZeroCount(Candidates.Cells.SharedHouses))
 		];
 
 	/// <inheritdoc/>
@@ -447,8 +478,8 @@ public class MultipleForcingChains(params Conclusion[] conclusions) :
 				// the coloring will be wrong due to lack of an reversion-back operation.
 				// I'll adjust the backing logic in the future.
 				var id = isDynamicChaining
-					? node.IsOn ? ColorIdentifier.Normal : ColorIdentifier.Auxiliary1
-					: (++j & 1) == 0 ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal;
+					? node.IsOn ? ColorDescriptorAlias.Normal : ColorDescriptorAlias.Auxiliary1
+					: (++j & 1) == 0 ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal;
 				foreach (var candidate in node.Map)
 				{
 					var currentViewNode = new CandidateViewNode(id, candidate);
@@ -466,7 +497,7 @@ public class MultipleForcingChains(params Conclusion[] conclusions) :
 					continue;
 				}
 
-				var currentViewNode = new ChainLinkViewNode(ColorIdentifier.Normal, firstNode.Map, secondNode.Map, isStrong);
+				var currentViewNode = new ChainLinkViewNode(ColorDescriptorAlias.Normal, firstNode.Map, secondNode.Map, isStrong);
 				globalView.Add(currentViewNode);
 				subview.Add(currentViewNode);
 			}

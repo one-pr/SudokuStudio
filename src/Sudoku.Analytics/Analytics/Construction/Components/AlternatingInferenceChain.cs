@@ -80,7 +80,7 @@ public sealed class AlternatingInferenceChain(Node lastNode) : NamedChain(lastNo
 		&& Links is [
 			var a and ({ GroupedLinkPattern: AlmostLockedSetPattern } or { IsBivalueCellLink: true }),
 			_,
-			{ IsStrictlyGrouped: true },
+		{ IsStrictlyGrouped: true },
 			_,
 			var b and ({ GroupedLinkPattern: AlmostLockedSetPattern } or { IsBivalueCellLink: true })
 		]
@@ -122,12 +122,12 @@ public sealed class AlternatingInferenceChain(Node lastNode) : NamedChain(lastNo
 		=> this switch
 		{
 			[
-				{ Map.Digits: var m1 },
-				{ Map.Digits: var m2 },
-				{ Map.Digits: var m3 },
-				{ Map.Digits: var m4 },
-				{ Map.Digits: var m5 },
-				{ Map.Digits: var m6 }
+			{ Map.Digits: var m1 },
+			{ Map.Digits: var m2 },
+			{ Map.Digits: var m3 },
+			{ Map.Digits: var m4 },
+			{ Map.Digits: var m5 },
+			{ Map.Digits: var m6 }
 			]
 				=> BitOperations.IsPow2(m1) && BitOperations.IsPow2(m2) && BitOperations.IsPow2(m3)
 				&& BitOperations.IsPow2(m4) && BitOperations.IsPow2(m5) && BitOperations.IsPow2(m6)
@@ -319,9 +319,6 @@ public sealed class AlternatingInferenceChain(Node lastNode) : NamedChain(lastNo
 		}
 		return 0;
 	}
-
-	/// <inheritdoc/>
-	public override string ToString() => ((IFormattable)this).ToString(null, null);
 
 	/// <inheritdoc/>
 	public override ConclusionSet GetConclusions(in Grid grid) => [.. EliminationCalculator.Chain.GetConclusions(grid, First, Last)];

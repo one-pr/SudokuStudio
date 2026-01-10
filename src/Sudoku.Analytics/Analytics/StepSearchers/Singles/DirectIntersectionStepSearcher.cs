@@ -60,7 +60,7 @@ public sealed partial class DirectIntersectionStepSearcher : StepSearcher
 		ref readonly var grid = ref context.Grid;
 		var emptyCells = grid.EmptyCells;
 		var candidatesMap = grid.CandidatesMap;
-		foreach (var ((bs, cs), (a, b, c, _)) in Miniline.Map)
+		foreach (var ((bs, cs), (a, b, c, _)) in Segments.Map)
 		{
 			if (!LockedCandidates.IsLockedCandidates(grid, a, b, c, emptyCells, out var m))
 			{
@@ -156,12 +156,12 @@ public sealed partial class DirectIntersectionStepSearcher : StepSearcher
 				Array.Single(new Conclusion(Assignment, lastCell, lastDigit)),
 				[
 					[
-						.. from cell in intersection select new CandidateViewNode(ColorIdentifier.Normal, cell * 9 + digit),
+						.. from cell in intersection select new CandidateViewNode(ColorDescriptorAlias.Normal, cell * 9 + digit),
 						.. Excluder.GetLockedCandidatesExcluders(grid, digit, baseSet, intersection),
-						new CandidateViewNode(ColorIdentifier.Elimination, lastCell * 9 + digit),
-						new HouseViewNode(ColorIdentifier.Normal, baseSet),
-						new HouseViewNode(ColorIdentifier.Auxiliary1, coverSet),
-						new HouseViewNode(ColorIdentifier.Auxiliary3, house)
+						new CandidateViewNode(ColorDescriptorAlias.Elimination, lastCell * 9 + digit),
+						new HouseViewNode(ColorDescriptorAlias.Normal, baseSet),
+						new HouseViewNode(ColorDescriptorAlias.Auxiliary1, coverSet),
+						new HouseViewNode(ColorDescriptorAlias.Auxiliary3, house)
 					]
 				],
 				context.Options,
@@ -229,16 +229,16 @@ public sealed partial class DirectIntersectionStepSearcher : StepSearcher
 				[
 					[
 						.. Excluder.GetHiddenSingleExcluders(grid, digit, house, lastCell, out var chosenCells, out _),
-						.. from cell in intersection select new CandidateViewNode(ColorIdentifier.Normal, cell * 9 + digit),
+						.. from cell in intersection select new CandidateViewNode(ColorDescriptorAlias.Normal, cell * 9 + digit),
 						.. Excluder.GetLockedCandidatesExcluders(grid, digit, baseSet, intersection),
 						..
 						from cell in HousesMap[house] & elimMap
-						select new CandidateViewNode(ColorIdentifier.Elimination, cell * 9 + digit),
-						new DiamondViewNode(ColorIdentifier.Auxiliary3, lastCell),
-						new CandidateViewNode(ColorIdentifier.Elimination, lastCell * 9 + digit),
-						new HouseViewNode(ColorIdentifier.Normal, baseSet),
-						new HouseViewNode(ColorIdentifier.Auxiliary1, coverSet),
-						new HouseViewNode(ColorIdentifier.Auxiliary3, house)
+						select new CandidateViewNode(ColorDescriptorAlias.Elimination, cell * 9 + digit),
+						new DiamondViewNode(ColorDescriptorAlias.Auxiliary3, lastCell),
+						new CandidateViewNode(ColorDescriptorAlias.Elimination, lastCell * 9 + digit),
+						new HouseViewNode(ColorDescriptorAlias.Normal, baseSet),
+						new HouseViewNode(ColorDescriptorAlias.Auxiliary1, coverSet),
+						new HouseViewNode(ColorDescriptorAlias.Auxiliary3, house)
 					]
 				],
 				context.Options,
@@ -303,13 +303,13 @@ public sealed partial class DirectIntersectionStepSearcher : StepSearcher
 				Array.Single(new Conclusion(Assignment, lastCell, lastDigit)),
 				[
 					[
-						.. from cell in intersection select new CandidateViewNode(ColorIdentifier.Normal, cell * 9 + digit),
+						.. from cell in intersection select new CandidateViewNode(ColorDescriptorAlias.Normal, cell * 9 + digit),
 						.. Excluder.GetNakedSingleExcluders(grid, lastCell, lastDigit, out _),
 						.. Excluder.GetLockedCandidatesExcluders(grid, digit, baseSet, intersection),
-						new DiamondViewNode(ColorIdentifier.Auxiliary3, lastCell),
-						new CandidateViewNode(ColorIdentifier.Elimination, lastCell * 9 + digit),
-						new HouseViewNode(ColorIdentifier.Normal, baseSet),
-						new HouseViewNode(ColorIdentifier.Auxiliary1, coverSet)
+						new DiamondViewNode(ColorDescriptorAlias.Auxiliary3, lastCell),
+						new CandidateViewNode(ColorDescriptorAlias.Elimination, lastCell * 9 + digit),
+						new HouseViewNode(ColorDescriptorAlias.Normal, baseSet),
+						new HouseViewNode(ColorDescriptorAlias.Auxiliary1, coverSet)
 					]
 				],
 				context.Options,

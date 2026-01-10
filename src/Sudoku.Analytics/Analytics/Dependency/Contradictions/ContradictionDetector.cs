@@ -208,7 +208,7 @@ public static class ContradictionDetector
 	{
 		var emptyCells = grid.EmptyCells;
 		var candidatesMap = grid.CandidatesMap;
-		foreach (var ((baseSet, coverSet), (a, b, c, _)) in Miniline.Map)
+		foreach (var ((baseSet, coverSet), (a, b, c, _)) in Segments.Map)
 		{
 			// Check whether the locked candidates pattern can be formed or not.
 			if (!LockedCandidates.IsLockedCandidates(grid, a, b, c, emptyCells, out var digitsMaskFormingLockedCandidates))

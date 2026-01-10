@@ -70,6 +70,6 @@ public sealed class GridClickedEventArgs(MouseButton mouseButton, Candidate cand
 	public static (int Megarow, int Megacolumn) GetChute(Candidate candidate)
 	{
 		var cell = candidate / 9;
-		return (((cell >> HouseType.Row) - 9) / 3, ((cell >> HouseType.Column) - 18) / 3);
+		return ((cell.GetHouse(HouseType.Row) - 9) / 3, (cell.GetHouse(HouseType.Column) - 18) / 3);
 	}
 }

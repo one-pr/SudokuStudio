@@ -53,7 +53,8 @@ public sealed class BinaryForcingChainsStep(
 			)
 		];
 
-	private string ChainsStr => Casted.ToString(new ChainFormatInfo(Options.Converter));
+	private string ChainsStr
+		=> Casted.ToString(new CustomizedChainConverter { CustomizedCandidateConverter = Options.Converter });
 
 	private BinaryForcingChains Casted => (BinaryForcingChains)Pattern;
 }

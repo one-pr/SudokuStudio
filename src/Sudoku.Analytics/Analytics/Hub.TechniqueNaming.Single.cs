@@ -25,7 +25,7 @@ public partial class Hub
 				{
 					foreach (var houseType in HouseTypes)
 					{
-						if (HousesMap[chosenCell >> houseType] & houseCells)
+						if (HousesMap[chosenCell.GetHouse(houseType)] & houseCells)
 						{
 							(houseType == HouseType.Block ? ref b : ref houseType == HouseType.Row ? ref r : ref c)++;
 							break;
@@ -54,7 +54,7 @@ public partial class Hub
 				var (valuesCountInBlock, valuesCountInRow, valuesCountInColumn) = (0, 0, 0);
 				foreach (var houseType in HouseTypes)
 				{
-					foreach (var c in HousesMap[cell >> houseType])
+					foreach (var c in HousesMap[cell.GetHouse(houseType)])
 					{
 						if (grid.GetState(c) != CellState.Empty)
 						{

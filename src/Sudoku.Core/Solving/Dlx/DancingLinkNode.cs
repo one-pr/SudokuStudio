@@ -4,7 +4,7 @@ namespace Sudoku.Solving.Dlx;
 /// Represents a dancing link node.
 /// </summary>
 [DebuggerDisplay($$"""{{{nameof(ToString)}}(),nq}""")]
-public class DancingLinkNode : IFormattable
+public class DancingLinkNode
 {
 	/// <summary>
 	/// Initializes a <see cref="DancingLinkNode"/> instance via the specified ID value and the column node.
@@ -54,10 +54,21 @@ public class DancingLinkNode : IFormattable
 
 
 	/// <inheritdoc/>
-	public override string ToString() => ToString(null);
+	public override string ToString() => ToString(CoordinateConverter.InvariantCulture);
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider)
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation using the specified culture.
+	/// </summary>
+	/// <param name="culture">The culture.</param>
+	/// <returns>The string.</returns>
+	public string ToString(CultureInfo culture) => ToString(CoordinateConverter.GetInstance(culture));
+
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation using the specified converter.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <returns>The string.</returns>
+	public string ToString(CoordinateConverter converter)
 	{
 		var sb = new StringBuilder();
 		sb.Append($"{nameof(DancingLinkNode)} {{ ");
@@ -71,7 +82,6 @@ public class DancingLinkNode : IFormattable
 
 		string f(Candidate candidate)
 		{
-			var converter = CoordinateConverter.GetInstance(formatProvider);
 			return candidate == -1
 				? "<invalid>"
 				: candidate switch
@@ -86,7 +96,4 @@ public class DancingLinkNode : IFormattable
 				};
 		}
 	}
-
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
 }

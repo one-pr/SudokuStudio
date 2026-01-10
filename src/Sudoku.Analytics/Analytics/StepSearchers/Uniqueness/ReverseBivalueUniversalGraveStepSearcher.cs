@@ -14,8 +14,8 @@ namespace Sudoku.Analytics.StepSearchers;
 	"StepSearcherName_ReverseBivalueUniversalGraveStepSearcher",
 	Technique.ReverseBivalueUniversalGraveType1, Technique.ReverseBivalueUniversalGraveType2,
 	Technique.ReverseBivalueUniversalGraveType3, Technique.ReverseBivalueUniversalGraveType4,
-	SupportedSudokuTypes = GridType.Standard,
-	SupportAnalyzingMultipleSolutionsPuzzle = false)]
+	SupportsSukaku = false,
+	SupportsAnalyzingPuzzleHavingMultipleSolutions = false)]
 public sealed partial class ReverseBivalueUniversalGraveStepSearcher : StepSearcher
 {
 	/// <summary>
@@ -232,7 +232,7 @@ public sealed partial class ReverseBivalueUniversalGraveStepSearcher : StepSearc
 		var cellOffsets = new List<CellViewNode>(completePattern.Count);
 		foreach (var cell in completePattern)
 		{
-			cellOffsets.Add(new(cellsChosen.Contains(cell) ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, cell));
+			cellOffsets.Add(new(cellsChosen.Contains(cell) ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, cell));
 		}
 
 		var step = new ReverseBivalueUniversalGraveType1Step(
@@ -292,7 +292,7 @@ public sealed partial class ReverseBivalueUniversalGraveStepSearcher : StepSearc
 		var cellOffsets = new List<CellViewNode>(completePattern.Count);
 		foreach (var cell in completePattern)
 		{
-			cellOffsets.Add(new(cellsChosen.Contains(cell) ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, cell));
+			cellOffsets.Add(new(cellsChosen.Contains(cell) ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, cell));
 		}
 
 		var candidateOffsets = new List<CandidateViewNode>();
@@ -302,7 +302,7 @@ public sealed partial class ReverseBivalueUniversalGraveStepSearcher : StepSearc
 			{
 				candidateOffsets.Add(
 					new(
-						digit == extraDigit ? ColorIdentifier.Normal : ColorIdentifier.Auxiliary1,
+						digit == extraDigit ? ColorDescriptorAlias.Normal : ColorDescriptorAlias.Auxiliary1,
 						cell * 9 + digit
 					)
 				);
@@ -414,7 +414,7 @@ public sealed partial class ReverseBivalueUniversalGraveStepSearcher : StepSearc
 				var cellOffsets = new List<CellViewNode>(completePattern.Count);
 				foreach (var cell in completePattern)
 				{
-					cellOffsets.Add(new(cellsChosen.Contains(cell) ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, cell));
+					cellOffsets.Add(new(cellsChosen.Contains(cell) ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, cell));
 				}
 
 				var candidateOffsets = new List<CandidateViewNode>(cellsChosen.Count);
@@ -424,7 +424,7 @@ public sealed partial class ReverseBivalueUniversalGraveStepSearcher : StepSearc
 					{
 						candidateOffsets.Add(
 							new(
-								(comparer >> digit & 1) == 0 ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal,
+								(comparer >> digit & 1) == 0 ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal,
 								cell * 9 + digit
 							)
 						);
@@ -434,7 +434,7 @@ public sealed partial class ReverseBivalueUniversalGraveStepSearcher : StepSearc
 				{
 					foreach (var digit in grid.GetCandidates(cell))
 					{
-						candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + digit));
+						candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, cell * 9 + digit));
 					}
 				}
 
@@ -444,7 +444,7 @@ public sealed partial class ReverseBivalueUniversalGraveStepSearcher : StepSearc
 						[
 							.. cellOffsets,
 							.. candidateOffsets,
-							new HouseViewNode(ColorIdentifier.Normal, house),
+							new HouseViewNode(ColorDescriptorAlias.Normal, house),
 							.. GetLinkViewNodes(separatedLoops)
 						]
 					],
@@ -536,7 +536,7 @@ public sealed partial class ReverseBivalueUniversalGraveStepSearcher : StepSearc
 			var cellOffsets = new List<CellViewNode>(completePattern.Count);
 			foreach (var cell in completePattern)
 			{
-				cellOffsets.Add(new(cellsChosen.Contains(cell) ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal, cell));
+				cellOffsets.Add(new(cellsChosen.Contains(cell) ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal, cell));
 			}
 
 			var step = new ReverseBivalueUniversalGraveType4Step(
@@ -544,22 +544,22 @@ public sealed partial class ReverseBivalueUniversalGraveStepSearcher : StepSearc
 				[
 					[
 						.. cellOffsets,
-						new CandidateViewNode(ColorIdentifier.Auxiliary1, conjugatePairCellInnerPattern * 9 + selectedDigit),
-						new CandidateViewNode(ColorIdentifier.Auxiliary1, conjugatePairCellOuterPattern * 9 + selectedDigit),
+						new CandidateViewNode(ColorDescriptorAlias.Auxiliary1, conjugatePairCellInnerPattern * 9 + selectedDigit),
+						new CandidateViewNode(ColorDescriptorAlias.Auxiliary1, conjugatePairCellOuterPattern * 9 + selectedDigit),
 						new ConjugateLinkViewNode(
-							ColorIdentifier.Normal,
+							ColorDescriptorAlias.Normal,
 							possibleConjugatePairCells[0],
 							possibleConjugatePairCells[1],
 							selectedDigit
 						),
 						new ChainLinkViewNode(
-							ColorIdentifier.Normal,
+							ColorDescriptorAlias.Normal,
 							[conjugatePairCellInnerPattern * 9 + selectedDigit],
 							[anotherCell * 9 + selectedDigit],
 							false
 						),
 						new ChainLinkViewNode(
-							ColorIdentifier.Normal,
+							ColorDescriptorAlias.Normal,
 							[conjugatePairCellOuterPattern * 9 + selectedDigit],
 							[anotherCell * 9 + selectedDigit],
 							false
@@ -733,7 +733,7 @@ public sealed partial class ReverseBivalueUniversalGraveStepSearcher : StepSearc
 		{
 			foreach (var (first, second) in hamiltonianLoop.EnumerateAdjacentCells())
 			{
-				links.Add(new(ColorIdentifier.Normal, first, second));
+				links.Add(new(ColorDescriptorAlias.Normal, first, second));
 			}
 		}
 		return links.AsSpan();

@@ -61,7 +61,7 @@ public static class GridSnyderExtensions
 					{
 						if (step.Code.ToString() | &SnyderTechnique.Parse | (f => techniques.HasFlag(f)))
 						{
-							gridResetCandidates >>= step;
+							gridResetCandidates.Apply(step);
 						}
 					}
 					return @this != gridResetCandidates;

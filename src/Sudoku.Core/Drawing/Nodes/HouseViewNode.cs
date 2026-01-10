@@ -6,7 +6,7 @@ namespace Sudoku.Drawing.Nodes;
 /// <param name="identifier"><inheritdoc/></param>
 /// <param name="house"><inheritdoc cref="House" path="/summary"/></param>
 [method: JsonConstructor]
-public sealed class HouseViewNode(ColorIdentifier identifier, House house) : BasicViewNode(identifier)
+public sealed class HouseViewNode(ColorDescriptor identifier, House house) : BasicViewNode(identifier)
 {
 	/// <summary>
 	/// Indicates the house highlighted.
@@ -15,7 +15,7 @@ public sealed class HouseViewNode(ColorIdentifier identifier, House house) : Bas
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	public void Deconstruct(out ColorIdentifier identifier, out House house) => (identifier, house) = (Identifier, House);
+	public void Deconstruct(out ColorDescriptor identifier, out House house) => (identifier, house) = (Identifier, House);
 
 	/// <inheritdoc/>
 	public override bool Equals([NotNullWhen(true)] ViewNode? other)

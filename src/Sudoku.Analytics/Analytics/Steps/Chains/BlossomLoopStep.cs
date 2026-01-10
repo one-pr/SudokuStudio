@@ -80,7 +80,7 @@ public sealed class BlossomLoopStep(ReadOnlyMemory<Conclusion> conclusions, View
 			)
 		];
 
-	private string BurredLoopStr => Casted.ToString(new ChainFormatInfo(Options.Converter));
+	private string BurredLoopStr => Casted.ToString(new CustomizedChainConverter { CustomizedCandidateConverter = Options.Converter });
 
 	private BlossomLoop Casted => (BlossomLoop)Pattern;
 

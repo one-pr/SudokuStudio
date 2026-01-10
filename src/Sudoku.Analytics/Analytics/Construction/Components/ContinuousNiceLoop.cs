@@ -237,9 +237,6 @@ public sealed class ContinuousNiceLoop(Node lastNode) : NamedChain(lastNode, tru
 	public override int CompareTo(Chain? other) => CompareTo(other as ContinuousNiceLoop);
 
 	/// <inheritdoc/>
-	public override string ToString() => ((IFormattable)this).ToString(null, null);
-
-	/// <inheritdoc/>
 	public override ConclusionSet GetConclusions(in Grid grid)
 	{
 		var result = new ConclusionSet();

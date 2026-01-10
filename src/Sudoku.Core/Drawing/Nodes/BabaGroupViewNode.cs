@@ -8,15 +8,15 @@ namespace Sudoku.Drawing.Nodes;
 /// <param name="unknownValueChar"><inheritdoc cref="UnknownValueChar" path="/summary"/></param>
 /// <param name="digitsMask"><inheritdoc cref="DigitsMask" path="/summary"/></param>
 [method: JsonConstructor]
-public sealed class BabaGroupViewNode(ColorIdentifier identifier, Cell cell, char unknownValueChar, Mask digitsMask) :
+public sealed class BabaGroupViewNode(ColorDescriptor identifier, Cell cell, char unknownValueChar, Mask digitsMask) :
 	BasicViewNode(identifier)
 {
 	/// <summary>
 	/// Initializes a <see cref="BabaGroupViewNode"/> instance via the specified values.
 	/// </summary>
-	/// <inheritdoc cref="BabaGroupViewNode(ColorIdentifier, Cell, char, Mask)"/>
+	/// <inheritdoc cref="BabaGroupViewNode(ColorDescriptor, Cell, char, Mask)"/>
 	public BabaGroupViewNode(Cell cell, char unknownValueChar, Mask digitsMask) :
-		this(ColorIdentifier.Normal, cell, unknownValueChar, digitsMask)
+		this(ColorDescriptorAlias.Normal, cell, unknownValueChar, digitsMask)
 	{
 	}
 
@@ -38,11 +38,11 @@ public sealed class BabaGroupViewNode(ColorIdentifier identifier, Cell cell, cha
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	public void Deconstruct(out ColorIdentifier identifier, out Cell cell, out char unknownValueChar)
+	public void Deconstruct(out ColorDescriptor identifier, out Cell cell, out char unknownValueChar)
 		=> (identifier, cell, unknownValueChar) = (Identifier, Cell, UnknownValueChar);
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	public void Deconstruct(out ColorIdentifier identifier, out Cell cell, out Mask digitsMask, out char unknownValueChar)
+	public void Deconstruct(out ColorDescriptor identifier, out Cell cell, out Mask digitsMask, out char unknownValueChar)
 		=> ((identifier, cell, unknownValueChar), digitsMask) = (this, DigitsMask);
 
 	/// <inheritdoc/>
@@ -55,7 +55,7 @@ public sealed class BabaGroupViewNode(ColorIdentifier identifier, Cell cell, cha
 	/// <inheritdoc/>
 	public override string ToString()
 	{
-		var cellsString = Cell.ToCellString(Cell, CoordinateConverter.InvariantCultureInstance);
+		var cellsString = Cell.ToCellString(Cell, CoordinateConverter.InvariantCulture);
 		var digitsString = Convert.ToString(DigitsMask, 2).ToString();
 		return $"{nameof(BabaGroupViewNode)} {{ {nameof(UnknownValueChar)} = {UnknownValueChar}, Cell = {cellsString}, Digits = {digitsString}, Identifier = {Identifier} }}";
 	}

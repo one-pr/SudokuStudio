@@ -21,7 +21,7 @@ public sealed partial record RxCyParser : CoordinateParser
 			}
 
 			var result = CellMap.Empty;
-			foreach (var match in matches.Cast<Match>())
+			foreach (var match in from match in matches select match)
 			{
 				var s = match.Value;
 				var indexOfColumnLabel = s.IndexOfAny(['C', 'c']);
@@ -54,7 +54,7 @@ public sealed partial record RxCyParser : CoordinateParser
 			}
 
 			var result = CandidateMap.Empty;
-			foreach (var match in matches.Cast<Match>())
+			foreach (var match in from match in matches select match)
 			{
 				var s = match.Value;
 				if (s.Contains('('))
@@ -113,7 +113,7 @@ public sealed partial record RxCyParser : CoordinateParser
 			}
 
 			var result = 0;
-			foreach (var match in matches.Cast<Match>())
+			foreach (var match in from match in matches select match)
 			{
 				var s = match.Value;
 				var label = s[0];
@@ -141,7 +141,7 @@ public sealed partial record RxCyParser : CoordinateParser
 			}
 
 			var result = new ConclusionSet();
-			foreach (var match in matches.Cast<Match>())
+			foreach (var match in from match in matches select match)
 			{
 				var s = match.Value;
 				var indexOfEqualityOperatorCharacters = s.Split(["==", "<>", "=", "!="], 2, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
@@ -181,7 +181,7 @@ public sealed partial record RxCyParser : CoordinateParser
 			}
 
 			var result = new List<Chute>(6);
-			foreach (var match in matches.Cast<Match>())
+			foreach (var match in from match in matches select match)
 			{
 				switch (match.Value)
 				{
@@ -215,7 +215,7 @@ public sealed partial record RxCyParser : CoordinateParser
 			}
 
 			var result = new List<Conjugate>();
-			foreach (var match in matches.Cast<Match>())
+			foreach (var match in from match in matches select match)
 			{
 				var s = match.Value;
 				var split = s.Split("==", StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
@@ -229,40 +229,27 @@ public sealed partial record RxCyParser : CoordinateParser
 		};
 
 	/// <inheritdoc/>
-	public override Func<string, ReadOnlySpan<Miniline>> IntersectionParser
+	public override Func<string, SegmentCollection> SegmentParser
 		=> static str =>
 		{
-			if (string.IsNullOrWhiteSpace(str))
+			var split = str / ' ';
+			var result = SegmentCollection.Empty;
+			foreach (var element in split)
 			{
-				return [];
-			}
-
-			if (UnitIntersectionGroupPattern.Matches(str) is not { Count: not 0 } matches)
-			{
-				return [];
-			}
-
-			var result = new List<Miniline>();
-			foreach (var match in matches.Cast<Match>())
-			{
-				var s = match.Value;
-				var indexOfBlockLabel = s.IndexOfAny(['B', 'b']);
-				var lineLabel = s[0];
-				var lines = s[1..indexOfBlockLabel];
-				var blocks = s[(indexOfBlockLabel + 1)..];
-				foreach (var line in lines)
+				result += (element.Trim() / 2) switch
 				{
-					foreach (var block in blocks)
-					{
-						var @base = new MinilineBase(
-							(byte)(lineLabel is 'R' or 'r' ? line + 9 - '1' : line + 18 - '1'),
-							(byte)(block - '1')
-						);
-						result.Add(new(@base, Miniline.Map[@base]));
-					}
-				}
+					[
+						[var lineCh and ('R' or 'r' or 'C' or 'c'), var ch1 and >= '1' and <= '9'],
+						['B' or 'b', var ch2 and >= '1' and <= '9']
+					] => new Segment(ch1 - '1' + (lineCh is 'R' or 'r' ? 9 : 18), ch2 - '1'),
+					[
+						['B' or 'b', var ch2 and >= '1' and <= '9'],
+						[var lineCh and ('R' or 'r' or 'C' or 'c'), var ch1 and >= '1' and <= '9']
+					] => new Segment(ch1 - '1' + (lineCh is 'R' or 'r' ? 9 : 18), ch2 - '1'),
+					_ => throw new FormatException()
+				};
 			}
-			return result.AsSpan();
+			return result;
 		};
 
 	/// <summary>
@@ -313,7 +300,7 @@ public sealed partial record RxCyParser : CoordinateParser
 	[GeneratedRegex("""r[1-9]+c[1-9]+\([1-9]+\)|[1-9]+r[1-9]+c[1-9]+""", RegexOptions.Compiled | RegexOptions.IgnoreCase)]
 	private static partial Regex UnitCandidateGroupPattern { get; }
 
-	[GeneratedRegex("""r[1-9]+c[1-9]+(,\s*r[1-9]+c[1-9]+)*\s*(==?|!=|<>)\s*[1-9]+""", RegexOptions.Compiled | RegexOptions.IgnoreCase)]
+	[GeneratedRegex("""r[1-9]+c[1-9]+(?:,\s*r[1-9]+c[1-9]+)*\s*(==?|!=|<>)\s*[1-9]+""", RegexOptions.Compiled | RegexOptions.IgnoreCase)]
 	private static partial Regex UnitConclusionGroupPattern { get; }
 
 	[GeneratedRegex("""[rcb][1-9]+""", RegexOptions.Compiled | RegexOptions.IgnoreCase)]
@@ -336,9 +323,4 @@ public sealed partial record RxCyParser : CoordinateParser
 
 	[GeneratedRegex("""(\d+)([rcbn])(\d+)""", RegexOptions.Compiled | RegexOptions.IgnoreCase)]
 	private static partial Regex SpaceSegmentPattern { get; }
-
-
-	/// <inheritdoc/>
-	[return: NotNullIfNotNull(nameof(formatType))]
-	public override object? GetFormat(Type? formatType) => formatType == typeof(CoordinateParser) ? this : null;
 }

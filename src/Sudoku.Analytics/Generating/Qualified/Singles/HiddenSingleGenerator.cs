@@ -46,7 +46,7 @@ public sealed class HiddenSingleGenerator : SingleGenerator
 			return true;
 
 		NextLoop:
-			if (!cancellationToken)
+			if (cancellationToken.IsCancellationRequested)
 			{
 				result = Grid.Undefined;
 				return false;
@@ -205,7 +205,7 @@ public sealed class HiddenSingleGenerator : SingleGenerator
 			static void adjustToCenterCell(ref Cell targetCell, ref Grid puzzle)
 			{
 				var pos = BlockPositionOf(targetCell);
-				if (targetCell >> HouseType.Block == 4 && pos == 4)
+				if (targetCell.GetHouse(HouseType.Block) == 4 && pos == 4)
 				{
 					return;
 				}
@@ -328,14 +328,14 @@ public sealed class HiddenSingleGenerator : SingleGenerator
 				switch (Alignment)
 				{
 					case ConclusionCellAlignment.CenterHouse or ConclusionCellAlignment.CenterBlock
-					when targetCell >> HouseType.Block is var b and not 4:
+					when targetCell.GetHouse(HouseType.Block) is var b and not 4:
 					{
 						adjustToBlock5(b, ref house, ref targetCell, ref puzzle);
 						break;
 					}
 					case ConclusionCellAlignment.CenterCell when targetCell != 40:
 					{
-						adjustToBlock5(targetCell >> HouseType.Block, ref house, ref targetCell, ref puzzle);
+						adjustToBlock5(targetCell.GetHouse(HouseType.Block), ref house, ref targetCell, ref puzzle);
 						adjustToCenterCell(ref house, ref targetCell, ref puzzle);
 						break;
 					}
@@ -406,7 +406,7 @@ public sealed class HiddenSingleGenerator : SingleGenerator
 			static void adjustToCenterCell(ref House house, ref Cell targetCell, ref Grid puzzle)
 			{
 				var pos = BlockPositionOf(targetCell);
-				if (targetCell >> HouseType.Block == 4 && pos == 4)
+				if (targetCell.GetHouse(HouseType.Block) == 4 && pos == 4)
 				{
 					return;
 				}
@@ -499,7 +499,7 @@ public sealed class HiddenSingleGenerator : SingleGenerator
 				}
 				default:
 				{
-					if (!cancellationToken)
+					if (cancellationToken.IsCancellationRequested)
 					{
 						(result, phasedGrid, step) = (Grid.Undefined, Grid.Undefined, null);
 						return false;

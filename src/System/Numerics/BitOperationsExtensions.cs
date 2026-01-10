@@ -544,9 +544,29 @@ public static partial class BitOperationsExtensions
 		{
 			if (Bmi2.X64.IsSupported)
 			{
-				return TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << order, @this)) is var result and not FallbackConstants.@long
-					? result
-					: -1;
+				var result = TrailingZeroCount(Bmi2.X64.ParallelBitDeposit(1UL << order, @this));
+				return result != FallbackConstants.@long ? result : -1;
+			}
+
+			if (Bmi2.IsSupported)
+			{
+				var low = (uint)@this;
+				var lowCount = PopCount(low);
+				if (order < lowCount)
+				{
+					var src32 = 1U << order;
+					var deposited = Bmi2.ParallelBitDeposit(src32, low);
+					var p = TrailingZeroCount(deposited);
+					return p != FallbackConstants.@int ? p : -1;
+				}
+				else
+				{
+					var high = (uint)(@this >> FallbackConstants.@int);
+					var src32 = 1U << (order - lowCount);
+					var deposited = Bmi2.ParallelBitDeposit(src32, high);
+					var p = TrailingZeroCount(deposited);
+					return p != FallbackConstants.@int ? FallbackConstants.@int + p : -1;
+				}
 			}
 
 			var (mask, size, @base) = (0x0000FFFFU, 16U, 0U);
@@ -569,7 +589,7 @@ public static partial class BitOperationsExtensions
 					mask >>= (int)size;
 				}
 			}
-			return @base == 64 ? -1 : (int)@base;
+			return @base == FallbackConstants.@long ? -1 : (int)@base;
 		}
 
 		/// <inheritdoc cref="GetEnumerator(sbyte)"/>

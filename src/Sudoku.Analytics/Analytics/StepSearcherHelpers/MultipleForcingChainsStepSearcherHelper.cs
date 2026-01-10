@@ -145,7 +145,7 @@ internal sealed class MultipleForcingChainsStepSearcherHelper : ForcingChainsSte
 		{
 			foreach (var houseType in HouseTypes)
 			{
-				var house = cell >> houseType;
+				var house = cell.GetHouse(houseType);
 				var cellsInHouse = HousesMap[house] & CandidatesMap[digit];
 				if (cellsInHouse.Count <= 2)
 				{

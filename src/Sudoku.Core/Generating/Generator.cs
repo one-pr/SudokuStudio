@@ -111,14 +111,13 @@ public ref struct Generator : IGenerator<Grid>
 		// 2024/10/25: Add this if block to skip initialization for templates.
 		// 2024/10/28: Change if statement from 'if (_newFullSudoku.IsUndefined)' to 'if (!_useCustomizedSolution)'.
 		// 2025/9/1: Use 'cancellationToken.IsCancellationRequested' flag instead of throwing exceptions.
-		// 2025/9/18: Simplify via extension operator 'cancellationToken.IsCancellationRequested' -> '!op_True(cancellationToken)'.
 		if (!_useCustomizedSolution)
 		{
 			while (!GenerateForFullGrid()) ;
 		}
 
 		GenerateInitPos(cluesCount, symmetricType, cancellationToken);
-		return cancellationToken ? _newValidSudoku.FixedGrid : Grid.Undefined;
+		return cancellationToken.IsCancellationRequested ? Grid.Undefined : _newValidSudoku.FixedGrid;
 	}
 
 	/// <summary>
@@ -134,7 +133,7 @@ public ref struct Generator : IGenerator<Grid>
 		// Do until we have only 17 clues left or until all cells have been tried.
 		while (remainingClues > (cluesCount == -1 ? 17 : cluesCount) && usedCount > 1)
 		{
-			if (!cancellationToken)
+			if (cancellationToken.IsCancellationRequested)
 			{
 				return;
 			}

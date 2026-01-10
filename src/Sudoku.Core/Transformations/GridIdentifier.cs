@@ -56,8 +56,7 @@ public readonly struct GridIdentifier :
 	IComparable<GridIdentifier>,
 	IComparisonOperators<GridIdentifier, GridIdentifier, bool>,
 	IEquatable<GridIdentifier>,
-	IEqualityOperators<GridIdentifier, GridIdentifier, bool>,
-	IParsable<GridIdentifier>
+	IEqualityOperators<GridIdentifier, GridIdentifier, bool>
 {
 	/// <summary>
 	/// Indicates the numebr of all transformations permutation cases.
@@ -281,13 +280,9 @@ public readonly struct GridIdentifier :
 	{
 		get
 		{
-			var g = OriginalGrid >> Transform;
-			preserveGrid(ref g, GivenCells);
-			return g;
-
-
-			[UnsafeAccessor(UnsafeAccessorKind.Method, Name = "Preserve")]
-			static extern Grid preserveGrid(ref Grid grid, in CellMap pattern);
+			var g = OriginalGrid;
+			g.Apply(Transform);
+			return g.Preserve(GivenCells);
 		}
 	}
 
@@ -349,7 +344,12 @@ public readonly struct GridIdentifier :
 	}
 
 
-	/// <inheritdoc cref="IParsable{TSelf}.TryParse(string?, IFormatProvider?, out TSelf)"/>
+	/// <summary>
+	/// Try to parse the specified string into target instance.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <param name="result">The result.</param>
+	/// <returns>A <see cref="bool"/> result.</returns>
 	public static bool TryParse([NotNullWhen(true)] string? s, out GridIdentifier result)
 	{
 		try
@@ -370,7 +370,12 @@ public readonly struct GridIdentifier :
 		}
 	}
 
-	/// <inheritdoc cref="IParsable{TSelf}.Parse(string, IFormatProvider?)"/>
+	/// <summary>
+	/// Try to parse the specified string into target instance.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <returns>The result.</returns>
+	/// <exception cref="FormatException">Throws when invalid characters encountered.</exception>
 	public static GridIdentifier Parse(string s)
 	{
 		if (string.IsNullOrEmpty(s))
@@ -394,13 +399,6 @@ public readonly struct GridIdentifier :
 		}
 		return new(result);
 	}
-
-	/// <inheritdoc/>
-	static bool IParsable<GridIdentifier>.TryParse([NotNullWhen(true)] string? s, [NotNullWhen(true)] IFormatProvider? provider, out GridIdentifier result)
-		=> TryParse(s, out result);
-
-	/// <inheritdoc/>
-	static GridIdentifier IParsable<GridIdentifier>.Parse(string s, IFormatProvider? provider) => Parse(s);
 
 
 	/// <inheritdoc cref="IEqualityOperators{TSelf, TOther, TResult}.op_Equality(TSelf, TOther)"/>

@@ -27,29 +27,15 @@ public static class StringBuilderExtensions
 		/// using the specified converter to convert each element into <see cref="string"/> value.
 		/// </summary>
 		/// <typeparam name="T">The type of each element.</typeparam>
+		/// <param name="elements">The elements to be appended.</param>
 		/// <param name="stringConverter">The converter method.</param>
-		/// <param name="appender">
-		/// The append method for the builder instance, telling the handler which appending operation will be handled.
-		/// By default, the method is equivalent to lambda:
-		/// <code>
-		/// <see langword="static"/> (<see cref="StringBuilder"/> sb, <typeparamref name="T"/> v) => sb.Append(v)
-		/// </code>
-		/// </param>
-		/// <param name="elements">
-		/// <para>The elements to be appended.</para>
-		/// <include file="../../global-doc-comments.xml" path="//g/csharp12/feature[@name='params-collections']/target[@name='parameter']"/>
-		/// </param>
 		/// <returns>The reference of the current instance.</returns>
-		public StringBuilder AppendRange<T>(
-			Func<T, string> stringConverter,
-			Func<StringBuilder, string, StringBuilder>? appender = null,
-			params ReadOnlySpan<T> elements
-		) where T : notnull
+		public StringBuilder AppendRange<T>(ReadOnlySpan<T> elements, Func<T, string>? stringConverter) where T : notnull
 		{
-			appender ??= static (sb, v) => sb.Append(v);
+			stringConverter ??= static value => value.ToString()!;
 			foreach (ref readonly var element in elements)
 			{
-				appender(@this, stringConverter(element));
+				@this.Append(stringConverter(element));
 			}
 			return @this;
 		}

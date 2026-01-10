@@ -11,8 +11,7 @@ public sealed class BlossomLoop(params ConclusionSet conclusions) :
 	IChainOrForcingChains,
 	IComponent,
 	IEquatable<BlossomLoop>,
-	IEqualityOperators<BlossomLoop, BlossomLoop, bool>,
-	IFormattable
+	IEqualityOperators<BlossomLoop, BlossomLoop, bool>
 {
 	/// <summary>
 	/// Indicates whether the loop entry is cell type.
@@ -205,23 +204,55 @@ public sealed class BlossomLoop(params ConclusionSet conclusions) :
 	}
 
 	/// <inheritdoc/>
-	public override string ToString() => ToString(null);
+	public override string ToString() => ToString(CoordinateConverter.InvariantCulture);
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider)
-	{
-		var converter = CoordinateConverter.GetInstance(formatProvider);
-		return string.Join(
+	/// <inheritdoc/>
+	public string ToString(CultureInfo culture) => ToString(CoordinateConverter.GetInstance(culture));
+
+	/// <inheritdoc/>
+	public string ToString(CoordinateConverter converter)
+		=> ToString(new CustomizedChainConverter { CustomizedCandidateConverter = converter });
+
+	/// <inheritdoc/>
+	public string ToString(IChainConverter converter) => ToString(converter, null, CoordinateConverter.InvariantCulture);
+
+	/// <inheritdoc/>
+	public string ToString(IChainConverter converter, IFormatProvider? formatProvider)
+		=> ToString(converter, formatProvider, CoordinateConverter.InvariantCulture);
+
+	/// <inheritdoc cref="ToString(IChainConverter, IFormatProvider?, ICandidateMapConverter)"/>
+	public string ToString(IChainConverter converter, CoordinateConverter branchKeyConverter)
+		=> ToString(converter, null, branchKeyConverter);
+
+	/// <inheritdoc cref="ToString(IChainConverter, IFormatProvider?, ICandidateMapConverter)"/>
+	public string ToString(IChainConverter converter, IFormatProvider? formatProvider, CoordinateConverter branchKeyConverter)
+		=> string.Join(
 			", ",
 			from kvp in this
 			let candidate = kvp.Key
 			let chain = kvp.Value
-			select $"{Candidate.ToCandidateString(candidate, converter)}: {chain.ToString(converter)}"
+			select $"{Candidate.ToCandidateString(candidate, branchKeyConverter)}: {chain.ToString(converter)}"
 		);
-	}
 
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
+	/// <inheritdoc cref="ToString(IChainConverter, IFormatProvider?, ICandidateMapConverter)"/>
+	public string ToString(IChainConverter converter, ICandidateMapConverter branchKeyConverter)
+		=> ToString(converter, null, branchKeyConverter);
+
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation via the specified converter.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <param name="formatProvider">The format provider.</param>
+	/// <param name="branchKeyConverter">The branch key (candidate) converter.</param>
+	/// <returns>The string.</returns>
+	public string ToString(IChainConverter converter, IFormatProvider? formatProvider, ICandidateMapConverter branchKeyConverter)
+		=> string.Join(
+			", ",
+			from kvp in this
+			let candidate = kvp.Key
+			let chain = kvp.Value
+			select $"{Candidate.ToCandidateString(candidate, branchKeyConverter)}: {chain.ToString(converter)}"
+		);
 
 
 	/// <inheritdoc/>

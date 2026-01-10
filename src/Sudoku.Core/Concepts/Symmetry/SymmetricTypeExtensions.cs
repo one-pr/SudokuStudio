@@ -100,14 +100,14 @@ public static class SymmetricTypeExtensions
 
 
 		/// <summary>
-		/// Gets the name of thr symmetry.
+		/// Gets the name of thr symmetry via the specified culture.
 		/// </summary>
-		/// <param name="formatProvider">The culture.</param>
+		/// <param name="culture">The culture.</param>
 		/// <returns>The string.</returns>
 		/// <exception cref="InvalidOperationException">Throws when the argument holds multiple flag values.</exception>
-		public string GetName(IFormatProvider? formatProvider)
+		public string GetName(CultureInfo? culture)
 			=> PopCount((uint)(int)@this) < 2
-				? SR.Get($"SymmetricType_{@this}", formatProvider as CultureInfo)
+				? SR.Get($"SymmetricType_{@this}", culture)
 				: throw new InvalidOperationException(SR.ExceptionMessage("MultipleFlagsExist"));
 
 		/// <inheritdoc cref="extension(SymmetricType).GetCells(RowIndex, ColumnIndex)"/>

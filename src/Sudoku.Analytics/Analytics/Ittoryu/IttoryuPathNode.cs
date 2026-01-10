@@ -6,7 +6,7 @@ namespace Sudoku.Analytics.Ittoryu;
 /// <param name="Grid">Indicates the currently-used grid.</param>
 /// <param name="House">Indicates the house. The value can be -1 when the represented node is for a naked single.</param>
 /// <param name="Candidate">Indicates the target candidate.</param>
-internal sealed record IttoryuPathNode(in Grid Grid, House House, Candidate Candidate) : IFormattable
+internal sealed record IttoryuPathNode(in Grid Grid, House House, Candidate Candidate)
 {
 	/// <summary>
 	/// Indicates the target digit.
@@ -23,15 +23,13 @@ internal sealed record IttoryuPathNode(in Grid Grid, House House, Candidate Cand
 	public void Deconstruct(out Grid grid, out House house, out Cell cell, out Digit digit)
 		=> ((grid, house, _), cell, digit) = (this, Candidate / 9, Candidate % 9);
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider)
-	{
-		var converter = CoordinateConverter.GetInstance(formatProvider);
-		return House != -1
-			? $"Full House / Hidden Single: {converter.CandidateConverter([Candidate])} in house {converter.HouseConverter(1 << House)}"
-			: $"Naked Single: {converter.CandidateConverter([Candidate])}";
-	}
-
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation via the specified converter.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <returns>The string.</returns>
+	public string ToString(CoordinateConverter converter)
+		=> House != -1
+			? $"Full House / Hidden Single: {Candidate.ToCandidateString(Candidate, converter)} in house {converter.HouseConverter(1 << House)}"
+			: $"Naked Single: {Candidate.ToCandidateString(Candidate, converter)}";
 }

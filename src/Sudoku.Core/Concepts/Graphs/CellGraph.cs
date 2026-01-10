@@ -12,7 +12,6 @@ namespace Sudoku.Concepts.Graphs;
 public readonly partial struct CellGraph :
 	IEquatable<CellGraph>,
 	IEqualityOperators<CellGraph, CellGraph, bool>,
-	IFormattable,
 	IReadOnlyCollection<Cell>
 {
 	/// <summary>
@@ -228,14 +227,39 @@ public readonly partial struct CellGraph :
 	/// <returns>An <see cref="int"/> indicating that. If the cell isn't in the current graph, -1 will be returned.</returns>
 	public int GetDegreeOf(Cell cell) => _cells.Contains(cell) ? _directlyConnectedCellsDictionary[cell].Count : -1;
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider)
+	/// <inheritdoc/>
+	public string ToString(CultureInfo culture) => ToString(CoordinateConverter.GetInstance(culture));
+
+	/// <inheritdoc cref="ToString(ICellMapConverter, IFormatProvider?)"/>
+	public string ToString(CoordinateConverter converter)
 	{
-		var converter = CoordinateConverter.GetInstance(formatProvider);
 		var sb = new StringBuilder();
 		foreach (var kvp in _directlyConnectedCellsDictionary)
 		{
 			sb.AppendLine($"{Cell.ToCellString(kvp.Key, converter)}: {converter.CellConverter(kvp.ValueRef)}");
+		}
+		return sb.ToString();
+	}
+
+	/// <inheritdoc cref="ToString(ICellMapConverter, IFormatProvider?)"/>
+	public string ToString(ICellMapConverter converter) => ToString(converter, null);
+
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation via the specified converter.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <param name="formatProvider">The format provider.</param>
+	/// <returns>The string.</returns>
+	public string ToString(ICellMapConverter converter, IFormatProvider? formatProvider)
+	{
+		var sb = new StringBuilder();
+		foreach (var kvp in _directlyConnectedCellsDictionary)
+		{
+			if (!converter.TryFormat(in kvp.ValueRef, formatProvider, out var r))
+			{
+				throw new FormatException();
+			}
+			sb.AppendLine($"{Cell.ToCellString(kvp.Key, converter)}: {r}");
 		}
 		return sb.ToString();
 	}
@@ -252,12 +276,7 @@ public readonly partial struct CellGraph :
 	{
 		if (_cells)
 		{
-			var paths = new HashSet<HamiltonianCycle>(
-				EqualityComparer<HamiltonianCycle>.Create(
-					static (left, right) => left.Equals(right, HamiltonianCycleComparison.IgnoreDirection),
-					static obj => obj.GetHashCode(HamiltonianCycleComparison.IgnoreDirection)
-				)
-			);
+			var paths = new HashSet<HamiltonianCycle>(HamiltonianCycle.CreateEqualityComparer(HamiltonianCycleComparison.IgnoreDirection));
 			dfs(_cells[1..], _cells[0], [_cells[0]], paths);
 			return paths.ToArray();
 		}
@@ -341,9 +360,6 @@ public readonly partial struct CellGraph :
 
 	/// <inheritdoc/>
 	public bool Contains(Cell item) => _cells.Contains(item);
-
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
 
 	/// <inheritdoc/>
 	IEnumerator IEnumerable.GetEnumerator() => _cells.ToArrayUnsafe().GetEnumerator();

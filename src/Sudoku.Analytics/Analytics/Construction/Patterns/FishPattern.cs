@@ -8,9 +8,7 @@ namespace Sudoku.Analytics.Construction.Patterns;
 /// <param name="coverSets"><inheritdoc cref="CoverSets" path="/summary"/></param>
 /// <param name="exofins"><inheritdoc cref="Exofins" path="/summary"/></param>
 /// <param name="endofins"><inheritdoc cref="Endofins" path="/summary"/></param>
-public sealed class FishPattern(Digit digit, HouseMask baseSets, HouseMask coverSets, in CellMap exofins, in CellMap endofins) :
-	Pattern,
-	IFormattable
+public sealed class FishPattern(Digit digit, HouseMask baseSets, HouseMask coverSets, in CellMap exofins, in CellMap endofins) : Pattern
 {
 	/// <summary>
 	/// Indicates whether the pattern is complex fish.
@@ -89,12 +87,23 @@ public sealed class FishPattern(Digit digit, HouseMask baseSets, HouseMask cover
 	public override int GetHashCode() => HashCode.Combine(Digit, BaseSets, CoverSets, Exofins, Endofins);
 
 	/// <inheritdoc/>
-	public override string ToString() => ToString(null);
+	public override string ToString() => ToString(CoordinateConverter.InvariantCulture);
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider)
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> represenation.
+	/// </summary>
+	/// <param name="culture">The culture.</param>
+	/// <returns>The string.</returns>
+	public string ToString(CultureInfo culture) => ToString(CoordinateConverter.GetInstance(culture));
+
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> represenation via the specified converter.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <returns>The string.</returns>
+	public string ToString(CoordinateConverter converter)
 	{
-		switch (CoordinateConverter.GetInstance(formatProvider))
+		switch (converter)
 		{
 			case RxCyConverter c:
 			{
@@ -161,7 +170,4 @@ public sealed class FishPattern(Digit digit, HouseMask baseSets, HouseMask cover
 
 	/// <inheritdoc/>
 	public override FishPattern Clone() => new(Digit, BaseSets, CoverSets, Exofins, Endofins);
-
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
 }

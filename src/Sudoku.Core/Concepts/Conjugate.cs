@@ -8,11 +8,7 @@ namespace Sudoku.Concepts;
 /// where all cells has only two position can fill this candidate.
 /// </remarks>
 /// <param name="_mask">Indicates the target mask.</param>
-public readonly struct Conjugate(int _mask) :
-	IEquatable<Conjugate>,
-	IEqualityOperators<Conjugate, Conjugate, bool>,
-	IFormattable,
-	IParsable<Conjugate>
+public readonly struct Conjugate(int _mask) : IEquatable<Conjugate>, IEqualityOperators<Conjugate, Conjugate, bool>
 {
 	/// <summary>
 	/// Initializes a <see cref="Conjugate"/> instance with from and to cell offset and a digit.
@@ -78,49 +74,92 @@ public readonly struct Conjugate(int _mask) :
 	/// <inheritdoc/>
 	public override int GetHashCode() => HashCode.Combine(Digit, Map);
 
-	/// <inheritdoc/>
-	public override string ToString() => ToString(null);
+	/// <inheritdoc cref="object.ToString"/>
+	public override string ToString() => ToString(CoordinateConverter.InvariantCulture);
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider)
-		=> CoordinateConverter.GetInstance(formatProvider).ConjugateConverter([this]);
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation, using the specified culture.
+	/// </summary>
+	/// <param name="culture">The culture.</param>
+	/// <returns>The string.</returns>
+	public string ToString(CultureInfo culture) => ToString(CoordinateConverter.GetInstance(culture));
 
-	/// <inheritdoc/>
-	string IFormattable.ToString(string? format, IFormatProvider? formatProvider) => ToString(formatProvider);
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation, using the specified converter.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <returns>The string.</returns>
+	public string ToString(CoordinateConverter converter) => converter.ConjugateConverter([this]);
 
 
-	/// <inheritdoc cref="IParsable{TSelf}.Parse(string, IFormatProvider?)"/>
-	public static bool TryParse(string s, out Conjugate result) => TryParse(s, null, out result);
+	/// <summary>
+	/// Try to parse the specified string into target instance.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <param name="result">The result.</param>
+	/// <returns>A <see cref="bool"/> result.</returns>
+	public static bool TryParse([NotNullWhen(true)] string? s, out Conjugate result)
+		=> TryParse(s, CoordinateParser.InvariantCulture, out result);
 
-	/// <inheritdoc/>
-	public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, out Conjugate result)
+	/// <summary>
+	/// Try to parse the specified string into target instance, using the specified culture.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <param name="culture">The culture.</param>
+	/// <param name="result">The result.</param>
+	/// <returns>A <see cref="bool"/> result.</returns>
+	public static bool TryParse([NotNullWhen(true)] string? s, CultureInfo culture, out Conjugate result)
+		=> TryParse(s, CoordinateParser.GetInstance(culture), out result);
+
+	/// <summary>
+	/// Try to parse the specified string into target instance, using the specified converter.
+	/// </summary>
+	/// <param name="s">The string.</param>
+	/// <param name="converter">The converter.</param>
+	/// <param name="result">The result.</param>
+	/// <returns>A <see cref="bool"/> result.</returns>
+	public static bool TryParse([NotNullWhen(true)] string? s, CoordinateParser converter, out Conjugate result)
 	{
 		try
 		{
 			if (s is null)
 			{
-				result = default;
-				return false;
+				goto ReturnFalse;
 			}
-
-			result = Parse(s, provider);
+			result = Parse(s, converter);
 			return true;
 		}
 		catch (FormatException)
 		{
-			result = default;
-			return false;
 		}
+
+	ReturnFalse:
+		result = default;
+		return false;
 	}
 
-	/// <inheritdoc cref="IParsable{TSelf}.Parse(string, IFormatProvider?)"/>
-	public static Conjugate Parse(string s) => Parse(s, null);
+	/// <summary>
+	/// Parses the string into target instance.
+	/// </summary>
+	/// <param name="s">The string to parse.</param>
+	/// <returns>The result.</returns>
+	public static Conjugate Parse(string s) => Parse(s, CoordinateParser.InvariantCulture);
 
-	/// <inheritdoc/>
-	public static Conjugate Parse(string s, IFormatProvider? provider)
-		=> CoordinateParser.GetInstance(provider).ConjugateParser(s) is [var result]
-			? result
-			: throw new FormatException(SR.ExceptionMessage("MultipleConjugatePairValuesFound"));
+	/// <summary>
+	/// Parses the string into target instance via the specified culture.
+	/// </summary>
+	/// <param name="s">The string to parse.</param>
+	/// <param name="culture">The culture.</param>
+	/// <returns>The result.</returns>
+	public static Conjugate Parse(string s, CultureInfo culture) => Parse(s, CoordinateParser.GetInstance(culture));
+
+	/// <summary>
+	/// Parses the string into target instance via the specified converter.
+	/// </summary>
+	/// <param name="s">The string to parse.</param>
+	/// <param name="converter">The converter.</param>
+	/// <returns>The result.</returns>
+	public static Conjugate Parse(string s, CoordinateParser converter) => converter.ConjugateParser(s)[0];
 
 
 	/// <inheritdoc/>

@@ -83,7 +83,7 @@ public readonly struct DependencyAssignment :
 	/// <inheritdoc cref="object.GetHashCode"/>
 	public override int GetHashCode() => _mask;
 
-	/// <inheritdoc cref="ToCandidateFormatString(bool, IFormatProvider?)"/>
+	/// <inheritdoc cref="ToCandidateFormatString(bool, CultureInfo?)"/>
 	public string ToCandidateFormatString(bool enableConsoleColors) => ToCandidateFormatString(enableConsoleColors, null);
 
 	/// <summary>
@@ -93,11 +93,11 @@ public readonly struct DependencyAssignment :
 	/// Indicates whether the output text will include control characters like <c>\e</c>,
 	/// in order to display colors in console output stream.
 	/// </param>
-	/// <param name="formatProvider">The coordinate format converter.</param>
+	/// <param name="culture">The culture.</param>
 	/// <returns>The string representation.</returns>
-	public string ToCandidateFormatString(bool enableConsoleColors, IFormatProvider? formatProvider)
+	public string ToCandidateFormatString(bool enableConsoleColors, CultureInfo? culture)
 	{
-		var converter = CoordinateConverter.GetInstance(formatProvider);
+		var converter = CoordinateConverter.GetInstance(culture);
 		var candidates = Cells * Digit;
 		return IsGrouped && enableConsoleColors
 			? $"\e[38;2;255;255;0m{converter.CandidateConverter(candidates)}\e[0m"

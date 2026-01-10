@@ -145,7 +145,7 @@ public sealed partial class WhipStepSearcher : StepSearcher
 								continue;
 							}
 
-							var nextNode = new WhipNode(assignment) >> currentNode;
+							var nextNode = WhipNode.Create(new(assignment), currentNode);
 							nextNode = new WhipNode(assignment, GetNextAssignments(grid, nextNode, groupedWhip), nextNode.Parent);
 							pendingNodes.Enqueue(nextNode);
 						}
@@ -174,14 +174,14 @@ public sealed partial class WhipStepSearcher : StepSearcher
 			{
 				case NormalWhipAssignment { Candidate: var candidate }:
 				{
-					grid >>= new Conclusion(Assignment, candidate);
+					grid.Apply(new(Assignment, candidate));
 					break;
 				}
 				case GroupedWhipAssignment { Digit: var digit, Cells: var cells }:
 				{
 					foreach (var cell in grid.CandidatesMap[digit] & cells.PeerIntersection)
 					{
-						grid >>= new Conclusion(Elimination, cell, digit);
+						grid.Apply(new(Elimination, cell, digit));
 					}
 					break;
 				}
@@ -396,7 +396,7 @@ public sealed partial class WhipStepSearcher : StepSearcher
 			{
 				var currentCandidates = node.Assignment.Map;
 				var reason = node.Assignment.Reason;
-				currentCandidates.ForEach(c => candidateOffsets.Add(new(ColorIdentifier.Normal, c)));
+				currentCandidates.ForEach(c => candidateOffsets.Add(new(ColorDescriptorAlias.Normal, c)));
 
 				// Due to design of this algorithm, we should append extra strong and weak links between two assignments.
 				// Please note that the links are reversed, we should make a reversion
@@ -408,18 +408,18 @@ public sealed partial class WhipStepSearcher : StepSearcher
 						case Technique.FullHouse or Technique.NakedSingle:
 						{
 							var interimCandidate = currentCandidates[0] / 9 * 9 + f % 9;
-							parentCandidates.ForEach(p => candidateOffsets.Add(new(ColorIdentifier.Normal, p)));
-							currentCandidates.ForEach(c => candidateOffsets.Add(new(ColorIdentifier.Normal, c)));
-							candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, interimCandidate));
+							parentCandidates.ForEach(p => candidateOffsets.Add(new(ColorDescriptorAlias.Normal, p)));
+							currentCandidates.ForEach(c => candidateOffsets.Add(new(ColorDescriptorAlias.Normal, c)));
+							candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, interimCandidate));
 
-							linkOffsets.Add(new(ColorIdentifier.Normal, parentCandidates, interimCandidate.AsCandidateMap(), false));
-							linkOffsets.Add(new(ColorIdentifier.Normal, interimCandidate.AsCandidateMap(), currentCandidates, true));
+							linkOffsets.Add(new(ColorDescriptorAlias.Normal, parentCandidates, interimCandidate.AsCandidateMap(), false));
+							linkOffsets.Add(new(ColorDescriptorAlias.Normal, interimCandidate.AsCandidateMap(), currentCandidates, true));
 							break;
 						}
 						case var type and >= Technique.CrosshatchingBlock and <= Technique.CrosshatchingColumn:
 						{
-							parentCandidates.ForEach(p => candidateOffsets.Add(new(ColorIdentifier.Normal, p)));
-							currentCandidates.ForEach(c => candidateOffsets.Add(new(ColorIdentifier.Normal, c)));
+							parentCandidates.ForEach(p => candidateOffsets.Add(new(ColorDescriptorAlias.Normal, p)));
+							currentCandidates.ForEach(c => candidateOffsets.Add(new(ColorDescriptorAlias.Normal, c)));
 
 							var currentCells = currentCandidates.Cells;
 							var currentDigit = BitOperations.Log2((uint)currentCandidates.Digits);
@@ -433,7 +433,7 @@ public sealed partial class WhipStepSearcher : StepSearcher
 							if ((parentCandidates.Cells.PeerIntersection & currentCells) != currentCells)
 							{
 								var groupedCells = (parentCandidates.Cells | currentCells).PeerIntersection
-									& HousesMap[currentCells[0] >> houseType]
+									& HousesMap[currentCells[0].GetHouse(houseType)]
 									& CandidatesMap[currentDigit];
 								if (!groupedCells)
 								{
@@ -443,19 +443,19 @@ public sealed partial class WhipStepSearcher : StepSearcher
 
 								foreach (var cell in groupedCells)
 								{
-									candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, cell * 9 + currentDigit));
+									candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, cell * 9 + currentDigit));
 								}
 
 								var interimMap = (from cell in groupedCells select cell * 9 + currentDigit).AsCandidateMap();
-								linkOffsets.Add(new(ColorIdentifier.Normal, parentCandidates, interimMap, false));
-								linkOffsets.Add(new(ColorIdentifier.Normal, interimMap, currentCandidates, true));
+								linkOffsets.Add(new(ColorDescriptorAlias.Normal, parentCandidates, interimMap, false));
+								linkOffsets.Add(new(ColorDescriptorAlias.Normal, interimMap, currentCandidates, true));
 							}
 							else
 							{
 								var interimCandidate = f / 9 * 9 + currentDigit;
-								candidateOffsets.Add(new(ColorIdentifier.Auxiliary1, interimCandidate));
-								linkOffsets.Add(new(ColorIdentifier.Normal, parentCandidates, interimCandidate.AsCandidateMap(), false));
-								linkOffsets.Add(new(ColorIdentifier.Normal, interimCandidate.AsCandidateMap(), currentCandidates, true));
+								candidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary1, interimCandidate));
+								linkOffsets.Add(new(ColorDescriptorAlias.Normal, parentCandidates, interimCandidate.AsCandidateMap(), false));
+								linkOffsets.Add(new(ColorDescriptorAlias.Normal, interimCandidate.AsCandidateMap(), currentCandidates, true));
 							}
 							break;
 						}
@@ -475,13 +475,13 @@ public sealed partial class WhipStepSearcher : StepSearcher
 					// Skip for the start candidate if the start node is a single candidate that is the real start candidate.
 					foreach (var candidate in currentCandidates)
 					{
-						tryAndErrorCandidateOffsets.Add(new(ColorIdentifier.Normal, candidate));
+						tryAndErrorCandidateOffsets.Add(new(ColorDescriptorAlias.Normal, candidate));
 					}
 				}
 
 				if (node.Parent is { Assignment.Map: var parentCandidates })
 				{
-					tryAndErrorLinkOffsets.Add(new(ColorIdentifier.Normal, parentCandidates, currentCandidates, false));
+					tryAndErrorLinkOffsets.Add(new(ColorDescriptorAlias.Normal, parentCandidates, currentCandidates, false));
 				}
 			}
 
@@ -489,18 +489,18 @@ public sealed partial class WhipStepSearcher : StepSearcher
 			ReadOnlySpan<ViewNode> contradictionViewNodes = [
 				.. failedSpace.Type == SpaceType.RowColumn
 					? [
-						new CellViewNode(ColorIdentifier.Auxiliary1, failedSpace.Cell),
+						new CellViewNode(ColorDescriptorAlias.Auxiliary1, failedSpace.Cell),
 						..
 						from digit in initialGrid.GetCandidates(failedSpace.Cell)
-						select new CandidateViewNode(ColorIdentifier.Auxiliary1, failedSpace.Cell * 9 + digit)
+						select new CandidateViewNode(ColorDescriptorAlias.Auxiliary1, failedSpace.Cell * 9 + digit)
 					]
 					: ReadOnlySpan<ViewNode>.Empty,
 				.. failedSpace.Type != SpaceType.RowColumn
 					? [
-						new HouseViewNode(ColorIdentifier.Auxiliary1, failedSpace.House),
+						new HouseViewNode(ColorDescriptorAlias.Auxiliary1, failedSpace.House),
 						..
 						from cell in HousesMap[failedSpace.House] & CandidatesMap[failedSpace.Digit]
-						select new CandidateViewNode(ColorIdentifier.Auxiliary1, cell * 9 + failedSpace.Digit)
+						select new CandidateViewNode(ColorDescriptorAlias.Auxiliary1, cell * 9 + failedSpace.Digit)
 					]
 					: ReadOnlySpan<ViewNode>.Empty
 			];
@@ -509,7 +509,7 @@ public sealed partial class WhipStepSearcher : StepSearcher
 			var missingCandidateOffsets = new List<CandidateViewNode>();
 			foreach (var candidate in burredCandidates)
 			{
-				missingCandidateOffsets.Add(new(ColorIdentifier.Auxiliary2, candidate));
+				missingCandidateOffsets.Add(new(ColorDescriptorAlias.Auxiliary2, candidate));
 			}
 
 			return [

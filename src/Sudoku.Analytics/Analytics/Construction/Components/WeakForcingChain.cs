@@ -196,7 +196,4 @@ public sealed class WeakForcingChain(Node lastNode, bool isDynamicChaining = fal
 			}
 		}
 	}
-
-	/// <inheritdoc/>
-	public override string ToString() => ((IFormattable)this).ToString(null, null);
 }

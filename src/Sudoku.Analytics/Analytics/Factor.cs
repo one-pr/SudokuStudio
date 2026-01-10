@@ -102,9 +102,9 @@ public readonly struct Factor(string resourceKey, string[] parameterNames, Type 
 	/// <summary>
 	/// Try to fetch the name stored in resource dictionary.
 	/// </summary>
-	/// <param name="formatProvider">The culture information.</param>
+	/// <param name="culture">The culture information.</param>
 	/// <returns>The name of the factor.</returns>
-	public string GetName(IFormatProvider? formatProvider) => SR.Get(FactorResourceKey, formatProvider as CultureInfo);
+	public string GetName(CultureInfo? culture) => SR.Get(FactorResourceKey, culture);
 
 
 	/// <summary>

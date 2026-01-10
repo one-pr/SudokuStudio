@@ -227,7 +227,7 @@ internal sealed class DynamicForcingChainsStepSearcherHelper : ForcingChainsStep
 		{
 			foreach (var houseType in HouseTypes)
 			{
-				var house = cell >> houseType;
+				var house = cell.GetHouse(houseType);
 				var cellsInHouse = HousesMap[house] & CandidatesMap[digit];
 				if (cellsInHouse.Count <= 2)
 				{
@@ -603,7 +603,7 @@ internal sealed class DynamicForcingChainsStepSearcherHelper : ForcingChainsStep
 				var currentNode = pendingNodesSupposedOff.Dequeue();
 				var supposedOn = GetNodesFromOffToOn(currentNode, chainingRules, nodesSupposedOff, options, tempGrid, grid);
 
-				tempGrid >>= currentNode;
+				tempGrid.Apply(currentNode);
 
 				if (!supposedOn.IsEmpty)
 				{
@@ -697,16 +697,11 @@ file static class GridNodeExtensions
 	/// </summary>
 	extension(ref Grid @this)
 	{
-		/// <inheritdoc cref="op_RightShiftAssignment(ref Grid, Node)"/>
-		[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
-		public void Apply(Node node) => @this >>= node;
-
-
 		/// <summary>
 		/// Treat the specified node as a real conclusion, and apply to a grid.
 		/// </summary>
 		/// <param name="node">The node.</param>
-		public void operator >>=(Node node)
+		public void Apply(Node node)
 		{
 			ref readonly var map = ref node.Map;
 			if (node.IsOn)
@@ -735,15 +730,6 @@ file static class GridNodeExtensions
 					@this[candidate / 9] &= (Mask)~(1 << candidate % 9);
 				}
 			}
-		}
-
-
-		/// <inheritdoc cref="op_RightShiftAssignment(ref Grid, Node)"/>
-		public static Grid operator >>(in Grid grid, Node node)
-		{
-			var tempGrid = grid;
-			tempGrid >>= node;
-			return tempGrid;
 		}
 	}
 }

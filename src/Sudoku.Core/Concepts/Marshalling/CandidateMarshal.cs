@@ -21,16 +21,29 @@ public static class CandidateMarshal
 #endif
 
 
+		/// <inheritdoc cref="ToCandidateString(int, ICandidateMapConverter, IFormatProvider?)"/>
+		public static string ToCandidateString(Candidate candidate, CultureInfo culture)
+			=> Candidate.ToCandidateString(candidate, CoordinateConverter.GetInstance(culture));
+
+		/// <inheritdoc cref="ToCandidateString(int, ICandidateMapConverter, IFormatProvider?)"/>
+		public static string ToCandidateString(Candidate candidate, CoordinateConverter converter)
+			=> converter.CandidateConverter(candidate.AsCandidateMap());
+
+		/// <inheritdoc cref="ToCandidateString(int, ICandidateMapConverter, IFormatProvider?)"/>
+		public static string ToCandidateString(Candidate candidate, ICandidateMapConverter converter)
+			=> Candidate.ToCandidateString(candidate, converter, null);
+
 		/// <summary>
 		/// Converts a candidate instance into a string instance that represents for a candidate.
 		/// </summary>
 		/// <param name="candidate">The candidate.</param>
-		/// <param name="formatProvider">The formatter.</param>
+		/// <param name="converter">The converter.</param>
+		/// <param name="formatProvider">The format provider.</param>
 		/// <returns>The string representation.</returns>
-		public static string ToCandidateString(Candidate candidate, IFormatProvider? formatProvider)
+		public static string ToCandidateString(Candidate candidate, ICandidateMapConverter converter, IFormatProvider? formatProvider)
 		{
-			var converter = CoordinateConverter.GetInstance(formatProvider);
-			return converter.CandidateConverter(candidate.AsCandidateMap());
+			var map = candidate.AsCandidateMap();
+			return converter.TryFormat(in map, null, out var result) ? result : throw new FormatException();
 		}
 	}
 

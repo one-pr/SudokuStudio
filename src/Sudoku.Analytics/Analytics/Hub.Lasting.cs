@@ -39,7 +39,7 @@ public partial class Hub
 			var (resultCount, resultHouse) = (9, 0);
 			foreach (var houseType in HouseTypes)
 			{
-				var (h, tempCount) = (cell >> houseType, 0);
+				var (h, tempCount) = (cell.GetHouse(houseType), 0);
 				foreach (var c in HousesMap[h])
 				{
 					if (grid.GetState(c) == CellState.Empty)

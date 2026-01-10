@@ -207,7 +207,7 @@ public sealed class BorescoperDeadlyPatternPattern(long mask) : Pattern
 			for (var (i, cur) = (0, 0); i < 9; i++)
 			{
 				var cell = HousesCells[houseIndex][i];
-				if (block == cell >> HouseType.Block)
+				if (block == cell.GetHouse(HouseType.Block))
 				{
 					continue;
 				}

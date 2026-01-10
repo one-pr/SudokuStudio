@@ -11,35 +11,16 @@ public static class GridAnalysisExtensions
 	/// </summary>
 	extension(ref Grid @this)
 	{
-		/// <inheritdoc cref="op_RightShiftAssignment(ref Grid, Step)"/>
-		[Obsolete(DeprecatedMessages.ExtensionOperator_Apply, false)]
-		public void Apply(Step step) => @this >>= step;
-
-
 		/// <summary>
 		/// Applies for all conclusions into the current <see cref="Grid"/> instance.
 		/// </summary>
 		/// <param name="step">A conclusion-provider <see cref="Step"/> instance.</param>
-		public void operator >>=(Step step)
+		public void Apply(Step step)
 		{
 			foreach (var conclusion in step.Conclusions)
 			{
-				@this >>= conclusion;
+				@this.Apply(conclusion);
 			}
-		}
-
-
-		/// <summary>
-		/// Applies the grid with specified step.
-		/// </summary>
-		/// <param name="grid">The grid.</param>
-		/// <param name="step">The step.</param>
-		/// <returns>The target grid.</returns>
-		public static Grid operator >>(in Grid grid, Step step)
-		{
-			var tempGrid = grid;
-			tempGrid >>= step;
-			return tempGrid;
 		}
 	}
 
@@ -163,7 +144,7 @@ public static class GridAnalysisExtensions
 		/// </remarks>
 		public ReadOnlySpan<Conclusion> GetBackdoors()
 		{
-			if (@this.PuzzleType != GridType.Standard || @this.IsSolved || !@this.IsValid)
+			if (!@this.IsStandard || @this.IsSolved || !@this.IsValid)
 			{
 				return default;
 			}

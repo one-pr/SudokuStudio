@@ -13,8 +13,7 @@ public readonly record struct Permutation(ReadOnlyMemory<Candidate> Assignments,
 	IComparable<Permutation>,
 	IComparisonOperators<Permutation, Permutation, bool>,
 	IEqualityOperators<Permutation, Permutation, bool>,
-	IEnumerable<Candidate>,
-	IFormattable
+	IEnumerable<Candidate>
 {
 	/// <summary>
 	/// Indicates candidates used.
@@ -32,16 +31,28 @@ public readonly record struct Permutation(ReadOnlyMemory<Candidate> Assignments,
 	public int CompareTo(Permutation other) => Map.CompareTo(other.Map);
 
 	/// <inheritdoc cref="object.ToString"/>
-	public override string ToString() => ToString(null);
+	public override string ToString() => ToString(CoordinateConverter.InvariantCulture);
 
-	/// <inheritdoc cref="IFormattable.ToString(string?, IFormatProvider?)"/>
-	public string ToString(IFormatProvider? formatProvider) => ToString(null, formatProvider);
+	/// <inheritdoc cref="ToString(ICandidateMapConverter, IFormatProvider?)"/>
+	public string ToString(CultureInfo culture) => ToString(CoordinateConverter.GetInstance(culture));
 
-	/// <inheritdoc/>
-	public string ToString(string? format, IFormatProvider? formatProvider)
-		=> formatProvider is ICustomFormatter customFormatter
-			? customFormatter.Format(format, this, formatProvider)
-			: CoordinateConverter.GetInstance(formatProvider).CandidateConverter(Map);
+	/// <inheritdoc cref="ToString(ICandidateMapConverter, IFormatProvider?)"/>
+	public string ToString(CoordinateConverter converter) => converter.CandidateConverter(Map);
+
+	/// <inheritdoc cref="ToString(ICandidateMapConverter, IFormatProvider?)"/>
+	public string ToString(ICandidateMapConverter converter) => ToString(converter, null);
+
+	/// <summary>
+	/// Converts the current instance into <see cref="string"/> representation via the specified converter.
+	/// </summary>
+	/// <param name="converter">The converter.</param>
+	/// <param name="formatProvider">The format provider.</param>
+	/// <returns>The string.</returns>
+	public string ToString(ICandidateMapConverter converter, IFormatProvider? formatProvider)
+	{
+		var map = Map;
+		return converter.TryFormat(in map, formatProvider, out var result) ? result : throw new FormatException();
+	}
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
 	public AnonymousSpanEnumerator<Candidate> GetEnumerator() => new(Assignments.Span);

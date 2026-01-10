@@ -12,7 +12,7 @@ namespace Sudoku.Analytics.StepSearchers;
 	Technique.BruteForce,
 	IsCachingSafe = true,
 	IsOrderingFixed = true,
-	SupportAnalyzingMultipleSolutionsPuzzle = false)]
+	SupportsAnalyzingPuzzleHavingMultipleSolutions = false)]
 public sealed partial class BruteForceStepSearcher : StepSearcher
 {
 	/// <summary>

@@ -63,8 +63,8 @@ public partial class Hub
 						mergedConclusions,
 						[
 							[
-						.. from node in xyz1ViewNodes where node.Identifier == ColorIdentifier.Auxiliary2 select node,
-						.. from node in xyz2ViewNodes where node.Identifier == ColorIdentifier.Auxiliary2 select node,
+						.. from node in xyz1ViewNodes where node.Identifier == ColorDescriptorAlias.Auxiliary2 select node,
+						.. from node in xyz2ViewNodes where node.Identifier == ColorDescriptorAlias.Auxiliary2 select node,
 						.. xyz1ViewNodes
 					],
 					xyz1ViewNodes,

@@ -32,12 +32,12 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 		for (var chuteIndex = 0; chuteIndex < 6; chuteIndex++)
 		{
 			// Represents a chute cells.
-			var chuteCells = Miniline.MinilinesGroupedByChuteIndex[chuteIndex].AsReadOnlySpan();
+			var chuteCells = Segments.SegmentsGroupedByChuteIndex[chuteIndex].AsReadOnlySpan();
 
 			// Iterate on each combination of triplets of braiding indices.
 			foreach (var indices in BraidingIndices)
 			{
-				// Gets miniline cells in this group to be checked.
+				// Gets segment cells in this group to be checked.
 				var cells1 = chuteCells[indices[0]];
 				var cells2 = chuteCells[indices[1]];
 				var cells3 = chuteCells[indices[2]];
@@ -45,8 +45,8 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 				cellsGroup[1] = &cells2;
 				cellsGroup[2] = &cells3;
 
-				// Check whether every miniline has enough cells to be iterated.
-				if (!CheckWhetherEveryMinilineHasAtLeastTwoEmptyCells(grid, cellsGroup, chuteCells, indices))
+				// Check whether every segment has enough cells to be iterated.
+				if (!CheckWhetherEverySegmentHasAtLeastTwoEmptyCells(grid, cellsGroup, chuteCells, indices))
 				{
 					continue;
 				}
@@ -63,7 +63,7 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 						continue;
 					}
 
-					// The other unused cell in this miniline shouldn't contain same digits to be checked.
+					// The other unused cell in this segment shouldn't contain same digits to be checked.
 					if ((grid.GetCandidates((chuteCells[indices[0]] & ~a)[0]) & digitsMask) != 0)
 					{
 						continue;
@@ -80,7 +80,7 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 							continue;
 						}
 
-						// The other unused cell in this miniline shouldn't contain same digits to be checked.
+						// The other unused cell in this segment shouldn't contain same digits to be checked.
 						if ((grid.GetCandidates((chuteCells[indices[1]] & ~b)[0]) & digitsMask) != 0)
 						{
 							continue;
@@ -97,7 +97,7 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 								continue;
 							}
 
-							// The other unused cell in this miniline shouldn't contain same digits to be checked.
+							// The other unused cell in this segment shouldn't contain same digits to be checked.
 							if ((grid.GetCandidates((chuteCells[indices[2]] & ~c)[0]) & digitsMask) != 0)
 							{
 								continue;
@@ -197,9 +197,9 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 								conclusions.AsMemory(),
 								[
 									[
-										.. from cell in a select new CellViewNode(ColorIdentifier.Normal, cell),
-										.. from cell in b select new CellViewNode(ColorIdentifier.Normal, cell),
-										.. from cell in c select new CellViewNode(ColorIdentifier.Normal, cell)
+										.. from cell in a select new CellViewNode(ColorDescriptorAlias.Normal, cell),
+										.. from cell in b select new CellViewNode(ColorDescriptorAlias.Normal, cell),
+										.. from cell in c select new CellViewNode(ColorDescriptorAlias.Normal, cell)
 									]
 								],
 								context.Options,
@@ -225,21 +225,21 @@ public sealed partial class BraidAnalysisStepSearcher : StepSearcher
 
 
 	/// <summary>
-	/// Check whether every miniline has enough cells to be iterated.
+	/// Check whether every segment has enough cells to be iterated.
 	/// </summary>
 	/// <param name="grid">The grid.</param>
 	/// <param name="cellsGroup">The cell groups.</param>
 	/// <param name="chuteCells">The chute cells.</param>
 	/// <param name="indices">The chosen chute indices.</param>
 	/// <returns>A <see cref="bool"/> result.</returns>
-	private static unsafe bool CheckWhetherEveryMinilineHasAtLeastTwoEmptyCells(
+	private static unsafe bool CheckWhetherEverySegmentHasAtLeastTwoEmptyCells(
 		in Grid grid,
 		CellMap** cellsGroup,
 		ReadOnlySpan<CellMap> chuteCells,
 		int[] indices
 	)
 	{
-		// Check whether all 3 minilines contain at least 2 empty cells.
+		// Check whether all 3 segments contain at least 2 empty cells.
 		for (var i = 0; i < 3; i++)
 		{
 			ref var cellsToCheck = ref *cellsGroup[i];

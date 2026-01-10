@@ -95,12 +95,12 @@ public sealed partial class IrregularWingStepSearcher : StepSearcher
 				// Iterate on each house.
 				for (var house = 0; house < 27; house++)
 				{
-					if (house == c1 >> HouseType.Block
-						|| house == c1 >> HouseType.Row
-						|| house == c1 >> HouseType.Column
-						|| house == c2 >> HouseType.Block
-						|| house == c2 >> HouseType.Row
-						|| house == c2 >> HouseType.Column)
+					if (house == c1.GetHouse(HouseType.Block)
+						|| house == c1.GetHouse(HouseType.Row)
+						|| house == c1.GetHouse(HouseType.Column)
+						|| house == c2.GetHouse(HouseType.Block)
+						|| house == c2.GetHouse(HouseType.Row)
+						|| house == c2.GetHouse(HouseType.Column))
 					{
 						// The house to search for conjugate pairs shouldn't be the same as those two cells' houses.
 						continue;
@@ -159,12 +159,12 @@ public sealed partial class IrregularWingStepSearcher : StepSearcher
 							(from cell in elimMap select new Conclusion(Elimination, cell, anotherDigit)).ToArray(),
 							[
 								[
-									new CandidateViewNode(ColorIdentifier.Auxiliary1, c1 * 9 + anotherDigit),
-									new CandidateViewNode(ColorIdentifier.Auxiliary1, c2 * 9 + anotherDigit),
-									new CandidateViewNode(ColorIdentifier.Normal, c1 * 9 + digit),
-									new CandidateViewNode(ColorIdentifier.Normal, c2 * 9 + digit),
-									.. from cell in bridge select new CandidateViewNode(ColorIdentifier.Normal, cell * 9 + digit),
-									new HouseViewNode(ColorIdentifier.Normal, house)
+									new CandidateViewNode(ColorDescriptorAlias.Auxiliary1, c1 * 9 + anotherDigit),
+									new CandidateViewNode(ColorDescriptorAlias.Auxiliary1, c2 * 9 + anotherDigit),
+									new CandidateViewNode(ColorDescriptorAlias.Normal, c1 * 9 + digit),
+									new CandidateViewNode(ColorDescriptorAlias.Normal, c2 * 9 + digit),
+									.. from cell in bridge select new CandidateViewNode(ColorDescriptorAlias.Normal, cell * 9 + digit),
+									new HouseViewNode(ColorDescriptorAlias.Normal, house)
 								]
 							],
 							context.Options,
@@ -236,7 +236,7 @@ public sealed partial class IrregularWingStepSearcher : StepSearcher
 								var tempCrosshatchingHouses = CellMap.Empty;
 								foreach (var cell in cells)
 								{
-									tempCrosshatchingHouses |= HousesMap[cell >> crosshatchingHouseType];
+									tempCrosshatchingHouses |= HousesMap[cell.GetHouse(crosshatchingHouseType)];
 								}
 								emptyCellsInThisHouse &= tempCrosshatchingHouses;
 								if (emptyCellsInThisHouse.Count != size)
@@ -272,7 +272,7 @@ public sealed partial class IrregularWingStepSearcher : StepSearcher
 									{
 										candidateOffsets.Add(
 											new(
-												digit == wDigit ? ColorIdentifier.Auxiliary1 : ColorIdentifier.Normal,
+												digit == wDigit ? ColorDescriptorAlias.Auxiliary1 : ColorDescriptorAlias.Normal,
 												cell * 9 + digit
 											)
 										);
@@ -280,12 +280,12 @@ public sealed partial class IrregularWingStepSearcher : StepSearcher
 								}
 								foreach (var cell in emptyCellsInThisHouse)
 								{
-									candidateOffsets.Add(new(ColorIdentifier.Normal, cell * 9 + xDigit));
+									candidateOffsets.Add(new(ColorDescriptorAlias.Normal, cell * 9 + xDigit));
 								}
 
 								var step = new MultiBranchWWingStep(
 									conclusions.AsMemory(),
-									[[.. candidateOffsets, new HouseViewNode(ColorIdentifier.Normal, house)]],
+									[[.. candidateOffsets, new HouseViewNode(ColorDescriptorAlias.Normal, house)]],
 									context.Options,
 									cells,
 									emptyCellsInThisHouse,

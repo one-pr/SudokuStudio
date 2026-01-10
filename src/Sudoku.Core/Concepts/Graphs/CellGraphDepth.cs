@@ -16,7 +16,7 @@ public readonly record struct CellGraphDepth(int Depth, Cell Cell) : IEqualityOp
 		builder.Append($"{nameof(Depth)} = ");
 		builder.Append(Depth);
 		builder.Append($", {nameof(Cell)} = ");
-		builder.Append($"\"{Cell.ToCellString(Cell, CoordinateConverter.InvariantCultureInstance)}\"");
+		builder.Append($"\"{Cell.ToCellString(Cell, CoordinateConverter.InvariantCulture)}\"");
 		return true;
 	}
 }

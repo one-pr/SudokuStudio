@@ -6,7 +6,7 @@ namespace Sudoku.Drawing.Nodes;
 /// <param name="identifier"><inheritdoc/></param>
 /// <param name="chuteIndex"><inheritdoc cref="ChuteIndex" path="/summary"/></param>
 [method: JsonConstructor]
-public sealed class ChuteViewNode(ColorIdentifier identifier, int chuteIndex) : BasicViewNode(identifier)
+public sealed class ChuteViewNode(ColorDescriptor identifier, int chuteIndex) : BasicViewNode(identifier)
 {
 	/// <summary>
 	/// Indicates the chute index. The value can be between 0 and 5.
@@ -34,7 +34,7 @@ public sealed class ChuteViewNode(ColorIdentifier identifier, int chuteIndex) : 
 
 
 	/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>
-	public void Deconstruct(out ColorIdentifier identifier, out int chute) => (identifier, chute) = (Identifier, ChuteIndex);
+	public void Deconstruct(out ColorDescriptor identifier, out int chute) => (identifier, chute) = (Identifier, ChuteIndex);
 
 	/// <inheritdoc/>
 	public override bool Equals([NotNullWhen(true)] ViewNode? other)
