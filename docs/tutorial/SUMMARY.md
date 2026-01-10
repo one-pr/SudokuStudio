@@ -207,7 +207,10 @@
 * [匿名致命结构](deadly-pattern-theory/01-anonymous-deadly-pattern.md)
 * [反转致命结构](deadly-pattern-theory/02-reversed-deadly-pattern/README.md)
   * [反转拓展矩形（RXR）](deadly-pattern-theory/02-reversed-deadly-pattern/01-reversed-extended-rectangle.md)
-  * [反转唯一矩形和反转唯一环](deadly-pattern-theory/02-reversed-deadly-pattern/02-reversed-unique-rectangle-and-reversed-unique-loop.md)
+  * [反转唯一矩形 / 唯一环（RUR / RUL）](deadly-pattern-theory/02-reversed-deadly-pattern/02-reversed-unique-rectangle-and-reversed-unique-loop.md)
+* [宇宙法（GSP）](deadly-pattern-theory/03-gurth-symmetrical-placement/README.md)
+  * [宇宙法的基本推理](deadly-pattern-theory/03-gurth-symmetrical-placement/01-reasoning-of-gurth-symmtrical-placement.md)
+  * [宇宙法反演](deadly-pattern-theory/03-gurth-symmetrical-placement/02-anti-gurth-symmetrical-placement.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
