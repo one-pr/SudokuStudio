@@ -210,7 +210,8 @@
   * [反转唯一矩形 / 唯一环（RUR / RUL）](deadly-pattern-theory/02-reversed-deadly-pattern/02-reversed-unique-rectangle-and-reversed-unique-loop.md)
 * [宇宙法（GSP）](deadly-pattern-theory/03-gurth-symmetrical-placement/README.md)
   * [宇宙法的基本推理](deadly-pattern-theory/03-gurth-symmetrical-placement/01-reasoning-of-gurth-symmtrical-placement.md)
-  * [宇宙法反演](deadly-pattern-theory/03-gurth-symmetrical-placement/02-anti-gurth-symmetrical-placement.md)
+  * [宇宙法的复合用法](deadly-pattern-theory/03-gurth-symmetrical-placement/02-cascading-gurth-symmetrical-placement.md)
+  * [宇宙法反演](deadly-pattern-theory/03-gurth-symmetrical-placement/03-anti-gurth-symmetrical-placement.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
