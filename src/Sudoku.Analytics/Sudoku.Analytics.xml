@@ -1051,7 +1051,7 @@
             <summary>
             Gets the pattern type of three digits in the specified chute.
             </summary>
-            <param name="grid">The grid.</param>
+            <param name="solutionGrid">The solution to a certain grid.</param>
             <param name="chuteIndex">The chute (0..6).</param>
             <param name="sequenceIndex">The sequence index (0..3).</param>
             <returns>The first three digits from the segment, specified as <paramref name="sequenceIndex"/>.</returns>
@@ -1105,15 +1105,32 @@
             </summary>
             <seealso cref="T:Sudoku.Analytics.Braiding.BraidType"/>
         </member>
+        <member name="M:Sudoku.Analytics.Braiding.BraidTypeExtensions.get_IsRope(Sudoku.Analytics.Braiding.BraidType)">
+            <inheritdoc cref="P:Sudoku.Analytics.Braiding.BraidTypeExtensions.&lt;G&gt;$337A34F3ADFCA277CB4B6C156B9CFC9F.IsRope"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.BraidTypeExtensions.get_IsBraid(Sudoku.Analytics.Braiding.BraidType)">
+            <inheritdoc cref="P:Sudoku.Analytics.Braiding.BraidTypeExtensions.&lt;G&gt;$337A34F3ADFCA277CB4B6C156B9CFC9F.IsBraid"/>
+        </member>
         <member name="M:Sudoku.Analytics.Braiding.BraidTypeExtensions.Create(Sudoku.Analytics.Braiding.RotationType,Sudoku.Analytics.Braiding.RotationType,Sudoku.Analytics.Braiding.RotationType)">
             <inheritdoc cref="M:Sudoku.Analytics.Braiding.BraidTypeExtensions.&lt;G&gt;$337A34F3ADFCA277CB4B6C156B9CFC9F.Create(Sudoku.Analytics.Braiding.RotationType,Sudoku.Analytics.Braiding.RotationType,Sudoku.Analytics.Braiding.RotationType)"/>
         </member>
         <member name="M:Sudoku.Analytics.Braiding.BraidTypeExtensions.Create(System.ReadOnlySpan{Sudoku.Analytics.Braiding.RotationType})">
             <inheritdoc cref="M:Sudoku.Analytics.Braiding.BraidTypeExtensions.&lt;G&gt;$337A34F3ADFCA277CB4B6C156B9CFC9F.Create(System.ReadOnlySpan{Sudoku.Analytics.Braiding.RotationType})"/>
         </member>
-        <member name="T:Sudoku.Analytics.Braiding.BraidTypeExtensions.&lt;G&gt;$337A34F3ADFCA277CB4B6C156B9CFC9F.&lt;M&gt;$337A34F3ADFCA277CB4B6C156B9CFC9F">
+        <member name="T:Sudoku.Analytics.Braiding.BraidTypeExtensions.&lt;G&gt;$337A34F3ADFCA277CB4B6C156B9CFC9F.&lt;M&gt;$F18BBD20497D6472D2834772CC34D519">
             <summary>
             Provides extension members on <see cref="T:Sudoku.Analytics.Braiding.BraidType"/>.
+            </summary>
+            <param name="this">The current field.</param>
+        </member>
+        <member name="P:Sudoku.Analytics.Braiding.BraidTypeExtensions.&lt;G&gt;$337A34F3ADFCA277CB4B6C156B9CFC9F.IsRope">
+            <summary>
+            Indicates whether the field can be defined as "rope".
+            </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Braiding.BraidTypeExtensions.&lt;G&gt;$337A34F3ADFCA277CB4B6C156B9CFC9F.IsBraid">
+            <summary>
+            Indicates whether the field can be defined as "braid".
             </summary>
         </member>
         <member name="M:Sudoku.Analytics.Braiding.BraidTypeExtensions.&lt;G&gt;$337A34F3ADFCA277CB4B6C156B9CFC9F.Create(Sudoku.Analytics.Braiding.RotationType,Sudoku.Analytics.Braiding.RotationType,Sudoku.Analytics.Braiding.RotationType)">

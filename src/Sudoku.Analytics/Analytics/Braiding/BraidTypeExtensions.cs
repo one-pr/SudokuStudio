@@ -9,8 +9,20 @@ public static class BraidTypeExtensions
 	/// <summary>
 	/// Provides extension members on <see cref="BraidType"/>.
 	/// </summary>
-	extension(BraidType)
+	/// <param name="this">The current field.</param>
+	extension(BraidType @this)
 	{
+		/// <summary>
+		/// Indicates whether the field can be defined as "rope".
+		/// </summary>
+		public bool IsRope => @this is BraidType.NRope or BraidType.ZRope;
+
+		/// <summary>
+		/// Indicates whether the field can be defined as "braid".
+		/// </summary>
+		public bool IsBraid => @this is BraidType.NBraid or BraidType.ZBraid;
+
+
 		/// <summary>
 		/// Creates a <see cref="BraidType"/> field via 3 rotation types.
 		/// </summary>

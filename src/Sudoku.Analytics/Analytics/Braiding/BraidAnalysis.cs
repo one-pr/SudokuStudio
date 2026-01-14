@@ -101,24 +101,24 @@ public static class BraidAnalysis
 	/// <summary>
 	/// Gets the pattern type of three digits in the specified chute.
 	/// </summary>
-	/// <param name="grid">The grid.</param>
+	/// <param name="solutionGrid">The solution to a certain grid.</param>
 	/// <param name="chuteIndex">The chute (0..6).</param>
 	/// <param name="sequenceIndex">The sequence index (0..3).</param>
 	/// <returns>The first three digits from the segment, specified as <paramref name="sequenceIndex"/>.</returns>
 	/// <exception cref="ArgumentException">Throws when the argument must be solved.</exception>
-	public static BraidType GetPattern(in Grid grid, int chuteIndex, int sequenceIndex)
+	public static BraidType GetPattern(in Grid solutionGrid, int chuteIndex, int sequenceIndex)
 	{
-		ArgumentException.Assert(grid.IsSolved);
+		ArgumentException.Assert(solutionGrid.IsSolved);
 
 		ref readonly var topThreeCells = ref TopThreeCellsMap[(chuteIndex, sequenceIndex)];
-		var valuesMap = grid.ValuesMap;
+		var valuesMap = solutionGrid.ValuesMap;
 
 		var result = new List<RotationType>(3);
 
 		// Iterate on each cell.
 		foreach (var cell in topThreeCells)
 		{
-			var digit = grid.GetDigit(cell);
+			var digit = solutionGrid.GetDigit(cell);
 
 			// Check for two types of rotation.
 			foreach (var type in (RotationType.Downside, RotationType.Upside))

@@ -7,4 +7,4 @@ namespace Sudoku.Analytics.Braiding;
 /// <param name="SequenceIndex">Indicates sequence index (0..3).</param>
 /// <param name="Type">Indicates type of rotation.</param>
 /// <seealso cref="BraidAnalysis.RotationMap"/>
-public readonly record struct RotationMapKey(int ChuteIndex, Digit SequenceIndex, RotationType Type);
+internal readonly record struct RotationMapKey(int ChuteIndex, Digit SequenceIndex, RotationType Type);
