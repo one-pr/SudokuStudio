@@ -74,12 +74,10 @@ public static class BraidAnalysis
 					var otherCells3 = cellsFromHouse3 & ~cells3;
 
 					// Merge them up.
-					var cellsFromChute = cells1 | cells2 | cells3;
 					var otherCellsFromChute = otherCells1 | otherCells2 | otherCells3;
 
 					// Add value into the dictionary.
-					var strand = new Strand(chuteIndex, sequenceIndex, mode);
-					strandsMap.Add(strand, new(cellsFromChute, otherCellsFromChute));
+					strandsMap.Add(new(chuteIndex, sequenceIndex, mode), new([cells1, cells2, cells3], otherCellsFromChute));
 				}
 			}
 		}
@@ -152,5 +150,44 @@ public static class BraidAnalysis
 			}
 		}
 		return BraidType.Create(result[0], result[1], result[2]);
+	}
+
+	/// <summary>
+	/// Maps all digits in the specified grid that can be categorized as N or Z mode.
+	/// </summary>
+	/// <param name="grid">The grid.</param>
+	/// <returns>A dictionary of strands and the digits that can be categorized as this strand.</returns>
+	public static FrozenDictionary<Strand, Mask> MapStrands(in Grid grid)
+	{
+		var result = new Dictionary<Strand, Mask>();
+		var digitsMap = grid.DigitsMap;
+		foreach (ref readonly var strand in Strand.Strands)
+		{
+			var ((chuteIndex, sequenceIndex, _), mask) = (strand, (Mask)0);
+			var includedSegments = StrandsMap[strand].IncludedSegments;
+
+			// Iterate on each digit appeared in this group of cells.
+			var globalIndex = ProjectGlobalIndex(chuteIndex, sequenceIndex);
+			foreach (var digit in grid[TopThreeCellsMap[globalIndex], true])
+			{
+				var allSegmentsSatisfied = true;
+				foreach (ref readonly var segmentCells in includedSegments)
+				{
+					if (!(digitsMap[digit] & segmentCells))
+					{
+						allSegmentsSatisfied = false;
+						break;
+					}
+				}
+				if (allSegmentsSatisfied)
+				{
+					mask |= (Mask)(1 << digit);
+				}
+			}
+
+			// Add the target mask into dictionary.
+			result.Add(strand, mask);
+		}
+		return result.ToFrozenDictionary();
 	}
 }

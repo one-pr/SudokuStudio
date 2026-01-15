@@ -95,14 +95,14 @@ public interface IGrid<TSelf> :
 
 	/// <summary>
 	/// Indicates the map of possible positions of the existence of the candidate value for each digit.
-	/// The return value will be an array of 9 elements, which stands for the states of 9 digits.
+	/// The return value will be an array of 9 elements, which represents the states of 9 digits.
 	/// </summary>
 	ReadOnlySpan<CellMap> CandidatesMap { get; }
 
 	/// <summary>
 	/// <para>
 	/// Indicates the map of possible positions of the existence of each digit. The return value will
-	/// be an array of 9 elements, which stands for the statuses of 9 digits.
+	/// be an array of 9 elements, which represents the states of 9 digits.
 	/// </para>
 	/// <para>
 	/// Different with <see cref="CandidatesMap"/>, this property contains all givens, modifiables and
@@ -115,7 +115,7 @@ public interface IGrid<TSelf> :
 	/// <summary>
 	/// <para>
 	/// Indicates the map of possible positions of the existence of that value of each digit.
-	/// The return value will be an array of 9 elements, which stands for the statuses of 9 digits.
+	/// The return value will be an array of 9 elements, which represents the states of 9 digits.
 	/// </para>
 	/// <para>
 	/// Different with <see cref="CandidatesMap"/>, the value only contains the given or modifiable

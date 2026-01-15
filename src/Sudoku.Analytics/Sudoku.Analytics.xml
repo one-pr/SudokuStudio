@@ -1072,6 +1072,13 @@
             <returns>The first three digits from the segment, specified as <paramref name="sequenceIndex"/>.</returns>
             <exception cref="T:System.ArgumentException">Throws when the argument must be solved.</exception>
         </member>
+        <member name="M:Sudoku.Analytics.Braiding.BraidAnalysis.MapStrands(Sudoku.Concepts.Grid@)">
+            <summary>
+            Maps all digits in the specified grid that can be categorized as N or Z mode.
+            </summary>
+            <param name="grid">The grid.</param>
+            <returns>A dictionary of strands and the digits that can be categorized as this strand.</returns>
+        </member>
         <member name="T:Sudoku.Analytics.Braiding.BraidType">
             <summary>
             Represents a braid type of a chute.
@@ -1179,14 +1186,14 @@
             <summary>
             Represents a pair of <see cref="T:Sudoku.Concepts.CellMap"/> indicating used and unused cells in a chute.
             </summary>
-            <param name="included"><inheritdoc cref="F:Sudoku.Analytics.Braiding.ChuteStrandMap.Included" path="/summary"/></param>
+            <param name="includedSegments"><inheritdoc cref="P:Sudoku.Analytics.Braiding.ChuteStrandMap.IncludedSegments" path="/summary"/></param>
             <param name="excluded"><inheritdoc cref="F:Sudoku.Analytics.Braiding.ChuteStrandMap.Excluded" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Analytics.Braiding.ChuteStrandMap.#ctor(Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@)">
+        <member name="M:Sudoku.Analytics.Braiding.ChuteStrandMap.#ctor(Sudoku.Concepts.CellMap[],Sudoku.Concepts.CellMap@)">
             <summary>
             Represents a pair of <see cref="T:Sudoku.Concepts.CellMap"/> indicating used and unused cells in a chute.
             </summary>
-            <param name="included"><inheritdoc cref="F:Sudoku.Analytics.Braiding.ChuteStrandMap.Included" path="/summary"/></param>
+            <param name="includedSegments"><inheritdoc cref="P:Sudoku.Analytics.Braiding.ChuteStrandMap.IncludedSegments" path="/summary"/></param>
             <param name="excluded"><inheritdoc cref="F:Sudoku.Analytics.Braiding.ChuteStrandMap.Excluded" path="/summary"/></param>
         </member>
         <member name="F:Sudoku.Analytics.Braiding.ChuteStrandMap.Included">
@@ -1198,6 +1205,27 @@
             <summary>
             Indicates cells not contained for a certain type of braid mode in a chute.
             </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Braiding.ChuteStrandMap.IncludedSegments">
+            <summary>
+            Indicates segments of included cells.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.ChuteStrandMap.Deconstruct(Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@)">
+            <target name="method">
+				<summary>
+					Deconstruct the current instance into multiple values, which means you can use
+					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+				</summary>
+			</target>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.ChuteStrandMap.Deconstruct(Sudoku.Concepts.CellMap@,Sudoku.Concepts.CellMap@,System.ReadOnlySpan{Sudoku.Concepts.CellMap}@)">
+            <target name="method">
+				<summary>
+					Deconstruct the current instance into multiple values, which means you can use
+					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+				</summary>
+			</target>
         </member>
         <member name="M:Sudoku.Analytics.Braiding.ChuteStrandMap.Equals(System.Object)">
             <inheritdoc/>
@@ -1228,11 +1256,9 @@
         </member>
         <member name="T:Sudoku.Analytics.Braiding.Strand">
             <summary>
-            <para>Represents a strand.</para>
-            <para>
+            Represents a strand.
             A <b>Strand</b> is a distribution pattern for a single digit in 3 of the 9 intersections aligned in a chute.
             There are 6 different strands in each chute.
-            </para>
             </summary>
             <param name="ChuteIndex">Indicates chute index (0..6).</param>
             <param name="SequenceIndex">Indicates sequence index (0..3).</param>
@@ -1241,11 +1267,9 @@
         </member>
         <member name="M:Sudoku.Analytics.Braiding.Strand.#ctor(System.Int32,System.Int32,Sudoku.Analytics.Braiding.StrandType)">
             <summary>
-            <para>Represents a strand.</para>
-            <para>
+            Represents a strand.
             A <b>Strand</b> is a distribution pattern for a single digit in 3 of the 9 intersections aligned in a chute.
             There are 6 different strands in each chute.
-            </para>
             </summary>
             <param name="ChuteIndex">Indicates chute index (0..6).</param>
             <param name="SequenceIndex">Indicates sequence index (0..3).</param>
@@ -1261,13 +1285,66 @@
         <member name="P:Sudoku.Analytics.Braiding.Strand.Type">
             <summary>Indicates type of rotation.</summary>
         </member>
+        <member name="F:Sudoku.Analytics.Braiding.Strand.StrandsBackingField">
+            <inheritdoc cref="P:Sudoku.Analytics.Braiding.Strand.Strands"/>
+        </member>
+        <member name="P:Sudoku.Analytics.Braiding.Strand.Strands">
+            <summary>
+            Represents all possible strand instances.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.Strand.#cctor">
+            <static-constructor>
+		<summary>
+			<para>
+				Indicates the <see langword="static" /> constructor of the current type.
+			</para>
+			<para>
+				This constructor will initialize some <see langword="static readonly" /> data members
+				of this type that can't use a simple expression to describe the initial value.
+			</para>
+		</summary>
+	</static-constructor>
+        </member>
         <member name="P:Sudoku.Analytics.Braiding.Strand.GlobalSequenceIndex">
             <summary>
-            Indicates global sequence index.
+            Indicates global sequence index (0..9).
             </summary>
+        </member>
+        <member name="P:Sudoku.Analytics.Braiding.Strand.GlobalIndex">
+            <summary>
+            Indicates global index (0..18).
+            </summary>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.Strand.Equals(Sudoku.Analytics.Braiding.Strand)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.Strand.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.Strand.CompareTo(Sudoku.Analytics.Braiding.Strand)">
+            <inheritdoc/>
         </member>
         <member name="M:Sudoku.Analytics.Braiding.Strand.ToString">
             <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.Strand.TryParse(System.String,Sudoku.Analytics.Braiding.Strand@)">
+            <inheritdoc cref="M:System.IParsable`1.TryParse(System.String,System.IFormatProvider,`0@)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.Strand.Parse(System.String)">
+            <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.Strand.op_GreaterThan(Sudoku.Analytics.Braiding.Strand,Sudoku.Analytics.Braiding.Strand)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.Strand.op_GreaterThanOrEqual(Sudoku.Analytics.Braiding.Strand,Sudoku.Analytics.Braiding.Strand)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.Strand.op_LessThan(Sudoku.Analytics.Braiding.Strand,Sudoku.Analytics.Braiding.Strand)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.Strand.op_LessThanOrEqual(Sudoku.Analytics.Braiding.Strand,Sudoku.Analytics.Braiding.Strand)">
+            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Braiding.StrandType">
             <summary>
