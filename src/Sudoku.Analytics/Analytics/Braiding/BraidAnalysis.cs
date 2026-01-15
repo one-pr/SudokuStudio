@@ -37,7 +37,7 @@ public static class BraidAnalysis
 				ref readonly var cellsFromHouse1 = ref HousesMap[sequenceIndex switch { 0 => house1, 1 => house2, _ => house3 }];
 				var cells1 = cellsFromHouse1[..3];
 				var otherCells1 = cellsFromHouse1 & ~cells1;
-				var globalIndex = (chuteIndex / 3 * 3 + chuteIndex % 3) * 3 + sequenceIndex;
+				var globalIndex = ProjectGlobalIndex(chuteIndex, sequenceIndex);
 				TopThreeCellsMap[globalIndex] = cells1;
 
 				// Then do rotate-shifting with N or Z mode.
@@ -89,6 +89,16 @@ public static class BraidAnalysis
 
 
 	/// <summary>
+	/// Projects global index from chute index (0..6) and sequence index (0..3).
+	/// </summary>
+	/// <param name="chuteIndex">The chute index.</param>
+	/// <param name="sequenceIndex">The sequence index.</param>
+	/// <returns>The global index.</returns>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static int ProjectGlobalIndex(int chuteIndex, int sequenceIndex)
+		=> (chuteIndex / 3 * 3 + chuteIndex % 3) * 3 + sequenceIndex;
+
+	/// <summary>
 	/// Get cells at the specified chute, sequence index and type.
 	/// </summary>
 	/// <param name="chuteIndex">The chute index (0..6).</param>
@@ -117,7 +127,7 @@ public static class BraidAnalysis
 	{
 		ArgumentException.Assert(solutionGrid.IsSolved);
 
-		var globalIndex = (chuteIndex / 3 * 3 + chuteIndex % 3) * 3 + sequenceIndex;
+		var globalIndex = ProjectGlobalIndex(chuteIndex, sequenceIndex);
 		ref readonly var topThreeCells = ref TopThreeCellsMap[globalIndex];
 		var valuesMap = solutionGrid.ValuesMap;
 

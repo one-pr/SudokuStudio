@@ -1038,6 +1038,14 @@
 		</summary>
 	</static-constructor>
         </member>
+        <member name="M:Sudoku.Analytics.Braiding.BraidAnalysis.ProjectGlobalIndex(System.Int32,System.Int32)">
+            <summary>
+            Projects global index from chute index (0..6) and sequence index (0..3).
+            </summary>
+            <param name="chuteIndex">The chute index.</param>
+            <param name="sequenceIndex">The sequence index.</param>
+            <returns>The global index.</returns>
+        </member>
         <member name="M:Sudoku.Analytics.Braiding.BraidAnalysis.GetCellsAt(System.Int32,System.Int32,Sudoku.Analytics.Braiding.StrandType)">
             <summary>
             Get cells at the specified chute, sequence index and type.
@@ -1191,8 +1199,32 @@
             Indicates cells not contained for a certain type of braid mode in a chute.
             </summary>
         </member>
+        <member name="M:Sudoku.Analytics.Braiding.ChuteStrandMap.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.ChuteStrandMap.Equals(Sudoku.Analytics.Braiding.ChuteStrandMap@)">
+            <inheritdoc cref="M:System.IEquatable`1.Equals(`0)"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.ChuteStrandMap.GetHashCode">
+            <inheritdoc/>
+        </member>
         <member name="M:Sudoku.Analytics.Braiding.ChuteStrandMap.ToString">
             <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.ChuteStrandMap.System#IEquatable{Sudoku#Analytics#Braiding#ChuteStrandMap}#Equals(Sudoku.Analytics.Braiding.ChuteStrandMap)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.ChuteStrandMap.op_Equality(Sudoku.Analytics.Braiding.ChuteStrandMap@,Sudoku.Analytics.Braiding.ChuteStrandMap@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.ChuteStrandMap.op_Inequality(Sudoku.Analytics.Braiding.ChuteStrandMap@,Sudoku.Analytics.Braiding.ChuteStrandMap@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.ChuteStrandMap.System#Numerics#IEqualityOperators{Sudoku#Analytics#Braiding#ChuteStrandMap,Sudoku#Analytics#Braiding#ChuteStrandMap,System#Boolean}#op_Equality(Sudoku.Analytics.Braiding.ChuteStrandMap,Sudoku.Analytics.Braiding.ChuteStrandMap)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Analytics.Braiding.ChuteStrandMap.System#Numerics#IEqualityOperators{Sudoku#Analytics#Braiding#ChuteStrandMap,Sudoku#Analytics#Braiding#ChuteStrandMap,System#Boolean}#op_Inequality(Sudoku.Analytics.Braiding.ChuteStrandMap,Sudoku.Analytics.Braiding.ChuteStrandMap)">
+            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Analytics.Braiding.Strand">
             <summary>
