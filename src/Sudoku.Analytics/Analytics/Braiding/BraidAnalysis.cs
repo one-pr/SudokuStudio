@@ -181,19 +181,25 @@ public static class BraidAnalysis
 	/// Reduces the full grid of digit distribution on braid analysis.
 	/// </summary>
 	/// <param name="grid">The grid.</param>
-	/// <returns>The result.</returns>
-	public static FrozenDictionary<Strand, Mask> Reduce(in Grid grid)
+	/// <param name="reducedChutesMask">
+	/// The result chute indices that can be reduced. The result value is a 6-bit mask indicating chute indices that can be reduced.
+	/// </param>
+	/// <param name="reducedLookup">The reduced dictionary (if can).</param>
+	/// <returns>A <see cref="bool"/> result indicating whether it can be reduced.</returns>
+	public static bool TryReduce(in Grid grid, out int reducedChutesMask, out FrozenDictionary<Strand, Mask> reducedLookup)
 	{
 		var originalMappedStrands = MapStrands(grid);
-		var result = new Dictionary<Strand, Mask>();
+		var tempReducedLookup = new Dictionary<Strand, Mask>();
+		reducedChutesMask = 0;
 		for (var chute = 0; chute < 6; chute++)
 		{
 			if (TryInferType(grid, chute, out _, out var reduced))
 			{
 				foreach (var kvp in reduced)
 				{
-					result.Add(kvp.Key, kvp.Value);
+					tempReducedLookup.Add(kvp.Key, kvp.Value);
 				}
+				reducedChutesMask |= 1 << chute;
 			}
 			else
 			{
@@ -202,12 +208,14 @@ public static class BraidAnalysis
 					foreach (var type in (StrandType.Downside, StrandType.Upside))
 					{
 						var strand = new Strand(chute, sequenceIndex, type);
-						result.Add(strand, originalMappedStrands[strand]);
+						tempReducedLookup.Add(strand, originalMappedStrands[strand]);
 					}
 				}
 			}
 		}
-		return result.ToFrozenDictionary();
+
+		reducedLookup = tempReducedLookup.ToFrozenDictionary();
+		return reducedChutesMask != 0;
 	}
 
 	/// <summary>
