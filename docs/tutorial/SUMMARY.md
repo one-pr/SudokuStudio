@@ -213,8 +213,8 @@
   * [宇宙法的复合用法](deadly-pattern-theory/03-gurth-symmetrical-placement/02-cascading-gurth-symmetrical-placement.md)
   * [宇宙法反演](deadly-pattern-theory/03-gurth-symmetrical-placement/03-anti-gurth-symmetrical-placement.md)
 * [探长致命结构](deadly-pattern-theory/04-borescoper-deadly-pattern/README.md)
-  * [探长致命结构的基本推理](deadly-pattern-theory/04-borescoper-deadly-pattern/01-reasoning-of-borescoper-deadly-pattern.md)
-  * [探长致命结构的例子](deadly-pattern-theory/04-borescoper-deadly-pattern/02-examples-of-borescoper-deadly-pattern.md)
+  * [三数探长致命结构的基本推理](deadly-pattern-theory/04-borescoper-deadly-pattern/01-reasoning-of-borescoper-deadly-pattern-using-3-digits.md)
+  * [四数探长致命结构的基本推理](deadly-pattern-theory/04-borescoper-deadly-pattern/02-reasoning-of-borescoper-deadly-pattern-using-4-digits.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
