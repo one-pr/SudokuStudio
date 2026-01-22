@@ -7,9 +7,9 @@ namespace Sudoku.Analytics.Braiding;
 public enum BraidingType
 {
 	/// <summary>
-	/// Represents placeholder of this type.
+	/// Represents unknown braiding type.
 	/// </summary>
-	None = 0,
+	Unknown = 0,
 
 	/// <summary>
 	/// Represents N-Rope pattern (NNN).

@@ -1087,7 +1087,7 @@
             <param name="grid">The grid.</param>
             <returns>A dictionary of strands and the digits that can be categorized as this strand.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Braiding.BraidAnalysis.TryReduce(Sudoku.Concepts.Grid@,System.Int32@,System.Collections.Frozen.FrozenDictionary{Sudoku.Analytics.Braiding.Strand,System.Int16}@)">
+        <member name="M:Sudoku.Analytics.Braiding.BraidAnalysis.TryReduce(Sudoku.Concepts.Grid@,System.Int32@,System.Collections.Frozen.FrozenDictionary{Sudoku.Analytics.Braiding.Strand,System.ValueTuple{Sudoku.Analytics.Braiding.BraidingType,System.Int16}}@)">
             <summary>
             Reduces the full grid of digit distribution on braid analysis.
             </summary>
@@ -1104,13 +1104,13 @@
             </summary>
             <param name="grid">The grid.</param>
             <param name="chuteIndex">The chute index (0..6).</param>
-            <param name="result">The type inferred. If none found, <see cref="F:Sudoku.Analytics.Braiding.BraidingType.None"/> will be returned.</param>
+            <param name="result">The type inferred. If none found, <see cref="F:Sudoku.Analytics.Braiding.BraidingType.Unknown"/> will be returned.</param>
             <param name="resultLookup">
             The result distribution of digits must be appeared in the specified strands.
             The value is not <see langword="null"/> if and only if the return value is <see langword="true"/>.
             </param>
             <returns>A <see cref="T:System.Boolean"/> result indicating whether the type can be inferred with unique value.</returns>
-            <seealso cref="F:Sudoku.Analytics.Braiding.BraidingType.None"/>
+            <seealso cref="F:Sudoku.Analytics.Braiding.BraidingType.Unknown"/>
         </member>
         <member name="M:Sudoku.Analytics.Braiding.BraidAnalysis.MapStrandsCore(Sudoku.Concepts.Grid@,System.Int32,System.Collections.Generic.Dictionary{Sudoku.Analytics.Braiding.Strand,System.Int16})">
             <summary>
@@ -1141,9 +1141,9 @@
             Represents a braiding type of a chute.
             </summary>
         </member>
-        <member name="F:Sudoku.Analytics.Braiding.BraidingType.None">
+        <member name="F:Sudoku.Analytics.Braiding.BraidingType.Unknown">
             <summary>
-            Represents placeholder of this type.
+            Represents unknown braiding type.
             </summary>
         </member>
         <member name="F:Sudoku.Analytics.Braiding.BraidingType.NRope">

@@ -186,18 +186,18 @@ public static class BraidAnalysis
 	/// </param>
 	/// <param name="reducedLookup">The reduced dictionary (if can).</param>
 	/// <returns>A <see cref="bool"/> result indicating whether it can be reduced.</returns>
-	public static bool TryReduce(in Grid grid, out int reducedChutesMask, out FrozenDictionary<Strand, Mask> reducedLookup)
+	public static bool TryReduce(in Grid grid, out int reducedChutesMask, out FrozenDictionary<Strand, (BraidingType Type, Mask Mask)> reducedLookup)
 	{
 		var originalMappedStrands = MapStrands(grid);
-		var tempReducedLookup = new Dictionary<Strand, Mask>();
+		var tempReducedLookup = new Dictionary<Strand, (BraidingType, Mask)>();
 		reducedChutesMask = 0;
 		for (var chute = 0; chute < 6; chute++)
 		{
-			if (TryInferType(grid, chute, out _, out var reduced))
+			if (TryInferType(grid, chute, out var braidingType, out var reduced))
 			{
 				foreach (var kvp in reduced)
 				{
-					tempReducedLookup.Add(kvp.Key, kvp.Value);
+					tempReducedLookup.Add(kvp.Key, (braidingType, kvp.Value));
 				}
 				reducedChutesMask |= 1 << chute;
 			}
@@ -208,7 +208,7 @@ public static class BraidAnalysis
 					foreach (var type in (StrandType.Downside, StrandType.Upside))
 					{
 						var strand = new Strand(chute, sequenceIndex, type);
-						tempReducedLookup.Add(strand, originalMappedStrands[strand]);
+						tempReducedLookup.Add(strand, (BraidingType.Unknown, originalMappedStrands[strand]));
 					}
 				}
 			}
@@ -223,13 +223,13 @@ public static class BraidAnalysis
 	/// </summary>
 	/// <param name="grid">The grid.</param>
 	/// <param name="chuteIndex">The chute index (0..6).</param>
-	/// <param name="result">The type inferred. If none found, <see cref="BraidingType.None"/> will be returned.</param>
+	/// <param name="result">The type inferred. If none found, <see cref="BraidingType.Unknown"/> will be returned.</param>
 	/// <param name="resultLookup">
 	/// The result distribution of digits must be appeared in the specified strands.
 	/// The value is not <see langword="null"/> if and only if the return value is <see langword="true"/>.
 	/// </param>
 	/// <returns>A <see cref="bool"/> result indicating whether the type can be inferred with unique value.</returns>
-	/// <seealso cref="BraidingType.None"/>
+	/// <seealso cref="BraidingType.Unknown"/>
 	public static bool TryInferType(
 		in Grid grid,
 		int chuteIndex,
@@ -237,7 +237,7 @@ public static class BraidAnalysis
 		[NotNullWhen(true)] out FrozenDictionary<Strand, Mask>? resultLookup
 	)
 	{
-		result = BraidingType.None;
+		result = BraidingType.Unknown;
 
 		// Define a result dictionary and initialize it with original values.
 		var resultDictionary = new Dictionary<Strand, Mask>(MapStrands(grid, chuteIndex));
@@ -386,9 +386,9 @@ public static class BraidAnalysis
 		}
 
 		// Get values and return.
-		result = candidateBraidingTypes.IsFlag ? candidateBraidingTypes : BraidingType.None;
-		resultLookup = result != BraidingType.None ? resultDictionary.ToFrozenDictionary() : null;
-		return result != BraidingType.None;
+		result = candidateBraidingTypes.IsFlag ? candidateBraidingTypes : BraidingType.Unknown;
+		resultLookup = result != BraidingType.Unknown ? resultDictionary.ToFrozenDictionary() : null;
+		return result != BraidingType.Unknown;
 	}
 
 	/// <summary>

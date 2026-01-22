@@ -58,7 +58,7 @@ public static class BraidTypeExtensions
 		public string ToSimpleString()
 			=> @this switch
 			{
-				BraidingType.None => string.Empty,
+				BraidingType.Unknown => string.Empty,
 				BraidingType.NRope => nameof(BraidingType.NNN),
 				BraidingType.NBraid => nameof(BraidingType.NNZ),
 				BraidingType.ZBraid => nameof(BraidingType.NZZ),
