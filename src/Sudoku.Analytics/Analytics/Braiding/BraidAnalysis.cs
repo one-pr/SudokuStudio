@@ -434,6 +434,7 @@ public static class BraidAnalysis
 		}
 	}
 
+
 	/// <summary>
 	/// Provides extension members on <see cref="Dictionary{TKey, TValue}"/>.
 	/// </summary>
