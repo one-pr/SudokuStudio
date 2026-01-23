@@ -200,9 +200,20 @@
             <inheritdoc cref="P:SudokuStudio.AppExtensions.&lt;G&gt;$BA25A5DC2D5ECDFAB0CDAF49939E8048.CurrentApp"/>
         </member>
         <member name="T:SudokuStudio.AppExtensions.&lt;G&gt;$8870D109CBB55E5F608E76711615B86A.&lt;M&gt;$6DC3A46C313EAC6D72FD6C06129CFC51">
-            <summary>
-            Provides extension members on <see cref="T:SudokuStudio.App"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:SudokuStudio.AppExtensions.&lt;G&gt;$8870D109CBB55E5F608E76711615B86A.GetStepSearchers">
             <summary>
@@ -211,9 +222,20 @@
             <returns>A list of <see cref="T:Sudoku.Analytics.StepSearcher"/> instances.</returns>
         </member>
         <member name="T:SudokuStudio.AppExtensions.&lt;G&gt;$BA25A5DC2D5ECDFAB0CDAF49939E8048.&lt;M&gt;$2502E03BA46EC582201F228E156C0B29">
-            <summary>
-            Provides extension members on <see cref="T:Microsoft.UI.Xaml.Application"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="P:SudokuStudio.AppExtensions.&lt;G&gt;$BA25A5DC2D5ECDFAB0CDAF49939E8048.CurrentApp">
             <inheritdoc cref="P:Microsoft.UI.Xaml.Application.Current"/>
@@ -3358,9 +3380,20 @@
             <inheritdoc cref="M:SudokuStudio.Drawing.Extensions.&lt;G&gt;$D0A041DC94BABB7413571448407CE803.FindDrawableControls"/>
         </member>
         <member name="T:SudokuStudio.Drawing.Extensions.&lt;G&gt;$D0A041DC94BABB7413571448407CE803.&lt;M&gt;$D3DCE9AC78532663B5A784BF20338EFC">
-            <summary>
-            Provides extension members on <see cref="T:Microsoft.UI.Xaml.Controls.UIElementCollection"/> instance.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:SudokuStudio.Drawing.Extensions.&lt;G&gt;$D0A041DC94BABB7413571448407CE803.RemoveAllViewUnitControls">
             <summary>
@@ -3384,10 +3417,20 @@
             <inheritdoc cref="M:SudokuStudio.Drawing.Extensions.&lt;G&gt;$970916A189419611DDDEAC9AB092AA10.ConflictWith(System.Int32,System.Nullable{Sudoku.Concepts.Conclusion}@)"/>
         </member>
         <member name="T:SudokuStudio.Drawing.Extensions.&lt;G&gt;$970916A189419611DDDEAC9AB092AA10.&lt;M&gt;$14E2F3B8923C5DBA2560C824D2385A9C">
-            <summary>
-            Provides extension members on <see cref="T:System.ReadOnlyMemory`1"/> of <see cref="T:Sudoku.Concepts.Conclusion"/>.
-            </summary>
-            <param name="conclusions">The conclusion collection.</param>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="conclusions">The current instance.</param>
         </member>
         <member name="M:SudokuStudio.Drawing.Extensions.&lt;G&gt;$970916A189419611DDDEAC9AB092AA10.ConflictWith(System.Int32,System.Nullable{Sudoku.Concepts.Conclusion}@)">
             <summary>
@@ -4013,9 +4056,20 @@
             <inheritdoc cref="M:SudokuStudio.Interaction.Conversions.Extensions.&lt;G&gt;$EB1323430AE283AAF1610D439170F7ED.ToString(Sudoku.Analytics.Step,System.Decimal,System.Globalization.CultureInfo)"/>
         </member>
         <member name="T:SudokuStudio.Interaction.Conversions.Extensions.&lt;G&gt;$EB1323430AE283AAF1610D439170F7ED.&lt;M&gt;$D1807C59820321B01F40B9FDA124C1E6">
-            <summary>
-            Provides extension members on <see cref="T:Sudoku.Analytics.Factor"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:SudokuStudio.Interaction.Conversions.Extensions.&lt;G&gt;$EB1323430AE283AAF1610D439170F7ED.ToString(Sudoku.Analytics.Step,System.Decimal,System.Globalization.CultureInfo)">
             <summary>
@@ -4921,9 +4975,20 @@
             <inheritdoc cref="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.&lt;G&gt;$831724A3875A25A142781824A23012D1.Converter"/>
         </member>
         <member name="T:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.&lt;G&gt;$831724A3875A25A142781824A23012D1.&lt;M&gt;$10ED192D97D1E63AC20F1E1642B328FC">
-            <summary>
-            Provides extension members on <see cref="T:SudokuStudio.Interaction.SudokuFormatFlags"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="P:SudokuStudio.Interaction.SudokuFormatFlagsExtensions.&lt;G&gt;$831724A3875A25A142781824A23012D1.Converter">
             <summary>
@@ -11060,9 +11125,20 @@
             <inheritdoc cref="M:SudokuStudio.Storage.FileFormats.&lt;G&gt;$7C56FB134EF893A33DC98E5C8F3635B9.AddFileFormat(SudokuStudio.Storage.FileFormat)"/>
         </member>
         <member name="T:SudokuStudio.Storage.FileFormats.&lt;G&gt;$A065CF8670CC728645FF3396A2B8C05A.&lt;M&gt;$54B9ACB0B3E98B60F0088CEA4A0E6E04">
-            <summary>
-            Provides extension members on <see cref="T:Windows.Storage.Pickers.FileSavePicker"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:SudokuStudio.Storage.FileFormats.&lt;G&gt;$A065CF8670CC728645FF3396A2B8C05A.AddFileFormat(SudokuStudio.Storage.FileFormat)">
             <summary>
@@ -11071,9 +11147,20 @@
             <param name="format">The format to be added.</param>
         </member>
         <member name="T:SudokuStudio.Storage.FileFormats.&lt;G&gt;$7C56FB134EF893A33DC98E5C8F3635B9.&lt;M&gt;$9AA68181A89F8595CE431B1C53485711">
-            <summary>
-            Provides extension members on <see cref="T:Windows.Storage.Pickers.FileOpenPicker"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:SudokuStudio.Storage.FileFormats.&lt;G&gt;$7C56FB134EF893A33DC98E5C8F3635B9.AddFileFormat(SudokuStudio.Storage.FileFormat)">
             <summary>
@@ -12123,9 +12210,21 @@
             <seealso cref="P:SudokuStudio.Views.Attached.AnalyzerProperties.AnalyzerUseIttoryuMode"/>
         </member>
         <member name="T:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.&lt;M&gt;$DB32F42FFB7A39E1D137C17C0AEFC1BF">
-            <summary>
-            Provides extension members on <see cref="T:Sudoku.Analytics.StepGatherer"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <typeparam name="T">The type of step gatherer.</typeparam>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:SudokuStudio.Views.Attached.AnalyzerProperties.&lt;G&gt;$FADAECEBD681235227010BB9198D85DE`1.WithRuntimeIdentifierSetter(System.Object,System.String,System.Boolean@)">
             <summary>
@@ -13850,6 +13949,32 @@
 					Provides with file-local extension methods.
 				</summary>
 			</target>
+        </member>
+        <member name="M:SudokuStudio.Views.Controls.Extensions.GetCellsOrdered(System.Int32,System.Int32)">
+            <inheritdoc cref="M:SudokuStudio.Views.Controls.Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.GetCellsOrdered(System.Int32)"/>
+        </member>
+        <member name="T:SudokuStudio.Views.Controls.Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.&lt;M&gt;$51B2989A609F7566ED3112AEC750A666">
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current cell.</param>
+        </member>
+        <member name="M:SudokuStudio.Views.Controls.Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.GetCellsOrdered(System.Int32)">
+            <summary>
+            Get ordered cells.
+            </summary>
+            <param name="house">The house index (0..27).</param>
+            <returns>The ordered cells.</returns>
         </member>
         <member name="T:SudokuStudio.Views.Controls.SudokuPaneCell">
             <summary>
@@ -15603,9 +15728,20 @@
             <inheritdoc cref="P:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$F2E2D4FDD1D611F71CA5E043EC8527E5.TechniqueString"/>
         </member>
         <member name="T:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$F2E2D4FDD1D611F71CA5E043EC8527E5.&lt;M&gt;$1C505831FBD0BA5E5EDD14823B9158EC">
-            <summary>
-            Provides extension members on <see cref="T:Sudoku.Analytics.Categorization.TechniqueSet"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="P:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$F2E2D4FDD1D611F71CA5E043EC8527E5.TechniqueString">
             <summary>
@@ -16013,6 +16149,31 @@
 					Provides with file-local extension methods.
 				</summary>
 			</target>
+        </member>
+        <member name="M:SudokuStudio.Views.Pages.Operation.Extensions.AddComment(QuestPDF.Fluent.ColumnDescriptor,System.String)">
+            <inheritdoc cref="M:SudokuStudio.Views.Pages.Operation.Extensions.&lt;G&gt;$D9285269886E18760ABDD9BA735C0360.AddComment(System.String)"/>
+        </member>
+        <member name="T:SudokuStudio.Views.Pages.Operation.Extensions.&lt;G&gt;$D9285269886E18760ABDD9BA735C0360.&lt;M&gt;$107927C742D734F87F0760C85240AA72">
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
+        </member>
+        <member name="M:SudokuStudio.Views.Pages.Operation.Extensions.&lt;G&gt;$D9285269886E18760ABDD9BA735C0360.AddComment(System.String)">
+            <summary>
+            Adds comment.
+            </summary>
+            <param name="comment">Comment text.</param>
         </member>
         <member name="T:SudokuStudio.Views.Pages.Operation.ShuffleOperation">
             <summary>
@@ -17313,22 +17474,34 @@
 			</target>
         </member>
         <member name="M:SudokuStudio.Views.Pages.Extensions.CountWithSameIndex``2(System.Collections.Generic.List{``0},System.Collections.Generic.List{``1},System.Func{``0,``1,System.Boolean},System.Int32)">
-            <inheritdoc cref="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2`1.CountWithSameIndex``1(System.Collections.Generic.List{``0},System.Func{`0,``0,System.Boolean},System.Int32)"/>
+            <inheritdoc cref="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$AE0493D87407AA7F2C5582890F05B293`2.CountWithSameIndex(System.Collections.Generic.List{`1},System.Func{`0,`1,System.Boolean},System.Int32)"/>
         </member>
         <member name="M:SudokuStudio.Views.Pages.Extensions.Refresh``1(System.Collections.Generic.List{``0},System.Int32)">
             <inheritdoc cref="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2`1.Refresh(System.Int32)"/>
         </member>
-        <member name="T:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2`1.&lt;M&gt;$EFA650F559D5ACD0707B73B431B82A87">
-            <summary>
-            Provides extension members on <see cref="T:System.Collections.Generic.List`1"/> of <typeparamref name="T1"/>.
-            </summary>
+        <member name="T:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$AE0493D87407AA7F2C5582890F05B293`2.&lt;M&gt;$FBCE63296C3F013892711BC23E7ECB58">
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <typeparam name="T1">The type of elements from the current collection.</typeparam>
+            <typeparam name="T2">The type of elements from the other collection.</typeparam>
+            <param name="this">The current instance.</param>
         </member>
-        <member name="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2`1.CountWithSameIndex``1(System.Collections.Generic.List{``0},System.Func{`0,``0,System.Boolean},System.Int32)">
+        <member name="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$AE0493D87407AA7F2C5582890F05B293`2.CountWithSameIndex(System.Collections.Generic.List{`1},System.Func{`0,`1,System.Boolean},System.Int32)">
             <summary>
             Counts up the number of instances that satisfies the specified condition, with the specified instance as the reference,
             using index from another collection.
             </summary>
-            <typeparam name="T2">The type of elements from the other collection.</typeparam>
             <param name="other">The other collection.</param>
             <param name="predicate">The condition.</param>
             <param name="count">The number of elements.</param>
@@ -17353,9 +17526,20 @@
             </remarks>
         </member>
         <member name="T:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2`1.&lt;M&gt;$2C2C34D30F0D33A0DD68C9EE7E68192F">
-            <summary>
-            Provides extension members on <see cref="T:System.Collections.Generic.List`1"/> of <typeparamref name="T"/>?.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:SudokuStudio.Views.Pages.Extensions.&lt;G&gt;$64B67F85FE78DDA587BDEEBA2FF0A5A2`1.Refresh(System.Int32)">
             <summary>
@@ -17770,9 +17954,20 @@
             <inheritdoc cref="M:Windows.UI.ColorExtensions.&lt;G&gt;$BB16C40F20C63E9DB9FEB07C52A6A7C6.GetIdentifier"/>
         </member>
         <member name="T:Windows.UI.ColorExtensions.&lt;G&gt;$BB16C40F20C63E9DB9FEB07C52A6A7C6.&lt;M&gt;$79B7CC6B96879A7697C259BC05F3662B">
-            <summary>
-            Provides extension members on <see cref="T:Windows.UI.Color"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:Windows.UI.ColorExtensions.&lt;G&gt;$BB16C40F20C63E9DB9FEB07C52A6A7C6.Deconstruct(System.Byte@,System.Byte@,System.Byte@)">
             <target name="method">
@@ -17809,9 +18004,20 @@
             <seealso cref="T:Windows.Storage.Pickers.FileOpenPicker"/>
         </member>
         <member name="T:Windows.Storage.Pickers.FileOpenPickerExtensions.&lt;G&gt;$7C56FB134EF893A33DC98E5C8F3635B9.&lt;M&gt;$9AA68181A89F8595CE431B1C53485711">
-            <summary>
-            Provides extension memebers on <see cref="T:Windows.Storage.Pickers.FileOpenPicker"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="T:Windows.Storage.Pickers.FileSavePickerExtensions">
             <summary>
@@ -17820,9 +18026,20 @@
             <seealso cref="T:Windows.Storage.Pickers.FileSavePicker"/>
         </member>
         <member name="T:Windows.Storage.Pickers.FileSavePickerExtensions.&lt;G&gt;$A065CF8670CC728645FF3396A2B8C05A.&lt;M&gt;$54B9ACB0B3E98B60F0088CEA4A0E6E04">
-            <summary>
-            Provides extension memebers on <see cref="T:Windows.Storage.Pickers.FileSavePicker"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="T:Windows.Foundation.PointExtensions">
             <summary>
@@ -17837,9 +18054,20 @@
             <inheritdoc cref="M:Windows.Foundation.PointExtensions.&lt;G&gt;$E5CBC5819895488B0E2A580EC6C7E2E1.DistanceTo(Windows.Foundation.Point)"/>
         </member>
         <member name="T:Windows.Foundation.PointExtensions.&lt;G&gt;$E5CBC5819895488B0E2A580EC6C7E2E1.&lt;M&gt;$5CE4EC99141C292792ED6453DA3BBD07">
-            <summary>
-            Provides extension members on <see cref="T:Windows.Foundation.Point"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:Windows.Foundation.PointExtensions.&lt;G&gt;$E5CBC5819895488B0E2A580EC6C7E2E1.Deconstruct(System.Double@,System.Double@)">
             <target name="method">
@@ -17866,9 +18094,20 @@
             <inheritdoc cref="M:Windows.Foundation.SizeExtensions.&lt;G&gt;$F18D57BD98D8C041A664D2CF6D588B0E.Deconstruct(System.Single@,System.Single@)"/>
         </member>
         <member name="T:Windows.Foundation.SizeExtensions.&lt;G&gt;$F18D57BD98D8C041A664D2CF6D588B0E.&lt;M&gt;$23DB45B863A7AE1B4D5BBA234D7A2480">
-            <summary>
-            Provides extension members on <see cref="T:Windows.Foundation.Size"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:Windows.Foundation.SizeExtensions.&lt;G&gt;$F18D57BD98D8C041A664D2CF6D588B0E.Deconstruct(System.Single@,System.Single@)">
             <target name="method">
@@ -17918,9 +18157,20 @@
             <inheritdoc cref="M:Microsoft.UI.Xaml.Documents.RunExtensions.&lt;G&gt;$D9754C7FE36C276142D9B65FC7810E7B.SingletonSpan``1"/>
         </member>
         <member name="T:Microsoft.UI.Xaml.Documents.RunExtensions.&lt;G&gt;$D9754C7FE36C276142D9B65FC7810E7B.&lt;M&gt;$61B5500EFA56C9F120FCDFE9FA682325">
-            <summary>
-            Provides extension members on <see cref="T:Microsoft.UI.Xaml.Documents.Run"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:Microsoft.UI.Xaml.Documents.RunExtensions.&lt;G&gt;$D9754C7FE36C276142D9B65FC7810E7B.SingletonSpan``1">
             <summary>
@@ -17938,11 +18188,21 @@
             <inheritdoc cref="M:Microsoft.UI.Xaml.UIElementExtensions.&lt;G&gt;$173E6A2B7FF026B3BC4CBA9988C29F4F`1.RenderToAsync``1(``0)"/>
         </member>
         <member name="T:Microsoft.UI.Xaml.UIElementExtensions.&lt;G&gt;$173E6A2B7FF026B3BC4CBA9988C29F4F`1.&lt;M&gt;$41B91CF64347DB343D740780ED03C5F1">
-            <summary>
-            Provides extension members on <typeparamref name="TUIElement"/>,
-            where <typeparamref name="TUIElement"/> satisfies <see cref="T:Microsoft.UI.Xaml.UIElement"/> constraint.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
             <typeparam name="TUIElement">The type of the UI control.</typeparam>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:Microsoft.UI.Xaml.UIElementExtensions.&lt;G&gt;$173E6A2B7FF026B3BC4CBA9988C29F4F`1.RenderToAsync``1(``0)">
             <summary>
@@ -17988,9 +18248,20 @@
             <inheritdoc cref="M:System.Numerics.Vector2Extensions.&lt;G&gt;$31F76E721F56097EE9FE33FA9ECF3447.Deconstruct(System.Single@,System.Single@)"/>
         </member>
         <member name="T:System.Numerics.Vector2Extensions.&lt;G&gt;$31F76E721F56097EE9FE33FA9ECF3447.&lt;M&gt;$A64F2B590DF18DB8776CFA3D848CF8A5">
-            <summary>
-            Provides extension members on <see cref="T:System.Numerics.Vector2"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:System.Numerics.Vector2Extensions.&lt;G&gt;$31F76E721F56097EE9FE33FA9ECF3447.Deconstruct(System.Single@,System.Single@)">
             <target name="method">
