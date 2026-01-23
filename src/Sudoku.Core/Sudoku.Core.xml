@@ -172,12 +172,12 @@
         </member>
         <member name="P:Sudoku.Concepts.CandidateMap.DigitDistribution">
             <summary>
-            Returns a <see cref="T:System.Collections.Frozen.FrozenDictionary`2"/> that describes the distribution of digits appeared in cells, grouped by digit.
+            Returns a <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/> that describes the distribution of digits appeared in cells, grouped by digit.
             </summary>
         </member>
         <member name="P:Sudoku.Concepts.CandidateMap.CellDistribution">
             <summary>
-            Returns a <see cref="T:System.Collections.Frozen.FrozenDictionary`2"/> that describes the distribution of digits appeared in cells, grouped by cell.
+            Returns a <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/> that describes the distribution of digits appeared in cells, grouped by cell.
             </summary>
         </member>
         <member name="P:Sudoku.Concepts.CandidateMap.Offsets">

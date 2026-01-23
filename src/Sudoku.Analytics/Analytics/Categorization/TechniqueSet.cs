@@ -76,26 +76,26 @@ public sealed partial class TechniqueSet() :
 	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
 	static TechniqueSet()
 	{
-		var dic = new Dictionary<TechniqueGroup, TechniqueSet>();
+		var techniqueRelationGroups = new Dictionary<TechniqueGroup, TechniqueSet>();
 		foreach (var technique in Technique.AllValues)
 		{
-			if (technique != Technique.None && technique.TryGetGroup() is { } group && !dic.TryAdd(group, [technique]))
+			if (technique != Technique.None && technique.TryGetGroup() is { } group && !techniqueRelationGroups.TryAdd(group, [technique]))
 			{
-				dic[group].Add(technique);
+				techniqueRelationGroups[group].Add(technique);
 			}
 		}
-		TechniqueRelationGroups = dic.ToFrozenDictionary();
+		TechniqueRelationGroups = techniqueRelationGroups.ToFrozenDictionary();
 
-		var configurableDic = new Dictionary<TechniqueGroup, TechniqueSet>();
+		var configurableTechniqueRelationGroups = new Dictionary<TechniqueGroup, TechniqueSet>();
 		foreach (var technique in Technique.AllValues)
 		{
 			if (technique.SupportsCustomizingDifficulty
-				&& technique.TryGetGroup() is { } group && !configurableDic.TryAdd(group, [technique]))
+				&& technique.TryGetGroup() is { } group && !configurableTechniqueRelationGroups.TryAdd(group, [technique]))
 			{
-				configurableDic[group].Add(technique);
+				configurableTechniqueRelationGroups[group].Add(technique);
 			}
 		}
-		ConfigurableTechniqueRelationGroups = configurableDic.ToFrozenDictionary();
+		ConfigurableTechniqueRelationGroups = configurableTechniqueRelationGroups.ToFrozenDictionary();
 	}
 
 

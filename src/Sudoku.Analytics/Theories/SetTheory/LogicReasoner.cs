@@ -17,7 +17,7 @@ public static partial class LogicReasoner
 	/// <param name="logic">The logic.</param>
 	/// <param name="sublogics">Represents sublogic views for each eliminations.</param>
 	/// <returns>A <see cref="Rank"/> instance representing the result.</returns>
-	public static Rank GetRank(ref readonly Logic logic, out FrozenDictionary<Conclusion, Logic> sublogics)
+	public static Rank GetRank(ref readonly Logic logic, out IReadOnlyDictionary<Conclusion, Logic> sublogics)
 	{
 		var permutations = GetPermutations(in logic);
 		return PermRequired.GetRank(

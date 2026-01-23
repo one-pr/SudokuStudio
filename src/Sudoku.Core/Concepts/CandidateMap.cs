@@ -143,9 +143,9 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 	}
 
 	/// <summary>
-	/// Returns a <see cref="FrozenDictionary{TKey, TValue}"/> that describes the distribution of digits appeared in cells, grouped by digit.
+	/// Returns a <see cref="IReadOnlyDictionary{TKey, TValue}"/> that describes the distribution of digits appeared in cells, grouped by digit.
 	/// </summary>
-	public readonly FrozenDictionary<Digit, CellMap> DigitDistribution
+	public readonly IReadOnlyDictionary<Digit, CellMap> DigitDistribution
 	{
 		get
 		{
@@ -158,14 +158,14 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 					dictionary.Add(digit, map);
 				}
 			}
-			return dictionary.ToFrozenDictionary();
+			return dictionary;
 		}
 	}
 
 	/// <summary>
-	/// Returns a <see cref="FrozenDictionary{TKey, TValue}"/> that describes the distribution of digits appeared in cells, grouped by cell.
+	/// Returns a <see cref="IReadOnlyDictionary{TKey, TValue}"/> that describes the distribution of digits appeared in cells, grouped by cell.
 	/// </summary>
-	public readonly FrozenDictionary<Cell, Mask> CellDistribution
+	public readonly IReadOnlyDictionary<Cell, Mask> CellDistribution
 	{
 		get
 		{
@@ -177,7 +177,7 @@ public partial struct CandidateMap : CandidateMapBase, IDrawableItem
 					dictionary[element / 9] |= (Mask)(1 << element % 9);
 				}
 			}
-			return dictionary.ToFrozenDictionary();
+			return dictionary;
 		}
 	}
 

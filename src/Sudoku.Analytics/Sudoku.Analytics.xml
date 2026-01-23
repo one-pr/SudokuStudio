@@ -1138,7 +1138,7 @@
             <param name="grid">The grid.</param>
             <returns>A dictionary of strands and the digits that can be categorized as this strand.</returns>
         </member>
-        <member name="M:Sudoku.Analytics.Braiding.BraidAnalysis.TryReduce(Sudoku.Concepts.Grid@,System.Int32@,System.Collections.Frozen.FrozenDictionary{Sudoku.Analytics.Braiding.Strand,System.ValueTuple{Sudoku.Analytics.Braiding.BraidingType,System.Int16}}@)">
+        <member name="M:Sudoku.Analytics.Braiding.BraidAnalysis.TryReduce(Sudoku.Concepts.Grid@,System.Int32@,System.Collections.Generic.IReadOnlyDictionary{Sudoku.Analytics.Braiding.Strand,System.ValueTuple{Sudoku.Analytics.Braiding.BraidingType,System.Int16}}@)">
             <summary>
             Reduces the full grid of digit distribution on braid analysis.
             </summary>
@@ -1167,7 +1167,7 @@
             ]]></code>
             </remarks>
         </member>
-        <member name="M:Sudoku.Analytics.Braiding.BraidAnalysis.TryInferType(Sudoku.Concepts.Grid@,System.Int32,Sudoku.Analytics.Braiding.BraidingType@,System.Collections.Frozen.FrozenDictionary{Sudoku.Analytics.Braiding.Strand,System.Int16}@)">
+        <member name="M:Sudoku.Analytics.Braiding.BraidAnalysis.TryInferType(Sudoku.Concepts.Grid@,System.Int32,Sudoku.Analytics.Braiding.BraidingType@,System.Collections.Generic.IReadOnlyDictionary{Sudoku.Analytics.Braiding.Strand,System.Int16}@)">
             <summary>
             Try to infer braiding type of the specified chute.
             </summary>
@@ -36564,11 +36564,11 @@
         <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternAssigningMap.GetEnumerator">
             <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
         </member>
-        <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternAssigningMap.ToFrozenDictionary">
+        <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternAssigningMap.ToDictionary">
             <summary>
-            Converts the current instance into a <see cref="T:System.Collections.Frozen.FrozenDictionary`2"/> of cell and mask pairs.
+            Converts the current instance into an <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/> of cell and mask pairs.
             </summary>
-            <returns>The instance of type <see cref="T:System.Collections.Frozen.FrozenDictionary`2"/>.</returns>
+            <returns>The instance of type <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/>.</returns>
         </member>
         <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternAssigningMap.System#Collections#IEnumerable#GetEnumerator">
             <inheritdoc/>
@@ -37087,7 +37087,7 @@
             Provides a list of members to get pattern detailed information that should be inferred.
             </summary>
         </member>
-        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.GetRank(Sudoku.Theories.SetTheory.Logic@,System.Collections.Frozen.FrozenDictionary{Sudoku.Concepts.Conclusion,Sudoku.Theories.SetTheory.Logic}@)">
+        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.GetRank(Sudoku.Theories.SetTheory.Logic@,System.Collections.Generic.IReadOnlyDictionary{Sudoku.Concepts.Conclusion,Sudoku.Theories.SetTheory.Logic}@)">
             <summary>
             <para>
             Gets the rank of the pattern. If the pattern is not minimal, it may contains multiple ranks,
@@ -37215,8 +37215,8 @@
             </summary>
             <seealso cref="T:Sudoku.Theories.SetTheory.LogicReasoner"/>
         </member>
-        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermRequired.GetRank(Sudoku.Theories.SetTheory.Logic@,Sudoku.Concepts.ConclusionSet,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation},System.Collections.Frozen.FrozenDictionary{Sudoku.Concepts.Conclusion,Sudoku.Theories.SetTheory.Logic}@)">
-            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetRank(Sudoku.Theories.SetTheory.Logic@,System.Collections.Frozen.FrozenDictionary{Sudoku.Concepts.Conclusion,Sudoku.Theories.SetTheory.Logic}@)"/>
+        <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermRequired.GetRank(Sudoku.Theories.SetTheory.Logic@,Sudoku.Concepts.ConclusionSet,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation},System.Collections.Generic.IReadOnlyDictionary{Sudoku.Concepts.Conclusion,Sudoku.Theories.SetTheory.Logic}@)">
+            <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetRank(Sudoku.Theories.SetTheory.Logic@,System.Collections.Generic.IReadOnlyDictionary{Sudoku.Concepts.Conclusion,Sudoku.Theories.SetTheory.Logic}@)"/>
         </member>
         <member name="M:Sudoku.Theories.SetTheory.LogicReasoner.PermRequired.GetAssignedCount(Sudoku.Theories.SetTheory.Logic@,System.ReadOnlySpan{Sudoku.Theories.SetTheory.Permutation})">
             <inheritdoc cref="M:Sudoku.Theories.SetTheory.LogicReasoner.GetAssignedCount(Sudoku.Theories.SetTheory.Logic@)"/>

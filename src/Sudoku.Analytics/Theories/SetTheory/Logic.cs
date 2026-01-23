@@ -97,7 +97,7 @@ public struct Logic : IEquatable<Logic>, IEqualityOperators<Logic, Logic, bool>
 	/// <summary>
 	/// Represents links light-up lookup table.
 	/// </summary>
-	public readonly FrozenDictionary<Space, CandidateMap> LinksLightupLookup
+	public readonly IReadOnlyDictionary<Space, CandidateMap> LinksLightupLookup
 	{
 		get
 		{
@@ -106,7 +106,7 @@ public struct Logic : IEquatable<Logic>, IEqualityOperators<Logic, Logic, bool>
 			{
 				result.Add(link, link.GetAvailableRange(Grid));
 			}
-			return result.ToFrozenDictionary();
+			return result;
 		}
 	}
 

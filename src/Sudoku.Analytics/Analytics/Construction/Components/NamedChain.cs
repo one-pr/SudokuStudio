@@ -56,7 +56,7 @@ public abstract class NamedChain(Node lastNode, bool isLoop) : Chain(lastNode, i
 	/// <summary>
 	/// Indicates the number of grouped pattern used in chain.
 	/// </summary>
-	public FrozenDictionary<PatternType, int> GroupedPatternsCount
+	public IReadOnlyDictionary<PatternType, int> GroupedPatternsCount
 	{
 		get
 		{
@@ -75,7 +75,7 @@ public abstract class NamedChain(Node lastNode, bool isLoop) : Chain(lastNode, i
 					result[PatternType.AlmostLockedSet]++;
 				}
 			}
-			return result.ToFrozenDictionary();
+			return result;
 		}
 	}
 

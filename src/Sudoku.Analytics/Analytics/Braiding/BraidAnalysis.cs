@@ -158,11 +158,11 @@ public static class BraidAnalysis
 	/// <param name="grid">The grid.</param>
 	/// <param name="chuteIndex">The chute index (0..6).</param>
 	/// <returns>A dictionary of strands and the digits that can be categorized as this strand.</returns>
-	public static FrozenDictionary<Strand, Mask> MapStrands(in Grid grid, int chuteIndex)
+	public static IReadOnlyDictionary<Strand, Mask> MapStrands(in Grid grid, int chuteIndex)
 	{
 		var result = new Dictionary<Strand, Mask>();
 		MapStrandsCore(grid, chuteIndex, result);
-		return result.ToFrozenDictionary();
+		return result;
 	}
 
 	/// <summary>
@@ -170,11 +170,11 @@ public static class BraidAnalysis
 	/// </summary>
 	/// <param name="grid">The grid.</param>
 	/// <returns>A dictionary of strands and the digits that can be categorized as this strand.</returns>
-	public static FrozenDictionary<Strand, Mask> MapStrands(in Grid grid)
+	public static IReadOnlyDictionary<Strand, Mask> MapStrands(in Grid grid)
 	{
 		var result = new Dictionary<Strand, Mask>();
 		MapStrandsCore(grid, -1, result);
-		return result.ToFrozenDictionary();
+		return result;
 	}
 
 	/// <summary>
@@ -204,7 +204,7 @@ public static class BraidAnalysis
 	/// }
 	/// ]]></code>
 	/// </remarks>
-	public static bool TryReduce(in Grid grid, out int reducedChutesMask, out FrozenDictionary<Strand, (BraidingType Type, Mask Mask)> reducedLookup)
+	public static bool TryReduce(in Grid grid, out int reducedChutesMask, out IReadOnlyDictionary<Strand, (BraidingType Type, Mask Mask)> reducedLookup)
 	{
 		var originalMappedStrands = MapStrands(grid);
 		var tempReducedLookup = new Dictionary<Strand, (BraidingType, Mask)>();
@@ -232,7 +232,7 @@ public static class BraidAnalysis
 			}
 		}
 
-		reducedLookup = tempReducedLookup.ToFrozenDictionary();
+		reducedLookup = tempReducedLookup;
 		return reducedChutesMask != 0;
 	}
 
@@ -252,7 +252,7 @@ public static class BraidAnalysis
 		in Grid grid,
 		int chuteIndex,
 		out BraidingType result,
-		[NotNullWhen(true)] out FrozenDictionary<Strand, Mask>? resultLookup
+		[NotNullWhen(true)] out IReadOnlyDictionary<Strand, Mask>? resultLookup
 	)
 	{
 		result = BraidingType.Unknown;
@@ -405,7 +405,7 @@ public static class BraidAnalysis
 
 		// Get values and return.
 		result = candidateBraidingTypes.IsFlag ? candidateBraidingTypes : BraidingType.Unknown;
-		resultLookup = result != BraidingType.Unknown ? resultDictionary.ToFrozenDictionary() : null;
+		resultLookup = result != BraidingType.Unknown ? resultDictionary : null;
 		return result != BraidingType.Unknown;
 	}
 

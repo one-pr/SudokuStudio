@@ -10,13 +10,13 @@ public partial class LogicReasoner
 	/// <seealso cref="LogicReasoner"/>
 	public static class PermRequired
 	{
-		/// <inheritdoc cref="LogicReasoner.GetRank(ref readonly Logic, out FrozenDictionary{Conclusion, Logic})"/>
-		public static Rank GetRank(ref readonly Logic logic, ConclusionSet conclusions, ReadOnlySpan<Permutation> permutations, out FrozenDictionary<Conclusion, Logic> sublogics)
+		/// <inheritdoc cref="LogicReasoner.GetRank(ref readonly Logic, out IReadOnlyDictionary{Conclusion, Logic})"/>
+		public static Rank GetRank(ref readonly Logic logic, ConclusionSet conclusions, ReadOnlySpan<Permutation> permutations, out IReadOnlyDictionary<Conclusion, Logic> sublogics)
 		{
 			var resultViews = new Dictionary<Conclusion, Logic>();
 			if (permutations.Length == 0)
 			{
-				sublogics = resultViews.ToFrozenDictionary();
+				sublogics = resultViews;
 				return Rank.Illegal;
 			}
 
@@ -28,7 +28,7 @@ public partial class LogicReasoner
 					resultViews.Add(conclusion, logic);
 				}
 
-				sublogics = resultViews.ToFrozenDictionary();
+				sublogics = resultViews;
 				return logic.Links.Count - logic.Truths.Count;
 			}
 
@@ -81,7 +81,7 @@ public partial class LogicReasoner
 				cachedMinimalLogics.Add(lightupLinks, minimal);
 			}
 
-			sublogics = resultViews.ToFrozenDictionary();
+			sublogics = resultViews;
 			return rankList.Count == 1 ? rankList.First() : (int[])[.. rankList];
 		}
 

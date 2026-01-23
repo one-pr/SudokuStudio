@@ -117,10 +117,10 @@ public sealed partial class DeadlyPatternAssigningMap : IEnumerable<KeyValuePair
 	public Enumerator GetEnumerator() => new(_maskTable);
 
 	/// <summary>
-	/// Converts the current instance into a <see cref="FrozenDictionary{TKey, TValue}"/> of cell and mask pairs.
+	/// Converts the current instance into an <see cref="IReadOnlyDictionary{TKey, TValue}"/> of cell and mask pairs.
 	/// </summary>
-	/// <returns>The instance of type <see cref="FrozenDictionary{TKey, TValue}"/>.</returns>
-	public FrozenDictionary<Cell, Mask> ToFrozenDictionary() => _maskTable.ToFrozenDictionary();
+	/// <returns>The instance of type <see cref="IReadOnlyDictionary{TKey, TValue}"/>.</returns>
+	public IReadOnlyDictionary<Cell, Mask> ToDictionary() => _maskTable;
 
 	/// <inheritdoc/>
 	IEnumerator IEnumerable.GetEnumerator() => _maskTable.GetEnumerator();
