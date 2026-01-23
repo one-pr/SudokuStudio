@@ -186,6 +186,24 @@ public static class BraidAnalysis
 	/// </param>
 	/// <param name="reducedLookup">The reduced dictionary (if can).</param>
 	/// <returns>A <see cref="bool"/> result indicating whether it can be reduced.</returns>
+	/// <remarks>
+	/// Usage:
+	/// <code><![CDATA[
+	/// var grid = Grid.Parse("<puzzle-string-here>");
+	/// if (BraidAnalysis.TryReduce(grid, out var reducedChutesMask, out var reducedLookup))
+	/// {
+	///     var chuteStrings = from chute in reducedChutesMask.AllSets select (chute + 1).ToString();
+	///     var reducedChuteIndicesString = string.Join(", ", chuteStrings);
+	///     Console.WriteLine($"Reduced chute indices (0..6): [{reducedChuteIndicesString}]");
+	///     foreach (var (strand, (type, mask)) in reducedLookup)
+	///     {
+	///         var typeString = type.ToSimpleString();
+	///         var maskString = string.Join(", ", from digit in mask.AllSets select $"{digit + 1}");
+	///         Console.WriteLine($"{strand} ({typeString}), [{maskString}]");
+	///     }
+	/// }
+	/// ]]></code>
+	/// </remarks>
 	public static bool TryReduce(in Grid grid, out int reducedChutesMask, out FrozenDictionary<Strand, (BraidingType Type, Mask Mask)> reducedLookup)
 	{
 		var originalMappedStrands = MapStrands(grid);
