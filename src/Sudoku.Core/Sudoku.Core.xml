@@ -7409,9 +7409,6 @@
             Represents a concept "Cell".
             </summary>
         </member>
-        <member name="M:Sudoku.Concepts.Marshalling.CellMarshal.AsCellMap(System.Int32)">
-            <inheritdoc cref="M:Sudoku.Concepts.Marshalling.CellMarshal.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.AsCellMap"/>
-        </member>
         <member name="M:Sudoku.Concepts.Marshalling.CellMarshal.get_Band(System.Int32)">
             <inheritdoc cref="P:Sudoku.Concepts.Marshalling.CellMarshal.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Band"/>
         </member>
@@ -7426,6 +7423,9 @@
         </member>
         <member name="M:Sudoku.Concepts.Marshalling.CellMarshal.GetHouse(System.Int32,Sudoku.Concepts.HouseType)">
             <inheritdoc cref="M:Sudoku.Concepts.Marshalling.CellMarshal.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.GetHouse(Sudoku.Concepts.HouseType)"/>
+        </member>
+        <member name="M:Sudoku.Concepts.Marshalling.CellMarshal.AsCellMap(System.Int32)">
+            <inheritdoc cref="M:Sudoku.Concepts.Marshalling.CellMarshal.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.AsCellMap"/>
         </member>
         <member name="M:Sudoku.Concepts.Marshalling.CellMarshal.ToCellString(System.Int32,System.Globalization.CultureInfo)">
             <inheritdoc cref="M:Sudoku.Concepts.Marshalling.CellMarshal.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.ToCellString(System.Int32,System.Globalization.CultureInfo)"/>
@@ -7460,12 +7460,6 @@
 				</summary>
 			</target>
             <param name="this">The current cell (0..81).</param>
-        </member>
-        <member name="M:Sudoku.Concepts.Marshalling.CellMarshal.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.AsCellMap">
-            <summary>
-            Converts the specified <see cref="T:System.Int32"/> into a singleton <see cref="T:Sudoku.Concepts.CellMap"/> instance.
-            </summary>
-            <returns>A <see cref="T:Sudoku.Concepts.CellMap"/> instance, containing only one element of the current cell.</returns>
         </member>
         <member name="P:Sudoku.Concepts.Marshalling.CellMarshal.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Band">
             <summary>
@@ -7526,6 +7520,12 @@
             <exception cref="T:System.ArgumentOutOfRangeException">
             Throws when the argument <paramref name="houseType"/> is not defined.
             </exception>
+        </member>
+        <member name="M:Sudoku.Concepts.Marshalling.CellMarshal.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.AsCellMap">
+            <summary>
+            Converts the specified <see cref="T:System.Int32"/> into a singleton <see cref="T:Sudoku.Concepts.CellMap"/> instance.
+            </summary>
+            <returns>A <see cref="T:Sudoku.Concepts.CellMap"/> instance, containing only one element of the current cell.</returns>
         </member>
         <member name="M:Sudoku.Concepts.Marshalling.CellMarshal.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.ToCellString(System.Int32,System.Globalization.CultureInfo)">
             <inheritdoc cref="M:Sudoku.Concepts.Marshalling.CellMarshal.ToCellString(System.Int32,Sudoku.Concepts.ValueConversions.ICellMapConverter,System.IFormatProvider)"/>

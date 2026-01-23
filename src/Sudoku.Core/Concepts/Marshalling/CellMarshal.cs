@@ -12,12 +12,6 @@ public static class CellMarshal
 	extension(Cell @this)
 	{
 		/// <summary>
-		/// Converts the specified <see cref="Cell"/> into a singleton <see cref="CellMap"/> instance.
-		/// </summary>
-		/// <returns>A <see cref="CellMap"/> instance, containing only one element of the current cell.</returns>
-		public ref readonly CellMap AsCellMap() => ref CellMaps[@this];
-
-		/// <summary>
 		/// Try to get the band index (mega-row) of the specified cell.
 		/// </summary>
 		public int Band => @this / 27;
@@ -99,6 +93,12 @@ public static class CellMarshal
 				HouseType.Column => ColumnTable[@this],
 				_ => throw new ArgumentOutOfRangeException(nameof(houseType))
 			};
+
+		/// <summary>
+		/// Converts the specified <see cref="Cell"/> into a singleton <see cref="CellMap"/> instance.
+		/// </summary>
+		/// <returns>A <see cref="CellMap"/> instance, containing only one element of the current cell.</returns>
+		public ref readonly CellMap AsCellMap() => ref CellMaps[@this];
 
 
 		/// <inheritdoc cref="ToCellString(int, ICellMapConverter, IFormatProvider?)"/>
