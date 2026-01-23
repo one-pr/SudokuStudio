@@ -5,9 +5,10 @@ namespace Sudoku.Concepts.Supersymmetry;
 /// </summary>
 public static class CandidateSpaces
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Candidate"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current candidate (0..729).</param>
 	extension(Candidate @this)
 	{
 		/// <summary>

@@ -6,10 +6,10 @@ namespace Sudoku.CommandLine;
 /// <seealso cref="CommandBase"/>
 public static class CommandBaseExtensions
 {
-	/// <summary>
-	/// Provides extension members on <typeparamref name="TCommand"/>,
-	/// where <typeparamref name="TCommand"/> satisfies <see cref="CommandBase"/> constraint.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension<TCommand>(TCommand @this) where TCommand : CommandBase
 	{
 		/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>

@@ -417,6 +417,19 @@ fixed (short* ptr = instance)
 	<!-- C# 14 -->
 	<csharp14>
 		<feature name="extension-container">
+			<target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension"/> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension"/> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
 			<target name="generic-method">
 				<para>
 					Starting with C# 14, the <b>extension member</b> feature is supported.

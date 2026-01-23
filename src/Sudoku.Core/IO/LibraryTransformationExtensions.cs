@@ -6,9 +6,10 @@ namespace Sudoku.IO;
 /// <seealso cref="Library"/>
 public static class LibraryTransformationExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Library"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Library @this)
 	{
 		/// <summary>

@@ -1334,8 +1334,17 @@ public sealed partial class SudokuPane : UserControl, INotifyPropertyChanged
 /// <include file='../../global-doc-comments.xml' path='g/csharp11/feature[@name="file-local"]/target[@name="class" and @when="extension"]'/>
 file static class Extensions
 {
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current cell.</param>
 	extension(Cell @this)
 	{
+		/// <summary>
+		/// Get ordered cells.
+		/// </summary>
+		/// <param name="house">The house index (0..27).</param>
+		/// <returns>The ordered cells.</returns>
 		public ReadOnlySpan<CellMap> GetCellsOrdered(House house)
 		{
 			var cells = HousesCells[house];

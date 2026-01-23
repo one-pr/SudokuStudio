@@ -26,9 +26,9 @@ public static class CellMapMarshal
 	}
 
 
-	/// <summary>
-	/// Provides extension members on <see cref="CellMap"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	extension(CellMap)
 	{
 		/// <summary>

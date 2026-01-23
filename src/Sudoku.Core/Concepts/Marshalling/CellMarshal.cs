@@ -5,9 +5,10 @@ namespace Sudoku.Concepts.Marshalling;
 /// </summary>
 public static class CellMarshal
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Cell"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current cell (0..81).</param>
 	extension(Cell @this)
 	{
 		/// <summary>
@@ -121,18 +122,20 @@ public static class CellMarshal
 			=> converter.TryFormat(in cell.AsCellMap(), formatProvider, out var result) ? result : throw new FormatException();
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="Cell"/>[].
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Cell[] @this)
 	{
 		/// <inheritdoc cref="extension(ReadOnlySpan{Cell}).AsCellMap()"/>
 		public CellMap AsCellMap() => [.. @this];
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="ReadOnlySpan{T}"/> of <see cref="Cell"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(ReadOnlySpan<Cell> @this)
 	{
 		/// <summary>

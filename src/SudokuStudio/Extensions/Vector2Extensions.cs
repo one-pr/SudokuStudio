@@ -6,9 +6,10 @@ namespace System.Numerics;
 /// <seealso cref="Vector2"/>
 public static class Vector2Extensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Vector2"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Vector2 @this)
 	{
 		/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>

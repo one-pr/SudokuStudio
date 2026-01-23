@@ -6,9 +6,10 @@ namespace Sudoku.Linq;
 /// <seealso cref="View"/>
 public static class ViewEnumerable
 {
-	/// <summary>
-	/// Provides extension members on <see cref="View"/>[].
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(View[] @this)
 	{
 		/// <inheritdoc cref="ArrayEnumerable.SelectMany{TSource, TCollection, TResult}(TSource[], Func{TSource, ReadOnlySpan{TCollection}}, Func{TSource, TCollection, TResult})"/>

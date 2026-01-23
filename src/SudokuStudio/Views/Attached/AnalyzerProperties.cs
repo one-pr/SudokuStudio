@@ -176,9 +176,11 @@ public static partial class AnalyzerProperties
 	public static partial bool AnalyzerUseIttoryuMode { get; set; }
 
 
-	/// <summary>
-	/// Provides extension members on <see cref="StepGatherer"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <typeparam name="T">The type of step gatherer.</typeparam>
+	/// <param name="this">The current instance.</param>
 	extension<T>(T @this) where T : StepGatherer
 	{
 		/// <summary>

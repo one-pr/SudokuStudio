@@ -453,9 +453,9 @@ public static class BraidAnalysis
 	}
 
 
-	/// <summary>
-	/// Provides extension members on <see cref="Dictionary{TKey, TValue}"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	/// <param name="this">The dictionary.</param>
 	extension(Dictionary<Strand, Mask> @this)
 	{

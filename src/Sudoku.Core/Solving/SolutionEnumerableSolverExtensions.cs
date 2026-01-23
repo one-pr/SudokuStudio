@@ -6,10 +6,9 @@ namespace Sudoku.Solving;
 /// <seealso cref="ISolutionEnumerableSolver{TSelf}"/>
 public static class SolutionEnumerableSolverExtensions
 {
-	/// <summary>
-	/// Provides extension members on <typeparamref name="TSolver"/>,
-	/// where <typeparamref name="TSolver"/> satisfies <see cref="ISolutionEnumerableSolver{TSelf}"/> constraint.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	/// <typeparam name="TSolver">The type of solver instance.</typeparam>
 	/// <param name="this">The solver instance.</param>
 	extension<TSolver>(TSolver @this) where TSolver : ISolutionEnumerableSolver<TSolver>

@@ -5,10 +5,11 @@ namespace Sudoku.Linq;
 /// </summary>
 public static class StepCollectionExtensions
 {
-	/// <summary>
-	/// Provides with extension members on <see cref="ReadOnlySpan{T}"/> of <see cref="Step"/>.
-	/// </summary>
-	/// <param name="this">The instance.</param>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <typeparam name="TStep">The type of step to be casted.</typeparam>
+	/// <param name="this">The current instance.</param>
 	extension<TStep>(ReadOnlySpan<Step> @this) where TStep : Step
 	{
 		/// <inheritdoc cref="ICastMethod{TSelf, TSource}.Cast{TResult}"/>

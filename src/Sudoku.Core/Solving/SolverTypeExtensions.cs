@@ -6,9 +6,9 @@ namespace Sudoku.Solving;
 /// <seealso cref="SolverType"/>
 public static class SolverTypeExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="SolverType"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	extension(SolverType)
 	{
 		/// <summary>

@@ -6,12 +6,9 @@ namespace Sudoku.Linq;
 /// <seealso cref="BitStateMapGrouping{TMap, TElement, TKey}"/>
 public static class BitStateMapGroupingEnumerable
 {
-	/// <summary>
-	/// Provides extension members on <see cref="ReadOnlySpan{T}"/>
-	/// of <see cref="BitStateMapGrouping{TMap, TElement, TKey}"/>
-	/// of <see cref="CellMap"/>, <see cref="Cell"/> and <typeparamref name="TKey"/>,
-	/// where <typeparamref name="TKey"/> satisfies <see langword="notnull"/> constraint.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	/// <typeparam name="TKey">The type of the grouping.</typeparam>
 	/// <param name="this">The list to be checked.</param>
 	extension<TKey>(ReadOnlySpan<BitStateMapGrouping<CellMap, Cell, TKey>> @this) where TKey : notnull
@@ -34,12 +31,9 @@ public static class BitStateMapGroupingEnumerable
 		}
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="ReadOnlySpan{T}"/>
-	/// of <see cref="BitStateMapGrouping{TMap, TElement, TKey}"/>
-	/// of <see cref="CandidateMap"/>, <see cref="Candidate"/> and <typeparamref name="TKey"/>,
-	/// where <typeparamref name="TKey"/> satisfies <see langword="notnull"/> constraint.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	/// <typeparam name="TKey">The type of the grouping.</typeparam>
 	/// <param name="this">The list to be checked.</param>
 	extension<TKey>(ReadOnlySpan<BitStateMapGrouping<CandidateMap, Candidate, TKey>> @this) where TKey : notnull

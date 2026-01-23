@@ -6,9 +6,10 @@ namespace Sudoku.Concepts.Supersymmetry;
 /// <seealso cref="Space"/>
 public static class SpaceExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Space"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Space @this)
 	{
 		/// <summary>

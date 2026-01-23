@@ -6,9 +6,10 @@ namespace Sudoku.Analytics.SnyderMarkings;
 /// <seealso cref="SingleSubtype"/>
 public static class SingleSubtypeExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="SingleSubtype"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(SingleSubtype @this)
 	{
 		/// <summary>

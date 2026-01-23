@@ -46,9 +46,10 @@ public static class FileFormats
 	public static readonly FileFormat UserPreference = new(SR.Get("FileExtension_UserPreference", App.CurrentCulture), FileExtensions.UserPreference);
 
 
-	/// <summary>
-	/// Provides extension members on <see cref="FileSavePicker"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(FileSavePicker @this)
 	{
 		/// <summary>
@@ -59,9 +60,10 @@ public static class FileFormats
 			=> @this.FileTypeChoices.Add(format.Description, format.Formats);
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="FileOpenPicker"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(FileOpenPicker @this)
 	{
 		/// <summary>

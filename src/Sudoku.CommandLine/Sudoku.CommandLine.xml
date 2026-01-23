@@ -112,10 +112,20 @@
             <inheritdoc cref="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749`1.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@)"/>
         </member>
         <member name="T:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749`1.&lt;M&gt;$7201DC8AC8BD890CA6049EA76DA40E5F">
-            <summary>
-            Provides extension members on <typeparamref name="TCommand"/>,
-            where <typeparamref name="TCommand"/> satisfies <see cref="T:Sudoku.CommandLine.CommandBase"/> constraint.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:Sudoku.CommandLine.CommandBaseExtensions.&lt;G&gt;$6418958A46DF5F6DD9A84F71F50FF749`1.Deconstruct(Sudoku.CommandLine.SymbolList{System.CommandLine.Option}@,Sudoku.CommandLine.SymbolList{System.CommandLine.Argument}@)">
             <target name="method">
@@ -905,9 +915,20 @@
             <inheritdoc cref="M:System.CommandLine.CommandExtensions.&lt;G&gt;$81468004E349C15CBD0731E19E5DDDFA.AddRangeGlobal(Sudoku.CommandLine.SymbolList{System.CommandLine.Option})"/>
         </member>
         <member name="T:System.CommandLine.CommandExtensions.&lt;G&gt;$81468004E349C15CBD0731E19E5DDDFA.&lt;M&gt;$3F160269C8AC7C7E16D6B5878BE5EA5D">
-            <summary>
-            Provides extension members on <see cref="T:System.CommandLine.Command"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:System.CommandLine.CommandExtensions.&lt;G&gt;$81468004E349C15CBD0731E19E5DDDFA.AddRange(Sudoku.CommandLine.SymbolList{System.CommandLine.Option})">
             <summary>

@@ -6,9 +6,10 @@ namespace Sudoku.Concepts.Coordinates;
 /// <seealso cref="CoordinateType"/>
 public static class CoordinateTypeExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="CoordinateType"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(CoordinateType @this)
 	{
 		/// <summary>

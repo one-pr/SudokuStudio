@@ -7,11 +7,11 @@ namespace Sudoku.Analytics;
 /// <seealso cref="StepGatherer"/>
 public static class StepGathererFactory
 {
-	/// <summary>
-	/// Provides extension members on <typeparamref name="TStepGatherer"/>,
-	/// where <typeparamref name="TStepGatherer"/> satisfies <see cref="StepGatherer"/> constraint.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	/// <typeparam name="TStepGatherer">The type of step gatherer (<see cref="Analyzer"/> or <see cref="Collector"/>).</typeparam>
+	/// <param name="instance">The current instance.</param>
 	extension<TStepGatherer>(TStepGatherer instance) where TStepGatherer : StepGatherer
 	{
 		/// <summary>
@@ -66,9 +66,10 @@ public static class StepGathererFactory
 		}
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="Analyzer"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="instance">The current instance.</param>
 	extension(Analyzer instance)
 	{
 		/// <summary>
@@ -94,9 +95,10 @@ public static class StepGathererFactory
 		}
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="Collector"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="instance">The current instance.</param>
 	extension(Collector instance)
 	{
 		/// <summary>

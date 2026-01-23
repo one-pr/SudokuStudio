@@ -127,10 +127,10 @@ public static class HouseMarshal
 	public static ReadOnlySpan<CellMap> HousesMap => HousesMapBackingField;
 
 
-	/// <summary>
-	/// Provides extension members on <see cref="House"/>.
-	/// </summary>
-	/// <param name="houseIndex">The house index.</param>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="houseIndex">The current house index (0..27).</param>
 	extension(House houseIndex)
 	{
 		/// <summary>

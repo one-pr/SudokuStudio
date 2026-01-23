@@ -6,9 +6,10 @@ namespace Windows.Storage.Pickers;
 /// <seealso cref="FileOpenPicker"/>
 public static class FileOpenPickerExtensions
 {
-	/// <summary>
-	/// Provides extension memebers on <see cref="FileOpenPicker"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(FileOpenPicker @this)
 	{
 		internal void Initialize<TUIElement>(TUIElement control) where TUIElement : UIElement

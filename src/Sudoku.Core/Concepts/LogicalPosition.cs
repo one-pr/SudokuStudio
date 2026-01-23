@@ -103,10 +103,10 @@ public static class LogicalPosition
 	];
 
 
-	/// <summary>
-	/// Represents extension members on <see cref="Cell"/>.
-	/// </summary>
-	/// <param name="cell">The cell.</param>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="cell">The current cell.</param>
 	extension(Cell cell)
 	{
 		/// <summary>

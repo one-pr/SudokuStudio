@@ -6,9 +6,10 @@ namespace Sudoku.Concepts.ValueConversions;
 /// <seealso cref="NotationBracket"/>
 public static class NotationBracketExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="NotationBracket"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(NotationBracket @this)
 	{
 		/// <summary>

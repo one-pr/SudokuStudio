@@ -5,9 +5,10 @@ namespace Sudoku.Analytics.Construction.Components;
 /// </summary>
 internal static class ExocetShapeKindExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="IComplexSeniorExocet"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(IComplexSeniorExocet @this)
 	{
 		/// <summary>

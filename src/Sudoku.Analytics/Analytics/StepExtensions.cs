@@ -6,9 +6,9 @@ namespace Sudoku.Analytics;
 /// <seealso cref="Step"/>
 public static class StepExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Step"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	extension(Step)
 	{
 		/// <summary>

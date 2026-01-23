@@ -5,9 +5,10 @@ namespace Sudoku.Concepts.Marshalling;
 /// </summary>
 public static class CandidateMarshal
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Candidate"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current candidate (0..729).</param>
 	extension(Candidate @this)
 	{
 		/// <summary>
@@ -47,18 +48,20 @@ public static class CandidateMarshal
 		}
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="Candidate"/>[].
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Candidate[] @this)
 	{
 		/// <inheritdoc cref="extension(ReadOnlySpan{Candidate}).AsCandidateMap()"/>
 		public CandidateMap AsCandidateMap() => [.. @this];
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="ReadOnlySpan{T}"/> of <see cref="Candidate"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(ReadOnlySpan<Candidate> @this)
 	{
 		/// <summary>

@@ -14,9 +14,10 @@ namespace Sudoku.Concepts;
 /// <seealso href="https://leetcode.com/problems/maximal-square">"Maximum Square" Problem</seealso>
 public static class MaximalEmptyArea
 {
-	/// <summary>
-	/// Provides extension members on <see langword="in"/> <see cref="Grid"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(in Grid @this)
 	{
 		/// <summary>
@@ -36,9 +37,10 @@ public static class MaximalEmptyArea
 		public Cell GetMaxEmptySquareArea(out Cell topLeftCell) => @this.EmptyCells.GetMaxEmptySquareArea(out topLeftCell);
 	}
 
-	/// <summary>
-	/// Provides extension members on <see langword="in"/> <see cref="CellMap"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(in CellMap @this)
 	{
 		/// <inheritdoc cref="extension(in Grid).GetMaxEmptyArea(out Cell)"/>

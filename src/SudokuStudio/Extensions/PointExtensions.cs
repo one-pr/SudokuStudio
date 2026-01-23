@@ -6,9 +6,10 @@ namespace Windows.Foundation;
 /// <seealso cref="Point"/>
 public static class PointExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Point"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Point @this)
 	{
 		/// <include file="../../global-doc-comments.xml" path="g/csharp7/feature[@name='deconstruction-method']/target[@name='method']"/>

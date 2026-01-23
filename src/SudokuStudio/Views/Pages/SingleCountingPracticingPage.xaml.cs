@@ -259,16 +259,20 @@ public sealed partial class SingleCountingPracticingPage : Page
 /// <include file='../../global-doc-comments.xml' path='g/csharp11/feature[@name="file-local"]/target[@name="class" and @when="extension"]'/>
 file static class Extensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="List{T}"/> of <typeparamref name="T1"/>.
-	/// </summary>
-	extension<T1>(List<T1?> @this) where T1 : notnull
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <typeparam name="T1">The type of elements from the current collection.</typeparam>
+	/// <typeparam name="T2">The type of elements from the other collection.</typeparam>
+	/// <param name="this">The current instance.</param>
+	extension<T1, T2>(List<T1?> @this)
+		where T1 : notnull
+		where T2 : notnull
 	{
 		/// <summary>
 		/// Counts up the number of instances that satisfies the specified condition, with the specified instance as the reference,
 		/// using index from another collection.
 		/// </summary>
-		/// <typeparam name="T2">The type of elements from the other collection.</typeparam>
 		/// <param name="other">The other collection.</param>
 		/// <param name="predicate">The condition.</param>
 		/// <param name="count">The number of elements.</param>
@@ -278,7 +282,7 @@ file static class Extensions
 		///     file="../../global-doc-comments.xml"
 		///     path="g/csharp14/feature[@name='extension-container']/target[@name='generic-method']"/>
 		/// </remarks>
-		public int CountWithSameIndex<T2>(List<T2?> other, Func<T1?, T2?, bool> predicate, int count) where T2 : notnull
+		public int CountWithSameIndex(List<T2?> other, Func<T1?, T2?, bool> predicate, int count)
 		{
 			Debug.Assert(@this.Count == other.Count);
 
@@ -294,9 +298,10 @@ file static class Extensions
 		}
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="List{T}"/> of <typeparamref name="T"/>?.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension<T>(List<T?> @this) where T : notnull
 	{
 		/// <summary>

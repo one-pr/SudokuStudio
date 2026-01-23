@@ -6,9 +6,10 @@ namespace Sudoku.Analytics.Categorization;
 /// <seealso cref="Technique"/>
 public static class TechniqueExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Technique"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The technique field.</param>
 	extension(Technique @this)
 	{
 		/// <summary>

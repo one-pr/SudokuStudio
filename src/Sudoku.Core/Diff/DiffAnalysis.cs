@@ -5,9 +5,9 @@ namespace Sudoku.Diff;
 /// </summary>
 public static class DiffAnalysis
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Grid"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	extension(Grid)
 	{
 		/// <summary>

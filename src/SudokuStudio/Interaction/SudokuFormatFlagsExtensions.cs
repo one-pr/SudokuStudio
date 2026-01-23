@@ -6,9 +6,10 @@ namespace SudokuStudio.Interaction;
 /// <seealso cref="SudokuFormatFlags"/>
 internal static class SudokuFormatFlagsExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="SudokuFormatFlags"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(SudokuFormatFlags @this)
 	{
 		/// <summary>

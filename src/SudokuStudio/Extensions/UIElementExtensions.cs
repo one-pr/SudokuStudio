@@ -6,11 +6,11 @@ namespace Microsoft.UI.Xaml;
 /// <seealso cref="UIElement"/>
 public static class UIElementExtensions
 {
-	/// <summary>
-	/// Provides extension members on <typeparamref name="TUIElement"/>,
-	/// where <typeparamref name="TUIElement"/> satisfies <see cref="UIElement"/> constraint.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	/// <typeparam name="TUIElement">The type of the UI control.</typeparam>
+	/// <param name="this">The current instance.</param>
 	extension<TUIElement>(TUIElement @this) where TUIElement : UIElement
 	{
 		/// <summary>

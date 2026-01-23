@@ -7,9 +7,10 @@ namespace System.Drawing;
 /// <seealso cref="PointF"/>
 public static class PointOrPointFExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Point"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Point @this)
 	{
 #if !COMPATIBLE_EXTENSION_DECONSTRUCT_METHOD
@@ -18,9 +19,10 @@ public static class PointOrPointFExtensions
 #endif
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="PointF"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(PointF @this)
 	{
 		/// <summary>

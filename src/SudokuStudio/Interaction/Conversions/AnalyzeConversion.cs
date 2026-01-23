@@ -225,9 +225,10 @@ internal static class AnalyzeConversion
 /// <include file='../../global-doc-comments.xml' path='g/csharp11/feature[@name="file-local"]/target[@name="class" and @when="extension"]'/>
 file static class Extensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Factor"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Factor @this)
 	{
 		/// <summary>

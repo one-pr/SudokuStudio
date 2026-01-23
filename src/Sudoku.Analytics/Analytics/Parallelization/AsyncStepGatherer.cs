@@ -5,9 +5,10 @@ namespace Sudoku.Analytics.Parallelization;
 /// </summary>
 public static class AsyncStepGatherer
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Analyzer"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Analyzer @this)
 	{
 		/// <summary>
@@ -74,9 +75,10 @@ public static class AsyncStepGatherer
 		}
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="Collector"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Collector @this)
 	{
 		/// <summary>

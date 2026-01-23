@@ -6,10 +6,9 @@ namespace Sudoku.Concepts;
 [DebuggerStepThrough]
 internal static class GridPredicates
 {
-	/// <summary>
-	/// Provides extension members on <typeparamref name="TGrid"/>,
-	/// where <typeparamref name="TGrid"/> satisfies <see langword="unmanaged"/> and <see cref="IGrid{TSelf}"/> constraints.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	/// <typeparam name="TGrid">The type of the grid.</typeparam>
 	extension<TGrid>(TGrid) where TGrid : unmanaged, IGrid<TGrid>
 	{

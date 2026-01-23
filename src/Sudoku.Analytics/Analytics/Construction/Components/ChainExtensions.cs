@@ -6,9 +6,10 @@ namespace Sudoku.Analytics.Construction.Components;
 /// <seealso cref="Chain"/>
 internal static class ChainExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Chain"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Chain @this)
 	{
 		/// <summary>

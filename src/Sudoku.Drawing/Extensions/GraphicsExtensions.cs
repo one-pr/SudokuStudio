@@ -6,9 +6,10 @@ namespace System.Drawing;
 /// <seealso cref="Graphics"/>
 public static class GraphicsExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Graphics"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Graphics @this)
 	{
 		/// <summary>

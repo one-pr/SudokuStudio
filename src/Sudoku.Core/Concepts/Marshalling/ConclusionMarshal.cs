@@ -6,9 +6,10 @@ namespace Sudoku.Concepts.Marshalling;
 /// <seealso cref="Conclusion"/>
 public static class ConclusionMarshal
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Conclusion"/>[].
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Conclusion[] @this)
 	{
 		/// <summary>
@@ -18,18 +19,20 @@ public static class ConclusionMarshal
 		public ConclusionSet AsSet() => [.. @this];
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="ReadOnlyMemory{T}"/> of <see cref="Conclusion"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(ReadOnlyMemory<Conclusion> @this)
 	{
 		/// <inheritdoc cref="AsSet(Conclusion[])"/>
 		public ConclusionSet AsSet() => [.. @this];
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="ReadOnlySpan{T}"/> of <see cref="Conclusion"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(ReadOnlySpan<Conclusion> @this)
 	{
 		/// <inheritdoc cref="AsSet(Conclusion[])"/>

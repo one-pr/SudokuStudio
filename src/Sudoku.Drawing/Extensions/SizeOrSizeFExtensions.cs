@@ -7,9 +7,10 @@ namespace System.Drawing;
 /// <seealso cref="SizeF"/>
 public static class SizeOrSizeFExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Size"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Size @this)
 	{
 #if !COMPATIBLE_EXTENSION_DECONSTRUCT_METHOD
@@ -18,9 +19,10 @@ public static class SizeOrSizeFExtensions
 #endif
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="SizeF"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(SizeF @this)
 	{
 		/// <summary>

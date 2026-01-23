@@ -6,9 +6,10 @@ namespace Microsoft.UI.Xaml.Documents;
 /// <seealso cref="Run"/>
 public static class RunExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Run"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Run @this)
 	{
 		/// <summary>

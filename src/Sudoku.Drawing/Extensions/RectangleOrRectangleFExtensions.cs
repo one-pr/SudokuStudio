@@ -7,9 +7,10 @@ namespace System.Drawing;
 /// <seealso cref="RectangleF"/>
 public static class RectangleOrRectangleFExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Rectangle"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Rectangle @this)
 	{
 		/// <summary>
@@ -27,9 +28,9 @@ public static class RectangleOrRectangleFExtensions
 #endif
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="Rectangle"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	extension(Rectangle)
 	{
 		/// <summary>
@@ -46,9 +47,9 @@ public static class RectangleOrRectangleFExtensions
 		}
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="RectangleF"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	extension(RectangleF)
 	{
 		/// <summary>
@@ -65,9 +66,10 @@ public static class RectangleOrRectangleFExtensions
 		}
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="RectangleF"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(RectangleF @this)
 	{
 		/// <summary>

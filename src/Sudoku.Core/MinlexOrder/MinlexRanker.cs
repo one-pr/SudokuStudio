@@ -5,9 +5,9 @@ namespace Sudoku.MinlexOrder;
 /// </summary>
 public static partial class MinlexRanker
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Grid"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	extension(Grid)
 	{
 		/// <summary>

@@ -628,10 +628,10 @@ internal partial class DrawableFactory
 /// <include file='../../global-doc-comments.xml' path='g/csharp11/feature[@name="file-local"]/target[@name="class" and @when="extension"]'/>
 file static class Extensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="ReadOnlyMemory{T}"/> of <see cref="Conclusion"/>.
-	/// </summary>
-	/// <param name="conclusions">The conclusion collection.</param>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="conclusions">The current instance.</param>
 	extension(ReadOnlyMemory<Conclusion> conclusions)
 	{
 		/// <summary>

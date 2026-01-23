@@ -6,9 +6,10 @@ namespace Sudoku.Filtering;
 /// <seealso cref="ComparisonOperator"/>
 public static class ComparisonOperatorExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="ComparisonOperator"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(ComparisonOperator @this)
 	{
 		/// <summary>

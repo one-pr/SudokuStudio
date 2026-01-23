@@ -200,9 +200,10 @@ file ref struct HamiltonianPathFinder(ref readonly CellMap points)
 /// <include file='../../global-doc-comments.xml' path='g/csharp11/feature[@name="file-local"]/target[@name="class" and @when="extension"]'/>
 file static class Extensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Cell"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current cell (0..81).</param>
 	extension(Cell @this)
 	{
 		/// <summary>

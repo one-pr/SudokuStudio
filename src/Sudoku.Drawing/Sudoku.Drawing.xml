@@ -783,9 +783,20 @@
             <param name="aTable">Lookup table for the A channel.</param>
         </member>
         <member name="T:Sudoku.Ocr.ImageHandler.&lt;G&gt;$83E19F3BC0FC39D07F40DE315A2F9EA7.&lt;M&gt;$121D730B27E907682BDEEA8FC3B3658B">
-            <summary>
-            Provides extension members on <see cref="T:System.Drawing.PointF"/>[].
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="contour">The current instance.</param>
         </member>
         <member name="M:Sudoku.Ocr.ImageHandler.&lt;G&gt;$83E19F3BC0FC39D07F40DE315A2F9EA7.IsRectangle(System.Int32,System.Int32,System.Double)">
             <summary>
@@ -799,9 +810,20 @@
             <returns>A <see cref="T:System.Boolean"/> value.</returns>
         </member>
         <member name="T:Sudoku.Ocr.ImageHandler.&lt;G&gt;$C14DA01C3B3D21636597C0C038AB5E3F.&lt;M&gt;$87722E1B52F74B28E33DCB9AF1BACEEF">
-            <summary>
-            Provides extension members on <see cref="T:System.Drawing.Bitmap"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:Sudoku.Ocr.ImageHandler.&lt;G&gt;$C14DA01C3B3D21636597C0C038AB5E3F.CorrectOrientation">
             <summary>
@@ -825,9 +847,20 @@
             <seealso cref="T:System.Drawing.Bitmap"/>
         </member>
         <member name="T:Sudoku.Ocr.ImageHandler.&lt;G&gt;$8DA33323F53729D310C78F4DD2538901`2.&lt;M&gt;$3F78F430DCE9DF7B11CC63B252A54ADE">
-            <summary>
-            Provides extension members on <see cref="T:Emgu.CV.Image`2"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="image">The current instance.</param>
         </member>
         <member name="M:Sudoku.Ocr.ImageHandler.&lt;G&gt;$8DA33323F53729D310C78F4DD2538901`2.CopyFromBitmap(System.Drawing.Bitmap)">
             <summary>
@@ -1030,9 +1063,20 @@
             <inheritdoc cref="M:System.Drawing.BitmapExtensions.&lt;G&gt;$C14DA01C3B3D21636597C0C038AB5E3F.ZoomTo(System.Int32,System.Int32)"/>
         </member>
         <member name="T:System.Drawing.BitmapExtensions.&lt;G&gt;$C14DA01C3B3D21636597C0C038AB5E3F.&lt;M&gt;$87722E1B52F74B28E33DCB9AF1BACEEF">
-            <summary>
-            Provides extension members on <see cref="T:System.Drawing.Bitmap"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:System.Drawing.BitmapExtensions.&lt;G&gt;$C14DA01C3B3D21636597C0C038AB5E3F.ZoomTo(System.Int32,System.Int32)">
             <summary>
@@ -1060,9 +1104,20 @@
 			</target>
         </member>
         <member name="T:System.Drawing.ColorExtensions.&lt;G&gt;$B73B7345C6FAC66E9EBD3203731F9C85.&lt;M&gt;$4952722348C920B071F3F0DE3766DBB0">
-            <summary>
-            Provides extension members on <see cref="T:System.Drawing.Color"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="P:System.Drawing.ColorExtensions.&lt;G&gt;$B73B7345C6FAC66E9EBD3203731F9C85.QuarterAlpha">
             <summary>
@@ -1097,9 +1152,20 @@
             <inheritdoc cref="M:System.Drawing.GraphicsExtensions.&lt;G&gt;$7EB657A2C40A0F8E5F7466BF0DEBAFCB.FillRoundedRectangle(System.Drawing.Brush,System.Drawing.RectangleF,System.Single)"/>
         </member>
         <member name="T:System.Drawing.GraphicsExtensions.&lt;G&gt;$7EB657A2C40A0F8E5F7466BF0DEBAFCB.&lt;M&gt;$E5726D7FFB5665153473599F80A13B76">
-            <summary>
-            Provides extension members on <see cref="T:System.Drawing.Graphics"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:System.Drawing.GraphicsExtensions.&lt;G&gt;$7EB657A2C40A0F8E5F7466BF0DEBAFCB.DrawValue``1(``0,System.Drawing.Font,System.Drawing.Brush,System.Drawing.PointF,System.Drawing.StringFormat)">
             <summary>
@@ -1200,14 +1266,36 @@
 			</target>
         </member>
         <member name="T:System.Drawing.PointOrPointFExtensions.&lt;G&gt;$A3C1C4EA458DE615FF50978C85162251.&lt;M&gt;$77E6F057C332046EA7CDA44DDD75DA0D">
-            <summary>
-            Provides extension members on <see cref="T:System.Drawing.Point"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="T:System.Drawing.PointOrPointFExtensions.&lt;G&gt;$0979ECC3352093A9F1CC29CD6A61D9EE.&lt;M&gt;$E7F4ACC5F5DA212F8B99A284DA750F3F">
-            <summary>
-            Provides extension members on <see cref="T:System.Drawing.PointF"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:System.Drawing.PointOrPointFExtensions.&lt;G&gt;$0979ECC3352093A9F1CC29CD6A61D9EE.Truncate">
             <summary>
@@ -1262,9 +1350,20 @@
 			</target>
         </member>
         <member name="T:System.Drawing.RectangleOrRectangleFExtensions.&lt;G&gt;$D7425F472740CAD384E874162FC3E69E.&lt;M&gt;$53FB962151D2B1E17C158A18C430803B">
-            <summary>
-            Provides extension members on <see cref="T:System.Drawing.Rectangle"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:System.Drawing.RectangleOrRectangleFExtensions.&lt;G&gt;$D7425F472740CAD384E874162FC3E69E.Zoom(System.Int32)">
             <summary>
@@ -1275,9 +1374,19 @@
             <returns>The new rectangle.</returns>
         </member>
         <member name="T:System.Drawing.RectangleOrRectangleFExtensions.&lt;G&gt;$D7425F472740CAD384E874162FC3E69E.&lt;M&gt;$D7425F472740CAD384E874162FC3E69E">
-            <summary>
-            Provides extension members on <see cref="T:System.Drawing.Rectangle"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
         </member>
         <member name="M:System.Drawing.RectangleOrRectangleFExtensions.&lt;G&gt;$D7425F472740CAD384E874162FC3E69E.Create(System.Drawing.Point,System.Drawing.Point)">
             <summary>
@@ -1288,9 +1397,19 @@
             <returns>The rectangle.</returns>
         </member>
         <member name="T:System.Drawing.RectangleOrRectangleFExtensions.&lt;G&gt;$AE707D28D979AF7D3654BDAF995590CA.&lt;M&gt;$AE707D28D979AF7D3654BDAF995590CA">
-            <summary>
-            Provides extension members on <see cref="T:System.Drawing.RectangleF"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
         </member>
         <member name="M:System.Drawing.RectangleOrRectangleFExtensions.&lt;G&gt;$AE707D28D979AF7D3654BDAF995590CA.Create(System.Drawing.PointF,System.Drawing.PointF)">
             <summary>
@@ -1301,9 +1420,20 @@
             <returns>The rectangle.</returns>
         </member>
         <member name="T:System.Drawing.RectangleOrRectangleFExtensions.&lt;G&gt;$AE707D28D979AF7D3654BDAF995590CA.&lt;M&gt;$A5CF9A6CCB0442005FF2EAD32FAA0CCD">
-            <summary>
-            Provides extension members on <see cref="T:System.Drawing.RectangleF"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:System.Drawing.RectangleOrRectangleFExtensions.&lt;G&gt;$AE707D28D979AF7D3654BDAF995590CA.Zoom(System.Single)">
             <summary>
@@ -1346,14 +1476,36 @@
 			</target>
         </member>
         <member name="T:System.Drawing.SizeOrSizeFExtensions.&lt;G&gt;$D1D75F8A93ABA0FFF4BFD08C123057B8.&lt;M&gt;$BF0CD66700F51FB8C30E28F9AA664E77">
-            <summary>
-            Provides extension members on <see cref="T:System.Drawing.Size"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="T:System.Drawing.SizeOrSizeFExtensions.&lt;G&gt;$A9C4965BDF552C215BBE4C64C42375A9.&lt;M&gt;$85F4DA274BBC3AFDA4E1CDD7AB10D275">
-            <summary>
-            Provides extension members on <see cref="T:System.Drawing.SizeF"/>.
-            </summary>
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
         </member>
         <member name="M:System.Drawing.SizeOrSizeFExtensions.&lt;G&gt;$A9C4965BDF552C215BBE4C64C42375A9.Truncate">
             <summary>

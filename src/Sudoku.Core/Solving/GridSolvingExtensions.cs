@@ -19,9 +19,10 @@ public static class GridSolvingExtensions
 	private static readonly BitwiseSolver Solver = new();
 
 
-	/// <summary>
-	/// Provides extension members on <see langword="in"/> <see cref="Grid"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(in Grid @this)
 	{
 		/// <summary>

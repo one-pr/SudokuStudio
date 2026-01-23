@@ -7,9 +7,9 @@ namespace Sudoku.Analytics;
 /// <seealso cref="CandidateMap"/>
 public static class BitStateMapExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="CellMap"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	extension(CellMap)
 	{
 		/// <summary>
@@ -38,9 +38,9 @@ public static class BitStateMapExtensions
 		public static CellMap operator %(in CellMap @base, in CellMap template) => (@base & template).PeerIntersection & template;
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="CandidateMap"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	extension(CandidateMap)
 	{
 		/// <inheritdoc cref="extension(CellMap).op_Modulus(in CellMap, in CellMap)"/>

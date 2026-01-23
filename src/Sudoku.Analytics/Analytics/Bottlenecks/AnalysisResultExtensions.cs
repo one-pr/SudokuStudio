@@ -6,9 +6,10 @@ namespace Sudoku.Analytics.Bottlenecks;
 /// <seealso cref="AnalysisResult"/>
 public static class AnalysisResultExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="AnalysisResult"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(AnalysisResult @this)
 	{
 		/// <summary>
@@ -167,9 +168,11 @@ public static class AnalysisResultExtensions
 /// <include file='../../global-doc-comments.xml' path='g/csharp11/feature[@name="file-local"]/target[@name="class" and @when="extension"]'/>
 file static class Extensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="ReadOnlySpan{T}"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <typeparam name="T">The type of each element.</typeparam>
+	/// <param name="this">The current instance.</param>
 	extension<T>(ReadOnlySpan<T> @this) where T : struct
 	{
 		/// <inheritdoc cref="IFirstLastMethod{TSelf, TSource}.FirstOrDefault(Func{TSource, bool})"/>

@@ -6,10 +6,11 @@ namespace Sudoku.MinlexOrder;
 /// <seealso cref="Mapper"/>
 internal static class MapperExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Mapper"/>.
-	/// </summary>
-	extension(in Mapper map)
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="mapper">The current mapper instance.</param>
+	extension(in Mapper mapper)
 	{
 		/// <summary>
 		/// Converts <see cref="Mapper"/> and <see cref="MinlexCandidate"/> into a readable <see cref="Transform"/> instance.
@@ -31,7 +32,7 @@ internal static class MapperExtensions
 			var transpose = cand.IsTransposed != 0;
 			for (var s = 0; s < 81; s++)
 			{
-				var canon = map.Cell[s];
+				var canon = mapper.Cell[s];
 				if (canon >= MinlexFinder.EmptyCellPlaceholder)
 				{
 					continue; // Masked / Non-given.
@@ -70,7 +71,7 @@ internal static class MapperExtensions
 			var digits = (stackalloc Digit[10]);
 			for (var i = 0; i < 10; i++)
 			{
-				digits[i] = map.Label[i] - 1;
+				digits[i] = mapper.Label[i] - 1;
 			}
 
 			return new(
@@ -101,7 +102,7 @@ internal static class MapperExtensions
 
 			for (var cell = 0; cell < 81; cell++)
 			{
-				var canonicalCell = map.Cell[cell];
+				var canonicalCell = mapper.Cell[cell];
 				if (canonicalCell >= MinlexFinder.EmptyCellPlaceholder)
 				{
 					continue;
@@ -140,7 +141,7 @@ internal static class MapperExtensions
 			var digits = (stackalloc Digit[10]);
 			for (var i = 0; i < 10; i++)
 			{
-				digits[i] = map.Label[i] - 1;
+				digits[i] = mapper.Label[i] - 1;
 			}
 			return score_NotTransposed >= score_Transposed
 				? new(

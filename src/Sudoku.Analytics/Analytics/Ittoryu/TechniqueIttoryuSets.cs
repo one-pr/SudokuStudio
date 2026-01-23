@@ -5,9 +5,9 @@ namespace Sudoku.Analytics.Ittoryu;
 /// </summary>
 public static class TechniqueIttoryuSets
 {
-	/// <summary>
-	/// Provides extension members on <see cref="TechniqueSet"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	extension(TechniqueSet)
 	{
 		/// <summary>

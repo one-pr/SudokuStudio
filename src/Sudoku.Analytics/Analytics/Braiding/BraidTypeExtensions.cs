@@ -6,9 +6,9 @@ namespace Sudoku.Analytics.Braiding;
 /// <seealso cref="BraidingType"/>
 public static class BraidTypeExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="BraidingType"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	/// <param name="this">The current field.</param>
 	extension(BraidingType @this)
 	{

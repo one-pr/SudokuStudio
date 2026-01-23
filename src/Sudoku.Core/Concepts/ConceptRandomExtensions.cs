@@ -5,9 +5,10 @@ namespace Sudoku.Concepts;
 /// </summary>
 public static class ConceptRandomExtensions
 {
-	/// <summary>
-	/// Provides extension members on <see cref="Random"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="random">The current instance.</param>
 	extension(Random random)
 	{
 		/// <summary>

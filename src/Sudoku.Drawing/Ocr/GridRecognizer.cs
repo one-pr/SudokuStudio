@@ -220,9 +220,10 @@ internal sealed class GridRecognizer(Bitmap _photo) : IDisposable
 /// <seealso cref="Bitmap"/>
 file static class ImageHandler
 {
-	/// <summary>
-	/// Provides extension members on <see cref="PointF"/>[].
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="contour">The current instance.</param>
 	extension(PointF[] contour)
 	{
 		/// <summary>
@@ -274,9 +275,10 @@ file static class ImageHandler
 		}
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="Bitmap"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="this">The current instance.</param>
 	extension(Bitmap @this)
 	{
 		/// <summary>
@@ -473,9 +475,10 @@ file static class ImageHandler
 		}
 	}
 
-	/// <summary>
-	/// Provides extension members on <see cref="Image{TColor, TDepth}"/>.
-	/// </summary>
+	/// <include
+	///     file="../../global-doc-comments.xml"
+	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
+	/// <param name="image">The current instance.</param>
 	extension<TColor, TDepth>(Image<TColor, TDepth> image)
 		where TColor : struct, IColor
 		where TDepth : new()
