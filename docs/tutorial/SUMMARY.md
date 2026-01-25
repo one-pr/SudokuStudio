@@ -217,6 +217,8 @@
   * [四数探长致命结构的基本推理](deadly-pattern-theory/04-borescoper-deadly-pattern/02-reasoning-of-borescoper-deadly-pattern-using-4-digits.md)
 * [唯一矩阵（UM）](deadly-pattern-theory/05-unique-matrix.md)
 * [唯一性提示数覆盖（UCC）](deadly-pattern-theory/06-uniqueness-clue-cover.md)
+* [致命结构的传递](deadly-pattern-theory/07-state-transition-of-deadly-pattern/README.md)
+  * [什么是传递？](deadly-pattern-theory/07-state-transition-of-deadly-pattern/01-what-is-state-transition.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
