@@ -204,7 +204,11 @@ public static class BraidAnalysis
 	/// }
 	/// ]]></code>
 	/// </remarks>
-	public static bool TryReduce(in Grid grid, out int reducedChutesMask, out IReadOnlyDictionary<Strand, (BraidingType Type, Mask Mask)> reducedLookup)
+	public static bool TryReduce(
+		in Grid grid,
+		out int reducedChutesMask,
+		out IReadOnlyDictionary<Strand, (BraidingType Type, Mask Mask)> reducedLookup
+	)
 	{
 		var originalMappedStrands = MapStrands(grid);
 		var tempReducedLookup = new Dictionary<Strand, (BraidingType, Mask)>();
