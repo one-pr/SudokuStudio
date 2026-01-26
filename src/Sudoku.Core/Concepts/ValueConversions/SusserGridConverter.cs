@@ -291,7 +291,7 @@ public abstract partial class SusserGridConverter : IGridConverter
 			for (var i = 0; i < 9; i++)
 			{
 				var characterIndexStart = i * 9;
-				var sliced = @base[characterIndexStart..(characterIndexStart + 9)];
+				var sliced = @base.Substring(characterIndexStart, 9);
 				switch (Regex.Matches(sliced, placeholderPattern))
 				{
 					case []:

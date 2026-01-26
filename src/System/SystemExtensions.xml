@@ -2614,12 +2614,6 @@
         <member name="M:System.IndexRangeExtensions.op_Inequality(System.Index,System.Index)">
             <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$884281F282080FCB4345EB7F01A5EF3F.op_Inequality(System.Index,System.Index)"/>
         </member>
-        <member name="M:System.IndexRangeExtensions.op_Addition(System.Index,System.Int32)">
-            <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$884281F282080FCB4345EB7F01A5EF3F.op_Addition(System.Index,System.Int32)"/>
-        </member>
-        <member name="M:System.IndexRangeExtensions.op_Subtraction(System.Index,System.Int32)">
-            <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$884281F282080FCB4345EB7F01A5EF3F.op_Subtraction(System.Index,System.Int32)"/>
-        </member>
         <member name="M:System.IndexRangeExtensions.Deconstruct(System.Range@,System.Index@,System.Index@)">
             <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.Deconstruct(System.Index@,System.Index@)"/>
         </member>
@@ -2631,12 +2625,6 @@
         </member>
         <member name="M:System.IndexRangeExtensions.op_Inequality(System.Range@,System.Range@)">
             <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.op_Inequality(System.Range@,System.Range@)"/>
-        </member>
-        <member name="M:System.IndexRangeExtensions.op_Addition(System.Range@,System.Int32)">
-            <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.op_Addition(System.Range@,System.Int32)"/>
-        </member>
-        <member name="M:System.IndexRangeExtensions.op_Subtraction(System.Range@,System.Int32)">
-            <inheritdoc cref="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.op_Subtraction(System.Range@,System.Int32)"/>
         </member>
         <member name="T:System.IndexRangeExtensions.&lt;G&gt;$884281F282080FCB4345EB7F01A5EF3F.&lt;M&gt;$63920E9D99D3FF049EAE4485624B52D0">
             <target name="container">
@@ -2667,22 +2655,6 @@
         </member>
         <member name="M:System.IndexRangeExtensions.&lt;G&gt;$884281F282080FCB4345EB7F01A5EF3F.op_Inequality(System.Index,System.Index)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
-        </member>
-        <member name="M:System.IndexRangeExtensions.&lt;G&gt;$884281F282080FCB4345EB7F01A5EF3F.op_Addition(System.Index,System.Int32)">
-            <summary>
-            Creates an <see cref="T:System.Index"/> instance that makes an offset.
-            </summary>
-            <param name="left">The instance.</param>
-            <param name="right">The offset.</param>
-            <returns>The target <see cref="T:System.Index"/> instance.</returns>
-        </member>
-        <member name="M:System.IndexRangeExtensions.&lt;G&gt;$884281F282080FCB4345EB7F01A5EF3F.op_Subtraction(System.Index,System.Int32)">
-            <summary>
-            Creates an <see cref="T:System.Index"/> instance that makes an negative-lengthed offset.
-            </summary>
-            <param name="left">The instance.</param>
-            <param name="right">The offset.</param>
-            <returns>The target <see cref="T:System.Index"/> instance.</returns>
         </member>
         <member name="T:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.&lt;M&gt;$55C99093876990A7A78743FFE475DB19">
             <target name="container">
@@ -2716,22 +2688,6 @@
         </member>
         <member name="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.op_Inequality(System.Range@,System.Range@)">
             <inheritdoc cref="M:System.Numerics.IEqualityOperators`3.op_Inequality(`0,`1)"/>
-        </member>
-        <member name="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.op_Addition(System.Range@,System.Int32)">
-            <summary>
-            Creates a <see cref="T:System.Range"/> instance that includes <see cref="P:System.Range.End"/> + <paramref name="right"/>.
-            </summary>
-            <param name="left">The original value.</param>
-            <param name="right">The offset that will </param>
-            <returns>The result range instance.</returns>
-        </member>
-        <member name="M:System.IndexRangeExtensions.&lt;G&gt;$2BED71C534053B53AEFDCE16BD914EC5.op_Subtraction(System.Range@,System.Int32)">
-            <summary>
-            Creates a <see cref="T:System.Range"/> instance that includes <see cref="P:System.Range.End"/> - <paramref name="right"/>.
-            </summary>
-            <param name="left">The original value.</param>
-            <param name="right">The offset that will </param>
-            <returns>The result range instance.</returns>
         </member>
         <member name="T:System.IO.FileExtensions">
             <summary>

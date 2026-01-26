@@ -453,7 +453,7 @@ public abstract partial class Chain :
 	/// <param name="start">The start index.</param>
 	/// <param name="length">The number of <see cref="Node"/> instances to slice.</param>
 	/// <returns>A <see cref="ReadOnlySpan{T}"/> of <see cref="Node"/> instances returned.</returns>
-	public ReadOnlySpan<Node> Slice(int start, int length) => ValidNodes[start..(start + length)];
+	public ReadOnlySpan<Node> Slice(int start, int length) => ValidNodes.Slice(start, length);
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
 	public Enumerator GetEnumerator() => new(this);

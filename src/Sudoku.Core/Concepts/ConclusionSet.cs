@@ -433,7 +433,7 @@ public sealed partial class ConclusionSet :
 	public Enumerator EnumerateEliminations() => new(_bitArray, HalfBitsCount, BitsCount);
 
 	/// <inheritdoc cref="ISliceMethod{TSelf, TSource}.Slice(int, int)"/>
-	public ConclusionSet Slice(int start, int count) => [.. ToArray().AsReadOnlySpan()[start..(start + count)]];
+	public ConclusionSet Slice(int start, int count) => [.. ToArray().AsReadOnlySpan().Slice(start, count)];
 
 	/// <inheritdoc/>
 	void ICollection<Conclusion>.Add(Conclusion item) => _ = Add(item);

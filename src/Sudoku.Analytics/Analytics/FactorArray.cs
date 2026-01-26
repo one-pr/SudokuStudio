@@ -89,7 +89,7 @@ public readonly ref struct FactorArray(ReadOnlyMemory<Factor> _values) :
 	/// <param name="start">The index of the start element.</param>
 	/// <param name="length">The number of elements to be sliced.</param>
 	/// <returns>A <see cref="FactorArray"/> instance sliced.</returns>
-	public FactorArray Slice(int start, int length) => new(_values[start..(start + length)]);
+	public FactorArray Slice(int start, int length) => new(_values.Slice(start, length));
 
 	/// <inheritdoc/>
 	public Factor[] ToArray() => _values.ToArray();

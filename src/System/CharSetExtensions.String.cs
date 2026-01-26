@@ -65,7 +65,7 @@ public partial class CharSetExtensions
 			var span = result.AsSpan();
 			for (var i = 0; i < result.Length; i += value.Length)
 			{
-				value.CopyTo(span[i..(i + value.Length)]);
+				value.CopyTo(span.Slice(i, value.Length));
 			}
 			return new(result);
 		}
