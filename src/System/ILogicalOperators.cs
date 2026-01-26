@@ -38,7 +38,7 @@ public interface ILogicalOperators<TSelf> : IBitwiseOperators<TSelf, TSelf, TSel
 	/// overloads when implementing <c><see langword="operator"/> &amp;&amp;</c> / <c><see langword="operator"/> ||</c>.
 	/// Describe any consistency requirements with <c><see langword="operator true"/></c> and how <see langword="null"/> is handled.
 	/// </remarks>
-	static virtual bool operator false(TSelf value) => !(value ? true : false);
+	static abstract bool operator false(TSelf value);
 
 	/// <summary>
 	/// Negates the current instance, and makes the result to be negated one.
