@@ -265,12 +265,12 @@
             </summary>
             <param name="color">Color.</param>
         </member>
-        <member name="T:Sudoku.Graphics.Primitives.IGridImageDrawLines">
+        <member name="T:Sudoku.Graphics.Primitives.IGridImageDrawLine">
             <summary>
             Provides line drawing method set.
             </summary>
         </member>
-        <member name="M:Sudoku.Graphics.Primitives.IGridImageDrawLines.DrawGridLine(Sudoku.Graphics.ImageDrawingOptions)">
+        <member name="M:Sudoku.Graphics.Primitives.IGridImageDrawLine.DrawGridLine(Sudoku.Graphics.ImageDrawingOptions)">
             <summary>
             Draw grid lines.
             </summary>

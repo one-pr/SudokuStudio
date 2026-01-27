@@ -8,7 +8,7 @@ namespace Sudoku.Graphics;
 public sealed class GridImage(in Grid grid, PointMapper mapper) :
 	IDisposable,
 	IGridImageDrawBackground,
-	IGridImageDrawLines,
+	IGridImageDrawLine,
 	IGridImageExport
 {
 	/// <summary>
