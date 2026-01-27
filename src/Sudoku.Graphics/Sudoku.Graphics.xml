@@ -49,7 +49,7 @@
         <member name="M:Sudoku.Graphics.GridCanvas.Dispose">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Graphics.GridCanvas.DrawBackground(SkiaSharp.SKColor)">
+        <member name="M:Sudoku.Graphics.GridCanvas.DrawBackground(Sudoku.Graphics.ImageDrawingOptions)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Graphics.GridCanvas.DrawGridLine(Sudoku.Graphics.ImageDrawingOptions)">
@@ -117,6 +117,11 @@
         <member name="P:Sudoku.Graphics.ImageDrawingOptions.CandidateAuxiliaryLineDashSequence">
             <summary>
             Indicates candidate auxiliary line dash sequence. By default it's empty array.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.ImageDrawingOptions.BackgroundColor">
+            <summary>
+            Indicates background color.
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.ImageDrawingOptions.CandidateAuxiliaryLineStrokeColor">
@@ -303,11 +308,14 @@
             Provides background drawing method set.
             </summary>
         </member>
-        <member name="M:Sudoku.Graphics.Primitives.IGridCanvasDrawBackground.DrawBackground(SkiaSharp.SKColor)">
+        <member name="M:Sudoku.Graphics.Primitives.IGridCanvasDrawBackground.DrawBackground(Sudoku.Graphics.ImageDrawingOptions)">
             <summary>
-            Draw background.
+            Draw background. Properties in <paramref name="options"/> used:
+            <list type="bullet">
+            <item><see cref="P:Sudoku.Graphics.ImageDrawingOptions.BackgroundColor"/></item>
+            </list>
             </summary>
-            <param name="color">Color.</param>
+            <param name="options">Indicates the options.</param>
         </member>
         <member name="T:Sudoku.Graphics.Primitives.IGridCanvasDrawLine">
             <summary>
@@ -316,7 +324,18 @@
         </member>
         <member name="M:Sudoku.Graphics.Primitives.IGridCanvasDrawLine.DrawGridLine(Sudoku.Graphics.ImageDrawingOptions)">
             <summary>
-            Draw grid lines.
+            Draw grid lines. Properties in <paramref name="options"/> used:
+            <list type="bullet">
+            <item><see cref="P:Sudoku.Graphics.ImageDrawingOptions.BlockLineStrokeThickness"/></item>
+            <item><see cref="P:Sudoku.Graphics.ImageDrawingOptions.BlockLineStrokeColor"/></item>
+            <item><see cref="P:Sudoku.Graphics.ImageDrawingOptions.BlockLineDashSequence"/></item>
+            <item><see cref="P:Sudoku.Graphics.ImageDrawingOptions.GridLineStrokeThickness"/></item>
+            <item><see cref="P:Sudoku.Graphics.ImageDrawingOptions.GridLineStrokeColor"/></item>
+            <item><see cref="P:Sudoku.Graphics.ImageDrawingOptions.GridLineDashSequence"/></item>
+            <item><see cref="P:Sudoku.Graphics.ImageDrawingOptions.CandidateAuxiliaryLineStrokeThickness"/></item>
+            <item><see cref="P:Sudoku.Graphics.ImageDrawingOptions.CandidateAuxiliaryLineStrokeColor"/></item>
+            <item><see cref="P:Sudoku.Graphics.ImageDrawingOptions.CandidateAuxiliaryLineDashSequence"/></item>
+            </list>
             </summary>
             <param name="options">Indicates the options.</param>
         </member>

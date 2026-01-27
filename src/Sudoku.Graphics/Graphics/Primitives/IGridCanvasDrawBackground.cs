@@ -6,8 +6,11 @@ namespace Sudoku.Graphics.Primitives;
 public interface IGridCanvasDrawBackground
 {
 	/// <summary>
-	/// Draw background.
+	/// Draw background. Properties in <paramref name="options"/> used:
+	/// <list type="bullet">
+	/// <item><see cref="ImageDrawingOptions.BackgroundColor"/></item>
+	/// </list>
 	/// </summary>
-	/// <param name="color">Color.</param>
-	void DrawBackground(SKColor color);
+	/// <param name="options">Indicates the options.</param>
+	void DrawBackground(ImageDrawingOptions? options = null);
 }

@@ -43,6 +43,11 @@ public sealed class ImageDrawingOptions
 	public LineDashSequence CandidateAuxiliaryLineDashSequence { get; set; } = [];
 
 	/// <summary>
+	/// Indicates background color.
+	/// </summary>
+	public SKColor BackgroundColor { get; set; } = SKColors.White;
+
+	/// <summary>
 	/// Indicates stroke color of candidate auxiliary lines. By default it's <see cref="SKColors.Black"/>.
 	/// </summary>
 	public SKColor CandidateAuxiliaryLineStrokeColor { get; set; } = SKColors.Black;

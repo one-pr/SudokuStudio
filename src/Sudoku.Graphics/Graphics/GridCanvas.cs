@@ -47,7 +47,8 @@ public sealed class GridCanvas(in Grid grid, PointMapper mapper) : IGridCanvas
 	}
 
 	/// <inheritdoc/>
-	public void DrawBackground(SKColor color) => Canvas.Clear(color);
+	public void DrawBackground(ImageDrawingOptions? options = null)
+		=> Canvas.Clear((options ?? new()).BackgroundColor);
 
 	/// <inheritdoc/>
 	public void DrawGridLine(ImageDrawingOptions? options = null)
