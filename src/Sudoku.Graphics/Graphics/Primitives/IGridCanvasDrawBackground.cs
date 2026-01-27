@@ -3,7 +3,7 @@ namespace Sudoku.Graphics.Primitives;
 /// <summary>
 /// Provides background drawing method set.
 /// </summary>
-internal interface IGridImageDrawBackground
+internal interface IGridCanvasDrawBackground
 {
 	/// <summary>
 	/// Draw background.

@@ -4,62 +4,81 @@
         <name>Sudoku.Graphics</name>
     </assembly>
     <members>
-        <member name="T:Sudoku.Graphics.GridImage">
+        <member name="T:Sudoku.Graphics.GridCanvas">
             <summary>
-            Represents an image to a sudoku grid.
+            Represents a canvas that allows you drawing sudoku-related items onto it.
             </summary>
-            <param name="grid"><inheritdoc cref="P:Sudoku.Graphics.GridImage.Grid" path="/summary"/></param>
-            <param name="mapper"><inheritdoc cref="P:Sudoku.Graphics.GridImage.Mapper" path="/summary"/></param>
+            <param name="grid"><inheritdoc cref="P:Sudoku.Graphics.GridCanvas.Grid" path="/summary"/></param>
+            <param name="mapper"><inheritdoc cref="P:Sudoku.Graphics.GridCanvas.Mapper" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Graphics.GridImage.#ctor(Sudoku.Concepts.Grid@,Sudoku.Graphics.PointMapper)">
+        <member name="M:Sudoku.Graphics.GridCanvas.#ctor(Sudoku.Concepts.Grid@,Sudoku.Graphics.PointMapper)">
             <summary>
-            Represents an image to a sudoku grid.
+            Represents a canvas that allows you drawing sudoku-related items onto it.
             </summary>
-            <param name="grid"><inheritdoc cref="P:Sudoku.Graphics.GridImage.Grid" path="/summary"/></param>
-            <param name="mapper"><inheritdoc cref="P:Sudoku.Graphics.GridImage.Mapper" path="/summary"/></param>
+            <param name="grid"><inheritdoc cref="P:Sudoku.Graphics.GridCanvas.Grid" path="/summary"/></param>
+            <param name="mapper"><inheritdoc cref="P:Sudoku.Graphics.GridCanvas.Mapper" path="/summary"/></param>
         </member>
-        <member name="F:Sudoku.Graphics.GridImage._grid">
+        <member name="F:Sudoku.Graphics.GridCanvas._grid">
             <summary>
-            The backing field of property <see cref="P:Sudoku.Graphics.GridImage.Grid"/>.
+            The backing field of property <see cref="P:Sudoku.Graphics.GridCanvas.Grid"/>.
             </summary>
-            <seealso cref="P:Sudoku.Graphics.GridImage.Grid"/>
+            <seealso cref="P:Sudoku.Graphics.GridCanvas.Grid"/>
         </member>
-        <member name="F:Sudoku.Graphics.GridImage._surface">
+        <member name="F:Sudoku.Graphics.GridCanvas._surface">
             <summary>
             Indicates the backing surface object.
             </summary>
         </member>
-        <member name="F:Sudoku.Graphics.GridImage._isDisposed">
+        <member name="F:Sudoku.Graphics.GridCanvas._isDisposed">
             <summary>
             Indicates whether the object has already been disposed.
             </summary>
         </member>
-        <member name="P:Sudoku.Graphics.GridImage.Grid">
+        <member name="P:Sudoku.Graphics.GridCanvas.Grid">
             <summary>
             Indicates the grid used.
             </summary>
         </member>
-        <member name="P:Sudoku.Graphics.GridImage.Mapper">
+        <member name="P:Sudoku.Graphics.GridCanvas.Mapper">
             <summary>
             Indicates the mapper.
             </summary>
         </member>
-        <member name="P:Sudoku.Graphics.GridImage.Canvas">
+        <member name="P:Sudoku.Graphics.GridCanvas.Canvas">
             <summary>
             Indicates the canvas that allows you drawing on it.
             </summary>
         </member>
-        <member name="M:Sudoku.Graphics.GridImage.Dispose">
+        <member name="M:Sudoku.Graphics.GridCanvas.Dispose">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Graphics.GridImage.DrawBackground(SkiaSharp.SKColor)">
+        <member name="M:Sudoku.Graphics.GridCanvas.DrawBackground(SkiaSharp.SKColor)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Graphics.GridImage.DrawGridLine(Sudoku.Graphics.ImageDrawingOptions)">
+        <member name="M:Sudoku.Graphics.GridCanvas.DrawGridLine(Sudoku.Graphics.ImageDrawingOptions)">
             <inheritdoc/>
         </member>
-        <member name="M:Sudoku.Graphics.GridImage.Export(System.String,Sudoku.Graphics.ImageExportingOptions)">
+        <member name="M:Sudoku.Graphics.GridCanvas.Export(System.String,Sudoku.Graphics.ImageExportingOptions)">
             <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.GridCanvas.ExportAsync(System.String,Sudoku.Graphics.ImageExportingOptions,System.Threading.CancellationToken)">
+            <summary>
+            Export image into target file, asynchronously.
+            </summary>
+            <param name="path">The file path.</param>
+            <param name="options">The exporting options.</param>
+            <param name="cancellationToken">The cancellation token that allows you cancelling the operation if necessary.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that allows you visiting states on asynchronous task.</returns>
+            <exception cref="T:System.NotSupportedException">Throws when the target file extension is not supported.</exception>
+            <exception cref="T:System.OperationCanceledException">Throws when task is canceled.</exception>
+        </member>
+        <member name="M:Sudoku.Graphics.GridCanvas.GetFormatFromExtension(System.String)">
+            <summary>
+            Returns <see cref="T:SkiaSharp.SKEncodedImageFormat"/> from extension string.
+            </summary>
+            <param name="extension">The file extesnsion.</param>
+            <returns>The target format.</returns>
+            <exception cref="T:System.NotSupportedException">Throws when the target format is not supported.</exception>
         </member>
         <member name="T:Sudoku.Graphics.ImageDrawingOptions">
             <summary>
@@ -254,34 +273,34 @@
             <param name="columnIndex">The column index.</param>
             <returns>The point value.</returns>
         </member>
-        <member name="T:Sudoku.Graphics.Primitives.IGridImageDrawBackground">
+        <member name="T:Sudoku.Graphics.Primitives.IGridCanvasDrawBackground">
             <summary>
             Provides background drawing method set.
             </summary>
         </member>
-        <member name="M:Sudoku.Graphics.Primitives.IGridImageDrawBackground.DrawBackground(SkiaSharp.SKColor)">
+        <member name="M:Sudoku.Graphics.Primitives.IGridCanvasDrawBackground.DrawBackground(SkiaSharp.SKColor)">
             <summary>
             Draw background.
             </summary>
             <param name="color">Color.</param>
         </member>
-        <member name="T:Sudoku.Graphics.Primitives.IGridImageDrawLine">
+        <member name="T:Sudoku.Graphics.Primitives.IGridCanvasDrawLine">
             <summary>
             Provides line drawing method set.
             </summary>
         </member>
-        <member name="M:Sudoku.Graphics.Primitives.IGridImageDrawLine.DrawGridLine(Sudoku.Graphics.ImageDrawingOptions)">
+        <member name="M:Sudoku.Graphics.Primitives.IGridCanvasDrawLine.DrawGridLine(Sudoku.Graphics.ImageDrawingOptions)">
             <summary>
             Draw grid lines.
             </summary>
             <param name="options">Indicates the options.</param>
         </member>
-        <member name="T:Sudoku.Graphics.Primitives.IGridImageExport">
+        <member name="T:Sudoku.Graphics.Primitives.IGridCanvasExport">
             <summary>
             Represents export method set.
             </summary>
         </member>
-        <member name="M:Sudoku.Graphics.Primitives.IGridImageExport.Export(System.String,Sudoku.Graphics.ImageExportingOptions)">
+        <member name="M:Sudoku.Graphics.Primitives.IGridCanvasExport.Export(System.String,Sudoku.Graphics.ImageExportingOptions)">
             <summary>
             Export image into target file.
             </summary>

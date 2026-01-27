@@ -7,6 +7,8 @@ global using System.Linq;
 global using System.Linq.Enumerators;
 global using System.Text.Json;
 global using System.Text.Json.Serialization;
+global using System.Threading;
+global using System.Threading.Tasks;
 global using SkiaSharp;
 global using Sudoku.Concepts;
 global using Sudoku.Graphics.Primitives;
