@@ -74,4 +74,29 @@ public sealed partial class ImageDrawingOptions
 	/// </summary>
 	[JsonConverter(typeof(SKColorConverter))]
 	public SKColor BlockLineStrokeColor { get; set; } = SKColors.Black;
+
+
+	/// <summary>
+	/// Loads configuration from JSON file, specified by its path.
+	/// If the specified file doesn't exist, <see langword="null"/> will be returned.
+	/// </summary>
+	/// <param name="filePath">The target file path.</param>
+	/// <returns>The options loaded.</returns>
+	public static ImageDrawingOptions? LoadFrom(string filePath)
+		=> File.Exists(filePath) ? JsonSerializer.Deserialize<ImageDrawingOptions>(File.ReadAllText(filePath)) : null;
+
+	/// <summary>
+	/// Saves the specified options, converting it into JSON string and save to the specified file.
+	/// If the specified file exists, truncated and overwritten;
+	/// if <paramref name="options"/> is <see langword="null"/>, do nothing.
+	/// </summary>
+	/// <param name="options">The instance.</param>
+	/// <param name="filePath">The target file path.</param>
+	public static void SaveTo(ImageDrawingOptions? options, string filePath)
+	{
+		if (options is not null)
+		{
+			File.WriteAllText(filePath, JsonSerializer.Serialize(options));
+		}
+	}
 }

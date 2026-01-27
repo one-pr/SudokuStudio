@@ -144,6 +144,23 @@
             Indicates stroke color of block lines. By default it's <see cref="F:SkiaSharp.SKColors.Black"/>.
             </summary>
         </member>
+        <member name="M:Sudoku.Graphics.ImageDrawingOptions.LoadFrom(System.String)">
+            <summary>
+            Loads configuration from JSON file, specified by its path.
+            If the specified file doesn't exist, <see langword="null"/> will be returned.
+            </summary>
+            <param name="filePath">The target file path.</param>
+            <returns>The options loaded.</returns>
+        </member>
+        <member name="M:Sudoku.Graphics.ImageDrawingOptions.SaveTo(Sudoku.Graphics.ImageDrawingOptions,System.String)">
+            <summary>
+            Saves the specified options, converting it into JSON string and save to the specified file.
+            If the specified file exists, truncated and overwritten;
+            if <paramref name="options"/> is <see langword="null"/>, do nothing.
+            </summary>
+            <param name="options">The instance.</param>
+            <param name="filePath">The target file path.</param>
+        </member>
         <member name="T:Sudoku.Graphics.ImageDrawingOptions.LineDashSequenceConverter">
             <summary>
             Represents <see cref="T:Sudoku.Graphics.LineDashSequence"/> JSON converter.
