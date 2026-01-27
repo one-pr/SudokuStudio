@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sudoku.Graphics</name>
+    </assembly>
+    <members>
+        <member name="T:Sudoku.Graphics.GridImage">
+            <summary>
+            Represents an image to a sudoku grid.
+            </summary>
+            <param name="grid"><inheritdoc cref="P:Sudoku.Graphics.GridImage.Grid" path="/summary"/></param>
+            <param name="mapper"><inheritdoc cref="P:Sudoku.Graphics.GridImage.Mapper" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Graphics.GridImage.#ctor(Sudoku.Concepts.Grid@,Sudoku.Graphics.PointMapper)">
+            <summary>
+            Represents an image to a sudoku grid.
+            </summary>
+            <param name="grid"><inheritdoc cref="P:Sudoku.Graphics.GridImage.Grid" path="/summary"/></param>
+            <param name="mapper"><inheritdoc cref="P:Sudoku.Graphics.GridImage.Mapper" path="/summary"/></param>
+        </member>
+        <member name="F:Sudoku.Graphics.GridImage._grid">
+            <summary>
+            The backing field of property <see cref="P:Sudoku.Graphics.GridImage.Grid"/>.
+            </summary>
+            <seealso cref="P:Sudoku.Graphics.GridImage.Grid"/>
+        </member>
+        <member name="F:Sudoku.Graphics.GridImage._surface">
+            <summary>
+            Indicates the backing surface object.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Graphics.GridImage._isDisposed">
+            <summary>
+            Indicates whether the object has already been disposed.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.GridImage.Grid">
+            <summary>
+            Indicates the grid used.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.GridImage.Mapper">
+            <summary>
+            Indicates the mapper.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.GridImage.Canvas">
+            <summary>
+            Indicates the canvas that allows you drawing on it.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.GridImage.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.GridImage.DrawBackground(SkiaSharp.SKColor)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.GridImage.Export(System.String,Sudoku.Graphics.ImageExportOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Graphics.ImageExportOptions">
+            <summary>
+            Represents image export options.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Graphics.ImageExportOptions.Default">
+            <summary>
+            Indicates the default options.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.ImageExportOptions.Quality">
+            <summary>
+            Indicates the quality. Range 0..100. Default 80.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Graphics.PointMapper">
+            <summary>
+            Represents a mapper instance that projects from pixel points into sudoku elements (coordinates),
+            or from sudoku elements into points.
+            </summary>
+            <param name="size"><inheritdoc cref="P:Sudoku.Graphics.PointMapper.Size" path="/summary"/></param>
+            <param name="margin"><inheritdoc cref="P:Sudoku.Graphics.PointMapper.Margin" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Graphics.PointMapper.#ctor(System.Int32,System.Single)">
+            <summary>
+            Represents a mapper instance that projects from pixel points into sudoku elements (coordinates),
+            or from sudoku elements into points.
+            </summary>
+            <param name="size"><inheritdoc cref="P:Sudoku.Graphics.PointMapper.Size" path="/summary"/></param>
+            <param name="margin"><inheritdoc cref="P:Sudoku.Graphics.PointMapper.Margin" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Graphics.PointMapper.Size">
+            <summary>
+            Indicates size of the picture.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.PointMapper.Margin">
+            <summary>
+            Indicates margin of the picture.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Graphics.Primitives.IGridImageDrawBackground">
+            <summary>
+            Provides background drawing method set.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.Primitives.IGridImageDrawBackground.DrawBackground(SkiaSharp.SKColor)">
+            <summary>
+            Draw background.
+            </summary>
+            <param name="color">Color.</param>
+        </member>
+        <member name="T:Sudoku.Graphics.Primitives.IGridImageExport">
+            <summary>
+            Represents export method set.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.Primitives.IGridImageExport.Export(System.String,Sudoku.Graphics.ImageExportOptions)">
+            <summary>
+            Export image into target file.
+            </summary>
+            <param name="path">The file path.</param>
+            <param name="options">The exporting options.</param>
+            <exception cref="T:System.NotSupportedException">Throws when the target file extension is not supported.</exception>
+        </member>
+    </members>
+</doc>
