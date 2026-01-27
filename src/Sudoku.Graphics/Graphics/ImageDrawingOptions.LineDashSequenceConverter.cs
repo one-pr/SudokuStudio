@@ -1,11 +1,12 @@
 namespace Sudoku.Graphics;
 
-public partial struct LineDashSequence
+public partial class ImageDrawingOptions
 {
 	/// <summary>
-	/// Represents a JSON converter type.
+	/// Represents <see cref="LineDashSequence"/> JSON converter.
 	/// </summary>
-	private sealed class JsonConverter : JsonConverter<LineDashSequence>
+	/// <seealso cref="LineDashSequence"/>
+	private sealed class LineDashSequenceConverter : JsonConverter<LineDashSequence>
 	{
 		/// <inheritdoc/>
 		public override LineDashSequence Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -21,7 +22,7 @@ public partial struct LineDashSequence
 					}
 					case JsonTokenType.EndArray:
 					{
-						return new(sequence.AsSpan());
+						return [.. sequence];
 					}
 					case JsonTokenType.Number:
 					{
@@ -41,7 +42,7 @@ public partial struct LineDashSequence
 		public override void Write(Utf8JsonWriter writer, LineDashSequence value, JsonSerializerOptions options)
 		{
 			writer.WriteStartArray();
-			foreach (var element in value._intervals)
+			foreach (var element in value.Intervals)
 			{
 				writer.WriteNumberValue(element);
 			}

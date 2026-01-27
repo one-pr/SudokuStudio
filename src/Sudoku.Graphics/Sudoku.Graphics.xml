@@ -144,6 +144,30 @@
             Indicates stroke color of block lines. By default it's <see cref="F:SkiaSharp.SKColors.Black"/>.
             </summary>
         </member>
+        <member name="T:Sudoku.Graphics.ImageDrawingOptions.LineDashSequenceConverter">
+            <summary>
+            Represents <see cref="T:Sudoku.Graphics.LineDashSequence"/> JSON converter.
+            </summary>
+            <seealso cref="T:Sudoku.Graphics.LineDashSequence"/>
+        </member>
+        <member name="M:Sudoku.Graphics.ImageDrawingOptions.LineDashSequenceConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.ImageDrawingOptions.LineDashSequenceConverter.Write(System.Text.Json.Utf8JsonWriter,Sudoku.Graphics.LineDashSequence,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Graphics.ImageDrawingOptions.SKColorConverter">
+            <summary>
+            Represents <see cref="T:SkiaSharp.SKColor"/> JSON converter.
+            </summary>
+            <seealso cref="T:SkiaSharp.SKColor"/>
+        </member>
+        <member name="M:Sudoku.Graphics.ImageDrawingOptions.SKColorConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.ImageDrawingOptions.SKColorConverter.Write(System.Text.Json.Utf8JsonWriter,SkiaSharp.SKColor,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
         <member name="T:Sudoku.Graphics.ImageExportingOptions">
             <summary>
             Represents image exporting options.
@@ -185,6 +209,11 @@
             Indicates whether the sequence is empty.
             </summary>
         </member>
+        <member name="P:Sudoku.Graphics.LineDashSequence.Intervals">
+            <summary>
+            Indicates interval values.
+            </summary>
+        </member>
         <member name="P:Sudoku.Graphics.LineDashSequence.Item(System.Int32)">
             <summary>
             Returns the element at the specified index.
@@ -219,17 +248,6 @@
             Implicit cast from <see cref="T:Sudoku.Graphics.LineDashSequence"/> into <see cref="T:SkiaSharp.SKPathEffect"/>.
             </summary>
             <param name="sequence">The sequence.</param>
-        </member>
-        <member name="T:Sudoku.Graphics.LineDashSequence.JsonConverter">
-            <summary>
-            Represents a JSON converter type.
-            </summary>
-        </member>
-        <member name="M:Sudoku.Graphics.LineDashSequence.JsonConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Graphics.LineDashSequence.JsonConverter.Write(System.Text.Json.Utf8JsonWriter,Sudoku.Graphics.LineDashSequence,System.Text.Json.JsonSerializerOptions)">
-            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Graphics.PointMapper">
             <summary>

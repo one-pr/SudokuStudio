@@ -3,8 +3,7 @@ namespace Sudoku.Graphics;
 /// <summary>
 /// Represents a sequence of dash intervals.
 /// </summary>
-[JsonConverter(typeof(JsonConverter))]
-public readonly partial struct LineDashSequence : IEnumerable<float>
+public readonly struct LineDashSequence : IEnumerable<float>
 {
 	/// <summary>
 	/// The backing intervals.
@@ -29,6 +28,11 @@ public readonly partial struct LineDashSequence : IEnumerable<float>
 	/// </summary>
 	public bool IsEmpty => _intervals.Count == 0;
 
+	/// <summary>
+	/// Indicates interval values.
+	/// </summary>
+	public ReadOnlySpan<float> Intervals => _intervals.AsSpan();
+
 
 	/// <summary>
 	/// Returns the element at the specified index.
@@ -45,7 +49,7 @@ public readonly partial struct LineDashSequence : IEnumerable<float>
 	public void Add(float value) => _intervals.Add(value);
 
 	/// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
-	public AnonymousSpanEnumerator<float> GetEnumerator() => new(_intervals.AsSpan());
+	public AnonymousSpanEnumerator<float> GetEnumerator() => new(Intervals);
 
 
 	/// <summary>
