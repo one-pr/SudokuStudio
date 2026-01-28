@@ -55,9 +55,24 @@ public sealed class GridCanvas(in Grid grid, PointMapper mapper) : IGridCanvas
 	{
 		options ??= CanvasDrawingOptions.Default;
 
-		using var givenDigitsTypeface = SKTypeface.FromFamilyName(options.GivenDigitsFontName);
-		using var modifiableDigitsTypeface = SKTypeface.FromFamilyName(options.ModifiableDigitsFontName);
-		using var candidatesTypeface = SKTypeface.FromFamilyName(options.CandidatesFontName);
+		using var givenDigitsTypeface = SKTypeface.FromFamilyName(
+			options.GivenDigitsFontName,
+			options.GivenDigitsFontWeight,
+			options.GivenDigitsFontWidth,
+			options.GivenDigitsFontSlant
+		);
+		using var modifiableDigitsTypeface = SKTypeface.FromFamilyName(
+			options.ModifiableDigitsFontName,
+			options.ModifiableDigitsFontWeight,
+			options.ModifiableDigitsFontWidth,
+			options.ModifiableDigitsFontSlant
+		);
+		using var candidatesTypeface = SKTypeface.FromFamilyName(
+			options.CandidatesFontName,
+			options.CandidatesFontWeight,
+			options.CandidatesFontWidth,
+			options.CandidatesFontSlant
+		);
 		var factGivenDigitsSize = options.GivenDigitsFontSizeRatio.Measure(Mapper.CellSize);
 		var factModifiableDigitsSize = options.ModifiableDigitsFontSizeRatio.Measure(Mapper.CellSize);
 		var factCandidatesSize = options.CandidatesFontSizeRatio.Measure(Mapper.CellSize);

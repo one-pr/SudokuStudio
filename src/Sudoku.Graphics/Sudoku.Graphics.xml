@@ -34,6 +34,51 @@
             Indicates candidates font name. By default it's <c>"Tahoma"</c>.
             </summary>
         </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontWeight">
+            <summary>
+            Indicates given digits font weight. By default it's <see cref="F:SkiaSharp.SKFontStyleWeight.Normal"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontWeight">
+            <summary>
+            Indicates modifiable digits font weight. By default it's <see cref="F:SkiaSharp.SKFontStyleWeight.Normal"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontWeight">
+            <summary>
+            Indicates candidates font weight. By default it's <see cref="F:SkiaSharp.SKFontStyleWeight.Normal"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontWidth">
+            <summary>
+            Indicates given digits font width. By default it's <see cref="F:SkiaSharp.SKFontStyleWidth.Normal"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontWidth">
+            <summary>
+            Indicates modifiable digits font width. By default it's <see cref="F:SkiaSharp.SKFontStyleWidth.Normal"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontWidth">
+            <summary>
+            Indicates candidates font width. By default it's <see cref="F:SkiaSharp.SKFontStyleWidth.Normal"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontSlant">
+            <summary>
+            Indicates given digits font slant. By default it's <see cref="F:SkiaSharp.SKFontStyleSlant.Upright"/> (default).
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontSlant">
+            <summary>
+            Indicates modifiable digits font slant. By default it's <see cref="F:SkiaSharp.SKFontStyleSlant.Upright"/> (default).
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontSlant">
+            <summary>
+            Indicates candidates font slant. By default it's <see cref="F:SkiaSharp.SKFontStyleSlant.Upright"/> (default).
+            </summary>
+        </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio">
             <summary>
             Indicates stroke thickness ratio of candidate auxiliary lines, relative to grid size.
@@ -500,12 +545,21 @@
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontName"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontSizeRatio"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsColor"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontWeight"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontWidth"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontSlant"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontName"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontSizeRatio"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsColor"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontWeight"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontWidth"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontSlant"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontName"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontSizeRatio"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesColor"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontWeight"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontWidth"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontSlant"/></item>
             </list>
             </summary>
             <param name="grid">The grid.</param>

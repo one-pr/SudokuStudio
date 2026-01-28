@@ -32,6 +32,51 @@ public sealed partial class CanvasDrawingOptions
 	public string CandidatesFontName { get; set; } = "Tahoma";
 
 	/// <summary>
+	/// Indicates given digits font weight. By default it's <see cref="SKFontStyleWeight.Normal"/>.
+	/// </summary>
+	public SKFontStyleWeight GivenDigitsFontWeight { get; set; } = SKFontStyleWeight.Normal;
+
+	/// <summary>
+	/// Indicates modifiable digits font weight. By default it's <see cref="SKFontStyleWeight.Normal"/>.
+	/// </summary>
+	public SKFontStyleWeight ModifiableDigitsFontWeight { get; set; } = SKFontStyleWeight.Normal;
+
+	/// <summary>
+	/// Indicates candidates font weight. By default it's <see cref="SKFontStyleWeight.Normal"/>.
+	/// </summary>
+	public SKFontStyleWeight CandidatesFontWeight { get; set; } = SKFontStyleWeight.Normal;
+
+	/// <summary>
+	/// Indicates given digits font width. By default it's <see cref="SKFontStyleWidth.Normal"/>.
+	/// </summary>
+	public SKFontStyleWidth GivenDigitsFontWidth { get; set; } = SKFontStyleWidth.Normal;
+
+	/// <summary>
+	/// Indicates modifiable digits font width. By default it's <see cref="SKFontStyleWidth.Normal"/>.
+	/// </summary>
+	public SKFontStyleWidth ModifiableDigitsFontWidth { get; set; } = SKFontStyleWidth.Normal;
+
+	/// <summary>
+	/// Indicates candidates font width. By default it's <see cref="SKFontStyleWidth.Normal"/>.
+	/// </summary>
+	public SKFontStyleWidth CandidatesFontWidth { get; set; } = SKFontStyleWidth.Normal;
+
+	/// <summary>
+	/// Indicates given digits font slant. By default it's <see cref="SKFontStyleSlant.Upright"/> (default).
+	/// </summary>
+	public SKFontStyleSlant GivenDigitsFontSlant { get; set; } = SKFontStyleSlant.Upright;
+
+	/// <summary>
+	/// Indicates modifiable digits font slant. By default it's <see cref="SKFontStyleSlant.Upright"/> (default).
+	/// </summary>
+	public SKFontStyleSlant ModifiableDigitsFontSlant { get; set; } = SKFontStyleSlant.Upright;
+
+	/// <summary>
+	/// Indicates candidates font slant. By default it's <see cref="SKFontStyleSlant.Upright"/> (default).
+	/// </summary>
+	public SKFontStyleSlant CandidatesFontSlant { get; set; } = SKFontStyleSlant.Upright;
+
+	/// <summary>
 	/// Indicates stroke thickness ratio of candidate auxiliary lines, relative to grid size.
 	/// By default it's 4.63E-4F (approximately 0.0463%).
 	/// Approximately thickness <b>0.5</b> in a <b>1080 * 1080</b> picture.
