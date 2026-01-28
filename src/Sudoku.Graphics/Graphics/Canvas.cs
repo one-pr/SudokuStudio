@@ -3,13 +3,12 @@ namespace Sudoku.Graphics;
 /// <summary>
 /// Represents a canvas that allows you drawing sudoku-related items onto it.
 /// </summary>
-/// <param name="mapper"><inheritdoc cref="Mapper" path="/summary"/></param>
-public sealed class Canvas(PointMapper mapper) : ICanvas
+public sealed class Canvas : ICanvas
 {
 	/// <summary>
 	/// Indicates the backing surface object.
 	/// </summary>
-	private readonly SKSurface _surface = SKSurface.Create(new SKImageInfo(mapper.Size, mapper.Size));
+	private readonly SKSurface _surface;
 
 	/// <summary>
 	/// Indicates whether the object has already been disposed.
@@ -17,8 +16,28 @@ public sealed class Canvas(PointMapper mapper) : ICanvas
 	private bool _isDisposed;
 
 
+	/// <summary>
+	/// Initializes a <see cref="Canvas"/> instance via the specified picture size and margin (to the inner sudoku grid).
+	/// </summary>
+	/// <param name="size">The picture size.</param>
+	/// <param name="margin">The margin to the inner sudoku grid.</param>
+	public Canvas(int size, float margin) : this(new(size, margin))
+	{
+	}
+
+	/// <summary>
+	/// Initializes a <see cref="Canvas"/> instance via the specified point mapper instance.
+	/// </summary>
+	/// <param name="mapper">The mapper instance.</param>
+	private Canvas(PointMapper mapper)
+	{
+		_surface = SKSurface.Create(new SKImageInfo(mapper.Size, mapper.Size));
+		Mapper = mapper;
+	}
+
+
 	/// <inheritdoc/>
-	public PointMapper Mapper { get; } = mapper;
+	public PointMapper Mapper { get; }
 
 	/// <inheritdoc/>
 	bool ICanvas.IsDisposed => _isDisposed;
