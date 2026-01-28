@@ -20,7 +20,7 @@ public readonly struct Ratio(float value) :
 	public override bool Equals([NotNullWhen(true)] object? obj) => obj is Ratio comparer && Equals(comparer);
 
 	/// <inheritdoc/>
-	public bool Equals(Ratio other) => Value.NearlyEquals(other.Value, 1E-5F);
+	public bool Equals(Ratio other) => Value.NearlyEquals(other.Value, float.Epsilon);
 
 	/// <summary>
 	/// Measure the fact value
