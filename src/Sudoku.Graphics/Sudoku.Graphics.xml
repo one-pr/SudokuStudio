@@ -28,12 +28,42 @@
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineStrokeThickness">
             <summary>
-            Indicates stroke thickness of grid lines. By default it's 1.5.
+            Indicates stroke thickness of grid lines. By default it's 2.
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.BlockLineStrokeThickness">
             <summary>
-            Indicates stroke thickness of block lines. By default it's 3.
+            Indicates stroke thickness of block lines. By default it's 8.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontSize">
+            <summary>
+            Indicates font size of given digits. By default it's 60.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontSize">
+            <summary>
+            Indicates font size of modifiable digits. By default it's 60.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontSize">
+            <summary>
+            Indicates font size of candidates. By default it's 20.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontName">
+            <summary>
+            Indicates given digits font name. By default it's <c>"Tahoma"</c>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontName">
+            <summary>
+            Indicates modifiable digits font name. By default it's <c>"Tahoma"</c>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontName">
+            <summary>
+            Indicates candidates font name. By default it's <c>"Tahoma"</c>.
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineDashSequence">
@@ -69,6 +99,21 @@
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.BlockLineStrokeColor">
             <summary>
             Indicates stroke color of block lines. By default it's <see cref="F:SkiaSharp.SKColors.Black"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsColor">
+            <summary>
+            Indicates color of given digits. By default it's <see cref="F:SkiaSharp.SKColors.Black"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsColor">
+            <summary>
+            Indicates color of modifiable digits. By default it's <see cref="F:SkiaSharp.SKColors.Blue"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesColor">
+            <summary>
+            Indicates color of candidates. By default it's <see cref="F:SkiaSharp.SKColors.DimGray"/>.
             </summary>
         </member>
         <member name="M:Sudoku.Graphics.CanvasDrawingOptions.LoadFrom(System.String)">
@@ -173,6 +218,9 @@
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Graphics.GridCanvas.DrawBackground(Sudoku.Graphics.CanvasDrawingOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.GridCanvas.DrawGrid(Sudoku.Concepts.Grid@,Sudoku.Graphics.CanvasDrawingOptions)">
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Graphics.GridCanvas.DrawGridLine(Sudoku.Graphics.CanvasDrawingOptions)">
@@ -312,9 +360,9 @@
             Indicates size of candidate.
             </summary>
         </member>
-        <member name="M:Sudoku.Graphics.PointMapper.GetCandidateAnchor(System.Int32,System.Int32)">
+        <member name="M:Sudoku.Graphics.PointMapper.GetCandidateTopLeftPoint(System.Int32,System.Int32)">
             <summary>
-            Gets anchor point (top-left point) of a candidate, specified by row and column index (in range 0..28).
+            Gets top-left point of a candidate, specified by row and column index (in range 0..28).
             </summary>
             <param name="rowIndex">The row index.</param>
             <param name="columnIndex">The column index.</param>
@@ -322,6 +370,20 @@
             <exception cref="T:System.ArgumentOutOfRangeException">
             Throws when either argument <paramref name="rowIndex"/> or <paramref name="columnIndex"/> isn't between 0 and 27.
             </exception>
+        </member>
+        <member name="M:Sudoku.Graphics.PointMapper.GetCellCenterPoint(System.Int32)">
+            <summary>
+            Returns center point of the specified cell.
+            </summary>
+            <param name="cell">The cell.</param>
+            <returns>The center point.</returns>
+        </member>
+        <member name="M:Sudoku.Graphics.PointMapper.GetCandidateCenterPoint(System.Int32)">
+            <summary>
+            Returns center point of the specified candidate.
+            </summary>
+            <param name="candidate">The candidate.</param>
+            <returns>The center point.</returns>
         </member>
         <member name="T:Sudoku.Graphics.Primitives.IGridCanvas">
             <summary>
@@ -383,6 +445,31 @@
             </list>
             </summary>
             <param name="options">Indicates the options.</param>
+        </member>
+        <member name="T:Sudoku.Graphics.Primitives.IGridCanvasDrawText">
+            <summary>
+            Provides text drawing method set.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.Primitives.IGridCanvasDrawText.DrawGrid(Sudoku.Concepts.Grid@,Sudoku.Graphics.CanvasDrawingOptions)">
+            <summary>
+            Draw grid text (given digits, modifiable digits and candidates). Properties in <paramref name="options"/> used:
+            <list type="bullet">
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontName"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontSize"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsColor"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontName"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontSize"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsColor"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontName"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontSize"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesColor"/></item>
+            </list>
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="options">
+            Indicates the options.
+            </param>
         </member>
         <member name="T:Sudoku.Graphics.Primitives.IGridCanvasExport">
             <summary>

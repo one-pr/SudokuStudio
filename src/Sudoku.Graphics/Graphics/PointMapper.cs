@@ -40,7 +40,7 @@ public sealed class PointMapper(int size, float margin)
 
 
 	/// <summary>
-	/// Gets anchor point (top-left point) of a candidate, specified by row and column index (in range 0..28).
+	/// Gets top-left point of a candidate, specified by row and column index (in range 0..28).
 	/// </summary>
 	/// <param name="rowIndex">The row index.</param>
 	/// <param name="columnIndex">The column index.</param>
@@ -48,11 +48,31 @@ public sealed class PointMapper(int size, float margin)
 	/// <exception cref="ArgumentOutOfRangeException">
 	/// Throws when either argument <paramref name="rowIndex"/> or <paramref name="columnIndex"/> isn't between 0 and 27.
 	/// </exception>
-	public SKPoint GetCandidateAnchor(int rowIndex, int columnIndex)
+	public SKPoint GetCandidateTopLeftPoint(int rowIndex, int columnIndex)
 	{
 		ArgumentOutOfRangeException.Assert(rowIndex is >= 0 and <= 27);
 		ArgumentOutOfRangeException.Assert(columnIndex is >= 0 and <= 27);
 
 		return new(CandidateSize * rowIndex + Margin, CandidateSize * columnIndex + Margin);
+	}
+
+	/// <summary>
+	/// Returns center point of the specified cell.
+	/// </summary>
+	/// <param name="cell">The cell.</param>
+	/// <returns>The center point.</returns>
+	public SKPoint GetCellCenterPoint(Cell cell) => GetCandidateCenterPoint(cell * 9 + 4);
+
+	/// <summary>
+	/// Returns center point of the specified candidate.
+	/// </summary>
+	/// <param name="candidate">The candidate.</param>
+	/// <returns>The center point.</returns>
+	public SKPoint GetCandidateCenterPoint(Candidate candidate)
+	{
+		var cell = candidate / 9;
+		var digit = candidate % 9;
+		var point = GetCandidateTopLeftPoint(cell % 9 * 3 + digit % 3, cell / 9 * 3 + digit / 3);
+		return point + new SKPoint(CandidateSize / 2, CandidateSize / 2);
 	}
 }

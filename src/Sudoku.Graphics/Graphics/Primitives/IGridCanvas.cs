@@ -7,6 +7,7 @@ public interface IGridCanvas :
 	IDisposable,
 	IGridCanvasDrawBackground,
 	IGridCanvasDrawLine,
+	IGridCanvasDrawText,
 	IGridCanvasExport
 {
 	/// <summary>

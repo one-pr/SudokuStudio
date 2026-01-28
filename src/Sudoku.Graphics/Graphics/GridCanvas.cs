@@ -51,6 +51,69 @@ public sealed class GridCanvas(in Grid grid, PointMapper mapper) : IGridCanvas
 		=> Canvas.Clear((options ?? CanvasDrawingOptions.Default).BackgroundColor);
 
 	/// <inheritdoc/>
+	public void DrawGrid(in Grid grid, CanvasDrawingOptions? options = null)
+	{
+		options ??= CanvasDrawingOptions.Default;
+
+		using var givenDigitsTypeface = SKTypeface.FromFamilyName(options.GivenDigitsFontName);
+		using var modifiableDigitsTypeface = SKTypeface.FromFamilyName(options.ModifiableDigitsFontName);
+		using var candidatesTypeface = SKTypeface.FromFamilyName(options.CandidatesFontName);
+		using var givenDigitsFont = new SKFont(givenDigitsTypeface, options.GivenDigitsFontSize)
+		{
+			Subpixel = true
+		};
+		using var givenDigitsPaint = new SKPaint { Color = options.GivenDigitsColor };
+		using var modifiableDigitsFont = new SKFont(modifiableDigitsTypeface, options.ModifiableDigitsFontSize)
+		{
+			Subpixel = true
+		};
+		using var modifiableDigitsPaint = new SKPaint { Color = options.ModifiableDigitsColor };
+		using var candidatesFont = new SKFont(candidatesTypeface, options.CandidatesFontSize)
+		{
+			Subpixel = true
+		};
+		using var candidatesPaint = new SKPaint { Color = options.CandidatesColor };
+
+		for (var cell = 0; cell < 81; cell++)
+		{
+			switch (grid.GetState(cell))
+			{
+				case CellState.Empty:
+				{
+					foreach (var digit in grid.GetCandidates(cell))
+					{
+						var text = (digit + 1).ToString();
+						var offset = candidatesFont.MeasureText(text, candidatesPaint);
+						Canvas.DrawText(
+							text,
+							Mapper.GetCandidateCenterPoint(cell * 9 + digit) + new SKPoint(0, offset / 2),
+							SKTextAlign.Center,
+							candidatesFont,
+							candidatesPaint
+						);
+					}
+					break;
+				}
+				case var state and (CellState.Modifiable or CellState.Given):
+				{
+					var text = (grid.GetDigit(cell) + 1).ToString();
+					var targetFont = state == CellState.Given ? givenDigitsFont : modifiableDigitsFont;
+					var targetPaint = state == CellState.Given ? givenDigitsPaint : modifiableDigitsPaint;
+					var offset = targetFont.MeasureText(text, targetPaint);
+					Canvas.DrawText(
+						text,
+						Mapper.GetCellCenterPoint(cell) + new SKPoint(0, offset / 2),
+						SKTextAlign.Center,
+						targetFont,
+						targetPaint
+					);
+					break;
+				}
+			}
+		}
+	}
+
+	/// <inheritdoc/>
 	public void DrawGridLine(CanvasDrawingOptions? options = null)
 	{
 		options ??= CanvasDrawingOptions.Default;
@@ -88,8 +151,8 @@ public sealed class GridCanvas(in Grid grid, PointMapper mapper) : IGridCanvas
 				continue;
 			}
 
-			Canvas.DrawLine(Mapper.GetCandidateAnchor(i, 0), Mapper.GetCandidateAnchor(i, 27), paintChosen);
-			Canvas.DrawLine(Mapper.GetCandidateAnchor(0, i), Mapper.GetCandidateAnchor(27, i), paintChosen);
+			Canvas.DrawLine(Mapper.GetCandidateTopLeftPoint(i, 0), Mapper.GetCandidateTopLeftPoint(i, 27), paintChosen);
+			Canvas.DrawLine(Mapper.GetCandidateTopLeftPoint(0, i), Mapper.GetCandidateTopLeftPoint(27, i), paintChosen);
 		}
 	}
 
