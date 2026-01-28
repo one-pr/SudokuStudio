@@ -77,51 +77,41 @@ public sealed partial class CanvasDrawingOptions
 	public SKFontStyleSlant CandidatesFontSlant { get; set; } = SKFontStyleSlant.Upright;
 
 	/// <summary>
-	/// Indicates stroke thickness ratio of candidate auxiliary lines, relative to grid size.
-	/// By default it's 4.63E-4F (approximately 0.0463%).
-	/// Approximately thickness <b>0.5</b> in a <b>1080 * 1080</b> picture.
+	/// Indicates stroke thickness ratio of candidate auxiliary lines, relative to candidate size.
+	/// By default it's 0.0125.
 	/// The value should be consumed if <see cref="DrawCandidateAuxiliaryLines"/> is <see langword="true"/>.
 	/// </summary>
 	/// <remarks>
 	/// <para>
-	/// The ratio value can be calculated by <c>fact-stroke-thickness / grid-size</c>,
-	/// or another formula <c>fact-stroke-thickness = grid-size * ratio</c>.
+	/// The ratio value can be calculated by <c>fact-stroke-thickness / candidate-size</c>,
+	/// or another formula <c>fact-stroke-thickness = candidate-size * ratio</c>.
 	/// </para>
 	/// <para>
-	/// For example, if <c>picture-size</c> is 1100, and <c>margin</c> is 10,
-	/// and <c>fact-stroke-thickness</c> is 0.5,
-	/// then we can get <c>ratio = 0.5 / (1100 - 2 * 10) = 0.0004[629] ~= 4.629E-4 ~= 0.046%</c>.
+	/// For example, if <c>candidate-size</c> is 40 and <c>fact-stroke-thickness</c> is 0.5,
+	/// then we can get <c>ratio = 0.5 / 40 = 0.0125</c>.
 	/// </para>
-	/// <para><i>
-	/// Well, I know this design is a little bit weird but I do want to design it using a relative system
-	/// instead of traditional pixel-based absolute values :)
-	/// </i></para>
 	/// </remarks>
 	/// <seealso cref="DrawCandidateAuxiliaryLines"/>
 	[JsonConverter(typeof(RatioConverter))]
-	public Ratio CandidateAuxiliaryLineStrokeThicknessRatio { get; set; } = 4.63E-4F;
+	public Ratio CandidateAuxiliaryLineStrokeThicknessRatio { get; set; } = .0125F;
 
 	/// <summary>
-	/// Indicates stroke thickness ratio of grid lines, relative to grid size.
-	/// By default it's 1.85E-3 (approximately 0.185%,
-	/// 4 times with <see cref="CandidateAuxiliaryLineStrokeThicknessRatio"/>).
-	/// Approximately thickness <b>2</b> in a <b>1080 * 1080</b> picture.
+	/// Indicates stroke thickness ratio of normal cell lines, relative to candidate size.
+	/// By default it's 0.05 (4 times with <see cref="CandidateAuxiliaryLineStrokeThicknessRatio"/>).
 	/// </summary>
 	/// <remarks><inheritdoc cref="CandidateAuxiliaryLineStrokeThicknessRatio" path="/remarks"/></remarks>
 	/// <seealso cref="CandidateAuxiliaryLineStrokeThicknessRatio"/>
 	[JsonConverter(typeof(RatioConverter))]
-	public Ratio GridLineStrokeThicknessRatio { get; set; } = 1.85E-3F;
+	public Ratio GridLineStrokeThicknessRatio { get; set; } = .05F;
 
 	/// <summary>
-	/// Indicates stroke thickness ratio of block lines, relative to grid size.
-	/// By default it's 7.41E-3 (approximately 0.741%,
-	/// 8 times with <see cref="CandidateAuxiliaryLineStrokeThicknessRatio"/>).
-	/// Approximately thickness <b>4</b> in a <b>1080 * 1080</b> picture.
+	/// Indicates stroke thickness ratio of block lines, relative to candidate size.
+	/// By default it's 0.2 (16 times with <see cref="CandidateAuxiliaryLineStrokeThicknessRatio"/>).
 	/// </summary>
 	/// <remarks><inheritdoc cref="CandidateAuxiliaryLineStrokeThicknessRatio" path="/remarks"/></remarks>
 	/// <seealso cref="CandidateAuxiliaryLineStrokeThicknessRatio"/>
 	[JsonConverter(typeof(RatioConverter))]
-	public Ratio BlockLineStrokeThicknessRatio { get; set; } = 7.41E-3F;
+	public Ratio BlockLineStrokeThicknessRatio { get; set; } = .2F;
 
 	/// <summary>
 	/// Indicates font size ratio of given digits, relative to cell size.

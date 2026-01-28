@@ -134,7 +134,7 @@ public sealed class GridCanvas(in Grid grid, PointMapper mapper) : IGridCanvas
 		using var blockLinePaint = new SKPaint
 		{
 			Style = SKPaintStyle.Stroke,
-			StrokeWidth = options.BlockLineStrokeThicknessRatio.Measure(Mapper.GridSize),
+			StrokeWidth = options.BlockLineStrokeThicknessRatio.Measure(Mapper.CandidateSize),
 			Color = options.BlockLineStrokeColor,
 			IsAntialias = true,
 			PathEffect = options.BlockLineDashSequence.IsEmpty ? null : options.BlockLineDashSequence
@@ -142,7 +142,7 @@ public sealed class GridCanvas(in Grid grid, PointMapper mapper) : IGridCanvas
 		using var cellLinePaint = new SKPaint
 		{
 			Style = SKPaintStyle.Stroke,
-			StrokeWidth = options.GridLineStrokeThicknessRatio.Measure(Mapper.GridSize),
+			StrokeWidth = options.GridLineStrokeThicknessRatio.Measure(Mapper.CandidateSize),
 			Color = options.GridLineStrokeColor,
 			IsAntialias = true,
 			PathEffect = options.GridLineDashSequence.IsEmpty ? null : options.GridLineDashSequence
@@ -151,7 +151,7 @@ public sealed class GridCanvas(in Grid grid, PointMapper mapper) : IGridCanvas
 			? new SKPaint
 			{
 				Style = SKPaintStyle.Stroke,
-				StrokeWidth = options.CandidateAuxiliaryLineStrokeThicknessRatio.Measure(Mapper.GridSize),
+				StrokeWidth = options.CandidateAuxiliaryLineStrokeThicknessRatio.Measure(Mapper.CandidateSize),
 				Color = options.CandidateAuxiliaryLineStrokeColor,
 				IsAntialias = true,
 				PathEffect = options.CandidateAuxiliaryLineDashSequence.IsEmpty ? null : options.CandidateAuxiliaryLineDashSequence
