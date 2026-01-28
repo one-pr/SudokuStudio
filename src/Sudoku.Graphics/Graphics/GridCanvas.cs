@@ -3,16 +3,9 @@ namespace Sudoku.Graphics;
 /// <summary>
 /// Represents a canvas that allows you drawing sudoku-related items onto it.
 /// </summary>
-/// <param name="grid"><inheritdoc cref="Grid" path="/summary"/></param>
 /// <param name="mapper"><inheritdoc cref="Mapper" path="/summary"/></param>
-public sealed class GridCanvas(in Grid grid, PointMapper mapper) : IGridCanvas
+public sealed class GridCanvas(PointMapper mapper) : IGridCanvas
 {
-	/// <summary>
-	/// The backing field of property <see cref="Grid"/>.
-	/// </summary>
-	/// <seealso cref="Grid"/>
-	private readonly Grid _grid = grid;
-
 	/// <summary>
 	/// Indicates the backing surface object.
 	/// </summary>
@@ -23,9 +16,6 @@ public sealed class GridCanvas(in Grid grid, PointMapper mapper) : IGridCanvas
 	/// </summary>
 	private bool _isDisposed;
 
-
-	/// <inheritdoc/>
-	public ref readonly Grid Grid => ref _grid;
 
 	/// <inheritdoc/>
 	public PointMapper Mapper { get; } = mapper;
@@ -80,7 +70,7 @@ public sealed class GridCanvas(in Grid grid, PointMapper mapper) : IGridCanvas
 		using var givenDigitsPaint = new SKPaint { Color = options.GivenDigitsColor };
 		using var modifiableDigitsFont = new SKFont(modifiableDigitsTypeface, factModifiableDigitsSize) { Subpixel = true };
 		using var modifiableDigitsPaint = new SKPaint { Color = options.ModifiableDigitsColor };
-		using var candidatesFont = new SKFont(candidatesTypeface, factCandidatesSize){ Subpixel = true };
+		using var candidatesFont = new SKFont(candidatesTypeface, factCandidatesSize) { Subpixel = true };
 		using var candidatesPaint = new SKPaint { Color = options.CandidatesColor };
 
 		for (var cell = 0; cell < 81; cell++)

@@ -16,11 +16,6 @@ public interface IGridCanvas :
 	bool IsDisposed { get; }
 
 	/// <summary>
-	/// Indicates the grid used.
-	/// </summary>
-	ref readonly Grid Grid { get; }
-
-	/// <summary>
 	/// Indicates the mapper.
 	/// </summary>
 	PointMapper Mapper { get; }

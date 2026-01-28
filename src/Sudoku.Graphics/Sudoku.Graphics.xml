@@ -253,21 +253,13 @@
             <summary>
             Represents a canvas that allows you drawing sudoku-related items onto it.
             </summary>
-            <param name="grid"><inheritdoc cref="P:Sudoku.Graphics.GridCanvas.Grid" path="/summary"/></param>
             <param name="mapper"><inheritdoc cref="P:Sudoku.Graphics.GridCanvas.Mapper" path="/summary"/></param>
         </member>
-        <member name="M:Sudoku.Graphics.GridCanvas.#ctor(Sudoku.Concepts.Grid@,Sudoku.Graphics.PointMapper)">
+        <member name="M:Sudoku.Graphics.GridCanvas.#ctor(Sudoku.Graphics.PointMapper)">
             <summary>
             Represents a canvas that allows you drawing sudoku-related items onto it.
             </summary>
-            <param name="grid"><inheritdoc cref="P:Sudoku.Graphics.GridCanvas.Grid" path="/summary"/></param>
             <param name="mapper"><inheritdoc cref="P:Sudoku.Graphics.GridCanvas.Mapper" path="/summary"/></param>
-        </member>
-        <member name="F:Sudoku.Graphics.GridCanvas._grid">
-            <summary>
-            The backing field of property <see cref="P:Sudoku.Graphics.GridCanvas.Grid"/>.
-            </summary>
-            <seealso cref="P:Sudoku.Graphics.GridCanvas.Grid"/>
         </member>
         <member name="F:Sudoku.Graphics.GridCanvas._surface">
             <summary>
@@ -278,9 +270,6 @@
             <summary>
             Indicates whether the object has already been disposed.
             </summary>
-        </member>
-        <member name="P:Sudoku.Graphics.GridCanvas.Grid">
-            <inheritdoc/>
         </member>
         <member name="P:Sudoku.Graphics.GridCanvas.Mapper">
             <inheritdoc/>
@@ -470,11 +459,6 @@
         <member name="P:Sudoku.Graphics.Primitives.IGridCanvas.IsDisposed">
             <summary>
             Indicates whether the object is disposed or not. This property should be explicitly-implemented.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Graphics.Primitives.IGridCanvas.Grid">
-            <summary>
-            Indicates the grid used.
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.Primitives.IGridCanvas.Mapper">
