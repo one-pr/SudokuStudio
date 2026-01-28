@@ -4,6 +4,74 @@
         <name>Sudoku.Graphics</name>
     </assembly>
     <members>
+        <member name="T:Sudoku.Graphics.Canvas">
+            <summary>
+            Represents a canvas that allows you drawing sudoku-related items onto it.
+            </summary>
+            <param name="mapper"><inheritdoc cref="P:Sudoku.Graphics.Canvas.Mapper" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.#ctor(Sudoku.Graphics.PointMapper)">
+            <summary>
+            Represents a canvas that allows you drawing sudoku-related items onto it.
+            </summary>
+            <param name="mapper"><inheritdoc cref="P:Sudoku.Graphics.Canvas.Mapper" path="/summary"/></param>
+        </member>
+        <member name="F:Sudoku.Graphics.Canvas._surface">
+            <summary>
+            Indicates the backing surface object.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Graphics.Canvas._isDisposed">
+            <summary>
+            Indicates whether the object has already been disposed.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.Canvas.Mapper">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Graphics.Canvas.Sudoku#Graphics#Primitives#ICanvas#IsDisposed">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Graphics.Canvas.Sudoku#Graphics#Primitives#ICanvas#BackingCanvas">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Graphics.Canvas.BackingCanvas">
+            <inheritdoc cref="P:Sudoku.Graphics.Primitives.ICanvas.BackingCanvas"/>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.DrawBackground(Sudoku.Graphics.CanvasDrawingOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.DrawGrid(Sudoku.Concepts.Grid@,Sudoku.Graphics.CanvasDrawingOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.DrawGridLine(Sudoku.Graphics.CanvasDrawingOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.Export(System.String,Sudoku.Graphics.CanvasExportingOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.ExportAsync(System.String,Sudoku.Graphics.CanvasExportingOptions,System.Threading.CancellationToken)">
+            <summary>
+            Export image into target file, asynchronously.
+            </summary>
+            <param name="path">The file path.</param>
+            <param name="options">The exporting options.</param>
+            <param name="cancellationToken">The cancellation token that allows you cancelling the operation if necessary.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that allows you visiting states on asynchronous task.</returns>
+            <exception cref="T:System.NotSupportedException">Throws when the target file extension is not supported.</exception>
+            <exception cref="T:System.OperationCanceledException">Throws when task is canceled.</exception>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.GetFormatFromExtension(System.String)">
+            <summary>
+            Returns <see cref="T:SkiaSharp.SKEncodedImageFormat"/> from extension string.
+            </summary>
+            <param name="extension">The file extesnsion.</param>
+            <returns>The target format.</returns>
+            <exception cref="T:System.NotSupportedException">Throws when the target format is not supported.</exception>
+        </member>
         <member name="T:Sudoku.Graphics.CanvasDrawingOptions">
             <summary>
             Represents drawing options.
@@ -249,71 +317,6 @@
             Indicates the quality. Range 0..100. Default 80.
             </summary>
         </member>
-        <member name="T:Sudoku.Graphics.GridCanvas">
-            <summary>
-            Represents a canvas that allows you drawing sudoku-related items onto it.
-            </summary>
-            <param name="mapper"><inheritdoc cref="P:Sudoku.Graphics.GridCanvas.Mapper" path="/summary"/></param>
-        </member>
-        <member name="M:Sudoku.Graphics.GridCanvas.#ctor(Sudoku.Graphics.PointMapper)">
-            <summary>
-            Represents a canvas that allows you drawing sudoku-related items onto it.
-            </summary>
-            <param name="mapper"><inheritdoc cref="P:Sudoku.Graphics.GridCanvas.Mapper" path="/summary"/></param>
-        </member>
-        <member name="F:Sudoku.Graphics.GridCanvas._surface">
-            <summary>
-            Indicates the backing surface object.
-            </summary>
-        </member>
-        <member name="F:Sudoku.Graphics.GridCanvas._isDisposed">
-            <summary>
-            Indicates whether the object has already been disposed.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Graphics.GridCanvas.Mapper">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Graphics.GridCanvas.Canvas">
-            <inheritdoc/>
-        </member>
-        <member name="P:Sudoku.Graphics.GridCanvas.Sudoku#Graphics#Primitives#IGridCanvas#IsDisposed">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Graphics.GridCanvas.Dispose">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Graphics.GridCanvas.DrawBackground(Sudoku.Graphics.CanvasDrawingOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Graphics.GridCanvas.DrawGrid(Sudoku.Concepts.Grid@,Sudoku.Graphics.CanvasDrawingOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Graphics.GridCanvas.DrawGridLine(Sudoku.Graphics.CanvasDrawingOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Graphics.GridCanvas.Export(System.String,Sudoku.Graphics.CanvasExportingOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Graphics.GridCanvas.ExportAsync(System.String,Sudoku.Graphics.CanvasExportingOptions,System.Threading.CancellationToken)">
-            <summary>
-            Export image into target file, asynchronously.
-            </summary>
-            <param name="path">The file path.</param>
-            <param name="options">The exporting options.</param>
-            <param name="cancellationToken">The cancellation token that allows you cancelling the operation if necessary.</param>
-            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that allows you visiting states on asynchronous task.</returns>
-            <exception cref="T:System.NotSupportedException">Throws when the target file extension is not supported.</exception>
-            <exception cref="T:System.OperationCanceledException">Throws when task is canceled.</exception>
-        </member>
-        <member name="M:Sudoku.Graphics.GridCanvas.GetFormatFromExtension(System.String)">
-            <summary>
-            Returns <see cref="T:SkiaSharp.SKEncodedImageFormat"/> from extension string.
-            </summary>
-            <param name="extension">The file extesnsion.</param>
-            <returns>The target format.</returns>
-            <exception cref="T:System.NotSupportedException">Throws when the target format is not supported.</exception>
-        </member>
         <member name="T:Sudoku.Graphics.LineDashSequence">
             <summary>
             Represents a sequence of dash intervals.
@@ -451,22 +454,22 @@
             <param name="candidate">The candidate.</param>
             <returns>The center point.</returns>
         </member>
-        <member name="T:Sudoku.Graphics.Primitives.IGridCanvas">
+        <member name="T:Sudoku.Graphics.Primitives.ICanvas">
             <summary>
-            Represents required members on a grid canvas.
+            Represents required members on a canvas.
             </summary>
         </member>
-        <member name="P:Sudoku.Graphics.Primitives.IGridCanvas.IsDisposed">
+        <member name="P:Sudoku.Graphics.Primitives.ICanvas.IsDisposed">
             <summary>
             Indicates whether the object is disposed or not. This property should be explicitly-implemented.
             </summary>
         </member>
-        <member name="P:Sudoku.Graphics.Primitives.IGridCanvas.Mapper">
+        <member name="P:Sudoku.Graphics.Primitives.ICanvas.Mapper">
             <summary>
             Indicates the mapper.
             </summary>
         </member>
-        <member name="P:Sudoku.Graphics.Primitives.IGridCanvas.Canvas">
+        <member name="P:Sudoku.Graphics.Primitives.ICanvas.BackingCanvas">
             <summary>
             Indicates the canvas that allows you drawing on it.
             </summary>

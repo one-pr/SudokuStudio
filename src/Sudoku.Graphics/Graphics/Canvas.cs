@@ -4,7 +4,7 @@ namespace Sudoku.Graphics;
 /// Represents a canvas that allows you drawing sudoku-related items onto it.
 /// </summary>
 /// <param name="mapper"><inheritdoc cref="Mapper" path="/summary"/></param>
-public sealed class GridCanvas(PointMapper mapper) : IGridCanvas
+public sealed class Canvas(PointMapper mapper) : ICanvas
 {
 	/// <summary>
 	/// Indicates the backing surface object.
@@ -21,10 +21,13 @@ public sealed class GridCanvas(PointMapper mapper) : IGridCanvas
 	public PointMapper Mapper { get; } = mapper;
 
 	/// <inheritdoc/>
-	public SKCanvas Canvas => _surface.Canvas;
+	bool ICanvas.IsDisposed => _isDisposed;
 
 	/// <inheritdoc/>
-	bool IGridCanvas.IsDisposed => _isDisposed;
+	SKCanvas ICanvas.BackingCanvas => BackingCanvas;
+
+	/// <inheritdoc cref="ICanvas.BackingCanvas"/>
+	private SKCanvas BackingCanvas => _surface.Canvas;
 
 
 	/// <inheritdoc/>
@@ -38,7 +41,7 @@ public sealed class GridCanvas(PointMapper mapper) : IGridCanvas
 
 	/// <inheritdoc/>
 	public void DrawBackground(CanvasDrawingOptions? options = null)
-		=> Canvas.Clear((options ?? CanvasDrawingOptions.Default).BackgroundColor);
+		=> BackingCanvas.Clear((options ?? CanvasDrawingOptions.Default).BackgroundColor);
 
 	/// <inheritdoc/>
 	public void DrawGrid(in Grid grid, CanvasDrawingOptions? options = null)
@@ -83,7 +86,7 @@ public sealed class GridCanvas(PointMapper mapper) : IGridCanvas
 					{
 						var text = (digit + 1).ToString();
 						var offset = candidatesFont.MeasureText(text, candidatesPaint);
-						Canvas.DrawText(
+						BackingCanvas.DrawText(
 							text,
 							Mapper.GetCandidateCenterPoint(cell * 9 + digit)
 								+ new SKPoint(0, offset / 2) // Offset adjustment
@@ -101,7 +104,7 @@ public sealed class GridCanvas(PointMapper mapper) : IGridCanvas
 					var targetFont = state == CellState.Given ? givenDigitsFont : modifiableDigitsFont;
 					var targetPaint = state == CellState.Given ? givenDigitsPaint : modifiableDigitsPaint;
 					var offset = targetFont.MeasureText(text, targetPaint);
-					Canvas.DrawText(
+					BackingCanvas.DrawText(
 						text,
 						Mapper.GetCellCenterPoint(cell)
 							+ new SKPoint(0, offset / 2) // Offset adjustment
@@ -154,8 +157,8 @@ public sealed class GridCanvas(PointMapper mapper) : IGridCanvas
 				continue;
 			}
 
-			Canvas.DrawLine(Mapper.GetCandidateTopLeftPoint(i, 0), Mapper.GetCandidateTopLeftPoint(i, 27), paintChosen);
-			Canvas.DrawLine(Mapper.GetCandidateTopLeftPoint(0, i), Mapper.GetCandidateTopLeftPoint(27, i), paintChosen);
+			BackingCanvas.DrawLine(Mapper.GetCandidateTopLeftPoint(i, 0), Mapper.GetCandidateTopLeftPoint(i, 27), paintChosen);
+			BackingCanvas.DrawLine(Mapper.GetCandidateTopLeftPoint(0, i), Mapper.GetCandidateTopLeftPoint(27, i), paintChosen);
 		}
 	}
 

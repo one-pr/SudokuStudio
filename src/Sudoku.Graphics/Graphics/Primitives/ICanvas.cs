@@ -1,9 +1,9 @@
 namespace Sudoku.Graphics.Primitives;
 
 /// <summary>
-/// Represents required members on a grid canvas.
+/// Represents required members on a canvas.
 /// </summary>
-public interface IGridCanvas :
+public interface ICanvas :
 	IDisposable,
 	IGridCanvasDrawBackground,
 	IGridCanvasDrawLine,
@@ -23,5 +23,5 @@ public interface IGridCanvas :
 	/// <summary>
 	/// Indicates the canvas that allows you drawing on it.
 	/// </summary>
-	SKCanvas Canvas { get; }
+	SKCanvas BackingCanvas { get; }
 }
