@@ -480,12 +480,12 @@
             Indicates the canvas that allows you drawing on it.
             </summary>
         </member>
-        <member name="T:Sudoku.Graphics.Primitives.IGridCanvasDrawBackground">
+        <member name="T:Sudoku.Graphics.Primitives.ICanvasDrawBackground">
             <summary>
             Provides background drawing method set.
             </summary>
         </member>
-        <member name="M:Sudoku.Graphics.Primitives.IGridCanvasDrawBackground.DrawBackground(Sudoku.Graphics.CanvasDrawingOptions)">
+        <member name="M:Sudoku.Graphics.Primitives.ICanvasDrawBackground.DrawBackground(Sudoku.Graphics.CanvasDrawingOptions)">
             <summary>
             Draw background. Properties in <paramref name="options"/> used:
             <list type="bullet">
@@ -494,12 +494,12 @@
             </summary>
             <param name="options">Indicates the options.</param>
         </member>
-        <member name="T:Sudoku.Graphics.Primitives.IGridCanvasDrawLine">
+        <member name="T:Sudoku.Graphics.Primitives.ICanvasDrawLine">
             <summary>
             Provides line drawing method set.
             </summary>
         </member>
-        <member name="M:Sudoku.Graphics.Primitives.IGridCanvasDrawLine.DrawGridLine(Sudoku.Graphics.CanvasDrawingOptions)">
+        <member name="M:Sudoku.Graphics.Primitives.ICanvasDrawLine.DrawGridLine(Sudoku.Graphics.CanvasDrawingOptions)">
             <summary>
             Draw grid lines. Properties in <paramref name="options"/> used:
             <list type="bullet">
@@ -516,12 +516,12 @@
             </summary>
             <param name="options">Indicates the options.</param>
         </member>
-        <member name="T:Sudoku.Graphics.Primitives.IGridCanvasDrawText">
+        <member name="T:Sudoku.Graphics.Primitives.ICanvasDrawText">
             <summary>
             Provides text drawing method set.
             </summary>
         </member>
-        <member name="M:Sudoku.Graphics.Primitives.IGridCanvasDrawText.DrawGrid(Sudoku.Concepts.Grid@,Sudoku.Graphics.CanvasDrawingOptions)">
+        <member name="M:Sudoku.Graphics.Primitives.ICanvasDrawText.DrawGrid(Sudoku.Concepts.Grid@,Sudoku.Graphics.CanvasDrawingOptions)">
             <summary>
             Draw grid text (given digits, modifiable digits and candidates). Properties in <paramref name="options"/> used:
             <list type="bullet">
@@ -550,12 +550,12 @@
             Indicates the options.
             </param>
         </member>
-        <member name="T:Sudoku.Graphics.Primitives.IGridCanvasExport">
+        <member name="T:Sudoku.Graphics.Primitives.ICanvasExport">
             <summary>
             Represents export method set.
             </summary>
         </member>
-        <member name="M:Sudoku.Graphics.Primitives.IGridCanvasExport.Export(System.String,Sudoku.Graphics.CanvasExportingOptions)">
+        <member name="M:Sudoku.Graphics.Primitives.ICanvasExport.Export(System.String,Sudoku.Graphics.CanvasExportingOptions)">
             <summary>
             Export image into target file.
             </summary>

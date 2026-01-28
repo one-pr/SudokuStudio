@@ -3,7 +3,7 @@ namespace Sudoku.Graphics.Primitives;
 /// <summary>
 /// Represents export method set.
 /// </summary>
-public interface IGridCanvasExport
+public interface ICanvasExport
 {
 	/// <summary>
 	/// Export image into target file.

@@ -5,10 +5,10 @@ namespace Sudoku.Graphics.Primitives;
 /// </summary>
 public interface ICanvas :
 	IDisposable,
-	IGridCanvasDrawBackground,
-	IGridCanvasDrawLine,
-	IGridCanvasDrawText,
-	IGridCanvasExport
+	ICanvasDrawBackground,
+	ICanvasDrawLine,
+	ICanvasDrawText,
+	ICanvasExport
 {
 	/// <summary>
 	/// Indicates whether the object is disposed or not. This property should be explicitly-implemented.

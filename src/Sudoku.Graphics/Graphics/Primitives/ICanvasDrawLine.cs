@@ -3,7 +3,7 @@ namespace Sudoku.Graphics.Primitives;
 /// <summary>
 /// Provides line drawing method set.
 /// </summary>
-public interface IGridCanvasDrawLine
+public interface ICanvasDrawLine
 {
 	/// <summary>
 	/// Draw grid lines. Properties in <paramref name="options"/> used:

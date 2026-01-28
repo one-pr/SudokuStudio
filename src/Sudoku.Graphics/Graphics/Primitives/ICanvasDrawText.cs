@@ -3,7 +3,7 @@ namespace Sudoku.Graphics.Primitives;
 /// <summary>
 /// Provides text drawing method set.
 /// </summary>
-public interface IGridCanvasDrawText
+public interface ICanvasDrawText
 {
 	/// <summary>
 	/// Draw grid text (given digits, modifiable digits and candidates). Properties in <paramref name="options"/> used:
