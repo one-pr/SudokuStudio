@@ -58,17 +58,20 @@ public sealed class GridCanvas(in Grid grid, PointMapper mapper) : IGridCanvas
 		using var givenDigitsTypeface = SKTypeface.FromFamilyName(options.GivenDigitsFontName);
 		using var modifiableDigitsTypeface = SKTypeface.FromFamilyName(options.ModifiableDigitsFontName);
 		using var candidatesTypeface = SKTypeface.FromFamilyName(options.CandidatesFontName);
-		using var givenDigitsFont = new SKFont(givenDigitsTypeface, options.GivenDigitsFontSize)
+		var factGivenDigitsSize = options.GivenDigitsFontSizeRatio.Measure(Mapper.CellSize);
+		var factModifiableDigitsSize = options.ModifiableDigitsFontSizeRatio.Measure(Mapper.CellSize);
+		var factCandidatesSize = options.CandidatesFontSizeRatio.Measure(Mapper.CellSize);
+		using var givenDigitsFont = new SKFont(givenDigitsTypeface, factGivenDigitsSize)
 		{
 			Subpixel = true
 		};
 		using var givenDigitsPaint = new SKPaint { Color = options.GivenDigitsColor };
-		using var modifiableDigitsFont = new SKFont(modifiableDigitsTypeface, options.ModifiableDigitsFontSize)
+		using var modifiableDigitsFont = new SKFont(modifiableDigitsTypeface, factModifiableDigitsSize)
 		{
 			Subpixel = true
 		};
 		using var modifiableDigitsPaint = new SKPaint { Color = options.ModifiableDigitsColor };
-		using var candidatesFont = new SKFont(candidatesTypeface, options.CandidatesFontSize)
+		using var candidatesFont = new SKFont(candidatesTypeface, factCandidatesSize)
 		{
 			Subpixel = true
 		};
@@ -121,7 +124,7 @@ public sealed class GridCanvas(in Grid grid, PointMapper mapper) : IGridCanvas
 		using var blockLinePaint = new SKPaint
 		{
 			Style = SKPaintStyle.Stroke,
-			StrokeWidth = options.BlockLineStrokeThickness,
+			StrokeWidth = options.BlockLineStrokeThicknessRatio.Measure(Mapper.GridSize),
 			Color = options.BlockLineStrokeColor,
 			IsAntialias = true,
 			PathEffect = options.BlockLineDashSequence.IsEmpty ? null : options.BlockLineDashSequence
@@ -129,7 +132,7 @@ public sealed class GridCanvas(in Grid grid, PointMapper mapper) : IGridCanvas
 		using var cellLinePaint = new SKPaint
 		{
 			Style = SKPaintStyle.Stroke,
-			StrokeWidth = options.GridLineStrokeThickness,
+			StrokeWidth = options.GridLineStrokeThicknessRatio.Measure(Mapper.GridSize),
 			Color = options.GridLineStrokeColor,
 			IsAntialias = true,
 			PathEffect = options.GridLineDashSequence.IsEmpty ? null : options.GridLineDashSequence
@@ -138,7 +141,7 @@ public sealed class GridCanvas(in Grid grid, PointMapper mapper) : IGridCanvas
 			? new SKPaint
 			{
 				Style = SKPaintStyle.Stroke,
-				StrokeWidth = options.CandidateAuxiliaryLineStrokeThickness,
+				StrokeWidth = options.CandidateAuxiliaryLineStrokeThicknessRatio.Measure(Mapper.GridSize),
 				Color = options.CandidateAuxiliaryLineStrokeColor,
 				IsAntialias = true,
 				PathEffect = options.CandidateAuxiliaryLineDashSequence.IsEmpty ? null : options.CandidateAuxiliaryLineDashSequence

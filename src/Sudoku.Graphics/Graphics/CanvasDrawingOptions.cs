@@ -17,38 +17,6 @@ public sealed partial class CanvasDrawingOptions
 	public bool DrawCandidateAuxiliaryLines { get; set; } = false;
 
 	/// <summary>
-	/// Indicates stroke thickness of candidate auxiliary lines. By default it's 0.5.
-	/// The value should be consumed if <see cref="DrawCandidateAuxiliaryLines"/> is <see langword="true"/>.
-	/// </summary>
-	/// <seealso cref="DrawCandidateAuxiliaryLines"/>
-	public float CandidateAuxiliaryLineStrokeThickness { get; set; } = .5F;
-
-	/// <summary>
-	/// Indicates stroke thickness of grid lines. By default it's 2.
-	/// </summary>
-	public float GridLineStrokeThickness { get; set; } = 2F;
-
-	/// <summary>
-	/// Indicates stroke thickness of block lines. By default it's 8.
-	/// </summary>
-	public float BlockLineStrokeThickness { get; set; } = 8F;
-
-	/// <summary>
-	/// Indicates font size of given digits. By default it's 60.
-	/// </summary>
-	public float GivenDigitsFontSize { get; set; } = 60F;
-
-	/// <summary>
-	/// Indicates font size of modifiable digits. By default it's 60.
-	/// </summary>
-	public float ModifiableDigitsFontSize { get; set; } = 60F;
-
-	/// <summary>
-	/// Indicates font size of candidates. By default it's 20.
-	/// </summary>
-	public float CandidatesFontSize { get; set; } = 20F;
-
-	/// <summary>
 	/// Indicates given digits font name. By default it's <c>"Tahoma"</c>.
 	/// </summary>
 	public string GivenDigitsFontName { get; set; } = "Tahoma";
@@ -62,6 +30,74 @@ public sealed partial class CanvasDrawingOptions
 	/// Indicates candidates font name. By default it's <c>"Tahoma"</c>.
 	/// </summary>
 	public string CandidatesFontName { get; set; } = "Tahoma";
+
+	/// <summary>
+	/// Indicates stroke thickness ratio of candidate auxiliary lines, relative to grid size.
+	/// By default it's 4.63E-4F (approximately 0.0463%).
+	/// Approximately thickness <b>0.5</b> in a <b>1080 * 1080</b> picture.
+	/// The value should be consumed if <see cref="DrawCandidateAuxiliaryLines"/> is <see langword="true"/>.
+	/// </summary>
+	/// <remarks>
+	/// <para>
+	/// The ratio value can be calculated by <c>fact-stroke-thickness / grid-size</c>,
+	/// or another formula <c>fact-stroke-thickness = grid-size * ratio</c>.
+	/// </para>
+	/// <para>
+	/// For example, if <c>picture-size</c> is 1100, and <c>margin</c> is 10,
+	/// and <c>fact-stroke-thickness</c> is 0.5,
+	/// then we can get <c>ratio = 0.5 / (1100 - 2 * 10) = 0.0004[629] ~= 4.629E-4 ~= 0.046%</c>.
+	/// </para>
+	/// <para><i>
+	/// Well, I know this design is a little bit weird but I do want to design it using a relative system
+	/// instead of traditional pixel-based absolute values :)
+	/// </i></para>
+	/// </remarks>
+	/// <seealso cref="DrawCandidateAuxiliaryLines"/>
+	[JsonConverter(typeof(RatioConverter))]
+	public Ratio CandidateAuxiliaryLineStrokeThicknessRatio { get; set; } = 4.63E-4F;
+
+	/// <summary>
+	/// Indicates stroke thickness ratio of grid lines, relative to grid size.
+	/// By default it's 1.85E-3 (approximately 0.185%,
+	/// 4 times with <see cref="CandidateAuxiliaryLineStrokeThicknessRatio"/>).
+	/// Approximately thickness <b>2</b> in a <b>1080 * 1080</b> picture.
+	/// </summary>
+	/// <remarks><inheritdoc cref="CandidateAuxiliaryLineStrokeThicknessRatio" path="/remarks"/></remarks>
+	/// <seealso cref="CandidateAuxiliaryLineStrokeThicknessRatio"/>
+	[JsonConverter(typeof(RatioConverter))]
+	public Ratio GridLineStrokeThicknessRatio { get; set; } = 1.85E-3F;
+
+	/// <summary>
+	/// Indicates stroke thickness ratio of block lines, relative to grid size.
+	/// By default it's 7.41E-3 (approximately 0.741%,
+	/// 8 times with <see cref="CandidateAuxiliaryLineStrokeThicknessRatio"/>).
+	/// Approximately thickness <b>4</b> in a <b>1080 * 1080</b> picture.
+	/// </summary>
+	/// <remarks><inheritdoc cref="CandidateAuxiliaryLineStrokeThicknessRatio" path="/remarks"/></remarks>
+	/// <seealso cref="CandidateAuxiliaryLineStrokeThicknessRatio"/>
+	[JsonConverter(typeof(RatioConverter))]
+	public Ratio BlockLineStrokeThicknessRatio { get; set; } = 7.41E-3F;
+
+	/// <summary>
+	/// Indicates font size ratio of given digits, relative to cell size.
+	/// By default it's 75%.
+	/// </summary>
+	[JsonConverter(typeof(RatioConverter))]
+	public Ratio GivenDigitsFontSizeRatio { get; set; } = .75F;
+
+	/// <summary>
+	/// Indicates font size ratio of modifiable digits, relative to cell size.
+	/// By default it's 75%.
+	/// </summary>
+	[JsonConverter(typeof(RatioConverter))]
+	public Ratio ModifiableDigitsFontSizeRatio { get; set; } = .75F;
+
+	/// <summary>
+	/// Indicates font size ratio of candidates, relative to cell size.
+	/// By default it's 25%.
+	/// </summary>
+	[JsonConverter(typeof(RatioConverter))]
+	public Ratio CandidatesFontSizeRatio { get; set; } = .25F;
 
 	/// <summary>
 	/// Indicates grid line dash sequence. By default it's empty array.

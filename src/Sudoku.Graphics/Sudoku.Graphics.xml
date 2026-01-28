@@ -19,38 +19,6 @@
             Indicates whether candidate auxiliary lines are also drawn or not. By default it's <see langword="false"/>.
             </summary>
         </member>
-        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThickness">
-            <summary>
-            Indicates stroke thickness of candidate auxiliary lines. By default it's 0.5.
-            The value should be consumed if <see cref="P:Sudoku.Graphics.CanvasDrawingOptions.DrawCandidateAuxiliaryLines"/> is <see langword="true"/>.
-            </summary>
-            <seealso cref="P:Sudoku.Graphics.CanvasDrawingOptions.DrawCandidateAuxiliaryLines"/>
-        </member>
-        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineStrokeThickness">
-            <summary>
-            Indicates stroke thickness of grid lines. By default it's 2.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.BlockLineStrokeThickness">
-            <summary>
-            Indicates stroke thickness of block lines. By default it's 8.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontSize">
-            <summary>
-            Indicates font size of given digits. By default it's 60.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontSize">
-            <summary>
-            Indicates font size of modifiable digits. By default it's 60.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontSize">
-            <summary>
-            Indicates font size of candidates. By default it's 20.
-            </summary>
-        </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontName">
             <summary>
             Indicates given digits font name. By default it's <c>"Tahoma"</c>.
@@ -64,6 +32,68 @@
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontName">
             <summary>
             Indicates candidates font name. By default it's <c>"Tahoma"</c>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio">
+            <summary>
+            Indicates stroke thickness ratio of candidate auxiliary lines, relative to grid size.
+            By default it's 4.63E-4F (approximately 0.0463%).
+            Approximately thickness <b>0.5</b> in a <b>1080 * 1080</b> picture.
+            The value should be consumed if <see cref="P:Sudoku.Graphics.CanvasDrawingOptions.DrawCandidateAuxiliaryLines"/> is <see langword="true"/>.
+            </summary>
+            <remarks>
+            <para>
+            The ratio value can be calculated by <c>fact-stroke-thickness / grid-size</c>,
+            or another formula <c>fact-stroke-thickness = grid-size * ratio</c>.
+            </para>
+            <para>
+            For example, if <c>picture-size</c> is 1100, and <c>margin</c> is 10,
+            and <c>fact-stroke-thickness</c> is 0.5,
+            then we can get <c>ratio = 0.5 / (1100 - 2 * 10) = 0.0004[629] ~= 4.629E-4 ~= 0.046%</c>.
+            </para>
+            <para><i>
+            Well, I know this design is a little bit weird but I do want to design it using a relative system
+            instead of traditional pixel-based absolute values :)
+            </i></para>
+            </remarks>
+            <seealso cref="P:Sudoku.Graphics.CanvasDrawingOptions.DrawCandidateAuxiliaryLines"/>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineStrokeThicknessRatio">
+            <summary>
+            Indicates stroke thickness ratio of grid lines, relative to grid size.
+            By default it's 1.85E-3 (approximately 0.185%,
+            4 times with <see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio"/>).
+            Approximately thickness <b>2</b> in a <b>1080 * 1080</b> picture.
+            </summary>
+            <remarks><inheritdoc cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio" path="/remarks"/></remarks>
+            <seealso cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio"/>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.BlockLineStrokeThicknessRatio">
+            <summary>
+            Indicates stroke thickness ratio of block lines, relative to grid size.
+            By default it's 7.41E-3 (approximately 0.741%,
+            8 times with <see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio"/>).
+            Approximately thickness <b>4</b> in a <b>1080 * 1080</b> picture.
+            </summary>
+            <remarks><inheritdoc cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio" path="/remarks"/></remarks>
+            <seealso cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio"/>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontSizeRatio">
+            <summary>
+            Indicates font size ratio of given digits, relative to cell size.
+            By default it's 75%.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontSizeRatio">
+            <summary>
+            Indicates font size ratio of modifiable digits, relative to cell size.
+            By default it's 75%.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontSizeRatio">
+            <summary>
+            Indicates font size ratio of candidates, relative to cell size.
+            By default it's 25%.
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineDashSequence">
@@ -143,6 +173,18 @@
             <inheritdoc/>
         </member>
         <member name="M:Sudoku.Graphics.CanvasDrawingOptions.LineDashSequenceConverter.Write(System.Text.Json.Utf8JsonWriter,Sudoku.Graphics.LineDashSequence,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Graphics.CanvasDrawingOptions.RatioConverter">
+            <summary>
+            Represents a JSON converter for <see cref="T:Sudoku.Graphics.Ratio"/> instances.
+            </summary>
+            <seealso cref="T:Sudoku.Graphics.Ratio"/>
+        </member>
+        <member name="M:Sudoku.Graphics.CanvasDrawingOptions.RatioConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.CanvasDrawingOptions.RatioConverter.Write(System.Text.Json.Utf8JsonWriter,Sudoku.Graphics.Ratio,System.Text.Json.JsonSerializerOptions)">
             <inheritdoc/>
         </member>
         <member name="T:Sudoku.Graphics.CanvasDrawingOptions.SKColorConverter">
@@ -433,13 +475,13 @@
             <summary>
             Draw grid lines. Properties in <paramref name="options"/> used:
             <list type="bullet">
-            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.BlockLineStrokeThickness"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.BlockLineStrokeThicknessRatio"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.BlockLineStrokeColor"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.BlockLineDashSequence"/></item>
-            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineStrokeThickness"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineStrokeThicknessRatio"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineStrokeColor"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineDashSequence"/></item>
-            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThickness"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeColor"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineDashSequence"/></item>
             </list>
@@ -456,13 +498,13 @@
             Draw grid text (given digits, modifiable digits and candidates). Properties in <paramref name="options"/> used:
             <list type="bullet">
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontName"/></item>
-            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontSize"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontSizeRatio"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsColor"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontName"/></item>
-            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontSize"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontSizeRatio"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsColor"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontName"/></item>
-            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontSize"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontSizeRatio"/></item>
             <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesColor"/></item>
             </list>
             </summary>
@@ -483,6 +525,79 @@
             <param name="path">The file path.</param>
             <param name="options">The exporting options.</param>
             <exception cref="T:System.NotSupportedException">Throws when the target file extension is not supported.</exception>
+        </member>
+        <member name="T:Sudoku.Graphics.Ratio">
+            <summary>
+            Represents a ratio value.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.#ctor(System.Single)">
+            <summary>
+            Represents a ratio value.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:Sudoku.Graphics.Ratio.Value">
+            <summary>
+            Indicates the value.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.Equals(Sudoku.Graphics.Ratio)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.Measure(System.Single)">
+            <summary>
+            Measure the fact value
+            (i.e. performs the formula <c><paramref name="value"/> * <see langword="this"/>.RatioValue</c>).
+            </summary>
+            <param name="value">The original value.</param>
+            <returns>The target value measured.</returns>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.CompareTo(Sudoku.Graphics.Ratio)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.ToString(System.String)">
+            <inheritdoc cref="M:System.Double.ToString(System.String)"/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.op_Equality(Sudoku.Graphics.Ratio,Sudoku.Graphics.Ratio)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.op_Inequality(Sudoku.Graphics.Ratio,Sudoku.Graphics.Ratio)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.op_GreaterThan(Sudoku.Graphics.Ratio,Sudoku.Graphics.Ratio)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.op_GreaterThanOrEqual(Sudoku.Graphics.Ratio,Sudoku.Graphics.Ratio)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.op_LessThan(Sudoku.Graphics.Ratio,Sudoku.Graphics.Ratio)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.op_LessThanOrEqual(Sudoku.Graphics.Ratio,Sudoku.Graphics.Ratio)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.op_Implicit(System.Single)~Sudoku.Graphics.Ratio">
+            <summary>
+            Implicit cast from <see cref="T:System.Single"/> into <see cref="T:Sudoku.Graphics.Ratio"/> value.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.op_Explicit(Sudoku.Graphics.Ratio)~System.Single">
+            <summary>
+            Explicit cast from <see cref="T:Sudoku.Graphics.Ratio"/> into <see cref="T:System.Single"/> value.
+            </summary>
+            <param name="value">The value.</param>
         </member>
     </members>
 </doc>
