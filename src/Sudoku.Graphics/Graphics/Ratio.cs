@@ -4,6 +4,7 @@ namespace Sudoku.Graphics;
 /// Represents a ratio value.
 /// </summary>
 /// <param name="value">The value.</param>
+[JsonConverter(typeof(Converter))]
 public readonly struct Ratio(float value) :
 	IComparable<Ratio>,
 	IComparisonOperators<Ratio, Ratio, bool>,
@@ -79,4 +80,22 @@ public readonly struct Ratio(float value) :
 	/// </summary>
 	/// <param name="value">The value.</param>
 	public static explicit operator float(Ratio value) => value.Value;
+}
+
+/// <summary>
+/// Represents a JSON converter for <see cref="Ratio"/> instances.
+/// </summary>
+/// <seealso cref="Ratio"/>
+file sealed class Converter : JsonConverter<Ratio>
+{
+	/// <inheritdoc/>
+	public override Ratio Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+	{
+		reader.Read();
+		return reader.GetSingle();
+	}
+
+	/// <inheritdoc/>
+	public override void Write(Utf8JsonWriter writer, Ratio value, JsonSerializerOptions options)
+		=> writer.WriteNumberValue(value.Value);
 }

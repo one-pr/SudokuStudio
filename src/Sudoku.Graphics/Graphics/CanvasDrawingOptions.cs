@@ -3,7 +3,7 @@ namespace Sudoku.Graphics;
 /// <summary>
 /// Represents drawing options.
 /// </summary>
-public sealed partial class CanvasDrawingOptions
+public sealed class CanvasDrawingOptions
 {
 	/// <summary>
 	/// Indicates the default options.
@@ -92,7 +92,6 @@ public sealed partial class CanvasDrawingOptions
 	/// </para>
 	/// </remarks>
 	/// <seealso cref="DrawCandidateAuxiliaryLines"/>
-	[JsonConverter(typeof(RatioConverter))]
 	public Ratio CandidateAuxiliaryLineStrokeThicknessRatio { get; set; } = .0125F;
 
 	/// <summary>
@@ -101,7 +100,6 @@ public sealed partial class CanvasDrawingOptions
 	/// </summary>
 	/// <remarks><inheritdoc cref="CandidateAuxiliaryLineStrokeThicknessRatio" path="/remarks"/></remarks>
 	/// <seealso cref="CandidateAuxiliaryLineStrokeThicknessRatio"/>
-	[JsonConverter(typeof(RatioConverter))]
 	public Ratio GridLineStrokeThicknessRatio { get; set; } = .05F;
 
 	/// <summary>
@@ -110,46 +108,39 @@ public sealed partial class CanvasDrawingOptions
 	/// </summary>
 	/// <remarks><inheritdoc cref="CandidateAuxiliaryLineStrokeThicknessRatio" path="/remarks"/></remarks>
 	/// <seealso cref="CandidateAuxiliaryLineStrokeThicknessRatio"/>
-	[JsonConverter(typeof(RatioConverter))]
 	public Ratio BlockLineStrokeThicknessRatio { get; set; } = .2F;
 
 	/// <summary>
 	/// Indicates font size ratio of given digits, relative to cell size.
 	/// By default it's 75%.
 	/// </summary>
-	[JsonConverter(typeof(RatioConverter))]
 	public Ratio GivenDigitsFontSizeRatio { get; set; } = .75F;
 
 	/// <summary>
 	/// Indicates font size ratio of modifiable digits, relative to cell size.
 	/// By default it's 75%.
 	/// </summary>
-	[JsonConverter(typeof(RatioConverter))]
 	public Ratio ModifiableDigitsFontSizeRatio { get; set; } = .75F;
 
 	/// <summary>
 	/// Indicates font size ratio of candidates, relative to cell size.
 	/// By default it's 25%.
 	/// </summary>
-	[JsonConverter(typeof(RatioConverter))]
 	public Ratio CandidatesFontSizeRatio { get; set; } = .25F;
 
 	/// <summary>
 	/// Indicates grid line dash sequence. By default it's empty array.
 	/// </summary>
-	[JsonConverter(typeof(LineDashSequenceConverter))]
 	public LineDashSequence GridLineDashSequence { get; set; } = [];
 
 	/// <summary>
 	/// Indicates cell line dash sequence. By default it's empty array.
 	/// </summary>
-	[JsonConverter(typeof(LineDashSequenceConverter))]
 	public LineDashSequence BlockLineDashSequence { get; set; } = [];
 
 	/// <summary>
 	/// Indicates candidate auxiliary line dash sequence. By default it's empty array.
 	/// </summary>
-	[JsonConverter(typeof(LineDashSequenceConverter))]
 	public LineDashSequence CandidateAuxiliaryLineDashSequence { get; set; } = [];
 
 	/// <summary>

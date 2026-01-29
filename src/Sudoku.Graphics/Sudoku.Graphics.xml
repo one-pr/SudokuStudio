@@ -272,42 +272,6 @@
             <param name="options">The instance.</param>
             <param name="filePath">The target file path.</param>
         </member>
-        <member name="T:Sudoku.Graphics.CanvasDrawingOptions.LineDashSequenceConverter">
-            <summary>
-            Represents <see cref="T:Sudoku.Graphics.LineDashSequence"/> JSON converter.
-            </summary>
-            <seealso cref="T:Sudoku.Graphics.LineDashSequence"/>
-        </member>
-        <member name="M:Sudoku.Graphics.CanvasDrawingOptions.LineDashSequenceConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Graphics.CanvasDrawingOptions.LineDashSequenceConverter.Write(System.Text.Json.Utf8JsonWriter,Sudoku.Graphics.LineDashSequence,System.Text.Json.JsonSerializerOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Graphics.CanvasDrawingOptions.RatioConverter">
-            <summary>
-            Represents a JSON converter for <see cref="T:Sudoku.Graphics.Ratio"/> instances.
-            </summary>
-            <seealso cref="T:Sudoku.Graphics.Ratio"/>
-        </member>
-        <member name="M:Sudoku.Graphics.CanvasDrawingOptions.RatioConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Graphics.CanvasDrawingOptions.RatioConverter.Write(System.Text.Json.Utf8JsonWriter,Sudoku.Graphics.Ratio,System.Text.Json.JsonSerializerOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Graphics.CanvasDrawingOptions.SKColorConverter">
-            <summary>
-            Represents <see cref="T:SkiaSharp.SKColor"/> JSON converter.
-            </summary>
-            <seealso cref="T:SkiaSharp.SKColor"/>
-        </member>
-        <member name="M:Sudoku.Graphics.CanvasDrawingOptions.SKColorConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Sudoku.Graphics.CanvasDrawingOptions.SKColorConverter.Write(System.Text.Json.Utf8JsonWriter,SkiaSharp.SKColor,System.Text.Json.JsonSerializerOptions)">
-            <inheritdoc/>
-        </member>
         <member name="T:Sudoku.Graphics.CanvasExportingOptions">
             <summary>
             Represents exporting options.
@@ -322,6 +286,18 @@
             <summary>
             Indicates the quality. Range 0..100. Default 80.
             </summary>
+        </member>
+        <member name="T:Sudoku.Graphics.ExternalConverters.SKColorConverter">
+            <summary>
+            Represents <see cref="T:SkiaSharp.SKColor"/> JSON converter.
+            </summary>
+            <seealso cref="T:SkiaSharp.SKColor"/>
+        </member>
+        <member name="M:Sudoku.Graphics.ExternalConverters.SKColorConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.ExternalConverters.SKColorConverter.Write(System.Text.Json.Utf8JsonWriter,SkiaSharp.SKColor,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Graphics.LineDashSequence">
             <summary>
@@ -388,6 +364,18 @@
             Implicit cast from <see cref="T:Sudoku.Graphics.LineDashSequence"/> into <see cref="T:SkiaSharp.SKPathEffect"/>.
             </summary>
             <param name="sequence">The sequence.</param>
+        </member>
+        <member name="T:Sudoku.Graphics.Converter">
+            <summary>
+            Represents <see cref="T:Sudoku.Graphics.LineDashSequence"/> JSON converter.
+            </summary>
+            <seealso cref="T:Sudoku.Graphics.LineDashSequence"/>
+        </member>
+        <member name="M:Sudoku.Graphics.Converter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Converter.Write(System.Text.Json.Utf8JsonWriter,Sudoku.Graphics.LineDashSequence,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Graphics.PointMapper">
             <summary>
@@ -635,6 +623,18 @@
             Explicit cast from <see cref="T:Sudoku.Graphics.Ratio"/> into <see cref="T:System.Single"/> value.
             </summary>
             <param name="value">The value.</param>
+        </member>
+        <member name="T:Sudoku.Graphics.Converter">
+            <summary>
+            Represents a JSON converter for <see cref="T:Sudoku.Graphics.Ratio"/> instances.
+            </summary>
+            <seealso cref="T:Sudoku.Graphics.Ratio"/>
+        </member>
+        <member name="M:Sudoku.Graphics.Converter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Converter.Write(System.Text.Json.Utf8JsonWriter,Sudoku.Graphics.Ratio,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
         </member>
     </members>
 </doc>

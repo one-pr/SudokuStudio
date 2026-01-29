@@ -14,4 +14,5 @@ global using System.Threading;
 global using System.Threading.Tasks;
 global using SkiaSharp;
 global using Sudoku.Concepts;
+global using Sudoku.Graphics.ExternalConverters;
 global using Sudoku.Graphics.Primitives;

@@ -3,6 +3,7 @@ namespace Sudoku.Graphics;
 /// <summary>
 /// Represents a sequence of dash intervals.
 /// </summary>
+[JsonConverter(typeof(Converter))]
 public readonly struct LineDashSequence : IEnumerable<float>
 {
 	/// <summary>
@@ -72,4 +73,52 @@ public readonly struct LineDashSequence : IEnumerable<float>
 	/// <param name="sequence">The sequence.</param>
 	public static implicit operator SKPathEffect(LineDashSequence sequence)
 		=> SKPathEffect.CreateDash([.. sequence._intervals], 0);
+}
+
+/// <summary>
+/// Represents <see cref="LineDashSequence"/> JSON converter.
+/// </summary>
+/// <seealso cref="LineDashSequence"/>
+file sealed class Converter : JsonConverter<LineDashSequence>
+{
+	/// <inheritdoc/>
+	public override LineDashSequence Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+	{
+		var sequence = new List<float>();
+		while (reader.Read())
+		{
+			switch (reader.TokenType)
+			{
+				case JsonTokenType.StartArray:
+				{
+					break;
+				}
+				case JsonTokenType.EndArray:
+				{
+					return [.. sequence];
+				}
+				case JsonTokenType.Number:
+				{
+					sequence.Add(reader.GetSingle());
+					break;
+				}
+				default:
+				{
+					throw new JsonException();
+				}
+			}
+		}
+		throw new UnreachableException();
+	}
+
+	/// <inheritdoc/>
+	public override void Write(Utf8JsonWriter writer, LineDashSequence value, JsonSerializerOptions options)
+	{
+		writer.WriteStartArray();
+		foreach (var element in value.Intervals)
+		{
+			writer.WriteNumberValue(element);
+		}
+		writer.WriteEndArray();
+	}
 }
