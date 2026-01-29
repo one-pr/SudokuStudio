@@ -47,8 +47,12 @@ public readonly struct ColorDescriptor(long mask) :
 	/// <param name="r">The red value.</param>
 	/// <param name="g">The green value.</param>
 	/// <param name="b">The blue value.</param>
+	/// <remarks>
+	/// We should explicitly cast from bit-merged value into <see cref="uint"/> to prevent negative-bit extension,
+	/// which is unexpected behavior.
+	/// </remarks>
 	private ColorDescriptor(byte a, byte r, byte g, byte b) :
-		this((long)ColorDescriptorType.Argb << TypeShift | (long)(a << 24 | r << 16 | g << 8 | b))
+		this((long)ColorDescriptorType.Argb << TypeShift | (uint)(a << 24 | r << 16 | g << 8 | b))
 	{
 	}
 
@@ -105,7 +109,7 @@ public readonly struct ColorDescriptor(long mask) :
 	/// <summary>
 	/// Indicates the type of the color identifier.
 	/// </summary>
-	public ColorDescriptorType Type => (ColorDescriptorType)(Mask >> TypeShift);
+	public ColorDescriptorType Type => (ColorDescriptorType)(Mask >>> TypeShift);
 
 	/// <summary>
 	/// Indicates an aliased value that directly points to an item that you want to color it to.

@@ -60,7 +60,7 @@ public sealed class Canvas : ICanvas
 
 	/// <inheritdoc/>
 	public void DrawBackground(CanvasDrawingOptions? options = null)
-		=> BackingCanvas.Clear((options ?? CanvasDrawingOptions.Default).BackgroundColor);
+		=> BackingCanvas.Clear((options ?? CanvasDrawingOptions.Default).BackgroundColor.GetTargetColor(options));
 
 	/// <inheritdoc/>
 	public void DrawGrid(in Grid grid, CanvasDrawingOptions? options = null)
@@ -89,11 +89,11 @@ public sealed class Canvas : ICanvas
 		var factModifiableDigitsSize = options.ModifiableDigitsFontSizeRatio.Measure(Mapper.CellSize);
 		var factCandidatesSize = options.CandidatesFontSizeRatio.Measure(Mapper.CellSize);
 		using var givenDigitsFont = new SKFont(givenDigitsTypeface, factGivenDigitsSize) { Subpixel = true };
-		using var givenDigitsPaint = new SKPaint { Color = options.GivenDigitsColor };
+		using var givenDigitsPaint = new SKPaint { Color = options.GivenDigitsColor.GetTargetColor(options) };
 		using var modifiableDigitsFont = new SKFont(modifiableDigitsTypeface, factModifiableDigitsSize) { Subpixel = true };
-		using var modifiableDigitsPaint = new SKPaint { Color = options.ModifiableDigitsColor };
+		using var modifiableDigitsPaint = new SKPaint { Color = options.ModifiableDigitsColor.GetTargetColor(options) };
 		using var candidatesFont = new SKFont(candidatesTypeface, factCandidatesSize) { Subpixel = true };
-		using var candidatesPaint = new SKPaint { Color = options.CandidatesColor };
+		using var candidatesPaint = new SKPaint { Color = options.CandidatesColor.GetTargetColor(options) };
 
 		for (var cell = 0; cell < 81; cell++)
 		{
@@ -147,7 +147,7 @@ public sealed class Canvas : ICanvas
 		{
 			Style = SKPaintStyle.Stroke,
 			StrokeWidth = options.BlockLineStrokeThicknessRatio.Measure(Mapper.CandidateSize),
-			Color = options.BlockLineStrokeColor,
+			Color = options.BlockLineStrokeColor.GetTargetColor(options),
 			IsAntialias = true,
 			PathEffect = options.BlockLineDashSequence.IsEmpty ? null : options.BlockLineDashSequence
 		};
@@ -155,7 +155,7 @@ public sealed class Canvas : ICanvas
 		{
 			Style = SKPaintStyle.Stroke,
 			StrokeWidth = options.GridLineStrokeThicknessRatio.Measure(Mapper.CandidateSize),
-			Color = options.GridLineStrokeColor,
+			Color = options.GridLineStrokeColor.GetTargetColor(options),
 			IsAntialias = true,
 			PathEffect = options.GridLineDashSequence.IsEmpty ? null : options.GridLineDashSequence
 		};
@@ -164,7 +164,7 @@ public sealed class Canvas : ICanvas
 			{
 				Style = SKPaintStyle.Stroke,
 				StrokeWidth = options.CandidateAuxiliaryLineStrokeThicknessRatio.Measure(Mapper.CandidateSize),
-				Color = options.CandidateAuxiliaryLineStrokeColor,
+				Color = options.CandidateAuxiliaryLineStrokeColor.GetTargetColor(options),
 				IsAntialias = true,
 				PathEffect = options.CandidateAuxiliaryLineDashSequence.IsEmpty ? null : options.CandidateAuxiliaryLineDashSequence
 			}

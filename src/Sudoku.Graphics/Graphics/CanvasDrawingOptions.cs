@@ -111,20 +111,17 @@ public sealed class CanvasDrawingOptions
 	public Ratio BlockLineStrokeThicknessRatio { get; set; } = .2F;
 
 	/// <summary>
-	/// Indicates font size ratio of given digits, relative to cell size.
-	/// By default it's 75%.
+	/// Indicates font size ratio of given digits, relative to cell size. By default it's 75%.
 	/// </summary>
 	public Ratio GivenDigitsFontSizeRatio { get; set; } = .75F;
 
 	/// <summary>
-	/// Indicates font size ratio of modifiable digits, relative to cell size.
-	/// By default it's 75%.
+	/// Indicates font size ratio of modifiable digits, relative to cell size. By default it's 75%.
 	/// </summary>
 	public Ratio ModifiableDigitsFontSizeRatio { get; set; } = .75F;
 
 	/// <summary>
-	/// Indicates font size ratio of candidates, relative to cell size.
-	/// By default it's 25%.
+	/// Indicates font size ratio of candidates, relative to cell size. By default it's 25%.
 	/// </summary>
 	public Ratio CandidatesFontSizeRatio { get; set; } = .25F;
 
@@ -144,46 +141,39 @@ public sealed class CanvasDrawingOptions
 	public LineDashSequence CandidateAuxiliaryLineDashSequence { get; set; } = [];
 
 	/// <summary>
-	/// Indicates background color.
+	/// Indicates background color. By default it's white (#FFFFFFFF).
 	/// </summary>
-	[JsonConverter(typeof(SKColorConverter))]
-	public SKColor BackgroundColor { get; set; } = SKColors.White;
+	public ColorDescriptor BackgroundColor { get; set; } = (255, 255, 255, 255);
 
 	/// <summary>
-	/// Indicates stroke color of candidate auxiliary lines. By default it's <see cref="SKColors.Black"/>.
+	/// Indicates stroke color of candidate auxiliary lines. By default it's black (#FF000000).
 	/// </summary>
-	[JsonConverter(typeof(SKColorConverter))]
-	public SKColor CandidateAuxiliaryLineStrokeColor { get; set; } = SKColors.Black;
+	public ColorDescriptor CandidateAuxiliaryLineStrokeColor { get; set; } = (255, 0, 0, 0);
 
 	/// <summary>
-	/// Indicates stroke color of grid lines. By default it's <see cref="SKColors.Black"/>.
+	/// Indicates stroke color of grid lines. By default it's black (#FF000000).
 	/// </summary>
-	[JsonConverter(typeof(SKColorConverter))]
-	public SKColor GridLineStrokeColor { get; set; } = SKColors.Black;
+	public ColorDescriptor GridLineStrokeColor { get; set; } = (255, 0, 0, 0);
 
 	/// <summary>
-	/// Indicates stroke color of block lines. By default it's <see cref="SKColors.Black"/>.
+	/// Indicates stroke color of block lines. By default it's black (#FF000000).
 	/// </summary>
-	[JsonConverter(typeof(SKColorConverter))]
-	public SKColor BlockLineStrokeColor { get; set; } = SKColors.Black;
+	public ColorDescriptor BlockLineStrokeColor { get; set; } = (255, 0, 0, 0);
 
 	/// <summary>
-	/// Indicates color of given digits. By default it's <see cref="SKColors.Black"/>.
+	/// Indicates color of given digits. By default it's black (#FF000000).
 	/// </summary>
-	[JsonConverter(typeof(SKColorConverter))]
-	public SKColor GivenDigitsColor { get; set; } = SKColors.Black;
+	public ColorDescriptor GivenDigitsColor { get; set; } = (255, 0, 0, 0);
 
 	/// <summary>
-	/// Indicates color of modifiable digits. By default it's <see cref="SKColors.Blue"/>.
+	/// Indicates color of modifiable digits. By default it's blue (#FF0000FF).
 	/// </summary>
-	[JsonConverter(typeof(SKColorConverter))]
-	public SKColor ModifiableDigitsColor { get; set; } = SKColors.Blue;
+	public ColorDescriptor ModifiableDigitsColor { get; set; } = (255, 0, 0, 255);
 
 	/// <summary>
-	/// Indicates color of candidates. By default it's <see cref="SKColors.DimGray"/>.
+	/// Indicates color of candidates. By default it's dim gray (#FF696969).
 	/// </summary>
-	[JsonConverter(typeof(SKColorConverter))]
-	public SKColor CandidatesColor { get; set; } = SKColors.DimGray;
+	public ColorDescriptor CandidatesColor { get; set; } = (255, 105, 105, 105);
 
 
 	/// <summary>

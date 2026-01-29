@@ -189,20 +189,17 @@
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontSizeRatio">
             <summary>
-            Indicates font size ratio of given digits, relative to cell size.
-            By default it's 75%.
+            Indicates font size ratio of given digits, relative to cell size. By default it's 75%.
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontSizeRatio">
             <summary>
-            Indicates font size ratio of modifiable digits, relative to cell size.
-            By default it's 75%.
+            Indicates font size ratio of modifiable digits, relative to cell size. By default it's 75%.
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontSizeRatio">
             <summary>
-            Indicates font size ratio of candidates, relative to cell size.
-            By default it's 25%.
+            Indicates font size ratio of candidates, relative to cell size. By default it's 25%.
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineDashSequence">
@@ -222,37 +219,37 @@
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.BackgroundColor">
             <summary>
-            Indicates background color.
+            Indicates background color. By default it's white (#FFFFFFFF).
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeColor">
             <summary>
-            Indicates stroke color of candidate auxiliary lines. By default it's <see cref="F:SkiaSharp.SKColors.Black"/>.
+            Indicates stroke color of candidate auxiliary lines. By default it's black (#FF000000).
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineStrokeColor">
             <summary>
-            Indicates stroke color of grid lines. By default it's <see cref="F:SkiaSharp.SKColors.Black"/>.
+            Indicates stroke color of grid lines. By default it's black (#FF000000).
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.BlockLineStrokeColor">
             <summary>
-            Indicates stroke color of block lines. By default it's <see cref="F:SkiaSharp.SKColors.Black"/>.
+            Indicates stroke color of block lines. By default it's black (#FF000000).
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsColor">
             <summary>
-            Indicates color of given digits. By default it's <see cref="F:SkiaSharp.SKColors.Black"/>.
+            Indicates color of given digits. By default it's black (#FF000000).
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsColor">
             <summary>
-            Indicates color of modifiable digits. By default it's <see cref="F:SkiaSharp.SKColors.Blue"/>.
+            Indicates color of modifiable digits. By default it's blue (#FF0000FF).
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesColor">
             <summary>
-            Indicates color of candidates. By default it's <see cref="F:SkiaSharp.SKColors.DimGray"/>.
+            Indicates color of candidates. By default it's dim gray (#FF696969).
             </summary>
         </member>
         <member name="M:Sudoku.Graphics.CanvasDrawingOptions.LoadFrom(System.String)">
@@ -287,17 +284,37 @@
             Indicates the quality. Range 0..100. Default 80.
             </summary>
         </member>
-        <member name="T:Sudoku.Graphics.ExternalConverters.SKColorConverter">
+        <member name="T:Sudoku.Graphics.ColorDescriptorConverter">
             <summary>
-            Represents <see cref="T:SkiaSharp.SKColor"/> JSON converter.
+            Represents converter method on <see cref="T:Sudoku.Descriptors.ColorDescriptor"/> instance.
             </summary>
-            <seealso cref="T:SkiaSharp.SKColor"/>
+            <seealso cref="T:Sudoku.Descriptors.ColorDescriptor"/>
         </member>
-        <member name="M:Sudoku.Graphics.ExternalConverters.SKColorConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
-            <inheritdoc/>
+        <member name="M:Sudoku.Graphics.ColorDescriptorConverter.GetTargetColor(Sudoku.Descriptors.ColorDescriptor,Sudoku.Graphics.CanvasDrawingOptions)">
+            <inheritdoc cref="M:Sudoku.Graphics.ColorDescriptorConverter.&lt;G&gt;$9A597DC0EE0EDA298CCB97AE511D17E7.GetTargetColor(Sudoku.Graphics.CanvasDrawingOptions)"/>
         </member>
-        <member name="M:Sudoku.Graphics.ExternalConverters.SKColorConverter.Write(System.Text.Json.Utf8JsonWriter,SkiaSharp.SKColor,System.Text.Json.JsonSerializerOptions)">
-            <inheritdoc/>
+        <member name="T:Sudoku.Graphics.ColorDescriptorConverter.&lt;G&gt;$9A597DC0EE0EDA298CCB97AE511D17E7.&lt;M&gt;$06336A947A79C93CB23D500B1B5AD086">
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
+        </member>
+        <member name="M:Sudoku.Graphics.ColorDescriptorConverter.&lt;G&gt;$9A597DC0EE0EDA298CCB97AE511D17E7.GetTargetColor(Sudoku.Graphics.CanvasDrawingOptions)">
+            <summary>
+            Returns target color to be drawn.
+            </summary>
+            <param name="options">The options.</param>
+            <returns>The color.</returns>
         </member>
         <member name="T:Sudoku.Graphics.LineDashSequence">
             <summary>
