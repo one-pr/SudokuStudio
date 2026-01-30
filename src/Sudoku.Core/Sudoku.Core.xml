@@ -10793,16 +10793,16 @@
             The value becomes unsafe when <see cref="P:Sudoku.Descriptors.ColorDescriptor.Type"/> is not <see cref="F:Sudoku.Descriptors.ColorDescriptorType.Argb"/> but no exceptions thrown.
             </summary>
         </member>
-        <member name="P:Sudoku.Descriptors.ColorDescriptor.ArgbMask">
-            <summary>
-            Indicates an integer that represents ARGB values.
-            The value becomes unsafe when <see cref="P:Sudoku.Descriptors.ColorDescriptor.Type"/> is not <see cref="F:Sudoku.Descriptors.ColorDescriptorType.Argb"/> but no exceptions thrown.
-            </summary>
-        </member>
         <member name="P:Sudoku.Descriptors.ColorDescriptor.Id">
             <summary>
             Indicates an integer that describes the palette ID that a user has chosen.
             The value becomes unsafe when <see cref="P:Sudoku.Descriptors.ColorDescriptor.Type"/> is not <see cref="F:Sudoku.Descriptors.ColorDescriptorType.Id"/> but no exceptions thrown.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Descriptors.ColorDescriptor.ArgbMask">
+            <summary>
+            Indicates an integer that represents ARGB values.
+            The value becomes unsafe when <see cref="P:Sudoku.Descriptors.ColorDescriptor.Type"/> is not <see cref="F:Sudoku.Descriptors.ColorDescriptorType.Argb"/> but no exceptions thrown.
             </summary>
         </member>
         <member name="P:Sudoku.Descriptors.ColorDescriptor.ValueMask">

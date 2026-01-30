@@ -25,7 +25,7 @@ internal static class ColorDescriptorConverter
 			{
 				case (_, (byte a, byte r, byte g, byte b)):
 				{
-					return new(a, r, g, b);
+					return new(r, g, b, a);
 				}
 				case (_, int paletteId):
 				{

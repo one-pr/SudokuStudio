@@ -69,37 +69,37 @@ public readonly struct ColorDescriptor(long mask) :
 	/// Indicates alpha value.
 	/// The value becomes unsafe when <see cref="Type"/> is not <see cref="ColorDescriptorType.Argb"/> but no exceptions thrown.
 	/// </summary>
-	public byte Alpha => (byte)(ValueMask & byte.MaxValue);
+	public byte Alpha => (byte)(ArgbMask >>> 24 & 255);
 
 	/// <summary>
 	/// Indicates red value.
 	/// The value becomes unsafe when <see cref="Type"/> is not <see cref="ColorDescriptorType.Argb"/> but no exceptions thrown.
 	/// </summary>
-	public byte Red => (byte)(ValueMask >> 8 & byte.MaxValue);
+	public byte Red => (byte)(ArgbMask >>> 16 & 255);
 
 	/// <summary>
 	/// Indicates green value.
 	/// The value becomes unsafe when <see cref="Type"/> is not <see cref="ColorDescriptorType.Argb"/> but no exceptions thrown.
 	/// </summary>
-	public byte Green => (byte)(ValueMask >> 16 & byte.MaxValue);
+	public byte Green => (byte)(ArgbMask >>> 8 & 255);
 
 	/// <summary>
 	/// Indicates blue value.
 	/// The value becomes unsafe when <see cref="Type"/> is not <see cref="ColorDescriptorType.Argb"/> but no exceptions thrown.
 	/// </summary>
-	public byte Blue => (byte)(ValueMask >> 24 & byte.MaxValue);
-
-	/// <summary>
-	/// Indicates an integer that represents ARGB values.
-	/// The value becomes unsafe when <see cref="Type"/> is not <see cref="ColorDescriptorType.Argb"/> but no exceptions thrown.
-	/// </summary>
-	public int ArgbMask => (int)(Mask & int.MaxValue);
+	public byte Blue => (byte)(ArgbMask & 255);
 
 	/// <summary>
 	/// Indicates an integer that describes the palette ID that a user has chosen.
 	/// The value becomes unsafe when <see cref="Type"/> is not <see cref="ColorDescriptorType.Id"/> but no exceptions thrown.
 	/// </summary>
 	public int Id => (int)ValueMask;
+
+	/// <summary>
+	/// Indicates an integer that represents ARGB values.
+	/// The value becomes unsafe when <see cref="Type"/> is not <see cref="ColorDescriptorType.Argb"/> but no exceptions thrown.
+	/// </summary>
+	public uint ArgbMask => (uint)(Mask & uint.MaxValue);
 
 	/// <summary>
 	/// Indicates the mask that only represents color data.
