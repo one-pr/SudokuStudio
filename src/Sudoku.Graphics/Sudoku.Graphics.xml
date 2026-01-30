@@ -290,6 +290,12 @@
             </summary>
             <seealso cref="T:Sudoku.Descriptors.ColorDescriptor"/>
         </member>
+        <member name="M:Sudoku.Graphics.ColorDescriptorCollection.AsSpan">
+            <summary>
+            Returns an equivalent instance of type <see cref="T:System.ReadOnlySpan`1"/> of <see cref="T:Sudoku.Descriptors.ColorDescriptor"/>.
+            </summary>
+            <returns>An instance of type <see cref="T:System.ReadOnlySpan`1"/> of <see cref="T:Sudoku.Descriptors.ColorDescriptor"/>.</returns>
+        </member>
         <member name="M:Sudoku.Graphics.ColorDescriptorCollection.Slice(System.Int32,System.Int32)">
             <inheritdoc cref="M:System.Collections.Generic.List`1.Slice(System.Int32,System.Int32)"/>
         </member>
