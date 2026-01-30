@@ -10758,6 +10758,10 @@
             <param name="r">The red value.</param>
             <param name="g">The green value.</param>
             <param name="b">The blue value.</param>
+            <remarks>
+            We should explicitly cast from bit-merged value into <see cref="T:System.UInt32"/> to prevent negative-bit extension,
+            which is unexpected behavior.
+            </remarks>
         </member>
         <member name="M:Sudoku.Descriptors.ColorDescriptor.#ctor(Sudoku.Descriptors.ColorDescriptorAlias)">
             <summary>
