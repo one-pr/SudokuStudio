@@ -219,6 +219,7 @@
 * [唯一性提示数覆盖（UCC）](deadly-pattern-theory/06-uniqueness-clue-cover.md)
 * [致命结构的传递](deadly-pattern-theory/07-state-transition-of-deadly-pattern/README.md)
   * [什么是传递？](deadly-pattern-theory/07-state-transition-of-deadly-pattern/01-what-is-state-transition.md)
+  * [传递的底层原理](deadly-pattern-theory/07-state-transition-of-deadly-pattern/02-principle-of-state-transition.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
