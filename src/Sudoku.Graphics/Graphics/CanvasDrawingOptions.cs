@@ -143,37 +143,37 @@ public sealed class CanvasDrawingOptions
 	/// <summary>
 	/// Indicates background color. By default it's white (#FFFFFFFF).
 	/// </summary>
-	public SerializableColor BackgroundColor { get; set; } = SerializableColor.WellKnownColors[nameof(SKColors.White)];
+	public SerializableColor BackgroundColor { get; set; } = new(SKColors.White);
 
 	/// <summary>
 	/// Indicates stroke color of candidate auxiliary lines. By default it's black (#FF000000).
 	/// </summary>
-	public SerializableColor CandidateAuxiliaryLineStrokeColor { get; set; } = SerializableColor.WellKnownColors[nameof(SKColors.Black)];
+	public SerializableColor CandidateAuxiliaryLineStrokeColor { get; set; } = new(SKColors.Black);
 
 	/// <summary>
 	/// Indicates stroke color of grid lines. By default it's black (#FF000000).
 	/// </summary>
-	public SerializableColor GridLineStrokeColor { get; set; } = SerializableColor.WellKnownColors[nameof(SKColors.Black)];
+	public SerializableColor GridLineStrokeColor { get; set; } = new(SKColors.Black);
 
 	/// <summary>
 	/// Indicates stroke color of block lines. By default it's black (#FF000000).
 	/// </summary>
-	public SerializableColor BlockLineStrokeColor { get; set; } = SerializableColor.WellKnownColors[nameof(SKColors.Black)];
+	public SerializableColor BlockLineStrokeColor { get; set; } = new(SKColors.Black);
 
 	/// <summary>
 	/// Indicates color of given digits. By default it's black (#FF000000).
 	/// </summary>
-	public SerializableColor GivenDigitsColor { get; set; } = SerializableColor.WellKnownColors[nameof(SKColors.Black)];
+	public SerializableColor GivenDigitsColor { get; set; } = new(SKColors.Black);
 
 	/// <summary>
 	/// Indicates color of modifiable digits. By default it's blue (#FF0000FF).
 	/// </summary>
-	public SerializableColor ModifiableDigitsColor { get; set; } = SerializableColor.WellKnownColors[nameof(SKColors.Blue)];
+	public SerializableColor ModifiableDigitsColor { get; set; } = new(SKColors.Blue);
 
 	/// <summary>
 	/// Indicates color of candidates. By default it's dim gray (#FF696969).
 	/// </summary>
-	public SerializableColor CandidatesColor { get; set; } = SerializableColor.WellKnownColors[nameof(SKColors.DimGray)];
+	public SerializableColor CandidatesColor { get; set; } = new(SKColors.DimGray);
 
 	/// <summary>
 	/// Indicates the normal color.
@@ -213,7 +213,7 @@ public sealed class CanvasDrawingOptions
 	/// <summary>
 	/// Indicates the link color.
 	/// </summary>
-	public SerializableColor LinkColor { get; set; } = SerializableColor.WellKnownColors[nameof(SKColors.Red)];
+	public SerializableColor LinkColor { get; set; } = new(SKColors.Red);
 
 	/// <summary>
 	/// Indicates the auxiliary color set.
