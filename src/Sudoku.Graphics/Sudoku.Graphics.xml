@@ -88,6 +88,11 @@
             Indicates the default options.
             </summary>
         </member>
+        <member name="F:Sudoku.Graphics.CanvasDrawingOptions.SerializerOptions">
+            <summary>
+            Represents serializer options.
+            </summary>
+        </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.DrawCandidateAuxiliaryLines">
             <summary>
             Indicates whether candidate auxiliary lines are also drawn or not. By default it's <see langword="false"/>.
@@ -312,6 +317,13 @@
             Indicates the user-defined colors.
             </summary>
         </member>
+        <member name="M:Sudoku.Graphics.CanvasDrawingOptions.SaveTo(System.String)">
+            <summary>
+            Saves the specified options, converting it into JSON string and save to the specified file.
+            If the specified file exists, truncated and overwritten.
+            </summary>
+            <param name="filePath">The target file path.</param>
+        </member>
         <member name="M:Sudoku.Graphics.CanvasDrawingOptions.LoadFrom(System.String)">
             <summary>
             Loads configuration from JSON file, specified by its path.
@@ -319,15 +331,6 @@
             </summary>
             <param name="filePath">The target file path.</param>
             <returns>The options loaded.</returns>
-        </member>
-        <member name="M:Sudoku.Graphics.CanvasDrawingOptions.SaveTo(Sudoku.Graphics.CanvasDrawingOptions,System.String)">
-            <summary>
-            Saves the specified options, converting it into JSON string and save to the specified file.
-            If the specified file exists, truncated and overwritten;
-            if <paramref name="options"/> is <see langword="null"/>, do nothing.
-            </summary>
-            <param name="options">The instance.</param>
-            <param name="filePath">The target file path.</param>
         </member>
         <member name="T:Sudoku.Graphics.CanvasExportingOptions">
             <summary>
@@ -818,6 +821,49 @@
         </member>
         <member name="M:Sudoku.Graphics.SerializableColor.ToString">
             <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.ToString(System.String)">
+            <summary>
+            Converts the current instance into string representation, using the specified format string.
+            Supported formats:
+            <list type="table">
+            <listheader>
+            <term>Format string</term>
+            <description>Meaning</description>
+            </listheader>
+            <item>
+            <term><see langword="null"/></term>
+            <description>Same as <c>"#RRGGBB"</c></description>
+            </item>
+            <item>
+            <term><c>"#RRGGBB"</c> and <c>"#rrggbb"</c></term>
+            <description>
+            Output string as red-green-blue hex string format (<c>"#RRGGBB"</c> is upper-cased);
+            if alpha value is 255, it will be omitted
+            </description>
+            </item>
+            <item>
+            <term><c>"#AARRGGBB"</c> and <c>"#aarrggbb"</c></term>
+            <description>Output string as alpha-red-green-blue hex string format (<c>"#AARRGGBB"</c> is upper-cased)</description>
+            </item>
+            <item>
+            <term><c>"#RGB"</c> and <c>"#rgb"</c></term>
+            <description>
+            Output string as red-green blue hex string format (<c>"#RGB"</c> is upper-cased);
+            if two characters in all red, green and blue values are same like <c>#AABBCC</c>, it will be simplified as <c>#ABC</c>
+            </description>
+            </item>
+            <item>
+            <term><c>"#ARGB"</c> and <c>"#argb"</c></term>
+            <description>
+            Output string as alpha-red-green blue hex string format (<c>"#ARGB"</c> is upper-cased);
+            if two characters in all red, green and blue values are same like <c>#AABBCCDD</c>, it will be simplified as <c>#ABCD</c>
+            </description>
+            </item>
+            </list>
+            </summary>
+            <param name="format">The format string.</param>
+            <returns>The string representation.</returns>
         </member>
         <member name="M:Sudoku.Graphics.SerializableColor.AsSKColor">
             <summary>

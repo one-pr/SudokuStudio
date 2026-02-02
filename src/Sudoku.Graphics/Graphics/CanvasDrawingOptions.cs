@@ -10,6 +10,18 @@ public sealed class CanvasDrawingOptions
 	/// </summary>
 	public static readonly CanvasDrawingOptions Default = new();
 
+	/// <summary>
+	/// Represents serializer options.
+	/// </summary>
+	private static readonly JsonSerializerOptions SerializerOptions = new()
+	{
+		WriteIndented = true,
+		IndentCharacter = ' ',
+		IndentSize = 2,
+		AllowTrailingCommas = false,
+		Converters = { new JsonStringEnumConverter() }
+	};
+
 
 	/// <summary>
 	/// Indicates whether candidate auxiliary lines are also drawn or not. By default it's <see langword="false"/>.
@@ -267,26 +279,21 @@ public sealed class CanvasDrawingOptions
 
 
 	/// <summary>
+	/// Saves the specified options, converting it into JSON string and save to the specified file.
+	/// If the specified file exists, truncated and overwritten.
+	/// </summary>
+	/// <param name="filePath">The target file path.</param>
+	public void SaveTo(string filePath) => File.WriteAllText(filePath, JsonSerializer.Serialize(this, SerializerOptions));
+
+
+	/// <summary>
 	/// Loads configuration from JSON file, specified by its path.
 	/// If the specified file doesn't exist, <see langword="null"/> will be returned.
 	/// </summary>
 	/// <param name="filePath">The target file path.</param>
 	/// <returns>The options loaded.</returns>
 	public static CanvasDrawingOptions? LoadFrom(string filePath)
-		=> File.Exists(filePath) ? JsonSerializer.Deserialize<CanvasDrawingOptions>(File.ReadAllText(filePath)) : null;
-
-	/// <summary>
-	/// Saves the specified options, converting it into JSON string and save to the specified file.
-	/// If the specified file exists, truncated and overwritten;
-	/// if <paramref name="options"/> is <see langword="null"/>, do nothing.
-	/// </summary>
-	/// <param name="options">The instance.</param>
-	/// <param name="filePath">The target file path.</param>
-	public static void SaveTo(CanvasDrawingOptions? options, string filePath)
-	{
-		if (options is not null)
-		{
-			File.WriteAllText(filePath, JsonSerializer.Serialize(options));
-		}
-	}
+		=> File.Exists(filePath)
+			? JsonSerializer.Deserialize<CanvasDrawingOptions>(File.ReadAllText(filePath), SerializerOptions)
+			: null;
 }

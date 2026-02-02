@@ -138,23 +138,117 @@ public readonly struct SerializableColor :
 	public override int GetHashCode() => (int)_value;
 
 	/// <inheritdoc cref="object.ToString"/>
-	public override string ToString()
-	{
-		// Check well-known colors, in order to get its friendly name.
-		foreach (var (name, value) in WellKnownColors)
-		{
-			if (this == value)
-			{
-				return name;
-			}
-		}
+	public override string ToString() => ToString(null);
 
-		// Otherwise, return hex string. If alpha is 255, we'll omit it.
+	/// <summary>
+	/// Converts the current instance into string representation, using the specified format string.
+	/// Supported formats:
+	/// <list type="table">
+	/// <listheader>
+	/// <term>Format string</term>
+	/// <description>Meaning</description>
+	/// </listheader>
+	/// <item>
+	/// <term><see langword="null"/></term>
+	/// <description>Same as <c>"#RRGGBB"</c></description>
+	/// </item>
+	/// <item>
+	/// <term><c>"#RRGGBB"</c> and <c>"#rrggbb"</c></term>
+	/// <description>
+	/// Output string as red-green-blue hex string format (<c>"#RRGGBB"</c> is upper-cased);
+	/// if alpha value is 255, it will be omitted
+	/// </description>
+	/// </item>
+	/// <item>
+	/// <term><c>"#AARRGGBB"</c> and <c>"#aarrggbb"</c></term>
+	/// <description>Output string as alpha-red-green-blue hex string format (<c>"#AARRGGBB"</c> is upper-cased)</description>
+	/// </item>
+	/// <item>
+	/// <term><c>"#RGB"</c> and <c>"#rgb"</c></term>
+	/// <description>
+	/// Output string as red-green blue hex string format (<c>"#RGB"</c> is upper-cased);
+	/// if two characters in all red, green and blue values are same like <c>#AABBCC</c>, it will be simplified as <c>#ABC</c>
+	/// </description>
+	/// </item>
+	/// <item>
+	/// <term><c>"#ARGB"</c> and <c>"#argb"</c></term>
+	/// <description>
+	/// Output string as alpha-red-green blue hex string format (<c>"#ARGB"</c> is upper-cased);
+	/// if two characters in all red, green and blue values are same like <c>#AABBCCDD</c>, it will be simplified as <c>#ABCD</c>
+	/// </description>
+	/// </item>
+	/// </list>
+	/// </summary>
+	/// <param name="format">The format string.</param>
+	/// <returns>The string representation.</returns>
+	public string ToString(string? format)
+	{
+		const string format_rgbFullUpper = "#RRGGBB";
+		const string format_rgbFullLower = "#rrggbb";
+		const string format_argbFullUpper = "#AARRGGBB";
+		const string format_argbFullLower = "#aarrggbb";
+		const string format_rgbSimplifiedUpper = "#RGB";
+		const string format_rgbSimplifiedLower = "#rgb";
+		const string format_argbSimplifiedUpper = "#ARGB";
+		const string format_argbSimplifiedLower = "#argb";
 		var aString = Alpha.ToString("X2");
 		var rString = Red.ToString("X2");
 		var gString = Green.ToString("X2");
 		var bString = Blue.ToString("X2");
-		return Alpha == 255 ? $"#{rString}{gString}{bString}" : $"#{aString}{rString}{gString}{bString}";
+		var isUpperCasedFormat = format is null
+			or format_argbFullUpper or format_rgbFullUpper
+			or format_argbSimplifiedUpper or format_rgbSimplifiedUpper;
+		switch (format)
+		{
+			case null:
+			{
+				// Check well-known colors, in order to get its friendly name.
+				foreach (var (name, value) in WellKnownColors)
+				{
+					if (this == value)
+					{
+						return name;
+					}
+				}
+				goto case format_rgbFullUpper;
+			}
+			case format_rgbFullUpper:
+			case format_rgbFullLower:
+			{
+				var resultOriginal = Alpha == 255 ? $"#{rString}{gString}{bString}" : $"#{aString}{rString}{gString}{bString}";
+				return isUpperCasedFormat ? resultOriginal : resultOriginal.ToLower();
+			}
+			case format_argbFullUpper:
+			case format_argbFullLower:
+			{
+				var resultOriginal = $"#{aString}{rString}{gString}{bString}";
+				return isUpperCasedFormat ? resultOriginal : resultOriginal.ToLower();
+			}
+			case format_rgbSimplifiedUpper:
+			case format_rgbSimplifiedLower:
+			{
+				var resultOriginal = Alpha == 255
+					? (rString[0], gString[0], bString[0]) == (rString[1], gString[1], bString[1])
+						? $"#{rString[0]}{gString[0]}{bString[0]}"
+						: $"#{rString}{gString}{bString}"
+					: (aString[0], rString[0], gString[0], bString[0]) == (aString[1], rString[1], gString[1], bString[1])
+						? $"#{aString[0]}{rString[0]}{gString[0]}{bString[0]}"
+						: $"#{aString}{rString}{gString}{bString}";
+				return isUpperCasedFormat ? resultOriginal : resultOriginal.ToLower();
+			}
+			case format_argbSimplifiedUpper:
+			case format_argbSimplifiedLower:
+			{
+				var resultOriginal = (aString[0], rString[0], gString[0], bString[0]) == (aString[1], rString[1], gString[1], bString[1])
+					? $"#{aString[0]}{rString[0]}{gString[0]}{bString[0]}"
+					: $"#{aString}{rString}{gString}{bString}";
+				return isUpperCasedFormat ? resultOriginal : resultOriginal.ToLower();
+			}
+			default:
+			{
+				throw new FormatException($"Invalid format string '{format}'.");
+			}
+		}
 	}
 
 	/// <summary>
@@ -192,21 +286,27 @@ public readonly struct SerializableColor :
 			? wellKnownColorResult
 			: s[0] switch
 			{
-				'#' => (s[1..] / 2) switch
+				'#' => s[1..] switch
 				{
-					[var aString, var rString, var gString, var bString]
-						when Convert.ToByte(aString, 16) is var alpha
-						&& Convert.ToByte(rString, 16) is var red
-						&& Convert.ToByte(gString, 16) is var green
-						&& Convert.ToByte(bString, 16) is var blue
-						=> new(alpha, red, green, blue),
-					[var rString, var gString, var bString]
-						when Convert.ToByte(rString, 16) is var red
-						&& Convert.ToByte(gString, 16) is var green
-						&& Convert.ToByte(bString, 16) is var blue
-						=> new(red, green, blue),
+					[var r, var g, var b] => Parse($"#FF{r}{r}{g}{g}{b}{b}"),
+					[var a, var r, var g, var b] => Parse($"#{a}{a}{r}{r}{g}{g}{b}{b}"),
+					{ Length: 6 or 8 } t => (t / 2) switch
+					{
+						[var aString, var rString, var gString, var bString]
+							when Convert.ToByte(aString, 16) is var alpha
+							&& Convert.ToByte(rString, 16) is var red
+							&& Convert.ToByte(gString, 16) is var green
+							&& Convert.ToByte(bString, 16) is var blue
+							=> new(alpha, red, green, blue),
+						[var rString, var gString, var bString]
+							when Convert.ToByte(rString, 16) is var red
+							&& Convert.ToByte(gString, 16) is var green
+							&& Convert.ToByte(bString, 16) is var blue
+							=> new(red, green, blue),
+					},
+					_ => throw new FormatException("Expected length 3, 4, 6 or 8.")
 				},
-				_ => throw new FormatException("Color hex string prefix token '#' expected.")
+				_ => throw new FormatException("Expected color hex string prefix token '#'.")
 			};
 
 
