@@ -294,22 +294,22 @@
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.AuxiliaryColors">
             <summary>
-            Indicates the auxiliary color set.
+            Indicates the auxiliary colors.
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.AlmostLockedSetColors">
             <summary>
-            Indicates the almost locked set color set.
+            Indicates the almost locked set colors.
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.RectangleColors">
             <summary>
-            Indicates the almost rectangle color set.
+            Indicates the almost rectangle colors.
             </summary>
         </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.UserDefinedColorPalette">
             <summary>
-            Indicates the user-defined color palette.
+            Indicates the user-defined colors.
             </summary>
         </member>
         <member name="M:Sudoku.Graphics.CanvasDrawingOptions.LoadFrom(System.String)">

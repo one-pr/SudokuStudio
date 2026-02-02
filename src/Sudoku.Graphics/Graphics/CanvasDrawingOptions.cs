@@ -216,7 +216,7 @@ public sealed class CanvasDrawingOptions
 	public SerializableColor LinkColor { get; set; } = new(SKColors.Red);
 
 	/// <summary>
-	/// Indicates the auxiliary color set.
+	/// Indicates the auxiliary colors.
 	/// </summary>
 	public SerializableColorCollection AuxiliaryColors { get; set; } = [
 		new(255, 192, 89), // Orange
@@ -225,7 +225,7 @@ public sealed class CanvasDrawingOptions
 	];
 
 	/// <summary>
-	/// Indicates the almost locked set color set.
+	/// Indicates the almost locked set colors.
 	/// </summary>
 	public SerializableColorCollection AlmostLockedSetColors { get; set; } = [
 		new(220, 212, 252), // Purple
@@ -236,7 +236,7 @@ public sealed class CanvasDrawingOptions
 	];
 
 	/// <summary>
-	/// Indicates the almost rectangle color set.
+	/// Indicates the almost rectangle colors.
 	/// </summary>
 	public SerializableColorCollection RectangleColors { get; set; } = [
 		new(216, 178, 255), // Purple
@@ -245,7 +245,7 @@ public sealed class CanvasDrawingOptions
 	];
 
 	/// <summary>
-	/// Indicates the user-defined color palette.
+	/// Indicates the user-defined colors.
 	/// </summary>
 	public SerializableColorCollection UserDefinedColorPalette { get; set; } = [
 		new(63, 218, 101), // Green
