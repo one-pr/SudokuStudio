@@ -47,8 +47,12 @@ public readonly struct ColorDescriptor(long mask) :
 	/// <param name="r">The red value.</param>
 	/// <param name="g">The green value.</param>
 	/// <param name="b">The blue value.</param>
+	/// <remarks>
+	/// We should explicitly cast from bit-merged value into <see cref="uint"/> to prevent negative-bit extension,
+	/// which is unexpected behavior.
+	/// </remarks>
 	private ColorDescriptor(byte a, byte r, byte g, byte b) :
-		this((long)ColorDescriptorType.Argb << TypeShift | (long)(a << 24 | r << 16 | g << 8 | b))
+		this((long)ColorDescriptorType.Argb << TypeShift | (uint)(a << 24 | r << 16 | g << 8 | b))
 	{
 	}
 
@@ -65,37 +69,37 @@ public readonly struct ColorDescriptor(long mask) :
 	/// Indicates alpha value.
 	/// The value becomes unsafe when <see cref="Type"/> is not <see cref="ColorDescriptorType.Argb"/> but no exceptions thrown.
 	/// </summary>
-	public byte Alpha => (byte)(ValueMask & byte.MaxValue);
+	public byte Alpha => (byte)(ArgbMask >>> 24 & 255);
 
 	/// <summary>
 	/// Indicates red value.
 	/// The value becomes unsafe when <see cref="Type"/> is not <see cref="ColorDescriptorType.Argb"/> but no exceptions thrown.
 	/// </summary>
-	public byte Red => (byte)(ValueMask >> 8 & byte.MaxValue);
+	public byte Red => (byte)(ArgbMask >>> 16 & 255);
 
 	/// <summary>
 	/// Indicates green value.
 	/// The value becomes unsafe when <see cref="Type"/> is not <see cref="ColorDescriptorType.Argb"/> but no exceptions thrown.
 	/// </summary>
-	public byte Green => (byte)(ValueMask >> 16 & byte.MaxValue);
+	public byte Green => (byte)(ArgbMask >>> 8 & 255);
 
 	/// <summary>
 	/// Indicates blue value.
 	/// The value becomes unsafe when <see cref="Type"/> is not <see cref="ColorDescriptorType.Argb"/> but no exceptions thrown.
 	/// </summary>
-	public byte Blue => (byte)(ValueMask >> 24 & byte.MaxValue);
-
-	/// <summary>
-	/// Indicates an integer that represents ARGB values.
-	/// The value becomes unsafe when <see cref="Type"/> is not <see cref="ColorDescriptorType.Argb"/> but no exceptions thrown.
-	/// </summary>
-	public int ArgbMask => (int)(Mask & int.MaxValue);
+	public byte Blue => (byte)(ArgbMask & 255);
 
 	/// <summary>
 	/// Indicates an integer that describes the palette ID that a user has chosen.
 	/// The value becomes unsafe when <see cref="Type"/> is not <see cref="ColorDescriptorType.Id"/> but no exceptions thrown.
 	/// </summary>
 	public int Id => (int)ValueMask;
+
+	/// <summary>
+	/// Indicates an integer that represents ARGB values.
+	/// The value becomes unsafe when <see cref="Type"/> is not <see cref="ColorDescriptorType.Argb"/> but no exceptions thrown.
+	/// </summary>
+	public uint ArgbMask => (uint)(Mask & uint.MaxValue);
 
 	/// <summary>
 	/// Indicates the mask that only represents color data.
@@ -105,7 +109,7 @@ public readonly struct ColorDescriptor(long mask) :
 	/// <summary>
 	/// Indicates the type of the color identifier.
 	/// </summary>
-	public ColorDescriptorType Type => (ColorDescriptorType)(Mask >> TypeShift);
+	public ColorDescriptorType Type => (ColorDescriptorType)(Mask >>> TypeShift);
 
 	/// <summary>
 	/// Indicates an aliased value that directly points to an item that you want to color it to.
@@ -188,6 +192,13 @@ public readonly struct ColorDescriptor(long mask) :
 	public static implicit operator ColorDescriptor(int id) => new(id);
 
 	/// <summary>
+	/// Implicit cast from (<see cref="byte"/>, <see cref="byte"/>, <see cref="byte"/>) to <see cref="ColorDescriptor"/>.
+	/// </summary>
+	/// <param name="tuple">The tuple or ARGB values.</param>
+	public static implicit operator ColorDescriptor((byte Red, byte Green, byte Blue) tuple)
+		=> new(255, tuple.Red, tuple.Green, tuple.Blue);
+
+	/// <summary>
 	/// Implicit cast from (<see cref="byte"/>, <see cref="byte"/>, <see cref="byte"/>, <see cref="byte"/>)
 	/// to <see cref="ColorDescriptor"/>.
 	/// </summary>
@@ -215,6 +226,15 @@ public readonly struct ColorDescriptor(long mask) :
 	public static explicit operator (byte Alpha, byte Red, byte Green, byte Blue)(ColorDescriptor descriptor)
 		=> descriptor.Type == ColorDescriptorType.Argb
 			? (descriptor.Alpha, descriptor.Red, descriptor.Green, descriptor.Blue)
+			: throw new InvalidCastException();
+
+	/// <summary>
+	/// Explicit cast from <see cref="ColorDescriptor"/> into ARGB quadruple.
+	/// </summary>
+	/// <param name="descriptor">The descriptor.</param>
+	public static explicit operator (byte Red, byte Green, byte Blue)(ColorDescriptor descriptor)
+		=> descriptor.Type == ColorDescriptorType.Argb
+			? (descriptor.Red, descriptor.Green, descriptor.Blue)
 			: throw new InvalidCastException();
 
 	/// <summary>

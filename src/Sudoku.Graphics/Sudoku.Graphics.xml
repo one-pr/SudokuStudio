@@ -1,0 +1,944 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sudoku.Graphics</name>
+    </assembly>
+    <members>
+        <member name="T:Sudoku.Graphics.Canvas">
+            <summary>
+            Represents a canvas that allows you drawing sudoku-related items onto it.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Graphics.Canvas._surface">
+            <summary>
+            Indicates the backing surface object.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Graphics.Canvas._isDisposed">
+            <summary>
+            Indicates whether the object has already been disposed.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.#ctor(System.Int32,System.Single)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Graphics.Canvas"/> instance via the specified picture size and margin (to the inner sudoku grid).
+            </summary>
+            <param name="size">The picture size.</param>
+            <param name="margin">The margin to the inner sudoku grid.</param>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.#ctor(Sudoku.Graphics.PointMapper)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Graphics.Canvas"/> instance via the specified point mapper instance.
+            </summary>
+            <param name="mapper">The mapper instance.</param>
+        </member>
+        <member name="P:Sudoku.Graphics.Canvas.Mapper">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Graphics.Canvas.Sudoku#Graphics#Primitives#ICanvas#IsDisposed">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Graphics.Canvas.Sudoku#Graphics#Primitives#ICanvas#BackingCanvas">
+            <inheritdoc/>
+        </member>
+        <member name="P:Sudoku.Graphics.Canvas.BackingCanvas">
+            <inheritdoc cref="P:Sudoku.Graphics.Primitives.ICanvas.BackingCanvas"/>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.DrawBackground(Sudoku.Graphics.CanvasDrawingOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.DrawGrid(Sudoku.Concepts.Grid@,Sudoku.Graphics.CanvasDrawingOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.DrawGridLine(Sudoku.Graphics.CanvasDrawingOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.Export(System.String,Sudoku.Graphics.CanvasExportingOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.ExportAsync(System.String,Sudoku.Graphics.CanvasExportingOptions,System.Threading.CancellationToken)">
+            <summary>
+            Export image into target file, asynchronously.
+            </summary>
+            <param name="path">The file path.</param>
+            <param name="options">The exporting options.</param>
+            <param name="cancellationToken">The cancellation token that allows you cancelling the operation if necessary.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> object that allows you visiting states on asynchronous task.</returns>
+            <exception cref="T:System.NotSupportedException">Throws when the target file extension is not supported.</exception>
+            <exception cref="T:System.OperationCanceledException">Throws when task is canceled.</exception>
+        </member>
+        <member name="M:Sudoku.Graphics.Canvas.GetFormatFromExtension(System.String)">
+            <summary>
+            Returns <see cref="T:SkiaSharp.SKEncodedImageFormat"/> from extension string.
+            </summary>
+            <param name="extension">The file extesnsion.</param>
+            <returns>The target format.</returns>
+            <exception cref="T:System.NotSupportedException">Throws when the target format is not supported.</exception>
+        </member>
+        <member name="T:Sudoku.Graphics.CanvasDrawingOptions">
+            <summary>
+            Represents drawing options.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Graphics.CanvasDrawingOptions.Default">
+            <summary>
+            Indicates the default options.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Graphics.CanvasDrawingOptions.SerializerOptions">
+            <summary>
+            Represents serializer options.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.DrawCandidateAuxiliaryLines">
+            <summary>
+            Indicates whether candidate auxiliary lines are also drawn or not. By default it's <see langword="false"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontName">
+            <summary>
+            Indicates given digits font name. By default it's <c>"Tahoma"</c>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontName">
+            <summary>
+            Indicates modifiable digits font name. By default it's <c>"Tahoma"</c>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontName">
+            <summary>
+            Indicates candidates font name. By default it's <c>"Tahoma"</c>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontWeight">
+            <summary>
+            Indicates given digits font weight. By default it's <see cref="F:SkiaSharp.SKFontStyleWeight.Normal"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontWeight">
+            <summary>
+            Indicates modifiable digits font weight. By default it's <see cref="F:SkiaSharp.SKFontStyleWeight.Normal"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontWeight">
+            <summary>
+            Indicates candidates font weight. By default it's <see cref="F:SkiaSharp.SKFontStyleWeight.Normal"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontWidth">
+            <summary>
+            Indicates given digits font width. By default it's <see cref="F:SkiaSharp.SKFontStyleWidth.Normal"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontWidth">
+            <summary>
+            Indicates modifiable digits font width. By default it's <see cref="F:SkiaSharp.SKFontStyleWidth.Normal"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontWidth">
+            <summary>
+            Indicates candidates font width. By default it's <see cref="F:SkiaSharp.SKFontStyleWidth.Normal"/>.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontSlant">
+            <summary>
+            Indicates given digits font slant. By default it's <see cref="F:SkiaSharp.SKFontStyleSlant.Upright"/> (default).
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontSlant">
+            <summary>
+            Indicates modifiable digits font slant. By default it's <see cref="F:SkiaSharp.SKFontStyleSlant.Upright"/> (default).
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontSlant">
+            <summary>
+            Indicates candidates font slant. By default it's <see cref="F:SkiaSharp.SKFontStyleSlant.Upright"/> (default).
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio">
+            <summary>
+            Indicates stroke thickness ratio of candidate auxiliary lines, relative to candidate size.
+            By default it's 0.0125.
+            The value should be consumed if <see cref="P:Sudoku.Graphics.CanvasDrawingOptions.DrawCandidateAuxiliaryLines"/> is <see langword="true"/>.
+            </summary>
+            <remarks>
+            <para>
+            The ratio value can be calculated by <c>fact-stroke-thickness / candidate-size</c>,
+            or another formula <c>fact-stroke-thickness = candidate-size * ratio</c>.
+            </para>
+            <para>
+            For example, if <c>candidate-size</c> is 40 and <c>fact-stroke-thickness</c> is 0.5,
+            then we can get <c>ratio = 0.5 / 40 = 0.0125</c>.
+            </para>
+            </remarks>
+            <seealso cref="P:Sudoku.Graphics.CanvasDrawingOptions.DrawCandidateAuxiliaryLines"/>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineStrokeThicknessRatio">
+            <summary>
+            Indicates stroke thickness ratio of normal cell lines, relative to candidate size.
+            By default it's 0.05 (4 times with <see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio"/>).
+            </summary>
+            <remarks><inheritdoc cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio" path="/remarks"/></remarks>
+            <seealso cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio"/>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.BlockLineStrokeThicknessRatio">
+            <summary>
+            Indicates stroke thickness ratio of block lines, relative to candidate size.
+            By default it's 0.2 (16 times with <see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio"/>).
+            </summary>
+            <remarks><inheritdoc cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio" path="/remarks"/></remarks>
+            <seealso cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio"/>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontSizeRatio">
+            <summary>
+            Indicates font size ratio of given digits, relative to cell size. By default it's 75%.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontSizeRatio">
+            <summary>
+            Indicates font size ratio of modifiable digits, relative to cell size. By default it's 75%.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontSizeRatio">
+            <summary>
+            Indicates font size ratio of candidates, relative to cell size. By default it's 25%.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineDashSequence">
+            <summary>
+            Indicates grid line dash sequence. By default it's empty array.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.BlockLineDashSequence">
+            <summary>
+            Indicates cell line dash sequence. By default it's empty array.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineDashSequence">
+            <summary>
+            Indicates candidate auxiliary line dash sequence. By default it's empty array.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.BackgroundColor">
+            <summary>
+            Indicates background color. By default it's white (#FFFFFFFF).
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeColor">
+            <summary>
+            Indicates stroke color of candidate auxiliary lines. By default it's black (#FF000000).
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineStrokeColor">
+            <summary>
+            Indicates stroke color of grid lines. By default it's black (#FF000000).
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.BlockLineStrokeColor">
+            <summary>
+            Indicates stroke color of block lines. By default it's black (#FF000000).
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsColor">
+            <summary>
+            Indicates color of given digits. By default it's black (#FF000000).
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsColor">
+            <summary>
+            Indicates color of modifiable digits. By default it's blue (#FF0000FF).
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesColor">
+            <summary>
+            Indicates color of candidates. By default it's dim gray (#FF696969).
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.NormalColor">
+            <summary>
+            Indicates the normal color.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.AssignmentColor">
+            <summary>
+            Indicates the color that draws for an assignment.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.OverlappedAssignmentColor">
+            <summary>
+            Indicates the color that draws for an overlapped assignment.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.EliminationColor">
+            <summary>
+            Indicates the elimination color.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CannibalismColor">
+            <summary>
+            Indicates the cannibalism color.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ExofinColor">
+            <summary>
+            Indicates the exo-fin color.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.EndofinColor">
+            <summary>
+            Indicates the endo-fin color.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.LinkColor">
+            <summary>
+            Indicates the link color.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.AuxiliaryColors">
+            <summary>
+            Indicates the auxiliary colors.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.AlmostLockedSetColors">
+            <summary>
+            Indicates the almost locked set colors.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.RectangleColors">
+            <summary>
+            Indicates the almost rectangle colors.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.UserDefinedColorPalette">
+            <summary>
+            Indicates the user-defined colors.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.CanvasDrawingOptions.SaveTo(System.String)">
+            <summary>
+            Saves the specified options, converting it into JSON string and save to the specified file.
+            If the specified file exists, truncated and overwritten.
+            </summary>
+            <param name="filePath">The target file path.</param>
+        </member>
+        <member name="M:Sudoku.Graphics.CanvasDrawingOptions.LoadFrom(System.String)">
+            <summary>
+            Loads configuration from JSON file, specified by its path.
+            If the specified file doesn't exist, <see langword="null"/> will be returned.
+            </summary>
+            <param name="filePath">The target file path.</param>
+            <returns>The options loaded.</returns>
+        </member>
+        <member name="T:Sudoku.Graphics.CanvasExportingOptions">
+            <summary>
+            Represents exporting options.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Graphics.CanvasExportingOptions.Default">
+            <summary>
+            Indicates the default options.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasExportingOptions.Quality">
+            <summary>
+            Indicates the quality. Range 0..100. Default 80.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Graphics.ColorDescriptorConverter">
+            <summary>
+            Represents converter method on <see cref="T:Sudoku.Descriptors.ColorDescriptor"/> instance.
+            </summary>
+            <seealso cref="T:Sudoku.Descriptors.ColorDescriptor"/>
+        </member>
+        <member name="M:Sudoku.Graphics.ColorDescriptorConverter.GetTargetColor(Sudoku.Descriptors.ColorDescriptor,Sudoku.Graphics.CanvasDrawingOptions)">
+            <inheritdoc cref="M:Sudoku.Graphics.ColorDescriptorConverter.&lt;G&gt;$9A597DC0EE0EDA298CCB97AE511D17E7.GetTargetColor(Sudoku.Graphics.CanvasDrawingOptions)"/>
+        </member>
+        <member name="T:Sudoku.Graphics.ColorDescriptorConverter.&lt;G&gt;$9A597DC0EE0EDA298CCB97AE511D17E7.&lt;M&gt;$06336A947A79C93CB23D500B1B5AD086">
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
+        </member>
+        <member name="M:Sudoku.Graphics.ColorDescriptorConverter.&lt;G&gt;$9A597DC0EE0EDA298CCB97AE511D17E7.GetTargetColor(Sudoku.Graphics.CanvasDrawingOptions)">
+            <summary>
+            Returns target color to be drawn.
+            </summary>
+            <param name="options">The options.</param>
+            <returns>The color.</returns>
+        </member>
+        <member name="T:Sudoku.Graphics.LineDashSequence">
+            <summary>
+            Represents a sequence of dash intervals.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Graphics.LineDashSequence._intervals">
+            <summary>
+            The backing intervals.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.LineDashSequence.#ctor">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Graphics.LineDashSequence"/>.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.LineDashSequence.#ctor(System.ReadOnlySpan{System.Single})">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Graphics.LineDashSequence"/> via the specified intervals.
+            </summary>
+            <param name="intervals">The intervals.</param>
+        </member>
+        <member name="P:Sudoku.Graphics.LineDashSequence.IsEmpty">
+            <summary>
+            Indicates whether the sequence is empty.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.LineDashSequence.Intervals">
+            <summary>
+            Indicates interval values.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.LineDashSequence.Item(System.Int32)">
+            <summary>
+            Returns the element at the specified index.
+            </summary>
+            <param name="index">The desired index.</param>
+            <returns>The value.</returns>
+        </member>
+        <member name="M:Sudoku.Graphics.LineDashSequence.Add(System.Single)">
+            <summary>
+            Adds a new element into the collection.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Sudoku.Graphics.LineDashSequence.GetEnumerator">
+            <inheritdoc cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+        </member>
+        <member name="M:Sudoku.Graphics.LineDashSequence.Create(System.ReadOnlySpan{System.Single})">
+            <summary>
+            Creates a <see cref="T:Sudoku.Graphics.LineDashSequence"/> instance via intervals.
+            </summary>
+            <param name="values">The intervals.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:Sudoku.Graphics.LineDashSequence.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.LineDashSequence.System#Collections#Generic#IEnumerable{System#Single}#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.LineDashSequence.op_Implicit(Sudoku.Graphics.LineDashSequence)~SkiaSharp.SKPathEffect">
+            <summary>
+            Implicit cast from <see cref="T:Sudoku.Graphics.LineDashSequence"/> into <see cref="T:SkiaSharp.SKPathEffect"/>.
+            </summary>
+            <param name="sequence">The sequence.</param>
+        </member>
+        <member name="T:Sudoku.Graphics.Converter">
+            <summary>
+            Represents <see cref="T:Sudoku.Graphics.LineDashSequence"/> JSON converter.
+            </summary>
+            <seealso cref="T:Sudoku.Graphics.LineDashSequence"/>
+        </member>
+        <member name="M:Sudoku.Graphics.Converter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Converter.Write(System.Text.Json.Utf8JsonWriter,Sudoku.Graphics.LineDashSequence,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Graphics.PointMapper">
+            <summary>
+            Represents a mapper instance that projects from pixel points into sudoku elements (coordinates),
+            or from sudoku elements into points.
+            </summary>
+            <param name="size"><inheritdoc cref="P:Sudoku.Graphics.PointMapper.Size" path="/summary"/></param>
+            <param name="margin"><inheritdoc cref="P:Sudoku.Graphics.PointMapper.Margin" path="/summary"/></param>
+        </member>
+        <member name="M:Sudoku.Graphics.PointMapper.#ctor(System.Int32,System.Single)">
+            <summary>
+            Represents a mapper instance that projects from pixel points into sudoku elements (coordinates),
+            or from sudoku elements into points.
+            </summary>
+            <param name="size"><inheritdoc cref="P:Sudoku.Graphics.PointMapper.Size" path="/summary"/></param>
+            <param name="margin"><inheritdoc cref="P:Sudoku.Graphics.PointMapper.Margin" path="/summary"/></param>
+        </member>
+        <member name="P:Sudoku.Graphics.PointMapper.Size">
+            <summary>
+            Indicates size of the picture.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.PointMapper.Margin">
+            <summary>
+            Indicates margin of the picture.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.PointMapper.GridSize">
+            <summary>
+            Indicates size of grid.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.PointMapper.BlockSize">
+            <summary>
+            Indicates size of block.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.PointMapper.CellSize">
+            <summary>
+            Indicates size of cell.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.PointMapper.CandidateSize">
+            <summary>
+            Indicates size of candidate.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.PointMapper.GetCandidateTopLeftPoint(System.Int32,System.Int32)">
+            <summary>
+            Gets top-left point of a candidate, specified by row and column index (in range 0..28).
+            </summary>
+            <param name="rowIndex">The row index.</param>
+            <param name="columnIndex">The column index.</param>
+            <returns>The point value.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            Throws when either argument <paramref name="rowIndex"/> or <paramref name="columnIndex"/> isn't between 0 and 27.
+            </exception>
+        </member>
+        <member name="M:Sudoku.Graphics.PointMapper.GetCellCenterPoint(System.Int32)">
+            <summary>
+            Returns center point of the specified cell.
+            </summary>
+            <param name="cell">The cell.</param>
+            <returns>The center point.</returns>
+        </member>
+        <member name="M:Sudoku.Graphics.PointMapper.GetCandidateCenterPoint(System.Int32)">
+            <summary>
+            Returns center point of the specified candidate.
+            </summary>
+            <param name="candidate">The candidate.</param>
+            <returns>The center point.</returns>
+        </member>
+        <member name="T:Sudoku.Graphics.Primitives.ICanvas">
+            <summary>
+            Represents required members on a canvas.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.Primitives.ICanvas.IsDisposed">
+            <summary>
+            Indicates whether the object is disposed or not. This property should be explicitly-implemented.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.Primitives.ICanvas.Mapper">
+            <summary>
+            Indicates the mapper.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.Primitives.ICanvas.BackingCanvas">
+            <summary>
+            Indicates the canvas that allows you drawing on it. This property should be explicitly-implemented.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Graphics.Primitives.ICanvasDrawBackground">
+            <summary>
+            Provides background drawing method set.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.Primitives.ICanvasDrawBackground.DrawBackground(Sudoku.Graphics.CanvasDrawingOptions)">
+            <summary>
+            Draw background. Properties in <paramref name="options"/> used:
+            <list type="bullet">
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.BackgroundColor"/></item>
+            </list>
+            </summary>
+            <param name="options">Indicates the options.</param>
+        </member>
+        <member name="T:Sudoku.Graphics.Primitives.ICanvasDrawLine">
+            <summary>
+            Provides line drawing method set.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.Primitives.ICanvasDrawLine.DrawGridLine(Sudoku.Graphics.CanvasDrawingOptions)">
+            <summary>
+            Draw grid lines. Properties in <paramref name="options"/> used:
+            <list type="bullet">
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.BlockLineStrokeThicknessRatio"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.BlockLineStrokeColor"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.BlockLineDashSequence"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineStrokeThicknessRatio"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineStrokeColor"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GridLineDashSequence"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeThicknessRatio"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineStrokeColor"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidateAuxiliaryLineDashSequence"/></item>
+            </list>
+            </summary>
+            <param name="options">Indicates the options.</param>
+        </member>
+        <member name="T:Sudoku.Graphics.Primitives.ICanvasDrawText">
+            <summary>
+            Provides text drawing method set.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.Primitives.ICanvasDrawText.DrawGrid(Sudoku.Concepts.Grid@,Sudoku.Graphics.CanvasDrawingOptions)">
+            <summary>
+            Draw grid text (given digits, modifiable digits and candidates). Properties in <paramref name="options"/> used:
+            <list type="bullet">
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontName"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontSizeRatio"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsColor"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontWeight"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontWidth"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.GivenDigitsFontSlant"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontName"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontSizeRatio"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsColor"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontWeight"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontWidth"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.ModifiableDigitsFontSlant"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontName"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontSizeRatio"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesColor"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontWeight"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontWidth"/></item>
+            <item><see cref="P:Sudoku.Graphics.CanvasDrawingOptions.CandidatesFontSlant"/></item>
+            </list>
+            </summary>
+            <param name="grid">The grid.</param>
+            <param name="options">
+            Indicates the options.
+            </param>
+        </member>
+        <member name="T:Sudoku.Graphics.Primitives.ICanvasExport">
+            <summary>
+            Represents export method set.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.Primitives.ICanvasExport.Export(System.String,Sudoku.Graphics.CanvasExportingOptions)">
+            <summary>
+            Export image into target file.
+            </summary>
+            <param name="path">The file path.</param>
+            <param name="options">The exporting options.</param>
+            <exception cref="T:System.NotSupportedException">Throws when the target file extension is not supported.</exception>
+        </member>
+        <member name="T:Sudoku.Graphics.Ratio">
+            <summary>
+            Represents a ratio value.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.#ctor(System.Single)">
+            <summary>
+            Represents a ratio value.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:Sudoku.Graphics.Ratio.Value">
+            <summary>
+            Indicates the value.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.Equals(Sudoku.Graphics.Ratio)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.Measure(System.Single)">
+            <summary>
+            Measure the fact value
+            (i.e. performs the formula <c><paramref name="value"/> * <see langword="this"/>.RatioValue</c>).
+            </summary>
+            <param name="value">The original value.</param>
+            <returns>The target value measured.</returns>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.CompareTo(Sudoku.Graphics.Ratio)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.ToString(System.String)">
+            <inheritdoc cref="M:System.Double.ToString(System.String)"/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.op_Equality(Sudoku.Graphics.Ratio,Sudoku.Graphics.Ratio)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.op_Inequality(Sudoku.Graphics.Ratio,Sudoku.Graphics.Ratio)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.op_GreaterThan(Sudoku.Graphics.Ratio,Sudoku.Graphics.Ratio)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.op_GreaterThanOrEqual(Sudoku.Graphics.Ratio,Sudoku.Graphics.Ratio)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.op_LessThan(Sudoku.Graphics.Ratio,Sudoku.Graphics.Ratio)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.op_LessThanOrEqual(Sudoku.Graphics.Ratio,Sudoku.Graphics.Ratio)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.op_Implicit(System.Single)~Sudoku.Graphics.Ratio">
+            <summary>
+            Implicit cast from <see cref="T:System.Single"/> into <see cref="T:Sudoku.Graphics.Ratio"/> value.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Sudoku.Graphics.Ratio.op_Explicit(Sudoku.Graphics.Ratio)~System.Single">
+            <summary>
+            Explicit cast from <see cref="T:Sudoku.Graphics.Ratio"/> into <see cref="T:System.Single"/> value.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="T:Sudoku.Graphics.Converter">
+            <summary>
+            Represents a JSON converter for <see cref="T:Sudoku.Graphics.Ratio"/> instances.
+            </summary>
+            <seealso cref="T:Sudoku.Graphics.Ratio"/>
+        </member>
+        <member name="M:Sudoku.Graphics.Converter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Converter.Write(System.Text.Json.Utf8JsonWriter,Sudoku.Graphics.Ratio,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Graphics.SerializableColor">
+            <summary>
+            Represents a serializable color value.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Graphics.SerializableColor.WellKnownColors">
+            <summary>
+            Represents all well-known colors.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Graphics.SerializableColor._value">
+            <summary>
+            Indicates the mask.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.#ctor(System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Graphics.SerializableColor"/> instance via the specified alpha, red, green and blue values.
+            </summary>
+            <param name="alpha">The alpha value.</param>
+            <param name="red">The red value.</param>
+            <param name="green">The green value.</param>
+            <param name="blue">The blue value.</param>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.#ctor(System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Graphics.SerializableColor"/> instance via the specified red, green and blue values;
+            with alpha value 255 as default initialization.
+            </summary>
+            <param name="red">The red value.</param>
+            <param name="green">The green value.</param>
+            <param name="blue">The blue value.</param>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.#ctor(SkiaSharp.SKColor)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Graphics.SerializableColor"/> instance via the specified <see cref="T:SkiaSharp.SKColor"/> instance.
+            </summary>
+            <param name="skColor">The <see cref="T:SkiaSharp.SKColor"/> instance.</param>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.#ctor(System.UInt32)">
+            <summary>
+            Initializes a <see cref="T:Sudoku.Graphics.SerializableColor"/> instance via the specified mask value.
+            </summary>
+            <param name="value">The mask value.</param>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.#cctor">
+            <static-constructor>
+		<summary>
+			<para>
+				Indicates the <see langword="static" /> constructor of the current type.
+			</para>
+			<para>
+				This constructor will initialize some <see langword="static readonly" /> data members
+				of this type that can't use a simple expression to describe the initial value.
+			</para>
+		</summary>
+	</static-constructor>
+        </member>
+        <member name="P:Sudoku.Graphics.SerializableColor.Alpha">
+            <summary>
+            Indicates alpha value.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.SerializableColor.Red">
+            <summary>
+            Indicates red value.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.SerializableColor.Green">
+            <summary>
+            Indicates green value.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.SerializableColor.Blue">
+            <summary>
+            Indicates blue value.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.Deconstruct(System.Byte@,System.Byte@,System.Byte@,System.Byte@)">
+            <target name="method">
+				<summary>
+					Deconstruct the current instance into multiple values, which means you can use
+					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+				</summary>
+			</target>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.Deconstruct(System.Byte@,System.Byte@,System.Byte@)">
+            <target name="method">
+				<summary>
+					Deconstruct the current instance into multiple values, which means you can use
+					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+				</summary>
+			</target>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.Equals(Sudoku.Graphics.SerializableColor)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.GetHashCode">
+            <inheritdoc cref="M:System.Object.GetHashCode"/>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.ToString">
+            <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.ToString(System.String)">
+            <summary>
+            Converts the current instance into string representation, using the specified format string.
+            Supported formats:
+            <list type="table">
+            <listheader>
+            <term>Format string</term>
+            <description>Meaning</description>
+            </listheader>
+            <item>
+            <term><see langword="null"/></term>
+            <description>Same as <c>"#RRGGBB"</c></description>
+            </item>
+            <item>
+            <term><c>"#RRGGBB"</c> and <c>"#rrggbb"</c></term>
+            <description>
+            Output string as red-green-blue hex string format (<c>"#RRGGBB"</c> is upper-cased);
+            if alpha value is 255, it will be omitted
+            </description>
+            </item>
+            <item>
+            <term><c>"#AARRGGBB"</c> and <c>"#aarrggbb"</c></term>
+            <description>Output string as alpha-red-green-blue hex string format (<c>"#AARRGGBB"</c> is upper-cased)</description>
+            </item>
+            <item>
+            <term><c>"#RGB"</c> and <c>"#rgb"</c></term>
+            <description>
+            Output string as red-green blue hex string format (<c>"#RGB"</c> is upper-cased);
+            if two characters in all red, green and blue values are same like <c>#AABBCC</c>, it will be simplified as <c>#ABC</c>
+            </description>
+            </item>
+            <item>
+            <term><c>"#ARGB"</c> and <c>"#argb"</c></term>
+            <description>
+            Output string as alpha-red-green blue hex string format (<c>"#ARGB"</c> is upper-cased);
+            if two characters in all red, green and blue values are same like <c>#AABBCCDD</c>, it will be simplified as <c>#ABCD</c>
+            </description>
+            </item>
+            </list>
+            </summary>
+            <param name="format">The format string.</param>
+            <returns>The string representation.</returns>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.AsSKColor">
+            <summary>
+            Converts the current instance as an <see cref="T:SkiaSharp.SKColor"/> instance.
+            </summary>
+            <returns>An <see cref="T:SkiaSharp.SKColor"/> instance.</returns>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.TryParse(System.String,Sudoku.Graphics.SerializableColor@)">
+            <inheritdoc cref="M:System.IParsable`1.TryParse(System.String,System.IFormatProvider,`0@)"/>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.Parse(System.String)">
+            <inheritdoc cref="M:System.IParsable`1.Parse(System.String,System.IFormatProvider)"/>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.op_Equality(Sudoku.Graphics.SerializableColor,Sudoku.Graphics.SerializableColor)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColor.op_Inequality(Sudoku.Graphics.SerializableColor,Sudoku.Graphics.SerializableColor)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Graphics.Converter">
+            <summary>
+            Represents a JSON converter of type <see cref="T:Sudoku.Graphics.SerializableColor"/>.
+            </summary>
+            <seealso cref="T:Sudoku.Graphics.SerializableColor"/>
+        </member>
+        <member name="M:Sudoku.Graphics.Converter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sudoku.Graphics.Converter.Write(System.Text.Json.Utf8JsonWriter,Sudoku.Graphics.SerializableColor,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Graphics.SerializableColorCollection">
+            <summary>
+            Represents a list of <see cref="T:Sudoku.Graphics.SerializableColor"/> instances.
+            </summary>
+            <seealso cref="T:Sudoku.Graphics.SerializableColor"/>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColorCollection.Slice(System.Int32,System.Int32)">
+            <inheritdoc cref="M:System.Collections.Generic.List`1.Slice(System.Int32,System.Int32)"/>
+        </member>
+        <member name="M:Sudoku.Graphics.SerializableColorCollection.System#Linq#Providers#ISliceMethod{Sudoku#Graphics#SerializableColorCollection,Sudoku#Graphics#SerializableColor}#Slice(System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sudoku.Graphics.SKColorExtensions">
+            <summary>
+            Provides extension members on <see cref="T:SkiaSharp.SKColor"/> instances.
+            </summary>
+            <seealso cref="T:SkiaSharp.SKColor"/>
+        </member>
+        <member name="M:Sudoku.Graphics.SKColorExtensions.Deconstruct(SkiaSharp.SKColor,System.Byte@,System.Byte@,System.Byte@,System.Byte@)">
+            <inheritdoc cref="M:Sudoku.Graphics.SKColorExtensions.&lt;G&gt;$0B54FF251BFEADD611570DC7AF079F1E.Deconstruct(System.Byte@,System.Byte@,System.Byte@,System.Byte@)"/>
+        </member>
+        <member name="T:Sudoku.Graphics.SKColorExtensions.&lt;G&gt;$0B54FF251BFEADD611570DC7AF079F1E.&lt;M&gt;$3BA8A7E9893FD68B511A567BE4CF244F">
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
+        </member>
+        <member name="M:Sudoku.Graphics.SKColorExtensions.&lt;G&gt;$0B54FF251BFEADD611570DC7AF079F1E.Deconstruct(System.Byte@,System.Byte@,System.Byte@,System.Byte@)">
+            <target name="method">
+				<summary>
+					Deconstruct the current instance into multiple values, which means you can use
+					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+				</summary>
+			</target>
+        </member>
+    </members>
+</doc>
