@@ -252,6 +252,46 @@
             Indicates color of candidates. By default it's dim gray (#FF696969).
             </summary>
         </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.NormalColor">
+            <summary>
+            Indicates the normal color.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.AssignmentColor">
+            <summary>
+            Indicates the color that draws for an assignment.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.OverlappedAssignmentColor">
+            <summary>
+            Indicates the color that draws for an overlapped assignment.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.EliminationColor">
+            <summary>
+            Indicates the elimination color.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.CannibalismColor">
+            <summary>
+            Indicates the cannibalism color.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.ExofinColor">
+            <summary>
+            Indicates the exo-fin color.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.EndofinColor">
+            <summary>
+            Indicates the endo-fin color.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Graphics.CanvasDrawingOptions.LinkColor">
+            <summary>
+            Indicates the link color.
+            </summary>
+        </member>
         <member name="P:Sudoku.Graphics.CanvasDrawingOptions.AuxiliaryColors">
             <summary>
             Indicates the auxiliary color set.
@@ -698,7 +738,13 @@
             <param name="blue">The blue value.</param>
         </member>
         <member name="M:Sudoku.Graphics.SerializableColor.#ctor(System.Byte,System.Byte,System.Byte)">
-            <inheritdoc cref="M:Sudoku.Graphics.SerializableColor.#ctor(System.Byte,System.Byte,System.Byte,System.Byte)"/>
+            <summary>
+            Initializes a <see cref="T:Sudoku.Graphics.SerializableColor"/> instance via the specified red, green and blue values;
+            with alpha value 255 as default initialization.
+            </summary>
+            <param name="red">The red value.</param>
+            <param name="green">The green value.</param>
+            <param name="blue">The blue value.</param>
         </member>
         <member name="M:Sudoku.Graphics.SerializableColor.#ctor(SkiaSharp.SKColor)">
             <summary>

@@ -35,7 +35,13 @@ public readonly struct SerializableColor :
 		Blue = blue;
 	}
 
-	/// <inheritdoc cref="SerializableColor(byte, byte, byte, byte)"/>
+	/// <summary>
+	/// Initializes a <see cref="SerializableColor"/> instance via the specified red, green and blue values;
+	/// with alpha value 255 as default initialization.
+	/// </summary>
+	/// <param name="red">The red value.</param>
+	/// <param name="green">The green value.</param>
+	/// <param name="blue">The blue value.</param>
 	public SerializableColor(byte red, byte green, byte blue) : this(255, red, green, blue)
 	{
 	}

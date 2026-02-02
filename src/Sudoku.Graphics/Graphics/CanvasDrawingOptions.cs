@@ -176,6 +176,46 @@ public sealed class CanvasDrawingOptions
 	public SerializableColor CandidatesColor { get; set; } = SerializableColor.WellKnownColors[nameof(SKColors.DimGray)];
 
 	/// <summary>
+	/// Indicates the normal color.
+	/// </summary>
+	public SerializableColor NormalColor { get; set; } = new(63, 218, 101); // Green
+
+	/// <summary>
+	/// Indicates the color that draws for an assignment.
+	/// </summary>
+	public SerializableColor AssignmentColor { set; get; } = new(63, 218, 101); // Green
+
+	/// <summary>
+	/// Indicates the color that draws for an overlapped assignment.
+	/// </summary>
+	public SerializableColor OverlappedAssignmentColor { set; get; } = new(0, 255, 204); // Aqua
+
+	/// <summary>
+	/// Indicates the elimination color.
+	/// </summary>
+	public SerializableColor EliminationColor { get; set; } = new(255, 118, 132); // Red
+
+	/// <summary>
+	/// Indicates the cannibalism color.
+	/// </summary>
+	public SerializableColor CannibalismColor { get; set; } = new(235, 0, 0); // Dark red
+
+	/// <summary>
+	/// Indicates the exo-fin color.
+	/// </summary>
+	public SerializableColor ExofinColor { get; set; } = new(255, 192, 89); // Orange
+
+	/// <summary>
+	/// Indicates the endo-fin color.
+	/// </summary>
+	public SerializableColor EndofinColor { get; set; } = new(216, 178, 255); // Purple
+
+	/// <summary>
+	/// Indicates the link color.
+	/// </summary>
+	public SerializableColor LinkColor { get; set; } = SerializableColor.WellKnownColors[nameof(SKColors.Red)];
+
+	/// <summary>
 	/// Indicates the auxiliary color set.
 	/// </summary>
 	public SerializableColorCollection AuxiliaryColors { get; set; } = [

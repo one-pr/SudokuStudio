@@ -20,49 +20,35 @@ internal static class ColorDescriptorConverter
 		public SKColor GetTargetColor(CanvasDrawingOptions? options = null)
 		{
 			options ??= CanvasDrawingOptions.Default;
-
-			switch (@this)
+			return @this switch
 			{
-				case (_, (byte a, byte r, byte g, byte b)):
+				(_, (byte a, byte r, byte g, byte b)) => new(r, g, b, a),
+				(_, int paletteId) => options.UserDefinedColorPalette[paletteId].AsSKColor(),
+				(_, ColorDescriptorAlias item) => item switch
 				{
-					return new(r, g, b, a);
-				}
-				case (_, int paletteId):
-				{
-					return options.UserDefinedColorPalette[paletteId].AsSKColor();
-				}
-				case (_, ColorDescriptorAlias item):
-				{
-					// TODO: Not implemented.
-					return item switch
-					{
-						ColorDescriptorAlias.Normal => throw new NotImplementedException(),
-						ColorDescriptorAlias.Auxiliary1 => options.AuxiliaryColors[0].AsSKColor(),
-						ColorDescriptorAlias.Auxiliary2 => options.AuxiliaryColors[1].AsSKColor(),
-						ColorDescriptorAlias.Auxiliary3 => options.AuxiliaryColors[2].AsSKColor(),
-						ColorDescriptorAlias.Assignment => throw new NotImplementedException(),
-						ColorDescriptorAlias.OverlappedAssignment => throw new NotImplementedException(),
-						ColorDescriptorAlias.Elimination => throw new NotImplementedException(),
-						ColorDescriptorAlias.Cannibalism => throw new NotImplementedException(),
-						ColorDescriptorAlias.Exofin => throw new NotImplementedException(),
-						ColorDescriptorAlias.Endofin => throw new NotImplementedException(),
-						ColorDescriptorAlias.Link => throw new NotImplementedException(),
-						ColorDescriptorAlias.AlmostLockedSet1 => options.AlmostLockedSetColors[0].AsSKColor(),
-						ColorDescriptorAlias.AlmostLockedSet2 => options.AlmostLockedSetColors[1].AsSKColor(),
-						ColorDescriptorAlias.AlmostLockedSet3 => options.AlmostLockedSetColors[2].AsSKColor(),
-						ColorDescriptorAlias.AlmostLockedSet4 => options.AlmostLockedSetColors[3].AsSKColor(),
-						ColorDescriptorAlias.AlmostLockedSet5 => options.AlmostLockedSetColors[4].AsSKColor(),
-						ColorDescriptorAlias.Rectangle1 => options.RectangleColors[0].AsSKColor(),
-						ColorDescriptorAlias.Rectangle2 => options.RectangleColors[1].AsSKColor(),
-						ColorDescriptorAlias.Rectangle3 => options.RectangleColors[2].AsSKColor(),
-						_ => throw new InvalidOperationException($"The value '{nameof(@this.AliasedItem)}' is invalid.")
-					};
-				}
-				default:
-				{
-					throw new ArgumentOutOfRangeException(nameof(@this));
-				}
-			}
+					ColorDescriptorAlias.Normal => options.NormalColor.AsSKColor(),
+					ColorDescriptorAlias.Auxiliary1 => options.AuxiliaryColors[0].AsSKColor(),
+					ColorDescriptorAlias.Auxiliary2 => options.AuxiliaryColors[1].AsSKColor(),
+					ColorDescriptorAlias.Auxiliary3 => options.AuxiliaryColors[2].AsSKColor(),
+					ColorDescriptorAlias.Assignment => options.AssignmentColor.AsSKColor(),
+					ColorDescriptorAlias.OverlappedAssignment => options.OverlappedAssignmentColor.AsSKColor(),
+					ColorDescriptorAlias.Elimination => options.EliminationColor.AsSKColor(),
+					ColorDescriptorAlias.Cannibalism => options.CannibalismColor.AsSKColor(),
+					ColorDescriptorAlias.Exofin => options.ExofinColor.AsSKColor(),
+					ColorDescriptorAlias.Endofin => options.EndofinColor.AsSKColor(),
+					ColorDescriptorAlias.Link => options.LinkColor.AsSKColor(),
+					ColorDescriptorAlias.AlmostLockedSet1 => options.AlmostLockedSetColors[0].AsSKColor(),
+					ColorDescriptorAlias.AlmostLockedSet2 => options.AlmostLockedSetColors[1].AsSKColor(),
+					ColorDescriptorAlias.AlmostLockedSet3 => options.AlmostLockedSetColors[2].AsSKColor(),
+					ColorDescriptorAlias.AlmostLockedSet4 => options.AlmostLockedSetColors[3].AsSKColor(),
+					ColorDescriptorAlias.AlmostLockedSet5 => options.AlmostLockedSetColors[4].AsSKColor(),
+					ColorDescriptorAlias.Rectangle1 => options.RectangleColors[0].AsSKColor(),
+					ColorDescriptorAlias.Rectangle2 => options.RectangleColors[1].AsSKColor(),
+					ColorDescriptorAlias.Rectangle3 => options.RectangleColors[2].AsSKColor(),
+					_ => throw new InvalidOperationException($"The value '{nameof(@this.AliasedItem)}' is invalid.")
+				},
+				_ => throw new ArgumentOutOfRangeException(nameof(@this))
+			};
 		}
 	}
 }
