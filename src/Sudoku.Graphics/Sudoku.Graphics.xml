@@ -545,7 +545,7 @@
         </member>
         <member name="P:Sudoku.Graphics.Primitives.ICanvas.BackingCanvas">
             <summary>
-            Indicates the canvas that allows you drawing on it.
+            Indicates the canvas that allows you drawing on it. This property should be explicitly-implemented.
             </summary>
         </member>
         <member name="T:Sudoku.Graphics.Primitives.ICanvasDrawBackground">

@@ -21,7 +21,7 @@ public interface ICanvas :
 	PointMapper Mapper { get; }
 
 	/// <summary>
-	/// Indicates the canvas that allows you drawing on it.
+	/// Indicates the canvas that allows you drawing on it. This property should be explicitly-implemented.
 	/// </summary>
 	SKCanvas BackingCanvas { get; }
 }
