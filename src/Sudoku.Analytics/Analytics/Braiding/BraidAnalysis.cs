@@ -389,6 +389,18 @@ public static class BraidAnalysis
 				var (nCount, zCount) = (candidateBraidingTypes.NCount, candidateBraidingTypes.ZCount);
 				foreach (var (strand, mask) in hiddenDictionary)
 				{
+					// Add an extra check here: we can safely eliminate other digits
+					// if and only if the number of N's and Z's digits have already been inferred.
+					// For example, if a chute has the following digit distribution:
+					//   * T4N (NNZ), [5, 8]
+					//   * T4Z (NNZ), [2, 3]
+					//   * T5N (NNZ), [7, 9]
+					//   * T5Z (NNZ), [4]
+					//   * T6N (NNZ), [1, 2, 3]
+					//   * T6Z (NNZ), [6]
+					// In T6N, digits 2 and 3 in [1, 2, 3] cannot be eliminated
+					// because we cannot keep the second digit appeared in strand T6N, because this chute is inferred as NNZ mode,
+					// meaning there're 2 N's digits.
 					if (BitOperations.PopCount((uint)mask) == (strand.Type == StrandType.Downside ? nCount : zCount))
 					{
 						// Clears all the other digits appeared in the current strand.
