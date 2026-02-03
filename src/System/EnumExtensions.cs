@@ -35,7 +35,7 @@ public static class EnumExtensions
 
 
 				bool f<TInteger>() where TInteger : IBinaryInteger<TInteger>
-					=> Unsafe.As<T, TInteger>(ref thisCopied) is var integer && (integer == TInteger.Zero || TInteger.IsPow2(integer));
+					=> Unsafe.As<T, TInteger>(ref thisCopied) is var integer && TInteger.IsPow2(integer);
 			}
 		}
 
