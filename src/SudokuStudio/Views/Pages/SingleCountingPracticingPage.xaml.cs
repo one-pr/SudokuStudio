@@ -256,7 +256,7 @@ public sealed partial class SingleCountingPracticingPage : Page
 		=> Application.CurrentApp.CoverSettingsToSudokuPaneViaApplicationTheme(SudokuPane);
 }
 
-/// <include file='../../global-doc-comments.xml' path='g/csharp11/feature[@name="file-local"]/target[@name="class" and @when="extension"]'/>
+/// <include file="../../global-doc-comments.xml" path="g/csharp11/feature[@name='file-local']/target[@name='class' and @when='extension']"/>
 file static class Extensions
 {
 	/// <include

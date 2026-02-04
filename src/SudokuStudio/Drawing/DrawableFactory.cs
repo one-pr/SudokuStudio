@@ -203,7 +203,9 @@ internal static partial class DrawableFactory
 	private static partial void ForGroupedNodes(DrawingContext context, ReadOnlySpan<GroupedNodeInfo> nodes);
 }
 
-/// <include file='../../global-doc-comments.xml' path='g/csharp11/feature[@name="file-local"]/target[@name="class" and @when="extension"]'/>
+/// <include
+///     file="../../global-doc-comments.xml"
+///     path="g/csharp11/feature[@name='file-local']/target[@name='class' and @when='extension']"/>
 file static class Extensions
 {
 	/// <include
