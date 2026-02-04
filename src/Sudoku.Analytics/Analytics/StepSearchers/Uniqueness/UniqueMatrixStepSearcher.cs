@@ -35,7 +35,7 @@ public sealed partial class UniqueMatrixStepSearcher : StepSearcher
 	];
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static UniqueMatrixStepSearcher()
 	{
 		var result = new CellMap[162];

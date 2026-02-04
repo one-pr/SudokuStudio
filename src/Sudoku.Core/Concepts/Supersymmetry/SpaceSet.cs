@@ -42,7 +42,7 @@ public partial struct SpaceSet :
 	private InlineArray4<CellMap> _field;
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static SpaceSet()
 	{
 		AllCells = AllBlocks = AllRows = AllColumns = default;

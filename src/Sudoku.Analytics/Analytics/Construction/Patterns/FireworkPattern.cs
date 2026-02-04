@@ -40,7 +40,7 @@ public sealed class FireworkPattern(in CellMap map, Cell? pivot) : Pattern
 	];
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static FireworkPattern()
 	{
 		Patterns = new FireworkPattern[3645];

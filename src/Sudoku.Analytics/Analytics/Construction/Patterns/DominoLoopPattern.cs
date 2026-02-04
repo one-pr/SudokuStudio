@@ -12,7 +12,7 @@ public sealed class DominoLoopPattern(Cell[] cells) : Pattern
 	internal static readonly DominoLoopPattern[] Patterns;
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static DominoLoopPattern()
 	{
 		Patterns = new DominoLoopPattern[729];

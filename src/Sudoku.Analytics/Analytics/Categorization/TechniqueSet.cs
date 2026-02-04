@@ -73,7 +73,7 @@ public sealed partial class TechniqueSet() :
 	}
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static TechniqueSet()
 	{
 		var techniqueRelationGroups = new Dictionary<TechniqueGroup, TechniqueSet>();

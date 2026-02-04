@@ -42,7 +42,7 @@ public sealed class QiuDeadlyPattern1Pattern(in CellMap corner, HouseMask lines)
 	internal static readonly QiuDeadlyPattern1Pattern[] Patterns;
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static QiuDeadlyPattern1Pattern()
 	{
 		// Case 1: 2 lines + 2 cells.

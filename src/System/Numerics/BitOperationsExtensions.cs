@@ -12,7 +12,7 @@ public static partial class BitOperationsExtensions
 	private static readonly byte[] BitCountLut = new byte[256];
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static BitOperationsExtensions()
 	{
 		for (var i = 0; i < 256; i++)

@@ -18,7 +18,7 @@ public sealed partial class FatRingStepSearcher : StepSearcher
 	private static readonly (RowIndex Row, ColumnIndex Column, BlockIndex[] CanceledBlocks)[] PatternPositions;
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static FatRingStepSearcher()
 	{
 		var positions = new List<(RowIndex, ColumnIndex, BlockIndex[])>(81);

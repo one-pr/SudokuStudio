@@ -25,7 +25,7 @@ public sealed partial class BruteForceStepSearcher : StepSearcher
 	private static readonly Cell[] BruteForceTryAndErrorOrder;
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static BruteForceStepSearcher()
 	{
 		var (table, currentRow, currentColumn, k) = ((List<Cell>)[40], 4, 4, 1);

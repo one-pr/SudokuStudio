@@ -72,7 +72,7 @@ public static class HouseMarshal
 	private static readonly CellMap[] HousesMapBackingField;
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static HouseMarshal()
 	{
 		//

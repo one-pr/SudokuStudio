@@ -35,7 +35,7 @@ public static class Segments
 	];
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static Segments()
 	{
 		SegmentsGroupedByChuteIndex = new CellMap[6][];

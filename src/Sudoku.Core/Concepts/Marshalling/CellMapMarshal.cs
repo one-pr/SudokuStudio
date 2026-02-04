@@ -13,7 +13,7 @@ public static class CellMapMarshal
 	internal static readonly CellMap[] CellMaps;
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static CellMapMarshal()
 	{
 		CellMaps = new CellMap[81];

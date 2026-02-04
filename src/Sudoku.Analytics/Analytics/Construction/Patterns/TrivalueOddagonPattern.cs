@@ -40,7 +40,7 @@ public sealed class TrivalueOddagonPattern(Cell[] block1Cells, Cell[] block2Cell
 	private static readonly Cell[][] AntidiagonalCases = [[0, 11, 19], [1, 9, 20], [2, 10, 18]];
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static TrivalueOddagonPattern()
 	{
 		var patternOffsetsList = new List<TrivalueOddagonPattern>();

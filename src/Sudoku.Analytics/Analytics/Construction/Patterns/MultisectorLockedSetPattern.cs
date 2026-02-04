@@ -22,7 +22,7 @@ public sealed class MultisectorLockedSetPattern(in CellMap map, RowIndex rowCoun
 	private static readonly (RowIndex Rows, ColumnIndex Columns)[] PossibleSizes = [(3, 3), (3, 4), (4, 3), (4, 4), (4, 5), (5, 4)];
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static MultisectorLockedSetPattern()
 	{
 		const HouseMask a = ~7, b = ~56, c = ~448;

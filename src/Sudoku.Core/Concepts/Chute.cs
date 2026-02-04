@@ -30,7 +30,7 @@ public readonly record struct Chute(int Index, bool IsRow, HouseMask HousesMask)
 	private static readonly Chute[] ChutesBackingField;
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static Chute()
 	{
 		//

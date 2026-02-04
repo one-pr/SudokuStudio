@@ -63,7 +63,7 @@ public sealed partial class ConclusionSet :
 	private readonly BitArray _bitArray = new(BitsCount);
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static ConclusionSet()
 	{
 		All = [];

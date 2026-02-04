@@ -75,7 +75,7 @@ public sealed class BorescoperDeadlyPatternPattern(long mask) : Pattern
 	private readonly long _mask = mask;
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static BorescoperDeadlyPatternPattern()
 	{
 		var count = 0;

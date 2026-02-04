@@ -33,7 +33,7 @@ public sealed class QiuDeadlyPattern2Pattern(HouseMask lines1, HouseMask lines2)
 	internal static readonly QiuDeadlyPattern2Pattern[] Patterns;
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static QiuDeadlyPattern2Pattern()
 	{
 		// Case 2: 2 rows + 2 columns.

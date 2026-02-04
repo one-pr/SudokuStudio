@@ -16,7 +16,7 @@ public static class BraidAnalysis
 	private static readonly FrozenDictionary<Strand, ChuteStrandMap> StrandsMap;
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static BraidAnalysis()
 	{
 		var strandsMap = new Dictionary<Strand, ChuteStrandMap>();

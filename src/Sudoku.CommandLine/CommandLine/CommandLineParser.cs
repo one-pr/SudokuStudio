@@ -11,7 +11,7 @@ public static class CommandLineParser
 	private static readonly RootCommand RootCommand;
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static CommandLineParser()
 	{
 		RootCommand = [

@@ -15,7 +15,7 @@ public static class CandidateMapMarshal
 #endif
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static CandidateMapMarshal()
 	{
 #if CACHE_CANDIDATE_MAPS

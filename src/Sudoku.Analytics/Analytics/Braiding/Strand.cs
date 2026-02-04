@@ -47,7 +47,7 @@ public readonly struct Strand(int chuteIndex, Digit sequenceIndex, StrandType ty
 	public static ReadOnlySpan<Strand> Strands => StrandsBackingField;
 
 
-	/// <include file='../../global-doc-comments.xml' path='g/static-constructor' />
+	/// <include file="../../global-doc-comments.xml" path="g/static-constructor"/>
 	static Strand()
 	{
 		StrandsBackingField = new Strand[Chute.MaxChuteIndex * 3 * 2];
