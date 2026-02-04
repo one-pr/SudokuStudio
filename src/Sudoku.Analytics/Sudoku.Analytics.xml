@@ -1215,7 +1215,7 @@
                 {
                     var typeString = type.ToSimpleString();
                     var maskString = string.Join(", ", from digit in mask.AllSets select $"{digit + 1}");
-                    Console.WriteLine($"{strand} ({typeString}), [{maskString}]");
+                    Console.WriteLine($"{strand} ({typeString}) -> [{maskString}]");
                 }
             }
             ]]></code>
@@ -1228,10 +1228,7 @@
             <param name="grid">The grid.</param>
             <param name="chuteIndex">The chute index (0..6).</param>
             <param name="result">The type inferred. If none found, <see cref="F:Sudoku.Analytics.Braiding.BraidingType.Unknown"/> will be returned.</param>
-            <param name="resultLookup">
-            The result distribution of digits must be appeared in the specified strands.
-            The value is not <see langword="null"/> if and only if the return value is <see langword="true"/>.
-            </param>
+            <param name="resultLookup">The result distribution of digits must be appeared in the specified strands.</param>
             <returns>A <see cref="T:System.Boolean"/> result indicating whether the type can be inferred with unique value.</returns>
             <seealso cref="F:Sudoku.Analytics.Braiding.BraidingType.Unknown"/>
         </member>
@@ -1243,8 +1240,8 @@
             <param name="chuteIndex">The chute index (0..6). -1 for all chutes checking.</param>
             <param name="value">The value.</param>
         </member>
-        <member name="M:Sudoku.Analytics.Braiding.BraidAnalysis.DictionaryEquals(System.Collections.Generic.Dictionary{Sudoku.Analytics.Braiding.Strand,System.Int16},System.Collections.Generic.Dictionary{Sudoku.Analytics.Braiding.Strand,System.Int16})">
-            <inheritdoc cref="M:Sudoku.Analytics.Braiding.BraidAnalysis.&lt;G&gt;$986C2E0E189C64C0FB1B0919AE00744A.DictionaryEquals(System.Collections.Generic.Dictionary{Sudoku.Analytics.Braiding.Strand,System.Int16})"/>
+        <member name="M:Sudoku.Analytics.Braiding.BraidAnalysis.DictionaryEquals``1(System.Collections.Generic.Dictionary{Sudoku.Analytics.Braiding.Strand,System.Int16},``0)">
+            <inheritdoc cref="M:Sudoku.Analytics.Braiding.BraidAnalysis.&lt;G&gt;$986C2E0E189C64C0FB1B0919AE00744A.DictionaryEquals``1(``0)"/>
         </member>
         <member name="T:Sudoku.Analytics.Braiding.BraidAnalysis.&lt;G&gt;$986C2E0E189C64C0FB1B0919AE00744A.&lt;M&gt;$79D28E2E4F0C687EFB967B0B418DFB72">
             <target name="container">
@@ -1262,10 +1259,11 @@
 			</target>
             <param name="this">The dictionary.</param>
         </member>
-        <member name="M:Sudoku.Analytics.Braiding.BraidAnalysis.&lt;G&gt;$986C2E0E189C64C0FB1B0919AE00744A.DictionaryEquals(System.Collections.Generic.Dictionary{Sudoku.Analytics.Braiding.Strand,System.Int16})">
+        <member name="M:Sudoku.Analytics.Braiding.BraidAnalysis.&lt;G&gt;$986C2E0E189C64C0FB1B0919AE00744A.DictionaryEquals``1(``0)">
             <summary>
             Compare two <see cref="T:System.Collections.Generic.Dictionary`2"/> instances.
             </summary>
+            <typeparam name="TDictionary">The type of dictionary to compare.</typeparam>
             <param name="other">The other instance to be compared.</param>
             <returns>A <see cref="T:System.Boolean"/> result.</returns>
         </member>

@@ -199,7 +199,7 @@ public static class BraidAnalysis
 	///     {
 	///         var typeString = type.ToSimpleString();
 	///         var maskString = string.Join(", ", from digit in mask.AllSets select $"{digit + 1}");
-	///         Console.WriteLine($"{strand} ({typeString}), [{maskString}]");
+	///         Console.WriteLine($"{strand} ({typeString}) -> [{maskString}]");
 	///     }
 	/// }
 	/// ]]></code>
@@ -215,7 +215,8 @@ public static class BraidAnalysis
 		reducedChutesMask = 0;
 		for (var chute = 0; chute < 6; chute++)
 		{
-			if (TryInferType(grid, chute, out var braidingType, out var reduced))
+			if (TryInferType(grid, chute, out var braidingType, out var reduced)
+				|| !((Dictionary<Strand, Mask>)MapStrands(grid, chute)).DictionaryEquals(reduced))
 			{
 				foreach (var kvp in reduced)
 				{
@@ -246,17 +247,14 @@ public static class BraidAnalysis
 	/// <param name="grid">The grid.</param>
 	/// <param name="chuteIndex">The chute index (0..6).</param>
 	/// <param name="result">The type inferred. If none found, <see cref="BraidingType.Unknown"/> will be returned.</param>
-	/// <param name="resultLookup">
-	/// The result distribution of digits must be appeared in the specified strands.
-	/// The value is not <see langword="null"/> if and only if the return value is <see langword="true"/>.
-	/// </param>
+	/// <param name="resultLookup">The result distribution of digits must be appeared in the specified strands.</param>
 	/// <returns>A <see cref="bool"/> result indicating whether the type can be inferred with unique value.</returns>
 	/// <seealso cref="BraidingType.Unknown"/>
 	public static bool TryInferType(
 		in Grid grid,
 		int chuteIndex,
 		out BraidingType result,
-		[NotNullWhen(true)] out IReadOnlyDictionary<Strand, Mask>? resultLookup
+		out IReadOnlyDictionary<Strand, Mask> resultLookup
 	)
 	{
 		result = BraidingType.Unknown;
@@ -299,19 +297,7 @@ public static class BraidAnalysis
 				} while (localHasAnyChanges);
 			}
 
-			// Find hidden / naked rules appeared in either N part or Z part.<br/>
-			// Here rules are ones describing cases that can be concluded:
-			// <list type="bullet">
-			// <item>
-			// <b>Hidden</b> -
-			// If a digit can only appeared once in the only strand of all strands defined in <c>mappedStrands</c>,
-			// it must be correct.
-			// </item>
-			// <item>
-			// <b>Naked</b> - If a digit is the only one satisifed in a single strand
-			// (others are not appeared), it must be correct.
-			// </item>
-			// </list>
+			// Find hidden rules appeared in either N part or Z part.
 			var hiddenDictionary = new Dictionary<Strand, Mask>();
 
 			// Now find for hidden rules.
@@ -392,12 +378,12 @@ public static class BraidAnalysis
 					// Add an extra check here: we can safely eliminate other digits
 					// if and only if the number of N's and Z's digits have already been inferred.
 					// For example, if a chute has the following digit distribution:
-					//   * T4N (NNZ), [5, 8]
-					//   * T4Z (NNZ), [2, 3]
-					//   * T5N (NNZ), [7, 9]
-					//   * T5Z (NNZ), [4]
-					//   * T6N (NNZ), [1, 2, 3]
-					//   * T6Z (NNZ), [6]
+					//   * T4N (NNZ) -> [5, 8]
+					//   * T4Z (NNZ) -> [2, 3]
+					//   * T5N (NNZ) -> [7, 9]
+					//   * T5Z (NNZ) -> [4]
+					//   * T6N (NNZ) -> [1, 2, 3]
+					//   * T6Z (NNZ) -> [6]
 					// In T6N, digits 2 and 3 in [1, 2, 3] cannot be eliminated
 					// because we cannot keep the second digit appeared in strand T6N because of NNZ having been inferred,
 					// meaning there're 2 N's digits.
@@ -421,7 +407,7 @@ public static class BraidAnalysis
 
 		// Get values and return.
 		result = candidateBraidingTypes.IsFlag ? candidateBraidingTypes : BraidingType.Unknown;
-		resultLookup = result != BraidingType.Unknown ? resultDictionary : null;
+		resultLookup = resultDictionary;
 		return result != BraidingType.Unknown;
 	}
 
@@ -478,9 +464,10 @@ public static class BraidAnalysis
 		/// <summary>
 		/// Compare two <see cref="Dictionary{TKey, TValue}"/> instances.
 		/// </summary>
+		/// <typeparam name="TDictionary">The type of dictionary to compare.</typeparam>
 		/// <param name="other">The other instance to be compared.</param>
 		/// <returns>A <see cref="bool"/> result.</returns>
-		public bool DictionaryEquals(Dictionary<Strand, Mask>? other)
+		public bool DictionaryEquals<TDictionary>(TDictionary? other) where TDictionary : IReadOnlyDictionary<Strand, Mask>
 		{
 			if (other is null)
 			{
