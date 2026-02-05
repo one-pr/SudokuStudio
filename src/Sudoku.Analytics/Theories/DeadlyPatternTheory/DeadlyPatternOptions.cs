@@ -22,6 +22,14 @@ public readonly struct DeadlyPatternOptions
 
 	/// <summary>
 	/// <para>
+	/// Indicates whether the checker ignores a digit can only be placed at one position in a house of a pattern or not.
+	/// </para>
+	/// <para>By default the value is <see langword="false"/>.</para>
+	/// </summary>
+	public bool IgnorePotentialSinglePositionInHouse { get; init; }
+
+	/// <summary>
+	/// <para>
 	/// Indicates the number of solutions that the checking API can search for.
 	/// If a pattern has more number of solutions than desired value specified,
 	/// The method will return instead of continuing checking.

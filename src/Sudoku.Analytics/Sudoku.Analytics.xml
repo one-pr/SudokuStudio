@@ -37208,6 +37208,14 @@
             <para>By default the value is <see langword="false"/>.</para>
             </summary>
         </member>
+        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternOptions.IgnorePotentialSinglePositionInHouse">
+            <summary>
+            <para>
+            Indicates whether the checker ignores a digit can only be placed at one position in a house of a pattern or not.
+            </para>
+            <para>By default the value is <see langword="false"/>.</para>
+            </summary>
+        </member>
         <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternOptions.LimitSolutionsCount">
             <summary>
             <para>

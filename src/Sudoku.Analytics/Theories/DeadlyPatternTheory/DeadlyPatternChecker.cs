@@ -45,15 +45,18 @@ public static class DeadlyPatternChecker
 
 		// Step 0: Determine whether at least one house the pattern spanned only hold one cell used.
 		// A valid deadly pattern must hold at least 2 cells for all spanned houses.
-		foreach (var kvp in patternMap.DigitDistribution)
+		if (!options.IgnorePotentialSinglePositionInHouse)
 		{
-			var digit = kvp.Key;
-			ref readonly var cells = ref kvp.ValueRef;
-			foreach (var house in cells.Houses)
+			foreach (var kvp in patternMap.DigitDistribution)
 			{
-				if ((HousesMap[house] & cells).Count == 1)
+				var digit = kvp.Key;
+				ref readonly var cells = ref kvp.ValueRef;
+				foreach (var house in cells.Houses)
 				{
-					goto FastFail;
+					if ((HousesMap[house] & cells).Count == 1)
+					{
+						goto FastFail;
+					}
 				}
 			}
 		}
