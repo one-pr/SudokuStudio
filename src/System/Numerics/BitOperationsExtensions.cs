@@ -17,14 +17,14 @@ public static partial class BitOperationsExtensions
 	{
 		for (var i = 0; i < 256; i++)
 		{
-			var n = i;
-			var c = (byte)0;
-			while (n != 0)
+			var value = i;
+			var count = (byte)0;
+			while (value != 0)
 			{
-				c++;
-				n &= n - 1;
+				count++;
+				value &= value - 1;
 			}
-			BitCountLut[i] = c;
+			BitCountLut[i] = count;
 		}
 	}
 
