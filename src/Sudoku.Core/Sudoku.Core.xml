@@ -6777,6 +6777,115 @@
             <returns>The reference to the element.</returns>
             <exception cref="T:System.IndexOutOfRangeException">Throws when the index is out of range.</exception>
         </member>
+        <member name="T:Sudoku.Concepts.Limits">
+            <summary>
+            Provides an easy entry to visit limits of types.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Concepts.Limits.Candidate">
+            <summary>
+            Indicates candidate-related limits.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.Limits.Candidate.Min">
+            <summary>
+            Indicates min value of candidate.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.Limits.Candidate.Max">
+            <summary>
+            Indicates max value of candidate.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Concepts.Limits.Cell">
+            <summary>
+            Indicates cell-related limits.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.Limits.Cell.Min">
+            <summary>
+            Indicates min value of cell.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.Limits.Cell.Max">
+            <summary>
+            Indicates max value of cell.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Concepts.Limits.Chute">
+            <summary>
+            Indicates chute-related limits.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.Limits.Chute.Min">
+            <summary>
+            Indicates min value of chute index.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.Limits.Chute.Max">
+            <summary>
+            Indicates max value of chute index.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Concepts.Limits.ChuteCellsCount">
+            <summary>
+            Indicates limits on chute cells count.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.Limits.ChuteCellsCount.Min">
+            <summary>
+            Indicates min value of chute cells count.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.Limits.ChuteCellsCount.Max">
+            <summary>
+            Indicates max value of chute cells count.
+            </summary>
+        </member>
+        <member name="M:Sudoku.Concepts.Limits.GetMin``1">
+            <summary>
+            Returns min value of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sudoku.Concepts.Limits.GetMax``1">
+            <summary>
+            Returns max value of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <returns>The result.</returns>
+        </member>
+        <member name="T:Sudoku.Concepts.Limits.HouseCellsCount">
+            <summary>
+            Indicates limits on house cells count.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.Limits.HouseCellsCount.Min">
+            <summary>
+            Indicates min value of house cells count.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.Limits.HouseCellsCount.Max">
+            <summary>
+            Indicates max value of house cells count.
+            </summary>
+        </member>
+        <member name="T:Sudoku.Concepts.Limits.Segment">
+            <summary>
+            Indicates segment-related limits.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.Limits.Segment.Min">
+            <summary>
+            Indicates min value of segment index.
+            </summary>
+        </member>
+        <member name="F:Sudoku.Concepts.Limits.Segment.Max">
+            <summary>
+            Indicates max value of segment index.
+            </summary>
+        </member>
         <member name="T:Sudoku.Concepts.LogicalPosition">
             <summary>
             Represents logical position between cells.
