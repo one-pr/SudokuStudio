@@ -222,6 +222,7 @@
   * [传递的底层原理](deadly-pattern-theory/07-state-transition-of-deadly-pattern/02-principle-of-state-transition.md)
   * [全强链死环的基本推理](deadly-pattern-theory/07-state-transition-of-deadly-pattern/03-reasoning-of-broken-loop.md)
   * [无解结构的判别](deadly-pattern-theory/07-state-transition-of-deadly-pattern/04-judgement-of-pattern-having-no-solution.md)
+  * [正确地使用传递](deadly-pattern-theory/07-state-transition-of-deadly-pattern/05-correct-way-to-use-state-transition.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 

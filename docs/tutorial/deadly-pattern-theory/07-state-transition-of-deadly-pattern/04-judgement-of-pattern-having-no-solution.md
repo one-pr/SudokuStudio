@@ -120,3 +120,15 @@ description: Judgement of Pattern Having No Solution
 所以，判断无解结构的本质仍然是穷举是否有解。如果你把它当成判别的重点的话，那么我相信你就可以明确知道致命结构和无解结构的关系到底是包含，还是有交集，还是完全没有关系了。
 
 至此，我们就把全强链死环和无解结构的内容介绍完了。下一节我们将继续探讨更复杂的致命结构的内容。
+
+## 局部全双值格致死解法（Bivalue Universal Grave Lite） <a href="#naming-of-pattern-having-no-solution" id="naming-of-pattern-having-no-solution"></a>
+
+无解结构可以看出，它要么是属于全强链死环这种，跟致命结构一点不沾边的情况，要么就是全双值格致死解法这种，看起来非常像是致命结构（多解的那种）。
+
+实际上，在外国的数独圈子里，对于全双值格致死解法这种看起来一眼判别不出来的、除了无解不符合致命结构的特征外，其他均符合的特殊结构，他们称为**轻量级全双值格致死解法**或**局部全双值格致死解法**（Bivalue Universal Grave Lite，简称 BUG Lite）。最典型的例子就是之前我们看到的，那个错误传递的结构。它在实战里是确实有这种题的。
+
+<figure><img src="../../.gitbook/assets/images_0976.png" alt="" width="375"><figcaption><p>局部全双值格致死解法</p></figcaption></figure>
+
+如图所示。这是一个之前结构的实体例子。
+
+这是类型 2。如果 `r3c4(5)` 和 `r6c5(5)` 同假的话，这个结构将矛盾。所以删掉两个 5 可以看到的地方。
