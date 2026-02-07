@@ -865,8 +865,10 @@
         <member name="M:SudokuStudio.BindableSource.ViewUnitBindableSourceDiff.Deconstruct(System.ReadOnlySpan{Sudoku.Drawing.IDrawableItem}@,System.ReadOnlySpan{Sudoku.Drawing.IDrawableItem}@)">
             <target name="method">
 				<summary>
-					Deconstruct the current instance into multiple values, which means you can use
-					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+					Deconstructs the current instance into its individual components,
+					enabling the use of tuple deconstruction syntax in C# 7 and later.
+					This method allows the object to be unpacked into separate variables
+					using assignment or deconstruction patterns.
 				</summary>
 			</target>
         </member>
@@ -3468,8 +3470,10 @@
         <member name="M:SudokuStudio.Drawing.DrawingContext.Deconstruct(SudokuStudio.Views.Controls.SudokuPane@,SudokuStudio.Drawing.AnimatedResultCollection@)">
             <target name="method">
 				<summary>
-					Deconstruct the current instance into multiple values, which means you can use
-					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+					Deconstructs the current instance into its individual components,
+					enabling the use of tuple deconstruction syntax in C# 7 and later.
+					This method allows the object to be unpacked into separate variables
+					using assignment or deconstruction patterns.
 				</summary>
 			</target>
         </member>
@@ -3863,16 +3867,20 @@
         <member name="M:SudokuStudio.Input.SudokuPanePositionConverter.Deconstruct(Windows.Foundation.Point@,Windows.Foundation.Point[0:,0:]@)">
             <target name="method">
 				<summary>
-					Deconstruct the current instance into multiple values, which means you can use
-					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+					Deconstructs the current instance into its individual components,
+					enabling the use of tuple deconstruction syntax in C# 7 and later.
+					This method allows the object to be unpacked into separate variables
+					using assignment or deconstruction patterns.
 				</summary>
 			</target>
         </member>
         <member name="M:SudokuStudio.Input.SudokuPanePositionConverter.Deconstruct(Windows.Foundation.Size@,Windows.Foundation.Size@,Windows.Foundation.Size@,Windows.Foundation.Size@)">
             <target name="method">
 				<summary>
-					Deconstruct the current instance into multiple values, which means you can use
-					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+					Deconstructs the current instance into its individual components,
+					enabling the use of tuple deconstruction syntax in C# 7 and later.
+					This method allows the object to be unpacked into separate variables
+					using assignment or deconstruction patterns.
 				</summary>
 			</target>
         </member>
@@ -17972,16 +17980,20 @@
         <member name="M:Windows.UI.ColorExtensions.&lt;G&gt;$BB16C40F20C63E9DB9FEB07C52A6A7C6.Deconstruct(System.Byte@,System.Byte@,System.Byte@)">
             <target name="method">
 				<summary>
-					Deconstruct the current instance into multiple values, which means you can use
-					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+					Deconstructs the current instance into its individual components,
+					enabling the use of tuple deconstruction syntax in C# 7 and later.
+					This method allows the object to be unpacked into separate variables
+					using assignment or deconstruction patterns.
 				</summary>
 			</target>
         </member>
         <member name="M:Windows.UI.ColorExtensions.&lt;G&gt;$BB16C40F20C63E9DB9FEB07C52A6A7C6.Deconstruct(System.Byte@,System.Byte@,System.Byte@,System.Byte@)">
             <target name="method">
 				<summary>
-					Deconstruct the current instance into multiple values, which means you can use
-					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+					Deconstructs the current instance into its individual components,
+					enabling the use of tuple deconstruction syntax in C# 7 and later.
+					This method allows the object to be unpacked into separate variables
+					using assignment or deconstruction patterns.
 				</summary>
 			</target>
         </member>
@@ -18072,8 +18084,10 @@
         <member name="M:Windows.Foundation.PointExtensions.&lt;G&gt;$E5CBC5819895488B0E2A580EC6C7E2E1.Deconstruct(System.Double@,System.Double@)">
             <target name="method">
 				<summary>
-					Deconstruct the current instance into multiple values, which means you can use
-					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+					Deconstructs the current instance into its individual components,
+					enabling the use of tuple deconstruction syntax in C# 7 and later.
+					This method allows the object to be unpacked into separate variables
+					using assignment or deconstruction patterns.
 				</summary>
 			</target>
         </member>
@@ -18112,8 +18126,10 @@
         <member name="M:Windows.Foundation.SizeExtensions.&lt;G&gt;$F18D57BD98D8C041A664D2CF6D588B0E.Deconstruct(System.Single@,System.Single@)">
             <target name="method">
 				<summary>
-					Deconstruct the current instance into multiple values, which means you can use
-					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+					Deconstructs the current instance into its individual components,
+					enabling the use of tuple deconstruction syntax in C# 7 and later.
+					This method allows the object to be unpacked into separate variables
+					using assignment or deconstruction patterns.
 				</summary>
 			</target>
         </member>
@@ -18266,8 +18282,10 @@
         <member name="M:System.Numerics.Vector2Extensions.&lt;G&gt;$31F76E721F56097EE9FE33FA9ECF3447.Deconstruct(System.Single@,System.Single@)">
             <target name="method">
 				<summary>
-					Deconstruct the current instance into multiple values, which means you can use
-					the value-tuple syntax like <c>(a, b, c)</c> to define your own deconstruction logic.
+					Deconstructs the current instance into its individual components,
+					enabling the use of tuple deconstruction syntax in C# 7 and later.
+					This method allows the object to be unpacked into separate variables
+					using assignment or deconstruction patterns.
 				</summary>
 			</target>
         </member>
