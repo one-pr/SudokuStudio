@@ -220,9 +220,8 @@
 * [致命结构的传递](deadly-pattern-theory/07-state-transition-of-deadly-pattern/README.md)
   * [什么是传递？](deadly-pattern-theory/07-state-transition-of-deadly-pattern/01-what-is-state-transition.md)
   * [传递的底层原理](deadly-pattern-theory/07-state-transition-of-deadly-pattern/02-principle-of-state-transition.md)
-* [全强链死环](deadly-pattern-theory/08-broken-loop/README.md)
-  * [全强链死环的基本推理](deadly-pattern-theory/08-broken-loop/01-reasoning-of-broken-loop.md)
-  * [无解结构的判别](deadly-pattern-theory/08-broken-loop/02-judgement-of-pattern-having-no-solution.md)
+  * [全强链死环的基本推理](deadly-pattern-theory/07-state-transition-of-deadly-pattern/03-reasoning-of-broken-loop.md)
+  * [无解结构的判别](deadly-pattern-theory/07-state-transition-of-deadly-pattern/04-judgement-of-pattern-having-no-solution.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
