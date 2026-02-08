@@ -226,6 +226,7 @@
 * [淑芬致命结构（QDP）](deadly-pattern-theory/08-qiu-deadly-pattern/README.md)
   * [淑芬致命结构的基本推理](deadly-pattern-theory/08-qiu-deadly-pattern/01-reasoning-of-qiu-deadly-pattern.md)
   * [淑芬致命结构的一些例子](deadly-pattern-theory/08-qiu-deadly-pattern/02-examples-of-qiu-deadly-pattern.md)
+  * [双淑芬致命结构](deadly-pattern-theory/08-qiu-deadly-pattern/03-dual-qiu-deadly-pattern.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
