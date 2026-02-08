@@ -2,7 +2,7 @@
 description: History of Sudoku
 ---
 
-# 数独历史
+# 历史由来
 
 数独演变到如今，中间确实存在不少响当当的人物在让数独更加大众化。下面我们来看看数独究竟是如何演变至今的。
 
@@ -48,7 +48,7 @@ description: History of Sudoku
 
 按照一般说法，拉丁方起源自一个叫做**欧拉**（Leonhard Euler）的数学家。实际上，他也不一定非得是数学家，他在别的领域也有研究。不过以本人来看，他创造的拉丁方是以字母作为填空的元素，而非数字。
 
-然后经考证，似乎这个东西的发明另有其人。一位韩国的数学家**崔锡鼎**（Choi Seok-jeong） 似乎早于欧拉至少 67 年就制作了拉丁方的相似内容。这个东西当时被称为**九数略**（Gusuryak）。
+然后经考证，似乎这个东西的发明另有其人。一位韩国的数学家**崔锡鼎**（Choi Seok-jeong）似乎早于欧拉至少 67 年就制作了拉丁方的相似内容。这个东西当时被称为**九数略**（Gusuryak）。
 
 <figure><img src="../.gitbook/assets/images_0172.png" alt=""><figcaption><p>九数略</p></figcaption></figure>
 
