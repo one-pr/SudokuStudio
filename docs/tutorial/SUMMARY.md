@@ -227,6 +227,8 @@
   * [淑芬致命结构的基本推理](deadly-pattern-theory/08-qiu-deadly-pattern/01-reasoning-of-qiu-deadly-pattern.md)
   * [淑芬致命结构的一些例子](deadly-pattern-theory/08-qiu-deadly-pattern/02-examples-of-qiu-deadly-pattern.md)
   * [双淑芬致命结构](deadly-pattern-theory/08-qiu-deadly-pattern/03-dual-qiu-deadly-pattern.md)
+* [秩理论里的致命结构](deadly-pattern-theory/09-deadly-pattern-in-rank-theory/README.md)
+  * [致命结构的秩](deadly-pattern-theory/09-deadly-pattern-in-rank-theory/01-rank-of-deadly-pattern.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
