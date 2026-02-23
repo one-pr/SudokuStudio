@@ -200,7 +200,7 @@
   * [单真对（STP）](exocet/11-exocet-with-domino-loop/04-single-truth-pair.md)
 * [衰弱飞鱼](exocet/12-weak-exocet/README.md)
   * [初见衰弱飞鱼](exocet/12-weak-exocet/01-the-first-view-of-weak-exocet.md)
-  * [全衰飞鱼](exocet/12-weak-exocet/03-lame-weak-exocet.md)
+  * [全衰飞鱼](exocet/12-weak-exocet/02-lame-weak-exocet.md)
 
 ## 致命结构理论 <a href="#deadly-pattern-theory" id="deadly-pattern-theory"></a>
 

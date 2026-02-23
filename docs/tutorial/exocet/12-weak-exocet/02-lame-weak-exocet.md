@@ -4,11 +4,7 @@ description: Lame Weak Exocet
 
 # 全衰飞鱼
 
-{% hint style="warning" %}
-本文的编号为 03。原本编号为 02 的文章是预留给了对衰弱飞鱼的删数的完整证明的，但是证明的难度颇高，要写成文档需要大幅度制图和说明文字。因为我最近时间不太够，所以暂时没有完整梳理出证明过程并转为文档描述。我们暂时跳过证明的文档内容；以后有空了我会把证明补到缺失的 02 编号的位置上。
-{% endhint %}
-
-前面我们带着大家证明了如何得到衰弱飞鱼的一些特征删数，下面我们来看衰弱飞鱼的变体：**全衰弱飞鱼**（Lame Weak Exocet）。
+前面我们带着大家看了如何得到衰弱飞鱼的一些特征删数，下面我们来看衰弱飞鱼的变体：**全衰弱飞鱼**（Lame Weak Exocet）。
 
 ## 全衰飞鱼的基本推理 <a href="#reasoning-of-lame-weak-exocet" id="reasoning-of-lame-weak-exocet"></a>
 

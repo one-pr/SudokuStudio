@@ -72,3 +72,18 @@ description: The First View of Weak Exocet
 <figure><img src="../../.gitbook/assets/images_0846.png" alt="" width="375"><figcaption><p>衰弱飞鱼结论 5</p></figcaption></figure>
 
 至此，我们就把所有的结论全部介绍完毕了。下一节我们再带着大家证明一下图里的删数由来。
+
+## 证明过程尤为复杂 <a href="#very-complex-proof" id="very-complex-proof"></a>
+
+此技巧虽然看着跟普通的飞鱼也就差那么一点点而已，但删数的证明来源非常复杂。数独圈子里有人尝试为其给出了证明，这里把帖子贴出：
+
+{% embed url="https://tieba.baidu.com/p/6382981016" %}
+衰弱飞鱼证明
+{% endembed %}
+
+这里我就不带着证明了。我实在是写不了这个，制图太过于费劲。另外，其他的特征删数的证明可以参考这些链接：
+
+* [https://tieba.baidu.com/p/6383046467](https://tieba.baidu.com/p/6383046467)
+* [https://tieba.baidu.com/p/6383028455](https://tieba.baidu.com/p/6383028455)
+* [https://tieba.baidu.com/p/7176858088](https://tieba.baidu.com/p/7176858088)
+* [https://tieba.baidu.com/p/7176878509](https://tieba.baidu.com/p/7176878509)
