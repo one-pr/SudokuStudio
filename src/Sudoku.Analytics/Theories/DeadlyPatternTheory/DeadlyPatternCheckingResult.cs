@@ -5,7 +5,7 @@ namespace Sudoku.Theories.DeadlyPatternTheory;
 /// </summary>
 /// <param name="grid"><inheritdoc cref="Grid" path="/summary"/></param>
 /// <seealso cref="DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern"/>
-public readonly ref struct DeadlyPatternResult(ref readonly Grid grid)
+public readonly ref struct DeadlyPatternCheckingResult(ref readonly Grid grid)
 {
 	/// <summary>
 	/// Indicates the grid used.

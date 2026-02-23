@@ -3,12 +3,12 @@ namespace Sudoku.Theories.DeadlyPatternTheory;
 /// <summary>
 /// Represents a type that adjust checking rules for deadly pattern.
 /// </summary>
-public readonly struct DeadlyPatternOptions
+public readonly struct DeadlyPatternCheckingOptions
 {
 	/// <summary>
 	/// Represents default option.
 	/// </summary>
-	public static readonly DeadlyPatternOptions Default = default;
+	public static readonly DeadlyPatternCheckingOptions Default = default;
 
 
 	/// <summary>

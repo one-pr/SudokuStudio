@@ -37090,7 +37090,7 @@
             </summary>
             <seealso cref="T:Sudoku.Concepts.Grid"/>
         </member>
-        <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternOptions)">
+        <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingOptions)">
             <summary>
             Determine whether a grid will form a deadly pattern if the specified truths are constrained.
             </summary>
@@ -37099,8 +37099,12 @@
             <param name="options">Indicates the extra options.</param>
             <returns>The result after the analysis operation is finished.</returns>
             <exception cref="T:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternInferrerLimitReachedException">
-            Throws when the pattern contains more than 10000 solutions.
+            Throws when the pattern contains more than the number of solutions
+            specified in parameter <paramref name="options"/>,
+            and its property <see cref="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingOptions.ThrowExceptionIfMaximumSolutionsCountReached"/>
+            is set <see langword="true"/>.
             </exception>
+            <seealso cref="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingOptions.ThrowExceptionIfMaximumSolutionsCountReached"/>
         </member>
         <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternChecker.CanLeadToDeadlyPatternContradiction(System.Int32,Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternAssigningMap,Sudoku.Concepts.Grid@,Sudoku.Concepts.CellMap@,Sudoku.Concepts.CandidateMap@)">
             <summary>
@@ -37229,34 +37233,26 @@
 				</remarks>
 			</target>
         </member>
-        <member name="T:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternInferrerLimitReachedException">
-            <summary>
-            Represents an exception that will be thrown if more than 10000 solutions found in a possible deadly pattern to be verified.
-            </summary>
-        </member>
-        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternInferrerLimitReachedException.Message">
-            <inheritdoc/>
-        </member>
-        <member name="T:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternOptions">
+        <member name="T:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingOptions">
             <summary>
             Represents a type that adjust checking rules for deadly pattern.
             </summary>
         </member>
-        <member name="F:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternOptions.Default">
+        <member name="F:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingOptions.Default">
             <summary>
             Represents default option.
             </summary>
         </member>
-        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternOptions.ThrowExceptionIfMaximumSolutionsCountReached">
+        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingOptions.ThrowExceptionIfMaximumSolutionsCountReached">
             <summary>
             <para>
             Indicates whether an exception will be thrown if maximum solutions count is reached,
-            if property <see cref="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternOptions.LimitSolutionsCount"/> is specified with non-zero value.
+            if property <see cref="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingOptions.LimitSolutionsCount"/> is specified with non-zero value.
             </para>
             <para>By default the value is <see langword="false"/>.</para>
             </summary>
         </member>
-        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternOptions.IgnorePotentialSinglePositionInHouse">
+        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingOptions.IgnorePotentialSinglePositionInHouse">
             <summary>
             <para>
             Indicates whether the checker ignores a digit can only be placed at one position in a house of a pattern or not.
@@ -37264,7 +37260,7 @@
             <para>By default the value is <see langword="false"/>.</para>
             </summary>
         </member>
-        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternOptions.LimitSolutionsCount">
+        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingOptions.LimitSolutionsCount">
             <summary>
             <para>
             Indicates the number of solutions that the checking API can search for.
@@ -37274,53 +37270,61 @@
             <para>By default the value is 0.</para>
             </summary>
         </member>
-        <member name="T:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternResult">
+        <member name="T:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingResult">
             <summary>
-            Indicates the result value after <see cref="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternOptions)"/> called.
+            Indicates the result value after <see cref="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingOptions)"/> called.
             </summary>
-            <param name="grid"><inheritdoc cref="F:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternResult.Grid" path="/summary"/></param>
-            <seealso cref="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternOptions)"/>
+            <param name="grid"><inheritdoc cref="F:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingResult.Grid" path="/summary"/></param>
+            <seealso cref="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingOptions)"/>
         </member>
-        <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternResult.#ctor(Sudoku.Concepts.Grid@)">
+        <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingResult.#ctor(Sudoku.Concepts.Grid@)">
             <summary>
-            Indicates the result value after <see cref="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternOptions)"/> called.
+            Indicates the result value after <see cref="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingOptions)"/> called.
             </summary>
-            <param name="grid"><inheritdoc cref="F:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternResult.Grid" path="/summary"/></param>
-            <seealso cref="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternOptions)"/>
+            <param name="grid"><inheritdoc cref="F:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingResult.Grid" path="/summary"/></param>
+            <seealso cref="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternChecker.CheckWhetherFormsDeadlyPattern(Sudoku.Concepts.Grid@,Sudoku.Concepts.Supersymmetry.SpaceSet@,Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingOptions)"/>
         </member>
-        <member name="F:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternResult.Grid">
+        <member name="F:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingResult.Grid">
             <summary>
             Indicates the grid used.
             </summary>
         </member>
-        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternResult.IsDeadlyPattern">
+        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingResult.IsDeadlyPattern">
             <summary>
             Indicates the pattern is a real deadly pattern.
             </summary>
         </member>
-        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternResult.PermutationsCount">
+        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingResult.PermutationsCount">
             <summary>
             Indicates the number of permutations.
             </summary>
         </member>
-        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternResult.FailedReason">
+        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingResult.FailedReason">
             <summary>
             Indicates the failed reason.
             </summary>
         </member>
-        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternResult.FailedCases">
+        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingResult.FailedCases">
             <summary>
             Indicates all possible failed cases. The value can be an empty sequence if the pattern is a real deadly pattern,
             or not a deadly pattern but containing obvious invalid candidates (like containing given or modifiable cells).
             </summary>
         </member>
-        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternResult.PatternCandidates">
+        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingResult.PatternCandidates">
             <summary>
             Indicates the candidates the pattern used.
             </summary>
         </member>
-        <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternResult.ToString">
+        <member name="M:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternCheckingResult.ToString">
             <inheritdoc cref="M:System.Object.ToString"/>
+        </member>
+        <member name="T:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternInferrerLimitReachedException">
+            <summary>
+            Represents an exception that will be thrown if more than 10000 solutions found in a possible deadly pattern to be verified.
+            </summary>
+        </member>
+        <member name="P:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternInferrerLimitReachedException.Message">
+            <inheritdoc/>
         </member>
         <member name="T:Sudoku.Theories.DeadlyPatternTheory.DeadlyPatternResultFailedReason">
             <summary>

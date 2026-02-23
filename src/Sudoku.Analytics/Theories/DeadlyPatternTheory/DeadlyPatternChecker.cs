@@ -15,15 +15,19 @@ public static class DeadlyPatternChecker
 	/// <param name="options">Indicates the extra options.</param>
 	/// <returns>The result after the analysis operation is finished.</returns>
 	/// <exception cref="DeadlyPatternInferrerLimitReachedException">
-	/// Throws when the pattern contains more than 10000 solutions.
+	/// Throws when the pattern contains more than the number of solutions
+	/// specified in parameter <paramref name="options"/>,
+	/// and its property <see cref="DeadlyPatternCheckingOptions.ThrowExceptionIfMaximumSolutionsCountReached"/>
+	/// is set <see langword="true"/>.
 	/// </exception>
-	public static DeadlyPatternResult CheckWhetherFormsDeadlyPattern(
+	/// <seealso cref="DeadlyPatternCheckingOptions.ThrowExceptionIfMaximumSolutionsCountReached"/>
+	public static DeadlyPatternCheckingResult CheckWhetherFormsDeadlyPattern(
 		in Grid grid,
 		in SpaceSet truths,
-		DeadlyPatternOptions options = default
+		DeadlyPatternCheckingOptions options = default
 	)
 	{
-		var defaultResult = new DeadlyPatternResult(in grid) { PermutationsCount = 0, IsDeadlyPattern = false, FailedCases = [] };
+		var defaultResult = new DeadlyPatternCheckingResult(in grid) { PermutationsCount = 0, IsDeadlyPattern = false, FailedCases = [] };
 
 		var patternMap = CandidateMap.Empty;
 		if (grid is not { IsValid: false, EmptyCellsCount: 81, IsStandard: true })
