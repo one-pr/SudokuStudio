@@ -7,7 +7,7 @@ namespace Sudoku.IO;
 /// <param name="_inputPath">Path to the input file to be sorted.</param>
 /// <param name="_outputPath">Path to the file where sorted lines will be written.</param>
 /// <param name="_linesPerChunk">Maximum number of lines to load into memory per chunk.</param>
-internal sealed class FileExternalSorter(string _inputPath, string _outputPath, int _linesPerChunk = 500_000)
+public sealed class FileExternalSorter(string _inputPath, string _outputPath, int _linesPerChunk = 500_000)
 {
 	/// <summary>
 	/// Sorts a large text file line by line in ascending order, using external sorting strategy.
@@ -21,15 +21,24 @@ internal sealed class FileExternalSorter(string _inputPath, string _outputPath, 
 
 		using (var reader = new StreamReader(_inputPath))
 		{
-			var chunkIndex = 0;
-			while (!reader.EndOfStream)
+			var (chunkIndex, isEndOfStream) = (0, false);
+			while (!isEndOfStream)
 			{
+				isEndOfStream = false;
+
 				var lines = new List<string>(_linesPerChunk);
 
 				// Read a chunk of lines from input file.
-				for (var i = 0; i < _linesPerChunk && !reader.EndOfStream; i++)
+				for (var i = 0; i < _linesPerChunk; i++)
 				{
-					if (await reader.ReadLineAsync() is { } line && !string.IsNullOrWhiteSpace(line))
+					if (await reader.ReadLineAsync() is not { } line)
+					{
+						// There's no line to read.
+						isEndOfStream = true;
+						break;
+					}
+
+					if (!string.IsNullOrWhiteSpace(line))
 					{
 						lines.Add(line);
 					}
@@ -94,8 +103,7 @@ internal sealed class FileExternalSorter(string _inputPath, string _outputPath, 
 		// Initialize priority queue with the first line from each reader.
 		for (var i = 0; i < readers.Count; i++)
 		{
-			if (!readers[i].EndOfStream
-				&& await readers[i].ReadLineAsync() is { } line
+			if (await readers[i].ReadLineAsync() is { } line
 				&& !string.IsNullOrWhiteSpace(line)
 				&& !queue.TryAdd(line, [i]))
 			{
@@ -126,8 +134,7 @@ internal sealed class FileExternalSorter(string _inputPath, string _outputPath, 
 				}
 
 				var reader = readers[readerIndex];
-				if (!reader.EndOfStream
-					&& await reader.ReadLineAsync() is { } nextLine
+				if (await reader.ReadLineAsync() is { } nextLine
 					&& !string.IsNullOrWhiteSpace(nextLine)
 					&& !queue.TryAdd(nextLine, [readerIndex]))
 				{
