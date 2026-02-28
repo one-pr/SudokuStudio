@@ -217,10 +217,11 @@
   * [四数探长致命结构的基本推理](deadly-pattern-theory/04-borescoper-deadly-pattern/02-reasoning-of-borescoper-deadly-pattern-using-4-digits.md)
 * [唯一矩阵（UM）](deadly-pattern-theory/05-unique-matrix.md)
 * [唯一性提示数覆盖（UCC）](deadly-pattern-theory/06-uniqueness-clue-cover.md)
-* [传递・基础知识](deadly-pattern-theory/07-state-transition-1/README.md)
-  * [什么是传递？](deadly-pattern-theory/07-state-transition-1/01-what-is-state-transition.md)
-  * [传递的底层原理](deadly-pattern-theory/07-state-transition-1/02-principle-of-state-transition.md)
-  * [正确地使用传递](deadly-pattern-theory/07-state-transition-1/03-correct-way-to-use-state-transition.md)
+* [传递](deadly-pattern-theory/07-state-transition/README.md)
+  * [什么是传递？](deadly-pattern-theory/07-state-transition/01-what-is-state-transition.md)
+  * [传递的底层原理](deadly-pattern-theory/07-state-transition/02-principle-of-state-transition.md)
+  * [正确地使用传递](deadly-pattern-theory/07-state-transition/03-correct-way-to-use-state-transition.md)
+  * [反转致命结构的传递](deadly-pattern-theory/07-state-transition/04-state-transition-in-reversed-deadly-pattern.md)
 * [淑芬致命结构（QDP）](deadly-pattern-theory/08-qiu-deadly-pattern/README.md)
   * [淑芬致命结构的基本推理](deadly-pattern-theory/08-qiu-deadly-pattern/01-reasoning-of-qiu-deadly-pattern.md)
   * [淑芬致命结构的一些例子](deadly-pattern-theory/08-qiu-deadly-pattern/02-examples-of-qiu-deadly-pattern.md)
@@ -231,8 +232,8 @@
 * [秩理论里的致命结构](deadly-pattern-theory/10-deadly-pattern-in-rank-theory/README.md)
   * [致命结构的秩](deadly-pattern-theory/10-deadly-pattern-in-rank-theory/01-rank-of-deadly-pattern.md)
   * [隐性致命结构](deadly-pattern-theory/10-deadly-pattern-in-rank-theory/02-hidden-deadly-pattern.md)
-* [传递・非常规传递](deadly-pattern-theory/11-state-transition-2/README.md)
-  * [反转致命结构的传递](deadly-pattern-theory/11-state-transition-2/01-state-transition-in-reversed-deadly-pattern.md)
+* [条件致命结构](deadly-pattern-theory/11-conditional-deadly-pattern/README.md)
+  * [旋转致命结构的基本推理](deadly-pattern-theory/11-conditional-deadly-pattern/01-reasoning-of-rotating-deadly-pattern.md)
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
