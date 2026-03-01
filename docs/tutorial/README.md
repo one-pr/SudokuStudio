@@ -2,7 +2,7 @@
 description: Welcome to Sudoku!
 ---
 
-# 初来乍到
+# 数独初介绍
 
 欢迎阅览本教程。本教程旨在讲解所有数独技巧/解法的推理逻辑，让你在做题的时候清楚地认识数独的必要特征，以及如何获取到 100% 正确的推导结论，帮助你“掷地有声”地完成题目，并且能够全身心投入逻辑推理之中，感受数独通过思维运动所带来的快乐。
 
@@ -38,7 +38,7 @@ description: Welcome to Sudoku!
 
 在完成一个数独题目的时候，我们会有一些基础的信息作为辅助，并非上手就给玩家完成。
 
-<figure><img src=".gitbook/assets/images_0246.png" alt=""><figcaption><p>一个题，和它的答案</p></figcaption></figure>
+<figure><img src=".gitbook/assets/Snipaste_2025-01-28_16-07-35.png" alt=""><figcaption><p>一个题，和它的答案</p></figcaption></figure>
 
 如图所示，左边的图是这个题目，而右边这个是它的答案。我们也叫它**解**（Solution）。可以看出，一个题是必须拥有一些合适的填数作为初始提示项，才能完成的；如果是空白的盘面的话，是无论如何都没有任何依赖项可提供推演提示的。我们把左边初始状态就给出的数字称为**提示数**或**已知数**（Given）。
 

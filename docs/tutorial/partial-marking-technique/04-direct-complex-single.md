@@ -14,7 +14,7 @@ description: Direct Complex Single
 
 ### 例子 1：宫区块 + 隐性数对 <a href="#example-1" id="example-1"></a>
 
-<figure><img src="../.gitbook/assets/images_0090.png" alt=""><figcaption><p>宫区块 + 隐性数对 + 宫排除</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (147).png" alt=""><figcaption><p>宫区块 + 隐性数对 + 宫排除</p></figcaption></figure>
 
 如图所示，我们先看左边的图，然后再看右边的图。左图里展示的是一个宫区块，得到的是 `b5` 的 6 区块结构。于是，我们可以得到 `r4c2 <> 6` 的结论。
 
@@ -44,7 +44,7 @@ description: Direct Complex Single
 
 ### 例子 3：两个宫区块 <a href="#example-3" id="example-3"></a>
 
-<figure><img src="../.gitbook/assets/images_0092.png" alt="" width="375"><figcaption><p>两个宫区块 + 唯一余数</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (148).png" alt="" width="375"><figcaption><p>两个宫区块 + 唯一余数</p></figcaption></figure>
 
 如图所示。`b7` 有个 5 的宫排除。我们先忽略它（实际上也帮不上什么忙）。
 
