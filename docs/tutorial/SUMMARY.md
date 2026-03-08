@@ -239,17 +239,11 @@
 
 ## 附录 <a href="#appendix" id="appendix"></a>
 
-* [术语索引](appendix/01-terms.md)
-* [数独文本格式](appendix/sudoku-text-format.md)
-* [逻辑学基础](appendix/02-logic-basics/README.md)
-  * [逻辑学简要介绍](appendix/02-logic-basics/01-brief-introduction-to-logic.md)
-  * [分情况讨论和析取消去](appendix/02-logic-basics/02-proof-of-cases-and-disjunction-elimination.md)
-  * [反证法](appendix/02-logic-basics/03-proof-by-contradiction.md)
-  * [逻辑蕴含](appendix/02-logic-basics/04-entailment.md)
-* [组合数学基础](appendix/03-combinatorics-basics/README.md)
-  * [抽屉原理](appendix/03-combinatorics-basics/01-pigeonhole-principle.md)
-* [HoDoKu 参考](appendix/04-hodoku-information/README.md)
-  * [HoDoKu 技巧编号一览表](appendix/04-hodoku-information/01-hodoku-library-technique-codes.md)
+* [Ⅰ：术语索引](appendix/01-terms.md)
+* [Ⅱ：数独文本格式](appendix/sudoku-text-format.md)
+* [Ⅲ：逻辑学简介](appendix/02-logic-basics.md)
+* [Ⅳ：抽屉原理简介](appendix/01-pigeonhole-principle.md)
+* [Ⅴ：HoDoKu 技巧编号一览表](appendix/01-hodoku-library-technique-codes.md)
 
 ## 其他 <a href="#miscellaneous" id="miscellaneous"></a>
 
