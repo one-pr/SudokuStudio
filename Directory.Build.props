@@ -1,4 +1,4 @@
-<Project>
+﻿<Project>
 	<!--
 	BASIC CONFIGURATION
 	-->
@@ -6,7 +6,7 @@
 	<PropertyGroup>
 		<!--Project configuration-->
 		<Authors>Kyouyama Kazusa</Authors>
-		<Copyright>Copyright (c) KyouyamaKazusa 2019-2025</Copyright>
+		<Copyright>Copyright (c) KyouyamaKazusa 2019-2026</Copyright>
 		<Version>3.5.0</Version>
 
 		<!--Syntax configuration-->
