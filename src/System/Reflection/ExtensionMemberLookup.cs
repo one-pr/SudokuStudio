@@ -14,13 +14,12 @@ public static class ExtensionMemberLookup
 		/// Try to find for all possible members (properties, methods and operators) of the specified type,
 		/// representing as a <see cref="Type"/> instance, defined as extension members inside the specified assemblies.
 		/// </summary>
-		/// <param name="memberTypes">The types of members you want to find.</param>
 		/// <param name="assemblies">
 		/// The assemblies that you want to find. If specify <see langword="null"/> or an empty array,
 		/// this method will defaultly find for extension members in the current-executing assembly.
 		/// </param>
 		/// <returns>All possible extension members found.</returns>
-		public IEnumerable<MemberInfo> FindExtensionMembers(ExtensionMemberTypes memberTypes, Assembly[]? assemblies)
+		public IEnumerable<MemberInfo> FindExtensionMembers(Assembly[]? assemblies)
 		{
 			// By design, we should find members and types marked <see langword="public"/> and <see langword="static"/>,
 			// and it shouldn't be a member overwritten from its base type or ancestor types.
