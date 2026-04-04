@@ -9486,6 +9486,76 @@
             <param name="field">The field.</param>
             <returns>The <see cref="T:System.Reflection.FieldInfo"/> instance.</returns>
         </member>
+        <member name="T:System.Reflection.ExtensionMemberLookup">
+            <summary>
+            Provides a way to find for extension members that are introduced in C# 14.
+            </summary>
+        </member>
+        <member name="M:System.Reflection.ExtensionMemberLookup.FindExtensionMembers(System.Type,System.Reflection.ExtensionMemberTypes,System.Reflection.Assembly[])">
+            <inheritdoc cref="M:System.Reflection.ExtensionMemberLookup.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.FindExtensionMembers(System.Reflection.ExtensionMemberTypes,System.Reflection.Assembly[])"/>
+        </member>
+        <member name="T:System.Reflection.ExtensionMemberLookup.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.&lt;M&gt;$8377F7E7F2B49410D74D1097D20FDAD7">
+            <summary>
+            Extends <see cref="T:System.Type"/> instances.
+            </summary>
+        </member>
+        <member name="M:System.Reflection.ExtensionMemberLookup.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.FindExtensionMembers(System.Reflection.ExtensionMemberTypes,System.Reflection.Assembly[])">
+            <summary>
+            Try to find for all possible members (properties, methods and operators) of the specified type,
+            representing as a <see cref="T:System.Type"/> instance, defined as extension members inside the specified assemblies.
+            </summary>
+            <param name="memberTypes">The types of members you want to find.</param>
+            <param name="assemblies">
+            The assemblies that you want to find. If specify <see langword="null"/> or an empty array,
+            this method will defaultly find for extension members in the current-executing assembly.
+            </param>
+            <returns>All possible extension members found.</returns>
+        </member>
+        <member name="T:System.Reflection.ExtensionMemberTypes">
+            <summary>
+            Represents a type of extension members.
+            </summary>
+        </member>
+        <member name="F:System.Reflection.ExtensionMemberTypes.None">
+            <summary>
+            Indicates none of all members.
+            </summary>
+        </member>
+        <member name="F:System.Reflection.ExtensionMemberTypes.Properties">
+            <summary>
+            Indicates instance properties.
+            </summary>
+        </member>
+        <member name="F:System.Reflection.ExtensionMemberTypes.StaticProperties">
+            <summary>
+            Indicates static properties.
+            </summary>
+        </member>
+        <member name="F:System.Reflection.ExtensionMemberTypes.Indexers">
+            <summary>
+            Indicates indexers. Not implemented in C# 14.
+            </summary>
+        </member>
+        <member name="F:System.Reflection.ExtensionMemberTypes.Methods">
+            <summary>
+            Indicates instance methods.
+            </summary>
+        </member>
+        <member name="F:System.Reflection.ExtensionMemberTypes.StaticMethods">
+            <summary>
+            Indicates static methods.
+            </summary>
+        </member>
+        <member name="F:System.Reflection.ExtensionMemberTypes.CompoundAssignmentOperators">
+            <summary>
+            Indicates compound assignment operators.
+            </summary>
+        </member>
+        <member name="F:System.Reflection.ExtensionMemberTypes.Operators">
+            <summary>
+            Indicates operators.
+            </summary>
+        </member>
         <member name="T:System.Reflection.MemberInfoExtensions">
             <summary>
             Provides with extension methods on <see cref="T:System.Reflection.MemberInfo"/> instances.
