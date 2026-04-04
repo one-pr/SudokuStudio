@@ -40,14 +40,14 @@ public partial class DelegateExtensions
 		/// (Easter egg) Represents Y-Combinator. This method can allow you create recursive lambdas.
 		/// For example, this code snippet will calculate for factorial of the specified digit:
 		/// <code><![CDATA[
-		/// var factorial = Func<int, int>.YCombinator(
-		///     lambda => value => value switch
-		///     {
-		///         < 0 => throw new ArgumentException("Invalid argument", nameof(value)),
-		///         0 or 1 => 1,
-		///         _ => value * lambda(value - 1)
-		///     }
-		/// );
+		/// // Define a nested lambda that performs a recursion.
+		/// var nested = (Func<int, int> lambda) => (int value) => value switch
+		/// {
+		///     < 0 => throw new ArgumentException("Invalid argument", nameof(value)),
+		///     0 or 1 => 1,
+		///     _ => value * lambda(value - 1)
+		/// };
+		/// var factorial = nested.YCombinator; // To get Y-combinator of this type.
 		/// Console.WriteLine(factorial(5)); // 120
 		/// ]]></code>
 		/// </summary>
