@@ -9486,10 +9486,130 @@
             <param name="field">The field.</param>
             <returns>The <see cref="T:System.Reflection.FieldInfo"/> instance.</returns>
         </member>
+        <member name="T:System.Reflection.ExtensionContainerMetadata">
+            <summary>
+            Represents a list of extension container type information.
+            </summary>
+            <param name="ExtensionGrouper">Indicates the type of extension grouper.</param>
+            <param name="ExtensionMarker">Indicates the type of extension marker.</param>
+            <param name="ContainingStaticClass">Indicates the containing static class type.</param>
+            <remarks>
+            For extension members, C# design team defines the following type hierarchy:
+            <code><![CDATA[
+            [Extension]
+            static class TypeExtensions
+            {
+                // An "Extension Grouping Type".
+                [SpecialName, Extension]
+                public sealed class <G>$ComplexHash
+                {
+                    // Provides signatures on declaration of an extension block,
+                    // Including type you want to extend (extension type), and its instance parameter name.
+                    // This type is named an "Extesion Marker Type".
+                    [SpecialName]
+                    public static class <M>$ComplexHash
+                    {
+                        [SpecialName, CompilerGenerated]
+                        public static void <Extension>$(ExtensionType extensionInstanceName);
+                    }
+            
+                    // All types of members will be fully-copied their signatures into this extension grouping type.
+                    // However, such members cannot be callable because they will automatically throw exceptions.
+                    // The only reason they are here is for representing runtime-recognizable signatures.
+                    // In addition, if such extension members has been marked some attributes,
+                    // they will also be copied here.
+                    // Examples of signatures:
+                    //   [ExtensionMarker("<M>$ComplexHash")]
+                    //   public int Property { [ExtensionMarker("<M>$ComplexHash")] get; }
+                    //   [ExtensionMarker("<M>$ComplexHash")]
+                    //   public static void Method();
+                    //   [ExtensionMarker("<M>$ComplexHash")]
+                    //   public static bool op_True(int value);
+                }
+            
+                // All callable members will be defined here, but they are lowered as *static methods*.
+                // Examples of signatures:
+                //   public static int get_Property(int @this);
+                //   public static void Method();
+                //   public static bool op_True(int value);
+            }
+            ]]></code>
+            To visit members for extension members in reflection (metadata), we can lookup such extension grouper and marker types.
+            </remarks>
+        </member>
+        <member name="M:System.Reflection.ExtensionContainerMetadata.#ctor(System.Type,System.Type,System.Type)">
+            <summary>
+            Represents a list of extension container type information.
+            </summary>
+            <param name="ExtensionGrouper">Indicates the type of extension grouper.</param>
+            <param name="ExtensionMarker">Indicates the type of extension marker.</param>
+            <param name="ContainingStaticClass">Indicates the containing static class type.</param>
+            <remarks>
+            For extension members, C# design team defines the following type hierarchy:
+            <code><![CDATA[
+            [Extension]
+            static class TypeExtensions
+            {
+                // An "Extension Grouping Type".
+                [SpecialName, Extension]
+                public sealed class <G>$ComplexHash
+                {
+                    // Provides signatures on declaration of an extension block,
+                    // Including type you want to extend (extension type), and its instance parameter name.
+                    // This type is named an "Extesion Marker Type".
+                    [SpecialName]
+                    public static class <M>$ComplexHash
+                    {
+                        [SpecialName, CompilerGenerated]
+                        public static void <Extension>$(ExtensionType extensionInstanceName);
+                    }
+            
+                    // All types of members will be fully-copied their signatures into this extension grouping type.
+                    // However, such members cannot be callable because they will automatically throw exceptions.
+                    // The only reason they are here is for representing runtime-recognizable signatures.
+                    // In addition, if such extension members has been marked some attributes,
+                    // they will also be copied here.
+                    // Examples of signatures:
+                    //   [ExtensionMarker("<M>$ComplexHash")]
+                    //   public int Property { [ExtensionMarker("<M>$ComplexHash")] get; }
+                    //   [ExtensionMarker("<M>$ComplexHash")]
+                    //   public static void Method();
+                    //   [ExtensionMarker("<M>$ComplexHash")]
+                    //   public static bool op_True(int value);
+                }
+            
+                // All callable members will be defined here, but they are lowered as *static methods*.
+                // Examples of signatures:
+                //   public static int get_Property(int @this);
+                //   public static void Method();
+                //   public static bool op_True(int value);
+            }
+            ]]></code>
+            To visit members for extension members in reflection (metadata), we can lookup such extension grouper and marker types.
+            </remarks>
+        </member>
+        <member name="P:System.Reflection.ExtensionContainerMetadata.ExtensionGrouper">
+            <summary>Indicates the type of extension grouper.</summary>
+        </member>
+        <member name="P:System.Reflection.ExtensionContainerMetadata.ExtensionMarker">
+            <summary>Indicates the type of extension marker.</summary>
+        </member>
+        <member name="P:System.Reflection.ExtensionContainerMetadata.ContainingStaticClass">
+            <summary>Indicates the containing static class type.</summary>
+        </member>
+        <member name="M:System.Reflection.ExtensionContainerMetadata.EnumerateExtensionMembers">
+            <summary>
+            Try to enumerate all members defined in this extension container.
+            </summary>
+            <returns>A sequence of extension members.</returns>
+        </member>
         <member name="T:System.Reflection.ExtensionMemberLookup">
             <summary>
             Provides a way to find for extension members that are introduced in C# 14.
             </summary>
+        </member>
+        <member name="M:System.Reflection.ExtensionMemberLookup.GetExtensionContainers(System.Type,System.Reflection.Assembly[])">
+            <inheritdoc cref="M:System.Reflection.ExtensionMemberLookup.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.GetExtensionContainers(System.Reflection.Assembly[])"/>
         </member>
         <member name="M:System.Reflection.ExtensionMemberLookup.FindExtensionMembers(System.Type,System.Reflection.Assembly[])">
             <inheritdoc cref="M:System.Reflection.ExtensionMemberLookup.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.FindExtensionMembers(System.Reflection.Assembly[])"/>
@@ -9498,6 +9618,19 @@
             <summary>
             Extends <see cref="T:System.Type"/> instances.
             </summary>
+        </member>
+        <member name="M:System.Reflection.ExtensionMemberLookup.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.GetExtensionContainers(System.Reflection.Assembly[])">
+            <summary>
+            Try to enumerates for all possible extension containers that represents extension members for the current type.
+            </summary>
+            <param name="assemblies">
+            The assemblies that you want to find. If specify <see langword="null"/> or an empty array,
+            this method will defaultly find for extension members in the current-executing assembly.
+            </param>
+            <returns>
+            A sequence of tuple of <see cref="T:System.Type"/> instances: extension grouper, extension marker
+            and the containing static class type.
+            </returns>
         </member>
         <member name="M:System.Reflection.ExtensionMemberLookup.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.FindExtensionMembers(System.Reflection.Assembly[])">
             <summary>
