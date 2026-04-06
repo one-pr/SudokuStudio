@@ -154,18 +154,64 @@ public static class ExtensionMemberLookup
 		/// Try to find for all possible members (properties, methods and operators) of the specified type,
 		/// representing as a <see cref="Type"/> instance, defined as extension members inside the specified assemblies.
 		/// </summary>
+		/// <param name="memberTypes">The types of members you want to get.</param>
 		/// <param name="assemblies">
 		/// The assemblies that you want to find. If specify <see langword="null"/> or an empty array,
 		/// this method will defaultly find for extension members in the current-executing assembly.
 		/// </param>
 		/// <returns>All possible extension members found.</returns>
-		public IEnumerable<MemberInfo> FindExtensionMembers(Assembly[]? assemblies)
+		public IEnumerable<MemberInfo> FindExtensionMembers(ExtensionMemberTypes memberTypes, Assembly[]? assemblies)
 		{
+			// TODO: Unfinished - here we should check for metadata member (defined in extension grouper type, not in static class).
 			foreach (var metadata in type.GetExtensionContainers(assemblies))
 			{
 				foreach (var member in metadata.EnumerateExtensionMembers())
 				{
-					yield return member;
+					switch (member, memberTypes)
+					{
+						case (PropertyInfo { GetMethod: var getter, SetMethod: var setter } p, _)
+						when
+							// It's an instance property
+							memberTypes.HasFlag(ExtensionMemberTypes.Properties)
+							&& !((getter?.IsStatic ?? false) || (setter?.IsStatic ?? false))
+							&& p.GetIndexParameters().Length == 0
+							// Or a static property
+							|| memberTypes.HasFlag(ExtensionMemberTypes.StaticProperties)
+							&& ((getter?.IsStatic ?? false) || (setter?.IsStatic ?? false))
+							&& p.GetIndexParameters().Length == 0
+							// Or an indexer (must be instance)
+							|| memberTypes.HasFlag(ExtensionMemberTypes.Indexers)
+							&& p.GetIndexParameters().Length != 0:
+						{
+							yield return member;
+							break;
+						}
+
+						case (MethodInfo { IsStatic: var isStatic, Name: var name, Attributes: var methodAttributes }, _)
+						when
+							// It's an instance method
+							memberTypes.HasFlag(ExtensionMemberTypes.Methods)
+							&& !isStatic
+							&& !methodAttributes.HasFlag(MethodAttributes.SpecialName)
+							// Or a static method
+							|| memberTypes.HasFlag(ExtensionMemberTypes.StaticMethods)
+							&& isStatic
+							&& !methodAttributes.HasFlag(MethodAttributes.SpecialName)
+							// Or an instance operator (compound assignment operator)
+							|| memberTypes.HasFlag(ExtensionMemberTypes.CompoundAssignmentOperators)
+							&& !isStatic
+							&& methodAttributes.HasFlag(MethodAttributes.SpecialName)
+							&& name.StartsWith("op_") && name.EndsWith("Assignment")
+							// Or a static operator
+							|| memberTypes.HasFlag(ExtensionMemberTypes.Operators)
+							&& isStatic
+							&& methodAttributes.HasFlag(MethodAttributes.SpecialName)
+							&& name.StartsWith("op_"):
+						{
+							yield return member;
+							break;
+						}
+					}
 				}
 			}
 		}
