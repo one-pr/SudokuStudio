@@ -28,7 +28,7 @@ public static class ExtensionMemberLookup
 		/// A sequence of tuple of <see cref="Type"/> instances: extension grouper, extension marker
 		/// and the containing static class type.
 		/// </returns>
-		public IEnumerable<ExtensionContainerMetadata> GetExtensionContainers(Assembly[]? assemblies)
+		public IEnumerable<ExtensionContainerMetadata> GetExtensionContainers(params Assembly[]? assemblies)
 		{
 			// Iterate on each assembly.
 			foreach (var assembly in assemblies is { Length: not 0 } ? assemblies : [Assembly.GetExecutingAssembly()])
@@ -163,14 +163,13 @@ public static class ExtensionMemberLookup
 		/// this method will defaultly find for extension members in the current-executing assembly.
 		/// </param>
 		/// <returns>All possible extension members found.</returns>
-		public IEnumerable<MemberInfo> FindExtensionMembers(ExtensionMemberTypes memberTypes, Assembly[]? assemblies)
+		public IEnumerable<MemberInfo> FindExtensionMembers(ExtensionMemberTypes memberTypes, params Assembly[]? assemblies)
 		{
-			// TODO: Unfinished - here we should check for metadata member (defined in extension grouper type, not in static class).
 			foreach (var metadata in type.GetExtensionContainers(assemblies))
 			{
-				foreach (var member in metadata.EnumerateExtensionMembers())
+				foreach (var (callable, skeleton) in metadata.EnumerateExtensionMembers())
 				{
-					switch (member, memberTypes)
+					switch (skeleton, memberTypes)
 					{
 						case (PropertyInfo { GetMethod: var getter, SetMethod: var setter } p, _)
 						when
@@ -186,7 +185,7 @@ public static class ExtensionMemberLookup
 							|| memberTypes.HasFlag(ExtensionMemberTypes.Indexers)
 							&& p.GetIndexParameters().Length != 0:
 						{
-							yield return member;
+							yield return callable;
 							break;
 						}
 
@@ -211,7 +210,7 @@ public static class ExtensionMemberLookup
 							&& methodAttributes.HasFlag(MethodAttributes.SpecialName)
 							&& name.StartsWith("op_"):
 						{
-							yield return member;
+							yield return callable;
 							break;
 						}
 					}

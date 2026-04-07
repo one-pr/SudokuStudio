@@ -9601,6 +9601,20 @@
             <summary>
             Indicates the name of container instance parameter.
             </summary>
+            <remarks>
+            A container may be like this:
+            <code><![CDATA[
+            extension(int @this)
+            {
+                // ...
+                // Members
+                // ...
+            }
+            ]]></code>
+            This property returns a <see cref="T:System.Reflection.ParameterInfo"/> that represents parameter <c><see cref="T:System.Int32"/> @this</c>
+            defined in <c><see langword="extension"/>(<see cref="T:System.Int32"/> @this)</c>.
+            If unnamed, <see langword="null"/> will be returned.
+            </remarks>
         </member>
         <member name="M:System.Reflection.ExtensionContainerMetadata.EnumerateExtensionMembers">
             <summary>

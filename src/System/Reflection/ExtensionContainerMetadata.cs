@@ -54,7 +54,21 @@ public sealed record ExtensionContainerMetadata(Type ExtensionGrouper, Type Exte
 	/// <summary>
 	/// Indicates the name of container instance parameter.
 	/// </summary>
-	public ParameterInfo ContainerParameter
+	/// <remarks>
+	/// A container may be like this:
+	/// <code><![CDATA[
+	/// extension(int @this)
+	/// {
+	///     // ...
+	///     // Members
+	///     // ...
+	/// }
+	/// ]]></code>
+	/// This property returns a <see cref="ParameterInfo"/> that represents parameter <c><see cref="int"/> @this</c>
+	/// defined in <c><see langword="extension"/>(<see cref="int"/> @this)</c>.
+	/// If unnamed, <see langword="null"/> will be returned.
+	/// </remarks>
+	public ParameterInfo? ContainerParameter
 		=> ExtensionMarker.GetMethod("<Extension>$", ExtensionMemberLookup.DefaultBindingFlags)!.GetParameters()[0];
 
 
@@ -62,7 +76,7 @@ public sealed record ExtensionContainerMetadata(Type ExtensionGrouper, Type Exte
 	/// Try to enumerate all members defined in this extension container.
 	/// </summary>
 	/// <returns>A sequence of extension members.</returns>
-	public IEnumerable<MemberInfo> EnumerateExtensionMembers()
+	public IEnumerable<(MethodInfo Callable, MemberInfo Skeleton)> EnumerateExtensionMembers()
 	{
 		// Find for all possible signatures of members defined in this type.
 		// Such types cannot be callable but we should use its names to make a final lookup.
@@ -102,13 +116,21 @@ public sealed record ExtensionContainerMetadata(Type ExtensionGrouper, Type Exte
 			foreach (var member in members)
 			{
 				// This type must be a static method.
-				if (member is not MethodInfo { IsStatic: true })
+				if (member is not MethodInfo { IsStatic: true, Name: var methodName } methodInfo)
 				{
 					continue;
 				}
 
 				// Okay, now the member is found.
-				yield return member;
+				yield return (
+					methodInfo,
+					methodName switch
+					{
+						['o', 'p', '_', ..] => ExtensionGrouper.GetMethod(methodName)!,
+						['g' or 's', 'e', 't', '_', ..] => ExtensionGrouper.GetProperty(methodName[4..])!,
+						_ => ExtensionGrouper.GetMember(methodName)![0]
+					}
+				);
 			}
 		}
 	}
