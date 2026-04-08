@@ -5,7 +5,7 @@ namespace System.Reflection;
 /// </summary>
 /// <param name="ExtensionGrouper">Indicates the type of extension grouper.</param>
 /// <param name="ExtensionMarker">Indicates the type of extension marker.</param>
-/// <param name="ContainingStaticClass">Indicates the containing static class type.</param>
+/// <param name="DeclaringStaticClass">Indicates the static class type that includes such extension grouper and marker types.</param>
 /// <remarks>
 /// For extension members, C# design team defines the following type hierarchy:
 /// <code><![CDATA[
@@ -49,7 +49,7 @@ namespace System.Reflection;
 /// ]]></code>
 /// To visit members for extension members in reflection (metadata), we can lookup such extension grouper and marker types.
 /// </remarks>
-public sealed record ExtensionContainerMetadata(Type ExtensionGrouper, Type ExtensionMarker, Type ContainingStaticClass)
+public sealed record ExtensionContainerMetadata(Type ExtensionGrouper, Type ExtensionMarker, Type DeclaringStaticClass)
 {
 	/// <summary>
 	/// Indicates the name of container instance parameter.
@@ -75,7 +75,7 @@ public sealed record ExtensionContainerMetadata(Type ExtensionGrouper, Type Exte
 		var sb = new StringBuilder();
 		sb.AppendLine(
 			$"""
-			Container - {ContainingStaticClass}:
+			Container - {DeclaringStaticClass}:
 			Parameter - {ContainerParameter}
 			Members:
 			"""
@@ -116,13 +116,6 @@ public sealed record ExtensionContainerMetadata(Type ExtensionGrouper, Type Exte
 		// Then find for matched members in the static class by names collected.
 		foreach (var skeletonMember in skeletonMembers)
 		{
-			var skeletonMemberIsStatic = skeletonMember switch
-			{
-				PropertyInfo { IsStatic: var p } => p,
-				MethodInfo { IsStatic: var m } => m,
-				_ => throw new UnreachableException()
-			};
-
 			// There's no possible members exists here due to mismatched of name.
 			// Although, the name may not be same (which is more intuitive, especially for properties),
 			// they are, in fact, same in reflection - though it is represented as a static method now.
@@ -136,7 +129,7 @@ public sealed record ExtensionContainerMetadata(Type ExtensionGrouper, Type Exte
 			// <item>Method => <c>MethodName</c> (Just copy)</item>
 			// <item>Operator => <c>op_OperatorName</c> (Just copy)</item>
 			// </list>
-			var callableMethods = ContainingStaticClass
+			var callableMethods = DeclaringStaticClass
 				.GetMember(skeletonMember.Name)
 				.OfType<MethodInfo>()
 				.Where(static member => member.IsStatic)

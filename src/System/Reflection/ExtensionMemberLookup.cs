@@ -11,6 +11,16 @@ public static partial class ExtensionMemberLookup
 	public const string ExtensionMarkerMethodName = "<Extension>$";
 
 	/// <summary>
+	/// Indicates the prefix of extension grouper type name.
+	/// </summary>
+	public const string ExtensionGrouperTypeNamePrefix = "<G>$";
+
+	/// <summary>
+	/// Indicates the prefix of extension marker type name.
+	/// </summary>
+	public const string ExtensionMarkerTypeNamePrefix = "<M>$";
+
+	/// <summary>
 	/// By design, we should find members and types marked <see langword="public"/> and <see langword="static"/>,
 	/// and it shouldn't be a member overwritten from its base type or ancestor types.
 	/// </summary>
@@ -52,13 +62,13 @@ public static partial class ExtensionMemberLookup
 					// Step 1: Check for static class.
 
 					// This type must be 'static'.
-					if (!isStaticClass(staticClassType))
+					if (!staticClassType.IsStatic)
 					{
 						continue;
 					}
 
 					// This type must be marked as [Extension].
-					if (!staticClassType.IsDefined(typeof(ExtensionAttribute), false))
+					if (!staticClassType.MightBeExtension)
 					{
 						continue;
 					}
@@ -69,14 +79,15 @@ public static partial class ExtensionMemberLookup
 						continue;
 					}
 
-					// Step 2: Check extension grouping type, whose name must be started with '<G>$'.
+					// Step 2: Check extension grouping type, whose name must be started
+					// with <see cref="ExtensionGrouperTypeNamePrefix"/>.
 					// This type is a static class.
 
 					// Iterate on all possible types defined in it.
 					foreach (var extensionGrouperType in staticClassType.GetMembers(DefaultBindingFlags).OfType<Type>())
 					{
-						// The name of this type must be started with '<G>$'.
-						if (!extensionGrouperType.Name.StartsWith("<G>$"))
+						// The name of this type must be started with <see cref="ExtensionGrouperTypeNamePrefix"/>.
+						if (!extensionGrouperType.Name.StartsWith(ExtensionGrouperTypeNamePrefix))
 						{
 							continue;
 						}
@@ -88,7 +99,7 @@ public static partial class ExtensionMemberLookup
 						}
 
 						// This type must be marked as [Extension].
-						if (!extensionGrouperType.IsDefined(typeof(ExtensionAttribute), false))
+						if (!extensionGrouperType.MightBeExtension)
 						{
 							continue;
 						}
@@ -102,7 +113,7 @@ public static partial class ExtensionMemberLookup
 						}
 
 						// This type must be non-'static'.
-						if (isStaticClass(extensionGrouperType))
+						if (extensionGrouperType.IsStatic)
 						{
 							continue;
 						}
@@ -113,8 +124,8 @@ public static partial class ExtensionMemberLookup
 						var correspondingExtensionMarkerType = default(Type);
 						foreach (var extensionMarkerType in extensionGrouperType.GetMembers(DefaultBindingFlags).OfType<Type>())
 						{
-							// The name of this type must be started with <M>$.
-							if (!extensionMarkerType.Name.StartsWith("<M>$"))
+							// The name of this type must be started with '<see cref="ExtensionMarkerTypeNamePrefix"/>'.
+							if (!extensionMarkerType.Name.StartsWith(ExtensionMarkerTypeNamePrefix))
 							{
 								continue;
 							}
@@ -126,21 +137,27 @@ public static partial class ExtensionMemberLookup
 							}
 
 							// This type must be 'static'.
-							if (!isStaticClass(extensionMarkerType))
+							if (!extensionMarkerType.IsStatic)
 							{
 								continue;
 							}
 
-							// This type must contain one and only one member - a 'static' method, with name '<c>&lt;Extension&gt;$</c>'.
+							// This type must contain one and only one member - a 'static' method,
+							// with name '<see cref="ExtensionMarkerMethodName"/>'.
 							var possibleMethodsInfo = extensionMarkerType.GetMembers(DefaultBindingFlags)
 								.OfType<MethodInfo>()
 								.ToArray();
-							if (possibleMethodsInfo is not [{ IsGenericMethod: false, Name: ExtensionMarkerMethodName, ReturnType: var returnType } extensionStaticMethodMember]
-								|| extensionStaticMethodMember.GetParameters() is not [{ ParameterType: var parameterType }]
+							if (possibleMethodsInfo is not [
+								{
+									IsGenericMethod: false,
+									Name: ExtensionMarkerMethodName,
+									ReturnType: var returnType,
+									IsSpecialName: true,
+									IsCompilerGenerated: true,
+									Parameters: [{ ParameterType: var parameterType }],
+								}]
 								|| parameterType != type
-								|| returnType != typeof(void)
-								|| !extensionStaticMethodMember.IsSpecialName
-								|| !extensionStaticMethodMember.IsDefined(typeof(CompilerGeneratedAttribute), false))
+								|| returnType != typeof(void))
 							{
 								continue;
 							}
@@ -159,15 +176,6 @@ public static partial class ExtensionMemberLookup
 						yield return new(extensionGrouperType, correspondingExtensionMarkerType, staticClassType);
 					}
 				}
-			}
-
-
-			static bool isStaticClass(Type type)
-			{
-				// In metadata (IL layer), a <see langword="static class"/> will be emitted
-				// as an <see langword="abstracted sealed class"/> with no constructors.
-				const BindingFlags instanceConstructorFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-				return type.IsAbstract && type.IsSealed && type.GetConstructors(instanceConstructorFlags).Length == 0;
 			}
 		}
 

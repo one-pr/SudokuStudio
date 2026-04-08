@@ -9533,7 +9533,7 @@
             </summary>
             <param name="ExtensionGrouper">Indicates the type of extension grouper.</param>
             <param name="ExtensionMarker">Indicates the type of extension marker.</param>
-            <param name="ContainingStaticClass">Indicates the containing static class type.</param>
+            <param name="DeclaringStaticClass">Indicates the static class type that includes such extension grouper and marker types.</param>
             <remarks>
             For extension members, C# design team defines the following type hierarchy:
             <code><![CDATA[
@@ -9584,7 +9584,7 @@
             </summary>
             <param name="ExtensionGrouper">Indicates the type of extension grouper.</param>
             <param name="ExtensionMarker">Indicates the type of extension marker.</param>
-            <param name="ContainingStaticClass">Indicates the containing static class type.</param>
+            <param name="DeclaringStaticClass">Indicates the static class type that includes such extension grouper and marker types.</param>
             <remarks>
             For extension members, C# design team defines the following type hierarchy:
             <code><![CDATA[
@@ -9635,8 +9635,8 @@
         <member name="P:System.Reflection.ExtensionContainerMetadata.ExtensionMarker">
             <summary>Indicates the type of extension marker.</summary>
         </member>
-        <member name="P:System.Reflection.ExtensionContainerMetadata.ContainingStaticClass">
-            <summary>Indicates the containing static class type.</summary>
+        <member name="P:System.Reflection.ExtensionContainerMetadata.DeclaringStaticClass">
+            <summary>Indicates the static class type that includes such extension grouper and marker types.</summary>
         </member>
         <member name="P:System.Reflection.ExtensionContainerMetadata.ContainerParameter">
             <summary>
@@ -9668,6 +9668,16 @@
         <member name="F:System.Reflection.ExtensionMemberLookup.ExtensionMarkerMethodName">
             <summary>
             Indicates the name of method of extension marker.
+            </summary>
+        </member>
+        <member name="F:System.Reflection.ExtensionMemberLookup.ExtensionGrouperTypeNamePrefix">
+            <summary>
+            Indicates the prefix of extension grouper type name.
+            </summary>
+        </member>
+        <member name="F:System.Reflection.ExtensionMemberLookup.ExtensionMarkerTypeNamePrefix">
+            <summary>
+            Indicates the prefix of extension marker type name.
             </summary>
         </member>
         <member name="F:System.Reflection.ExtensionMemberLookup.DefaultBindingFlags">
@@ -9787,60 +9797,14 @@
             </summary>
             <seealso cref="T:System.Reflection.MemberInfo"/>
         </member>
-        <member name="M:System.Reflection.MemberInfoExtensions.GetInitMethod(System.Reflection.PropertyInfo,System.Boolean)">
-            <inheritdoc cref="M:System.Reflection.MemberInfoExtensions.&lt;G&gt;$A68E0825C8469CCB2F38F50C7F6F03AB.GetInitMethod(System.Boolean)"/>
+        <member name="M:System.Reflection.MemberInfoExtensions.get_IsCompilerGenerated(System.Reflection.MemberInfo)">
+            <inheritdoc cref="P:System.Reflection.MemberInfoExtensions.&lt;G&gt;$9DB10D0E7CAA88E7E81DFBF03450ED00.IsCompilerGenerated"/>
+        </member>
+        <member name="M:System.Reflection.MemberInfoExtensions.get_MightBeExtension(System.Reflection.MemberInfo)">
+            <inheritdoc cref="P:System.Reflection.MemberInfoExtensions.&lt;G&gt;$9DB10D0E7CAA88E7E81DFBF03450ED00.MightBeExtension"/>
         </member>
         <member name="M:System.Reflection.MemberInfoExtensions.IsDefined``1(System.Reflection.MemberInfo)">
             <inheritdoc cref="M:System.Reflection.MemberInfoExtensions.&lt;G&gt;$9DB10D0E7CAA88E7E81DFBF03450ED00.IsDefined``1"/>
-        </member>
-        <member name="T:System.Reflection.MemberInfoExtensions.&lt;G&gt;$A68E0825C8469CCB2F38F50C7F6F03AB.&lt;M&gt;$7E436839AF95F31B88A4B7A199A68586">
-            <target name="container">
-				<summary>
-					<para>
-						Represents a nested <see langword="extension" /> block that includes extension members
-						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
-						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
-					</para>
-					<para>
-						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
-						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
-					</para>
-				</summary>
-			</target>
-            <param name="this">The current instance.</param>
-        </member>
-        <member name="M:System.Reflection.MemberInfoExtensions.&lt;G&gt;$A68E0825C8469CCB2F38F50C7F6F03AB.GetInitMethod(System.Boolean)">
-            <summary>
-            When overridden in a derived class, returns the <see langword="init"/> accessor for this property.
-            </summary>
-            <param name="nonPublic">
-            Indicates whether the accessor should be returned if it is non-public.
-            <see langword="true"/> if a non-public accessor is to be returned; otherwise, <see langword="false"/>.
-            </param>
-            <returns>
-            This property's <see langword="init"/> method, or <see langword="null"/>, as shown in the following table.
-            <list type="table">
-            <listheader>
-            <term>Value</term>
-            <description>Condition</description>
-            </listheader>
-            <item>
-            <term>The <see langword="init"/> method for this property</term>
-            <description>
-            The <see langword="init"/> accessor is public, or <paramref name="nonPublic"/> is <see langword="true"/>
-            and the <see langword="init"/> accessor is non-public.
-            </description>
-            </item>
-            <item>
-            <term><see langword="null"/></term>
-            <description>
-            <paramref name="nonPublic"/> is <see langword="true"/>, but the property is read-only,
-            or <paramref name="nonPublic"/> is <see langword="false"/> and the <see langword="init"/> accessor is non-public,
-            or there is no <see langword="init"/> accessor.
-            </description>
-            </item>
-            </list>
-            </returns>
         </member>
         <member name="T:System.Reflection.MemberInfoExtensions.&lt;G&gt;$9DB10D0E7CAA88E7E81DFBF03450ED00.&lt;M&gt;$4E0FA3C40E065A721E749500333DDA4B">
             <target name="container">
@@ -9858,8 +9822,49 @@
 			</target>
             <param name="this">The current instance.</param>
         </member>
+        <member name="P:System.Reflection.MemberInfoExtensions.&lt;G&gt;$9DB10D0E7CAA88E7E81DFBF03450ED00.IsCompilerGenerated">
+            <summary>
+            Indicates whether the member is compiler-generated.
+            </summary>
+        </member>
+        <member name="P:System.Reflection.MemberInfoExtensions.&lt;G&gt;$9DB10D0E7CAA88E7E81DFBF03450ED00.MightBeExtension">
+            <summary>
+            Indicates whether the member is marked <see cref="T:System.Runtime.CompilerServices.ExtensionAttribute"/> or not.
+            </summary>
+            <seealso cref="T:System.Runtime.CompilerServices.ExtensionAttribute"/>
+        </member>
         <member name="M:System.Reflection.MemberInfoExtensions.&lt;G&gt;$9DB10D0E7CAA88E7E81DFBF03450ED00.IsDefined``1">
             <inheritdoc cref="M:System.Reflection.CustomAttributeExtensions.IsDefined(System.Reflection.MemberInfo,System.Type)"/>
+        </member>
+        <member name="T:System.Reflection.MethodInfoExtensions">
+            <summary>
+            Provides extension members on <see cref="T:System.Reflection.MethodInfo"/> instances.
+            </summary>
+            <seealso cref="T:System.Reflection.MethodInfo"/>
+        </member>
+        <member name="M:System.Reflection.MethodInfoExtensions.get_Parameters(System.Reflection.MethodInfo)">
+            <inheritdoc cref="P:System.Reflection.MethodInfoExtensions.&lt;G&gt;$C219D7CAAD849B16AAC7CB332D19BED9.Parameters"/>
+        </member>
+        <member name="T:System.Reflection.MethodInfoExtensions.&lt;G&gt;$C219D7CAAD849B16AAC7CB332D19BED9.&lt;M&gt;$2308254F684681B91329835CB36809CC">
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
+        </member>
+        <member name="P:System.Reflection.MethodInfoExtensions.&lt;G&gt;$C219D7CAAD849B16AAC7CB332D19BED9.Parameters">
+            <summary>
+            Indicates the parameters defined in this method.
+            </summary>
         </member>
         <member name="T:System.Reflection.ParameterInfoExtensions">
             <summary>
@@ -9922,6 +9927,9 @@
         <member name="M:System.Reflection.PropertyInfoExtensions.get_IndexParameters(System.Reflection.PropertyInfo)">
             <inheritdoc cref="P:System.Reflection.PropertyInfoExtensions.&lt;G&gt;$A68E0825C8469CCB2F38F50C7F6F03AB.IndexParameters"/>
         </member>
+        <member name="M:System.Reflection.PropertyInfoExtensions.GetInitMethod(System.Reflection.PropertyInfo,System.Boolean)">
+            <inheritdoc cref="M:System.Reflection.PropertyInfoExtensions.&lt;G&gt;$A68E0825C8469CCB2F38F50C7F6F03AB.GetInitMethod(System.Boolean)"/>
+        </member>
         <member name="T:System.Reflection.PropertyInfoExtensions.&lt;G&gt;$A68E0825C8469CCB2F38F50C7F6F03AB.&lt;M&gt;$7E436839AF95F31B88A4B7A199A68586">
             <target name="container">
 				<summary>
@@ -9954,6 +9962,39 @@
             If the property is not an indexer, an empty array will be returned.
             </summary>
         </member>
+        <member name="M:System.Reflection.PropertyInfoExtensions.&lt;G&gt;$A68E0825C8469CCB2F38F50C7F6F03AB.GetInitMethod(System.Boolean)">
+            <summary>
+            When overridden in a derived class, returns the <see langword="init"/> accessor for this property.
+            </summary>
+            <param name="nonPublic">
+            Indicates whether the accessor should be returned if it is non-public.
+            <see langword="true"/> if a non-public accessor is to be returned; otherwise, <see langword="false"/>.
+            </param>
+            <returns>
+            This property's <see langword="init"/> method, or <see langword="null"/>, as shown in the following table.
+            <list type="table">
+            <listheader>
+            <term>Value</term>
+            <description>Condition</description>
+            </listheader>
+            <item>
+            <term>The <see langword="init"/> method for this property</term>
+            <description>
+            The <see langword="init"/> accessor is public, or <paramref name="nonPublic"/> is <see langword="true"/>
+            and the <see langword="init"/> accessor is non-public.
+            </description>
+            </item>
+            <item>
+            <term><see langword="null"/></term>
+            <description>
+            <paramref name="nonPublic"/> is <see langword="true"/>, but the property is read-only,
+            or <paramref name="nonPublic"/> is <see langword="false"/> and the <see langword="init"/> accessor is non-public,
+            or there is no <see langword="init"/> accessor.
+            </description>
+            </item>
+            </list>
+            </returns>
+        </member>
         <member name="T:System.Reflection.TypeExtensions">
             <summary>
             Provides with extension methods on <see cref="T:System.Type"/>.
@@ -9962,6 +10003,9 @@
         </member>
         <member name="M:System.Reflection.TypeExtensions.get_HasParameterlessConstructor(System.Type)">
             <inheritdoc cref="P:System.Reflection.TypeExtensions.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.HasParameterlessConstructor"/>
+        </member>
+        <member name="M:System.Reflection.TypeExtensions.get_IsStatic(System.Type)">
+            <inheritdoc cref="P:System.Reflection.TypeExtensions.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.IsStatic"/>
         </member>
         <member name="M:System.Reflection.TypeExtensions.IsGenericAssignableTo(System.Type,System.Type)">
             <inheritdoc cref="M:System.Reflection.TypeExtensions.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.IsGenericAssignableTo(System.Type)"/>
@@ -9988,6 +10032,11 @@
         <member name="P:System.Reflection.TypeExtensions.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.HasParameterlessConstructor">
             <summary>
             Determines whether the type has a parameterless constructor.
+            </summary>
+        </member>
+        <member name="P:System.Reflection.TypeExtensions.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.IsStatic">
+            <summary>
+            Indicates whether the type is <see langword="static"/> or not.
             </summary>
         </member>
         <member name="M:System.Reflection.TypeExtensions.&lt;G&gt;$6B6159A298CA62A8C577E514BE40E3DD.IsGenericAssignableTo(System.Type)">

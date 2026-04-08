@@ -10,54 +10,20 @@ public static class MemberInfoExtensions
 	///     file="../../global-doc-comments.xml"
 	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
 	/// <param name="this">The current instance.</param>
-	extension(PropertyInfo @this)
-	{
-		/// <summary>
-		/// When overridden in a derived class, returns the <see langword="init"/> accessor for this property.
-		/// </summary>
-		/// <param name="nonPublic">
-		/// Indicates whether the accessor should be returned if it is non-public.
-		/// <see langword="true"/> if a non-public accessor is to be returned; otherwise, <see langword="false"/>.
-		/// </param>
-		/// <returns>
-		/// This property's <see langword="init"/> method, or <see langword="null"/>, as shown in the following table.
-		/// <list type="table">
-		/// <listheader>
-		/// <term>Value</term>
-		/// <description>Condition</description>
-		/// </listheader>
-		/// <item>
-		/// <term>The <see langword="init"/> method for this property</term>
-		/// <description>
-		/// The <see langword="init"/> accessor is public, or <paramref name="nonPublic"/> is <see langword="true"/>
-		/// and the <see langword="init"/> accessor is non-public.
-		/// </description>
-		/// </item>
-		/// <item>
-		/// <term><see langword="null"/></term>
-		/// <description>
-		/// <paramref name="nonPublic"/> is <see langword="true"/>, but the property is read-only,
-		/// or <paramref name="nonPublic"/> is <see langword="false"/> and the <see langword="init"/> accessor is non-public,
-		/// or there is no <see langword="init"/> accessor.
-		/// </description>
-		/// </item>
-		/// </list>
-		/// </returns>
-		public MethodInfo? GetInitMethod(bool nonPublic)
-			=> @this.GetSetMethod(nonPublic) switch
-			{
-				{ ReturnParameter: var r } i
-					when Array.Exists(r.GetRequiredCustomModifiers(), static modreq => modreq == typeof(IsExternalInit)) => i,
-				_ => null
-			};
-	}
-
-	/// <include
-	///     file="../../global-doc-comments.xml"
-	///     path="/g/csharp14/feature[@name='extension-container']/target[@name='container']"/>
-	/// <param name="this">The current instance.</param>
 	extension(MemberInfo @this)
 	{
+		/// <summary>
+		/// Indicates whether the member is compiler-generated.
+		/// </summary>
+		public bool IsCompilerGenerated => @this.IsDefined(typeof(CompilerGeneratedAttribute), false);
+
+		/// <summary>
+		/// Indicates whether the member is marked <see cref="ExtensionAttribute"/> or not.
+		/// </summary>
+		/// <seealso cref="ExtensionAttribute"/>
+		public bool MightBeExtension => @this.IsDefined(typeof(ExtensionAttribute), false);
+
+
 		/// <inheritdoc cref="CustomAttributeExtensions.IsDefined(MemberInfo, Type)"/>
 		public bool IsDefined<TAttribute>() where TAttribute : Attribute => @this.IsDefined(typeof(TAttribute));
 	}

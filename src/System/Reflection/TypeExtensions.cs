@@ -18,6 +18,20 @@ public static class TypeExtensions
 		public bool HasParameterlessConstructor
 			=> @this.GetConstructor(BindingFlags.Public | BindingFlags.Instance, Type.EmptyTypes) is not null;
 
+		/// <summary>
+		/// Indicates whether the type is <see langword="static"/> or not.
+		/// </summary>
+		public bool IsStatic
+		{
+			get
+			{
+				// In metadata (IL layer), a <see langword="static class"/> will be emitted
+				// as an <see langword="abstracted sealed class"/> with no constructors.
+				const BindingFlags instanceConstructorFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+				return @this.IsAbstract && @this.IsSealed && @this.GetConstructors(instanceConstructorFlags).Length == 0;
+			}
+		}
+
 
 		/// <summary>
 		/// Determines whether the current type can be assigned to a variable of the specified
