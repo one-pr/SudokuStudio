@@ -9665,10 +9665,20 @@
             Provides a way to find for extension members that are introduced in C# 14.
             </summary>
         </member>
+        <member name="F:System.Reflection.ExtensionMemberLookup.ExtensionMarkerMethodName">
+            <summary>
+            Indicates the name of method of extension marker.
+            </summary>
+        </member>
         <member name="F:System.Reflection.ExtensionMemberLookup.DefaultBindingFlags">
             <summary>
             By design, we should find members and types marked <see langword="public"/> and <see langword="static"/>,
             and it shouldn't be a member overwritten from its base type or ancestor types.
+            </summary>
+        </member>
+        <member name="F:System.Reflection.ExtensionMemberLookup.ExtensionGrouperSkeletonMembersBindingFlags">
+            <summary>
+            Defines binding flags that will match skeleton members defined in extesion grouper types.
             </summary>
         </member>
         <member name="M:System.Reflection.ExtensionMemberLookup.GetExtensionContainers(System.Type,System.Boolean,System.Reflection.Assembly[])">
@@ -9895,6 +9905,53 @@
         <member name="P:System.Reflection.ParameterInfoExtensions.&lt;G&gt;$248DBFF30607091B4958CD8CD757152A.IsParams">
             <summary>
             Indicates whether the parameter has modifier <see langword="params"/> or not.
+            </summary>
+        </member>
+        <member name="T:System.Reflection.PropertyInfoExtensions">
+            <summary>
+            Provides extension members on <see cref="T:System.Reflection.PropertyInfo"/> instances.
+            </summary>
+            <seealso cref="T:System.Reflection.PropertyInfo"/>
+        </member>
+        <member name="M:System.Reflection.PropertyInfoExtensions.get_IsStatic(System.Reflection.PropertyInfo)">
+            <inheritdoc cref="P:System.Reflection.PropertyInfoExtensions.&lt;G&gt;$A68E0825C8469CCB2F38F50C7F6F03AB.IsStatic"/>
+        </member>
+        <member name="M:System.Reflection.PropertyInfoExtensions.get_IsReadOnly(System.Reflection.PropertyInfo)">
+            <inheritdoc cref="P:System.Reflection.PropertyInfoExtensions.&lt;G&gt;$A68E0825C8469CCB2F38F50C7F6F03AB.IsReadOnly"/>
+        </member>
+        <member name="M:System.Reflection.PropertyInfoExtensions.get_IndexParameters(System.Reflection.PropertyInfo)">
+            <inheritdoc cref="P:System.Reflection.PropertyInfoExtensions.&lt;G&gt;$A68E0825C8469CCB2F38F50C7F6F03AB.IndexParameters"/>
+        </member>
+        <member name="T:System.Reflection.PropertyInfoExtensions.&lt;G&gt;$A68E0825C8469CCB2F38F50C7F6F03AB.&lt;M&gt;$7E436839AF95F31B88A4B7A199A68586">
+            <target name="container">
+				<summary>
+					<para>
+						Represents a nested <see langword="extension" /> block that includes extension members
+						that allows you using instance or static member reference syntax to visit them, avoiding some verbose referencing syntax
+						like <c>BlahBlahExtension.Method(InstanceMember)</c>, extending from extension methods introduced in C# 3.
+					</para>
+					<para>
+						Different with extension methods, an <see langword="extension" /> block can declare multiple different kinds of members,
+						rather than only methods, instance methods. C# 14 has already brought properties, methods and operators.
+					</para>
+				</summary>
+			</target>
+            <param name="this">The current instance.</param>
+        </member>
+        <member name="P:System.Reflection.PropertyInfoExtensions.&lt;G&gt;$A68E0825C8469CCB2F38F50C7F6F03AB.IsStatic">
+            <summary>
+            Indicates whether the property is modified by keyword <see langword="static"/> or not.
+            </summary>
+        </member>
+        <member name="P:System.Reflection.PropertyInfoExtensions.&lt;G&gt;$A68E0825C8469CCB2F38F50C7F6F03AB.IsReadOnly">
+            <summary>
+            Indicates whether the property is modified by keyword <see langword="readonly"/> or not.
+            </summary>
+        </member>
+        <member name="P:System.Reflection.PropertyInfoExtensions.&lt;G&gt;$A68E0825C8469CCB2F38F50C7F6F03AB.IndexParameters">
+            <summary>
+            Indicates the parameters defined in this indexer property.
+            If the property is not an indexer, an empty array will be returned.
             </summary>
         </member>
         <member name="T:System.Reflection.TypeExtensions">

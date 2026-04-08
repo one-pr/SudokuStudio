@@ -6,10 +6,22 @@ namespace System.Reflection;
 public static partial class ExtensionMemberLookup
 {
 	/// <summary>
+	/// Indicates the name of method of extension marker.
+	/// </summary>
+	public const string ExtensionMarkerMethodName = "<Extension>$";
+
+	/// <summary>
 	/// By design, we should find members and types marked <see langword="public"/> and <see langword="static"/>,
 	/// and it shouldn't be a member overwritten from its base type or ancestor types.
 	/// </summary>
 	internal const BindingFlags DefaultBindingFlags = BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly;
+
+	/// <summary>
+	/// Defines binding flags that will match skeleton members defined in extesion grouper types.
+	/// </summary>
+	internal const BindingFlags ExtensionGrouperSkeletonMembersBindingFlags = BindingFlags.Public | BindingFlags.NonPublic
+		| BindingFlags.Static | BindingFlags.Instance
+		| BindingFlags.DeclaredOnly;
 
 
 	/// <summary>
@@ -84,7 +96,7 @@ public static partial class ExtensionMemberLookup
 						// This type must be marked as [SpecialName].
 						// However, we should check for this type by using <see cref="Type.Attributes"/>,
 						// rather than using <see cref="MemberInfo.IsDefined(Type, bool)"/>.
-						if (!extensionGrouperType.Attributes.HasFlag(TypeAttributes.SpecialName))
+						if (!extensionGrouperType.IsSpecialName)
 						{
 							continue;
 						}
@@ -108,7 +120,7 @@ public static partial class ExtensionMemberLookup
 							}
 
 							// This type must be marked [SpecialName].
-							if (!extensionGrouperType.Attributes.HasFlag(TypeAttributes.SpecialName))
+							if (!extensionGrouperType.IsSpecialName)
 							{
 								continue;
 							}
@@ -119,15 +131,15 @@ public static partial class ExtensionMemberLookup
 								continue;
 							}
 
-							// This type must contain one and only one member - a 'static' method, with name '<Extension>$'.
-							var possibleMethodInfos = extensionMarkerType.GetMembers(DefaultBindingFlags)
+							// This type must contain one and only one member - a 'static' method, with name '<c>&lt;Extension&gt;$</c>'.
+							var possibleMethodsInfo = extensionMarkerType.GetMembers(DefaultBindingFlags)
 								.OfType<MethodInfo>()
 								.ToArray();
-							if (possibleMethodInfos is not [{ IsGenericMethod: false, Name: "<Extension>$", ReturnType: var returnType } extensionStaticMethodMember]
-								|| extensionStaticMethodMember.GetParameters() is not [{ ParameterType: var parameterType, Name: _ }]
+							if (possibleMethodsInfo is not [{ IsGenericMethod: false, Name: ExtensionMarkerMethodName, ReturnType: var returnType } extensionStaticMethodMember]
+								|| extensionStaticMethodMember.GetParameters() is not [{ ParameterType: var parameterType }]
 								|| parameterType != type
 								|| returnType != typeof(void)
-								|| !extensionStaticMethodMember.Attributes.HasFlag(MethodAttributes.SpecialName)
+								|| !extensionStaticMethodMember.IsSpecialName
 								|| !extensionStaticMethodMember.IsDefined(typeof(CompilerGeneratedAttribute), false))
 							{
 								continue;
@@ -177,46 +189,24 @@ public static partial class ExtensionMemberLookup
 			{
 				foreach (var (callable, skeleton) in metadata.EnumerateExtensionMembers())
 				{
-					switch (skeleton, memberTypes)
+					switch (skeleton)
 					{
-						case (PropertyInfo { GetMethod: var getter, SetMethod: var setter } p, _)
-						when
-							// It's an instance property
-							memberTypes.HasFlag(ExtensionMemberTypes.Properties)
-							&& !((getter?.IsStatic ?? false) || (setter?.IsStatic ?? false))
-							&& p.GetIndexParameters().Length == 0
-							// Or a static property
-							|| memberTypes.HasFlag(ExtensionMemberTypes.StaticProperties)
-							&& ((getter?.IsStatic ?? false) || (setter?.IsStatic ?? false))
-							&& p.GetIndexParameters().Length == 0
-							// Or an indexer (must be instance)
-							|| memberTypes.HasFlag(ExtensionMemberTypes.Indexers)
-							&& p.GetIndexParameters().Length != 0:
-						{
-							yield return callable;
-							break;
-						}
-
-						case (MethodInfo { IsStatic: var isStatic, Name: var name, Attributes: var methodAttributes }, _)
-						when
-							// It's an instance method
-							memberTypes.HasFlag(ExtensionMemberTypes.Methods)
-							&& !isStatic
-							&& !methodAttributes.HasFlag(MethodAttributes.SpecialName)
-							// Or a static method
-							|| memberTypes.HasFlag(ExtensionMemberTypes.StaticMethods)
-							&& isStatic
-							&& !methodAttributes.HasFlag(MethodAttributes.SpecialName)
-							// Or an instance operator (compound assignment operator)
-							|| memberTypes.HasFlag(ExtensionMemberTypes.CompoundAssignmentOperators)
-							&& !isStatic
-							&& methodAttributes.HasFlag(MethodAttributes.SpecialName)
-							&& name.StartsWith("op_") && name.EndsWith("Assignment")
-							// Or a static operator
-							|| memberTypes.HasFlag(ExtensionMemberTypes.Operators)
-							&& isStatic
-							&& methodAttributes.HasFlag(MethodAttributes.SpecialName)
-							&& name.StartsWith("op_"):
+						case PropertyInfo { IsStatic: false, IndexParameters: [] }
+							when memberTypes.HasFlag(ExtensionMemberTypes.Properties):
+						case PropertyInfo { IsStatic: true, IndexParameters: [] }
+							when memberTypes.HasFlag(ExtensionMemberTypes.StaticProperties):
+						case PropertyInfo { IndexParameters: not [] }
+							when memberTypes.HasFlag(ExtensionMemberTypes.Indexers):
+						case MethodInfo { IsStatic: false, IsSpecialName: false }
+							when memberTypes.HasFlag(ExtensionMemberTypes.Methods):
+						case MethodInfo { IsStatic: true, IsSpecialName: false }
+							when memberTypes.HasFlag(ExtensionMemberTypes.StaticMethods):
+						case MethodInfo { IsStatic: false, IsSpecialName: true, Name: var methodName1 }
+							when memberTypes.HasFlag(ExtensionMemberTypes.CompoundAssignmentOperators)
+							&& methodName1.StartsWith("op_") && methodName1.EndsWith("Assignment"):
+						case MethodInfo { IsStatic: true, IsSpecialName: true, Name: var methodName2 }
+							when memberTypes.HasFlag(ExtensionMemberTypes.Operators)
+							&& methodName2.StartsWith("op_"):
 						{
 							yield return callable;
 							break;

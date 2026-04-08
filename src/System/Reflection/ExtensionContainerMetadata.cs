@@ -63,7 +63,10 @@ public sealed record ExtensionContainerMetadata(Type ExtensionGrouper, Type Exte
 	/// no matter whether the parameter is named or not.
 	/// </remarks>
 	public ParameterInfo ContainerParameter
-		=> ExtensionMarker.GetMethod("<Extension>$", ExtensionMemberLookup.DefaultBindingFlags)!.GetParameters()[0];
+		=> ExtensionMarker
+			.GetMethod(ExtensionMemberLookup.ExtensionMarkerMethodName, ExtensionMemberLookup.DefaultBindingFlags)!
+			.GetParameters()
+			[0];
 
 
 	/// <inheritdoc/>
@@ -77,9 +80,17 @@ public sealed record ExtensionContainerMetadata(Type ExtensionGrouper, Type Exte
 			Members:
 			"""
 		);
-		foreach (var (_, skeleton) in EnumerateExtensionMembers())
+		var members = EnumerateExtensionMembers().ToArray();
+		if (members.Length == 0)
 		{
-			sb.AppendLine($"{new(' ', 4)}{skeleton}");
+			sb.AppendLine($"{new(' ', 4)}<None>");
+		}
+		else
+		{
+			foreach (var (_, skeleton) in members)
+			{
+				sb.AppendLine($"{new(' ', 4)}{skeleton}");
+			}
 		}
 		return sb.ToString();
 	}
@@ -92,32 +103,26 @@ public sealed record ExtensionContainerMetadata(Type ExtensionGrouper, Type Exte
 	{
 		// Find for all possible signatures of members defined in this type.
 		// Such types cannot be callable but we should use its names to make a final lookup.
-		var targetMemberNames = new HashSet<(string Name, bool IsProperty, bool IsStatic)>();
-		foreach (var member in ExtensionGrouper.GetMembers())
+		var skeletonMembers = new HashSet<MemberInfo>();
+		foreach (var member in ExtensionGrouper.GetMembers(ExtensionMemberLookup.ExtensionGrouperSkeletonMembersBindingFlags))
 		{
 			// Only extension properties, methods, operators and indexers (introduced in C# 15) will be supported.
-			if (member is { Name: var memberName } and (PropertyInfo or MethodInfo))
+			if (member is PropertyInfo or MethodInfo)
 			{
-				targetMemberNames.Add(
-					(
-						memberName,
-						member is PropertyInfo,
-						member switch
-						{
-							PropertyInfo { GetMethod.IsStatic: true } => true,
-							PropertyInfo { SetMethod.IsStatic: true } => true,
-							PropertyInfo => false,
-							MethodInfo { IsStatic: var isStatic } => isStatic,
-							_ => throw new NotSupportedException()
-						}
-					)
-				);
+				skeletonMembers.Add(member);
 			}
 		}
 
 		// Then find for matched members in the static class by names collected.
-		foreach (var (memberName, isProperty, isStatic) in targetMemberNames)
+		foreach (var skeletonMember in skeletonMembers)
 		{
+			var skeletonMemberIsStatic = skeletonMember switch
+			{
+				PropertyInfo { IsStatic: var p } => p,
+				MethodInfo { IsStatic: var m } => m,
+				_ => throw new UnreachableException()
+			};
+
 			// There's no possible members exists here due to mismatched of name.
 			// Although, the name may not be same (which is more intuitive, especially for properties),
 			// they are, in fact, same in reflection - though it is represented as a static method now.
@@ -131,63 +136,69 @@ public sealed record ExtensionContainerMetadata(Type ExtensionGrouper, Type Exte
 			// <item>Method => <c>MethodName</c> (Just copy)</item>
 			// <item>Operator => <c>op_OperatorName</c> (Just copy)</item>
 			// </list>
-			if (ContainingStaticClass.GetMember(memberName) is not { Length: not 0 } members)
+			var callableMethods = ContainingStaticClass
+				.GetMember(skeletonMember.Name)
+				.OfType<MethodInfo>()
+				.Where(static member => member.IsStatic)
+				.ToArray();
+			if (callableMethods.Length == 0)
 			{
 				continue;
 			}
 
+			var methodName = skeletonMember.Name;
+
 			// Iterate on each matched member of same name.
-			foreach (var member in members)
+			foreach (var callableMethod in callableMethods)
 			{
-				// This type must be a static method.
-				if (member is not MethodInfo { IsStatic: true, Name: var methodName } methodInfo)
+				if (skeletonMember is MethodInfo skeletonMethod && methodName switch
+				{
+					['o', 'p', '_', ..] => ExtensionGrouper.GetMethod(methodName),
+					['g' or 's', 'e', 't', '_', ..] => ExtensionGrouper.GetProperty(methodName[4..]),
+					_ => getSkeleton(skeletonMethod, ExtensionGrouper.GetMember(methodName).OfType<MethodInfo>())
+				} is { } matchedMember)
+				{
+					yield return (callableMethod, matchedMember);
+					break;
+				}
+
+				// Otherwise, the target member is non-method.
+				// For non-method members we can directly return that member because it must be matched.
+				yield return (callableMethod, skeletonMember);
+				break;
+			}
+		}
+
+
+		static MemberInfo? getSkeleton(MethodInfo skeletonMethod, IEnumerable<MethodInfo> possibleMethodsInfo)
+		{
+			var parametersInfo = skeletonMethod.GetParameters();
+			foreach (var possibleMethodInfo in possibleMethodsInfo)
+			{
+				var possibleMethodParametersInfo = possibleMethodInfo.GetParameters();
+				if (possibleMethodParametersInfo.Length != parametersInfo.Length)
 				{
 					continue;
 				}
 
-				// Okay, now the member is found.
-				yield return (
-					methodInfo,
-					methodName switch
-					{
-						['o', 'p', '_', ..] => ExtensionGrouper.GetMethod(methodName)!,
-						['g' or 's', 'e', 't', '_', ..] => ExtensionGrouper.GetProperty(methodName[4..])!,
-						_ => getSkeleton(methodInfo, ExtensionGrouper.GetMember(methodName)!.OfType<MethodInfo>())
-					}
-				);
-			}
-
-
-			MemberInfo getSkeleton(MethodInfo methodInfo, IEnumerable<MethodInfo> possibleMethodsInfo)
-			{
-				var parametersInfo = methodInfo.GetParameters()[isStatic ? .. : 1..];
-				foreach (var possibleMethodInfo in possibleMethodsInfo)
+				var isMatched = true;
+				for (var i = 0; i < parametersInfo.Length; i++)
 				{
-					var possibleMethodParametersInfo = possibleMethodInfo.GetParameters();
-					if (possibleMethodParametersInfo.Length != parametersInfo.Length)
+					var a = parametersInfo[i];
+					var b = possibleMethodParametersInfo[i];
+					if (!Type.IsExactlySame(a.ParameterType, b.ParameterType, false, true)
+						|| a.IsIn != b.IsIn || a.IsOut != b.IsOut)
 					{
-						continue;
-					}
-
-					var isMatched = true;
-					for (var i = 0; i < parametersInfo.Length; i++)
-					{
-						var a = parametersInfo[i];
-						var b = possibleMethodParametersInfo[i];
-						if (!Type.IsExactlySame(a.ParameterType, b.ParameterType, false, true)
-							|| a.IsIn != b.IsIn || a.IsOut != b.IsOut)
-						{
-							isMatched = false;
-							break;
-						}
-					}
-					if (isMatched)
-					{
-						return possibleMethodInfo;
+						isMatched = false;
+						break;
 					}
 				}
-				throw new UnreachableException("The target member cannot be found.");
+				if (isMatched)
+				{
+					return possibleMethodInfo;
+				}
 			}
+			return null;
 		}
 	}
 }
