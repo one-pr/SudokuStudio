@@ -92,7 +92,7 @@ public sealed record ExtensionContainerMetadata(Type ExtensionGrouper, Type Exte
 	{
 		// Find for all possible signatures of members defined in this type.
 		// Such types cannot be callable but we should use its names to make a final lookup.
-		var targetMemberNames = new List<(string Name, bool IsProperty, bool IsStatic)>();
+		var targetMemberNames = new HashSet<(string Name, bool IsProperty, bool IsStatic)>();
 		foreach (var member in ExtensionGrouper.GetMembers())
 		{
 			// Only extension properties, methods, operators and indexers (introduced in C# 15) will be supported.
