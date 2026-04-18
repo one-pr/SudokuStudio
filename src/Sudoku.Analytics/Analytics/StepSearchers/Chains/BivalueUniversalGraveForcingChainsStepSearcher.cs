@@ -13,6 +13,12 @@ public sealed partial class BivalueUniversalGraveForcingChainsStepSearcher : Ste
 	/// <inheritdoc/>
 	protected internal override Step? Collect(ref StepAnalysisContext context)
 	{
+		if (!context.InitialGrid.IsValid)
+		{
+			// Skip the puzzle that doesn't have a unique solution.
+			return null;
+		}
+
 		var accumulator = new SortedSet<ChainStep>();
 		if (BivalueUniversalGraveForcingChainsStepSearcherHelper.CollectCore(ref context, accumulator, true, false) is { } step)
 		{
